@@ -1,56 +1,56 @@
 ---
-title: A Container Storage Interface (CSI) illesztőprogramjainak engedélyezése az Azure Kubernetes szolgáltatásban (ak)
-description: Megtudhatja, hogyan engedélyezheti az Azure-lemezek és-Azure Files számára készült Container Storage Interface (CSI) illesztőprogramokat az Azure Kubernetes Service (ak) fürtben.
+title: A Container Storage Interface (CSI) illesztőprogramok engedélyezése Azure Kubernetes Service (AKS)
+description: Megtudhatja, hogyan engedélyezheti a Container Storage Interface (CSI) illesztőprogramokat az Azure-lemezeken és Azure Files egy Azure Kubernetes Service (AKS-) fürtben.
 services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: ec8aeb07e54c6ec49647e7bb65284b6cb7343555
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: c9edfdf1c9740ec1fdaaeeedbc6ba92793eb0b3f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305667"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779956"
 ---
-# <a name="enable-container-storage-interface-csi-drivers-for-azure-disks-and-azure-files-on-azure-kubernetes-service-aks-preview"></a>A Container Storage Interface (CSI) illesztőprogramjainak engedélyezése Azure-lemezekhez és Azure Files az Azure Kubernetes szolgáltatásban (ak) (előzetes verzió)
+# <a name="enable-container-storage-interface-csi-drivers-for-azure-disks-and-azure-files-on-azure-kubernetes-service-aks-preview"></a>A Container Storage Interface (CSI) illesztőprogramok engedélyezése Azure-lemezekhez és Azure Files on Azure Kubernetes Service (AKS) (előzetes verzió)
 
-A Container Storage Interface (CSI) egy olyan szabvány, amely tetszőleges blokk-és file Storage-rendszerek számára teszi elérhetővé a Kubernetes tárolt számítási feladatokat. A CSI segítségével az Azure Kubernetes Service (ak) segítségével írhat, telepíthet és megismételheti a beépülő modulokat, hogy új vagy javítsa a meglévő tárolási rendszereket a Kubernetes anélkül, hogy meg kellene érintenie az alapvető Kubernetes-kódot, és várnia kell a kiadási ciklusokra.
+A Container Storage Interface (CSI) egy olyan szabvány, amely tetszőleges blokk- és fájltároló rendszereket tár fel a Kubernetes tárolóba ezett számítási feladatai számára. A CSI alkalmazásával és használatával az Azure Kubernetes Service (AKS) képes a beépülő modulok írását, üzembe helyezését és iterálását a Kubernetesben található új tárolórendszerek felfedése vagy javítása érdekében anélkül, hogy hozzá kellene érnie az alapvető Kubernetes-kódhoz, és meg kellene várnia a kiadási ciklusokat.
 
-A CSI Storage-illesztőprogram támogatja az AK-t, így natív módon használható:
-- [*Azure-lemezek*](azure-disk-csi.md), amelyek Kubernetes *adatlemez* -erőforrások létrehozására használhatók. A lemezek a nagy teljesítményű SSD-k, illetve az Azure standard Storage által támogatott Azure Premium Storage-t is használhatják, a normál HDD-k vagy a standard SSD-k használatával. A legtöbb éles és fejlesztési számítási feladathoz használja a Premium Storage. Az Azure-lemezek *ReadWriteOnce*-ként vannak csatlakoztatva, így csak egyetlen Pod számára érhető el. A több hüvelyrel egyidejűleg elérhető tárolási kötetek esetében használja a Azure Files.
-- [*Azure Files*](azure-files-csi.md), amely egy Azure Storage-fiók által a hüvelyek számára támogatott SMB 3,0-megosztás csatlakoztatására használható. A Azure Files használatával több csomóponton és hüvelyen is megoszthatja az adategységeket. A Azure Files a standard HDD-k vagy az Azure-Premium Storage által támogatott, nagy teljesítményű SSD-ket támogató Azure standard Storage-t is használhatja.
+A CSI tárolóillesztő támogatása az AKS-hez lehetővé teszi a natív használatot:
+- [*Azure-lemezek,*](azure-disk-csi.md)amelyek Kubernetes *DataDisk-erőforrások létrehozására* használhatók. A lemezek az Azure Premium Storage, nagy teljesítményű VAGY Azure Standard Storage, hagyományos HDD-k vagy Standard HDD-k használatával. A legtöbb éles és fejlesztési számítási feladathoz használja a Premium Storage. Az Azure-lemezek *ReadWriteOnce* ként vannak csatlakoztatva, így csak egyetlen pod számára érhetők el. Olyan tárolókötetek esetén, amelyekhez egyszerre több pod is hozzáfér, használja a Azure Files.
+- [*Azure Files,*](azure-files-csi.md)amely egy Azure Storage-fiók által a podok számára egy SMB 3.0-megosztás csatlakoztatásra használható. A Azure Files több csomópont és pod között oszthat meg adatokat. Azure Files a Azure Standard Storage HDD-k vagy a nagy teljesítményű HDD-k által Premium Storage Azure-beli virtuális Premium Storage is használhatók.
 
 > [!IMPORTANT]
-> A Kubernetes 1,21-es verziójától kezdődően a Kubernetes csak a CSI-illesztőprogramokat és alapértelmezés szerint fogja használni. Ezek az illesztőprogramok a tárolók támogatásának jövője a Kubernetes-ben.
+> A Kubernetes 1.21-es verziójától kezdődően a Kubernetes csak CSI-illesztőprogramokat fog használni, alapértelmezés szerint. Ezek az illesztőprogramok a Kubernetes tárolási támogatásának jövőbeli jövője.
 >
-> A *fában lévő illesztőprogramok* az alapszintű Kubernetes-kód részét képező, az új CSI-illesztőprogramok, amelyek beépülő modulok.
+> *A fastruktúrában található illesztőprogramok* az alapvető Kubernetes-kód részét képezi, és az új CSI-illesztőprogramok, azaz a beépülő modulok.
 
 ## <a name="limitations"></a>Korlátozások
 
-- Ez a funkció csak fürt létrehozási idején állítható be.
-- A CSI-illesztőprogramokat támogató minimális Kubernetes-alverzió v 1.17.
-- Az előzetes verzió ideje alatt az alapértelmezett tárolási osztály továbbra is [ugyanaz lesz a fán tárolt tárolási osztályban](concepts-storage.md#storage-classes). Miután ez a funkció általánosan elérhetővé válik, az alapértelmezett tárolási osztály lesz `managed-csi` eltávolítva.
-- Az első előzetes fázisban csak az Azure CLI támogatott.
+- Ez a funkció csak a fürt létrehozásakor lehet beállítani.
+- A CSI-illesztőprogramokat támogató minimális Kubernetes-alverzió az 1.17-es verzió.
+- Az előzetes verzióban az alapértelmezett tárolási osztály továbbra is ugyanaz a [fatárolóosztály lesz.](concepts-storage.md#storage-classes) Miután ez a szolgáltatás általánosan elérhetővé válik, az alapértelmezett tárolási osztály lesz a tárolási osztály, és a fa `managed-csi` tárolóosztályok el lesznek távolítva.
+- Az első előzetes verzió fázisában csak az Azure CLI támogatott.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-### <a name="register-the-enableazurediskfilecsidriver-preview-feature"></a>Az `EnableAzureDiskFileCSIDriver` előzetes verzió funkciójának regisztrálása
+### <a name="register-the-enableazurediskfilecsidriver-preview-feature"></a>Az előzetes `EnableAzureDiskFileCSIDriver` verziójú funkció regisztrálása
 
-Ha olyan AK-fürtöt szeretne létrehozni, amely a CSI-illesztőprogramokat használja az Azure-lemezekhez és a Azure Fileshoz, engedélyeznie kell a `EnableAzureDiskFileCSIDriver` szolgáltatás jelölőjét az előfizetésében.
+Olyan AKS-fürt létrehozásához, amely képes CSI-illesztőprogramokat használni az Azure-lemezekhez és Azure Files, engedélyeznie kell a funkciójelölőt `EnableAzureDiskFileCSIDriver` az előfizetésén.
 
-Regisztrálja a `EnableAzureDiskFileCSIDriver` szolgáltatás jelölőjét az az [Feature Register][az-feature-register] paranccsal, az alábbi példában látható módon:
+Regisztrálja `EnableAzureDiskFileCSIDriver` a funkciójelölőt az [az feature register paranccsal,][az-feature-register] az alábbi példában látható módon:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureDiskFileCSIDriver"
 ```
 
-Néhány percet vesz igénybe, amíg az állapot *regisztrálva* jelenik meg. Ellenőrizze a regisztrációs állapotot az az [Feature List][az-feature-list] parancs használatával:
+Eltarthat néhány percig, hogy az állapot Regisztrált *állapotúra mutasson.* Ellenőrizze a regisztráció állapotát az [az feature list paranccsal:][az-feature-list]
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureDiskFileCSIDriver')].{Name:name,State:properties.state}"
 ```
 
-Ha elkészült, frissítse a *Microsoft. tárolószolgáltatás* erőforrás-szolgáltató regisztrációját az az [Provider Register][az-provider-register] parancs használatával:
+Ha készen áll, frissítse a *Microsoft.ContainerService* erőforrás-szolgáltató regisztrációját az [az provider register paranccsal:][az-provider-register]
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -60,7 +60,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="install-aks-preview-cli-extension"></a>Az aks-preview CLI-bővítmény telepítése
 
-Ha egy AK-alapú fürtöt vagy egy olyan csomópont-készletet szeretne létrehozni, amely a CSI Storage-illesztőprogramokat használja, szüksége lesz a legújabb *AK – előzetes* verzió Azure CLI-bővítményre. Telepítse az *AK – előzetes* verzió Azure CLI-bővítményét az az [Extension Add][az-extension-add] paranccsal. Vagy telepítse az elérhető frissítéseket az az [Extension Update][az-extension-update] paranccsal.
+A CSI-tárolóillesztőket használni képes AKS-fürt vagy csomópontkészlet létrehozásához a legújabb *aks-preview Azure CLI-bővítmény* szükséges. Telepítse *az aks-preview* Azure CLI-bővítményt az [az extension add paranccsal.][az-extension-add] Vagy telepítse az elérhető frissítéseket az [az extension update paranccsal.][az-extension-update]
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -71,28 +71,28 @@ az extension update --name aks-preview
 ``` 
 
 
-## <a name="create-a-new-cluster-that-can-use-csi-storage-drivers"></a>A CSI Storage-illesztőprogramokat használó új fürt létrehozása
+## <a name="create-a-new-cluster-that-can-use-csi-storage-drivers"></a>CSI-tárolóillesztők használatára képes új fürt létrehozása
 
-Hozzon létre egy új fürtöt, amely a következő CLI-parancsokkal használhatja a CSI Storage-illesztőprogramokat az Azure-lemezekhez és a Azure Fileshoz. A `--aks-custom-headers` szolgáltatás beállításához használja a jelzőt `EnableAzureDiskFileCSIDriver` .
+Hozzon létre egy új fürtöt, amely KÉPES CSI-tárolóillesztőket használni az Azure-lemezekhez, Azure Files parancssori felület alábbi parancsai segítségével. A funkció `--aks-custom-headers` beállítását a `EnableAzureDiskFileCSIDriver` jelzővel használhatja.
 
-Azure-erőforráscsoport létrehozása:
+Hozzon létre egy Azure-erőforráscsoportot:
 
 ```azurecli-interactive
 # Create an Azure resource group
 az group create --name myResourceGroup --location canadacentral
 ```
 
-Az AK-fürt létrehozása a CSI Storage-illesztőprogramok támogatásával:
+Hozza létre a CSI-tárolóillesztőket támogató AKS-fürtöt:
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
 az aks create -g MyResourceGroup -n MyManagedCluster --network-plugin azure  --aks-custom-headers EnableAzureDiskFileCSIDriver=true
 ```
 
-Ha a CSI Storage-illesztőprogramok helyett fatároló-illesztőprogramokban szeretne fürtöket létrehozni, ezt az egyéni paraméter kihagyása mellett teheti meg `--aks-custom-headers` .
+Ha CSI-tárolóillesztők helyett fatároló-illesztőprogramban szeretne fürtöket létrehozni, ezt az egyéni paraméter `--aks-custom-headers` kihagyása után használhatja.
 
 
-Győződjön meg arról, hogy hány Azure Disk-alapú kötetet tud csatlakoztatni ehhez a csomóponthoz a következő futtatásával:
+A következő futtatásával ellenőrizze, hogy hány Lemezalapú Azure-kötet csatolhat ehhez a csomóponthoz:
 
 ```console
 $ kubectl get nodes
@@ -106,9 +106,9 @@ $ echo $(kubectl get CSINode <NODE NAME> -o jsonpath="{.spec.drivers[1].allocata
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az Azure-lemezek CSI-meghajtójának használatához lásd: az [Azure-lemezek használata a CSI-illesztőprogramokkal](azure-disk-csi.md).
-- A Azure Files CSI-meghajtójának használatához tekintse meg a [Azure Files használata a CSI-illesztőprogramokkal](azure-files-csi.md)című témakört.
-- További információ a tárolással kapcsolatos ajánlott eljárásokról: [ajánlott eljárások a tároláshoz és a biztonsági mentésekhez az Azure Kubernetes szolgáltatásban][operator-best-practices-storage].
+- A CSI-meghajtó Azure-lemezekhez való használatával lásd: [Azure-lemezek használata CSI-illesztőprogramokkal.](azure-disk-csi.md)
+- Ha a CSI-meghajtót a Azure Files használni, tekintse meg [a Azure Files CSI-illesztőprogramokkal való használatát.](azure-files-csi.md)
+- További információ a tárolással kapcsolatos ajánlott eljárásokról: Ajánlott tárolási és biztonsági mentési eljárások a [Azure Kubernetes Service.][operator-best-practices-storage]
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
@@ -122,18 +122,18 @@ $ echo $(kubectl get CSINode <NODE NAME> -o jsonpath="{.spec.drivers[1].allocata
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
 [premium-storage]: ../virtual-machines/disks-types.md
-[az-disk-list]: /cli/azure/disk#az-disk-list
-[az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
-[az-disk-create]: /cli/azure/disk#az-disk-create
-[az-disk-show]: /cli/azure/disk#az-disk-show
+[az-disk-list]: /cli/azure/disk#az_disk_list
+[az-snapshot-create]: /cli/azure/snapshot#az_snapshot_create
+[az-disk-create]: /cli/azure/disk#az_disk_create
+[az-disk-show]: /cli/azure/disk#az_disk_show
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register

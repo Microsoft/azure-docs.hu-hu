@@ -1,9 +1,8 @@
 ---
-title: Rövid útmutató – Tanúsítványok & nézetének Azure Key Vault a Azure PowerShell
-description: Rövid útmutató, amely bemutatja, hogyan állíthat be és Azure Key Vault tanúsítványt a Azure PowerShell
+title: Rövid útmutató – Tanúsítványok & nézetének Azure Key Vault beállítása Azure PowerShell
+description: Rövid útmutató, amely bemutatja, hogyan állíthat be és Azure Key Vault tanúsítványt Azure PowerShell
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
@@ -11,16 +10,16 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurepowershell
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 11f463ab0ae60f489fd6b10d06402b6d27fc9930
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: a641ca1206cb41ded0513db72daa278dc3753c85
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502257"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750391"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>Rövid útmutató: Tanúsítvány beállítása és lekérése a Azure Key Vault a Azure PowerShell
 
-Ebben a rövid útmutatóban egy kulcstartót hoz létre a Azure Key Vault a Azure PowerShell. Az Azure Key Vault egy felhőszolgáltatás, amely biztonságos titkoskulcs-tárolóként működik. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. További információt a Key Vault áttekintésében [talál.](../general/overview.md) Azure PowerShell azure-erőforrások parancsokkal vagy szkriptekkel való létrehozására és kezelésére szolgál. Ha ezzel elkészült, egy tanúsítványt fog tárolni.
+Ebben a rövid útmutatóban egy kulcstartót hoz létre a Azure Key Vault a Azure PowerShell. Az Azure Key Vault egy felhőszolgáltatás, amely biztonságos titkoskulcs-tárolóként működik. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. További információt a Key Vault áttekintésében [talál.](../general/overview.md) Azure PowerShell azure-erőforrások parancsokkal vagy szkriptekkel való létrehozására és kezelésére szolgál. Miután ezt befejezte, egy tanúsítványt fog tárolni.
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -53,7 +52,7 @@ $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs
 Add-AzKeyVaultCertificate -VaultName "<your-unique-keyvault-name>" -Name "ExampleCertificate" -CertificatePolicy $Policy
 ```
 
-Most már hivatkozhat erre a tanúsítványra, amelyet a Azure Key Vault az URI-ját használva. A **"https://<-unique-keyvault-name>.vault.azure.net/certificates/ExampleCertificate"** használatával lekérte az aktuális verziót. 
+Most már hivatkozhat erre a tanúsítványra, amelyet a Azure Key Vault URI-ját használva. A **"https://<-unique-keyvault-name>.vault.azure.net/certificates/ExampleCertificate"** használatával lekérte az aktuális verziót. 
 
 A korábban tárolt tanúsítvány megtekintése:
 
@@ -61,15 +60,15 @@ A korábban tárolt tanúsítvány megtekintése:
 Get-AzKeyVaultCertificate -VaultName "<your-unique-keyvault-name>" -Name "ExampleCertificate"
 ```
 
-Most már létrehozott egy Key Vault, tárolt egy tanúsítványt, és lekérte azt.
+Létrehozott egy új tanúsítványt Key Vault tárolt egy tanúsítványt, és lekérte azt.
 
 **Hibaelhárítás:**
 
 A művelet érvénytelen állapotkódot adott vissza (Tiltott)
 
-Ha ezt a hibaüzenetet kapja, a fiók, amely hozzáfér Azure Key Vault nem rendelkezik a megfelelő engedélyekkel a tanúsítványok létrehozásához.
+Ha ezt a hibaüzenetet kapja, a Azure Key Vault hozzáféréssel rendelkező fiók nem rendelkezik a megfelelő engedélyekkel a tanúsítványok létrehozásához.
 
-Futtassa a Azure PowerShell parancsot a megfelelő engedélyek hozzárendeléshez:
+Futtassa a Azure PowerShell parancsot a megfelelő engedélyek hozzárendelése érdekében:
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> -ObjectId <AzureObjectID> -PermissionsToCertificates get,list,update,create
@@ -81,8 +80,8 @@ Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> -ObjectId <AzureObjectID> -
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy Key Vault, és tárolt benne egy tanúsítványt. Ha többet szeretne megtudni a Key Vault és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
+Ebben a rövid útmutatóban létrehozott egy Key Vault, és tárolt benne egy tanúsítványt. Ha többet szeretne megtudni a Key Vault és az alkalmazásokba való integrálásáról, folytassa az alábbi cikkekkel.
 
-- Áttekintés a [Azure Key Vault](../general/overview.md)
+- Olvassa el [a Azure Key Vault](../general/overview.md)
 - Lásd a Azure PowerShell Key Vault [parancsmagok referenciáit](/powershell/module/az.keyvault/)
-- A biztonsági [Key Vault áttekintése](../general/security-overview.md)
+- Tekintse át [a Key Vault biztonsági áttekintését](../general/security-overview.md)

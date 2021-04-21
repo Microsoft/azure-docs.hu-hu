@@ -1,122 +1,122 @@
 ---
-title: Azure metric-riasztások hibaelhárítása
-description: Azure Monitor metrikus riasztásokkal és lehetséges megoldásokkal kapcsolatos gyakori problémák.
+title: Azure-metrikákra vonatkozó riasztások hibaelhárítása
+description: Gyakori problémák a Azure Monitor metrikák riasztásaival és a lehetséges megoldásokkal kapcsolatban.
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 04/12/2021
-ms.openlocfilehash: 85be4100d62971ef7f69840ae3e9b117fbc3c047
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: fc9af94b07add5728201baaa8fa6992728a60a8c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305225"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786008"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Az Azure Monitor metrikaalapú riasztásaival kapcsolatos hibák elhárítása 
 
-Ez a cikk a Azure Monitor [metrikus riasztásokkal](alerts-metric-overview.md) kapcsolatos gyakori problémákat és azok hibaelhárítását ismerteti.
+Ez a cikk a metrikás riasztások Azure Monitor [gyakori problémáit](alerts-metric-overview.md) és azok hibaelhárítását ismerteti.
 
-Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Lehetővé teszik a problémák azonosítását és megcímzését, mielőtt a felhasználók a rendszerértesítéseket. A riasztással kapcsolatos további információkért lásd: [a Microsoft Azure riasztások áttekintése](./alerts-overview.md).
+Azure Monitor riasztások proaktívan értesítik, ha fontos feltételek találhatók a monitorozási adatokban. Lehetővé teszik a problémák azonosítását és megoldását, mielőtt a felhasználók észreveik őket. A riasztásokkal kapcsolatos további információkért lásd: A riasztások [áttekintése a Microsoft Azure.](./alerts-overview.md)
 
-## <a name="metric-alert-should-have-fired-but-didnt"></a>Metrikus riasztást kellett volna kilőtt, de nem 
+## <a name="metric-alert-should-have-fired-but-didnt"></a>A metrikariasztásnak el kellett volna lennie, de nem kellett volna 
 
-Ha úgy gondolja, hogy egy metrikai riasztásnak kilőtte, de nem volt tűz, és nem található a Azure Portalban, próbálkozzon a következő lépésekkel:
+Ha úgy véli, hogy egy metrikariasztásnak kellett volna elriasztva lennie, de nem jött létre, és nem található a Azure Portal, próbálkozzon a következő lépésekkel:
 
-1. **Konfiguráció** – tekintse át a metrika riasztási szabályának konfigurációját, és győződjön meg arról, hogy megfelelően van-e konfigurálva:
-    - Győződjön meg arról, hogy az **összesítési típus** és az **Összesítés részletessége (időszak)** a vártnak megfelelően van-e konfigurálva. Az **összesítési típus** határozza meg, hogy a metrikai értékek hogyan legyenek összesítve (további részletek [itt](../essentials/metrics-aggregation-explained.md#aggregation-types)), és az **Összesítés részletessége (időszak)** szabályozza, hogy a kiértékelés milyen mértékben összesíti a mérőszám értékeit a riasztási szabály futtatásakor.
-    -  Győződjön meg arról, hogy a **küszöbérték** vagy az **érzékenység** a vártnak megfelelően van-e konfigurálva.
-    - A dinamikus küszöbértékeket használó riasztási szabályok esetében ellenőrizze, hogy a speciális beállítások konfigurálva vannak-e, mivel a **szabálysértések száma** kiszűrheti a riasztásokat, és **figyelmen kívül hagyhatja az adatvesztést, mielőtt** hatással lehet a küszöbértékek kiszámítására.
+1. **Konfiguráció** – Tekintse át a metrikák riasztási szabályának konfigurációját, és ellenőrizze, hogy megfelelően van-e konfigurálva:
+    - Ellenőrizze, hogy az **Összesítés típusa** és az Összesítés **részletessége (időszak)** az elvárt módon van-e konfigurálva. **Az** aggregáció típusa határozza meg a metrikaértékek összesítésének (további információ [itt),](../essentials/metrics-aggregation-explained.md#aggregation-types)az Összesítés részletessége **(időszak)** pedig azt határozza meg, hogy a kiértékelés milyen messze összesíti a metrikaértékeket a riasztási szabály futtatásakor.
+    -  Ellenőrizze, hogy **a Küszöbérték vagy** a **Érzékenység** a várt módon van-e konfigurálva.
+    - Dinamikus küszöbértékeket használó riasztási szabály esetén ellenőrizze, hogy  speciális beállítások vannak-e  konfigurálva, mivel a Szabálysértések száma szűrheti a riasztásokat, az Adatok mellőzése pedig hatással lehet a küszöbértékek kiszámítására.
 
        > [!NOTE] 
-       > A dinamikus küszöbértékekhez legalább 3 nap és 30 metrikus minta szükséges, mielőtt aktív lenne.
+       > A dinamikus küszöbértékek legalább 3 napot és 30 metrikamintát igényelnek az aktívvá válás előtt.
 
-2. **Kilőtt, de nincs értesítés** – tekintse át a [kilőtt](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) riasztások listáját, és ellenőrizze, hogy megtalálja-e a kilőtt riasztást. Ha a riasztást a listában látja, de a műveleteivel vagy értesítéseivel kapcsolatban probléma merül fel, további információt [itt](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)talál.
+2. **Elbocsátva, de értesítés nélkül** – Tekintse át az riasztások [listáját,](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) és ellenőrizze, hogy megtalálja-e az elbocsátott riasztást. Ha látja a riasztást a listában, de probléma van néhány műveletével vagy értesítésével, további információt itt [láthat.](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)
 
-3. **Már aktív** – ellenőrizze, hogy van-e már riasztás a következő metrikai idősorozaton:. A metrikariasztások állapotalapúak, ami azt jelenti, hogy a riasztások egy adott metrika-idősorozatra való aktiválását követően az adott idősorozatra vonatkozó további riasztások addig nem lesznek aktiválva, amíg a probléma meg nem szűnik. Ez a kialakítási lehetőség csökkenti a zajt. A riasztás automatikusan megoldódik, ha a riasztási feltétel három egymást követő értékelés esetében nem teljesül.
+3. **Már aktív** – Ellenőrizze, hogy van-e már aktivált riasztás abban a metrika-idősorozatban, amelyről riasztást várt. A metrikariasztások állapotalapúak, ami azt jelenti, hogy a riasztások egy adott metrika-idősorozatra való aktiválását követően az adott idősorozatra vonatkozó további riasztások addig nem lesznek aktiválva, amíg a probléma meg nem szűnik. Ez a kialakítás csökkenti a zajt. A riasztás automatikusan megoldódik, ha a riasztási feltétel három egymást követő értékelés során nem teljesül.
 
-4. **Felhasznált méretek** – ha egyes [dimenzió értékeket jelölt ki egy metrika](./alerts-metric-overview.md#using-dimensions)esetében, a riasztási szabály a küszöbértékek megszegése érdekében figyeli az egyes metrikai idősorozatokat (a dimenzió értékek kombinációja határozza meg). Az összesített metrikai idősorozatok figyeléséhez (a dimenziók nélkül) további riasztási szabályt is beállíthat a metrikán a dimenziók kiválasztása nélkül.
+4. **Használt dimenziók** – Ha kiválasztott néhány dimenzióértéket egy metrika számára, [a](./alerts-metric-overview.md#using-dimensions)riasztási szabály minden egyes metrikaidősort figyel (a dimenzióértékek kombinációja által meghatározottak szerint) egy küszöbérték túllépése esetén. Az összesített metrikaidősorok figyelése (kiválasztott dimenziók nélkül) egy további riasztási szabályt konfigurál a metrikán dimenziók kiválasztása nélkül.
 
-5. **Összesítés és idő részletessége** – ha a metrikát [metrikai diagramokkal](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics)jeleníti meg, ügyeljen arra, hogy:
-    * A metrikai diagram kiválasztott **összesítése** megegyezik a riasztási szabályban szereplő **összesítési típussal**
-    * A kiválasztott **időrészletesség** megegyezik a riasztási szabály **összesítési részletességével (időszakával)** (és nem az "automatikus" értékre van állítva)
+5. **Összesítés és idő részletessége** – Ha metrikadiagramokkal vizualizálja a metrikát, [](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics)győződjön meg a következőről:
+    * A  metrikadiagramon kiválasztott Összesítés  ugyanaz, mint a riasztási szabályban megadott Összesítés típusa
+    * A kiválasztott **Idő részletessége** megegyezik a riasztási szabályban az Összesítés **részletessége (időszak)** beállításával (és nem automatikusra állítva)
 
-## <a name="metric-alert-fired-when-it-shouldnt-have"></a>Metrikus riasztás kilőtt, ha nem lenne
+## <a name="metric-alert-fired-when-it-shouldnt-have"></a>Metrikariasztás akkor lett volna elbocsátva, amikor nem kellett volna
 
-Ha úgy gondolja, hogy a mérőszám riasztása nem lett elindítva, de a következő lépések segíthetnek a probléma megoldásában.
+Ha úgy véli, hogy a metrikariasztásnak nem kellett volna elriasztva, de mégis így történt, az alábbi lépések segíthetnek a probléma megoldásában.
 
-1. Tekintse át a kilőtt riasztások [listáját](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) , és kattintson ide a részletek megtekintéséhez. Tekintse át a riasztás miatti **figyelmeztetést?** című témakörben található információkat. a metrikai diagram, a **metrika** és a **küszöbérték** megtekinthető a riasztás indításakor.
+1. Tekintse át [az adott riasztások listáját,](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) és keresse meg az adott riasztást, és kattintson rá a részleteinek megtekintéséhez. Tekintse át a **Miért aktiválódott** ez a riasztás? alatt található  információkat, és tekintse meg a metrikák diagramját, a Metrikaértéket és a Küszöbértéket a riasztás aktiválódásakor. 
 
     > [!NOTE] 
-    > Ha dinamikus küszöbértékeket használ, és úgy gondolja, hogy a használt küszöbértékek nem megfelelőek, kérjük, küldje el a visszajelzést a komor ikon használatával. Ez a visszajelzés hatással lesz a gépi tanulási algoritmusok kutatására, és segít a jövőbeli észlelések fejlesztésében.
+    > Ha dinamikus küszöbértékek feltételtípust használ, és úgy gondolja, hogy a használt küszöbértékek helytelenek voltak, akkor a rosszalló ikon használatával adjon visszajelzést. Ez a visszajelzés hatással lesz a gépi tanulási algoritmusok kutatására, és segít a jövőbeli észlelések javításában.
 
-2. Ha több dimenzió értéket jelölt ki egy metrika esetében, a riasztás akkor aktiválódik, ha a metrikus idősorozat **bármelyike** (a dimenzió értékek kombinációja alapján) megsérti a küszöbértéket. A méretek metrikariasztásokban való használatáról [itt](./alerts-metric-overview.md#using-dimensions) talál további információt.
+2. Ha több dimenzióértéket választott ki egy metrikhoz,  a riasztás akkor aktiválódik, ha a metrikaidősorok bármelyike (a dimenzióértékek kombinációja által meghatározott módon) túllépi a küszöbértéket. A méretek metrikariasztásokban való használatáról [itt](./alerts-metric-overview.md#using-dimensions) talál további információt.
 
-3. Tekintse át a riasztási szabály konfigurációját, és győződjön meg arról, hogy megfelelően van-e konfigurálva:
-    - Győződjön meg arról, hogy az **összesítési típus**, az **összesítési részletesség (időszak)** és a **küszöbérték** vagy az **érzékenység** a várt módon van konfigurálva.
-    - A dinamikus küszöbértékeket használó riasztási szabályok esetében ellenőrizze, hogy a speciális beállítások konfigurálva vannak-e, mivel a **szabálysértések száma** kiszűrheti a riasztásokat, és **figyelmen kívül hagyhatja az adatvesztést, mielőtt** hatással lehet a küszöbértékek kiszámítására.
+3. Tekintse át a riasztási szabály konfigurációját, és ellenőrizze, hogy megfelelően van-e konfigurálva:
+    - Ellenőrizze, hogy az **Összesítés típusa,** Az összesítés **részletessége (időszak)** és **a Küszöbérték** vagy az **Érzékenység** a vártnak megfelelően van-e konfigurálva
+    - Dinamikus küszöbértékeket használó riasztási szabály esetén ellenőrizze, hogy  vannak-e speciális beállítások  konfigurálva, mivel a Szabálysértések száma szűrheti a riasztásokat, és az Adatok mellőzése az előtt hatással lehet a küszöbértékek kiszámítására
 
    > [!NOTE]
-   > A dinamikus küszöbértékekhez legalább 3 nap és 30 metrikus minta szükséges, mielőtt aktív lenne.
+   > A dinamikus küszöbértékek legalább 3 napot és 30 metrikamintát igényelnek az aktívvá válás előtt.
 
-4. Ha [mérőszámok diagram](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics)használatával jeleníti meg a metrikát, ügyeljen arra, hogy:
-    - A metrikai diagram kiválasztott **összesítése** megegyezik a riasztási szabályban szereplő **összesítési típussal**
-    - A kiválasztott **időrészletesség** megegyezik a riasztási szabály **összesítési részletességével (időszakával)** (és nem az "automatikus" értékre van állítva)
+4. Ha a metrikát Metrikák diagram használatával vizualizálja, győződjön meg [a](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics)következőről:
+    - A metrikadiagramon kiválasztott Összesítés  ugyanaz, mint a riasztási szabályban megadott Összesítés típusa 
+    - A kiválasztott **Idő részletessége** megegyezik a riasztási szabályban az Összesítés **részletessége (időszak)** beállításával (és nem automatikusra állítva)
 
-5. Ha a riasztás elakadt, miközben már vannak olyan riasztások, amelyek ugyanazt a feltételt figyelik (ez nem oldható fel), ellenőrizze, hogy a riasztási szabály konfigurálva van-e az *automérséklés* tulajdonság értéke **false** értékre (ez a tulajdonság csak Rest/PowerShell/CLI használatával konfigurálható, ezért ellenőrizze a riasztási szabály központi telepítéséhez használt parancsfájlt). Ilyen esetben a riasztási szabály nem oldja fel a kilőtt riasztásokat, és nem igényli, hogy a rendszer feloldja a riasztást a tüzelés előtt.
+5. Ha a riasztás akkor lett bekapcsolva, amikor már vannak olyan riasztások, amelyek ugyanezeket a feltételeket figyelik (amelyek nem oldódnak meg), ellenőrizze, hogy a riasztási szabály *autoMitigate* tulajdonsága **false** (hamis) értékkel lett-e konfigurálva (ez a tulajdonság csak REST/PowerShell/PARANCSSORi felület használatával konfigurálható, ezért ellenőrizze a riasztási szabály üzembe helyezéséhez használt szkriptet). Ebben az esetben a riasztási szabály nem oldja fel automatikusan az elbocsátott riasztásokat, és nem követeli meg az éles riasztások feloldását az újra elvégződés előtt.
 
 
-## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>Nem található a riasztást a virtuális gépek vendég metrikáit jelző metrika
+## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>Nem találom a metrikát, amely alapján riasztást lehet kapni – virtuális gépek vendégmetrikák
 
-Ha riasztást szeretne kapni a virtuális gépek vendég operációs rendszerére vonatkozó metrikáról (például memória, lemezterület), győződjön meg arról, hogy telepítette a szükséges ügynököt az adatok Azure Monitor metrikához való összegyűjtéséhez:
+A virtuális gépek vendég operációs rendszeri metrikákra (például memória, lemezterület) vonatkozó riasztásához győződjön meg arról, hogy telepítette az adatok gyűjtéséhez szükséges ügynököt a Azure Monitor Metricsbe:
 - [Windows rendszerű virtuális gépek esetén](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md)
 - [Linux rendszerű virtuális gépek esetén](../essentials/collect-custom-metrics-linux-telegraf.md)
 
-További információ az adatoknak a virtuális gép vendég operációs rendszerből való összegyűjtéséről: [itt](../vm/monitor-vm-azure.md#guest-operating-system).
+A virtuális gépek vendég operációs rendszerből való adatgyűjtésével kapcsolatos további információkért lásd [itt:](../vm/monitor-vm-azure.md#guest-operating-system).
 
 > [!NOTE] 
-> Ha a vendég metrikákat úgy konfigurálta, hogy egy Log Analytics munkaterületre legyenek küldve, a metrikák a Log Analytics munkaterület-erőforrás alatt jelennek meg, és **csak** az azokat figyelő riasztási szabály létrehozása után kezdenek adatokat megjeleníteni. Ehhez kövesse a [naplók metrikariasztásának konfigurálására](./alerts-metric-logs.md#configuring-metric-alert-for-logs) szolgáló lépéseket.
+> Ha vendégmetrikákat konfigurált egy Log Analytics-munkaterületre való küldéshez, a metrikák  a Log Analytics-munkaterület erőforrása alatt jelennek meg, és csak azután kezdik meg az adatok megjelenítését, hogy létrehoz egy riasztási szabályt, amely figyeli őket. Ehhez kövesse a [naplók metrikariasztásának konfigurálására](./alerts-metric-logs.md#configuring-metric-alert-for-logs) szolgáló lépéseket.
 
 > [!NOTE] 
-> A metrikai riasztások jelenleg nem támogatják a vendég metrikájának figyelését egyetlen riasztási szabállyal rendelkező több virtuális géphez. Ezt a [napló riasztási szabályával](./alerts-unified-log.md)érheti el. Ehhez győződjön meg arról, hogy a vendég metrikák gyűjtése egy Log Analytics munkaterületre történik, és hozzon létre egy napló-riasztási szabályt a munkaterületen.
+> A metrikákra vonatkozó riasztások jelenleg nem támogatják a több virtuális géphez egyetlen riasztási s szabálysal rendelkező vendégmetrikák monitorozását. Ezt a naplóriasztás [szabályával érheti el.](./alerts-unified-log.md) Győződjön meg arról, hogy a vendégmetrikák egy Log Analytics-munkaterületre vannak gyűjtve, és hozzon létre egy naplóriasztás-szabályt a munkaterületen.
 
-## <a name="cant-find-the-metric-to-alert-on"></a>Nem található a riasztáshoz használandó metrika
+## <a name="cant-find-the-metric-to-alert-on"></a>Nem található a metrikát, amely alapján riasztást küld
 
 Ha egy adott metrikához szeretne riasztást létrehozni, de nem látja a metrikát a riasztási szabály létrehozásakor, ellenőrizze az alábbiakat:
 - Ha nem lát az erőforrásra vonatkozó metrikákat, [ellenőrizze, hogy a metrikaalapú riasztások támogatják-e az erőforrás típusát](./alerts-metric-near-real-time.md).
 - Ha lát az erőforrásra vonatkozó metrikákat, de egy adott metrikát nem talál, [ellenőrizze, hogy a metrika elérhető-e](../essentials/metrics-supported.md), és ha igen, a leírásában ellenőrizze, hogy nem csak az erőforrás bizonyos verzióiban vagy kiadásában érhető-e el.
 - Ha a metrika nem érhető el az erőforráshoz, előfordulhat, hogy az erőforrásnaplókban elérhető lesz, és naplóriasztásokkal monitorozható. Itt tekinthet meg további információt az [erőforrásnaplóknak az Azure-erőforrásokból történő gyűjtésével és elemzésével](../essentials/tutorial-resource-logs.md) kapcsolatban.
 
-## <a name="cant-find-the-metric-dimension-to-alert-on"></a>Nem található a riasztásra vonatkozó metrikai dimenzió.
+## <a name="cant-find-the-metric-dimension-to-alert-on"></a>Nem található az a metrikadimenzió, amelyről riasztást küld
 
-Ha [egy metrika adott dimenzió értékeire](./alerts-metric-overview.md#using-dimensions)szeretne riasztást kapni, de nem találja ezeket az értékeket, vegye figyelembe a következőket:
+Ha egy metrika [](./alerts-metric-overview.md#using-dimensions)adott dimenzióértékeivel kapcsolatos riasztást keres, de nem találja ezeket az értékeket, vegye figyelembe a következőket:
 
 1. Eltarthat egy pár percig, amíg a dimenzióértékek megjelennek a **Dimenzióértékek** listában
 2. A megjelenített dimenzióértékek az elmúlt napban gyűjtött metrikaadatokon alapulnak
 3. Ha a dimenzió értéke még nincs kibocsátva, vagy nem jelenik meg, az „Egyéni érték hozzáadása” lehetőséggel adhat hozzá egyéni dimenzió értéket
-4. Ha szeretne riasztást kapni egy dimenzió összes lehetséges értékéről (beleértve a jövőbeli értékeket is), válassza az összes jelenlegi és jövőbeli érték kiválasztása lehetőséget.
-5. A Application Insights erőforrások egyéni metrikáinak méretei alapértelmezés szerint ki vannak kapcsolva. A méretek ezen egyéni metrikák gyűjteményének bekapcsolásához [itt](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)talál további információt.
+4. Ha egy dimenzió összes lehetséges értékére (a jövőbeli értékeket is beleértve) szeretne riasztást kapni, válassza az "Összes aktuális és jövőbeli érték kiválasztása" lehetőséget
+5. Az egyes erőforrások Application Insights egyéni metrikadimenziói alapértelmezés szerint ki vannak kapcsolva. Ezen egyéni metrikák dimenziógyűjteményének bekapcsolásért lásd [itt:](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
 
-## <a name="metric-alert-rules-still-defined-on-a-deleted-resource"></a>A metrika riasztási szabályai még definiálva vannak egy törölt erőforráson 
+## <a name="metric-alert-rules-still-defined-on-a-deleted-resource"></a>A metrikariasztás szabályai továbbra is definiálva vannak egy törölt erőforráson 
 
-Amikor töröl egy Azure-erőforrást, az ahhoz társított metrikariasztási szabályok nem törlődnek automatikusan. Egy törölt erőforráshoz társított riasztási szabályok törlése:
+Amikor töröl egy Azure-erőforrást, az ahhoz társított metrikariasztási szabályok nem törlődnek automatikusan. Törölt erőforráshoz tartozó riasztási szabályok törlése:
 
 1. Nyissa meg az erőforráscsoportot, amelyben a törölt erőforrás volt
 1. Az erőforrások listájában jelölje be a **Rejtett típusok megjelenítése** jelölőnégyzetet
 1. Szűrje a listát típus szerint = **microsoft.insights/metricalerts**
-1. Válassza ki a megfelelő riasztási szabályokat, és válassza a **Törlés** lehetőséget.
+1. Válassza ki a megfelelő riasztási szabályokat, majd válassza a **Törlés lehetőséget**
 
-## <a name="make-metric-alerts-occur-every-time-my-condition-is-met"></a>Metrikus riasztások elkészítése minden alkalommal, amikor a feltétel teljesült
+## <a name="make-metric-alerts-occur-every-time-my-condition-is-met"></a>Metrikákra vonatkozó riasztások beállítása minden alkalommal, amikor teljesül a feltételem
 
-A metrikai riasztások alapértelmezés szerint állapottal rendelkeznek, ezért a rendszer nem indít el további riasztásokat, ha már van egy kilőtt riasztás egy adott idősorozatban. Ha szeretné, hogy egy adott metrikai riasztási szabály állapot nélküli legyen, és a riasztási feltétel teljesülése esetén riasztást kapjon, a riasztási szabályt programozott módon hozza létre (például a [Resource Manager](./alerts-metric-create-templates.md), a [PowerShell](/powershell/module/az.monitor/), a [Rest](/rest/api/monitor/metricalerts/createorupdate), a [CLI](/cli/azure/monitor/metrics/alert)használatával), és állítsa a "false" értékre az *autokockázatcsökkentő* tulajdonságot.
+A metrikariasztás alapértelmezés szerint állapot-figyelő, ezért a rendszer nem küld további riasztásokat, ha egy adott idősoron már létezik egy riasztás. Ha egy adott metrikariasztás-szabályt állapot nélkülire szeretne beállítani, és riasztást szeretne kapni minden olyan értékelésről, amelyben a riasztási feltétel teljesül, hozza létre a riasztási szabályt programozott módon (például [a Resource Manager,](./alerts-metric-create-templates.md) [a PowerShell,](/powershell/module/az.monitor/) [a REST](/rest/api/monitor/metricalerts/createorupdate), [a PARANCSSORi](/cli/azure/monitor/metrics/alert)felület használatával), és állítsa az *autoMitigate* tulajdonságot "False" (Hamis) állapotra.
 
 > [!NOTE] 
-> A metrikai riasztási szabály állapotának megakadályozása megakadályozza a kilőtt riasztások feloldását, tehát még azt követően is, hogy a feltétel már nem teljesült, a kilőtt riasztások a 30 napos adatmegőrzési időszakig megmaradnak.
+> A metrikariasztás szabályának állapot nélküli beállítása megakadályozza az aktív riasztások megoldását, így az aktív riasztások a 30 napos megőrzési időszakig még akkor is aktív állapotban maradnak, ha a feltétel már nem teljesül.
 
-## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>Riasztási szabály definiálása egy olyan egyéni metrika esetében, amely még nincs kibocsátva
+## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>Riasztási szabály meghatározása még nem kibocsátott egyéni metrikákhoz
 
-Metrika-riasztási szabály létrehozásakor a metrika neve a [metrika-definíciók API](/rest/api/monitor/metricdefinitions/list) -val lesz érvényesítve, hogy biztosan létezik. Bizonyos esetekben riasztási szabályt kell létrehoznia egy egyéni metrika esetében még a kibocsátása előtt is. Ha például egy Resource Manager-sablonnal hoz létre egy Application Insights-erőforrást, amely egy egyéni metrikát fog kibocsátani, valamint egy riasztási szabályt, amely figyeli a metrikát.
+Metrikariasztás-szabály létrehozásakor a rendszer ellenőrzi a metrika nevét a [Metric Definitions API-n,](/rest/api/monitor/metricdefinitions/list) és ellenőrzi, hogy létezik-e. Bizonyos esetekben még a kibocsátás előtt is létre szeretne hozni egy riasztási szabályt egy egyéni metrikán. Ha például egy egyéni metrikát kibocsátó Resource Manager-erőforrást hoz létre (Resource Manager Application Insights-sablon használatával), akkor a metrikát figyelő riasztási s szabálysal együtt.
 
-Annak elkerülése érdekében, hogy a telepítés meghiúsuljon az egyéni metrika definícióinak érvényesítése során, használhatja a *skipMetricValidation* paramétert a riasztási szabály feltételek szakaszában, ami miatt a metrika érvényesítése ki lesz hagyva. Az alábbi példában megtekintheti, hogyan használhatja ezt a paramétert egy Resource Manager-sablonban. További információt a [metrikus riasztási szabályok létrehozásához a Resource Manager-sablonok teljes mintáit](./alerts-metric-create-templates.md)ismertető témakörben talál.
+Ha el akarja kerülni, hogy az üzembe helyezés meghiúsuljon az egyéni metrika definíciójának ellenőrzésekor, használhatja a *skipMetricValidation* paramétert a riasztási szabály feltételek szakaszában, ami kihagyja a metrikaérvényesítést. Az alábbi példa bemutatja, hogyan használhatja ezt a paramétert egy Resource Manager sablonban. További információkért tekintse meg a metrikák [riasztási Resource Manager létrehozásához szükséges teljes sablonmintákat.](./alerts-metric-create-templates.md)
 
 ```json
 "criteria": {
@@ -136,70 +136,70 @@ Annak elkerülése érdekében, hogy a telepítés meghiúsuljon az egyéni metr
     }
 ```
 
-## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Metrikus riasztási szabály Azure Resource Manager sablonjának exportálása a Azure Portal használatával
+## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Egy metrikariasztás szabály Azure Resource Manager sablonjának exportálása a Azure Portal
 
-A metrikai riasztási szabály Resource Manager-sablonjának exportálása segít megérteni a JSON-szintaxist és-tulajdonságokat, és automatizálhatja a jövőbeli központi telepítéseket.
-1. A Azure Portalban nyissa meg a riasztási szabályt a részletek megtekintéséhez.
+A Resource Manager riasztási szabály sablonjának exportálása segít megérteni annak JSON-szintaxisát és tulajdonságait, és a későbbi üzembe helyezések automatizálását is lehetővé teszi.
+1. A Azure Portal nyissa meg a riasztási szabályt a részleteinek megtekintéséhez.
 2. Kattintson a **Tulajdonságok** elemre.
-3. Az **automatizálás** területen válassza a **sablon exportálása** lehetőséget.
+3. Az **Automation alatt** válassza a Sablon **exportálása lehetőséget.**
 
-## <a name="metric-alert-rules-quota-too-small"></a>A metrika riasztási szabályainak kvótája túl kicsi
+## <a name="metric-alert-rules-quota-too-small"></a>Túl kicsi metrikariasztás-szabályok kvótája
 
-Az előfizetésre vonatkozó metrikus riasztási szabályok megengedett számának [korlátozásai a kvóták](../service-limits.md).
+Az előfizetésenkénti metrikariasztás-szabályok engedélyezett száma a [kvótakorlátok hatálya alá esik.](../service-limits.md)
 
-Ha elérte a kvóta korlátját, a következő lépések segíthetnek a probléma megoldásában:
-1. Próbálja meg törölni vagy letiltani a már nem használt mérőszám-riasztási szabályokat.
+Ha elérte a kvótakorlátot, az alábbi lépések segíthetnek a probléma megoldásában:
+1. Próbálja meg törölni vagy letiltani a már nem használt metrikariasztás-szabályokat.
 
-2. Váltson olyan metrikariasztási szabályok használatára, amelyek több erőforrást monitoroznak. Ezzel a képességgel egyetlen riasztási szabály több erőforrást is képes figyelni, csak egy riasztási szabályt használva, amely a kvóta alapján van megszámolva. A képességről és a támogatott erőforrástípusokról [itt](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor) talál további információt.
+2. Váltson olyan metrikariasztási szabályok használatára, amelyek több erőforrást monitoroznak. Ezzel a képességgel egyetlen riasztási szabály több erőforrást is figyelhet a kvótába beleszámolt egyetlen riasztási szabály használatával. A képességről és a támogatott erőforrástípusokról [itt](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor) talál további információt.
 
-3. Ha növelni szeretné a kvóta korlátját, nyisson meg egy támogatási kérést, és adja meg a következő információkat:
+3. Ha növelni kell a kvótakorlátot, nyisson egy támogatási kérést, és adja meg a következő információkat:
 
-    - Az előfizetés-azonosító (k), amelyhez a kvóta korlátját növelni kell
-    - A kvóta növelésének erőforrás-típusa: **metrikai riasztások** vagy **metrikai riasztások (klasszikus)**
+    - Előfizetés-azonosító(k), amelyekhez növelni kell a kvótakorlátot
+    - A kvóta növeléséhez szükséges erőforrástípus: **Metrikákra vonatkozó riasztások** vagy Metrikák **riasztásai (klasszikus)**
     - Kért kvótakorlát
 
-## <a name="check-total-number-of-metric-alert-rules"></a>Metrikai riasztási szabályok teljes számának keresése
+## <a name="check-total-number-of-metric-alert-rules"></a>A metrikák riasztási szabályainak teljes számának ellenőrzése
 
-A metrikus riasztási szabályok aktuális használatának vizsgálatához kövesse az alábbi lépéseket.
+A metrikákra vonatkozó riasztási szabályok aktuális használatának ellenőrzéshez kövesse az alábbi lépéseket.
 
 ### <a name="from-the-azure-portal"></a>Az Azure Portalról
 
 1. Nyissa meg a **Riasztások** képernyőt, és kattintson a **Riasztási szabályok kezelése** elemre
-2. Szűrés a megfelelő előfizetésre az **előfizetés** legördülő menüjének használatával
-3. Ügyeljen arra, hogy ne szűrje egy adott erőforráscsoportot, erőforrástípust vagy erőforrást
-4. A **jel típusa** legördülő menüben válassza a **metrikák** lehetőséget.
-5. Annak ellenőrzése, hogy az **állapot** legördülő menüje **engedélyezve** értékre van-e állítva
-6. A metrika riasztási szabályainak teljes száma a riasztási szabályok listáján felül jelenik meg
+2. Szűrhet a megfelelő előfizetésre az Előfizetés legördülő **vezérlő** használatával
+3. Ügyeljen arra, hogy NE szűrje egy adott erőforráscsoportra, erőforrástípusra vagy erőforrásra
+4. A Jel **típusa legördülő** vezérlőben válassza a **Metrikák lehetőséget**
+5. Ellenőrizze, hogy az **Állapot** legördülő vezérlő engedélyezve **van-e**
+6. A metrikákra vonatkozó riasztási szabályok teljes száma a riasztási szabályok listája felett jelenik meg
 
 ### <a name="from-api"></a>Küldő API
 
 - PowerShell – [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2)
 - REST API – [List by subscription](/rest/api/monitor/metricalerts/listbysubscription)
-- Azure CLI – [az monitor metrics alert list](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-list)
+- Azure CLI – [az monitor metrics alert list](/cli/azure/monitor/metrics/alert#az_monitor_metrics_alert_list)
 
-## <a name="managing-alert-rules-using-resource-manager-templates-rest-api-powershell-or-azure-cli"></a>Riasztási szabályok kezelése Resource Manager-sablonok, REST API, PowerShell vagy Azure CLI használatával
+## <a name="managing-alert-rules-using-resource-manager-templates-rest-api-powershell-or-azure-cli"></a>Riasztási szabályok kezelése Resource Manager, REST API, PowerShell vagy Azure CLI használatával
 
-Ha a metrikus riasztások Resource Manager-sablonokkal, REST API, PowerShell-lel vagy az Azure parancssori felületével (CLI) történő létrehozásával, frissítésével, beolvasásával vagy törlésével kapcsolatos problémákba ütközik, a következő lépések segíthetnek a probléma megoldásában.
+Ha problémái vannak a metrikariasztás létrehozása, frissítése, leolvasása vagy törlése során Resource Manager-sablonok, az REST API, a PowerShell vagy az Azure parancssori felület (CLI) használatával, az alábbi lépések segíthetnek a probléma megoldásában.
 
 ### <a name="resource-manager-templates"></a>Resource Manager-sablonok
 
 - Tekintse át az [Azure-beli üzemelő példányok gyakori hibáinak](../../azure-resource-manager/templates/common-deployment-errors.md) listáját, és ez alapján végezze el a hibaelhárítást
-- Tekintse meg a [metrikai riasztások Azure Resource Manager a sablonokra vonatkozó példákat](./alerts-metric-create-templates.md) , és győződjön meg róla, hogy az összes paramétert helyesen adta át
+- Tekintse meg a [metrikakriasztásokat Azure Resource Manager sablonpéékban,](./alerts-metric-create-templates.md) és ellenőrizze, hogy minden paramétert megfelelően adott-e meg
 
 ### <a name="rest-api"></a>REST API
 
-Tekintse át a [REST API útmutatót](/rest/api/monitor/metricalerts/) , és ellenőrizze, hogy helyesen adta-e meg az összes paramétert
+Tekintse át [REST API útmutatót,](/rest/api/monitor/metricalerts/) és ellenőrizze, hogy minden paramétert megfelelően adott-e meg
 
 ### <a name="powershell"></a>PowerShell
 
-Győződjön meg arról, hogy a megfelelő PowerShell-parancsmagokat használja a metrikai riasztásokhoz:
+Győződjön meg arról, hogy a megfelelő PowerShell-parancsmagokat használja a metrikák riasztásaihoz:
 
 - A metrikariasztások PowerShell-parancsmagjai az [Az.Monitor modulban](/powershell/module/az.monitor/) érhetők el
-- Ügyeljen arra, hogy a "v2" végződésű parancsmagokat használja az új (nem klasszikus) metrikai riasztásokhoz (például [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2)).
+- Győződjön meg arról, hogy az új (nem klasszikus) metrikák riasztásai esetében a "V2" végződésű parancsmagokat használja (például [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2))
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Győződjön meg arról, hogy a megfelelő CLI-parancsokat használja a metrikai riasztásokhoz:
+Győződjön meg arról, hogy a megfelelő PARANCSSORi felületi parancsokat használja a metrikák riasztásaihoz:
 
 - A metrikaalapú riasztásokra vonatkozó parancssori felületi parancsok a következőképpen kezdődnek: `az monitor metrics alert` Az [Azure CLI-referenciából](/cli/azure/monitor/metrics/alert) többet tudhat meg a szintaxisról.
 - Itt talál egy [példát a metrikaalapú riasztások parancssori felülettel történő használatára](./alerts-metric.md#with-azure-cli)
@@ -207,81 +207,81 @@ Győződjön meg arról, hogy a megfelelő CLI-parancsokat használja a metrikai
 
 ### <a name="general"></a>Általános kérdések
 
-- Ha a `Metric not found` következő hibaüzenetet kapja:
+- Ha hibaüzenetet `Metric not found` kap:
 
-   - Platform metrika esetén: Ügyeljen arra, hogy a **metrika** nevét [a Azure monitor támogatott metrikák lapról](../essentials/metrics-supported.md)használja, nem a **metrika megjelenítendő nevét** .
+   - Platformmetrika esetén: Győződjön meg arról, hogy a metrika nevét használja a Azure Monitor [metrikák](../essentials/metrics-supported.md)oldalán, és nem a metrika **megjelenítendő nevét** 
 
-   - Egyéni metrika esetén: Győződjön meg arról, hogy a metrika már ki van bocsátva (nem hozható létre riasztási szabály egy olyan egyéni metrika esetében, amely még nem létezik), és hogy az egyéni metrika névterét biztosítja (lásd a Resource Manager- [sablon példáját](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric))
+   - Egyéni metrika esetén: Győződjön meg arról, hogy a metrika már ki van bocsátva (nem hozhat létre riasztási szabályt olyan egyéni metrikákhoz, amelyek még nem léteznek), és hogy az egyéni metrika névterét biztosítja -e (lásd az Resource Manager-sablonra vonatkozó példát [itt)](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)
 
-- Ha [metrikus riasztásokat hoz létre a naplókon](./alerts-metric-logs.md), győződjön meg arról, hogy a megfelelő függőségek szerepelnek benne. Itt találhat egy [mintasablont](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
+- Ha metrikakriasztásokat [hoz létre a naplókhoz,](./alerts-metric-logs.md)győződjön meg arról, hogy a megfelelő függőségek is szerepelnek benne. Itt találhat egy [mintasablont](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 - Ha több feltételt tartalmazó riasztási szabályt hoz létre, vegye figyelembe a következő korlátozásokat:
 
    - Dimenziónként csak egy érték választható ki minden feltételben
    - A(z) „\*” nem használható dimenzióértékként
-   - Ha a különböző feltételekben konfigurált mérőszámok ugyanazt a dimenziót támogatják, akkor a konfigurált dimenzió értékét explicit módon kell beállítani az összes metrika esetében (lásd a Resource Manager- [sablonok példáját](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria))
+   - Ha a különböző feltételekben konfigurált metrikák ugyanazt a dimenziót támogatják, akkor a konfigurált dimenzióértéket explicit módon kell beállítani az összes metrika számára (lásd az Resource Manager-példasablont [itt)](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria)
 
 
-## <a name="no-permissions-to-create-metric-alert-rules"></a>Nincs engedélye metrikus riasztási szabályok létrehozására
+## <a name="no-permissions-to-create-metric-alert-rules"></a>Nincs engedélye metrikariasztás-szabályok létrehozásához
 
-Metrikus riasztási szabály létrehozásához a következő engedélyekkel kell rendelkeznie:
+Metrikákra vonatkozó riasztási szabály létrehozásához a következő engedélyekkel kell rendelkeznie:
 
-- Olvasási engedély a riasztási szabály cél erőforrásához
-- Írási engedély a riasztási szabályt létrehozó erőforráscsoport számára (ha a riasztási szabályt a Azure Portal hozza létre, a riasztási szabály alapértelmezés szerint ugyanabban az erőforráscsoportban jön létre, amelyben a célként megadott erőforrás található)
-- Olvasási engedély a riasztási szabályhoz társított összes műveleti csoporthoz (ha van ilyen)
+- Olvasási engedély a riasztási szabály célerőforrásán
+- Írási engedély arra az erőforráscsoportra, amelyben a riasztási szabály létrejön (ha a riasztási szabályt a Azure Portal-ból hozta létre, a riasztási szabály alapértelmezés szerint ugyanabban az erőforráscsoportban jön létre, amelyben a célerőforrás található)
+- Olvasási engedély a riasztási szabályhoz társított bármely műveletcsoporthoz (ha van)
 
 
-## <a name="naming-restrictions-for-metric-alert-rules"></a>Metrikus riasztási szabályok elnevezési korlátozásai
+## <a name="naming-restrictions-for-metric-alert-rules"></a>A metrikák riasztási szabályainak elnevezési korlátozásai
 
-Vegye figyelembe a következő korlátozásokat a metrikus riasztási szabályok neveinél:
+Vegye figyelembe a metrikariasztás szabálynevének alábbi korlátozásait:
 
-- A metrika riasztási szabályainak neve nem módosítható (átnevezve) a létrehozás után
-- A metrikus riasztási szabályok neveinek egyedinek kell lenniük egy erőforráscsoporthoz
-- A metrikai riasztási szabályok nevei nem tartalmazhatják a következő karaktereket: * # & +:  < > ? @ % { } \ / 
-- A metrikai riasztási szabályok nevei nem végződhet szóközzel vagy ponttal
+- A metrikák riasztási szabályának nevei létrehozás után nem módosíthatók (átnevezhetők)
+- A metrikariasztás szabálynevének egyedinek kell lennie egy erőforráscsoporton belül
+- A metrikák riasztási szabályának neve nem tartalmazhatja a következő karaktereket: * # & + : < > ? @ % { } \ / 
+- A metrikák riasztási szabályának neve nem végződhet szóközre vagy pontra
 
 > [!NOTE] 
-> Ha a riasztási szabály neve nem alfabetikus vagy numerikus karaktereket tartalmaz (például szóközök, írásjelek vagy szimbólumok), akkor ezek a karakterek URL-kódolással rendelkezhetnek, ha bizonyos ügyfelek beolvasják őket.
+> Ha a riasztási szabály neve nem alfabetikus vagy numerikus karaktereket (például szóközöket, írásjeleket vagy szimbólumokat) tartalmaz, előfordulhat, hogy ezek a karakterek URL-kódolással vannak kódolva, amikor bizonyos ügyfelek lekérik őket.
 
-## <a name="restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions"></a>Korlátozások a metrikus riasztási szabályokban több feltételt tartalmazó dimenziók használata esetén
+## <a name="restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions"></a>A dimenziók több feltételt használó metrikák riasztási szabályában való használatának korlátozásai
 
-A metrikus riasztások támogatják a többdimenziós metrikák riasztásait, valamint a több feltétel meghatározásának támogatását (a riasztási szabály legfeljebb 5 feltételét).
+A metrikák riasztásai támogatják a többdimenziós metrikákra vonatkozó riasztásokat, valamint támogatják több feltétel meghatározását (riasztási szabályonként legfeljebb 5 feltétel).
 
 Ha több feltételt tartalmazó riasztási szabályban dimenziókat használ, vegye figyelembe a következő korlátozásokat:
-- Minden feltételben csak egy értéket lehet kijelölni dimenzión belül.
-- Nem használhatja a "minden aktuális és jövőbeli érték kijelölése" lehetőséget (válassza ki \* ).
-- Ha a különböző feltételekben konfigurált mérőszámok ugyanazt a dimenziót támogatják, akkor a konfigurált dimenzió értékét explicit módon kell beállítani az összes metrika esetében (a vonatkozó feltételek között).
+- Dimenziónként csak egy értéket választhat ki az egyes feltételeken belül.
+- A "Select all current and future values" (Az összes aktuális és jövőbeli érték kiválasztása) lehetőséget nem használhatja (Select \* ).
+- Ha a különböző feltételekben konfigurált metrikák ugyanazt a dimenziót támogatják, akkor explicit módon kell beállítani egy konfigurált dimenzióértéket az összes metrika számára (a megfelelő feltételek mellett).
 Például:
-    - Vegyünk egy olyan metrikai riasztási szabályt, amely egy Storage-fiókban van definiálva, és két feltételt figyel:
-        * **Tranzakciók** összesen > 5
-        * Átlagos **SuccessE2ELatency** > 250 MS
-    - Szeretném frissíteni az első feltételt, és csak olyan tranzakciókat figyelni, amelyekben az **ApiName** dimenzió *"GetBlob"* értékkel rendelkezik
-    - Mivel mind a **tranzakciók** , mind a **SuccessE2ELatency** metrikája támogatja a **ApiName** -dimenziót, mindkét feltételt frissíteni kell, és mindkettőnek meg kell adnia a **ApiName** dimenziót *"GetBlob"* értékkel.
+    - Vezesszünk egy metrikákra vonatkozó riasztási szabályt, amely egy tárfiókban van meghatározva, és két feltételt figyel:
+        * Összes **tranzakció >** 5
+        * Átlagos **successE2ELatency** > 250 ms
+    - Frissíteni szeretném az első feltételt, és csak olyan tranzakciókat monitor szeretnék figyelni, **amelyeknél** az ApiName dimenzió *értéke "GetBlob"*
+    - Mivel a **Transactions** és **a SuccessE2ELatency** metrikák is támogatnak egy **ApiName** dimenziót, mindkét feltételt frissíteni kell, és mindkettőnek meg kell adnia az **ApiName** dimenziót egy *"GetBlob" értékkel.*
 
 ## <a name="setting-the-alert-rules-period-and-frequency"></a>A riasztási szabály időtartamának és gyakoriságának beállítása
 
-Javasoljuk, hogy a *kiértékelés gyakorisága* nagyobb mértékű *összesítési részletességet (időszakot)* válasszon, hogy csökkentse a hozzáadott idősorozat első kiértékelésének valószínűségét a következő esetekben:
--   Metrikus riasztási szabály, amely több dimenziót figyel – új dimenzió érték-kombináció hozzáadásakor
--   Metrikus riasztási szabály, amely több erőforrást figyel – új erőforrás a hatókörhöz való hozzáadásakor
--   Metrikus riasztási szabály, amely nem folyamatosan kibocsátott mérőszámot figyel (ritka metrika) – Ha a mérőszámot 24 óránál hosszabb időt követően bocsátják ki a rendszer, amelyben nem lett kibocsátva
+Javasoljuk, hogy olyan összesítési *részletességet (Period)* válasszon, amely nagyobb a kiértékelési *gyakoriságnál,* hogy a következő esetekben csökkentse annak valószínűségét, hogy hiányzik a hozzáadott idősorok első kiértékelése:
+-   Metrikákra vonatkozó riasztási szabály, amely több dimenziót figyel – Új dimenzióérték-kombináció hozzáadásakor
+-   Metrikákra vonatkozó riasztási szabály, amely több erőforrást figyel – Új erőforrás hatókörbe való hozzáadásakor
+-   Metrikariasztás szabálya, amely monitorozza a nem folyamatosan kibocsátott metrikát (ritka metrika) – Ha a metrika 24 óránál hosszabb idő után van kiadva, amikor nem lett kiadva
 
-## <a name="the-dynamic-thresholds-borders-dont-seem-to-fit-the-data"></a>Úgy tűnik, hogy a dinamikus küszöbértékek szegélyei nem férnek hozzá az adattartalomhoz
+## <a name="the-dynamic-thresholds-borders-dont-seem-to-fit-the-data"></a>Úgy tűnik, hogy a dinamikus küszöbértékek szegélyei nem illeszkednek az adatokhoz
 
-Ha a metrika viselkedése nemrég módosult, a módosítások nem lesznek szükségszerűen tükrözve a dinamikus küszöbértékek (felső és alsó határok) esetében, mivel ezek kiszámítása az elmúlt 10 napban mért metrikai adatok alapján történik. Egy adott metrika dinamikus küszöbértékének megtekintésekor ügyeljen arra, hogy az elmúlt hét metrikai trendjét ne csak az elmúlt órában vagy napban tekintse meg.
+Ha egy metrika viselkedése a közelmúltban változott, a módosítások nem feltétlenül jelennek meg azonnal a dinamikus küszöbértékek határaiban (a felső és az alsó határértéken), mivel ezek számítása az elmúlt 10 nap metrikaadatai alapján történik. Egy adott metrika dinamikus küszöbérték-határainak megtekintésekor ügyeljen arra, hogy az elmúlt héten ne csak az elmúlt órákra vagy napokra vonatkozó metrikák trendjét ellenőrizze.
 
-## <a name="why-is-weekly-seasonality-not-detected-by-dynamic-thresholds"></a>Miért nem észlelhetők a dinamikus küszöbértékek a heti szezonálisan?
+## <a name="why-is-weekly-seasonality-not-detected-by-dynamic-thresholds"></a>Miért nem észleli a dinamikus küszöbértékek a heti szezonalitást?
 
-A heti szezonális időpontok azonosításához a dinamikus küszöbértékek modellhez legalább három héttel korábbi adatmennyiség szükséges. Ha elegendő korábbi adat áll rendelkezésre, a rendszer a metrikus adatokban található heti szezonális időpontokat fogja azonosítani, és ennek megfelelően módosítja a modellt. 
+A heti szezonalitás azonosításához a Dinamikus küszöbértékek modell legalább három hét előzményadatot igényel. Ha elegendő előzményadat áll rendelkezésre, a rendszer azonosítja a metrikaadatokban megtalálható heti szezonalitásokat, és ennek megfelelően módosítja a modellt. 
 
-## <a name="dynamic-thresholds-shows-a-negative-lower-bound-for-a-metric-even-though-the-metric-always-has-positive-values"></a>A dinamikus küszöbértékek negatív alsó határt mutatnak a metrikához, annak ellenére, hogy a metrika mindig pozitív értékeket tartalmaz
+## <a name="dynamic-thresholds-shows-a-negative-lower-bound-for-a-metric-even-though-the-metric-always-has-positive-values"></a>A dinamikus küszöbértékek negatív alsó határértéket mutatnak a metrikákhoz, annak ellenére, hogy a metrika mindig pozitív értékekkel rendelkezik
 
-Ha egy metrika nagy ingadozást mutat be, a dinamikus küszöbértékek egy szélesebb modellt fognak kiépíteni a mérőszámok köréből, ami az alsó szegély nulla alatti értékhez vezethet. Pontosabban ez a következő esetekben fordulhat elő:
-1. Az érzékenység értéke alacsony 
-2. A középértékek értéke nullához közeledik
-3. A metrika szabálytalan viselkedést mutat a nagy variancia (az adatokban tüskék vagy dipsok találhatók)
+Ha egy metrika nagy ingadozást mutat, a dinamikus küszöbértékek szélesebb modellt építenek a metrikaértékek köré, ami azt eredményezheti, hogy az alsó szegély nullánál kevesebb lesz. Ez a következő esetekben fordulhat elő:
+1. A bizalmasság alacsonyra van állítva 
+2. A mediánértékek nullához közeliek
+3. A metrika szokatlan viselkedést mutat nagy varianciával (kiugró vagy mélyedés van az adatokban)
 
-Ha az alsó határ negatív értékkel rendelkezik, ez azt jelenti, hogy a metrika a metrika szabálytalan viselkedése miatt nem éri el a nulla értéket. Érdemes lehet nagyobb érzékenységet vagy nagyobb *összesítési részletességet (időszakot)* választani, hogy a modell kevésbé érzékeny legyen, vagy az *adatok figyelmen kívül hagyása* lehetőséggel kizárjon egy legutóbbi irregulaity a modell összeállításához használt korábbi adatokból.
+Ha az alsó határ negatív értékkel rendelkezik, az azt jelenti, hogy a metrika valószínű, hogy nulla értéket ér el a metrika szabálytalan viselkedése miatt. Érdemes lehet nagyobb bizalmasságot vagy nagyobb összesítési részletességet *(Period)* választani a modell  kevésbé bizalmassága érdekében, vagy az Adatok mellőzése az előtt beállítás használatával kizárni a legutóbbi integrációs adatokat a modell felépítéséhez használt előzményadatokból.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A riasztásokkal és értesítésekkel kapcsolatos általános hibaelhárítási információkért lásd: [Azure monitor riasztások hibaelhárítási problémái](alerts-troubleshoot.md).
+- A riasztásokkal és értesítésekkel kapcsolatos általános hibaelhárítási információkért lásd: Hibaelhárítási problémák a Azure Monitor [riasztások esetén.](alerts-troubleshoot.md)

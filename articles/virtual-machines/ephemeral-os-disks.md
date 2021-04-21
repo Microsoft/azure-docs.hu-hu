@@ -1,6 +1,6 @@
 ---
 title: Rövid élettartamú operációsrendszer-lemezek
-description: További információ az Azure-beli virtuális gépek elmúló operációsrendszer-lemezéről.
+description: További információ az Azure-beli virtuális gépekhez való operációsrendszer-lemezekről.
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -8,61 +8,61 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 814824fb6708abaf549bb3de19b4aced4774a244
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 24b1be2ca55b057c887c8782ce7eea1150f143da
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102485758"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762622"
 ---
-# <a name="ephemeral-os-disks-for-azure-vms"></a>Ideiglenes operációsrendszer-lemezek Azure-beli virtuális gépekhez
+# <a name="ephemeral-os-disks-for-azure-vms"></a>Az Azure-beli virtuális gépek rendszerlemezei aphemeral operációsrendszer-lemezeken
 
-Az ideiglenes operációsrendszer-lemezek a helyi virtuális gép (VM) tárolóján jönnek létre, és nem lesznek mentve a távoli Azure-tárolóba. Az időszakos operációsrendszer-lemezek jól működnek az állapot nélküli munkaterhelések esetében, ahol az alkalmazások az egyes virtuálisgép-hibáktól függenek, de a virtuális gép üzembe helyezési ideje vagy az egyes virtuálisgép-példányok újrarendszerképe is befolyásolja. Az elmúló operációsrendszer-lemezzel alacsonyabb olvasási/írási késést kap az operációsrendszer-lemez és a virtuális gép lemezképének gyors alaphelyzetbe állítása. 
+A rendszer a kis operációsrendszer-lemezeket a helyi virtuálisgép-tárolón (VM) hozta létre, és nem menti a távoli Azure Storage-ba. Aphemerális operációsrendszer-lemezek jól működnek az állapot nélküli számítási feladatokhoz, ahol az alkalmazások tűrik az egyes virtuális gépek meghibásodását, de a virtuális gépek üzembehelyezésének ideje vagy az egyes virtuálisgép-példányok rendszerképének visszaállítása nagyobb hatással van rá. A rövid idejű operációsrendszer-lemezekkel alacsonyabb olvasási/írási késés érhető el az operációsrendszer-lemezen, és gyorsabb a virtuális gépek rendszerének rendszer-visszaírása. 
  
-Az ideiglenes lemezek legfontosabb funkciói a következők: 
+Aphemerális lemezek fő jellemzői a következőek: 
 - Ideális állapot nélküli alkalmazásokhoz.
-- A piactéren és az egyéni rendszerképeken is használhatók.
-- Lehetővé teszi a virtuális gépek gyors alaphelyzetbe állítását vagy áttelepítését, illetve a méretezési csoport példányainak eredeti rendszerindítási állapotát.  
-- Kisebb késés, hasonlóan egy ideiglenes lemezhez. 
-- Az ideiglenes operációsrendszer-lemezek ingyenesek, az operációsrendszer-lemez tárolási díja nem jár.
-- Ezek az összes Azure-régióban elérhetők. 
-- A [megosztott rendszerkép](./shared-image-galleries.md)-katalógus támogatja az ideiglenes operációsrendszer-lemezt. 
+- A Marketplace-en és egyéni rendszerképekkel is használhatók.
+- A virtuális gépek gyors alaphelyzetbe állítása vagy rendszerindításának alaphelyzetbe állítása és a méretezésikészlet-példányok eredeti rendszerindítási állapotba való méretezése.  
+- Alacsonyabb késés, az ideiglenes lemezhez hasonlóan. 
+- Aphemerális operációsrendszer-lemezek ingyenesek, az operációsrendszer-lemezek tárolási költsége nem jár.
+- Minden Azure-régióban elérhetők. 
+- A rendszer a rendszer operációsrendszer-lemezét támogatja [a Shared Image Gallery.](./shared-image-galleries.md) 
  
 
  
-Az állandó és az elmúló operációsrendszer-lemezek közötti fő különbségek:
+Fő különbségek az állandó és a hosszútű operációsrendszer-lemezek között:
 
 |                             | Állandó operációsrendszer-lemez                          | Rövid élettartamú operációsrendszer-lemez                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| **OPERÁCIÓSRENDSZER-lemezre vonatkozó méretkorlát**      | 2 TiB                                                                                        | A virtuális gép méretének vagy 2TiB a gyorsítótár mérete, attól függően, hogy melyik a kisebb. A **GIB gyorsítótár-méretének** megtekintéséhez lásd [: DS](sizes-general.md), [es](sizes-memory.md), [M](sizes-memory.md), [FS](sizes-compute.md)és [GS](sizes-previous-gen.md#gs-series)              |
-| **Támogatott VM-méretek**          | Mind                                                                                          | A Premium Storage-t támogató virtuálisgép-méretek, például DSv1, DSv2, DSv3, Esv3, FS, FsV2, GS, M                                               |
-| **Lemez típusának támogatása**           | Felügyelt és nem felügyelt operációsrendszer-lemez                                                                | Csak felügyelt operációsrendszer-lemez                                                               |
+| **Operációsrendszer-lemez méretkorlátja**      | 2 TiB                                                                                        | Gyorsítótár mérete a virtuális gép méretének vagy 2TiB-nek (amelyik kisebb). A **Gyorsítótár mérete GiB-ban:** [DS,](sizes-general.md) [ES,](sizes-memory.md) [M,](sizes-memory.md) [FS](sizes-compute.md)és [GS](sizes-previous-gen.md#gs-series)              |
+| **Támogatott virtuálisgép-méretek**          | Mind                                                                                          | A Prémium szintű tárolást támogató virtuálisgép-méretek, például DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M                                               |
+| **Lemeztípus támogatása**           | Felügyelt és nem felügyelt operációsrendszer-lemez                                                                | Csak felügyelt operációsrendszer-lemez                                                               |
 | **Régiós támogatás**              | Minden régió                                                                                  | Minden régió                              |
-| **Adatmegőrzés**            | Az operációsrendszer-lemezre írt operációsrendszer-lemezeket az Azure Storage tárolja                                  | Az operációsrendszer-lemezre írt adatkészleteket a rendszer a helyi virtuálisgép-tárolóba tárolja, és nem őrzi meg az Azure Storage szolgáltatásban. |
-| **Lefoglalt állapot leállítása**      | A virtuális gépek és a méretezési csoport példányai leállíthatók, és a Leállított állapotból indíthatók újra. | A virtuális gépek és a méretezési csoport példányai nem állíthatók le – nem foglalható le.                                  |
+| **Adatmegőrzés**            | Az operációsrendszer-lemezre írt operációsrendszer-lemezadatokat az Azure Storage tárolja                                  | Az operációsrendszer-lemezre írt adatok a helyi virtuálisgép-tárolóban tárolódnak, és nem maradnak meg az Azure Storage-ban. |
+| **Felszabadított állapot leállítása**      | A virtuális gépek és a méretezésicsoport-példányok leállíthatóak és újraindíthatóak a felszabadított állapotból | A virtuális gépek és a méretezésicsoport-példányok nem állíthatóak fel                                  |
 | **Speciális operációsrendszer-lemezek támogatása** | Igen                                                                                          | Nem                                                                                 |
-| **OPERÁCIÓSRENDSZER-lemez átméretezése**              | A virtuális gép létrehozásakor és a virtuális gép leállítása után támogatott                                | Csak a virtuális gépek létrehozásakor támogatott                                                  |
-| **Átméretezés új virtuálisgép-méretre**   | Az operációsrendszer-lemezre vonatkozó adatmegőrzés                                                                    | Az operációsrendszer-lemezen lévő adatlemez törölve lett, az operációs rendszer újból kiépítve       
-| **Lapozófájl elhelyezése**   | Windows esetén a lapozófájl tárolása az erőforrás-lemezen történik                                              | Windows esetén a lapozófájlt az operációsrendszer-lemezen tárolja a rendszer.   |
+| **Operációsrendszer-lemez átméretezése**              | A virtuális gép létrehozása során és a virtuális gép felszabadítása után támogatott                                | Csak a virtuális gépek létrehozása során támogatott                                                  |
+| **Átméretezés új virtuálisgép-méretre**   | Az operációsrendszer-lemez adatai megmaradnak                                                                    | Az operációsrendszer-lemezen lévő adatok törlődnek, az operációs rendszer újra ki van építve       
+| **Lapfájl elhelyezése**   | Windows esetén a lapfájl az erőforráslemezen van tárolva                                              | Windows esetén a lapfájl az operációsrendszer-lemezen van tárolva   |
 
-## <a name="size-requirements"></a>Méretre vonatkozó követelmények
+## <a name="size-requirements"></a>Méretkövetelmények
 
-A virtuális gépek és a példányok rendszerképeinek üzembe helyezése a virtuális gép gyorsítótárának méretétől függetlenül végezhető el. A piactér standard szintű Windows Server-rendszerképei például a 127 GiB-ra vonatkoznak, ami azt jelenti, hogy a virtuális gép méretének a 127 GiB-nál nagyobb gyorsítótárral kell rendelkeznie. Ebben az esetben a [Standard_DS2_v2](dv2-dsv2-series.md) 86 GIB gyorsítótár-mérettel rendelkezik, ami nem elég nagy. A Standard_DS3_v2 gyorsítótárának mérete 172 GiB, ami elég nagy. Ebben az esetben a Standard_DS3_v2 a DSv2-sorozat legkisebb mérete, amelyet ezzel a képpel lehet használni. Az alapszintű Linux-rendszerképek a piactéren és a Windows Server-lemezképekben, amelyeknek a célja az, hogy `[smallsize]` körülbelül 30 GIB, és a rendelkezésre álló virtuálisgép-méretek többségét használhatják.
+A virtuálisgép- és példány-rendszerképeket a virtuálisgép-gyorsítótár méretének megfelelően helyezheti üzembe. A Marketplace-ről származó Standard Windows Server-rendszerképek például körülbelül 127 GiB méretűek, ami azt jelenti, hogy olyan virtuálisgép-méretre van szükség, amelynek gyorsítótára nagyobb, mint 127 GiB. Ebben az esetben a [Standard_DS2_v2](dv2-dsv2-series.md) 86 GiB gyorsítótármérettel rendelkezik, ami nem elég nagy. A Standard_DS3_v2 172 GiB gyorsítótármérettel rendelkezik, ami elég nagy. Ebben az esetben a Standard_DS3_v2 A DSv2 sorozat legkisebb mérete, amely használható ezzel a képpel. A Marketplace alapszintű Linux-rendszerképei és a Windows Server rendszerképei, amelyek neve általában körülbelül 30 GiB, és a legtöbb elérhető virtuálisgép-méretet `[smallsize]` használják.
 
-Az ideiglenes lemezek esetében a virtuális gép mérete is támogatja a Premium Storage-ot. A méretek általában (de nem mindig) rendelkeznek `s` a névvel, például a DSv2 és a EsV3. További információ: Azure-beli virtuálisgép- [méretek](sizes.md) a Premium Storage-t támogató méretek részleteiről.
+Aphemerális lemezek esetében a virtuális gép méretének is támogatva kell a Prémium szintű tárolást. A méretek neve általában (de nem mindig) `s` egy, például DSv2 és EsV3. További információért tekintse meg az Azure-beli [virtuális gépek](sizes.md) méretei oldalon annak részleteit, hogy mely méretek támogatják a Prémium szintű tárolást.
 
-## <a name="preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks"></a>Előzetes verzió – az elmúló operációsrendszer-lemezek mostantól a temp Disks szolgáltatásban tárolhatók
-A virtuális gépek gyorsítótárán kívül a virtuális gépekre vonatkozó ideiglenes operációsrendszer-lemezek mostantól a VM Temp/Resource lemezén is tárolhatók. Így most már használhat olyan ideiglenes operációsrendszer-lemezeket a virtuális géppel, amelyeknek nincs gyorsítótára, vagy nincs elegendő gyorsítótára, de az ideiglenes operációsrendszer-lemez (például a Dav3, a Dav4, a Eav4 és a Eav3) tárolására a temp/Resource lemez tartozik. Ha egy virtuális gépnek elegendő gyorsítótára van, és az ideiglenes területtel rendelkezik, mostantól megadhatja, hová szeretné tárolni az ideiglenes operációsrendszer-lemezt egy új, [DiffDiskPlacement](/rest/api/compute/virtualmachines/list#diffdiskplacement)nevű tulajdonság használatával. Ezzel a funkcióval a Windows rendszerű virtuális gépek üzembe helyezésekor a lapozófájlt az operációsrendszer-lemezen kell elhelyezni. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Első lépésként [kérjen hozzáférést](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u).
+## <a name="preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks"></a>Előzetes verzió – A ideiglenes operációsrendszer-lemezek mostantól tárolhatók ideiglenes lemezeken
+A ideiglenes operációsrendszer-lemezek mostantól a virtuális gép ideiglenes/erőforrás-lemezén is tárolhatók a virtuális gép gyorsítótára mellett. Így most már használhat ideiglenes operációsrendszer-lemezeket olyan virtuális gépekkel, amelyek nem rendelkezik gyorsítótárral, vagy nem rendelkezik megfelelő gyorsítótárral, de rendelkezik ideiglenes/erőforráslemezzel a ideiglenes operációsrendszer-lemez, például a Dav3, a Dav4, az Eav4 és az Eav3 tárolására. Ha egy virtuális gép elegendő gyorsítótárral és ideiglenes területtel rendelkezik, egy [új, DiffDiskPlacement](/rest/api/compute/virtualmachines/list#diffdiskplacement)nevű tulajdonság használatával megadhatja, hogy hol szeretné tárolni a ideiglenes operációsrendszer-lemezt. Ezzel a funkcióval a Windows rendszerű virtuális gépek kiépítésekor a lapozófájlt úgy konfiguráljuk, hogy az az operációsrendszer-lemezen legyen. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Első lépésekként kérjen [hozzáférést.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u)
 
 ## <a name="powershell"></a>PowerShell
 
-Ha ideiglenes lemezt szeretne használni egy PowerShell virtuálisgép-telepítéshez, használja a [set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) a virtuális gép konfigurációjában. Állítsa a és a értékre a következőt: `-DiffDiskSetting` `Local` `-Caching` `ReadOnly` .     
+Ha rövid távú lemezt kell használnia egy PowerShell virtuális gép üzembe helyezéséhez, használja a [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) parancsot a virtuális gép konfigurációjában. Állítsa a `-DiffDiskSetting` és `Local` a `-Caching` beállítását a `ReadOnly` következőre: .     
 
 ```powershell
 Set-AzVMOSDisk -DiffDiskSetting Local -Caching ReadOnly
 ```
 
-A méretezési csoport üzembe helyezéséhez használja a konfigurációban a [set-AzVmssStorageProfile](/powershell/module/az.compute/set-azvmssstorageprofile) parancsmagot. Állítsa a és a értékre a következőt: `-DiffDiskSetting` `Local` `-Caching` `ReadOnly` .
+Méretezési készlet üzembe helyezéséhez használja a [Set-AzVmssStorageProfile](/powershell/module/az.compute/set-azvmssstorageprofile) parancsmagot a konfigurációban. Állítsa a `-DiffDiskSetting` és `Local` a `-Caching` beállítását a `ReadOnly` következőre: .
 
 
 ```powershell
@@ -71,7 +71,7 @@ Set-AzVmssStorageProfile -DiffDiskSetting Local -OsDiskCaching ReadOnly
 
 ## <a name="cli"></a>parancssori felület
 
-Ha ideiglenes lemezt szeretne használni egy CLI virtuálisgép-telepítéshez, állítsa be a `--ephemeral-os-disk` paramétert az [az VM Create](/cli/azure/vm#az-vm-create) to `true` és a paraméter értékeként `--os-disk-caching` `ReadOnly` .
+Ha a cli-s virtuális gép üzembe helyezéséhez egy gyors üzembe helyezési lemezt használ, állítsa a paramétert az az vm create paraméterre, a paramétert pedig a `--ephemeral-os-disk` [](/cli/azure/vm#az_vm_create) `true` `--os-disk-caching` következőre: `ReadOnly` .
 
 ```azurecli-interactive
 az vm create \
@@ -84,22 +84,22 @@ az vm create \
   --generate-ssh-keys
 ```
 
-A méretezési csoportok esetében ugyanazt a paramétert használja az az `--ephemeral-os-disk true` [-vmss-Create](/cli/azure/vmss#az-vmss-create) paranccsal, és állítsa a paramétert a következőre: `--os-disk-caching` `ReadOnly` .
+Méretezési csoport esetében ugyanazt a paramétert használja `--ephemeral-os-disk true` [az az-vmss-create](/cli/azure/vmss#az_vmss_create) paraméterhez, és állítsa a `--os-disk-caching` paramétert a következőre: `ReadOnly` .
 
 ## <a name="portal"></a>Portál
 
-A Azure Portal a **lemezek** lap **speciális** szakaszának megnyitásával kiválaszthatja, hogy a virtuális gépek üzembe helyezése során az ideiglenes lemezeket használja-e. Az **ideiglenes operációsrendszer-lemez használata** beállításnál válassza az **Igen** lehetőséget.
+A Azure Portal virtuális gépek üzembe helyezésekor a Lemezek lap Speciális szakaszának megnyitásával  választhatja ki, hogy a virtuális gépek telepítésekor használjon-e  rendszertelen lemezeket. A **Usephemeral OS disk (Operációsrendszer-lemez használata) beállításhoz válassza** az **Igen lehetőséget.**
 
-![Képernyőfelvétel: az elmúló operációsrendszer-lemez használatának kiválasztására szolgáló választógombot ábrázoló gomb](./media/virtual-machines-common-ephemeral/ephemeral-portal.png)
+![A gyors operációsrendszer-lemez használatának kiválasztásához használható választógombot bemutató képernyőkép](./media/virtual-machines-common-ephemeral/ephemeral-portal.png)
 
-Ha egy ideiglenes lemez használatának lehetősége szürkén jelenik meg, lehetséges, hogy olyan virtuálisgép-méretet választott ki, amely nem rendelkezik az operációsrendszer-lemezképnél nagyobb gyorsítótár-mérettel, vagy amely nem támogatja a Premium Storage-ot. Lépjen vissza az **alapvető beállítások** lapra, és válasszon másik virtuális gép méretét.
+Ha a rendszerjel nélküli lemezek használata ki van szürkén, előfordulhat, hogy olyan virtuálisgép-méretet választott, amely nem rendelkezik az operációsrendszer-rendszerképnél nagyobb gyorsítótármérettel, vagy nem támogatja a Prémium szintű tárolót. Vissza Az alapok **lapra,** és válasszon egy másik virtuálisgép-méretet.
 
-A portálon létrehozhat olyan méretezési csoportokat is, amelyek elmúló operációsrendszer-lemezzel rendelkeznek. Csak győződjön meg arról, hogy a virtuális gép méretét nagy méretű gyorsítótár-mérettel, majd az **elmúló operációsrendszer-lemez használata** területen válassza az **Igen** lehetőséget.
+A portál használatával is létrehozhat olyan méretezési csoportokat, amelyekhez a rendszer operációsrendszer-lemezeket használ. Csak győződjön meg arról, hogy megfelelő méretű virtuálisgép-méretet választ ki, majd a A gyors operációsrendszer-lemez **használata** területen válassza az **Igen lehetőséget.**
 
-![Képernyőfelvétel: a választógomb, amely a méretezési csoport elmúló operációsrendszer-lemezének kiválasztására használható](./media/virtual-machines-common-ephemeral/scale-set.png)
+![Képernyőkép a gyors operációsrendszer-lemez méretezési készlethez való használatát választó választógombról](./media/virtual-machines-common-ephemeral/scale-set.png)
 
-## <a name="scale-set-template-deployment"></a>Méretezési csoport sablonjának üzembe helyezése  
-Az elmúló operációsrendszer-lemezt használó méretezési csoport létrehozásának folyamata a tulajdonság hozzáadása a `diffDiskSettings` `Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile` sablonban lévő erőforrástípus. Emellett a gyorsítótárazási házirendet az `ReadOnly` ideiglenes operációsrendszer-lemezre kell beállítani. 
+## <a name="scale-set-template-deployment"></a>Méretezési készlet sablonjának üzembe helyezése  
+A rendszerkézbesi operációsrendszer-lemezt használó méretezési csoport létrehozásához hozzá kell adni a tulajdonságot a sablonban lévő `diffDiskSettings` `Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile` erőforrástípushoz. Emellett a gyorsítótárazó házirendet a következőre kell beállítani a rendszerkézbesű `ReadOnly` operációsrendszer-lemezhez: . 
 
 
 ```json
@@ -143,7 +143,7 @@ Az elmúló operációsrendszer-lemezt használó méretezési csoport létrehoz
 ```
 
 ## <a name="vm-template-deployment"></a>Virtuálisgép-sablon üzembe helyezése 
-Sablon használatával üzembe helyezhet egy ideiglenes operációsrendszer-lemezzel rendelkező virtuális gépet. Az elmúló operációsrendszer-lemezeket használó virtuális gépek létrehozásának folyamata az, hogy hozzáadja a `diffDiskSettings` tulajdonságot a sablonban található Microsoft. számítási/virtualMachines erőforrástípus számára. Emellett a gyorsítótárazási házirendet az `ReadOnly` ideiglenes operációsrendszer-lemezre kell beállítani. 
+A virtuális gépeket egy sablon használatával helyezheti üzembe egy operációsrendszer-lemezzel. A rendszer operációsrendszer-lemezeket használó virtuális gépek létrehozási folyamata az, hogy hozzáadja a tulajdonságot a `diffDiskSettings` Microsoft.Compute/virtualMachines erőforrástípushoz a sablonban. Emellett a gyorsítótárazó házirendet a következőre kell beállítani a rendszerkézbesű `ReadOnly` operációsrendszer-lemezhez: . 
 
 ```json
 { 
@@ -180,8 +180,8 @@ Sablon használatával üzembe helyezhet egy ideiglenes operációsrendszer-leme
 ```
 
 
-## <a name="reimage-a-vm-using-rest"></a>Virtuális gép rendszerképének alaphelyzetbe állítása a REST használatával
-A virtuálisgép-példányokat az alábbi módon, az Azure Portalon, a virtuális gép áttekintés paneljén található REST API segítségével alaphelyzetbe helyezheti egy ideiglenes operációsrendszer-lemezzel. A méretezési csoportok esetében az Alaphelyzetbe állítás már elérhető a PowerShell, a CLI és a portál használatával.
+## <a name="reimage-a-vm-using-rest"></a>Virtuális gép rendszermemóba helyezése REST használatával
+A rövidtű operációsrendszer-lemezzel használt virtuálisgép-példányok rendszerképét az REST API használatával, az Azure Portalon keresztül, a virtuális gép Áttekintés panelén tudja újra rendszerképként használni. Méretezési készletekhez a képátképezés már elérhető a PowerShellen, a parancssori felületen és a portálon keresztül.
 
 ```
 POST https://management.azure.com/subscriptions/{sub-
@@ -190,23 +190,23 @@ id}/resourceGroups/{rgName}/providers/Microsoft.Compute/VirtualMachines/{vmName}
  
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**K: mekkora a helyi operációsrendszer-lemezek mérete?**
+**K: Mekkora a helyi operációsrendszer-lemezek mérete?**
 
-A: támogatjuk a platformot és az egyéni rendszerképeket, akár a virtuális gép gyorsítótárának méretétől, ahol az operációs rendszer lemezének összes olvasási/írási helye a virtuális géppel megegyező csomóponton lesz. 
+V: Platform- és egyéni rendszerképeket támogatunk a virtuálisgép-gyorsítótár méretének megfelelően, ahol az operációsrendszer-lemezre való összes olvasási/írási adat ugyanazon a csomóponton lesz helyi, mint a virtuális gép. 
 
-**K: az ideiglenes operációsrendszer-lemez átméretezése is lehetséges?**
+**K: Átméretezhetők aphemerális operációsrendszer-lemezek?**
 
-A: nem, az ideiglenes operációsrendszer-lemez kiépítés után az operációsrendszer-lemez nem méretezhető át. 
+NEM: Nem, az operációsrendszer-lemez kiépítése után az operációsrendszer-lemez nem méretezhető át. 
 
-**K: Csatolhatok Managed Disks egy ideiglenes virtuális géphez?**
+**K: Csatolok egy Managed Disks egyphemeral virtuális géphez?**
 
-Válasz: igen, a felügyelt adatlemezt egy ideiglenes operációsrendszer-lemezt használó virtuális géphez csatolhatja. 
+V: Igen, csatolhat felügyelt adatlemezt egy olyan virtuális géphez, amely egy operációsrendszer-lemezt használ. 
 
-**K: az összes virtuálisgép-méret támogatott az ideiglenes operációsrendszer-lemezek esetében?**
+**K: Minden virtuálisgép-méret támogatott lesz a hamarosan elérhető operációsrendszer-lemezeken?**
 
-A: nem, a legtöbb Premium Storage VM-méret támogatott (DS, ES, FS, GS, M stb.). Ha tudni szeretné, hogy egy adott virtuálisgép-méret támogatja-e az ideiglenes operációsrendszer-lemezeket, a következőket teheti:
+V: Nem, Premium Storage virtuálisgép-méretek (DS, ES, FS, GS, M stb.) támogatottak. A következővel tudhatja meg, hogy egy adott virtuálisgép-méret támogatja-e a rendszer operációsrendszer-lemezeket:
 
-A PowerShell-parancsmag meghívása `Get-AzComputeResourceSku`
+A `Get-AzComputeResourceSku` PowerShell-parancsmag hívása
 ```azurepowershell-interactive
  
 $vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 
@@ -223,32 +223,32 @@ foreach($vmSize in $vmSizes)
 }
 ```
  
-**K: az ideiglenes operációsrendszer-lemez alkalmazható a meglévő virtuális gépekre és méretezési csoportokra?**
+**K: Alkalmazható aphemerális operációsrendszer-lemez a meglévő virtuális gépekre és méretezési készletekre?**
 
-A: nem, az ideiglenes operációsrendszer-lemez csak a virtuális gép és a méretezési csoport létrehozásakor használható. 
+V: Nem, a rendszer operációsrendszer-lemeze csak a virtuális gép és a méretezési készlet létrehozása során használható. 
 
-**K: a méretezési csoportokban elmúló és normál operációsrendszer-lemezek is használhatók?**
+**K: Képes vegyesen elegyedni a hosszú életű és a normál operációsrendszer-lemezek egy méretezési készletben?**
 
-A: nem, nem rendelkezhet az egyazon méretezési csoportba tartozó ideiglenes és állandó operációsrendszer-példányok keverékéből. 
+NEM: Nem, nem lehet rövid és állandó operációsrendszer-lemezpéldányokat vegyesen ugyanabban a méretezési készletben. 
 
-**K: az ideiglenes operációsrendszer-lemez a PowerShell vagy a parancssori felület használatával hozható létre?**
+**K: Létre lehet-e hozatni a rövid operációsrendszer-lemezt a PowerShell vagy a parancssori felület használatával?**
 
-Válasz: igen, a REST, a Templates, a PowerShell és a parancssori felület használatával hozhat létre virtuális gépeket az ideiglenes operációsrendszer-lemezzel.
+V: Igen, rövid életű operációsrendszer-lemezzel is létrehozhat virtuális gépeket a REST, a Sablonok, a PowerShell és a parancssori felület használatával.
 
-**K: milyen funkciók nem támogatottak az elmúló operációsrendszer-lemezzel?**
+**K: Milyen funkciók nem támogatottak aphemerális operációsrendszer-lemezeken?**
 
-A: az ideiglenes lemezek nem támogatják A következőket:
-- VM-lemezképek rögzítése
+A: Aphemeral-lemezek nem támogatják a következőt:
+- Virtuálisgép-rendszerképek rögzítése
 - Lemez-pillanatképek 
 - Azure Disk Encryption 
 - Azure Backup
 - Azure Site Recovery  
-- OPERÁCIÓSRENDSZER-lemez cseréje 
+- Operációsrendszer-lemez felcserél 
 
 > [!NOTE]
 > 
-> Az ideiglenes lemez nem lesz elérhető a portálon keresztül. A rendszer "erőforrás nem található" vagy "404" hibaüzenetet kap a várt ideiglenes lemez elérésekor.
+> Aphemeral-lemezek nem érhetők el a portálon keresztül. A "Resource not Found" (Erőforrás nem található) vagy "404" típusú hibaüzenet jelenik meg a várhatóan hamarosan elérhető lemez elérésekor.
 > 
  
 ## <a name="next-steps"></a>Következő lépések
-Az [Azure CLI](/cli/azure/vm#az-vm-create)használatával létrehozhat egy ideiglenes operációsrendszer-lemezzel ellátott virtuális gépet.
+A virtuális gépeket az [Azure CLI](/cli/azure/vm#az_vm_create)használatával hozhatja létre egy operációsrendszer-lemezzel.

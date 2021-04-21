@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: webalkalmazások méretezése és biztosítása az Azure-beli bejárati ajtó és az Azure webalkalmazási tűzfal (WAF) használatával'
-description: Ez az oktatóanyag bemutatja, hogyan használhatja az Azure-webalkalmazási tűzfalat az Azure bevezető ajtó szolgáltatásával.
+title: 'Oktatóanyag: Webalkalmazások méretezése és védelme a Azure Front Door és Azure Web Application Firewall (WAF) használatával'
+description: Ez az oktatóanyag bemutatja, hogyan használhatja Azure Web Application Firewall a Azure Front Door szolgáltatással.
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -11,62 +11,62 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: fa5d34d195cfed2d5dbfa6954d83b28487bf0bba
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: d315fa5b588c6e5f2e4643ca18626e400e6ca01b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167753"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785648"
 ---
-# <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Oktatóanyag: webalkalmazások gyors méretezése és biztosítása az Azure-beli előtérben és az Azure webalkalmazási tűzfal (WAF) használatával
+# <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Oktatóanyag: Webalkalmazások gyors méretezése és védelme a Azure Front Door és Azure Web Application Firewall (WAF) használatával
 
-A COVID-19 miatt számos webalkalmazás gyors növekedést észlelt az elmúlt hetekben. Ezek a webalkalmazások a rosszindulatú adatforgalmat is megtapasztalják, beleértve a szolgáltatásmegtagadási támadásokat is. Az alkalmazás vertikális felskálázása és a támadások elleni védelem hatékony módja: az Azure WAF az Azure-ba a webalkalmazás előtt gyorsított, gyorsítótárazási és biztonsági rétegként konfigurálható. Ez a cikk útmutatást nyújt arról, hogyan kérhet Azure bejárati ajtót az Azure-on belül vagy kívül futó webalkalmazásokhoz konfigurált Azure WAF. 
+Számos webalkalmazásban gyors növekedés történt az elmúlt hetekben a COVID-19 miatt. Ezek a webalkalmazások a rosszindulatú adatforgalom hirtelen megszavadását is tapasztalják, beleértve a szolgáltatásmegtagadásos támadásokat is. Hatékonyan felskálálhatja az alkalmazást a forgalom hirtelen meggyorsítása érdekében, és megvédheti magát a támadásoktól: az Azure Front Door-t az Azure WAF-et gyorsítási, gyorsítótárazási és biztonsági rétegként konfigurálhatja a webalkalmazás előtt. Ez a cikk útmutatást nyújt arról, hogyan Azure Front Door Azure WAF-et az Azure-on belül vagy azon kívül futó webalkalmazáshoz konfigurálva. 
 
-Ebben az oktatóanyagban az Azure CLI használatával konfiguráljuk a WAF. Ugyanezt a dolgot a Azure Portal, a Azure PowerShell, a Azure Resource Manager vagy az Azure REST API-k használatával hajthatja végre. 
+Ebben az oktatóanyagban az Azure CLI használatával konfiguráljuk a WAF-et. Ugyanezt elvégezheti a következő használatával: Azure Portal, Azure PowerShell, Azure Resource Manager Azure REST API-k. 
 
 Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 > [!div class="checklist"]
-> - Hozzon létre egy bejárati ajtót.
-> - Hozzon létre egy Azure WAF szabályzatot.
-> - Szabálykészlet konfigurálása WAF-házirendhez.
-> - WAF-házirend hozzárendelése a bejárati ajtóhoz.
+> - Hozzon létre egy Front Door.
+> - Azure WAF-szabályzat létrehozása.
+> - WAF-szabályzat szabálykészletének konfigurálása.
+> - WAF-szabályzat társítása a Front Door.
 > - Egyéni tartomány konfigurálása.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az oktatóanyagban szereplő utasítások az Azure CLI-t használják. [Tekintse meg ezt az útmutatót](/cli/azure/get-started-with-azure-cli) az Azure CLI-vel való ismerkedéshez.
+- Az oktatóanyagban található utasítások az Azure CLI-t használják. [Az Azure](/cli/azure/get-started-with-azure-cli) CLI használatának első lépésekhez tekintse meg ezt az útmutatót.
 
   > [!TIP] 
-  > Az Azure CLI első lépéseinek egyszerű és gyors módja a [Bash Azure Cloud Shell](../cloud-shell/quickstart.md).
+  > Az Azure CLI használatának egyszerű és gyors módja, ha a Basht használja a [Azure Cloud Shell.](../cloud-shell/quickstart.md)
 
-- Győződjön meg arról, hogy a `front-door` bővítmény hozzá van adva az Azure CLI-hez:
+- Győződjön meg arról, `front-door` hogy a bővítmény hozzá van adva az Azure CLI-hez:
 
    ```azurecli-interactive 
    az extension add --name front-door
    ```
 
 > [!NOTE] 
-> Az oktatóanyagban használt parancsokkal kapcsolatos további információkért tekintse meg az [Azure CLI-referenciát az](/cli/azure/ext/front-door)előtérben.
+> Az oktatóanyagban használt parancsokkal kapcsolatos további információkért lásd: [Azure CLI-referencia a Front Door.](/cli/azure/ext/front-door)
 
-## <a name="create-an-azure-front-door-resource"></a>Azure-beli előtérben lévő erőforrás létrehozása
+## <a name="create-an-azure-front-door-resource"></a>Erőforrás Azure Front Door létrehozása
 
 ```azurecli-interactive 
 az network front-door create --backend-address <>  --accepted-protocols <> --name <> --resource-group <>
 ```
 
-`--backend-address`: A védelemmel ellátni kívánt alkalmazás teljes tartományneve (FQDN). Például: `myapplication.contoso.com`.
+`--backend-address`: A védeni kívánt alkalmazás teljes tartományneve. Például: `myapplication.contoso.com`.
 
-`--accepted-protocols`: Azokat a protokollokat adja meg, amelyeknek az Azure bejáratát szeretné támogatni a webalkalmazás támogatásához. Például: `--accepted-protocols Http Https`.
+`--accepted-protocols`: Megadja azokat a protokollokat, Azure Front Door támogatni szeretné a webalkalmazást. Például: `--accepted-protocols Http Https`.
 
-`--name`: Az Azure-beli előtérben lévő erőforrás neve.
+`--name`: A Azure Front Door neve.
 
-`--resource-group`: Az az erőforráscsoport, amelyben be szeretné helyezni az Azure bejárati erőforrását. További információ az erőforráscsoportok használatáról: [erőforráscsoportok kezelése az Azure-ban](../azure-resource-manager/management/manage-resource-groups-portal.md).
+`--resource-group`: Az erőforráscsoport, amelybe ezt Azure Front Door erőforrást. Az erőforráscsoportokkal kapcsolatos további információkért lásd: [Erőforráscsoportok kezelése az Azure-ban.](../azure-resource-manager/management/manage-resource-groups-portal.md)
 
-A parancs futtatásakor kapott válaszban keresse meg a kulcsot `hostName` . Ezt az értéket egy későbbi lépésben kell megadnia. A a `hostName` létrehozott Azure-beli előtérben lévő erőforrás DNS-neve.
+A parancs futtatásakor adott válaszban keresse meg a `hostName` kulcsot. Erre az értékre egy későbbi lépésben lesz szüksége. A `hostName` a létrehozott Azure Front Door DNS-neve.
 
-## <a name="create-an-azure-waf-profile-to-use-with-azure-front-door-resources"></a>Azure-beli WAF-profil létrehozása az Azure-beli előtérben lévő erőforrásokkal való használathoz
+## <a name="create-an-azure-waf-profile-to-use-with-azure-front-door-resources"></a>Azure WAF-profil létrehozása a Azure Front Door való használathoz
 
 ```azurecli-interactive 
 az network front-door waf-policy create --name <>  --resource-group <>  --disabled false --mode Prevention
@@ -74,32 +74,32 @@ az network front-door waf-policy create --name <>  --resource-group <>  --disabl
 
 `--name`: Az új Azure WAF-szabályzat neve.
 
-`--resource-group`: Az az erőforráscsoport, amelyben ezt a WAF-erőforrást be kívánja helyezni. 
+`--resource-group`: Az erőforráscsoport, amelybe ezt a WAF-erőforrást szeretné helyezze. 
 
-Az előző CLI-kód létrehoz egy WAF házirendet, amely engedélyezve van, és ez megelőzési módban van. 
+A fenti CLI-kód létrehoz egy engedélyezett, megelőzési módban elérhető WAF-szabályzatot. 
 
 > [!NOTE] 
-> Érdemes lehet az WAF szabályzatot észlelési módban létrehozni, és megfigyelni, hogyan észleli és naplózza a kártékony kérelmeket (anélkül, hogy blokkolja őket), mielőtt a védelmi mód használatára döntene.
+> Előfordulhat, hogy észlelési módban szeretné létrehozni a WAF-szabályzatot, és megfigyelni, hogyan észleli és naplózza a kártékony kéréseket (azok blokkolása nélkül), mielőtt a védelmi mód használata előtt dönt.
 
-A parancs futtatásakor kapott válaszban keresse meg a kulcsot `ID` . Ezt az értéket egy későbbi lépésben kell megadnia. 
+A parancs futtatásakor adott válaszban keresse meg a `ID` kulcsot. Erre az értékre egy későbbi lépésben lesz szüksége. 
 
-A `ID` mezőnek a következő formátumúnak kell lennie:
+A `ID` mezőnek a következő formátumban kell lennie:
 
-/Subscriptions/**előfizetés azonosítója**/resourcegroups/**erőforráscsoport neve**/Providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/**WAF házirend neve**
+/subscriptions/**előfizetés azonosítója**/resourcegroups/**erőforráscsoport neve**/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/**WAF-szabályzat neve**
 
-## <a name="add-managed-rule-sets-to-the-waf-policy"></a>Felügyelt szabálykészlet hozzáadása a WAF szabályzathoz
+## <a name="add-managed-rule-sets-to-the-waf-policy"></a>Felügyelt szabálykészletek hozzáadása a WAF-szabályzathoz
 
-Felügyelt szabálykészlet WAF-házirendhez adható hozzá. A felügyelt szabálykészlet a Microsoft által készített és felügyelt szabályok halmaza, amely segít megvédeni a fenyegetések egy csoportjára. Ebben a példában két szabálykészlet hozzáadására van szükség:
-- Az alapértelmezett szabálykészlet, amely segít a gyakori webes fenyegetések elleni védelemben. 
-- A robot védelmi szabály beállítása, amely segít megvédeni a rosszindulatú robotok elleni védelmet.
+Felügyelt szabálykészleteket adhat hozzá a WAF-szabályzathoz. A felügyelt szabálykészlet a Microsoft által épített és kezelt szabálykészlet, amely segít megvédeni a fenyegetések egy osztályát. Ebben a példában két szabálykészletet fogunk hozzáadni:
+- Az alapértelmezett szabálykészlet segít megvédeni a gyakori webes fenyegetéseket. 
+- A robotvédelmi szabálykészlet, amely segít megvédeni a rosszindulatú robotokat.
 
-Adja meg az alapértelmezett szabálykészlet:
+Adja hozzá az alapértelmezett szabálykészletet:
 
    ```azurecli-interactive 
    az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type DefaultRuleSet --version 1.0
    ```
 
-A robot Protection-szabálykészlet hozzáadása:
+Adja hozzá a robotvédelmi szabálykészletet:
 
    ```azurecli-interactive 
    az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type Microsoft_BotManagerRuleSet --version 1.0
@@ -107,54 +107,54 @@ A robot Protection-szabálykészlet hozzáadása:
 
 `--policy-name`: Az Azure WAF-erőforráshoz megadott név.
 
-`--resource-group`: Az az erőforráscsoport, amelyben a WAF-erőforrást helyezte.
+`--resource-group`: Az erőforráscsoport, amelybe a WAF-erőforrást helyezte.
 
-## <a name="associate-the-waf-policy-with-the-azure-front-door-resource"></a>A WAF szabályzat hozzárendelése az Azure-beli bejárati erőforráshoz
+## <a name="associate-the-waf-policy-with-the-azure-front-door-resource"></a>A WAF-szabályzat társítása a Azure Front Door erőforráshoz
 
-Ebben a lépésben a webalkalmazás előtt létrehozott Azure bejárati erőforrással társítjuk a WAF szabályzatot:
+Ebben a lépésben a létrehozott WAF-szabályzatot a webalkalmazás előtt Azure Front Door erőforráshoz társítjuk:
 
 ```azurecli-interactive 
 az network front-door update --name <> --resource-group <> --set frontendEndpoints[0].webApplicationFirewallPolicyLink='{"id":"<>"}'
 ```
 
-`--name`: Az Azure-beli előtérben lévő erőforráshoz megadott név.
+`--name`: Az erőforráshoz megadott Azure Front Door.
 
-`--resource-group`: Az az erőforráscsoport, amelyben az Azure-beli bejárati erőforrást helyezte.
+`--resource-group`: Az erőforráscsoport, amelybe Azure Front Door erőforrást.
 
-`--set`: Itt frissítheti az Azure-beli előtérben lévő `WebApplicationFirewallPolicyLink` `frontendEndpoint` erőforráshoz társított attribútumot az új WAF-házirenddel. Az oktatóanyag korábbi részében a WAF-profil létrehozásakor kapott válaszban a WAF szabályzat AZONOSÍTÓját kell használnia.
+`--set`: Itt frissíti a Azure Front Door erőforráshoz társított attribútumot `WebApplicationFirewallPolicyLink` `frontendEndpoint` az új WAF-szabályzathoz. Az oktatóanyag korábbi, WAF-profiljának létrehozásakor kapott válaszban meg kell lennie a WAF-szabályzat azonosítójának.
 
  > [!NOTE] 
-> Az előző példa akkor alkalmazható, ha nem használ egyéni tartományt. Ha nem használ egyéni tartományokat a webalkalmazások eléréséhez, kihagyhatja a következő szakaszt. Ebben az esetben Önnek kell megadnia az ügyfeleit az Azure-beli `hostName` elülső ajtó erőforrásának létrehozásakor. Ezt használva a `hostName` webalkalmazáshoz juthatnak.
+> Az előző példa akkor alkalmazható, ha nem egyéni tartományt használ. Ha nem használ egyéni tartományokat a webalkalmazások eléréséhez, kihagyhatja a következő szakaszt. Ebben az esetben a saját erőforrás létrehozásakor kapott adatokat fogja Azure Front Door `hostName` számára. Ezt a `hostName` webalkalmazáshoz használják majd.
 
-## <a name="configure-the-custom-domain-for-your-web-application"></a>A webalkalmazás egyéni tartományának konfigurálása
+## <a name="configure-the-custom-domain-for-your-web-application"></a>Az egyéni tartomány konfigurálása a webalkalmazáshoz
 
-A webalkalmazás egyéni tartományneve az a felhasználó, aki az alkalmazásra hivatkozik. Például: www.contoso.com. Kezdetben ez az Egyéni tartománynév arra a helyre mutat, ahol a futott, mielőtt bevezette az Azure-előtérben. Miután hozzáadta az Azure-beli bejárati ajtót, és WAF az alkalmazást, az adott egyéni tartománynak megfelelő DNS-bejegyzésnek az Azure bejárati ajtó erőforrására kell mutatnia. Ezt a módosítást úgy hajthatja végre, hogy áthelyezi a DNS-kiszolgáló bejegyzését az Azure bejárati ajtajára, amelyet az Azure-beli előtérben `hostName` lévő erőforrás létrehozásakor észlelt.
+A webalkalmazás egyéni tartományneve az, amit az ügyfelek az alkalmazásra való hivatkozáshoz használhatnak. Például: www.contoso.com. Kezdetben ez az egyéni tartománynév arra a helyre mutatott, ahol a tartományt futtatta, mielőtt Azure Front Door. Miután hozzáadta a Azure Front Door WAF-et az alkalmazás előtt, az egyéni tartománynak megfelelő DNS-bejegyzésnek a Azure Front Door kell lennie. Ezt a változtatást úgy módosíthatja, ha újra leképezi a DNS-kiszolgáló bejegyzését a Azure Front Door erőforrás létrehozásakor feljegyzett `hostName` Azure Front Door elemre.
 
-A DNS-rekordok frissítésének konkrét lépései a DNS-szolgáltatótól függenek. Ha Azure DNSt használ a DNS-név üzemeltetéséhez, tekintse meg a [DNS-rekordok frissítésének](../dns/dns-operations-recordsets-cli.md) és az Azure-beli bejárati ajtóra mutató lépéseknek a dokumentációját `hostName` . 
+A DNS-rekordok frissítésének konkrét lépései a DNS-szolgáltatótól függenek. Ha a DNS Azure DNS név gazdagépeként használja, a [DNS-rekord](../dns/dns-operations-recordsets-cli.md) frissítésének lépéseit a dokumentációban találhatja meg, és `hostName` Azure Front Door. 
 
-Fontos megjegyezni, hogy ha ügyfeleinek a zóna csúcsán kell megszerezniük a webhelyét (például contoso.com). Ebben az esetben az Azure DNS és az [alias bejegyzéstípust](../dns/dns-alias.md) kell használnia a DNS-név üzemeltetéséhez. 
+Fontos megjegyezni, ha arra van szüksége, hogy az ügyfelei a zóna csúcspontján (például a zóna csúcspontján) contoso.com. Ebben az esetben a DNS-név Azure DNS [](../dns/dns-alias.md) és aliasrekordtípusát kell használnia. 
 
-Emellett frissítenie kell az Azure bejárati ajtajának konfigurációját, hogy [az egyéni tartományt hozzá lehessen adni](./front-door-custom-domain.md) ahhoz, hogy tisztában legyen ezzel a leképezéssel.
+Emellett frissítenie kell a Azure Front Door, [](./front-door-custom-domain.md) hogy az egyéni tartományt hozzá tudja adni, hogy értesülni fog erről a leképezésről.
 
-Végül, ha egyéni tartományt használ a webalkalmazás eléréséhez, és engedélyezni szeretné a HTTPS protokollt. [Az Azure-beli bejárati ajtóban be kell állítania az egyéni tartományhoz tartozó tanúsítványokat](./front-door-custom-domain-https.md). 
+Végül, ha egyéni tartományt használ a webalkalmazás eléréséhez, és engedélyezni szeretné a HTTPS protokollt. Az egyéni [tartomány tanúsítványait](./front-door-custom-domain-https.md)a következő Azure Front Door. 
 
 ## <a name="lock-down-your-web-application"></a>A webalkalmazás zárolása
 
-Javasoljuk, hogy csak az Azure-előtérben lévő élek kommunikáljanak a webalkalmazással. Így biztosíthatja, hogy senki ne kerüljék el az Azure-beli elülső ajtó védelmét, és közvetlenül hozzáférjen az alkalmazáshoz. A zárolás végrehajtásához tekintse [meg hogyan a háttérbeli hozzáférés zárolása csak az Azure bejárati ajtót?](./front-door-faq.yml#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-)című témakört.
+Javasoljuk, hogy csak az Azure Front Door kommunikáljon a webalkalmazással. Ezzel biztosíthatja, hogy senki ne kerülje meg a Azure Front Door és közvetlenül hozzá tud férni az alkalmazáshoz. A zárolás elvégzéséhez tekintse meg a háttér Hogyan, hogy csak a [Azure Front Door?](./front-door-faq.yml#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az oktatóanyagban használt erőforrásokra, az az [Group delete](/cli/azure/group#az-group-delete) paranccsal távolítsa el az erőforráscsoportot, a bejárati ajtót és a WAF szabályzatot:
+Ha már nincs szüksége az oktatóanyagban használt erőforrásokra, az [az group delete](/cli/azure/group#az_group_delete) paranccsal távolítsa el az erőforráscsoportot, a Front Door és a WAF-szabályzatot:
 
 ```azurecli-interactive
   az group delete \
     --name <>
 ```
-`--name`: Az oktatóanyagban használt összes erőforrás erőforráscsoport neve.
+`--name`: Az oktatóanyagban használt összes erőforrás erőforráscsoportja neve.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha szeretné megtudni, hogyan lehet elhárítani a bejárati ajtót, tekintse meg a hibaelhárítási útmutatókat:
+A hibaelhárítással kapcsolatos Front Door tekintse meg a hibaelhárítási útmutatókat:
 
 > [!div class="nextstepaction"]
 > [Gyakori útválasztási problémák elhárítása](front-door-troubleshoot-routing.md)

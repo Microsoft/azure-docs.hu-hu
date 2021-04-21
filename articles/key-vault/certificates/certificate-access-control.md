@@ -1,52 +1,51 @@
 ---
-title: Tudnivalók Azure Key Vault tanúsítványok hozzáférés-vezérléséről
-description: A Azure Key Vault tanúsítványok hozzáférés-vezérlésének áttekintése
+title: A Azure Key Vault tanúsítványok hozzáférés-vezérlésének
+description: Az Azure Key Vault tanúsítványok hozzáférés-vezérlésének áttekintése
 services: key-vault
 author: sebansal
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: overview
 ms.date: 10/12/2020
 ms.author: sebansal
-ms.openlocfilehash: 1308debb34d724f93526b776f19e0cbf1914d945
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 54874f30384d7f4827b13a597a469bfc67bc8fd2
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92128640"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752479"
 ---
 # <a name="certificate-access-control"></a>Tanúsítvány Access Control
 
- A tanúsítványok hozzáférés-vezérlését a Key Vault kezeli, és az adott tanúsítványokat tartalmazó Key Vault biztosítja. A tanúsítványok hozzáférés-vezérlési házirendje különbözik az azonos Key Vault található kulcsok és titkok hozzáférés-vezérlési házirendjeitől. A felhasználók egy vagy több tárolót hozhatnak létre a tanúsítványok tárolására, a forgatókönyvek megfelelő szegmentálásának és a tanúsítványok kezelésének fenntartása érdekében.  
+ A tanúsítványok hozzáférés-vezérlését a Key Vault kezeli, és az adott tanúsítványokat tartalmazó Key Vault biztosítja. A tanúsítványok hozzáférés-vezérlési szabályzata eltér az ugyanabban a tanúsítványban található kulcsok és titkos kulcsok hozzáférés-vezérlési Key Vault. A felhasználók létrehozhatnak egy vagy több tárolót a tanúsítványok kezeléséhez a forgatókönyvek megfelelő szegmentálása és a tanúsítványok kezelése érdekében.  
 
- A következő engedélyek a Key Vault Secrets hozzáférés-vezérlési bejegyzésében, és a titkos objektumon engedélyezett műveletek részletes tükrözése céljából használhatók:  
+ A következő engedélyek használhatók rendszerbiztonsági tagonként egy kulcstartó titkoskulcs-hozzáférés-vezérlési bejegyzésében, és szigorúan tükrözik a titkos objektumon engedélyezett műveleteket:  
 
-- Tanúsítványkezelő műveletekhez szükséges engedélyek
-  - **beolvasás**: a tanúsítvány aktuális verziójának vagy bármely verziójának lekérése
-  - **lista**: a tanúsítvány aktuális tanúsítványait vagy verzióit sorolja fel.  
-  - **frissítés**: tanúsítvány frissítése
-  - **Létrehozás**: Key Vault tanúsítvány létrehozása
-  - **Importálás**: tanúsítvány importálása Key Vault tanúsítványba
-  - **Törlés**: tanúsítvány törlése, házirendje és minden verziója  
-  - **helyreállítás**: törölt tanúsítvány helyreállítása
-  - **biztonsági mentés**: tanúsítvány biztonsági mentése kulcstartóban
-  - **visszaállítás**: biztonsági másolat készítése a tanúsítványról egy kulcstartóra
-  - **managecontacts**: Key Vault tanúsítványok kapcsolatainak kezelése  
-  - **manageissuers**: Key Vault hitelesítésszolgáltatók/kiállítók kezelése
-  - **getissuers**: tanúsítvány hitelesítő szerveinek/kiállítóinak beszerzése
-  - **listissuers**: a tanúsítvány hatóságainak/kiállítóinak listázása  
-  - **setissuers**: Key Vault tanúsítvány szerveinek/kiállítóinak létrehozása vagy frissítése  
-  - **deleteissuers**: Key Vault tanúsítvány hatóságainak/kiállítóinak törlése  
+- Engedélyek tanúsítványkezelési műveletekhez
+  - **get:** Szerezze be az aktuális tanúsítványverziót vagy a tanúsítvány bármely verzióját
+  - **list:** Az aktuális tanúsítványok vagy a tanúsítványok verzióinak felsorolása  
+  - **update**: Tanúsítvány frissítése
+  - **létrehozás:** Hozzon létre Key Vault tanúsítványt
+  - **importálás:** Tanúsítványanyag importálása Key Vault tanúsítványba
+  - **delete**: Tanúsítvány, házirend és annak összes verziója törlése  
+  - **recover:** Törölt tanúsítvány helyreállítása
+  - **biztonsági mentés:** Tanúsítvány biztonsági mentése egy kulcstartóban
+  - **visszaállítás:** Biztonsági másolatból biztonsági másolatból visszaállítható egy kulcstartó
+  - **managecontacts**: Key Vault-tanúsítványok névjegyének kezelése  
+  - **manageissuers:** Key Vault hitelesítésszolgáltató vagy kiállító kezelése
+  - **getissuers:** Tanúsítvány hitelesítésszolgáltatóinak/kiállítóinak lekéri
+  - **listissuers:** Egy tanúsítvány hitelesítésszolgáltatóinak/kiállítóinak felsorolása  
+  - **setissuers:** Hozzon létre vagy frissítsen egy Key Vault hitelesítésszolgáltatóit/kiállítóit  
+  - **deleteissuers:** Key Vault hitelesítésszolgáltatói/kiállítóinak törlése  
  
-- Jogosultsági szintű műveletek engedélyei
-  - **kiürítés**: törölt tanúsítvány törlése (végleges törlése)
+- Jogosultsági szintű műveletekre vonatkozó engedélyek
+  - **purge**: Törölt tanúsítvány végleges törlése (végleges törlése)
 
-További információkért tekintse meg a [tanúsítványok műveleteit a Key Vault REST API-referenciában](/rest/api/keyvault). További információ az engedélyek létrehozásáról: tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy).
+További információért tekintse meg [a tanúsítványműveleteket a Key Vault REST API referenciában.](/rest/api/keyvault) További információ az engedélyek létrehozásáról: [Tárolók – Hozzáférési szabályzat frissítése.](/rest/api/keyvault/vaults/updateaccesspolicy)
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
-A hiányzó hozzáférési szabályzat miatt hiba jelenhet meg. A ```Error type : Access denied or user is unauthorized to create certificate``` hiba elhárításához például tanúsítványokat vagy létrehozási engedélyt kell hozzáadnia.
+Hiányzó hozzáférési szabályzat miatt hibaüzenet jelenhet meg. A hiba ```Error type : Access denied or user is unauthorized to create certificate``` elhárításához például tanúsítványokat kell hozzáadnia/engedélyeket kell létrehoznia.
 
 ## <a name="next-steps"></a>Következő lépések
 

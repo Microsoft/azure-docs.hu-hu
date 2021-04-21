@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/06/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 1b7c8487eb42204f2741679c9ef6eb2717c272cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c059746262cdaf2901c765d3ce3848887b2e629c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86057354"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781123"
 ---
-A parancs kimenetében a `identity` szakasz egy típusú identitást mutat be `SystemAssigned` a feladatban. A a `principalId` feladat identitásának elsődleges azonosítója:
+A parancs kimenetében a szakasz azt mutatja, hogy a feladatban be van állítva egy típusú `identity` `SystemAssigned` identitás. A `principalId` a feladatidentitás fő azonosítója:
 
 ```console
 [...]
@@ -28,7 +28,7 @@ A parancs kimenetében a `identity` szakasz egy típusú identitást mutat be `S
   "location": "eastus",
 [...]
 ``` 
-Az az [ACR Task show][az-acr-task-show] paranccsal tárolja a principalId egy változóban, a későbbi parancsokban való használatra. A következő parancsban helyettesítse be a feladat és a beállításjegyzék nevét:
+A principalId változóban való tárolására használja az [az acr task show][az-acr-task-show] parancsot a későbbi parancsokban való használathoz. A következő parancsban helyettesítse be a feladat és a beállításjegyzék nevét:
 
 ```azurecli
 principalID=$(az acr task show \
@@ -37,4 +37,4 @@ principalID=$(az acr task show \
 ```
 
 <!-- LINKS - Internal -->
-[az-acr-task-show]: /cli/azure/acr/task#az-acr-task-show
+[az-acr-task-show]: /cli/azure/acr/task#az_acr_task_show

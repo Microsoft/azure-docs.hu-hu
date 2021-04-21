@@ -1,118 +1,118 @@
 ---
-title: Automatizált közzététel a folyamatos integráció és a kézbesítés terén
-description: Megtudhatja, hogyan teheti közzé automatikusan a folyamatos integrációt és a kézbesítést.
+title: Automatikus közzététel a folyamatos integrációhoz és teljesítéshez
+description: Ismerje meg, hogyan tehet közzé automatikus közzétételt a folyamatos integráció és teljesítés érdekében.
 ms.service: data-factory
 author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: b2c48fcc11feaec3efc0acab283609181b92a3dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5730b0c7e522f7496f578ffebf716957fcaa56b0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104780463"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788929"
 ---
-# <a name="automated-publishing-for-continuous-integration-and-delivery"></a>Automatizált közzététel a folyamatos integráció és a kézbesítés terén
+# <a name="automated-publishing-for-continuous-integration-and-delivery"></a>Automatikus közzététel a folyamatos integrációhoz és teljesítéshez
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 ## <a name="overview"></a>Áttekintés
 
-A folyamatos integráció a kódbázis módosításainak automatikus tesztelését jelenti. A folyamatos teljesítés a lehető leghamarabb a folyamatos integráció során megjelenő tesztelést követi, és leküldi a módosításokat egy átmeneti vagy éles rendszerbe.
+A folyamatos integráció a kódbázis módosításainak automatikus tesztelését jelenti. A folyamatos teljesítés a lehető leghamarabb követi a folyamatos integráció során végzett tesztelést, és a módosításokat egy átmeneti vagy éles rendszerbe továbbkullja.
 
-Azure Data Factory a folyamatos integráció és a folyamatos teljesítés (CI/CD) a Data Factory folyamatok egyik környezetből, például a fejlesztésből, a tesztelésből és a termelésből egy másikba való áthelyezését jelenti. A Data Factory [Azure Resource Manager sablonokat (ARM-sablonokat)](../azure-resource-manager/templates/overview.md) használ a különböző Data Factory entitások, például folyamatok, adatkészletek és adatfolyamatok konfigurációjának tárolásához.
+A Azure Data Factory folyamatos integráció és folyamatos teljesítés (CI/CD) azt jelenti, hogy Data Factory folyamatok egyik környezetből , például a fejlesztésből, a tesztelésből és az éles környezetből egy másikba vannak átköltöztve. Data Factory [sablonokat Azure Resource Manager (ARM-sablonokat)](../azure-resource-manager/templates/overview.md) használ a különböző Data Factory-entitások, például folyamatok, adatkészletek és adatfolyamok konfigurációjának tárolására.
 
-Két javasolt módszer áll rendelkezésre az adatelőállító más környezetbe való előléptetéséhez:
+Két javasolt módszer létezik az adat-előállító másik környezetbe való meg előléptetheti:
 
-- Automatikus üzembe helyezés a Data Factory és az [Azure-folyamatok](/azure/devops/pipelines/get-started/what-is-azure-pipelines)integrálásával.
-- ARM-sablon manuális feltöltése Data Factory felhasználói élmény Azure Resource Manager használatával történő integrálásával.
+- Automatizált üzembe helyezés az Azure [Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines)Data Factory használatával.
+- ARM-sablon manuális feltöltése a felhasználói Data Factory integrációja és a Azure Resource Manager.
 
-További információ: [folyamatos integráció és kézbesítés Azure Data Factoryban](continuous-integration-deployment.md).
+További információ: Folyamatos integráció és [teljesítés a Azure Data Factory.](continuous-integration-deployment.md)
 
-Ez a cikk a folyamatos üzembe helyezés fejlesztéseit és a CI/CD automatikus közzétételi funkcióját ismerteti.
+Ez a cikk a folyamatos üzembe helyezés fejlesztésére és a CI/CD automatikus közzétételi funkcióra összpontosít.
 
-## <a name="continuous-deployment-improvements"></a>Folyamatos üzembe helyezési fejlesztések
+## <a name="continuous-deployment-improvements"></a>Folyamatos üzembe helyezés fejlesztései
 
-Az automatikus közzétételi funkció a Data Factory felhasználói élményben fogadja el az **összes** és az **export ARM-sablon** funkcióit, és egy nyilvánosan elérhető NPM-csomagon keresztül teszi a logikát [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) . Ezért programozott módon elindíthatja ezeket a műveleteket ahelyett, hogy a Data Factory felhasználói felületére ugorjon, és egy gombot manuálisan kell kiválasztania. Ezzel a képességgel a CI/CD-folyamatok igazabb folyamatos integrációs élményt biztosítanak.
+Az automatizált közzétételi  funkció az Összes ellenőrzése és az **ARM-sablon** exportálása funkciót Data Factory felhasználói felületről, és a logikát egy nyilvánosan elérhető npm-csomagon keresztül használhatóként teszi [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) elérhetővé. Ezért ezeket a műveleteket programozott módon is aktiválhatja ahelyett, hogy a felhasználói felületre kellene Data Factory, és manuálisan kellene kiválasztania egy gombot. Ez a képesség valódibb folyamatos integrációs élményt biztosít a CI-/CD-folyamatok számára.
 
-### <a name="current-cicd-flow"></a>Jelenlegi CI/CD-folyamat
+### <a name="current-cicd-flow"></a>Aktuális CI/CD-folyamat
 
-1. Minden felhasználó a saját fiókjaiban végez módosításokat.
-1. A leküldéses főkiszolgáló nem engedélyezett. A felhasználóknak egy lekéréses kérelmet kell létrehozniuk a módosítások elvégzéséhez.
-1. A felhasználóknak be kell tölteniük a Data Factory felhasználói felületet, és a **Közzététel** elemre kattintva telepíteniük kell a módosításokat a Data Factory és az ARM-sablonokat a közzétételi ágban kell előállítani.
-1. A DevOps kiadási folyamat úgy van beállítva, hogy új kiadást hozzon létre, és minden alkalommal telepítse az ARM-sablont, amikor egy új módosítást küldenek a közzétételi ágra.
+1. Minden felhasználó módosítja a saját privát ágát.
+1. A főkiszolgálóra való leküldés nem engedélyezett. A felhasználóknak lekéréses kérelmet kell létrehozniuk a módosítások létrehozására.
+1. A felhasználóknak be kell tölteniük  a Data Factory felhasználói felületét, és a Közzététel lehetőséget választva üzembe kell helyezniük a módosításokat a Data Factory és létre kell hozniuk az ARM-sablonokat a közzétételi ágban.
+1. A DevOps-kiadási folyamat úgy van konfigurálva, hogy új kiadást hozzon létre, és minden alkalommal üzembe helyez egy ARM-sablont, amikor új módosítás lesz lekért a közzétételi ágba.
 
-![Az aktuális CI/CD folyamatot bemutató diagram.](media/continuous-integration-deployment-improvements/current-ci-cd-flow.png)
+![Az aktuális CI/CD-folyamatot bemutató diagram.](media/continuous-integration-deployment-improvements/current-ci-cd-flow.png)
 
 ### <a name="manual-step"></a>Manuális lépés
 
-Az aktuális CI/CD-folyamat során a felhasználói élmény az ARM-sablon létrehozása. Ennek eredményeképpen a felhasználónak meg kell nyitnia a Data Factory felhasználói felületet, és manuálisan kell kiválasztania a **Közzététel** elemet az ARM-sablon létrehozásának elindításához és a közzétételi ág eldobásához.
+A jelenlegi CI/CD-folyamat során a felhasználói élmény az ARM-sablon közvetítői létrehozása. Ennek eredményeképpen a felhasználónak a Data Factory felhasználói felületén  manuálisan kell kiválasztania a Publish (Közzététel) lehetőséget az ARM-sablon generálása és a közzétételi ágba való eldobása érdekében.
 
 ### <a name="the-new-cicd-flow"></a>Az új CI/CD-folyamat
 
-1. Minden felhasználó a saját fiókjaiban végez módosításokat.
-1. A leküldéses főkiszolgáló nem engedélyezett. A felhasználóknak egy lekéréses kérelmet kell létrehozniuk a módosítások elvégzéséhez.
-1. Az Azure DevOps pipeline-Build minden alkalommal aktiválódik, amikor új véglegesítik a főkiszolgálót. Ellenőrzi az erőforrásokat, és egy ARM-sablont hoz létre, ha az érvényesítés sikeres.
-1. A DevOps kiadási folyamat úgy van beállítva, hogy új kiadást hozzon létre, és minden alkalommal telepítse az ARM-sablont, amikor egy új Build elérhetővé válik.
+1. Minden felhasználó módosításokat tesz a privát ágakban.
+1. A főkiszolgálóra való leküldés nem engedélyezett. A felhasználóknak lekéréses kérelmet kell létrehozniuk a módosítások létrehozására.
+1. Az Azure DevOps-folyamat build minden alkalommal aktiválódik, amikor új véglegesítést hoznak létre a főkiszolgálón. Ellenőrzi az erőforrásokat, és ha az érvényesítés sikeres, létrehoz egy ARM-sablont összetevőként.
+1. A DevOps-kiadási folyamat úgy van konfigurálva, hogy új kiadást hozzon létre, és minden alkalommal üzembe helyez egy ARM-sablont, amikor új build érhető el.
 
-![Az új CI/CD folyamatot bemutató diagram.](media/continuous-integration-deployment-improvements/new-ci-cd-flow.png)
+![Az új CI/CD-folyamatot bemutató diagram.](media/continuous-integration-deployment-improvements/new-ci-cd-flow.png)
 
 ### <a name="what-changed"></a>Mi változott?
 
-- Most már van egy DevOps-létrehozási folyamatot használó Build folyamata.
-- A build folyamat a ADFUtilities NPM csomagot használja, amely ellenőrzi az összes erőforrást, és létrehozza az ARM-sablonokat. Ezek a sablonok lehetnek egyetlenek és összekapcsolhatók.
-- A létrehozási folyamat feladata a Data Factory erőforrások ellenőrzése és az ARM-sablon létrehozása a Data Factory felhasználói felület (**Közzététel** gomb) helyett.
-- A DevOps kiadás definíciója mostantól ezt az új Build folyamatot fogja használni a git-összetevő helyett.
+- Most már van egy buildfolyamatunk, amely DevOps buildfolyamatot használ.
+- A build folyamat az ADFUtilities NPM-csomagot használja, amely érvényesíti az összes erőforrást, és létrehozza az ARM-sablonokat. Ezek a sablonok egyszeresek és összekapcsolhatók.
+- A build folyamat feladata a Data Factory és az ARM-sablon létrehozása az Data Factory **felhasználói** felület (Közzététel gomb) helyett.
+- A DevOps kiadási definíciója mostantól ezt az új build folyamatot használja a Git-összetevő helyett.
 
 > [!NOTE]
-> Továbbra is használhatja a meglévő mechanizmust, amely az `adf_publish` ág, vagy használhatja az új folyamatot. Mindkettő támogatott.
+> Továbbra is használhatja a meglévő mechanizmust, azaz a ágat, vagy használhatja az `adf_publish` új folyamatot. Mindkettő támogatott.
 
 ## <a name="package-overview"></a>Csomag – áttekintés
 
-Jelenleg két parancs érhető el a csomagban:
+A csomagban jelenleg két parancs érhető el:
 
 - ARM-sablon exportálása
 - Érvényesítés
 
 ### <a name="export-arm-template"></a>ARM-sablon exportálása
 
-Futtassa `npm run start export <rootFolder> <factoryId> [outputFolder]` a parancsot az ARM-sablon exportálásához egy adott mappa erőforrásainak használatával. Ez a parancs az ARM-sablon létrehozása előtt is futtat egy érvényesítési ellenőrzést. Bemutatunk egy példát:
+Futtassa `npm run start export <rootFolder> <factoryId> [outputFolder]` a parancsot az ARM-sablon exportáláshoz egy adott mappa erőforrásainak használatával. Ez a parancs egy érvényesítési ellenőrzést is futtat az ARM-sablon létrehozása előtt. Bemutatunk egy példát:
 
 ```
 npm run start export C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory ArmTemplateOutput
 ```
 
-- `RootFolder` egy kötelező mező, amely a Data Factory erőforrásainak helyét jelöli.
-- `FactoryId` egy kötelező mező, amely a Data Factory erőforrás-azonosítót jelöli a formátumban `/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.DataFactory/factories/<dfName>` .
-- `OutputFolder` egy nem kötelező paraméter, amely a generált ARM-sablon mentéséhez használt relatív elérési utat határozza meg.
+- `RootFolder` A egy kötelező mező, amely azt jelöli, Data Factory erőforrások hol találhatók.
+- `FactoryId` A egy kötelező mező, amely a Data Factory erőforrás-azonosítóját jelöli a következő formátumban: `/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.DataFactory/factories/<dfName>` .
+- `OutputFolder` A nem kötelező paraméter, amely megadja a létrehozott ARM-sablon mentéséhez szükséges relatív elérési utat.
  
 > [!NOTE]
-> A létrehozott ARM-sablon nincs közzétéve a gyár élő verziójában. Az üzembe helyezést CI/CD-folyamat használatával kell elvégezni.
+> A létrehozott ARM-sablon nem lesz közzétéve a gyár élő verziójában. Az üzembe helyezést CI/CD-folyamat használatával kell eltennünk.
  
 ### <a name="validate"></a>Érvényesítés
 
-`npm run start validate <rootFolder> <factoryId>`Egy adott mappa összes erőforrásának érvényesítéséhez futtassa a parancsot. Bemutatunk egy példát:
+Futtassa `npm run start validate <rootFolder> <factoryId>` a parancsot egy adott mappa összes erőforrásának ellenőrzéshez. Bemutatunk egy példát:
 
 ```
 npm run start validate C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory
 ```
 
-- `RootFolder` egy kötelező mező, amely a Data Factory erőforrásainak helyét jelöli.
-- `FactoryId` egy kötelező mező, amely a Data Factory erőforrás-azonosítót jelöli a formátumban `/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.DataFactory/factories/<dfName>` .
+- `RootFolder` A egy kötelező mező, amely azt jelöli, Data Factory erőforrások hol találhatók.
+- `FactoryId` A egy kötelező mező, amely a Data Factory erőforrás-azonosítóját jelöli a következő formátumban: `/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.DataFactory/factories/<dfName>` .
 
 ## <a name="create-an-azure-pipeline"></a>Azure-folyamat létrehozása
 
-Habár a NPM-csomagok különböző módokon használhatók fel, az egyik elsődleges előnyt az [Azure-folyamaton](https://nam06.safelinks.protection.outlook.com/?url=https:%2F%2Fdocs.microsoft.com%2F%2Fazure%2Fdevops%2Fpipelines%2Fget-started%2Fwhat-is-azure-pipelines%3Fview%3Dazure-devops%23:~:text%3DAzure%2520Pipelines%2520is%2520a%2520cloud%2Cit%2520available%2520to%2520other%2520users.%26text%3DAzure%2520Pipelines%2520combines%2520continuous%2520integration%2Cship%2520it%2520to%2520any%2520target.&data=04%7C01%7Cabnarain%40microsoft.com%7C5f064c3d5b7049db540708d89564b0bc%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C1%7C637423607000268277%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=jo%2BkIvSBiz6f%2B7kmgqDN27TUWc6YoDanOxL9oraAbmA%3D&reserved=0)keresztül lehet használni. Az együttműködési ág minden egyesítése után egy folyamat indítható el, amely először ellenőrzi az összes kódot, majd exportálja az ARM-sablont egy olyan [Build](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2F%2Fazure%2Fdevops%2Fpipelines%2Fartifacts%2Fbuild-artifacts%3Fview%3Dazure-devops%26tabs%3Dyaml%23how-do-i-consume-artifacts&data=04%7C01%7Cabnarain%40microsoft.com%7C5f064c3d5b7049db540708d89564b0bc%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C1%7C637423607000278113%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=dN3t%2BF%2Fzbec4F28hJqigGANvvedQoQ6npzegTAwTp1A%3D&reserved=0) -összetevőbe, amelyet egy kiadási folyamat felhasználhat. Miben különbözik az aktuális CI/CD-folyamattól, hogy *a kiadási folyamatot a meglévő `adf_publish` ág helyett ezen* az összetevőn fogja irányítani.
+Bár az npm-csomagok többféleképpen is felhasználhatjak, az egyik elsődleges előnyt az [Azure Pipeline használatával lehet igénybeni.](https://nam06.safelinks.protection.outlook.com/?url=https:%2F%2Fdocs.microsoft.com%2F%2Fazure%2Fdevops%2Fpipelines%2Fget-started%2Fwhat-is-azure-pipelines%3Fview%3Dazure-devops%23:~:text%3DAzure%2520Pipelines%2520is%2520a%2520cloud%2Cit%2520available%2520to%2520other%2520users.%26text%3DAzure%2520Pipelines%2520combines%2520continuous%2520integration%2Cship%2520it%2520to%2520any%2520target.&data=04%7C01%7Cabnarain%40microsoft.com%7C5f064c3d5b7049db540708d89564b0bc%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C1%7C637423607000268277%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=jo%2BkIvSBiz6f%2B7kmgqDN27TUWc6YoDanOxL9oraAbmA%3D&reserved=0) Az együttműködési ággal való egyes egyesítéskor aktiválható egy folyamat, amely először érvényesíti [](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2F%2Fazure%2Fdevops%2Fpipelines%2Fartifacts%2Fbuild-artifacts%3Fview%3Dazure-devops%26tabs%3Dyaml%23how-do-i-consume-artifacts&data=04%7C01%7Cabnarain%40microsoft.com%7C5f064c3d5b7049db540708d89564b0bc%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C1%7C637423607000278113%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=dN3t%2BF%2Fzbec4F28hJqigGANvvedQoQ6npzegTAwTp1A%3D&reserved=0) az összes kódot, majd exportálja az ARM-sablont egy kiadási folyamat által használható build-összetevőbe. Miben különbözik az aktuális CI/CD-folyamattól, hogy a kiadási folyamatot erre az összetevőre fogja használni a *meglévő `adf_publish` ág helyett.*
 
 A kezdéshez kövesse az alábbi lépéseket:
 
-1.  Nyisson meg egy Azure DevOps-projektet, és lépjen a **folyamatok** elemre. Válassza a **New pipeline** (Új folyamat) lehetőséget.
+1.  Nyisson meg egy Azure DevOps-projektet, és nyissa meg **a Pipelines (Folyamatok) gombra.** Válassza a **New pipeline** (Új folyamat) lehetőséget.
 
-    ![Képernyőkép, amely az új folyamat gombot jeleníti meg.](media/continuous-integration-deployment-improvements/new-pipeline.png)
+    ![Az Új folyamat gombot bemutató képernyőkép.](media/continuous-integration-deployment-improvements/new-pipeline.png)
     
-1.  Válassza ki azt a tárházat, amelybe menteni szeretné a folyamat YAML parancsfájlját. Azt javasoljuk, hogy a Data Factory erőforrásainak ugyanazon tárházában lévő Build mappában mentse azt. Győződjön meg arról, hogy a csomag nevét tartalmazó adattárban van egy *package.jsa* következő példában látható módon:
+1.  Válassza ki azt az adattárat, ahová a folyamat YAML-szkriptet menteni szeretné. Javasoljuk, hogy mentse egy buildmappába a saját erőforrásának ugyanabban a Data Factory adattárában. Győződjön meg arról, *package.js* fájl tartalmaz egy fájlban, amely tartalmazza a csomag nevét, az alábbi példában látható módon:
 
     ```json
     {
@@ -125,9 +125,9 @@ A kezdéshez kövesse az alábbi lépéseket:
     } 
     ```
     
-1.  Válassza ki a **kezdő folyamat** elemet. Ha feltöltötte vagy egyesítette a YAML-fájlt, ahogy az az alábbi példában is látható, akkor közvetlenül is rámutathat, és szerkesztheti azt.
+1.  Válassza a **Kezdő folyamat lehetőséget.** Ha feltöltötte vagy egyesítette a YAML-fájlt az alábbi példában látható módon, közvetlenül erre is mutathat, és szerkesztheti azt.
 
-    ![Az alapszintű folyamatot bemutató képernyőkép.](media/continuous-integration-deployment-improvements/starter-pipeline.png)
+    ![Képernyőkép a Starter folyamatról.](media/continuous-integration-deployment-improvements/starter-pipeline.png)
 
     ```yaml
     # Sample YAML file to validate and export an ARM template into a build artifact
@@ -151,6 +151,7 @@ A kezdéshez kövesse az alábbi lépéseket:
     - task: Npm@1
       inputs:
         command: 'install'
+        workingDir: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>' #replace with the package.json folder
         verbose: true
       displayName: 'Install npm package'
     
@@ -160,6 +161,7 @@ A kezdéshez kövesse az alábbi lépéseket:
     - task: Npm@1
       inputs:
         command: 'custom'
+        workingDir: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>' #replace with the package.json folder
         customCommand: 'run build validate $(Build.Repository.LocalPath) /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName'
       displayName: 'Validate'
     
@@ -169,6 +171,7 @@ A kezdéshez kövesse az alábbi lépéseket:
     - task: Npm@1
       inputs:
         command: 'custom'
+        workingDir: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>' #replace with the package.json folder
         customCommand: 'run build export $(Build.Repository.LocalPath) /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName "ArmTemplate"'
       displayName: 'Validate and Generate ARM template'
     
@@ -176,16 +179,16 @@ A kezdéshez kövesse az alábbi lépéseket:
     
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '$(Build.Repository.LocalPath)/ArmTemplate'
+        targetPath: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>/ArmTemplate' #replace with the package.json folder
         artifact: 'ArmTemplates'
         publishLocation: 'pipeline'
     ```
 
-1.  Adja meg a YAML kódját. Azt javasoljuk, hogy kiindulási pontként használja a YAML-fájlt.
-1.  Mentés és Futtatás. Ha a YAML használta, a rendszer a fő ág frissítésekor minden alkalommal elindul.
+1.  Adja meg a YAML-kódot. Javasoljuk, hogy kiindulási pontként használja a YAML-fájlt.
+1.  Mentse és futtassa a gombra. Ha a YAML-t használta, az a főág minden egyes frissítésekor aktiválódik.
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információk a folyamatos integrációról és a Data Factory történő kézbesítésről:
+További információ a folyamatos integrációról és teljesítésről a Data Factory:
 
-- [Folyamatos integráció és kézbesítés Azure Data Factoryban](continuous-integration-deployment.md).
+- [Folyamatos integráció és teljesítés a Azure Data Factory.](continuous-integration-deployment.md)

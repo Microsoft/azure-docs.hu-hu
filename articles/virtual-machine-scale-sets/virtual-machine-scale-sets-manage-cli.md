@@ -1,6 +1,6 @@
 ---
-title: Virtual Machine Scale Sets kezelése az Azure CLI-vel
-description: Általános Azure CLI-parancsok Virtual Machine Scale Sets kezelésére, például egy példány indítására és leállítására, illetve a méretezési csoport kapacitásának módosítására.
+title: Az Virtual Machine Scale Sets kezelése az Azure CLI-val
+description: Gyakori Azure CLI-parancsok a Virtual Machine Scale Sets, például a példányok indításának és leállításának, vagy a méretezési készlet kapacitásának módosítása.
 author: ju-shim
 ms.author: jushiman
 ms.topic: how-to
@@ -9,21 +9,21 @@ ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: d954f7cdda4cae65f822489828226e0364d0fc29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c2b2217fc6b32e5191bb67ffdaa10b796adf84b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91570532"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762766"
 ---
-# <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Virtuálisgép-méretezési csoport kezelése az Azure CLI-vel
-A virtuálisgép-méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Emellett előfordulhat, hogy különféle szkripteket is érdemes létrehozni az életciklus-feladatok automatizálására. Ez a cikk a leggyakoribb Azure CLI-parancsokat ismerteti, amelyek lehetővé teszik ezen feladatok elvégzését.
+# <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Virtuálisgép-méretezési készlet kezelése az Azure CLI-val
+A virtuálisgép-méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Emellett előfordulhat, hogy különféle szkripteket is érdemes létrehozni az életciklus-feladatok automatizálására. Ez a cikk néhány gyakori Azure CLI-parancsot részletez, amelyek segítségével végrehajthat ilyen feladatokat.
 
-A felügyeleti feladatok elvégzéséhez szüksége lesz a legújabb Azure CLI-re. További információ: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ha létre kell hoznia egy virtuálisgép-méretezési készletet, [létrehozhat egy méretezési készletet az Azure CLI](quick-create-cli.md)használatával.
+A felügyeleti feladatok elvégzéséhez a legújabb Azure CLI-re lesz szüksége. További információ: [Az Azure CLI telepítése.](/cli/azure/install-azure-cli) Ha létre kell hoznia egy virtuálisgép-méretezési készletet, az Azure CLI használatával hozhat létre [méretezési csoportokat.](quick-create-cli.md)
 
 
-## <a name="view-information-about-a-scale-set"></a>Méretezési csoportra vonatkozó információk megtekintése
-A méretezési csoportokra vonatkozó általános információk megtekintéséhez használja az [az vmss show](/cli/azure/vmss)lehetőséget. A következő példa a *myResourceGroup* erőforráscsoport *myScaleSet* nevű méretezési csoportjának adatait olvassa be. Adja meg a saját nevét a következőképpen:
+## <a name="view-information-about-a-scale-set"></a>Méretezési készlet információinak megtekintése
+A méretezési készlet általános információinak megtekintéséhez használja [az az vmss show adatokat.](/cli/azure/vmss) Az alábbi példa a *myResourceGroup erőforráscsoportban* *található myScaleSet* nevű méretezési csoport adatait lekérte. Adja meg a saját nevét az alábbiak szerint:
 
 ```azurecli
 az vmss show --resource-group myResourceGroup --name myScaleSet
@@ -31,7 +31,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 
 
 ## <a name="view-vms-in-a-scale-set"></a>Virtuális gépek megtekintése egy méretezési csoportban
-A méretezési csoportokban lévő virtuálisgép-példányok listájának megtekintéséhez használja az [az vmss List-instances](/cli/azure/vmss)lehetőséget. Az alábbi példa felsorolja a *myResourceGroup* erőforráscsoport *myScaleSet* nevű méretezési csoportjának összes virtuálisgép-példányát. Adja meg a saját értékeit a következő nevekhez:
+A méretezési készletben található virtuálisgép-példányok listájának megtekintéséhez használja [az az vmss list-instances et.](/cli/azure/vmss) Az alábbi példa felsorolja a *myResourceGroup* erőforráscsoportban található *myScaleSet* nevű méretezési csoportban található összes virtuálisgép-példányt. Adja meg a saját értékeit a következő nevekhez:
 
 ```azurecli
 az vmss list-instances \
@@ -40,7 +40,7 @@ az vmss list-instances \
     --output table
 ```
 
-Egy adott virtuálisgép-példányra vonatkozó további információk megtekintéséhez adja hozzá a `--instance-id` paramétert az [az vmss Get-instance-View](/cli/azure/vmss) elemhez, és adjon meg egy megtekinteni kívánt példányt. Az alábbi példa a *myScaleSet* és a *myResourceGroup* erőforráscsoport nevű méretezési csoportban található virtuálisgép *-példányok* adatait tekinti meg. Adja meg a saját nevét a következőképpen:
+Egy adott virtuálisgép-példány további információinak megtekintéséhez adja hozzá a paramétert `--instance-id` [az az vmss get-instance-view](/cli/azure/vmss) paraméterhez, és adjon meg egy megtekinteni kívánt példányt. Az alábbi példa a *myScaleSet* és a *myResourceGroup* erőforráscsoport nevű méretezési csoport *0* virtuálisgép-példányának adataitnézett tartalmazza. Adja meg a saját nevét az alábbiak szerint:
 
 ```azurecli
 az vmss get-instance-view \
@@ -49,7 +49,7 @@ az vmss get-instance-view \
     --instance-id 0
 ```
 
-Egy API-hívásban részletes *instanceView* információkat is megtudhat az összes példányról, ami segíthet elkerülni a nagyméretű TELEPÍTÉSEk API-szabályozását. Adja meg a, a és a saját értékeit `--resource-group` `--subscription` `--name` .
+Egy API-hívás minden példányának részletes *instanceView* információit is le tudja kérni, ami segíthet elkerülni a nagy méretű telepítések API-szabályozását. Adja meg a saját értékeit a `--resource-group` , a és a `--subscription` `--name` számára.
 
 ```azurecli
 az vmss list-instances \
@@ -64,8 +64,8 @@ az vmss list-instances \
 GET "https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSSName>/virtualMachines?api-version=2019-03-01&%24expand=instanceView"
 ```
 
-## <a name="list-connection-information-for-vms"></a>Virtuális gépekhez tartozó kapcsolatok adatainak listázása
-Ha egy méretezési csoportba tartozó virtuális gépekhez szeretne csatlakozni, SSH vagy RDP protokollt kell rendelnie egy hozzárendelt nyilvános IP-címhez és portszámhoz. Alapértelmezés szerint a hálózati címfordítási (NAT) szabályok hozzáadódnak az Azure Load Balancerhez, amely minden virtuális géphez továbbítja a távoli kapcsolatok forgalmát. A méretezési csoportokban lévő virtuálisgép-példányokhoz való csatlakozáshoz használandó címek és portok listázásához használja az [az vmss List-instance-kapcsolat-info](/cli/azure/vmss)parancsot. Az alábbi példa felsorolja a virtuálisgép-példányok a *myScaleSet* és a *myResourceGroup* erőforráscsoport nevű méretezési csoportban található virtuálisgép-példányokhoz való csatlakoztatási adatait. Adja meg a saját értékeit a következő nevekhez:
+## <a name="list-connection-information-for-vms"></a>Virtuális gépek kapcsolati információinak felsorolása
+A méretezési csoportban található virtuális gépekhez való csatlakozáshoz SSH-t vagy RDP-t kell hozzárendelni egy hozzárendelt nyilvános IP-címhez és portszámhoz. Alapértelmezés szerint a hálózati címfordítási (NAT-) szabályok hozzá vannak adva az Azure Load Balancerhez, amely továbbítja a távoli kapcsolat forgalmát az egyes virtuális gépeknek. A méretezési készletben található virtuálisgép-példányokhoz való csatlakozás címének és portjainak listához használja [az az vmss list-instance-connection-info parancsokat.](/cli/azure/vmss) Az alábbi példa a *myScaleSet* nevű méretezési csoportban és a *myResourceGroup* erőforráscsoportban található virtuálisgép-példányok kapcsolati adatait sorolja fel. Adja meg a saját értékeit ezekhez a nevekhez:
 
 ```azurecli
 az vmss list-instance-connection-info \
@@ -75,7 +75,7 @@ az vmss list-instance-connection-info \
 
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>Méretezési csoport kapacitásának módosítása
-Az előző parancsok a méretezési csoportra és a virtuálisgép-példányokra vonatkozó információkat mutatták. A méretezési csoport példányainak számának növeléséhez vagy csökkentéséhez módosíthatja a kapacitást. A méretezési csoport létrehozza vagy eltávolítja a szükséges virtuális gépek számát, majd konfigurálja a virtuális gépeket az alkalmazás forgalmának fogadására.
+A fenti parancsok a méretezési készletről és a virtuálisgép-példányról mutattak be információkat. A méretezési készletben a példányok számának növeléséhez vagy csökkentéséhez módosíthatja a kapacitást. A méretezési készlet létrehozza vagy eltávolítja a szükséges számú virtuális gépeket, majd konfigurálja a virtuális gépeket az alkalmazás forgalmának fogadására.
 
 A méretezési csoportban jelenleg futó példányok számának megtekintéséhez használja az [az vmss show](/cli/azure/vmss) parancsot, és állítsa be az *sku.capacity* lekérdezést:
 
@@ -87,7 +87,7 @@ az vmss show \
     --output table
 ```
 
-Ezt követően az [az vmss scale](/cli/azure/vmss) parancs használatával manuálisan növelheti vagy csökkentheti a méretezési csoportban futó virtuális gépek számát. A következő példa a méretezési csoportba tartozó virtuális gépek számát állítja be *5* értékre:
+Ezt követően az [az vmss scale](/cli/azure/vmss) parancs használatával manuálisan növelheti vagy csökkentheti a méretezési csoportban futó virtuális gépek számát. Az alábbi példa a méretezési készletben a virtuális gépek számát *5-re állítja:*
 
 ```azurecli
 az vmss scale \
@@ -96,29 +96,29 @@ az vmss scale \
     --new-capacity 5
 ```
 
-A méretezési csoport kapacitásának frissítése néhány percet vesz igénybe. Ha csökkenti a méretezési csoport kapacitását, a rendszer először eltávolítja a legmagasabb példány-azonosítóval rendelkező virtuális gépeket.
+A méretezési csoport kapacitásának frissítése néhány percet vesz igénybe. Ha csökkenti egy méretezési készlet kapacitását, a rendszer először a legmagasabb példány-értékekkel rendelkező virtuális gépeket távolítja el.
 
 
 ## <a name="stop-and-start-vms-in-a-scale-set"></a>Virtuális gépek leállítása és elindítása egy méretezési csoportban
-A méretezési csoportokban lévő egy vagy több virtuális gép leállításához használja [az az vmss stop](/cli/azure/vmss#az-vmss-stop)lehetőséget. Az `--instance-ids` paraméter segítségével megadhat egy vagy több leállítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép le lesz állítva. Több virtuális gép leállításához az egyes példányok AZONOSÍTÓit szóközzel kell elválasztani.
+Egy méretezési készlet egy vagy több virtuális gépének leállításhoz használja [az az vmss stop et.](/cli/azure/vmss#az_vmss_stop) Az `--instance-ids` paraméter segítségével megadhat egy vagy több leállítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép le lesz állítva. Több virtuális gép leállításhoz minden példányazonosítót szóközre kell elválasztani.
 
-A következő példa leállítja a *0* . példányt a *myScaleSet* nevű méretezési csoportba és a *myResourceGroup* -erőforráscsoporthoz. Adja meg a saját értékeit az alábbiak szerint:
+Az alábbi példa leállítja a *myScaleSet* nevű méretezési csoport *0.* példányát és a *myResourceGroup* erőforráscsoportot. Adja meg a saját értékeit az alábbiak szerint:
 
 ```azurecli
 az vmss stop --resource-group myResourceGroup --name myScaleSet --instance-ids 0
 ```
 
-A leállított virtuális gépek továbbra is kiosztásra kerülnek, és továbbra is számításba vehetők. Ha ehelyett azt szeretné, hogy a virtuális gépek felszabadítva legyenek, és csak a tárolási díjakat terhelik, használja [az az vmss felszabadítása](/cli/azure/vmss)parancsot. Több virtuális gép felszabadításához szóközzel válassza el az egyes példány-AZONOSÍTÓkat. A következő példa leállítja és felszabadítja a *0* . példányt a *MyScaleSet* és a *myResourceGroup* erőforráscsoport nevű méretezési csoportban. Adja meg a saját értékeit az alábbiak szerint:
+A leállított virtuális gépek továbbra is le vannak osztva, és továbbra is számítási díjakat kell fizetni. Ha ehelyett szeretné felszabadítani a virtuális gépeket, és csak tárolási költségeket kell fizetni, használja [az az vmss deallocate et.](/cli/azure/vmss) Több virtuális gép felszabadítása esetén az egyes példányazonosítókat szóközre kell elválasztani. Az alábbi példa leállítja és felszabadítja a *myScaleSet* és a *myResourceGroup* erőforráscsoport nevű méretezési csoport *0.* példányát. Adja meg a saját értékeit az alábbiak szerint:
 
 ```azurecli
 az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance-ids 0
 ```
 
 
-### <a name="start-vms-in-a-scale-set"></a>Virtuális gépek indítása méretezési csoportokban
-Egy vagy több virtuális gép egy méretezési csoportba való elindításához használja [az az vmss Start](/cli/azure/vmss)parancsot. Az `--instance-ids` paraméter segítségével megadhat egy vagy több indítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép el lesz indítva. Több virtuális gép indításához külön szóközzel válassza el az egyes példány-AZONOSÍTÓkat.
+### <a name="start-vms-in-a-scale-set"></a>Virtuális gépek elindítani egy méretezési készletben
+Egy vagy több virtuális gép méretezési készletben való indításhoz használja [az az vmss start használhatja a következőt:](/cli/azure/vmss). Az `--instance-ids` paraméter segítségével megadhat egy vagy több indítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép el lesz indítva. Több virtuális gép indításhoz külön kell elválasztani az egyes példányazonosítókat egy szóköztől.
 
-A következő példa elindítja a *0* . példányt a *myScaleSet* nevű méretezési csoportba és a *myResourceGroup* -erőforráscsoporthoz. Adja meg a saját értékeit az alábbiak szerint:
+A következő példa elindítja a *myScaleSet* nevű méretezési csoport *0.* példányát és a *myResourceGroup* erőforráscsoportot. Adja meg a saját értékeit az alábbiak szerint:
 
 ```azurecli
 az vmss start --resource-group myResourceGroup --name myScaleSet --instance-ids 0
@@ -126,19 +126,19 @@ az vmss start --resource-group myResourceGroup --name myScaleSet --instance-ids 
 
 
 ## <a name="restart-vms-in-a-scale-set"></a>Virtuális gépek újraindítása egy méretezési csoportban
-Egy vagy több virtuális gép újraindításához a méretezési csoportokban használja [az az vmss restart](/cli/azure/vmss). Az `--instance-ids` paraméter segítségével megadhat egy vagy több újraindítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép újra lesz indítva. Több virtuális gép újraindításához az egyes példányok AZONOSÍTÓit szóközzel kell elválasztani.
+Egy méretezési készlet egy vagy több virtuális gépének újraindításához használja [az az vmss restart parancsokat.](/cli/azure/vmss) Az `--instance-ids` paraméter segítségével megadhat egy vagy több újraindítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép újra lesz indítva. Több virtuális gép újraindításához az egyes példányazonosítókat szóközre kell elválasztani.
 
-A következő példa újraindítja a *0* . példányt a *MyScaleSet* és a *myResourceGroup* erőforráscsoport nevű méretezési csoportban. Adja meg a saját értékeit az alábbiak szerint:
+Az alábbi példa újraindítja a *myScaleSet* nevű méretezési csoport *0.* példányát és a *myResourceGroup* erőforráscsoportot. Adja meg a saját értékeit az alábbiak szerint:
 
 ```azurecli
 az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-ids 0
 ```
 
 
-## <a name="remove-vms-from-a-scale-set"></a>Virtuális gépek eltávolítása egy méretezési csoportból
-Egy vagy több virtuális gép egy méretezési csoportból való eltávolításához használja [az az vmss delete-instances](/cli/azure/vmss)parancsot. A `--instance-ids` paraméter segítségével megadhat egy vagy több eltávolítandó virtuális gépet. Ha a példány AZONOSÍTÓját adja meg, a rendszer a méretezési csoport összes virtuális gépe törlődik. Több virtuális gép eltávolításához az egyes példányok AZONOSÍTÓit szóközzel kell elválasztani.
+## <a name="remove-vms-from-a-scale-set"></a>Virtuális gépek eltávolítása méretezési készletből
+A méretezési csoportban található egy vagy több virtuális gép eltávolításához használja [az az vmss delete-instances parancsot.](/cli/azure/vmss) A paraméterrel egy vagy több eltávolítható virtuális gép `--instance-ids` adható meg. Ha megadja a * értéket a példányazonosítóhoz, a méretezési készletben minden virtuális gép el lesz távolítva. Több virtuális gép eltávolításához az egyes példányazonosítókat szóközre kell elválasztani.
 
-A következő példa eltávolítja a *0* . példányt a *myScaleSet* nevű méretezési csoportba és a *myResourceGroup* -erőforráscsoporthoz. Adja meg a saját értékeit az alábbiak szerint:
+Az alábbi példa eltávolítja a *0* példányt a *myScaleSet* nevű méretezési csoportból és a *myResourceGroup* erőforráscsoportból. Adja meg a saját értékeit az alábbiak szerint:
 
 ```azurecli
 az vmss delete-instances --resource-group myResourceGroup --name myScaleSet --instance-ids 0
@@ -146,4 +146,4 @@ az vmss delete-instances --resource-group myResourceGroup --name myScaleSet --in
 
 
 ## <a name="next-steps"></a>Következő lépések
-A méretezési csoportokkal kapcsolatos egyéb gyakori feladatok közé tartozik az [alkalmazások központi telepítése](virtual-machine-scale-sets-deploy-app.md)és a virtuálisgép- [példányok frissítése](virtual-machine-scale-sets-upgrade-scale-set.md). Az Azure CLI-vel is [konfigurálhatja az automatikus skálázási szabályokat](virtual-machine-scale-sets-autoscale-overview.md).
+A méretezési készletek további gyakori feladatai közé tartozik az alkalmazások üzembe helyezése és [a](virtual-machine-scale-sets-deploy-app.md) [virtuálisgép-példányok frissítése.](virtual-machine-scale-sets-upgrade-scale-set.md) Az automatikus skálázható szabályokat az Azure CLI [használatával is konfigurálhatja.](virtual-machine-scale-sets-autoscale-overview.md)

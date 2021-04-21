@@ -1,9 +1,8 @@
 ---
-title: Oktatóanyag – a tanúsítvány automatikus elforgatási gyakoriságának frissítése Key Vaultban | Microsoft Docs
-description: Az oktatóanyag bemutatja, hogyan lehet frissíteni a tanúsítvány automatikus rotációs gyakoriságát Azure Key Vault a Azure Portal használatával
+title: Oktatóanyag – Tanúsítvány automatikus rotációs gyakoriságának frissítése a Key Vault | Microsoft Docs
+description: Oktatóanyag, amely bemutatja, hogyan frissítheti egy tanúsítvány automatikus rotációs gyakoriságát Azure Key Vault a Azure Portal
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
@@ -11,27 +10,27 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: ec648f02918717dad6b739aa6ae99206bcec1d6e
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 48a531e054bf92c8ddc7761689b8fdf1df8a28a7
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581816"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750013"
 ---
-# <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Oktatóanyag: a tanúsítvány automatikus elforgatásának konfigurálása Key Vaultban
+# <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Oktatóanyag: Tanúsítvány automatikus rotációja a Key Vault
 
-Azure Key Vault használatával könnyedén kiépítheti, kezelheti és telepítheti a digitális tanúsítványokat. A tanúsítványok lehetnek nyilvános és magánhálózati SSL (SSL)/Transport Layer Security (TLS) tanúsítványok, amelyeket a hitelesítésszolgáltató (CA) vagy egy önaláírt tanúsítvány írt alá. A Key Vault a CAs-vel való partneri kapcsolaton keresztül is kérheti és megújíthatja a tanúsítványokat, így robusztus megoldást biztosít a tanúsítványok életciklusának kezelésére. Ebben az oktatóanyagban frissíteni fogja a tanúsítvány érvényességi időtartamát, az automatikus rotációs gyakoriságot és a HITELESÍTÉSSZOLGÁLTATÓI attribútumokat.
+A digitális tanúsítványokat egyszerűen kiépítheti, kezelheti és telepítheti a Azure Key Vault. A tanúsítványok egy hitelesítésszolgáltató (CA) által aláírt SSL (SSL)/Transport Layer Security (TLS) tanúsítványok vagy egy önaírt tanúsítvány is lehet. Key Vault tanúsítványokat is kérhetnek és újíthat meg a hitelesítésszolgáltatói partneri viszonyokkal, így robusztus megoldást kínálnak a tanúsítványok életciklusának kezelésére. Ebben az oktatóanyagban frissíteni fogja a tanúsítvány érvényességi időszakát, az automatikus rotáció gyakoriságát és a CA attribútumokat.
 
 Ez az oktatóanyag a következőket mutatja be:
 
 > [!div class="checklist"]
-> * Tanúsítvány kezelése a Azure Portal használatával.
-> * HITELESÍTÉSSZOLGÁLTATÓI szolgáltatói fiók hozzáadása.
-> * A tanúsítvány érvényességi idejének frissítése.
+> * Tanúsítvány kezelése a Azure Portal.
+> * Adjon hozzá egy hitelesítésszolgáltatói fiókot.
+> * Frissítse a tanúsítvány érvényességi időszakát.
 > * Frissítse a tanúsítvány automatikus rotációs gyakoriságát.
-> * Frissítse a tanúsítvány attribútumait Azure PowerShell használatával.
+> * Frissítse a tanúsítvány attribútumát a Azure PowerShell.
 
-Mielőtt elkezdené, olvassa el [Key Vault alapvető fogalmakat](../general/basic-concepts.md).
+Mielőtt hozzákezd, olvassa [el Key Vault alapfogalmakat.](../general/basic-concepts.md)
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -41,76 +40,78 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-vault"></a>Tároló létrehozása
 
-Hozzon létre egy Azure Key Vaultt a [Azure Portal](../general/quick-create-portal.md), az [Azure CLI](../general/quick-create-cli.md)vagy a [Azure PowerShell](../general/quick-create-powershell.md)használatával. A példában a kulcstároló neve **például a-Vault**.
+Hozzon létre egy Azure Key Vault [az Azure Portal,](../general/quick-create-portal.md) [az Azure CLI](../general/quick-create-cli.md)vagy a [Azure PowerShell.](../general/quick-create-powershell.md) A példában a kulcstartó neve **Example-Vault.**
 
-![Kimenet a Key Vault létrehozásának befejeződése után](../media/certificates/tutorial-import-cert/vault-properties.png)
+![Kimenet a Key Vault létrehozásának befejezése után](../media/certificates/tutorial-import-cert/vault-properties.png)
 
-## <a name="create-a-certificate-in-key-vault"></a>Tanúsítvány létrehozása Key Vaultban
+## <a name="create-a-certificate-in-key-vault"></a>Tanúsítvány létrehozása a Key Vault
 
-Hozzon létre egy tanúsítványt, vagy importáljon egy tanúsítványt a kulcstartóba (lásd: a [tanúsítvány létrehozásának lépései a Key Vault](../secrets/quick-create-portal.md)). Ebben az esetben egy **ExampleCertificate** nevű tanúsítványon fog dolgozni.
+Hozzon létre egy tanúsítványt, vagy importálja a tanúsítványt a kulcstartóba [(lásd: Tanúsítvány](../secrets/quick-create-portal.md)létrehozása a Key Vault). Ebben az esetben egy **ExampleCertificate** nevű tanúsítvánnyal fog dolgozni.
 
-## <a name="update-certificate-lifecycle-attributes"></a>A tanúsítvány életciklus-attribútumainak frissítése
+## <a name="update-certificate-lifecycle-attributes"></a>Tanúsítvány életciklus-attribútumainak frissítése
 
-Azure Key Vault a tanúsítvány életciklus-attribútumait a tanúsítvány létrehozásakor vagy után is frissítheti.
+A Azure Key Vault a tanúsítvány életciklus-attribútumait a tanúsítvány létrehozásakor vagy után is frissítheti.
 
-Key Vault-ben létrehozott tanúsítvány a következőket teheti:
+A tanúsítványban létrehozott Key Vault a következő lehet:
 
-- Önaláírt tanúsítvány.
-- Egy Key Vault-vel összekötött HITELESÍTÉSSZOLGÁLTATÓval létrehozott tanúsítvány.
-- Olyan HITELESÍTÉSSZOLGÁLTATÓval rendelkező tanúsítvány, amely nem Key Vaulthoz van társítva.
+- Önaírt tanúsítvány.
+- Egy hitelesítésszolgáltatóval létrehozott tanúsítvány, amely a Key Vault.
+- Olyan hitelesítésszolgáltatóval rendelkezik, amely nem partneri Key Vault.
 
-A következő hitelesítésszolgáltatók jelenleg a Key Vaultkal rendelkező partneri szolgáltatók:
+Jelenleg az alábbi, felhőszolgáltatókkal partneri Key Vault:
 
-- DigiCert: Key Vault OV TLS/SSL-tanúsítványokat kínál.
-- GlobalSign: Key Vault OV TLS/SSL-tanúsítványokat kínál.
+- DigiCert: Key Vault OV TLS-/SSL-tanúsítványokat kínál.
+- GlobalSign: Key Vault OV TLS-/SSL-tanúsítványokat kínál.
 
-Key Vault automatikusan elforgatja a tanúsítványokat a CAs használatával létesített partnerségek segítségével. Mivel Key Vault a tanúsítványok automatikus kérése és megújítása a partnerségen keresztül történik, az automatikus rotációs képesség nem alkalmazható olyan hitelesítésszolgáltatókkal létrehozott tanúsítványokra, amelyek nem a Key Vault-mel vannak társítva.
+Key Vault automatikusan váltogatja a tanúsítványokat a hitelesítés tanúsítványokkal való partneri viszonyon keresztül. Mivel Key Vault tanúsítványokat a partnerkapcsolaton keresztül automatikusan leküld és újít meg, az automatikus rotáció nem alkalmazható olyan HITELESÍTÉS-szerződésekkel létrehozott tanúsítványokra, amelyek nincsenek partnerkapcsolatban a Key Vault.
 
 > [!NOTE]
-> A HITELESÍTÉSSZOLGÁLTATÓI szolgáltatói fiók rendszergazdája olyan hitelesítő adatokat hoz létre, amelyeket Key Vault használ a TLS/SSL-tanúsítványok létrehozásához, megújításához és használatához.
+> A hitelesítésszolgáltató fiók-rendszergazdája olyan hitelesítő adatokat hoz létre, Key Vault TLS-/SSL-tanúsítványok létrehozására, megújítására és használatára használ.
 ![Hitelesítésszolgáltató](../media/certificates/tutorial-rotate-cert/cert-authority-create.png)
 >
 
-### <a name="update-certificate-lifecycle-attributes-at-the-time-of-creation"></a>A tanúsítvány életciklus-attribútumainak frissítése a létrehozás időpontjában
+### <a name="update-certificate-lifecycle-attributes-at-the-time-of-creation"></a>A tanúsítvány életciklus-attribútumainak frissítése a létrehozáskor
 
-1. A Key Vault tulajdonságok lapon válassza a **tanúsítványok** lehetőséget.
-1. Válassza a **készítés/importálás** lehetőséget.
-1. A **tanúsítvány létrehozása** képernyőn frissítse a következő értékeket:
+1. A tulajdonságokat Key Vault oldalon válassza a Tanúsítványok **lehetőséget.**
+1. Válassza **a Generate/Import (Generálás/Importálás) lehetőséget.**
+1. A Tanúsítvány **létrehozása képernyőn** frissítse a következő értékeket:
 
-   - **Érvényességi időszak**: adja meg az értéket (hónapokban). A rövid élettartamú tanúsítványok létrehozása ajánlott biztonsági eljárás. Alapértelmezés szerint az újonnan létrehozott tanúsítvány érvényességi értéke 12 hónap.
-   - **Élettartam művelet típusa**: válassza ki a tanúsítvány automatikus megújítási és riasztási műveletét, majd frissítse a **százalékos élettartamot** vagy **a lejárat előtti napok számát**. Alapértelmezés szerint a tanúsítvány automatikus megújítása az élettartamának 80%-ában van beállítva. A legördülő menüben válassza az alábbi lehetőségek egyikét.
+   - **Érvényességi időtartam:** Adja meg az értéket (hónapokban). A rövid életű tanúsítványok létrehozása ajánlott biztonsági eljárás. Alapértelmezés szerint az újonnan létrehozott tanúsítvány érvényességi értéke 12 hónap.
+   - **Élettartam művelettípus:** Válassza ki a tanúsítvány automatikus megújítási  és riasztási műveletét, majd frissítse a százalékos élettartamot vagy a lejárat előtti **napok számát.** Alapértelmezés szerint a tanúsítvány automatikus megújítása az élettartam 80 százalékára van beállítva. A legördülő menüben válassza az alábbi lehetőségek egyikét.
 
-        |  Automatikus megújítás egy adott időpontban| Minden Névjegy küldése egy adott időpontban |
-        |-----------|------|
-        |Ha kiválasztja ezt a lehetőséget, *bekapcsolja* az autorotációt. | Ha ezt a beállítást választja, *nem* fog automatikusan elforgatni, de csak a névjegyeket fogja riasztani.|
-         You can learn about [setting up Email contact here](https://docs.microsoft.com/azure/key-vault/certificates/overview-renew-certificate#get-notified-about-certificate-expiration)
+      |  Automatikus megújítás egy adott időpontban| E-mail küldése az összes kapcsolattartónak egy adott időpontban |
+      |-----------|------|
+      |Ha ezt a lehetőséget *választja, bekapcsolja* az automatikus beállítást. | Ha ezt a lehetőséget választja, a rendszer *nem* váltja fel automatikusan, csak a kapcsolattartókat riasztja.|
+      
+      Az [e-mail-kapcsolattartó beállításával kapcsolatban itt olvashat.](https://docs.microsoft.com/azure/key-vault/certificates/overview-renew-certificate#get-notified-about-certificate-expiration)
+
 1. Válassza a **Létrehozás** lehetőséget.
 
-![Tanúsítvány életciklusa](../media/certificates/tutorial-rotate-cert/create-cert-lifecycle.png)
+![Tanúsítvány-életciklus](../media/certificates/tutorial-rotate-cert/create-cert-lifecycle.png)
 
 ### <a name="update-lifecycle-attributes-of-a-stored-certificate"></a>Tárolt tanúsítvány életciklus-attribútumainak frissítése
 
 1. Válassza ki a kulcstartót.
-1. A Key Vault tulajdonságok lapon válassza a **tanúsítványok** lehetőséget.
-1. Válassza ki a frissíteni kívánt tanúsítványt. Ebben az esetben egy **ExampleCertificate** nevű tanúsítványon fog dolgozni.
-1. Válassza ki a **kiállítási szabályzat** elemet a felső menüsorban.
+1. A Tulajdonságok Key Vault oldalon válassza a Tanúsítványok **lehetőséget.**
+1. Válassza ki a frissíteni kívánt tanúsítványt. Ebben az esetben egy **ExampleCertificate** nevű tanúsítvánnyal fog dolgozni.
+1. A **felső menüsávon** válassza a Kiállítási szabályzat lehetőséget.
 
-   ![Képernyőfelvétel: a kiállítási szabályzat gombjának kiemelése.](../media/certificates/tutorial-rotate-cert/cert-issuance-policy.png)
+   ![A Kiállítási szabályzat gombot kikapcsoló képernyőkép.](../media/certificates/tutorial-rotate-cert/cert-issuance-policy.png)
 
-1. A **kiállítási szabályzat** képernyőn frissítse a következő értékeket:
+1. A **Kiállítási házirend képernyőn** frissítse a következő értékeket:
 
-   - **Érvényességi időszak**: frissítse az értéket (hónapokban).
-   - **Élettartam művelet típusa**: válassza ki a tanúsítvány automatikus megújítási és riasztási műveletét, majd frissítse a **százalékos élettartamot** vagy a **lejárat előtti napok számát**.
+   - **Érvényességi időtartam:** Frissítse az értéket (hónapokban).
+   - **Élettartam művelettípus:** Válassza ki a tanúsítvány automatikus megújítási és  riasztási műveletét, majd frissítse a lejárat előtti napok százalékos élettartamát vagy **számát.**
 
    ![Tanúsítvány tulajdonságai](../media/certificates/tutorial-rotate-cert/cert-policy-change.png)
 
 1. Kattintson a **Mentés** gombra.
 
 > [!IMPORTANT]
-> Ha módosítja egy tanúsítvány élettartamának típusát, a rendszer azonnal rögzíti a meglévő tanúsítványok módosításait.
+> Egy tanúsítvány élettartam művelettípusának módosítása azonnal rögzíti a meglévő tanúsítványok módosításait.
 
 
-### <a name="update-certificate-attributes-by-using-powershell"></a>Tanúsítvány attribútumainak frissítése a PowerShell használatával
+### <a name="update-certificate-attributes-by-using-powershell"></a>Tanúsítványattribútumok frissítése a PowerShell használatával
 
 ```azurepowershell
 
@@ -121,7 +122,7 @@ Set-AzureKeyVaultCertificatePolicy -VaultName $vaultName
 ```
 
 > [!TIP]
-> A tanúsítványok listájának megújítási szabályzatának módosításához írja be `File.csv` a `VaultName,CertName` következőket a következő példában látható módon:
+> A tanúsítványlista megújítási szabályzatának módosításához írja be a következőt: , amely a következő `File.csv` `VaultName,CertName` példában szerepel:
 > <br/>
  `vault1,Cert1` <br/>
 >  `vault2,Cert2`
@@ -134,23 +135,23 @@ Set-AzureKeyVaultCertificatePolicy -VaultName $vaultName
 > }
 >  ```
 > 
-A paraméterekkel kapcsolatos további tudnivalókért tekintse meg az [az Key Vault Certificate](/cli/azure/keyvault/certificate#az-keyvault-certificate-set-attributes)című témakört.
+A paraméterekkel kapcsolatos további információkért lásd: [az keyvault certificate](/cli/azure/keyvault/certificate#az-keyvault-certificate-set-attributes).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Más Key Vault oktatóanyagok erre az oktatóanyagra épülnek. Ha ezeket az oktatóanyagokat szeretné használni, érdemes lehet a meglévő erőforrásokat helyben hagyni.
-Ha már nincs szüksége rájuk, törölje az erőforráscsoportot, amely törli a kulcstartót és a kapcsolódó erőforrásokat.
+Más Key Vault oktatóanyagok erre az oktatóanyagra épülnek. Ha azt tervezi, hogy ezekkel az oktatóanyagokkal dolgozik, érdemes ezeket a meglévő erőforrásokat a helyén hagyni.
+Ha már nincs rájuk szüksége, törölje az erőforráscsoportot, amely törli a kulcstartót és a kapcsolódó erőforrásokat.
 
 Az erőforráscsoport törlése a portál használatával:
 
-1. Adja meg az erőforráscsoport nevét a portál felső részén található **keresőmezőbe** . Ha az ebben a rövid útmutatóban használt erőforráscsoport megjelenik a keresési eredmények között, válassza ki.
+1. Írja be az erőforráscsoport  nevét a portál tetején található Keresőmezőbe. Amikor az ebben a rövid útmutatóban használt erőforráscsoport megjelenik a keresési eredmények között, válassza ki.
 1. Válassza az **Erőforráscsoport törlése** elemet.
-1. A **írja be az ERŐFORRÁSCSOPORT nevét:** mezőbe írja be az erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget.
+1. Az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe írja be az erőforráscsoport nevét, majd válassza a **Törlés lehetőséget.**
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban frissítette a tanúsítvány életciklus-attribútumait. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa a következő cikkekkel:
+Ebben az oktatóanyagban frissítette egy tanúsítvány életciklus-attribútumát. Ha többet szeretne megtudni a Key Vault és az alkalmazásokba való integrálásáról, folytassa a következő cikkekkel:
 
-- További információ a [tanúsítványok létrehozásáról Azure Key Vaultban](./create-certificate-scenarios.md).
-- Tekintse át a [Key Vault áttekintését](../general/overview.md).
+- További információ: [Tanúsítvány létrehozásának kezelése a Azure Key Vault.](./create-certificate-scenarios.md)
+- Tekintse át a [Key Vault áttekintését.](../general/overview.md)

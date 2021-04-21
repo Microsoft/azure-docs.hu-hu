@@ -1,5 +1,5 @@
 ---
-title: Virtuális gépek üzembe helyezése rendelkezésre állási csoportokban az Azure CLI használatával
+title: Virtuális gépek üzembe helyezése rendelkezésre állási készletben az Azure CLI használatával
 description: Ebből az oktatóanyagból elsajátíthatja, hogyan használhatja az Azure CLI-t magas rendelkezésre állású virtuális gépek üzembe helyezésére a rendelkezésre állási csoportokban
 documentationcenter: ''
 services: virtual-machines
@@ -10,14 +10,14 @@ ms.date: 3/8/2021
 ms.author: mimckitt
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 6a54e0d808ef734a26a0fa309bd7367e73316856
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c45f08a339ca8878bb9e2840faa8a412f3e60e0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102507065"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765970"
 ---
-# <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-cli"></a>Virtuális gépek létrehozása és üzembe helyezése rendelkezésre állási csoportokban az Azure CLI használatával
+# <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-cli"></a>Virtuális gépek létrehozása és üzembe helyezése rendelkezésre állási csoportban az Azure CLI használatával
 
 Ebben az oktatóanyagban megtanulhatja, hogyan növelheti Azure-beli virtuálisgép-megoldásai rendelkezésre állását és megbízhatóságát a rendelkezésre állási csoportok elnevezésű képesség használatával. A rendelkezésre állási csoportok biztosítják, hogy az Azure-ban üzembe helyezett virtuális gépek több elkülönített hardverfürt között legyenek elosztva. Ezáltal biztosítható, hogy ha hardveres vagy Azure-beli szoftveres hiba fordul elő, az a virtuális gépeknek csak egy részhalmazát érintse, és a teljes megoldás továbbra is elérhető és működőképes maradjon.
 
@@ -28,7 +28,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Virtuális gép létrehozása rendelkezésre állási csoportban
 > * Elérhető virtuálisgép-méretek ellenőrzése
 
-Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](../../cloud-shell/overview.md)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
+Ez az oktatóanyag a cli-t használja [a Azure Cloud Shell,](../../cloud-shell/overview.md)amely folyamatosan frissül a legújabb verzióra. A kód Cloud Shell válassza a Try **it (Próbálja** ki) gombra a kódblokkok tetején.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -36,7 +36,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 Rendelkezésre állási csoportot az [az vm availability-set create](/cli/azure/vm/availability-set) paranccsal hozhat létre. Ebben a példában a frissítési és a tartalék tartományok számát egyaránt *2*-re állítjuk a *myResourceGroupAvailability* erőforráscsoport *myAvailabilitySet* nevű rendelkezésre állási csoportjánál.
 
-Először is hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) parancsmaggal, majd hozza létre a rendelkezésre állási csoportot:
+Először is hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) parancsmaggal, majd hozza létre a rendelkezésre állási csoportot:
 
 ```azurecli-interactive
 az group create --name myResourceGroupAvailability --location eastus
@@ -80,7 +80,7 @@ A rendelkezésre állási csoport eloszlását megtekintheti a Portalon az Erőf
 
 ## <a name="check-for-available-vm-sizes"></a>Elérhető virtuálisgép-méretek ellenőrzése
 
-Később további virtuális gépeket is hozzá lehet adni a rendelkezésre állási csoporthoz, ahol a virtuális gépek mérete rendelkezésre áll a hardveren. A rendelkezésre állási csoport számára elérhető összes méret listázásához használja az [az VM rendelkezésre állása-set List-sizes](/cli/azure/vm/availability-set#az-vm-availability-set-list-sizes) lehetőséget:
+Később további virtuális gépeket is hozzá lehet adni a rendelkezésre állási csoporthoz, ahol a virtuális gépek mérete rendelkezésre áll a hardveren. Használja [az az vm availability-set list-sizes](/cli/azure/vm/availability-set#az_vm_availability_set_list_sizes) et a rendelkezésre állási csoport hardverfürtön elérhető méretének felsorolásához:
 
 ```azurecli-interactive
 az vm availability-set list-sizes \
@@ -103,6 +103,6 @@ Folytassa a következő oktatóanyaggal, amely a virtuálisgép-méretezési cso
 > [!div class="nextstepaction"]
 > [Virtuálisgép-méretezési csoport létrehozása](tutorial-create-vmss.md)
 
-* Ha többet szeretne megtudni a rendelkezésre állási zónákról, látogasson el a  [Availability Zones dokumentációra](../../availability-zones/az-overview.md).
-* A rendelkezésre állási csoportokról és a rendelkezésre állási zónákról további dokumentáció [is elérhető.](../availability.md)
-* A rendelkezésre állási zónák kipróbálásához látogasson el a [linuxos virtuális gép létrehozása rendelkezésre állási zónába az Azure CLI-vel](./create-cli-availability-zone.md)
+* A rendelkezésre állási zónákkal kapcsolatos további információkért olvassa el a Availability Zones [dokumentációját.](../../availability-zones/az-overview.md)
+* A rendelkezésre állási csoportokkal és a rendelkezésre állási zónákkal kapcsolatos további dokumentáció itt is [elérhető.](../availability.md)
+* A rendelkezésre állási zónák kipróbálása: Linux rendszerű virtuális gép létrehozása rendelkezésre állási [zónában az Azure CLI használatával](./create-cli-availability-zone.md)

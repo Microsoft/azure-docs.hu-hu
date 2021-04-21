@@ -9,12 +9,12 @@ ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 58b8cdef604861342a6489ef4e57ff1d057cd3f4
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 756258db1c6e91002bf3a7c2bd0f71f921ce655d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377734"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769930"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Adatok szűrése a lekérdezésgyorsítás Azure Data Lake Storage használatával
 
@@ -102,7 +102,7 @@ A lekérdezésgyorsítás használatához először regisztrálnia kell a lekér
 
    Cserélje le `<subscription-id>` a helyőrző értékét az előfizetése azonosítójára.
 
-3. Regisztrálja a lekérdezésgyorsítási funkciót az [az feature register paranccsal.](/cli/azure/feature#az-feature-register)
+3. Regisztrálja a lekérdezésgyorsítási funkciót az [az feature register paranccsal.](/cli/azure/feature#az_feature_register)
 
    ```azurecli
    az feature register --namespace Microsoft.Storage --name BlobQuery
@@ -122,7 +122,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuer
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A regisztráció befejezésének ellenőrzéséhez használja [az az feature](/cli/azure/feature#az-feature-show) parancsot.
+A regisztráció befejezésének ellenőrzéséhez használja [az az feature](/cli/azure/feature#az_feature_show) parancsot.
 
 ```azurecli
 az feature show --namespace Microsoft.Storage --name BlobQuery
@@ -144,7 +144,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Az erőforrás-szolgáltató regisztráláshoz használja [az az provider register](/cli/azure/provider#az-provider-register) parancsot.
+Az erőforrás-szolgáltató regisztráláshoz használja [az az provider register](/cli/azure/provider#az_provider_register) parancsot.
 
 ```azurecli
 az provider register --namespace 'Microsoft.Storage'
@@ -328,7 +328,7 @@ Get-QueryCsv $ctx $container $blob "SELECT * FROM BlobStorage WHERE _3 = 'Heming
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Az aszinkron metódus elküldi a lekérdezést a lekérdezésgyorsítási API-nak, majd streameli az eredményeket az alkalmazásnak `BlobQuickQueryClient.QueryAsync` [Stream-objektumként.](/dotnet/api/system.io.stream)
+Az aszinkron metódus elküldi a lekérdezést a lekérdezésgyorsítási API-nak, majd streamelési objektumként továbbítja az eredményeket `BlobQuickQueryClient.QueryAsync` az [alkalmazásnak.](/dotnet/api/system.io.stream)
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)
@@ -375,7 +375,7 @@ private static async Task DumpQueryCsv(BlockBlobClient blob, string query, bool 
 
 ### <a name="java"></a>[Java](#tab/java)
 
-A metódus elküldi a lekérdezést a lekérdezésgyorsítási API-nak, majd az eredményeket egy objektumként továbbítja az alkalmazásnak, amely úgy olvasható, mint bármely `BlobQuickQueryClient.openInputStream()` `InputStream` más InputStream-objektum.
+A metódus elküldi a lekérdezést a lekérdezésgyorsítási API-nak, majd az eredményeket egy objektumként továbbítja az alkalmazásnak, amely bármely más `BlobQuickQueryClient.openInputStream()` `InputStream` InputStream-objektumhoz hasonló módon olvasható.
 
 ```java
 static void QueryHemingway(BlobClient blobClient) {
@@ -615,4 +615,4 @@ async function queryDvds(blob)
 ## <a name="next-steps"></a>Következő lépések
 
 - [Azure Data Lake Storage gyorsítása](data-lake-storage-query-acceleration.md)
-- [Lekérdezésgyorsítás SQL nyelvi referenciája](query-acceleration-sql-reference.md)
+- [Lekérdezésgyorsítás – SQL nyelvi referencia](query-acceleration-sql-reference.md)

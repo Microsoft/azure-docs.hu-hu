@@ -1,6 +1,6 @@
 ---
-title: CLI-parancsfájl – méretezési kiszolgáló – Azure Database for MariaDB
-description: Ez a CLI-parancsfájl a metrikák lekérdezése után átméretezi Azure Database for MariaDB kiszolgálót egy másik teljesítményszint.
+title: CLI-szkript – Kiszolgáló méretezése – Azure Database for MariaDB
+description: Ez a CLI-példaszk Azure Database for MariaDB kiszolgálót más teljesítményszintre skáláz a metrikák lekérdezése után.
 author: savjani
 ms.author: pariks
 ms.service: mariadb
@@ -8,24 +8,24 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: 71a2ad5b8d09812eb999ab75a3522caf5a8dd20a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a099f1a3ab16c33baa8037e727d26f107a593a2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664551"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785540"
 ---
-# <a name="monitor-and-scale-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure Database for MariaDB-kiszolgáló monitorozása és méretezése az Azure CLI-vel
-Ez a CLI-parancsfájl a metrikák lekérdezése után egy Azure Database for MariaDB kiszolgáló számítási és tárolási kapacitását méretezi. A számítás vertikális fel-vagy leskálázást végez. A tárterület csak vertikális felskálázásra használható.
+# <a name="monitor-and-scale-an-azure-database-for-mariadb-server-using-azure-cli"></a>Virtuáliskiszolgálók monitorba Azure Database for MariaDB és méretezése az Azure CLI használatával
+Ez a CLI-példaszk szkript egyetlen kiszolgáló számítási és tárolási Azure Database for MariaDB a metrikák lekérdezése után. A számítás felfelé vagy lefelé is skálázható. A tárterület csak felskálásos.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van. 
+- Ehhez a cikkhez az Azure CLI 2.0-s vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van. 
 
 ## <a name="sample-script"></a>Példaszkript
-Frissítse a parancsfájlt az előfizetés-azonosítójával.
+Frissítse a szkriptet az előfizetés azonosítójával.
 [!code-azurecli-interactive[main](../../../cli_scripts/mariadb/scale-mariadb-server/scale-mariadb-server.sh "Create and scale Azure Database for MariaDB.")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
@@ -37,13 +37,13 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 
 | **Parancs** | **Megjegyzések** |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az MariaDB Server Create](/cli/azure/mariadb/server#az-mariadb-server-create) | Létrehoz egy MariaDB-kiszolgálót, amely az adatbázisokat üzemelteti. |
-| [az MariaDB Server Update](/cli/azure/mariadb/server#az-mariadb-server-update) | Frissíti a MariaDB-kiszolgáló tulajdonságait. |
-| [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) | Listázza az erőforrások metrikaértékét. |
-| [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az mariadb server create](/cli/azure/mariadb/server#az_mariadb_server_create) | Létrehoz egy MariaDB-kiszolgálót, amely az adatbázisokat tárolja. |
+| [az mariadb server update](/cli/azure/mariadb/server#az_mariadb_server_update) | Frissíti a MariaDB-kiszolgáló tulajdonságait. |
+| [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) | Listázza az erőforrások metrikaértékét. |
+| [az group delete](/cli/azure/group#az_group_delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>Következő lépések
-- További információ a [Azure Database for MariaDB számítási és tárolási](../concepts-pricing-tiers.md) feladatokról
-- További parancsfájlok kipróbálása: [Azure CLI-minták a Azure Database for MariaDB](../sample-scripts-azure-cli.md)
-- További információ az [Azure CLI](/cli/azure) -ről
+- További információ a [Azure Database for MariaDB és tárolásról](../concepts-pricing-tiers.md)
+- További szkriptek: [Azure CLI-minták Azure Database for MariaDB](../sample-scripts-azure-cli.md)
+- További információ az [Azure CLI-ről](/cli/azure)

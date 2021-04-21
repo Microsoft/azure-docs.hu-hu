@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: kiszolgáló tervezése – Azure CLI – Azure Database for MySQL'
+title: 'Oktatóanyag: Kiszolgáló tervezése – Azure CLI – Azure Database for MySQL'
 description: Ez az oktatóanyag azt ismerteti, hogyan hozható létre és kezelhető az Azure Database for MySQL-kiszolgáló és -adatbázis az Azure CLI parancssorból történő használatával.
 author: savjani
 ms.author: pariks
@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8546ba5c80a4c8909876ff755bc094f1aec96482
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19779ffa8bab045e03161475646c802f464a7e41
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96437082"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791606"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Oktatóanyag: Azure Database for MySQL tervezése az Azure CLI használatával
 
@@ -22,7 +22,7 @@ Az Azure Database for MySQL egy relációsadatbázis-szolgáltatás a Microsoft 
 > [!div class="checklist"]
 > * Azure Database for MySQL létrehozása
 > * A kiszolgáló tűzfalának konfigurálása
-> * Adatbázis létrehozása a [MySQL parancssori eszköz](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) használatával
+> * Adatbázis [létrehozása a mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) parancssori eszközzel
 > * Mintaadatok betöltése
 > * Adatok lekérdezése
 > * Adatok frissítése
@@ -32,15 +32,15 @@ Az Azure Database for MySQL egy relációsadatbázis-szolgáltatás a Microsoft 
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a cikkhez az Azure CLI 2.0-s vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
-Ha több előfizetéssel rendelkezik, válassza a megfelelő előfizetést, amelyen az erőforrás megtalálható vagy terhelve van. Válasszon ki egy megadott előfizetés-azonosítót a fiókja alatt az [az account set](/cli/azure/account#az-account-set) parancs segítségével.
+Ha több előfizetéssel rendelkezik, válassza a megfelelő előfizetést, amelyen az erőforrás megtalálható vagy terhelve van. Válasszon ki egy megadott előfizetés-azonosítót a fiókja alatt az [az account set](/cli/azure/account#az_account_set) parancs segítségével.
 ```azurecli-interactive
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
-Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) az [az group create](/cli/azure/group#az-group-create) paranccsal. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat.
+Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) az [az group create](/cli/azure/group#az_group_create) paranccsal. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat.
 
 A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myresourcegroup` helyen.
 
@@ -51,13 +51,13 @@ az group create --name myresourcegroup --location westus
 ## <a name="create-an-azure-database-for-mysql-server"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
 Hozzon létre egy Azure Database for MySQL-kiszolgálót az az mysql server create paranccsal. Egy kiszolgáló több adatbázist is tud kezelni. Általában külön adatbázissal rendelkezik minden projekt vagy felhasználó.
 
-A következő példában létrehozunk egy `mydemoserver` nevű Azure-adatbázist MySQL-kiszolgálóhoz a `myresourcegroup` erőforráscsoportban a `westus`-ben. A kiszolgáló rendelkezik egy nevű rendszergazda felhasználóval `myadmin` . Ez egy általános célú, Gen 5 kiszolgáló 2 virtuális mag. A `<server_admin_password>` helyére írja be saját értékét.
+A következő példában létrehozunk egy `mydemoserver` nevű Azure-adatbázist MySQL-kiszolgálóhoz a `myresourcegroup` erőforráscsoportban a `westus`-ben. A kiszolgálónak van egy nevű rendszergazdai `myadmin` felhasználója. Ez egy általános célú, 5. generációs kiszolgáló 2 virtuális maggal. A `<server_admin_password>` helyére írja be saját értékét.
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
 ```
 Az sku-name paraméter értéke a {tarifacsomag}\_{számítási generáció}\_{virtuális magok} mintát követi, a következő példákban látható módon:
-+ `--sku-name B_Gen5_2` az alapszintű, a Gen 5 és a 2 virtuális mag képezi le.
++ `--sku-name B_Gen5_2` A alapszintű, 5. generációs és 2 virtuális magra van leképezve.
 + `--sku-name GP_Gen5_32` jelentése: Általános célú, 5. generációs és 32 virtuális mag.
 + `--sku-name MO_Gen5_2` jelentése: Memóriaoptimalizált, 5. generációs és 2 virtuális mag.
 
@@ -201,7 +201,7 @@ Ha ezekre az erőforrásokra már nincs szüksége más gyorsútmutatókhoz/okta
 az group delete --name myresourcegroup
 ```
 
-Ha csak az újonnan létrehozott kiszolgálót szeretné törölni, futtathatja az [az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete) parancsot.
+Ha csak az újonnan létrehozott kiszolgálót szeretné törölni, futtathatja az [az mysql server delete](/cli/azure/mysql/server#az_mysql_server_delete) parancsot.
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver

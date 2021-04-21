@@ -1,6 +1,6 @@
 ---
-title: Azure Traffic Manager alhálózat felülbírálása az Azure CLI használatával | Microsoft Docs
-description: Ez a cikk segít megérteni, hogy Traffic Manager alhálózat felülbírálásával hogyan bírálhatja felül a Traffic Manager-profilok útválasztási módszerét, hogy a végfelhasználói IP-cím alapján, előre meghatározott IP-címeken keresztül irányítsa át a forgalmat a végpont-hozzárendelések számára.
+title: Azure Traffic Manager felülbírálása az Azure CLI használatával | Microsoft Docs
+description: Ez a cikk segít megérteni, hogyan bírálható felül egy Traffic Manager-alhálózat felülbírálása egy Traffic Manager-profil útválasztási módszerével, hogy a forgalmat a végfelhasználói IP-cím alapján, előre meghatározott IP-címtartományon keresztül a végpontleképezések felé irányítsa.
 services: traffic-manager
 documentationcenter: ''
 author: duongau
@@ -8,38 +8,38 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 2e289728c7fde9b98256d079d45067aba1d4d805
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fab167884d9060edc4f626d3ee05fa0b23389d92
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211328"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767798"
 ---
-# <a name="traffic-manager-subnet-override-using-azure-cli"></a>Alhálózat Traffic Manager felülbírálása az Azure CLI használatával
+# <a name="traffic-manager-subnet-override-using-azure-cli"></a>Traffic Manager felülbírálása az Azure CLI használatával
 
-Traffic Manager alhálózat felülbírálása lehetővé teszi egy profil útválasztási módszerének módosítását.  A felülbírálás hozzáadásával a rendszer a végfelhasználó IP-címe alapján, előre meghatározott IP-tartománnyal továbbítja a forgalmat a végpont-hozzárendeléshez. 
+Traffic Manager alhálózat felülbírálása lehetővé teszi egy profil útválasztási módszerének megváltoztatását.  A felülbírálás hozzáadása a végfelhasználó IP-címe alapján irányítja a forgalmat egy előre meghatározott IP-címtartománysal a végpontleképezéshez. 
 
-## <a name="how-subnet-override-works"></a>Az alhálózat felülbírálásának működése
+## <a name="how-subnet-override-works"></a>Az alhálózat felülbírálási működése
 
-Ha az alhálózat felülbírálásait egy Traffic Manager-profilhoz adja, Traffic Manager először ellenőrizze, hogy van-e alhálózat felülbírálva a végfelhasználó IP-címéhez. Ha az egyik található, a rendszer a felhasználó DNS-lekérdezését a megfelelő végpontra irányítja.  Ha nem talál leképezést, Traffic Manager a profil eredeti útválasztási metódusára kerül vissza. 
+Amikor alhálózati felülbírálásokat ad egy Traffic Manager-profilhoz, a Traffic Manager először ellenőrzi, hogy van-e alhálózati felülbírálás a végfelhasználó IP-címére. Ha talál egyet, a felhasználó DNS-lekérdezése a megfelelő végpontra lesz irányítva.  Ha nem talál leképezést, Traffic Manager vissza a profil eredeti útválasztási módszerére. 
 
-Az IP-címtartományok megadhatók CIDR-tartományként (például 1.2.3.0/24) vagy címtartományként (például 1.2.3.4-5.6.7.8). Az egyes végpontokhoz társított IP-tartományoknak egyedinek kell lenniük a végpont számára. Az IP-címtartományok különböző végpontok közötti átfedése miatt a Traffic Manager elutasítja a profilt.
+Az IP-címtartományok CIDR-tartományokként (például 1.2.3.0/24) vagy címtartományként (például 1.2.3.4-5.6.7.8) is megadhatja őket. Az egyes végpontok IP-címtartományának egyedinek kell lennie az adott végponton. Ha az IP-címtartományok átfedésben vannak a különböző végpontok között, akkor a profilt a rendszer Traffic Manager.
 
-Az alhálózatok felülbírálásait két típusú útválasztási profil támogatja:
+Az alhálózat felülbírálásokat támogató útválasztási profiloknak két típusa van:
 
-* **Földrajzi** – ha Traffic Manager megkeresi a DNS-lekérdezés IP-címéhez tartozó alhálózat felülbírálását, a lekérdezés a végpont állapotának megfelelő állapotba irányítja a lekérdezést.
-* **Teljesítmény** – ha Traffic Manager megkeresi a DNS-lekérdezés IP-címéhez tartozó alhálózat felülbírálását, akkor a rendszer csak akkor irányítja át a forgalmat a végponthoz, ha az kifogástalan állapotú.  Ha az alhálózat felülbírálási végpontja nem kifogástalan állapotú, akkor a Traffic Manager vissza fog térni a teljesítmény-útválasztási heurisztikus művelethez.
+* **Földrajzi** – Ha Traffic Manager alhálózati felülbírálást talál a DNS-lekérdezés IP-címéhez, a lekérdezést a végpont állapotától függetlenül a végponthoz irányíthatja.
+* **Teljesítmény** – Ha Traffic Manager alhálózati felülbírálást talál a DNS-lekérdezés IP-címéhez, az csak akkor fogja a végpontra irányít át a forgalmat, ha az kifogástalan.  Traffic Manager a teljesítmény-útválasztás heurisztikus lesz, ha az alhálózat felülbírálási végpontja nem megfelelő.
 
-## <a name="create-a-traffic-manager-subnet-override"></a>Traffic Manager alhálózat felülbírálásának létrehozása
+## <a name="create-a-traffic-manager-subnet-override"></a>Új Traffic Manager létrehozása
 
-Traffic Manager alhálózat felülbírálásának létrehozásához az Azure CLI használatával adhatja hozzá a felülbírálás alhálózatait a Traffic Manager végponthoz.
+Alhálózati Traffic Manager létrehozásához az Azure CLI használatával használhatja a felülbírálás alhálózatát a Traffic Manager végponthoz.
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a cikkhez az Azure CLI 2.0.28-as vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
-## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>Frissítse a Traffic Manager végpontot az alhálózat felülbírálásával.
-Az Azure CLI használatával frissítse a végpontot az [az Network Traffic-Manager Endpoint Update](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-update)paranccsal.
+## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>Frissítse a Traffic Manager végpontot az alhálózat felülbírálása használatával.
+Az Azure CLI használatával frissítse a végpontot [az az network traffic-manager endpoint update használatával.](/cli/azure/network/traffic-manager/endpoint#az_network_traffic_manager_endpoint_update)
 
 ```azurecli-interactive
 ### Add a range of IPs ###
@@ -59,7 +59,7 @@ az network traffic-manager endpoint update \
     --type AzureEndpoints
 ```
 
-Az IP-címtartományok eltávolításához futtassa az az [Network Traffic-Manager Endpoint Update](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-update) parancsot a **--Remove** kapcsolóval.
+Az IP-címtartományokat az [az network traffic-manager endpoint update](/cli/azure/network/traffic-manager/endpoint#az_network_traffic_manager_endpoint_update) az **--remove** kapcsolóval való futtatásával távolíthatja el.
 
 ```azurecli-interactive
 az network traffic-manager endpoint update \
@@ -72,6 +72,6 @@ az network traffic-manager endpoint update \
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a Traffic Manager [forgalom-útválasztási módszerekről](traffic-manager-routing-methods.md).
+További információ a Traffic Manager [útválasztási módszereiről.](traffic-manager-routing-methods.md)
 
-Tudnivalók az [alhálózat forgalmáról – útválasztási módszer](./traffic-manager-routing-methods.md#subnet-traffic-routing-method)
+Az [alhálózati forgalom-útválasztási módszer megismerése](./traffic-manager-routing-methods.md#subnet-traffic-routing-method)

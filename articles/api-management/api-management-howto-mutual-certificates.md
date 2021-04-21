@@ -1,7 +1,7 @@
 ---
-title: API Management háttér védelme az ügyféltanúsítvány-alapú hitelesítés használatával
+title: A API Management biztonságának biztosítása ügyfél-tanúsítványos hitelesítéssel
 titleSuffix: Azure API Management
-description: Ismerje meg, hogyan kezelheti az Ügyféltanúsítványok és a háttérbeli szolgáltatások védelmét az Azure API Managementban az ügyféltanúsítvány-alapú hitelesítés használatával.
+description: Megtudhatja, hogyan kezelheti az ügyféltanúsítványokat és a háttérszolgáltatásokat ügyféltanúsítvány-alapú hitelesítéssel az Azure API Management.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -9,135 +9,135 @@ ms.service: api-management
 ms.topic: article
 ms.date: 01/26/2021
 ms.author: apimpm
-ms.openlocfilehash: 2e4a398ab71878134887fb8fba025cd8aa6122ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5d261368260a1c9658ae0bef8bdf63a7ca6bafe
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492834"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750625"
 ---
-# <a name="secure-backend-services-using-client-certificate-authentication-in-azure-api-management"></a>A háttérbeli szolgáltatások biztonságossá tétele az Azure-beli ügyféltanúsítvány-alapú hitelesítés használatával API Management
+# <a name="secure-backend-services-using-client-certificate-authentication-in-azure-api-management"></a>Háttérszolgáltatások biztosítása ügyfél-tanúsítvány hitelesítésének használatával az Azure API Management
 
-API Management lehetővé teszi az API-k háttér-szolgáltatáshoz való hozzáférésének védelmét az Ügyféltanúsítványok használatával. Ez az útmutató bemutatja, hogyan kezelheti a tanúsítványokat egy Azure API Management Service-példányban a Azure Portal használatával. Azt is ismerteti, hogyan konfigurálhat egy API-t a háttér-szolgáltatáshoz való hozzáféréshez használt tanúsítvány használatára.
+API Management lehetővé teszi, hogy ügyféltanúsítványok használatával biztonságossá teszi az API háttérszolgáltatásához való hozzáférést. Ez az útmutató bemutatja, hogyan kezelheti a tanúsítványokat egy Azure API Management-szolgáltatáspéldányban a Azure Portal. Azt is bemutatja, hogyan konfigurálhatja az API-t úgy, hogy egy tanúsítvány használatával hozzáférjen egy háttérszolgáltatáshoz.
 
-API Management tanúsítványokat a [API Management REST API](/rest/api/apimanagement/2020-06-01-preview/certificate)használatával is kezelheti.
+A tanúsítványokat a API Management is [API Management REST API.](/rest/api/apimanagement/2020-06-01-preview/certificate)
 
-## <a name="certificate-options"></a>Tanúsítvány beállításai
+## <a name="certificate-options"></a>Tanúsítványbeállítások
 
-API Management két lehetőséget kínál a háttér-szolgáltatásokhoz való hozzáférés biztosításához használt tanúsítványok kezelésére:
+API Management két lehetőséget kínál a háttérszolgáltatásokhoz való hozzáférés biztonságossá tára érdekében használt tanúsítványok kezelésére:
 
-* [Azure Key Vault](../key-vault/general/overview.md) felügyelt tanúsítvány referenciája 
+* Hivatkozhat egy, [](../key-vault/general/overview.md) a Azure Key Vault 
 * Tanúsítványfájl hozzáadása közvetlenül a API Management
 
-A Key Vault-tanúsítványok használata ajánlott, mert segít javítani a API Management biztonságot:
+A Key Vault-tanúsítványok használata azért ajánlott, mert hozzájárul a API Management javításához:
 
-* A Key vaultokban tárolt tanúsítványok újra felhasználhatók a szolgáltatások között
-* A részletes [hozzáférési szabályzatok](../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) alkalmazhatók a Key vaultban tárolt tanúsítványokra is
-* A Key vaultban frissített tanúsítványok API Management automatikusan el lesznek forgatva. A Key vaultban történt frissítés után a API Management 4 órán belül frissül a tanúsítvány. A tanúsítványt manuálisan is frissítheti a Azure Portal vagy a felügyeleti REST API segítségével.
+* A kulcstartókban tárolt tanúsítványok újra felhasználhatók a szolgáltatások között
+* A [kulcstartókban](../key-vault/general/security-overview.md#privileged-access) tárolt tanúsítványokra részletes hozzáférési szabályzatok alkalmazhatók
+* A kulcstartóban frissített tanúsítványok automatikusan váltogatva vannak a API Management. A kulcstartóban való frissítés után a tanúsítvány a API Management 4 órán belül frissül. A tanúsítványt manuálisan is frissítheti a Azure Portal vagy a felügyeleti REST API.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Ha még nem hozott létre API Management Service-példányt, tekintse meg [a API Management-szolgáltatás példányának létrehozása][Create an API Management service instance]című témakört.
-* Az ügyféltanúsítvány-alapú hitelesítéshez konfigurálnia kell a háttér-szolgáltatást. A tanúsítványalapú hitelesítés konfigurálásához a Azure App Service tekintse meg [ezt a cikket][to configure certificate authentication in Azure WebSites refer to this article]. 
-* A tanúsítványhoz és az Azure Key vaultban való felügyelethez szükséges jelszóhoz, vagy a API Management szolgáltatáshoz való feltöltéshez van szüksége. A tanúsítványnak **pfx** formátumúnak kell lennie. Az önaláírt tanúsítványok engedélyezettek.
+* Ha még nem hozott létre API Management szolgáltatáspéldányt, tekintse meg [a API Management szolgáltatáspéldány létrehozása részt.][Create an API Management service instance]
+* A háttérszolgáltatásnak konfigurálva kell lennie az ügyfél-tanúsítvány hitelesítéséhez. Ha tanúsítványhitelesítést konfigurál a Azure App Service, tekintse meg [ezt a cikket.][to configure certificate authentication in Azure WebSites refer to this article] 
+* Hozzá kell férni a tanúsítványhoz és a jelszóhoz az Azure Key Vaultban való felügyelethez, vagy fel kell töltenie az API Management szolgáltatásba. A tanúsítványnak **PFX formátumúnak kell** lennie. Az önaírt tanúsítványok engedélyezettek.
 
 ### <a name="prerequisites-for-key-vault-integration"></a>A Key Vault-integráció előfeltételei
 
-1. A kulcstartó létrehozásának lépéseiért lásd: gyors útmutató [: kulcstartó létrehozása a Azure Portal használatával](../key-vault/general/quick-create-portal.md).
-1. A rendszer által hozzárendelt vagy felhasználó által hozzárendelt [felügyelt identitás](api-management-howto-use-managed-service-identity.md) engedélyezése a API Management-példányban.
-1. Rendeljen hozzá egy [Key Vault-hozzáférési szabályzatot](../key-vault/general/assign-access-policy-portal.md) a felügyelt identitáshoz, amely engedélyekkel rendelkezik tanúsítványok lekéréséhez és listázásához a tárból. A szabályzat hozzáadása:
-    1. A portálon navigáljon a kulcstartóhoz.
-    1. Válassza a **beállítások > hozzáférési szabályzatok > + hozzáférési házirend hozzáadása** lehetőséget.
-    1. Válassza a **tanúsítvány engedélyei** lehetőséget, majd a **beolvasás** és a **lista** lehetőséget.
-    1. A **rendszerbiztonsági tag kiválasztása** területen válassza ki a felügyelt identitás erőforrásának nevét. Ha rendszer által hozzárendelt identitást használ, a rendszerbiztonsági tag a API Management példányának neve.
-1. Tanúsítvány létrehozása vagy importálása a kulcstartóba. Lásd [: gyors útmutató: tanúsítvány beállítása és lekérése Azure Key Vault a Azure Portal használatával](../key-vault/certificates/quick-create-portal.md).
+1. A kulcstartók létrehozásához szükséges lépésekért lásd: Rövid útmutató: Kulcstartó létrehozása [a Azure Portal.](../key-vault/general/quick-create-portal.md)
+1. Rendszer által hozzárendelt vagy [](api-management-howto-use-managed-service-identity.md) felhasználó által hozzárendelt felügyelt identitás engedélyezése a API Management példányban.
+1. Rendeljen hozzá [egy kulcstartó-hozzáférési](../key-vault/general/assign-access-policy-portal.md) szabályzatot a felügyelt identitáshoz, amely rendelkezik a tárolóból származó tanúsítványok le- és listához szükséges engedélyekkel. A szabályzat hozzáadása:
+    1. A portálon keresse meg a kulcstartót.
+    1. Válassza **a Beállítások > hozzáférési szabályzatok > + Hozzáférési szabályzat hozzáadása lehetőséget.**
+    1. Válassza **a Tanúsítványengedélyek,** majd a **Lekér és lista** **lehetőséget.**
+    1. A **Rendszerbiztonsági tag kiválasztása** mezőben válassza ki a felügyelt identitás erőforrásnevét. Ha rendszer által hozzárendelt identitást használ, a rendszerbiztonsági tag a API Management neve.
+1. Hozzon létre vagy importálja a tanúsítványt a kulcstartóba. Lásd: [Rövid útmutató: Tanúsítvány](../key-vault/certificates/quick-create-portal.md)beállítása és lekérése a Azure Key Vault használatával Azure Portal.
 
 [!INCLUDE [api-management-key-vault-network](../../includes/api-management-key-vault-network.md)]
 
 ## <a name="add-a-key-vault-certificate"></a>Key Vault-tanúsítvány hozzáadása
 
-Lásd: [a Key Vault-integráció előfeltételei](#prerequisites-for-key-vault-integration).
+Lásd: [A Key Vault-integráció előfeltételei.](#prerequisites-for-key-vault-integration)
 
 > [!CAUTION]
-> Ha API Management Key Vault-tanúsítványt használ, ügyeljen arra, hogy ne törölje a Key Vault eléréséhez használt tanúsítványt, kulcstartót vagy felügyelt identitást.
+> Amikor Key Vault-tanúsítványt használ a API Management ügyeljen arra, hogy ne törölje a kulcstartó eléréséhez használt tanúsítványt, kulcstartót vagy felügyelt identitást.
 
-Key Vault-tanúsítvány hozzáadása a API Managementhoz:
+Kulcstartó-tanúsítvány hozzáadása a API Management:
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon a API Management-példányhoz.
-1. A **Biztonság** területen válassza a **tanúsítványok** lehetőséget.
-1. Válassza a **tanúsítványok**  >  **+ Hozzáadás** lehetőséget.
-1. Az **azonosító** mezőben adja meg az Ön által választott nevet.
-1. A **tanúsítvány** területen válassza a **Key Vault** elemet.
-1. Adja meg a Key Vault-tanúsítvány azonosítóját, vagy válassza a **kiválasztás** lehetőséget a tanúsítvány kiválasztásához a kulcstartóból.
+1. A [Azure Portal](https://portal.azure.com)nyissa meg a API Management példányát.
+1. A **Biztonság alatt** válassza a Tanúsítványok **lehetőséget.**
+1. Válassza a **Tanúsítványok**  >  **+ Hozzáadás lehetőséget.**
+1. Az **Id (Azonosító)** alatt adjon meg egy ön által választott nevet.
+1. A **Tanúsítvány mezőben** válassza a **Key Vault lehetőséget.**
+1. Adja meg egy kulcstartó tanúsítványának  azonosítóját, vagy válassza a Kijelölés lehetőséget a tanúsítvány kulcstartóból való kiválasztásához.
     > [!IMPORTANT]
-    > Ha saját maga adja meg a Key Vault-tanúsítvány azonosítóját, győződjön meg róla, hogy nem rendelkezik a verzióval kapcsolatos információkkal. Ellenkező esetben a tanúsítvány nem forog automatikusan API Management a Key Vault frissítését követően.
-1. Az **ügyfél identitása** területen válasszon ki egy rendszer által hozzárendelt vagy egy meglévő felhasználó által hozzárendelt felügyelt identitást. Ismerje meg, hogyan [adhat hozzá vagy módosíthat felügyelt identitásokat a API Management szolgáltatásban](api-management-howto-use-managed-service-identity.md).
+    > Ha saját maga ad meg kulcstartó-tanúsítványazonosítót, győződjön meg arról, hogy az nem rendelkezik verzióinformációkkal. Ellenkező esetben a tanúsítvány nem lesz automatikusan elforgatva a API Management a kulcstartóban való frissítés után.
+1. Az **Ügyfélidentitás** mezőben válasszon ki egy rendszer által hozzárendelt vagy egy meglévő, felhasználó által hozzárendelt felügyelt identitást. Megtudhatja, hogyan adhat hozzá vagy módosíthat felügyelt [identitásokat a API Management szolgáltatásban.](api-management-howto-use-managed-service-identity.md)
     > [!NOTE]
-    > Az identitásnak engedélyre van szüksége a tanúsítvány lekéréséhez és listázásához a kulcstartóból. Ha még nem konfigurálta a Key vaulthoz való hozzáférést, API Management felszólítja, hogy automatikusan konfigurálja az identitást a szükséges engedélyekkel.
+    > Az identitásnak engedélyekre van szüksége a tanúsítvány kulcstartóból való lekérése és listába való listához. Ha még nem konfigurálta a kulcstartóhoz való hozzáférést, a API Management kéri, hogy automatikusan konfigurálni tudja az identitást a szükséges engedélyekkel.
 1. Válassza a **Hozzáadás** lehetőséget.
 
     :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-kv.png" alt-text="Key Vault-tanúsítvány hozzáadása":::
 
 ## <a name="upload-a-certificate"></a>Tanúsítvány feltöltése
 
-Ügyféltanúsítvány feltöltése a API Managementba: 
+Ügyfél-tanúsítvány feltöltése a API Management: 
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon a API Management-példányhoz.
-1. A **Biztonság** területen válassza a **tanúsítványok** lehetőséget.
-1. Válassza a **tanúsítványok**  >  **+ Hozzáadás** lehetőséget.
-1. Az **azonosító** mezőben adja meg az Ön által választott nevet.
-1. A **tanúsítvány** területen válassza az **Egyéni** lehetőséget.
-1. Tallózással válassza ki a Certificate. pfx fájlt, és adja meg a jelszavát.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a API Management példányát.
+1. A **Biztonság alatt** válassza a Tanúsítványok **lehetőséget.**
+1. Válassza a **Tanúsítványok**  >  **+ Hozzáadás lehetőséget.**
+1. Az **Id (Azonosító)** alatt adjon meg egy ön által választott nevet.
+1. A **Tanúsítvány mezőben** válassza az Egyéni **lehetőséget.**
+1. Tallózással válassza ki a tanúsítvány .pfx fájlját, és adja meg a jelszavát.
 1. Válassza a **Hozzáadás** lehetőséget.
 
-    :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-add.png" alt-text="Ügyféltanúsítvány feltöltése":::
+    :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-add.png" alt-text="Ügyfél-tanúsítvány feltöltése":::
 
-A tanúsítvány feltöltése után az a **tanúsítványok** ablakban jelenik meg. Ha sok tanúsítványa van, jegyezze fel a kívánt tanúsítvány ujjlenyomatát, hogy az API-t úgy konfigurálja, hogy az ügyfél tanúsítványát használja az [átjáró-hitelesítéshez](#configure-an-api-to-use-client-certificate-for-gateway-authentication).
+A tanúsítvány feltöltése után megjelenik a Tanúsítványok **ablakban.** Ha sok tanúsítvánnyal rendelkezik, jegyezze fel a kívánt tanúsítvány ujjlenyomatát, hogy az API-t ügyféltanúsítvány használatára konfigurálja az [átjáró hitelesítéséhez.](#configure-an-api-to-use-client-certificate-for-gateway-authentication)
 
 > [!NOTE]
-> Ha például önaláírt tanúsítványt használ a tanúsítványlánc-ellenőrzés kikapcsolásához, kövesse a jelen cikk későbbi, [önaláírt tanúsítványok](#self-signed-certificates)című részében ismertetett lépéseket.
+> Ha például önaírt tanúsítvány használata esetén ki kell kapcsolnia a tanúsítványlánc érvényesítését, kövesse a cikk későbbi, Önaírt tanúsítványok ( [)](#self-signed-certificates)cikkének lépéseit.
 
-## <a name="configure-an-api-to-use-client-certificate-for-gateway-authentication"></a>API konfigurálása az ügyfél-tanúsítvány használatára az átjáró hitelesítéséhez
+## <a name="configure-an-api-to-use-client-certificate-for-gateway-authentication"></a>API konfigurálása ügyfél-tanúsítvány használatára az átjáró hitelesítéséhez
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon a API Management-példányhoz.
-1. Az **API**-k területen válassza az **API**-k elemet.
+1. A [Azure Portal](https://portal.azure.com)nyissa meg a API Management példányát.
+1. Az **API-k alatt** válassza az **API-k lehetőséget.**
 1. Válasszon ki egy API-t a listából. 
-2. A **tervezés** lapon válassza a szerkesztő ikont a **háttér** szakaszban.
-3. Az **átjáró hitelesítő adatai** területen válassza ki az **ügyfél-tanúsítvány** elemet, majd válassza ki a tanúsítványt a legördülő listából.
+2. A Tervezés **lapon** válassza a Háttér szakaszban található **szerkesztőikont.**
+3. Az **Átjáró hitelesítő adatai alatt** válassza az Ügyfél **tanúsítványa lehetőséget,** majd válassza ki a tanúsítványt a legördülő menüből.
 1. Kattintson a **Mentés** gombra.
 
-    :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png" alt-text="Ügyféltanúsítvány használata átjáró-hitelesítéshez":::
+    :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png" alt-text="Ügyfél-tanúsítvány használata átjáróhitelesítéshez":::
 
 > [!CAUTION]
-> Ez a változás azonnal hatályba lép, és az API műveleteinek meghívása a tanúsítványt használja a háttér-kiszolgálón történő hitelesítéshez.
+> Ez a módosítás azonnal hatályba lép, és az API műveleteinek hívásai a tanúsítványt használják a háttérkiszolgálón való hitelesítéshez.
 
 > [!TIP]
-> Ha egy API háttérbeli szolgáltatásához tanúsítvány van megadva az átjáró-hitelesítéshez, az az adott API szabályzatának részévé válik, és megtekinthető a házirend-szerkesztőben.
+> Ha meg van adva egy tanúsítvány az API háttérszolgáltatásának átjáróhitelesítéséhez, az api szabályzatának része lesz, és megtekinthető a házirendszerkesztőben.
 
-## <a name="self-signed-certificates"></a>Önaláírt tanúsítványok
+## <a name="self-signed-certificates"></a>Önaírt tanúsítványok
 
-Ha önaláírt tanúsítványokat használ, le kell tiltania a tanúsítványlánc érvényesítését API Management a háttérrendszer használatával folytatott kommunikációhoz. Ellenkező esetben 500 hibakódot ad vissza. Ennek konfigurálásához használhatja az [`New-AzApiManagementBackend`](/powershell/module/az.apimanagement/new-azapimanagementbackend) (új háttérrendszer esetében) vagy a [`Set-AzApiManagementBackend`](/powershell/module/az.apimanagement/set-azapimanagementbackend) (meglévő háttérrendszer esetében) PowerShell-parancsmagokat, és beállíthatja a `-SkipCertificateChainValidation` paramétert a következőre: `True` .
+Ha önaírt tanúsítványokat használ, le kell tiltania a tanúsítványlánc érvényesítését a API Management a háttérrendszerrel való kommunikációhoz. Ellenkező esetben 500-as hibakódot ad vissza. A konfiguráláshoz használhatja a [`New-AzApiManagementBackend`](/powershell/module/az.apimanagement/new-azapimanagementbackend) (új háttérkészlethez) vagy (meglévő háttérkészlethez) PowerShell-parancsmagokat, és a paramétert állítsa a [`Set-AzApiManagementBackend`](/powershell/module/az.apimanagement/set-azapimanagementbackend) következőre: `-SkipCertificateChainValidation` `True` .
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
 New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```
 
-## <a name="delete-a-client-certificate"></a>Ügyféltanúsítvány törlése
+## <a name="delete-a-client-certificate"></a>Ügyfél-tanúsítvány törlése
 
-A tanúsítvány törléséhez jelölje ki azt, majd válassza a helyi menü **Törlés** elemét (**...**).
+Tanúsítvány törléséhez jelölje ki, majd válassza a Törlés **lehetőséget** a helyi menüből (**...**).
 
 :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-delete-new.png" alt-text="Tanúsítvány törlése":::
 
 > [!IMPORTANT]
-> Ha a tanúsítványra bármely szabályzat hivatkozik, megjelenik egy figyelmeztető képernyő. A tanúsítvány törléséhez először el kell távolítania a tanúsítványt a használatára konfigurált összes szabályzatból.
+> Ha a tanúsítványra bármely házirend hivatkozik, megjelenik egy figyelmeztető képernyő. A tanúsítvány törléséhez először el kell távolítania a tanúsítványt a használatára konfigurált házirendekből.
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [API-k biztonságossá tétele ügyféltanúsítvány-alapú hitelesítéssel az API Managementben](api-management-howto-mutual-certificates-for-clients.md)
-* További tudnivalók a [API Management szabályzatokról](api-management-howto-policies.md)
+* Tudnivalók a [szabályzatok API Management](api-management-howto-policies.md)
 
 
 [How to add operations to an API]: ./mock-api-responses.md

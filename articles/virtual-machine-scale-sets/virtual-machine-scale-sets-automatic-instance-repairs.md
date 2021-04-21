@@ -1,6 +1,6 @@
 ---
-title: Azure-beli virtuálisgép-méretezési csoportokkal rendelkező automatikus példányok javítása
-description: Útmutató a méretezési csoportokban lévő virtuálisgép-példányok automatikus javítási házirendjének konfigurálásához
+title: Példányok automatikus javítása azure-beli virtuálisgép-méretezési készletekkel
+description: Ismerje meg, hogyan konfigurálhatja az automatikus javítási szabályzatot egy méretezési készletben található virtuálisgép-példányokhoz
 author: avirishuv
 ms.author: avverma
 ms.topic: conceptual
@@ -9,106 +9,106 @@ ms.subservice: instance-protection
 ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: b43502e771415c0ca62d821c697516fae16e35ce
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 733f4602e43511924783f6bc8cb1bad29edb5ea0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934529"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762910"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Példányok automatikus javítása az Azure-beli virtuális gépek méretezési csoportjaiban
 
-Az Azure-beli virtuálisgép-méretezési csoportokhoz tartozó automatikus példányok javításának engedélyezése lehetővé teszi, hogy az alkalmazások magas rendelkezésre állást biztosítson a megfelelő állapotok mellett. Ha a méretezési csoport egyik példánya nem kifogástalan állapotú, mint az [Application Health Extension](./virtual-machine-scale-sets-health-extension.md) vagy a [Load Balancer Health](../load-balancer/load-balancer-custom-probe-overview.md)mintavétele, akkor ez a funkció automatikusan elvégzi a példányok javítását a nem kifogástalan példány törlésével, és újat hoz létre a helyére.
+Az Azure-beli virtuálisgép-méretezési készletek automatikus példányjavításainak engedélyezése segít elérni az alkalmazások magas rendelkezésre állását a kifogástalan állapotú példányok egy készletének fenntartásával. Ha a méretezési csoport egyik példánya nem megfelelőnek talál az [Application Health](./virtual-machine-scale-sets-health-extension.md) bővítmény vagy a [Terheléselosztás](../load-balancer/load-balancer-custom-probe-overview.md)állapot-mintavételei által jelentett állapotfigyelő adatokat, akkor ez a funkció automatikusan elvégzi a példány javítását a nem megfelelő példány törlésével és egy új példány létrehozásával a helyére.
 
-## <a name="requirements-for-using-automatic-instance-repairs"></a>A példányok automatikus javításának használatára vonatkozó követelmények
+## <a name="requirements-for-using-automatic-instance-repairs"></a>Az automatikus példányjavítások használatának követelményei
 
-**Alkalmazás állapot-figyelésének engedélyezése a méretezési csoport számára**
+**Alkalmazás állapotfigyelésének engedélyezése méretezési készlethez**
 
-A méretezési csoportnak rendelkeznie kell az alkalmazás állapotának figyelésével a példányok engedélyezéséhez. Ez az [alkalmazás állapotának](./virtual-machine-scale-sets-health-extension.md) vagy a [terheléselosztó állapotának](../load-balancer/load-balancer-custom-probe-overview.md)használatával végezhető el. Egyszerre csak az egyik engedélyezhető. Az alkalmazás állapota vagy a terheléselosztó-tesztek pingelik a virtuálisgép-példányokon konfigurált alkalmazás-végpontot az alkalmazás állapotának megállapításához. Ezt az állapotot a méretezési csoport Orchestrator a példány állapotának figyelésére, valamint szükség esetén a javítások elvégzésére használja.
+A méretezési csoportban engedélyezni kell a példányok alkalmazás állapotának figyelése funkciót. Ezt az Application [Health bővítővel](./virtual-machine-scale-sets-health-extension.md) vagy a [Terheléselosztás állapot-mintavételével lehet tenni.](../load-balancer/load-balancer-custom-probe-overview.md) Egyszerre csak az egyik engedélyezhető. Az alkalmazásállapot-bővítmény vagy a terheléselosztási mintavétel pingelte a virtuálisgép-példányon konfigurált alkalmazásvégpontot az alkalmazás állapotának megállapításához. Ezt az állapotállapotot a méretezésikészlet-vezénylési rendszer a példány állapotának figyelése és szükség esetén a javítás végrehajtása során használja.
 
-**Végpont beállítása állapot biztosításához**
+**Végpont konfigurálása állapotra**
 
-A példányok automatikus javításának engedélyezése előtt gondoskodjon arról, hogy a méretezési csoport példányai rendelkezzenek az alkalmazás állapotának kibocsátására konfigurált alkalmazás-végponttal. Ha egy példány a 200 (OK) állapotot adja vissza ezen az alkalmazás-végponton, akkor a példány "kifogástalan" jelöléssel jelenik meg. Minden más esetben a példány "nem megfelelő" állapotúként van megjelölve, beleértve az alábbi eseteket:
+Az automatikus példányjavítási szabályzat engedélyezése előtt győződjön meg arról, hogy a méretezésikészlet-példányok alkalmazásvégpontja úgy van konfigurálva, hogy kibocsátsa az alkalmazás állapotát. Ha egy példány a 200-as (OK) állapotot adja vissza ezen az alkalmazásvégponton, akkor a példány "Kifogástalan" állapotúként lesz megjelölve. Minden más esetben a példány "Nem megfelelő" jelöléssel van megjelölve, beleértve a következő forgatókönyveket is:
 
-- Ha a virtuálisgép-példányokban nincs konfigurálva alkalmazás-végpont az alkalmazás állapotának megadásához
-- Ha az alkalmazás végpontja helytelenül van konfigurálva
-- Ha az alkalmazás végpontja nem érhető el
+- Ha nincs olyan alkalmazásvégpont konfigurálva a virtuálisgép-példányon belül, amely az alkalmazás állapotát szolgáltatja
+- Ha az alkalmazásvégpont helytelenül van konfigurálva
+- Ha az alkalmazásvégpont nem elérhető
 
-A "nem megfelelő" állapotú példányok esetén a méretezési csoport automatikusan kijavítja az automatikus javításokat. Győződjön meg arról, hogy az alkalmazás végpontja megfelelően van konfigurálva az automatikus javítási házirend engedélyezése előtt, hogy elkerülje a nem kívánt példányok javítását, a végpontot pedig konfigurálja.
+A "Nem megfelelő" jelölésű példányok esetén a méretezési készlet aktiválja az automatikus javításokat. Az automatikus javítási szabályzat engedélyezése előtt győződjön meg arról, hogy az alkalmazásvégpont helyesen van konfigurálva, hogy elkerülje a példányok nem szándékolt javítását, miközben a végpont konfigurálása meg van állítva.
 
-**A méretezési csoport példányainak maximális száma**
+**Példányok maximális száma a méretezési készletben**
 
-Ez a funkció jelenleg csak a legfeljebb 200 példányú méretezési csoportokhoz érhető el. A méretezési csoport egyetlen elhelyezési csoportként vagy több elhelyezési csoportként is telepíthető, azonban a példányszám nem lehet 200-nál nagyobb, ha a méretezési csoport automatikus példányának javítása engedélyezve van.
+Ez a funkció jelenleg csak a legfeljebb 200 példányú méretezési készletekhez érhető el. A méretezési csoport üzembe helyezhető egyetlen elhelyezési csoportként vagy több elhelyezési csoportként, de a példányszám nem lehet 200 fölé, ha a méretezési csoporton engedélyezve van a példányok automatikus javítása.
 
 **API-verzió**
 
-Az automatikus javítási szabályzat a 2018-10-01-es vagy újabb számítási API-verzió esetén támogatott.
+Az automatikus javítási szabályzat a 2018-10-01-es vagy újabb számítási API-verziókhoz támogatott.
 
-**Az erőforrás-vagy előfizetés-áthelyezésre vonatkozó korlátozások**
+**Erőforrás- vagy előfizetés-elosztási korlátozások**
 
-Az erőforrás-vagy előfizetési lépések jelenleg nem támogatottak a méretezési csoportokban, ha engedélyezve van az automatikus javítás funkció.
+Az erőforrás- vagy előfizetés-elosztás jelenleg nem támogatott a méretezési csoportokkal, ha az automatikus javítási funkció engedélyezve van.
 
-**Service Fabric-méretezési csoportok korlátozása**
+**A Service Fabric-méretezési készletek korlátozásai**
 
-Ez a funkció jelenleg nem támogatott a Service Fabric-méretezési csoportokban.
+Ez a szolgáltatás a Service Fabric-méretezési készletekben jelenleg nem támogatott.
 
-## <a name="how-do-automatic-instance-repairs-work"></a>Hogyan működik az automatikus példányok javítása?
+## <a name="how-do-automatic-instance-repairs-work"></a>Hogyan működik az automatikus példányjavítás?
 
-Az automatikus példány-javítási funkció a méretezési csoportokban lévő egyes példányok állapotának figyelésére támaszkodik. A méretezési csoportokban lévő virtuálisgép-példányok [az alkalmazás állapotának vagy a](./virtual-machine-scale-sets-health-extension.md) [terheléselosztó állapotának](../load-balancer/load-balancer-custom-probe-overview.md)használatával állíthatók be az alkalmazás állapotának kiosztására. Ha egy példány nem kifogástalan állapotú, akkor a méretezési csoport javítási műveletet hajt végre, ha törli a nem megfelelő állapotú példányt, és létrehoz egy újat a helyére. Az új példány létrehozásához a legújabb virtuálisgép-méretezési csoport modellt használjuk. Ez a funkció a *automaticRepairsPolicy* objektum használatával engedélyezhető a virtuálisgép-méretezési csoport modelljében.
+Az automatikus példányjavítási funkció a méretezési készlet egyes példányainak állapotfigyelésére támaszkodik. A méretezési készletben lévő virtuálisgép-példányok úgy konfigurálhatóak, hogy alkalmazásállapot-állapotot adjanak ki az [Application Health](./virtual-machine-scale-sets-health-extension.md) bővítmény vagy a [Terheléselosztás állapot-mintavételei segítségével.](../load-balancer/load-balancer-custom-probe-overview.md) Ha egy példány nem megfelelőnek talál, akkor a méretezési csoport javítási műveletet hajt végre a nem megfelelő példány törlésével és egy új példány létrehozásával a helyére. Az új példány létrehozásához a legújabb virtuálisgép-méretezési csoport modell használható. Ez a funkció az *automaticRepairsPolicy* objektummal engedélyezhető a virtuálisgép-méretezési csoport modelljében.
 
 ### <a name="batching"></a>Kötegelés
 
-Az automatikus példány-javítási műveletek kötegekben lesznek elvégezve. Egy adott időpontban a méretezési csoport példányainak legfeljebb 5%-a javítása az automatikus javítási szabályzattal történik. Ez segít elkerülni a nagy számú példány egyidejű törlését és újbóli létrehozását, ha nem megfelelő állapotot észlelt.
+Az automatikus példányjavítási műveletek kötegekként vannak hajtva végre. Egy adott időpontban a méretezési készletben a példányok nem több mint 5%-a javítható ki az automatikus javítási szabályzat segítségével. Így elkerülhető a nagy számú példány egyidejű törlése és újra létrehozása, ha egyszerre nem megfelelőnek talál megfelelőt.
 
 ### <a name="grace-period"></a>Türelmi időszak
 
-Ha egy példány állapot-módosítási művelettel halad át a méretezési csoporton végrehajtott PUT, PATCH vagy POST művelet miatt (például rendszerkép, újratelepítés, frissítés stb.), akkor az adott példányon végzett javítási műveletek csak a türelmi időszakra való várakozás után történnek. A türelmi időszak azt az időtartamot adja meg, amely lehetővé teszi, hogy a példány Kifogástalan állapotba térjen vissza. A türelmi időszak az állapotváltozás befejeződése után kezdődik. Ez segít elkerülni a korai vagy véletlen javítási műveleteket. A türelmi időszakot a méretezési csoport minden újonnan létrehozott példánya esetében tiszteletben kell venni (beleértve a javítási művelet eredményeképpen létrehozott egyet is). A türelmi időszak ISO 8601 formátumú percekben van megadva, és a *automaticRepairsPolicy. gracePeriod* tulajdonsággal állítható be. A türelmi időszak 30 perc és 90 perc között lehet, és alapértelmezett értéke 30 perc.
+Ha egy példány állapotváltozási műveleten megy keresztül a méretezési készleten végrehajtott PUT, PATCH vagy POST művelet miatt (például rendszerállapot-újratelepítés, frissítés stb.), akkor az adott példányon végrehajtott javítási műveletek csak a türelmi időszakra való várakozás után hajtják végre. A türelmi időszak az az időtartam, amely alatt a példány kifogástalan állapotúra térhet vissza. A türelmi időszak az állapotváltozás befejezése után kezdődik. Ez segít elkerülni a korai vagy véletlen javítási műveleteket. A rendszer a türelmi időszakot a méretezési készletben újonnan létrehozott példányok esetén (beleértve a javítási művelet eredményeként létrehozottat is) be lesz állítva. A türelmi időszak ISO 8601 formátumban, percben van megadva, és az *automaticRepairsPolicy.gracePeriod tulajdonság használatával lehet beállítani.* A türelmi időszak 30 perc és 90 perc között lehet, és az alapértelmezett értéke 30 perc.
 
 ### <a name="suspension-of-repairs"></a>Javítások felfüggesztése 
 
-A virtuálisgép-méretezési csoportok lehetővé teszik, hogy szükség esetén ideiglenesen felfüggessze az automatikus példányok javításait. A virtuálisgép-méretezési csoport *orchestrationServices* tulajdonsága alatt az automatikus javítások *serviceState* az automatikus javítás aktuális állapotát jeleníti meg. Ha egy méretezési csoport automatikus javításokra van beállítva, a *serviceState* paraméter értéke *fut* értékre van állítva. Ha az automatikus javítás fel van függesztve egy méretezési csoportra, a *serviceState* paraméter *felfüggesztve* értékre van állítva. Ha a *automaticRepairsPolicy* definiálva van egy méretezési csoport, de az automatikus javítás funkció nincs engedélyezve, akkor a *ServiceState* paraméter *nem fut* értékre van állítva.
+A virtuálisgép-méretezési készletek lehetővé teszi a példányok automatikus javításának ideiglenes felfüggesztését, ha szükséges. A *serviceState* az automatikus javításokhoz a virtuálisgép-méretezési készlet példánynézetében található *orchestrationServices* tulajdonság alatt az automatikus javítások aktuális állapotát jeleníti meg. Ha egy méretezési készlet automatikus javítást választ, a *serviceState* paraméter értéke Fut értékre *lesz állítva.* Ha egy méretezési készlet automatikus javításai fel vannak függesztve, a *serviceState* paraméter értéke *Felfüggesztve* lesz. Ha *az automaticRepairsPolicy* egy méretezési csoportban van definiálva, de az automatikus javítási funkció nincs engedélyezve, akkor a *serviceState* paraméter értéke *Nem fut.*
 
-Ha egy méretezési csoport nem kifogástalan állapotának cseréjéhez újonnan létrehozott példányok továbbra is kifogástalan állapotban maradnak, még a javítási műveletek ismételt végrehajtása után is, akkor a platform biztonsági intézkedése frissíti a *serviceState* az automatikus javítások *felfüggesztéséhez*. Újra folytathatja az automatikus javításokat úgy, hogy a *serviceState* értékének megadásával *futtatja* az automatikus javításokat. Részletes utasítások a méretezési csoport [automatikus javítási szabályzatának megtekintési és frissítési állapotának megtekintése és frissítése](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) című szakaszban olvashatók. 
+Ha az újonnan létrehozott példányok a méretezési készletben a nem megfelelőek cseréjére továbbra is nem megfelelőek maradnak, még a javítási műveletek ismételt végrehajtása után is, akkor a platform biztonsági intézkedésként frissíti a *serviceState-t* az automatikus javításokhoz a *Felfüggesztve* beállításra. Az automatikus javításokat ismét folytathatja, ha a *serviceState* értéket az automatikus javításokhoz a Fut értékre *állítsa.* A részletes utasításokat a [](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) méretezési csoport automatikus javítási szabályzatának megtekintését és frissítését részletező szakaszban található. 
 
-Az automatikus példány javításának folyamata a következőképpen működik:
+Az automatikus példányjavítási folyamat a következőképpen működik:
 
-1. Az [alkalmazás állapotának vagy a](./virtual-machine-scale-sets-health-extension.md) [terheléselosztó állapotának](../load-balancer/load-balancer-custom-probe-overview.md) vizsgálatával pingelheti az alkalmazás végpontját a méretezési csoport minden egyes virtuális gépén az egyes példányok állapotának lekéréséhez.
-2. Ha a végpont 200-as (OK) állapottal válaszol, akkor a példány "kifogástalan" állapotúként lesz megjelölve. Az összes többi esetben (ha a végpont nem érhető el), a példány "nem megfelelő" állapotúként van megjelölve.
-3. Ha egy példány sérült állapotba kerül, a méretezési csoport kivált egy javítási műveletet a nem kifogástalan példány törlésével, és újat hoz létre a helyére.
-4. A példányok javítása kötegekben történik. Egy adott időpontban a méretezési csoport összes példányának legfeljebb 5%-a javításra kerül. Ha a méretezési csoport kevesebb, mint 20 példánya van, a javításokat egyszerre egy nem kifogástalan állapotú példányhoz kell elvégezni.
-5. A fenti folyamat addig folytatódik, amíg a méretezési csoport összes nem kifogástalan állapotú példánya ki van javítva.
+1. [Az Alkalmazásállapot bővítmény vagy](./virtual-machine-scale-sets-health-extension.md) [a Terheléselosztás állapot-mintavételei](../load-balancer/load-balancer-custom-probe-overview.md) pingelik az alkalmazásvégpontot a méretezési készletben lévő egyes virtuális gépeken az egyes példányok alkalmazásállapotának lekérése érdekében.
+2. Ha a végpont 200 (OK) állapottal válaszol, akkor a példány "Kifogástalan" állapotúként lesz megjelölve. A többi esetben (beleértve azt is, ha a végpont nem érhető el) a példány "Nem megfelelő" jelöléssel van megjelölve.
+3. Ha egy példány nem megfelelőnek talál, a méretezési csoport egy javítási műveletet indít el a nem megfelelő példány törlésével és egy új példány létrehozásával a helyére.
+4. A példányok javítása kötegben történik. Egy adott időpontban a méretezési készletben található összes példánynak nem több mint 5%-a javítható. Ha egy méretezési készletben kevesebb mint 20 példány van, a javítás egyszerre egy nem megfelelő példányon történik.
+5. A fenti folyamat addig folytatódik, amíg meg nem javítják a méretezési készlet összes nem megfelelő példányát.
 
-## <a name="instance-protection-and-automatic-repairs"></a>A példányok védelme és az automatikus javítás
+## <a name="instance-protection-and-automatic-repairs"></a>Példányvédelem és automatikus javítások
 
-Ha a méretezési csoport egy példánya védett egy [védelmi házirend](./virtual-machine-scale-sets-instance-protection.md)alkalmazásával, akkor a rendszer nem hajtja végre az automatikus javításokat az adott példányon. Ez a védelmi házirendekre is vonatkozik: *védelem a méretezési* és a védelem között a *méretezési* műveleteknél. 
+Ha egy méretezési készletben egy példány védelmét az egyik védelmi szabályzat [védi,](./virtual-machine-scale-sets-instance-protection.md)akkor a rendszer nem hajt végre automatikus javításokat a példányon. Ez mindkét védelmi szabályzatra vonatkozik: *Védelem a leskálástól* és *Védelem a méretezésihalmaz-műveletektől.* 
 
-## <a name="terminatenotificationandautomaticrepairs"></a>Értesítés és automatikus javítás leállítása
+## <a name="terminatenotificationandautomaticrepairs"></a>Lemondhatja az értesítéseket és az automatikus javításokat
 
-Ha a leállítási [értesítési](./virtual-machine-scale-sets-terminate-notification.md) funkció engedélyezve van egy méretezési csoporton, akkor az automatikus javítási művelet során a nem megfelelő állapotú példányok törlése a megszakítási értesítés konfigurációját követi. Az Azure metaadat-szolgáltatás – ütemezett események –, a példányok törlése pedig késleltetve küldi el a lemondási értesítést a beállított késleltetési időkorlát időtartamára. Egy új példány létrehozásakor azonban a sérült állapot cseréje nem várja meg, amíg a késleltetési időkorlát be nem fejeződik.
+Ha a [leállítási](./virtual-machine-scale-sets-terminate-notification.md) értesítési funkció engedélyezve van egy méretezési csoporton, akkor az automatikus javítási művelet során a nem megfelelő példány törlése a leállítási értesítési konfigurációt követi. A leállítja értesítést a rendszer az Azure metaadat-szolgáltatásán (ütemezett eseményeken) keresztül küldi el, és a példány törlése a konfigurált késési időkorlát időtartamára késik. A nem megfelelőt lecserélő új példány létrehozása azonban nem várja meg a késési időkorlát befejezését.
 
-## <a name="enabling-automatic-repairs-policy-when-creating-a-new-scale-set"></a>Automatikus javítási szabályzat engedélyezése új méretezési csoport létrehozásakor
+## <a name="enabling-automatic-repairs-policy-when-creating-a-new-scale-set"></a>Automatikus javítási szabályzat engedélyezése új méretezési készlet létrehozásakor
 
-Ha új méretezési csoport létrehozásakor szeretné engedélyezni az automatikus javítási szabályzatot, ellenőrizze, hogy teljesülnek-e a szolgáltatásba való bejelentkezéshez [szükséges összes követelmény](#requirements-for-using-automatic-instance-repairs) . Az alkalmazás-végpontot megfelelően kell konfigurálni a méretezési csoport példányaihoz, így elkerülhető a nem szándékolt javítások elindítása a végpont konfigurálása közben. Az újonnan létrehozott méretezési csoportok esetében minden példány javítása csak a türelmi időszak időtartamára való várakozás után történik. A méretezési csoportokban az automatikus példányok javításának engedélyezéséhez használja a *automaticRepairsPolicy* objektumot a virtuálisgép-méretezési csoport modelljében.
+Az automatikus javítási szabályzat új méretezési készlet létrehozásakor [](#requirements-for-using-automatic-instance-repairs) való engedélyezéséhez győződjön meg arról, hogy a szolgáltatásra való feliratkozás összes követelménye teljesül. Az alkalmazásvégpontot megfelelően kell konfigurálni a méretezésikészlet-példányokhoz, hogy ne indítsunk nem szándékolt javításokat a végpont konfigurálása közben. Újonnan létrehozott méretezési készletek esetén a példányok javítása csak a türelmi időszakra való várakozás után történik. Ha engedélyezni szeretné az automatikus példányjavítást egy méretezési készletben, használja az *automaticRepairsPolicy* objektumot a virtuálisgép-méretezésihalmaz-modellben.
 
-Ezzel a rövid útmutató [sablonnal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-automatic-repairs-slb-health-probe) üzembe helyezhet egy virtuálisgép-méretezési készletet a terheléselosztó állapotának mintavételével és az automatikus példányok javításával, amely 30 perces türelmi időszakra van beállítva.
+Ezzel a gyorsindítási sablonnal egy virtuálisgép-méretezési csoport is üzembe helyezhető a terheléselelosztás állapot-mintavételével és az automatikus példányjavításokkal, 30 perces türelmi időszakkal. [](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-automatic-repairs-slb-health-probe)
 
 ### <a name="azure-portal"></a>Azure Portal
  
-Az alábbi lépésekkel engedélyezheti az automatikus javítási szabályzatot új méretezési csoport létrehozásakor.
+Új méretezési készlet létrehozásakor az alábbi lépésekkel lehet engedélyezni az automatikus javítási szabályzatot.
  
-1. Nyissa meg a **virtuálisgép-méretezési csoportokat**.
-1. Válassza a **+ Hozzáadás** lehetőséget egy új méretezési csoport létrehozásához.
-1. Lépjen a **Health (állapot** ) lapra. 
-1. Keresse meg az **állapot** szakaszt.
-1. Az **alkalmazás állapotának figyelése** lehetőség engedélyezése.
-1. Keresse meg az **automatikus javítási szabályzat** szakaszt.
-1. Kapcsolja **be** az **automatikus javítási** lehetőséget.
-1. A **türelmi időszak (perc)** mezőben határozza meg a türelmi időszakot percben, a megengedett értékek 30 és 90 perc között vannak. 
-1. Ha elkészült az új méretezési csoport létrehozásával, válassza a **felülvizsgálat + létrehozás** gombot.
+1. Ugrás a **Virtuálisgép-méretezési készletekre.**
+1. Új **méretezési csoport létrehozásához** válassza a + Hozzáadás lehetőséget.
+1. Ugrás az Állapot **lapra.** 
+1. Keresse meg **az Állapot** szakaszt.
+1. Engedélyezze az **Alkalmazás állapotának figyelése** beállítást.
+1. Keresse meg **az Automatikus javítási szabályzat szakaszt.**
+1. Kapcsolja **be** az **Automatikus javítás beállítást.**
+1. A **Türelmi időszak (min.)** mezőben adja meg a türelmi időszakot percben, az engedélyezett értékek 30 és 90 perc között vannak. 
+1. Ha végzett az új méretezési csoport létrehozásával, válassza az **Áttekintés + létrehozás gombot.**
 
 ### <a name="rest-api"></a>REST API
 
-Az alábbi példa bemutatja, hogyan engedélyezheti az automatikus példányok javítását egy méretezési csoport modelljében. Az API 2018-10-01-es vagy újabb verzióját használja.
+Az alábbi példa bemutatja, hogyan engedélyezheti az automatikus példányjavítást egy méretezésikészlet-modellben. Az API 2018-10-01-es vagy újabb verzióját használja.
 
 ```
 PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}?api-version=2019-07-01'
@@ -127,7 +127,7 @@ PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupNa
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Az automatikus példány-javítási funkció engedélyezhető egy új méretezési csoport létrehozásakor a [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) parancsmag használatával. Ez a minta parancsfájl végigvezeti a méretezési csoport és a kapcsolódó erőforrások létrehozásán a konfigurációs fájl használatával: [hozzon létre egy teljes virtuálisgép-méretezési készletet](./scripts/powershell-sample-create-complete-scale-set.md). A *EnableAutomaticRepair* és a *AutomaticRepairGracePeriod* paramétereknek a méretezési csoport létrehozásához való hozzáadásával konfigurálhatja az automatikus példányok javítási házirendjét. A következő példa egy 30 perces türelmi időszakot engedélyez a szolgáltatás számára.
+Az automatikus példányjavítási funkció új méretezési csoport létrehozásakor engedélyezhető a [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) parancsmaggal. Ez a példaszk szkript végigvezeti a méretezési csoport és a társított erőforrások konfigurációs fájllal való létrehozásának folyamatán: [Teljes virtuálisgép-méretezési csoport létrehozása.](./scripts/powershell-sample-create-complete-scale-set.md) Az automatikus példányjavítási szabályzat konfigurálható úgy, hogy hozzáadja az *EnableAutomaticRepair* és az *AutomaticRepairGracePeriod* paramétereket a konfigurációs objektumhoz a méretezési készlet létrehozásához. Az alábbi példa 30 perces türelmi időszakkal engedélyezi a funkciót.
 
 ```azurepowershell-interactive
 New-AzVmssConfig `
@@ -141,7 +141,7 @@ New-AzVmssConfig `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Az alábbi példa lehetővé teszi az automatikus javítási szabályzatot az új méretezési csoport létrehozásakor az *[az vmss Create](/cli/azure/vmss#az-vmss-create)* paranccsal. Először hozzon létre egy erőforráscsoportot, majd hozzon létre egy új méretezési csoportot, amely az automatikus javítási házirend türelmi időszaka 30 percre van beállítva.
+Az alábbi példa engedélyezi az automatikus javítási szabályzatot egy új méretezési csoport létrehozása során *[az az vmss create használatával.](/cli/azure/vmss#az_vmss_create)* Először hozzon létre egy erőforráscsoportot, majd hozzon létre egy új méretezési csoportot, amelynél az automatikus javítási szabályzat türelmi időszaka 30 percre van beállítva.
 
 ```azurecli-interactive
 az group create --name <myResourceGroup> --location <VMSSLocation>
@@ -156,29 +156,29 @@ az vmss create \
   --automatic-repairs-grace-period 30
 ```
 
-A fenti példa egy meglévő Load balancert és egy állapot-mintavételt használ az alkalmazások állapotának figyeléséhez. Ha inkább egy alkalmazás-állapotfigyelő bővítményt szeretne használni a figyeléshez, létrehozhat egy méretezési készletet, beállíthatja az alkalmazás állapotát, majd engedélyezheti az automatikus példány javítása házirendet az az *vmss Update* használatával, a következő szakaszban leírtak szerint.
+A fenti példa egy meglévő terheléselosztási és állapotfigyelőt használ a példányok alkalmazásállapotának figyelése érdekében. Ha inkább egy alkalmazás állapotfigyelő bővítményét szeretné használni a monitorozáshoz, létrehozhat egy méretezési készletet, konfigurálhatja az alkalmazás állapotbővítményét, majd engedélyezheti az automatikus példányjavítási szabályzatot az *az vmss update* parancs használatával, a következő szakaszban leírtak szerint.
 
-## <a name="enabling-automatic-repairs-policy-when-updating-an-existing-scale-set"></a>Automatikus javítási szabályzat engedélyezése egy meglévő méretezési csoport frissítésekor
+## <a name="enabling-automatic-repairs-policy-when-updating-an-existing-scale-set"></a>Automatikus javítási szabályzat engedélyezése meglévő méretezési készlet frissítésekkor
 
-Mielőtt engedélyezné az automatikus javítási szabályzatot egy meglévő méretezési csoporton belül, győződjön meg arról, hogy a szolgáltatásba való bejelentkezéshez [szükséges összes követelmény](#requirements-for-using-automatic-instance-repairs) teljesül. Az alkalmazás-végpontot megfelelően kell konfigurálni a méretezési csoport példányaihoz, így elkerülhető a nem szándékolt javítások elindítása a végpont konfigurálása közben. A méretezési csoportokban az automatikus példányok javításának engedélyezéséhez használja a *automaticRepairsPolicy* objektumot a virtuálisgép-méretezési csoport modelljében.
+Az automatikus javítási szabályzat meglévő méretezési készletben [](#requirements-for-using-automatic-instance-repairs) való engedélyezése előtt győződjön meg arról, hogy a funkcióra való feliratkozás összes követelménye teljesül. Az alkalmazásvégpontot megfelelően kell konfigurálni a méretezésikészlet-példányokhoz, hogy ne indítsunk nem szándékolt javításokat a végpont konfigurálása közben. Ha engedélyezni szeretné az automatikus példányjavítást egy méretezési készletben, használja az *automaticRepairsPolicy* objektumot a virtuálisgép-méretezésihalmaz-modellben.
 
-Egy meglévő méretezési csoport modelljének frissítése után győződjön meg arról, hogy a legújabb modellt alkalmazza a skála összes példányára. Tekintse át a [virtuális gépek naprakész állapotba helyezésének utasításait a legújabb méretezési csoport modelljével](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model).
+Egy meglévő méretezési készlet modelljének frissítése után győződjön meg arról, hogy a rendszer a legújabb modellt alkalmazza a méretezés összes példányára. Tekintse meg a virtuális gépek a legújabb méretezésikészlet-modellel való naprakészen [való beállítását.](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Egy meglévő méretezési csoport automatikus javítási szabályzatát módosíthatja a Azure Portalon keresztül. 
+Egy meglévő méretezési készlet automatikus javítási szabályzatát a következőn keresztül módosíthatja: Azure Portal. 
  
-1. Váltson egy meglévő virtuálisgép-méretezési csoportra.
-1. A bal oldali menü **Beállítások** területén válassza az **állapot és javítás** lehetőséget.
-1. Az **alkalmazás állapotának figyelése** lehetőség engedélyezése.
-1. Keresse meg az **automatikus javítási szabályzat** szakaszt.
-1. Kapcsolja **be** az **automatikus javítási** lehetőséget.
-1. A **türelmi időszak (perc)** mezőben határozza meg a türelmi időszakot percben, a megengedett értékek 30 és 90 perc között vannak. 
+1. Ugrás egy meglévő virtuálisgép-méretezési készletre.
+1. A **bal oldali** menü Beállítások menüjében válassza az Állapot és javítás **lehetőséget.**
+1. Engedélyezze az **Alkalmazás állapotának figyelése** beállítást.
+1. Keresse meg **az Automatikus javítási szabályzat szakaszt.**
+1. Kapcsolja **be** az **Automatikus javítás lehetőséget.**
+1. A **Türelmi időszak (min.)** mezőben adja meg a türelmi időszakot percben, az engedélyezett értékek 30 és 90 perc között vannak. 
 1. Amikor elkészült, válassza a **Mentés** gombot. 
 
 ### <a name="rest-api"></a>REST API
 
-Az alábbi példa a 40 perces türelmi idővel engedélyezi a szabályzatot. Az API 2018-10-01-es vagy újabb verzióját használja.
+Az alábbi példa engedélyezi a szabályzatot 40 perces türelmi időszakkal. Az API 2018-10-01-es vagy újabb verzióját használja.
 
 ```
 PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}?api-version=2019-07-01'
@@ -197,7 +197,7 @@ PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupNa
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Az [Update-AzVmss](/powershell/module/az.compute/update-azvmss) parancsmag segítségével módosíthatja egy meglévő méretezési csoport automatikus példány-javítási funkciójának konfigurációját. A következő példa a türelmi időszakot 40 percre frissíti.
+Az [Update-AzVmss](/powershell/module/az.compute/update-azvmss) parancsmag használatával módosíthatja egy meglévő méretezési készlet automatikus példányjavítási funkciójának konfigurációját. Az alábbi példa 40 percre frissíti a türelmi időszakot.
 
 ```azurepowershell-interactive
 Update-AzVmss `
@@ -209,7 +209,7 @@ Update-AzVmss `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Az alábbi példa egy meglévő méretezési csoport automatikus példányának javítási szabályzatának frissítését szemlélteti az *[az vmss Update](/cli/azure/vmss#az-vmss-update)* használatával.
+Az alábbi példa egy meglévő méretezési készlet automatikus példányjavítási szabályzatának frissítésére mutat példát *[az az vmss update használatával.](/cli/azure/vmss#az_vmss_update)*
 
 ```azurecli-interactive
 az vmss update \  
@@ -219,11 +219,11 @@ az vmss update \
   --automatic-repairs-grace-period 30
 ```
 
-## <a name="viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy"></a>Az automatikus példányok javítási szabályzatának szolgáltatási állapotának megtekintése és frissítése
+## <a name="viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy"></a>Az automatikus példányjavítási szabályzat szolgáltatásállapotának megtekintése és frissítése
 
 ### <a name="rest-api"></a>REST API 
 
-A virtuálisgép-méretezési csoporthoz tartozó, 2019-12-01 [-es vagy](/rest/api/compute/virtualmachinescalesets/getinstanceview) újabb API-s verziójú, a *serviceState* az automatikus javításokhoz a *orchestrationServices* tulajdonság alatt megtekintheti. 
+A [Példánynézet](/rest/api/compute/virtualmachinescalesets/getinstanceview) lekért verziója a 2019-12-01-es vagy újabb API-verzióval használható a virtuálisgép-méretezési készlethez, hogy megtekintse a *serviceState* tulajdonságot az *orchestrationServices* tulajdonság alatti automatikus javításhoz. 
 
 ```http
 GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/instanceView?api-version=2019-12-01'
@@ -240,7 +240,7 @@ GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provider
 }
 ```
 
-Az automatikus javítás állapotának beállításához használja a *setOrchestrationServiceState* API-t a 2019-12-01-es vagy újabb API-verzióval a virtuálisgép-méretezési csoportokban. Ha a méretezési csoport az automatikus javítás funkcióval van elindítva, ezzel az API-val felfüggesztheti vagy folytathatja a méretezési csoport automatikus javításait. 
+Használja a *setOrchestrationServiceState* API-t a 2019-12-01-es vagy újabb API-verzióval egy virtuálisgép-méretezési készleten az automatikus javítások állapotának beállításához. Miután a méretezési készletet bekapcsolta az automatikus javítás funkcióba, ezzel az API-val felfüggesztheti vagy folytathatja a méretezési készlet automatikus javításait. 
 
  ```http
  POST '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/setOrchestrationServiceState?api-version=2019-12-01'
@@ -259,7 +259,7 @@ Az automatikus javítás állapotának beállításához használja a *setOrches
 
 ### <a name="azure-cli"></a>Azure CLI 
 
-A [Get-instance-View](/cli/azure/vmss#az-vmss-get-instance-view) parancsmag használatával megtekintheti az automatikus példányok javításának *serviceState* . 
+Használja [a get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view) parancsmagot a *serviceState* megtekintéséhez az automatikus példányjavítások megtekintéséhez. 
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -267,7 +267,7 @@ az vmss get-instance-view \
     --resource-group MyResourceGroup
 ```
 
-A [set-vezényel-Service-State](/cli/azure/vmss#az-vmss-set-orchestration-service-state) parancsmag használatával frissítse a *serviceState* az automatikus példányok javításához. Ha a méretezési csoport az automatikus javítási szolgáltatásban van, akkor ezzel a parancsmaggal felfüggesztheti vagy folytathatja a méretezési csoport automatikus javításait. 
+Használja [a set-orchestration-service-state parancsmagot](/cli/azure/vmss#az_vmss_set_orchestration_service_state) a *serviceState* frissítéséhez az automatikus példányjavításhoz. Miután a méretezési készletet bekapcsolta az automatikus javítási funkcióba, ezzel a parancsmag használatával felfüggesztheti vagy folytathatja az automatikus javításokat a méretezési készletben. 
 
 ```azurecli-interactive
 az vmss set-orchestration-service-state \
@@ -278,7 +278,7 @@ az vmss set-orchestration-service-state \
 ```
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-A [Get-AzVmss](/powershell/module/az.compute/get-azvmss) parancsmag és a *InstanceView* paraméter használatával megtekintheti az automatikus példányok javításának *ServiceState* .
+Használja [a Get-AzVmss](/powershell/module/az.compute/get-azvmss) parancsmagot az *InstanceView* paraméterrel a *ServiceState* megtekintéséhez az automatikus példányjavítások megtekintéséhez.
 
 ```azurepowershell-interactive
 Get-AzVmss `
@@ -287,7 +287,7 @@ Get-AzVmss `
     -InstanceView
 ```
 
-Az automatikus példányok javításához használja a Set-AzVmssOrchestrationServiceState parancsmagot a *serviceState* frissítéséhez. Ha a méretezési csoport az automatikus javítási szolgáltatásba van állítva, ezzel a parancsmaggal felfüggesztheti vagy folytathatja a méretezési csoport automatikus javításait.
+Használja Set-AzVmssOrchestrationServiceState parancsmagot a *serviceState* frissítéséhez a példányok automatikus javításához. Miután a méretezési készletet bekapcsolta az automatikus javítási funkcióba, ezzel a parancsmag használatával felfüggesztheti vagy folytathatja az automatikus javításokat a méretezési készletben.
 
 ```azurepowershell-interactive
 Set-AzVmssOrchestrationServiceState `
@@ -301,18 +301,18 @@ Set-AzVmssOrchestrationServiceState `
 
 **Nem sikerült engedélyezni az automatikus javítási szabályzatot**
 
-Ha "BadRequest" hibaüzenet jelenik meg, amely azt jelzi, hogy "a" nem található a "Properties" típusú objektum "automaticRepairsPolicy" tagja, akkor ellenőrizze a virtuálisgép-méretezési csoporthoz használt API-verziót. Ehhez a szolgáltatáshoz a 2018-10-01-es vagy újabb API-verzió szükséges.
+Ha "BadRequest" hibaüzenetet kap a "Nem található automaticRepairsPolicy" tag a "properties" típusú objektumon, ellenőrizze a virtuálisgép-méretezési készlethez használt API-verziót. Ehhez a funkcióhoz az API 2018-10-01-es vagy újabb verziója szükséges.
 
-**A példány nem kerül javításra, még akkor is, ha a szabályzat engedélyezve van**
+**A példány nem javítható még akkor sem, ha a szabályzat engedélyezve van**
 
-A példány lehet türelmi időszak. Ez az az időtartam, ameddig a rendszer az állapot megváltozása után várakozik a példányon a javítások végrehajtása előtt. Ezzel elkerülhető az idő előtti vagy véletlen javítás. A javítási műveletnek akkor kell történnie, ha a türelmi időszak befejeződött a példányhoz.
+A példány türelmi időszakban lehet. Ez az az idő, amely után a példány állapotváltozása után várni kell a javítások végrehajtása előtt. Ezzel elkerülhetők a korai vagy véletlen javítások. A javítási műveletre akkor van szükség, amikor a türelmi időszak befejeződik a példányon.
 
-**A méretezési csoport példányainak alkalmazás-állapotának megtekintése**
+**Méretezésikészlet-példányok alkalmazásállapotának megtekintése**
 
-A virtuálisgép-méretezési csoport példányaihoz tartozó példányok [megtekintése API](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) használatával megtekintheti az alkalmazás állapotát. A Azure PowerShell a [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) parancsmagot használhatja a *-InstanceView* jelzővel. Az alkalmazás állapotának állapotát a *vmHealth* tulajdonság alatt kell megadnia.
+Az alkalmazás [](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) állapotának megtekintéséhez használhatja egy virtuálisgép-méretezési készlet példányainak Példánynézet API-ját. A Azure PowerShell a [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) parancsmagot használhatja az *-InstanceView jelzővel.* Az alkalmazás állapota a *vmHealth* tulajdonság alatt található.
 
-A Azure Portal az állapotot is megtekintheti. Váltson egy meglévő méretezési csoportra, válassza a bal oldali menüben a **példányok** lehetőséget, és tekintse **meg az Állapot oszlopban az** egyes méretezési csoportokhoz tartozó állapotok állapotát. 
+A Azure Portal láthatja az állapotukat is. Ugrás egy meglévő méretezési  készletre, válassza a bal oldali  menü Példányok menüpontját, és nézze meg az egyes méretezésikészlet-példányok állapotoszlopát. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Megtudhatja, hogyan konfigurálhatja a méretezési csoportokhoz az [alkalmazás állapotának kiterjesztését](./virtual-machine-scale-sets-health-extension.md) vagy a [terheléselosztó állapotát](../load-balancer/load-balancer-custom-probe-overview.md) .
+Ismerje meg, hogyan konfigurálhatja [az Application Health bővítményt](./virtual-machine-scale-sets-health-extension.md) vagy a [terheléselosztás](../load-balancer/load-balancer-custom-probe-overview.md) állapot-mintavételét a méretezési készletekhez.

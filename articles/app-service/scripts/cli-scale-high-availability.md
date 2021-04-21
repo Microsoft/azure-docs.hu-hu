@@ -1,6 +1,6 @@
 ---
-title: 'CLI: alkalmazás méretezése Traffic Manager'
-description: Ismerje meg, hogyan automatizálható az App Service-alkalmazás üzembe helyezése és kezelése az Azure CLI használatával. Ez a minta bemutatja, hogyan méretezhető világszerte a Traffic Manager.
+title: 'CLI: Alkalmazás méretezése Traffic Manager'
+description: Megtudhatja, hogyan automatizálhatja az alkalmazás üzembe helyezését és felügyeletét az Azure CLI App Service használatával. Ez a minta bemutatja, hogyan skáláz egy globális Traffic Manager.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: e4033a50-0e05-4505-8ce8-c876204b2acc
@@ -9,22 +9,22 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 9c1c4ad16a491f7e868a395fa5c36d9605348cdb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 089ab9d6b3c0f678c2a200872a0da4160fa6292a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97005697"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787664"
 ---
-# <a name="scale-an-app-service-app-worldwide-with-a-high-availability-architecture-using-azure-cli"></a>App Service-alkalmazás méretezése világszerte magas rendelkezésre állású architektúrával az Azure CLI használatával
+# <a name="scale-an-app-service-app-worldwide-with-a-high-availability-architecture-using-azure-cli"></a>Globálisan App Service méretezése magas rendelkezésre állású architektúrával az Azure CLI használatával
 
-Ez a parancsfájl létrehoz egy erőforráscsoportot, két App Service tervet, két alkalmazást, egy Traffic Manager-profilt és két Traffic Manager-végpontot. A gyakorlat befejezése után egy magas rendelkezésre állású architektúrával rendelkezik, amely a legkisebb hálózati késés alapján biztosítja az alkalmazás globális elérhetőségét.
+Ez a példaszkprogram létrehoz egy erőforráscsoportot, két App Service tervet, két alkalmazást, egy Traffic Manager-profilt és két Traffic Manager-végpontot. A gyakorlat befejezése után egy magas rendelkezésre állású architektúrával rendelkezik, amely a legalacsonyabb hálózati késés alapján biztosítja az alkalmazás globális rendelkezésre állását.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - Az oktatóanyaghoz az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+ - Ehhez az oktatóanyaghoz az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -38,11 +38,11 @@ Ez a szkript a következő parancsokat használja egy erőforráscsoport, App Se
 
 | Parancs | Jegyzetek |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Létrehoz egy App Service alkalmazást. |
-| [`az network traffic-manager profile create`](/cli/azure/network/traffic-manager/profile#az-network-traffic-manager-profile-create) | Létrehoz egy Azure Traffic Manager-profilt. |
-| [`az network traffic-manager endpoint create`](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-create) | Hozzáad egy végpontot egy Azure Traffic Manager-profilhoz. |
+| [`az group create`](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | Létrehoz egy App Service-csomagot. |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | Létrehoz egy App Service alkalmazást. |
+| [`az network traffic-manager profile create`](/cli/azure/network/traffic-manager/profile#az_network_traffic_manager_profile_create) | Létrehoz egy Azure Traffic Manager-profilt. |
+| [`az network traffic-manager endpoint create`](/cli/azure/network/traffic-manager/endpoint#az_network_traffic-manager_endpoint_create) | Hozzáad egy végpontot egy Azure Traffic Manager-profilhoz. |
 
 ## <a name="next-steps"></a>Következő lépések
 

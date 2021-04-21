@@ -1,24 +1,24 @@
 ---
-title: Az Azure foglalások használatának ismertetése Nagyvállalati Szerződés és a Microsoft ügyfél-szerződéssel kapcsolatban
-description: Megtudhatja, hogyan olvashatja el a használati adatait, hogy megtudja, hogyan vonatkozik az Azure-foglalás a Nagyvállalati Szerződés és a Microsoft ügyfél-szerződés használatára.
+title: Az Azure Reservations használatának Nagyvállalati Szerződés és Microsoft Ügyfélszerződés
+description: Megtudhatja, hogyan olvashatja el a használati adatokat, hogy megtudja, hogyan vonatkozik az Azure-foglalás Nagyvállalati Szerződés és Microsoft Ügyfélszerződés használatra.
 author: bandersmsft
 ms.reviewer: yashar
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 01/19/2020
+ms.date: 04/20/2021
 ms.author: banders
-ms.openlocfilehash: 0c69e9533130d6ca70c57422c7cdd5fc75adff72
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: edc1a80687f768723a3a218ecaa1f6459cd484ed
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683717"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763558"
 ---
-# <a name="get-enterprise-agreement-and-microsoft-customer-agreement-reservation-costs-and-usage"></a>A Nagyvállalati Szerződés és a Microsoft ügyfél-szerződés foglalási költségeinek és használatának beszerzése
+# <a name="get-enterprise-agreement-and-microsoft-customer-agreement-reservation-costs-and-usage"></a>Foglalási Nagyvállalati Szerződés és Microsoft Ügyfélszerződés költségeinek és használatának le- és lefoglalása
 
-A foglalási költségekkel és a használattal kapcsolatos továbbfejlesztett adatok Nagyvállalati Szerződés (EA) és a Microsoft Customer Agreement (MCA) használata esetén érhetők el a Cost Management szolgáltatásban. Ez a cikk a következőkben nyújt segítséget:
+A foglalási költségek és a használat továbbfejlesztett adatai Nagyvállalati Szerződés (EA) és Microsoft Ügyfélszerződés (MCA) használathoz a Cost Managementben. Ez a cikk a következőkben nyújt segítséget:
 
 - Lekérheti a foglalás megvásárlására vonatkozó adatokat
 - Megtudhatja, melyik előfizetés, erőforráscsoport vagy erőforrás használta a foglalást
@@ -85,7 +85,7 @@ A mérőket és szűrőket tartalmazó következő táblázat segítséget nyúj
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>Az új használati adatokat tartalmazó CSV-fájl letöltése
 
-Ha Ön egy nagyvállalati rendszergazda, akkor letöltheti az új használati adatokat tartalmazó CSV-fájlt Azure Portalról. Ezek az adatok nem érhetők el az EA Portalról (ea.azure.com). Az új adatok megtekintéséhez le kell töltenie a felhasználási adatokat tartalmazó fájlt az Azure Portalról (portal.azure.com).
+Ha Ön EA-rendszergazda, letöltheti az új használati adatokat tartalmazó CSV-fájlt a Azure Portal. Ezek az adatok nem érhetők el az EA Portalról (ea.azure.com). Az új adatok megtekintéséhez le kell töltenie a felhasználási adatokat tartalmazó fájlt az Azure Portalról (portal.azure.com).
 
 Lépjen a [Költségkezelés + számlázás](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts) menüponthoz az Azure Portalon.
 
@@ -95,7 +95,6 @@ Lépjen a [Költségkezelés + számlázás](https://portal.azure.com/#blade/Mic
 ![Példa a használati adatokat tartalmazó CSV-fájl letöltési helyére az Azure Portalról](./media/understand-reserved-instance-usage-ea/portal-download-csv.png)
 4. A **Felhasználás + díjak letöltése** lehetőségben az **Adatforgalom részletei 2. verzió** területen válassza ki az **Összes díj (használat és vásárlások)** lehetőséget, majd kattintson a Letöltés lehetőségre. Ismételje meg ezt az **Amortizált díjakkal (használat és vásárlások)** .
 
-A letölteni kívánt CSV-fájlok a tényleges költségeket és az amortizált költségeket is tartalmazzák.
 
 ## <a name="common-cost-and-usage-tasks"></a>A költségekkel és a használattal kapcsolatos gyakori feladatok
 
@@ -158,8 +157,7 @@ Az Azure Reservationszel kapcsolatos további információkért tekintse meg a k
 
 - [Mi az az Azure Reservations?](save-compute-costs-reservations.md)
 - [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../../virtual-machines/prepay-reserved-vm-instances.md)
-- [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../../azure-sql/database/reserved-capacity-overview.md)
-- [Az Azure Reservations kezelése](manage-reserved-vm-instance.md)
 - [A foglalási kedvezmény alkalmazásának ismertetése](../manage/understand-vm-reservation-charges.md)
-- [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](understand-reserved-instance-usage.md)
 - [A Reservations díjában nem szereplő Windows-szoftverköltségek](reserved-instance-windows-software-costs.md)
+- [Szolgáltatásnév használata a költségadatok lekértségéhez](../manage/assign-roles-azure-service-principals.md)
+- [Cost Management-exportálások használata](../costs/tutorial-export-acm-data.md)

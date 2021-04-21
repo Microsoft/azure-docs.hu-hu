@@ -1,29 +1,29 @@
 ---
 title: Azure Kubernetes Service- (AKS-) fürt méretezése
-description: Megtudhatja, hogyan méretezheti a csomópontok számát egy Azure Kubernetes-szolgáltatásbeli (ak-) fürtben.
+description: Megtudhatja, hogyan skálázható a csomópontok száma egy Azure Kubernetes Service (AKS-) fürtben.
 services: container-service
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: fdb61bf090351894329c24eb1a3c73d627e622e8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1468f9a0a23935022ed14488dfb65d789828d310
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102173766"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782886"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Csomópontszám skálázása egy Azure Kubernetes Service- (AKS-) fürtben
 
-Ha az alkalmazások erőforrás-szükséglete megváltozik, manuálisan méretezheti egy AK-fürtöt úgy, hogy más számú csomópontot futtasson. A skálázás során a rendszer gondosan [kiüríti és kiüríti][kubernetes-drain] a csomópontokat az alkalmazások futtatásának minimalizálásához. Ha vertikális felskálázást végez, az AK megvárja, amíg a Kubernetes-fürt meg nem jelöli a csomópontokat `Ready` a hüvelyek ütemezése előtt.
+Ha az alkalmazások erőforrás-igényei megváltoznak, manuálisan skálázhat egy AKS-fürtöt különböző számú csomópont futtatásához. A leskálás során [][kubernetes-drain] a csomópontok gondosan el vannak korétálva és ki vannak ürítve, hogy minimálisra csökkenje a futó alkalmazások üzemkimaradása. A felskáláskor az AKS megvárja, amíg a kubernetes-fürt meg nem jelöli a csomópontokat, mielőtt a `Ready` podok ütemezve vannak.
 
 ## <a name="scale-the-cluster-nodes"></a>A fürtcsomópontok méretezése
 
-Először kérje le a Node-készlet *nevét* az az az [AK show][az-aks-show] paranccsal. A következő példa beolvassa a *myAKSCluster* nevű fürt Node-készletének nevét a *myResourceGroup* erőforráscsoporthoz:
+Először szerezze *be a* csomópontkészlet nevét az az [aks show paranccsal.][az-aks-show] Az alábbi példa lekérte a *myResourceGroup* erőforráscsoportban található *myAKSCluster* nevű fürt csomópontkészletének nevét:
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
 ```
 
-A következő példa kimenete azt mutatja, hogy a *név* *nodepool1*:
+Az alábbi példakimeneten látható, hogy *a név* *nodepool1:*
 
 ```output
 [
@@ -39,13 +39,13 @@ A következő példa kimenete azt mutatja, hogy a *név* *nodepool1*:
 ]
 ```
 
-A fürtcsomópontok méretezéséhez használja az az [AK Scale][az-aks-scale] parancsot. Az alábbi példa egy *myAKSCluster* nevű fürtöt egyetlen csomópontra méretezi. Adja meg a sajátját `--nodepool-name` az előző parancsból, például a *nodepool1*:
+A [fürtcsomópontok méretezéséhez][az-aks-scale] használja az az aks scale parancsot. Az alábbi példa egy *myAKSCluster* nevű fürtöt skáláz egyetlen csomópontra. Adja meg a `--nodepool-name` sajátját az előző parancsból, például *nodepool1:*
 
 ```azurecli-interactive
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
 ```
 
-A következő példa kimenete azt mutatja, hogy a fürt egy csomópontra való skálázása sikeresen megtörtént, ahogy az a *agentPoolProfiles* szakaszban is látható:
+Az alábbi példakimeneten látható, hogy a fürt sikeresen skálázva lett egy csomópontra, ahogyan az *agentPoolProfiles* szakaszban látható:
 
 ```json
 {
@@ -68,29 +68,29 @@ A következő példa kimenete azt mutatja, hogy a fürt egy csomópontra való s
 ```
 
 
-## <a name="scale-user-node-pools-to-0"></a>`User`Csomópont-készletek méretezése 0-ra
+## <a name="scale-user-node-pools-to-0"></a>`User`Csomópontkészletek méretezése 0-ra
 
-A csomópont `System` -készletektől eltérően, amelyekhez mindig futó csomópontok szükségesek, a `User` csomópont-készletek lehetővé teszik a méretezést 0-ra. A rendszer és a felhasználói csomópontok készletei közötti különbségekről további információt a [rendszer-és felhasználói csomópontok készletei](use-system-pools.md)című témakörben talál.
+A mindig futó csomópontokat igénylő csomópontkészletekkel ellentétben a csomópontkészletek lehetővé teszik `System` `User` a 0-ra való méretezést. A rendszer- és felhasználói csomópontkészletek közötti különbségekről további információt a Rendszer- és felhasználói csomópontkészletek oldalon [olvashat.](use-system-pools.md)
 
-Ha a felhasználói készletet 0-ra szeretné méretezni, használhatja az az [AK nodepool skálázást][az-aks-nodepool-scale] a fenti `az aks scale` parancs alternatívájaként, és állítsa a 0 értéket a csomópontok számának megadásához.
+Ha 0-ra skáláz egy felhasználói készletet, használhatja az [az aks nodepool scale][az-aks-nodepool-scale] parancsot a fenti parancs alternatívájaként, és `az aks scale` beállíthatja a 0-t csomópontszámként.
 
 
 ```azurecli-interactive
 az aks nodepool scale --name <your node pool name> --cluster-name myAKSCluster --resource-group myResourceGroup  --node-count 0 
 ```
 
-A `User` csomópont-készleteket 0 csomópontra is kibővítheti, ha a `--min-count` [fürt automéretező](cluster-autoscaler.md) paraméterét 0-ra állítja.
+A csomópontkészleteket 0 csomópontra is automatikusan skálázhatja, ha az automatikus fürtméretozó paraméterét `User` `--min-count` 0-ra stb. [](cluster-autoscaler.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben manuálisan méretezhető egy AK-fürtöt a csomópontok számának növeléséhez vagy csökkentéséhez. A fürt automatikus [méretezésével][cluster-autoscaler] is automatikusan méretezheti a fürtöt.
+Ebben a cikkben manuálisan skálázta az AKS-fürtöt a csomópontok számának növelése vagy csökkentése érdekében. Az automatikus [fürtméretozóval automatikusan][cluster-autoscaler] is skálázhatja a fürtöt.
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 
 <!-- LINKS - internal -->
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
-[az-aks-show]: /cli/azure/aks#az-aks-show
-[az-aks-scale]: /cli/azure/aks#az-aks-scale
+[az-aks-show]: /cli/azure/aks#az_aks_show
+[az-aks-scale]: /cli/azure/aks#az_aks_scale
 [cluster-autoscaler]: cluster-autoscaler.md
-[az-aks-nodepool-scale]: /cli/azure/aks/nodepool#az-aks-nodepool-scale
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool#az_aks_nodepool_scale

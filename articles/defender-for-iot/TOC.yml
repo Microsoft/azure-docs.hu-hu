@@ -21,7 +21,7 @@
           displayName: 'firewall, proxy, open ports'
           href: quickstart-system-prerequisites.md
         - name: Bevezetés az Azure Defender for IoT használatába
-          displayName: 'getting started, registration, onboarding'
+          displayName: 'getting started, registration, onboarding, activation, threat intelligence'
           href: getting-started.md
     - name: Ügynökalapú megoldás eszközkészítők számára
       items:
@@ -122,8 +122,8 @@
               href: how-to-install-software.md
         - name: Az érzékelők előkészítése
           items:
-            - name: Érzékelők kezelése
-              displayName: 'onboard, cloud, register, activate, offboard, subscription, subscriptions, offboarding'
+            - name: Érzékelők előkészítése
+              displayName: 'onboard, cloud, register, version, activate, offboard, subscription, threat intelligence, packages, connected'
               href: how-to-manage-sensors-on-the-cloud.md
             - name: Az érzékelő aktiválása és beállítása
               displayName: 'deployment, onboard, register, activation, SSL, TLS, certificate, cloud connected, sign in, login, setup, learning mode, initial'
@@ -171,6 +171,7 @@
           displayName: 'mail, SMTP, activation, certificate, software update, backup, restore, proxy, password recovery'
         - name: Fenyegetésfelderítési csomagok használata
           href: how-to-work-with-threat-intelligence-packages.md
+          displayName: 'packages, automatic, intelligence, push, threat'
         - name: Az eszközkészletek adatainak használata
           items:
             - name: Egy eszközkészlet összes vállalati érzékelője általi észlelések vizsgálata
@@ -216,7 +217,7 @@
             - name: Kockázatfelmérési jelentések létrehozása
               href: how-to-create-risk-assessment-reports.md
               displayName: 'vulnerability, security score, score, CVE'
-            - name: Támadásvektor-jelentések létrehozása
+            - name: Támadási vektorjelentések létrehozása
               href: how-to-create-attack-vector-reports.md
               displayName: 'Attack surface, prediction,simulation'
             - name: Adatbányászati jelentések létrehozása

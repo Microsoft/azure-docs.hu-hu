@@ -1,23 +1,23 @@
 ---
-title: 'Oktatóanyag: többtárolós alkalmazás létrehozása'
-description: Megtudhatja, hogyan használhatja a többtárolós alkalmazásokat a WordPress-alkalmazást és egy MySQL-tárolót tartalmazó Azure App Serviceon, és konfigurálhatja a WordPress-alkalmazást.
-keywords: Azure app Service, webalkalmazás, Linux, Docker, összeállítás, több tároló, többtárolós, Web App for containers, több tároló, tároló, WordPress, Azure db for MySQL, üzemi adatbázis tárolókkal
+title: 'Oktatóanyag: Többtárolós alkalmazás létrehozása'
+description: Megtudhatja, hogyan építhet ki egy többtárolós alkalmazást a Azure App Service, amely tartalmaz egy WordPress-alkalmazást és egy MySQL-tárolót, és hogyan konfigurálhatja a WordPress-alkalmazást.
+keywords: azure app service, webalkalmazás, linux, docker, compose, többtárolós, többtárolós, webalkalmazás tárolókhoz, több tároló, tároló, wordpress, azure db for mysql, éles adatbázis tárolók használatával
 author: msangapu-msft
 ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: msangapu
 ms.custom: cli-validate, devx-track-azurecli
-ms.openlocfilehash: e73d681cadaddd32290cec40ae7a9c8f6e8ac758
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dee00c6f733cfbebf68276ee4b54f91b8e2cb35b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97005647"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765538"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Oktatóanyag: Többtárolós (előzetes verzió) alkalmazás létrehozása a Web App for Containersben
 
 > [!NOTE]
-> A multi-Container előzetes verzióban érhető el.
+> A többtárolós verzió előzetes verzióban érhető el.
 
 A [Web App for Containers](overview.md#app-service-on-linux) segítségével rugalmasan használhatók a Docker-rendszerképek. Ezen oktatóanyagból megtudhatja, hogyan hozhat létre egy többtárolós alkalmazást a WordPress és a MySQL használatával. Ezt az oktatóanyagot a Cloud Shellben végezzük el, a parancsok azonban helyileg is futtathatók az [Azure CLI](/cli/azure/install-azure-cli) parancssori eszköz (2.0.32-es vagy újabb verzió) használatával.
 
@@ -35,11 +35,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez a [Docker-összeállítással](https://docs.docker.com/compose/)kapcsolatos élményre van szükség.
+Az oktatóanyag befejezéséhez tapasztalatra van szüksége a [Docker Compose-nak.](https://docs.docker.com/compose/)
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
-Ebben az oktatóanyagban az összeállítás fájlt a [Docker](https://docs.docker.com/compose/wordpress/#define-the-project)-ből fogja használni, de úgy módosítja, hogy Azure Database for MySQL, állandó tárterületet és Redis is tartalmazzon. A konfigurációs fájl az [Azure-minták](https://github.com/Azure-Samples/multicontainerwordpress) között található. A támogatott konfigurációs beállításokért lásd: [Docker-összeállítási beállítások](configure-custom-container.md#docker-compose-options).
+Ebben az oktatóanyagban a [Docker](https://docs.docker.com/compose/wordpress/#define-the-project)compose fájlját fogja használni, de úgy fogja módosítani, hogy tartalmazza a Azure Database for MySQL, az állandó tárolást és a Redist. A konfigurációs fájl az [Azure-minták](https://github.com/Azure-Samples/multicontainerwordpress) között található. A támogatott konfigurációs beállításokért lásd: [A Docker Compose beállításai.](configure-custom-container.md#docker-compose-options)
 
 [!code-yml[Main](../../azure-app-service-multi-container/docker-compose-wordpress.yml)]
 
@@ -63,7 +63,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-A Cloud Shellban hozzon létre egy erőforráscsoportot a [`az group create`](/cli/azure/group#az-group-create) paranccsal. A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *USA déli középső régiója* helyen. A Linuxon futó, **Standard** szintű App Service-t támogató összes hely megtekintéséhez futtassa az [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice#az-appservice-list-locations) parancsot.
+A Cloud Shell hozzon létre egy erőforráscsoportot az [`az group create`](/cli/azure/group#az_group_create) paranccsal. A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *USA déli középső régiója* helyen. A Linuxon futó, **Standard** szintű App Service-t támogató összes hely megtekintéséhez futtassa az [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice#az_appservice_list_locations) parancsot.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -75,7 +75,7 @@ A parancs befejeződésekor a JSON-kimenet megjeleníti az erőforráscsoport tu
 
 ## <a name="create-an-azure-app-service-plan"></a>Azure App Service-csomag létrehozása
 
-A Cloud Shell-ban hozzon létre egy App Service tervet az erőforrás-csoportban az [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) paranccsal.
+A Cloud Shell hozzon létre egy App Service-tervet az erőforráscsoportban az [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) paranccsal.
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan-linux.md)] -->
 
@@ -109,7 +109,7 @@ Az App Service-csomag létrehozása után a Cloud Shell az alábbi példához ha
 
 ## <a name="create-a-docker-compose-app"></a>Docker Compose-alkalmazás létrehozása
 
-A Cloud Shellben hozzon létre egy többtárolós [webalkalmazást](overview.md) az `myAppServicePlan` App Service-csomagban az [az webapp create](/cli/azure/webapp#az-webapp-create) paranccsal. Ne felejtse el lecserélni _\<app-name>_ egy egyedi alkalmazás nevére.
+A Cloud Shellben hozzon létre egy többtárolós [webalkalmazást](overview.md) az `myAppServicePlan` App Service-csomagban az [az webapp create](/cli/azure/webapp#az_webapp_create) paranccsal. Ne felejtse el lecserélni _\<app-name>_ a helyére az egyedi alkalmazásnevet.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -138,7 +138,7 @@ Keresse meg az üzembe helyezett alkalmazást a következő helyen: `http://<app
 
 ![Minta többtárolós alkalmazás a Web Apps for Containersben][1]
 
-**Gratulálunk**, egy többtárolós alkalmazást hozott létre web app for Containersban. A következő lépésben konfigurálja az alkalmazást az Azure Database for MySQL használatára. Egyelőre még ne telepítse a WordPresst.
+**Gratulálunk,** létrehozott egy többtárolós alkalmazást a Web App for Containers. A következő lépésben konfigurálja az alkalmazást az Azure Database for MySQL használatára. Egyelőre még ne telepítse a WordPresst.
 
 ## <a name="connect-to-production-database"></a>Kapcsolódás éles adatbázishoz
 
@@ -146,9 +146,9 @@ Keresse meg az üzembe helyezett alkalmazást a következő helyen: `http://<app
 
 ### <a name="create-an-azure-database-for-mysql-server"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
 
-Hozzon létre egy Azure Database for MySQL-kiszolgálót a [`az mysql server create`](/cli/azure/mysql/server#az-mysql-server-create) paranccsal.
+Hozzon létre Azure Database for MySQL-kiszolgálót az [`az mysql server create`](/cli/azure/mysql/server#az_mysql_server_create) paranccsal.
 
-A következő parancsban cserélje ki a MySQL-kiszolgáló nevét, ahol a _&lt; MySQL-Server-Name>_ helyőrző jelenik meg (érvényes karakterek:, `a-z` `0-9` és `-` ). Ez a név része a MySQL-kiszolgáló állomásnevének (`<mysql-server-name>.database.windows.net`), és globálisan egyedinek kell lennie.
+A következő parancsban írja be a MySQL-kiszolgáló nevét a _&lt; mysql-server-name_ helyőrző helyére>(érvényes karakterek: `a-z` , `0-9` és `-` ). Ez a név része a MySQL-kiszolgáló állomásnevének (`<mysql-server-name>.database.windows.net`), és globálisan egyedinek kell lennie.
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name>  --location "South Central US" --admin-user adminuser --admin-password My5up3rStr0ngPaSw0rd! --sku-name B_Gen5_1 --version 5.7
@@ -171,7 +171,7 @@ A kiszolgáló létrehozása eltarthat néhány percig. A MySQL-kiszolgáló lé
 
 ### <a name="configure-server-firewall"></a>Kiszolgáló tűzfalának konfigurálása
 
-Hozzon létre egy tűzfalszabályot a MySQL-kiszolgálóhoz, hogy engedélyezze az ügyfélkapcsolatokat a [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create) parancs használatával. Ha a kezdő IP-cím és a záró IP-cím is 0.0.0.0 értékre van állítva, a tűzfal csak más Azure-erőforrások számára van nyitva.
+Hozzon létre egy tűzfalszabályt a MySQL-kiszolgálóhoz, hogy engedélyezze az ügyfélkapcsolatokat az [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) paranccsal. Ha a kezdő IP-cím és a záró IP-cím is 0.0.0.0 értékre van állítva, a tűzfal csak más Azure-erőforrások számára van nyitva.
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -205,7 +205,7 @@ Az adatbázis létrehozása után a Cloud Shell az alábbi példához hasonló i
 
 A WordPress és az új MySQL-kiszolgáló csatlakoztatásához konfigurálni kell néhány WordPress-specifikus környezeti változót, például a `MYSQL_SSL_CA` által meghatározott SSL CA elérési utat. Az alábbi [egyéni rendszerkép](#use-a-custom-image-for-mysql-ssl-and-other-configurations) a [DigiCert](https://www.digicert.com/)[Baltimore CyberTrust legfelső szintű tanúsítványát](https://www.digicert.com/digicert-root-certificates.htm) tartalmazza.
 
-A módosítások elvégzéséhez használja az [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) parancsot a Cloud Shellben. Az alkalmazásbeállítások megkülönböztetik a kis-és nagybetűket, és szóközzel vannak elválasztva.
+A módosítások elvégzéséhez használja az [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) parancsot a Cloud Shellben. Az alkalmazásbeállítások megkülönböztetik a kis-és nagybetűket, és szóközzel vannak elválasztva.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WORDPRESS_DB_HOST="<mysql-server-name>.mysql.database.azure.com" WORDPRESS_DB_USER="adminuser@<mysql-server-name>" WORDPRESS_DB_PASSWORD="My5up3rStr0ngPaSw0rd!" WORDPRESS_DB_NAME="wordpress" MYSQL_SSL_CA="BaltimoreCyberTrustroot.crt.pem"
@@ -243,11 +243,11 @@ Az alkalmazásbeállítás létrehozása után a Cloud Shell az alábbi példáh
 ]
 </pre>
 
-További információ a környezeti változókról: [környezeti változók konfigurálása](configure-custom-container.md#configure-environment-variables).
+További információ a környezeti változókról: [Környezeti változók konfigurálása.](configure-custom-container.md#configure-environment-variables)
 
 ### <a name="use-a-custom-image-for-mysql-ssl-and-other-configurations"></a>Egyéni MySQL SSL-rendszerkép és egyéb konfigurációk használata
 
-Alapértelmezés szerint az Azure Database for MySQL az SSL-t használja. A WordPress esetében további konfigurálás szükséges az SSL és a MySQL együttes használatához. A WordPress "hivatalos rendszerképe" nem biztosítja a további konfigurációt, de az Ön kényelme érdekében [Egyéni rendszerkép](https://github.com/Azure-Samples/multicontainerwordpress) készül. A gyakorlatban a kívánt módosításokat a saját rendszerképéhez adná hozzá.
+Alapértelmezés szerint az Azure Database for MySQL az SSL-t használja. A WordPress esetében további konfigurálás szükséges az SSL és a MySQL együttes használatához. A WordPress "hivatalos rendszerképe" nem biztosít további konfigurációt, de [az](https://github.com/Azure-Samples/multicontainerwordpress) Ön kényelme érdekében előkészítettünk egy egyéni rendszerképet. A gyakorlatban a kívánt módosításokat a saját rendszerképéhez adná hozzá.
 
 Az egyéni rendszerkép a WordPress „hivatalos rendszerképén” alapul, amely a [Docker Hubból](https://hub.docker.com/_/wordpress/) érhető el. Az egyéni rendszerkép a következő módosításokat tartalmazza az Azure Database for MySQL-hez:
 
@@ -279,7 +279,7 @@ Mentse a módosításokat, és lépjen ki a nanóból. A mentéshez a `^O`, a ki
 
 ### <a name="update-app-with-new-configuration"></a>Az alkalmazás frissítése egy új konfigurációval
 
-A Cloud Shellben konfiguráljon újra egy többtárolós [webalkalmazást](overview.md) az [az webapp config container set](/cli/azure/webapp/config/container#az-webapp-config-container-set) paranccsal. Ne felejtse el lecserélni a _\<app-name>_ korábban létrehozott webalkalmazás nevére.
+A Cloud Shellben konfiguráljon újra egy többtárolós [webalkalmazást](overview.md) az [az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set) paranccsal. Ne felejtse el lecserélni _\<app-name>_ a helyére a korábban létrehozott webalkalmazás nevét.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -304,11 +304,11 @@ Keresse meg az üzembe helyezett alkalmazást a következő helyen: `http://<app
 
 ## <a name="add-persistent-storage"></a>Állandó tároló hozzáadása
 
-A többtárolós alkalmazás mostantól a Web App for Containersben fut. Azonban ha most telepíti a WordPresst, majd később újraindítja az alkalmazást, azzal fog szembesülni, hogy a WordPress-telepítés eltűnt. Ennek az az oka, hogy a Docker Compose konfigurációja jelenleg egy, a tárolón belüli tárhelyre mutat. A tárolóba telepített fájlok nem maradnak meg az alkalmazás újraindítását követően. Ebben a szakaszban [állandó tárterületet ad hozzá](configure-custom-container.md#use-persistent-shared-storage) a WordPress-tárolóhoz.
+A többtárolós alkalmazás mostantól a Web App for Containersben fut. Azonban ha most telepíti a WordPresst, majd később újraindítja az alkalmazást, azzal fog szembesülni, hogy a WordPress-telepítés eltűnt. Ennek az az oka, hogy a Docker Compose konfigurációja jelenleg egy, a tárolón belüli tárhelyre mutat. A tárolóba telepített fájlok nem maradnak meg az alkalmazás újraindítását követően. Ebben a szakaszban állandó tárolót [fog](configure-custom-container.md#use-persistent-shared-storage) hozzáadni a WordPress-tárolóhoz.
 
 ### <a name="configure-environment-variables"></a>Környezeti változók konfigurálása
 
-Ha állandó tárterületet szeretne használni, App Serviceon belül engedélyezheti ezt a beállítást. A módosítás elvégzéséhez használja az [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) parancsot a Cloud Shellben. Az alkalmazásbeállítások megkülönböztetik a kis-és nagybetűket, és szóközzel vannak elválasztva.
+Állandó tárolók használata esetén ezt a beállítást a App Service. A módosítás elvégzéséhez használja az [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) parancsot a Cloud Shellben. Az alkalmazásbeállítások megkülönböztetik a kis-és nagybetűket, és szóközzel vannak elválasztva.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
@@ -355,7 +355,7 @@ services:
 
 ### <a name="update-app-with-new-configuration"></a>Az alkalmazás frissítése egy új konfigurációval
 
-A Cloud Shellben konfiguráljon újra egy többtárolós [webalkalmazást](overview.md) az [az webapp config container set](/cli/azure/webapp/config/container#az-webapp-config-container-set) paranccsal. Ne felejtse el lecserélni _\<app-name>_ egy egyedi alkalmazás nevére.
+A Cloud Shellben konfiguráljon újra egy többtárolós [webalkalmazást](overview.md) az [az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set) paranccsal. Ne felejtse el lecserélni _\<app-name>_ a helyére az egyedi alkalmazásnevet.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -415,7 +415,7 @@ services:
 
 ### <a name="configure-environment-variables"></a>Környezeti változók konfigurálása
 
-A Redis használatához engedélyezni kell ezt a `WP_REDIS_HOST` beállítást az App Service-ben. Ez a beállítás *kötelező* ahhoz, hogy a WordPress kommunikálni tudjon a Redis-hoszttal. A módosítás elvégzéséhez használja az [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) parancsot a Cloud Shellben. Az alkalmazásbeállítások megkülönböztetik a kis-és nagybetűket, és szóközzel vannak elválasztva.
+A Redis használatához engedélyezni kell ezt a `WP_REDIS_HOST` beállítást az App Service-ben. Ez a beállítás *kötelező* ahhoz, hogy a WordPress kommunikálni tudjon a Redis-hoszttal. A módosítás elvégzéséhez használja az [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) parancsot a Cloud Shellben. Az alkalmazásbeállítások megkülönböztetik a kis-és nagybetűket, és szóközzel vannak elválasztva.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WP_REDIS_HOST="redis"
@@ -441,7 +441,7 @@ Az alkalmazásbeállítás létrehozása után a Cloud Shell az alábbi példáh
 
 ### <a name="update-app-with-new-configuration"></a>Az alkalmazás frissítése egy új konfigurációval
 
-A Cloud Shellben konfiguráljon újra egy többtárolós [webalkalmazást](overview.md) az [az webapp config container set](/cli/azure/webapp/config/container#az-webapp-config-container-set) paranccsal. Ne felejtse el lecserélni _\<app-name>_ egy egyedi alkalmazás nevére.
+A Cloud Shellben konfiguráljon újra egy többtárolós [webalkalmazást](overview.md) az [az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set) paranccsal. Ne felejtse el lecserélni _\<app-name>_ a helyére az alkalmazás egyedi nevét.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
@@ -466,7 +466,7 @@ Végezze el a lépéseket, és telepítse a WordPresst.
 
 ### <a name="connect-wordpress-to-redis"></a>A WordPress csatlakoztatása a Redishez
 
-Jelentkezzen be a WordPress-rendszergazdába. A bal oldali navigációs sávon válassza a **plugins** lehetőséget, majd válassza a **telepített beépülő modulok** lehetőséget.
+Jelentkezzen be a WordPress-rendszergazdába. A bal oldali navigációs sávon válassza a **Beépülő modulok,** majd az **Installed Plugins (Telepített beépülő modulok) lehetőséget.**
 
 ![WordPress beépülő modulok kiválasztása][2]
 
@@ -480,7 +480,7 @@ Kattintson a **Settings** (Beállítások) lehetőségre.
 
 ![Kattintson a Beállítások lehetőségre][4]
 
-Kattintson az **objektum-gyorsítótár engedélyezése** gombra.
+Kattintson az **Objektumgyorsítótár engedélyezése gombra.**
 
 ![Kattintson az „Object Cache engedélyezése” gombra][5]
 
@@ -523,12 +523,12 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Csatlakozás az Azure Database for MySQL-hez
 > * Hibák elhárítása
 
-Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan képezhető le egyéni DNS-név az alkalmazáshoz.
+A következő oktatóanyag azt is bemutatja, hogyan lehet leképezni egy egyéni DNS-nevet az alkalmazásra.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: egyéni DNS-név leképezése az alkalmazáshoz](app-service-web-tutorial-custom-domain.md)
+> [Oktatóanyag: Egyéni DNS-név leképezése az alkalmazásra](app-service-web-tutorial-custom-domain.md)
 
-Vagy tekintse meg a többi erőforrást:
+Vagy tekintse meg az egyéb erőforrásokat:
 
 > [!div class="nextstepaction"]
 > [Egyéni tároló konfigurálása](configure-custom-container.md)

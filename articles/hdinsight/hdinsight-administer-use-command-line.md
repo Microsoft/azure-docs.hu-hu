@@ -1,34 +1,34 @@
 ---
-title: Azure HDInsight-fürtök kezelése az Azure CLI-vel
-description: Ismerje meg, hogyan kezelheti az Azure HDInsight-fürtöket az Azure CLI használatával. A fürtök típusai közé tartoznak a Apache Hadoop, a Spark, a HBase, a Storm, a Kafka, az interaktív lekérdezés és a ML-szolgáltatások.
+title: Fürtök Azure HDInsight Az Azure CLI használatával
+description: Megtudhatja, hogyan kezelheti a fürtök Azure HDInsight Azure CLI-t. A fürttípusok közé tartozik az Apache Hadoop, a Spark, a HBase, a Storm, a Kafka, Interactive Query és az ML-szolgáltatások.
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-azurecli
 ms.date: 02/26/2020
-ms.openlocfilehash: b17c5a2abc036c16ff3ce36b81428f9149e36b4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14b88700f3968e3bfdc788abb2fc9ce90634068e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98942859"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770344"
 ---
-# <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Azure HDInsight-fürtök kezelése az Azure CLI-vel
+# <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Fürtök Azure HDInsight Az Azure CLI használatával
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Ismerje meg, hogyan kezelheti az Azure HDInsight-fürtöket az [Azure CLI](/cli/azure/) használatával. Az Azure parancssori felülete (CLI) a Microsoft platformfüggetlen parancssori felülete, amely Azure-erőforrások felügyeletére szolgál.
+Megtudhatja, hogyan használhatja az [Azure CLI-t](/cli/azure/) a Azure HDInsight kezelésére. Az Azure parancssori felülete (CLI) a Microsoft platformfüggetlen parancssori felülete, amely Azure-erőforrások felügyeletére szolgál.
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure CLI. Ha még nem telepítette az Azure CLI-t, olvassa el a következő témakört: [Az Azure CLI telepítése](/cli/azure/install-azure-cli) .
+* Azure CLI. Ha még nem telepítette az Azure CLI-t, a lépésekért lásd: [Az Azure CLI](/cli/azure/install-azure-cli) telepítése.
 
-* Egy Apache Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* Apache Hadoop-fürt a HDInsightban. Lásd: Get Started with HDInsight on Linux (A [HDInsight első lépések Linux rendszeren) .](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 
 ## <a name="connect-to-azure"></a>Csatlakozás az Azure szolgáltatáshoz
 
-Jelentkezzen be az Azure-előfizetésbe. Ha azt tervezi, hogy Azure Cloud Shell használ, válassza a **kipróbálás** lehetőséget a kód blokk jobb felső sarkában. Máskülönben adja meg az alábbi parancsot:
+Jelentkezzen be az Azure-előfizetésbe. Ha a kódblokk Azure Cloud Shell használni,  válassza a Kódblokk jobb felső sarkában található Kipróbálom lehetőséget. Ha nem, írja be az alábbi parancsot:
 
 ```azurecli-interactive
 az login
@@ -37,9 +37,9 @@ az login
 # az account set --subscription "SUBSCRIPTIONID"
 ```
 
-## <a name="list-clusters"></a>Fürtök listázása
+## <a name="list-clusters"></a>Fürtök listába sorolása
 
-Fürtök listázása [az az hdinsight List](/cli/azure/hdinsight#az-hdinsight-list) paranccsal. Szerkessze az alábbi parancsokat úgy, hogy lecseréli az `RESOURCE_GROUP_NAME` erőforráscsoport nevét, majd beírja a parancsokat:
+A [fürtök listához használja az az hdinsight listát.](/cli/azure/hdinsight#az_hdinsight_list) Szerkessze az alábbi parancsokat úgy, hogy a et az erőforráscsoport nevére cseréli, majd `RESOURCE_GROUP_NAME` írja be a következő parancsokat:
 
 ```azurecli-interactive
 # List all clusters in the current subscription
@@ -57,7 +57,7 @@ az hdinsight list --resource-group RESOURCE_GROUP_NAME --query "[].{clusterName:
 
 ## <a name="show-cluster"></a>Fürt megjelenítése
 
-Az [az hdinsight show](/cli/azure/hdinsight#az-hdinsight-show) paranccsal jelenítheti meg egy adott fürt információit. Az alábbi parancs szerkesztésével cserélje le a parancsot a `RESOURCE_GROUP_NAME` `CLUSTER_NAME` megfelelő információkra, majd írja be a következő parancsot:
+Az [az hdinsight show használatával egy](/cli/azure/hdinsight#az_hdinsight_show) adott fürt információit mutatjuk be. Szerkessze az alábbi parancsot úgy, hogy lecseréli a és a adatokat a megfelelő `RESOURCE_GROUP_NAME` `CLUSTER_NAME` információkra, majd írja be a parancsot:
 
 ```azurecli-interactive
 az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -65,13 +65,13 @@ az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 
 ## <a name="delete-clusters"></a>Fürtök törlése
 
-A megadott fürt törléséhez használja [az az hdinsight delete](/cli/azure/hdinsight#az-hdinsight-delete) paranccsal. Az alábbi parancs szerkesztésével cserélje le a parancsot a `RESOURCE_GROUP_NAME` `CLUSTER_NAME` megfelelő információkra, majd írja be a következő parancsot:
+Egy adott fürt törléséhez használja az [az hdinsight delete](/cli/azure/hdinsight#az_hdinsight_delete) parancsot. Szerkessze az alábbi parancsot úgy, hogy lecseréli a és a adatokat a megfelelő `RESOURCE_GROUP_NAME` `CLUSTER_NAME` információkra, majd írja be a parancsot:
 
 ```azurecli-interactive
 az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 ```
 
-A fürtöt a fürtöt tartalmazó erőforráscsoport törlésével is törölheti. Vegye figyelembe, hogy ez a csoport összes erőforrását törli, beleértve az alapértelmezett Storage-fiókot is.
+Fürtöt a fürtöt tartalmazó erőforráscsoport törlésével is törölhet. Vegye figyelembe, hogy ezzel törli a csoport összes erőforrását, beleértve az alapértelmezett tárfiókot is.
 
 ```azurecli-interactive
 az group delete --name RESOURCE_GROUP_NAME
@@ -79,7 +79,7 @@ az group delete --name RESOURCE_GROUP_NAME
 
 ## <a name="scale-clusters"></a>Fürtök méretezése
 
-Az [az hdinsight Resize](/cli/azure/hdinsight#az-hdinsight-resize) paranccsal méretezze át a megadott hdinsight-fürtöt a megadott méretre. Szerkessze az alábbi parancsot a helyére `RESOURCE_GROUP_NAME` , és `CLUSTER_NAME` a megfelelő információkkal. Cserélje le a `WORKERNODE_COUNT` értéket a fürthöz tartozó munkavégző csomópontok kívánt számára. A fürtök méretezésével kapcsolatos további információkért lásd: [HDInsight-fürtök](./hdinsight-scaling-best-practices.md)méretezése. Adja meg a parancsot:
+Az [az hdinsight resize használatával](/cli/azure/hdinsight#az_hdinsight_resize) méretezze át a megadott HDInsight-fürtöt a megadott méretre. Szerkessze az alábbi parancsot úgy, hogy lecseréli a `RESOURCE_GROUP_NAME` és `CLUSTER_NAME` a adatokat a megfelelő információkra. Cserélje le a helyére a fürthöz `WORKERNODE_COUNT` kívánt munkavégző csomópontok számát. További információ a fürtök méretezésről: [HDInsight-fürtök skálázása.](./hdinsight-scaling-best-practices.md) Írja be a következő parancsot:
 
 ```azurecli-interactive
 az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --workernode-count WORKERNODE_COUNT
@@ -87,9 +87,9 @@ az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --w
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta, hogyan végezheti el a különböző HDInsight-fürtök felügyeleti feladatait. További tudnivalókért olvassa el a következő cikket:
+Ebben a cikkben megtanulta, hogyan hajthat végre különböző HDInsight-fürtök felügyeleti feladatait. További tudnivalókért olvassa el a következő cikket:
 
-* [Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával](hdinsight-administer-use-portal-linux.md)
-* [HDInsight felügyelete Azure PowerShell használatával](hdinsight-administer-use-powershell.md)
-* [Ismerkedés az Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* [Apache Hadoop-fürtök kezelése a HDInsightban a Azure Portal](hdinsight-administer-use-portal-linux.md)
+* [A HDInsight felügyelete a Azure PowerShell](hdinsight-administer-use-powershell.md)
+* [Első lépések a Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Az Azure CLI használatának első lépései](/cli/azure/get-started-with-azure-cli)

@@ -1,60 +1,60 @@
 ---
-title: Virtuális gépek és méretezési csoport példányainak üzembe helyezése dedikált gazdagépeken a parancssori felület használatával
-description: A virtuális gépek és a méretezési csoport példányainak üzembe helyezése dedikált gazdagépekre az Azure CLI használatával.
+title: Virtuális gépek és méretezésikészlet-példányok üzembe helyezése dedikált gazdagépek számára a CLI használatával
+description: Virtuális gépek és méretezésikészlet-példányok üzembe helyezése dedikált gazdagépek számára az Azure CLI használatával.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: dedicated-hosts
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: 9d4117cafd665556fb60278aa4dc60dc14a27ada
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: adc09bf2572be563ff52cf9fa3d0dea51263d032
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670523"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774412"
 ---
-# <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Üzembe helyezés dedikált gazdagépeken az Azure CLI használatával
+# <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Üzembe helyezés dedikált gazdagépen az Azure CLI használatával
  
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre egy dedikált Azure- [gazdagépet](../dedicated-hosts.md) a virtuális gépek (VM-EK) üzemeltetéséhez. 
+Ez a cikk bemutatja, [](../dedicated-hosts.md) hogyan hozhat létre egy dedikált Azure-gazdagépet a virtuális gépek (VM-ek) számára. 
 
-Győződjön meg arról, hogy telepítette az Azure CLI 2.16.0 vagy újabb verzióját, majd jelentkezzen be egy Azure-fiókba a használatával `az login` . 
+Győződjön meg arról, hogy telepítette az Azure CLI 2.16.0-s vagy újabb verzióját, és bejelentkezett egy Azure-fiókba a `az login` használatával. 
 
 
 ## <a name="limitations"></a>Korlátozások
 
-- A dedikált gazdagépek számára elérhető méretek és hardver típusok régiónként eltérőek. További információért tekintse meg a gazdagép [díjszabását ismertető oldalt](https://aka.ms/ADHPricing) .
+- A dedikált gazdagépekhez elérhető méretek és hardvertípusok régiónként változnak. További információért tekintse meg [a gazdagép díjszabását.](https://aka.ms/ADHPricing)
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása 
-Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozza létre az erőforráscsoportot az az Group Create paranccsal. A következő példában létrehozunk egy *myDHResourceGroup* nevű ERŐFORRÁSCSOPORTOT az *USA keleti* régiójában.
+Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozza létre az erőforráscsoportot az az group create gombra. A következő példában létrehozunk egy *myDHResourceGroup* nevű erőforráscsoportot az *USA keleti régiója* helyen.
 
 ```azurecli-interactive
 az group create --name myDHResourceGroup --location eastus 
 ```
  
-## <a name="list-available-host-skus-in-a-region"></a>Az elérhető gazdagépek listázása egy régióban
+## <a name="list-available-host-skus-in-a-region"></a>Egy régióban elérhető gazdagép-SKUS-k listái
 
-Nem minden gazdagép-SKU érhető el minden régióban és rendelkezésre állási zónában. 
+Nem minden gazdagép termékkódja érhető el minden régióban és rendelkezésre állási zónában. 
 
-A dedikált gazdagépek üzembe helyezésének megkezdése előtt listázhatja az állomás rendelkezésre állását és az ajánlatra vonatkozó korlátozásokat. 
+A dedikált gazdagépek kiépítése előtt sorolja fel a gazdagépek rendelkezésre állását és az esetleges ajánlatkorlátozásokat. 
 
 ```azurecli-interactive
 az vm list-skus -l eastus2  -r hostGroups/hosts  -o table  
 ```
  
-## <a name="create-a-host-group"></a>Gazda csoport létrehozása 
+## <a name="create-a-host-group"></a>Gazdagépcsoport létrehozása 
 
-A **gazda-csoport** egy olyan erőforrás, amely dedikált gazdagépek gyűjteményét jelöli. Egy adott régióban és egy rendelkezésre állási zónában hozhat létre egy gazdagépet, és hozzáadhat gazdagépeket. A magas rendelkezésre állás tervezése során további lehetőségek is rendelkezésre állnak. A dedikált gazdagépekhez a következő lehetőségek közül választhat: 
-- Több rendelkezésre állási zónára kiterjedő span. Ebben az esetben minden használni kívánt zónában rendelkeznie kell egy gazdagép-csoporttal.
-- Több tartalék tartomány között, amelyek fizikai állványokra vannak leképezve. 
+A **gazdagépcsoport** olyan erőforrás, amely dedikált gazdagépek gyűjteményét jelöli. Hozzon létre egy gazdagépcsoportot egy régióban és egy rendelkezésre állási zónában, majd adjon hozzá gazdagépeket. A magas rendelkezésre állás tervezésekor további lehetőségek is rendelkezésre állnak. A következő lehetőségek egyikét vagy mindkettőt használhatja a dedikált gazdagépekkel: 
+- Több rendelkezésre állási zónára is kihathat. Ebben az esetben minden használni kívánt zónában gazdagépcsoportot kell használnia.
+- Több tartalék tartományra is kihathat, amelyek fizikai állványra vannak leképezve. 
  
-Mindkét esetben meg kell adnia a gazdagép-csoport tartalék tartományának darabszámát. Ha nem szeretné a csoportban lévő tartalék tartományokat kivonni, használja az 1. számú tartalék tartományt. 
+Mindkét esetben meg kell adnia a tartalék tartományok számát a gazdagépcsoporthoz. Ha nem szeretné átfogni a tartalék tartományokat a csoportban, használjon 1-es tartaléktartomány-számlálót. 
 
-Dönthet úgy is, hogy a rendelkezésre állási zónákat és a tartalék tartományokat is használja. 
+Dönthet úgy is, hogy a rendelkezésre állási zónákat és a tartalék tartományokat is használnia kell. 
 
 
-Ebben a példában az [az VM Host Group Create](/cli/azure/vm/host/group#az-vm-host-group-create) paranccsal hozzunk létre egy, a rendelkezésre állási zónákat és a tartalék tartományokat használó gazda-csoportot. 
+Ebben a példában az [az vm host group create](/cli/azure/vm/host/group#az_vm_host_group_create) használatával hozunk létre egy gazdagépcsoportot a rendelkezésre állási zónák és a tartalék tartományok használatával. 
 
 ```azurecli-interactive
 az vm host group create \
@@ -64,12 +64,12 @@ az vm host group create \
    --platform-fault-domain-count 2 
 ``` 
 
-Adja hozzá a `--automatic-placement true` paramétert, hogy a virtuális gépek és a méretezési csoport példányai automatikusan a gazdagépekre kerüljenek a gazdagépen belül. További információ: manuális és [automatikus elhelyezés ](../dedicated-hosts.md#manual-vs-automatic-placement).
+Adja hozzá a paramétert, hogy a virtuális gépek és a méretezési csoport példányai automatikusan a gazdagépcsoport `--automatic-placement true` gazdagépeire kerülnek. További információ: Manuális [és automatikus elhelyezés. ](../dedicated-hosts.md#manual-vs-automatic-placement)
 
 
 ### <a name="other-examples"></a>További példák
 
-Azt is megteheti, hogy az [az VM Host Group Create](/cli/azure/vm/host/group#az-vm-host-group-create) paranccsal létrehoz egy gazdagép csoportot az 1. rendelkezésre állási zónában (és nincs tartalék tartomány).
+Az az [vm host group create](/cli/azure/vm/host/group#az_vm_host_group_create) parancs használatával is létrehozhat egy gazdagépcsoportot az 1. rendelkezésre állási zónában (tartalék tartományok nélkül).
 
 ```azurecli-interactive
 az vm host group create \
@@ -79,7 +79,7 @@ az vm host group create \
    --platform-fault-domain-count 1 
 ```
  
-A következő az [az VM Host Group Create](/cli/azure/vm/host/group#az-vm-host-group-create) paranccsal hoz létre egy gazdagépet, amely csak a tartalék tartományokat használja (azokat a régiókat kell használni, ahol a rendelkezésre állási zónák nem támogatottak). 
+A következőkben [az az vm host group create](/cli/azure/vm/host/group#az_vm_host_group_create) használatával hozunk létre egy gazdagépcsoportot csak tartalék tartományokkal (olyan régiókban használhatók, ahol a rendelkezésre állási zónák nem támogatottak). 
 
 ```azurecli-interactive
 az vm host group create \
@@ -90,11 +90,11 @@ az vm host group create \
  
 ## <a name="create-a-host"></a>Gazdagép létrehozása 
 
-Most hozzon létre egy dedikált gazdagépet a gazdagép csoportban. A gazdagép neve mellett meg kell adnia a gazdagéphez tartozó SKU-t is. A gazdagép SKU rögzíti a támogatott virtuálisgép-sorozatot, valamint a dedikált gazdagép hardveres generációját.  
+Most hozzunk létre egy dedikált gazdagépet a gazdagépcsoportban. A gazdagép neve mellett meg kell adnia a gazdagép termékváltozatát is. A gazdagép termékváltozata rögzíti a támogatott virtuálisgép-sorozatokat, valamint a dedikált gazdagép hardvergenerációját.  
 
-A gazdagép SKU-ról és a díjszabásról további információt az [Azure dedikált gazdagép díjszabása](https://aka.ms/ADHPricing)című témakörben talál.
+A gazdagép-termékcsomagokkal és -díjszabással kapcsolatos további információkért lásd: [Azure Dedicated Host díjszabása.](https://aka.ms/ADHPricing)
 
-A gazdagép létrehozásához használja [az az VM Host Create](/cli/azure/vm/host#az-vm-host-create) paranccsal. Ha a gazdagéphez a tartalék tartományokat állítja be, a rendszer megkéri, hogy adja meg a gazdagép tartalék tartományát.  
+Gazdagép [létrehozásához használja](/cli/azure/vm/host#az_vm_host_create) az az vm host create használhatja. Ha a gazdagépcsoport tartalék tartományszámát adja meg, a gazdagép tartalék tartományának megadására lesz szükség.  
 
 ```azurecli-interactive
 az vm host create \
@@ -108,7 +108,7 @@ az vm host create \
 
  
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása 
-Hozzon létre egy dedikált gazdagépen belüli virtuális gépet [az az VM Create](/cli/azure/vm#az-vm-create)paranccsal. Ha a rendelkezésre állási zónát a gazda csoport létrehozásakor adta meg, akkor ugyanazt a zónát kell használnia a virtuális gép létrehozásakor.
+Hozzon létre egy virtuális gépet egy dedikált gazdagépen [az az vm create használatával.](/cli/azure/vm#az_vm_create) Ha a gazdagépcsoport létrehozásakor rendelkezésre állási zónát adott meg, ugyanazt a zónát kell használnia a virtuális gép létrehozásakor.
 
 ```azurecli-interactive
 az vm create \
@@ -121,14 +121,14 @@ az vm create \
    --zone 1
 ```
 
-Ha a virtuális gépet egy adott gazdagépre kívánja helyezni, használja a (z `--host` ) helyett a gazdagépet `--host-group` .
+Ha a virtuális gépet egy adott gazdagépen kell elhelyezésre használnia, a gazdagépcsoport megadása helyett használja a `--host` következőt: `--host-group` .
  
 > [!WARNING]
-> Ha olyan gazdagépen hoz létre virtuális gépet, amely nem rendelkezik elegendő erőforrással, a virtuális gép hibás állapotban lesz létrehozva. 
+> Ha olyan gazdagépen hoz létre virtuális gépet, amely nem rendelkezik elegendő erőforrással, a virtuális gép SIKERTELEN állapotban jön létre. 
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása 
 
-Méretezési csoport telepítésekor meg kell adnia a gazdagépet.
+Méretezési csoport üzembe helyezésekor meg kell adnia a gazdagépcsoportot.
 
 ```azurecli-interactive
 az vmss create \
@@ -144,12 +144,12 @@ az vmss create \
   --zone 1
 ```
 
-Ha manuálisan szeretné kiválasztani a méretezési csoport üzembe helyezéséhez szükséges gazdagépet, adja hozzá a `--host` nevet és a gazdagép nevét.
+Ha manuálisan szeretné kiválasztani, hogy melyik gazdagépre szeretné telepíteni a méretezési készletet, adja hozzá a nevet és `--host` a gazdagép nevét.
 
 
-## <a name="check-the-status-of-the-host"></a>A gazdagép állapotának keresése
+## <a name="check-the-status-of-the-host"></a>A gazdagép állapotának ellenőrzése
 
-Megtekintheti a gazdagép állapotának állapotát, valamint azt, hogy hány virtuális gépet telepíthet tovább a gazdagépre az [az VM Host Get-instance-View](/cli/azure/vm/host#az-vm-host-get-instance-view)paranccsal.
+Az [az vm host get-instance-view](/cli/azure/vm/host#az_vm_host_get_instance_view)használatával ellenőrizheti a gazdagép állapotát és azt, hogy hány virtuális gépet helyezhet üzembe még a gazdagépen.
 
 ```azurecli-interactive
 az vm host get-instance-view \
@@ -157,7 +157,7 @@ az vm host get-instance-view \
    --host-group myHostGroup \
    --name myHost
 ```
- A kimenet a következőhöz hasonlóan fog kinézni:
+ A kimenet a következő módon fog kinézni:
  
 ```json
 {
@@ -256,15 +256,15 @@ az vm host get-instance-view \
 ```
  
 ## <a name="export-as-a-template"></a>Exportálás sablonként 
-Ha most szeretne létrehozni egy további fejlesztési környezetet ugyanazzal a paraméterekkel, vagy egy olyan éles környezettel, amely megfelel a sablonnak, exportálhat egy sablont is. A Resource Manager JSON-sablonokat használ, amelyek meghatározzák a környezet összes paraméterét. A JSON-sablonra hivatkozó teljes környezeteket hozhat létre. A JSON-sablonokat manuálisan is létrehozhatja, vagy exportálhat egy meglévő környezetet a JSON-sablon létrehozásához. Az az [Group export](/cli/azure/group#az-group-export) paranccsal exportálhatja az erőforráscsoportot.
+Exportálhat egy sablont, ha most egy további fejlesztési környezetet szeretne létrehozni ugyanazokkal a paraméterekkel, vagy egy olyan éles környezetet, amely megfelel a sablonnak. Resource Manager JSON-sablonokat használ, amelyek meghatározzák a környezet összes paraméterét. A JSON-sablonra hivatkozva teljes környezeteket építhet ki. A JSON-sablonokat létrehozhatja manuálisan, vagy exportálhat egy meglévő környezetet a JSON-sablon létrehozásához. Az [az group export használatával](/cli/azure/group#az_group_export) exportálja az erőforráscsoportot.
 
 ```azurecli-interactive
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
 ```
 
-Ez a parancs az `myDHResourceGroup.json` aktuális munkakönyvtárban hozza létre a fájlt. Amikor létrehoz egy környezetet a sablonból, a rendszer az összes erőforrás nevét kéri. Ezeket a neveket feltöltheti a sablon fájljába úgy, hogy hozzáadja a `--include-parameter-default-value` paramétert a `az group export` parancshoz. Szerkessze a JSON-sablont az erőforrásnevek megadásához, vagy hozzon létre egy parameters.jsaz erőforrás nevét megadó fájlon.
+Ez a parancs létrehozza `myDHResourceGroup.json` a fájlt az aktuális munkakönyvtárban. Amikor létrehoz egy környezetet ebből a sablonból, a rendszer az összes erőforrásnevet kéri. Ezeket a neveket feltöltheti a sablonfájlban, ha hozzáadja a `--include-parameter-default-value` paramétert a `az group export` parancshoz. Szerkessze a JSON-sablont az erőforrásnevek megadásához, vagy hozzon létre egy parameters.js, amely megadja az erőforrásneveket.
  
-Ha létre szeretne hozni egy környezetet a sablonból, használja az [az üzembe helyezési csoport létrehozása](/cli/azure/deployment/group#az_deployment_group_create)elemet.
+Környezet sablonból való létrehozásához használja [az az deployment group create et.](/cli/azure/deployment/group#az_deployment_group_create)
 
 ```azurecli-interactive
 az deployment group create \ 
@@ -275,27 +275,27 @@ az deployment group create \
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása 
 
-A dedikált gazdagépekre akkor is díjat számítunk fel, ha nincsenek virtuális gépek üzembe helyezése. Minden olyan gazdagépet törölni kell, amelyet jelenleg nem használ a költségek megtakarítására.  
+A dedikált gazdagépekért akkor is díjat számítunk fel, ha nincsenek virtuális gépek telepítve. A költségek csökkentése érdekében törölje az összes olyan gazdagépet, amely jelenleg nincs használatban.  
 
-Csak akkor törölhet egy gazdagépet, ha már nem használja a virtuális gépeket. Törölje a virtuális gépeket az [az VM delete](/cli/azure/vm#az-vm-delete)paranccsal.
+Csak akkor törölhet gazdagépeket, ha már nem használják azokat virtuális gépek. Törölje a virtuális gépeket az [az vm delete parancs használatával.](/cli/azure/vm#az_vm_delete)
 
 ```azurecli-interactive
 az vm delete -n myVM -g myDHResourceGroup
 ```
 
-A virtuális gépek törlése után törölheti a gazdagépet az [az VM Host delete](/cli/azure/vm/host#az-vm-host-delete)paranccsal.
+A virtuális gépek törlése után az az vm host delete parancs használatával törölheti a [gazdagépet.](/cli/azure/vm/host#az_vm_host_delete)
 
 ```azurecli-interactive
 az vm host delete -g myDHResourceGroup --host-group myHostGroup --name myHost 
 ```
  
-Miután törölte az összes gazdagépet, törölheti a gazdagép csoportot az [az VM Host Group delete](/cli/azure/vm/host/group#az-vm-host-group-delete)paranccsal.  
+Miután törölte az összes gazdagépet, törölheti a gazdagépcsoportot [az az vm host group delete parancs használatával.](/cli/azure/vm/host/group#az_vm_host_group_delete)  
  
 ```azurecli-interactive
 az vm host group delete -g myDHResourceGroup --host-group myHostGroup  
 ```
  
-A teljes erőforráscsoportot egyetlen parancsban is törölheti. Ezzel törli a csoportban létrehozott összes erőforrást, beleértve az összes virtuális gépet, gazdagépet és gazdagépet is.
+A teljes erőforráscsoportot egyetlen paranccsal is törölheti. Ezzel törli a csoportban létrehozott összes erőforrást, beleértve az összes virtuális gép, gazdagép és gazdagépcsoportot is.
  
 ```azurecli-interactive
 az group delete -n myDHResourceGroup 
@@ -303,8 +303,8 @@ az group delete -n myDHResourceGroup
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információt a [dedikált gazdagépek](../dedicated-hosts.md) áttekintése című témakörben talál.
+- További információ: Dedikált [gazdagépek](../dedicated-hosts.md) áttekintése.
 
-- A [Azure Portal](../dedicated-hosts-portal.md)használatával dedikált gazdagépeket is létrehozhat.
+- Dedikált gazdagépeket is létrehozhat a [Azure Portal.](../dedicated-hosts-portal.md)
 
-- [Itt](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)található egy minta sablon, amely mindkét zónát és tartalék tartományt használja a maximális rugalmasság érdekében egy régióban.
+- Itt található egy [](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)mintasablon, amely zónákat és tartalék tartományokat is használ a maximális rugalmasság érdekében egy adott régióban.

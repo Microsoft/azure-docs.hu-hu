@@ -4,7 +4,7 @@
   items:
     - name: Az Azure VMware Solution ismertetése
       href: introduction.md
-    - name: Platform frissítései
+    - name: Platformfrissítések
       href: azure-vmware-solution-platform-updates.md
 - name: Első lépések
   items:
@@ -34,7 +34,7 @@
       href: tutorial-deploy-vmware-hcx.md
     - name: 8 – Magánfelhő skálázása
       href: tutorial-scale-private-cloud.md
-    - name: 9 – privát felhő törlése
+    - name: 9 – Magánfelhő törlése
       href: tutorial-delete-private-cloud.md
 - name: Alapelvek
   items:
@@ -52,9 +52,9 @@
       href: concepts-upgrades.md
 - name: Útmutatók
   items:
-    - name: A gazdagép kvótájának kérése és az Azure VMware-megoldás engedélyezése
+    - name: Gazdagépkvóta kérése és a Azure VMware Solution
       href: enable-azure-vmware-solution.md
-    - name: EA-és CSP-előfizetések áthelyezése
+    - name: EA- és CSP-előfizetések áthelyezése
       href: move-ea-csp-subscriptions.md
     - name: Költségcsökkentés fenntartott példánnyal
       href: reserved-instance.md
@@ -72,13 +72,13 @@
       href: create-ipsec-tunnel.md
     - name: Windows Server feladatátvevő fürt
       href: windows-server-failover-cluster.md
-    - name: VSphere hitelesítő adatainak alaphelyzetbe állítása
+    - name: A vSphere hitelesítő adatainak alaphelyzetbe állítása
       href: reset-vsphere-credentials.md
     - name: Vészhelyreállítás
       items:
         - name: Vészhelyreállítás üzembe helyezése virtuális gépekhez
           href: disaster-recovery-for-virtual-machines.md
-        - name: Vész-helyreállítás az Azure-ba
+        - name: Vészhelyreállítás az Azure-ba
           items:
             - name: Az Azure előkészítése
               href: /azure/site-recovery/avs-tutorial-prepare-azure?context=/azure/azure-vmware/context/context
@@ -116,7 +116,7 @@
           href: protect-azure-vmware-solution-with-application-gateway.md
         - name: Traffic Manager
           href: deploy-traffic-manager-balance-workloads.md
-        - name: Riasztások konfigurálása és metrikák használata
+        - name: Riasztások konfigurálása és metrikákkal való munka
           href: configure-alerts-for-azure-vmware-solution.md
     - name: VMware-megoldások
       items:
@@ -124,13 +124,13 @@
           href: vrealize-operations-for-azure-vmware-solution.md
         - name: A VMware Horizon üzembe helyezése
           href: azure-vmware-solution-horizon.md
-        - name: Virtuális gépek üzembe helyezése a tartalom könyvtárából
+        - name: Virtuális gépek üzembe helyezése a tartalomtárból
           href: deploy-vm-content-library.md
     - name: VMware-ökoszisztéma
       items:
         - name: Biztonsági mentési megoldások virtuális gépekhez
           href: ecosystem-back-up-vms.md
-        - name: Áttelepítési megoldások a virtuális gépekhez
+        - name: Migrálási megoldások virtuális gépekhez
           href: ecosystem-migration-vms.md
 - name: További források
   items:
@@ -138,23 +138,25 @@
       items:
         - name: Támogatási kérés megnyitása a sikertelen üzembe helyezésekhez
           href: fix-deployment-provisioning-failures.md
+        - name: VMware-eszközök vix hibakód = 21009
+          href: 'https://kb.vmware.com/s/article/2129927'
     - name: GYIK
       items:
         - name: Általános kérdések
           href: /azure/azure-vmware/faq#general
-        - name: Ügyfél-kommunikáció
+        - name: Ügyfélkommunikáció
           href: /azure/azure-vmware/faq#customer-communication
         - name: Konfigurálás és beállítás
           href: /azure/azure-vmware/faq#configuration-and-setup
-        - name: VMware szoftver
+        - name: VMware-szoftver
           href: /azure/azure-vmware/faq#vmware-software
-        - name: 'Számítás, biztonsági mentés és vész-helyreállítás'
+        - name: 'Számítás, biztonsági mentés és vészhelyreállítás'
           href: '/azure/azure-vmware/faq#compute,-backup,-and-disaster-recovery'
-        - name: Hálózatkezelés és kapcsolat
+        - name: Hálózat és összekapcsolás
           href: /azure/azure-vmware/faq#networking-and-interconnectivity
         - name: Tárolás
           href: /azure/azure-vmware/faq#storage
-        - name: 'Gazdagépek, fürtök és privát felhők'
+        - name: 'Gazdagépek, fürtök és magánfelhők'
           href: '/azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds'
         - name: Identitáskezelés
           href: /azure/azure-vmware/faq#identity-management
@@ -164,13 +166,13 @@
       items:
         - name: Lejátszási lista
           href: 'https://youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin'
-        - name: Integráció az Azure-szolgáltatással
+        - name: Integráció az Azure szolgáltatással
           href: 'https://youtu.be/m26iLu6DHbU'
-        - name: Integráció az Azure Application Gateway
+        - name: Integráció a Azure Application Gateway
           href: 'https://youtu.be/BoQYvqzb6Y8'
-        - name: Áttelepítés és kapacitás megtervezése
+        - name: Migrálás és kapacitástervezés
           href: 'https://youtu.be/NoNG-hkksrA'
-        - name: VCenter elforgatása az Azure Logic App használatával & NSX-T jelszavakkal
+        - name: VCenter-& NSX-T-jelszavak váltása az Azure Logic App használatával
           href: 'https://youtu.be/cK1qY3knj88'
 - name: Referencia
   items:

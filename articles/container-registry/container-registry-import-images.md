@@ -1,57 +1,57 @@
 ---
 title: Tárolórendszerképek importálása
-description: A tároló lemezképeit az Azure API-k használatával importálhatja egy Azure Container registrybe anélkül, hogy a Docker-parancsokat kellene futtatnia.
+description: Tároló rendszerképeket importálhat egy Azure Container Registrybe Azure API-k használatával Anélkül, hogy Docker-parancsokat kellene futtatnia.
 ms.topic: article
 ms.date: 01/15/2021
-ms.openlocfilehash: b481a2b4f0a08f0ccbfd33f7059e5d8e0c04f5f0
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: e7becadab7f23acd7b85d6d82fd8abbfa7608add
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221500"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781522"
 ---
-# <a name="import-container-images-to-a-container-registry"></a>Tároló-lemezképek importálása egy tároló-beállításjegyzékbe
+# <a name="import-container-images-to-a-container-registry"></a>Tároló rendszerképének importálása egy tároló-beállításjegyzékbe
 
-A tárolók lemezképeit egyszerűen importálhatja egy Azure Container registrybe Docker-parancsok használata nélkül. Például importálhatja a lemezképeket egy fejlesztői beállításjegyzékből egy éles beállításjegyzékbe, vagy átmásolhatja az alaplemezképeket egy nyilvános beállításjegyzékből.
+Docker-parancsok használata nélkül egyszerűen importálhat (másolhat) tároló rendszerképeket egy Azure Container Registrybe. Importálhat például rendszerképeket egy fejlesztési regisztrációs adatbázisból egy éles regisztrációs adatbázisba, vagy alapként használható rendszerképeket másolhat egy nyilvános regisztrációs adatbázisból.
 
-Azure Container Registry a lemezképek és egyéb összetevők meglévő beállításjegyzékből való másolásának számos gyakori forgatókönyvét kezeli:
+Azure Container Registry a képek és egyéb összetevők meglévő regisztrációs adatbázisból való másolásának gyakori forgatókönyvét is kezeli:
 
-* Lemezképek importálása nyilvános beállításjegyzékből
+* Rendszerképek importálása nyilvános beállításjegyzékből
 
-* Képek vagy OCI-összetevők importálása, beleértve a Helm 3 diagramot egy másik Azure Container registryből, ugyanabban vagy egy másik Azure-előfizetésben vagy-bérlőben
+* Rendszerképek vagy OCI-összetevők importálása, beleértve a Helm 3-diagramokat egy másik Azure-beli tároló-beállításjegyzékből, ugyanabban vagy egy másik Azure-előfizetésben vagy -bérlőben
 
-* Importálás nem Azure Private Container registryből
+* Importálás nem Azure-beli privát tárolójegyzékből
 
-A rendszerkép importálása az Azure Container registrybe az alábbi előnyökkel jár a Docker CLI-parancsok használatakor:
+Az Azure Container Registrybe történő rendszerkép-importálás a következő előnyökkel jár a Docker PARANCSSORi felületi parancsokkal való használata felett:
 
-* Mivel az ügyfél-környezet nem igényel helyi Docker-telepítést, importálja a tárolók rendszerképét a támogatott operációsrendszer-típustól függetlenül.
+* Mivel az ügyfélkörnyezetben nincs szükség helyi Docker-telepítésre, a támogatott operációs rendszer típusától függetlenül importálja a tárolórendszerképeket.
 
-* Ha többarchitektúrás képeket (például hivatalos Docker-lemezképeket) importál, a jegyzékben megadott összes architektúrához és platformhoz tartozó lemezképet másolja a rendszer.
+* Amikor többarchitektúraű rendszerképeket (például hivatalos Docker-rendszerképeket) importál, a rendszer a jegyzéklistában megadott összes architektúra és platform rendszerképét átmásolja.
 
-* A cél-beállításjegyzék eléréséhez nem szükséges a beállításjegyzék nyilvános végpontjának használata.
+* A céljegyzékhez való hozzáférésnek nem kell a regisztrációs adatbázis nyilvános végpontját használnia.
 
-A tároló-lemezképek importálásához ehhez a cikkhez az Azure CLI-t Azure Cloud Shell vagy helyileg kell futtatni (2.0.55 vagy újabb verzió ajánlott). A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
+A tároló rendszerképének importálásához ehhez a cikkhez az Azure CLI-t Azure Cloud Shell helyileg kell futtatnia (2.0.55-ös vagy újabb verzió ajánlott). A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
 > [!NOTE]
-> Ha azonos tároló-lemezképeket kell terjeszteni több Azure-régióban, Azure Container Registry a [geo-replikációt](container-registry-geo-replication.md)is támogatja. Ha földrajzilag replikál egy beállításjegyzéket (prémium szintű szolgáltatási szint szükséges), egyszerre több régiót is felhasználhat, amelyek azonos képpel és címkékkel rendelkeznek egyetlen beállításjegyzékből.
+> Ha azonos tároló rendszerképeket kell elosztani több Azure-régióban, a Azure Container Registry támogatja a [georeplikációt is.](container-registry-geo-replication.md) Egy beállításjegyzék georeplikálása (prémium szolgáltatási szint szükséges) több régiót is kiszolgálhat azonos rendszerkép- és címkenevekkel egyetlen beállításjegyzékből.
 >
 
 > [!IMPORTANT]
-> A két Azure Container-nyilvántartó közötti Képimportálási változás a 2021-as januári értékkel lett bevezetve:
-> * A hálózatra korlátozott Azure Container Registry-be vagy abból történő importáláshoz a korlátozott beállításjegyzéknek engedélyeznie kell a [**megbízható szolgáltatások hozzáférését**](allow-access-trusted-services.md) a hálózat megkerüléséhez. Alapértelmezés szerint a beállítás engedélyezve van, ami lehetővé teszi az importálást. Ha a beállítás nincs engedélyezve egy olyan újonnan létrehozott beállításjegyzékben, amely privát végponttal vagy a beállításjegyzék tűzfalszabályok szabályaival rendelkezik, az importálás sikertelen lesz. 
-> * Egy meglévő, az importálás forrásaként vagy célként használt, hálózatra korlátozott Azure Container registryben ez a hálózati biztonsági funkció nem kötelező, de ajánlott.
+> 2021 januárja óta módosult a rendszerkép importálása két Azure-beli tárolóregisztráló között:
+> * A hálózati korlátozás alá tartozó Azure Container Registrybe [](allow-access-trusted-services.md) vagy onnan történő importáláshoz a korlátozott regisztrációs adatbázisra van szükség ahhoz, hogy a megbízható szolgáltatások hozzáférve megkerüljék a hálózatot. Alapértelmezés szerint a beállítás engedélyezve van, ami lehetővé teszi az importálást. Ha a beállítás nincs engedélyezve privát végponttal rendelkező újonnan létrehozott beállításjegyzékben vagy beállításjegyzékbeli tűzfalszabályokkal, az importálás sikertelen lesz. 
+> * Importálási forrásként vagy célként használt meglévő, hálózatra korlátozott Azure Container Registryben a hálózati biztonsági funkció engedélyezése nem kötelező, de ajánlott.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nem rendelkezik Azure Container registryvel, hozzon létre egy beállításjegyzéket. A lépéseket a rövid útmutató [: privát tároló beállításjegyzékének létrehozása az Azure CLI használatával](container-registry-get-started-azure-cli.md)című témakörben tekintheti meg.
+Ha még nem rendelkezik Azure Container Registryvel, hozzon létre egy regisztrációs adatbázist. A lépésekért lásd: Rövid útmutató: Privát tároló-beállításjegyzék létrehozása [az Azure CLI használatával.](container-registry-get-started-azure-cli.md)
 
-Egy rendszerkép Azure Container registrybe való importálásához az identitásnak írási engedéllyel kell rendelkeznie a célként megadott beállításjegyzékhez (legalább közreműködői szerepkörhöz vagy egy egyéni szerepkörhöz, amely engedélyezi a importImage műveletet). Lásd: [Azure Container Registry szerepkörök és engedélyek](container-registry-roles.md#custom-roles). 
+Ahhoz, hogy rendszerképet importálni tud egy Azure Container Registrybe, az identitásnak írási engedéllyel kell rendelkeznie a céljegyzékhez (legalább Közreműködő szerepkör, vagy egy egyéni szerepkör, amely engedélyezi az importImage műveletet). Lásd: [Azure Container Registry szerepkörök és engedélyek.](container-registry-roles.md#custom-roles) 
 
 ## <a name="import-from-a-public-registry"></a>Importálás nyilvános beállításjegyzékből
 
-### <a name="import-from-docker-hub"></a>Importálás a Docker hub-ból
+### <a name="import-from-docker-hub"></a>Importálás Docker Hub
 
-Például az az [ACR import][az-acr-import] paranccsal importálhatja a multi-Architecture `hello-world:latest` rendszerképet a Docker hub-ból egy *myregistry* nevű beállításjegyzékbe. Mivel a `hello-world` a Docker hub hivatalos rendszerképe, ez a rendszerkép az alapértelmezett `library` tárházban található. Adja meg az adattár nevét és opcionálisan egy címkét a `--source` rendszerkép paraméter értékében. (A képet a jegyzékfájlja alapján is azonosíthatja, a címke alapján, amely a rendszerkép egy adott verzióját garantálja.)
+Az az [acr import][az-acr-import] paranccsal például importálhatja a többarchitektúra-rendszerképet a Docker Hub egy `hello-world:latest` *myregistry* nevű regisztrációs adatbázisba. Mivel a egy hivatalos rendszerkép a Docker Hub, ez a rendszerkép `hello-world` az alapértelmezett `library` adattárban van. A képparaméter értékének tartalmaznia kell az adattár nevét és opcionálisan egy `--source` címkét. (Ha szükséges, a rendszerképet címke helyett jegyzékkivonata alapján is azonosíthatja, ami garantálja a rendszerkép egy adott verzióját.)
  
 ```azurecli
 az acr import \
@@ -60,7 +60,7 @@ az acr import \
   --image hello-world:latest
 ```
 
-A következő parancs futtatásával ellenőrizheti, hogy a képhez több jegyzékfájl is társítva van-e `az acr repository show-manifests` :
+A parancs futtatásával ellenőrizheti, hogy több jegyzék van-e társítva ehhez a `az acr repository show-manifests` rendszerképhez:
 
 ```azurecli
 az acr repository show-manifests \
@@ -68,7 +68,7 @@ az acr repository show-manifests \
   --repository hello-world
 ```
 
-Ha rendelkezik [Docker hub-fiókkal](https://www.docker.com/pricing), javasoljuk, hogy használja a hitelesítő adatokat, amikor a Docker hub-ból importál egy rendszerképet. Adja át a Docker hub felhasználónevét és jelszavát, vagy egy [személyes hozzáférési tokent](https://docs.docker.com/docker-hub/access-tokens/) paraméterként a következőhöz: `az acr import` . Az alábbi példa egy nyilvános rendszerképet importál a `tensorflow` Docker hub-adattárból a Docker hub hitelesítő adatainak használatával:
+Ha a [fiókkal Docker Hub,](https://www.docker.com/pricing)javasoljuk, hogy használja a hitelesítő adatokat, amikor lemezképet importál a Docker Hub. Adja át Docker Hub felhasználónevet és a jelszót vagy egy személyes hozzáférési [jogkivonatot](https://docs.docker.com/docker-hub/access-tokens/) paraméterként a `az acr import` számára. Az alábbi példa importál egy nyilvános rendszerképet a Docker Hub `tensorflow` adattárából a Docker Hub használatával:
 
 ```azurecli
 az acr import \
@@ -79,9 +79,9 @@ az acr import \
   --password <Docker Hub token>
 ```
 
-### <a name="import-from-microsoft-container-registry"></a>Importálás a Microsoft Container Registryból
+### <a name="import-from-microsoft-container-registry"></a>Importálás Microsoft Container Registry
 
-Importálja például a `ltsc2019` Windows Server Core rendszerképet a `windows` tárházból a Microsoft Container Registryban.
+Importálja például a `ltsc2019` Windows Server Core-rendszerképet az `windows` Microsoft Container Registry.
 
 ```azurecli
 az acr import \
@@ -90,21 +90,21 @@ az acr import \
 --image servercore:ltsc2019
 ```
 
-## <a name="import-from-an-azure-container-registry-in-the-same-ad-tenant"></a>Importálás egy Azure Container registryből ugyanabban az AD-bérlőben
+## <a name="import-from-an-azure-container-registry-in-the-same-ad-tenant"></a>Importálás azure-beli tároló-beállításjegyzékből ugyanabban az AD-bérlőben
 
-Az Azure Container registryből is importálhat rendszerképet ugyanabban az AD-bérlőn, integrált Azure Active Directory engedélyek használatával.
+Importálhat egy rendszerképet egy azure-beli tárolójegyzékből ugyanabba az AD-bérlőbe integrált Azure Active Directory engedélyekkel.
 
-* Az identitásnak Azure Active Directory engedélyekkel kell rendelkeznie a forrás-beállításjegyzékből (olvasói szerepkör) való olvasáshoz, illetve a cél beállításjegyzékbe való importáláshoz (közreműködő szerepkör vagy egy [Egyéni szerepkör](container-registry-roles.md#custom-roles) , amely engedélyezi a importImage műveletet).
+* Az identitásnak rendelkeznie kell Azure Active Directory engedéllyel ahhoz, hogy beolvassa a forrás beállításjegyzékből [](container-registry-roles.md#custom-roles) (Olvasó szerepkör), és importálni tudja a cél beállításjegyzékbe (Közreműködő szerepkör, vagy egy egyéni szerepkör, amely engedélyezi az importImage műveletet).
 
-* A beállításjegyzék lehet ugyanabban a Active Directory-bérlőben vagy egy másik Azure-előfizetésben.
+* A regisztrációs adatbázis lehet ugyanabban vagy egy másik Azure-előfizetésben ugyanabban a Active Directory bérlőben.
 
-* Előfordulhat, hogy a forrás beállításjegyzékhez [való nyilvános hozzáférés](container-registry-access-selected-networks.md#disable-public-network-access) le van tiltva. Ha a nyilvános hozzáférés le van tiltva, adja meg a forrás beállításjegyzéket erőforrás-azonosító alapján a beállításjegyzék bejelentkezési kiszolgálójának neve helyett.
+* [Előfordulhat, hogy](container-registry-access-selected-networks.md#disable-public-network-access) a forrásjegyzékhez való nyilvános hozzáférés le van tiltva. Ha a nyilvános hozzáférés le van tiltva, a beállításjegyzék bejelentkezési kiszolgálójának neve helyett erőforrás-azonosító alapján adja meg a forrás-beállításjegyzéket.
 
-* Ha a forrás-és/vagy a célként megadott beállításjegyzékben van egy magánhálózati vagy beállításjegyzékbeli tűzfalszabály, győződjön meg arról, hogy a korlátozott beállításjegyzék [lehetővé teszi a megbízható szolgáltatások](allow-access-trusted-services.md) számára a hálózat elérését.
+* Ha a forrás-beállításjegyzék és/vagy a céljegyzék privát végponttal vagy beállításjegyzékbeli tűzfalszabályokkal rendelkezik, győződjön meg arról, hogy a korlátozott beállításjegyzék engedélyezi a megbízható szolgáltatások hozzáférését a hálózathoz. [](allow-access-trusted-services.md)
 
-### <a name="import-from-a-registry-in-the-same-subscription"></a>Importálás ugyanabba az előfizetésbe tartozó beállításjegyzékből
+### <a name="import-from-a-registry-in-the-same-subscription"></a>Importálás ugyanabban az előfizetésben egy regisztrációs adatbázisból
 
-Importálhatja például a `aci-helloworld:latest` rendszerképet egy forrás-beállításjegyzék *mysourceregistry* , hogy ugyanabba az Azure-előfizetésbe *myregistry* .
+Importálhatja például a rendszerképet `aci-helloworld:latest` a *mysourceregistry* forrásjegyzékből a *myregistry* adatbázisba ugyanabban az Azure-előfizetésben.
 
 ```azurecli
 az acr import \
@@ -113,7 +113,7 @@ az acr import \
   --image aci-helloworld:latest
 ```
 
-A következő példa importálja a `aci-helloworld:latest` rendszerképet egy olyan *myregistry* - *mysourceregistry* , amelyben a beállításjegyzék nyilvános végpontjának hozzáférése le van tiltva. Adja meg a forrás-beállításjegyzék erőforrás-AZONOSÍTÓját a (z `--registry` ) paraméterrel. Figyelje `--source` meg, hogy a paraméter csak a forrás tárházat és a címkét adja meg, nem a beállításjegyzék bejelentkezési kiszolgálójának nevét.
+Az alábbi példa importálja `aci-helloworld:latest` a rendszerképet a *myregistry* forrásjegyzékből a *mysourceregistry* forrásjegyzékbe, ahol a regisztrációs adatbázis nyilvános végpontjának elérése le van tiltva. A paraméterrel meg kell adni a forrás-beállításjegyzék `--registry` erőforrás-azonosítóját. Figyelje meg, hogy a paraméter csak a forrásadattárat és a címkét adja meg, a beállításjegyzék bejelentkezési `--source` kiszolgálójának nevét nem.
 
 ```azurecli
 az acr import \
@@ -123,7 +123,7 @@ az acr import \
   --registry /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
 ```
 
-Az alábbi példa egy képet a manifest Digest (SHA-256 kivonat, amely a következőképpen jelenik meg) alapján importál a `sha256:...` címke helyett:
+Az alábbi példa egy képet importál jegyzékkivonattal (SHA-256 kivonat, ként jelölő ) a `sha256:...` címke helyett:
 
 ```azurecli
 az acr import \
@@ -131,9 +131,9 @@ az acr import \
   --source mysourceregistry.azurecr.io/aci-helloworld@sha256:123456abcdefg 
 ```
 
-### <a name="import-from-a-registry-in-a-different-subscription"></a>Importálás egy másik előfizetésben lévő beállításjegyzékből
+### <a name="import-from-a-registry-in-a-different-subscription"></a>Importálás másik előfizetésben egy beállításjegyzékből
 
-A következő példában a *mysourceregistry* egy másik előfizetésben található a *myregistry* ugyanazon a Active Directory bérlőn. Adja meg a forrás-beállításjegyzék erőforrás-AZONOSÍTÓját a (z `--registry` ) paraméterrel. Figyelje `--source` meg, hogy a paraméter csak a forrás tárházat és a címkét adja meg, nem a beállításjegyzék bejelentkezési kiszolgálójának nevét.
+A következő példában a *mysourceregistry* egy másik előfizetésben van, mint a *myregistry* ugyanabban a Active Directory bérlőben. A paraméterrel meg kell adni a forrás-beállításjegyzék `--registry` erőforrás-azonosítóját. Figyelje meg, hogy a paraméter csak a forrásadattárat és a címkét adja meg, a beállításjegyzék bejelentkezési `--source` kiszolgálójának nevét nem.
 
 ```azurecli
 az acr import \
@@ -143,22 +143,9 @@ az acr import \
   --registry /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
 ```
 
-### <a name="import-from-a-registry-using-service-principal-credentials"></a>Importálás beállításjegyzékből az egyszerű szolgáltatásnév hitelesítő adataival
+### <a name="import-from-a-registry-using-service-principal-credentials"></a>Importálás beállításjegyzékből szolgáltatásnév hitelesítő adataival
 
-Ha olyan beállításjegyzékből szeretne importálni, amely nem fér hozzá az integrált Active Directory engedélyek használatával, az egyszerű szolgáltatás hitelesítő adatait (ha elérhető) is használhatja a forrás-beállításjegyzékbe. Adja meg egy olyan Active Directory [egyszerű szolgáltatásnév](container-registry-auth-service-principal.md) appID és jelszavát, amely ACRPull hozzáféréssel rendelkezik a forrás-beállításjegyzékhez. Egyszerű szolgáltatásnév használata olyan rendszerek és más felügyelet nélküli rendszerek esetében hasznos, amelyeknek lemezképeket kell importálni a beállításjegyzékbe.
-
-```azurecli
-az acr import \
-  --name myregistry \
-  --source sourceregistry.azurecr.io/sourcerrepo:tag \
-  --image targetimage:tag \
-  --username <SP_App_ID> \
-  --password <SP_Passwd>
-```
-
-## <a name="import-from-an-azure-container-registry-in-a-different-ad-tenant"></a>Importálás egy Azure Container registryből egy másik AD-bérlőben
-
-Ha egy másik Azure Active Directory bérlőben lévő Azure Container registryből szeretne importálni, adja meg a forrás beállításjegyzéket a bejelentkezési kiszolgáló neve alapján, és adja meg a felhasználónevet és a jelszót hitelesítő adatokat, amelyek engedélyezik a beállításjegyzékhez való lekéréses hozzáférést. Használjon például egy [adattárház-hatókörű tokent](container-registry-repository-scoped-permissions.md) és jelszót, vagy egy Active Directory [egyszerű](container-registry-auth-service-principal.md) appID és jelszavát, amely ACRPull hozzáféréssel rendelkezik a forrás-beállításjegyzékhez. 
+Ha integrált Active Directory engedélyekkel nem fér hozzá a regisztrációs adatbázisból való importáláshoz, használja a forrás beállításjegyzék szolgáltatásnévhez való hitelesítő adatait (ha elérhető). A forrásjegyzékhez ACRPull-hozzáféréssel Active Directory szolgáltatásnév appID-ját és jelszavát kell megadnia. [](container-registry-auth-service-principal.md) A szolgáltatásnév használata olyan buildrendszerek és más felügyelet nélküli rendszerek esetében hasznos, amelyek lemezképeket importálnak a regisztrációs adatbázisba.
 
 ```azurecli
 az acr import \
@@ -169,9 +156,22 @@ az acr import \
   --password <SP_Passwd>
 ```
 
-## <a name="import-from-a-non-azure-private-container-registry"></a>Importálás nem Azure Private Container registryből
+## <a name="import-from-an-azure-container-registry-in-a-different-ad-tenant"></a>Importálás másik AD-bérlőn található Azure Container Registryből
 
-Rendszerkép importálása nem Azure-beli privát beállításjegyzékből olyan hitelesítő adatok megadásával, amelyek lehetővé teszik a lekéréses hozzáférést a beállításjegyzékhez. Például egy privát Docker-beállításjegyzékből származó rendszerkép lekérése: 
+Ha egy másik azure-bérlőben található Azure Container Registryből szeretné importálni, adja meg Azure Active Directory a forrás-beállításjegyzéket a bejelentkezési kiszolgáló neve alapján, és adjon meg olyan felhasználónevet és jelszót, amelyek lehetővé teszik a lekért hozzáférést a beállításjegyzékhez. Használhat például egy adattárra vonatkozó jogkivonatot és jelszót, vagy egy olyan [Active Directory-szolgáltatásnév](container-registry-repository-scoped-permissions.md) appID-ját és jelszavát, amely ACRPull hozzáféréssel rendelkezik a forrás beállításjegyzékhez. [](container-registry-auth-service-principal.md) 
+
+```azurecli
+az acr import \
+  --name myregistry \
+  --source sourceregistry.azurecr.io/sourcerrepo:tag \
+  --image targetimage:tag \
+  --username <SP_App_ID> \
+  --password <SP_Passwd>
+```
+
+## <a name="import-from-a-non-azure-private-container-registry"></a>Importálás nem Azure-beli privát tárolójegyzékből
+
+Rendszerkép importálása nem Azure-beli privát beállításjegyzékből olyan hitelesítő adatok megadásával, amelyek lehetővé teszik a regisztrációs adatbázishoz való lekért hozzáférést. Lekért például egy rendszerképet egy privát Docker-regisztrációs adatbázisból: 
 
 ```azurecli
 az acr import \
@@ -184,10 +184,10 @@ az acr import \
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta, hogyan importálhatja a tároló lemezképeit egy nyilvános beállításjegyzékből vagy egy másik privát beállításjegyzékből egy Azure Container registrybe. További Képimportálási lehetőségekért tekintse meg az az [ACR import][az-acr-import] parancs-referenciát. 
+Ebben a cikkben megtanulta, hogyan importálhat tároló rendszerképeket egy Azure-beli tároló-beállításjegyzékbe egy nyilvános regisztrációs adatbázisból vagy egy másik privát regisztrációs adatbázisból. A rendszerkép-importálás további beállításaiért tekintse meg az [az acr import][az-acr-import] parancsreferenciát. 
 
 
 <!-- LINKS - Internal -->
-[az-login]: /cli/azure/reference-index#az-login
-[az-acr-import]: /cli/azure/acr#az-acr-import
+[az-login]: /cli/azure/reference-index#az_login
+[az-acr-import]: /cli/azure/acr#az_acr_import
 [azure-cli]: /cli/azure/install-azure-cli

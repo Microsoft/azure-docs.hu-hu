@@ -1,6 +1,6 @@
 ---
-title: Hálózati forgalom irányítása – Azure CLI | Microsoft Docs
-description: Ebből a cikkből megtudhatja, hogyan irányíthatja át a hálózati forgalmat egy útválasztási táblázattal az Azure CLI használatával.
+title: Hálózati forgalom útválasztása – Azure CLI-| Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogyan irányítható a hálózati forgalom egy útvonaltáblával az Azure CLI használatával.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ed2a97ccfb0a3b9b4b43021ab0fff1460919c9b9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2ff643c39820fa529c8678c7a36881dd25da354c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060720"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762496"
 ---
-# <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Hálózati forgalom irányítása útválasztási táblázattal az Azure CLI használatával
+# <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Hálózati forgalom útválasztási táblázattal való útválasztása az Azure CLI használatával
 
 Egy adott virtuális hálózaton belül az Azure alapértelmezés szerint automatikusan elosztja a forgalmat az összes alhálózat között. Az Azure alapértelmezett útválasztását felülírhatja saját maga által létrehozott útvonalakkal. Az egyéni útvonalak létrehozása akkor lehet hasznos, hálózati virtuális berendezésen (NVA) keresztül kívánja irányítani az alhálózatok közötti forgalmat. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -39,11 +39,11 @@ Egy adott virtuális hálózaton belül az Azure alapértelmezés szerint automa
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a cikkhez az Azure CLI 2.0.28-as vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="create-a-route-table"></a>Útválasztási táblázat létrehozása
 
-Az útválasztási táblázat létrehozása előtt hozzon létre egy erőforráscsoportot az az [Group Create](/cli/azure/group) paranccsal az ebben a cikkben létrehozott összes erőforráshoz. 
+Mielőtt létrehoz egy útvonaltáblát, hozzon létre egy erőforráscsoportot [az az group create](/cli/azure/group) segítségével a cikkben létrehozott összes erőforráshoz. 
 
 ```azurecli-interactive
 # Create a resource group.
@@ -52,7 +52,7 @@ az group create \
   --location eastus
 ```
 
-Hozzon létre egy útválasztási táblázatot az [az Network Route-Table Create](/cli/azure/network/route-table#az-network-route-table-create)paranccsal. A következő példa egy *myroutetablepublic elemet* nevű útválasztási táblázatot hoz létre. 
+Hozzon létre egy útvonaltáblát [az az network route-table create gombra.](/cli/azure/network/route-table#az_network_route_table_create) A következő példában létrehozunk egy *myRouteTablePublic nevű útválasztási táblázatot.* 
 
 ```azurecli-interactive
 # Create a route table
@@ -63,7 +63,7 @@ az network route-table create \
 
 ## <a name="create-a-route"></a>Útvonal létrehozása
 
-Hozzon létre egy útvonalat az útválasztási táblában az [az Network Route-Table Route Create](/cli/azure/network/route-table/route#az-network-route-table-route-create)paranccsal. 
+Hozzon létre egy útvonalat az útvonaltáblában [az az network route-table route create gombra.](/cli/azure/network/route-table/route#az_network_route_table_route_create) 
 
 ```azurecli-interactive
 az network route-table route create \
@@ -77,7 +77,7 @@ az network route-table route create \
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Útválasztási táblázat társítása alhálózattal
 
-Ahhoz, hogy egy útválasztási táblázatot alhálózathoz lehessen rendelni, létre kell hoznia egy virtuális hálózatot és alhálózatot. Hozzon létre egy alhálózattal rendelkező virtuális hálózatot az [az Network vnet Create](/cli/azure/network/vnet)paranccsal.
+Mielőtt alhálózathoz társíthat egy útválasztási táblázatot, létre kell hoznia egy virtuális hálózatot és egy alhálózatot. Hozzon létre egy virtuális hálózatot egy alhálózattal [az az network vnet create gombra.](/cli/azure/network/vnet)
 
 ```azurecli-interactive
 az network vnet create \
@@ -88,7 +88,7 @@ az network vnet create \
   --subnet-prefix 10.0.0.0/24
 ```
 
-Hozzon létre két további alhálózatot az [az Network vnet subnet Create](/cli/azure/network/vnet/subnet)paranccsal.
+Hozzon létre két további alhálózatot [az az network vnet subnet create segítségével.](/cli/azure/network/vnet/subnet)
 
 ```azurecli-interactive
 # Create a private subnet.
@@ -106,7 +106,7 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 ```
 
-Társítsa a *myroutetablepublic elemet* útválasztási táblázatot a *nyilvános* alhálózathoz az [az Network vnet subnet Update paranccsal](/cli/azure/network/vnet/subnet).
+Társítsa a *myRouteTablePublic* útválasztási táblázatot a *Nyilvános* alhálózathoz [az az network vnet subnet update frissítéssel.](/cli/azure/network/vnet/subnet)
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -120,7 +120,7 @@ az network vnet subnet update \
 
 Az NVA egy olyan virtuális gép, amely hálózati funkciót tölt be, például útválasztóként, tűzfalként vagy WAN-optimalizálóként működik.
 
-Hozzon létre egy NVA a *DMZ* -alhálózatban az [az VM Create](/cli/azure/vm)paranccsal. Amikor létrehoz egy virtuális gépet, az Azure alapértelmezés szerint létrehoz és hozzárendel egy nyilvános IP-címet a virtuális géphez. A `--public-ip-address ""` paraméter arra utasítja az Azure-t, hogy ne hozzon létre és rendeljen nyilvános IP-címet a virtuális géphez, mivel a virtuális gépnek nem kell az internetről csatlakoznia. Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.
+Hozzon létre egy NVA-t a *DMZ* alhálózatban [az az vm create segítségével.](/cli/azure/vm) Virtuális gép létrehozásakor az Azure alapértelmezés szerint létrehoz és hozzárendel egy nyilvános IP-címet a virtuális géphez. A paraméter arra utasítja az Azure-t, hogy ne hozzon létre és rendeljen hozzá nyilvános IP-címet a virtuális géphez, mivel a virtuális gépnek nem kell az `--public-ip-address ""` internetről csatlakozva lennie. Ha az SSH-kulcsok még nem léteznek a kulcsok alapértelmezett helyén, a parancs létrehozza őket. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.
 
 ```azurecli-interactive
 az vm create \
@@ -133,9 +133,9 @@ az vm create \
   --generate-ssh-keys
 ```
 
-A virtuális gép üzembe helyezése néhány percet vesz igénybe. Ne folytassa a következő lépéssel, amíg az Azure befejezi a virtuális gép létrehozását, és visszaadja a virtuális gép kimenetét. 
+A virtuális gép üzembe helyezése néhány percet vesz igénybe. Ne folytassa a következő lépéssel, amíg az Azure be nem fejezi a virtuális gép létrehozását, és vissza nem adja a virtuális gép kimenetét. 
 
-Ahhoz, hogy egy hálózati adapter továbbíthassa a neki küldött, de nem a saját IP-címére címzett forgalmat, engedélyeznie kell az IP-továbbítást a hálózati adapteren. Engedélyezze az IP-továbbítást a hálózati adapter számára az [az Network NIC Update paranccsal](/cli/azure/network/nic).
+Ahhoz, hogy egy hálózati adapter továbbíthassa a neki küldött, de nem a saját IP-címére címzett forgalmat, engedélyeznie kell az IP-továbbítást a hálózati adapteren. Engedélyezze az IP-továbbítást a hálózati adapter számára [az az network nic update parancs használatával.](/cli/azure/network/nic)
 
 ```azurecli-interactive
 az network nic update \
@@ -144,7 +144,7 @@ az network nic update \
   --ip-forwarding true
 ```
 
-A virtuális gépen, az operációs rendszeren, vagy egy a virtuális gépen futó alkalmazáson belül szintén működnie kell a hálózati forgalom továbbításának. Engedélyezze a virtuális gép operációs rendszerén belüli IP-továbbítást az [az VM Extension set](/cli/azure/vm/extension)paranccsal:
+A virtuális gépen, az operációs rendszeren, vagy egy a virtuális gépen futó alkalmazáson belül szintén működnie kell a hálózati forgalom továbbításának. Engedélyezze az IP-továbbítást a virtuális gép operációs rendszerén [az az vm extension set beállítással:](/cli/azure/vm/extension)
 
 ```azurecli-interactive
 az vm extension set \
@@ -159,9 +159,9 @@ A parancs végrehajtása akár egy percet is igénybe vehet.
 
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
-Hozzon létre két virtuális gépet a virtuális hálózaton, így ellenőrizheti, hogy a *nyilvános* alhálózatról érkező forgalom a NVA egy későbbi lépésben átirányítja-e a *privát* alhálózatra. 
+Hozzon létre két virtuális gépet a virtuális hálózatban, így egy későbbi  lépésben ellenőrizheti, hogy a nyilvános alhálózatról származó forgalom a Privát alhálózatra lesz-e irányítva az NVA-n keresztül.  
 
-Hozzon létre egy virtuális gépet a *nyilvános* alhálózaton az [az VM Create](/cli/azure/vm)paranccsal. A `--no-wait` paraméter lehetővé teszi, hogy az Azure végrehajtsa a parancsot a háttérben, így továbbra is folytathatja a következő parancsot. A cikk egyszerűsítése érdekében a rendszer jelszót használ. A kulcsokat jellemzően éles környezetben használják. Ha kulcsokat használ, az SSH-ügynök továbbítását is konfigurálnia kell. További információkért tekintse meg az SSH-ügyfél dokumentációját. Cserélje le a `<replace-with-your-password>` parancsot a következő parancsra a választott jelszóval.
+Hozzon létre egy virtuális gépet a *Nyilvános* alhálózaton [az az vm create segítségével.](/cli/azure/vm) A paraméter lehetővé teszi, hogy az Azure végrehajtsa a parancsot a `--no-wait` háttérben, így folytathatja a következő paranccsal. A cikk leegyszerűsítése érdekében a rendszer jelszót használ. A kulcsokat általában éles környezetben használják. Kulcsok használata esetén konfigurálnia kell az SSH-ügynökátirányítást is. További információért tekintse meg az SSH-ügyfél dokumentációját. A `<replace-with-your-password>` következő parancsban cserélje le a helyére a választott jelszót.
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"
@@ -177,7 +177,7 @@ az vm create \
   --no-wait
 ```
 
-Hozzon létre egy virtuális gépet a *privát* alhálózatban.
+Hozzon létre egy virtuális gépet a *Privát* alhálózaton.
 
 ```azurecli-interactive
 az vm create \
@@ -190,7 +190,7 @@ az vm create \
   --admin-password $adminPassword
 ```
 
-A virtuális gép üzembe helyezése néhány percet vesz igénybe. A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg: 
+A virtuális gép üzembe helyezése néhány percet vesz igénybe. A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jeleníti meg: 
 
 ```output
 {
@@ -205,25 +205,25 @@ A virtuális gép üzembe helyezése néhány percet vesz igénybe. A virtuális
 }
 ```
 
-Jegyezze fel a **publicIpAddress** értékét. Ez a címe egy későbbi lépésben a virtuális gép internetről való elérésére szolgál.
+Jegyezze fel a **publicIpAddress** értékét. Ez a cím a virtuális gép internetről való elérésére használható egy későbbi lépésben.
 
 ## <a name="route-traffic-through-an-nva"></a>Forgalom irányítása NVA-n keresztül
 
-A következő parancs használatával hozzon létre egy SSH-munkamenetet a *myVmPrivate* virtuális géppel. Cserélje le a *\<publicIpAddress>* t a virtuális gép nyilvános IP-címére. A fenti példában az IP-cím *13.90.242.231*.
+A következő paranccsal hozzon létre SSH-munkamenetet a *myVmPrivate virtuális géphez.* Cserélje *\<publicIpAddress>* le a helyére a virtuális gép nyilvános IP-címét. A fenti példában az IP-cím *a következő: 13.90.242.231.*
 
 ```bash
 ssh azureuser@<publicIpAddress>
 ```
 
-Ha a rendszer jelszót kér, adja meg a [virtuális gépek létrehozásakor](#create-virtual-machines)kiválasztott jelszót.
+Amikor a rendszer jelszót kér, adja meg a Virtuális gépek [létrehozása mezőben kiválasztott jelszót.](#create-virtual-machines)
 
-A következő parancs használatával telepítse a nyomkövetési útvonalat a *myVmPrivate* virtuális gépre:
+A következő paranccsal telepítse a nyomkövetési útvonalat a *myVmPrivate virtuális gépre:*
 
 ```bash
 sudo apt-get install traceroute
 ```
 
-A következő parancs használatával tesztelheti a *myVmPublic* virtuális gépre irányuló hálózati forgalom útválasztását a *myVmPrivate* virtuális gépről.
+A következő paranccsal tesztelje a *myVmPublic* virtuális gépre kimenő hálózati forgalom útválasztását a *myVmPrivate virtuális gépről.*
 
 ```bash
 traceroute myVmPublic
@@ -238,19 +238,19 @@ traceroute to myVmPublic (10.0.0.4), 30 hops max, 60 byte packets
 
 Láthatja, hogy a rendszer a *myVmPrivate* virtuális gépről közvetlenül a *myVmPublic* virtuális gépre irányítja a forgalmat. Az Azure alapértelmezett útvonalai közvetlenül az alhálózatok között irányítják a forgalmat. 
 
-Használja az alábbi parancsot az SSH-val a *myVmPublic* virtuális gépre a *myVmPrivate* virtuális gépről:
+Használja a következő parancsot a *myVmPrivate virtuális gépről a myVmPublic virtuális* géphez való *SSH-hoz:*
 
 ```bash
 ssh azureuser@myVmPublic
 ```
 
-A következő parancs használatával telepítse a nyomkövetési útvonalat a *myVmPublic* virtuális gépre:
+A következő paranccsal telepítse a nyomkövetési útvonalat a *myVmPublic virtuális* gépen:
 
 ```bash
 sudo apt-get install traceroute
 ```
 
-A következő parancs használatával tesztelheti a *myVmPrivate* virtuális gépre irányuló hálózati forgalom útválasztását a *myVmPublic* virtuális gépről.
+A következő paranccsal tesztelje a *myVmPublic* virtuális gépről a *myVmPrivate* virtuális gépre kimenő hálózati forgalom útválasztását.
 
 ```bash
 traceroute myVmPrivate
@@ -266,11 +266,11 @@ traceroute to myVmPrivate (10.0.1.4), 30 hops max, 60 byte packets
 
 Láthatja, hogy az első ugrás a 10.0.2.4 cím, amely az NVA magánhálózati IP-címe. A második ugrás a 10.0.1.4 cím – ez a *myVmPrivate* virtuális gép magánhálózati IP-címe. A *myRouteTablePublic* útválasztási táblázathoz hozzáadott és a *Magánjellegű* alhálózathoz rendelt útvonal miatt az Azure az NVA-n keresztül továbbította a forgalmat ahelyett, hogy közvetlenül a *Privát* alhálózatra továbbította volna.
 
-Az SSH-munkamenetek bezárásával a *myVmPublic* és a *myVmPrivate* virtuális gépek is megtalálhatók.
+Zárja be az SSH-munkameneteket a *myVmPublic* és *a myVmPrivate virtuális* gépeken.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, az [az Group delete](/cli/azure/group) paranccsal távolítsa el az erőforráscsoportot és a benne található összes erőforrást.
+Ha már nincs rá szükség, [az az group delete](/cli/azure/group) parancs használatával távolítsa el az erőforráscsoportot és az összes benne található erőforrást.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -278,6 +278,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben létrehozta az útválasztási táblázatot, és hozzárendelte azt egy alhálózathoz. Létrehozott egy egyszerű NVA-t, amely átirányította a forgalmat egy nyilvános alhálózatról egy privát alhálózatra. Az [Azure Marketplace-ről](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) számos előre konfigurált NVA-t helyezhet üzembe, amelyek olyan hálózati funkciókat végeznek, mint például a tűzfal és a WAN-optimalizálás. További információ az útválasztásról: [Az útválasztás áttekintése](virtual-networks-udr-overview.md); [Útválasztási táblázat kezelése](manage-route-table.md).
+Ebben a cikkben létrehozott egy útvonaltáblát, és társította azt egy alhálózathoz. Létrehozott egy egyszerű NVA-t, amely átirányította a forgalmat egy nyilvános alhálózatról egy privát alhálózatra. Az [Azure Marketplace-ről](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) számos előre konfigurált NVA-t helyezhet üzembe, amelyek olyan hálózati funkciókat végeznek, mint például a tűzfal és a WAN-optimalizálás. További információ az útválasztásról: [Az útválasztás áttekintése](virtual-networks-udr-overview.md); [Útválasztási táblázat kezelése](manage-route-table.md).
 
-Egy virtuális hálózaton belül több Azure-erőforrást helyezhet üzembe, azonban egyes Azure PaaS-szolgáltatások erőforrásai nem helyezhetők üzembe virtuális hálózatban. Ennek ellenére korlátozhatja az egyes Azure PaaS-szolgáltatások erőforrásaihoz való hozzáférést, hogy csak egyetlen virtuális hálózati alhálózatról legyenek elérhetők. További információ: a [hálózati hozzáférés korlátozása a Pásti-erőforrásokhoz](tutorial-restrict-network-access-to-resources-cli.md).
+Egy virtuális hálózaton belül több Azure-erőforrást helyezhet üzembe, azonban egyes Azure PaaS-szolgáltatások erőforrásai nem helyezhetők üzembe virtuális hálózatban. Ennek ellenére korlátozhatja az egyes Azure PaaS-szolgáltatások erőforrásaihoz való hozzáférést, hogy csak egyetlen virtuális hálózati alhálózatról legyenek elérhetők. További információ: [A PaaS-erőforrásokhoz](tutorial-restrict-network-access-to-resources-cli.md)való hálózati hozzáférés korlátozása.

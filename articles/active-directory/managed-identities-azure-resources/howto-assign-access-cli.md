@@ -1,6 +1,6 @@
 ---
-title: Felügyelt identitás-hozzáférés kiosztása egy erőforráshoz az Azure CLI-vel – Azure AD
-description: Részletes útmutató felügyelt identitások egy erőforráshoz való hozzárendeléséhez, egy másik erőforráshoz való hozzáféréshez az Azure CLI használatával.
+title: Felügyelt identitás hozzáférésének hozzárendelése erőforráshoz az Azure CLI használatával – Azure AD
+description: Részletes útmutató felügyelt identitás hozzárendeléshez egy erőforráshoz, hozzáférés egy másik erőforráshoz az Azure CLI használatával.
 services: active-directory
 documentationcenter: ''
 author: barclayn
@@ -16,43 +16,43 @@ ms.date: 01/29/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e3b06ce76ae77aa62b20b707a736e8e20e5f6c45
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e1fa22cc36df00b098274002b6bd444be4140ff
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99090044"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783286"
 ---
-# <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>Felügyelt identitás-hozzáférés kiosztása egy erőforráshoz az Azure CLI használatával
+# <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>Felügyelt identitás hozzáférésének hozzárendelése erőforráshoz az Azure CLI használatával
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Miután konfigurált egy Azure-erőforrást egy felügyelt identitással, megadhatja a felügyelt identitás hozzáférését egy másik erőforráshoz, ugyanúgy, mint a rendszerbiztonsági tag. Ebből a példából megtudhatja, hogyan adhat egy Azure-beli virtuális gépet vagy virtuálisgép-méretezési csoport felügyelt identitás-hozzáférését egy Azure Storage-fiókhoz az Azure CLI használatával.
+Miután konfigurált egy Azure-erőforrást egy felügyelt identitással, hozzáférést adhat a felügyelt identitásnak egy másik erőforráshoz, akárcsak bármely más rendszerbiztonsági tag. Ez a példa bemutatja, hogyan adhat hozzáférést egy Azure-beli virtuális gépnek vagy virtuálisgép-méretezési készlet felügyelt identitásának egy Azure Storage-fiókhoz az Azure CLI használatával.
 
 Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg a [Mi az Azure-erőforrások felügyelt identitásai?](overview.md)című témakört. A rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitási típusok megismeréséhez lásd: [felügyelt identitások típusai](overview.md#managed-identity-types).
+- Ha nem ismeri az Azure-erőforrások felügyelt identitását, lásd: Mik azok az [Azure-erőforrások felügyelt identitások?](overview.md). A rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitástípusokkal kapcsolatos további információkért lásd: [Felügyelt identitástípusok.](overview.md#managed-identity-types)
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-## <a name="use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Felügyelt identitás-hozzáférés kiosztása az Azure RBAC használatával egy másik erőforráshoz
+## <a name="use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Felügyelt identitás hozzáférésének hozzárendelése egy másik erőforráshoz az Azure RBAC használatával
 
-Miután engedélyezte a felügyelt identitást egy Azure-erőforráson, például egy Azure-beli [virtuális gépen](qs-configure-cli-windows-vm.md) vagy egy Azure-beli [virtuálisgép-méretezési csoporton](qs-configure-cli-windows-vmss.md): 
+Miután engedélyezte a felügyelt identitást egy Azure-erőforráson, például [egy Azure-beli](qs-configure-cli-windows-vm.md) virtuális gépen vagy egy Azure-beli virtuálisgép-méretezési [csoporton:](qs-configure-cli-windows-vmss.md) 
 
-1. Ebben a példában egy Azure-beli virtuális gépet adunk hozzá egy Storage-fiókhoz. Először az [az Resource List](/cli/azure/resource/#az-resource-list) paranccsal szerezheti be a myVM nevű virtuális géphez tartozó szolgáltatásnevet:
+1. Ebben a példában hozzáférést biztosítunk egy Azure-beli virtuális gépnek egy tárfiókhoz. Először az [az resource list](/cli/azure/resource/#az_resource_list) használatával kérjük le a myVM nevű virtuális gép szolgáltatásnevét:
 
    ```azurecli-interactive
    spID=$(az resource list -n myVM --query [*].identity.principalId --out tsv)
    ```
-   Azure virtuálisgép-méretezési csoport esetén a parancs a "DevTestVMSS" nevű virtuálisgép-méretezési csoport egyszerű szolgáltatását kapja meg:
+   Azure-beli virtuálisgép-méretezési készletben a parancs ugyanaz, kivéve itt, a "DevTestVMSS" nevű virtuálisgép-méretezési készlet szolgáltatásnevét:
    
    ```azurecli-interactive
    spID=$(az resource list -n DevTestVMSS --query [*].identity.principalId --out tsv)
    ```
 
-1. Ha már rendelkezik az egyszerű szolgáltatás azonosítójával, használja az [az role-hozzárendelés létrehozás](/cli/azure/role/assignment#az-role-assignment-create) lehetőséget, hogy a virtuális gép vagy a virtuálisgép-méretezési csoport "olvasó" hozzáférhessen egy "mystorageacct kifejezést" nevű Storage-fiókhoz:
+1. Ha már rendelkezik a szolgáltatásnév azonosítójával, az [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) használatával adjon "Olvasó" hozzáférést a virtuális gépnek vagy a virtuálisgép-méretezési csoportnak a "myStorageAcct" nevű tárfiókhoz:
 
    ```azurecli-interactive
    az role assignment create --assignee $spID --role 'Reader' --scope /subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/myStorageAcct
@@ -60,6 +60,6 @@ Miután engedélyezte a felügyelt identitást egy Azure-erőforráson, példáu
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Felügyelt identitások az Azure-erőforrásokhoz – áttekintés](overview.md)
-- Az Azure-beli virtuális gépek felügyelt identitásának engedélyezéséhez lásd: [felügyelt identitások konfigurálása](qs-configure-cli-windows-vm.md)Azure-beli virtuális gépen az Azure CLI használatával.
-- Az Azure virtuálisgép-méretezési csoport felügyelt identitásának engedélyezéséhez lásd: [felügyelt identitások konfigurálása az Azure-erőforrásokhoz a virtuálisgép-méretezési csoportokban az Azure CLI használatával](qs-configure-cli-windows-vmss.md).
+- [Az Azure-erőforrások felügyelt identitásának áttekintése](overview.md)
+- Ha engedélyezni szeretné a felügyelt identitást egy Azure-beli virtuális gépen, tekintse meg az Azure-beli virtuális gépen található Azure-erőforrások felügyelt identitásának [az Azure CLI használatával való konfigurálásával kapcsolatban lásd:](qs-configure-cli-windows-vm.md).
+- Ha engedélyezni szeretné a felügyelt identitást egy Azure-beli virtuálisgép-méretezési készleten, lásd: Azure-erőforrások felügyelt identitásának konfigurálása virtuálisgép-méretezési készleten [az Azure CLI használatával.](qs-configure-cli-windows-vmss.md)

@@ -1,6 +1,6 @@
 ---
-title: Tanúsítványok exportálása Azure Key Vaultból
-description: Ismerje meg, hogyan exportálhat tanúsítványokat a Azure Key Vaultból.
+title: Tanúsítványok exportálása Azure Key Vault
+description: Megtudhatja, hogyan exportálhatja a tanúsítványokat a Azure Key Vault.
 services: key-vault
 author: sebansal
 tags: azure-key-vault
@@ -10,46 +10,46 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: 116bafe2e26ca3af5b4ed68373d20e1e787502b7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0efe0164d8e1a4e5bc3b9d6d7313855740afd316
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729201"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767906"
 ---
-# <a name="export-certificates-from-azure-key-vault"></a>Tanúsítványok exportálása Azure Key Vaultból
+# <a name="export-certificates-from-azure-key-vault"></a>Tanúsítványok exportálása Azure Key Vault
 
-Ismerje meg, hogyan exportálhat tanúsítványokat a Azure Key Vaultból. A tanúsítványokat az Azure CLI, Azure PowerShell vagy a Azure Portal használatával exportálhatja. 
+Megtudhatja, hogyan exportálhatja a tanúsítványokat a Azure Key Vault. A tanúsítványokat exportálhatja az Azure CLI, a Azure PowerShell vagy a Azure Portal. 
 
 ## <a name="about-azure-key-vault-certificates"></a>Információk az Azure Key Vault-tanúsítványokról
 
-A Azure Key Vault lehetővé teszi digitális tanúsítványok egyszerű kiépítését, kezelését és üzembe helyezését a hálózaton. Emellett biztonságos kommunikációt tesz lehetővé az alkalmazások számára. További információért tekintse meg [Azure Key Vault tanúsítványokat](./about-certificates.md) .
+Azure Key Vault lehetővé teszi a digitális tanúsítványok egyszerű üzembe helyezését, kezelését és üzembe helyezését a hálózaton. Emellett biztonságos kommunikációt tesz lehetővé az alkalmazások számára. További [Azure Key Vault a tanúsítványokról.](./about-certificates.md)
 
 ### <a name="composition-of-a-certificate"></a>A tanúsítványok összetétele
 
-Key Vault-tanúsítvány létrehozásakor egy megcímezhető kulcs és *titkos* *kód* jön létre, amelynek neve azonos. A Key Vault kulcs lehetővé teszi a legfontosabb műveleteket. A Key Vault titkos kód lehetővé teszi a tanúsítvány értékének beolvasását titkos kulcsként. A Key Vault tanúsítvány A nyilvános x509 tanúsítvány-metaadatokat is tartalmaz. További információért látogasson el a [tanúsítvány összeállítására](./about-certificates.md#composition-of-a-certificate) .
+A Key Vault létrehozásakor létrejön egy azonos nevű  címezhető kulcs és titkos kulcs.  A Key Vault kulcs lehetővé teszi a kulcsműveleteket. A Key Vault titkos ként engedélyezi a tanúsítvány értékének titkos ként való lekérését. A Key Vault tanúsítvány nyilvános x509-tanúsítvány metaadatokat is tartalmaz. További [információ: A](./about-certificates.md#composition-of-a-certificate) tanúsítvány összetétele.
 
 ### <a name="exportable-and-non-exportable-keys"></a>Exportálható és nem exportálható kulcsok
 
-Key Vault-tanúsítvány létrehozása után lekérheti a titkos kulccsal rendelkező címezhető titokból. A tanúsítvány lekérése PFX-vagy PEM-formátumban.
+A Key Vault létrehozása után a titkos kulccsal lekérheti azt a címezhető titkos kulcsból. A tanúsítvány lekérése PFX vagy PEM formátumban.
 
-- **Exportálható**: a tanúsítvány létrehozásához használt szabályzat azt jelzi, hogy a kulcs exportálható.
-- **Nem exportálható**: a tanúsítvány létrehozásához használt szabályzat azt jelzi, hogy a kulcs nem exportálható. Ebben az esetben a titkos kulcs nem része az értéknek, amikor a rendszer titokként kéri le.
+- **Exportálható:** A tanúsítvány létrehozásához használt házirend azt jelzi, hogy a kulcs exportálható.
+- **Nem exportálható:** A tanúsítvány létrehozásához használt házirend azt jelzi, hogy a kulcs nem exportálható. Ebben az esetben a titkos kulcs nem része az értéknek, amikor titkos kulcsként lekéri.
 
-Támogatott főtípusok: az RSA, az RSA-HSM, az EC, az EC-HSM, a TOT ( [itt](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)felsorolva) csak az RSA, az EC esetében engedélyezett. A HSM-kulcsok nem exportálhatók.
+Támogatott kulcstípusok: RSA, RSA-HSM, EC, EC-HSM, október (itt listázva) [](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)Az exportálható csak RSA, EC esetén engedélyezett. A HSM-kulcsok nem exportálhatók.
 
-További információ: [tudnivalók Azure Key Vault tanúsítványokról](./about-certificates.md#exportable-or-non-exportable-key) .
+További [információ: Azure Key Vault tanúsítványok](./about-certificates.md#exportable-or-non-exportable-key) használata.
 
 ## <a name="export-stored-certificates"></a>Tárolt tanúsítványok exportálása
 
 Az Azure CLI, az Azure PowerShell vagy az Azure Portal használatával exportálhat tárolt tanúsítványokat az Azure Key Vaultba.
 
 > [!NOTE]
-> A tanúsítványnak a kulcstartóba való importálásakor csak tanúsítvány jelszava szükséges. A Key Vault nem menti a társított jelszót. A tanúsítvány exportálásakor a jelszó üres.
+> Csak tanúsítványjelszót igényel, amikor importálja a tanúsítványt a kulcstartóba. A Key Vault nem menti a társított jelszót. Amikor exportálja a tanúsítványt, a jelszó üres.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Az Azure CLI következő parancsával letöltheti Key Vault tanúsítvány **nyilvános részét** .
+Az Azure CLI-ban a következő  paranccsal töltheti le egy nyilvános Key Vault tanúsítványból.
 
 ```azurecli
 az keyvault certificate download --file
@@ -61,9 +61,9 @@ az keyvault certificate download --file
                                  [--version]
 ```
 
-További információkért tekintse meg a [példák és a paraméterek definícióit](/cli/azure/keyvault/certificate#az-keyvault-certificate-download) .
+További [információért tekintse](/cli/azure/keyvault/certificate#az_keyvault_certificate_download) meg a példákat és a paraméterdefiníciókat.
 
-A tanúsítvány letöltése a nyilvános rész beszerzését jelenti. Ha a titkos kulcsot és a nyilvános metaadatokat is szeretné használni, töltse le titkos fájlként.
+A tanúsítványként való letöltés a nyilvános rész lekért részét jelenti. Ha a titkos kulcsot és a nyilvános metaadatokat is szeretné, akkor titkos ként letöltheti.
 
 ```azurecli
 az keyvault secret download -–file {nameofcert.pfx}
@@ -75,11 +75,11 @@ az keyvault secret download -–file {nameofcert.pfx}
                             [--version]
 ```
 
-További információ: [Paraméterek definíciói](/cli/azure/keyvault/secret#az-keyvault-secret-download).
+További információ: [paraméterdefiníciók.](/cli/azure/keyvault/secret#az_keyvault_secret_download)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Használja ezt a parancsot a Azure PowerShell a **TestCert01** nevű tanúsítvány lekéréséhez a **ContosoKV01** nevű kulcstartóból. A tanúsítvány PFX-fájlként való letöltéséhez futtassa a következő parancsot. Ezek a parancsok hozzáférnek a **SecretId**, majd a tartalmat pfx-fájlként mentik.
+Ezzel a paranccsal a Azure PowerShell a **TestCert01** nevű tanúsítványt a **ContosoKV01 nevű kulcstartóból.** A tanúsítvány PFX-fájlként való letöltéséhez futtassa a következő parancsot. Ezek a parancsok hozzáférnek a **SecretId-hez,** majd PFX-fájlként mentik a tartalmat.
 
 ```azurepowershell
 $cert = Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
@@ -101,24 +101,24 @@ $pfxFileByte = $x509Cert.Export($type, $password)
 [System.IO.File]::WriteAllBytes("KeyVault.pfx", $pfxFileByte)
 ```
 
-Ez a parancs a tanúsítványok teljes láncát exportálja a titkos kulccsal (azaz ugyanaz, mint az importált). A tanúsítvány jelszavas védelemmel van ellátva.
-További információ a **Get-AzKeyVaultCertificate** parancsról és paraméterekről: [Get-AzKeyVaultCertificate – example 2](/powershell/module/az.keyvault/Get-AzKeyVaultCertificate).
+Ez a parancs exportálja a tanúsítványok teljes láncát titkos kulccsal (azaz ugyanúgy, mint az importáltat). A tanúsítvány jelszavas védelem alatt áll.
+A **Get-AzKeyVaultCertificate** paranccsal és paraméterekkel kapcsolatos további információkért lásd: [Get-AzKeyVaultCertificate – 2. példa.](/powershell/module/az.keyvault/Get-AzKeyVaultCertificate)
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Ha **a tanúsítvány** paneljén létrehoz/importál egy tanúsítványt a Azure Portalon, értesítést kap arról, hogy a tanúsítvány sikeresen létrejött. Válassza ki a tanúsítványt és az aktuális verziót, hogy megjelenjen a letöltési lehetőség.
+A Azure Portal tanúsítvány létrehozása/importálása után a Tanúsítvány  panelen értesítést kap arról, hogy a tanúsítvány sikeresen létrejött. Válassza ki a tanúsítványt és az aktuális verziót a letöltési lehetőség kiválasztásához.
 
-A tanúsítvány letöltéséhez válassza a **Letöltés CER formátumban** vagy **a letöltés pfx/PEM formátumban** lehetőséget.
+A tanúsítvány letöltéséhez válassza a **Letöltés CER formátumban** vagy **a Letöltés PFX/PEM formátumban lehetőséget.**
 
 ![Tanúsítvány letöltése](../media/certificates/quick-create-portal/current-version-shown.png)
 
-**Azure App Service tanúsítványok exportálása**
+**Tanúsítvány Azure App Service exportálása**
 
-Azure App Service a tanúsítványok kényelmes megoldást jelentenek az SSL-tanúsítványok megvásárlására. Az Azure-alkalmazásokhoz hozzárendelheti őket a portálon belülről. Az importálás után a App Service tanúsítványok a **titkok** területen találhatók.
+Azure App Service tanúsítványokkal kényelmesen vásárolhat SSL-tanúsítványokat. Ezeket a portálon keresztül rendelheti hozzá az Azure Appshez. Importálásuk után az App Service tanúsítványok a titkos kulcsok **alatt találhatók.**
 
-További információ: [Azure app Service tanúsítványok exportálásának](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)lépései.
+További információkért lásd a tanúsítványok [exportálásának Azure App Service lépéseit.](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)
 
 ---
 
 ## <a name="read-more"></a>További információk
-* [Különböző tanúsítványfájl-típusok és-definíciók](/archive/blogs/kaushal/various-ssltls-certificate-file-typesextensions)
+* [Különböző tanúsítványfájltípusok és -definíciók](/archive/blogs/kaushal/various-ssltls-certificate-file-typesextensions)

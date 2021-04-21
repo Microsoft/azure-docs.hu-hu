@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: kiszolgáló létrehozása – Azure CLI-Azure Database for PostgreSQL – rugalmas kiszolgáló'
-description: Ez a rövid útmutató azt ismerteti, hogyan használható az Azure CLI egy Azure Database for PostgreSQL rugalmas kiszolgáló Azure-erőforráscsoportbeli létrehozásához.
+title: 'Rövid útmutató: Kiszolgáló létrehozása – Azure CLI – Azure Database for PostgreSQL – Rugalmas kiszolgáló'
+description: Ez a rövid útmutató azt ismerteti, hogyan használható az Azure CLI egy rugalmas Azure Database for PostgreSQL kiszolgáló létrehozására egy Azure-erőforráscsoportban.
 author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
@@ -8,37 +8,37 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/22/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 49c98905d99e5895dd0d2aa7e6a06e7a3605897e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 320457365a36825564154c36ad843ef665fc2d2c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606130"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791552"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql-flexible-server-using-azure-cli"></a>Gyors útmutató: Azure Database for PostgreSQL rugalmas kiszolgáló létrehozása az Azure CLI használatával
+# <a name="quickstart-create-an-azure-database-for-postgresql-flexible-server-using-azure-cli"></a>Rövid útmutató: Rugalmas Azure Database for PostgreSQL létrehozása az Azure CLI használatával
 
-Ez a rövid útmutató bemutatja, hogyan használhatja az [Azure CLI](/cli/azure/get-started-with-azure-cli) -parancsokat a [Azure Cloud Shellban](https://shell.azure.com) egy Azure Database for PostgreSQL rugalmas kiszolgáló öt perc alatt történő létrehozásához. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ez a rövid útmutató bemutatja, hogyan [](https://shell.azure.com) hozhat létre Azure Cloud Shell rugalmas Azure Database for PostgreSQL öt perc alatt az Azure CLI-parancsokkal. [](/cli/azure/get-started-with-azure-cli) Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 > [!IMPORTANT] 
 > Azure Database for PostgreSQL rugalmas kiszolgáló jelenleg előzetes verzióban érhető el.
 
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell elindítása
 
-A [Azure Cloud Shell](../../cloud-shell/overview.md) egy ingyenes interaktív felület, amellyel a cikkben ismertetett lépéseket futtathatja. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta.
+A [Azure Cloud Shell](../../cloud-shell/overview.md) egy ingyenes interaktív felület, amely a cikkben található lépések futtatására használható. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta.
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngésző lapon is megnyithatja [https://shell.azure.com/bash](https://shell.azure.com/bash) . Válassza a **Másolás** lehetőséget a kód blokkok másolásához, illessze be a Cloud Shellba, majd válassza az **ENTER billentyűt** a futtatásához.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A lapot megnyithatja Cloud Shell böngészőlapon a következő megnyitásával: [https://shell.azure.com/bash](https://shell.azure.com/bash) . Kattintson **a Másolás** gombra a kódblokkok másoláshoz, illessze be a Cloud Shell, majd az **Enter** billentyűt a futtatáshoz.
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2,0-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha inkább helyileg szeretné telepíteni és használni a CLI-t, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az az [login](/cli/azure/reference-index#az-login) parancs használatával kell bejelentkeznie a fiókjába. Jegyezze fel az **ID** tulajdonságot, amely az Azure-fiók **előfizetés-azonosítójára** utal.
+Az az login paranccsal kell bejelentkeznie [a fiókjába.](/cli/azure/reference-index#az_login) Figyelje meg **az id** tulajdonságot, amely az Azure-fiók **előfizetés-azonosítójára** vonatkozik.
 
 ```azurecli-interactive
 az login
 ```
 
-Válassza ki az adott előfizetést a fiókja alatt az [az Account set](/cli/azure/account#az-account-set) parancs használatával. Jegyezze fel az **azonosító** értéket az az **login** kimenetből, amelyet a parancs **előfizetés** argumentumának értékeként kíván használni. Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetés beszerzéséhez használja [az az Account List](/cli/azure/account#az-account-list)lehetőséget.
+Válassza ki az adott előfizetést a fiókjában [az az account set paranccsal.](/cli/azure/account#az_account_set) Jegyezze fel  az az **login** output parancs id értékét, amely a subscription argumentum értékeként lesz használva a parancsban.  Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetését az [az account list használatával használhatja.](/cli/azure/account#az_account_list)
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -46,30 +46,30 @@ az account set --subscription <subscription id>
 
 ## <a name="create-a-flexible-server"></a>Rugalmas kiszolgáló létrehozása
 
-Hozzon létre egy [Azure-erőforráscsoportot](../../azure-resource-manager/management/overview.md) a `az group create` paranccsal, majd hozza létre a PostgreSQL rugalmas kiszolgálóját ebben az erőforráscsoportban. Egyedi nevet adjon meg. A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myresourcegroup` helyen.
+Hozzon létre [egy Azure-erőforráscsoportot](../../azure-resource-manager/management/overview.md) az paranccsal, majd hozza létre a rugalmas `az group create` PostgreSQL-kiszolgálót ebben az erőforráscsoportban. Egyedi nevet adjon meg. A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myresourcegroup` helyen.
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
 
-Hozzon létre egy rugalmas kiszolgálót a `az postgres flexible-server create` paranccsal. Egy kiszolgáló több adatbázist tartalmazhat. A következő parancs egy kiszolgálót hoz létre az Azure CLI [helyi környezetében](/cli/azure/local-context)lévő szolgáltatás-alapértékek és-értékek használatával: 
+Hozzon létre egy rugalmas kiszolgálót az `az postgres flexible-server create` paranccsal. Egy kiszolgáló több adatbázist tartalmazhat. A következő parancs létrehoz egy kiszolgálót a szolgáltatás alapértelmezett értékeinek és értékeinek használatával az Azure CLI helyi [környezetében:](/cli/azure/local-context) 
 
 ```azurecli
 az postgres flexible-server create
 ```
 
 A létrehozott kiszolgáló az alábbi attribútumokkal rendelkezik: 
-- Automatikusan generált kiszolgálónév, rendszergazdai Felhasználónév, rendszergazdai jelszó, erőforráscsoport neve (ha még nincs meghatározva helyi környezetben), és az erőforráscsoporthoz megegyező helyen 
-- Szolgáltatás alapértelmezett értékei a fennmaradó kiszolgálói konfigurációkhoz: számítási réteg (általános célú), számítási méret/SKU (D2s_v3-2 virtuális mag, 8 GB RAM), biztonsági mentési megőrzési idő (7 nap) és PostgreSQL-verzió (12)
-- Az alapértelmezett kapcsolódási módszer a privát hozzáférés (VNet-integráció) egy automatikusan generált virtuális hálózattal és alhálózattal
+- Automatikusan létrehozott kiszolgálónév, rendszergazdai felhasználónév, rendszergazdai jelszó, erőforráscsoport neve (ha még nincs megadva a helyi környezetben), és ugyanazon a helyen, ahol az erőforráscsoport található 
+- Szolgáltatás alapértelmezett beállításai a fennmaradó kiszolgálói konfigurációkhoz: számítási szint (általános célú), számítási méret/termékváltozat (D2s_v3 – 2 virtuális mag, 8 GB RAM), biztonsági másolatok megőrzési időtartama (7 nap) és PostgreSQL-verzió (12)
+- Az alapértelmezett csatlakozási módszer a privát hozzáférés (VNet-integráció) egy automatikusan létrehozott virtuális hálózattal és alhálózattal
 
 > [!NOTE] 
-> A kapcsolódási módszer nem módosítható a kiszolgáló létrehozása után. Ha például a létrehozás során a *privát hozzáférés (VNet-integráció)* lehetőséget választotta, akkor a létrehozás után nem lehet *nyilvános hozzáférésre váltani (engedélyezett IP-címek)* . Javasoljuk, hogy hozzon létre egy olyan kiszolgálót, amely privát hozzáféréssel rendelkezik a kiszolgáló biztonságos eléréséhez a VNet-integráció használatával. További információ a privát hozzáférésről a [fogalmakat ismertető cikkben](./concepts-networking.md).
+> A kapcsolati módszer nem módosítható a kiszolgáló létrehozása után. Ha például a létrehozás során a Privát hozzáférés *(VNet-integráció)* beállítást választotta, akkor a létrehozás után nem lehet nyilvános *hozzáférésre (engedélyezett IP-címekre)* módosítani. Javasoljuk, hogy hozzon létre egy privát hozzáféréssel bíró kiszolgálót a kiszolgáló VNet-integrációval való biztonságos eléréséhez. A privát hozzáféréssel kapcsolatos további információkért olvassa el [a következő cikket:](./concepts-networking.md).
 
-Ha módosítani szeretné az alapértelmezett beállításokat, tekintse meg az Azure CLI dokumentációját. <!--FIXME --> a konfigurálható CLI-paraméterek teljes listájához. 
+Ha módosítani szeretné az alapértelmezett beállításokat, tekintse meg az Azure CLI referenciadokumentációját <!--FIXME --> a konfigurálható CLI-paraméterek teljes listájához. 
 
 > [!NOTE]
-> Kapcsolatok Azure Database for PostgreSQL a 5432-es porton keresztüli kommunikációhoz. Ha vállalati hálózaton belülről próbál csatlakozni, lehet, hogy a 5432-as porton keresztüli kimenő forgalom nem engedélyezett. Ha ez a helyzet, akkor nem tud csatlakozni a kiszolgálóhoz, ha az informatikai részleg megnyitja a 5432-es portot.
+> A hálózati Azure Database for PostgreSQL az 5432-es porton keresztül kommunikálnak. Ha vállalati hálózaton belülről próbál csatlakozni, előfordulhat, hogy az 5432-es porton keresztüli kimenő forgalom nem engedélyezett. Ebben az esetben csak akkor tud csatlakozni a kiszolgálóhoz, ha az it-részleg megnyitja az 5432-es portot.
 
 ## <a name="get-the-connection-information"></a>Kapcsolatadatok lekérése
 
@@ -110,13 +110,13 @@ Az eredmény JSON formátumban van. Jegyezze fel a következőket: **fullyQualif
 }
 ```
 
-## <a name="connect-using-postgresql-command-line-client"></a>Kapcsolat a PostgreSQL parancssori ügyféllel
+## <a name="connect-using-postgresql-command-line-client"></a>Csatlakozás PostgreSQL parancssori ügyféllel
 
-Mivel a rugalmas kiszolgáló *magánhálózati hozzáféréssel (VNet-integrációval)* lett létrehozva, csatlakoznia kell a kiszolgálóhoz egy olyan erőforrásból, amely a kiszolgálóval megegyező VNet belül található. Létrehozhat egy virtuális gépet, és hozzáadhatja azt a létrehozott virtuális hálózathoz. 
+Mivel a rugalmas kiszolgáló privát hozzáféréssel *(VNet-integrációval)* lett létrehozva, csatlakoznia kell a kiszolgálóhoz egy olyan erőforrásról, amely a kiszolgálóval azonos virtuális hálózatban található. Létrehozhat egy virtuális gépet, és hozzáadhatja a létrehozott virtuális hálózathoz. 
 
 A virtuális gép létrehozása után SSH-t telepíthet a gépre, és telepítheti a **[psql](https://www.postgresql.org/download/)** parancssori eszközt.
 
-A psql az alábbi parancs használatával kapcsolódhat. Cserélje le az értékeket a tényleges kiszolgáló nevére és jelszavára. 
+A psql használatával csatlakozzon az alábbi paranccsal. Cserélje le az értékeket a kiszolgáló tényleges nevére és jelszavára. 
 
 ```bash
 psql -h mydemoserver.postgres.database.azure.com -u mydemouser -p
@@ -130,7 +130,7 @@ Ha ezekre az erőforrásokra már nincs szüksége más gyorsútmutatókhoz/okta
 az group delete --name myresourcegroup
 ```
 
-Ha csak az újonnan létrehozott kiszolgálót szeretné törölni, futtathatja a `az postgres flexible-server delete` parancsot.
+Ha csak az újonnan létrehozott kiszolgálót szeretné törölni, futtassa a `az postgres flexible-server delete` parancsot.
 
 ```azurecli-interactive
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver
@@ -139,4 +139,4 @@ az postgres flexible-server delete --resource-group myresourcegroup --name mydem
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
->[Django-alkalmazás üzembe helyezése App Service és PostgreSQL használatával](tutorial-django-app-service-postgres.md)
+>[Django-alkalmazás üzembe helyezése a App Service PostgreSQL használatával](tutorial-django-app-service-postgres.md)

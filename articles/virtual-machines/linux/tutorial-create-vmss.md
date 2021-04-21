@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: linuxos virtuálisgép-méretezési csoport létrehozása'
-description: Ismerje meg, hogyan hozhat létre és helyezhet üzembe egy kiválóan elérhető alkalmazást Linux rendszerű virtuális gépeken egy virtuálisgép-méretezési csoport használatával az Azure CLI használatával
+title: 'Oktatóanyag: Linux rendszerű virtuálisgép-méretezési csoport létrehozása'
+description: Megtudhatja, hogyan hozhat létre és helyezhet üzembe magas rendelkezésre állású alkalmazásokat Linux rendszerű virtuális gépeken egy virtuálisgép-méretezési csoport használatával az Azure CLI használatával
 author: ju-shim
 ms.author: jushiman
 ms.topic: tutorial
@@ -9,12 +9,12 @@ ms.subservice: linux
 ms.date: 06/01/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: c38fb976ca597647493f3dc3d32be79040ded6eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d31bde05158e89168f2a67b820c8743d4cd2729
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91320183"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769894"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>Oktatóanyag: Virtuálisgép-méretezési csoport létrehozása és magas rendelkezésre állású alkalmazás üzembe helyezése Linuxon, az Azure CLI használatával
 
@@ -28,7 +28,7 @@ A virtuálisgép-méretezési csoportok segítségével azonos, automatikus ská
 > * Méretezésicsoport-példányok kapcsolatinformációinak megtekintése
 > * Adatlemezek használata méretezési csoportokban
 
-Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](../../cloud-shell/overview.md)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
+Ez az oktatóanyag a cli-t használja [a Azure Cloud Shell,](../../cloud-shell/overview.md)amely folyamatosan frissül a legújabb verzióra. A kód Cloud Shell válassza a Try **it (Próbálja** ki) gombra a kódblokkok tetején.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -91,13 +91,13 @@ runcmd:
 
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
-Mielőtt létrehozhatna egy méretezési csoportot, létre kell hoznia egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. A következő példában létrehozunk egy *myResourceGroupScaleSet* nevű erőforráscsoportot az *eastus* helyen:
+Mielőtt létrehozhatna egy méretezési csoportot, létre kell hoznia egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroupScaleSet* nevű erőforráscsoportot az *eastus* helyen:
 
 ```azurecli-interactive
 az group create --name myResourceGroupScaleSet --location eastus
 ```
 
-Most hozzon létre egy virtuálisgép-méretezési csoportot az [az vmss create](/cli/azure/vmss#az-vmss-create) paranccsal. A következő példa létrehoz egy *myScaleSet* nevű méretezési csoportot, a cloud-init fájl használatával elvégzi a virtuális gép testreszabását, valamint SSH-kulcsokat hoz létre, amennyiben azok még nem léteznek:
+Most hozzon létre egy virtuálisgép-méretezési csoportot az [az vmss create](/cli/azure/vmss#az_vmss_create) paranccsal. A következő példa létrehoz egy *myScaleSet* nevű méretezési csoportot, a cloud-init fájl használatával elvégzi a virtuális gép testreszabását, valamint SSH-kulcsokat hoz létre, amennyiben azok még nem léteznek:
 
 ```azurecli-interactive
 az vmss create \
@@ -116,7 +116,7 @@ A méretezési csoport erőforrásainak és virtuális gépeinek létrehozása �
 ## <a name="allow-web-traffic"></a>Webforgalom engedélyezése
 A terheléselosztó a virtuálisgép-méretezési csoport részeként automatikusan lett létrehozva. A terheléselosztó a terheléselosztó szabályait használó meghatározott virtuális gépek készletében osztja szét a forgalmat. A terheléselosztó alapelveivel és konfigurálásával kapcsolatban bővebben a következő, [Virtuális gépek terheléselosztása az Azure-ban](tutorial-load-balancer.md) című oktatóanyagban ismerkedhet meg.
 
-Annak érdekében, hogy a forgalom elérhesse a webalkalmazást, hozzon létre egy szabályt az [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) paranccsal. Az alábbi példa egy *myLoadBalancerRuleWeb* nevű szabályt hoz létre:
+Annak érdekében, hogy a forgalom elérhesse a webalkalmazást, hozzon létre egy szabályt az [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) paranccsal. Az alábbi példa egy *myLoadBalancerRuleWeb* nevű szabályt hoz létre:
 
 ```azurecli-interactive
 az network lb rule create \
@@ -131,7 +131,7 @@ az network lb rule create \
 ```
 
 ## <a name="test-your-app"></a>Az alkalmazás tesztelése
-Ha működés közben szeretné megtekinteni a Node.js-alkalmazást a weben, kérje le a terheléselosztó nyilvános IP-címét az [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) paranccsal. A következő példa a *myScaleSetLBPublicIP* a méretezési csoport részeként létrehozott IP-címét kéri le:
+Ha működés közben szeretné megtekinteni a Node.js-alkalmazást a weben, kérje le a terheléselosztó nyilvános IP-címét az [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) paranccsal. A következő példa a *myScaleSetLBPublicIP* a méretezési csoport részeként létrehozott IP-címét kéri le:
 
 ```azurecli-interactive
 az network public-ip show \
@@ -152,7 +152,7 @@ Ha kíváncsi a méretezési csoport működésére, kényszerítse a webböngé
 A méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Emellett előfordulhat, hogy különféle szkripteket is érdemes létrehozni az életciklus-feladatok automatizálására. Az Azure CLI gyors módszert kínál e feladatok elvégzéséhez. Lássunk néhány gyakori feladatot.
 
 ### <a name="view-vms-in-a-scale-set"></a>Virtuális gépek megtekintése egy méretezési csoportban
-A méretezési csoportban futó virtuális gépek listájának megjelenítéséhez használja az [az vmss list-instances](/cli/azure/vmss#az-vmss-list-instances) parancsot az alábbi módon:
+A méretezési csoportban futó virtuális gépek listájának megjelenítéséhez használja az [az vmss list-instances](/cli/azure/vmss#az_vmss_list_instances) parancsot az alábbi módon:
 
 ```azurecli-interactive
 az vmss list-instances \
@@ -172,7 +172,7 @@ A kimenet a következő példához hasonló:
 
 
 ### <a name="manually-increase-or-decrease-vm-instances"></a>Virtuális gépek példányszámának manuális növelése vagy csökkentése
-A méretezési csoportban jelenleg futó példányok számának megtekintéséhez használja az [az vmss show](/cli/azure/vmss#az-vmss-show) parancsot, és állítsa be az *sku.capacity* lekérdezést:
+A méretezési csoportban jelenleg futó példányok számának megtekintéséhez használja az [az vmss show](/cli/azure/vmss#az_vmss_show) parancsot, és állítsa be az *sku.capacity* lekérdezést:
 
 ```azurecli-interactive
 az vmss show \
@@ -182,7 +182,7 @@ az vmss show \
     --output table
 ```
 
-Ezt követően az [az vmss scale](/cli/azure/vmss#az-vmss-scale) parancs használatával manuálisan növelheti vagy csökkentheti a méretezési csoportban futó virtuális gépek számát. Az alábbi példában a méretezési csoport virtuális gépeinek számát *3*-ra állítjuk:
+Ezt követően az [az vmss scale](/cli/azure/vmss#az_vmss_scale) parancs használatával manuálisan növelheti vagy csökkentheti a méretezési csoportban futó virtuális gépek számát. Az alábbi példában a méretezési csoport virtuális gépeinek számát *3*-ra állítjuk:
 
 ```azurecli-interactive
 az vmss scale \
@@ -192,7 +192,7 @@ az vmss scale \
 ```
 
 ### <a name="get-connection-info"></a>Kapcsolati adatok lekérése
-A méretezési csoportokban futó virtuális gépek kapcsolati adatainak beszerzéséhez használja az [az vmss list-instance-connection-info](/cli/azure/vmss#az-vmss-list-instance-connection-info) parancsot. Ez a parancs az SSH-val történő kapcsolódást engedélyező összes virtuális gép nyilvános IP-címét és portját adja vissza:
+A méretezési csoportokban futó virtuális gépek kapcsolati adatainak beszerzéséhez használja az [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) parancsot. Ez a parancs az SSH-val történő kapcsolódást engedélyező összes virtuális gép nyilvános IP-címét és portját adja vissza:
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -205,7 +205,7 @@ az vmss list-instance-connection-info \
 A méretezési csoportokkal adatlemezeket is létrehozhat és használhat. Egy korábbi oktatóanyagban megismerkedett az [Azure-lemezek kezelésével](tutorial-manage-disks.md). Az oktatóanyag az operációs rendszert tároló lemeztől eltérő adatlemezeken található alkalmazások létrehozására vonatkozó ajánlott eljárások és teljesítménnyel kapcsolatos fejlesztések bemutatását tartalmazta.
 
 ### <a name="create-scale-set-with-data-disks"></a>Adatlemezekkel rendelkező méretezési csoport létrehozása
-Méretezési csoport létrehozásához és adatlemezek csatlakoztatásához adja hozzá a `--data-disk-sizes-gb` paramétert az [az vmss create](/cli/azure/vmss#az-vmss-create) parancshoz. Az alábbi példában egy *50* GB-os adatlemezekkel rendelkező méretezési csoportot hozunk létre:
+Méretezési csoport létrehozásához és adatlemezek csatlakoztatásához adja hozzá a `--data-disk-sizes-gb` paramétert az [az vmss create](/cli/azure/vmss#az_vmss_create) parancshoz. Az alábbi példában egy *50* GB-os adatlemezekkel rendelkező méretezési csoportot hozunk létre:
 
 ```azurecli-interactive
 az vmss create \
@@ -222,7 +222,7 @@ az vmss create \
 Ha a rendszer eltávolít egy példányt a méretezési csoportból, akkor az ahhoz csatlakoztatott adatlemezek is el lesznek távolítva.
 
 ### <a name="add-data-disks"></a>Adatlemezek hozzáadása
-Ha szeretne hozzáadni egy adatlemezt a méretezési csoport példányaihoz, használja az [az vmss disk attach](/cli/azure/vmss/disk#az-vmss-disk-attach) parancsot. Az alábbi példában minden egyes példányhoz hozzáadunk egy *50* GB-os lemezt:
+Ha szeretne hozzáadni egy adatlemezt a méretezési csoport példányaihoz, használja az [az vmss disk attach](/cli/azure/vmss/disk#az_vmss_disk_attach) parancsot. Az alábbi példában minden egyes példányhoz hozzáadunk egy *50* GB-os lemezt:
 
 ```azurecli-interactive
 az vmss disk attach \
@@ -233,7 +233,7 @@ az vmss disk attach \
 ```
 
 ### <a name="detach-data-disks"></a>Adatlemezek leválasztása
-Ha szeretne eltávolítani egy adatlemezt a méretezési csoport példányairól, használja az [az vmss disk detach](/cli/azure/vmss/disk#az-vmss-disk-detach) parancsot. A következő példában eltávolítjuk a *2* LUN-számú adatlemezt:
+Ha szeretne eltávolítani egy adatlemezt a méretezési csoport példányairól, használja az [az vmss disk detach](/cli/azure/vmss/disk#az_vmss_disk_detach) parancsot. A következő példában eltávolítjuk a *2* LUN-számú adatlemezt:
 
 ```azurecli-interactive
 az vmss disk detach \

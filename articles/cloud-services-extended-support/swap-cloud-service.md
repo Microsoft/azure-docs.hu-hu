@@ -1,6 +1,6 @@
 ---
-title: Csere/váltás két Azure-Cloud Services között (bővített támogatás)
-description: Csere/váltás két Azure-Cloud Services között (bővített támogatás)
+title: Üzemelő példányok felcserél helyezése vagy váltása Azure Cloud Services (kiterjesztett támogatás)
+description: Megtudhatja, hogyan válthat az üzemelő példányok között a Azure Cloud Services (kiterjesztett támogatás).
 ms.topic: how-to
 ms.service: cloud-services-extended-support
 author: surbhijain
@@ -8,46 +8,65 @@ ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 04/01/2021
 ms.custom: ''
-ms.openlocfilehash: 6f96656af9afd9874cc6273a9cea9ed43e8c69cc
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: f5e01075ffb460c7ddd70b40a6b19f7ea70dd776
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106294311"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748821"
 ---
-# <a name="swapswitch-between-two-azure-cloud-services-extended-support"></a>Csere/váltás két Azure-Cloud Services között (bővített támogatás)
-A Cloud Services szolgáltatással (kiterjesztett támogatással) két független felhőalapú szolgáltatás üzemelő példánya között lehet cserélni. A Cloud Services (klasszikus) szolgáltatástól eltérően a tárolóhelyek fogalma nem létezik a Azure Resource Manager modellel. Ha úgy dönt, hogy egy felhőalapú szolgáltatás új kiadását (kiterjesztett támogatás) helyezi üzembe, akkor a "lecserélhető" állapotot egy másik meglévő felhőalapú szolgáltatással (kiterjesztett támogatással) is elvégezheti, amely lehetővé teszi az új kiadás előkészítését és tesztelését ezzel az üzembe helyezéssel. A Cloud Service "cserélhető" lehet egy másik felhőalapú szolgáltatással a második felhőalapú szolgáltatás (pár) üzembe helyezésének időpontjában. Ha az ARM sablon alapú telepítési módszert használja, ezt a SwappableCloudService tulajdonságnak a Cloud Service-objektum hálózati profilján belüli beállításával, a párosított felhőalapú szolgáltatás AZONOSÍTÓjának használatával végezheti el. 
+# <a name="swap-or-switch-deployments-in-azure-cloud-services-extended-support"></a>Üzemelő példányok felcserél helyezése vagy váltása Azure Cloud Services (kiterjesztett támogatás)
 
-```
+A két független felhőszolgáltatás üzemelő példánya között felcserélhet a Azure Cloud Services (kiterjesztett támogatás). A Azure Cloud Services (klasszikus) Azure Resource Manager modell a Azure Cloud Services (kiterjesztett támogatás) nem használ üzembe helyezési pontokat. A Azure Cloud Services (kiterjesztett támogatás) esetén a felhőszolgáltatás új kiadásának üzembe helyezésekor a felhőszolgáltatást "felcserélhetőre" helyezheti egy meglévő felhőszolgáltatással a Azure Cloud Services (kiterjesztett támogatás).
+
+Az üzemelő példányok felcserélte után az új kiadást az új felhőszolgáltatás üzemelő példányával is tesztelheti. A felcserélés valójában egy új felhőszolgáltatást hirdet meg, amely éles környezetben való kiadásra van előléptetve.
+
+> [!NOTE]
+> Nem lehet felcserélni egy Azure Cloud Services (klasszikus) és egy Azure Cloud Services (kiterjesztett támogatás) üzemelő példány között.
+
+A felhőszolgáltatást fel kell cserélni egy másik felhőszolgáltatásra, amikor két felhőszolgáltatást helyez üzembe.
+
+Az üzembe helyezéseket felcserélheti egy Azure Resource Manager sablonnal (ARM-sablon), a Azure Portal vagy a REST API.
+
+## <a name="arm-template"></a>ARM-sablon
+
+Ha ARM-sablonalapú üzembe helyezési módszert használ, hogy a felhőszolgáltatások felcserélhetők, állítsa az objektum tulajdonságát a párosított `SwappableCloudService` `networkProfile` `cloudServices` felhőszolgáltatás azonosítójára:
+
+```json
 "networkProfile": {
  "SwappableCloudService": {
               "id": "[concat(variables('swappableResourcePrefix'), 'Microsoft.Compute/cloudServices/', parameters('cloudServicesToBeSwappedWith'))]"
             },
+        }
 ```
-> [!Note] 
-> A Cloud Service (klasszikus) és a Cloud Service (kiterjesztett támogatás) között nem lehet cserélni.
 
-Használja a **swap** szolgáltatást a két felhőalapú szolgáltatás által kezelt URL-címek átváltásához, ami hatással van egy új felhőalapú szolgáltatás (szakaszos) éles kiadásra való előléptetésére.
-A központi telepítéseket a Cloud Services vagy az irányítópulton cserélheti le.
+## <a name="azure-portal"></a>Azure Portal
 
-1. A [Azure Portal](https://portal.azure.com)válassza ki a frissíteni kívánt felhőalapú szolgáltatást. Ez a lépés megnyitja a Cloud Service-példány panelt.
-2. A panelen válassza a **képcserélés** 
-    :::image type="content" source="media/swap-cloud-service-1.png" alt-text="lehetőséget a Cloud Service swap lehetőségének megjelenítése":::
-   
-3. Megnyílik a következő megerősítő üzenet
-   
-   :::image type="content" source="media/swap-cloud-service-2.png" alt-text="A rendszerkép a Cloud Service cseréjét mutatja be":::
-   
-4. Az üzembe helyezési információk ellenőrzése után kattintson az OK gombra az üzemelő példányok kicseréléséhez.
-A csere gyorsan történik, mert az egyetlen dolog, ami megváltoztatja a két felhőalapú szolgáltatás virtuális IP-címeit (VIP).
+Üzemelő példány felcserél helyezése a Azure Portal:
 
-A számítási költségek mentéséhez törölheti az egyik felhőalapú szolgáltatást (amely átmeneti környezetként van kijelölve az alkalmazás telepítéséhez), miután meggyőződött arról, hogy a felcserélt felhőalapú szolgáltatás a várt módon működik.
+1. A portál menüjében válassza a Cloud Services **(kiterjesztett támogatás)** vagy az **Irányítópult lehetőséget.**
+1. Válassza ki a frissíteni kívánt felhőszolgáltatást.
+1. A **felhőszolgáltatás** Áttekintésében válassza a **Felcserélés lehetőséget:**
 
-A REST API, amely a "swap" műveletet hajtja végre két felhőalapú szolgáltatás kiterjesztett támogatási környezete között, az alábbiakban látható:
+   :::image type="content" source="media/swap-cloud-service-portal-swap.png" alt-text="A felhőszolgáltatás felcserélés lapját bemutató képernyőkép.":::
+
+1. A felcserélés megerősítése panelen ellenőrizze az üzembe helyezési adatokat, majd kattintson az **OK** gombra az üzemelő példányok felcserél helyezéséhez:
+
+   :::image type="content" source="media/swap-cloud-service-portal-confirm.png" alt-text="Képernyőkép az üzembehelyezés felcserélési információinak megerősítéséről.":::
+
+Az üzemelő példányok gyorsan felcserélnek, mert az egyetlen dolog, ami megváltozik, az az üzembe helyezett felhőszolgáltatás virtuális IP-címe.
+
+A számítási költségek csökkentése érdekében törölheti az egyik felhőszolgáltatást (amely előkészítési környezetként van ki jelölve az alkalmazás üzembe helyezéséhez), miután ellenőrizte, hogy a felcserélhető felhőszolgáltatás a várt módon működik-e.
+
+## <a name="rest-api"></a>REST API
+
+Az alábbi REST API és JSON-konfigurációval váltson át egy új felhőszolgáltatás üzembe helyezésére a Azure Cloud Services (kiterjesztett támogatás) használatával:
+
 ```http
 POST https://management.azure.com/subscriptions/subId/providers/Microsoft.Network/locations/region/setLoadBalancerFrontendPublicIpAddresses?api-version=2020-11-01
 ```
-```
+
+```json
 {
   "frontendIPConfigurations": [
     {
@@ -68,23 +87,36 @@ POST https://management.azure.com/subscriptions/subId/providers/Microsoft.Networ
     }
   ]
  }
+}
 ```
-## <a name="common-questions-about-swapping-deployments"></a>Gyakori kérdések az üzemelő példányok cseréjével kapcsolatban
 
-### <a name="what-are-the-prerequisites-for-swapping-between-two-cloud-services"></a>Mik a két felhőalapú szolgáltatás közötti váltás előfeltételei?
-A felhőalapú szolgáltatás (kiterjesztett támogatás) sikeres felváltásának két fő előfeltétele van:
-* Ha az egyik cserélhető felhő-szolgáltatáshoz statikus/fenntartott IP-címet szeretne használni, a másik felhőalapú szolgáltatásnak fenntartott IP-címet is használnia kell. Ellenkező esetben a swap sikertelen lesz.
-* A felcserélés végrehajtása előtt a szerepkörök összes példányának futnia kell. A példányok állapotát a Azure Portal áttekintés paneljén tekintheti meg. Másik lehetőségként használhatja a Get-AzRole parancsot a Windows PowerShellben.
+## <a name="common-questions-about-swapping-deployments"></a>Gyakori kérdések az üzemelő példányok felcserélésről
 
-A vendég operációs rendszer frissítései és a szolgáltatás-javító műveletek miatt a telepítési swap-feladatok sikertelenek lehetnek. További információ: a Cloud Service üzembe helyezési problémáinak elhárítása.
+Tekintse át ezeket a válaszokat az üzembehelyezés felcserélhető példányai Azure Cloud Services (kiterjesztett támogatás) kérdésére.
 
-### <a name="can-i-perform-a-vip-swap-in-parallel-with-another-mutating-operation"></a>Párhuzamosan is elvégezhető VIP-csere egy másik mutációs művelettel?
-Nem. A VIP-swap szolgáltatás csak olyan hálózatkezelési változást tartalmaz, amelyet el kell végeznie ahhoz, hogy más számítási műveletet hajtson végre a Cloud Service (k) on. Frissítési, törlési vagy automatikus skálázási művelet végrehajtása a Cloud Service-ben, miközben egy VIP-swap folyamatban van, vagy VIP-swapot indít el, míg egy másik számítási művelet folyamatban van, a Cloud Service-t nem kívánt állapotba hagyhatja, amelyből előfordulhat, hogy a helyreállítás nem lehetséges. 
+### <a name="what-are-the-prerequisites-for-swapping-to-a-new-cloud-services-deployment"></a>Mik az új felhőszolgáltatások üzemelő példányára való felcserélés előfeltételei?
 
-### <a name="does-a-swap-incur-downtime-for-my-application-how-should-i-handle-it"></a>Felmerül a swap-állásidő az alkalmazásom esetében? Hogyan kezelhető?
-Az előző szakaszban leírtaknak megfelelően a Cloud Service swap általában gyors, mert csak az Azure Load Balancer konfigurációjának változása. Bizonyos esetekben 10 vagy több másodpercet is igénybe vehet, és átmeneti csatlakoztatási hibákat eredményezhet. Az ügyfelekre gyakorolt hatás korlátozásához érdemes lehet megvalósítani az ügyfél újrapróbálkozási logikáját.
+A sikeres üzembe helyezési felcseréléshez két fő előfeltételt kell teljesítenie a Azure Cloud Services (kiterjesztett támogatás):
+
+* Ha statikus vagy fenntartott IP-címet szeretne használni az egyik felcserélhető felhőszolgáltatáshoz, a másik felhőszolgáltatásnak is fenntartott IP-címet kell használnia. Ellenkező esetben a csere sikertelen lesz.
+* Ahhoz, hogy a felcserélés sikeres legyen, a szerepkörök összes példányának futnia kell. A példányok állapotának ellenőrzéséhez a Azure Portal az  újonnan üzembe helyezett felhőszolgáltatás áttekintését ismertető oldalon, vagy használja a parancsot a `Get-AzRole` Windows PowerShell.
+
+A vendég operációs rendszer frissítései és a szolgáltatás-javító műveletek az üzembe helyezés felcserélének meghiúsulását okozhatják. További információ: [Felhőszolgáltatások üzemelő példányának hibaelhárítása.](../cloud-services/cloud-services-troubleshoot-deployment-problems.md)
+
+### <a name="can-i-make-a-vip-swap-in-parallel-with-another-mutating-operation"></a>A VIP-felcserélést egy másik mutató művelettel párhuzamosan is el lehet tetsszen?
+
+Nem. A VIP-felcserélés csak hálózattal kapcsolatos módosítás, amely csak akkor ér véget, ha bármilyen más számítási műveletet elindít egy felhőszolgáltatásban. Ha egy felhőszolgáltatás frissítési, törlési vagy automatikus skálázási művelete van folyamatban, miközben egy VIP-felcserélés van folyamatban, vagy vip-felcserélést vált ki egy másik számítási művelet közben, előfordulhat, hogy a felhőszolgáltatás nem állítható vissza hibaállapotba.
+
+### <a name="does-a-swap-incur-downtime-for-my-application-and-how-should-i-handle-it"></a>A felcserélés állásidőt jelent az alkalmazásom számára, és hogyan kezeljem?
+
+A felhőszolgáltatások felcserélhetősége általában gyors, mivel ez csak egy konfigurációs változás az Azure Load Balancerben. Bizonyos esetekben a felcserélés 10 vagy több másodpercig is igénybe vehet, ami átmeneti csatlakozási hibákat eredményezhet. A felcserélés felhasználókra gyakorolt hatásának korlátozása érdekében fontolja meg az ügyfél-újrapróbálkozási logika alkalmazását.
 
 ## <a name="next-steps"></a>Következő lépések 
-- Tekintse át a Cloud Services [üzembe helyezésének előfeltételeit](deploy-prerequisite.md) (kiterjesztett támogatás).
-- Tekintse át a Cloud Servicesra vonatkozó [gyakori kérdéseket](faq.md) (kiterjesztett támogatás).
-- A [Azure Portal](deploy-portal.md), a [PowerShell](deploy-powershell.md), a [sablon](deploy-template.md) vagy a [Visual Studio](deploy-visual-studio.md)használatával üzembe helyezhet egy felhőalapú szolgáltatást (kiterjesztett támogatás).
+
+* Tekintse [át az üzembe helyezés előfeltételeit](deploy-prerequisite.md) a Azure Cloud Services (kiterjesztett támogatás).
+* Tekintse [át a gyakori kérdéseket a](faq.md) Azure Cloud Services (kiterjesztett támogatás).
+* Üzembe helyezhet egy Azure Cloud Services (kiterjesztett támogatás) felhőszolgáltatást az alábbi lehetőségek egyikének használatával:
+  * [Azure Portal](deploy-portal.md)
+  * [PowerShell](deploy-powershell.md)
+  * [ARM-sablon](deploy-template.md)
+  * [Visual Studio](deploy-visual-studio.md)

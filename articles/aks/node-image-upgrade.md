@@ -1,31 +1,31 @@
 ---
-title: Az Azure Kubernetes szolgáltatás (ak) csomópont-rendszerképeinek frissítése
-description: Ismerje meg, hogyan frissítheti a lemezképeket az AK-fürtcsomópontok és-csomópontok csomópontjain.
+title: Csomópont Azure Kubernetes Service (AKS)-csomópontok rendszerképének frissítése
+description: Ismerje meg, hogyan frissítheti az AKS-fürtcsomópontok és csomópontkészletek rendszerképét.
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: jpalma
-ms.openlocfilehash: 83d7d48922806334e2b49494fe0ef1d15e1a7a6a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4f6ac01c1d4df288c823142abbc93e981048d8db
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96531479"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767528"
 ---
-# <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Az Azure Kubernetes szolgáltatás (ak) csomópont-rendszerképének frissítése
+# <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Azure Kubernetes Service (AKS) csomópont rendszerképének frissítése
 
-Az AK támogatja a lemezképek frissítését egy csomóponton, hogy naprakész legyen a legújabb operációsrendszer-és futtatókörnyezet-frissítésekkel. Az AK egy új rendszerképet biztosít hetente a legújabb frissítésekkel, így hasznos lehet a csomópontok képeit rendszeresen frissíteni a legújabb funkciókhoz, beleértve a Linux vagy a Windows rendszerű javításokat is. Ez a cikk bemutatja, hogyan frissítheti az AK-fürtcsomópontok lemezképeit, és hogyan frissítheti a csomópont-készlet lemezképeit a Kubernetes verziójának frissítése nélkül.
+Az AKS támogatja a csomóponton található rendszerképek frissítését, hogy naprakész legyen az operációs rendszer és a futásidő legújabb frissítéseit. Az AKS hetente egy új rendszerképet biztosít a legújabb frissítésekkel, ezért hasznos, ha rendszeresen frissíti a csomópont lemezképeit a legújabb szolgáltatások, például a Linux vagy a Windows javításai számára. Ez a cikk bemutatja, hogyan frissítheti az AKS-fürtcsomópont-rendszerképeket, és hogyan frissítheti a csomópontkészlet-rendszerképeket a Kubernetes verziójának frissítése nélkül.
 
-Az AK által biztosított legújabb rendszerképekkel kapcsolatos további információkért tekintse meg az [AK kibocsátási megjegyzéseit](https://github.com/Azure/AKS/releases).
+Az AKS által biztosított legújabb rendszerképekkel kapcsolatos további információkért tekintse meg az [AKS kibocsátási megjegyzéseit.](https://github.com/Azure/AKS/releases)
 
-További információ a fürt Kubernetes-verziójának frissítéséről: [AK-fürt frissítése][upgrade-cluster].
+A fürt Kubernetes-verziójának frissítéséhez lásd: [AKS-fürt frissítése.][upgrade-cluster]
 
 > [!NOTE]
-> Az AK-fürtnek virtuálisgép-méretezési csoportokat kell használnia a csomópontokhoz.
+> Az AKS-fürtnek virtuálisgép-méretezési csoportokat kell használnia a csomópontokhoz.
 
-## <a name="check-if-your-node-pool-is-on-the-latest-node-image"></a>Ellenőrizze, hogy a csomópont-készlet a legújabb csomópont-lemezképen van-e
+## <a name="check-if-your-node-pool-is-on-the-latest-node-image"></a>Ellenőrizze, hogy a csomópontkészlet a legújabb csomópont-rendszerképen található-e
 
-Az alábbi paranccsal megtekintheti, hogy mi a csomópont-rendszerkép a Node-készlethez elérhető legfrissebb verziója: 
+A következő paranccsal láthatja a csomópontkészlethez elérhető legújabb csomópont-rendszerképverziót: 
 
 ```azurecli
 az aks nodepool get-upgrades \
@@ -34,7 +34,7 @@ az aks nodepool get-upgrades \
     --resource-group myResourceGroup
 ```
 
-A kimenetben a következő példában láthatók `latestNodeImageVersion` :
+A kimenetben az alábbi példához `latestNodeImageVersion` hasonlót láthat:
 
 ```output
 {
@@ -49,7 +49,7 @@ A kimenetben a következő példában láthatók `latestNodeImageVersion` :
 }
 ```
 
-Így `nodepool1` a legújabb csomópont-lemezkép elérhető `AKSUbuntu-1604-2020.10.28` . Most összehasonlíthatja azt a Node-készlet aktuális, a csomópont által használt verziójával, a futtatásával:
+A legújabb `nodepool1` elérhető csomópont-rendszerkép tehát `AKSUbuntu-1604-2020.10.28` a következő: . Most már összehasonlíthatja a csomópontkészlet által használt aktuális csomópont-rendszerképverzióval a következő futtatásával:
 
 ```azurecli
 az aks nodepool show \
@@ -59,17 +59,17 @@ az aks nodepool show \
     --query nodeImageVersion
 ```
 
-Példa:
+Példa a kimenetre:
 
 ```output
 "AKSUbuntu-1604-2020.10.08"
 ```
 
-Így ebben a példában az aktuális `AKSUbuntu-1604-2020.10.08` lemezkép-verzióról a legújabb verzióra frissíthet `AKSUbuntu-1604-2020.10.28` . 
+Ebben a példában tehát frissíthet az aktuális rendszerképverzióról a `AKSUbuntu-1604-2020.10.08` legújabb `AKSUbuntu-1604-2020.10.28` verzióra. 
 
-## <a name="upgrade-all-nodes-in-all-node-pools"></a>Az összes csomópont összes csomópontjának frissítése
+## <a name="upgrade-all-nodes-in-all-node-pools"></a>Az összes csomópontkészlet összes csomópontjának frissítése
 
-A csomópont rendszerképének frissítése a-vel történik `az aks upgrade` . A csomópont rendszerképének frissítéséhez használja a következő parancsot:
+A csomópont rendszerképének frissítése a következővel `az aks upgrade` történik: . A csomópont rendszerképének frissítésére használja a következő parancsot:
 
 ```azurecli
 az aks upgrade \
@@ -78,13 +78,13 @@ az aks upgrade \
     --node-image-only
 ```
 
-A frissítés során a csomópont rendszerképeinek állapotát a következő paranccsal tekintheti meg a `kubectl` címkék beszerzéséhez és a csomópont-rendszerkép aktuális információinak kiszűréséhez:
+A frissítés során a következő paranccsal ellenőrizze a csomópont-rendszerképek állapotát a címkék lekért és a csomópont aktuális rendszerkép-információinak `kubectl` kiszűréséhez:
 
 ```azurecli
 kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.metadata.labels.kubernetes\.azure\.com\/node-image-version}{"\n"}{end}'
 ```
 
-Ha a frissítés befejeződött, használja a következőt: `az aks show` a Node-készlet frissített adatainak beolvasása. Az aktuális csomópont képe megjelenik a `nodeImageVersion` tulajdonságban.
+Ha a frissítés befejeződött, a használatával `az aks show` lekérte a frissített csomópontkészlet adatait. Az aktuális csomópont rendszerképe megjelenik a `nodeImageVersion` tulajdonságban.
 
 ```azurecli
 az aks show \
@@ -92,11 +92,11 @@ az aks show \
     --name myAKSCluster
 ```
 
-## <a name="upgrade-a-specific-node-pool"></a>Adott csomópont-készlet frissítése
+## <a name="upgrade-a-specific-node-pool"></a>Adott csomópontkészlet frissítése
 
-Egy csomópont-készlet rendszerképének frissítése hasonló a fürtön lévő rendszerkép frissítéséhez.
+A csomópontkészlet lemezképének frissítése hasonló a fürtön található lemezkép frissítéséhez.
 
-Ha a Kubernetes frissítése nélkül szeretné frissíteni a csomópont operációsrendszer-rendszerképét, használja a `--node-image-only` következő példában szereplő beállítást:
+A csomópontkészlet operációsrendszer-lemezképének Kubernetes-fürtfrissítés nélküli frissítéséhez használja az alábbi `--node-image-only` példában található kapcsolót:
 
 ```azurecli
 az aks nodepool upgrade \
@@ -106,13 +106,13 @@ az aks nodepool upgrade \
     --node-image-only
 ```
 
-A frissítés során a csomópont rendszerképeinek állapotát a következő paranccsal tekintheti meg a `kubectl` címkék beszerzéséhez és a csomópont-rendszerkép aktuális információinak kiszűréséhez:
+A frissítés során ellenőrizze a csomópont-rendszerképek állapotát a következő paranccsal, hogy lekérte a címkéket, és kiszűrje az aktuális `kubectl` csomópont rendszerkép-információit:
 
 ```azurecli
 kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.metadata.labels.kubernetes\.azure\.com\/node-image-version}{"\n"}{end}'
 ```
 
-Ha a frissítés befejeződött, használja a következőt: `az aks nodepool show` a Node-készlet frissített adatainak beolvasása. Az aktuális csomópont képe megjelenik a `nodeImageVersion` tulajdonságban.
+Ha a frissítés befejeződött, a használatával `az aks nodepool show` lekérte a frissített csomópontkészlet adatait. Az aktuális csomópont rendszerképe megjelenik a `nodeImageVersion` tulajdonságban.
 
 ```azurecli
 az aks nodepool show \
@@ -121,13 +121,13 @@ az aks nodepool show \
     --name mynodepool
 ```
 
-## <a name="upgrade-node-images-with-node-surge"></a>Csomópont-lemezképek frissítése a Node túlfeszültséggel
+## <a name="upgrade-node-images-with-node-surge"></a>Csomópont-rendszerképek frissítése csomópont-túlcsomópont-túlcsomóponttal
 
-A csomópont-rendszerkép frissítési folyamatának felgyorsításához a Node-lemezképeket testreszabható csomópont-túllépési érték használatával frissítheti. Alapértelmezés szerint az AK egy további csomópontot használ a frissítések konfigurálásához.
+A csomópont rendszerkép-frissítési folyamatának felgyorsítása érdekében testre szabható csomópont-túlcsomópont-értékkel frissítheti a csomópont-rendszerképeket. Alapértelmezés szerint az AKS egy további csomópontot használ a frissítések konfigurálhoz.
 
-Ha szeretné bővíteni a frissítések sebességét, használja a értéket a `--max-surge` frissítésekhez használni kívánt csomópontok számának konfigurálásához. Ha többet szeretne megtudni a különböző beállításokkal kapcsolatos kompromisszumokról `--max-surge` , tekintse meg a csomópontok túlterhelésének [frissítését][max-surge]ismertető témakört.
+Ha növelni szeretné a frissítések sebességét, az értékkel konfigurálhatja a frissítéshez használt csomópontok számát, hogy azok `--max-surge` gyorsabban befejeződnek. A különböző beállításokra vonatkozó további `--max-surge` információkért lásd: [Csomópontok túlcsomópont-frissítésének testreszabása.][max-surge]
 
-A következő parancs a csomópont-rendszerkép frissítésének maximális túllépési értékét állítja be:
+A következő parancs beállítja a csomópont-rendszerkép frissítésének maximális túlcsomóponti értékét:
 
 ```azurecli
 az aks nodepool upgrade \
@@ -139,13 +139,13 @@ az aks nodepool upgrade \
     --no-wait
 ```
 
-A frissítés során a csomópont rendszerképeinek állapotát a következő paranccsal tekintheti meg a `kubectl` címkék beszerzéséhez és a csomópont-rendszerkép aktuális információinak kiszűréséhez:
+A frissítés során ellenőrizze a csomópont-rendszerképek állapotát a következő paranccsal, hogy lekérte a címkéket, és kiszűrje az aktuális `kubectl` csomópont rendszerkép-információit:
 
 ```azurecli
 kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.metadata.labels.kubernetes\.azure\.com\/node-image-version}{"\n"}{end}'
 ```
 
-`az aks nodepool show`A csomópont-készlet frissített adatainak beszerzéséhez használja a következőt:. Az aktuális csomópont képe megjelenik a `nodeImageVersion` tulajdonságban.
+Az `az aks nodepool show` használatával lekérte a frissített csomópontkészlet adatait. Az aktuális csomópont rendszerképe megjelenik a `nodeImageVersion` tulajdonságban.
 
 ```azurecli
 az aks nodepool show \
@@ -156,15 +156,15 @@ az aks nodepool show \
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A legújabb csomópont-lemezképekkel kapcsolatos információkért tekintse meg az [AK kibocsátási megjegyzéseit](https://github.com/Azure/AKS/releases) .
-- Ismerje meg, hogyan frissítheti a Kubernetes-verziót [egy AK-fürt frissítésével][upgrade-cluster].
-- [Fürt-és csomópont-készlet frissítéseinek automatikus alkalmazása GitHub-műveletekkel][github-schedule]
-- További tudnivalók a több csomópontos készletekről, valamint a csomópont-készletek [több csomópontos készletek létrehozásával és kezelésével][use-multiple-node-pools]történő frissítéséről.
+- A legújabb [csomópont-rendszerképekkel kapcsolatos](https://github.com/Azure/AKS/releases) információkért tekintse meg az AKS kibocsátási megjegyzéseit.
+- Megtudhatja, hogyan frissítheti a Kubernetes verzióját [az AKS-fürtök frissítéséhez.][upgrade-cluster]
+- [Fürt- és csomópontkészlet-frissítések automatikus alkalmazása a GitHub Actions][github-schedule]
+- További információ a több csomópontkészletről és a csomópontkészletek frissítésével kapcsolatban a Több csomópontkészlet [létrehozása és kezelése segítségével.][use-multiple-node-pools]
 
 <!-- LINKS - internal -->
 [upgrade-cluster]: upgrade-cluster.md
 [github-schedule]: node-upgrade-github-actions.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [max-surge]: upgrade-cluster.md#customize-node-surge-upgrade
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update

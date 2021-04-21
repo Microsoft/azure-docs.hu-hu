@@ -8,14 +8,14 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: f1a502722156bc010dab917afdbd1d49ae93681a
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 804c4732ce979cd9ec46c69456b3f731284c9c73
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375984"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748525"
 ---
-# <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Rövid útmutató: Azure Key Vault Titkos kódtár létrehozása Javához
+# <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Rövid útmutató: Azure Key Vault Java titkos ügyféloldali kódtárának létrehozása
 A Java-hoz Azure Key Vault Secret ügyféloldali kódtár első lépések. A csomag telepítéséhez kövesse az alábbi lépéseket, és próbálja ki az alapszintű feladatokhoz szükséges példakódot.
 
 További források:
@@ -45,7 +45,7 @@ Ez a rövid útmutató az Azure Identity Library és az Azure CLI használatáva
 
    Ha a CLI meg tudja nyitni az alapértelmezett böngészőt, akkor ezt fogja megtenni, és betölt egy Azure bejelentkezési oldalt.
 
-   Ellenkező esetben nyisson meg egy böngészőoldalt a oldalon, és írja be a terminálban [https://aka.ms/devicelogin](https://aka.ms/devicelogin) megjelenő engedélyezési kódot.
+   Ellenkező esetben nyisson meg egy böngészőoldalt a oldalon, és adja meg a terminálon [https://aka.ms/devicelogin](https://aka.ms/devicelogin) megjelenő engedélyezési kódot.
 
 2. A böngészőben jelentkezzen be fiókja hitelesítő adataival.
 
@@ -168,14 +168,14 @@ SecretClient secretClient = new SecretClientBuilder()
     .buildClient();
 ```
 
-### <a name="save-a-secret"></a>Titkos fájl mentése
-Most, hogy az alkalmazás hitelesítve van, a metódussal titkos kulcsot is betehet a `secretClient.setSecret` kulcstartóba. Ehhez szükség van egy névre a titkos nak – ebben a mintában a "mySecret" értéket `secretName` rendeltük hozzá a változóhoz.
+### <a name="save-a-secret"></a>Titkos gombra
+Most, hogy az alkalmazás hitelesítve van, a metódussal titkos adatokat is betehet a `secretClient.setSecret` kulcstartóba. Ehhez szükség van a titkos névre – ebben a példában a "mySecret" értéket rendeltük `secretName` hozzá a változóhoz.
 
 ```java
 secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
 ```
 
-A titkos kulcs az [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) paranccsal ellenőrizhető:
+A titkos kulcs beállítását az [az keyvault secret show paranccsal ellenőrizheti:](/cli/azure/keyvault/secret?#az-keyvault-secret-show)
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret
@@ -188,10 +188,10 @@ Most már lekérheti a korábban beállított titkos adatokat a `secretClient.ge
 KeyVaultSecret retrievedSecret = secretClient.getSecret(secretName);
  ```
 
-Most már elérheti a lekért titkos adatokat a `retrievedSecret.getValue()` következővel: .
+Most már elérheti a lekért titkos adat értékét a `retrievedSecret.getValue()` következővel: .
 
 ### <a name="delete-a-secret"></a>Titkos kulcs törlése
-Végül töröljük a titkos adatokat a kulcstartóból a `secretClient.beginDeleteSecret` metódussal.
+Végül töröljük a titkos adatokat a key vaultból a `secretClient.beginDeleteSecret` metódussal.
 
 A titkos adat törlése egy hosszú ideig futó művelet, amellyel lekérdezheti az előrehaladását, vagy megvárhatja, amíg befejeződik.
 
@@ -200,7 +200,7 @@ SyncPoller<DeletedSecret, Void> deletionPoller = secretClient.beginDeleteSecret(
 deletionPoller.waitForCompletion();
 ```
 
-A titkos kulcs az [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) paranccsal ellenőrizhető:
+A titkos kulcs törlése az az [keyvault secret show paranccsal ellenőrizhető:](/cli/azure/keyvault/secret?#az-keyvault-secret-show)
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret
@@ -279,6 +279,6 @@ public class App {
 ## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban létrehozott egy kulcstartót, tárolt egy titkos kulcsot, lekérte, majd törölte. Ha többet szeretne megtudni a Key Vault és az alkalmazásokba való integrálásáról, folytassa az alábbi cikkekkel.
 
-- Áttekintés a [Azure Key Vault](../general/overview.md)
+- Olvassa el [a Azure Key Vault](../general/overview.md)
 - Lásd [Azure Key Vault fejlesztői útmutatót](../general/developers-guide.md)
-- [Kulcstartóhoz való hozzáférés biztonságossá tere](../general/secure-your-key-vault.md)
+- [Kulcstartóhoz való hozzáférés biztonságossá tere](../general/security-overview.md)

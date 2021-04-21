@@ -1,50 +1,50 @@
 ---
-title: Az API-kiszolgáló által jóváhagyott IP-címtartományok az Azure Kubernetes szolgáltatásban (ak)
-description: Ismerje meg, hogyan biztonságossá teheti a fürtöt IP-címtartomány használatával az Azure Kubernetes szolgáltatásban (ak) lévő API-kiszolgálóhoz való hozzáféréshez
+title: API-kiszolgáló engedélyezett IP-címtartományai a Azure Kubernetes Service (AKS)
+description: Ismerje meg, hogyan biztosíthatja a fürt biztonságossá a fürtöt egy IP-címtartomány használatával az API-kiszolgáló eléréséhez a Azure Kubernetes Service (AKS) szolgáltatásban
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: 20c3d46e9a19c66c727e5a21bccd6caa0dc5f0ba
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8fca3fe61e26a031e6ea09692c9ba0781bfca21f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771923"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769642"
 ---
-# <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Biztonságos hozzáférés az API-kiszolgálóhoz a jogosult IP-címtartományok használatával az Azure Kubernetes szolgáltatásban (ak)
+# <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Biztonságos hozzáférés az API-kiszolgálóhoz hitelesített IP-címtartományok használatával a Azure Kubernetes Service (AKS)
 
-A Kubernetes-ben az API-kiszolgáló kérelmeket fogad a fürt műveleteinek végrehajtásához, például erőforrások létrehozásához vagy a csomópontok számának skálázásához. Az API-kiszolgáló a fürttel való kommunikáció és felügyelet központi módja. A fürt biztonságának növelése és a támadások csökkentése érdekében az API-kiszolgálónak csak korlátozott IP-címtartományok közül kell elérhetőnek lennie.
+A Kubernetesben az API-kiszolgáló kéréseket kap a fürtön lévő műveletek végrehajtásához, például erőforrások létrehozásához vagy a csomópontok számának skálázához. Az API-kiszolgáló a fürtök kezelésének és kezelésének központi módja. A fürtbiztonság javítása és a támadások minimalizálása érdekében az API-kiszolgálónak csak korlátozott SZÁMÚ IP-címtartományból szabad elérhetőnek lennie.
 
-Ebből a cikkből megtudhatja, hogyan használható az API-kiszolgáló által engedélyezett IP-címtartományok annak a korlátozására, hogy mely IP-címek és CIDRs férhetnek hozzá a vezérlő síkja.
+Ez a cikk bemutatja, hogyan használhatja az API-kiszolgáló engedélyezett IP-címtartományait annak korlátozására, hogy mely IP-címek és CIDR-ek férhetnek hozzá a vezérlősíkhoz.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk bemutatja, hogyan hozhat létre egy AK-fürtöt az Azure CLI használatával.
+Ez a cikk bemutatja, hogyan hozhat létre AKS-fürtöt az Azure CLI használatával.
 
-Szüksége lesz az Azure CLI-verzió 2.0.76 vagy újabb verziójára, és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
+Az Azure CLI 2.0.76-os vagy újabb verzióját kell telepítenie és konfigurálnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 ### <a name="limitations"></a>Korlátozások
 
-Az API-kiszolgáló által jóváhagyott IP-címtartományok funkció a következő korlátozásokkal rendelkezik:
-- Az API-kiszolgáló által engedélyezett IP-címtartományok után létrehozott fürtökön a 2019 októberi időszakban az API-kiszolgáló által engedélyezett IP-címtartományok csak a *standard* SKU Load Balancer esetében támogatottak. Az *alapszintű* SKU Load Balancer és a konfigurált API-kiszolgáló által jóváhagyott IP-címtartományok meglévő fürtök továbbra is ugyanúgy működnek, mint a *standard* SKU Load Balancer. Ezek a meglévő fürtök továbbra is működni fognak, ha a Kubernetes verziója vagy a vezérlő síkja frissül. Az API-kiszolgáló által engedélyezett IP-címtartományok a privát fürtök esetében nem támogatottak.
-- Ez a funkció nem kompatibilis a [csomópontok nyilvános IP-címet](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools)használó fürtökkel.
+Az API-kiszolgáló Engedélyezett IP-címtartományok szolgáltatása a következő korlátozásokkal rendelkezik:
+- Az API-kiszolgáló engedélyezett IP-címtartományai előzetes verzióból 2019 októberében való eltávozása után létrehozott fürtökön az API-kiszolgáló által engedélyezett IP-címtartományok csak a *Standard* termékváltozat terheléseltöltőn támogatottak. Az alapszintű *termékváltozatú* terheléselosztással és az API-kiszolgáló engedélyezett IP-címtartományokkal konfigurált meglévő fürtök továbbra is a jelenlegi módon működnek, de nem migrálhatóak *standard* termékváltozatú terheléselosztásra. Ezek a meglévő fürtök akkor is működni fognak, ha a Kubernetes-verzió vagy a vezérlősík frissítve van. Az API-kiszolgáló engedélyezett IP-címtartományai privát fürtök esetén nem támogatottak.
+- Ez a szolgáltatás nem kompatibilis a csomópontonként nyilvános [IP-címet () használ fürtökön.](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools)
 
-## <a name="overview-of-api-server-authorized-ip-ranges"></a>Az API-kiszolgáló által jóváhagyott IP-címtartományok áttekintése
+## <a name="overview-of-api-server-authorized-ip-ranges"></a>Az API-kiszolgáló engedélyezett IP-címtartományának áttekintése
 
-A Kubernetes API-kiszolgáló az alapul szolgáló Kubernetes API-k számára elérhető. Ez az összetevő a felügyeleti eszközök, például `kubectl` a vagy a Kubernetes irányítópultjának interakcióját biztosítja. Az AK egy egybérlős fürtbeli vezérlési síkot biztosít dedikált API-kiszolgálóval. Alapértelmezés szerint az API-kiszolgáló egy nyilvános IP-címet kap, és a hozzáférést a Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC) vagy az Azure RBAC használatával szabályozhatja.
+A Kubernetes API-kiszolgáló az alapul szolgáló Kubernetes API-k elérhetővé téve. Ez az összetevő biztosítja az interakciót a felügyeleti eszközök, például a vagy a `kubectl` Kubernetes-irányítópult számára. Az AKS egybérlős fürtvezérlő síkot biztosít dedikált API-kiszolgálóval. Alapértelmezés szerint az API-kiszolgálóhoz nyilvános IP-cím van rendelve, és a hozzáférést a Kubernetes szerepköralapú hozzáférés-vezérlésével (Kubernetes RBAC) vagy az Azure RBAC-val kell szabályozni.
 
-Az egyébként nyilvánosan elérhető AK-vezérlési sík/API-kiszolgáló hozzáférésének biztonságossá tételéhez engedélyezheti és használhatja az engedélyezett IP-tartományokat. Ezek a megengedett IP-címtartományok csak a meghatározott IP-címtartományok használatát teszik lehetővé az API-kiszolgálóval való kommunikációhoz. Az API-kiszolgálónak egy olyan IP-címről érkező kérés le van tiltva, amely nem része ezeknek az engedélyezett IP-tartományoknak. Folytassa a Kubernetes RBAC vagy az Azure RBAC használatával a felhasználók és az általuk kért műveletek engedélyezéséhez.
+A egyébként nyilvánosan elérhető AKS-vezérlősíkhoz/API-kiszolgálóhoz való hozzáférés biztonságossá tétele érdekében engedélyezheti és használhatja az engedélyezett IP-címtartományokat. Ezek az engedélyezett IP-tartományok csak meghatározott IP-címtartományok számára teszik lehetővé az API-kiszolgálóval való kommunikációt. Az API-kiszolgálónak az engedélyezett IP-címtartományok részét nem használó IP-címről le van tiltva egy kérés. Használja továbbra is a Kubernetes RBAC-t vagy az Azure RBAC-t a felhasználók és a kért műveletek jogosultságának igénylésére.
 
-További információ az API-kiszolgálóról és az egyéb fürt-összetevőkről: [Kubernetes Core Concepts for AK][concepts-clusters-workloads].
+További információ az API-kiszolgálóról és más fürtösszetevőkről: [Kubernetes alapfogalmak az AKS-hez.][concepts-clusters-workloads]
 
-## <a name="create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled"></a>AK-fürt létrehozása az API-kiszolgáló által engedélyezett IP-címtartományok engedélyezve
+## <a name="create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled"></a>AKS-fürt létrehozása engedélyezett API-kiszolgálói IP-címtartományokkal
 
-Hozzon létre egy fürtöt az [az AK Create][az-aks-create] paranccsal, és adja meg a *`--api-server-authorized-ip-ranges`* paramétert a jóváhagyott IP-címtartományok listájának megadásához. Ezek az IP-címtartományok általában a helyszíni hálózatok vagy a nyilvános IP-címek által használt címtartományok. CIDR-tartomány megadásakor a tartomány első IP-címével kezdjen el. Például a *137.117.106.90/29* egy érvényes tartomány, de győződjön meg arról, hogy az első IP-címet adta meg a tartományban, például *137.117.106.88/29*.
+Hozzon létre egy fürtöt [az az aks create][az-aks-create] használatával, és adja meg a paramétert az engedélyezett *`--api-server-authorized-ip-ranges`* IP-címtartományok listájának megadásához. Ezek az IP-címtartományok általában a helyszíni hálózatok vagy a nyilvános IP-címek által használt címtartományok. CIDR-tartomány megadásakor kezdje a tartomány első IP-címével. Például a *137.117.106.90/29* érvényes tartomány, de ügyeljen arra, hogy a tartomány első IP-címét adja meg, *például: 137.117.106.88/29.*
 
 > [!IMPORTANT]
-> Alapértelmezés szerint a fürt a [standard SKU Load balancert][standard-sku-lb] használja, amelyet a kimenő átjáró konfigurálására használhat. Ha engedélyezi az API-kiszolgálók engedélyezett IP-tartományait a fürt létrehozása során, a fürt nyilvános IP-címe alapértelmezés szerint is engedélyezett a megadott tartományokon kívül. Ha a *""* vagy a nem értéket ad meg *`--api-server-authorized-ip-ranges`* , az API-kiszolgáló által engedélyezett IP-címtartományok le lesznek tiltva. Vegye figyelembe, hogy ha a PowerShellt használja, használja az *`--api-server-authorized-ip-ranges=""`* (egyenlőségjel) lehetőséget az elemzési problémák elkerüléséhez.
+> Alapértelmezés szerint a fürt a [Standard termékváltozatú terheléselosztást][standard-sku-lb] használja, amellyel konfigurálhatja a kimenő átjárót. Ha engedélyezi az API-kiszolgáló engedélyezett IP-címtartományait a fürt létrehozása során, a fürt nyilvános IP-címe is alapértelmezés szerint engedélyezett a megadott tartományok mellett. Ha a *""* értéket adja meg, vagy nem ad meg értéket, az *`--api-server-authorized-ip-ranges`* API-kiszolgáló engedélyezett IP-címtartományai le lesznek tiltva. Vegye figyelembe, hogy ha a PowerShellt használja, az (egyenlőségjeles) használatával elkerülheti az *`--api-server-authorized-ip-ranges=""`* elemzési problémákat.
 
-A következő példa egy *myAKSCluster* nevű egycsomópontos fürtöt hoz létre az *myResourceGroup* nevű erőforráscsoport és az API-kiszolgáló által engedélyezett IP-címtartományok használatával. Az IP-címtartományok megengedett *73.140.245.0/24*:
+Az alábbi példa egy *myAKSCluster* nevű egycsomópontos fürtöt hoz létre a *myResourceGroup nevű erőforráscsoportban,* engedélyezett ENGEDÉLYEZETT API-kiszolgálói IP-címtartományokkal. Az engedélyezett IP-címtartományok a *következőek: 73.140.245.0/24:*
 
 ```azurecli-interactive
 az aks create \
@@ -58,18 +58,18 @@ az aks create \
 ```
 
 > [!NOTE]
-> Adja hozzá ezeket a tartományokat egy engedélyezési listához:
+> Ezeket a tartományokat hozzá kell adni egy engedélyező listához:
 > - A tűzfal nyilvános IP-címe
-> - Bármely tartomány, amely azokat a hálózatokat képviseli, amelyekről a fürtöt felügyelni szeretné
-> - Ha az AK-fürtön az Azure dev Spaces szolgáltatást használja, akkor a [régión alapuló további tartományokat][dev-spaces-ranges]is engedélyeznie kell.
+> - Bármely tartomány, amely azokat a hálózatokat jelöli, amelyekről a fürtöt felügyelni fogja
+> - Ha az Azure Dev Spacest használja az AKS-fürtön, további tartományokat kell engedélyeznie a [régiója alapján.][dev-spaces-ranges]
 >
-> A megadható IP-címtartományok felső határa 200.
+> A megadható IP-tartományok felső korlátja 200.
 >
-> A szabályok akár a 2perc is eltarthat. A kapcsolódás tesztelésekor adja meg a megadott időt.
+> A szabályok propagálása akár 2 perc is lehet. A kapcsolat tesztelésekor adjon meg legfeljebb ennyi időt.
 
-### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>A standard SKU Load Balancer kimenő IP-címeinek megadása
+### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Adja meg a standard termékváltozatú terheléselosztás kimenő IP-eit
 
-AK-fürt létrehozásakor, ha megadja a fürt kimenő IP-címeit vagy előtagjait, akkor ezek a címek vagy előtagok is engedélyezettek. Például:
+AKS-fürt létrehozásakor, ha megadja a fürt kimenő IP-címeit vagy előtagját, akkor ezek a címek vagy előtagok is engedélyezettek. Például:
 
 ```azurecli-interactive
 az aks create \
@@ -83,15 +83,15 @@ az aks create \
     --generate-ssh-keys
 ```
 
-A fenti példában a paraméterben megadott összes IP-cím *`--load-balancer-outbound-ip-prefixes`* engedélyezett a paraméterben található IP-címekkel együtt *`--api-server-authorized-ip-ranges`* .
+A fenti példában a paraméterben megadott összes IP-pont engedélyezett a paraméterben található *`--load-balancer-outbound-ip-prefixes`* IP-ekkel *`--api-server-authorized-ip-ranges`* együtt.
 
-Ehelyett megadhatja a *`--load-balancer-outbound-ip-prefixes`* paramétert a kimenő terheléselosztó IP-előtagjainak engedélyezéséhez.
+Ehelyett megadhatja a paramétert a kimenő *`--load-balancer-outbound-ip-prefixes`* terheléselosztási IP-előtagok engedélyezése érdekében.
 
-### <a name="allow-only-the-outbound-public-ip-of-the-standard-sku-load-balancer"></a>Csak a standard SKU Load Balancer kimenő nyilvános IP-címének engedélyezése
+### <a name="allow-only-the-outbound-public-ip-of-the-standard-sku-load-balancer"></a>Csak a Standard termékváltozat terheléselosztásának kimenő nyilvános IP-címének engedélyezése
 
-Ha engedélyezi az API-kiszolgáló engedélyezett IP-tartományait a fürt létrehozása során, akkor a fürt szabványos SKU-Load Balancer kimenő nyilvános IP-címe is alapértelmezés szerint engedélyezett a megadott tartományokon kívül. Ha csak a standard SKU Load Balancer kimenő nyilvános IP-címét szeretné engedélyezni, a paraméter megadásakor a *0.0.0.0/32* protokollt használja *`--api-server-authorized-ip-ranges`* .
+Ha engedélyezi az API-kiszolgáló engedélyezett IP-címtartományait a fürt létrehozása során, a fürt standard termékváltozatú terheléselosztásának kimenő nyilvános IP-címe alapértelmezés szerint az Ön által megadott tartományokon kívül is engedélyezve lesz. Ha csak a Standard termékváltozat terheléselosztásának kimenő nyilvános IP-címét engedélyezi, használja a *0.0.0.0/32* értéket a paraméter *`--api-server-authorized-ip-ranges`* megadásakor.
 
-A következő példában csak a standard SKU Load Balancer kimenő nyilvános IP-címe engedélyezett, és csak a fürt csomópontjain található API-kiszolgáló férhet hozzá.
+A következő példában csak a Standard termékváltozat terheléselosztásának kimenő nyilvános IP-címe engedélyezett, és az API-kiszolgáló csak a fürt csomópontjairól érhető el.
 
 ```azurecli-interactive
 az aks create \
@@ -104,11 +104,11 @@ az aks create \
     --generate-ssh-keys
 ```
 
-## <a name="update-a-clusters-api-server-authorized-ip-ranges"></a>Fürt API-kiszolgálójának IP-tartományának frissítése
+## <a name="update-a-clusters-api-server-authorized-ip-ranges"></a>Fürt API-kiszolgálójának engedélyezett IP-címtartományok frissítése
 
-Ha egy meglévő fürtön szeretné frissíteni az API-kiszolgáló által jóváhagyott IP-tartományokat, használja az [az AK Update][az-aks-update] parancsot, és használja a *`--api-server-authorized-ip-ranges`* ,--Load-Balancer-kimenő-IP-előtag *, *`--load-balancer-outbound-ips`* , vagy--Load-Balancer-kimenő-IP-előtagok* paramétereit.
+Az API-kiszolgáló engedélyezett IP-címtartományának meglévő fürtön való frissítéséhez használja az [az aks update][az-aks-update] parancsot, és használja a *`--api-server-authorized-ip-ranges`* ,--load-balancer-outbound-ip-prefixes *, *`--load-balancer-outbound-ips`* vagy--load-balancer-outbound-ip-prefixes* paramétereket.
 
-Az alábbi példa frissíti az API-kiszolgáló által jóváhagyott IP-tartományokat a *myAKSCluster* nevű fürtön a *myResourceGroup* nevű erőforráscsoport alatt. Az engedélyezni kívánt IP-címtartomány a *73.140.245.0/24*:
+A következő példa frissíti a myResourceGroup nevű erőforráscsoportban található *myAKSCluster* nevű fürt *API-kiszolgálójának engedélyezett IP-címtartományát.* Az engedélyeznie kell az IP-címtartományt: *73.140.245.0/24:*
 
 ```azurecli-interactive
 az aks update \
@@ -117,11 +117,11 @@ az aks update \
     --api-server-authorized-ip-ranges  73.140.245.0/24
 ```
 
-A *0.0.0.0/32* -et is használhatja a paraméter megadásával *`--api-server-authorized-ip-ranges`* , hogy csak a standard SKU Load Balancer nyilvános IP-címét engedélyezze.
+A *0.0.0.0/32* paramétert is használhatja a paraméter megadásakor, hogy csak a Standard termékváltozatú terheléselosztás nyilvános *`--api-server-authorized-ip-ranges`* IP-címét engedélyezze.
 
-## <a name="disable-authorized-ip-ranges"></a>A hitelesítő IP-címtartományok letiltása
+## <a name="disable-authorized-ip-ranges"></a>Engedélyezett IP-tartományok letiltása
 
-Az engedélyezett IP-címtartományok letiltásához használja az [az AK Update][az-aks-update] parancsot, és az API-kiszolgáló által engedélyezett IP-címtartományok letiltásához használjon üres tartományt. Például:
+Az engedélyezett IP-tartományok letiltásához használja [az az aks update][az-aks-update] et, és adjon meg egy üres tartományt az API-kiszolgáló által engedélyezett IP-tartományok letiltásához. Például:
 
 ```azurecli-interactive
 az aks update \
@@ -130,9 +130,9 @@ az aks update \
     --api-server-authorized-ip-ranges ""
 ```
 
-## <a name="find-existing-authorized-ip-ranges"></a>Meglévő, jóváhagyott IP-címtartományok keresése
+## <a name="find-existing-authorized-ip-ranges"></a>Meglévő engedélyezett IP-címtartományok megkerese
 
-Az engedélyezni kívánt IP-címtartományok megkereséséhez használja az [az AK show][az-aks-show] nevet, és adja meg a fürt nevét és az erőforráscsoportot. Például:
+A hitelesített IP-tartományok kereséséhez használja [az az aks show][az-aks-show] használhatja, és adja meg a fürt nevét és erőforráscsoportját. Például:
 
 ```azurecli-interactive
 az aks show \
@@ -141,19 +141,19 @@ az aks show \
     --query apiServerAccessProfile.authorizedIpRanges'
 ```
 
-## <a name="update-disable-and-find-authorized-ip-ranges-using-azure-portal"></a>Hitelesítő IP-címtartományok frissítése, letiltása és keresése Azure Portal használatával
+## <a name="update-disable-and-find-authorized-ip-ranges-using-azure-portal"></a>Az engedélyezett IP-címtartományok frissítése, letiltása és megkeres Azure Portal
 
-Az adott IP-címtartományok hozzáadásával, frissítésével, megkeresésével és letiltásával kapcsolatos műveletek a Azure Portalon is elvégezhetők. A hozzáféréshez navigáljon a **hálózat** menüpontra a fürterőforrás menüjének **Beállítások** területén.
+Az engedélyezett IP-tartományok hozzáadásának, frissítésének, keresésének és letiltásának fenti műveletei a következő műveleteket is Azure Portal. A hozzáféréshez lépjen a Hálózat **elemre** **a** fürterőforrás menü panelének Beállítások menüjében.
 
-:::image type="content" source="media/api-server-authorized-ip-ranges/ip-ranges-specified.PNG" alt-text="A böngészőben a fürterőforrás hálózati beállítások Azure Portal lapja látható. A &quot;megadott IP-címtartomány beállítása&quot; és a &quot;megadott IP-címtartományok&quot; beállítás ki van emelve.":::
+:::image type="content" source="media/api-server-authorized-ip-ranges/ip-ranges-specified.PNG" alt-text="A böngészőben megjelenik a fürterőforrás hálózati beállításainak Azure Portal lapon. A &quot;megadott IP-tartomány beállítása&quot; és a &quot;Megadott IP-címtartományok&quot; beállítás ki van emelve.":::
 
-## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>Hogyan találhatom meg az IP-címet, hogy szerepeljen a alkalmazásban `--api-server-authorized-ip-ranges` ?
+## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>Hogyan találhatom meg az IP-címemet, hogy szerepeltetsem a `--api-server-authorized-ip-ranges` következőben: ?
 
-Az API-kiszolgáló innen való eléréséhez hozzá kell adnia a fejlesztői gépeket, az eszközök vagy az Automation IP-címeit a jóváhagyott IP-tartományok AK-beli fürtjének listájához. 
+Az API-kiszolgáló innen való eléréséhez hozzá kell adni a fejlesztési gépeket, az eszközök vagy az automation IP-címeket a jóváhagyott IP-tartományok AKS-fürtök listájához. 
 
-Egy másik lehetőség, hogy a tűzfal virtuális hálózatán belül egy külön alhálózaton belüli Jumpbox konfigurálja a szükséges eszközökkel. Ez azt feltételezi, hogy a környezete tűzfallal rendelkezik a megfelelő hálózattal, és a tűzfal IP-címei a jogosult tartományokhoz lettek adva. Hasonlóképpen, ha úgy döntött, hogy az AK-alhálózatról a tűzfal alhálózatára kényszerített bújtatást, akkor a fürt alhálózatán lévő Jumpbox is rendben van.
+Egy másik lehetőség egy jumpbox konfigurálása a szükséges eszközkészlettel a tűzfal virtuális hálózatának egy külön alhálózatán belül. Ez azt feltételezi, hogy a környezet rendelkezik tűzfallal a megfelelő hálózattal, és ön hozzáadta a tűzfal IP-eket az engedélyezett tartományokhoz. Hasonlóképpen, ha kényszerített bújtatást kényszerített az AKS alhálózata és a tűzfal alhálózata között, akkor a fürt alhálózatában található jumpbox is megfelelő.
 
-Adjon hozzá egy másik IP-címet a jóváhagyott tartományokhoz a következő paranccsal.
+Adjon hozzá egy másik IP-címet a jóváhagyott tartományokhoz az alábbi paranccsal.
 
 ```bash
 # Retrieve your IP address
@@ -163,21 +163,21 @@ az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/3
 ```
 
 >> [!NOTE]
-> A fenti példa hozzáfűzi az API-kiszolgáló által jóváhagyott IP-tartományokat a fürthöz. Az engedélyezett IP-címtartományok letiltásához használja az az AK Update parancsot, és határozzon meg egy üres tartományt. 
+> A fenti példa hozzáfűzi az API-kiszolgáló engedélyezett IP-címtartományát a fürthöz. Az engedélyezett IP-tartományok letiltásához használja az az aks update használhatja, és adjon meg egy üres tartományt "". 
 
-Egy másik lehetőség az alábbi parancs használata Windows rendszereken a nyilvános IPv4-cím lekéréséhez, vagy az [IP-cím megkeresése](https://support.microsoft.com/en-gb/help/4026518/windows-10-find-your-ip-address)című cikkben ismertetett lépéseket követve.
+Másik lehetőségként használja az alábbi parancsot Windows rendszereken a nyilvános IPv4-cím lekért címéhez, vagy kövesse az [IP-cím megkeresése lépéseit.](https://support.microsoft.com/en-gb/help/4026518/windows-10-find-your-ip-address)
 
 ```azurepowershell-interactive
 Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
 ```
 
-Ezt a címet a "mi az IP-cím" kifejezéssel keresheti meg egy böngészőben.
+Ezt a címet úgy is megkeresheti, ha egy webböngészőben rákeres a "mi az IP-címem" szóra.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben engedélyezte az API-kiszolgáló engedélyezett IP-tartományait. Ez a megközelítés a biztonságos AK-fürtök futtatásának egyik része.
+Ebben a cikkben engedélyezte az API-kiszolgáló engedélyezett IP-címtartományokat. Ez a megközelítés a biztonságos AKS-fürtök futtatásának egyik része.
 
-További információ: az [AK-ban található alkalmazásokhoz és fürtökhöz tartozó biztonsági fogalmak][concepts-security] , valamint a [fürt biztonságára és az AK-ban való frissítésére vonatkozó ajánlott eljárások][operator-best-practices-cluster-security].
+További információkért lásd az [AKS-alkalmazások][concepts-security] és fürtök biztonsági fogalmait és az AKS-hez használható fürtbiztonsági és frissítési ajánlott [eljárásokat.][operator-best-practices-cluster-security]
 
 <!-- LINKS - external -->
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
@@ -186,9 +186,9 @@ További információ: az [AK-ban található alkalmazásokhoz és fürtökhöz 
 
 <!-- LINKS - internal -->
 [az-aks-update]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-update
-[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-create]: /cli/azure/aks#az_aks_create
 [az-aks-show]: /cli/azure/aks#az_aks_show
-[az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
+[az-network-public-ip-list]: /cli/azure/network/public-ip#az_network_public_ip_list
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
 [concepts-security]: concepts-security.md
 [install-azure-cli]: /cli/azure/install-azure-cli
