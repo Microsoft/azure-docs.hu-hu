@@ -1,34 +1,34 @@
 ---
 title: 'Oktatóanyag: PHP-alkalmazás és MySQL'
-description: Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő PHP-alkalmazásra, amely csatlakozik egy MySQL-adatbázishoz az Azure-ban. A Laravel az oktatóanyagban van használatban.
+description: Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő PHP-alkalmazásra, amely csatlakozik egy MySQL-adatbázishoz az Azure-ban. Az oktatóanyag a Laravelt használja.
 ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.devlang: php
 ms.topic: tutorial
 ms.date: 06/15/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: aaef3f28ea9b7e41bce35661e9515f6efcc9ade5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0810f023f4e2e192f2cb0d83f2a028cdded9e275
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102184440"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779480"
 ---
-# <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>Oktatóanyag: PHP-és MySQL-alkalmazás létrehozása Azure App Service
+# <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>Oktatóanyag: PHP- és MySQL-alkalmazás Azure App Service
 
 ::: zone pivot="platform-windows"  
 
-A [Azure app Service](overview.md) egy rugalmasan méretezhető, önjavító webes üzemeltetési szolgáltatást biztosít a Windows operációs rendszer használatával. Ez az oktatóanyag bemutatja, hogyan hozhat létre PHP-alkalmazást az Azure-ban, és hogyan csatlakoztatható egy MySQL-adatbázishoz. Ha elkészült, Azure App Service Windows rendszeren futó [Laravel](https://laravel.com/) -alkalmazást fog tartalmazni.
+[Azure App Service](overview.md) egy nagymértékben skálázható, önjavítást használó webes üzemeltetési szolgáltatást nyújt a Windows operációs rendszer használatával. Ez az oktatóanyag bemutatja, hogyan hozhat létre EGY PHP-alkalmazást az Azure-ban, és hogyan csatlakoztathatja azt egy MySQL-adatbázishoz. Ha végzett, egy Windows rendszeren futó [Laravel-Azure App Service](https://laravel.com/) fog futni.
 
 ::: zone-end
 
 ::: zone pivot="platform-linux"
 
-A [Azure app Service](overview.md) a Linux operációs rendszer használatával jól méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. Ez az oktatóanyag bemutatja, hogyan hozhat létre PHP-alkalmazást az Azure-ban, és hogyan csatlakoztatható egy MySQL-adatbázishoz. Ha elkészült, a Linuxon Azure App Service fut egy [Laravel](https://laravel.com/) -alkalmazás.
+[Azure App Service](overview.md) egy nagymértékben skálázható, önjavítást használó webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez az oktatóanyag bemutatja, hogyan hozhat létre EGY PHP-alkalmazást az Azure-ban, és hogyan csatlakoztathatja azt egy MySQL-adatbázishoz. Ha elkészült, egy [Laravel-alkalmazás](https://laravel.com/) fog futni a Azure App Service on Linux.
 
 ::: zone-end
 
-:::image type="content" source="./media/tutorial-php-mysql-app/complete-checkbox-published.png" alt-text="Képernyőkép egy Feladatlista nevű PHP-alkalmazásról.":::
+:::image type="content" source="./media/tutorial-php-mysql-app/complete-checkbox-published.png" alt-text="Képernyőkép egy PHP-alkalmazásról, Feladatlista.":::
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -50,7 +50,7 @@ Az oktatóanyag elvégzéséhez:
 - [Telepítse a PHP 5.6.4-es vagy újabb verzióját](https://php.net/downloads.php)
 - [Telepítse a Composert](https://getcomposer.org/doc/00-intro.md)
 - Engedélyezze a következő PHP-bővítményeket, amelyre a Laravelnek szüksége van: OpenSSL, PDO-MySQL, Mbstring, Tokenizer, XML
-- [A MySQL telepítése és elindítása](https://dev.mysql.com/doc/refman/5.7/en/installing.html)
+- [A MySQL telepítése és indítsa el](https://dev.mysql.com/doc/refman/5.7/en/installing.html)
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)] 
 
 ## <a name="prepare-local-mysql"></a>A helyi MySQL előkészítése
@@ -108,7 +108,7 @@ composer install
 
 ### <a name="configure-mysql-connection"></a>MySQL-kapcsolat konfigurálása
 
-Hozzon létre egy *.env* nevű fájlt az adattár gyökérkönyvtárjában. Másolja az alábbi változókat a *.env* fájlba. Cserélje le a _&lt; root_password>_ helyőrzőt a MySQL root felhasználó jelszavára.
+Hozzon létre egy *.env* nevű fájlt az adattár gyökérkönyvtárjában. Másolja az alábbi változókat a *.env* fájlba. Cserélje le _&lt; root_password>_ helyőrzőt a MySQL-gyökérfelhasználó jelszavára.
 
 ```txt
 APP_ENV=local
@@ -160,9 +160,9 @@ Ebben a lépésben egy MySQL-adatbázist hoz létre az [Azure Database for MySQL
 
 ### <a name="create-a-mysql-server"></a>MySQL-kiszolgáló létrehozása
 
-A Cloud Shellben hozzon létre egy kiszolgálót a Azure Database for MySQLban a [`az mysql server create`](/cli/azure/mysql/server#az-mysql-server-create) paranccsal.
+A Cloud Shell hozzon létre egy kiszolgálót a Azure Database for MySQL a [`az mysql server create`](/cli/azure/mysql/server#az_mysql_server_create) paranccsal.
 
-A következő parancsban cserélje le a helyőrzőhöz tartozó egyedi kiszolgálónevet *\<mysql-server-name>* , a és a helyőrzőhöz tartozó felhasználónevet *\<admin-user>* *\<admin-password>*  . A kiszolgálónév a MySQL-végpont (`https://<mysql-server-name>.mysql.database.azure.com`) részét képezi majd, így egyedi kiszolgálónévnek kell lennie a teljes Azure-ban. További információ a MySQL DB SKU kiválasztásáról: [Azure Database for MySQL kiszolgáló létrehozása](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md#create-an-azure-database-for-mysql-server).
+A következő parancsban helyettesítse be a helyőrzőt egy egyedi kiszolgálónévvel, a felhasználónévvel és a helyőrző *\<mysql-server-name>* *\<admin-user>* *\<admin-password>*  jelszavával. A kiszolgálónév a MySQL-végpont (`https://<mysql-server-name>.mysql.database.azure.com`) részét képezi majd, így egyedi kiszolgálónévnek kell lennie a teljes Azure-ban. A MySQL DB termékváltozat kiválasztásával kapcsolatos részletekért lásd: Create an Azure Database for MySQL server (Új kiszolgáló [létrehozása).](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md#create-an-azure-database-for-mysql-server)
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name> --location "West Europe" --admin-user <admin-user> --admin-password <admin-password> --sku-name B_Gen5_1
@@ -186,7 +186,7 @@ A MySQL-kiszolgáló létrehozása után az Azure CLI az alábbi példához haso
 
 ### <a name="configure-server-firewall"></a>Kiszolgáló tűzfalának konfigurálása
 
-A Cloud Shell hozzon létre egy tűzfalszabályot a MySQL-kiszolgálóhoz, hogy engedélyezze az ügyfélkapcsolatokat a [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create) parancs használatával. Ha a kezdő IP-cím és a záró IP-cím is 0.0.0.0 értékre van állítva, a tűzfal csak más Azure-erőforrások számára van nyitva. 
+A Cloud Shell hozzon létre egy tűzfalszabályt a MySQL-kiszolgálóhoz, hogy engedélyezze az ügyfélkapcsolatokat az [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) paranccsal. Ha a kezdő IP-cím és a záró IP-cím is 0.0.0.0 értékre van állítva, a tűzfal csak más Azure-erőforrások számára van nyitva. 
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -196,7 +196,7 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-n
 > Még szigorúbb tűzfalszabályt is megadhat, ha [csak azokat a kimenő IP-címeket használja, amelyeket alkalmazása használ](overview-inbound-outbound-ips.md#find-outbound-ips).
 >
 
-A Cloud Shell futtassa újra a parancsot, hogy engedélyezze a hozzáférést a helyi számítógépről a *\<your-ip-address>* [helyi IPv4 IP-címére](https://www.whatsmyip.org/)való lecseréléssel.
+A Cloud Shell futtassa újra a parancsot, hogy engedélyezze a helyi számítógéphez való hozzáférést a helyett a *\<your-ip-address>* [helyi IPv4 IP-címével.](https://www.whatsmyip.org/)
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name AllowLocalClient --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
@@ -204,7 +204,7 @@ az mysql server firewall-rule create --name AllowLocalClient --server <mysql-ser
 
 ### <a name="connect-to-production-mysql-server-locally"></a>Helyi csatlakozás éles MySQL-kiszolgálóhoz
 
-A helyi terminálablakban csatlakozzon az Azure-ban található MySQL-kiszolgálóhoz. Használja a korábban megadott értéket a következőhöz: _&lt; Admin-User>_ és _&lt; mysql-Server-Name>_. Amikor a rendszer jelszót kér, használja azt a jelszót, amelyet az adatbázis létrehozásakor adott meg az Azure-ban.
+A helyi terminálablakban csatlakozzon az Azure-ban található MySQL-kiszolgálóhoz. Használja a korábban az _&lt; admin-user>_ és _&lt; a mysql-server-name>._ Amikor a rendszer jelszót kér, használja azt a jelszót, amelyet az adatbázis létrehozásakor adott meg az Azure-ban.
 
 ```bash
 mysql -u <admin-user>@<mysql-server-name> -h <mysql-server-name>.mysql.database.azure.com -P 3306 -p
@@ -220,7 +220,7 @@ CREATE DATABASE sampledb;
 
 ### <a name="create-a-user-with-permissions"></a>Engedélyekkel rendelkező felhasználó létrehozása
 
-Hozzon létre egy _phpappuser_ nevű adatbázis-felhasználót, és adja meg neki az összes jogosultságot a `sampledb` adatbázisban. Az oktatóanyag egyszerűsége érdekében használja a _MySQLAzure2017_ jelszót.
+Hozzon létre egy _phpappuser_ nevű adatbázis-felhasználót, és adja meg neki az összes jogosultságot a `sampledb` adatbázisban. Az oktatóanyag egyszerűsége érdekében használja a _MySQLAzure2017 jelszót._
 
 ```sql
 CREATE USER 'phpappuser' IDENTIFIED BY 'MySQLAzure2017'; 
@@ -241,7 +241,7 @@ Ebben a lépésben csatlakoztatja a PHP-alkalmazást a MySQL-adatbázishoz, amel
 
 ### <a name="configure-the-database-connection"></a>Az adatbázis-kapcsolat konfigurálása
 
-Az adattár gyökérkönyvtárában, hozzon létre a _. env.production_ fájlt, és másolja bele a következő változókat. Cserélje le a placeholder_ &lt; MySQL-Server-name>_t mindkét *DB_HOST* és *DB_USERNAME*.
+Az adattár gyökérkönyvtárában, hozzon létre a _. env.production_ fájlt, és másolja bele a következő változókat. Cserélje le placeholder_ &lt; mysql-server-name nevet a>_ és *a DB_HOST* *DB_USERNAME.*
 
 ```
 APP_ENV=production
@@ -262,9 +262,9 @@ Mentse a módosításokat.
 > A MySQL-kapcsolati adatok védelme érdekében ez a fájl már ki van zárva a Git-adattárból (lásd: _.gitignore_ az adattár gyökérkönyvtárában). Később megtudhatja, hogyan konfigurálhat környezeti változókat az App Service-ben az Azure Database for MySQL-ben található adatbázishoz való csatlakozáshoz. A környezeti változók esetében nincs szüksége a *.env* fájlra az App Service-ben.
 >
 
-### <a name="configure-tlsssl-certificate"></a>TLS/SSL-tanúsítvány konfigurálása
+### <a name="configure-tlsssl-certificate"></a>TLS-/SSL-tanúsítvány konfigurálása
 
-Alapértelmezés szerint a Azure Database for MySQL az ügyfelektől érkező TLS-kapcsolatokat kényszeríti ki. Az Azure-ban található MySQL-adatbázishoz való csatlakozáshoz használja a [_.pem_ tanúsítványt, amelyet az Azure Database for MySQL](../mysql/howto-configure-ssl.md) biztosít.
+Alapértelmezés szerint a Azure Database for MySQL TLS-kapcsolatokat kényszerít ki az ügyfelektől. Az Azure-ban található MySQL-adatbázishoz való csatlakozáshoz használja a [_.pem_ tanúsítványt, amelyet az Azure Database for MySQL](../mysql/howto-configure-ssl.md) biztosít.
 
 Nyissa meg a _config/database.php_ fájlt, majd adja hozzá az `sslmode` és az `options` paramétereket a `connections.mysql` szakaszhoz az alábbi kódban látható módon.
 
@@ -376,9 +376,9 @@ Ebben a lépésben üzembe helyezi a MySQL-hez csatlakoztatott PHP-alkalmazást 
 
 ### <a name="configure-database-settings"></a>Adatbázis-beállítások konfigurálása
 
-Az App Service-ben a környezeti változókat _alkalmazásbeállításként_ adhatja meg az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) paranccsal.
+Az App Service-ben a környezeti változókat _alkalmazásbeállításként_ adhatja meg az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) paranccsal.
 
-Az alábbi parancs a `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` és `DB_PASSWORD` alkalmazásbeállítást konfigurálja. Cserélje le a helyőrzők _&lt; alkalmazás neve>_ és a _&lt; mysql-Server-Name>_.
+Az alábbi parancs a `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` és `DB_PASSWORD` alkalmazásbeállítást konfigurálja. Cserélje le a helyőrzők _&lt; alkalmazásnevét>_ _&lt; mysql-server-name helyőrzőket a>._
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql-server-name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
@@ -407,35 +407,35 @@ A helyi terminálablakban használja a `php artisan` parancsot egy új alkalmaz�
 php artisan key:generate --show
 ```
 
-A Cloud Shell a parancs használatával állítsa be az alkalmazás kulcsát a App Service alkalmazásban [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) . Cserélje le a helyőrzők _&lt; alkalmazás neve>_ és a _&lt; outputofphpartisankey:>készítése_ elemre.
+A Cloud Shell állítsa be az alkalmazáskulcsot a App Service alkalmazásban az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) paranccsal. Cserélje le a helyőrzők _&lt; alkalmazásnevét>_ _&lt; az outputofphpartisankey:generate>._
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
 ```
 
-`APP_DEBUG="true"` azt jelzi, hogy a Laravel visszaküldi a hibakeresési adatokat, amikor az üzembe helyezett alkalmazás hibákat észlel. Éles alkalmazás futtatásakor állítsa át a biztonságosabb `false` értékűre.
+`APP_DEBUG="true"` A arra utasítja a Laravelt, hogy adja vissza a hibakeresési információkat, amikor az üzembe helyezett alkalmazás hibákba ütközik. Éles alkalmazás futtatásakor állítsa át a biztonságosabb `false` értékűre.
 
 ### <a name="set-the-virtual-application-path"></a>A virtuális alkalmazáselérési út beállítása
 
 ::: zone pivot="platform-windows"  
 
-Állítsa be a virtuális alkalmazás elérési útját az alkalmazáshoz. Erre a lépésre azért van szükség, mert a [Laravel-alkalmazás életciklusa](https://laravel.com/docs/5.4/lifecycle) az alkalmazás gyökérkönyvtára helyett a _nyilvános_ könyvtárban kezdődik. A többi PHP-keretrendszer, amelynek az életciklusa a gyökérkönyvtárban kezdődik, a virtuális alkalmazáselérési út manuális konfigurálása nélkül is működik.
+Állítsa be az alkalmazás virtuális alkalmazásának elérési útját. Erre a lépésre azért van szükség, mert a [Laravel-alkalmazás életciklusa](https://laravel.com/docs/5.4/lifecycle) az alkalmazás gyökérkönyvtára helyett a _nyilvános_ könyvtárban kezdődik. A többi PHP-keretrendszer, amelynek az életciklusa a gyökérkönyvtárban kezdődik, a virtuális alkalmazáselérési út manuális konfigurálása nélkül is működik.
 
-A Cloud Shellban állítsa be a virtuális alkalmazás elérési útját a [`az resource update`](/cli/azure/resource#az-resource-update) parancs használatával. Cserélje le az _&lt; alkalmazás neve>_ helyőrzőt.
+A Cloud Shell állítsa be a virtuális alkalmazás elérési útját az [`az resource update`](/cli/azure/resource#az_resource_update) paranccsal. Cserélje le _&lt; az alkalmazásnevet>_ helyőrzőre.
 
 ```azurecli-interactive
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
 ```
 
-Alapértelmezés szerint a Azure App Service a virtuális alkalmazás elérési útját ( _/_ ) a telepített alkalmazásfájlok (_sites\wwwroot_) gyökérkönyvtárára mutat.
+Alapértelmezés szerint a Azure App Service a virtuális alkalmazás gyökérútvonalát ( ) az üzembe helyezett alkalmazásfájlok gyökérkönyvtárába _/_ _(sites\wwwroot ) mutat._
 
 ::: zone-end
 
 ::: zone pivot="platform-linux"
 
-A [Laravel alkalmazás életciklusa](https://laravel.com/docs/5.4/lifecycle) az alkalmazás gyökérkönyvtára helyett a _nyilvános_ könyvtárban kezdődik. Az App Service alapértelmezett PHP Docker-rendszerképe az Apache rendszert használja, és nem engedélyezi a `DocumentRoot` testreszabását a Laravel számára. A `.htaccess` használatával azonban újraírhatja az összes kérést úgy, hogy azok a _/public_ könyvtárra mutassanak a gyökérkönyvtár helyett. Az adattár gyökérkönyvtárában egy `.htaccess` már hozzá lett adva erre a célra. Ennek segítségével a Laravel-alkalmazás készen áll az üzembe helyezésre.
+[A Laravel-alkalmazások életciklusa](https://laravel.com/docs/5.4/lifecycle) az alkalmazás gyökérkönyvtára helyett a nyilvános könyvtárban kezdődik.  Az App Service alapértelmezett PHP Docker-rendszerképe az Apache rendszert használja, és nem engedélyezi a `DocumentRoot` testreszabását a Laravel számára. A `.htaccess` használatával azonban újraírhatja az összes kérést úgy, hogy azok a _/public_ könyvtárra mutassanak a gyökérkönyvtár helyett. Az adattár gyökérkönyvtárában egy `.htaccess` már hozzá lett adva erre a célra. Ennek segítségével a Laravel-alkalmazás készen áll az üzembe helyezésre.
 
-További információt a [hely gyökerének módosítása](configure-language-php.md#change-site-root)című témakörben talál.
+További információ: [Hely gyökerének módosítása.](configure-language-php.md#change-site-root)
 
 ::: zone-end
 
@@ -493,11 +493,11 @@ remote: Running deployment command...
 
 ::: zone-end
 
-### <a name="browse-to-the-azure-app"></a>Tallózással keresse meg az Azure-alkalmazást
+### <a name="browse-to-the-azure-app"></a>Keresse meg az Azure-alkalmazást
 
 Egy böngészőben keresse fel az `http://<app-name>.azurewebsites.net` címet, és vegyen fel néhány feladatot a listára.
 
-:::image type="content" source="./media/tutorial-php-mysql-app/php-mysql-in-azure.png" alt-text="Képernyőkép az Azure app-példáról, amely az új feladatok hozzáadásával Feladatlista.":::
+:::image type="content" source="./media/tutorial-php-mysql-app/php-mysql-in-azure.png" alt-text="Képernyőkép az Új feladatok hozzáadása Feladatlista azure-alkalmazás példáról.":::
 
 Gratulálunk, egy adatvezérelt PHP-alkalmazást futtat az Azure App Service-ben.
 
@@ -637,7 +637,7 @@ git commit -m "added complete checkbox"
 git push azure main
 ```
 
-A `git push` befejezését követően navigáljon az Azure-alkalmazáshoz, és tesztelje az új funkciókat.
+Miután a `git push` befejeződött, lépjen az Azure-alkalmazáshoz, és tesztelje az új funkciót.
 
 ![Az Azure-ban közzétett modell- és adatbázis-módosítások](media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
@@ -649,13 +649,13 @@ Ha felvett feladatokat, azok megmaradnak az adatbázisban. Az adatséma frissít
 
 Bár a PHP-alkalmazás az Azure App Service-ben fut, a konzolnaplófájlokat megkaphatja a terminálban is. Így ugyanazokat a diagnosztikai üzeneteket kaphatja meg az alkalmazáshibák elhárításához.
 
-A log streaming elindításához használja a [`az webapp log tail`](/cli/azure/webapp/log#az-webapp-log-tail) parancsot a Cloud Shellban.
+A naplóstreamelést a következő [`az webapp log tail`](/cli/azure/webapp/log#az_webapp_log_tail) paranccsal kezdheti meg: Cloud Shell.
 
 ```azurecli-interactive
 az webapp log tail --name <app_name> --resource-group myResourceGroup
 ```
 
-A log streaming elindítása után frissítse az Azure-alkalmazást a böngészőben a webes forgalom eléréséhez. Ekkor láthatja, hogy a rendszer átadja a konzolnaplófájlokat a terminálnak. Ha nem jelennek meg azonnal a konzolnaplófájlok, ellenőrizze ismét 30 másodperc múlva.
+A naplóstreamelés elindulás után frissítse az Azure-alkalmazást a böngészőben, hogy némi webes forgalmat generálni tud. Ekkor láthatja, hogy a rendszer átadja a konzolnaplófájlokat a terminálnak. Ha nem jelennek meg azonnal a konzolnaplófájlok, ellenőrizze ismét 30 másodperc múlva.
 
 A `Ctrl`+`C` billentyűparanccsal bármikor leállíthatja a naplóstreamelést.
 
@@ -676,13 +676,13 @@ A `Ctrl`+`C` billentyűparanccsal bármikor leállíthatja a naplóstreamelést.
 
 ## <a name="manage-the-azure-app"></a>Az Azure-alkalmazás kezelése
 
-A létrehozott alkalmazás kezeléséhez lépjen a [Azure Portal](https://portal.azure.com) .
+A létrehozott [Azure Portal](https://portal.azure.com) az alkalmazás kezeléséhez.
 
-A bal oldali menüben kattintson a **app Services** elemre, majd kattintson az Azure-alkalmazás nevére.
+A bal oldali menüben kattintson a **App Services** elemre, majd az Azure-alkalmazás nevére.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/tutorial-php-mysql-app/access-portal.png)
 
-Megtekintheti az alkalmazás áttekintés lapját. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a leállítás, elindítás, újraindítás, tallózás és törlés.
+Látható az alkalmazás Áttekintés lapja. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a leállítás, elindítás, újraindítás, tallózás és törlés.
 
 A bal oldali menü az alkalmazás konfigurálásához biztosít oldalakat.
 
@@ -707,9 +707,9 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan képezhet le egyedi DNS-nevet az alkalmazásokhoz.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: egyéni DNS-név leképezése az alkalmazáshoz](app-service-web-tutorial-custom-domain.md)
+> [Oktatóanyag: Egyéni DNS-név leképezése az alkalmazásra](app-service-web-tutorial-custom-domain.md)
 
-Vagy tekintse meg a többi erőforrást:
+Vagy tekintse meg az egyéb erőforrásokat:
 
 > [!div class="nextstepaction"]
-> [A PHP-alkalmazás konfigurálása](configure-language-php.md)
+> [PHP-alkalmazás konfigurálása](configure-language-php.md)

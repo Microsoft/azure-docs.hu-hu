@@ -6,13 +6,13 @@ author: mksuni
 ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b631173ed92905870e73e6c560d90aab08476ce1
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.custom: vc, devx-track-azurecli
+ms.openlocfilehash: 0c6211f4cd647addd6f1d18a153695d16a9d9952
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480154"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770146"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>Oktatóanyag: WordPress-alkalmazás üzembe helyezése AKS-Azure Database for MySQL rugalmas kiszolgálóval
 
@@ -60,7 +60,7 @@ Az alábbi példakimeneten a sikeresen létrehozott erőforráscsoport látható
 
 ## <a name="create-aks-cluster"></a>AKS-fürt létrehozása
 
-Használja az [az aks create](/cli/azure/aks#az-aks-create) parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. Ez eltarthat néhány percig.
+Használja az [az aks create](/cli/azure/aks#az_aks_create) parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. Ez eltarthat néhány percig.
 
 ```azurecli-interactive
 az aks create --resource-group wordpress-project --name myAKSCluster --node-count 1 --generate-ssh-keys
@@ -73,13 +73,13 @@ Néhány perc múlva befejeződik a parancs, és visszaadja a fürttel kapcsolat
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
-A Kubernetes-fürtök kezeléséhez használja a [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), a Kubernetes parancssori ügyfelét. Ha az alkalmazást Azure Cloud Shell, `kubectl` a már telepítve van. Helyi `kubectl` telepítéshez használja az [az aks install-cli](/cli/azure/aks#az-aks-install-cli) parancsot:
+A Kubernetes-fürtök kezeléséhez használja a [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), a Kubernetes parancssori ügyfelét. Ha az alkalmazást Azure Cloud Shell, `kubectl` a már telepítve van. A helyi `kubectl` telepítéshez használja az [az aks install-cli](/cli/azure/aks#az_aks_install_cli) parancsot:
 
 ```azurecli-interactive
 az aks install-cli
 ```
 
-Az [az aks get-credentials](/cli/azure/aks#az-aks-get-credentials) paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes parancssori felületét azok használatára.
+Az [az aks get-credentials](/cli/azure/aks#az_aks_get_credentials) paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes parancssori felületét azok használatára.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group wordpress-project --name myAKSCluster
@@ -111,7 +111,7 @@ az mysql flexible-server create --public-access <YOUR-IP-ADDRESS>
 A létrehozott kiszolgáló az alábbi attribútumokkal rendelkezik:
 - A kiszolgáló első kiépítésekor létrejön egy új ```flexibleserverdb``` üres adatbázis. Ebben a rövid útmutatóban ezt az adatbázist fogjuk használni.
 - Automatikusan létrehozott kiszolgálónév, rendszergazdai felhasználónév, rendszergazdai jelszó, erőforráscsoport neve (ha még nincs megadva a helyi környezetben), és ugyanazon a helyen, ahol az erőforráscsoport található
-- Szolgáltatás alapértelmezett beállításai a fennmaradó kiszolgálói konfigurációkhoz: számítási szint (burstable), számítási méret/termékváltozat (B1MS), biztonsági másolatok megőrzési időtartama (7 nap) és MySQL-verzió (5.7)
+- Szolgáltatás alapértelmezett beállításai a fennmaradó kiszolgálói konfigurációkhoz: számítási szint (burstable), számítási méret/termékváltozat (B1MS), biztonsági másolat megőrzési időszaka (7 nap) és MySQL-verzió (5.7)
 - A nyilvános hozzáférésű argumentum használatával tűzfalszabályok által védett nyilvános hozzáférésű kiszolgálót hozhat létre. Adja meg az IP-címét a tűzfalszabály hozzáadásához, hogy engedélyezze a hozzáférést az ügyfélszámítógépről.
 - Mivel a parancs helyi környezetet használ, a kiszolgálót az erőforráscsoportban és a ```wordpress-project``` régióban hozza ```eastus``` létre.
 
@@ -121,20 +121,20 @@ A létrehozott kiszolgáló az alábbi attribútumokkal rendelkezik:
 Töltse le [a WordPress legújabb](https://wordpress.org/download/) verzióját. Hozzon létre új ```my-wordpress-app``` könyvtárat a projekthez, és használja ezt az egyszerű mappastruktúrát
 
 ```
-â””â”€â”€â”€my-wordpress-app
-    â””â”€â”€â”€public
-        â”œâ”€â”€â”€wp-admin
-        â”‚   â”œâ”€â”€â”€css
+└───my-wordpress-app
+    └───public
+        ├───wp-admin
+        │   ├───css
         . . . . . . .
-        â”œâ”€â”€â”€wp-content
-        â”‚   â”œâ”€â”€â”€plugins
+        ├───wp-content
+        │   ├───plugins
         . . . . . . .
-        â””â”€â”€â”€wp-includes
+        └───wp-includes
         . . . . . . .
-        â”œâ”€â”€â”€wp-config-sample.php
-        â”œâ”€â”€â”€index.php
+        ├───wp-config-sample.php
+        ├───index.php
         . . . . . . .
-    â””â”€â”€â”€ Dockerfile
+    └─── Dockerfile
 
 ```
 
@@ -327,4 +327,3 @@ az group delete --name wordpress-project --yes --no-wait
 - Ismerje meg, hogyan [skálázható a fürt](../../aks/tutorial-kubernetes-scale.md)
 - Megtudhatja, hogyan kezelheti rugalmas [MySQL-kiszolgálóját](./quickstart-create-server-cli.md)
 - Megtudhatja, [hogyan konfigurálhatja az adatbázis-kiszolgáló](./how-to-configure-server-parameters-cli.md) kiszolgálóparaméterét.
-

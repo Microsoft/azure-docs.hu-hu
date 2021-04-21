@@ -1,24 +1,24 @@
 ---
-title: Azure Monitor (előzetes Azure Data Explorer)| Microsoft Docs
-description: Ez a cikk a Azure Monitor fürtökre vonatkozó Azure Data Explorer ismerteti.
+title: Azure Data Explorer Insights (ADX Insights előzetes verzió)| Microsoft Docs
+description: Ez a cikk a Azure Data Explorer (ADX Insights)
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: ac147df90d3fa0c27bb4299c57ec79d9a9031710
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: a8aae2dc03ba87e9782cdf3952be1bfc4a1aae75
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107737592"
+ms.locfileid: "107767040"
 ---
-# <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure Monitor (előzetes Azure Data Explorer)
+# <a name="azure-data-explorer-insights-preview"></a>Azure Data Explorer Insights (előzetes verzió)
 
-Azure Monitor for Azure Data Explorer (előzetes verzió) átfogó monitorozást biztosít a fürtökről a fürtök teljesítményének, műveleteinek, használatának és meghibásodásának egységes áttekintésével.
-Ez a cikk segít megérteni, hogyan lehet a Azure Monitor (előzetes verzió) Azure Data Explorer használni.
+A Azure Data Explorer Insights (előzetes verzió) átfogó monitorozást biztosít a fürtökről a fürtök teljesítményének, műveleteinek, használatának és meghibásodásának egységes áttekintésével.
+Ez a cikk segít megérteni a Azure Data Explorer Insights (előzetes verzió) használatát.
 
-## <a name="introduction-to-azure-monitor-for-azure-data-explorer-preview"></a>A Azure Monitor (előzetes Azure Data Explorer) bemutatása
+## <a name="introduction-to-azure-data-explorer-insights-preview"></a>A Azure Data Explorer (előzetes verzió) bemutatása
 
 Mielőtt belevetné magát a gyakorlatba, meg kell értenie, hogyan mutatja be és vizualizálja az információkat.
 -    **Méretezési szempontból** a fürtök elsődleges metrika pillanatkép-nézetének megjelenítése a lekérdezések, a becslés és az exportálási műveletek teljesítményének egyszerű nyomon követéséhez.
@@ -43,7 +43,7 @@ A kiválasztott **előfizetés** Áttekintés lapján a táblázat interaktív m
 
 * Előfizetések – csak azok az előfizetések listában Azure Data Explorer, amelyek Azure Data Explorer fürtök.
 
-* Azure Data Explorer fürtök – alapértelmezés szerint legfeljebb öt fürt van előre kiválasztva. Ha kijelöli a hatókörválasztóban az összes vagy több fürtöt, legfeljebb 200 fürt lesz visszaadva.
+* Azure Data Explorer fürtök – alapértelmezés szerint legfeljebb öt fürt van előre kiválasztva. Ha a hatókörválasztóban kijelöli az összes vagy több fürtöt, legfeljebb 200 fürt lesz visszaadva.
 
 * Időtartomány – alapértelmezés szerint a az elmúlt 24 óra adatait jeleníti meg a megfelelő beállítások alapján.
 
@@ -63,7 +63,7 @@ Ezen a lapon látható a beszúrási késés, a sikeres feldolgozás eredményei
 
 [![Képernyőkép a beszúrási teljesítmény lapról](./media/data-explorer/ingestion-performance.png)](./media/data-explorer/ingestion-performance.png#lightbox)
 
-### <a name="streaming-ingest-performance-tab"></a>Streamelési átvitel teljesítménye lap
+### <a name="streaming-ingest-performance-tab"></a>Streamelési teljesítmény lap
 
 Ez a lap az átlagos adatátviteli sebességről, az átlagos időtartamról és a kérelmek sebességére vonatkozó információkat tartalmaz.
 
@@ -73,7 +73,7 @@ Ez a lap az exportált rekordokkal, a késéssel, a függőben lévő számmal �
 
 ## <a name="view-from-an-azure-data-explorer-cluster-resource-drill-down-analysis"></a>Nézet egy Azure Data Explorer-erőforrásból (részletezés elemzése)
 
-A fürtök Azure Monitor hozzáférése Azure Data Explorer fürtökhöz közvetlenül egy Azure Data Explorer fürtből:
+A Azure Data Explorer közvetlen elérése egy Azure Data Explorer fürtből:
 
 1. A Azure Portal válassza a **Fürtök Azure Data Explorer lehetőséget.**
 
@@ -81,7 +81,7 @@ A fürtök Azure Monitor hozzáférése Azure Data Explorer fürtökhöz közvet
 
 Ezek a nézetek úgy is elérhetők, hogy kiválasztják egy Azure Data Explorer fürt erőforrásnevét a Azure Monitor nézetben.
 
-Azure Monitor a Azure Data Explorer naplókat és metrikákat kombinálva biztosít egy globális monitorozási megoldást. A naplóalapú vizualizációk felvételéhez a felhasználóknak engedélyezniük kell a Azure Data Explorer naplózását, és el kell küldeniük őket [egy Log Analytics-munkaterületre.](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) Az engedélyezni szükséges diagnosztikai naplók a következőek: **Parancs,** **Lekérdezés,** **TableDetails**, **és TableUsageStatistics.**
+Azure Data Explorer Insights a naplókat és a metrikákat kombinálva globális monitorozási megoldást biztosít. A naplóalapú vizualizációk felvételéhez a felhasználóknak engedélyezniük kell a Azure Data Explorer naplózását, és el kell küldeniük őket [egy Log Analytics-munkaterületre.](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) Az engedélyezni szükséges diagnosztikai naplók a következőek: **Parancs,** **Lekérdezés,** **TableDetails**, **és TableUsageStatistics.**
 
 ![A "Naplók monitorozásának engedélyezése" szöveget megjelenítő kék gomb képernyőképe](./media/data-explorer/enable-logs.png)
 
@@ -108,13 +108,13 @@ A **Használat** lapon a felhasználók mélyebben is belemerülnek a fürt para
  - Azonosítsa a lekérdezések számának legutóbbi változásait a számítási feladatcsoport, a felhasználó és az alkalmazás napi átlagához képest (az elmúlt 16 napban).
  - A lekérdezések, a memória és a processzorhasználat trendjeinek és csúcsértékének azonosítása számítási feladatcsoport, felhasználó, alkalmazás és parancstípus szerint.
 
-[![Képernyőkép a műveleti nézetről, amely a felső alkalmazás fánkdiagramjaival parancs- és lekérdezésszám szerint, a legfontosabbak parancs- és lekérdezésszám szerint, valamint a legjobb parancsok parancstípusok szerint](./media/data-explorer/usage.png)](./media/data-explorer/usage.png#lightbox)
+[![Képernyőkép a műveleti nézetről, amely a felső alkalmazás fánkdiagramja parancs- és lekérdezésszám szerint, a legfontosabbak parancs- és lekérdezésszám szerint, valamint a legjobb parancsok parancstípusok szerint](./media/data-explorer/usage.png)](./media/data-explorer/usage.png#lightbox)
 
 [![Képernyőkép a műveleti nézetről, amely vonaldiagramon mutatja a lekérdezések számát alkalmazás szerint, a teljes memóriát alkalmazás és a teljes CPU-t alkalmazás szerint](./media/data-explorer/usage-2.png)](./media/data-explorer/usage-2.png#lightbox)
 
 A **Táblák** lap a fürtben lévő táblák legújabb és előzménytulajdonságait jeleníti meg. Láthatja, hogy mely táblák foglalják a legtöbb helyet, nyomon követheti a növekedési előzményeket a tábla mérete, a forró adatok és a sorok száma alapján.
 
-A **gyorsítótár** lapon a felhasználók elemezhetik a tényleges lekérdezések visszatekintő mintáit, és összehasonlíthatja őket a konfigurált gyorsítótár-szabályzatokkal (az egyes táblákhoz). Azonosíthatja a legtöbb lekérdezés és nem lekérdezett tábla által használt táblákat, és ennek megfelelően adaptálhatja a gyorsítótár-szabályzatot. Az Azure Advisor adott tábláira vonatkozóan konkrét gyorsítótár-szabályzati javaslatokat kap (jelenleg a gyorsítótárazási javaslatok csak a fő [Azure Advisor-irányítópultról](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations)érhetők el), a tényleges lekérdezések elmúlt 30 napban történt visszatekintése és a lekérdezések legalább 95%-ára vonatkozó, nem optimalizált gyorsítótár-szabályzat alapján. A Azure Advisor gyorsítótárának csökkentésére vonatkozó javaslatok érhetők el az "adatok által határolt" fürtökhöz (azaz a fürt processzorhasználata alacsony és alacsony a bebecsülési kihasználtsága, de a nagy adatkapacitás miatt a fürt nem volt képes horizontális le- vagy leskálást használni).
+A **gyorsítótár** lapon a felhasználók elemezhetik a tényleges lekérdezések visszatekintő mintáit, és összehasonlíthatja őket a konfigurált gyorsítótár-szabályzatokkal (az egyes táblákhoz). Azonosíthatja a legtöbb lekérdezés és tábla által használt táblákat, amelyek egyáltalán nincsenek lekérdezve, és ennek megfelelően adaptálhatja a gyorsítótár-házirendet. Az Azure Advisor adott tábláira vonatkozóan konkrét gyorsítótár-szabályzati javaslatokat kap (jelenleg a gyorsítótárazási javaslatok csak a fő [Azure Advisor-irányítópultról](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations)érhetők el), a tényleges lekérdezések elmúlt 30 napban történt visszatekintése és a lekérdezések legalább 95%-ára vonatkozó, nem optimalizált gyorsítótár-szabályzat alapján. A Azure Advisor gyorsítótárának csökkentésére vonatkozó javaslatok érhetők el az "adatok által határolt" fürtökhöz (azaz a fürt processzorhasználata alacsony és alacsony a bebecsülési kihasználtsága, de a nagy adatkapacitás miatt a fürt nem volt képes horizontális le- vagy leskálást használni).
 
 [![A gyorsítótár részleteinek képernyőképe](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
 
@@ -129,7 +129,7 @@ A metrika bármelyik szakaszát (a "nagy léptékű" perspektívát) rögzíthet
 
 ![Képernyőkép a kijelölt rögzítés ikonról](./media/data-explorer/pin.png)
 
-## <a name="customize-azure-monitor-for-azure-data-explorer-cluster"></a>Fürt Azure Monitor testreszabása Azure Data Explorer fürthöz
+## <a name="customize-azure-data-explorer-insights"></a>Az Azure Data Explorer-elemzések testreszabása
 
 Ez a szakasz gyakori forgatókönyveket mutat be a munkafüzet adatelemzési igényeknek megfelelő testreszabáshoz való szerkesztéséhez:
 * A munkafüzet hatókörének beállítása egy adott előfizetés vagy Azure Data Explorer fürt(ök) kiválasztásához
@@ -148,7 +148,7 @@ A rendszer egyéni munkafüzetbe menti a testreszabásokat, hogy ne felülírja 
 
 Általános hibaelhárítási útmutatásért tekintse meg a dedikált munkafüzetalapú elemzések [hibaelhárítását bemutató cikket.](troubleshoot-workbooks.md)
 
-Ez a szakasz segít diagnosztizálni és elhárítani néhány olyan gyakori problémát, amely a fürt Azure Monitor (előzetes verzió) Azure Data Explorer során merülhet fel. Az alábbi lista segítségével megkeresheti az adott problémához kapcsolódó információkat.
+Ez a szakasz segítséget nyújt a Azure Data Explorer Insights (előzetes verzió) használata során felmerülő gyakori problémák diagnosztizálásában és hibaelhárításában. Az alábbi lista segítségével megkeresheti az adott problémához kapcsolódó információkat.
 
 ### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>Miért nem látom az összes előfizetésemet az előfizetés-kiválasztóban?
 

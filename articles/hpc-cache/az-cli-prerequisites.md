@@ -1,33 +1,33 @@
 ---
-title: Azure parancssori felület előfeltételei az Azure HPC cache-hez
-description: Telepítési lépések, mielőtt az Azure CLI-t Azure HPC-gyorsítótár létrehozására vagy módosítására használhatja
+title: Az Azure CLI előfeltételei a Azure HPC Cache
+description: Beállítási lépések, mielőtt az Azure CLI használatával létrehozhat vagy módosíthat egy Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 13f45c96a830110bd0f4a2d4a2b422921d7a2e31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30621eceefd69cd3e08de137bb34f1079a17a406
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94654456"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780478"
 ---
 # <a name="set-up-azure-cli-for-azure-hpc-cache"></a>Azure CLI beállítása az Azure HPC Cache-hez
 
-Az alábbi lépéseket követve előkészítheti a környezetet, mielőtt az Azure CLI-t használja az Azure HPC-gyorsítótár létrehozásához vagy kezeléséhez.
+Kövesse az alábbi lépéseket a környezet előkészítéséhez, mielőtt az Azure CLI használatával létrehoz vagy kezel egy Azure HPC Cache.
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - Az Azure HPC cache az Azure CLI 2,7-es vagy újabb verzióját igényli. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+ - Azure HPC Cache Azure CLI 2.7-es vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="set-default-resource-group-optional"></a>Alapértelmezett erőforráscsoport beállítása (nem kötelező)
 
-A HPC-cache parancsok többsége megköveteli a gyorsítótár erőforráscsoport átadását. Az alapértelmezett erőforráscsoportot az [az configure](/cli/azure/reference-index#az-configure)paranccsal állíthatja be.
+A legtöbb hpc-cache parancshoz át kell adni a gyorsítótár erőforráscsoportját. Az alapértelmezett erőforráscsoportot az az configure használatával [állíthatja be.](/cli/azure/reference-index#az_configure)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Azure CLI-bővítmény telepítését és a bejelentkezést követően az Azure CLI használatával hozhat létre és kezelhet Azure HPC gyorsítótár-rendszereket.
+Az Azure CLI-bővítmény telepítése és a bejelentkezés után az Azure CLI használatával létrehozhat és kezelhet Azure HPC Cache rendszereket.
 
-* [Azure HPC-gyorsítótár létrehozása](hpc-cache-create.md)
-* [Azure CLI HPC – gyorsítótár dokumentációja](/cli/azure/ext/hpc-cache/hpc-cache)
+* [Hozzon létre egy Azure HPC Cache](hpc-cache-create.md)
+* [Az Azure CLI hpc-cache dokumentációja](/cli/azure/ext/hpc-cache/hpc-cache)

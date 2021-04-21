@@ -1,6 +1,6 @@
 ---
 title: Rövid útmutató – Azure Key Vault Kulcs ügyféloldali kódtár használata Javához
-description: Gyorsútmutatót biztosít a Azure Key Vault Kulcsok ügyféloldali kódtárához a Javához.
+description: Gyorsútmutatót biztosít a Azure Key Vault Keys Java-hoz való ügyféloldali kódtárához.
 author: msmbaldwin
 ms.custom: devx-track-java
 ms.author: mbaldwin
@@ -8,15 +8,15 @@ ms.date: 01/05/2021
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: f0933a19ecfebfde8ac43ac3e88332506e2256ec
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 75cb7b6c9225e8579561f980df10da8994257133
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750376"
+ms.locfileid: "107777184"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>Rövid útmutató: Azure Key Vault Kulcs ügyféloldali kódtár létrehozása Javához
-Első lépések a java Azure Key Vault kulcs ügyféloldali kódtárával. Kövesse az alábbi lépéseket a csomag telepítéséhez, és próbálja ki az alapszintű feladatokhoz szükséges példakódot.
+A Java Azure Key Vault ügyféloldali kódtárának első lépések. A csomag telepítéséhez kövesse az alábbi lépéseket, és próbálja ki az alapszintű feladatokhoz szükséges példakódot.
 
 További források:
 
@@ -31,7 +31,7 @@ További források:
 - [Apache Maven](https://maven.apache.org)
 - [Azure CLI](/cli/azure/install-azure-cli)
 
-Ez a rövid útmutató feltételezi, hogy az [Azure CLI-t](/cli/azure/install-azure-cli) és az [Apache Mavent](https://maven.apache.org) egy Linux terminálablakban futtatja.
+Ez a rövid útmutató azt feltételezi, hogy az [Azure CLI-t](/cli/azure/install-azure-cli) és az [Apache Mavent](https://maven.apache.org) egy Linux terminálablakban futtatja.
 
 ## <a name="setting-up"></a>Beállítása
 Ez a rövid útmutató az Azure Identity Library és az Azure CLI használatával hitelesíti a felhasználókat az Azure-szolgáltatásokban. A fejlesztők a Visual Studio vagy Visual Studio Code használatával is hitelesítik a hívásokat. További információ: Az ügyfél hitelesítése az Azure Identity ügyféloldali [kódtárával.](/java/api/overview/azure/identity-readme)
@@ -45,7 +45,7 @@ Ez a rövid útmutató az Azure Identity Library és az Azure CLI használatáva
 
    Ha a CLI meg tudja nyitni az alapértelmezett böngészőt, akkor ezt fogja megtenni, és betölt egy Azure bejelentkezési oldalt.
 
-   Ellenkező esetben nyisson meg egy böngészőoldalt a oldalon, és írja be a terminálban [https://aka.ms/devicelogin](https://aka.ms/devicelogin) megjelenő engedélyezési kódot.
+   Ellenkező esetben nyisson meg egy böngészőoldalt a oldalon, és adja meg a terminálon [https://aka.ms/devicelogin](https://aka.ms/devicelogin) megjelenő engedélyezési kódot.
 
 2. A böngészőben jelentkezzen be fiókja hitelesítő adataival.
 
@@ -60,7 +60,7 @@ mvn archetype:generate -DgroupId=com.keyvault.keys.quickstart
                        -DinteractiveMode=false
 ```
 
-A projekt generálásának kimenete a következőre hasonlít:
+A projekt generálásának kimenete a következő lesz:
 
 ```console
 [INFO] ----------------------------------------------------------------------------
@@ -176,7 +176,7 @@ Most, hogy az alkalmazás hitelesítve van, létrehozhat egy kulcsot a kulcstart
 keyClient.createKey(keyName, KeyType.RSA);
 ```
 
-A kulcs az [az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show) paranccsal ellenőrizhető:
+A kulcs az [az keyvault key show](/cli/azure/keyvault/key?#az_keyvault_key_show) paranccsal ellenőrizhető:
 
 ```azurecli
 az keyvault key show --vault-name <your-unique-key-vault-name> --name myKey
@@ -201,7 +201,7 @@ SyncPoller<DeletedKey, Void> deletionPoller = keyClient.beginDeleteKey(keyName);
 deletionPoller.waitForCompletion();
 ```
 
-Az [az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show) paranccsal ellenőrizheti, hogy a kulcs törölve lett-e:
+Az [az keyvault key show](/cli/azure/keyvault/key?#az_keyvault_key_show) paranccsal ellenőrizheti, hogy a kulcs törölve lett-e:
 
 ```azurecli
 az keyvault key show --vault-name <your-unique-key-vault-name> --name myKey

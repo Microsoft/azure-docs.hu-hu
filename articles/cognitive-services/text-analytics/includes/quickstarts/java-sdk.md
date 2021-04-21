@@ -1,50 +1,50 @@
 ---
-title: 'Gyors útmutató: Text Analytics v3 ügyféloldali kódtár a Javához | Microsoft Docs'
-description: Ismerkedjen meg a Javához készült v3 Text Analytics ügyféloldali kódtáraval.
+title: 'Rövid útmutató: Text Analytics v3-as ügyféloldali kódtár létrehozása Java-| Microsoft Docs'
+description: A Java-hoz Text Analytics v3-as ügyféloldali kódtár első lépések.
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 03/11/2021
+ms.date: 04/19/2021
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 9d7f94788bf5ac4c561fe2333035b75e02897d5e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d39f40d4059b43246f523b4d01ca92c0360bc574
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599033"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765066"
 ---
 <a name="HOLTop"></a>
 
-# <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/version-3-1)
+# <a name="version-31-preview"></a>[3.1-es előzetes verzió](#tab/version-3-1)
 
-[Dokumentáció](/java/api/overview/azure/ai-textanalytics-readme?preserve-view=true&view=azure-java-preview)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.5/sdk/textanalytics/azure-ai-textanalytics)  |  [Csomag](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.5)  |  [Példák](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.5/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Referenciadokumentáció](/java/api/overview/azure/ai-textanalytics-readme?preserve-view=true&view=azure-java-preview)  |  [Kódtár forráskódja](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.5/sdk/textanalytics/azure-ai-textanalytics)  |  [Csomag](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.5)  |  [Minták](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.5/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
-# <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
+# <a name="version-30"></a>[3.0-s verzió](#tab/version-3)
 
-[Dokumentáció](/java/api/overview/azure/ai-textanalytics-readme)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics)  |  [Csomag](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0)  |  [Példák](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Referenciadokumentáció](/java/api/overview/azure/ai-textanalytics-readme)  |  [Kódtár forráskódja](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics)  |  [Csomag](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0)  |  [Minták](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 ---
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
-* [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) a 8-as vagy újabb verzióval
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" hozzon létre egy Text Analytics erőforrást, "  target="_blank"> és hozzon létre egy Text Analytics-erőforrást </a> a Azure Portal a kulcs és a végpont beszerzéséhez.  Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
-    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Text Analytics APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
-    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
-* Az elemzés funkció használatához szüksége lesz egy Text Analytics erőforrásra a standard (S) árképzési szinttel.
+* Azure-előfizetés [– Hozzon létre egyet ingyenesen](https://azure.microsoft.com/free/cognitive-services)
+* [Java fejlesztői készlet](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) 8-as vagy újabb verzióval
+* Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy Text Analytics-erőforrást, Text Analytics erőforrást a Azure Portal a kulcs és a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" "  target="_blank"> végpont </a> lekért létrehozásához.  Az üzembe helyezés után kattintson az **Erőforráshoz való ugrás elemre.**
+    * Szüksége lesz a létrehozott erőforrás kulcsának és végpontjának létrehozására, hogy az alkalmazást a Text Analytics API-hoz. A kulcsot és a végpontot a rövid útmutató későbbi, alábbi kódába fogja beilleszteni.
+    * Az ingyenes tarifacsomag ( ) használatával kipróbálhatja a szolgáltatást, és később frissíthet fizetős szolgáltatási szintre éles `F0` környezetben.
+* Az Elemzés funkció használatához szüksége lesz egy Text Analytics (S) tarifacsomaggal.
 
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
 ### <a name="add-the-client-library"></a>Az ügyféloldali kódtár hozzáadása
 
-# <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/version-3-1)
+# <a name="version-31-preview"></a>[3.1-es előzetes verzió](#tab/version-3-1)
 
-Hozzon létre egy Maven-projektet az előnyben részesített IDE-vagy fejlesztési környezetben. Ezután adja hozzá a következő függőséget a projekt *pom.xml* fájljához. A [többi Build-eszköz](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.5) megvalósítási szintaxisát online is megtalálhatja.
+Hozzon létre egy Maven-projektet a választott IDE-környezetben vagy fejlesztői környezetben. Ezután adja hozzá a következő függőséget a projektpom.xml *fájlhoz.* Az egyéb buildeszközök [implementáció-szintaxisát](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.5) megtalálja az interneten.
 
 ```xml
 <dependencies>
@@ -56,9 +56,9 @@ Hozzon létre egy Maven-projektet az előnyben részesített IDE-vagy fejleszté
 </dependencies>
 ```
 
-# <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
+# <a name="version-30"></a>[3.0-s verzió](#tab/version-3)
 
-Hozzon létre egy Maven-projektet az előnyben részesített IDE-vagy fejlesztési környezetben. Ezután adja hozzá a következő függőséget a projekt *pom.xml* fájljához. A [többi Build-eszköz](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0) megvalósítási szintaxisát online is megtalálhatja.
+Hozzon létre egy Maven-projektet az előnyben részesített IDE-környezetben vagy fejlesztői környezetben. Ezután adja hozzá a következő függőséget a projektpom.xml *fájlhoz.* Más buildeszközök [implementációszintaxisát megtalálja az](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0) interneten.
 
 ```xml
 <dependencies>
@@ -71,11 +71,11 @@ Hozzon létre egy Maven-projektet az előnyben részesített IDE-vagy fejleszté
 ```
 
 > [!TIP]
-> Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/TextAnalytics/TextAnalyticsSamples.java), amely a jelen rövid útmutatóban szereplő példákat tartalmazza. 
+> Szeretné egyszerre megtekinteni a teljes gyorsindítási kódfájlt? Ez a [GitHubon található,](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/TextAnalytics/TextAnalyticsSamples.java)amely a rövid útmutatóban található példakódokat tartalmazza. 
 
 ---
 
-Hozzon létre egy nevű Java-fájlt `TextAnalyticsSamples.java` . Nyissa meg a fájlt, és adja hozzá a következő `import` utasításokat:
+Hozzon létre egy nevű `TextAnalyticsSamples.java` Java-fájlt. Nyissa meg a fájlt, és adja hozzá a következő `import` utasításokat:
 
 ```java
 import com.azure.core.credential.AzureKeyCredential;
@@ -84,7 +84,7 @@ import com.azure.ai.textanalytics.TextAnalyticsClientBuilder;
 import com.azure.ai.textanalytics.TextAnalyticsClient;
 ```
 
-A Java-fájlban adjon hozzá egy új osztályt, és adja hozzá az Azure-erőforrás kulcsát és végpontját az alább látható módon.
+A java-fájlban adjon hozzá egy új osztályt, és adja hozzá az Azure-erőforrás kulcsát és végpontját az alább látható módon.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
@@ -95,9 +95,9 @@ public class TextAnalyticsSamples {
 }
 ```
 
-Adja hozzá a következő fő metódust a osztályhoz. Az itt megnevezett metódusokat később kell meghatároznia.
+Adja hozzá a következő fő metódust a osztályhoz. A metódusokat később fogja definiálni.
 
-# <a name="version-31-preview"></a>[3,1-es verzió (előzetes verzió)](#tab/version-3-1)
+# <a name="version-31-preview"></a>[3.1-es verzió (előzetes verzió)](#tab/version-3-1)
 
 ```java
 public static void main(String[] args) {
@@ -113,7 +113,7 @@ public static void main(String[] args) {
 }
 ```
 
-# <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
+# <a name="version-30"></a>[3.0-s verzió](#tab/version-3)
 
 ```java
 public static void main(String[] args) {
@@ -134,21 +134,21 @@ public static void main(String[] args) {
 
 ## <a name="object-model"></a>Objektummodell
 
-A Text Analytics ügyfél egy olyan `TextAnalyticsClient` objektum, amely az Azure-ban hitelesíti a kulcsot, és függvényeket biztosít a szöveg egyetlen karakterláncként vagy kötegként való fogadásához. Az API-ra szinkron módon vagy aszinkron módon küldhet szöveget. A válasz objektum fogja tartalmazni az összes elküldött dokumentum elemzési információit. 
+A Text Analytics ügyfél egy olyan objektum, amely az Ön kulcsával hitelesíti magát az Azure-ban, és függvényeket biztosít a szövegek egyetlen sztringként vagy kötegként `TextAnalyticsClient` való elfogadásához. Szöveget küldhet szinkron vagy aszinkron módon az API-nak. A válaszobjektum minden elküldt dokumentum elemzési adatait tartalmazza. 
 
 ## <a name="code-examples"></a>Kódpéldák
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Hangulatelemzés](#sentiment-analysis) 
-* [Vélemény bányászata](#opinion-mining)
+* [Véleménybányászat](#opinion-mining)
 * [Nyelvfelismerés](#language-detection)
-* [Elnevezett entitások felismerése](#named-entity-recognition-ner)
-* [Entitás összekapcsolása](#entity-linking)
-* [Fő kifejezés kibontása](#key-phrase-extraction)
+* [Nevestű entitások felismerése](#named-entity-recognition-ner)
+* [Entitás-összekapcsolás](#entity-linking)
+* [Kulcskifejezések kinyerése](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Hozzon létre egy metódust az `TextAnalyticsClient` objektum létrehozásához a Text Analytics erőforrás kulcsával és végpontjának használatával. Ez a példa megegyezik az API 3,0-es és 3,1-es verzióival.
+Hozzon létre egy metódust az objektum példányosulatához a saját erőforrásának `TextAnalyticsClient` kulcsával Text Analytics végponttal. Ez a példa megegyezik az API 3.0-s és 3.1-es verzióival.
 
 ```java
 static TextAnalyticsClient authenticateClient(String key, String endpoint) {
@@ -160,18 +160,18 @@ static TextAnalyticsClient authenticateClient(String key, String endpoint) {
 ```
 
 
-A program `main()` metódusában hívja meg a hitelesítési módszert az ügyfél létrehozásához.
+A program metódusában hívja meg a hitelesítési módszert az `main()` ügyfél példányosítatáshoz.
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 
-# <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/version-3-1)
+# <a name="version-31-preview"></a>[3.1-es előzetes verzió](#tab/version-3-1)
 
 > [!NOTE]
-> A verzióban `3.1` :
-> * Hangulatelemzés tartalmaz olyan véleményt, amely nem kötelező. 
-> * A vélemények kitermelése a szempontokat és a vélemények szintjét is tartalmazza. 
+> `3.1`Verzióban:
+> * Hangulatelemzés véleménybányászati elemzést is tartalmaz, amely opcionális jelző. 
+> * A véleménybányászat aspektus- és véleményszintű érzelmeket is tartalmaz. 
 
-Hozzon létre egy nevű új függvényt `sentimentAnalysisExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `analyzeSentiment()` függvényt. A visszaadott `AnalyzeSentimentResult` objektum fogja tartalmazni, `documentSentiment` és `sentenceSentiments` Ha ez sikeres, vagy `errorMessage` Ha nem. 
+Hozzon létre egy nevű új függvényt, amely a korábban létrehozott ügyfelet és `sentimentAnalysisExample()` annak függvényét hívja `analyzeSentiment()` meg. A `AnalyzeSentimentResult` visszaadott objektum a következőket fogja `documentSentiment` tartalmazni: és `sentenceSentiments` ha sikeres, vagy `errorMessage` ha nem. 
 
 ```java
 static void sentimentAnalysisExample(TextAnalyticsClient client)
@@ -207,9 +207,9 @@ Recognized sentence sentiment: positive, positive score: 1.0, neutral score: 0.0
 Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.77, negative score: 0.02.
 ```
 
-### <a name="opinion-mining"></a>Vélemény bányászata
+### <a name="opinion-mining"></a>Véleménybányászat
 
-A kisegítő adatok elemzéséhez hozzon létre egy nevű új függvényt, `sentimentAnalysisWithOpinionMiningExample()` amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `analyzeSentiment()` függvényt a beállítási lehetőség objektummal `AnalyzeSentimentOptions` . A visszaadott `AnalyzeSentimentResult` objektum fogja tartalmazni, `documentSentiment` és `sentenceSentiments` Ha ez sikeres, vagy `errorMessage` Ha nem. 
+A hangulatelemzés véleménybányászattal való végrehajtásához hozzon létre egy új függvényt néven, amely a korábban létrehozott ügyfelet használja, és a objektum beállításával hívja meg a `sentimentAnalysisWithOpinionMiningExample()` `analyzeSentiment()` `AnalyzeSentimentOptions` függvényét. A `AnalyzeSentimentResult` visszaadott objektum a következőket fogja `documentSentiment` tartalmazni: és `sentenceSentiments` ha sikeres, vagy `errorMessage` ha nem. 
 
 
 ```java
@@ -260,9 +260,9 @@ Recognized document sentiment: negative, positive score: 0.010000, neutral score
             'negative' assessment sentiment because of "helpful". Is the assessment negated: true.
 ```
 
-# <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
+# <a name="version-30"></a>[3.0-s verzió](#tab/version-3)
 
-Hozzon létre egy nevű új függvényt `sentimentAnalysisExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `analyzeSentiment()` függvényt. A visszaadott `AnalyzeSentimentResult` objektum fogja tartalmazni, `documentSentiment` és `sentenceSentiments` Ha ez sikeres, vagy `errorMessage` Ha nem. 
+Hozzon létre egy nevű új függvényt, amely a korábban létrehozott ügyfelet és `sentimentAnalysisExample()` annak függvényét hívja `analyzeSentiment()` meg. A `AnalyzeSentimentResult` visszaadott objektum a következőket fogja `documentSentiment` tartalmazni: és `sentenceSentiments` ha sikeres, vagy `errorMessage` ha nem. 
 
 ```java
 static void sentimentAnalysisExample(TextAnalyticsClient client)
@@ -302,10 +302,10 @@ Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.7
 
 ## <a name="language-detection"></a>Nyelvfelismerés
 
-Hozzon létre egy nevű új függvényt `detectLanguageExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `detectLanguage()` függvényt. A visszaadott `DetectLanguageResult` objektum tartalmazni fog egy elsődleges nyelvet, amely a sikeres, illetve ha nem, más nyelvek listáját észlelte `errorMessage` . Ez a példa megegyezik az API 3,0-es és 3,1-es verzióival.
+Hozzon létre egy nevű új függvényt, amely a korábban létrehozott ügyfelet és `detectLanguageExample()` annak függvényét hívja `detectLanguage()` meg. A visszaadott objektum tartalmazni fog egy észlelt elsődleges nyelvet, egy listát a többi sikeres nyelvről, vagy `DetectLanguageResult` `errorMessage` egy ha nem. Ez a példa megegyezik az API 3.0-s és 3.1-es verzióival.
 
 > [!Tip]
-> Bizonyos esetekben nehéz lehet nyelveket egyértelműsítse a bemenet alapján. A `countryHint` paraméter használatával kétbetűs országkód adható meg. Alapértelmezés szerint az API az "USA"-t használja alapértelmezett countryHintként, hogy eltávolítsa ezt a paramétert úgy, hogy ezt az értéket üres sztringre állítja `countryHint = ""` . Másik alapértelmezett érték beállításához állítsa be a `TextAnalyticsClientOptions.DefaultCountryHint` tulajdonságot, és adja át azt az ügyfél inicializálása során.
+> Bizonyos esetekben nehéz lehet a bemenet alapján különböző nyelveket felfedni. A paraméterrel kétbetűs országkódot `countryHint` is megadhat. Alapértelmezés szerint az API az "US" értéket használja alapértelmezett countryHint értékként, hogy eltávolítsa ezt a viselkedést, ha ezt a paramétert üres sztringre `countryHint = ""` állítja. Másik alapértelmezett beállításhoz állítsa be a tulajdonságot, és adja `TextAnalyticsClientOptions.DefaultCountryHint` át az ügyfél inicializálása során.
 
 ```java
 static void detectLanguageExample(TextAnalyticsClient client)
@@ -327,16 +327,16 @@ static void detectLanguageExample(TextAnalyticsClient client)
 Detected primary language: French, ISO 6391 name: fr, score: 1.00.
 ```
 
-## <a name="named-entity-recognition-ner"></a>Elnevezett entitások felismerése
+## <a name="named-entity-recognition-ner"></a>Nevestű entitások felismerése (NER)
 
-# <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/version-3-1)
+# <a name="version-31-preview"></a>[3.1-es előzetes verzió](#tab/version-3-1)
 
 > [!NOTE]
-> A verzióban `3.1` :
-> * A tájékoztató külön módszereket tartalmaz a személyes adatok észlelésére. 
-> * Az entitások összekapcsolása egy külön kérelem, mint a kapcsolatfelvétel.
+> `3.1`Verzióban:
+> * A NER különböző módszereket tartalmaz a személyes adatok észlelésére. 
+> * Az entitás-összekapcsolás egy külön kérelem, mint a NER.
 
-Hozzon létre egy nevű új függvényt `recognizeEntitiesExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `recognizeEntities()` függvényt. A visszaadott `CategorizedEntityCollection` objektum tartalmazni fog egy listát, `CategorizedEntity` Ha a sikeres, vagy `errorMessage` Ha nem.
+Hozzon létre egy nevű új függvényt, amely a korábban létrehozott ügyfelet és `recognizeEntitiesExample()` annak függvényét hívja `recognizeEntities()` meg. A visszaadott objektum tartalmazni fogja a sikeres vagy nem `CategorizedEntityCollection` `CategorizedEntity` sikeres objektumok `errorMessage` listáját.
 
 ```java
 static void recognizeEntitiesExample(TextAnalyticsClient client)
@@ -365,9 +365,9 @@ Recognized entity: Seattle, entity category: Location, entity sub-category: GPE,
 Recognized entity: last week, entity category: DateTime, entity sub-category: DateRange, score: 0.8, offset: 24, length: 9.
 ```
 
-### <a name="entity-linking"></a>Entitás összekapcsolása
+### <a name="entity-linking"></a>Entitás-összekapcsolás
 
-Hozzon létre egy nevű új függvényt `recognizeLinkedEntitiesExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `recognizeLinkedEntities()` függvényt. A visszaadott `LinkedEntityCollection` objektum tartalmazni fog egy listát, `LinkedEntity` Ha a sikeres, vagy `errorMessage` Ha nem. Mivel a csatolt entitások egyedi módon vannak azonosítva, az azonos entitások előfordulásainak az `LinkedEntity` objektumok listáján vannak csoportosítva `LinkedEntityMatch` .
+Hozzon létre egy nevű új függvényt, amely a korábban létrehozott ügyfelet és `recognizeLinkedEntitiesExample()` annak függvényét hívja `recognizeLinkedEntities()` meg. A visszaadott objektum tartalmazni fogja a sikeres vagy nem `LinkedEntityCollection` `LinkedEntity` sikeres objektumok `errorMessage` listáját. Mivel a csatolt entitások egyedileg vannak azonosítva, ugyanazon entitás előfordulásai objektumok listájaként vannak egy objektum `LinkedEntity` alatt `LinkedEntityMatch` csoportosítva.
 
 
 ```java
@@ -428,7 +428,7 @@ Text: Altair 8800, Score: 0.88, Offset: 11, Length: 116
 
 ### <a name="personally-identifiable-information-recognition"></a>Személyazonosításra alkalmas adatok felismerése
 
-Hozzon létre egy nevű új függvényt `recognizePiiEntitiesExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `recognizePiiEntities()` függvényt. A visszaadott `PiiEntityCollection` objektum tartalmazni fog egy listát, `PiiEntity` Ha a sikeres, vagy `errorMessage` Ha nem. Emellett tartalmazni fogja a kivont szöveget is, amely az összes azonosítható entitást tartalmazó bemeneti szöveget tartalmazza `*****` .
+Hozzon létre egy nevű új függvényt, amely a korábban létrehozott ügyfelet és `recognizePiiEntitiesExample()` annak függvényét hívja `recognizePiiEntities()` meg. A visszaadott objektum tartalmazni fogja a sikeres vagy nem `PiiEntityCollection` `PiiEntity` sikeres objektumok `errorMessage` listáját. A kiíratott szöveget is tartalmazza, amely a szövegbeviteli szövegből áll, és az összes azonosítható entitást lecseréli a `*****` szövegre.
 
 ```java
 static void recognizePiiEntitiesExample(TextAnalyticsClient client)
@@ -451,14 +451,14 @@ Redacted Text: My SSN is ***********
 Recognized Personally Identifiable Information entity: 859-98-0987, entity category: U.S. Social Security Number (SSN), entity subcategory: null, confidence score: 0.650000.
 ```
 
-# <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
+# <a name="version-30"></a>[3.0-s verzió](#tab/version-3)
 
 > [!NOTE]
-> A verzióban `3.0` :
-> * A tájékoztató külön módszereket tartalmaz a személyes adatok észlelésére. 
-> * Az entitások összekapcsolása egy külön kérelem, mint a kapcsolatfelvétel.
+> `3.0`Verzióban:
+> * A NER különböző módszereket tartalmaz a személyes adatok észlelésére. 
+> * Az entitás-összekapcsolás egy külön kérelem, mint a NER.
 
-Hozzon létre egy nevű új függvényt `recognizeEntitiesExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `recognizeEntities()` függvényt. A visszaadott `CategorizedEntityCollection` objektum tartalmazni fog egy listát, `CategorizedEntity` Ha a sikeres, vagy `errorMessage` Ha nem.
+Hozzon létre egy nevű új függvényt, amely a korábban létrehozott ügyfelet és `recognizeEntitiesExample()` annak függvényét hívja `recognizeEntities()` meg. A visszaadott objektum tartalmazni fogja a sikeres vagy nem `CategorizedEntityCollection` `CategorizedEntity` sikeres objektumok `errorMessage` listáját.
 
 ```java
 static void recognizeEntitiesExample(TextAnalyticsClient client)
@@ -485,9 +485,9 @@ Recognized entity: Seattle, entity category: Location, entity sub-category: GPE,
 Recognized entity: last week, entity category: DateTime, entity sub-category: DateRange, score: 0.8.
 ```
 
-### <a name="entity-linking"></a>Entitás összekapcsolása
+### <a name="entity-linking"></a>Entitás-összekapcsolás
 
-Hozzon létre egy nevű új függvényt `recognizeLinkedEntitiesExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `recognizeLinkedEntities()` függvényt. A visszaadott `LinkedEntityCollection` objektum tartalmazni fog egy listát, `LinkedEntity` Ha a sikeres, vagy `errorMessage` Ha nem. Mivel a csatolt entitások egyedi módon vannak azonosítva, az azonos entitások előfordulásainak az `LinkedEntity` objektumok listáján vannak csoportosítva `LinkedEntityMatch` .
+Hozzon létre egy nevű új függvényt, amely a korábban létrehozott ügyfelet és `recognizeLinkedEntitiesExample()` annak függvényét hívja `recognizeLinkedEntities()` meg. A visszaadott objektum tartalmazni fogja a sikeres vagy nem `LinkedEntityCollection` `LinkedEntity` sikeres objektumok `errorMessage` listáját. Mivel a csatolt entitások egyedileg vannak azonosítva, ugyanazon entitás előfordulásai objektumok listájaként vannak egy objektum `LinkedEntity` alatt `LinkedEntityMatch` csoportosítva.
 
 ```java
 static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
@@ -546,7 +546,7 @@ Text: BASIC, Score: 0.33
 
 ## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
 
-Hozzon létre egy nevű új függvényt `extractKeyPhrasesExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `extractKeyPhrases()` függvényt. A visszaadott `ExtractKeyPhraseResult` objektum a kulcsfontosságú kifejezések listáját tartalmazza, ha a művelet sikeres, vagy `errorMessage` Ha nem. Ez a példa megegyezik az API 3,0-es és 3,1-es verziójával.
+Hozzon létre egy nevű új függvényt, amely a korábban létrehozott ügyfelet és `extractKeyPhrasesExample()` annak függvényét hívja `extractKeyPhrases()` meg. A `ExtractKeyPhraseResult` visszaadott objektum tartalmazni fogja a sikeres kulcskifejezések listáját, vagy ha `errorMessage` nem, akkor a következőt: . Ez a példa megegyezik az API 3.0-s és 3.1-es verziójával.
 
 ```java
 static void extractKeyPhrasesExample(TextAnalyticsClient client)
@@ -570,13 +570,13 @@ veterinarian
 ```
 ---
 
-## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>Az API aszinkron használata az elemzési művelettel
+## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>Az API aszinkron használata az Elemzés művelettel
 
-# <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/version-3-1)
+# <a name="version-31-preview"></a>[3.1-es előzetes verzió](#tab/version-3-1)
 
 [!INCLUDE [Analyze Batch Action pricing](../analyze-operation-pricing-caution.md)]
 
-Hozzon létre egy nevű új függvényt `analyzeBatchActionsExample()` , amely meghívja a `beginAnalyzeBatchActions()` függvényt. Az eredmény egy hosszú ideig futó művelet, amely az eredmények lekérdezésére lesz lekérdezve.
+Hozzon létre egy új függvényt `analyzeBatchActionsExample()` néven, amely a függvényt `beginAnalyzeBatchActions()` hívja meg. Az eredmény egy hosszú ideig futó művelet lesz, amelynek eredményeit a rendszer lekérdezi.
 
 ```java
 static void analyzeBatchActionsExample(TextAnalyticsClient client)
@@ -660,10 +660,10 @@ Recognized entity: Bill Gates, entity category: Person, entity subcategory: null
 Recognized entity: Paul Allen, entity category: Person, entity subcategory: null, confidence score: 0.990000.
 ```
 
-Az elemzési művelettel a személyes adatok észlelése, a csatolt entitások felismerése és a kulcsfontosságú kifejezés kibontása is használható. Tekintse meg a [minta elemzése](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro) a githubon című témakört.
+Az Elemzés művelettel piI-adatokat is észlelhet, felismerheti a csatolt entitásokat és a kulcskifejezések kinyerése műveleteket. Tekintse meg [az Elemzés mintát a](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro) GitHubon.
 
-# <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
+# <a name="version-30"></a>[3.0-s verzió](#tab/version-3)
 
-Ez a funkció az 3,0-es verzióban nem érhető el.
+Ez a funkció a 3.0-s verzióban nem érhető el.
 
 ---

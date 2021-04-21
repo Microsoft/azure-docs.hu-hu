@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/08/2021
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 81d80e7d3ae00c8afe8630634e647e850fe9cc61
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ab4192d0147f5d51a3314a74c4971dbc50ff646
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102473655"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107800336"
 ---
 > [!IMPORTANT]
-> A StorSimple Virtual array (1200-es sorozat) a teljes [életciklusát](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%201200%20Series) a 2022 decemberében éri el. Ha a StorSimple Virtual Array új üzemelő példányait fontolgatja, javasoljuk, hogy vizsgálja meg az egyéb alternatívákat, például [Azure file Sync](../articles/storage/files/storage-sync-files-deployment-guide.md) vagy [Azure Data Box online eszközöket](../articles/databox-online/index.yml) a számítási feladatokhoz.
+> A StorSimple Virtual Array (1200-as sorozat) 2020 decemberében éri el az élettartamát. [](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%201200%20Series) Ha a StorSimple Virtual Array új üzembe helyezését fontolgatja, javasoljuk, hogy fedezzen fel más alternatív megoldásokat, például Azure File Sync vagy [Azure Data Box Online-eszközöket](../articles/databox-online/index.yml) a számítási feladatokhoz. [](../articles/storage/file-sync/file-sync-deployment-guide.md)

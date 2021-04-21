@@ -1,22 +1,22 @@
 ---
-title: 'Oktatóanyag: Linux Ruby-alkalmazás és postgres'
-description: Ismerje meg, hogyan szerezhet be egy, az Azure-ban egy PostgreSQL-adatbázishoz csatlakozó Linux Ruby-alkalmazást Azure App Serviceban. A Rails használatban van az oktatóanyagban.
+title: 'Oktatóanyag: Linux Ruby-alkalmazás a Postgres használatával'
+description: Megtudhatja, hogyan használhat linuxos Ruby-alkalmazást a Azure App Service, és hogyan létesít kapcsolatot egy PostgreSQL-adatbázissal az Azure-ban. Az oktatóanyagban a Railst használjuk.
 ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: de8f0e64189014b303463dd8bd6c827990b88f9a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 63194ab87e0f2228b8585e962394aa1ebfff48d6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178457"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767248"
 ---
-# <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Ruby-és postgres-alkalmazás létrehozása Linuxon Azure App Service
+# <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Ruby- és Postgres-alkalmazás Azure App Service on Linux
 
-Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez az oktatóanyag bemutatja, hogyan hozható létre Ruby-alkalmazás, és hogyan csatlakoztatható egy PostgreSQL-adatbázishoz. Az oktatóanyag eredménye egy, a Linux App Service-ben futó [Ruby on Rails](https://rubyonrails.org/)-alkalmazás lesz.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez az oktatóanyag bemutatja, hogyan hozhat létre Ruby-alkalmazást, és hogyan csatlakoztathatja azt egy PostgreSQL-adatbázishoz. Az oktatóanyag eredménye egy, a Linux App Service-ben futó [Ruby on Rails](https://rubyonrails.org/)-alkalmazás lesz.
 
-:::image type="content" source="./media/tutorial-ruby-postgres-app/complete-checkbox-published.png" alt-text="Képernyőkép a Ruby on Rails-alkalmazásról – példa a feladatokra.":::
+:::image type="content" source="./media/tutorial-ruby-postgres-app/complete-checkbox-published.png" alt-text="Képernyőkép egy Feladatok című Ruby on Rails-alkalmazásról.":::
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -35,7 +35,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Az oktatóanyag elvégzéséhez:
 
 - [A Git telepítése](https://git-scm.com/)
-- [A Ruby 2,6 telepítése](https://www.ruby-lang.org/en/documentation/installation/)
+- [A Ruby 2.6 telepítése](https://www.ruby-lang.org/en/documentation/installation/)
 - [Telepítse a Ruby on Rails 5.1-es verzióját](https://guides.rubyonrails.org/v5.1/getting_started.html)
 - [A PostgreSQL telepítése és futtatása](https://www.postgresql.org/download/)
 
@@ -119,35 +119,35 @@ Ebben a lépésben egy Postgres-adatbázist fog létrehozni az [Azure Database f
 <!-- > [!NOTE]
 > Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1.  -->
 
-Ebben a szakaszban egy Azure Database for PostgreSQL-kiszolgálót és-adatbázist hoz létre. Az indításhoz telepítse a `db-up` bővítményt a következő paranccsal:
+Ebben a szakaszban egy új Azure Database for PostgreSQL és adatbázist hoz létre. Először telepítse a `db-up` bővítményt a következő paranccsal:
 
 ```azurecli
 az extension add --name db-up
 ```
 
-Hozza létre a postgres-adatbázist az Azure-ban a [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) paranccsal, az alábbi példában látható módon. Cserélje le *\<postgresql-name>* *egyedi* névre (a kiszolgálói végpont *https:// \<postgresql-name> . postgres.database.Azure.com*). És rendszer esetén a *\<admin-username>* *\<admin-password>* hitelesítő adatok megadásával hozzon létre egy rendszergazdai felhasználót ehhez a postgres-kiszolgálóhoz.
+Hozza létre a Postgres-adatbázist az Azure-ban az [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) paranccsal, az alábbi példában látható módon. A *\<postgresql-name>* helyére *egy egyedi nevet* (a kiszolgálóvégpont a *\<postgresql-name> .https:// postgres.database.azure.com).* A és a számára adja meg a hitelesítő adatokat, hogy rendszergazdai felhasználót hozzon létre *\<admin-username>* *\<admin-password>* ehhez a Postgres-kiszolgálóhoz.
 
 <!-- Issue: without --location -->
 ```azurecli
 az postgres up --resource-group myResourceGroup --location westeurope --server-name <postgresql-name> --database-name sampledb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
 ```
 
-Ez a parancs hosszabb időt is igénybe vehet, mert a következő műveleteket végzi el:
+Ez a parancs a következő lépésekből ad vissza:
 
-- Létrehoz egy nevű [erőforráscsoportot](../azure-resource-manager/management/overview.md#terminology) `myResourceGroup` , ha az nem létezik. Minden Azure-erőforrásnak ilyen típusúnak kell lennie. A(z) `--resource-group` nem kötelező.
-- Létrehoz egy postgres-kiszolgálót a rendszergazda felhasználóval.
+- Létrehoz egy [nevű erőforráscsoportot,](../azure-resource-manager/management/overview.md#terminology) `myResourceGroup` ha az még nem létezik. Minden Azure-erőforrásnak egy ilyen erőforrásban kell lennie. A(z) `--resource-group` nem kötelező.
+- Létrehoz egy Postgres-kiszolgálót a rendszergazda felhasználóval.
 - Létrehoz egy `sampledb` adatbázist.
-- Engedélyezi a hozzáférést a helyi IP-címről.
-- Engedélyezi az Azure-szolgáltatásokból való hozzáférést.
-- Hozzon létre egy adatbázis-felhasználót, amely hozzáfér az `sampledb` adatbázishoz.
+- Engedélyezi a helyi IP-címről való hozzáférést.
+- Hozzáférést biztosít az Azure-szolgáltatásokból.
+- Hozzon létre egy adatbázis-felhasználót, aki hozzáfér az `sampledb` adatbázishoz.
 
-A lépéseket külön is végrehajthatja más `az postgres` parancsokkal, és az összes lépést megteheti `psql` `az postgres up` egy lépésben.
+Az összes lépést külön is végre lehet tenni más parancsokkal és a parancsokkal, de mindegyiket egyetlen lépésben `az postgres` `psql` kell `az postgres up` elvégeznie.
 
-A parancs befejeződése után keresse meg a által használt kimeneti sorokat `Ran Database Query:` . Az Ön számára létrehozott adatbázis-felhasználót, a felhasználónevet `root` és a jelszót is megjeleníti `Sampledb1` . Ezeket később fogja használni az alkalmazás adatbázishoz való összekapcsolásához.
+Amikor a parancs befejeződik, keresse meg a kimeneti sorokat, amelyek a használatával `Ran Database Query:` vannak. A létrehozott adatbázis-felhasználót a felhasználónévvel és jelszóval `root` mutatják `Sampledb1` be. Később ezeket fogja használni az alkalmazás adatbázishoz való csatlakoztatásához.
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
-> `--location <location-name>`, az egyik [Azure-régióhoz](https://azure.microsoft.com/global-infrastructure/regions/)is beállítható. Az előfizetéshez elérhető régiókat a paranccsal érheti el [`az account list-locations`](/cli/azure/account#az-account-list-locations) . Éles alkalmazások esetében ugyanazon a helyen helyezze el az adatbázist és az alkalmazást.
+> `--location <location-name>`A bármelyik Azure-régióra [beállítható.](https://azure.microsoft.com/global-infrastructure/regions/) Az előfizetése számára elérhető régiókat az paranccsal [`az account list-locations`](/cli/azure/account#az_account_list_locations) kaphatja meg. Éles alkalmazások esetén helyezze az adatbázist és az alkalmazást ugyanoda.
 
 ## <a name="connect-app-to-azure-postgres"></a>Az alkalmazás csatlakoztatása az Azure Postgreshez
 
@@ -255,9 +255,9 @@ Ebben a lépésben üzembe helyezi a Postgreshez csatlakoztatott Rails-alkalmaz�
 
 ### <a name="configure-database-settings"></a>Adatbázis-beállítások konfigurálása
 
-Az App Service-ben a környezeti változókat _alkalmazásbeállításként_ lehet beállítani az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) parancs Cloud Shellben való használatával.
+Az App Service-ben a környezeti változókat _alkalmazásbeállításként_ lehet beállítani az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) parancs Cloud Shellben való használatával.
 
-Az alábbi Cloud Shell-parancs a `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` és `DB_PASSWORD` alkalmazásbeállításokat konfigurálja. Cserélje le a helyőrzőket a>és a _&lt; postgres-Server-Name>_ _&lt; AppName_ .
+Az alábbi Cloud Shell-parancs a `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` és `DB_PASSWORD` alkalmazásbeállításokat konfigurálja. Cserélje le az _&lt; appname>_ a _&lt; postgres-server-name_ helyőrzőket a>.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<postgres-server-name>.postgres.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="root@<postgres-server-name>" DB_PASSWORD="Sampledb1"
@@ -265,7 +265,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 ### <a name="configure-rails-environment-variables"></a>Rails környezeti változók konfigurálása
 
-A helyi terminálon [egy új titkot állít elő](configure-language-ruby.md#set-secret_key_base-manually) a Rails éles környezet számára az Azure-ban.
+A helyi terminálon hozzon létre egy új titkos secret-et [a](configure-language-ruby.md#set-secret_key_base-manually) Rails éles környezethez az Azure-ban.
 
 ```bash
 rails secret
@@ -273,13 +273,13 @@ rails secret
 
 Konfigurálja a Rails éles környezet számára szükséges változókat.
 
-A következő Cloud Shell parancsban cserélje le a két _&lt; output-of-Rails-Secret>_ helyőrzőt a helyi terminálon létrehozott új titkos kulccsal.
+A következő Cloud Shell cserélje le a két _&lt; output-of-rails-secret>_ helyőrzőt a helyi terminálban létrehozott új titkos kulcsra.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output-of-rails-secret>" SECRET_KEY_BASE="<output-of-rails-secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
 ```
 
-Az `ASSETS_PRECOMPILE="true"` arra utasítja az alapértelmezett Ruby tárolót, hogy minden Git-üzembehelyezésnél fordítson elő objektumokat. További információ: [eszközök előfordítása](configure-language-ruby.md#precompile-assets) és [statikus eszközök kiszolgálása](configure-language-ruby.md#serve-static-assets).
+Az `ASSETS_PRECOMPILE="true"` arra utasítja az alapértelmezett Ruby tárolót, hogy minden Git-üzembehelyezésnél fordítson elő objektumokat. További információ: [Eszközök előkomponense és](configure-language-ruby.md#precompile-assets) [Statikus eszközök kiszolgálása.](configure-language-ruby.md#serve-static-assets)
 
 ### <a name="push-to-azure-from-git"></a>Leküldéses üzenet küldése a Gitből az Azure-ra
 
@@ -312,11 +312,11 @@ remote: Running deployment command...
 &lt; Output has been truncated for readability &gt;
 </pre>
 
-### <a name="browse-to-the-azure-app"></a>Tallózással keresse meg az Azure-alkalmazást
+### <a name="browse-to-the-azure-app"></a>Keresse meg az Azure-alkalmazást
 
 Egy böngészőben keresse fel az `http://<app-name>.azurewebsites.net` címet, és vegyen fel néhány feladatot a listára.
 
-:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="Képernyőkép az Azure-alkalmazásról – példa a feladatokra, amelyek a listához hozzáadott feladatokat mutatják.":::
+:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="Képernyőkép az Azure-alkalmazás Feladatok című példáról, amely a listához adott feladatokat mutatja.":::
 
 Gratulálunk, egy adatvezérelt Ruby on Rails-alkalmazást futtat az Azure App Service-ben.
 
@@ -425,7 +425,7 @@ git commit -m "added complete checkbox"
 git push azure main
 ```
 
-A `git push` befejezését követően navigáljon az Azure-alkalmazáshoz, és tesztelje az új funkciókat.
+Miután a `git push` befejeződött, lépjen az Azure-alkalmazáshoz, és tesztelje az új funkciót.
 
 ![Az Azure-ban közzétett modell- és adatbázis-módosítások](media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
@@ -437,13 +437,13 @@ Ha felvett feladatokat, azok megmaradnak az adatbázisban. Az adatséma frissít
 
 ## <a name="manage-the-azure-app"></a>Az Azure-alkalmazás kezelése
 
-A létrehozott alkalmazás kezeléséhez lépjen a [Azure Portal](https://portal.azure.com) .
+A létrehozott [Azure Portal](https://portal.azure.com) az alkalmazás kezeléséhez.
 
-A bal oldali menüben kattintson a **app Services** elemre, majd kattintson az Azure-alkalmazás nevére.
+A bal oldali menüben kattintson a **App Services** elemre, majd kattintson az Azure-alkalmazás nevére.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/tutorial-php-mysql-app/access-portal.png)
 
-Megtekintheti az alkalmazás áttekintés lapját. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a leállítás, elindítás, újraindítás, tallózás és törlés.
+2012 fog jelenni az alkalmazás Áttekintés lapja. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a leállítás, elindítás, újraindítás, tallózás és törlés.
 
 A bal oldali menü az alkalmazás konfigurálásához biztosít oldalakat.
 
@@ -465,12 +465,12 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Diagnosztikai naplók streamelése az Azure-ból
 > * Az alkalmazás kezelése az Azure Portalon
 
-Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan képezhető le egyéni DNS-név az alkalmazáshoz.
+A következő oktatóanyag azt is bemutatja, hogyan lehet leképezni egy egyéni DNS-nevet az alkalmazásra.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: egyéni DNS-név leképezése az alkalmazáshoz](app-service-web-tutorial-custom-domain.md)
+> [Oktatóanyag: Egyéni DNS-név leképezése az alkalmazásra](app-service-web-tutorial-custom-domain.md)
 
-Vagy tekintse meg a többi erőforrást:
+Vagy tekintse meg az egyéb erőforrásokat:
 
 > [!div class="nextstepaction"]
 > [Ruby-alkalmazás konfigurálása](configure-language-ruby.md)

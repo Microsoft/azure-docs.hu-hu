@@ -1,6 +1,6 @@
 ---
-title: Lemezek titkosítása az Azure-méretezési csoportokhoz az Azure CLI-vel
-description: Ismerje meg, hogyan titkosíthatja a virtuálisgép-példányokat és a csatlakoztatott lemezeket az Azure CLI használatával egy Windows rendszerű virtuálisgép-méretezési csoportokban
+title: Lemezek titkosítása Azure-méretezési készletekhez az Azure CLI használatával
+description: Megtudhatja, hogyan titkosíthatja a virtuálisgép-példányokat és a csatlakoztatott lemezeket egy Windows rendszerű virtuálisgép-méretezési készletben az Azure CLI használatával
 author: ju-shim
 ms.author: jushiman
 ms.topic: tutorial
@@ -9,30 +9,30 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: e6630cbb44157f25bd2cbfcff25ec3132c74c61c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d347be4e6727cdda659620befe20824678160020
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565571"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792434"
 ---
-# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Operációs rendszer és csatlakoztatott adatlemezek titkosítása virtuálisgép-méretezési csoportokban az Azure CLI-vel
+# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Operációs rendszer és csatlakoztatott adatlemezek titkosítása egy virtuálisgép-méretezési készletben az Azure CLI használatával
 
-Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan hozhat létre és titkosíthat virtuálisgép-méretezési csoportokat az Azure CLI használatával. Az Azure Disk Encryption virtuálisgép-méretezési csoportokra való alkalmazásával kapcsolatos további információkért lásd: [Azure Disk Encryption Virtual Machine Scale sets](disk-encryption-overview.md).
+Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan hozhat létre és titkosíthatja a virtuálisgép-méretezési csoportokat az Azure CLI használatával. Az Azure Disk Encryption virtuálisgép-méretezési készletre való alkalmazásával kapcsolatos további információkért lásd: Azure Disk Encryption [a Virtual Machine Scale Sets.](disk-encryption-overview.md)
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ehhez a cikkhez az Azure CLI 2.0.31 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a cikkhez az Azure CLI 2.0.31-es vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
 
-Mielőtt létrehozhatna egy méretezési csoportot, létre kell hoznia egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
+Mielőtt létrehozhatna egy méretezési csoportot, létre kell hoznia egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az alábbi példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy virtuálisgép-méretezési csoportot az [az vmss create](/cli/azure/vmss) paranccsal. A következő példa egy *myScaleSet* nevű méretezési csoportot hoz létre, amely automatikusan frissül a módosítások alkalmazásakor, valamint SSH-kulcsokat hoz létre, amennyiben azok még nem léteznének a *~/.ssh/id_rsa* helyen. Minden virtuálisgép-példányhoz 32Gb-adatlemez van csatolva, az Azure [Custom script bővítmény](../virtual-machines/extensions/custom-script-linux.md) pedig az adatlemezek előkészítésére szolgál az az [vmss Extension set](/cli/azure/vmss/extension):
+Most hozzon létre egy virtuálisgép-méretezési csoportot az [az vmss create](/cli/azure/vmss) paranccsal. A következő példa egy *myScaleSet* nevű méretezési csoportot hoz létre, amely automatikusan frissül a módosítások alkalmazásakor, valamint SSH-kulcsokat hoz létre, amennyiben azok még nem léteznének a *~/.ssh/id_rsa* helyen. Minden virtuálisgép-példányhoz 32 Gb-os adatlemez van csatolva, és az [azure-beli](../virtual-machines/extensions/custom-script-linux.md) egyéni szkriptbővítmény az az vmss extension set használatával készíti elő az [adatlemezeket:](/cli/azure/vmss/extension)
 
 ```azurecli-interactive
 # Create a scale set with attached data disk
@@ -57,11 +57,11 @@ az vmss extension set \
 
 A méretezési csoport erőforrásainak és virtuális gépeinek létrehozása és konfigurálása néhány percet vesz igénybe.
 
-## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>Lemezes titkosításhoz engedélyezett Azure Key Vault létrehozása
+## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>Lemeztitkosításhoz engedélyezett Azure Key Vault létrehozása
 
-A Azure Key Vault képes tárolni a kulcsokat, titkokat vagy jelszavakat, amelyek lehetővé teszik az alkalmazások és szolgáltatások biztonságos megvalósítását. A titkosítási kulcsokat a szoftveres védelem Azure Key Vault tárolja, vagy importálhatja vagy létrehozhatja a kulcsokat az FIPS 140-2 2. szintű standard minősítésű hardveres biztonsági modulokban (HSM). Ezek a titkosítási kulcsok a virtuális GÉPHEZ csatolt virtuális lemezek titkosítására és visszafejtésére szolgálnak. Megőrzi a titkosítási kulcsok felügyeletét, és naplózhatja a használatukat.
+Azure Key Vault a kulcsokat, titkos kulcsokat vagy jelszavakat, amelyek lehetővé teszik azok biztonságos implementtatását az alkalmazásokban és szolgáltatásokban. A titkosítási kulcsokat a Azure Key Vault szoftveres védelemmel tárolják, vagy a kulcsokat a FIPS 140-2 2. szintű 2. szabványnak megfelelő hardveres biztonsági modulokban (HSM-ekkel) importálhatja vagy hozhatja létre. Ezek a titkosítási kulcsok a virtuális géphez csatolt virtuális lemezek titkosítására és visszafejtéséhez használhatók. Ön továbbra is ön irányíthatja ezeket a titkosítási kulcsokat, és naplózhatja azok használatát.
 
-Saját egyedi *keyvault_name* definiálása. Ezután hozzon létre egy kulcstartót az az Key [Vault Create](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-create) paranccsal ugyanabban az előfizetésben és régióban, mint a méretezési csoport, és állítsa be a *-enabled-for-Disk-Encryption* hozzáférési házirendet.
+Definiálja saját egyedi *keyvault_name.* Ezután hozzon létre egy KeyVault-et [az az keyvault create](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-create) használatával ugyanabban az előfizetésben és régióban, mint a méretezési csoport, és állítsa be az *--enabled-for-disk-encryption* hozzáférési szabályzatot.
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -71,11 +71,11 @@ keyvault_name=myuniquekeyvaultname
 az keyvault create --resource-group myResourceGroup --name $keyvault_name --enabled-for-disk-encryption
 ```
 
-### <a name="use-an-existing-key-vault"></a>Meglévő Key Vault használata
+### <a name="use-an-existing-key-vault"></a>Meglévő alkalmazás Key Vault
 
-Ez a lépés csak akkor szükséges, ha rendelkezik egy meglévő Key Vault, amelyet lemezes titkosítással szeretne használni. Hagyja ki ezt a lépést, ha az előző szakaszban létrehozott egy Key Vault.
+Erre a lépésre csak akkor van szükség, ha Key Vault lemeztitkosítással használni kívánt meglévő adatbázissal. Hagyja ki ezt a lépést, ha az előző Key Vault létrehozott egy újat.
 
-Saját egyedi *keyvault_name* definiálása. Ezután frissítse a kulcstartót az [az Key Vault Update paranccsal](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-update) , és állítsa be az *--enabled-a-Disk-Encryption* hozzáférési szabályzatot.
+Definiálja saját egyedi *keyvault_name.* Ezután frissítse a KeyVaultot [az az keyvault update](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-update) frissítéssel, és állítsa be az *--enabled-for-disk-encryption* hozzáférési szabályzatot.
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -87,7 +87,7 @@ az keyvault update --name $keyvault_name --enabled-for-disk-encryption
 
 ## <a name="enable-encryption"></a>Titkosítás engedélyezése
 
-A méretezési csoportokban lévő virtuálisgép-példányok titkosításához először szerezzen be néhány információt az Key Vault erőforrás-AZONOSÍTÓval az [az kulcstartó show](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-show)paranccsal. A rendszer ezeket a változókat használja a titkosítási folyamat elindításához az [az vmss encryption Enable](/cli/azure/vmss/encryption#az-vmss-encryption-enable):
+A méretezési csoportban található virtuálisgép-példányok titkosításához először szerezze be a Key Vault erőforrás-azonosítóját [az az keyvault show segítségével.](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-show) Ezek a változók indítják el a titkosítási folyamatot az [az vmss encryption enable parancs használatával:](/cli/azure/vmss/encryption#az_vmss_encryption_enable)
 
 ```azurecli-interactive
 # Get the resource ID of the Key Vault
@@ -101,13 +101,13 @@ az vmss encryption enable \
     --volume-type DATA
 ```
 
-A titkosítási folyamat elindításához egy-két percet is igénybe vehet.
+A titkosítási folyamat elindulása egy-két percet is igénybe vehet.
 
-Mivel a méretezési csoport egy korábbi lépésben létrehozott méretezési csoport frissítési szabályzata *automatikus* értékre van állítva, a virtuálisgép-példányok automatikusan elindítják a titkosítási folyamatot. Azokon a méretezési csoportokon, amelyeken a frissítési szabályzat manuális, a virtuálisgép-példányok titkosítási szabályzatát az [az vmss Update-instances paranccsal](/cli/azure/vmss#az-vmss-update-instances)indíthatja el.
+Mivel a méretezési készlet egy korábbi lépésben létrehozott méretezési készlet frissítési szabályzata, automatikusra van állítva, a virtuálisgép-példányok automatikusan elindítják a titkosítási folyamatot. Olyan méretezési készleteken, ahol a frissítési szabályzat manuális, indítsa el a titkosítási szabályzatot a [virtuálisgép-példányon az az vmss update-instances használatával.](/cli/azure/vmss#az_vmss_update_instances)
 
-### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>Titkosítás engedélyezése a KEK használatával a kulcs becsomagolásához
+### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>Titkosítás engedélyezése kEK használatával a kulcs becsomagolása érdekében
 
-A virtuálisgép-méretezési csoport titkosításakor a titkosítási kulcs is használható a további biztonsághoz.
+A virtuálisgép-méretezési készlet titkosítása során kulcstitkosítási kulcsot is használhat a nagyobb biztonság érdekében.
 
 ```azurecli-interactive
 # Get the resource ID of the Key Vault
@@ -124,20 +124,20 @@ az vmss encryption enable \
 ```
 
 > [!NOTE]
->  A Disk-Encryption-kulcstartó paraméter értékének szintaxisa a teljes azonosító sztring:</br>
-/Subscriptions/[előfizetés-azonosító-GUID]/resourceGroups/[erőforrás-csoport-név]/providers/Microsoft.KeyVault/vaults/[kulcstartó-name]</br></br>
-> A kulcs-encryption-Key paraméter értékének szintaxisa a KEK teljes URI-ja, a következőhöz hasonlóan:</br>
-https://[kulcstartó-név]. Vault. Azure. net/Keys/[kekname]/[KEK-Unique-id]
+>  A disk-encryption-keyvault paraméter értékének szintaxisa a teljes azonosító sztring:</br>
+/subscriptions/[subscription-id-guid]/resourceGroups/[erőforráscsoport-neve]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br></br>
+> A key-encryption-key paraméter értékének szintaxisa a KEK teljes URI-ja, a következőként:</br>
+https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]
 
-## <a name="check-encryption-progress"></a>Titkosítási folyamat ellenőrzésének állapota
+## <a name="check-encryption-progress"></a>A titkosítási folyamat ellenőrzése
 
-A lemezes titkosítás állapotának megtekintéséhez használja az [az vmss encryption show](/cli/azure/vmss/encryption#az-vmss-encryption-show):
+A lemeztitkosítás állapotának ellenőrzéshez használja [az az vmss encryption show eszközt:](/cli/azure/vmss/encryption#az_vmss_encryption_show)
 
 ```azurecli-interactive
 az vmss encryption show --resource-group myResourceGroup --name myScaleSet
 ```
 
-Ha a virtuálisgép-példányok titkosítva vannak, az állapotkód *EncryptionState/titkosítva* jelenik meg, ahogy az a következő példában látható:
+Ha a virtuálisgép-példányok titkosítva vannak, az állapotkód *az EncryptionState/encrypted* állapotot jelenti, ahogy az alábbi példakimenetben látható:
 
 ```console
 [
@@ -166,7 +166,7 @@ Ha a virtuálisgép-példányok titkosítva vannak, az állapotkód *EncryptionS
 
 ## <a name="disable-encryption"></a>Titkosítás letiltása
 
-Ha már nem kíván titkosított virtuálisgép-példányokat használni, letilthatja a titkosítást az [az vmss encryption disable](/cli/azure/vmss/encryption#az-vmss-encryption-disable) paranccsal a következőképpen:
+Ha már nem szeretne titkosított virtuálisgép-példányokat használni, letilthatja a titkosítást [az az vmss encryption disable](/cli/azure/vmss/encryption#az_vmss_encryption_disable) használatával az alábbiak szerint:
 
 ```azurecli-interactive
 az vmss encryption disable --resource-group myResourceGroup --name myScaleSet
@@ -174,6 +174,6 @@ az vmss encryption disable --resource-group myResourceGroup --name myScaleSet
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ebben a cikkben az Azure CLI használatával titkosít egy virtuálisgép-méretezési készletet. Használhat [Azure PowerShell](disk-encryption-powershell.md) vagy [Azure Resource Manager sablonokat](disk-encryption-azure-resource-manager.md)is.
-- Ha azt szeretné, hogy a Azure Disk Encryption egy másik bővítmény kiépítés után is alkalmazza, használhatja a [bővítmények sorrendjét](virtual-machine-scale-sets-extension-sequencing.md). 
-- A Linux-méretezési csoport adatlemez-titkosításának végpontok közötti batch-fájlja [itt](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat)található. Ez a példa létrehoz egy erőforráscsoportot, egy Linux-méretezési csoportot, csatlakoztat egy 5 GB-nyi adatlemezt, és titkosítja a virtuálisgép-méretezési csoportot.
+- Ebben a cikkben az Azure CLI használatával titkosított egy virtuálisgép-méretezési készletet. A sablonokat is [Azure PowerShell](disk-encryption-powershell.md) vagy [Azure Resource Manager is használhatja.](disk-encryption-azure-resource-manager.md)
+- Ha egy másik bővítmény üzembe Azure Disk Encryption után szeretné alkalmazni az alkalmazásokat, használhatja a [bővítmény-szekvenálást.](virtual-machine-scale-sets-extension-sequencing.md) 
+- A Linux rendszerű méretezésihalmazok adatlemez-titkosítására vonatkozó, végpontok között lévő batch-fájlra itt [talál példát.](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat) Ebben a példában létrehozunk egy linuxos méretezési csoportot, csatlakoztatunk egy 5 GB-os adatlemezt, és titkosítjuk a virtuálisgép-méretezési csoportot.

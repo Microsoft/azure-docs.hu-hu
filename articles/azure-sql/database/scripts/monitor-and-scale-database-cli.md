@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLI: egyetlen adatbázis monitorozása és méretezése Azure SQL Database'
-description: Egy Azure CLI-parancsfájl használatával figyelheti és méretezheti a Azure SQL Database egyetlen adatbázisát.
+title: 'Azure CLI: Egyetlen adatbázis figyelése és méretezése a Azure SQL Database'
+description: Egy Azure CLI-példaszk szkript használatával egyetlen adatbázist figyelhet és skálázhat a Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -11,20 +11,20 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 0a72bea08052e5cd17502a21a98b41cb5582a3b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd982ab6dc66674e705f080511282bcfeb909872
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96493627"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787178"
 ---
-# <a name="use-the-azure-cli-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>Egyetlen adatbázis figyelése és méretezése az Azure CLI használatával Azure SQL Database
+# <a name="use-the-azure-cli-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>Az Azure CLI használata egyetlen adatbázis monitorzához és méretezéshez a Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Ez az Azure CLI-parancsfájl például az adatbázis méretére vonatkozó információk lekérése után egy különálló adatbázist Azure SQL Database egy másik számítási méretre.
+Ez az Azure CLI-példaszk Azure SQL Database adatbázist méretez más számítási méretre az adatbázis méretinformációjának lekérdezése után.
 
-Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
+Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -43,27 +43,27 @@ az account set -s $subscription # ...or use 'az login'
 [!code-azurecli-interactive[main](../../../../cli_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.sh "Monitor and scale a database in Azure SQL Database")]
 
 > [!TIP]
-> Az az [SQL db op List](/cli/azure/sql/db/op?#az-sql-db-op-list) paranccsal kérheti le az adatbázison végrehajtott műveletek listáját, és az [az SQL db op Cancel](/cli/azure/sql/db/op#az-sql-db-op-cancel) paranccsal szakíthat meg egy frissítési műveletet az adatbázison.
+> Az [az sql db op list](/cli/azure/sql/db/op?#az_sql_db_op_list) parancs használatával lekért lista az adatbázison végrehajtott műveletekről, az az sql db op [cancel](/cli/azure/sql/db/op#az_sql_db_op_cancel) parancs használatával pedig megszakítható az adatbázis frissítési művelete.
 
 ### <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A következő parancs használatával távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást.
+A következő paranccsal távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Minta leírása
+## <a name="sample-reference"></a>Mintahivatkozás
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Script | Leírás |
+| Script | Description |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | Kiszolgálói parancsok. |
-| [az sql db show-usage](/cli/azure/sql#az-sql-show-usage) | Megjeleníti egy adatbázis méretkihasználtsági adatait. |
+| [az sql db show-usage](/cli/azure/sql#az_sql_show_usage) | Megjeleníti egy adatbázis méretkihasználtsági adatait. |
 
 ## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
-További CLI-parancsfájlok is megtalálhatók az [Azure CLI-minták parancsfájljaiban](../az-cli-script-samples-content-guide.md).
+További CLI-példaszkprogramokat az [Azure CLI-mintaszk szkriptek között talál.](../az-cli-script-samples-content-guide.md)

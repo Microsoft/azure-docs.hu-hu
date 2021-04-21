@@ -1,25 +1,25 @@
 ---
-title: 'Rövid útmutató: többtárolós alkalmazás létrehozása'
-description: Ismerkedjen meg a többtárolós alkalmazásokkal Azure App Service az első többtárolós alkalmazás üzembe helyezésével.
-keywords: Azure app Service, webalkalmazás, Linux, Docker, összeállítás, több tároló, többtárolós, Web App for containers, több tároló, tároló, WordPress, Azure db for MySQL, üzemi adatbázis tárolókkal
+title: 'Rövid útmutató: Többtárolós alkalmazás létrehozása'
+description: A többtárolós alkalmazások Azure App Service első többtárolós alkalmazás üzembe helyezéssel.
+keywords: azure app service, webalkalmazás, linux, docker, compose, többtárolós, többtárolós, webalkalmazás tárolókhoz, több tároló, tároló, wordpress, azure db for mysql, éles adatbázis tárolók használatával
 author: msangapu-msft
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 2ba42e5e800ae607631e00aee50954bf2638ae43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ea55c36c239b5ecdb51ef3dc7a3ff762718bd1e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97007143"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768990"
 ---
-# <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Többtárolós (előzetes verziójú) alkalmazás létrehozása Docker-összeállítási konfiguráció használatával
+# <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Többtárolós (előzetes verziójú) alkalmazás létrehozása Docker Compose-konfigurációval
 
 > [!NOTE]
-> A multi-Container előzetes verzióban érhető el.
+> A többtárolós verzió előzetes verzióban érhető el.
 
-A [Web App for Containers](overview.md#app-service-on-linux) segítségével rugalmasan használhatók a Docker-rendszerképek. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy többtárolós alkalmazást (előzetes verzió) a [Cloud Shell](../cloud-shell/overview.md) Docker-összeállítási konfiguráció használatával történő Web App for containers.
+A [Web App for Containers](overview.md#app-service-on-linux) segítségével rugalmasan használhatók a Docker-rendszerképek. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy többtárolós alkalmazást (előzetes verzió) Web App for Containers a Cloud Shell Docker Compose-konfigurációval. [](../cloud-shell/overview.md)
 
 ![Minta többtárolós alkalmazás a Web Apps for Containersben][1]
 
@@ -27,7 +27,7 @@ A [Web App for Containers](overview.md#app-service-on-linux) segítségével rug
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Ehhez a cikkhez az Azure CLI 2.0.32 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+Ehhez a cikkhez az Azure CLI 2.0.32-es vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
@@ -55,7 +55,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-A Cloud Shell hozzon létre egy erőforráscsoportot a [`az group create`](/cli/azure/group#az-group-create) paranccsal. A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *USA déli középső régiója* helyen. A Linuxon futó, **Standard** szintű App Service-t támogató összes hely megtekintéséhez futtassa az [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice#az-appservice-list-locations) parancsot.
+A Cloud Shell hozzon létre egy erőforráscsoportot az [`az group create`](/cli/azure/group#az_group_create) paranccsal. A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *USA déli középső régiója* helyen. A Linuxon futó, **Standard** szintű App Service-t támogató összes hely megtekintéséhez futtassa az [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice#az_appservice_list_locations) parancsot.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -67,7 +67,7 @@ A parancs befejeződésekor a JSON-kimenet megjeleníti az erőforráscsoport tu
 
 ## <a name="create-an-azure-app-service-plan"></a>Azure App Service-csomag létrehozása
 
-A Cloud Shell hozzon létre egy App Service tervet az erőforráscsoporthoz a [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) paranccsal.
+A Cloud Shell hozzon létre egy App Service-tervet az erőforráscsoportban az [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) paranccsal.
 
 Az alábbi példa egy `myAppServicePlan` nevű App Service-csomag létrehozását mutatja be a **Standard** tarifacsomagban (`--sku S1`) és Linux-tárolóban (`--is-linux`).
 
@@ -98,9 +98,9 @@ Az App Service-csomag létrehozása után az Azure CLI az alábbi példához has
 ## <a name="create-a-docker-compose-app"></a>Docker Compose-alkalmazás létrehozása
 
 > [!NOTE]
-> Az Azure-App Services Docker-összeállítás jelenleg legfeljebb 4 000 karakterből állhat.
+> Az Azure-App Services Docker Compose jelenleg legfeljebb 4000 karakterből állhat.
 
-A Cloud Shell-terminálban hozzon létre egy többtárolós [webalkalmazást](overview.md#app-service-on-linux) az `myAppServicePlan` App Service-csomagban az [az webapp create](/cli/azure/webapp#az-webapp-create) paranccsal. Ne felejtse el lecserélni _\<app_name>_ egy egyedi alkalmazás nevére (érvényes karakterek:, `a-z` `0-9` és `-` ).
+A Cloud Shell-terminálban hozzon létre egy többtárolós [webalkalmazást](overview.md#app-service-on-linux) az `myAppServicePlan` App Service-csomagban az [az webapp create](/cli/azure/webapp#az_webapp_create) paranccsal. Ne felejtse el lecserélni a helyére az alkalmazás _\<app_name>_ egyedi nevét (érvényes karakterek: `a-z` , és `0-9` `-` ).
 
 ```azurecli
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
@@ -129,14 +129,14 @@ Keresse meg az üzembe helyezett alkalmazást a következő helyen: `http://<app
 
 ![Minta többtárolós alkalmazás a Web Apps for Containersben][1]
 
-**Gratulálunk**, egy többtárolós alkalmazást hozott létre web app for Containersban.
+**Gratulálunk,** létrehozott egy többtárolós alkalmazást a Web App for Containers.
 
 [!INCLUDE [Clean-up section](../../includes/cli-script-clean-up.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Multi-Container WordPress-alkalmazás](tutorial-multi-container-app.md)
+> [Oktatóanyag: Többtárolós WordPress-alkalmazás](tutorial-multi-container-app.md)
 
 > [!div class="nextstepaction"]
 > [Egyéni tároló konfigurálása](configure-custom-container.md)

@@ -5,42 +5,24 @@ services: app-service
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 12/20/2019
+ms.date: 02/02/2018
 ms.author: cephalin
-ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 8e925085472a2e9ead1af075c162241fcda07985
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.custom: include file
+ms.openlocfilehash: cc44780bd9b42e00ecfb3d140486fec87c767a76
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483517"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765745"
 ---
-A Cloud Shell hozzon létre egy App Service-tervet az erőforráscsoportban az [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) paranccsal.
+[!INCLUDE [resource group intro text](resource-group.md)]
 
-<!-- [!INCLUDE [app-service-plan](app-service-plan-linux.md)] -->
-
-Az alábbi példa egy nevű App Service az Ingyenes tarifacsomagban `myAppServicePlan` ( ) és egy  `--sku F1` Linux-tárolóban ( `--is-linux` ).
+A Cloud Shell hozzon létre egy erőforráscsoportot az [`az group create`](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *Nyugat-Európa* helyen. A Linuxon futó, **Alapszintű** App Service-t támogató összes hely megtekintéséhez futtassa az [`az appservice list-locations --sku B1 --linux-workers-enabled`](/cli/azure/appservice#az_appservice_list_locations) parancsot.
 
 ```azurecli-interactive
-az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku F1 --is-linux
+az group create --name myResourceGroup --location "West Europe"
 ```
 
-Az App Service-csomag létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg:
+Az erőforráscsoportot és az erőforrásokat általában a közelében található régiókban hozhatja létre. 
 
-```json
-{ 
-  "adminSiteName": null,
-  "appServicePlanName": "myAppServicePlan",
-  "geoRegion": "West Europe",
-  "hostingEnvironmentProfile": null,
-  "id": "/subscriptions/0000-0000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/myAppServicePlan",
-  "kind": "linux",
-  "location": "West Europe",
-  "maximumNumberOfWorkers": 1,
-  "name": "myAppServicePlan",
-  <JSON data removed for brevity.>
-  "targetWorkerSizeId": 0,
-  "type": "Microsoft.Web/serverfarms",
-  "workerTierName": null
-} 
-```
+A parancs befejeződésekor a JSON-kimenet megjeleníti az erőforráscsoport tulajdonságait.

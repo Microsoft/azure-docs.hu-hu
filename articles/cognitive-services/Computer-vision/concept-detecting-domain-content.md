@@ -1,7 +1,7 @@
 ---
-title: Tartományi specifikus tartalom – Computer Vision
+title: Tartományspecifikus tartalom – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan adhat meg egy képkategorizálási tartományt a képekkel kapcsolatos részletesebb információk visszaadásához.
+description: Megtudhatja, hogyan határozható meg egy képkategorizálási tartomány, amely részletesebb információkat ad vissza egy rendszerképről.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 5cd872d66088e165bfc8356ab6d96a0a6135a0e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 530ca81cedad06c949323889cc02d2a233dd0c02
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94538308"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778822"
 ---
 # <a name="detect-domain-specific-content"></a>Tartományspecifikus tartalom észlelése
 
-A címkézés és a magas szintű kategorizálás mellett a Computer Vision a speciális adatokra képzett modellekkel is támogatja a további, tartományra jellemző elemzéseket.
+A címkézés és a magas szintű kategorizálás mellett a Computer Vision a speciális adatokkal betanított modelleket használó további tartományspecifikus elemzéseket is támogat.
 
-A tartományszintű modelleket kétféleképpen használhatja: önmagukban (hatókörön belüli elemzés) vagy a kategorizálási funkció fejlesztésével.
+A tartományspecifikus modellek kétféleképpen használhatók: önmagukban (hatókörrel kapcsolatos elemzés), vagy a kategorizálási funkció fejlesztéseként.
 
-### <a name="scoped-analysis"></a>Hatókörön belüli elemzés
+### <a name="scoped-analysis"></a>Hatókörrel alá tartozó elemzés
 
-A képeket a [models/ \<model\> /analyze](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API meghívásával elemezheti úgy, hogy csak a kiválasztott tartományhoz tartozó modellt használja.
+A képeket csak a kiválasztott tartományspecifikus modellel elemezheti a [Models/ \<model\> /Analyze](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) API hívásával.
 
-Az alábbi példa egy, a **modell/hírességek/elemzés** API által visszaadott JSON-választ ad vissza az adott rendszerképhez:
+Az alábbiakban egy JSON-mintaválasz látható, amelyet a **models/celebrities/analyze** API adott képhez adott vissza:
 
-![Németh Beáta állandó, mosolygós](./images/satya.jpeg)
+![Álló Satya Nadella, mosolygó](./images/satya.jpeg)
 
 ```json
 {
@@ -57,11 +57,11 @@ Az alábbi példa egy, a **modell/hírességek/elemzés** API által visszaadott
 
 ### <a name="enhanced-categorization-analysis"></a>Továbbfejlesztett kategorizálási elemzés
 
-Az általános képelemzés kiegészítéseként a tartományra jellemző modelleket is használhatja. Ezt a [magas szintű kategorizálás](concept-categorizing-images.md) részeként úgy teheti meg, hogy a tartományra jellemző modelleket az [elemzési API-](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) hívás *részleteit* tartalmazó paraméterben megadja.
+Az általános képelemzés kiegészítéseként tartományspecifikus modelleket is használhat. Ezt magas szintű [kategorizálás](concept-categorizing-images.md) részeként kell megtennie, ha tartományspecifikus  modelleket ad meg az [Analyze](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) API hívás details paraméterében.
 
-Ebben az esetben az 86 kategóriába tartozó taxonómia-osztályozó a neve első. Ha az észlelt kategóriák bármelyike megfelel a tartományra jellemző modellnek, a rendszer átadja a rendszerképet a modellnek, és hozzáadja az eredményeket is.
+Ebben az esetben először a 86 kategóriás besorolási osztályozót hívjuk meg. Ha az észlelt kategóriák bármelyikének van egyező tartományspecifikus modellje, a rendszer a képet is átküldi ezen a modellen, és hozzáadja az eredményeket.
 
-A következő JSON-válasz azt mutatja be, hogy a tartomány-specifikus elemzések hogyan szerepelhetnek a `detail` szélesebb kategorizálási elemzések csomópontjaiban.
+A következő JSON-válasz bemutatja, hogyan használhatja csomópontként a tartományspecifikus elemzést egy szélesebb körű `detail` kategorizálási elemzésben.
 
 ```json
 "categories":[
@@ -96,16 +96,16 @@ A következő JSON-válasz azt mutatja be, hogy a tartomány-specifikus elemzés
 ]
 ```
 
-## <a name="list-the-domain-specific-models"></a>A tartományhoz tartozó modellek listázása
+## <a name="list-the-domain-specific-models"></a>A tartományspecifikus modellek felsorolása
 
-A Computer Vision jelenleg a következő tartományszintű modelleket támogatja:
+A Computer Vision a következő tartományspecifikus modelleket támogatja:
 
 | Név | Leírás |
 |------|-------------|
-| hírességek | Híresség-felismerés, a kategóriába sorolt rendszerképek esetén támogatott. `people_` |
-| arcrész | A tereptárgyak felismerése, amely a `outdoor_` vagy kategóriába sorolt rendszerképek esetén támogatott `building_` |
+| Hírességek | Hírességek felismerése, támogatott a kategóriában besorolt `people_` képekhez |
+| Tereptárgyak | Nevezetességek felismerése, támogatott a vagy kategóriákba sorolt `outdoor_` `building_` képekhez |
 
-A [models](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20e) API meghívása ezeket az információkat az egyes modellek által alkalmazható kategóriákkal együtt fogja visszaadni:
+A [Models](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f20e) API hívása ezeket az információkat adja vissza az egyes modellek által alkalmazható kategóriákkal együtt:
 
 ```json
 {
@@ -139,4 +139,4 @@ A [models](https://westcentralus.dev.cognitive.microsoft.com/docs/services/compu
 
 ## <a name="next-steps"></a>Következő lépések
 
-A [képek kategorizálásával](concept-categorizing-images.md)kapcsolatos fogalmak megismerése.
+Megismeri a [képek kategorizálásának fogalmait.](concept-categorizing-images.md)

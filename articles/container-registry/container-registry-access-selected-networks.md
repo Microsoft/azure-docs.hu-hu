@@ -1,32 +1,32 @@
 ---
 title: Nyilvános beállításjegyzék-hozzáférés konfigurálása
-description: Konfigurálja az IP-szabályokat úgy, hogy engedélyezze az Azure Container Registry elérését a kiválasztott nyilvános IP-címekről vagy címtartományok közül.
+description: Konfigurálja az IP-szabályokat az Azure Container Registryhez való hozzáférés engedélyezéséhez a kiválasztott nyilvános IP-címekről vagy címtartományokból.
 ms.topic: article
 ms.date: 03/08/2021
-ms.openlocfilehash: 727aa1dc028b5f52a022e54c2cd252ae372e78fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00912f0e66c84feff40e6439d59ccdfa82a4ab6a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773062"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785835"
 ---
 # <a name="configure-public-ip-network-rules"></a>Nyilvános IP-hálózati szabályok konfigurálása
 
-Az Azure Container Registry alapértelmezés szerint minden hálózaton fogadja az interneten keresztüli kapcsolatokat. Ez a cikk bemutatja, hogyan konfigurálhatja a tároló-beállításjegyzéket úgy, hogy csak bizonyos nyilvános IP-címekről vagy címtartományokről engedélyezze a hozzáférést. Az Azure CLI és a Azure Portal használatával egyenértékű lépések vannak megadva.
+Az Azure Container Registry alapértelmezés szerint bármilyen hálózat gazdagépei számára internetes kapcsolatokat fogad. Ez a cikk bemutatja, hogyan konfigurálhatja a tároló-beállításjegyzéket úgy, hogy csak bizonyos nyilvános IP-címekről vagy címtartományok számára engedélyezze a hozzáférést. Az Egyenértékű lépések az Azure CLI és a Azure Portal meg.
 
-Az IP-hálózati szabályok a nyilvános beállításjegyzékbeli végponton vannak konfigurálva. Az IP-hálózati szabályok nem vonatkoznak a [privát kapcsolattal](container-registry-private-link.md) konfigurált privát végpontokra
+Az IP-hálózati szabályok a nyilvános beállításjegyzék végpontjára vannak konfigurálva. Az IP-hálózati szabályok nem vonatkoznak az ip-címmel konfigurált privát [Private Link](container-registry-private-link.md)
 
-Az IP-hozzáférési szabályok konfigurálása a **prémium** szintű tároló beállításjegyzék-szolgáltatási szintjén érhető el. További információ a beállításjegyzék szolgáltatási szintjeiről és korlátairól: [Azure Container Registry rétegek](container-registry-skus.md).
+Az IP-hozzáférési szabályok konfigurálása a **Prémium** tároló-beállításjegyzék szolgáltatásszinten érhető el. A beállításjegyzék szolgáltatási rétegeiről és korlátairól további információt a következő [Azure Container Registry tartalmaz:](container-registry-skus.md).
 
-Mindegyik beállításjegyzék legfeljebb 100 hálózati hozzáférési szabályt támogat.
+Minden beállításjegyzék legfeljebb 100 hálózati hozzáférési szabályt támogat.
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
-## <a name="access-from-selected-public-network---cli"></a>Hozzáférés a kiválasztott nyilvános hálózatról – parancssori felület
+## <a name="access-from-selected-public-network---cli"></a>Hozzáférés a kiválasztott nyilvános hálózatról – CLI
 
 ### <a name="change-default-network-access-to-registry"></a>A beállításjegyzék alapértelmezett hálózati hozzáférésének módosítása
 
-A kiválasztott nyilvános hálózathoz való hozzáférés korlátozásához először módosítsa az alapértelmezett műveletet, hogy megtagadja a hozzáférést. Helyettesítse be a beállításjegyzék nevét a következő az [ACR Update][az-acr-update] paranccsal:
+A kijelölt nyilvános hálózathoz való hozzáférés korlátozásához először módosítsa az alapértelmezett műveletet a hozzáférés megtagadása beállításra. Helyettesítse be a regisztrációs adatbázis nevét a következő [az acr update parancsban:][az-acr-update]
 
 ```azurecli
 az acr update --name myContainerRegistry --default-action Deny
@@ -34,7 +34,7 @@ az acr update --name myContainerRegistry --default-action Deny
 
 ### <a name="add-network-rule-to-registry"></a>Hálózati szabály hozzáadása a beállításjegyzékhez
 
-Használja az az [ACR Network-Rule Add][az-acr-network-rule-add] parancsot egy olyan hálózati szabály hozzáadásához a beállításjegyzékhez, amely engedélyezi a hozzáférést egy nyilvános IP-címről vagy-tartományból. Helyettesítse be például a tároló beállításjegyzékének nevét és egy virtuális gép nyilvános IP-címét egy virtuális hálózatban.
+Az [az acr network-rule add paranccsal][az-acr-network-rule-add] adjon hozzá egy olyan hálózati szabályt a beállításjegyzékhez, amely engedélyezi a nyilvános IP-címről vagy -tartományból való hozzáférést. Helyettesítse be például a tároló-beállításjegyzék nevét és egy virtuális hálózatban lévő virtuális gép nyilvános IP-címét.
 
 ```azurecli
 az acr network-rule add \
@@ -43,34 +43,34 @@ az acr network-rule add \
 ```
 
 > [!NOTE]
-> Egy szabály hozzáadása után a szabály érvénybe léptetése néhány percet vesz igénybe.
+> Szabály hozzáadása után néhány percet vesz igénybe, hogy a szabály életbe lép.
 
 ## <a name="access-from-selected-public-network---portal"></a>Hozzáférés a kiválasztott nyilvános hálózatról – portál
 
-1. A portálon navigáljon a tároló-beállításjegyzékhez.
-1. A **Beállítások** területen válassza a **hálózatkezelés** lehetőséget.
-1. A **nyilvános hozzáférés** lapon válassza a lehetőséget, hogy engedélyezze a nyilvános hozzáférést a **kiválasztott hálózatokból**.
-1. A **tűzfal** területen adjon meg egy nyilvános IP-címet, például egy virtuális gép nyilvános IP-címét. Vagy adjon meg egy címtartományt a CIDR-jelölésben, amely a virtuális gép IP-címét tartalmazza.
+1. A portálon keresse meg a tároló-beállításjegyzéket.
+1. A **Beállítások alatt** válassza a Hálózat **lehetőséget.**
+1. A Nyilvános **hozzáférés lapon** válassza a Nyilvános hozzáférés engedélyezése lehetőséget a Kiválasztott hálózatokból való **nyilvános hozzáféréshez.**
+1. A **Tűzfal területen** adjon meg egy nyilvános IP-címet, például egy virtuális hálózat virtuális gépének nyilvános IP-címét. Vagy adjon meg egy címtartományt CIDR-ként, amely tartalmazza a virtuális gép IP-címét.
 1. Kattintson a **Mentés** gombra.
 
 ![Tűzfalszabály konfigurálása a tároló-beállításjegyzékhez][acr-access-selected-networks]
 
 > [!NOTE]
-> Egy szabály hozzáadása után a szabály érvénybe léptetése néhány percet vesz igénybe.
+> A szabály hozzáadása után néhány percet vesz igénybe, hogy a szabály életbe lép.
 
 > [!TIP]
-> Ha szeretné, engedélyezze a beállításjegyzék-hozzáférést egy helyi ügyfélszámítógép vagy IP-címtartomány alapján. A hozzáférés engedélyezéséhez a számítógép nyilvános IPv4-címe szükséges. Ezt a címet a "mi az IP-cím" kifejezéssel keresheti meg egy böngészőben. Az aktuális ügyfél IPv4-címe is automatikusan megjelenik a tűzfalbeállítások konfigurálásakor a portál **hálózatkezelés** lapján.
+> Engedélyezheti a beállításjegyzékhez való hozzáférést egy helyi ügyfélszámítógépről vagy IP-címtartományból. A hozzáféréshez szüksége lesz a számítógép nyilvános IPv4-címére. Ezt a címet úgy találhatja meg, ha egy webböngészőben rákeres a "mi az IP-címem" szóra. Az aktuális ügyfél IPv4-címe is automatikusan megjelenik, amikor a portál **Hálózat** lapján konfigurálja a tűzfalbeállításokat.
 
 ## <a name="disable-public-network-access"></a>Nyilvános hálózati hozzáférés letiltása
 
-Szükség esetén tiltsa le a nyilvános végpontot a beállításjegyzékben. A nyilvános végpont letiltása felülbírálja az összes tűzfal-konfigurációt. Előfordulhat például, hogy le szeretné tiltani a nyilvános hozzáférést egy, a virtuális hálózaton keresztül védett beállításjegyzékhez a [privát hivatkozás](container-registry-private-link.md)használatával.
+Ha szeretné, tiltsa le a nyilvános végpontot a beállításjegyzékben. A nyilvános végpont letiltása felülbírálja az összes tűzfal-konfigurációt. Előfordulhat például, hogy le szeretné tiltani egy virtuális hálózatban védett beállításjegyzék nyilvános hozzáférését az [Private Link.](container-registry-private-link.md)
 
 > [!NOTE]
-> Ha a beállításjegyzék egy [szolgáltatás-végponttal](container-registry-vnet.md)rendelkező virtuális hálózaton van beállítva, a beállításjegyzék nyilvános végponthoz való hozzáférés letiltása letiltja a virtuális hálózaton belüli beállításjegyzékhez való hozzáférést is.
+> Ha [a](container-registry-vnet.md)beállításjegyzék egy szolgáltatásvégponttal rendelkezik egy virtuális hálózatban, a beállításjegyzék nyilvános végpontjának hozzáférésének letiltása a beállításjegyzékhez való hozzáférést is letiltja a virtuális hálózaton belül.
 
-### <a name="disable-public-access---cli"></a>Nyilvános hozzáférés letiltása – parancssori felület
+### <a name="disable-public-access---cli"></a>Nyilvános hozzáférés letiltása – CLI
 
-Az Azure CLI használatával történő nyilvános hozzáférés letiltásához futtassa [az az ACR Update][az-acr-update] parancsot, és állítsa a következőre: `--public-network-enabled` `false` . Az `public-network-enabled` argumentumhoz az Azure CLI 2.6.0 vagy újabb verzió szükséges. 
+Ha le szeretné tiltani a nyilvános hozzáférést az Azure CLI használatával, futtassa [az az acr update][az-acr-update] futtatását, és állítsa a következőre: `--public-network-enabled` `false` . Az `public-network-enabled` argumentumhoz az Azure CLI 2.6.0-s vagy újabb szükséges. 
 
 ```azurecli
 az acr update --name myContainerRegistry --public-network-enabled false
@@ -78,22 +78,22 @@ az acr update --name myContainerRegistry --public-network-enabled false
 
 ### <a name="disable-public-access---portal"></a>Nyilvános hozzáférés letiltása – portál
 
-1. A portálon navigáljon a tároló beállításjegyzékéhez, és válassza a **beállítások > hálózatkezelés** lehetőséget.
-1. A **nyilvános hozzáférés** lapon, a **nyilvános hálózati hozzáférés engedélyezése** területen válassza a **Letiltva** lehetőséget. Kattintson a **Mentés** gombra.
+1. A portálon lépjen a tároló-beállításjegyzékhez, és válassza a **Hálózat > lehetőséget.**
+1. A Nyilvános **hozzáférés lap** Nyilvános hálózati hozzáférés engedélyezése **lapján válassza** a **Letiltva lehetőséget.** Kattintson a **Mentés** gombra.
 
 ![Nyilvános hozzáférés letiltása][acr-access-disabled]
 
 
 ## <a name="restore-public-network-access"></a>Nyilvános hálózati hozzáférés visszaállítása
 
-A nyilvános végpont újbóli engedélyezéséhez frissítse a hálózati beállításokat a nyilvános hozzáférés engedélyezéséhez. A nyilvános végpont engedélyezése felülbírálja az összes tűzfal-konfigurációt. 
+A nyilvános végpont újra engedélyezéséhez frissítse a hálózati beállításokat a nyilvános hozzáférés engedélyezéséhez. A nyilvános végpont engedélyezése felülbírálja az összes tűzfal-konfigurációt. 
 
-### <a name="restore-public-access---cli"></a>Nyilvános hozzáférés visszaállítása – parancssori felület
+### <a name="restore-public-access---cli"></a>Nyilvános hozzáférés visszaállítása – CLI
 
-Futtassa [az ACR Update][az-acr-update] parancsot, és állítsa a következőre: `--public-network-enabled` `true` . 
+Futtassa [az az acr update et,][az-acr-update] és állítsa a `--public-network-enabled` beállítását a (beállítás) `true` beállításra. 
 
 > [!NOTE]
-> Az `public-network-enabled` argumentumhoz az Azure CLI 2.6.0 vagy újabb verzió szükséges. 
+> Az `public-network-enabled` argumentumhoz az Azure CLI 2.6.0-s vagy újabb szükséges. 
 
 ```azurecli
 az acr update --name myContainerRegistry --public-network-enabled true
@@ -101,29 +101,29 @@ az acr update --name myContainerRegistry --public-network-enabled true
 
 ### <a name="restore-public-access---portal"></a>Nyilvános hozzáférés visszaállítása – portál
 
-1. A portálon navigáljon a tároló beállításjegyzékéhez, és válassza a **beállítások > hálózatkezelés** lehetőséget.
-1. A **nyilvános hozzáférés** lapon, a **nyilvános hálózati hozzáférés engedélyezése** területen válassza a **minden hálózat** lehetőséget. Kattintson a **Mentés** gombra.
+1. A portálon lépjen a tároló-beállításjegyzékhez, és válassza a **Beállítások > lehetőséget.**
+1. A Nyilvános **hozzáférés lap** Nyilvános hálózati hozzáférés engedélyezése **lapján** válassza a Minden **hálózat lehetőséget.** Kattintson a **Mentés** gombra.
 
 ![Nyilvános hozzáférés az összes hálózatról][acr-access-all-networks]
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-Ha a nyilvános hálózati szabály be van állítva, vagy a beállításjegyzékhez való nyilvános hozzáférés megtagadva, a rendszer sikertelenül kísérli meg bejelentkezni a beállításjegyzékbe egy nem engedélyezett nyilvános hálózatból. A HTTPS-proxy mögötti ügyfél-hozzáférés akkor is meghiúsul, ha nincs beállítva hozzáférési szabály a proxyhoz. A következőhöz hasonló hibaüzenet jelenik meg: `Error response from daemon: login attempt failed with status: 403 Forbidden` vagy `Looks like you don't have access to registry` .
+Ha nyilvános hálózati szabály van beállítva, vagy a beállításjegyzékhez való nyilvános hozzáférés le van tiltva, a nem engedélyezett nyilvános hálózatról a beállításjegyzékbe való bejelentkezés sikertelen lesz. A HTTPS-proxy mögötti ügyfél-hozzáférés szintén sikertelen lesz, ha nincs beállítva hozzáférési szabály a proxyhoz. Ehhez hasonló hibaüzenet jelenik meg: `Error response from daemon: login attempt failed with status: 403 Forbidden` vagy `Looks like you don't have access to registry` .
 
-Ezek a hibák akkor is előfordulhatnak, ha olyan HTTPS-proxyt használ, amelyet egy hálózati hozzáférési szabály engedélyez, de a proxy nem megfelelően van konfigurálva az ügyfél-környezetben. Győződjön meg arról, hogy a Docker-ügyfél és a Docker-démon is konfigurálva van a proxy működéséhez. Részletekért lásd: [HTTP/HTTPS-proxy](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) a Docker dokumentációjában.
+Ezek a hibák akkor is előfordulhatnak, ha hálózati hozzáférési szabály által engedélyezett HTTPS-proxyt használ, de a proxy nincs megfelelően konfigurálva az ügyfélkörnyezetben. Ellenőrizze, hogy a Docker-ügyfél és a Docker-démon is konfigurálva van-e a proxyviselkedéshez. Részletekért tekintse meg a [Docker dokumentációjának HTTP/HTTPS-proxyval](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) kapcsolatos dokumentumát.
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ha egy virtuális hálózat privát végpontján keresztül szeretné korlátozni a beállításjegyzékhez való hozzáférést, tekintse meg az [Azure Private-hivatkozás konfigurálása Azure Container registryhez](container-registry-private-link.md)című témakört.
-* Ha be kell állítania a beállításjegyzék-hozzáférési szabályokat az ügyfél tűzfala mögött, tekintse meg a [szabályok konfigurálása az Azure Container Registry tűzfal mögötti eléréséhez](container-registry-firewall-access-rules.md)című témakört.
+* A regisztrációs adatbázishoz való hozzáférés virtuális hálózaton lévő privát végpont használatával való korlátozásához lásd: Configure Azure Private Link for an Azure Container Registry (Regisztrációs adatbázis konfigurálása [Azure-beli tároló-beállításjegyzékhez).](container-registry-private-link.md)
+* Ha egy ügyfél tűzfal mögötti beállításjegyzék-hozzáférési szabályokat kell beállítania, tekintse meg a következőt: Configure rules to access an Azure Container Registry behind a firewall (Szabályok konfigurálása tűzfal mögötti [Azure Container Registry eléréséhez).](container-registry-firewall-access-rules.md)
 
-[az-acr-login]: /cli/azure/acr#az-acr-login
-[az-acr-network-rule-add]: /cli/azure/acr/network-rule/#az-acr-network-rule-add
-[az-acr-network-rule-remove]: /cli/azure/acr/network-rule/#az-acr-network-rule-remove
-[az-acr-network-rule-list]: /cli/azure/acr/network-rule/#az-acr-network-rule-list
-[az-acr-run]: /cli/azure/acr#az-acr-run
-[az-acr-update]: /cli/azure/acr#az-acr-update
+[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-acr-network-rule-add]: /cli/azure/acr/network-rule/#az_acr_network_rule_add
+[az-acr-network-rule-remove]: /cli/azure/acr/network-rule/#az_acr_network_rule_remove
+[az-acr-network-rule-list]: /cli/azure/acr/network-rule/#az_acr_network_rule_list
+[az-acr-run]: /cli/azure/acr#az_acr_run
+[az-acr-update]: /cli/azure/acr#az_acr_update
 [quickstart-portal]: container-registry-get-started-portal.md
 [quickstart-cli]: container-registry-get-started-azure-cli.md
 [azure-portal]: https://portal.azure.com

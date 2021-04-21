@@ -7,16 +7,13 @@ ms.reviewer: minewiskan
 ms.date: 08/31/2020
 ms.topic: quickstart
 ms.service: azure-analysis-services
-ms.custom:
-- references_regions
-- devx-track-azurepowershell
-- mode-api
-ms.openlocfilehash: eb76925e695f92da973fef9cb86d4e936a766587
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell - references_regions - devx-track-azurepowershell - mode-api
+ms.openlocfilehash: f1902a7192fc2153725e2b1d1e76f23cbd1426f3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531489"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769354"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>Gyors útmutató: Kiszolgáló létrehozása – PowerShell
 
@@ -26,13 +23,13 @@ Ez a rövid útmutató bemutatja, hogyan használhatja a PowerShellt a parancsso
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure-előfizetés:** Fiók [létrehozásához látogasson el az Ingyenes Azure-próbaverzió](https://azure.microsoft.com/offers/ms-azr-0044p/) webhelyre.
+- **Azure-előfizetés:** A fiók [létrehozásához látogasson el az Ingyenes Azure-próbaverzió](https://azure.microsoft.com/offers/ms-azr-0044p/) webhelyre.
 - **Azure Active Directory**: Előfizetésének egy Azure Active Directory-bérlőhöz kell tartoznia, és abban a könyvtárban kell fiókkal rendelkeznie. További információ: [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md).
 - **Azure PowerShell**. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. A telepítéshez vagy frissítéshez olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
 
 ## <a name="import-azanalysisservices-module"></a>Az Az.AnalysisServices modul importálása
 
-Ha kiszolgálót hoz létre az előfizetésében, használja az [Az.AnalysisServices modult.](/powershell/module/az.analysisservices) Töltse be az Az.AnalysisServices modult a PowerShell-munkamenetbe.
+Az előfizetésben az [Az.AnalysisServices](/powershell/module/az.analysisservices) modullal hozhat létre kiszolgálót. Töltse be az Az.AnalysisServices modult a PowerShell-munkamenetbe.
 
 ```powershell
 Import-Module Az.AnalysisServices

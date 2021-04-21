@@ -1,63 +1,63 @@
 ---
-title: 'Gyors útmutató: a Text Analytics meghívása a cURL használatával REST API'
+title: 'Rövid útmutató: A cURL használata a Text Analytics REST API'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató bemutatja, hogyan lehet gyorsan megkezdeni az Azure Cognitive Services Text Analytics API használatát.
+description: Ez a rövid útmutató bemutatja, hogyan lehet gyorsan használatba Text Analytics API-t Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 03/09/2021
+ms.date: 04/19/2021
 ms.author: aahi
-ms.openlocfilehash: 52c20a88c9a4a70b1608a7d050e4faccef9e2d3e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bf18ab6cae83f3dc0908a15bf4bf53b5318613d9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599065"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765080"
 ---
-# <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/version-3-1)
+# <a name="version-31-preview"></a>[3.1-es előzetes verzió](#tab/version-3-1)
 
-[a v 3.1 dokumentációja](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-4/)
+[3.1-es referenciadokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-4/)
 
-# <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
+# <a name="version-30"></a>[3.0-s verzió](#tab/version-3)
 
-[a v3-referenciák dokumentációja](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0) 
+[a v3 referenciadokumentációja](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0) 
 
 ---
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [curl](https://curl.haxx.se/)jelenlegi verziója.
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" hozzon létre egy Text Analytics erőforrást, "  target="_blank"> és hozzon létre egy Text Analytics-erőforrást </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
-    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Text Analytics APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
-    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* A [cURL aktuális verziója.](https://curl.haxx.se/)
+* Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy Text Analytics-erőforrást, Text Analytics erőforrást a Azure Portal a kulcs és a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" "  target="_blank"> végpont </a> lekért létrehozásához. Az üzembe helyezés után kattintson az **Erőforráshoz való ugrás elemre.**
+    * Szüksége lesz a létrehozott erőforrás kulcsának és végpontjának létrehozására, hogy az alkalmazást a Text Analytics API-hoz. A kulcsot és a végpontot a rövid útmutató későbbi, alábbi kódába fogja beilleszteni.
+    * Az ingyenes tarifacsomag ( ) használatával kipróbálhatja a szolgáltatást, és később frissíthet fizetős szolgáltatási szintre éles `F0` környezetben.
 
 > [!NOTE]
-> * A következő BASH-példák a `\` sor folytatási karakterét használják. Ha a konzol vagy a terminál eltérő vonalbeli folytatási karaktert használ, használja ezt a karaktert.
-> * A [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code)megtalálhatja a nyelvspecifikus példákat is.
-> * Lépjen a Azure Portalra, és keresse meg az előfeltételekben létrehozott Text Analytics erőforrás kulcsát és végpontját. Ezek az erőforrás **kulcs és végpont** lapján, az **Erőforrás-kezelés** területen találhatók. Ezután cserélje le az alábbi kódban szereplő karakterláncokat a kulcsra és a végpontra.
-A Text Analytics API meghívásához a következő információkra lesz szüksége:
+> * Az alábbi BASH-példák a sor `\` folytatási karakterét használják. Ha a konzol vagy a terminál más sor folytatási karaktert használ, használja ezt a karaktert.
+> * Nyelvspecifikus mintákat a [GitHubon találhat.](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+> * Keresse meg a Azure Portal, és keresse meg az előfeltételek Text Analytics létrehozott erőforrás kulcsát és végpontját. Ezek az erőforrás kulcs-  és végpontoldalán, az **erőforrás-kezelés alatt találhatók.** Ezután cserélje le az alábbi kódban található sztringeket a kulcsra és a végpontra.
+A Text Analytics API hívásához a következő információkra lesz szüksége:
 
 
 |parameter  |Description  |
 |---------|---------|
-|`-X POST <endpoint>`     | Megadja az API eléréséhez szükséges végpontot.        |
+|`-X POST <endpoint>`     | Megadja az API elérésére vonatkozó végpontot.        |
 |`-H Content-Type: application/json`     | A JSON-adatok küldésének tartalomtípusa.          |
 |`-H "Ocp-Apim-Subscription-Key:<key>`    | Megadja az API eléréséhez szükséges kulcsot.        |
 |`-d <documents>`     | A küldeni kívánt dokumentumokat tartalmazó JSON.         |
 
-A következő cURL-parancsokat egy BASH-rendszerhéjból hajtja végre a rendszer. Szerkessze ezeket a parancsokat saját erőforrás-névvel, erőforrás-kulccsal és JSON-értékekkel.
+Az alábbi cURL-parancsokat egy BASH-rendszerhéjból hajtjuk végre. Szerkessze ezeket a parancsokat a saját erőforrásnevének, erőforráskulcsának és JSON-értékeinek használatával.
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
-#### <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[3.1-preview verzió](#tab/version-3-1)
 
 > [!NOTE]
-> Az alábbi példa egy, a (z) paraméterrel Hangulatelemzés a (z `opinionMining=true` ), a (z) paraméterrel a (z), a (z), a (z), a (z) szövegben található célokhoz kapcsolódó felmérésekkel kapcsolatos információkat
+> Az alábbi példa egy kérést tartalmaz a Hangulatelemzés véleménybányászati funkcióhoz a paraméter használatával, amely részletes információkat nyújt a szövegben a `opinionMining=true` célokhoz (főnevekhez) kapcsolódó felmérésekről (melléknevekről).
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-preview.4/sentiment?opinionMining=true \
@@ -135,7 +135,7 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-pre
 }
 ``` 
 
-#### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
+#### <a name="version-30"></a>[3.0-s verzió](#tab/version-3)
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/sentiment/ \
@@ -184,7 +184,7 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/sen
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
-#### <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[3.1-preview verzió](#tab/version-3-1)
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-preview.4/languages/ \
@@ -217,7 +217,7 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-pre
 }
 ```
 
-#### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
+#### <a name="version-30"></a>[3.0-s verzió](#tab/version-3)
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/languages/ \
@@ -253,11 +253,11 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/lan
 ---
 
 
-## <a name="named-entity-recognition-ner"></a>Elnevezett entitások felismerése
+## <a name="named-entity-recognition-ner"></a>nevesített entitások felismerése (NER)
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
-#### <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[3.1-preview verzió](#tab/version-3-1)
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-preview.4/entities/recognition/general \
@@ -305,7 +305,7 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-pre
 
 ```
 
-### <a name="detecting-personally-identifying-information"></a>Személyazonosításra alkalmas adatok észlelése
+### <a name="detecting-personally-identifying-information"></a>Személyes azonosításra alkalmas adatok észlelése
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
@@ -352,7 +352,7 @@ curl -X POST https://your-text-analytics-endpoint-here>/text/analytics/v3.1-prev
 }
 ```
 
-#### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
+#### <a name="version-30"></a>[3.0-s verzió](#tab/version-3)
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/entities/recognition/general \
@@ -408,11 +408,11 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/ent
 
 ---
 
-## <a name="entity-linking"></a>Entitás összekapcsolása
+## <a name="entity-linking"></a>Entitás-összekapcsolás
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
-#### <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[3.1-preview verzió](#tab/version-3-1)
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-preview.4/entities/linking \
@@ -506,7 +506,7 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-pre
 }
 ```
 
-#### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
+#### <a name="version-30"></a>[3.0-s verzió](#tab/version-3)
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/entities/linking \
@@ -606,7 +606,7 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/ent
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
 
-#### <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[3.1-preview verzió](#tab/version-3-1)
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-preview.4/keyPhrases \
@@ -637,7 +637,7 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-pre
 }
 ```
 
-#### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
+#### <a name="version-30"></a>[3.0-s verzió](#tab/version-3)
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/keyPhrases \

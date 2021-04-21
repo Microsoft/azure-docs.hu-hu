@@ -1,154 +1,154 @@
 ---
-title: Számlázási & díjszabási modelljei
-description: A díjszabási és számlázási modellek Azure Logic Apps-ben való működésének áttekintése
+title: Számlázási & díjszabási modellek
+description: A díjszabási és számlázási modellek Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 01/29/2021
-ms.openlocfilehash: 2b37308bcbcd489876c21dce56878de7e0daf545
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/24/2021
+ms.openlocfilehash: a3c20dd85c94c359259cf69e25bb9083d56857fc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699028"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777148"
 ---
-# <a name="pricing-and-billing-models-for-azure-logic-apps"></a>A Azure Logic Apps díjszabása és számlázási modelljei
+# <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Díjszabási és számlázási modellek Azure Logic Apps
 
-A [Azure Logic apps](../logic-apps/logic-apps-overview.md) segítségével olyan automatizált integrációs munkafolyamatokat hozhat létre és futtathat, amelyek méretezhetők a felhőben. Ez a cikk azt ismerteti, hogyan működik a számlázási és díjszabási modell a Logic Apps szolgáltatás és a kapcsolódó erőforrások esetében. A díjszabással kapcsolatos további információkért lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps). A költségek tervezésével, kezelésével és figyelésével kapcsolatos további információkért lásd: [Azure Logic apps költségeinek tervezése és kezelése](plan-manage-costs.md).
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) segítségével olyan automatizált integrációs munkafolyamatokat hozhat létre és futtathat, amelyek skálázhatóak a felhőben. Ez a cikk azt ismerteti, hogyan működnek a számlázási és díjszabási modellek Logic Apps szolgáltatás és a kapcsolódó erőforrások esetében. Konkrét díjszabásért tekintse meg a [díjszabást Logic Apps.](https://azure.microsoft.com/pricing/details/logic-apps) A költségek tervezésével, kezelésével és monitorzható kezelésével kapcsolatos további információkért lásd: A költségek megtervése és [Azure Logic Apps.](plan-manage-costs.md)
 
 <a name="consumption-pricing"></a>
 
 ## <a name="multi-tenant-pricing"></a>Több-bérlős díjszabás
 
-A díjköteles használati díjszabási modell a nyilvános, "globális", több-bérlős Logic Apps szolgáltatásban futó logikai alkalmazásokra vonatkozik. Az összes sikeres és sikertelen Futtatás mérése és számlázása.
+A használat alapján fizetett díjszabási modell a nyilvános, "globális" és több-bérlős szolgáltatásban futó logikai alkalmazásokra Logic Apps vonatkozik. A sikeres és sikertelen futtatásokat a program számláz és számláz.
 
-Egy lekérdezési trigger által kezdeményezett kérelem például továbbra is végrehajtásra kerül, még akkor is, ha az adott trigger ki van hagyva, és nem jön létre logikai alkalmazás munkafolyamat-példánya.
+Például a lekérdezéses eseményindító által indított kéréseket a rendszer akkor is végrehajtásként használja, ha kihagyja az eseményindítót, és nem jön létre logikaialkalmazás-munkafolyamat-példány.
 
-| Elemek | Leírás |
+| Elemek | Description |
 |-------|-------------|
-| [Beépített](../connectors/apis-list.md#built-in) eseményindítók és műveletek | Natív módon futtatható a Logic Apps szolgáltatásban, és a [ **műveletek** ára](https://azure.microsoft.com/pricing/details/logic-apps/)alapján mérhető. <p><p>Például a HTTP-eseményindító és a kérelem eseményindítója beépített eseményindítók, míg a HTTP-művelet és a válasz művelet beépített művelet. Az adatműveletek, a kötegelt műveletek, a változó műveletek és a [munkafolyamat-vezérlési műveletek](../connectors/apis-list.md#control-workflow), például a hurkok, a feltételek, a kapcsoló, a párhuzamos ágak stb. is beépített műveletek. |
-| [Szabványos összekötő](../connectors/apis-list.md#managed-connectors) -eseményindítók és műveletek <p><p>[Egyéni összekötő](../connectors/apis-list.md#custom) -eseményindítók és műveletek | A [standard szintű összekötő díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/)alapján mérhető. |
-| [Vállalati összekötő](../connectors/apis-list.md#managed-connectors) -eseményindítók és műveletek | A [nagyvállalati összekötő díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/)alapján mérhető. A nyilvános előzetes verzióban azonban a vállalati összekötők a [ *standard szintű* összekötő díjszabásával](https://azure.microsoft.com/pricing/details/logic-apps/)mérhetők. |
-| [Hurkon](logic-apps-control-flow-loops.md) belüli műveletek | Minden ciklusban futó műveletet a rendszer minden futó hurok esetében mérten méri. <p><p>Tegyük fel például, hogy rendelkezik egy "for each" ciklussal, amely egy listát feldolgozó műveleteket tartalmaz. A Logic Apps-szolgáltatás minden olyan műveletet lefuttat, amely az adott hurokban fut. ehhez szorozza meg az elemek számát a hurokban lévő műveletek számával, és hozzáadja a hurkot indító műveletet. Így a 10 listaelem kiszámítása (10 * 1) + 1, amely 11 művelet végrehajtását eredményezi. |
-| Újrapróbálkozási kísérletek | A legalapvetőbb kivételek és hibák kezeléséhez beállíthatja az [újrapróbálkozási szabályzatot](logic-apps-exception-handling.md#retry-policies) az eseményindítók és a támogatott műveletek esetében. Ezeket az újrapróbálkozásokat az eredeti kéréssel együtt díjszabás alapján számítjuk fel, attól függően, hogy a trigger vagy a művelet beépített, standard vagy Enterprise típusú-e. Egy 2 Újrapróbálkozással végrehajtott művelet esetében például 3 művelet végrehajtására kerül sor. |
-| [Adatmegőrzési és-tárolási felhasználás](#data-retention) | Az adatmegőrzési díj mérésével mérhető, amely a [Logic apps díjszabási oldalán](https://azure.microsoft.com/pricing/details/logic-apps/), a **díjszabás részletei** táblában található. |
+| [Beépített eseményindítók](../connectors/built-in.md) és műveletek | Futtassa natív módon a Logic Apps szolgáltatásban, és a rendszer a [ **Műveletek árával használja a mérést.**](https://azure.microsoft.com/pricing/details/logic-apps/) <p><p>A HTTP-eseményindító és a Kérés eseményindító például beépített eseményindítók, a HTTP-művelet és a Válasz művelet pedig beépített műveletek. Az adatműveletek, kötegműveletek, változóműveletek és munkafolyamat-vezérlési műveletek [(](../connectors/built-in.md)például hurkok, feltételek, kapcsolók, párhuzamos ágak stb.) szintén beépített műveletek. |
+| [Szabványos összekötő-eseményindítók](../connectors/managed.md) és műveletek <p><p>[Egyéni összekötő eseményindítói](../connectors/apis-list.md#custom-apis-and-connectors) és -műveletek | Mérés a [Standard összekötő árával.](https://azure.microsoft.com/pricing/details/logic-apps/) |
+| [Vállalati összekötő eseményindítói](../connectors/managed.md) és -műveletek | Mérés az [Enterprise-összekötő árával.](https://azure.microsoft.com/pricing/details/logic-apps/) A nyilvános előzetes verzióban azonban a nagyvállalati összekötők mérése a [ *Standard* összekötő árán keresztül érhető el.](https://azure.microsoft.com/pricing/details/logic-apps/) |
+| Hurkon [belüli műveletek](logic-apps-control-flow-loops.md) | A hurkban futó összes művelet mérése minden futó ciklusciklushoz meg lesz mérésre. <p><p>Tegyük fel például, hogy van egy "for each" ciklusa, amely olyan műveleteket tartalmaz, amelyek egy listát feldolgoznak. A Logic Apps a hurkban futó összes műveletet megszorozza a listaelemek számával a hurokban lévő műveletek számával, és hozzáadja a ciklust elindításakor szükséges műveletet. A 10 elemből áll lista számítása tehát (10 * 1) + 1, ami 11 műveletvégrehajtást ad vissza. |
+| Újrapróbálkozási kísérletek | A legfontosabb kivételek és hibák kezeléshez újrapróbálkozási szabályzatot állíthat be [az](logic-apps-exception-handling.md#retry-policies) eseményindítókhoz és a támogatott műveletekhez. Ezek az újrakérések és az eredeti kérés díjszabása attól függ, hogy az eseményindító vagy művelet beépített, Standard vagy Enterprise típusú. Egy 2 újra megkísérelt műveletet például 3 műveletvégrehajtásért kell fizetnie. |
+| [Adatmegőrzés és tárhely-felhasználás](#data-retention) | Az adatmegőrzési díjszabás alapján van megszámfejve, amelyet a díjszabási [Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/)oldalon talál a **Díjszabás részletei táblázatban.** |
 |||
 
 További információkat a következő cikkekben talál:
 
-* [A végrehajtás és a tárterület-felhasználás metrikáinak megtekintése](plan-manage-costs.md#monitor-billing-metrics)
-* [Korlátok a Azure Logic Appsban](logic-apps-limits-and-config.md)
+* [A végrehajtások és a tárterület-felhasználás metrikainak megtekintése](plan-manage-costs.md#monitor-billing-metrics)
+* [A Azure Logic Apps](logic-apps-limits-and-config.md)
 
-### <a name="not-metered"></a>Nem mért
+### <a name="not-metered"></a>Nincs forgalmi díjas
 
-* A nem kielégíthető feltételek miatt kihagyott eseményindítók
-* Olyan műveletek, amelyek nem futnak, mert a logikai alkalmazás a befejezés előtt leállt
+* Kihagyott feltételek miatt kihagyott eseményindítók
+* Olyan műveletek, amelyek nem futottak, mert a logikai alkalmazás leállt a befejezés előtt
 * [Letiltott logikai alkalmazások](#disabled-apps)
 
 ### <a name="other-related-resources"></a>Egyéb kapcsolódó erőforrások
 
-A Logic apps más kapcsolódó erőforrásokkal, például integrációs fiókokkal, helyszíni adatátjárókkal és integrációs szolgáltatási környezetekkel (ISEs) működik együtt. Az erőforrások díjszabásáról a jelen témakör későbbi részében tájékozódhat:
+A logikai alkalmazások más kapcsolódó erőforrásokkal, például integrációs fiókokkal, helyszíni adatátjárókkal és integrációs szolgáltatási környezetekkel (ISE-ket) is használnak. Ezeknek az erőforrásoknak a díjszabását a témakör későbbi részében, a következő szakaszokban olvashatja el:
 
 * [On-premises data gateway (Helyszíni adatátjáró)](#data-gateway)
 * [Integrációs fiók díjszabási modellje](#integration-accounts)
-* [ISE díjszabási modellje](#fixed-pricing)
+* [ISE-díjszabási modell](#fixed-pricing)
 
-### <a name="tips-for-estimating-consumption-costs"></a>Tippek a használati költségek becsléséhez
+### <a name="tips-for-estimating-consumption-costs"></a>Tippek a fogyasztási költségek becslésére
 
-A pontosabb felhasználási költségek becsléséhez tekintse át a következő tippeket:
+A pontosabb fogyasztási költségek becsléséhez tekintse át az alábbi tippeket:
 
-* Vegye figyelembe a lehetséges számú üzenetet vagy eseményt, amely egy adott napon érkezik, ahelyett, hogy csak a lekérdezési időközre alapozza a számításokat.
+* Vegye figyelembe, hogy hány üzenet vagy esemény érkezhet egy adott napon, ahelyett, hogy a számításokat csak a lekérdezési időköz alapján kellene végeznie.
 
-* Ha egy esemény vagy üzenet megfelel az eseményindító feltételeinek, számos eseményindító azonnal megpróbálja beolvasni a feltételeknek megfelelő összes többi várakozási eseményt vagy üzenetet. Ez azt jelenti, hogy még akkor is, ha egy több lekérdezési időközt választ ki, az eseményindító a várakozó események vagy a munkafolyamatok elindítására jogosító üzenetek száma alapján indul el. A viselkedést követő triggerek közé tartozik a Azure Service Bus és az Azure Event hub.
+* Ha egy esemény vagy üzenet megfelel az eseményindító feltételeinek, számos eseményindító azonnal megpróbálja beolvasni a feltételeknek megfelelő összes többi várakozó eseményt vagy üzenetet. Ez a viselkedés azt jelenti, hogy még ha hosszabb lekérdezési időközt is kiválaszt, az eseményindító a várakozási események vagy az indítási munkafolyamatokhoz megfelelő üzenetek száma alapján aktiválódik. Az ezt a viselkedést követő eseményindítók közé tartozik Azure Service Bus Azure Event Hub.
 
-  Tegyük fel például, hogy olyan triggert állít be, amely naponta ellenőrzi a végpontot. Amikor az eseményindító ellenőrzi a végpontot, és 15 olyan eseményt talál, amely megfelel a feltételeknek, az eseményindító a megfelelő munkafolyamatot 15 alkalommal futtatja és futtatja. A Logic Apps szolgáltatás a 15 munkafolyamat által végrehajtott összes műveletet elvégzi, beleértve az indító kérelmeket is.
+  Tegyük fel például, hogy olyan eseményindítót hoz létre, amely minden nap ellenőrzi a végpontot. Amikor az eseményindító ellenőrzi a végpontot, és 15, a feltételeknek megfelelő eseményt talál, az eseményindító aktiválódik, és 15 alkalommal futtatja a megfelelő munkafolyamatot. A Logic Apps szolgáltatás a 15 munkafolyamat által végrehajtani minden műveletet, beleértve az eseményindító-kérelmeket is.
 
 <a name="fixed-pricing"></a>
 
-## <a name="ise-pricing"></a>ISE díjszabása
+## <a name="ise-pricing"></a>ISE-díjszabás
 
-A rögzített díjszabási modell az [ *integrációs szolgáltatási környezetben* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)futó logikai alkalmazásokra vonatkozik. Az ISE számlázása a [integrációs szolgáltatási környezet ár](https://azure.microsoft.com/pricing/details/logic-apps)alapján történik, amely a létrehozott [ISE szintjétől vagy *SKU* -](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) tól függ. Ez a díjszabás eltér a több-bérlős díjszabástól, mivel a fenntartott kapacitásért és a dedikált erőforrásokhoz fizet, függetlenül attól, hogy használja-e őket.
+A rögzített díjszabási modell az integrációs szolgáltatási környezetben [  (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)futó logikai alkalmazásokra vonatkozik. Az ISE-t a integrációs szolgáltatási környezet [alapján](https://azure.microsoft.com/pricing/details/logic-apps)számlázjuk, amely a létrehozott ISE-szinttől vagy [ *termékváltozattól*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) függ. Ez a díjszabás eltér a több-bérlős díjszabástól, mivel a fenntartott kapacitásért és a dedikált erőforrásokért fizet, függetlenül attól, hogy használja-e őket.
 
-| ISE SKU | Leírás |
+| ISE termékváltozat | Description |
 |---------|-------------|
-| **Prémium** | Az alapegység [kapacitása rögzített](logic-apps-limits-and-config.md#integration-service-environment-ise) , és [a prémium SKU óradíja](https://azure.microsoft.com/pricing/details/logic-apps)alapján számítjuk fel a díjat. Ha több átviteli sebességre van szüksége, [további skálázási egységeket adhat hozzá](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) az ISE vagy azután. Az egyes skálázási egységek [óradíja nagyjából az alapegység díjszabása](https://azure.microsoft.com/pricing/details/logic-apps). <p><p>A kapacitásra és a korlátozásokra vonatkozó információkért lásd: [az ISE korlátai a Azure Logic Appsban](logic-apps-limits-and-config.md#integration-service-environment-ise). |
-| **Fejlesztő** | Az alapegység [rögzített kapacitással](logic-apps-limits-and-config.md#integration-service-environment-ise) rendelkezik, és [a fejlesztői SKU óradíja](https://azure.microsoft.com/pricing/details/logic-apps)alapján számítjuk fel a díjat. Ez az SKU azonban nem rendelkezik szolgáltatói szerződéssel (SLA), vertikális Felskálázási képességgel vagy redundanciával az újrahasznosítás során, ami azt jelenti, hogy késések vagy leállások merülhetnek fel. Előfordulhat, hogy a háttérbeli frissítések időnként megszakítják a szolgáltatást. <p><p>**Fontos**: Ügyeljen arra, hogy ezt az SKU-t kizárólag feltáráshoz, kísérletezéshez, fejlesztéshez és teszteléshez használja, nem éles környezetben vagy teljesítmény-teszteléshez. <p><p>A kapacitásra és a korlátozásokra vonatkozó információkért lásd: [az ISE korlátai a Azure Logic Appsban](logic-apps-limits-and-config.md#integration-service-environment-ise). |
+| **Prémium** | Az alapegység rögzített [kapacitással rendelkezik,](logic-apps-limits-and-config.md#integration-service-environment-ise) és a prémium termékváltozatért óradíjat [kell fizetni.](https://azure.microsoft.com/pricing/details/logic-apps) Ha nagyobb átviteli sebességre van szüksége, további skálázható egységeket adhat [hozzá](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) az ISE létrehozásakor vagy azt követően. Az egyes skálázható egységek számlázása óránkénti díj alapján történik, amely nagyjából feleannyi [alapegységnek .](https://azure.microsoft.com/pricing/details/logic-apps) <p><p>Kapacitással és korlátozásokkal kapcsolatos információkért lásd: [ISE limits in Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
+| **Fejlesztő** | Az alapegység rögzített [kapacitással rendelkezik,](logic-apps-limits-and-config.md#integration-service-environment-ise) és a fejlesztői termékváltozatért óradíjat [kell fizetni.](https://azure.microsoft.com/pricing/details/logic-apps) Ez a termékváltozat azonban nem rendelkezik szolgáltatásiszint-szerződéssel (SLA), skálázható felskálával vagy redundanciával az újrahasznosítás során, ami azt jelenti, hogy késést vagy állásidőt tapasztalhat. A háttérfrissítések időnként megszakítják a szolgáltatást. <p><p>**Fontos:** Ügyeljen arra, hogy ezt a termékváltozatot csak feltárásra, kísérletekre, fejlesztésre és tesztelésre használja, éles környezetben vagy teljesítményt tesztelve. <p><p>Kapacitással és korlátozásokkal kapcsolatos információkért lásd: [ISE limits in Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
 |||
 
-### <a name="included-at-no-extra-cost"></a>Külön díj nélkül
+### <a name="included-at-no-extra-cost"></a>Többletköltség nélkül tartalmazza
 
-| Elemek | Leírás |
+| Elemek | Description |
 |-------|-------------|
-| [Beépített](../connectors/apis-list.md#built-in) eseményindítók és műveletek | Jelenítse meg az **alapvető** címkét, és futtassa a logikai alkalmazásokkal megegyező ISE-ben. |
-| [Szokványos összekötők](../connectors/apis-list.md#managed-connectors) <p><p>[Vállalati összekötők](../connectors/apis-list.md#enterprise-connectors) | – Az **ISE** -címkét megjelenítő felügyelt összekötők kifejezetten úgy vannak kialakítva, hogy a helyszíni adatátjáró nélkül működjenek, és UGYANABBAN az ISE-ben fussanak, mint a Logic apps szolgáltatásban. Az ISE díjszabása annyi vállalati kapcsolatot tartalmaz, amennyit csak szeretne. <p><p>– A több-bérlős Logic Apps szolgáltatásban futó ISE-címkét nem megjelenítő összekötők. Az ISE díjszabása azonban magában foglalja az ISE-ben futó Logic Apps-alkalmazások végrehajtását. |
-| [Hurkon](logic-apps-control-flow-loops.md) belüli műveletek | Az ISE díjszabása minden olyan műveletet magában foglal, amely egy ciklusban fut minden futó ciklusban. <p><p>Tegyük fel például, hogy rendelkezik egy "for each" ciklussal, amely egy listát feldolgozó műveleteket tartalmaz. A művelet-végrehajtások teljes számának lekéréséhez szorozza meg a listaelemek számát a hurokban lévő műveletek számával, majd adja hozzá a hurkot indító műveletet. Így a 10 listaelem kiszámítása (10 * 1) + 1, amely 11 művelet végrehajtását eredményezi. |
-| Újrapróbálkozási kísérletek | A legalapvetőbb kivételek és hibák kezeléséhez beállíthatja az [újrapróbálkozási szabályzatot](logic-apps-exception-handling.md#retry-policies) az eseményindítók és a támogatott műveletek esetében. Az ISE díjszabása az eredeti kérelemmel együtt újrapróbálkozásokat is tartalmaz. |
-| [Adatmegőrzési és-tárolási felhasználás](#data-retention) | Az ISE-beli logikai alkalmazások nem foglalnak magukban megőrzési és tárolási költségeket. |
-| [Integrációs fiókok](#integration-accounts) | Az ISE SKU-ra épülő, egyetlen integrációs fiókra vonatkozó szintet tartalmaz, külön díj nélkül. |
+| [Beépített eseményindítók](../connectors/built-in.md) és műveletek | Jelenítse meg **a Core** címkét, és futtassa ugyanazt az ISE-t, mint a logikai alkalmazásokat. |
+| [Szokványos összekötők](../connectors/managed.md) <p><p>[Vállalati összekötők](../connectors/managed.md#enterprise-connectors) | – Az **ISE** címkét megjelenítő felügyelt összekötők kifejezetten helyszíni adatátjáró nélkül működnek, és a logikai alkalmazásokkal azonos ISE-környezetben futnak. Az ISE díjszabása annyi vállalati kapcsolatot tartalmaz, amennyit csak szeretne. <p><p>– Az ISE címkét nem megjelenítő összekötők a több-bérlős Logic Apps futnak. Az ISE díjszabása azonban magában foglalja ezeket a végrehajtásokat az ISE környezetben futó logikai alkalmazások esetében. |
+| Hurkon [belüli műveletek](logic-apps-control-flow-loops.md) | Az ISE díjszabása minden olyan műveletet tartalmaz, amely hurokban fut minden futó hurokciklushoz. <p><p>Tegyük fel például, hogy van egy "for each" ciklusa, amely olyan műveleteket tartalmaz, amelyek egy listát feldolgoznak. A műveletvégrehajtások teljes számának leához szorozza meg a listaelemek számát a hurokban lévő műveletek számával, majd adja hozzá a ciklust elindításakor szükséges műveletet. A 10 elemből áll lista számítása tehát (10 * 1) + 1, ami 11 műveletvégrehajtást ad vissza. |
+| Újrapróbálkozási kísérletek | A legfontosabb kivételek és hibák kezeléshez újrapróbálkozási szabályzatot állíthat be [az](logic-apps-exception-handling.md#retry-policies) eseményindítókhoz és a támogatott műveletekhez. Az ISE díjszabása magában foglalja az újrakéréseket az eredeti kéréssel együtt. |
+| [Adatmegőrzés és tárhely-felhasználás](#data-retention) | Az ISE-beli logikai alkalmazások nem jár megőrzési és tárolási költségekkel. |
+| [Integrációs fiókok](#integration-accounts) | Használatot tartalmaz egyetlen integrációs fiókszinthez is, az ISE termékváltozat alapján, többletköltség nélkül. |
 |||
 
-A határértékekkel kapcsolatos információkért lásd: [az ISE korlátai a Azure Logic Appsban](logic-apps-limits-and-config.md#integration-service-environment-ise).
+A korlátozásokkal kapcsolatos információkért lásd az [ISE-korlátokat a Azure Logic Apps.](logic-apps-limits-and-config.md#integration-service-environment-ise)
 
 <a name="integration-accounts"></a>
 
 ## <a name="integration-accounts"></a>Integrációs fiókok
 
-Az [integrációs fiók](../logic-apps/logic-apps-pricing.md#integration-accounts) egy különálló erőforrás, amelyet Ön hoz létre és csatol a Logic apps szolgáltatáshoz, így az [EDI](logic-apps-enterprise-integration-b2b.md) -és [XML-feldolgozási](logic-apps-enterprise-integration-xml.md) képességeket használó B2B-integrációs megoldások megismeréséhez, összeállításához és teszteléséhez.
+Az [integrációs](../logic-apps/logic-apps-pricing.md#integration-accounts) fiók egy különálló erőforrás, amely logikai alkalmazásokra hivatkozik, így feltárhatja, létrehozhatja és tesztelheti az [EDI-](logic-apps-enterprise-integration-b2b.md) és XML-feldolgozási képességeket használni képes B2B integrációs [megoldásokat.](logic-apps-enterprise-integration-xml.md)
 
-A Azure Logic Apps a [díjszabási](https://azure.microsoft.com/pricing/details/logic-apps/) és [Számlázási modellekben](logic-apps-pricing.md#integration-accounts)változó, az integrációs fiók szintjének vagy szintjein alapul, attól függően, hogy a Logic apps alkalmazás-vagy ISE-alapú-e:
+Azure Logic Apps a díjszabási és számlázási modellben [](https://azure.microsoft.com/pricing/details/logic-apps/) eltérő integrációs [](logic-apps-pricing.md#integration-accounts)fiókszinteket vagy szinteket kínálja attól függően, hogy a logikai alkalmazások használatalapúak vagy ISE-alapúak:
 
-| Szint | Leírás |
+| Szint | Description |
 |------|-------------|
-| **Basic** | Olyan forgatókönyvek esetében, amelyekben csak az üzenetek kezelésére van szükség, vagy olyan kis üzleti partnernek kell működnie, amely egy nagyobb üzleti egységgel rendelkező kereskedelmi partneri kapcsolattal rendelkezik. <p><p>A Logic Apps SLA támogatja. |
-| **Standard** | Olyan forgatókönyvek esetén, ahol összetettebb VÁLLALATKÖZI kapcsolatok és nagyobb számú entitást kell kezelni. <p><p>A Logic Apps SLA támogatja. |
-| **Ingyenes** | Feltáró forgatókönyvek esetén nem éles környezetben. Ez a keret korlátozza a régió rendelkezésre állását, az átviteli sebességet és a használatot. Az ingyenes szintet például csak az Azure nyilvános régiói, például az USA nyugati régiója vagy Délkelet-Ázsia, de nem az [Azure China 21Vianet](/azure/china/overview-operations) vagy a [Azure Government](../azure-government/documentation-government-welcome.md)számára is elérhető. <p><p>**Megjegyzés**: a Logic apps SLA nem támogatja. |
+| **Basic** | Olyan forgatókönyvek esetén, ahol csak az üzenetek kezelését szeretné kezelni, vagy olyan kis üzleti partnerként szeretne viselkedni, amely kereskedelmi partnerkapcsolattal rendelkezik egy nagyobb üzleti entitással. <p><p>Az sla Logic Apps támogatja. |
+| **Standard** | Olyan forgatókönyvek esetén, ahol összetettebb B2B-kapcsolatok vannak, és több entitást kell kezelnie. <p><p>Az sla Logic Apps támogatja. |
+| **Ingyenes** | Feltáró jellegű forgatókönyvekhez, nem éles forgatókönyvekhez. Ez a szint korlátozza a régiók rendelkezésre állását, átviteli sebességét és használatát. Az Ingyenes szint például csak az Azure nyilvános régióiban érhető el, például az USA nyugati régiójában vagy [Délkelet-Ázsiában,](/azure/china/overview-operations) de nem érhető el az Azure China 21Vianet vagy [Azure Government.](../azure-government/documentation-government-welcome.md) <p><p>**Megjegyzés:** Az SLA nem Logic Apps támogatja. |
 |||
 
-További információ az integrációs fiók korlátairól: [a Azure Logic apps korlátai és konfigurálása](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits), például:
+További információ az integrációs fiókok korlátairól: [A](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)Azure Logic Apps korlátai és konfigurációja, például:
 
-* [Az integrációs fiókokra vonatkozó korlátozások Azure-előfizetések esetében](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)
+* [Integrációs fiókok korlátai Azure-előfizetésenként](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)
 
-* [Egy integrációs fiókra vonatkozó különböző összetevők korlátai](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits). Az összetevők közé tartoznak a kereskedelmi partnerek, a szerződések, a térképek, a sémák, a szerelvények, a tanúsítványok, a Batch-konfigurációk stb.
+* [Különböző összetevőkre vonatkozó korlátozások integrációs fiókonként.](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) Az összetevők közé tartoznak a kereskedelmi partnerek, a szerződések, a térképek, a sémák, a szerelvények, a tanúsítványok, a kötegkonfigurációk stb.
 
-### <a name="integration-accounts-for-consumption-based-logic-apps"></a>Integrációs fiókok a felhasználáson alapuló logikai alkalmazásokhoz
+### <a name="integration-accounts-for-consumption-based-logic-apps"></a>Integrációs fiókok használatalapú logikai alkalmazásokhoz
 
-Az integrációs fiókok számlázása rögzített [integrációs fiók díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/) alapján történik, amely a használt fiók szintjétől függ.
+Az integrációs fiókok számlázása rögzített [integrációs](https://azure.microsoft.com/pricing/details/logic-apps/) fiókár alapján, a használt fiókszinten alapul.
 
 ### <a name="ise-based-logic-apps"></a>ISE-alapú logikai alkalmazások
 
-Az ISE többletköltség nélkül egyetlen integrációs fiókot tartalmaz, amely az ISE SKU-ra épül. Többletköltség esetén több integrációs fiókot is létrehozhat az ISE számára, hogy az az [ISE teljes korlátját](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)használja. További információ a jelen témakör korábbi, [ISE díjszabási modelljéről](#fixed-pricing) .
+Az ISE külön költség nélkül tartalmaz egyetlen integrációs fiókot az ISE termékváltozat alapján. További költségekért további integrációs fiókokat hozhat létre az ISE számára, amelyek a teljes [ISE-korlátig használhatók.](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) A témakör [korábbi, ISE díjszabási](#fixed-pricing) modelljéről itt olvashat bővebben.
 
-| ISE SKU | Belefoglalt integrációs fiók | További díjak |
+| ISE termékváltozat | Tartalmazott integrációs fiók | További költségek |
 |---------|------------------------------|-----------------|
-| **Prémium** | Egyetlen [standard](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) integrációs fiók | Akár 19 további szabványos fiók. Ingyenes vagy alapszintű fiókok használata nem engedélyezett. |
-| **Fejlesztő** | Egyetlen [ingyenes](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) integrációs fiók | Akár 19 további szabványos fiók, ha már rendelkezik ingyenes fiókkal, vagy 20 teljes standard fiókot, ha nem rendelkezik ingyenes fiókkal. Nem engedélyezett alapszintű fiók. |
+| **Prémium** | Egyetlen [Standard integrációs](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) fiók | Legfeljebb 19 további Standard fiók. Ingyenes vagy alapszintű fiókok nem engedélyezettek. |
+| **Fejlesztő** | Egyetlen [ingyenes integrációs](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) fiók | Ha már rendelkezik ingyenes fiókkal, legfeljebb 19 Standard fiókot, vagy ha még nem rendelkezik ingyenes fiókkal, összesen 20 Standard-fiókkal. Alapszintű fiókok nem engedélyezettek. |
 ||||
 
 <a name="data-retention"></a>
 
-## <a name="data-retention-and-storage-consumption"></a>Adatmegőrzési és-tárolási felhasználás
+## <a name="data-retention-and-storage-consumption"></a>Adatmegőrzés és tárhely-felhasználás
 
-A logikai alkalmazás futtatási előzményeinek összes bemenete és kimenete az alkalmazás [futtatási időtartama és az előzmények megőrzési időtartama](logic-apps-limits-and-config.md#run-duration-retention-limits)alapján kerül tárolásra és mérésre.
+A logikai alkalmazás futtatáselőzményeibemenetek és -kimenetek tárolása és mérése az alkalmazás futási időtartama és az előzmények megőrzési időtartama alapján [() lesz tárolva és felmérőzve.](logic-apps-limits-and-config.md#run-duration-retention-limits)
 
-* A több-bérlős Logic Apps szolgáltatásban található Logic apps esetén a tárterület-használatot rögzített áron kell kiszámlázni, amelyet a **díjszabási adatok** táblázata alatt talál a [Logic apps díjszabási oldalán](https://azure.microsoft.com/pricing/details/logic-apps).
+* A több-bérlős Logic Apps szolgáltatás logikai alkalmazásai esetében a tárterület-használat rögzített áron van kiszámlázva, amelyet [az Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps)díjszabási oldalán talál a Díjszabás **részletei** táblázatban.
 
-* A ISEs logikai alkalmazásai esetében a tárterület-felhasználás nem jár adatmegőrzési költségekkel.
+* Az ISE-kben a logikai alkalmazások esetében a tárterület-használat nem jár adatmegőrzési költségekkel.
 
-A tárterület-használat felhasználásának figyeléséhez lásd: [mérőszámok megtekintése a végrehajtásokhoz és a tárhelyek felhasználásához](plan-manage-costs.md#monitor-billing-metrics).
+A tárterület-használat monitorhasználatának figyelése: [A végrehajtások metrikainak és a tárhelyhasználatnak a megtekintése.](plan-manage-costs.md#monitor-billing-metrics)
 
 <a name="data-gateway"></a>
 
 ## <a name="on-premises-data-gateway"></a>Helyszíni adatátjáró
 
-[A helyszíni adatátjáró](../logic-apps/logic-apps-gateway-install.md) egy különálló erőforrás, amelyet úgy hozhat létre, hogy a logikai alkalmazások hozzáférjenek a helyszíni adataihoz adott átjáró által támogatott összekötők használatával. Az átjárón keresztül futó összekötők a költségekkel járnak, de maga az átjáró nem számít fel díjat.
+A [helyszíni adatátjáró](../logic-apps/logic-apps-gateway-install.md) egy külön erőforrás, amelyet ön hoz létre, így a logikai alkalmazások adott átjáró által támogatott összekötők használatával férhetnek hozzá a helyszíni adatokhoz. Az átjárón keresztül futó összekötőműveletekkel kapcsolatban díjat kell fizetni, de maga az átjáró nem számít fel költségeket.
 
 <a name="disabled-apps"></a>
 
 ## <a name="disabled-logic-apps"></a>Letiltott logikai alkalmazások
 
-A letiltott logikai alkalmazások nem számítanak fel díjat, mert nem tudnak új példányokat létrehozni, miközben le vannak tiltva. A logikai alkalmazások letiltása után a jelenleg futó példányok eltarthat egy ideig, mielőtt teljesen leállnak.
+A letiltott logikai alkalmazások nem díj ellenében hozhatók létre új példányok, amíg le vannak tiltva. A logikai alkalmazás letiltása után a jelenleg futó példányok teljesen leállnak, és némi időt is eltelhet.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [A Azure Logic Apps költségeinek megtervezése és kezelése](plan-manage-costs.md)
+* [A költségek megtervzésére és Azure Logic Apps](plan-manage-costs.md)

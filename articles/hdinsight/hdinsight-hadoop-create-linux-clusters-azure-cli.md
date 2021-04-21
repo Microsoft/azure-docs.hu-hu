@@ -1,22 +1,22 @@
 ---
-title: Apache Hadoop-fürtök létrehozása az Azure CLI-vel – Azure HDInsight
-description: Ismerje meg, hogyan hozhat létre Azure HDInsight-fürtöket a platformfüggetlen Azure CLI használatával.
+title: Apache Hadoop-fürtök létrehozása az Azure CLI használatával – Azure HDInsight
+description: Megtudhatja, hogyan hozhat Azure HDInsight fürtöt a platformfüggetlen Azure CLI használatával.
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 02/03/2020
-ms.openlocfilehash: 9028d85346611341afec0d0598f27a77e4f37fdf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c19eb58e32fec66e5fe698c82133c8583f67b8b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715496"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775132"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>HDInsight-fürtök létrehozása az Azure CLI használatával
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-A jelen dokumentumban ismertetett lépések – HDInsight 3,6-fürt létrehozása az Azure CLI használatával.
+Az ebben a dokumentumban található lépések egy HDInsight 3.6-fürt Azure CLI használatával való létrehozását ják végre.
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -26,7 +26,7 @@ A jelen dokumentumban ismertetett lépések – HDInsight 3,6-fürt létrehozás
 
 ## <a name="create-a-cluster"></a>Fürt létrehozása
 
-1. Jelentkezzen be az Azure-előfizetésbe. Ha azt tervezi, hogy Azure Cloud Shell használ, válassza a **kipróbálás** lehetőséget a kód blokk jobb felső sarkában. Máskülönben adja meg az alábbi parancsot:
+1. Jelentkezzen be az Azure-előfizetésbe. Ha a kódblokk Azure Cloud Shell használni,  válassza a Kódblokk jobb felső sarkában található Kipróbálom lehetőséget. Ha nem, írja be az alábbi parancsot:
 
     ```azurecli-interactive
     az login
@@ -35,16 +35,16 @@ A jelen dokumentumban ismertetett lépések – HDInsight 3,6-fürt létrehozás
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. Környezeti változók beállítása A cikkben szereplő változók használata bash-alapú. Más környezetek esetében kisebb eltérésekre lesz szükség. A fürt létrehozásához szükséges paraméterek teljes listájáért tekintse meg az [az-hdinsight-Create](/cli/azure/hdinsight#az-hdinsight-create) lehetőséget.
+2. Környezeti változók beállítása. A változók használata ebben a cikkben a Bash-alapú. Más környezetekhez kisebb eltérésekre lesz szükség. A fürt létrehozására vonatkozó lehetséges paraméterek teljes listájáért lásd: [az az-hdinsight-create.](/cli/azure/hdinsight#az_hdinsight_create)
 
     |Paraméter | Leírás |
     |---|---|
-    |`--workernode-count`| A fürtben lévő munkavégző csomópontok száma. Ez a cikk a változót használja az `clusterSizeInNodes` átadott értékként `--workernode-count` . |
-    |`--version`| A HDInsight-fürt verziója. Ez a cikk a változót használja az `clusterVersion` átadott értékként `--version` . Lásd még: [támogatott HDInsight-verziók](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
-    |`--type`| A HDInsight-fürt típusa, például: Hadoop, interactivehive, hbase, Kafka, Storm, Spark, Rserver, mlservices.  Ez a cikk a változót használja az `clusterType` átadott értékként `--type` . Lásd még: [fürtök típusai és konfigurálása](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type).|
-    |`--component-version`|A különböző Hadoop-összetevők verziói az "összetevő = verzió" formátumban, szóközzel tagolt verziókban. Ez a cikk a változót használja az `componentVersion` átadott értékként `--component-version` . Lásd még: [Hadoop-összetevők](./hdinsight-component-versioning.md).|
+    |`--workernode-count`| A fürtben lévő munkavégző csomópontok száma. Ez a cikk a `clusterSizeInNodes` változót használja a számára átadott értékként. `--workernode-count` |
+    |`--version`| A HDInsight-fürt verziója. Ez a cikk a `clusterVersion` változót használja a számára átadott értékként. `--version` Lásd még: [Támogatott HDInsight-verziók.](./hdinsight-component-versioning.md#supported-hdinsight-versions)|
+    |`--type`| A HDInsight-fürt típusa, például: hadoop, interactivehive, hbase, kafka, storm, spark, rserver, mlservices.  Ez a cikk a `clusterType` változót használja a számára átadott értékként. `--type` Lásd még: [Fürttípusok és konfiguráció.](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type)|
+    |`--component-version`|A különböző Hadoop-összetevők verziói, "component=version" formátumban, szóközökre elválasztott verziókban. Ez a cikk a `componentVersion` változót használja a függvénynek átadott értékként. `--component-version` Lásd még: [Hadoop-összetevők.](./hdinsight-component-versioning.md)|
 
-    Cserélje le a,, `RESOURCEGROUPNAME` `LOCATION` ,, `CLUSTERNAME` `STORAGEACCOUNTNAME` és `PASSWORD` értéket a kívánt értékekre. Szükség szerint módosítsa a többi változó értékét. Ezután írja be a CLI-parancsokat.
+    Cserélje `RESOURCEGROUPNAME` le a , , , és `LOCATION` `CLUSTERNAME` `STORAGEACCOUNTNAME` `PASSWORD` értékeket a kívánt értékekre. Szükség szerint módosítsa a többi változó értékeit. Ezután adja meg a CLI-parancsokat.
 
     ```azurecli-interactive
     export resourceGroupName=RESOURCEGROUPNAME
@@ -61,7 +61,7 @@ A jelen dokumentumban ismertetett lépések – HDInsight 3,6-fürt létrehozás
     export componentVersion=Hadoop=2.7
     ```
 
-3. [Hozza létre az erőforráscsoportot](/cli/azure/group#az-group-create) az alábbi parancs beírásával:
+3. [Az erőforráscsoport létrehozásához](/cli/azure/group#az_group_create) írja be az alábbi parancsot:
 
     ```azurecli-interactive
     az group create \
@@ -69,9 +69,9 @@ A jelen dokumentumban ismertetett lépések – HDInsight 3,6-fürt létrehozás
         --name $resourceGroupName
     ```
 
-    Az érvényes helyszínek listájához használja a `az account list-locations` parancsot, majd használja az érték egyik helyét `name` .
+    Az érvényes helyek listájához használja az parancsot, majd használja az érték egyik `az account list-locations` `name` helyét.
 
-4. [Hozzon létre egy Azure Storage-fiókot](/cli/azure/storage/account#az-storage-account-create) az alábbi parancs beírásával:
+4. [Hozzon létre egy Azure Storage-fiókot](/cli/azure/storage/account#az_storage_account_create) az alábbi paranccsal:
 
     ```azurecli-interactive
     # Note: kind BlobStorage is not available as the default storage account.
@@ -84,7 +84,7 @@ A jelen dokumentumban ismertetett lépések – HDInsight 3,6-fürt létrehozás
         --sku Standard_LRS
     ```
 
-5. [Bontsa ki az elsődleges kulcsot az Azure Storage-fiókból](/cli/azure/storage/account/keys#az-storage-account-keys-list) , és tárolja egy változóban az alábbi parancs beírásával:
+5. [Az alábbi paranccsal bontsa](/cli/azure/storage/account/keys#az_storage_account_keys_list) ki az elsődleges kulcsot az Azure Storage-fiókból, és tárolja egy változóban:
 
     ```azurecli-interactive
     export AZURE_STORAGE_KEY=$(az storage account keys list \
@@ -93,7 +93,7 @@ A jelen dokumentumban ismertetett lépések – HDInsight 3,6-fürt létrehozás
         --query [0].value -o tsv)
     ```
 
-6. [Hozzon létre egy Azure Storage-tárolót](/cli/azure/storage/container#az-storage-container-create) az alábbi parancs beírásával:
+6. [Hozzon létre egy Azure Storage-tárolót](/cli/azure/storage/container#az_storage_container_create) az alábbi parancs beírásával:
 
     ```azurecli-interactive
     az storage container create \
@@ -102,7 +102,7 @@ A jelen dokumentumban ismertetett lépések – HDInsight 3,6-fürt létrehozás
         --account-name $AZURE_STORAGE_ACCOUNT
     ```
 
-7. [Hozza létre a HDInsight-fürtöt](/cli/azure/hdinsight#az-hdinsight-create) a következő parancs beírásával:
+7. [Hozza létre a HDInsight-fürtöt](/cli/azure/hdinsight#az_hdinsight_create) a következő parancs beírásával:
 
     ```azurecli-interactive
     az hdinsight create \
@@ -123,15 +123,15 @@ A jelen dokumentumban ismertetett lépések – HDInsight 3,6-fürt létrehozás
     ```
 
     > [!IMPORTANT]  
-    > A HDInsight-fürtök különböző típusokból állnak, amelyek megfelelnek a fürthöz hangolt munkaterhelésnek vagy technológiának. Nincs támogatott módszer a több típust egyesítő fürt létrehozására, például a Storm és a HBase egy fürtön.
+    > A HDInsight-fürtök különböző típusúak, amelyek a fürt által hangolt számítási feladatnak vagy technológiának felelnek meg. Nincs támogatott módszer olyan fürtök létrehozására, amelyek több típust kombinálnak, például a Stormot és a HBase-t egy fürtön.
 
-    A fürt létrehozási folyamata több percet is igénybe vehet. Általában körülbelül 15.
+    A fürt létrehozási folyamata több percig is eltarthat. Általában körülbelül 15.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A cikk befejezése után érdemes törölni a fürtöt. A HDInsight az adatait az Azure Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzékek törlik a fürtöket, ha nincsenek használatban.
+A cikk befejezése után érdemes törölni a fürtöt. A HDInsight segítségével az adatok az Azure Storage-ban tárolódnak, így a nem használt fürtök biztonságosan törölhetők. A HDInsight-fürtökért akkor is díjat kell fizetnie, ha nincs használatban. Mivel a fürt díja sokszor több, mint a tárolás díja, gazdasági szempontból logikus törölni a nem használt fürtök költségeit.
 
-Az erőforrások eltávolításához adja meg az alábbi parancsok mindegyikét vagy egy részét:
+Az erőforrások eltávolításához adja meg az összes vagy néhány alábbi parancsot:
 
 ```azurecli-interactive
 # Remove cluster
@@ -160,20 +160,20 @@ Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse me
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy sikeresen létrehozott egy HDInsight-fürtöt az Azure CLI használatával, a következő paranccsal megismerheti a fürttel való munkát:
+Most, hogy sikeresen létrehozott egy HDInsight-fürtöt az Azure CLI-n keresztül, a következővel megtanulja, hogyan használhatja a fürtöt:
 
-### <a name="apache-hadoop-clusters"></a>Fürtök Apache Hadoop
+### <a name="apache-hadoop-clusters"></a>Apache Hadoop-fürtök
 
-* [Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
-* [A MapReduce használata a HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Az Apache Hive használata a HDInsightban](hadoop/hdinsight-use-hive.md)
+* [A MapReduce használata a HDInsightban](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase-fürtök
 
-* [Ismerkedés az Apache HBase a HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Java-alkalmazások fejlesztése az Apache HBase a HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
+* [A HDInsight-alapú Apache HBase első lépések](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [Java-alkalmazások fejlesztése a HDInsight-alapú Apache HBase-hez](hbase/apache-hbase-build-java-maven-linux.md)
 
-### <a name="apache-storm-clusters"></a>Fürtök Apache Storm
+### <a name="apache-storm-clusters"></a>Apache Storm fürtök
 
-* [Java-topológiák fejlesztése a HDInsight Apache Storméhez](storm/apache-storm-develop-java-topology.md)
-* [Python-összetevők használata a HDInsight-ben Apache Storm](storm/apache-storm-develop-python-topology.md)
-* [Topológiák üzembe helyezése és figyelése Apache Storm a HDInsight-on](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [Java-topológiák fejlesztése Apache Storm HDInsighton](storm/apache-storm-develop-java-topology.md)
+* [Python-összetevők használata Apache Storm HDInsightban](storm/apache-storm-develop-python-topology.md)
+* [Topológiák üzembe helyezése és monitor helyezése Apache Storm HDInsighton](storm/apache-storm-deploy-monitor-topology-linux.md)

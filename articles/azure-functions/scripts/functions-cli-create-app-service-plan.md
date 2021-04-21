@@ -1,16 +1,16 @@
 ---
-title: Függvényalkalmazás létrehozása egy App Service-tervben – Azure CLI
+title: Függvényalkalmazás létrehozása egy App Service tervben – Azure CLI
 description: Azure CLI-szkriptminta – Függvényalkalmazás létrehozása egy App Service-csomagban
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.topic: sample
 ms.date: 07/03/2018
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 020bd064628554703bb375c06c72e68d4536a2a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea368714ded56d77a10e24b853144bdf1dd42dfe
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934441"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786314"
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>Függvényalkalmazás létrehozása egy App Service-csomagban
 
@@ -20,7 +20,7 @@ Ez az Azure Functions-példaszkript egy függvényalkalmazást hoz létre, amely
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - Az oktatóanyaghoz az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van. 
+ - Ehhez az oktatóanyaghoz az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van. 
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -36,10 +36,10 @@ A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatk
 
 | Parancs | Jegyzetek |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Létrehoz egy Azure Storage-fiókot. |
-| [az functionapp Plan Create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | Létrehoz egy prémium csomagot. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Létrehoz egy függvényalkalmazást az App Service-csomagban. |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Létrehoz egy Azure Storage-fiókot. |
+| [az functionapp plan create](/cli/azure/functionapp/plan#az_functionapp_plan_create) | Prémium szintű csomagokat hoz létre. |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | Létrehoz egy függvényalkalmazást az App Service-csomagban. |
 
 ## <a name="next-steps"></a>Következő lépések
 

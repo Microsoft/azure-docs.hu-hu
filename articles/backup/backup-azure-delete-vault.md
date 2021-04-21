@@ -1,203 +1,203 @@
 ---
-title: Microsoft Azure Recovery Services-tároló törlése
-description: Ebből a cikkből megtudhatja, hogyan távolíthatja el a függőségeket, majd törölhet egy Azure Backup Recovery Services-tárolót.
+title: Helyreállítási tár Microsoft Azure törlése
+description: Ebből a cikkből megtudhatja, hogyan távolíthat el függőségeket, majd hogyan törölhet Azure Backup Recovery Services-tárolóból.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 1526e9aeef1574f261dcb1a58ee12a12fbf08866
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bb6be070ac0fb408ac37c8ae7b003b54da5d6dea
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864958"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773656"
 ---
-# <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services-tároló törlése
+# <a name="delete-an-azure-backup-recovery-services-vault"></a>Helyreállítási tár Azure Backup törlése
 
-Ez a cikk egy [Azure Backup](backup-overview.md) Recovery Services-tároló törlését ismerteti. A függőségek eltávolítására, majd a tároló törlésére vonatkozó utasításokat tartalmaz.
+Ez a cikk bemutatja, hogyan törölhet egy [Azure Backup](backup-overview.md) Recovery Services-tárolót. Útmutatásokat tartalmaz a függőségek eltávolításához, majd egy tároló törléséhez.
 
 ## <a name="before-you-start"></a>Előkészületek
 
 Az alábbi függőségek egyike esetén sem törölhet Recovery Services-tárolót:
 
-- Védett adatforrásokat (például IaaS virtuális gépeket, SQL-adatbázisokat, Azure-fájlmegosztást) tartalmazó tárolót nem lehet törölni.
-- Olyan tárolót nem lehet törölni, amely biztonsági másolatokat tartalmaz. A biztonságimásolat-adatok a törlést követően az adatok állapota helyreállíthatóan törölt lesz.
-- Nem törölhet olyan tárolót, amely biztonsági mentési állapotot tartalmaz a törölt törlési állapotban.
-- Regisztrált Storage-fiókkal rendelkező tárolót nem lehet törölni.
+- Védett adatforrásokat (például IaaS virtuális gépeket, SQL-adatbázisokat, Azure-fájlmegosztásokat) tartalmazó tároló nem törölhető.
+- Biztonsági mentési adatokat tartalmazó tároló nem törölhető. A biztonságimásolat-adatok a törlést követően az adatok állapota helyreállíthatóan törölt lesz.
+- Nem törölhet olyan tárolót, amely a biztonsági másolatok adatait soft törölt állapotban tartalmazza.
+- A regisztrált tárfiókokkal rendelkező tárolók nem törölhetők.
 
-Ha a függőségek eltávolítása nélkül próbálja meg törölni a tárolót, a következő hibaüzenetek valamelyikét fogja tapasztalni:
+Ha a függőségek eltávolítása nélkül próbálja törölni a tárolót, az alábbi hibaüzenetek egyike jelenik meg:
 
-- A tár nem törölhető, mert létező erőforrásokat tartalmaz. Győződjön meg arról, hogy nincsenek olyan biztonsági mentési elemek, védett kiszolgálók vagy biztonságimásolat-felügyeleti kiszolgálók, amelyek ehhez a tárolóhoz vannak társítva. A törlés folytatásához szüntesse meg a tárolóhoz társított alábbi tárolók regisztrációját.
+- A tár nem törölhető, mert létező erőforrásokat tartalmaz. Győződjön meg arról, hogy nincsenek a tárolóhoz társított biztonsági mentési elemek, védett kiszolgálók vagy biztonsági mentési felügyeleti kiszolgálók. A törlés előtt törölje a tárolóhoz társított következő tárolók regisztrációját.
 
-- A helyreállítási tár nem törölhető, mivel a tárolóban helyreállítható módon törölt biztonsági másolati elemek vannak. A helyreállított törölt elemek a törlési művelet 14 napja után véglegesen törlődnek. A biztonsági mentési elemek végleges törlését követően próbálja meg törölni a tár törlését, és nincs olyan elem, amely a tárolóban marad. További információ: Azure Backup helyreállítható [Törlés](./backup-azure-security-feature-cloud.md).
+- A helyreállítási tár nem törölhető, mivel a tárolóban helyreállítható módon törölt biztonsági másolati elemek vannak. A 14 napos törlési művelet után a törölt elemek véglegesen törlődnek. Próbálja meg törölni a tárolót, miután a biztonsági másolat elemei véglegesen törölve vannak, és a tárolóban már nem maradt visszagátlott elem. További információ: [Soft delete for Azure Backup.](./backup-azure-security-feature-cloud.md)
 
-## <a name="proper-way-to-delete-a-vault"></a>Tár törlésének megfelelő módja
+## <a name="proper-way-to-delete-a-vault"></a>Tároló törlésének megfelelő módja
 
 >[!WARNING]
->A következő művelet romboló, ezért nem vonható vissza. A rendszer véglegesen törli a védett kiszolgálóhoz társított biztonsági mentési adatokat és biztonsági másolati elemeket. Legyen óvatos.
+>A következő művelet kipusztító, és nem vonható vissza. A védett kiszolgálóhoz társított összes biztonsági mentési adat és biztonsági mentési elem véglegesen törölve lesz. Legyen óvatos.
 
-A tárolók megfelelő törléséhez az alábbi lépéseket kell követnie:
+A tároló megfelelő törléséhez az alábbi sorrendben kell követnie a lépéseket:
 
-- **1. lépés**: a Soft delete funkció letiltása. A Soft delete letiltásához szükséges lépéseket [itt találja](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) .
+- **1. lépés:** A soft delete funkció letiltása. [A soft](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) delete letiltásához szükséges lépéseket itt láthatja.
 
-- **2. lépés**: a helyreállítható törlés letiltása után ellenőrizze, hogy vannak-e korábban megmaradt elemek a helyreállított törölt állapotban. Ha vannak olyan elemek, amelyekről törölhető a törölt állapot, akkor törölnie kell a *törlést* , majd újra *törölnie* kell őket. Az [alábbi lépéseket követve](./backup-azure-security-feature-cloud.md#permanently-deleting-soft-deleted-backup-items) megkeresheti a helyreállítható elemek törlését és véglegesen törölheti azokat.
+- **2. lépés:** A soft delete letiltása után ellenőrizze, hogy vannak-e korábban olyan elemek, amelyek a korábban törölt állapotban maradtak. Ha vannak olyan elemek, amelyek törölt állapotban vannak, akkor törölnie és *törölnie* kell *őket.* [Az alábbi lépésekkel](./backup-azure-security-feature-cloud.md#permanently-deleting-soft-deleted-backup-items) megkereshet és véglegesen törölhet elemeket.
 
-- **3. lépés**: az alábbi három helyen ellenőrizze, hogy vannak-e védett elemek:
+- **3. lépés:** Az alábbi három helyen ellenőriznie kell, hogy vannak-e védett elemek:
 
-  - **Felhőalapú védett elemek**: lépjen a tároló irányítópult menüjébe > **biztonsági másolati elemek elemre**. Az itt felsorolt összes elemet el kell távolítani a biztonsági mentés **leállítása** vagy a biztonsági mentési adatok **törlése** mellett.  Ezeket a [lépéseket követve](#delete-protected-items-in-the-cloud) távolíthatja el ezeket az elemeket.
-  - **SQL Server példány**: lépjen a tároló irányítópult menüjébe > **biztonsági mentési infrastruktúra** által  >  **védett kiszolgálók** elemre. A védett kiszolgálók lapon válassza ki a regisztrálni kívánt kiszolgálót. A tár törléséhez meg kell szüntetnie az összes kiszolgáló regisztrációját. Kattintson a jobb gombbal a védett kiszolgálóra, és válassza a **Regisztráció törlése** lehetőséget.
-  - **Mars-védelemmel ellátott kiszolgálók**: lépjen a tároló irányítópult menüjébe > **biztonsági mentési infrastruktúra** által  >  **védett kiszolgálók** elemre. Ha a MARS-védelemmel ellátott kiszolgálókkal rendelkezik, az itt felsorolt összes elemet törölni kell a biztonsági mentési adatokkal együtt. A MARS-védelemmel ellátott kiszolgálók törléséhez [kövesse az alábbi lépéseket](#delete-protected-items-on-premises) .
-  - **MABS vagy DPM felügyeleti kiszolgálók**: lépjen a tár irányítópult menüjébe > **biztonsági mentési infrastruktúra** biztonsági  >  **mentési felügyeleti kiszolgálók** elemre. Ha DPM vagy Azure Backup Server (MABS) rendelkezik, akkor az itt felsorolt összes elemet törölni kell, vagy a biztonsági mentési adatokkal együtt meg kell szüntetni a regisztrációt. A felügyeleti kiszolgálók törléséhez [kövesse az alábbi lépéseket](#delete-protected-items-on-premises) .
+  - **Felhőben védett elemek:** A Biztonsági másolati elemek menüben > **meg.** Az itt felsorolt összes elemet el kell távolítani a **Biztonsági** másolatok adatainak leállítása vagy a **Biztonsági** másolat adatainak törlése parancsokkal együtt.  [Az elemek eltávolításához](#delete-protected-items-in-the-cloud) kövesse az alábbi lépéseket.
+  - **SQL Server példány:** A Biztonsági mentési infrastruktúra által védett kiszolgálók > meg a tároló  >  **irányítópultjának menüjét.** A Protected Servers (Védett kiszolgálók) mezőben válassza ki a kiszolgálót, amelyről le kell mondania a regisztrációt. A tároló törléséhez törölnie kell az összes kiszolgáló regisztrációját. Kattintson a jobb gombbal a védett kiszolgálóra, és válassza **a Regisztráció törlése lehetőséget.**
+  - **MARS által védett kiszolgálók:** A Biztonsági mentési infrastruktúra által védett **kiszolgálók**> meg a tároló  >  **irányítópultjának menüjét.** Ha MARS-védelem alatt lévő kiszolgálókkal is van, akkor az itt felsorolt összes elemet törölni kell a biztonsági mentési adataikkal együtt. [Kövesse az alábbi lépéseket](#delete-protected-items-on-premises) a MARS által védett kiszolgálók törléséhez.
+  - **MABS- vagy DPM-felügyeleti** kiszolgálók: A Backup **Infrastructure** Backup Management Servers > meg a tároló  >  **irányítópultjának menüjét.** Ha dpm vagy Azure Backup Server (MABS) is van, akkor az itt felsorolt összes elemet törölni kell, vagy törölni kell a regisztrációt a biztonsági másolat adataival együtt. [A felügyeleti kiszolgálók törléséhez](#delete-protected-items-on-premises) kövesse az alábbi lépéseket.
 
-- **4. lépés**: Győződjön meg arról, hogy az összes regisztrált Storage-fiók törölve van. Lépjen a tároló irányítópult menüjébe > **biztonsági mentési infrastruktúra**  >  **Storage-fiókok** elemre. Ha az itt felsorolt Storage-fiókokkal rendelkezik, törölje az összes regisztrációját. További információ a fiók regisztrációjának megszüntetéséről: [Storage-fiók regisztrációjának törlése](manage-afs-backup.md#unregister-a-storage-account).
-- **5. lépés**: Győződjön meg arról, hogy nincsenek létrehozott privát végpontok a tárolóhoz. Nyissa meg a tároló irányítópultjának menü > **privát végponti kapcsolatok** menüpontot, > ha a tárolóban létrehozott vagy létrehozott magánhálózati végponti kapcsolatok vannak, akkor a tár törlésének folytatása előtt győződjön meg róla, hogy el lesznek távolítva. 
+- **4. lépés:** Gondoskodnia kell arról, hogy az összes regisztrált tárfiók törlődött. A Backup Infrastructure Storage-fiókok > meg a **tároló**  >  **irányítópultjának menüjét.** Ha vannak itt felsorolt tárfiókok, akkor mindegyik regisztrációját meg kell újulni. A fiók regisztrációjának a regisztrációját a tárfiók regisztrációjának [a regisztrációjának a megszabadulásában olvashatja el.](manage-afs-backup.md#unregister-a-storage-account)
+- **5. lépés:** Győződjön meg arról, hogy nincsenek privát végpontok létrehozva a tárolóhoz. Ha a tárolóban privát  végponti kapcsolatok vannak létrehozva vagy megkíséreltek létrehozni> válassza a Privát végponti kapcsolatok elemet a Beállítások > ha a tárolóban privát végponti kapcsolatok vannak létrehozva vagy megkíséreltek létrehozni, győződjön meg arról, hogy azok el vannak távolítva, mielőtt folytatná a tároló törlését. 
 
-A lépések elvégzése után továbbra is [törölheti a](#delete-the-recovery-services-vault)tárolót.
+A lépések befejezése után folytathatja a tároló [törlését.](#delete-the-recovery-services-vault)
 
-Ha a helyszínen vagy a felhőben nem található védett elem, de a tár törlési hibája továbbra is fennáll, hajtsa végre az Recovery Services-tároló törlésének lépéseit a [Azure Resource Manager használatával](#delete-the-recovery-services-vault-by-using-azure-resource-manager)
+Ha a helyszínen vagy a felhőben nincsenek védett elemek, de továbbra is a tárolótörlési hibát kapják, hajtsa végre a [Recovery Services-tároló](#delete-the-recovery-services-vault-by-using-azure-resource-manager) törlése a következő Azure Resource Manager
 
 ## <a name="delete-protected-items-in-the-cloud"></a>Védett elemek törlése a felhőben
 
-Először olvassa el az első **[lépések](#before-you-start)** szakaszt a függőségek és a tár törlési folyamatának megismeréséhez.
+Először olvassa el az **[Indítás](#before-you-start)** előtt szakaszt, hogy megértse a függőségeket és a tárolótörlési folyamatot.
 
-A védelem leállításához és a biztonsági mentési adatok törléséhez hajtsa végre a következő lépéseket:
+A védelem leállításhoz és a biztonsági mentési adatok törléséhez hajtsa végre a következő lépéseket:
 
-1. A portálon nyissa meg **Recovery Services**-tárolót, majd lépjen a **biztonsági másolati elemek elemre**. Ezután a biztonságimásolat- **kezelés típusa** listából válassza ki a védett elemeket a felhőben (például Azure Virtual Machines, Azure Storage [a Azure Files szolgáltatás] vagy SQL Server az Azure Virtual machines).
+1. A portálról válassza a **Recovery Services-tárolót,** majd a Biztonsági **mentési elemek elemet.** Ezután a **Biztonságimásolat-kezelés** típusa listában válassza ki a felhőben lévő védett elemeket (például Azure Virtual Machines, Azure Storage [Azure Files szolgáltatás], vagy SQL Server Azure Virtual Machines).
 
     ![Válassza ki a biztonsági mentés típusát.](./media/backup-azure-delete-vault/azure-storage-selected.png)
 
-2. Ekkor megjelenik a kategória összes elemének listája. Kattintson a jobb gombbal a biztonsági mentési elem kiválasztásához. Attól függően, hogy a biztonsági másolati elem védett-e, vagy sem, a menü a **biztonsági mentés leállítása** vagy a **biztonsági másolat törlése** ablaktáblát jeleníti meg.
+2. Megjelenik a kategória összes elemének listája. Kattintson a jobb gombbal a biztonsági mentési elem kiválasztásához. Attól függően, hogy a biztonsági mentési elem védett-e vagy sem, a menüben megjelenik a **Biztonsági** mentés leállítása vagy a Biztonsági másolat adatainak **törlése** panel.
 
-    - Ha megjelenik a **biztonsági mentés leállítása** ablaktábla, válassza a **biztonsági másolat adatainak törlése** lehetőséget a legördülő menüből. Adja meg a biztonsági másolati elem nevét (ez a kis-és nagybetűk megkülönböztetése), majd válasszon ki egy okot a legördülő menüből. Adja meg a megjegyzéseit, ha van ilyen. Ezután válassza a **biztonsági mentés leállítása** lehetőséget.
+    - Ha **megjelenik a Biztonsági mentés leállítása** panel, válassza a Biztonsági másolatok adatainak törlése **lehetőséget** a legördülő menüből. Adja meg a biztonságimásolat-elem nevét (ez a mező megkülönbözteti a kis- és nagybetűket), majd válasszon egy okot a legördülő menüből. Ha van megjegyzése, adja meg a megjegyzéseit. Ezután válassza a **Biztonsági mentés leállítása lehetőséget.**
 
-        ![A biztonsági mentés leállítása panel.](./media/backup-azure-delete-vault/stop-backup-item.png)
+        ![A Biztonsági mentés leállítása panel.](./media/backup-azure-delete-vault/stop-backup-item.png)
 
-    - Ha megjelenik a **biztonsági mentési adatok törlése** ablaktábla, adja meg a biztonsági másolati elem nevét (ez a mező megkülönbözteti a kis-és nagybetűket), majd válasszon ki egy okot a legördülő menüből. Adja meg a megjegyzéseit, ha van ilyen. Ezután válassza a **Törlés** lehetőséget.
+    - Ha **megjelenik** a Biztonsági másolatok adatainak törlése panel, adja meg a biztonsági mentési elem nevét (ez a mező megkülönbözteti a kis- és nagybetűket), majd válasszon egy okot a legördülő menüből. Ha vannak, adja meg megjegyzéseit. Ezután válassza a **Törlés lehetőséget.**
 
-         ![A biztonsági mentési adattábla törlése panel.](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
+         ![A Biztonsági másolatok adatainak törlése panel.](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
-   Ez a beállítás törli az ütemezett biztonsági mentéseket, továbbá törli az igény szerinti biztonsági mentést is.
-3. Keresse meg az **értesítés** ikont: ![ az értesítés ikonja.](./media/backup-azure-delete-vault/messages.png) A folyamat befejeződése után a szolgáltatás a következő üzenetet jeleníti meg: a biztonsági mentés *leállítása és* a biztonsági másolati elemektörlése. *A művelet sikeresen befejeződött*.
-4. Válassza a **frissítés** lehetőséget a **biztonsági másolati elemek** menüben, hogy meggyőződjön arról, hogy a biztonsági mentési elem törölve lett.
+   Ez a beállítás törli az ütemezett és az igény szerinti biztonsági mentéseket is.
+3. Jelölje be **az Értesítés** ikont: Az ![ Értesítés ikont.](./media/backup-azure-delete-vault/messages.png) A folyamat befejezése után a szolgáltatás a következő üzenetet jeleníti meg: A biztonsági mentés leállítása és a biztonsági mentési adatok törlése a *következőre: "* Biztonsági mentési elem *"*. *A művelet sikeresen befejeződött.*
+4. Válassza **a Biztonsági** másolati elemek **menü** Frissítés elemét, hogy biztosan törölve legyen a biztonsági mentési elem.
 
-      ![A biztonsági másolati elemek törlése oldal.](./media/backup-azure-delete-vault/empty-items-list.png)
+      ![A Biztonsági másolati elemek törlése oldal.](./media/backup-azure-delete-vault/empty-items-list.png)
 
 ## <a name="delete-protected-items-on-premises"></a>Védett elemek törlése a helyszínen
 
-Először olvassa el az első **[lépések](#before-you-start)** szakaszt a függőségek és a tár törlési folyamatának megismeréséhez.
+Először olvassa el az **[Before you start](#before-you-start)** (Kezdés előtt) szakaszt a függőségek és a tároló törlési folyamatának a megértenie.
 
-1. A tároló irányítópultjának menüjében válassza a **biztonsági mentési infrastruktúra** elemet.
-2. A helyszíni forgatókönyvtől függően válasszon a következő lehetőségek közül:
+1. A tároló irányítópultjának menüjében válassza a Biztonsági **mentési infrastruktúra lehetőséget.**
+2. A helyszíni forgatókönyvtől függően válasszon az alábbi lehetőségek közül:
 
-      - A MARS területen válassza a **védett kiszolgálók** elemet, majd  **Azure Backup az ügynököt**. Ezután válassza ki a törölni kívánt kiszolgálót.
+      - A MARS mezőben válassza a **Védett kiszolgálók lehetőséget,** majd válassza **Azure Backup Agent lehetőséget.** Ezután válassza ki a törölni kívánt kiszolgálót.
 
-        ![A MARS lapon válassza ki a tárolót az irányítópult megnyitásához.](./media/backup-azure-delete-vault/identify-protected-servers.png)
+        ![A MARS számára válassza ki a tárolót az irányítópult megnyitásához.](./media/backup-azure-delete-vault/identify-protected-servers.png)
 
-      - A MABS vagy a DPM lapon válassza a **biztonsági mentési felügyeleti kiszolgálók** lehetőséget. Ezután válassza ki a törölni kívánt kiszolgálót.
+      - MABS vagy DPM esetén válassza a **Biztonsági mentés felügyeleti kiszolgálók lehetőséget.** Ezután válassza ki a törölni kívánt kiszolgálót.
 
-          ![A MABS vagy DPM válassza ki a tárolót az irányítópult megnyitásához.](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
+          ![A MABS vagy a DPM számára válassza ki a tárolót az irányítópult megnyitásához.](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
-3. A **Törlés** panel figyelmeztető üzenettel jelenik meg.
+3. **Megjelenik** a Törlés panel egy figyelmeztető üzenettel.
 
-     ![A törlés panel.](./media/backup-azure-delete-vault/delete-protected-server.png)
+     ![A Törlés panel.](./media/backup-azure-delete-vault/delete-protected-server.png)
 
-     Tekintse át a figyelmeztető üzenetet és az utasításokat a belefoglalt szövegben.
+     Tekintse át a figyelmeztető üzenetet és a hozzájárulás jelölőnégyzetében található utasításokat.
     > [!NOTE]
     >
-    >- Ha a védett kiszolgáló szinkronizálva van az Azure-szolgáltatásokkal és a biztonsági mentési elemekkel, akkor a beleegyezik jelölőnégyzet megjeleníti a függő biztonsági mentési elemek számát és a biztonsági másolati elemek megtekintésére szolgáló hivatkozást.
-    >- Ha a védett kiszolgáló nincs szinkronizálva az Azure-szolgáltatásokkal és a biztonsági mentési elemekkel, akkor a beleegyezett jelölőnégyzet csak a biztonsági mentési elemek számát jeleníti meg.
-    >- Ha nincsenek biztonsági másolati elemek, a beleegyezett jelölőnégyzettel a törlést kéri a rendszer.
+    >- Ha a védett kiszolgáló szinkronizálva van az Azure-szolgáltatásokkal, és léteznek biztonsági mentési elemek, a hozzájárulás jelölőnégyzetben megjelenik a függő biztonsági mentési elemek száma és a biztonsági mentési elemek megtekintésére mutató hivatkozás.
+    >- Ha a védett kiszolgáló nincs szinkronizálva az Azure-szolgáltatásokkal, és léteznek biztonsági mentési elemek, a hozzájárulás jelölőnégyzet csak a biztonsági mentési elemek számát jeleníti meg.
+    >- Ha nincsenek biztonsági másolati elemek, a jóváhagyás jelölőnégyzet törlést kér.
 
-4. Jelölje be a beleegyezett jelölőnégyzetet, majd válassza a **Törlés** lehetőséget.
+4. Jelölje be a jóváhagyás jelölőnégyzetet, majd válassza a **Törlés lehetőséget.**
 
-5. Győződjön meg arról, hogy az **értesítési** ikon ![ törli a biztonsági mentési fájlokat ](./media/backup-azure-delete-vault/messages.png) . A művelet befejeződése után a szolgáltatás megjeleníti az üzenetet: a biztonsági mentés leállítása és a biztonsági másolati *elemek törlésének törlése.* *A művelet sikeresen befejeződött*.
-6. Válassza a **frissítés** lehetőséget a **biztonsági mentési elemek** menüben, hogy biztosan törölje a biztonsági mentési elemet.
+5. Jelölje be az **Értesítés ikon** biztonsági mentési ![ adatok ](./media/backup-azure-delete-vault/messages.png) törlését. A művelet befejezése után a szolgáltatás a következő üzenetet jeleníti meg: Biztonsági mentési elem biztonsági mentésének leállítása és *biztonsági mentési adatok törlése.* *A művelet sikeresen befejeződött.*
+6. Válassza **a Biztonsági** másolati elemek menü Frissítés elemét, hogy biztosan törölve legyen a biztonsági mentési elem. 
 
 >[!NOTE]
->Ha töröl egy helyszíni védett elemet egy olyan portálról, amely függőségeket tartalmaz, a "kiszolgáló regisztrációjának törlése egy romboló művelet, és nem vonható vissza. A rendszer véglegesen törli az összes biztonsági mentési adatokat (az adatok visszaállításához szükséges helyreállítási pontokat) és a védett kiszolgálóhoz társított biztonsági mentési elemeket. "
+>Ha egy függőségeket tartalmazó portálról töröl egy helyszíni védett elemet, a következő figyelmeztetés jelenik meg: "A kiszolgáló regisztrációjának törlése kioltó művelet, és nem vonható vissza. Az összes biztonsági mentési adat (az adatok visszaállításához szükséges helyreállítási pontok) és a védett kiszolgálóhoz társított biztonsági mentési elemek véglegesen törlődnek."
 
 A folyamat befejezése után törölheti a biztonsági mentési elemeket a felügyeleti konzolról:
 
-- [Biztonsági másolati elemek törlése a MARS felügyeleti konzolról](#delete-backup-items-from-the-mars-management-console)
-- [Biztonsági másolati elemek törlése a MABS vagy a DPM felügyeleti konzolról](#delete-backup-items-from-the-mabs-or-dpm-management-console)
+- [Biztonsági mentési elemek törlése a MARS felügyeleti konzolról](#delete-backup-items-from-the-mars-management-console)
+- [Biztonságimásolat-elemek törlése a MABS vagy a DPM felügyeleti konzolról](#delete-backup-items-from-the-mabs-or-dpm-management-console)
 
-### <a name="delete-backup-items-from-the-mars-management-console"></a>Biztonsági másolati elemek törlése a MARS felügyeleti konzolról
+### <a name="delete-backup-items-from-the-mars-management-console"></a>Biztonsági mentési elemek törlése a MARS felügyeleti konzolról
 
 >[!NOTE]
->Ha a biztonsági mentés leállítása nélkül törölte vagy elvesztette a forrás gépet, a következő ütemezett biztonsági mentés sikertelen lesz. A régi helyreállítási pont a szabályzatnak megfelelően lejár, de az utolsó egyszeri helyreállítási pont mindig megmarad, amíg le nem állítja a biztonsági mentést, és nem törli az adatvesztést. Ezt a [szakasz](#delete-protected-items-on-premises)lépéseit követve teheti meg.
+>Ha a forrásgépet a biztonsági mentés leállítása nélkül törölte vagy elveszítette, a következő ütemezett biztonsági mentés sikertelen lesz. A régi helyreállítási pont a szabályzatnak megfelelően lejár, de az utolsó helyreállítási pontot a rendszer mindig megőrzi, amíg le nemállítja a biztonsági mentést, és nem törli az adatokat. Ezt a szakasz lépéseit követve [használhatja.](#delete-protected-items-on-premises)
 
-1. Nyissa meg a MARS felügyeleti konzolját, lépjen a **műveletek** ablaktáblára, és válassza a **biztonsági mentés időzítése** elemet.
-2. Az **ütemezett biztonsági mentés módosítása vagy leállítása** lapon válassza a **Leállítás a biztonsági mentési ütemezés használatával lehetőséget, és törölje az összes tárolt biztonsági** mentést. Ezután válassza a **tovább** lehetőséget.
+1. Nyissa meg a MARS felügyeleti konzolt, nyissa meg a **Műveletek panelt,** és válassza a **Biztonsági mentés ütemezése lehetőséget.**
+2. Az Ütemezett **biztonsági mentés módosítása** vagy leállítása lapon válassza a Stop using this backup schedule (Leállítás a biztonsági mentés ütemezésének használatával) lehetőséget, és törölje az összes tárolt biztonsági **mentést.** Ezután válassza a **Tovább lehetőséget.**
 
     ![Ütemezett biztonsági mentés módosítása vagy leállítása.](./media/backup-azure-delete-vault/modify-schedule-backup.png)
 
-3. Az **ütemezett biztonsági mentés leállítása** lapon válassza a **Befejezés** lehetőséget.
+3. Az Ütemezett **biztonsági mentés befejezése lapon válassza a** Befejezés **lehetőséget.**
 
-    ![Állítsa le az ütemezett biztonsági mentést.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
-4. A rendszer felszólítja, hogy adjon meg egy biztonsági PIN-kódot (személyes azonosító számot), amelyet manuálisan kell előkészítenie. Ehhez először jelentkezzen be a Azure Portalba.
-5. Nyissa meg **Recovery Services** tároló  >  **beállításai**  >  **tulajdonságokat**.
-6. A **biztonsági PIN-kód** területen válassza a **készítés** elemet. Másolja ezt a PIN-kódot. A PIN-kód csak öt percig érvényes.
-7. A felügyeleti konzolon illessze be a PIN-kódot, majd kattintson **az OK gombra**.
+    ![Állítson le egy ütemezett biztonsági mentést.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
+4. A rendszer kéri, hogy adja meg a biztonsági PIN-kódot (személyes azonosító számot), amelyet manuálisan kell létrehoznia. Ehhez először jelentkezzen be a Azure Portal.
+5. Ugrás a **Recovery Services-tároló**  >  **beállításainak**  >  **tulajdonságaira.**
+6. A **Biztonsági PIN-kód alatt** válassza a Generate **(Generálás) lehetőséget.** Másolja ki ezt a PIN-kódot. A PIN-kód csak öt percig érvényes.
+7. A felügyeleti konzolon illessze be a PIN-kódot, majd kattintson az **OK gombra.**
 
     ![Biztonsági PIN-kód létrehozása.](./media/backup-azure-delete-vault/security-pin.png)
 
-8. A **biztonsági mentési folyamat módosítása** lapon a következő üzenet jelenik meg: a *törölt biztonsági mentési adat 14 napig megmarad. Ez idő után véglegesen törlődik a biztonsági mentési adatvesztés.*  
+8. A Biztonsági **mentés folyamatának** módosítása lapon a következő üzenet jelenik meg: A törölt biztonsági mentési adatok *14 napig lesznek megőrizve. Ezt követően a biztonsági mentési adatok véglegesen törlődnek.*  
 
     ![Törölje a biztonsági mentési infrastruktúrát.](./media/backup-azure-delete-vault/deleted-backup-data.png)
 
-A helyszíni biztonsági mentési elemek törlését követően kövesse a portál következő lépéseit.
+A helyszíni biztonsági mentési elemek törlését követően kövesse a következő lépéseket a portálon.
 
-### <a name="delete-backup-items-from-the-mabs-or-dpm-management-console"></a>Biztonsági másolati elemek törlése a MABS vagy a DPM felügyeleti konzolról
+### <a name="delete-backup-items-from-the-mabs-or-dpm-management-console"></a>Biztonsági másolat elemeinek törlése a MABS vagy a DPM felügyeleti konzolról
 
 >[!NOTE]
->Ha a biztonsági mentés leállítása nélkül törölte vagy elvesztette a forrás gépet, a következő ütemezett biztonsági mentés sikertelen lesz. A régi helyreállítási pont a szabályzatnak megfelelően lejár, de az utolsó egyszeri helyreállítási pont mindig megmarad, amíg le nem állítja a biztonsági mentést, és nem törli az adatvesztést. Ezt a [szakasz](#delete-protected-items-on-premises)lépéseit követve teheti meg.
+>Ha a forrásgépet a biztonsági mentés leállítása nélkül törölte vagy elveszítette, a következő ütemezett biztonsági mentés sikertelen lesz. A régi helyreállítási pont a szabályzatnak megfelelően lejár, de az utolsó helyreállítási pontot mindig megőrzi a rendszer, amíg le nemállítja a biztonsági mentést, és nem törli az adatokat. Ezt a szakasz lépéseit követve [használhatja.](#delete-protected-items-on-premises)
 
-A MABS vagy a DPM felügyeleti konzolról kétféleképpen törölhet biztonsági másolati elemeket.
+A biztonsági mentési elemek a MABS vagy a DPM felügyeleti konzolról való törlésére két módszerrel törölhetők.
 
 #### <a name="method-1"></a>1. módszer
 
-A védelem leállításához és a biztonsági másolatok állapotának törléséhez hajtsa végre a következő lépéseket:
+A védelem leállításhoz és a biztonsági mentési adatok törléséhez tegye a következőket:
 
-1. Nyissa meg a DPM Felügyeleti konzol, majd a navigációs sávon kattintson a **védelem** elemre.
-2. A Megjelenítés ablaktáblán válassza ki a védelmi csoport eltávolítani kívánt tagját. Kattintson a jobb gombbal a **csoporttagok védelmének leállítása** lehetőség kiválasztásához.
-3. A **védelem leállítása** párbeszédpanelen válassza a **védett adatok törlése** lehetőséget, majd jelölje be a **tárterület online törlése** jelölőnégyzetet. Ezután válassza a **védelem leállítása** lehetőséget.
+1. Nyissa meg DPM Felügyeleti konzol panelt, majd válassza a **navigációs sáv Védelem** beállítását.
+2. A megjelenítési panelen válassza ki az eltávolítani kívánt védelmicsoport-tagot. Kattintson a jobb gombbal a **Csoporttagok védelmének leállítása lehetőség kiválasztásához.**
+3. A Védelem **leállítása** párbeszédpanelen válassza a **Védett** adatok törlése lehetőséget, majd jelölje be a Tároló online törlése **jelölőnégyzetet.** Ezután válassza a **Védelem leállítása lehetőséget.**
 
-    ![Válassza a védett adatok törlése lehetőséget a védelem leállítása ablaktáblán.](./media/backup-azure-delete-vault/delete-storage-online.png)
+    ![A Védelem leállítása panelen válassza a Védett adatok törlése lehetőséget.](./media/backup-azure-delete-vault/delete-storage-online.png)
 
-    A védett tag állapota a *rendelkezésre álló inaktív replikára* módosul.
+    A védett tag állapota Inaktív *replikára változik.*
 
-4. Kattintson a jobb gombbal az inaktív védelmi csoportra, és válassza az **inaktív védelem eltávolítása** lehetőséget.
+4. Kattintson a jobb gombbal az inaktív védelmi csoportra, és válassza az **Inaktív védelem eltávolítása lehetőséget.**
 
     ![Inaktív védelem eltávolítása.](./media/backup-azure-delete-vault/remove-inactive-protection.png)
 
-5. Az **inaktív védelem törlése** ablakban jelölje be az **online tárterület törlése** jelölőnégyzetet, majd kattintson az **OK gombra**.
+5. Az Inaktív **védelem törlése ablakban** jelölje be az Online **tároló** törlése jelölőnégyzetet, majd kattintson az **OK gombra.**
 
-    ![Online tárterület törlése.](./media/backup-azure-delete-vault/remove-replica-on-disk-and-online.png)
+    ![Online tároló törlése.](./media/backup-azure-delete-vault/remove-replica-on-disk-and-online.png)
 
 #### <a name="method-2"></a>2. módszer
 
-Nyissa meg a **MABS-kezelő** vagy a **DPM felügyeleti** konzolt. Az **adatvédelmi módszer kiválasztása** területen törölje a jelet a szeretnék  **online védelem** jelölőnégyzetből.
+Nyissa meg a **MABS felügyeleti konzolt** vagy **a DPM felügyeleti konzolt.** A **Select data protection method (Adatvédelmi módszer kiválasztása)** alatt törölje a I want online protection  **(Online védelemre van szükségem)** jelölőnégyzet jelölését.
 
   ![Válassza ki az adatvédelmi módszert.](./media/backup-azure-delete-vault/data-protection-method.png)
 
-A helyszíni biztonsági mentési elemek törlését követően kövesse a portál következő lépéseit.
+A helyszíni biztonsági mentési elemek törlése után kövesse a portálon a következő lépéseket.
 
 ## <a name="delete-the-recovery-services-vault"></a>A helyreállítási tár törlése
 
-1. Ha az összes függőség el lett távolítva, görgessen a tároló menü **Essentials (alapvető** erőforrások) paneljére.
-2. Ellenőrizze, hogy nincsenek-e biztonsági másolati elemek, biztonságimásolat-kezelési kiszolgálók vagy replikált elemek felsorolva. Ha az elemek továbbra is megjelennek a tárolóban, [olvassa el az](#before-you-start) előkészületek című szakaszt.
+1. Ha az összes függőség el lett távolítva, görgessen a tároló **menüjének Alapvető** szolgáltatások paneljére.
+2. Ellenőrizze, hogy nincsenek-e felsorolva biztonsági mentési elemek, biztonsági mentési felügyeleti kiszolgálók vagy replikált elemek. Ha az elemek továbbra is megjelennek a tárolóban, tekintse meg [az Indítás előtt szakaszt.](#before-you-start)
 
-3. Ha nincs több elem a tárolóban, válassza a **Törlés** lehetőséget a tároló irányítópultján.
+3. Ha nincs több elem a tárolóban, válassza a **Törlés lehetőséget** a tároló irányítópultján.
 
-    ![Válassza a Törlés lehetőséget a tároló irányítópultján.](./media/backup-azure-delete-vault/vault-ready-to-delete.png)
+    ![A tároló irányítópultján válassza a Törlés lehetőséget.](./media/backup-azure-delete-vault/vault-ready-to-delete.png)
 
-4. Válassza az **Igen** lehetőséget annak ellenőrzéséhez, hogy törölni kívánja-e a tárolót. A tár törölve. A portál visszatér az **új** szolgáltatás menüjébe.
+4. Válassza **az Igen** lehetőséget annak ellenőrzéséhez, hogy törölni szeretné-e a tárolót. A tároló törlődik. A portál visszatér az Új **szolgáltatás menüre.**
 
 ## <a name="delete-the-recovery-services-vault-by-using-powershell"></a>A Recovery Services-tároló törlése a PowerShell használatával
 
-Először olvassa el az első **[lépések](#before-you-start)** szakaszt a függőségek és a tár törlési folyamatának megismeréséhez.
+Először olvassa el az **[Before you start](#before-you-start)** (Kezdés előtt) szakaszt a függőségek és a tároló törlési folyamatának a megértenie.
 
-A védelem leállításához és a biztonsági másolatok törléséhez:
+A védelem leállítása és a biztonsági mentési adatok törlése:
 
-- Ha az SQL-t használja az Azure virtuális gépek biztonsági mentése és az automatikus védelem engedélyezése SQL-példányok esetén, először tiltsa le az automatikus védelmet.
+- Ha SQL-t használ az Azure-beli virtuális gépek biztonsági mentésében, és engedélyezte az automatikus védelmet az SQL-példányokhoz, először tiltsa le az automatikus védelmet.
 
     ```PowerShell
         Disable-AzRecoveryServicesBackupAutoProtection
@@ -212,9 +212,9 @@ A védelem leállításához és a biztonsági másolatok törléséhez:
            [<CommonParameters>]
     ```
 
-  [További információ](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection) a Azure Backup-védelemmel ellátott elemek védelmének letiltásáról.
+  [További információ](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection) a védett elemek védelmének Azure Backup letiltásához.
 
-- Állítsa le a védelmet és töröljön adatokat a felhőben található összes biztonsági mentéssel védett elemhez (például: IaaS VM, Azure file share stb.):
+- Állítsa le a védelmet és törölje a felhőben lévő összes biztonsági mentéssel védett elem adatait (például: IaaS virtuális gép, Azure-fájlmegosztás és így tovább):
 
     ```PowerShell
        Disable-AzRecoveryServicesBackupProtection
@@ -228,32 +228,32 @@ A védelem leállításához és a biztonsági másolatok törléséhez:
        [<CommonParameters>]
     ```
 
-    [További információ](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection)   tudnivalók a biztonsági másolattal védett elemek védelmének letiltásáról.
+    [További információ](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection)   a biztonsági mentéssel védett elemek védelmének letiltása.
 
-- A Azure Backup ügynök (MARS) használatával védett helyszíni fájlok és mappák Azure-ba történő biztonsági mentését a következő PowerShell-paranccsal törölheti az egyes MARS PowerShell-modulokból származó biztonsági másolatok adatainak törléséhez:
-
-    ```powershell
-    Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
-    ```
-
-    Ezt követően a következő üzenet jelenik meg:
-
-    *Microsoft Azure Backup biztosan el szeretné távolítani ezt a biztonsági mentési szabályzatot? A törölt biztonsági mentési adat 14 napig őrzi meg a rendszer. Ez idő után véglegesen törlődik a biztonsági mentési adatvesztés. <br/> [Y] igen [A] igen az összes [N] nem [L] nem az összes [S] felfüggesztése [?] Súgó (az alapértelmezett érték az "Y"):*
-
-- A MABS (Microsoft Azure Backup Server) vagy a DPM (System Center Data Protection Manager) által az Azure-ba védett helyszíni gépeken a következő paranccsal törölheti az Azure-ban tárolt biztonsági másolati adataikat.
+- Az Azure-ba Azure Backup agent (MARS) használatával védett helyszíni fájlok és mappák esetén a következő PowerShell-paranccsal törölheti az egyes MARS PowerShell-modulokból származó biztonságimentett adatokat:
 
     ```powershell
     Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
     ```
 
-    Ezt követően a következő üzenet jelenik meg:
+    Ezt követően megjelenik a következő üzenet:
 
-   *Microsoft Azure Backup* Biztosan el kívánja távolítani ezt a biztonsági mentési szabályzatot? A törölt biztonsági mentési adat 14 napig őrzi meg a rendszer. Ez idő leteltével a biztonsági mentés adatai véglegesen törlődnek. <br/>
-   [Y] igen [A] igen az összes [N] nem [L] nem az összes [S] felfüggesztése [?] Súgó (az alapértelmezett érték "Y"):*
+    *Microsoft Azure Backup Biztosan eltávolítja ezt a biztonsági mentési szabályzatot? A törölt biztonsági mentési adatokat a rendszer 14 napig őrzi meg. Ezt követően a biztonsági mentési adatok véglegesen törlődnek. <br/> [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Súgó (az alapértelmezett érték az "Y":*
 
-A biztonsági másolatok törlése után törölje a helyszíni tárolók és a felügyeleti kiszolgálók regisztrációját.
+- A MABS (Microsoft Azure Backup Server) vagy a DPM (System Center Data Protection Manager) használatával az Azure-ba védett helyszíni gépek esetén a következő paranccsal törölheti a biztonságimentett adatokat az Azure-ban.
 
-- A Azure Backup Agent (MARS) használatával védett helyszíni fájlok és mappák az Azure-ba történő biztonsági mentéssel:
+    ```powershell
+    Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
+    ```
+
+    Ezt követően megjelenik a következő üzenet:
+
+   *Microsoft Azure Backup* Biztosan eltávolítja ezt a biztonsági mentési szabályzatot? A törölt biztonsági mentési adatokat a rendszer 14 napig őrzi meg. Ez idő leteltével a biztonsági mentés adatai véglegesen törlődnek. <br/>
+   [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Súgó (az alapértelmezett érték az "Y"):*
+
+A biztonságimentett adatok törlése után törölje a helyszíni tárolók és felügyeleti kiszolgálók regisztrációját.
+
+- Az Azure-ba biztonsági Azure Backup marsi ügynökkel (MARS) védett helyszíni fájlok és mappák esetén:
 
     ```PowerShell
     Unregister-AzRecoveryServicesBackupContainer
@@ -266,9 +266,9 @@ A biztonsági másolatok törlése után törölje a helyszíni tárolók és a 
               [<CommonParameters>]
     ```
 
-    [További](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer) információ a Windows Server vagy más tárolók a tárból való regisztrációjának törléséről.
+    [További információ](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer) a Windows Server vagy más tárolók tárolóból való regisztrációjának a tárolóból való regisztrációjának a regisztrációról.
 
-- A MABS (Microsoft Azure Backup-kiszolgáló) vagy az Azure-ba (System Center adatvédelem kezelése) védett helyszíni gépek esetén:
+- MABS (Microsoft Azure Backup Server) vagy DPM – Azure (System Center Data Protection Kezelés) használatával védett helyszíni gépek esetén:
 
     ```PowerShell
         Unregister-AzRecoveryServicesBackupManagementServer
@@ -281,9 +281,9 @@ A biztonsági másolatok törlése után törölje a helyszíni tárolók és a 
           [<CommonParameters>]
     ```
 
-    [További](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer) információ a biztonságimásolat-kezelési tárolók a tárból való regisztrációjának törléséről.
+    [További információ](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer) a Backup felügyeleti tárolónak a tárolóból való regisztrációját megszűkülő tárolóról.
 
-Miután véglegesen törölte a biztonsági mentést, és nem regisztrálja az összes tárolót, folytassa a tár törlésével.
+Miután véglegesen törölte a biztonságimentett adatokat, és törölte az összes tároló regisztrációját, lépjen tovább a tároló törlésére.
 
 Recovery Services-tároló törlése:
 
@@ -296,18 +296,18 @@ Recovery Services-tároló törlése:
       [<CommonParameters>]
    ```
 
-[További](/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault) információ a Recovery Services-tároló törléséről.
+[További információ](/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault) a Recovery Services-tárolók törléséről.
 
 ## <a name="delete-the-recovery-services-vault-by-using-cli"></a>A Recovery Services-tároló törlése a CLI használatával
 
-Először olvassa el az első **[lépések](#before-you-start)** szakaszt a függőségek és a tár törlési folyamatának megismeréséhez.
+Először olvassa el az **[Indítás](#before-you-start)** előtt szakaszt, hogy megértse a függőségeket és a tárolótörlési folyamatot.
 
 > [!NOTE]
-> Jelenleg Azure Backup CLI csak az Azure-beli virtuális gépek biztonsági másolatainak kezelését támogatja, így a tároló csak akkor törölhető, ha a tár Azure-beli virtuális gépek biztonsági másolatait tartalmazza. Azure Backup CLI használatával nem törölheti a tárolót, ha a tároló az Azure-beli virtuális gépektől eltérő típusú biztonsági másolati elemeket tartalmaz.
+> Jelenleg a Azure Backup parancssori felület csak az Azure-beli virtuális gépek biztonsági másolatai felügyeletét támogatja, ezért a tároló törlésére szolgáló alábbi parancs csak akkor működik, ha a tároló Azure-beli virtuális gépek biztonsági másolatokat tartalmaz. Nem törölhet tárolót a cli Azure Backup használatával, ha a tároló az Azure-beli virtuális gépeken kívül bármilyen típusú biztonsági mentési elemet tartalmaz.
 
 A meglévő Recovery Services-tároló törléséhez hajtsa végre a következő lépéseket:
 
-- A védelem leállítása és a biztonsági másolatok törlése
+- A védelem leállítása és a biztonsági mentési adatok törlése
 
     ```azurecli
     az backup protection disable --container-name
@@ -320,9 +320,9 @@ A meglévő Recovery Services-tároló törléséhez hajtsa végre a következő
                              [--yes]
     ```
 
-    További információkért tekintse meg ezt a [cikket](/cli/azure/backup/protection#az-backup-protection-disable).
+    További információt ebben a cikkben [talál.](/cli/azure/backup/protection#az_backup_protection_disable)
 
-- Meglévő Recovery Services tároló törlése:
+- Meglévő Recovery Services-tároló törlése:
 
     ```azurecli
     az backup vault delete [--force]
@@ -333,44 +333,44 @@ A meglévő Recovery Services-tároló törléséhez hajtsa végre a következő
                        [--yes]
     ```
 
-    További információkért tekintse meg ezt a [cikket](/cli/azure/backup/vault)
+    További információért tekintse meg ezt a [cikket](/cli/azure/backup/vault)
 
-## <a name="delete-the-recovery-services-vault-by-using-azure-resource-manager"></a>Az Recovery Services-tároló törlése Azure Resource Manager használatával
+## <a name="delete-the-recovery-services-vault-by-using-azure-resource-manager"></a>Törölje a Recovery Services-tárolót a Azure Resource Manager
 
-Ez a Recovery Services-tároló törlésének lehetősége csak akkor javasolt, ha az összes függőség el lett távolítva, és a tár *törlési hibája* továbbra is bekerül. Próbálja ki a következő tippek bármelyikét vagy mindegyikét:
+A Recovery Services-tároló törlésének lehetősége csak akkor ajánlott, ha az összes függőség el lett távolítva, és továbbra is a tároló törlési *hibája jelenik meg.* Próbálja ki az alábbi tippek bármelyikét vagy mindegyikét:
 
-- A tár menü **Essentials** paneljén ellenőrizze, hogy nincsenek-e biztonsági másolati elemek, biztonságimásolat-kezelési kiszolgálók vagy replikált elemek felsorolva. Ha vannak biztonsági másolati elemek, tekintse meg a [kezdés előtti](#before-you-start) szakaszt.
-- Próbálja meg újból [törölni a tárat a portálról](#delete-the-recovery-services-vault) .
-- Ha az összes függőség el lett távolítva, és még mindig beolvassa a tár *törlési hibáját*, a ARMClient eszközzel hajtsa végre a következő lépéseket (a Megjegyzés után).
+- A tároló **menüjének Alapvető** szolgáltatások paneljéből ellenőrizze, hogy nincsenek-e felsorolva biztonsági mentési elemek, biztonsági mentési felügyeleti kiszolgálók vagy replikált elemek. Ha vannak biztonsági másolati elemek, tekintse meg az [Indítás előtt szakaszt.](#before-you-start)
+- Próbálja [meg ismét törölni a tárolót a portálról.](#delete-the-recovery-services-vault)
+- Ha az összes függőség el lett távolítva, és továbbra is a tároló törlési hibája jelenik *meg,* használja az ARMClient eszközt a következő lépések végrehajtásához (a megjegyzés után).
 
-1. A chocolatey letöltéséhez és telepítéséhez nyissa meg a [chocolatey.org](https://chocolatey.org/) . Ezután telepítse a ARMClient a következő parancs futtatásával:
+1. A Chocolatey [chocolatey.org](https://chocolatey.org/) és telepítése a fájlban. Ezután telepítse az ARMClientet a következő parancs futtatásával:
 
    `choco install armclient --source=https://chocolatey.org/api/v2/`
 2. Jelentkezzen be az Azure-fiókjába, majd futtassa a következő parancsot:
 
     `ARMClient.exe login [environment name]`
 
-3. A Azure Portal Gyűjtse össze a törölni kívánt tároló előfizetés-AZONOSÍTÓját és erőforráscsoport-nevét.
+3. A Azure Portal gyűjtse össze a törölni kívánt tároló előfizetés-azonosítóját és erőforráscsoport-nevét.
 
-További információ a ARMClient parancsról: [ARMCLIENT readme](https://github.com/projectkudu/ARMClient/blob/master/README.md).
+További információ az ARMClient parancsról: [ARMClient README.](https://github.com/projectkudu/ARMClient/blob/master/README.md)
 
-### <a name="use-the-azure-resource-manager-client-to-delete-a-recovery-services-vault"></a>Recovery Services-tároló törlése a Azure Resource Manager ügyfél használatával
+### <a name="use-the-azure-resource-manager-client-to-delete-a-recovery-services-vault"></a>Recovery Services Azure Resource Manager-tároló törlése a Azure Resource Manager-ügyfél használatával
 
-1. Futtassa az alábbi parancsot az előfizetés-azonosító, az erőforráscsoport neve és a tár neve használatával. Ha nem rendelkezik függőségekkel, a tár törlődik a következő parancs futtatásakor:
+1. Futtassa a következő parancsot az előfizetés-azonosító, az erőforráscsoport neve és a tároló neve használatával. Ha nincsenek függőségei, a következő parancs futtatásakor a rendszer törli a tárolót:
 
    ```azurepowershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<Recovery Services vault name>?api-version=2015-03-15
    ```
 
-2. Ha a tároló nem üres, a következő hibaüzenet jelenik meg: a tár *nem törölhető, mert a tárban található meglévő erőforrások.* Egy védett elem vagy tároló egy tárolón belüli eltávolításához futtassa a következő parancsot:
+2. Ha a tároló nem üres, a következő hibaüzenet jelenik meg: A tároló nem törölhető, mert a tárolóban meglévő *erőforrások vannak.* Egy tárolóban található védett elem vagy tároló eltávolításához futtassa a következő parancsot:
 
    ```azurepowershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<Recovery Services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
 
-3. Győződjön meg arról, hogy a Azure Portal törli a tárolót.
+3. A Azure Portal ellenőrizze, hogy a tároló törölve lett-e.
 
 ## <a name="next-steps"></a>Következő lépések
 
-[További tudnivalók a Recovery Services](backup-azure-recovery-services-vault-overview.md) 
- -tárolók Tudnivalók [a Recovery Services-tárolók monitorozásáról és kezeléséről](backup-azure-manage-windows-server.md)
+[Tudnivalók a Recovery Services-tárolókról](backup-azure-recovery-services-vault-overview.md) 
+ [Tudnivalók a Recovery Services-tárolók figyeléséről és kezeléséről](backup-azure-manage-windows-server.md)

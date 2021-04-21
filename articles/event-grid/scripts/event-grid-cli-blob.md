@@ -1,16 +1,16 @@
 ---
 title: Azure CLI-példaszkript – Feliratkozás Blob Storage-fiókra | Microsoft Docs
-description: Ez a cikk egy Azure-beli Blob Storage-fiók eseményeire való előfizetést bemutató minta Azure CLI-parancsfájlt tartalmaz.
+description: Ez a cikk egy Azure CLI-példaszkprogramot mutat be, amely bemutatja, hogyan iratkhat fel egy Azure Blob Storage-fiók eseményeire.
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/08/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b7648a8ef71b151c94fac4fa28cfa8eafa239c68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab0995a49f944344b6914bd0e51f1d437dd28c69
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87494145"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766746"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-azure-cli"></a>Feliratkozás egy Blob Storage-fiók eseményeire az Azure CLI-vel
 
@@ -30,7 +30,7 @@ A szkript a következő parancsot használja az esemény-előfizetés létrehoz�
 
 | Parancs | Jegyzetek |
 |---|---|
-| [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | Event Grid-előfizetés létrehozása. |
+| [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create) | Event Grid-előfizetés létrehozása. |
 | [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) – bővítmény verziója | Event Grid-előfizetés létrehozása. |
 
 ## <a name="next-steps"></a>Következő lépések
