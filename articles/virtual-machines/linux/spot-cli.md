@@ -1,6 +1,6 @@
 ---
-title: Az Azure spot Virtual Machines üzembe helyezése a CLI használatával
-description: Megtudhatja, hogyan használhatja a CLI-t az Azure spot Virtual Machines üzembe helyezéséhez a költségek megtakarítása érdekében.
+title: Az Azure Spot-alkalmazások üzembe helyezése a CLI Virtual Machines
+description: Megtudhatja, hogyan használhatja a CLI-t az Azure Spot Virtual Machines a költségek csökkentése érdekében.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: spot
@@ -9,37 +9,37 @@ ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 90ad35757834c14abdffb017ff31b3296074ca24
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8e8bdaa7a812d8c7accfea59b58b75a58d50e21e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802437"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789608"
 ---
-# <a name="deploy-azure-spot-virtual-machines-using-the-azure-cli"></a>Az Azure spot Virtual Machines üzembe helyezése az Azure CLI használatával
+# <a name="deploy-azure-spot-virtual-machines-using-the-azure-cli"></a>Azure Spot-Virtual Machines üzembe helyezése az Azure CLI használatával
 
-Az [Azure Spot Virtual Machines](../spot-vms.md) használatával jelentős költségmegtakarítás mellett kihasználhatja a fel nem használt kapacitás előnyeit. Az Azure-infrastruktúra minden olyan időpontban kizárja az Azure spot Virtual Machinest, amikor az Azure-nak szüksége van a kapacitásra. Ezért az Azure spot Virtual Machines nagyszerűek olyan munkaterhelésekhez, amelyek képesek kezelni a megszakításokat, például a kötegelt feldolgozási feladatokat, a fejlesztési és tesztelési környezeteket, a nagy számítási feladatokat és egyebeket.
+Az [Azure Spot Virtual Machines](../spot-vms.md) lehetővé teszi, hogy jelentős költségmegtakarítás mellett kihasználja a kihasználatlan kapacitásunkat. Amikor az Azure-nak bármikor szüksége van a kapacitásra, az Azure-infrastruktúra ki fogja Virtual Machines. Ezért az Azure Spot Virtual Machines olyan számítási feladatokhoz hasznosak, amelyek kezelni tudnak olyan megszakításokat, mint a kötegelt feldolgozási feladatok, a fejlesztési/tesztelési környezetek, a nagy számítási feladatok stb.
 
-Az Azure spot Virtual Machines díjszabása a régió és az SKU alapján változó. További információ: virtuális gépek díjszabása [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) és [Windows rendszerekhez](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
+Az Azure Spot Virtual Machines díjszabása régió és termékváltozat alapján változó. További információ: Virtuális gépek díjszabása [Linux és](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) [Windows rendszeren.](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 
 
-Lehetősége van arra, hogy a virtuális gép számára óránként fizetendő maximális árat adja meg. Az Azure-beli helyszíni virtuális gépek maximális díja az USA dollárban (USD) állítható be, legfeljebb 5 tizedesjegyet használva. Az érték például a `0.98765` maximális díj $0,98765 USD/óra. Ha a maximális árat állítja be `-1` , a virtuális gép ára nem kerül kizárásra. A virtuális gép ára lesz az Azure spot virtuális gép aktuális díja, vagy egy standard VM díja, ami még nem kevesebb, amíg rendelkezésre áll a kapacitás és a kvóta. A maximális ár beállításával kapcsolatos további információkért lásd: [Azure Spot Virtual Machines – díjszabás](../spot-vms.md#pricing).
+Beállíthatja azt a maximális árat, amit óránként hajlandó fizetni a virtuális gépért. Az Azure Spot virtuális gépek maximális ára amerikai dollárban (USD) beállítható legfeljebb 5 tizedesjegy használatával. Az érték lehet például `0.98765` egy 0,98765 USD/óra maximális ára. Ha a maximális árat a következőre adja meg: , a virtuális gépet a rendszer nem fogja az ár alapján `-1` kiszűkülni. A virtuális gép ára az Azure Spot virtuális gép aktuális ára vagy egy standard virtuális gép ára lesz, amely a kapacitás és a kvóta rendelkezésre áll. A maximális ár beállításával kapcsolatos további információkért lásd: [Azure Spot Virtual Machines – Díjszabás.](../spot-vms.md#pricing)
 
-Az Azure-beli virtuális gépek Azure CLI-vel történő létrehozásának folyamata megegyezik a rövid útmutató [cikkben](./quick-create-cli.md)ismertetett eljárással. Csak adja hozzá a "--priority spot" paramétert, állítsa be a `--eviction-policy` (z) felszabadítását (ez az alapértelmezett érték) `Delete` , és adja meg a maximális árat vagy a értéket `-1` . 
+Az Azure-beli kihasznált virtuális gépek Azure CLI-t használó létrehozási folyamata megegyezik a rövid [útmutatóban található cikkel.](./quick-create-cli.md) Egyszerűen adja hozzá a "--priority Spot" paramétert, állítsa a et Felszabadítás (ez az alapértelmezett beállítás) vagy a (alapértelmezett érték) értékre, és adja meg a maximális árat vagy `--eviction-policy` `Delete` a `-1` értéket. 
 
 
 ## <a name="install-azure-cli"></a>Telepítse az Azure CLI-t
 
-Az Azure spot Virtual Machines létrehozásához az Azure CLI 2.0.74 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következő parancsot: **az --version**. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
+Azure Spot-Virtual Machines az Azure CLI 2.0.74-es vagy újabb verziójával kell futnia. A verzió megkereséséhez futtassa a következő parancsot: **az --version**. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
 
-Jelentkezzen be az Azure-ba az [az login](/cli/azure/reference-index#az-login)használatával.
+Jelentkezzen be az Azure-ba [az az login használatával.](/cli/azure/reference-index#az_login)
 
 ```azurecli-interactive
 az login
 ```
 
-## <a name="create-an-azure-spot-virtual-machine"></a>Azure-beli direktszínű virtuális gép létrehozása
+## <a name="create-an-azure-spot-virtual-machine"></a>Azure-beli spot virtuális gép létrehozása
 
-Ebből a példából megtudhatja, hogyan helyezhet üzembe egy olyan linuxos Azure-beli virtuális gépet, amelyet a díjszabás alapján nem fog kizárni. A kizárási szabályzat úgy van beállítva, hogy felszabadítsa a virtuális gépet, hogy később újra lehessen indítani. Ha törölni szeretné a virtuális gépet és a mögöttes lemezt a virtuális gép kizárásakor, állítsa a következőre: `--eviction-policy` `Delete` .
+Ez a példa bemutatja, hogyan helyezhet üzembe egy Olyan Linux rendszerű azure-beli virtuális gépet, amely nem lesz az ár alapján lesz kiszűkülve. A kiépítési szabályzat úgy van beállítva, hogy felszabadítsa a virtuális gépet, hogy később újraindítható legyen. Ha törölni szeretné a virtuális gépet és a mögöttes lemezt a virtuális gép kieséskor, állítsa a `--eviction-policy` következőre: `Delete` .
 
 ```azurecli-interactive
 az group create -n mySpotGroup -l eastus
@@ -56,7 +56,7 @@ az vm create \
 
 
 
-A virtuális gép létrehozása után a lekérdezéssel megtekintheti az erőforráscsoport összes virtuális gépe esetében a maximális számlázási árat.
+A virtuális gép létrehozása után lekérdezéssel láthatja az erőforráscsoportban található összes virtuális gép maximális számlázási árát.
 
 ```azurecli-interactive
 az vm list \
@@ -65,60 +65,60 @@ az vm list \
    --output table
 ```
 
-## <a name="simulate-an-eviction"></a>Kizárás szimulálása
+## <a name="simulate-an-eviction"></a>Kiesés szimulálása
 
-A REST, a PowerShell vagy a CLI használatával szimulálhatja az Azure-beli direktszínű virtuális gépek kizárását annak teszteléséhez, hogy az alkalmazás milyen jól reagáljon a hirtelen kizárásra.
+A REST, a PowerShell vagy a parancssori felület használatával szimulálhatja egy Azure-beli kihasznált virtuális gép kiesését annak tesztelésére, hogy az alkalmazás milyen jól reagál a hirtelen kiesésre.
 
-A legtöbb esetben érdemes a REST API [Virtual Machines szimulálni a kizárást](/rest/api/compute/virtualmachines/simulateeviction) , hogy segítsen az alkalmazások automatizált tesztelésében. A REST esetében `Response Code: 204` az azt jelenti, hogy a szimulált kizárás sikeres volt. A szimulált kizárásokat kombinálhatja az [ütemezett esemény szolgáltatással](scheduled-events.md), így automatizálhatja, hogy az alkalmazás hogyan reagáljon a virtuális gép kizárásakor.
+A legtöbb esetben a következőt kell használnia: REST API [Virtual Machines –](/rest/api/compute/virtualmachines/simulateeviction) A kilakoltatás szimulálása az alkalmazások automatizált teszteléséhez. A REST esetén a `Response Code: 204` azt jelenti, hogy a szimulált kiesés sikeres volt. A szimulált kieséseket kombinálhatja az ütemezett eseményszolgáltatással, így automatizálhatja, hogy az alkalmazás hogyan reagáljon a virtuális gép kiestekor. [](scheduled-events.md)
 
-Az ütemezett események működés közbeni megtekintéséhez tekintse meg az [Azure Friday – azure Scheduled Events használatával készítse elő a virtuális gépek karbantartását](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance).
+Az ütemezett eseményeket az Azure Friday – Az Azure Scheduled Events virtuális gépek karbantartásának előkészítésével kapcsolatos [videóban láthatja.](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance)
 
 
 ### <a name="quick-test"></a>Gyorsteszt
 
-Ha egy gyors teszttel bemutatjuk, hogyan fog működni egy szimulált kizárás, lássuk végig az ütemezett esemény szolgáltatás lekérdezését, hogy meglássuk, mi úgy néz ki, mint amikor a kizárást az Azure CLI használatával szimulálja.
+A szimulált kiesés viselkedésének gyors teszteléséhez nézzük végig az ütemezett eseményszolgáltatás lekérdezésén, és nézzük meg, hogyan néz ki, ha az Azure CLI használatával szimulál egy kiépítést.
 
-Az ütemezett esemény szolgáltatás engedélyezve van a szolgáltatáshoz, amikor az első alkalommal kérelmet küld az eseményekre. 
+Az ütemezett eseményszolgáltatás engedélyezve van a szolgáltatáshoz, amikor először kér eseményeket. 
 
-Távolról a virtuális gépre, majd nyisson meg egy parancssort. 
+Távolról nyissa meg a virtuális gépet, majd nyisson meg egy parancssort. 
 
-A virtuális gépen a parancssorba írja be a következőt:
+A virtuális gép parancssorában írja be a következőt:
 
 ```
 curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
 ```
 
-Ez az első válasz akár 2 percet is igénybe vehet. Mostantól szinte azonnal meg kell jelennie a kimenetnek.
+Ez az első válasz akár 2 percet is igénybe vehet. Ettől a képernyőtől szinte azonnal meg kell jelenni a kimenet.
 
-Egy olyan számítógépről, amelyen telepítve van az Azure CLI (például a helyi gép), szimuláljon egy kizárást az [az VM szimulálása-kilakoltatás](https://docs.microsoft.com/cli/azure/vm#az_vm_simulate_eviction)használatával. Cserélje le az erőforráscsoport nevét és a virtuális gép nevét a saját nevére. 
+Egy olyan számítógépről, amelyre telepítve van az Azure CLI (a helyi gépéhez hasonló), szimulálja a kiesést [az az vm simulate-eviction használatával.](https://docs.microsoft.com/cli/azure/vm#az_vm_simulate_eviction) Cserélje le az erőforráscsoport és a virtuális gép nevét a saját nevére. 
 
 ```azurecli-interactive
 az vm simulate-eviction --resource-group mySpotRG --name mySpot
 ```
 
-Ha a kérés sikeresen létrejött, a válasz kimenete lesz `Status: Succeeded` .
+A válasz kimenete akkor `Status: Succeeded` lesz, ha a kérés sikeresen le lett küldve.
 
-Lépjen vissza a helyszíni virtuális géphez való távoli kapcsolódásra, és ismételje meg a Scheduled Events-végpont lekérdezését. Ismételje meg a következő parancsot, amíg olyan kimenetet kap, amely további információkat tartalmaz:
+Gyorsan visszamehet a távoli kapcsolatra a spot virtuális géphez, és újra lekérdezheti Scheduled Events végpontot. Ismételje meg a következő parancsot, amíg meg nem kap egy kimenetet, amely további információkat tartalmaz:
 
 ```
 curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
 ```
 
-Ha az ütemezett esemény szolgáltatás lekéri a kizárási értesítést, a következőhöz hasonló választ kap:
+Amikor az ütemezett eseményszolgáltatás megkapja a kiesésről szóló értesítést, a következőre hasonló választ kap:
 
 ```output
 {"DocumentIncarnation":1,"Events":[{"EventId":"A123BC45-1234-5678-AB90-ABCDEF123456","EventStatus":"Scheduled","EventType":"Preempt","ResourceType":"VirtualMachine","Resources":["myspotvm"],"NotBefore":"Tue, 16 Mar 2021 00:58:46 GMT","Description":"","EventSource":"Platform"}]}
 ```
 
-Láthatja, hogy az `"EventType":"Preempt"` erőforrás a virtuális gép erőforrása `"Resources":["myspotvm"]` . 
+Láthatja, hogy `"EventType":"Preempt"` , és az erőforrás a virtuális gép erőforrása. `"Resources":["myspotvm"]` 
 
-Azt is láthatja, hogy a virtuális gép Mikor lesz kiürítve a `"NotBefore"` -ben – a virtuális gép nem lesz kizárva a megadott idő előtt, így az alkalmazásának az ablaka szabályosan lezárul.
+Azt is láthatja, hogy a rendszer mikor fogja bezárni a virtuális gépet. A virtuális gépet a rendszer nem zárja ki a megadott időpont előtt, így ez lesz az az időszak, amikor az alkalmazás elegánsan bezárja a `"NotBefore"` virtuális gépet.
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Azure PowerShell](../windows/spot-powershell.md), [portál](../spot-portal.md)vagy [sablon](spot-template.md)használatával is létrehozhat egy Azure-beli helyszíni virtuális gépet.
+Azure-beli kihasznált virtuális gépet a Azure PowerShell [,](../windows/spot-powershell.md) [a portál](../spot-portal.md)vagy egy sablon használatával [is létrehozhat.](spot-template.md)
 
-A jelenlegi díjszabási információkat az [Azure kiskereskedelmi díjszabás API](/rest/api/cost-management/retail-prices/azure-retail-prices) használatával kérdezheti le az Azure-beli helyszíni virtuális gépekről. A `meterName` és `skuName` mindkettő tartalmazni fogja `Spot` .
+Az Azure Spot virtuális géppel kapcsolatos információkért lekérdezheti az aktuális díjszabási információkat az [Azure Kiskereskedelmi](/rest/api/cost-management/retail-prices/azure-retail-prices) árak API-jának használatával. A `meterName` és a egyaránt `skuName` tartalmazni fogja a `Spot` következőt: .
 
-Ha hibát tapasztal, tekintse meg a [hibakódokat](../error-codes-spot.md).
+Ha hibába ütközik, tekintse meg a [hibakódokat.](../error-codes-spot.md)

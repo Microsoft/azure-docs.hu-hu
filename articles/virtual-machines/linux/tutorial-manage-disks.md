@@ -9,16 +9,16 @@ ms.date: 08/20/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
-ms.openlocfilehash: bbecaa32f85c42954cea6c8e533f0f658eb2dfee
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 56e804bc0d479f09ef2900c42361fbd24eed1d98
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802284"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765952"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Oktatóanyag – Azure-lemezek kezelése az Azure CLI használatával
 
-Az Azure-beli virtuális gépek (VM-ek) lemezeket használnak az operációs rendszerek, alkalmazások és adatok tárolására. Amikor létrehoz egy virtuális gépet, fontos, hogy a várt számítási feladatnak megfelelő méretű lemezt és konfigurációt válasszon. Ez az oktatóanyag bemutatja, hogyan helyezhet üzembe és kezelhet virtuálisgép-lemezeket. Az alábbiakkal fog megismerkedni:
+Az Azure-beli virtuális gépek (VM-ek) lemezeket használnak az operációs rendszerek, alkalmazások és adatok tárolására. Virtuális gép létrehozásakor fontos, hogy a várt számítási feladatnak megfelelő lemezméretet és konfigurációt válasszon. Ez az oktatóanyag bemutatja, hogyan helyezhet üzembe és kezelhet virtuálisgép-lemezeket. Az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Operációsrendszer-lemezek és ideiglenes lemezek
@@ -47,22 +47,22 @@ Az Azure két lemeztípust kínál.
 
 **Standard lemezek** – a merevlemez-meghajtókra épülő lemezek költséghatékony tárolási megoldást, ugyanakkor jó teljesítményt nyújtanak. A standard lemezek ideális megoldást jelentenek költséghatékony fejlesztési és tesztelési számítási feladatokhoz.
 
-**Prémium szintű lemezek** – SSD-alapú, nagy teljesítményű, kis késleltetésű lemez. Az éles számítási feladatokat futtató virtuális gépek esetén érdemes a használatuk mellett dönteni. A virtuális gépek [mérete a méret nevével](../vm-naming-conventions.md), általában **támogatja a Premium Storage** . A DS-sorozat, a DSv2-sorozat, a GS-sorozat és az FS sorozatú virtuális gépek például támogatják a Premium Storage szolgáltatást. Lemezméret kiválasztásakor az értéket felfelé kerekíti a rendszer a következő típusra. Ha például a lemez mérete meghaladja a 64 GB-ot, de kevesebb, mint 128 GB, a lemez típusa P10. 
+**Prémium lemezek** – SSD-alapú, nagy teljesítményű, kis késleltetésű lemezek. Az éles számítási feladatokat futtató virtuális gépek esetén érdemes a használatuk mellett dönteni. Az S **betűméretű** virtuálisgép-méretek általában támogatják a Premium Storage. [](../vm-naming-conventions.md) A DS- és DSv2-, GS- és FS-sorozatú virtuális gépek például támogatják a prémium szintű tárolást. Lemezméret kiválasztásakor az értéket felfelé kerekíti a rendszer a következő típusra. Ha például a lemez mérete nagyobb 64 GB-nál, de 128 GB-nál kisebb, akkor a lemez típusa P10. 
 
 <br>
 
 
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
 
-Ha Premium Storage-lemezt épít ki, a standard szintű tárterülettől eltérően, akkor garantált a lemez kapacitása, IOPS és átviteli sebessége. Ha például létrehoz egy P50 lemezt, az Azure 4 095 GB tárolókapacitást, 7 500 IOPS és 250 MB/s adatátviteli sebességet biztosít a lemez számára. Az alkalmazás a kapacitás és a teljesítmény egészét vagy egy részét használhatja. A prémium SSD lemezek úgy lettek kialakítva, hogy alacsony egyszámjegyű ezredmásodperces késéseket és célként megadott IOPS és átviteli sebességet biztosítson az idő 99,9%-ában.
+A standard szintű tárolóktól eltérően prémium szintű tárolólemez kiépítésekor garantált a lemez kapacitása, IOPS-értéke és átviteli sebessége. Ha például P50-lemezt hoz létre, az Azure 4095 GB tárkapacitást, 7500 IOPS-t és 250 MB/s átviteli sebességet biztosít a lemez számára. Az alkalmazás a kapacitás és a teljesítmény egészét vagy egy részét használhatja. prémium SSD lemezek úgy vannak kialakítva, hogy az idő 99,9%-ában alacsony egyszámjegyű ezredmásodperc késést és cél IOPS-értékeket és átviteli sebességet biztosítanak.
 
 Míg a fenti táblázatban a lemezenkénti maximális IOPS-érték látható, nagyobb teljesítmény is elérhető több adatlemez összevonásával. Például a Standard_GS5 virtuális géphez 64 adatlemez csatolható. Ha ezen lemezek mindegyike P30-ra van méretezve, maximum 80 000-es IOPS-érték érhető el. A virtuális gépenkénti maximális IOPS-értékről szóló részletes információkért lásd a [virtuális gépek típusait és méreteit](../sizes.md) ismertető cikket.
 
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell elindítása
 
-A Azure Cloud Shell egy ingyenes interaktív felület, amellyel a cikkben ismertetett lépéseket futtathatja. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta.
+Azure Cloud Shell egy ingyenes interaktív felület, amely a cikkben található lépések futtatására használható. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta.
 
-A Cloud Shell megnyitásához válassza a kód jobb felső sarkában lévő **kipróbálás** lehetőséget. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/bash) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell a kódblokk jobb felső sarkában található Try **it** (Próbálja ki) gombra. A böngészőablakot Cloud Shell böngészőlapon is elindíthatja a következő gombra: [https://shell.azure.com/powershell](https://shell.azure.com/bash) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 ## <a name="create-and-attach-disks"></a>Lemezek létrehozása és csatolása
 
@@ -70,13 +70,13 @@ Adatlemezek létrehozhatók és csatolhatók a virtuális gépek létrehozáskor
 
 ### <a name="attach-disk-at-vm-creation"></a>Lemez csatolása virtuális gép létrehozásakor
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal.
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal.
 
 ```azurecli-interactive
 az group create --name myResourceGroupDisk --location eastus
 ```
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az-vm-create) paranccsal. A következő példa létrehoz egy *myVM* nevű virtuális gépet, hozzáadja az *azureuser* nevű felhasználói fiókot, valamint SSH-kulcsokat hoz létre, ha azok még nem léteznének. A `--datadisk-sizes-gb` argumentum használatával adhatja meg, hogy egy további lemezt kell létrehozni és a virtuális géphez csatolni. Több lemez létrehozásához és csatolásához a lemezméreteket egy szóközzel tagolt listában adja meg. A következő példában egy virtuális gépet hozunk létre két, egyenként 128 GB méretű adatlemezzel. Mivel a lemezek mérete 128 GB, mindkettő P10 típusú lemezként van konfigurálva, amely lemezenként maximálisan 500 IOPS-t biztosít.
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. A következő példa létrehoz egy *myVM* nevű virtuális gépet, hozzáadja az *azureuser* nevű felhasználói fiókot, valamint SSH-kulcsokat hoz létre, ha azok még nem léteznének. A `--datadisk-sizes-gb` argumentum használatával adhatja meg, hogy egy további lemezt kell létrehozni és a virtuális géphez csatolni. Több lemez létrehozásához és csatolásához a lemezméreteket egy szóközzel tagolt listában adja meg. A következő példában egy virtuális gépet hozunk létre két, egyenként 128 GB méretű adatlemezzel. Mivel a lemezek mérete 128 GB, mindkettő P10 típusú lemezként van konfigurálva, amely lemezenként maximálisan 500 IOPS-t biztosít.
 
 ```azurecli-interactive
 az vm create \
@@ -91,7 +91,7 @@ az vm create \
 
 ### <a name="attach-disk-to-existing-vm"></a>Lemez csatolása meglévő virtuális géphez
 
-Új lemez egy meglévő virtuális gépen való létrehozásához és csatolásához használja az [az vm disk attach](/cli/azure/vm/disk#az-vm-disk-attach) parancsot. A következő példában egy 128 gigabájt méretű, prémium szintű lemezt hozunk létre, majd csatoljuk a legutóbbi lépésben létrehozott virtuális géphez.
+Új lemez egy meglévő virtuális gépen való létrehozásához és csatolásához használja az [az vm disk attach](/cli/azure/vm/disk#az_vm_disk_attach) parancsot. A következő példában egy 128 gigabájt méretű, prémium szintű lemezt hozunk létre, majd csatoljuk a legutóbbi lépésben létrehozott virtuális géphez.
 
 ```azurecli-interactive
 az vm disk attach \
@@ -120,7 +120,7 @@ Particionálja a lemezt az `parted` használatával.
 sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
 ```
 
-Írjon egy fájlrendszert a partícióra az `mkfs` paranccsal. A használatával `partprobe` az operációs rendszer tisztában lehet a módosítással.
+Írjon egy fájlrendszert a partícióra az `mkfs` paranccsal. A `partprobe` használatával tudatja az operációs rendszerrel a változást.
 
 ```bash
 sudo mkfs.xfs /dev/sdc1
@@ -133,13 +133,13 @@ Csatolja az új lemezt, hogy elérhető legyen az operációs rendszerben.
 sudo mkdir /datadrive && sudo mount /dev/sdc1 /datadrive
 ```
 
-A lemez most már a csatlakoztatási pont keresztül érhető el `/datadrive` , amely ellenőrizhető a parancs futtatásával `df -h` .
+A lemez most már elérhető a csatlakozási ponton keresztül, amely a parancs futtatásával `/datadrive` `df -h` ellenőrizhető.
 
 ```bash
 df -h | grep -i "sd"
 ```
 
-A kimenetben látható az új csatlakoztatott meghajtó `/datadrive` .
+A kimenetben a csatlakoztatott új meghajtó `/datadrive` látható.
 
 ```bash
 Filesystem      Size  Used Avail Use% Mounted on
@@ -162,21 +162,21 @@ A kimenet megjeleníti a meghajtó UUID-jét, amely esetünkben a `/dev/sdc1`.
 ```
 
 > [!NOTE]
-> Az **/etc/fstab** fájl nem megfelelő szerkesztése nem indítható rendszert eredményezhet. Ha nem biztos a dolgában, a fájl megfelelő szerkesztésével kapcsolatos információkért olvassa el a disztribúció dokumentációját. Azt is javasoljuk, hogy a Szerkesztés előtt hozza létre az/etc/fstab fájl biztonsági másolatát.
+> Ha nem megfelelően szerkeszti az **/etc/fstab** fájlt, az rendszer nem lesz rendszer. Ha nem biztos a dolgában, a fájl megfelelő szerkesztésével kapcsolatos információkért olvassa el a disztribúció dokumentációját. Javasolt az /etc/fstab fájl biztonsági mentése is a szerkesztés előtt.
 
-Nyissa meg a `/etc/fstab` fájlt egy szövegszerkesztőben a következőképpen:
+Nyissa meg `/etc/fstab` a fájlt egy szövegszerkesztőben a következőképpen:
 
 ```bash
 sudo nano /etc/fstab
 ```
 
-Adjon hozzá egy, a következőhöz hasonló sort az */etc/fstab* -fájlhoz, és cserélje le az UUID értéket a saját értékére.
+Adjon hozzá egy, az alábbihoz hasonló sort az */etc/fstab* fájlhoz, és cserélje le az UUID értéket a saját értékére.
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  xfs    defaults,nofail   1  2
 ```
 
-Ha elkészült a fájl szerkesztésével, `Ctrl+O` írja a fájlt a fájl írására és `Ctrl+X` a szerkesztőből való kilépéshez.
+Ha végzett a fájl szerkesztésével, a használatával írja meg a fájlt, `Ctrl+O` és lépjen ki a `Ctrl+X` szerkesztőből.
 
 Most, hogy a lemez konfigurálva lett, zárja be az SSH-munkamenetet.
 
@@ -186,11 +186,11 @@ exit
 
 ## <a name="take-a-disk-snapshot"></a>Lemez pillanatképének készítése
 
-A lemezpillanatképek létrehozása során az Azure egy csak olvasható, adott időponthoz kötött másolatot hoz létre a lemezről. Az Azure-beli virtuális gépekről készült pillanatképek akkor lehetnek hasznosak, ha a virtuális gépek állapotának gyors mentésére van szükség a konfiguráció módosítása előtt. Probléma vagy hiba esetén a virtuális gép visszaállítható egy pillanatkép használatával. Ha a virtuális gép egynél több lemezzel rendelkezik, az egyes lemezekről egymástól független pillanatképek készülnek. Alkalmazáskonzisztens biztonsági másolatok készítéséhez érdemes lehet leállítania a virtuális gépet a lemezpillanatképek készítése előtt. Másik megoldásként használhatja az [Azure Backup szolgáltatást](../../backup/index.yml) is, amelynek segítségével automatikus biztonsági mentést végezhet, miközben a virtuális gép fut.
+A lemezpillanatképek létrehozása során az Azure egy csak olvasható, adott időponthoz kötött másolatot hoz létre a lemezről. Az Azure-beli virtuális gépekről készült pillanatképek akkor lehetnek hasznosak, ha a virtuális gépek állapotának gyors mentésére van szükség a konfiguráció módosítása előtt. Probléma vagy hiba esetén a virtuális gép visszaállítható egy pillanatkép segítségével. Ha a virtuális gép egynél több lemezzel rendelkezik, az egyes lemezekről egymástól független pillanatképek készülnek. Alkalmazáskonzisztens biztonsági másolatok készítéséhez érdemes lehet leállítania a virtuális gépet a lemezpillanatképek készítése előtt. Másik megoldásként használhatja az [Azure Backup szolgáltatást](../../backup/index.yml) is, amelynek segítségével automatikus biztonsági mentést végezhet, miközben a virtuális gép fut.
 
 ### <a name="create-snapshot"></a>Pillanatkép készítése
 
-Pillanatkép létrehozása előtt szüksége lesz a lemez AZONOSÍTÓJÁRA vagy nevére. Használja az [az VM show](/cli/azure/vm#az-vm-show) paranccsal a lemez azonosítójának felvételéhez. A példában a lemezazonosítót egy változó tárolja, így az egy későbbi lépésben majd felhasználható.
+A pillanatkép létrehozása előtt szüksége lesz a lemez azonosítójára vagy nevére. A [lemezazonosítót az az vm show](/cli/azure/vm#az_vm_show) használatával használhatja. A példában a lemezazonosítót egy változó tárolja, így az egy későbbi lépésben majd felhasználható.
 
 ```azurecli-interactive
 osdiskid=$(az vm show \
@@ -200,7 +200,7 @@ osdiskid=$(az vm show \
    -o tsv)
 ```
 
-Most, hogy már rendelkezik AZONOSÍTÓval, az [az Snapshot Create](/cli/azure/snapshot#az-snapshot-create) paranccsal hozzon létre egy pillanatképet a lemezről.
+Most, hogy megvan az azonosító, [az az snapshot create](/cli/azure/snapshot#az_snapshot_create) használatával hozzon létre egy pillanatképet a lemezről.
 
 ```azurecli-interactive
 az snapshot create \
@@ -211,7 +211,7 @@ az snapshot create \
 
 ### <a name="create-disk-from-snapshot"></a>Lemez létrehozása pillanatképből
 
-Ezt a pillanatképet ezután átalakíthatja egy lemezre az [az Disk Create](/cli/azure/disk#az-disk-create)paranccsal, amely a virtuális gép újbóli létrehozásához használható.
+Ez a pillanatkép ezután átalakítható lemezre [az az disk create](/cli/azure/disk#az_disk_create)használatával, amely a virtuális gép újbóli létrehozásához használható.
 
 ```azurecli-interactive
 az disk create \
@@ -222,7 +222,7 @@ az disk create \
 
 ### <a name="restore-virtual-machine-from-snapshot"></a>Virtuális gép visszaállítása pillanatképből
 
-A virtuális gép helyreállításának bemutatásához törölje a meglévő virtuális gépet az [az VM delete](/cli/azure/vm#az-vm-delete)paranccsal.
+A virtuális gép helyreállításának szemléltetése érdekében törölje a meglévő virtuális gépet [az az vm delete parancs használatával.](/cli/azure/vm#az_vm_delete)
 
 ```azurecli-interactive
 az vm delete \
@@ -244,7 +244,7 @@ az vm create \
 
 Az összes adatlemezt újra kell csatolni a virtuális gépre.
 
-Keresse meg az adatlemez nevét az az [Disk List](/cli/azure/disk#az-disk-list) paranccsal. Ez a példa a lemez nevét egy nevű változóba helyezi `datadisk` , amelyet a következő lépésben kell használni.
+Keresse meg az adatlemez nevét az [az disk list paranccsal.](/cli/azure/disk#az_disk_list) Ebben a példában a lemez nevét egy nevű változóban adhatja meg, amelyet a `datadisk` következő lépésben fog használni.
 
 ```azurecli-interactive
 datadisk=$(az disk list \
@@ -253,7 +253,7 @@ datadisk=$(az disk list \
    -o tsv)
 ```
 
-A lemezt az [az vm disk attach](/cli/azure/vm/disk#az-vm-disk-attach) paranccsal csatolhatja.
+A lemezt az [az vm disk attach](/cli/azure/vm/disk#az_vm_disk_attach) paranccsal csatolhatja.
 
 ```azurecli-interactive
 az vm disk attach \

@@ -1,302 +1,302 @@
 ---
 title: Az Azure Logic Apps előzetes verziójának áttekintése
-description: A Azure Logic Apps Preview egy felhőalapú megoldás az olyan automatizált, egybérlős, állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozásához, amelyek alkalmazások, adatok, szolgáltatások és rendszerek integrálását teszik elérhetővé minimális kóddal a nagyvállalati szintű forgatókönyvek esetében.
+description: Azure Logic Apps Előzetes verzió egy felhőalapú megoldás olyan automatizált, egybérlős, állapotalapú és állapot nélküli munkafolyamatok építéséhez, amelyek alkalmazásokat, adatokat, szolgáltatásokat és rendszereket integrálnak minimális kódokkal a nagyvállalati szintű forgatókönyvekhez.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/10/2021
-ms.openlocfilehash: 7120b6ff17657232c0e614f49b75bb24263712b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/24/2021
+ms.openlocfilehash: 27889e8309c0efaf1e2869fc39d099f38f64f7c4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102636335"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764818"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Áttekintés: Azure Logic Apps előzetes verzió
 
 > [!IMPORTANT]
 > Ez a képesség nyilvános előzetes verzióban érhető el, nem vonatkozik rá szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-A Azure Logic Apps előzetes verzióban automatizálási és integrációs megoldásokat hozhat létre az alkalmazások, az erőforrások, a Cloud Services és a rendszerek között azáltal, hogy létrehoz és futtat egybérlős logikai alkalmazásokat az új **logikai alkalmazás (előzetes verzió)** típusú erőforrástípus használatával. Az egybérlős logikai alkalmazás típusának használatával több [ *állapot* -és *állapot* nélküli munkafolyamatot](#stateful-stateless) építhet ki, amelyek az újratervezett Azure Logic apps előzetes verzióban futnak, ami hordozhatóságot, jobb teljesítményt és rugalmasságot biztosít különböző üzemeltetési környezetek üzembe helyezéséhez és futtatásához, beleértve a nem csak az Azure-t, hanem a Docker-tárolókat is.
+Az Azure Logic Apps előzetes verzióval automatizálási és integrációs megoldásokat építhet ki az alkalmazások, adatok, felhőszolgáltatások és rendszerek számára, ha egybérlős logikai alkalmazásokat hoz létre és futtat az új **Logic App (előzetes verzió)** erőforrástípussal. Ezzel az egybérlős logikai alkalmazástípussal több, az újratervezett Azure Logic Apps-es előzetes verziójú futtatókörnyezet által működtetett állapotmentes munkafolyamatot is felépíthet, amely hordozhatóságot, jobb teljesítményt és rugalmasságot biztosít a különböző üzemeltetési környezetekben, például nem csak az Azure-ban, hanem Docker-tárolókban való üzembe helyezéshez és futtatáshoz is. [   ](#stateful-stateless)
 
-Hogyan lehetséges ez? Az újratervezett futtatókörnyezet a [Azure functions bővíthetőségi modellt](../azure-functions/functions-bindings-register.md) használja, és bővítményként fut a Azure functions futtatókörnyezetben. Ez az architektúra azt jelenti, hogy az egybérlős logikai alkalmazás típusát bárhol futtathatja, ahol a Azure Functions fut. Az újratervezett futtatókörnyezetet szinte bármilyen hálózati topológián üzemeltetheti, és a munkafolyamatok által igényelt szükséges munkaterhelés kezeléséhez kiválaszthatja a rendelkezésre álló számítási méreteket is. További információ: [bevezetés Azure functions](../azure-functions/functions-overview.md) és [Azure functions eseményindítók és kötések](../azure-functions/functions-triggers-bindings.md)használatába.
+Hogyan lehetséges ez? Az újratervezett Azure Functions [](../azure-functions/functions-bindings-register.md) az Azure Functions-bővítési modellt használja, és bővítményként van üzemeltetve a Azure Functions futtatáskor. Ez az architektúra azt jelenti, hogy az egybérlős logikai alkalmazástípust bárhol futtathatja, Azure Functions fut. Az újratervezett futásidőt szinte bármilyen hálózati topológián futtathatja, és bármilyen elérhető számítási méretet kiválaszthat a munkafolyamatokhoz szükséges számítási feladatok kezeléséhez. További információ: [Bevezetés az eseményindítók Azure Functions](../azure-functions/functions-overview.md) Azure Functions [és kötésekbe.](../azure-functions/functions-triggers-bindings.md)
 
-A **logikai alkalmazás (előzetes verzió)** erőforrását a [Azure Portal indításával](create-stateful-stateless-workflows-azure-portal.md) vagy a [Visual Studio Code-ban a Azure Logic apps (előzetes verzió) bővítménnyel létrehozott projekt létrehozásával](create-stateful-stateless-workflows-visual-studio-code.md)hozhatja létre. A Visual Studio Code-ban a munkafolyamatokat a fejlesztői környezetben is létrehozhatja *és helyileg futtathatja* . Függetlenül attól, hogy a portált vagy a Visual Studio Code-ot használja-e, ugyanúgy telepítheti és futtathatja az egybérlős logikai alkalmazások típusát, mint a különböző üzemeltetési környezetekben.
+A Logikai alkalmazás **(előzetes verzió)** erőforrást létrehozhatja a [Azure Portal](create-stateful-stateless-workflows-azure-portal.md) első kiadásával, vagy egy projekt létrehozásával a Visual Studio Code-ban a [Azure Logic Apps (előzetes verzió) bővítmény használatával.](create-stateful-stateless-workflows-visual-studio-code.md) Emellett a Visual Studio Code-ban is  felépítheti és helyileg futtathatja a munkafolyamatokat a fejlesztési környezetben. Akár a portált, akár a Visual Studio Code-et használja, az egybérlős logikai alkalmazástípust ugyanolyan típusú üzemeltetési környezetekben helyezheti üzembe és futtathatja.
 
-Ez az Áttekintés a következő területekre terjed ki:
+Ez az áttekintés a következő területeket fedi le:
 
-* [Azure Logic apps előzetes verzió, a Azure Logic apps több-bérlős környezet és az integrációs szolgáltatási környezet közötti különbségek](#preview-differences).
+* [Az előzetes Azure Logic Apps, a Azure Logic Apps-bérlős](#preview-differences)környezet és az integrációs szolgáltatási környezet közötti különbségek.
 
-* [Állapot-nyilvántartó és állapot nélküli munkafolyamatok közötti különbségek](#stateful-stateless), beleértve a [beágyazott állapotú és állapot nélküli munkafolyamatok](#nested-behavior)közötti viselkedési különbségeket.
+* [Az állapot-beli és állapot](#stateful-stateless)nélküli munkafolyamatok közötti különbségek, beleértve a beágyazott állapot-beli és állapot nélküli munkafolyamatok [közötti viselkedésbeli különbségeket](#nested-behavior)is.
 
-* A [nyilvános előzetes verzió képességei](#public-preview-contents).
+* [A nyilvános előzetes verzió képességei.](#public-preview-contents)
 
-* [A díjszabási modell működése](#pricing-model).
+* [A díjszabási modell működése.](#pricing-model)
 
-* [Módosított, korlátozott, nem elérhető vagy nem támogatott képességek](#limited-unavailable-unsupported).
+* [Módosított, korlátozott, nem elérhető vagy nem támogatott képességek.](#limited-unavailable-unsupported)
 
-* [Korlátok Azure Logic apps előzetes](#limits)verzióban.
+* [Az előzetes verzió Azure Logic Apps korlátai.](#limits)
 
-További információkért tekintse át a következő témaköröket:
+További információért tekintse át az alábbi témaköröket:
 
-* [A Azure Logic Apps bárhol fut a futás közben](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564)
+* [Azure Logic Apps futtatása – Runtime Deep Dive](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564)
 
 * [Logic Apps nyilvános előzetes verzió ismert problémái (GitHub)](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)
 
 <a name="preview-differences"></a>
 
-## <a name="how-does-azure-logic-apps-preview-differ"></a>Miben különbözik Azure Logic Apps előnézet?
+## <a name="how-does-azure-logic-apps-preview-differ"></a>Miben Azure Logic Apps az előzetes verzió?
 
-A Azure Logic Apps előzetes verzió futtatókörnyezete [Azure functions](../azure-functions/functions-overview.md) bővíthetőséget használ, és bővítményként fut a Azure functions futtatókörnyezetben. Ez az architektúra azt jelenti, hogy az egybérlős logikai alkalmazás típusát bárhol futtathatja, ahol a Azure Functions fut. Szinte bármilyen hálózati topológián üzemeltetheti a Azure Logic Apps előnézeti futtatókörnyezetet, és kiválaszthatja az összes rendelkezésre álló számítási méretet, hogy kezelni tudja a munkafolyamat által igényelt szükséges munkaterhelést. A Azure Functions bővíthetőségéről a [Webjobs SDK: egyéni bemeneti és kimeneti kötések létrehozása](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings)című témakörben olvashat bővebben.
+A Azure Logic Apps előzetes verziójú [](../azure-functions/functions-overview.md) Azure Functions bővítményként van üzemeltetve a Azure Functions bővítményként. Ez az architektúra azt jelenti, hogy az egybérlős logikai alkalmazástípust bárhol futtathatja, Azure Functions fut. Az előzetes Azure Logic Apps futtathatja szinte bármilyen hálózati topológián, és bármilyen elérhető számítási méretet kiválaszthat a munkafolyamathoz szükséges számítási feladatok kezeléséhez. További információ a Azure Functions létrehozásáról: [WebJobs SDK: Creating custom input and output bindings (WebJobs SDK: Egyéni](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings)bemeneti és kimeneti kötések létrehozása).
 
-Ezzel az új megközelítéssel a Azure Logic Apps előnézeti futtatókörnyezet és a munkafolyamatok is az alkalmazás részét képezik, amelyet együtt lehet csomagolni. Ez a funkció lehetővé teszi a munkafolyamatok üzembe helyezését és futtatását azáltal, hogy egyszerűen másolja az összetevőket az üzemeltetési környezetbe, és elindítja az alkalmazást. Ez a megközelítés egy szabványosított megoldást is biztosít a telepítési folyamatok létrehozásához a munkafolyamat-projektekben a szükséges tesztek és érvényesítések futtatásához, mielőtt telepítené a módosításokat az éles környezetekben. További információkért lásd: [Azure Logic apps fut bárhol a futtatókörnyezetben](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564).
+Ezzel az új megközelítéssel az Azure Logic Apps előzetes verziójú futtatás és a munkafolyamatok is részét képezi az alkalmazásnak, amely együtt csomagolt. Ez a képesség lehetővé teszi a munkafolyamatok üzembe helyezését és futtatását az összetevők egyszerűen az üzemeltetési környezetbe való másolása és az alkalmazás indítása révén. Ez a megközelítés szabványosabb élményt biztosít az üzembe helyezési folyamatoknak a munkafolyamat-projektek köré való építéséhez a szükséges tesztek és ellenőrzések futtatásához, mielőtt üzembe helyezi a módosításokat az éles környezetekben. További információ: Azure Logic Apps Running Anywhere - Runtime Deep Dive (Futtatás bárhol – [Futtatókörnyezet részletesen).](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564)
 
-Az alábbi táblázat röviden összefoglalja, hogy a munkafolyamatok milyen módon osztják meg az erőforrásokat a futtatott környezet alapján. A határértékekkel kapcsolatos különbségekért tekintse [meg a korlátozásokat Azure Logic apps előzetes](#limits)verzióban.
+Az alábbi táblázat röviden összefoglalja az erőforrások munkafolyamatok közötti megosztásának különbségeit a futtatás környezete alapján. A korlátok közötti különbségekért lásd: Az előzetes [verzió Azure Logic Apps korlátai.](#limits)
 
-| Környezet | Erőforrás-megosztás és-felhasználás |
+| Környezet | Erőforrás-megosztás és -felhasználás |
 |-------------|----------------------------------|
-| Azure Logic Apps (több-bérlős) | Az *ügyfelektől több bérlőn belüli* munkafolyamatok ugyanazt a feldolgozást (számítást), tárhelyet, hálózatot és így tovább használják. |
-| Azure Logic Apps (előzetes verzió, egybérlős) | *Az azonos logikai alkalmazásban és egyetlen bérlőn belüli* munkafolyamatok ugyanazt a feldolgozást (számítást), tárhelyet, hálózatot stb. használják. |
-| Integrációs szolgáltatási környezet (előzetes verzióban nem érhető el) | Az *ugyanabban a környezetben* lévő munkafolyamatok ugyanazt a feldolgozást (számítást), tárhelyet, hálózatot és egyebeket használják. |
+| Azure Logic Apps (több-bérlős) | A több *bérlőn lévő* ügyfelektől származó munkafolyamatok ugyanazt a feldolgozást (számítást), tárterületet, hálózatot stb. osztják meg. |
+| Azure Logic Apps (előzetes verzió, egybérlős) | Az ugyanabban a *logikai alkalmazásban* és egyetlen bérlőben a munkafolyamatok ugyanazt a feldolgozást (számítást), tárterületet, hálózatot stb. osztják meg. |
+| Integrációs szolgáltatási környezet (nem érhető el az előzetes verzióban) | Az ugyanabban a *környezetben a* munkafolyamatok ugyanazt a feldolgozást (számítást), tárterületet, hálózatot stb. osztják meg. |
 |||
 
-Eközben a több-bérlős logikai alkalmazás típusát is létrehozhatja a Azure Portal és a Visual Studio Code-ban a több-bérlős Azure Logic Apps bővítmény használatával. Bár a fejlesztési tapasztalatok különböznek a több-bérlős és az egybérlős logikai alkalmazások típusaitól, az Azure-előfizetések mindkét típust tartalmazhatják. Az Azure-előfizetésben megtekintheti és elérheti az összes telepített Logic apps-alkalmazást, de az alkalmazások a saját kategóriákban és szakaszban vannak rendszerezve.
+Addig is létrehozhatja a több-bérlős logikaialkalmazás-típust a Azure Portal és a Visual Studio Code-ban a több-bérlős logikai Azure Logic Apps használatával. Bár a fejlesztési élmény eltérő a több-bérlős és az egybérlős logikai alkalmazástípusok között, az Azure-előfizetés mindkét típust tartalmazhatja. Megtekintheti és elérheti az Összes üzembe helyezett logikai alkalmazást az Azure-előfizetésében, de az alkalmazások a saját kategóriáikban és szakaszaikban vannak rendezve.
 
 <a name="stateful-stateless"></a>
 
-## <a name="stateful-and-stateless-workflows"></a>Állapot-nyilvántartó és állapot nélküli munkafolyamatok
+## <a name="stateful-and-stateless-workflows"></a>Állapot- és állapot nélküli munkafolyamatok
 
-Az egybérlős logikai alkalmazás típusa esetén a következő munkafolyamat-típusok hozhatók létre ugyanazon logikai alkalmazáson belül:
+Az egybérlős logikai alkalmazástípussal a következő munkafolyamat-típusokat hozhatja létre ugyanabban a logikai alkalmazásban:
 
-* *Nyilvántartó*
+* *Állapot- szerinti*
 
-  Állapot-nyilvántartó munkafolyamatokat hozhat létre, ha az előző eseményekből származó adatok megtartására, felülvizsgálatára vagy hivatkozására van szüksége. Ezek a munkafolyamatok mentik az egyes műveletek bemeneteit és kimeneteit, valamint azok állapotát a külső tárolóban, ami az egyes futtatások befejezése után a Futtatás részleteinek és előzményeinek áttekintését teszi lehetővé. Az állapot-nyilvántartó munkafolyamatok nagy rugalmasságot biztosítanak, ha kimaradások történnek. A szolgáltatások és a rendszerek visszaállítása után megszakított futtatásokat állíthat össze a mentett állapotból, és újra futtathatja a munkafolyamatokat a befejezéshez. Az állapot-nyilvántartó munkafolyamatok akár egy évig is futhatnak.
+  Állapot- szerinti munkafolyamatokat hozhat létre, ha meg kell tartania, át kell vizsgálnia vagy hivatkozni kell a korábbi eseményekből származó adatokat. Ezek a munkafolyamatok az egyes műveletek bemenetét és kimenetét külső tárterületen mentik, ami lehetővé teszi a futtatás részleteinek és előzményeinek áttekintését az egyes futtatás befejezése után. Az állapot- szerinti munkafolyamatok nagy rugalmasságot biztosítanak kimaradás esetén. A szolgáltatások és rendszerek visszaállítása után rekonstruálhatja a megszakított futtatásokat a mentett állapotból, és újrafuttathatja a munkafolyamatokat a befejezésig. Az állapot- szerinti munkafolyamatok akár egy évig is futnak.
 
 * *Állapot nélküli*
 
-  Állapot nélküli munkafolyamatokat hozhat létre, ha nem kell a külső tárolóban lévő korábbi eseményekből származó adatok mentését, felülvizsgálatát vagy hivatkozását későbbi ellenőrzés céljából. Ezek a munkafolyamatok *csak a memóriában* mentik el az egyes műveletek bemeneteit és kimeneteit, és nem továbbítják ezeket az adatokat külső tárolóba. Ennek eredményeképpen az állapot nélküli munkafolyamatok rövidebb ideig tartanak, amelyek általában nem 5 percnél hosszabbak, gyorsabbak a gyorsabb válaszidő, a nagyobb átviteli sebesség és a csökkenő működési költségek, mivel a futtatási adatok és előzmények nem a külső tárolóban maradnak. Ha azonban az kimaradások történnek, a megszakított futtatások nem állnak helyre automatikusan, így a hívónak manuálisan kell újraküldenie a megszakított futtatásokat. Ezek a munkafolyamatok csak szinkron módon futtathatók.
+  Állapot nélküli munkafolyamatokat hozhat létre, ha nem kell mentenie, áttekintenie vagy hivatkozni a külső tárolóban történt korábbi események adatait későbbi felülvizsgálatra. Ezek a munkafolyamatok az egyes műveletek bemenetét és kimenetét, valamint azok állapotait csak a memóriában mentik *az* adatok külső tárolóba való átvitele helyett. Ennek eredményeképpen az állapot nélküli munkafolyamatok rövidebb futtatásokat futtatnak, amelyek általában nem hosszabbak 5 percnél, gyorsabb teljesítményt, gyorsabb válaszidőt, nagyobb átviteli sebességet és alacsonyabb futtatás-költségeket eredményeznek, mivel a futtatás részletei és előzményei nem tárolódnak külső tárolóban. Kimaradás esetén azonban a megszakított futtatásokat a rendszer nem visszaállítja automatikusan, így a hívónak manuálisan kell újra elterálnia a megszakított futtatásokat. Ezek a munkafolyamatok csak szinkron módon futtathatók.
 
-  A könnyebb hibakeresés érdekében engedélyezheti a futtatási előzményeket egy állapot nélküli munkafolyamathoz, amely hatással van a teljesítményre, majd letilthatja a futtatási előzményeket, ha elkészült. További információ: állapot-nyilvántartó [és állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban](create-stateful-stateless-workflows-visual-studio-code.md#enable-run-history-stateless) , illetve állapot-nyilvántartó [és állapot nélküli munkafolyamatok létrehozása a Azure Portalban](create-stateful-stateless-workflows-visual-studio-code.md#enable-run-history-stateless).
+  A könnyebb hibakeresés érdekében engedélyezheti a futtatás előzményeit egy állapot nélküli munkafolyamathoz, amely hatással van a teljesítményre, majd letilthatja a futtatás előzményeit, amikor végzett. További információ: [Állapot-](create-stateful-stateless-workflows-visual-studio-code.md#enable-run-history-stateless) és állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban vagy Állapot-állapot nélküli munkafolyamatok létrehozása a [Azure Portal.](create-stateful-stateless-workflows-visual-studio-code.md#enable-run-history-stateless)
 
   > [!NOTE]
-  > Az állapot nélküli munkafolyamatok jelenleg csak az Azure-ban üzembe helyezett [felügyelt összekötők](../connectors/apis-list.md#managed-api-connectors) *műveleteit* támogatják, és nem indítják el azokat. A munkafolyamat elindításához válassza a [beépített kérés, Event Hubs vagy Service Bus trigger](../connectors/apis-list.md#built-ins)lehetőséget. Ezek az eseményindítók natív módon futnak a Azure Logic Apps előzetes verziójának futtatókörnyezetében. A korlátozott, nem elérhető vagy nem támogatott eseményindítókkal, műveletekkel és összekötővel kapcsolatos további információkért lásd: [módosított, korlátozott, nem elérhető vagy nem támogatott képességek](#limited-unavailable-unsupported).
+  > Az állapot nélküli munkafolyamatok [](../connectors/managed.md)jelenleg csak az Azure-ban üzembe helyezett felügyelt összekötők esetén támogatják a műveleteket, az eseményindítókat nem.  A munkafolyamat elkezdését a beépített Request [(Kérés)](../connectors/built-in.md)vagy a Event Hubs vagy a Service Bus válassza. Ezek az eseményindítók natív módon futnak a Azure Logic Apps előzetes verziójú futtatásban. További információ a korlátozott, nem elérhető vagy nem támogatott eseményindítókról, műveletekről és [összekötőkről: Módosított, korlátozott,](#limited-unavailable-unsupported)nem elérhető vagy nem támogatott képességek.
 
 <a name="nested-behavior"></a>
 
-### <a name="nested-behavior-differences-between-stateful-and-stateless-workflows"></a>Az állapot-nyilvántartó és az állapot nélküli munkafolyamatok közötti beágyazott viselkedési különbségek
+### <a name="nested-behavior-differences-between-stateful-and-stateless-workflows"></a>Az állapot-beli és állapot nélküli munkafolyamatok beágyazott viselkedésének különbségei
 
-A munkafolyamatok [meghívhatók](../logic-apps/logic-apps-http-endpoint.md) más munkafolyamatokból is, amelyek ugyanabban a **logikai alkalmazásban (előzetes verzió)** találhatók, mint a [kérelem eseményindítója](../connectors/connectors-native-reqres.md), a [http webhook eseményindítója](../connectors/connectors-native-webhook.md)vagy a felügyelt összekötő eseményindítói, amelyek a [ApiConnectionWebhook típussal](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) rendelkeznek, és HTTPS-kéréseket fogadhatnak.
+Az ugyanannak [a](../logic-apps/logic-apps-http-endpoint.md) Logic App-erőforrásnak **(előzetes verzió)** megfelelő munkafolyamatból hívható munkafolyamatot a Kérés eseményindító, [](../connectors/connectors-native-reqres.md)a HTTP [Webhook-eseményindító](../connectors/connectors-native-webhook.md)vagy a felügyelt összekötő eseményindítók használatával is meg lehet hívni, amelyek [ApiConnectionWebhook](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) típusúak, és HTTPS-kéréseket fogadhatnak.
 
-Az alábbiakban láthatók azok a viselkedési minták, amelyeket a beágyazott munkafolyamatok követhetnek, miután egy szülő munkafolyamat meghívja a gyermek munkafolyamatot:
+A beágyazott munkafolyamatok a következő viselkedési mintákat követik, miután egy szülő munkafolyamat gyermek-munkafolyamatot hív meg:
 
 * Aszinkron lekérdezési minta
 
-  A szülő nem vár választ a kezdeti hívásra, de folyamatosan ellenőrzi a gyermek futási előzményeit, amíg a gyermek befejezi a futást. Alapértelmezés szerint az állapot-nyilvántartó munkafolyamatok ezt a mintát követik, ami ideális olyan hosszú ideig futó alárendelt munkafolyamatokhoz, amelyek túllépik a [kérelmek időtúllépési korlátait](../logic-apps/logic-apps-limits-and-config.md).
+  A szülő nem vár a kezdeti hívásra adott válaszra, hanem folyamatosan ellenőrzi a gyermek futtatás előzményeit, amíg a gyermek be nem fejezi a futását. Alapértelmezés szerint az állapot-igénylési munkafolyamatok ezt a mintát követik, amely ideális olyan hosszan futó gyermek-munkafolyamatokhoz, amelyek túllépik a kérelmek [időkorlátait.](../logic-apps/logic-apps-limits-and-config.md)
 
-* Szinkron minta ("tűz és felejtsd el")
+* Szinkron minta ("tűz és elfelejtve")
 
-  A gyermek visszaigazolja a hívást, hogy azonnal visszaadja a `202 ACCEPTED` választ, és a szülő továbbra is a következő műveletre vár anélkül, hogy meg kellene várnia a gyermek eredményét. Ehelyett a szülő megkapja az eredményeket, amikor a gyermek befejezi a futását. Olyan alárendelt állapot-nyilvántartó munkafolyamatok, amelyek nem tartalmazzák a válasz műveletet, mindig a szinkron mintát kövessék. Gyermek állapot-nyilvántartó munkafolyamatok esetén a futtatási előzmények elérhetők az áttekintéshez.
+  A gyermek válasz azonnali visszaküldésével nyugtázza a hívást, és a szülő anélkül folytatja a következő műveletet, hogy megvárja a gyermektől `202 ACCEPTED` kapott eredményeket. Ehelyett a szülő akkor kapja meg az eredményeket, amikor a gyermek befejeződik. A Response műveletet nem magában foglaló gyermek állapot- szerinti munkafolyamatok mindig a szinkron mintát követik. A gyermek állapot- szerinti munkafolyamatok futtatáselőzményei áttekinthetőek.
 
-  A viselkedés engedélyezéséhez a munkafolyamat JSON-definíciójában állítsa be a tulajdonságot a következőre: `operationOptions` `DisableAsyncPattern` . További információ: [trigger-és Művelettípus – műveleti beállítások](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options).
+  Ennek engedélyezéséhez a munkafolyamat JSON-definíciójában állítsa a tulajdonságot a `operationOptions` következőre: `DisableAsyncPattern` . További információ: [Eseményindító- és művelettípusok – Műveleti beállítások.](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options)
 
-* Trigger és várakozás
+* Aktiválás és várakozás
 
-  Gyermek állapot nélküli munkafolyamathoz a szülő vár egy olyan választ, amely visszaadja az eredményeket a gyermektől. Ez a minta hasonló módon működik, mint a beépített [http-trigger vagy művelet](../connectors/connectors-native-http.md) , amely egy alárendelt munkafolyamatot hív meg. Olyan alárendelt állapot nélküli munkafolyamatok, amelyek nem tartalmaznak választ azonnal választ adnak vissza `202 ACCEPTED` , de a szülő megvárja, amíg a gyermek befejeződik a következő művelet folytatása előtt. Ezek a viselkedés csak alárendelt állapot nélküli munkafolyamatokra érvényesek.
+  Gyermek állapot nélküli munkafolyamatoknél a szülő olyan válaszra vár, amely visszaadja a gyermek eredményeit. Ez a minta hasonlóan működik, [](../connectors/connectors-native-http.md) mint a beépített HTTP-eseményindító vagy művelet használata egy gyermek-munkafolyamat hívásához. A Válasz műveletet nem magában foglaló gyermek állapot nélküli munkafolyamatok azonnal választ adnak vissza, de a szülő megvárja, amíg a gyermek befejeződik, mielőtt továbblép a `202 ACCEPTED` következő műveletre. Ezek a viselkedések csak a gyermek állapot nélküli munkafolyamatok esetén érvényesek.
 
-Ez a tábla a gyermek munkafolyamatok viselkedését határozza meg attól függően, hogy a szülő és a gyermek állapota állapotú, állapot nélküli vagy vegyes munkafolyamat-típusok-e:
+Ez a táblázat határozza meg a gyermek-munkafolyamat viselkedését az alapján, hogy a szülő és a gyermek állapotalapú, állapot nélküli vagy vegyes munkafolyamat-típus:
 
-| Szülő munkafolyamat | Gyermek munkafolyamat | Gyermek viselkedése |
+| Szülő-munkafolyamat | Gyermek-munkafolyamat | Gyermek viselkedése |
 |-----------------|----------------|----------------|
-| Állapotalapú | Állapotalapú | Aszinkron vagy szinkron `"operationOptions": "DisableAsyncPattern"` beállítással |
-| Állapotalapú | Állapot nélküli | Trigger és várakozás |
+| Állapotalapú | Állapotalapú | Aszinkron vagy szinkron a `"operationOptions": "DisableAsyncPattern"` beállítással |
+| Állapotalapú | Állapot nélküli | Aktiválás és várakozás |
 | Állapot nélküli | Állapotalapú | Szinkron |
-| Állapot nélküli | Állapot nélküli | Trigger és várakozás |
+| Állapot nélküli | Állapot nélküli | Aktiválás és várakozás |
 ||||
 
 <a name="public-preview-contents"></a>
 
 ## <a name="capabilities"></a>Képességek
 
-A Azure Logic Apps Preview számos aktuális és további funkciót tartalmaz, például:
+Azure Logic Apps előzetes verzió számos jelenlegi és további képességet tartalmaz, például:
 
-* Hozzon létre logikai alkalmazásokat és azok munkafolyamatait [400 + összekötőből](/connectors/connector-reference/connector-reference-logicapps-connectors) a szolgáltatott szoftver (SaaS) és a szolgáltatásként nyújtott platform (Pásti) alkalmazásaihoz és szolgáltatásaihoz, valamint a helyszíni rendszerekhez.
+* Logikai alkalmazásokat és azok munkafolyamatait [több mint 400](/connectors/connector-reference/connector-reference-logicapps-connectors) összekötőből hozhatja létre a szolgáltatott szoftver (SaaS) és a szolgáltatásként nyújtott platform (PaaS) alkalmazásokhoz és szolgáltatásokhoz, valamint a helyszíni rendszerek összekötőihez.
 
-  * Néhány felügyelt összekötő már elérhető beépített verzióként, amely hasonlóan fut a beépített triggerekhez és műveletekhez, például a kérelem eseményindítója és a HTTP művelet, amely natív módon fut a Azure Logic Apps előnézet futtatókörnyezetben. Ezek az új beépített összekötők például a következők: Azure Service Bus, Azure Event Hubs, SQL Server és MQ.
-
-    > [!NOTE]
-    > A beépített SQL Server összekötő esetében csak a **lekérdezés végrehajtása** művelet tud közvetlenül csatlakozni az Azure virtuális hálózatokhoz anélkül, hogy a helyszíni [adatátjáróra](logic-apps-gateway-connection.md)lenne szükség.
-
-  * Hozzon létre saját beépített összekötőket minden szükséges szolgáltatáshoz az [előzetes verzió bővíthetőségi keretrendszerének](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272)használatával. A beépített összekötők, például a Azure Service Bus és a SQL Server esetében, de az előzetes verzióban jelenleg nem támogatott [Egyéni összekötők](../connectors/apis-list.md#custom-apis-and-connectors) eltérően ezek az összekötők magasabb átviteli sebességet, kis késleltetést, helyi kapcsolatot biztosítanak, és natív módon futnak az előzetes verziójú futtatókörnyezettel azonos folyamatban.
-
-    A szerzői művelet jelenleg csak a Visual Studio Code-ban érhető el, de alapértelmezés szerint nincs engedélyezve. Ezeknek az összekötőknek a létrehozásához [állítsa át a projektet a csomag-alapú (Node.js) NuGet Package-based (.net) értékre](create-stateful-stateless-workflows-visual-studio-code.md#enable-built-in-connector-authoring). További információ: [Azure Logic apps futó, bárhol beépített összekötő bővíthetősége](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272).
-
-  * Integrációs fiók nélkül is használhatja a VÁLLALATKÖZI műveleteket a folyékony műveletekhez és az XML-műveletekhez. Ezeknek a műveleteknek a használatához olyan likvid térképeket, XML-térképeket vagy XML-sémákat kell használni, amelyeket fel lehet tölteni a Azure Portalban található megfelelő műveletekkel, vagy hozzáadhat a Visual Studio Code Project összetevőinek mappájához a megfelelő **térképek** és **sémák** **mappák használatával** .
-
-  * Olyan logikai alkalmazásokat hozhat létre és helyezhet üzembe, amelyek bárhol futhatnak, mivel a Azure Logic Apps szolgáltatás közös hozzáférésű aláírási (SAS) kapcsolati karakterláncokat hoz létre, amelyeket ezek a logikai alkalmazások a felhőalapú kapcsolati futtatókörnyezet végpontjának küldött kérelmek küldésére használhatnak. A Logic Apps szolgáltatás menti ezeket a kapcsolódási karakterláncokat más Alkalmazásbeállítások segítségével, így egyszerűen tárolhatja ezeket az értékeket Azure Key Vault az Azure-ban való üzembe helyezéskor.
+  * Egyes felügyelt összekötők beépített verziókként érhetők el, amelyek hasonlóan futnak a beépített eseményindítókhoz és műveletekhez, mint például a Kérés eseményindító és a HTTP-művelet, amelyek natív módon futnak az Azure Logic Apps előzetes verziójú futásidejű verzióján. Ezek az új beépített összekötők például a következőket tartalmazzák: Azure Service Bus, Azure Event Hubs, SQL Server és MQ.
 
     > [!NOTE]
-    > Alapértelmezés szerint a **logikai alkalmazás (előzetes verzió)** erőforrásának a [rendszer által hozzárendelt felügyelt identitása](../logic-apps/create-managed-service-identity.md) automatikusan engedélyezve van a kapcsolatok futásidőben történő hitelesítéséhez. Ez az identitás különbözik a kapcsolatok létrehozásakor használt hitelesítő adatoktól vagy a kapcsolódási karakterlánctól. Ha letiltja ezt az identitást, a kapcsolatok nem működnek futásidőben. A beállítás megtekintéséhez a logikai alkalmazás menüjében, a **Beállítások** területen válassza az **identitás** elemet.
+    > A beépített SQL Server esetében csak a  Lekérdezés végrehajtása művelet tud közvetlenül csatlakozni az Azure-beli virtuális hálózatokhoz anélkül, hogy a [helyszíni adatátjáróra volna szükség.](logic-apps-gateway-connection.md)
 
-* Logikai alkalmazásokat hozhat létre olyan állapot nélküli munkafolyamatokkal, amelyek csak a memóriában futnak, így gyorsabban, gyorsabban, nagyobb átviteli sebességgel és kevesebb ideig futnak, mivel a futtatási előzmények és a műveletek közötti adatok nem maradnak meg a külső tárolóban. Igény szerint engedélyezheti a futtatási előzményeket a hibakereséshez. További információ: állapot-nyilvántartó és [állapot nélküli Logic apps](#stateful-stateless).
+  * Hozzon létre saját beépített összekötőket minden szükséges szolgáltatáshoz az előzetes kiadás kihetőségi [keretrendszerének használatával.](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272) A beépített összekötőkhöz (például az Azure Service Bus és az SQL Server) [](../connectors/apis-list.md#custom-apis-and-connectors) hasonlóan, de az előzetes verzióban jelenleg nem támogatott egyéni összekötőktől eltérően ezek az összekötők nagyobb átviteli sebességet, alacsony késést, helyi kapcsolatot biztosítanak, és natív módon futnak az előzetes verziójú futtatás folyamatában.
 
-* A Logic apps és a munkafolyamataik helyi futtatása, tesztelése és hibakeresése a Visual Studio Code fejlesztői környezetben.
+    A szerzői funkció jelenleg csak az Visual Studio Code-ban érhető el, de alapértelmezés szerint nincs engedélyezve. Ezen összekötők létrehozásához váltsa át a projektet csomagalapú [bővítményről (Node.js) NuGet csomagalapúra (.NET).](create-stateful-stateless-workflows-visual-studio-code.md#enable-built-in-connector-authoring) További információ: Azure Logic Apps Running Anywhere - Built-in connector extensibility (Bárhol fut – Beépített [összekötők extenzibilitása).](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272)
 
-  A logikai alkalmazás futtatása és tesztelése előtt a hibakeresést egyszerűbbé teheti a munkafolyamatok fájljának **workflow.jsján** belüli töréspontok hozzáadásával és használatával. A töréspontok azonban csak olyan műveletek esetén támogatottak, amelyek nem eseményindítók. További információ: állapot-nyilvántartó [és állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints).
+  * Integrációs fiók nélkül is használhatja a B2B-műveleteket a Liquid-műveletekhez és az XML-műveletekhez. Ezeknek a műveleteknek a felhasználásával Liquid-térképekre, XML-leképezésekre vagy XML-sémákra van szükség, amelyek feltölthetők az Azure Portal megfelelő műveletei között, vagy felvehetők a Visual Studio Code-projekt **Artifacts** mappájába a megfelelő **Maps** és **Schemas** mappák használatával.
 
-* A Logic apps és a munkafolyamataik közvetlen közzététele vagy üzembe helyezése a Visual Studio Code-ból különböző üzemeltetési környezetekben, például az Azure-ban és a [Docker-tárolókban](/dotnet/core/docker/introduction).
+  * Olyan logikai alkalmazásokat hozhat létre és helyezhet üzembe, amelyek bárhol futnak, mivel a Azure Logic Apps szolgáltatás közös hozzáférésű jogosultság jogosultságú (SAS) kapcsolati sztringeket hoz létre, amelyek használatával ezek a logikai alkalmazások kéréseket küldenek a felhőkapcsolat futásidejű végpontjára. A Logic Apps szolgáltatás más alkalmazásbeállításokkal menti ezeket a kapcsolati sztringeket, így ezeket az értékeket könnyen tárolhatja Azure Key Vault azure-beli üzembe helyezéskor.
 
-* Engedélyezze a diagnosztikai naplózási és nyomkövetési funkciókat a logikai alkalmazáshoz, ha az Azure-előfizetése és a logikai alkalmazás beállításai támogatják a [Application Insights](../azure-monitor/app/app-insights-overview.md) .
+    > [!NOTE]
+    > Alapértelmezés szerint a **logic app (előzetes verzió)** erőforrás rendszer által hozzárendelt felügyelt identitása automatikusan engedélyezve van a kapcsolatok futásidőben való hitelesítéséhez. [](../logic-apps/create-managed-service-identity.md) Ez az identitás eltér a kapcsolat létrehozásakor használt hitelesítő adatoktól vagy kapcsolati sztringtől. Ha letiltja ezt az identitást, a kapcsolatok futásidőben nem fognak működni. A beállítás megtekintéséhez a logikai alkalmazás menüjében, a **Beállítások alatt válassza** az Identitás **lehetőséget.**
 
-* A hálózati képességek, például a csatlakozás és az Azure Virtual Networks szolgáltatással való integráció biztosítása, hasonlóan a Azure Functionshoz, amikor a logikai alkalmazásokat a [Azure functions Premium csomaggal](../azure-functions/functions-premium-plan.md)hozza létre és telepíti. További információkért tekintse át a következő témaköröket:
+* Olyan logikai alkalmazásokat hozhat létre állapot nélküli munkafolyamatokkal, amelyek csak a memóriában futnak, így gyorsabban befejeződnek, gyorsabban válaszolnak, magasabb átviteli sebességet és kevesebb költséggel futnak, mert a futtatás-történeteket és a műveletek közötti adatokat nem őrizik meg a külső tárolóban. A könnyebb hibakeresés érdekében engedélyezheti a futtatás előzményeit is. További információ: [Állapot-](#stateful-stateless)és állapot nélküli logikai alkalmazások.
+
+* A logikai alkalmazásokat és azok munkafolyamatait helyileg futtatja, teszteli és hibakeresést Visual Studio Code fejlesztői környezetben.
+
+  A logikai alkalmazás futtatása és tesztelése előtt megkönnyítheti a hibakeresést,  ha töréspontokat ad hozzá és használworkflow.jsegy munkafolyamat fájljában. A töréspontok azonban jelenleg csak műveletekhez támogatottak, eseményindítókhoz nem. További információkért lásd: Állapot- és állapot nélküli munkafolyamatok létrehozása a [Visual Studio Code-ban.](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints)
+
+* Közvetlenül közzétehet vagy üzembe helyezhet logikai alkalmazásokat és azok munkafolyamatait a Visual Studio Code-ból különböző üzemeltetési környezetekben, például Azure- és [Docker-tárolókban.](/dotnet/core/docker/introduction)
+
+* Diagnosztikai naplózási és nyomkövetési képességek engedélyezése [](../azure-monitor/app/app-insights-overview.md) a logikai alkalmazáshoz a Application Insights használatával, ha az Azure-előfizetés és a logikai alkalmazás beállításai támogatják.
+
+* A logikai alkalmazások prémium szintű csomaggal való létrehozásakor és üzembe helyezésekor az Azure Functions Azure Functions-hez hasonlóan hozzáférhet olyan hálózati képességekhez, mint a privát csatlakozás és integráció az [Azure-beli virtuális hálózatokkal.](../azure-functions/functions-premium-plan.md) További információért tekintse át az alábbi témaköröket:
 
   * [Az Azure Functions hálózatkezelési lehetőségei](../azure-functions/functions-networking-options.md)
 
-  * [Azure Logic Apps a bárhonnan hálózati lehetőségeket a Azure Logic Apps előzetes verziójával](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047)
+  * [Azure Logic Apps Running Anywhere – Hálózati lehetőségek a Azure Logic Apps előzetes verzióval](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047)
 
-* Az egybérlős **logikai alkalmazás (előzetes verzió)** erőforrásaiban az egyes munkafolyamatok által használt felügyelt kapcsolatok elérési kulcsainak újragenerálása. Ehhez a feladathoz [kövesse ugyanezen lépéseket a több-bérlős **Logic apps** erőforráshoz, de az egyes munkafolyamatok szintjén](logic-apps-securing-a-logic-app.md#regenerate-access-keys), ne a logikai alkalmazás erőforrás szintjén.
+* Az egybérlős logic app **(előzetes verzió)** erőforrás egyéni munkafolyamatai által használt felügyelt kapcsolatok hozzáférési kulcsait újragenerálja. Ehhez a feladathoz kövesse ugyanezeket a lépéseket a [ **több-bérlős**](logic-apps-securing-a-logic-app.md#regenerate-access-keys)Logic Apps, de az egyéni munkafolyamat szintjén ne a logikai alkalmazás erőforrásszinten.
 
-* A több-bérlős tervezővel megegyező lépéseket követve vegyen fel párhuzamos ágakat az egybérlős tervezőben.
+* Az egybérlős tervezőben a több-bérlős tervezővel azonos lépéseket követve adhat hozzá párhuzamos ágakat.
 
-További információ: [módosított, korlátozott, nem elérhető és nem támogatott képességek](#limited-unavailable-unsupported) és a [Logic apps nyilvános előzetes verzió ismert problémák lapja a githubon](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
+További információ: [Módosított, korlátozott,](#limited-unavailable-unsupported) nem elérhető és nem támogatott képességek, valamint Logic Apps nyilvános előzetes verzió ismert problémáit bemutató oldal a [GitHubon.](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)
 
 <a name="pricing-model"></a>
 
 ## <a name="pricing-model"></a>Díjszabási modell
 
-Ha létrehoz egy egybérlős logikai alkalmazást a Azure Portal vagy a Visual Studio Code-ból való üzembe helyezést, akkor a logikai alkalmazás használatához ki kell választania egy [app Service vagy prémium](../azure-functions/functions-scale.md)szintű üzemeltetési csomagot. Ez a csomag határozza meg a logikai alkalmazás futtatására érvényes díjszabási modellt. Ha kijelöli a App Service csomagot, ki kell választania egy [árképzési szintet](../app-service/overview-hosting-plans.md)is.
+Amikor létrehozza az egybérlős logikai alkalmazás típusát a Azure Portal-ban, vagy üzembe helyez egy Visual Studio Code-ból, ki kell választania egy üzemeltetési tervet [(App Service](../azure-functions/functions-scale.md)vagy Prémium ) a logikai alkalmazás számára. Ez a csomag határozza meg a logikai alkalmazás futtatására vonatkozó díjszabási modellt. Ha az App Service tarifacsomagot választja, tarifacsomagot [is ki kell választania.](../app-service/overview-hosting-plans.md)
 
-Az *állapot-nyilvántartó* munkafolyamatok [külső tárterületet](../azure-functions/storage-considerations.md#storage-account-requirements)használnak, ezért az [Azure Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/) a Azure Logic apps előnézeti futtatókörnyezet által végrehajtott tárolási tranzakciókra vonatkozik. A várólisták például az ütemezéshez használatosak, míg a rendszer a táblákat és a blobokat használja a Munkafolyamat-állapotok tárolásához.
+*Az állapot-alapú* munkafolyamatok külső tárolót [alkalmaznak,](../azure-functions/storage-considerations.md#storage-account-requirements)így az Azure [Storage](https://azure.microsoft.com/pricing/details/storage/) díjszabása az előzetes verziójú Azure Logic Apps által Azure Logic Apps tárolási tranzakciókra vonatkozik. Az üzenetsorok például ütemezésre, míg a táblák és blobok munkafolyamat-államok tárolására használhatók.
 
 > [!NOTE]
-> A nyilvános előzetes verzióban a logikai alkalmazások App Serviceon való futtatása nem jár *további* költségekkel a kiválasztott csomag felett.
+> A nyilvános előzetes verzióban a logikai alkalmazások a  App Service futtatása nem jár további költségeket a kiválasztott csomagon felül.
 
-Az egybérlős erőforrástípus esetében alkalmazandó díjszabási modellekkel kapcsolatos további információkért tekintse át a következő témaköröket:
+Az egybérlős erőforrástípusra vonatkozó díjszabási modellekkel kapcsolatos további információkért tekintse át az alábbi témaköröket:
 
 * [Az Azure Functions méretezése és üzemeltetése](../azure-functions/functions-scale.md)
-* [Alkalmazás vertikális felskálázása Azure App Service](../app-service/manage-scale-up.md)
-* [A Azure Functions díjszabása](https://azure.microsoft.com/pricing/details/functions/)
-* [A App Service díjszabása](https://azure.microsoft.com/pricing/details/app-service/)
-* [Az Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/)
+* [Alkalmazás horizontális felskál méretezése a Azure App Service](../app-service/manage-scale-up.md)
+* [Azure Functions díjszabás részletei](https://azure.microsoft.com/pricing/details/functions/)
+* [App Service díjszabás részletei](https://azure.microsoft.com/pricing/details/app-service/)
+* [Az Azure Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/)
 
 <a name="limited-unavailable-unsupported"></a>
 
 ## <a name="changed-limited-unavailable-or-unsupported-capabilities"></a>Módosított, korlátozott, nem elérhető vagy nem támogatott képességek
 
-Azure Logic Apps előzetes verzióban ezek a funkciók megváltoztak, vagy jelenleg korlátozottak, nem érhetők el vagy nem támogatottak:
+Az Azure Logic Apps előzetes verzióban ezek a képességek megváltoztak, vagy jelenleg korlátozottak, nem érhetők el vagy nem támogatottak:
 
-* **Operációs rendszer támogatása**: a Visual Studio Code-ban a tervező jelenleg nem működik Linux operációs rendszeren, de továbbra is telepíthet olyan logikai alkalmazásokat, amelyek a Logic apps előnézet futtatókörnyezetet használják a Linux-alapú virtuális gépekhez. Egyelőre a Visual Studio Code-ban hozhat létre logikai alkalmazásokat Windows vagy macOS rendszeren, majd üzembe helyezheti azt egy Linux-alapú virtuális gépen.
+* **Operációs rendszer** támogatása: Az Visual Studio Code tervezője jelenleg nem működik Linux operációs rendszeren, de továbbra is üzembe helyezhet olyan logikai alkalmazásokat, amelyek az Logic Apps Preview-alapú futásidőt használják Linux-alapú virtuális gépeken. Logikai alkalmazásait jelenleg windowsos vagy macOS rendszeren a Visual Studio Code-ban építheti ki, majd linuxos virtuális gépen helyezheti üzembe.
 
-* **Eseményindítók és műveletek**: a beépített eseményindítók és műveletek natív módon futnak a Azure Logic apps előnézet futtatókörnyezetben, míg a felügyelt összekötők üzembe helyezése az Azure-ban történik. Néhány beépített eseményindító nem érhető el, például a csúszó ablak és a Batch.
+* **Eseményindítók és** műveletek: A beépített eseményindítók és műveletek natív módon futnak az Azure Logic Apps előzetes verziójú futtatásban, míg a felügyelt összekötők az Azure-ban vannak üzembe gombra stb. Egyes beépített eseményindítók nem érhetők el, például a Csúszóablak és a Batch.
 
-  A munkafolyamat elindításához használja a [beépített ismétlődés, kérelem, http, http webhook, Event Hubs vagy Service Bus eseményindítót](../connectors/apis-list.md). A tervezőben a beépített eseményindítók és műveletek a **beépített** lapon jelennek meg, míg a felügyelt összekötő-eseményindítók és műveletek az **Azure** lapon jelennek meg.
+  A munkafolyamat elkezdését a beépített [Ismétlődés, Kérés, HTTP, HTTP-webhook,](../connectors/apis-list.md)Event Hubs vagy Service Bus eseményindítóval. A tervezőben a beépített eseményindítók és  műveletek a Beépített lapon jelennek meg, míg a felügyelt összekötők eseményindítói és műveletei az **Azure lapon jelennek** meg.
 
   > [!NOTE]
-  > Ha helyileg szeretné futtatni a Visual Studio Code-ban, a webhook-alapú eseményindítók és műveletek további telepítést igényelnek. További információ: állapot-nyilvántartó [és állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban](create-stateful-stateless-workflows-visual-studio-code.md#webhook-setup).
+  > Ha helyileg futtatni Visual Studio Code-ban, a webhook-alapú triggerek és műveletek további beállításokat igényelnek. További információkért lásd: Állapot- és állapot nélküli munkafolyamatok létrehozása a [Visual Studio Code-ban.](create-stateful-stateless-workflows-visual-studio-code.md#webhook-setup)
 
-  * *Állapot nélküli munkafolyamatok* esetén az **Azure** lap nem jelenik meg, ha kijelöl egy eseményindítót, mert csak a [felügyelt összekötők *műveleteit*](../connectors/apis-list.md#managed-api-connectors)lehet kijelölni, nem pedig eseményindítókat. Bár az állapot nélküli munkafolyamatokhoz engedélyezheti az Azure által telepített felügyelt összekötőket, a tervező nem jeleníti meg a felügyelt összekötő-eseményindítókat a hozzáadáshoz.
+  * Állapot *nélküli munkafolyamatok esetén* az **Azure** lap nem jelenik meg az eseményindító kiválasztásakor, mert csak a felügyelt összekötő-műveleteket választhatja ki, az [eseményindítókat nem.](../connectors/managed.md) Bár az Azure-ban üzembe helyezett felügyelt összekötők engedélyezhetők állapot nélküli munkafolyamatokhoz, a tervező nem mutatja meg a hozzáadható felügyelt összekötő-eseményindítókat.
 
-  * Az olyan *állapot-nyilvántartó munkafolyamatok* esetében, amelyek nem az alább felsorolt eseményindítókat és műveleteket használják, a [felügyelt összekötő-eseményindítók és műveletek](../connectors/apis-list.md#managed-api-connectors) is használhatók.
+  * *Állapot- szerinti munkafolyamatok* esetén az alább nem elérhetőként felsorolt [](../connectors/managed.md) eseményindítóktól és műveletektől különböző esetekben a felügyelt összekötő eseményindítói és műveletei is használhatók.
 
-  * Ezek az eseményindítók és műveletek módosítva lettek, vagy jelenleg korlátozottak, nem támogatottak vagy nem érhetők el:
+  * Ezek az eseményindítók és műveletek vagy módosultak, vagy jelenleg korlátozottak, nem támogatottak vagy nem érhetők el:
 
-    * [A helyszíni adatátjáró- *Eseményindítók*](../connectors/apis-list.md#on-premises-connectors) nem érhetők el, *de az átjáró műveletei* elérhetők.
+    * [A helyszíni adatátjáró *eseményindítói*](../connectors/managed.md#on-premises-connectors) nem érhetők el, de az átjáróműveletek *elérhetők.*
 
-    * A beépített művelet, [Azure functions – válasszon ki egy Azure-](logic-apps-azure-functions.md) függvényt mostantól **Azure Function Operations – hívjon egy Azure-függvényt**. Ez a művelet jelenleg csak a **http-trigger** sablonból létrehozott függvények esetében működik.
+    * A beépített művelet, Azure Functions [– Válasszon ki egy Azure-függvényt](logic-apps-azure-functions.md) mostantól **Azure-függvényműveletek – Azure-függvény hívása.** Ez a művelet jelenleg csak a HTTP-eseményindító sablonból létrehozott **függvények esetén** működik.
 
-      A Azure Portalban kiválaszthat egy HTTP-trigger függvényt, amelyhez hozzáférése van a felhasználói felületén keresztüli kapcsolat létrehozásával. Ha megvizsgálja a Function művelet JSON-definícióját a kód nézetben vagy a **workflow.js** fájlon, a művelet hivatkozás használatával hivatkozik a függvényre `connectionName` . Ez a verzió összevonta a függvény információit a kapcsolatok között, amelyet a projekt **connections.js** talál a fájlon, amely a kapcsolatok létrehozása után érhető el.
+      A Azure Portal kiválaszthat egy HTTP-eseményindító függvényt, ahol hozzáféréssel rendelkezik, ha létrehoz egy kapcsolatot a felhasználói élményen keresztül. Ha megvizsgálja a függvény műveletének JSON-definícióját  kódnézetben vagyworkflow.jsfájlban, a művelet hivatkozással hivatkozik a `connectionName` függvényre. Ez a verzió kapcsolatként absztraktálja a függvény adatait,  amelyet a projekt fájljábanconnections.jstalál, amely a kapcsolat létrehozása után érhető el.
 
       > [!NOTE]
-      > Az egybérlős verzióban a függvény művelet csak a lekérdezési karakterláncok hitelesítését támogatja. Azure Logic Apps az előnézet beolvassa az alapértelmezett kulcsot a függvényből a kapcsolódás során, tárolja a kulcsot az alkalmazás beállításaiban, és a kulcs használatával használja a hitelesítést a függvény hívásakor.
+      > Az egybérlős verzióban a függvény művelet csak a lekérdezési sztringes hitelesítést támogatja. Azure Logic Apps előnézet lekérte az alapértelmezett kulcsot a függvénytől a kapcsolat létesítéskor, tárolja a kulcsot az alkalmazás beállításaiban, és a kulcsot használja a hitelesítéshez a függvény hívakor.
       >
-      > A több-bérlős verzióhoz hasonlóan, ha megújítja ezt a kulcsot, például a portálon a Azure Functions felületén keresztül, a függvény művelete az érvénytelen kulcs miatt már nem működik. A probléma megoldásához újra létre kell hoznia a kapcsolódást ahhoz a függvényhez, amelyet az új kulccsal szeretne meghívni vagy frissíteni az alkalmazás beállításait.
+      > Akár csak a több-bérlős verzió esetén, ha például a portál Azure Functions-élményében újítja meg a kulcsot, a függvény művelet az érvénytelen kulcs miatt már nem fog működni. A probléma megoldásához újra létre kell hoznia a kapcsolatot azzal a függvénysel, amely az új kulccsal hívja meg vagy frissíti az alkalmazás beállításait.
 
-    * A beépített művelet, a [beágyazott kód-végrehajtás JavaScript-kód](logic-apps-add-run-inline-code.md) mostantól beágyazott **kód-művelet – online JavaScript futtatása**.
+    * A beépített Beépített kód – [JavaScript-kód](logic-apps-add-run-inline-code.md) végrehajtása mostantól Beágyazott kódműveletek – Beágyazott **JavaScript futtatása.**
 
-      * A beágyazott kód műveleti műveleteihez már nincs szükség integrációs fiókra.
+      * A beágyazott kódműveleti műveletekhez már nincs szükség integrációs fiókra.
 
-      * MacOS és Linux esetén a **beágyazott kód műveletei** mostantól támogatottak, ha a Visual Studio Code-ban a Azure Logic apps (előzetes verzió) bővítményt használja.
+      * macOS és Linux  rendszeren a beágyazott kódműveleteket mostantól a Azure Logic Apps (előzetes verzió) bővítmény a Visual Studio Code-ban használja.
 
-      * Nem kell újraindítania a logikai alkalmazást, ha változtatásokat hajt végre egy **beágyazott kód műveleti** műveletében.
+      * Már nem kell újraindítani a logikai alkalmazást, ha módosításokat eszközlik egy beágyazott **kódműveletben.**
 
-      * A **beágyazott kód műveleti** műveleteinek [frissített korlátai](logic-apps-overview-preview.md#inline-code-limits)vannak.
+      * **A beágyazott kódműveleti műveleteknek** [frissített korlátaik vannak.](logic-apps-overview-preview.md#inline-code-limits)
 
-    * Az [integrációs fiókokhoz tartozó beépített B2B-eseményindítók és műveletek](../connectors/apis-list.md#integration-account-connectors) nem érhetők el, például a **sima fájl** kódolása és a dekódolási műveletek.
+    * Az [integrációs fiókok néhány beépített B2B-eseményindítója](../connectors/managed.md#integration-account-connectors) és -művelete nem érhető el, például az 1. fájl kódolási és dekódolási műveletei. 
 
-    * A beépített művelet, [Azure Logic apps – a logikai alkalmazás munkafolyamatának kiválasztása](logic-apps-http-endpoint.md) most **munkafolyamat-műveletek – munkafolyamat meghívása ebben a munkafolyamat-alkalmazásban**.
+    * A beépített művelet, Azure Logic Apps – Logikai alkalmazás [munkafolyamatának](logic-apps-http-endpoint.md) kiválasztása mostantól Munkafolyamat-műveletek – Munkafolyamat meghívása **ebben a munkafolyamat-alkalmazásban.**
 
-* Az [Egyéni összekötők](../connectors/apis-list.md#custom-apis-and-connectors) jelenleg előzetes verzióban nem támogatottak.
+* [Az egyéni összekötők](../connectors/apis-list.md#custom-apis-and-connectors) jelenleg nem támogatottak az előzetes verzióban.
 
-* **Üzemeltetési csomag rendelkezésre állása**: az egybérlős **logikai alkalmazás (előzetes verzió)** típusú erőforrástípus létrehozása a Azure Portal vagy a Visual Studio Code-ból való üzembe helyezés esetén csak a prémium vagy a app Service üzemeltetési csomagot használhatja az Azure-ban. A felhasználási üzemeltetési csomagok nem érhetők el, és nem támogatottak az erőforrástípus üzembe helyezése során. A Visual Studio Code-ból telepítheti a Docker-tárolót, az [integrációs szolgáltatási környezetre (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)azonban nem.
+* Üzemeltetési csomag rendelkezésre **állása:** Függetlenül attól, hogy az egybérlős Logikai alkalmazás **(előzetes verzió)** erőforrástípust az Azure Portal-ban hozza létre, vagy az Visual Studio Code-ból telepíti, csak a Prémium vagy App Service-alapú üzemeltetési csomag használható az Azure-ban. A használaton áteső üzemeltetési csomagok nem érhetők el, és nem támogatottak az erőforrástípus üzembe helyezéséhez. Az üzembe helyezést az Visual Studio Code-ból egy Docker-tárolóba, de integrációs szolgáltatási [környezetbe (ISE) nem.](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)
 
-* **Töréspontok hibakeresése a Visual Studio Code-ban**: bár a munkafolyamatok fájlján belül a **workflow.json** töréspontokat adhat hozzá és használhat, a töréspontok csak a jelenleg végrehajtott műveletekhez támogatottak, nem eseményindítók. További információ: állapot-nyilvántartó [és állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints).
+* **Töréspont-hibakeresés** az Visual Studio Code-ban: Bár a **workflow.js-fájlban** töréspontokat adhat hozzá és használhat munkafolyamatokhoz, a töréspontok jelenleg csak a műveletekhez támogatottak, az eseményindítókhoz nem. További információkért lásd: Állapot- és állapot nélküli munkafolyamatok létrehozása a [Visual Studio Code-ban.](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints)
 
-* **Nagyítás vezérlő**: a nagyítás vezérlő jelenleg nem érhető el a tervezőben.
+* **Nagyítás vezérlő:** A nagyítási vezérlő jelenleg nem érhető el a tervezőben.
 
-* **Trigger-előzmények és-futtatási előzmények**: a **logikai alkalmazás (előzetes verzió)** erőforrástípus, az előzmények és a futtatási előzmények a Azure Portal a munkafolyamat szintjén, nem a logikai alkalmazás szintjén jelennek meg. A korábbi adatértékek megkereséséhez kövesse az alábbi lépéseket:
+* **Triggerelőzmények** és futtatáselőzmények: A Logikai alkalmazás **(előzetes verzió)** erőforrástípushoz az eseményindító-előzmények és a futtatáselőzmények a Azure Portal a munkafolyamat szintjén jelennek meg, nem a logikai alkalmazás szintjén. Az előzményadatok megkereséhez kövesse az alábbi lépéseket:
 
-   * A futtatási előzmények megtekintéséhez nyissa meg a munkafolyamatot a logikai alkalmazásban. A munkafolyamat menü **fejlesztő** területén válassza a **figyelés** elemet.
+   * A futtatás előzményeinek megtekintéséhez nyissa meg a munkafolyamatot a logikai alkalmazásban. A munkafolyamat menüjében a Fejlesztő **alatt válassza** a **Figyelás lehetőséget.**
 
-   * Az aktiválási előzmények áttekintéséhez nyissa meg a munkafolyamatot a logikai alkalmazásban. A munkafolyamat menü **fejlesztői** területén válassza az **aktiválási előzmények** elemet.
+   * Az eseményindító előzményeinek áttekintéséhez nyissa meg a munkafolyamatot a logikai alkalmazásban. A munkafolyamat menü Fejlesztői **menüjében válassza** a **Trigger Histories** lehetőséget.
 
 <a name="firewall-permissions"></a>
 
-## <a name="permit-traffic-in-strict-network-and-firewall-scenarios"></a>A forgalom engedélyezése szigorú hálózati és tűzfal-forgatókönyvekben
+## <a name="permit-traffic-in-strict-network-and-firewall-scenarios"></a>Forgalomengedélyek szigorú hálózati és tűzfal-forgatókönyvekben
 
-Ha a környezete szigorú hálózati követelményekkel vagy a forgalmat korlátozó tűzfalakkal rendelkezik, a logikai alkalmazás munkafolyamataiban engedélyeznie kell a hozzáférést minden trigger-vagy művelet-kapcsolathoz.
+Ha a környezetben szigorú hálózati követelmények vagy tűzfalak korlátozzák a forgalmat, hozzáférést kell engedélyeznie a logikai alkalmazás munkafolyamatai eseményindítói és műveletkapcsolatai számára.
 
-A kapcsolatok teljes tartománynevének (FQDN) megkereséséhez tekintse át a következő témakörökben található megfelelő szakaszt:
+A kapcsolatok teljes tartománynevének (FQDN) megkeresése a következő témakörök megfelelő szakaszaiban található:
 
-* [Tűzfal engedélyei az egybérlős logikai alkalmazásokhoz – Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#firewall-setup)
-* [Tűzfal engedélyei az egybérlős logikai alkalmazásokhoz – Azure Portal](create-stateful-stateless-workflows-azure-portal.md#firewall-setup)
+* [Tűzfalengedélyek egybérlős logikai alkalmazásokhoz – Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#firewall-setup)
+* [Tűzfalengedélyek egybérlős logikai alkalmazásokhoz – Azure Portal](create-stateful-stateless-workflows-azure-portal.md#firewall-setup)
 
 <a name="limits"></a>
 
 ## <a name="updated-limits"></a>Frissített korlátok
 
-Bár a Azure Logic Apps előnézet számos korlátja ugyanaz marad, mint a [több-bérlős Azure Logic apps korlátai](logic-apps-limits-and-config.md), a Azure Logic apps előzetes verziójának korlátai megváltoztak.
+Bár az előzetes Azure Logic Apps korlátai ugyanazok maradnak, mint a [több-bérlős](logic-apps-limits-and-config.md)Azure Logic Apps korlátai, ezek a korlátok az előzetes verzióra Azure Logic Apps módosulnak.
 
 <a name="http-timeout-limits"></a>
 
-### <a name="http-timeout-limits"></a>HTTP-időkorlát korlátai
+### <a name="http-timeout-limits"></a>HTTP-időtúllépési korlátok
 
-Egyetlen bejövő hívás vagy kimenő hívás esetén az időtúllépési korlát 230 másodperc (3,9 perc) a következő eseményindítók és műveletek esetén:
+Egyetlen bejövő vagy kimenő hívás esetén az időkorlát 230 másodperc (3,9 perc) az alábbi eseményindítók és műveletek esetén:
 
-* Kimenő kérelem: HTTP-trigger, HTTP-művelet
-* Bejövő kérelem: trigger kérelmezése, HTTP webhook-trigger, HTTP-webhook művelet
+* Kimenő kérés: HTTP-eseményindító, HTTP-művelet
+* Bejövő kérelem: Kérés eseményindító, HTTP-webhook-eseményindító, HTTP-webhook művelet
 
-Ezzel szemben az eseményindítók és más környezetekben a Logic apps és a munkafolyamatok futtatásával kapcsolatos időtúllépési korlátok:
+Ezzel szemben az eseményindítók és műveletek időtúllépési korlátai más környezetekben, ahol a logikai alkalmazások és a munkafolyamataik futnak:
 
 * Több-bérlős Azure Logic Apps: 120 másodperc (2 perc)
 * Integrációs szolgáltatási környezet: 240 másodperc (4 perc)
 
-További információ: http- [korlátok](logic-apps-limits-and-config.md#http-limits).
+További információ: [HTTP-korlátok.](logic-apps-limits-and-config.md#http-limits)
 
 <a name="managed-connector-limits"></a>
 
 ### <a name="managed-connectors"></a>Felügyelt összekötők
 
-A felügyelt összekötők kapcsolatonként percenként 50 kérelemre korlátozódnak. Az összekötők szabályozásával kapcsolatos problémák megoldásához lásd: [a szabályozási problémák kezelése (429 – "túl sok kérés" hiba) a Azure Logic apps](handle-throttling-problems-429-errors.md#connector-throttling).
+A felügyelt összekötők kapcsolatonként legfeljebb 50 kérést kérhetnek percenként. Az összekötő-szabályozási problémák kezelésével kapcsolatban lásd a szabályozási problémák [(429 – "Túl sok kérelem" hiba)](handle-throttling-problems-429-errors.md#connector-throttling)kezelésével kapcsolatos Azure Logic Apps.
 
 <a name="inline-code-limits"></a>
 
-### <a name="inline-code-operations-execute-javascript-code"></a>Beágyazott kód műveletei (JavaScript-kód végrehajtása)
+### <a name="inline-code-operations-execute-javascript-code"></a>Beágyazott kódműveletek (JavaScript-kód végrehajtása)
 
-Egyetlen logikai alkalmazás definíciója esetében a beágyazott kód műveleti művelet, a [**JavaScript-kód végrehajtása**](logic-apps-add-run-inline-code.md), a következő frissítési korlátokkal rendelkezik:
+Egyetlen logikai alkalmazás definíciója esetén a Beágyazott kódműveletek Művelet [**JavaScript-kód**](logic-apps-add-run-inline-code.md)végrehajtása művelet a következő frissített korlátokkal rendelkezik:
 
-* A kód karaktereinek maximális száma 1 024 karakterből 100 000 karakterre nő.
+* A kód karakterek maximális száma 1024 karakterről 100 000 karakterre nő.
 
-* A kód futtatásának maximális időtartama öt másodperctől 15 másodpercre nő.
+* A kód futtatásának maximális időtartama öt másodpercről 15 másodpercre nő.
 
-További információ: [Logic app definition Limits](logic-apps-limits-and-config.md#definition-limits).
+További információ: [Logikaialkalmazás-definíciók korlátai.](logic-apps-limits-and-config.md#definition-limits)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozása a Azure Portalban](create-stateful-stateless-workflows-azure-portal.md)
-* [Állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban](create-stateful-stateless-workflows-visual-studio-code.md)
-* [Logic Apps nyilvános előzetes kiadás ismert problémáinak lapja a GitHubon](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)
+* [Állapot- és állapot nélküli munkafolyamatok létrehozása a Azure Portal](create-stateful-stateless-workflows-azure-portal.md)
+* [Állapot- és állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban](create-stateful-stateless-workflows-visual-studio-code.md)
+* [Logic Apps nyilvános előzetes verzió ismert problémáinak lapja a GitHubon](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)
 
-Azt is szeretnénk hallani, hogy Azure Logic Apps előzetes verzióval kapcsolatos tapasztalatairól van szó.
+Szívesen meghallgatjuk a Azure Logic Apps tapasztalatait!
 
-* Hibák vagy problémák esetén [hozza létre a problémákat a githubon](https://github.com/Azure/logicapps/issues).
-* Kérdések, kérések, megjegyzések és egyéb visszajelzések esetén [használja ezt a visszajelzési űrlapot](https://aka.ms/lafeedback).
+* Hibák vagy problémák esetén hozza [létre a problémákat a GitHubon.](https://github.com/Azure/logicapps/issues)
+* Ha kérdése, kérése, megjegyzése vagy egyéb visszajelzése van, használja [ezt a visszajelzési űrlapot.](https://aka.ms/lafeedback)

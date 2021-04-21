@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub a felhőből az eszközre irányuló üzenetkezelés ismertetése | Microsoft Docs
-description: Ez a fejlesztői útmutató ismerteti, hogyan használható a felhőből az eszközre irányuló üzenetkezelés az IoT hub használatával. Az üzenet életciklusával és a konfigurációs beállításokkal kapcsolatos információkat tartalmaz.
+title: A Azure IoT Hub közötti üzenetkezelés | Microsoft Docs
+description: Ez a fejlesztői útmutató bemutatja, hogyan használhatja a felhőből az eszközök közötti üzenetküldést az IoT Hubbal. Információkat tartalmaz az üzenetek életciklusról és konfigurációs beállításokról.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,104 +9,104 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: 154b496a6c14d307c09ddcd1b42bf4ba568cb315
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7bb3ca2b31eaef5c0639f30e0f2a329a37dfe7e0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104607891"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107761780"
 ---
-# <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Felhőből az eszközre irányuló üzenetek küldése IoT-hubhoz
+# <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Üzenetek küldése a felhőből az eszközre egy IoT Hubról
 
-Ha egyirányú értesítéseket szeretne küldeni egy eszközre a megoldás háttérből, küldjön a felhőből az eszközre irányuló üzeneteket a IoT hub-ról az eszközre. Az Azure IoT Hub által támogatott egyéb felhőből eszközre vonatkozó beállításokkal kapcsolatos további információkért lásd: a [felhőből az eszközre irányuló kommunikációs útmutató](iot-hub-devguide-c2d-guidance.md).
+Ha egy egyértelmű értesítéseket küld egy eszközalkalmazásnak a megoldás háttéralkalmazásból, küldjön a felhőből az eszközre üzeneteket az IoT Hubról az eszközre. A felhőből az eszközökre való kommunikáció egyéb, a felhőből az Azure IoT Hub által támogatott lehetőségekről a felhőből az eszközre való [kommunikáció útmutatója nyújt további útmutatást.](iot-hub-devguide-c2d-guidance.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-A felhőből az eszközre irányuló üzeneteket a szolgáltatással szemközti végponton ( */messages/devicebound*) keresztül küldi el. Az eszközök ezután egy adott eszközre vonatkozó végponton, */Devices/{deviceId}/messages/devicebound* keresztül kapják meg az üzeneteket.
+A felhőből az eszközre irányuló üzeneteket az */messages/devicebound* szolgáltatásvégponton keresztül küldheti el. Az eszközök ezután egy eszközspecifikus végponton *(/devices/{deviceId}/messages/devicebound)* keresztül kapják meg az üzeneteket.
 
-Ha egyetlen eszközön szeretné megcélozni az egyes felhőből az eszközre irányuló üzeneteket, az IoT hub a **to** tulajdonságot */Devices/{deviceId}/messages/devicebound* értékre állítja.
+Ha minden felhőből egy eszközre irányuló üzenetet egyetlen eszközre  céloz, az IoT Hub a tulajdonságot a következőre állítja: */devices/{deviceId}/messages/devicebound*.
 
-Minden eszköz-várólista rendelkezik, legfeljebb 50 felhőből eszközre küldött üzenetekkel. Ha több üzenetet szeretne küldeni ugyanarra az eszközre, a rendszer hibát jelez.
+Az eszközsorok akár 50, felhőből az eszközre küldött üzenetet is tartalmaznak. Ha több üzenetet próbál küldeni ugyanabba az eszközre, az hibát jelez.
 
-## <a name="the-cloud-to-device-message-life-cycle"></a>A felhőből az eszközre irányuló üzenetek életciklusa
+## <a name="the-cloud-to-device-message-life-cycle"></a>A felhőből az eszközre küldött üzenetek életciklusa
 
-A legalább egyszeri kézbesítés biztosításához az IoT hub a felhőből az eszközre irányuló üzeneteket tart fenn eszközönkénti várólistán. Ahhoz, hogy az IoT-központ eltávolítsa az üzeneteket a várólistából, az eszközöknek explicit módon el kell ismerniük a *befejezést*. Ez a megközelítés biztosítja a rugalmasságot a kapcsolat és az eszközök meghibásodása ellen.
+Az Üzenetek legalább egyszer történő kézbesítésének garantálása érdekében az IoT Hub eszközönkénti üzenetsorok között is megmarad a felhőből az eszközre küldött üzenetekben. Ahhoz, hogy az IoT Hub eltávolítsa az üzeneteket az üzenetsorból, az eszközöknek explicit módon meg kell nyugtázni a *befejezést.* Ez a megközelítés rugalmasságot biztosít a csatlakozási és eszközhibák esetén.
 
-Az életciklus állapotának diagramja az alábbi ábrán látható:
+Az életciklus-állapot diagramja az alábbi ábrán látható:
 
-![A felhőből az eszközre irányuló üzenetek életciklusa](./media/iot-hub-devguide-messages-c2d/lifecycle.png)
+![A felhőből az eszközre küldött üzenetek életciklusa](./media/iot-hub-devguide-messages-c2d/lifecycle.png)
 
-Amikor az IoT hub szolgáltatás üzenetet küld az eszköznek, a szolgáltatás *várólistán lévő* állítja be az üzenet állapotát. Ha egy eszköz üzenetet szeretne *kapni* , az IoT hub *zárolja* az üzenetet úgy, hogy az állapotot *láthatatlanra* állítja. Ez az állapot lehetővé teszi, hogy az eszköz más szálai is megkezdsék a többi üzenet fogadását. Ha egy eszköz szála befejezi az üzenet feldolgozását, az üzenet *elvégzésével* értesíti az IoT hubot. Az IoT hub ezután a *befejezett* állapotot állítja be.
+Amikor az IoT Hub szolgáltatás üzenetet küld egy eszköznek, az üzenetállapotot a *Következőre állítja: Enqueued*. Amikor egy eszköz üzenetet *szeretne kapni,* az IoT *Hub* a Láthatatlan állapotra való beállításával *zárolja az üzenetet.* Ez az állapot lehetővé teszi, hogy az eszközön más szálak is elkezdenek más üzeneteket fogadni. Amikor egy eszközszál befejezi egy üzenet feldolgozását, az  üzenet kitöltésével értesíti az IoT Hubot. Az IoT Hub ezután Befejezve állapotba állítja *az állapotot.*
 
-Az eszköz A következőket is elvégezheti:
+Az eszközök a következőre is képesek:
 
-* *Utasítsa* el az üzenetet, ami azt eredményezi, hogy az IoT hub a *Kézbesítetlen betűjelű* állapotba állítja azt. A Message Queuing telemetria Transport (MQTT) protokollon keresztül csatlakozó eszközök nem tagadhatják meg a felhőből az eszközre irányuló üzeneteket.
+* *Az* üzenet elutasítása, amelynek hatására az IoT Hub a Nem küldött *betűvel írt állapotba állítsa* azt. Az üzenetsor-kezelés telemetria-átviteli (MQTT) protokollal összekapcsolt eszközök nem utasítják el a felhőből az eszközre küldött üzeneteket.
 
-* Az üzenet *elhagyása* , amelynek hatására az IoT hub visszahelyezi az üzenetet a várólistába, és az állapot *várólistán lévő* értékre van állítva. A MQTT protokollon keresztül csatlakozó eszközök nem tudják kihagyni a felhőből az eszközre irányuló üzeneteket.
+* *Hagyja* fel az üzenetet, ami miatt az IoT Hub visszatesz egy üzenetet az üzenetsorba, és az állapot *a Sorba állítva lesz.* Az MQTT protokollon keresztül csatlakozó eszközök nem hagyhatják le a felhőből az eszközre küldött üzeneteket.
 
-Egy szál nem tud feldolgozni egy üzenetet az IoT hub értesítése nélkül. Ebben az esetben az üzenetek automatikusan a *láthatatlan* állapotból térnek vissza a *várólistán lévő* állapotba egy *láthatósági* időkorlát (vagy *zárolási* időkorlát) után. Az időtúllépés értéke egy perc, és nem módosítható.
+Egy szál nem tudja feldolgozni az üzenetet az IoT Hub értesítése nélkül. Ebben az esetben az üzenetek  automatikusan visszatérnek  a Láthatatlan állapotról a Besorolt  állapotba a *láthatósági* időkorlát (vagy a zárolás időkorlátja) után. Ennek az időkorreklének értéke egy perc, és nem módosítható.
 
-Az IoT hub **Max Delivery Count** tulajdonsága határozza meg, hogy az üzenet hány alkalommal tud áttérni a *várólistán lévő* és a *láthatatlan* állapot között. Ennyi átmenet után az IoT hub az üzenet állapotát a *Kézbesítetlen levélre* állítja. Hasonlóképpen, az IoT hub egy üzenet állapotát a lejárati idő *lejárta után* kézbesíti. További információ: [time to Live](#message-expiration-time-to-live).
+Az **IoT** Hub maximális kézbesítésszám tulajdonsága határozza meg, hogy egy üzenet legfeljebb hányszor válthat át a *Enqueued* és *a Invisible* (Láthatatlan) államok között. Ennyi áttűnés után az IoT Hub az üzenet állapotát *"Dead lettered" (Nem küldött) állapotra állítja.* Hasonlóképpen, az IoT Hub az üzenetek állapotát a lejárati ideje utáni, "Dead *lettered"* (Nem küldött üzenet) állapotra állítja. További információ: [Time to live (Az idő az életben).](#message-expiration-time-to-live)
 
-A [felhőből az eszközre irányuló üzenetek küldésének módja IoT hub](iot-hub-csharp-csharp-c2d.md) cikkből megtudhatja, hogyan küldhet a felhőből az eszközre irányuló üzeneteket a felhőből, és hogyan fogadhatja őket az eszközön.
+A [How to send cloud-to-device messages with IoT Hub (Felhőből](iot-hub-csharp-csharp-c2d.md) az eszközre küldött üzenetek küldése a IoT Hub-val) cikk bemutatja, hogyan küldhet a felhőből az eszközre üzeneteket a felhőből, és hogyan fogadhatja azokat egy eszközön.
 
-Az eszköz általában a felhőből az eszközre irányuló üzenetet hajt végre, ha az üzenet elvesztése nem befolyásolja az alkalmazás logikáját. Ilyen lehet például, ha az eszköz helyileg megtartotta az üzenet tartalmát, vagy sikeresen végrehajtotta a műveletet. Az üzenet átmeneti adatokat is tartalmazhat, amelyek elvesztése nem befolyásolja az alkalmazás funkcióit. A hosszan futó feladatok esetében időnként a következőket teheti:
+Az eszközök általában egy felhőből egy eszközre vonatkozó üzenetet küldnek, ha az üzenet elvesztése nincs hatással az alkalmazás logikára. Ez lehet például akkor, ha az eszköz helyben tárolta az üzenet tartalmát, vagy sikeresen végrehajtott egy műveletet. Az üzenet átmeneti információkat is hordozhat, amelyek elvesztése nem befolyásolta volna az alkalmazás működését. A hosszan futó feladatokhoz néha a következő műveleteket lehet elvégezni:
 
-* Fejezze be a felhőből az eszközre irányuló üzenetet, miután az eszköz megtartotta a feladat leírását a helyi tárolóban.
+* Miután az eszköz megőrzötte a feladat leírását a helyi tárolóban, töltse ki a felhőből az eszközre küldött üzenetet.
 
-* Értesítse a megoldás hátterét egy vagy több, az eszközről a felhőbe irányuló üzenettel a feladat előrehaladásának különböző szakaszaiban.
+* Értesítse a megoldás háttérszolgáltatását egy vagy több, eszközről a felhőbe küldött üzenetben a feladat előrehaladásának különböző szakaszaiban.
 
-## <a name="message-expiration-time-to-live"></a>Üzenet lejárata (élettartam)
+## <a name="message-expiration-time-to-live"></a>Üzenetek lejárata (az idő az élőben)
 
-Minden felhőből eszközre küldött üzenet lejárati idővel rendelkezik. Ezt az időt a következők valamelyike állítja be:
+Minden felhőből egy eszközre küldött üzenet lejárati idővel rendelkezik. Ezt az időt a következők valamelyike adja meg:
 
-* A szolgáltatás **ExpiryTimeUtc** tulajdonsága
-* Az IoT hub az IoT hub-tulajdonságként megadott alapértelmezett *idő* használatával
+* A **szolgáltatás ExpiryTimeUtc** tulajdonsága
+* Az IoT Hub az  IoT Hub-tulajdonságként megadott alapértelmezett időtartam használatával
 
-Lásd: [a felhőből az eszközre vonatkozó konfigurációs beállítások](#cloud-to-device-configuration-options).
+Lásd: A [felhőből az eszközre vonatkozó konfigurációs beállítások.](#cloud-to-device-configuration-options)
 
-Az üzenetek lejárati idejének kihasználása, valamint az üzenetek leválasztott eszközökre való küldésének általános módja, ha a rövid *élettartamot az élő* értékek értékre állítja. Ez a megközelítés ugyanazt az eredményt éri el, mint az eszköz csatlakoztatási állapotának fenntartása, de hatékonyabb. Ha üzenet-visszaigazolást kér, az IoT hub értesíti a következő eszközökről:
+Az üzenetek lejáratának és az üzenetek leválasztott eszközökre való küldésének elkerülése érdekében gyakori módszer a rövid idő beállítása az élő *értékekhez.* Ez a megközelítés ugyanazt az eredményt éri el, mint az eszköz kapcsolati állapotának fenntartása, de hatékonyabb. Amikor nyugtázást kér az üzenethez, az IoT Hub értesíti, hogy mely eszközök:
 
 * Képes üzeneteket fogadni.
-* Nem online vagy sikertelen volt.
+* Nincsenek online vagy sikertelenek.
 
-## <a name="message-feedback"></a>Üzenet visszajelzése
+## <a name="message-feedback"></a>Üzenet-visszajelzés
 
-A felhőből az eszközre küldött üzenetek küldésekor a szolgáltatás az üzenet végleges állapotára vonatkozó üzenet-visszajelzések kézbesítését is kérheti. Ezt úgy teheti meg, hogy a **iothub-ACK** Application tulajdonságot a következő négy érték egyikére küldi a felhőből az eszközre:
+Amikor egy felhőből egy eszközre küldött üzenetet küld, a szolgáltatás kérheti az üzenetenkénti visszajelzés kézbesítését az üzenet végleges állapotáról. Ezt az **iothub-ack** alkalmazástulajdonságnak a következő négy érték egyikére küldött, felhőből az eszközre küldött üzenetben kell megtennie:
 
-| ACK tulajdonság értéke | Működés |
+| Ack tulajdonság értéke | Működés |
 | ------------ | -------- |
-| Nincs     | Az IoT hub nem állít elő visszajelzési üzenetet (az alapértelmezett viselkedés). |
-| pozitív | Ha a felhőből az eszközre irányuló üzenet eléri a *befejezett* állapotot, a IoT hub visszajelzési üzenetet hoz létre. |
-| negatív | Ha a felhőből az eszközre irányuló üzenet eléri a *Kézbesítetlen* állapotot, a IoT hub visszajelzési üzenetet hoz létre. |
-| teljes     | Az IoT hub mindkét esetben létrehoz egy visszajelzési üzenetet. |
+| Nincs     | Az IoT Hub nem hoz létre visszajelzési üzenetet (alapértelmezett viselkedés). |
+| pozitív | Ha a felhőből az eszközre küldött üzenet *Befejezve* állapotba jut, az IoT Hub létrehoz egy visszajelzési üzenetet. |
+| negatív | Ha a felhőből az eszközre küldött üzenet a "Nem *küldve"* állapotot éri el, az IoT Hub létrehoz egy visszajelzési üzenetet. |
+| Teljes     | Az IoT Hub mindkét esetben létrehoz egy visszajelzési üzenetet. |
 
-Ha a **ACK** érték *megtelt*, és nem kap visszajelzést, az azt jelenti, hogy a visszajelzési üzenet lejárt. A szolgáltatás nem tudja, mi történt az eredeti üzenettel. A gyakorlatban a szolgáltatásnak biztosítania kell, hogy a lejárata előtt fel tudja dolgozni a visszajelzést. A maximális lejárati idő két nap, így a szolgáltatás sikertelenül fog futni, ha hiba történik.
+Ha **az Ack** értéke *megtelt,* és nem kap visszajelzési üzenetet, az azt jelenti, hogy a visszajelzési üzenet lejárt. A szolgáltatás nem tudja, mi történt az eredeti üzenettel. A gyakorlatban a szolgáltatásnak biztosítania kell, hogy feldolgozhatja a visszajelzést, mielőtt lejárna. A maximális lejárati idő két nap, ami időt hagy a szolgáltatás újrafuttatására hiba esetén.
 
-Ahogy azt a [végpontok](iot-hub-devguide-endpoints.md)ismertetik, a IoT hub visszajelzést küld a szolgáltatás felé irányuló végponton, a */messages/servicebound/feedback*, az üzenetekként. A visszajelzések fogadásának szemantikai megegyeznek a felhőből az eszközre irányuló üzenetekkel. Ha lehetséges, az üzenetek visszajelzése egyetlen üzenetbe van batch, a következő formátumban:
+A [Végpontok részben](iot-hub-devguide-endpoints.md)leírtak szerint az IoT Hub egy szolgáltatás felé néző végponton *(/messages/servicebound/feedback)* keresztül küld visszajelzést üzenetként. A visszajelzések fogadásának szemantikája ugyanaz, mint a felhőből az eszközre küldött üzenetekben. Amikor csak lehetséges, az üzenet-visszajelzéseket a rendszer egyetlen üzenetbe kötegi, a következő formátumban:
 
 | Tulajdonság     | Leírás |
 | ------------ | ----------- |
-| EnqueuedTime | Időbélyeg, amely azt jelzi, hogy a központ mikor fogadta el a visszajelzési üzenetet |
+| EnqueuedTime | Egy időbélyeg, amely azt jelzi, hogy a visszajelzési üzenetet mikor kapta meg a központ |
 | UserId (Felhasználóazonosító)       | `{iot hub name}` |
-| ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
+| ContentType (Tartalomtípus)  | `application/vnd.microsoft.iothub.feedback.json` |
 
-A rendszer akkor küldi el a visszajelzést, ha a köteg eléri a 64 üzenetet, vagy az utolsó elküldötttől számított 15 másodpercben, attól függően, hogy melyik következik be először. 
+A rendszer akkor küld visszajelzést, ha a köteg eléri a 64 üzenetet, vagy 15 másodpercen belül az utolsó küldéstől (amelyik előbb érkezik). 
 
-A törzs a rekordok JSON-szerializált tömbje, amelyek mindegyike a következő tulajdonságokkal rendelkezik:
+A törzs rekordok JSON-szerializált tömbje, amelyek mind a következő tulajdonságokkal rendelkeznek:
 
 | Tulajdonság           | Leírás |
 | ------------------ | ----------- |
-| EnqueuedTimeUtc    | Egy időbélyeg, amely azt jelzi, hogy mikor történt az üzenet eredménye (például a hub megkapta a visszajelzési üzenetet, vagy lejárt az eredeti üzenet) |
-| OriginalMessageId  | A *MessageID* üzenet, amelyre ez a visszajelzési információ vonatkozik |
-| StatusCode         | Egy kötelező karakterlánc, amelyet az IoT hub által generált visszajelzési üzenetekben használ: <br/> *Siker* <br/> *Lejárt* <br/> *DeliveryCountExceeded* <br/> *Elutasítva* <br/> *Törlődnek* |
-| Leírás        | *Statuscode* karakterlánc-értékei |
-| DeviceId           | A felhőből az eszközre irányuló üzenet megcélzott eszközének *DeviceID* eleme, amelyre ez a visszajelzés vonatkozik |
-| DeviceGenerationId | A felhőből az eszközre irányuló üzenet *DeviceGenerationId* , amelyre ez a visszajelzés vonatkozik |
+| EnqueuedTimeUtc    | Egy időbélyeg, amely azt jelzi, hogy mikor történt az üzenet kimenete (például a központ megkapta a visszajelzési üzenetet, vagy az eredeti üzenet lejárt) |
+| OriginalMessageId (EredetimessageId)  | Annak *a felhőből* az eszközre küldött üzenetnek az Üzenetazonosítója, amelyhez a visszajelzési információ kapcsolódik |
+| StatusCode (Állapotkód)         | Egy kötelező sztring, amely az IoT Hub által létrehozott visszajelzési üzenetekben használatos: <br/> *Siker* <br/> *Lejárt* <br/> *DeliveryCountExceeded* <br/> *Elutasítva* <br/> *Kiürítve* |
+| Description        | Sztringértékek a *StatusCode-hez* |
+| DeviceId           | A *felhőből* az eszközre küldött üzenet céleszközének DeviceId-e, amelyhez ez a visszajelzés kapcsolódik |
+| DeviceGenerationId | Annak *a felhő–eszköz* üzenetnek a DeviceGenerationId-e, amelyre ez a visszajelzés vonatkozik |
 
-Ahhoz, hogy a felhőből az eszközre irányuló üzenet összekapcsolja az eredeti üzenettel kapcsolatos visszajelzéseit, a szolgáltatásnak meg kell adnia egy *MessageID*.
+Ahhoz, hogy a felhőből egy eszközre küldött üzenet össze tudja korrelálni a visszajelzését az eredeti üzenettel, a szolgáltatásnak meg kell adnia egy *MessageId (Üzenetazonosító) értéket.*
 
-A visszajelzési üzenet törzse a következő kódban látható:
+A visszajelzési üzenet törzse az alábbi kódban látható:
 
 ```json
 [
@@ -125,31 +125,31 @@ A visszajelzési üzenet törzse a következő kódban látható:
 ]
 ```
 
-**Törlésre váró eszközök visszajelzése**
+**Függőben lévő visszajelzés a törölt eszközökről**
 
-Ha töröl egy eszközt, a függőben lévő visszajelzések is törlődnek. Az eszköz visszajelzéseit kötegekben küldi el a rendszer. Ha egy eszköz törölve lett a keskeny ablakban (általában 1 másodpercnél kevesebb), amikor az eszköz megerősíti az üzenet fogadását és a következő visszajelzési köteg előkészítését, a visszajelzés nem fog történni.
+Egy eszköz törlésekor a függőben lévő visszajelzések is törlődnek. Az eszköz visszajelzései kötegben vannak elküldve. Ha egy eszközt törölnek a keskeny (gyakran 1 másodpercnél rövidebb) ablakban, amikor az eszköz megerősíti az üzenet beérkeztét, és a következő visszajelzési köteg elkészülte között, a visszajelzés nem történik meg.
 
-Ezt a viselkedést úgy érheti el, ha az eszköz törlése előtt egy időszakot vár a függőben lévő visszajelzések megérkezésére. A kapcsolódó üzenetek visszajelzését az eszköz törlése után el kell fogadniuk.
+Ezt a viselkedést úgy is felhasználhatja, ha az eszköz törlése előtt várakozik egy ideig, amíg a függőben lévő visszajelzés megérkezik. A kapcsolódó üzenetekkel kapcsolatos visszajelzéseket az eszköz törlésekor el kell veszni.
 
-## <a name="cloud-to-device-configuration-options"></a>A felhőből az eszközre történő konfigurációs beállítások
+## <a name="cloud-to-device-configuration-options"></a>A felhőből az eszközre vonatkozó konfigurációs lehetőségek
 
-Minden IoT hub a következő konfigurációs beállításokat teszi elérhetővé a felhőből az eszközre irányuló üzenetküldéshez:
+Minden IoT Hub a következő konfigurációs lehetőségeket teszi elérhetővé a felhőből az eszközre való üzenetküldéshez:
 
 | Tulajdonság                  | Leírás | Tartomány és alapértelmezett |
 | ------------------------- | ----------- | ----------------- |
-| defaultTtlAsIso8601       | A felhőből az eszközre irányuló üzenetek alapértelmezett ÉLETTARTAMa | ISO_8601 intervallum legfeljebb 2 nap (legalább 1 perc); alapértelmezett: 1 óra |
-| maxDeliveryCount          | A felhőből az eszközre irányuló várólisták maximális kézbesítési száma | 1 – 100; alapértelmezett: 10 |
-| visszajelzés. ttlAsIso8601     | Szolgáltatáshoz kötött visszajelzési üzenetek megőrzése | ISO_8601 intervallum legfeljebb 2 nap (legalább 1 perc); alapértelmezett: 1 óra |
-| visszajelzés. maxDeliveryCount | A visszajelzési várólista maximális kézbesítési száma | 1 – 100; alapértelmezett: 10 |
-| visszajelzés. lockDurationAsIso8601 | A visszajelzési várólista maximális kézbesítési száma | ISO_8601 5 és 300 másodperc közötti intervallum (legalább 5 másodperc); alapértelmezett: 60 másodperc. |
+| defaultTtlAsIso8601       | Alapértelmezett TTL a felhőből az eszközre küldött üzenetekhez | ISO_8601 legfeljebb 2 nap (legalább 1 perc) időköz lehet; alapértelmezett: 1 óra |
+| maxDeliveryCount          | A felhőből az eszközre történő kézbesítés maximális száma az eszközönkénti üzenetsorok esetén | 1 és 100 között; alapértelmezett: 10 |
+| feedback.ttlAsIso8601     | Szolgáltatáshoz kötött visszajelzési üzenetek megőrzése | ISO_8601 időköz legfeljebb 2 nap (legalább 1 perc); alapértelmezett: 1 óra |
+| feedback.maxDeliveryCount | A visszajelzési üzenetsor maximális kézbesítési száma | 1 és 100 között; alapértelmezett: 10 |
+| feedback.lockDurationAsIso8601 | A visszajelzési üzenetsor maximális kézbesítési száma | ISO_8601 időköz 5 és 300 másodperc között (legalább 5 másodperc); alapértelmezett érték: 60 másodperc. |
 
-A konfigurációs beállításokat a következő módszerek egyikével állíthatja be:
+A konfigurációs beállításokat a következő módokon állíthatja be:
 
-* **Azure Portal**: az IoT hub **Beállítások** területén válassza a **beépített végpontok** lehetőséget, és bontsa ki **a felhőt az eszköz üzenetkezeléséhez**. (A **feedback. maxDeliveryCount** és a **feedback. lockDurationAsIso8601** tulajdonságok beállítása jelenleg nem támogatott a Azure Portalban.)
+* **Azure Portal:** **Az** IoT Hub Beállítások csomópontja alatt válassza a Beépített végpontok lehetőséget, és **bontsa** ki a Cloud to device messaging (Felhő az eszköz **üzenetkezelése) csomópontot.** (A **feedback.maxDeliveryCount** és **a feedback.lockDurationAsIso8601** tulajdonságok beállítása jelenleg nem támogatott a Azure Portal.)
 
-    ![A felhőből az eszközre irányuló üzenetküldés konfigurációs beállításainak megadása a portálon](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
+    ![A felhőből az eszközre való üzenetküldés konfigurációs beállításainak megadása a portálon](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
 
-* **Azure CLI**: használja az az [IOT hub Update](/cli/azure/iot/hub#az-iot-hub-update) parancsot:
+* **Azure CLI:** Használja [az az iot hub update parancsot:](/cli/azure/iot/hub#az_iot_hub_update)
 
     ```azurecli
     az iot hub update --name {your IoT hub name} \
@@ -170,6 +170,6 @@ A konfigurációs beállításokat a következő módszerek egyikével állítha
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a felhőből az eszközre irányuló üzenetek fogadására használható SDK-k használatáról: [Azure IoT SDK](iot-hub-devguide-sdks.md)-k.
+A felhőből az eszközre küldött üzenetek fogadására használható ADATTK-okkal kapcsolatos információkért lásd: [Azure IoT SDK-k.](iot-hub-devguide-sdks.md)
 
-A felhőből az eszközre irányuló üzenetek fogadásának kipróbálásához tekintse meg a [felhőből az eszközre történő küldéssel](iot-hub-csharp-csharp-c2d.md) kapcsolatos oktatóanyagot.
+A felhőből az eszközre küldött üzenetek fogadásának kipróbálásért tekintse meg a Felhőből az eszközre küldése [oktatóanyagot.](iot-hub-csharp-csharp-c2d.md)

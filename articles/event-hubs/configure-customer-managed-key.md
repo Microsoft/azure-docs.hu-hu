@@ -3,12 +3,12 @@ title: Saját kulcs konfigurálása az Azure Event Hubs adatok titkosításához
 description: Ez a cikk bemutatja, hogyan konfigurálhatja a saját kulcsát a Azure Event Hubs adatok titkosításához.
 ms.topic: conceptual
 ms.date: 02/01/2021
-ms.openlocfilehash: c608cd53c8ec71f219f015bab557d2b9b143d1c5
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: e3dd7cb1158294102d9bfe67629c80ae01ccdd17
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752011"
+ms.locfileid: "107775186"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által kezelt kulcsok konfigurálása az Azure Event Hubs adatok titkosításához az Azure Portal
 Azure Event Hubs az Azure Storage Service Encryption (Azure SSE) használatával titkosítja az Storage Service Encryption adatait. A Event Hubs szolgáltatás az Azure Storage használatával tárolja az adatokat. Az Azure Storage-ban tárolt összes adat a Microsoft által kezelt kulcsokkal van titkosítva. Ha saját kulcsot használ (más néven Bring Your Own Key (BYOK) vagy ügyfél által felügyelt kulcsot), az adatok titkosítása továbbra is a Microsoft által felügyelt kulccsal történik, de a Microsoft által felügyelt kulcs is titkosítva lesz az ügyfél által felügyelt kulccsal. Ez a funkció lehetővé teszi a Microsoft által kezelt kulcsok titkosításához használt, felhasználó által kezelt kulcsokhoz való hozzáférések létrehozására, váltására, letiltására és visszavonására. A BYOK funkció engedélyezése egy egyszeres beállítási folyamat a névtéren.
@@ -38,12 +38,12 @@ Ha engedélyezni szeretné az ügyfél által kezelt kulcsokat a Azure Portal k�
 Miután engedélyezi az ügyfél által kezelt kulcsokat, társítania kell az ügyfél által felügyelt kulcsot a Azure Event Hubs névterében. Event Hubs csak a Azure Key Vault. Ha engedélyezi az előző **szakaszban** a Titkosítás ügyfél által felügyelt kulccsal beállítást, a kulcsot importálni kell a Azure Key Vault. Emellett a kulcsokhoz a Soft **Delete** és **a Do Not Purge** (Végleges törlés) beállításnak kell konfigurálva lennie. Ezek a beállítások a PowerShell vagy a [parancssori felület használatával](../key-vault/general/key-vault-recovery.md) [konfigurálhatóak.](../key-vault/general/key-vault-recovery.md)
 
 1. Új kulcstartó létrehozásához kövesse a Azure Key Vault [útmutatót.](../key-vault/general/overview.md) A meglévő kulcsok importálására vonatkozó további információkért lásd: About keys, secrets, and certificates (Tudnivalók a [kulcsokról, titkos kulcsokról és tanúsítványokról).](../key-vault/general/about-keys-secrets-certificates.md)
-1. A tároló létrehozásakor a soft delete és a purge protection is bekapcsolandó az [az keyvault create paranccsal.](/cli/azure/keyvault#az-keyvault-create)
+1. A tároló létrehozásakor a soft delete és a purge protection is bekapcsolandó az [az keyvault create paranccsal.](/cli/azure/keyvault#az_keyvault_create)
 
     ```azurecli-interactive
     az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
     ```    
-1. Ha végleges törlés elleni védelmet szeretne hozzáadni egy meglévő tárolóhoz (amely már rendelkezik engedélyezett törléssel), használja [az az keyvault update](/cli/azure/keyvault#az-keyvault-update) parancsot.
+1. Ha végleges törlés elleni védelmet szeretne hozzáadni egy meglévő tárolóhoz (amely már rendelkezik engedélyezett törléssel), használja [az az keyvault update](/cli/azure/keyvault#az_keyvault_update) parancsot.
 
     ```azurecli-interactive
     az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
@@ -96,14 +96,14 @@ A rendszer minden naplót JavaScript Object Notation (JSON) formátumban tárol.
 | Tevékenységazonosító | A nyomkövetéshez használt belső azonosító. |
 | category | Meghatározza a feladat besorolását. Ha például a kulcstartóban található kulcs le van tiltva, akkor az információkategória lenne, vagy ha egy kulcsot nem lehet kivetni, az hibába eshet. |
 | resourceId | Azure Resource Manager erőforrás-azonosító |
-| keyVault | A Key Vault teljes neve. |
-| kulcs | A névtér titkosításához használt Event Hubs kulcsnév. |
+| keyVault | A kulcstartó teljes neve. |
+| kulcs | A névtér titkosításához használt Event Hubs. |
 | version | A használt kulcs verziója. |
-| művelet | A kulcstartó kulcsán végrehajtott művelet. Letilthatja/engedélyezheti például a kulcsot, becsomagolhatja vagy kicsomagíthatja |
+| művelet | A kulcstartó kulcsán végrehajtott művelet. Letilthatja/engedélyezheti például a kulcsot, burkothat vagy kicsomagíthat |
 | code | A művelethez társított kód. Példa: A 404-es hibakód azt jelenti, hogy a kulcs nem található. |
 | message | A művelethez kapcsolódó hibaüzenetek |
 
-Példa egy ügyfél által kezelt kulcs naplóira:
+Az alábbi példa egy ügyfél által felügyelt kulcs naplóját példázhatja:
 
 ```json
 {
@@ -138,15 +138,15 @@ Példa egy ügyfél által kezelt kulcs naplóira:
 ## <a name="use-resource-manager-template-to-enable-encryption"></a>Titkosítás engedélyezése Resource Manager sablon használatával
 Ez a szakasz bemutatja, hogyan használhatja a következő feladatokat **Azure Resource Manager sablonokkal.** 
 
-1. Hozzon **létre Event Hubs-névteret** egy felügyeltszolgáltatás-identitással.
-2. Hozzon létre **egy kulcstartót,** és adjon hozzáférést a szolgáltatásidentitásnak a kulcstartóhoz. 
-3. Frissítse a Event Hubs a kulcstartó adataival (kulcs/érték). 
+1. Hozzon **létre Event Hubs névteret** egy felügyeltszolgáltatás-identitással.
+2. Hozzon **létre egy kulcstartót,** és adjon hozzáférést a szolgáltatásidentitásnak a kulcstartóhoz. 
+3. Frissítse a Event Hubs névteret a kulcstartó adataival (kulcs/érték). 
 
 
-### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>Felügyeltszolgáltatás-identitással Event Hubs fürt és névtér létrehozása
+### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>Felügyeltszolgáltatás-Event Hubs fürt és névtér létrehozása
 Ez a szakasz bemutatja, hogyan hozhat létre egy Azure Event Hubs-névteret felügyeltszolgáltatás-identitással egy Azure Resource Manager és PowerShell használatával. 
 
-1. Hozzon létre Azure Resource Manager sablont egy felügyeltszolgáltatás-identitással Event Hubs névtér létrehozásához. Nevezze el a fájlt: **CreateEventHubClusterAndNamespace.jsa következőn:** 
+1. Hozzon létre Azure Resource Manager sablont egy felügyeltszolgáltatás Event Hubs identitást Event Hubs névtér létrehozásához. Nevezze el a fájlt: **CreateEventHubClusterAndNamespace.jsa következőn:** 
 
     ```json
     {
@@ -215,7 +215,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre egy Azure Event Hubs-névteret fel�
        }
     }
     ```
-2. Hozzon létre egy nevű sablonparaméter-CreateEventHubClusterAndNamespaceParams.js **a következőn:**. 
+2. Hozzon létre egy nevű sablonparaméter-fájlt **CreateEventHubClusterAndNamespaceParams.jsa következőn:**. 
 
     > [!NOTE]
     > Cserélje le a következő értékeket: 
@@ -249,9 +249,9 @@ Ez a szakasz bemutatja, hogyan hozhat létre egy Azure Event Hubs-névteret fel�
     $EventHubNamespaceId = $outputs.Outputs["eventHubNamespaceId"].value
     ```
  
-### <a name="grant-event-hubs-namespace-identity-access-to-key-vault"></a>Hozzáférés Event Hubs kulcstartóhoz a névtéridentitás számára
+### <a name="grant-event-hubs-namespace-identity-access-to-key-vault"></a>Hozzáférés Event Hubs kulcstartóhoz a névtér identitása számára
 
-1. Futtassa a következő parancsot egy kulcstartó létrehozásához, amelynél engedélyezve van a végleges törlés **elleni** védelem és a **soft-delete.** 
+1. Futtassa a következő parancsot egy kulcstartó létrehozásához, amelynél engedélyezve van a végleges törlés **elleni** védelem és **a soft-delete.** 
 
     ```powershell
     New-AzureRmKeyVault -Name {keyVaultName} -ResourceGroupName {RGName}  -Location {location} -EnableSoftDelete -EnablePurgeProtection    
@@ -259,12 +259,12 @@ Ez a szakasz bemutatja, hogyan hozhat létre egy Azure Event Hubs-névteret fel�
     
     (OR)    
     
-    Futtassa a következő parancsot egy meglévő **kulcstartó frissítéséhez.** A parancs futtatása előtt adja meg az erőforráscsoport- és kulcstartónevek értékeit. 
+    Futtassa a következő parancsot egy meglévő **kulcstartó frissítéséhez.** A parancs futtatása előtt adja meg az erőforráscsoport és a kulcstartó nevének értékeit. 
     
     ```powershell
     ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
     ``` 
-2. Állítsa be a kulcstartó hozzáférési szabályzatát úgy, hogy a Event Hubs névtér felügyelt identitása hozzáfér a kulcstartó kulcsértékhez. Használja az előző szakaszban Event Hubs névtér azonosítóját. 
+2. Állítsa be úgy a kulcstartó-hozzáférési szabályzatot, hogy a Event Hubs névtér felügyelt identitása hozzáfér a kulcstartóban tárolt kulcsértékhez. Használja az előző szakaszban Event Hubs névtér azonosítóját. 
 
     ```powershell
     $identity = (Get-AzureRmResource -ResourceId $EventHubNamespaceId -ExpandProperties).Identity
@@ -272,10 +272,10 @@ Ez a szakasz bemutatja, hogyan hozhat létre egy Azure Event Hubs-névteret fel�
     Set-AzureRmKeyVaultAccessPolicy -VaultName {keyVaultName} -ResourceGroupName {RGName} -ObjectId $identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey,list
     ```
 
-### <a name="encrypt-data-in-event-hubs-namespace-with-customer-managed-key-from-key-vault"></a>Adatok titkosítása Event Hubs kulcstartóból ügyfél által felügyelt kulccsal egy névtérben
+### <a name="encrypt-data-in-event-hubs-namespace-with-customer-managed-key-from-key-vault"></a>A névtérben Event Hubs adatok titkosítása ügyfél által felügyelt kulccsal a Key Vaultból
 Eddig a következő lépéseket tette: 
 
-1. Létrehozott egy prémium szintű névteret egy felügyelt identitással.
+1. Létrehozott egy prémium névteret egy felügyelt identitással.
 2. Hozzon létre egy kulcstartót, és hozzáférést biztosít a felügyelt identitás számára a kulcstartóhoz. 
 
 Ebben a lépésben frissíteni fogja a Event Hubs kulcstartó-információkkal. 

@@ -1,7 +1,7 @@
 ---
 title: Képleírások – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: A Computer Vision API rendszerkép-leírási funkciójával kapcsolatos fogalmak.
+description: Az Computer Vision API képleírási funkciójának fogalmai.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4fd328dad3544697ba1f4896f7383be857b097a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c517fa98bfc17d4702a51d4990e860b2ed7aaefd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96530663"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778930"
 ---
-# <a name="describe-images-with-human-readable-language"></a>Képek leírása emberi olvasásra alkalmas nyelvvel
+# <a name="describe-images-with-human-readable-language"></a>Képek írása ember által olvasható nyelvvel
 
-Computer Vision elemezheti a rendszerképet, és létrehozhat egy olyan, emberi olvasásra alkalmas mondatot, amely leírja annak tartalmát. Az algoritmus a különböző vizualizációs funkciók alapján több leírást ad vissza, és mindegyik Leírás megbízhatósági pontszámot kap. A végső kimenet a legmagasabbtól a legalacsonyabb megbízhatóságig rendezett leírások listája.
+Computer Vision képet elemezhet, és létrehozhat egy emberi olvasásra használható mondatot, amely leírja annak tartalmát. Az algoritmus valójában több leírást ad vissza különböző vizuális jellemzők alapján, és minden leírás megbízhatósági pontszámot kap. A végső kimenet a leírások listája, amelyek a legmagasabb megbízhatósági szinttől a legalacsonyabb megbízhatóságig vannak megrendelve.
 
-## <a name="image-description-example"></a>Példa a képek leírására
+## <a name="image-description-example"></a>Példa képleírásra
 
-A következő JSON-válasz azt szemlélteti, hogy milyen Computer Vision ad vissza, amikor leírja a képet a vizualizáció funkciói alapján.
+A következő JSON-válasz bemutatja, Computer Vision mit ad vissza, amikor a vizuális jellemzők alapján leírja a példaképet.
 
-![A Manhattanben található épületek fekete-fehér képe](./Images/bw_buildings.png)
+![Az épületek fekete-fehér képe a Következőben:](./Images/bw_buildings.png)
 
 ```json
 {
@@ -58,10 +58,10 @@ A következő JSON-válasz azt szemlélteti, hogy milyen Computer Vision ad viss
 
 ## <a name="use-the-api"></a>Az API használata
 
-A rendszerkép leírása funkció a [képelemzési](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API részét képezi. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja. Belefoglalás `Description` a **visualFeatures** lekérdezési paraméterbe. Ezután, amikor megkapja a teljes JSON-választ, egyszerűen elemezze a szakasz tartalmának karakterláncát `"description"` .
+A képleírási funkció a Analyze Image [API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) része. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja meg. Foglalja `Description` bele a **visualFeatures lekérdezési** paraméterbe. Ezután a teljes JSON-válasz után egyszerűen elemezze a szakasz tartalmának `"description"` sztringet.
 
-* [Rövid útmutató: Computer Vision REST API vagy ügyféloldali kódtárak](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Rövid útmutató: Computer Vision REST API vagy ügyfélkódtárak](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Megtudhatja, hogyan [címkézheti a képeket](concept-tagging-images.md) és [kategorizálhatja a képeket](concept-categorizing-images.md).
+Megismeri a képek [címkézésének és](concept-tagging-images.md) a képek [kategorizálásának kapcsolódó fogalmait.](concept-categorizing-images.md)

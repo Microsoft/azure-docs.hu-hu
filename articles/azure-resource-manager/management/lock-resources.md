@@ -1,76 +1,76 @@
 ---
-title: Erőforrások zárolása a módosítások megakadályozása érdekében
-description: Annak megakadályozása, hogy a felhasználók az összes felhasználóra és szerepkörre vonatkozó zárolást alkalmazzanak az Azure-erőforrások frissítésére vagy törlésére.
+title: Erőforrások zárolása a módosítások megelőzése érdekében
+description: Az összes felhasználóra és szerepkörre vonatkozó zárolás alkalmazásával megakadályozhatja, hogy a felhasználók frissítsék vagy törölzék az Azure-erőforrásokat.
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1cc96a855c2bfe79bbf5876f0476c016d36ca9a4
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 71637318a60e66bf5000de2f564d740cc101cc60
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030066"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768722"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Erőforrások zárolása a váratlan módosítások megelőzése érdekében
 
-Rendszergazdaként zárolhat egy előfizetést, erőforráscsoportot vagy erőforrást, hogy megakadályozza a szervezet más felhasználói számára a kritikus erőforrások véletlen törlését vagy módosítását. A zárolás felülbírálja a felhasználó által esetlegesen felmerülő engedélyeket.
+Rendszergazdaként zárolhat egy előfizetést, erőforráscsoportot vagy erőforrást, így megakadályozhatja, hogy a szervezet más felhasználói véletlenül törölzék vagy módosítsák a kritikus fontosságú erőforrásokat. A zárolás felülbírálja a felhasználó által esetlegesen szükséges engedélyeket.
 
-A zárolási szintet **CanNotDelete** (nem törölhető) vagy **ReadOnly** (csak olvasható) értékre állíthatja be. A portálon a zárolások neve **Törlés** és **csak olvasható** .
+A zárolási szintet **CanNotDelete** (nem törölhető) vagy **ReadOnly** (csak olvasható) értékre állíthatja be. A portálon a zárolások neve **Törlés,** illetve **Csak** olvasható.
 
-* A **CanNotDelete** azt jelzi, hogy a jogosult felhasználók továbbra is olvashatják és módosíthatják az erőforrásokat, de nem tudják törölni az erőforrást.
-* A **readonly** érték azt jelenti, hogy a jogosult felhasználók olvasni tudnak egy erőforrást, de nem tudják törölni vagy frissíteni az erőforrást. A zárolás alkalmazása hasonló ahhoz, hogy korlátozza az összes jogosult felhasználót az **olvasó** szerepkör által megadott engedélyekkel.
+* **A CanNotDelete azt jelenti,** hogy a jogosult felhasználók továbbra is olvashatják és módosíthatják az erőforrásokat, de nem törölhetik az erőforrást.
+* **A ReadOnly** azt jelenti, hogy a jogosult felhasználók olvashatják az erőforrásokat, de nem törölhetik vagy frissíthetik az erőforrást. A zárolás alkalmazása hasonló ahhoz, mint amikor az összes jogosult felhasználót az Olvasó szerepkör által megadott engedélyekre **korlátozza.**
 
 ## <a name="how-locks-are-applied"></a>A zárolások alkalmazása
 
-Ha egy fölérendelt hatókörben zárolja a zárolást, akkor a hatókörben lévő összes erőforrás örökli ugyanazt a zárolást. A később hozzáadott erőforrások még a szülőtől öröklik a zárolást. Az öröklés legszigorúbb zárolása elsőbbséget élvez.
+Ha egy szülőhatókörre alkalmaz zárolást, az adott hatókörben lévő összes erőforrás ugyanazt a zárolást örökli. Még a később hozzáadt erőforrások is öröklik a zárolást a szülőtől. Az öröklés legszigorúbb zárolása élvez elsőbbséget.
 
-A felügyeleti zárolás a szerepköralapú hozzáférés-vezérléssel szemben minden felhasználóra és szerepkörre érvényes korlátozásokat alkalmaz. A felhasználók és szerepkörök engedélyeinek beállításáról további információt az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)című témakörben talál.
+A felügyeleti zárolás a szerepköralapú hozzáférés-vezérléssel szemben minden felhasználóra és szerepkörre érvényes korlátozásokat alkalmaz. További információ a felhasználók és szerepkörök engedélyeinek beállításával kapcsolatban: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC).](../../role-based-access-control/role-assignments-portal.md)
 
-A Resource Manager zárolásai csak a felügyeleti síkon történő műveletekre érvényesek, ezek pedig a `https://management.azure.com` címre küldött műveletek. A zárolások nem korlátozzák, hogy az erőforrások hogyan végzik saját funkcióikat. Az erőforrás változásai korlátozva vannak, de az erőforrás működése nincs korlátozva. Egy SQL Database logikai kiszolgáló írásvédett zárolása például megakadályozza a kiszolgáló törlését vagy módosítását. Nem akadályozza meg az adatok létrehozását, frissítését és törlését az adott kiszolgálón lévő adatbázisokban. Az adattranzakciók engedélyezve vannak, mert ezek a műveletek nem lesznek elküldve a `https://management.azure.com` webhelyre.
+A Resource Manager zárolásai csak a felügyeleti síkon történő műveletekre érvényesek, ezek pedig a `https://management.azure.com` címre küldött műveletek. A zárolások nem korlátozzák, hogy az erőforrások hogyan végzik saját funkcióikat. Az erőforrás változásai korlátozva vannak, de az erőforrás működése nincs korlátozva. Egy logikai kiszolgálón például a ReadOnly SQL Database megakadályozza a kiszolgáló törlését vagy módosítását. Nem akadályozza meg az adatok létrehozását, frissítését vagy törlését a kiszolgálón található adatbázisokban. Az adattranzakciók engedélyezve vannak, mert ezek a műveletek nem lesznek elküldve a `https://management.azure.com` webhelyre.
 
-## <a name="considerations-before-applying-locks"></a>Szempontok a zárolások alkalmazása előtt
+## <a name="considerations-before-applying-locks"></a>A zárolások alkalmazása előtt megfontolandó szempontok
 
-A zárolások alkalmazása váratlan eredményekhez vezethet, mert egyes olyan műveletek, amelyek látszólag nem módosítják az erőforrást, ténylegesen megkövetelik a zárolás által letiltott műveleteket. A zárolások megakadályozza, hogy a Azure Resource Manager API-nak POST-kérést igénylő műveletek is meglegyenek. Néhány gyakori példa a zárolások által blokkolt műveletekre:
+A zárolások alkalmazása váratlan eredményekhez vezethet, mert egyes műveletek, amelyek látszólag nem módosítják az erőforrást, valójában zárolás által blokkolt műveleteket igényelnek. A zárolások megakadályozzák az olyan műveleteket, amelyekhez POST kérésre van szükség a Azure Resource Manager API-hoz. Néhány gyakori példa a zárolások által blokkolt műveletekre:
 
-* A **Storage-fiók** csak olvasható zárolása megakadályozza, hogy a felhasználók listázzák a fiók kulcsait. Az Azure Storage- [lista kulcsai](/rest/api/storagerp/storageaccounts/listkeys) művelet egy post-kérésen keresztül történik, hogy megvédje a fiók kulcsaihoz való hozzáférést, amelyek teljes körű hozzáférést biztosítanak a Storage-fiókban lévő összes információhoz. Ha a Storage-fiókhoz írásvédett zárolás van konfigurálva, a fiók kulcsaival nem rendelkező felhasználóknak az Azure AD hitelesítő adatait kell használniuk a blob-vagy üzenetsor-adatok eléréséhez. A írásvédett zárolás megakadályozza a Storage-fiókra vagy egy adattárolóra (blob-tárolóra vagy-várólistára) kiterjedő Azure RBAC-szerepkörök hozzárendelését is.
+* A tárfiókok csak olvasható **zárolása megakadályozza,** hogy a felhasználók listássának tsaják a fiókkulcsokat. Az Azure Storage [List Keys műveletet](/rest/api/storagerp/storageaccounts/listkeys) egy POST-kéréssel kezeli a fiókkulcsok hozzáférésének védelme érdekében, amelyek teljes hozzáférést biztosítanak a tárfiókban található adatokhoz. Ha egy tárfiókhoz csak olvasható zárolás van konfigurálva, a fiókkulcsokkal nem rendelkezik felhasználók Azure AD-beli hitelesítő adatokkal férhetnek hozzá a blob- vagy üzenetsoradatokhoz. A csak olvasható zárolás emellett megakadályozza a tárfiókra vagy adattárolóra (blobtárolóra vagy üzenetsorra) vonatkozó Azure RBAC-szerepkörök hozzárendelését.
 
-* Egy **Storage-fiók** nem törölhető zárolása nem akadályozza meg a fiókban lévő adatok törlését vagy módosítását. Ez a típusú zárolás csak a Storage-fiók törlését védi, és nem védi a blob, az üzenetsor, a tábla vagy a fájl adatait a Storage-fiókon belül. 
+* A tárfiók nem törölhető **zárolása** nem akadályozza meg a fiókon belüli adatok törlését vagy módosítását. Ez a zárolástípus csak magát a tárfiókot védi a törléstől, és nem védi a tárfiókon belüli blob-, üzenetsor-, tábla- vagy fájladatokat. 
 
-* A **Storage-fiók** írásvédett zárolása nem akadályozza meg, hogy a fiókban lévő adatok ne legyenek törölve vagy módosítva. Ez a típusú zárolás csak a Storage-fiók törlését vagy módosítását védi, és nem védi a blob, a várólista, a tábla vagy a fájl adatait a Storage-fiókon belül. 
+* A tárfiókok csak  olvasási zárolása nem akadályozza meg a fiókon belüli adatok törlését vagy módosítását. Ez a zárolástípus csak magát a tárfiókot védi a törléstől vagy módosítástól, és nem védi a tárfiókon belüli blob-, üzenetsor-, tábla- vagy fájladatokat. 
 
-* Egy **app Service** erőforrás írásvédett zárolása megakadályozza, hogy a Visual Studio Server Explorer megjelenítse az erőforráshoz tartozó fájlokat, mert az interakcióhoz írási hozzáférés szükséges.
+* Egy erőforrás csak olvasható **zárolása App Service** megakadályozza, hogy Visual Studio Server Explorer fájlokat jelenítsen meg az erőforráshoz, mivel ez az interakció írási hozzáférést igényel.
 
-* Egy **app Service csomagot** tartalmazó **erőforráscsoport** írásvédett zárolása megakadályozza [a terv vertikális felskálázását](../../app-service/manage-scale-up.md).
+* A tervtervet tartalmazó erőforráscsoport írás **App Service** zárolása megakadályozza **a** csomag fel- vagy [leméretezését.](../../app-service/manage-scale-up.md)
 
-* Egy olyan **erőforráscsoport** írásvédett zárolása, amely egy **virtuális gépet** tartalmaz, megakadályozza, hogy minden felhasználó elindítsa vagy újraindítsa a virtuális gépet. Ezeknek a műveleteknek POST kérelemre van szükségük.
+* A virtuális gépet tartalmazó  erőforráscsoport írásható zárolása megakadályozza, hogy **minden** felhasználó el tudja indítani vagy újraindítsa a virtuális gépet. Ezekhez a műveletekhez POST kérésre van szükség.
 
-* Egy **erőforráscsoport** nem törölhető zárolása megakadályozza, hogy Azure Resource Manager az előzményekben lévő [központi telepítések automatikus törlését](../templates/deployment-history-deletions.md) . Ha az előzményekben eléri a 800-es üzemelő példányokat, az üzemelő példányok sikertelenek lesznek.
+* Egy erőforráscsoport nem  törölhető zárolása megakadályozza, Azure Resource Manager [automatikusan](../templates/deployment-history-deletions.md) töröljön üzemelő példányokat az előzményekből. Ha az előzményekben eléri a 800 üzemelő példányt, az üzembe helyezések sikertelenek lesznek.
 
-* A **Azure Backup szolgáltatás** által létrehozott **erőforráscsoport** nem törölhető zárolása miatt a biztonsági mentések sikertelenek lesznek. A szolgáltatás legfeljebb 18 visszaállítási pontot támogat. Zárolt állapotban a Backup szolgáltatás nem tudja törölni a visszaállítási pontokat. További információk: [Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése](../../backup/backup-azure-vm-backup-faq.yml).
+* A szolgáltatás által létrehozott  erőforráscsoport nem törölhető **zárolása** Azure Backup a biztonsági mentések meghiúsulnak. A szolgáltatás legfeljebb 18 visszaállítási pontot támogat. Ha zárolva van, a biztonsági mentési szolgáltatás nem tudja megtisztítani a visszaállítási pontokat. További információkért lásd az [Azure-beli](../../backup/backup-azure-vm-backup-faq.yml)virtuális gépek biztonságimentésről való gyakori kérdéseket.
 
-* Az **előfizetés** írásvédett zárolása megakadályozza, hogy a **Azure Advisor** megfelelően működjön. Az Advisor nem tudja tárolni a lekérdezések eredményét.
+* Az előfizetések csak olvasható zárolása **megakadályozza,** **Azure Advisor** megfelelően tudjanak működni. Az Advisor nem tudja tárolni a lekérdezések eredményeit.
 
-## <a name="who-can-create-or-delete-locks"></a>Kik hozhatnak létre vagy törölhetnek zárolásokat
+## <a name="who-can-create-or-delete-locks"></a>Ki hozhat létre vagy törölhet zárolásokat?
 
-Felügyeleti zárolások létrehozásához vagy törléséhez hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/*` vagy a `Microsoft.Authorization/locks/*` műveletekhez. A beépített szerepkörök esetén ezek a műveletek csak a **Tulajdonosi** és a **Felhasználói hozzáférés rendszergazdájának** vannak engedélyezve.
+Felügyeleti zárolások létrehozásához vagy törléséhez hozzáféréssel kell rendelkezik a vagy `Microsoft.Authorization/*` `Microsoft.Authorization/locks/*` műveletekhez. A beépített szerepkörök esetén ezek a műveletek csak a **Tulajdonosi** és a **Felhasználói hozzáférés rendszergazdájának** vannak engedélyezve.
 
 ## <a name="managed-applications-and-locks"></a>Felügyelt alkalmazások és zárolások
 
-Bizonyos Azure-szolgáltatások, például a Azure Databricks a szolgáltatás megvalósításához a [felügyelt alkalmazásokat](../managed-applications/overview.md) használják. Ebben az esetben a szolgáltatás két erőforráscsoportot hoz létre. Egy erőforráscsoport a szolgáltatás áttekintését tartalmazza, és nincs zárolva. A másik erőforráscsoport tartalmazza a szolgáltatás infrastruktúráját, és zárolva van.
+Egyes Azure-szolgáltatások, például a Azure Databricks felügyelt alkalmazások [használatával](../managed-applications/overview.md) valósítják meg a szolgáltatást. Ebben az esetben a szolgáltatás két erőforráscsoportot hoz létre. Az egyik erőforráscsoport áttekintést nyújt a szolgáltatásról, és nincs zárolva. A másik erőforráscsoport tartalmazza a szolgáltatás infrastruktúráját, és zárolva van.
 
-Ha megpróbálja törölni az infrastruktúra-erőforráscsoportot, hibaüzenet jelenik meg arról, hogy az erőforráscsoport zárolva van. Ha megpróbálja törölni az infrastruktúra-erőforráscsoport zárolását, a rendszer hibaüzenetet kap arról, hogy a zárolás nem törölhető, mert egy rendszeralkalmazás tulajdonosa.
+Ha megpróbálja törölni az infrastruktúra-erőforráscsoportot, hibaüzenetet kap, amely szerint az erőforráscsoport zárolva van. Ha megpróbálja törölni az infrastruktúra-erőforráscsoport zárolását, hibaüzenetet kap, amely szerint a zárolás nem törölhető, mert az egy rendszeralkalmazás tulajdonában van.
 
-Ehelyett törölje a szolgáltatást, amely az infrastruktúra-erőforráscsoportot is törli.
+Ehelyett törölje a szolgáltatást, amely az infrastruktúra erőforráscsoportját is törli.
 
-Felügyelt alkalmazások esetében válassza ki a telepített szolgáltatást.
+Felügyelt alkalmazások esetén válassza ki az üzembe helyezett szolgáltatást.
 
 ![Szolgáltatás kiválasztása](./media/lock-resources/select-service.png)
 
-Figyelje meg, hogy a szolgáltatás tartalmaz egy hivatkozást egy **felügyelt erőforráscsoporthoz**. Ez az erőforráscsoport tárolja az infrastruktúrát, és zárolva van. Nem lehet közvetlenül törölni.
+Figyelje meg, hogy a szolgáltatás tartalmaz egy felügyelt **erőforráscsoportra mutató hivatkozást.** Ez az erőforráscsoport tartalmazza az infrastruktúrát, és zárolva van. Közvetlenül nem törölhető.
 
 ![Felügyelt csoport megjelenítése](./media/lock-resources/show-managed-group.png)
 
-A szolgáltatás összes elemének törléséhez, beleértve a zárolt infrastruktúra erőforráscsoportot is, válassza a **Törlés** lehetőséget a szolgáltatáshoz.
+Ha törölni szeretne mindent a szolgáltatásról, a zárolt infrastruktúra erőforráscsoportját is beleértve, válassza a **Törlés** lehetőséget a szolgáltatáshoz.
 
 ![Szolgáltatás törlése](./media/lock-resources/delete-service.png)
 
@@ -82,9 +82,9 @@ A szolgáltatás összes elemének törléséhez, beleértve a zárolt infrastru
 
 ### <a name="arm-template"></a>ARM-sablon
 
-Ha Azure Resource Manager sablont (ARM-sablont) használ a zárolás üzembe helyezéséhez, tisztában kell lennie a zárolás hatókörével és a telepítés hatókörével. Ha a központi telepítési hatókörön szeretné alkalmazni a zárolást, például egy erőforráscsoport vagy előfizetés zárolását, ne állítsa be a hatókör tulajdonságot. Amikor zárol egy erőforrást a központi telepítési hatókörön belül, állítsa be a hatókör tulajdonságot.
+Ha egy Azure Resource Manager sablont (ARM-sablont) használ a zárolás üzembe helyezéséhez, tisztában kell lennie a zárolás hatókörét és az üzembe helyezés hatókörét. Ha az üzembe helyezési hatókörben zárolást (például erőforráscsoport vagy előfizetés zárolását) alkalmazni, ne állítsa be a hatókör tulajdonságot. Amikor zárol egy erőforrást az üzembe helyezési hatókörben, állítsa be a scope tulajdonságot.
 
-A következő sablon egy zárolást alkalmaz a rendszerre telepített erőforráscsoporthoz. Figyelje meg, hogy nincs hatókör-tulajdonság a zárolási erőforráson, mert a zárolás hatóköre megegyezik az üzembe helyezés hatókörével. Ez a sablon az erőforráscsoport szintjén van üzembe helyezve.
+Az alábbi sablon zárolást alkalmaz arra az erőforráscsoportra, amelybe üzembe van helyezni. Figyelje meg, hogy nincs hatókörtulajdonság a zárolási erőforráson, mert a zárolás hatóköre megegyezik az üzembe helyezés hatókörének. Ezt a sablont az erőforráscsoport szintjén telepítik.
 
 ```json
 {
@@ -106,7 +106,7 @@ A következő sablon egy zárolást alkalmaz a rendszerre telepített erőforrá
 }
 ```
 
-Erőforráscsoport létrehozásához és a zárolásához a következő sablont kell telepíteni az előfizetési szinten.
+Erőforráscsoport létrehozásához és zárolásához telepítse az alábbi sablont az előfizetés szintjén.
 
 ```json
 {
@@ -164,9 +164,9 @@ Erőforráscsoport létrehozásához és a zárolásához a következő sablont 
 }
 ```
 
-Ha az erőforráscsoport egyik **erőforrásához** zárolást alkalmaz, adja hozzá a hatókör tulajdonságot. Állítsa a hatókört a zárolni kívánt erőforrás nevére.
+Amikor zárolást alkalmaz egy **erőforrásra** az erőforráscsoporton belül, adja hozzá a scope tulajdonságot. Állítsa a hatókört az erőforrás nevére a zároláshoz.
 
-Az alábbi példa egy olyan sablont mutat be, amely egy app Service-csomagot, egy webhelyet és egy zárolást hoz létre a webhelyen. A zárolás hatóköre a webhelyen van beállítva.
+Az alábbi példa egy sablont mutat be, amely létrehoz egy App Service-csomag, egy webhely és egy zárolást a webhelyen. A zárolás hatóköre a webhelyre van beállítva.
 
 ```json
 {
@@ -230,33 +230,33 @@ Az alábbi példa egy olyan sablont mutat be, amely egy app Service-csomagot, eg
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-A [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) parancs használatával zárolja a telepített erőforrásokat a Azure PowerShell.
+Az üzembe helyezett erőforrásokat a Azure PowerShell [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) paranccsal zárolhatja.
 
-Egy erőforrás zárolásához adja meg az erőforrás nevét, típusát és az erőforráscsoport nevét.
+Egy erőforrás zárolása érdekében adja meg az erőforrás nevét, az erőforrás típusát és az erőforráscsoport nevét.
 
 ```azurepowershell-interactive
 New-AzResourceLock -LockLevel CanNotDelete -LockName LockSite -ResourceName examplesite -ResourceType Microsoft.Web/sites -ResourceGroupName exampleresourcegroup
 ```
 
-Egy erőforráscsoport zárolásához adja meg az erőforráscsoport nevét.
+Az erőforráscsoport zárolása érdekében adja meg az erőforráscsoport nevét.
 
 ```azurepowershell-interactive
 New-AzResourceLock -LockName LockGroup -LockLevel CanNotDelete -ResourceGroupName exampleresourcegroup
 ```
 
-A zárolással kapcsolatos információk beszerzéséhez használja a [Get-AzResourceLock](/powershell/module/az.resources/get-azresourcelock). Az előfizetés összes zárolásának beszerzéséhez használja a következőt:
+A zárolásról a [Get-AzResourceLock használatával lekért információ.](/powershell/module/az.resources/get-azresourcelock) Az előfizetés zárolásának leához használja a következőt:
 
 ```azurepowershell-interactive
 Get-AzResourceLock
 ```
 
-Egy erőforrás összes zárolásának beszerzéséhez használja a következőt:
+Egy erőforrás összes zárolásának lekért használhatja a következőt:
 
 ```azurepowershell-interactive
 Get-AzResourceLock -ResourceName examplesite -ResourceType Microsoft.Web/sites -ResourceGroupName exampleresourcegroup
 ```
 
-Egy erőforráscsoport összes zárolásának beszerzéséhez használja a következőt:
+Az erőforráscsoport összes zárolásának lekért használhatja a következőt:
 
 ```azurepowershell-interactive
 Get-AzResourceLock -ResourceGroupName exampleresourcegroup
@@ -269,7 +269,7 @@ $lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup -ResourceN
 Remove-AzResourceLock -LockId $lockId
 ```
 
-Egy erőforráscsoport zárolásának törléséhez használja a következőt:
+Erőforráscsoport zárolásának törléséhez használja a következőt:
 
 ```azurepowershell-interactive
 $lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup).LockId
@@ -278,33 +278,33 @@ Remove-AzResourceLock -LockId $lockId
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az üzembe helyezett erőforrásokat az az [Lock Create](/cli/azure/lock#az-lock-create) paranccsal zárolhatja az Azure CLI használatával.
+Az üzembe helyezett erőforrásokat az az lock create paranccsal zárolhatja az Azure [CLI-val.](/cli/azure/lock#az_lock_create)
 
-Egy erőforrás zárolásához adja meg az erőforrás nevét, típusát és az erőforráscsoport nevét.
+Egy erőforrás zárolása érdekében adja meg az erőforrás nevét, az erőforrás típusát és az erőforráscsoport nevét.
 
 ```azurecli
 az lock create --name LockSite --lock-type CanNotDelete --resource-group exampleresourcegroup --resource-name examplesite --resource-type Microsoft.Web/sites
 ```
 
-Egy erőforráscsoport zárolásához adja meg az erőforráscsoport nevét.
+Egy erőforráscsoport zárolása érdekében adja meg az erőforráscsoport nevét.
 
 ```azurecli
 az lock create --name LockGroup --lock-type CanNotDelete --resource-group exampleresourcegroup
 ```
 
-A zárolással kapcsolatos információk lekéréséhez használja [az az Lock List](/cli/azure/lock#az-lock-list). Az előfizetés összes zárolásának beszerzéséhez használja a következőt:
+A zárolásokkal kapcsolatos információkért használja [az az lock list et.](/cli/azure/lock#az_lock_list) Az előfizetésében az összes zárolás lekért használhatja a következőt:
 
 ```azurecli
 az lock list
 ```
 
-Egy erőforrás összes zárolásának beszerzéséhez használja a következőt:
+Egy erőforrás összes zárolásának lekért használhatja a következőt:
 
 ```azurecli
 az lock list --resource-group exampleresourcegroup --resource-name examplesite --namespace Microsoft.Web --resource-type sites --parent ""
 ```
 
-Egy erőforráscsoport összes zárolásának beszerzéséhez használja a következőt:
+Az erőforráscsoport összes zárolásának lekért használhatja a következőt:
 
 ```azurecli
 az lock list --resource-group exampleresourcegroup
@@ -317,7 +317,7 @@ lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup --re
 az lock delete --ids $lockid
 ```
 
-Egy erőforráscsoport zárolásának törléséhez használja a következőt:
+Erőforráscsoport zárolásának törléséhez használja a következőt:
 
 ```azurecli
 lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup  --output tsv --query id)
@@ -326,17 +326,17 @@ az lock delete --ids $lockid
 
 ### <a name="rest-api"></a>REST API
 
-A telepített erőforrásokat zárolhatja a [felügyeleti zárolások Rest APIával](/rest/api/resources/managementlocks). A REST API lehetővé teszi zárolások létrehozását és törlését, valamint a meglévő zárolásokkal kapcsolatos információk lekérését.
+Az üzembe helyezett erőforrásokat a felügyeleti zárolások REST API [zárolhatja.](/rest/api/resources/managementlocks) A REST API lehetővé teszi zárolások létrehozására és törlésére, valamint a meglévő zárolások információinak lekérését.
 
-Zárolás létrehozásához futtassa a következő parancsot:
+Zárolás létrehozásához futtassa a következőt:
 
 ```http
 PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 ```
 
-A hatókör lehet előfizetés, erőforráscsoport vagy erőforrás. A zárolási név a zárolás meghívásához szükséges. Az API-Version esetében használja az **2016-09-01**-es verziót.
+A hatókör lehet előfizetés, erőforráscsoport vagy erőforrás. A zárolás neve legyen bármi, amit a zárolásnak szeretne hívni. Az API-version esetén használja a **2016-09-01- et.**
 
-A kérelemben adjon meg egy JSON-objektumot, amely meghatározza a zárolás tulajdonságait.
+A kérelembe foglaljon bele egy JSON-objektumot, amely meghatározza a zárolás tulajdonságait.
 
 ```json
 {
@@ -349,6 +349,6 @@ A kérelemben adjon meg egy JSON-objektumot, amely meghatározza a zárolás tul
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Az erőforrások logikus rendszerezésével kapcsolatos további információkért lásd: [címkék használata az erőforrások rendszerezéséhez](tag-resources.md).
-* Az előfizetésre vonatkozó korlátozásokat és konvenciókat egyéni szabályzatokkal is alkalmazhat. További információ: [Mi az az Azure Policy?](../../governance/policy/overview.md)
+* Az erőforrások logikai rendszerezésének megismerése: Címkék használata [az erőforrások rendszerezéséhez.](tag-resources.md)
+* Testreszabott szabályzatokkal korlátozásokat és konvenciókat alkalmazhat az előfizetésében. További információ: [Mi az az Azure Policy?](../../governance/policy/overview.md)
 * Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.

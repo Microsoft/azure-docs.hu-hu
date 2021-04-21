@@ -1,6 +1,6 @@
 ---
-title: Felügyelt identitás-hozzáférés kiosztása egy erőforráshoz a PowerShell használatával – Azure AD
-description: Részletes útmutató felügyelt identitások egy erőforráshoz való hozzárendeléséhez, egy másik erőforráshoz való hozzáféréshez a PowerShell használatával.
+title: Felügyelt identitás hozzáférésének hozzárendelése erőforráshoz a PowerShell használatával – Azure AD
+description: Részletes útmutató felügyelt identitások egy erőforráshoz való hozzárendeléshez, hozzáférés egy másik erőforráshoz a PowerShell használatával.
 services: active-directory
 documentationcenter: ''
 author: barclayn
@@ -15,34 +15,35 @@ ms.workload: identity
 ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf1a7a608df7a2b752d9a6bed52a4024fd776c5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fc5df641f27f8d604f7b5647736128856a3ecd51
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97592500"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764368"
 ---
-# <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>Felügyelt identitás-hozzáférés kiosztása egy erőforráshoz a PowerShell használatával
+# <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>Felügyelt identitás hozzáférésének hozzárendelése erőforráshoz a PowerShell használatával
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Miután konfigurált egy Azure-erőforrást egy felügyelt identitással, megadhatja a felügyelt identitás hozzáférését egy másik erőforráshoz, ugyanúgy, mint a rendszerbiztonsági tag. Ebből a példából megtudhatja, hogyan biztosíthatja az Azure-beli virtuális gépek felügyelt identitását egy Azure Storage-fiókhoz a PowerShell használatával.
+Miután konfigurált egy Azure-erőforrást egy felügyelt identitással, hozzáférést adhat a felügyelt identitásnak egy másik erőforráshoz, mint bármely más rendszerbiztonsági tag. Ez a példa bemutatja, hogyan adhat hozzáférést egy Azure-beli virtuális gép felügyelt identitásának egy Azure Storage-fiókhoz a PowerShell használatával.
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#managed-identity-types)**.
+- Ha nem ismeri az Azure-erőforrások felügyelt identitását, tekintse meg az [áttekintés szakaszt.](overview.md) Mindenképpen tekintse át a rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt **[identitások közötti különbséget.](overview.md#managed-identity-types)**
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
-- A példaként szolgáló szkriptek futtatásához két lehetőség közül választhat:
-    - Használja a [Azure Cloud shellt](../../cloud-shell/overview.md), amelyet a kódrészletek jobb felső sarkában található **kipróbálás** gomb használatával nyithat meg.
-    - Futtassa helyileg a parancsfájlokat a [Azure PowerShell](/powershell/azure/install-az-ps)legújabb verziójának telepítésével, majd jelentkezzen be az Azure-ba a használatával `Connect-AzAccount` . 
+- A példaszk szkriptek futtatásához két lehetőség áll rendelkezésre:
+    - Használja [a Azure Cloud Shell,](../../cloud-shell/overview.md)amelyet a kódblokkok jobb felső sarkában található **Try It (Próbálja** ki) gombbal nyithat meg.
+    - Futtatassa helyileg a szkripteket a Azure PowerShell [legújabb](/powershell/azure/install-az-ps)verziójának telepítésével, majd jelentkezzen be az Azure-ba a `Connect-AzAccount` használatával. 
 
-## <a name="use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Felügyelt identitás-hozzáférés kiosztása az Azure RBAC használatával egy másik erőforráshoz
+## <a name="use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Felügyelt identitás hozzáférésének hozzárendelése egy másik erőforráshoz az Azure RBAC használatával
 
-1. Felügyelt identitás engedélyezése Azure-erőforrásokon, [például egy Azure-beli virtuális gépen](qs-configure-powershell-windows-vm.md).
+1. Felügyelt identitás engedélyezése egy Azure-erőforráson, például egy [Azure-beli virtuális gépen.](qs-configure-powershell-windows-vm.md)
 
-1. Ebben a példában egy Azure-beli virtuális gép hozzáférést biztosítunk egy Storage-fiókhoz. Először a [Get-AzVM](/powershell/module/az.compute/get-azvm) használatával szerezheti be a nevű virtuális gép egyszerű szolgáltatását `myVM` , amely akkor jött létre, amikor engedélyezte a felügyelt identitást. Ezután a [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) használatával adja meg a virtuális gép **olvasójának** a következő nevű Storage-fiókhoz való hozzáférést `myStorageAcct` :
+1. Ebben a példában hozzáférést biztosítunk egy Azure-beli virtuális gépnek egy tárfiókhoz. Először a [Get-AzVM](/powershell/module/az.compute/get-azvm) használatával kérjük le a nevű virtuális gép szolgáltatásnevét, amely a felügyelt identitás `myVM` engedélyezésekor jött létre. Ezután a [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) használatával  adjon hozzáférést a virtuális gép olvasója számára a nevű tárfiókhoz: `myStorageAcct`
 
     ```azurepowershell-interactive
     $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
@@ -51,5 +52,5 @@ Miután konfigurált egy Azure-erőforrást egy felügyelt identitással, megadh
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Felügyelt identitás az Azure-erőforrásokhoz – áttekintés](overview.md)
-- A felügyelt identitás Azure-beli virtuális gépen való engedélyezésével kapcsolatban lásd: [felügyelt identitások konfigurálása](qs-configure-powershell-windows-vm.md)Azure-beli virtuális gépeken a PowerShell használatával.
+- [Az Azure-erőforrások felügyelt identitásának áttekintése](overview.md)
+- A felügyelt identitás Azure-beli virtuális gépen való engedélyezéséről lásd: Azure-beli virtuális gépen található Azure-erőforrások felügyelt identitásának konfigurálása [a PowerShell használatával.](qs-configure-powershell-windows-vm.md)

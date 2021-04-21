@@ -1,75 +1,75 @@
 ---
-title: GPU-t használó Container-példány üzembe helyezése
-description: Ismerje meg, hogyan helyezhet üzembe az Azure Container instances szolgáltatásban nagy számítási igényű tároló-alkalmazásokat GPU-erőforrásokkal.
+title: GPU-kompatibilis tárolópéldány üzembe helyezése
+description: Megtudhatja, hogyan helyezhet üzembe Azure Container Instances-példányokat nagy számítási igényű tárolóalkalmazások GPU-erőforrások használatával való futtatásához.
 ms.topic: article
 ms.date: 07/22/2020
-ms.openlocfilehash: 0d645d1fce24d1324e485d74e20bcf492d4444a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ffe4840d024c1e1f551966d05673c4ba83e1259
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93127008"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764062"
 ---
-# <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU-erőforrásokat használó tároló-példányok üzembe helyezése
+# <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU-erőforrásokat tartalmazó tárolópéldányok üzembe helyezése
 
-Ha Azure Container Instanceson bizonyos számítási igényű munkaterheléseket szeretne futtatni, telepítse a [tároló-csoportokat](container-instances-container-groups.md) a *GPU-erőforrásokkal*. A csoport Container instances egy vagy több NVIDIA Tesla GPU-t is elérhet a tároló munkaterhelések, például a CUDA és a Deep learning alkalmazások futtatása közben.
+Bizonyos nagy számítási igényű számítási feladatok futtatásához a Azure Container Instances GPU-erőforrásokkal kell üzembe [helyeznie](container-instances-container-groups.md) a *tárolócsoportokat.* A csoportban található tárolópéldányok hozzáférhetnek egy vagy több NVIDIA Tesla GPU-hoz, miközben tárolók számítási feladatait futtatják(pl. CUDA és mélytanulásos alkalmazások).
 
-Ez a cikk bemutatja, hogyan adhat hozzá GPU-erőforrásokat egy [YAML-fájl](container-instances-multi-container-yaml.md) vagy egy [Resource Manager-sablon](container-instances-multi-container-group.md)használatával. A GPU-erőforrásokat is megadhatja, ha a Azure Portal használatával telepít egy tároló-példányt.
+Ez a cikk bemutatja, hogyan adhat hozzá GPU-erőforrásokat, amikor [YAML-fájl](container-instances-multi-container-yaml.md) vagy sablon használatával helyez [üzembe Resource Manager tárolócsoportot.](container-instances-multi-container-group.md) GPU-erőforrásokat is megadhat, amikor tárolópéldányt helyez üzembe a Azure Portal.
 
 > [!IMPORTANT]
-> Ez a funkció jelenleg előzetes verzióban érhető el, és bizonyos [korlátozások érvényesek](#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> Ez a funkció jelenleg előzetes verzióban érhető el, és bizonyos [korlátozások érvényesek.](#preview-limitations) Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
-## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
+## <a name="preview-limitations"></a>Az előzetes verzió korlátozásai
 
-Az előzetes verzióban a következő korlátozások érvényesek, ha GPU-erőforrásokat használ a tároló-csoportokban. 
+Az előzetes verzióban az alábbi korlátozások érvényesek a GPU-erőforrások tárolócsoportokban való használata esetén. 
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 
-A további régiók támogatása az idő múlásával történik.
+Idővel további régiók támogatása is elérhető lesz.
 
-**Támogatott operációsrendszer-típusok**: csak Linux
+**Támogatott operációsrendszer-típusok:** csak Linux
 
-**További korlátozások**: a GPU-erőforrások nem használhatók tároló-csoportok [virtuális hálózatra](container-instances-vnet.md)történő telepítésekor.
+**További korlátozások:** A GPU-erőforrások nem használhatók tárolócsoport virtuális hálózaton [való üzembe helyezésekor.](container-instances-vnet.md)
 
-## <a name="about-gpu-resources"></a>Tudnivalók a GPU-erőforrásokról
+## <a name="about-gpu-resources"></a>A GPU-erőforrások
 
-### <a name="count-and-sku"></a>Darabszám és SKU
+### <a name="count-and-sku"></a>Darabszám és termékváltozat
 
-Ha a GPU-t egy Container-példányban szeretné használni, egy *GPU-erőforrást* kell megadnia a következő információkkal:
+Ha GPU-kat használ egy tárolópéldányban, adjon meg egy *GPU-erőforrást* az alábbi információkkal:
 
-* **Darabszám** – a GPU-k száma: **1**, **2** vagy **4**.
-* **SKU** – a GPU SKU: **K80**, **P100** vagy **V100**. Mindegyik SKU az NVIDIA Tesla GPU-ra mutat az alábbi Azure GPU-kompatibilis virtuálisgép-családokban:
+* **Darabszám** – A GPU-k száma: **1,** **2** vagy **4**.
+* **Termékváltozat** – A GPU termékváltozata: **K80,** **P100** vagy **V100**. Mindegyik termékváltozat az NVIDIA Tesla GPU-ra van leképezve az alábbi Azure GPU-kompatibilis virtuálisgép-családokkal:
 
-  | Termékváltozat | VM-család |
+  | Termékváltozat | Virtuálisgép-család |
   | --- | --- |
   | K80 | [NC](../virtual-machines/nc-series.md) |
   | P100 | [NCv2](../virtual-machines/ncv2-series.md) |
-  | V100 | [NCv3](../virtual-machines/ncv3-series.md) |
+  | 100-as | [NCv3](../virtual-machines/ncv3-series.md) |
 
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
-A GPU-erőforrások üzembe helyezése során állítsa be a számítási feladatokhoz megfelelő CPU-és memória-erőforrásokat az előző táblázatban látható maximális értékig. Ezek az értékek jelenleg nagyobbak, mint a CPU-és memória-erőforrások, amelyek GPU-erőforrások nélküli tároló-csoportokban érhetők el.  
+GPU-erőforrások üzembe helyezésekor állítsa be a számítási feladatnak megfelelő CPU- és memória-erőforrásokat az előző táblázatban látható maximális értékekig. Ezek az értékek jelenleg nagyobbak, mint a GPU-erőforrások nélküli tárolócsoportokban elérhető CPU- és memória-erőforrások.  
 
 > [!IMPORTANT]
-> A GPU-erőforrások alapértelmezett [előfizetési korlátai](container-instances-quotas.md) (kvótái) az SKU-ban különböznek. A P100 és az V100 SKU-ra vonatkozó alapértelmezett CPU-korlátok kezdetben 0 értékre vannak állítva. Egy elérhető régió növelésének igényléséhez küldjön egy [Azure-támogatási kérést][azure-support].
+> A [GPU-erőforrások alapértelmezett](container-instances-quotas.md) előfizetési korlátai (kvótái) termékváltozatonként eltérnek. A P100 és v100 SKU-k alapértelmezett processzorkorlátja kezdetben 0. Ha növelnie kell egy rendelkezésre álló régiót, küldjön egy Azure-támogatás [kérelmet.][azure-support]
 
 ### <a name="things-to-know"></a>Tudnivalók
 
-* **Üzembe helyezési idő** – a GPU-erőforrásokat tartalmazó tároló csoport létrehozása akár **8-10 percet** is igénybe vehet. Ezt a GPU virtuális gépek Azure-ban való üzembe helyezésének és konfigurálásának további ideje okozza. 
+* **Üzembe helyezési** idő – A GPU-erőforrásokat tartalmazó tárolócsoport létrehozása **akár 8–10 percet is igénybe vesz.** Ez a GPU-alapú virtuális gép Azure-ban való kiépítésének és konfigurálásának további ideje miatt van így. 
 
-* **Díjszabás** – a GPU-erőforrások nélküli tároló-csoportokhoz hasonlóan a GPU-erőforrásokkal rendelkező tárolók *időtartama* alatt felhasznált erőforrások Azure-számlái. Az időtartam kiszámításának ideje az első tároló rendszerképének lekérése, amíg a tároló csoport leáll. Nem tartalmazza a tároló csoport központi telepítésének idejét.
+* **Díjszabás –** A GPU-erőforrások nélküli tárolócsoportokhoz hasonlóan az  Azure a GPU-erőforrásokat tartalmazó tárolócsoport időtartama alatt felhasznált erőforrásokért fizet. Az időtartamot a rendszer az első tároló rendszerképének lekért idejéből számítja ki, amíg a tárolócsoport le nem áll. Nem tartalmazza a tárolócsoport üzembe helyezésének idejét.
 
-  Tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/container-instances/).
+  Tekintse meg [a díjszabás részleteit.](https://azure.microsoft.com/pricing/details/container-instances/)
 
-* A **CUDA-illesztőprogramok** – a GPU-erőforrásokkal rendelkező tároló-példányok az NVIDIA CUDA-illesztőprogramokkal és a tároló-futtatókörnyezetekkel vannak kiépítve, így a CUDA számítási feladatokhoz kifejlesztett tároló-lemezképeket is használhat.
+* **CUDA-illesztőprogramok** – A GPU-erőforrásokat tartalmazó tárolópéldányok előre ki vannak építve NVIDIA CUDA-illesztőprogramokkal és tároló-futtatásokkal, így használhatja a CUDA számítási feladatokhoz fejlesztett tároló-rendszerképeket.
 
-  Ebben a szakaszban csak a CUDA 9,0-et támogatjuk. Használhatja például a következő alapképeket a Docker-fájlhoz:
-  * [NVIDIA/CUDA: 9.0-Base-Ubuntu 16.04](https://hub.docker.com/r/nvidia/cuda/)
-  * [tensorflow/tensorflow: 1.12.0-GPU-py3](https://hub.docker.com/r/tensorflow/tensorflow)
+  Ebben a szakaszban csak a CUDA 9.0-t támogatjuk. A Docker-fájlhoz például a következő alap rendszerképeket használhatja:
+  * [nvidia/cuda:9.0-base-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda/)
+  * [tensorflow/tensorflow: 1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
     
-## <a name="yaml-example"></a>YAML példa
+## <a name="yaml-example"></a>YAML-példa
 
-A GPU-erőforrások hozzáadásának egyik módja, ha egy [YAML-fájl](container-instances-multi-container-yaml.md)használatával helyez üzembe egy tároló csoportot. Másolja az alábbi YAML egy új, *GPU-Deploy-ACI. YAML* nevű fájlba, majd mentse a fájlt. Ez a YAML létrehoz egy *gpucontainergroup* nevű tároló csoportot, amely egy K80 GPU-val rendelkező Container-példányt ad meg. A példány egy példa CUDA vektoros hozzáadási alkalmazást futtat. Az erőforrás-kérelmek elegendőek a munkaterhelés futtatásához.
+GPU-erőforrások hozzáadásának egyik módja egy tárolócsoport üzembe helyezése egy [YAML-fájllal.](container-instances-multi-container-yaml.md) Másolja a következő YAML-t egy *új, gpu-deploy-aci.yaml nevű fájlba,* majd mentse a fájlt. Ez a YAML létrehoz egy *gpucontainergroup* nevű tárolócsoportot, amely egy K80 GPU-val megadott tárolópéldányt határoz meg. A példány egy CUDA vektor összeadási mintaalkalmazást futtat. Az erőforrás-kérelmek elegendőek a számítási feladat futtatásához.
 
 ```YAML
 additional_properties: {}
@@ -91,13 +91,13 @@ properties:
   restartPolicy: OnFailure
 ```
 
-Telepítse a tároló csoportot az az [Container Create][az-container-create] paranccsal, és adja meg a paraméter YAML-fájljának nevét `--file` . Meg kell adnia egy erőforráscsoport nevét és egy olyan helyet a tároló csoport számára, amely támogatja a GPU-erőforrásokat támogató *eastus* .  
+Telepítse a tárolócsoportot [az az container create paranccsal,][az-container-create] és adja meg a YAML-fájl nevét a `--file` paraméterhez. Meg kell adnunk egy erőforráscsoport nevét és egy helyet a tárolócsoport számára, például *eastus,* amely támogatja a GPU-erőforrásokat.  
 
 ```azurecli
 az container create --resource-group myResourceGroup --file gpu-deploy-aci.yaml --location eastus
 ```
 
-Az üzembe helyezés több percet is igénybe vehet. Ezután a tároló elindítja és futtatja a CUDA vektorok hozzáadására szolgáló műveletet. Futtassa az az [Container logs][az-container-logs] parancsot a napló kimenetének megtekintéséhez:
+Az üzembe helyezés több percet is igénybe vehet. Ezután a tároló elindul, és futtat egy CUDA vektorkiadási műveletet. A napló [kimenetének megtekintéséhez][az-container-logs] futtassa az az container logs parancsot:
 
 ```azurecli
 az container logs --resource-group myResourceGroup --name gpucontainergroup --container-name gpucontainer
@@ -114,9 +114,9 @@ Test PASSED
 Done
 ```
 
-## <a name="resource-manager-template-example"></a>Példa Resource Manager-sablonra
+## <a name="resource-manager-template-example"></a>Resource Manager példasablonra
 
-Egy másik lehetőség, hogy egy, a GPU-erőforrásokkal rendelkező tároló csoportot egy [Resource Manager-sablon](container-instances-multi-container-group.md)használatával telepítsen. Először hozzon létre egy nevű fájlt `gpudeploy.json` , majd másolja a következő JSON-t. Ez a példa egy V100 GPU-val rendelkező tároló-példányt helyez üzembe, amely [TensorFlow](https://www.tensorflow.org/) -betanítási feladatot futtat a MNIST-adatkészleten. Az erőforrás-kérelmek elegendőek a munkaterhelés futtatásához.
+A TÁROLÓcsoport GPU-erőforrásokkal való üzembe helyezésének egy másik módja egy Resource Manager [használata.](container-instances-multi-container-group.md) Először hozzon létre egy nevű fájlt, majd másolja bele a `gpudeploy.json` következő JSON-t. Ez a példa üzembe helyez egy tárolópéldányt egy 100-as v100 GPU-val, amely [egy TensorFlow](https://www.tensorflow.org/) betanítási feladatot futtat a MNIST-adathalmaz. Az erőforrás-kérelmek elegendőek a számítási feladat futtatásához.
 
 ```JSON
 {
@@ -168,13 +168,13 @@ Egy másik lehetőség, hogy egy, a GPU-erőforrásokkal rendelkező tároló cs
 }
 ```
 
-Telepítse a sablont az az [Deployment Group Create][az-deployment-group-create] paranccsal. Meg kell adnia egy olyan erőforráscsoport nevét, amely egy olyan régióban lett létrehozva, mint a GPU-erőforrásokat támogató *eastus* .
+Telepítse a sablont az [az deployment group create paranccsal.][az-deployment-group-create] Meg kell adnunk egy olyan erőforráscsoport nevét, amely egy olyan régióban lett létrehozva, mint például az *eastus,* amely támogatja a GPU-erőforrásokat.
 
 ```azurecli-interactive
 az deployment group create --resource-group myResourceGroup --template-file gpudeploy.json
 ```
 
-Az üzembe helyezés több percet is igénybe vehet. Ezután elindul a tároló, és futtatja a TensorFlow feladatot. Futtassa az az [Container logs][az-container-logs] parancsot a napló kimenetének megtekintéséhez:
+Az üzembe helyezés több percet is igénybe vehet. Ezután elindul a tároló, és futtatja a TensorFlow-feladatot. A napló [kimenetének megtekintéséhez][az-container-logs] futtassa az az container logs parancsot:
 
 ```azurecli
 az container logs --resource-group myResourceGroup --name gpucontainergrouprm --container-name gpucontainer
@@ -209,13 +209,13 @@ Adding run metadata for 999
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Mivel a GPU-erőforrások használata költséges lehet, gondoskodjon arról, hogy a tárolók ne fussanak váratlanul hosszú ideig. Figyelje a tárolókat a Azure Portalban, vagy ellenőrizze egy tároló csoport állapotát az az [Container show][az-container-show] paranccsal. Például:
+Mivel a GPU-erőforrások használata költséges lehet, győződjön meg arról, hogy a tárolók hosszú ideig nem futnak váratlanul. Figyelje a tárolókat a Azure Portal, vagy ellenőrizze egy tárolócsoport állapotát [az az container show paranccsal.][az-container-show] Például:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name gpucontainergroup --output table
 ```
 
-Ha elkészült a létrehozott tároló-példányokkal, törölje azokat a következő parancsokkal:
+Ha végzett a létrehozott tárolópéldányokkal, törölje őket a következő parancsokkal:
 
 ```azurecli
 az container delete --resource-group myResourceGroup --name gpucontainergroup -y
@@ -224,8 +224,8 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a Container Group [YAML-fájl](container-instances-multi-container-yaml.md) vagy [Resource Manager-sablon](container-instances-multi-container-group.md)használatával történő üzembe helyezéséről.
-* További információ a GPU-ra optimalizált virtuálisgép- [méretekről](../virtual-machines/sizes-gpu.md) az Azure-ban.
+* További információ a tárolócsoport [YAML-fájllal](container-instances-multi-container-yaml.md) vagy [sablonnal Resource Manager üzembe helyezéséről.](container-instances-multi-container-group.md)
+* További információ a [GPU-optimalizált virtuálisgép-méretekről az](../virtual-machines/sizes-gpu.md) Azure-ban.
 
 
 <!-- IMAGES -->
@@ -236,8 +236,8 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-show]: /cli/azure/container#az-container-show
-[az-container-logs]: /cli/azure/container#az-container-logs
-[az-container-show]: /cli/azure/container#az-container-show
-[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-show]: /cli/azure/container#az_container_show
+[az-container-logs]: /cli/azure/container#az_container_logs
+[az-container-show]: /cli/azure/container#az_container_show
+[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create

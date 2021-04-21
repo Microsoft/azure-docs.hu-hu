@@ -1,17 +1,17 @@
 ---
-title: 'Gyors útmutató: egyéni események küldése a Storage-üzenetsor számára – Event Grid, Azure CLI'
-description: 'Rövid útmutató: a Azure Event Grid és az Azure CLI használatával tehet közzé egy témakört, és feliratkozhat erre az eseményre. A rendszer tárolási üzenetsort használ végpontként.'
+title: 'Rövid útmutató: Egyéni események küldése a Storage-üzenetsorba – Event Grid, Azure CLI'
+description: 'Rövid útmutató: A Azure Event Grid és az Azure CLI használatával közzétehet egy témakört, és feliratkozhat az eseményre. A rendszer tárolási üzenetsort használ végpontként.'
 ms.date: 02/02/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 00808e7eca13824833673ef820d39b70bf618dd2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb7712fbc5a0498695a8737d627f407eb6dfa575
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99493260"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766824"
 ---
-# <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Gyors útmutató: egyéni események irányítása az Azure üzenetsor-tárolóba az Azure CLI-vel és a Event Grid
+# <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Rövid útmutató: Egyéni események útválasztása az Azure Queue Storage-ba az Azure CLI és a Event Grid
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Az Azure Queue Storage az egyik támogatott eseménykezelő. Ebben a cikkben létrehozunk egy egyéni témakört az Azure CLI-vel, feliratkozunk az adott témakörre, majd elindítjuk az eseményt az eredmény megtekintéséhez. Az eseményeket elküldi a Queue Storage-ba.
 
@@ -19,17 +19,17 @@ Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Az Azure 
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ehhez a cikkhez az Azure CLI 2.0.56 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a cikkhez az Azure CLI 2.0.56-os vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
-- Ha Azure PowerShellt használ a helyi gépen a Azure Portal Cloud Shell használata helyett, győződjön meg arról, hogy Azure PowerShell 1.1.0 vagy újabb verzióra van szüksége. Töltse le a Azure PowerShell legújabb verzióját a Windows rendszerű gépén az [Azure downloads-parancssori eszközökről](https://azure.microsoft.com/downloads/). 
+- Ha a helyi Azure PowerShell használja az Cloud Shell helyett, Azure Portal 1.1.0-s vagy újabb Azure PowerShell használja. Töltse le a windowsos Azure PowerShell legújabb verzióját az [Azure-letöltések – Parancssori eszközök ről.](https://azure.microsoft.com/downloads/) 
 
-Ez a cikk az Azure CLI használatának parancsait ismerteti. 
+Ez a cikk az Azure CLI használatának parancsaiból ad ki parancsokat. 
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni. Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. 
 
 A következő példában létrehozunk egy *gridResourceGroup* nevű erőforráscsoportot a *westus2* helyen.
 
@@ -61,7 +61,7 @@ az storage queue create --name $queuename --account-name $storagename
 
 ## <a name="subscribe-to-a-custom-topic"></a>Feliratkozás egyéni témakörre
 
-Az egyéni témakörre való előfizetéssel megállapíthatja, hogy Event Grid mely eseményeket kívánja nyomon követni. Az alábbi példa előfizet a létrehozott egyéni témakörre, és átadja a végponthoz tartozó várólista-tároló erőforrás-AZONOSÍTÓját. Az Azure CLI használatakor a Queue Storage-azonosítót kell megadnia végpontként. A végpont formátuma a következő:
+Előfizethet egy egyéni témakörre, és Event Grid mely eseményeket szeretné nyomon követni. Az alábbi példa feliratkozik a létrehozott egyéni témakörre, és átadja a Queue Storage erőforrás-azonosítóját a végpontnak. Az Azure CLI használatakor a Queue Storage-azonosítót kell megadnia végpontként. A végpont formátuma a következő:
 
 `/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/queueservices/default/queues/<queue-name>`
 
@@ -118,9 +118,9 @@ A Portalon lépjen a Queue Storage-tárolóhoz, és figyelje meg, hogy az Event 
 ![Az üzenetek megjelenítése](./media/custom-event-to-queue-storage/messages.png)
 
 > [!NOTE]
-> Ha [Azure üzenetsor-tárolási triggert](../azure-functions/functions-bindings-storage-queue-trigger.md) használ egy olyan várólista Azure functions számára, amely üzeneteket fogad Event Gridtól, a függvény végrehajtásához a következő hibaüzenet jelenhet meg: `The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.`
+> Ha Azure [Queue](../azure-functions/functions-bindings-storage-queue-trigger.md) Storage-eseményindítót Azure Functions egy üzenetsorhoz, amely üzeneteket fogad a Event Grid-től, a következő hibaüzenet jelenhet meg a függvény végrehajtásakor: `The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.`
 > 
-> Ennek az az oka, hogy amikor [Azure üzenetsor-tárolási triggert](../azure-functions/functions-bindings-storage-queue-trigger.md)használ, Azure functions egy **Base64 kódolású karakterláncot** vár, de a Event Grid egyszerű szöveges formátumban küld üzeneteket egy tárolási várólistára. Jelenleg nem lehet konfigurálni a várólista-triggert Azure Functions egyszerű szöveg fogadására. 
+> Ennek az az oka, hogy ha egy Azure Queue Storage-eseményindítót használ, a Azure Functions **base64** kódolású sztringet vár, de a Event Grid egyszerű szöveges formátumban küld üzeneteket egy tárolási üzenetsorba. [](../azure-functions/functions-bindings-storage-queue-trigger.md) Az üzenetsor eseményindítóját jelenleg nem lehet egyszerű szöveg Azure Functions konfigurálni. 
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

@@ -1,6 +1,6 @@
 ---
 title: Felügyelt identitások használata Azure-beli virtuális gépen a bejelentkezéshez – Azure ADV
-description: Részletes utasítások és példák Azure-beli virtuális gépek által felügyelt identitások használatára az Azure-erőforrások egyszerű üzembe helyezéséhez a parancsfájl-ügyfél bejelentkezéséhez és az erőforrás-hozzáféréshez.
+description: Részletes utasítások és példák azure-beli virtuális gép által felügyelt identitások használatára az Azure-erőforrások szolgáltatásnévhez a szkriptek ügyfél-bejelentkezése és erőforrás-hozzáférése esetében.
 services: active-directory
 documentationcenter: ''
 author: barclayn
@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 01/29/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 61e83bd27c9434c4222e0161e3b643b183d1aa84
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 59366f1a5b4bd0572af1b36f7be2f5bf91392660
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99090960"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784784"
 ---
-# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Azure-erőforrások felügyelt identitásának használata Azure-beli virtuális gépen a bejelentkezéshez 
+# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Azure-beli virtuális gépen található Azure-erőforrások felügyelt identitásának használata a bejelentkezéshez 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
-Ez a cikk PowerShell-és CLI-parancsfájl-példákat tartalmaz a bejelentkezéshez az Azure-erőforrások egyszerű szolgáltatásához felügyelt identitások használatával, valamint útmutatást nyújt a fontos témakörökhöz, például a hibák kezeléséhez.
+Ez a cikk PowerShell- és CLI-példaszkprogramokat tartalmaz az Azure-erőforrások szolgáltatásnév felügyelt identitásaival való bejelentkezéshez, valamint útmutatást nyújt az olyan fontos témakörökhöz, mint a hibakezelés.
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
@@ -34,27 +34,27 @@ Ez a cikk PowerShell-és CLI-parancsfájl-példákat tartalmaz a bejelentkezésh
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-Ha a cikkben a Azure PowerShell vagy az Azure CLI-példákat is használni szeretné, telepítse az [Azure PowerShell](/powershell/azure/install-az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)legújabb verzióját. 
+Ha a cikkben említett Azure PowerShell Azure CLI-példákat használja, győződjön meg arról, hogy a Azure PowerShell vagy az Azure CLI legújabb [verzióját telepíti.](/cli/azure/install-azure-cli) [](/powershell/azure/install-az-ps) 
 
 > [!IMPORTANT]
-> - A cikkben szereplő összes minta parancsfájl azt feltételezi, hogy a parancssori ügyfél olyan virtuális gépen fut, amelyen engedélyezve van az Azure-erőforrások felügyelt identitása. Használja a Azure Portal virtuális gép "kapcsolódás" szolgáltatását a virtuális géphez való távoli kapcsolódáshoz. A virtuális gépeken található Azure-erőforrások felügyelt identitásának engedélyezésével kapcsolatos részletekért lásd: [felügyelt identitások konfigurálása egy virtuális gépen az Azure-erőforrások számára a Azure Portal](qs-configure-portal-windows-vm.md)vagy az egyik varianting article (POWERSHELL, CLI, sablon vagy Azure SDK használatával). 
-> - Az erőforrás-hozzáférés során felmerülő hibák megelőzése érdekében a virtuális gép felügyelt identitásának legalább "olvasó" hozzáférési jogosultsággal kell rendelkeznie a megfelelő hatókörben (a virtuális gépen vagy magasabb szinten), hogy engedélyezze a virtuális gép Azure Resource Manager műveleteit. További részletekért lásd: [felügyelt identitások társítása az Azure-erőforrásokhoz az erőforrásokhoz való hozzáféréshez a Azure Portal használatával](howto-assign-access-portal.md) .
+> - A cikkben található összes példaszkvóta feltételezi, hogy a parancssori ügyfél egy olyan virtuális gépen fut, amelynél engedélyezve vannak az Azure-erőforrások felügyelt identitásai. Használja a virtuális gép "Csatlakozás" funkcióját a Azure Portal, hogy távolról csatlakozzon a virtuális géphez. Az Azure-erőforrások felügyelt identitásának virtuális gépen való engedélyezésével kapcsolatos részletekért lásd: Azure-erőforrások felügyelt identitásának konfigurálása virtuális gépen [az Azure Portal](qs-configure-portal-windows-vm.md)használatával, vagy az egyik változatcikk (a PowerShell, a parancssori felület, egy sablon vagy egy Azure SDK használatával). 
+> - Az erőforrás-hozzáférés során előforduló hibák elkerülése érdekében a virtuális gép felügyelt identitásának legalább "Olvasó" hozzáférést kell adni a megfelelő hatókörben (a virtuális gépen vagy magasabb szinten), hogy Azure Resource Manager műveleteket a virtuális gépen. Részletekért [lásd: Azure-erőforrások felügyelt](howto-assign-access-portal.md) identitásának hozzárendelése erőforráshoz való hozzáféréshez a Azure Portal használatával.
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure-erőforrások felügyelt identitásai biztosítják a [szolgáltatás egyszerű objektumát](../develop/developer-glossary.md#service-principal-object) , amely a virtuális gépen található [Azure-erőforrások felügyelt identitásának engedélyezésekor jön létre](overview.md) . Az egyszerű szolgáltatás hozzáférést biztosíthat az Azure-erőforrásokhoz, és identitásként használhatja a bejelentkezéshez és az erőforrásokhoz való hozzáféréshez parancsfájl-vagy parancssori ügyfelekként. Hagyományosan a saját identitása alá tartozó biztonságos erőforrások eléréséhez a parancsfájl-ügyfélnek a következőket kell tennie:  
+Az Azure-erőforrások felügyelt identitása egy szolgáltatásnév-objektumot [biztosít,](../develop/developer-glossary.md#service-principal-object) amely akkor jön létre, amikor engedélyezi az [Azure-erőforrások](overview.md) felügyelt identitását a virtuális gépen. A szolgáltatásnév hozzáférést kaphat az Azure-erőforrásokhoz, és a bejelentkezéshez és az erőforrás-hozzáféréshez szkript-/parancssori ügyfelek identitásként használhatják. Hagyományosan ahhoz, hogy a biztonságos erőforrásokhoz a saját identitása alapján férnek hozzá, a parancsfájl-ügyfélnek a következőre lenne szüksége:  
 
-   - regisztrálva kell lennie az Azure AD-ben, bizalmas/webes ügyfélalkalmazásként
-   - Jelentkezzen be az egyszerű szolgáltatásnév alá, és használja az alkalmazás hitelesítő adatait (amelyek valószínűleg a szkriptbe vannak beágyazva)
+   - bizalmas/webes ügyfélalkalmazásként kell regisztrálni és jóváhagyást adni az Azure AD-nek
+   - jelentkezzen be a szolgáltatásnév alatt az alkalmazás hitelesítő adataival (amelyek valószínűleg be vannak ágyazva a szkriptbe)
 
-Az Azure-erőforrásokhoz tartozó felügyelt identitások esetében a parancsfájl-ügyfélnek többé nem kell tennie, mert az Azure-erőforrások szolgáltatásnév felügyelt identitások területén tud bejelentkezni. 
+Az Azure-erőforrások felügyelt identitása esetében a szkript-ügyfélnek már egyiket sem kell megtennie, mivel be tud jelentkezni az Azure-erőforrások szolgáltatásnév felügyelt identitása alatt. 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Az alábbi szkript a következőket mutatja be:
+A következő szkript a következőket mutatja be:
 
-1. Jelentkezzen be az Azure AD-be a virtuális gép felügyelt identitása Azure-erőforrások egyszerű szolgáltatásához  
-2. Hívja meg Azure Resource Manager és szerezze be a virtuális gép egyszerű szolgáltatásnév AZONOSÍTÓját. A CLI gondoskodik a jogkivonat-beszerzések és-használat automatikus kezeléséről. Ügyeljen rá, hogy helyettesítse be a virtuális gép nevét `<VM-NAME>` .  
+1. Jelentkezzen be az Azure AD-be a vm felügyelt identitása alatt az Azure-erőforrások szolgáltatásnévvel  
+2. Hívja Azure Resource Manager, és szerezze be a virtuális gép szolgáltatásnév-azonosítóját. A CLI automatikusan kezeli a jogkivonatok beszerzését és használatát. Mindenképpen helyettesítse be a virtuális gép nevét a `<VM-NAME>` nevére.  
 
    ```azurecli
    az login --identity
@@ -65,10 +65,10 @@ Az alábbi szkript a következőket mutatja be:
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Az alábbi szkript a következőket mutatja be:
+A következő szkript a következőket mutatja be:
 
-1. Jelentkezzen be az Azure AD-be a virtuális gép felügyelt identitása Azure-erőforrások egyszerű szolgáltatásához  
-2. Hívja meg az Azure Resource Manager parancsmagot a virtuális géppel kapcsolatos információk lekéréséhez. A PowerShell gondoskodik a jogkivonat-használat automatikus kezeléséről.  
+1. Jelentkezzen be az Azure AD-be a vm felügyelt identitása alatt az Azure-erőforrások szolgáltatásnévvel  
+2. A virtuális Azure Resource Manager lekért információkért hívja meg a Azure Resource Manager parancsmagot. A Jogkivonatok használatát a PowerShell automatikusan kezeli.  
 
    ```azurepowershell
    Add-AzAccount -identity
@@ -79,19 +79,19 @@ Az alábbi szkript a következőket mutatja be:
    echo "The managed identity for Azure resources service principal ID is $spID"
    ```
 
-## <a name="resource-ids-for-azure-services"></a>Az Azure-szolgáltatások erőforrás-azonosítói
+## <a name="resource-ids-for-azure-services"></a>Azure-szolgáltatások erőforrás-nevei
 
-Tekintse meg az Azure ad- [hitelesítést támogató Azure-szolgáltatásokat](services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) az Azure ad-t támogató erőforrások listájáért, valamint az Azure-erőforrások felügyelt identitásokkal való tesztelését, valamint a hozzájuk tartozó erőforrás-azonosítókat.
+Az [Azure AD-t támogató, az Azure-erőforrások](services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) felügyelt identitásával és azok erőforrás-azonosítóival tesztelt erőforrások listáját az Azure AD-hitelesítést támogató Azure-szolgáltatásokban talál.
 
-## <a name="error-handling-guidance"></a>Hiba a kezelési útmutatóban 
+## <a name="error-handling-guidance"></a>Hibakezelési útmutató 
 
-A következő válaszok például azt jelezhetik, hogy a virtuális gép felügyelt identitása nem lett megfelelően konfigurálva az Azure-erőforrásokhoz:
+Az alábbihoz hasonló válaszok azt jelezheti, hogy a virtuális gép Azure-erőforrásokhoz való felügyelt identitása nincs megfelelően konfigurálva:
 
-- PowerShell: *meghívó-webkérés: nem lehet csatlakozni a távoli kiszolgálóhoz*
-- CLI: *MSI: nem sikerült beolvasni a tokent a `http://localhost:50342/oauth2/token` következő hibával: "HTTPConnectionPool (host =" localhost ", Port = 50342)* 
+- PowerShell: *Invoke-WebRequest: Nem lehet csatlakozni a távoli kiszolgálóhoz*
+- CLI: MSI: Nem sikerült lekérni egy jogkivonatot a következő hibával: *`http://localhost:50342/oauth2/token` HTTPConnectionPool(host='localhost', port=50342)* 
 
-Ha ezen hibák valamelyike megjelenik, térjen vissza az Azure-beli virtuális géphez a [Azure Portal](https://portal.azure.com) , és nyissa meg az **Identity (identitás** ) lapot, és gondoskodjon róla, hogy a **rendszer hozzárendelve** legyen az "igen" értékre.
+Ha ilyen hibaüzenetet kap, térjen vissza az [](https://portal.azure.com) Azure-beli virtuális géphez  a Azure Portal, majd az **Identitás** lapra, és ellenőrizze, hogy a Rendszer által hozzárendelt beállítás "Igen" legyen.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Azure-beli virtuális gépen lévő Azure-erőforrások felügyelt identitásának engedélyezéséhez lásd: [felügyelt identitások konfigurálása](qs-configure-powershell-windows-vm.md)Azure-beli virtuális gépen Azure-beli virtuális gépeken a PowerShell használatával, illetve felügyelt identitások konfigurálása Azure-beli virtuális gépeken az Azure [CLI használatával](qs-configure-cli-windows-vm.md)
+- Az Azure-erőforrások felügyelt identitásának Azure-beli virtuális gépen való engedélyezéséhez lásd: Azure-beli virtuális gép felügyelt identitásának konfigurálása Egy Azure-beli virtuális gépen [a PowerShell](qs-configure-powershell-windows-vm.md)használatával, vagy Az Azure-erőforrások felügyelt identitásának konfigurálása Azure-beli virtuális gépen az [Azure CLI használatával](qs-configure-cli-windows-vm.md)

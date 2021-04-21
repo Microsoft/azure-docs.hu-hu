@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: belső terheléselosztó létrehozása sablon használatával'
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy belső Azure Load balancert egy Azure Resource Manager sablon (ARM-sablon) használatával.
+title: 'Rövid útmutató: Belső terheléselosztás létrehozása sablon használatával'
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre belső Azure Load Balancert egy Azure Resource Manager sablon (ARM-sablon) használatával.
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.author: allensu
 ms.date: 09/14/2020
-ms.openlocfilehash: 749b233b827c27d2c998cfd6be66cf79cf48089d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00126dde55ffe584be611ddf268bb759e127d7a1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94831650"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788744"
 ---
-# <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Rövid útmutató: belső terheléselosztó létrehozása a virtuális gépek terheléselosztásához ARM-sablon használatával
+# <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Rövid útmutató: Belső terheléselosztás létrehozása a virtuális gépek ARM-sablonnal való terheléselosztása érdekében
 
-Ez a rövid útmutató azt ismerteti, hogyan használható egy Azure Resource Manager sablon (ARM-sablon) egy belső Azure Load Balancer létrehozásához.
+Ez a rövid útmutató azt ismerteti, hogyan használható Azure Resource Manager sablon (ARM-sablon) egy belső Azure-terheléselosztás létrehozásához.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -31,20 +31,20 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/201-2-vms-internal-load-balancer)származik.
+Az ebben a rövid útmutatóban használt sablon az [Azure gyorsindítási sablonokból áll.](https://azure.microsoft.com/resources/templates/201-2-vms-internal-load-balancer)
 
 :::code language="json" source="~/quickstart-templates/201-2-vms-internal-load-balancer/azuredeploy.json":::
 
-Több Azure-erőforrás van definiálva a sablonban:
+A sablonban több Azure-erőforrás is definiálva van:
 
-- [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts): virtuálisgép-tároló fiókok a rendszerindítási diagnosztika számára.
-- [**Microsoft. számítás/availabilitySets**](/azure/templates/microsoft.compute/availabilitySets): rendelkezésre állási csoport a virtuális gépekhez.
-- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks): Virtual Network a Load Balancerhez és a virtuális gépekhez.
-- [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkInterfaces): hálózati adapterek virtuális gépekhez.
-- [**Microsoft. Network/loadBalancers**](/azure/templates/microsoft.network/loadBalancers): belső terheléselosztó.
-- [**Microsoft. számítási/virtualMachines**](/azure/templates/microsoft.compute/virtualMachines): virtuális gépek.
+- [**Microsoft.Storage/storageAccounts:**](/azure/templates/microsoft.storage/storageaccounts)Virtuálisgép-tárfiókok rendszerindítási diagnosztikához.
+- [**Microsoft.Compute/availabilitySets:**](/azure/templates/microsoft.compute/availabilitySets)Rendelkezésre állási készlet virtuális gépekhez.
+- [**Microsoft.Network/virtualNetworks:**](/azure/templates/microsoft.network/virtualNetworks)Virtuális hálózat terheléselosztáshoz és virtuális gépekhez.
+- [**Microsoft.Network/networkInterfaces:**](/azure/templates/microsoft.network/networkInterfaces)Virtuális gépek hálózati adapterei.
+- [**Microsoft.Network/loadBalancers:**](/azure/templates/microsoft.network/loadBalancers)Belső terheléselosztás.
+- [**Microsoft.Compute/virtualMachines:**](/azure/templates/microsoft.compute/virtualMachines)Virtuális gépek.
 
-A Azure Load Balancer kapcsolódó további sablonok kereséséhez tekintse meg az [Azure Gyorsindítás sablonjait](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
+A szolgáltatáshoz kapcsolódó további sablonok Azure Load Balancer [Azure gyorsindítási sablonok.](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular)
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
@@ -64,21 +64,21 @@ az deployment group create \
 --template-uri  $templateUri
 ```
 
-## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
+## <a name="review-deployed-resources"></a>Az üzembe helyezett erőforrások áttekintése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Válassza ki az **erőforráscsoportok** elemet a bal oldali ablaktáblán.
+1. A **bal oldali panelen** válassza az Erőforráscsoportok lehetőséget.
 
-1. Válassza ki az előző szakaszban létrehozott erőforráscsoportot. Az erőforráscsoport alapértelmezett neve **myresourcegrouplb erőforráscsoportban**
+1. Válassza ki az előző szakaszban létrehozott erőforráscsoportot. Az alapértelmezett erőforráscsoport neve **myResourceGroupLB**
 
-1. Ellenőrizze, hogy az erőforráscsoport az alábbi erőforrásokat hozta-e létre:
+1. Ellenőrizze, hogy a következő erőforrások létrejöttek-e az erőforráscsoportban:
 
-:::image type="content" source="media/quickstart-load-balancer-standard-internal-template/verify-creation.png" alt-text="Felhasználói Azure Portal az erőforrások létrehozásának ellenőrzéséhez." border="true":::
+:::image type="content" source="media/quickstart-load-balancer-standard-internal-template/verify-creation.png" alt-text="A Azure Portal erőforrások létrehozásának ellenőrzéséhez." border="true":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-delete) paranccsal eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást.
+Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az_group_delete) paranccsal eltávolíthatja az erőforráscsoportot és a benne lévő összes erőforrást.
 
 ```azurecli-interactive
   az group delete \
@@ -87,7 +87,7 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-dele
 
 ## <a name="next-steps"></a>Következő lépések
 
-A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
+A sablonok létrehozásának folyamatát részletesen ismertető oktatóanyagért lásd:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Oktatóanyag: Az első ARM-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

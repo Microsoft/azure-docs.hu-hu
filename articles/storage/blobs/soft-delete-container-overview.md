@@ -1,7 +1,7 @@
 ---
-title: Tárolók törlése (előzetes verzió)
+title: Tárolók soft delete (előzetes verzió)
 titleSuffix: Azure Storage
-description: A tárolók (előzetes verzió) helyreállítható törlésével megvédheti adatait, így könnyebben állíthatja helyre az adatokat, amikor az alkalmazás vagy egy másik Storage-fiók felhasználója hibásan módosítja vagy törölte azokat.
+description: A tárolók helyreállítható törlése (előzetes verzió) védi az adatokat, így könnyebben helyreállíthatja az adatokat, ha azokat egy alkalmazás vagy egy másik tárfiók-felhasználó hibásan módosította vagy törölte.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,71 +10,71 @@ ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: af9d520bab3ff49b30672717414fbd651c915dd4
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 2efd673d26231e83d820f7971a740d06e9b2a1d2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552377"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785414"
 ---
-# <a name="soft-delete-for-containers-preview"></a>Tárolók törlése (előzetes verzió)
+# <a name="soft-delete-for-containers-preview"></a>Tárolók soft delete (előzetes verzió)
 
-A tárolók (előzetes verzió) helyreállítható törlésével megvédheti az adatait véletlenül vagy rosszindulatúan törölve. Ha a tároló-helyreállító törlés engedélyezve van egy Storage-fiókhoz, a rendszer megőrzi a törölt tárolót és annak tartalmát az Azure Storage-ban az Ön által megadott időszakra vonatkozóan. A megőrzési időtartam alatt a korábban törölt tárolók helyreállíthatók. A tároló helyreállításakor a törléskor a tárolóban lévő blobok is helyre lesznek állítva.
+A tárolók (előzetes verzió) által védett törlés megvédi az adatokat a véletlen vagy rosszindulatú törléstől. Ha a tárolókhoz engedélyezve van a tárfiókok helyreállítása, a törölt tárolók és tartalmaik az Ön által megadott időtartamra megmaradnak az Azure Storage-ban. A megőrzési időtartam alatt a korábban törölt tárolók helyreállíthatók. A tároló helyreállításakor a törléskor a tárolóban lévő blobok is helyre lesznek állítva.
 
-A blob-adatai teljes körű védelme érdekében a Microsoft a következő adatvédelmi funkciók engedélyezését javasolja:
+A blobadatok végpontok elleni védelme érdekében a Microsoft a következő adatvédelmi funkciók engedélyezését javasolja:
 
-- Tároló-helyreállítható törlés a törölt tárolók visszaállításához. A tárolók helyreállítható törlésének engedélyezéséről a tárolók helyreállítható [törlésének engedélyezése és kezelése](soft-delete-container-enable.md)című témakörben olvashat bővebben.
-- BLOB verziószámozása, hogy automatikusan fenntartsa a blob korábbi verzióit. Ha a blob verziószámozása engedélyezve van, visszaállíthatja a blob egy korábbi verzióját az adatok helyreállításához, ha az hibásan van módosítva vagy törölve. A blob verziószámozásának engedélyezéséről a [blob verziószámozásának engedélyezése és kezelése](versioning-enable.md)című témakörben olvashat bővebben.
-- BLOB törölje a törlést, hogy visszaállítsa a törölt blobot vagy verziót. Ha szeretné megtudni, hogyan engedélyezheti a Blobok törlését, olvassa el a következőt: Blobok eltávolításának [engedélyezése és kezelése](soft-delete-blob-enable.md).
+- Tároló helyreállítható törlése a törölt tároló visszaállításához. A tárolókhoz való soft delete engedélyezéséről lásd: Tárolókhoz való soft [delete engedélyezése és kezelése.](soft-delete-container-enable.md)
+- Blob verziószámozása a blobok korábbi verzióinak automatikus karbantartásához. Ha a blobok verziószámozása engedélyezve van, visszaállíthatja egy blob korábbi verzióját, hogy helyreállítsa az adatokat, ha azokat hibásan módosították vagy törölték. A blobok verziószámozásának engedélyezéséről a blobok verziószámozásának [engedélyezését és kezelését lásd:](versioning-enable.md).
+- Blob helyreállítható törlése a törölt blobok vagy verziók visszaállításához. Ha szeretné megtudni, hogyan engedélyezheti a blobok soft delete parancsát, tekintse meg a blobok soft [delete engedélyezését](soft-delete-blob-enable.md)és kezelését.
 
 > [!IMPORTANT]
-> A tároló Soft delete jelenleg **előzetes** verzióban érhető el. Tekintse meg az Azure-szolgáltatásokra vonatkozó, a bétaverzióban, az előzetes verzióban, vagy más módon még nem közzétett, általánosan elérhetővé vált jogi feltételekhez tartozó [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
+> A tárolók végleges törlése jelenleg előzetes verzióban **érhető el.** A [bétaverzióban,](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) előzetes verzióban vagy más, általánosan elérhető Azure-funkciókra vonatkozó jogi feltételekért tekintse meg a kiegészítő használati feltételeket a Microsoft Azure előzetes verziókhoz.
 
-## <a name="how-container-soft-delete-works"></a>A tárolók törlésének működése
+## <a name="how-container-soft-delete-works"></a>A tárolókhoz való soft delete működése
 
-A tárolók helyreállított törlésének engedélyezésekor megadhat egy megőrzési időtartamot a törölt tárolók számára 1 és 365 nap között. Az alapértelmezett megőrzési időtartam 7 nap. A megőrzési időszak alatt helyreállíthatja a törölt tárolót a **tároló visszaállítása** művelet meghívásával.
+Ha engedélyezi a tárolók soft delete funkcióját, megadhat egy 1 és 365 nap közötti megőrzési időszakot a törölt tárolókhoz. Az alapértelmezett megőrzési időtartam 7 nap. A megőrzési időtartam alatt a törölt tárolók a Tároló visszaállítása művelet hívásával **állíthatók** helyre.
 
-A tárolók visszaállításakor a tároló blobok és a blob-verziók is visszaállíthatók. Ha azonban maga a tároló törlődött, csak a tárolók törlését használhatja a Blobok visszaállításához. Ha egy törölt blobot szeretne visszaállítani, ha a fölérendelt tároló nem lett törölve, a blob Soft DELETE vagy a blob verziószámozást kell használnia.
+A tárolók visszaállításakor a tároló blobja és a blobverziók is visszaállnak. A tároló helyreállítható törlésével azonban csak akkor lehet blobokat visszaállítani, ha maga a tároló lett törölve. Törölt blob visszaállításához, ha annak szülőtárolója még nem lett törölve, a blob helyreállítható törlését vagy a blob verziószámozását kell használnia.
 
 > [!WARNING]
-> A tároló-helyreállító törlés csak a teljes tárolókat és azok tartalmát állíthatja vissza a törlés időpontjában. A törölt Blobok nem állíthatók vissza tárolón belül a tároló-helyreállító törlés használatával. A Microsoft azt javasolja, hogy a Blobok Soft delete és a blob verziószámozása is lehetővé tegye a tárolók egyedi blobjának a megvédését.
+> A tároló helyreállítható törlése csak teljes tárolókat és azok tartalmát tudja visszaállítani a törléskor. A tárolókban törölt blobok nem állíthatók vissza a tároló helyreállítható törlésével. A Microsoft javasolja továbbá a blobok blobok soft delete és versioning (blobok verziószámozásának) engedélyezését a tárolóban lévő egyes blobok védelme érdekében.
 
-A következő ábra azt mutatja be, hogyan állítható vissza a törölt tároló, ha a tárolók Soft delete engedélyezve van:
+Az alábbi ábra bemutatja, hogyan állítható vissza egy törölt tároló, ha a tároló helyreállítható törlése engedélyezve van:
 
-:::image type="content" source="media/soft-delete-container-overview/container-soft-delete-diagram.png" alt-text="Az a diagram, amely bemutatja, hogyan állítható vissza a helyreállítható tároló":::
+:::image type="content" source="media/soft-delete-container-overview/container-soft-delete-diagram.png" alt-text="A helyreállítható módon törölt tároló visszaállítását bemutató ábra":::
 
-Tároló visszaállításakor visszaállíthatja az eredeti nevét, ha a nevet nem használták fel újra. Ha az eredeti tároló nevét használták, a tárolót új névvel állíthatja vissza.
+Tároló visszaállításakor visszaállíthatja azt az eredeti nevére, ha a nevet nem használtuk újra. Ha az eredeti tárolónevet használta, akkor visszaállíthatja a tárolót egy új névvel.
 
-A megőrzési időszak lejárta után a tároló véglegesen törlődik az Azure Storage-ból, és nem állítható helyre. Az óra azon a megőrzési időtartamon kezdődik, amelyen a tároló törlődik. Bármikor módosíthatja a megőrzési időszakot, de ne feledje, hogy a frissített megőrzési idő csak az újonnan törölt tárolók esetében érvényes. A korábban törölt tárolók véglegesen törlődnek a tároló törlésének időpontjában érvényben lévő megőrzési időtartam alapján.
+A megőrzési időszak lejárta után a tároló véglegesen törlődik az Azure Storage-ból, és nem állítható helyre. Az óra a megőrzési időszaktól indul a tároló törlésekor. A megőrzési időtartam bármikor megváltoztatható, de ne feledje, hogy a frissített megőrzési időszak csak az újonnan törölt tárolókra vonatkozik. A korábban törölt tárolók véglegesen törlődnek azon megőrzési időtartam alapján, amely a tároló törlésekor volt érvényben.
 
-A tárolók törlésének letiltása nem eredményezi végleges törlését a korábban törölt tárolók számára. A rendszer véglegesen törli a törölt tárolókat a tároló törlésének időpontjában érvényben lévő megőrzési időszak lejártakor.
+A tárolók ideiglenes törlésének letiltása nem eredményezi a korábban törölt tárolók végleges törlését. A nem véglegesen törölt tárolók véglegesen törlődnek a tároló törlésekor érvényes megőrzési időszak lejártakor.
 
 > [!IMPORTANT]
-> A tároló Soft delete nem véd a Storage-fiókok törlésével. Csak az adott fiókban lévő tárolók törlésével véd. A Storage-fiók törlésével szembeni védelemhez állítson be egy zárolást a Storage-fiók erőforrásán. További információ a Storage-fiókok zárolásáról: [Azure Resource Manager zárolás alkalmazása egy Storage-fiókra](../common/lock-account-resource.md).
+> A tárolók nem védettek a tárfiókok törlésével szemben. Csak az abban a fiókban található tárolók törlése ellen nyújt védelmet. A tárfiók törlés elleni védelméhez konfigurálja a tárfiók erőforrásának zárolását. A tárfiókok zárolásának további információiért lásd: [Azure Resource Manager zárolás alkalmazása tárfiókra.](../common/lock-account-resource.md)
 
-## <a name="about-the-preview"></a>Az előzetes verzió ismertetése
+## <a name="about-the-preview"></a>Az előzetes verzióról
 
-A tárolók Soft DELETE az összes Azure-régióban előzetes verzióban érhető el.
+A tárolók előzetes verziója minden Azure-régióban elérhető.
 
-Az Azure Storage REST API 2019-12-12-es vagy újabb verziója támogatja a tárolók törlését.
+Az Azure Storage-fiók 2019-12-12-es vagy újabb verziója REST API támogatja a tárolók REST API törlését.
 
-### <a name="storage-account-support"></a>A Storage-fiók támogatása
+### <a name="storage-account-support"></a>Tárfiókok támogatása
 
-A tárolók Soft Delete a következő típusú tárolási fiókok esetében érhető el:
+A tárolók soft delete szolgáltatása a következő tárfióktípusokhoz érhető el:
 
-- Általános célú v2 és v1 Storage-fiókok
-- BLOB Storage-fiókok letiltása
+- Általános célú v2- és v1-tárfiókok
+- Blokkblob-tárfiókok
 - Blob Storage-fiókok
 
-A Azure Data Lake Storage Gen2-vel való használatra engedélyezett hierarchikus névtérrel rendelkező Storage-fiókok is támogatottak.
+Azok a tárfiókok is támogatottak, amelyeken engedélyezve van a Azure Data Lake Storage Gen2 névtér.
 
-### <a name="register-for-the-preview"></a>Regisztráljon az előzetes verzióra
+### <a name="register-for-the-preview"></a>Regisztráció az előzetes verzióra
 
-Ha az előzetes verzióban szeretné regisztrálni a tárolót, a PowerShell vagy az Azure CLI használatával küldjön be egy kérést a szolgáltatás regisztrálásához az előfizetésében. A kérés jóváhagyása után engedélyezheti a tárolók helyreállítható törlését bármely új vagy meglévő általános célú v2-, blob Storage-vagy prémium szintű blokk blob Storage-fiókkal.
+Ha regisztrálni szeretne az előzetes verzióban a tárolók soft delete szolgáltatására, a PowerShell vagy az Azure CLI használatával küldjön el egy kérést a funkció előfizetésben való regisztrálására. A kérelem jóváhagyása után engedélyezheti a tárolókhoz való soft delete parancsot bármilyen új vagy meglévő általános célú v2-vel, Blob Storage-fiókkal vagy prémium szintű blokkblob-tárfiókkal.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-A PowerShell-lel való regisztráláshoz hívja meg a [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) parancsot.
+A PowerShell-regisztrációhoz hívja meg [a Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) parancsot.
 
 ```powershell
 # Register for container soft delete (preview)
@@ -87,7 +87,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Az Azure CLI-vel való regisztrációhoz hívja meg az az [Feature Register](/cli/azure/feature#az-feature-register) parancsot.
+Az Azure CLI-regisztrációhoz hívja az [az feature register](/cli/azure/feature#az_feature_register) parancsot.
 
 ```azurecli
 az feature register --namespace Microsoft.Storage --name ContainerSoftDelete
@@ -96,13 +96,13 @@ az provider register --namespace 'Microsoft.Storage'
 
 ---
 
-### <a name="check-the-status-of-your-registration"></a>A regisztráció állapotának ellenõrzése
+### <a name="check-the-status-of-your-registration"></a>A regisztráció állapotának ellenőrzése
 
-A regisztráció állapotának vizsgálatához használja a PowerShell vagy az Azure CLI-t.
+A regisztráció állapotának ellenőrzéshez használja a PowerShellt vagy az Azure CLI-t.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Ha ellenőriznie szeretné a regisztráció állapotát a PowerShell-lel, hívja meg a [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) parancsot.
+A PowerShell-regisztráció állapotának ellenőrzéshez hívja meg a [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) parancsot.
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName ContainerSoftDelete
@@ -110,7 +110,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName Containe
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Az Azure CLI-vel való regisztráció állapotának megtekintéséhez hívja meg az az [Feature](/cli/azure/feature#az-feature-show) parancsot.
+Az Azure CLI-regisztráció állapotának ellenőrzéshez hívja meg az [az feature](/cli/azure/feature#az_feature_show) parancsot.
 
 ```azurecli
 az feature show --namespace Microsoft.Storage --name ContainerSoftDelete
@@ -120,10 +120,10 @@ az feature show --namespace Microsoft.Storage --name ContainerSoftDelete
 
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 
-A tárolók törlésének engedélyezése nem díjköteles. A helyreállított törölt tárolókban lévő adatforgalom az aktív adatforgalommal megegyező sebességgel történik.
+A tárolók nem törölhetők díjmentesen. A softdeleted tárolókban lévő adatok számlázása ugyanolyan sebességgel történik, mint az aktív adatok.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Tároló helyreállítható törlésének konfigurálása](soft-delete-container-enable.md)
+- [Tárolók végleges törlésének konfigurálása](soft-delete-container-enable.md)
 - [Blobok helyreállítható törlése](soft-delete-blob-overview.md)
-- [BLOB verziószámozása](versioning-overview.md)
+- [Blobok verziószámozása](versioning-overview.md)

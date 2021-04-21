@@ -1,6 +1,6 @@
 ---
-title: 'CLI: alkalmazás üzembe helyezése a GitHubról'
-description: Ismerje meg, hogyan automatizálható az App Service-alkalmazás üzembe helyezése és kezelése az Azure CLI használatával. Ez a minta bemutatja, hogyan helyezhet üzembe egy alkalmazást a GitHubról.
+title: 'CLI: Alkalmazás üzembe helyezése a GitHubról'
+description: Megtudhatja, hogyan automatizálhatja az alkalmazás üzembe helyezését és felügyeletét az Azure CLI App Service használatával. Ez a minta bemutatja, hogyan helyezhet üzembe egy alkalmazást a GitHubról.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 0205c991-0989-4ca3-bb41-237dcc964460
@@ -9,22 +9,22 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: ffbbeb9eac94cdc76c8086623bf16488d8a2d9e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 655c98e5249b66b114dfbe1d88cf951001d07af2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006245"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787867"
 ---
-# <a name="create-an-app-service-app-with-deployment-from-github-using-azure-cli"></a>App Service-alkalmazás létrehozása a GitHubról történő üzembe helyezéssel az Azure CLI használatával
+# <a name="create-an-app-service-app-with-deployment-from-github-using-azure-cli"></a>Alkalmazásalkalmazás App Service GitHubról az Azure CLI használatával való üzembe helyezéssel
 
-Ez a példa egy alkalmazást hoz létre App Service a kapcsolódó erőforrásokkal. Ezután üzembe helyezi az alkalmazás kódját egy nyilvános GitHub-adattárból (folyamatos üzembe helyezés nélkül). A GitHub üzembe helyezésének folyamatos üzembe helyezésével kapcsolatban lásd: [alkalmazás létrehozása a githubról történő folyamatos üzembe helyezéssel](cli-continuous-deployment-github.md).
+Ez a példaszkprogram létrehoz egy alkalmazást a App Service kapcsolódó erőforrásokkal együtt. Ezután üzembe helyezheti az alkalmazáskódot egy nyilvános GitHub-adattárból (folyamatos üzembe helyezés nélkül). A GitHub folyamatos üzembe helyezéssel való üzembe helyezéséről lásd: Alkalmazás létrehozása folyamatos üzembe helyezéssel [a GitHubról.](cli-continuous-deployment-github.md)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - Az oktatóanyaghoz az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+ - Ehhez az oktatóanyaghoz az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -38,10 +38,10 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Jegyzetek |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Létrehoz egy App Service alkalmazást. |
-| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config) | Egy App Service alkalmazást társít egy git-vagy Mercurial-tárházhoz. |
+| [`az group create`](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | Létrehoz egy App Service-csomagot. |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | Létrehoz egy App Service alkalmazást. |
+| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config) | Társít egy App Service egy Git- vagy Mercurial-adattárhoz. |
 
 ## <a name="next-steps"></a>Következő lépések
 

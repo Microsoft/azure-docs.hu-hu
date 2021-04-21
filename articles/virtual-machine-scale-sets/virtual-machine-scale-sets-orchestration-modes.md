@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 72e36a942eeaea00699f346db99a7ca3503495da
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: d089708ead67891164aee074394e923d2a84a977
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481650"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774448"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Előzetes verzió: Vezénylési módok virtuálisgép-méretezési készletekhez az Azure-ban 
 
@@ -34,7 +34,7 @@ Az egységes vezénylésű virtuálisgép-méretezési készletek virtuálisgép
 ## <a name="scale-sets-with-flexible-orchestration"></a>Méretezési készletek rugalmas vezényléssel 
 Nagy léptékű magas rendelkezésre állást érhet el azonos vagy több virtuálisgép-típussal.
 
-A rugalmas vezénylésnek megfelelően az Azure egységes felhasználói élményt nyújt az Azure-beli virtuális gépek ökoszisztémájában. A rugalmas vezénylés magas rendelkezésre állást garantál (legfeljebb 1000 virtuális géphez) azáltal, hogy a virtuális gépeket egy régió vagy egy rendelkezésre állási zóna tartalék tartományai között elterjed. Ez lehetővé teszi az alkalmazás horizontális felskálálását a tartalék tartományok elkülönítésének fenntartása mellett, ami elengedhetetlen a kvórumalapú vagy állapotalapú számítási feladatok futtatásához, beleértve a következőket:
+A rugalmas vezénylésnek megfelelően az Azure egységes felhasználói élményt nyújt az Azure-beli virtuális gépek ökoszisztémájában. A rugalmas vezénylés magas rendelkezésre állást garantál (akár 1000 virtuális gépig) azáltal, hogy a virtuális gépeket egy régióban vagy egy rendelkezésre állási zónában található tartalék tartományok között elterjed. Ez lehetővé teszi az alkalmazás horizontális felskálálását a tartalék tartományok elkülönítésének fenntartása mellett, ami elengedhetetlen a kvórumalapú vagy állapotalapú számítási feladatok futtatásához, beleértve a következőket:
 - Kvórumalapú számítási feladatok
 - Open-Source adatbázisok
 - Állapot- szerinti alkalmazások
@@ -55,7 +55,7 @@ A rugalmas vezénylés egyik fő előnye, hogy a méretezési készlet gyermek v
 A rugalmas vezénylési méretezési készlethez kiválaszthatja a tartalék tartományok számát. Alapértelmezés szerint ha virtuális gépet ad hozzá egy rugalmas méretezési készlethez, az Azure egyenletesen eltárja a példányokat a tartalék tartományok között. Bár azt javasoljuk, hogy az Azure rendelje hozzá a tartalék tartományt, speciális vagy hibaelhárítási forgatókönyvek esetén felülbírálhatja ezt az alapértelmezett viselkedést, és megadhatja azt a tartalék tartományt, ahová a példány le fog ni.
 
 ```azurecli-interactive 
-az vm create â€“vmss "myVMSS"  â€“-platform_fault_domain 1
+az vm create –vmss "myVMSS"  –-platform_fault_domain 1
 ```
 
 ### <a name="instance-naming"></a>Példányelnevezés 
@@ -65,11 +65,11 @@ Amikor létrehoz egy virtuális gépet, és hozzáadja egy rugalmas méretezési
 Az előnyben részesített módszer az Azure Resource Graph virtuálisgép-méretezési készlet összes virtuális gépének lekérdezése. Azure Resource Graph hatékony lekérdezési képességeket biztosít az Azure-erőforrásokhoz nagy méretekben, több előfizetésben. 
 
 ``` 
-|â€¯whereâ€¯typeâ€¯=~â€¯'Microsoft.Compute/virtualMachines' 
-|â€¯whereâ€¯properties.virtualMachineScaleSetâ€¯containsâ€¯"demo" 
-|â€¯extendâ€¯powerStateâ€¯=â€¯properties.extended.instanceView.powerState.code 
-|â€¯projectâ€¯name,â€¯resourceGroup,â€¯location,â€¯powerState 
-|â€¯orderâ€¯byâ€¯resourceGroupâ€¯desc,â€¯nameâ€¯desc 
+| where type =~ 'Microsoft.Compute/virtualMachines' 
+| where properties.virtualMachineScaleSet contains "demo" 
+| extend powerState = properties.extended.instanceView.powerState.code 
+| project name, resourceGroup, location, powerState 
+| order by resourceGroup desc, name desc 
 ```
 
 Az erőforrások [lekérdezése](../governance/resource-graph/overview.md) Azure Resource Graph és hatékony módja az Azure-erőforrások lekérdezésének, és minimálisra csökkenti az erőforrás-szolgáltatóhoz való API-hívásokat. Azure Resource Graph egy végül konzisztens gyorsítótár, ahol az új vagy frissített erőforrások akár 60 másodpercig sem jelennek meg. A következőket teheti:
@@ -81,10 +81,10 @@ Az erőforrások [lekérdezése](../governance/resource-graph/overview.md) Azure
 A virtuálisgép-méretezési csoport virtuálisgép-API-i helyett használja a standard virtuálisgép-parancsokat a példányok indításához, leállításához, újraindításához és törléséhez. A Virtuálisgép-méretezési készlet virtuálisgép-kötegműveletei (az összes újraindítása, az összes visszaállítása, az összes rendszerimizálása stb.) nincsenek rugalmas vezénylési módban használva. 
 
 ### <a name="monitor-application-health"></a>Alkalmazásállapot monitorozása 
-Az alkalmazás állapotfigyelése lehetővé teszi, hogy az alkalmazás szívveréssel megállapítsa, hogy az alkalmazás kifogástalan vagy nem megfelelő állapotú-e. Az Azure képes automatikusan lecserélni a nem megfelelő virtuálisgép-példányokat. Rugalmas méretezésikészlet-példányok esetén telepítenie és konfigurálnia kell az Application Health bővítményt a virtuális gépen. Egységes méretezési csoport példányai esetén használhatja az Application Health bővítményt, vagy mérheti az állapotát egy egyéni állapot Azure Load Balancer használatával. 
+Az alkalmazás állapotfigyelése lehetővé teszi, hogy az alkalmazás szívveréssel megállapítsa, hogy az alkalmazás kifogástalan vagy nem megfelelő állapotú-e. Az Azure automatikusan lecserélheti a nem megfelelő virtuálisgép-példányokat. Rugalmas méretezésikészlet-példányok esetén telepítenie és konfigurálnia kell az Application Health bővítményt a virtuális gépen. Egységes méretezési csoport példányai esetén használhatja az Application Health bővítményt, vagy mérheti az állapotát egy egyéni állapot Azure Load Balancer használatával. 
 
 ### <a name="list-scale-sets-vm-api-changes"></a>Méretezési készletek virtuálisgép-API-módosításainak felsorolása 
-Virtual Machine Scale Sets lehetővé teszi a méretezési készlethez tartozó példányok felsorolását. Rugalmas vezényléssel a Virtual Machine Scale Sets virtuálisgép-parancs listájában megjelenik a méretezési készletek virtuálisgép-adatbázisának listája. Ezután a GET Virtual Machine Scale Sets virtuálisgép-parancsokat hívva további részleteket kaphat arról, hogyan működik együtt a méretezési készlet a virtuálisgép-példányokkal. A virtuális gép teljes részleteinek lekért információkért használja a standard GET VM-parancsokat, vagy [Azure Resource Graph.](../governance/resource-graph/overview.md) 
+Virtual Machine Scale Sets lehetővé teszi a méretezési készlethez tartozó példányok felsorolását. A rugalmas vezénylésnek Virtual Machine Scale Sets VM parancs listájában megjelenik a méretezési készletek virtuálisgép-adatbázisának listája. Ezután a GET Virtual Machine Scale Sets virtuálisgép-parancsokat hívva további részleteket kaphat arról, hogyan működik együtt a méretezési készlet a virtuálisgép-példányokkal. A virtuális gép teljes részleteinek lekért információkért használja a standard GET VM-parancsokat, vagy [Azure Resource Graph.](../governance/resource-graph/overview.md) 
 
 ### <a name="retrieve-boot-diagnostics-data"></a>Rendszerindítási diagnosztikai adatok lekérése 
 Használja a standard VM API-kat és parancsokat a példány rendszerindítási diagnosztikai adatainak és képernyőképének lekéréséhez. A Virtual Machine Scale Sets virtuális gép rendszerindítási diagnosztikai API-ját és parancsait a rendszer nem használja rugalmas vezénylési módú példányokkal.
@@ -101,32 +101,32 @@ Az alábbi táblázat a rugalmas vezénylési módot, az egységes vezénylési 
 |         Virtuális gép típusa  | Standard Azure IaaS virtuális gép (Microsoft.compute /virtualmachines)  | Méretezésikészlet-specifikus virtuális gépek (Microsoft.compute /virtualmachinescalesets/virtualmachines)  | Standard Azure IaaS virtuális gép (Microsoft.compute /virtualmachines)  |
 |         Támogatott SKUS-k  |            D sorozat, E sorozat, F sorozat, A sorozat, B sorozat, Intel, AMD  |            Minden SKUs  |            Minden SKUs  |
 |         Rendelkezésre állási zónák  |            Megadhatja, hogy az összes példány egyetlen rendelkezésre állási zónába ássa le |            1, 2 vagy 3 rendelkezésre állási zónába leérkedő példányok megadása  |            Nem támogatott  |
-|         A virtuális gépek, a NIC-k és a lemezek teljes körű vezérlése  |            Igen  |            Korlátozott hozzáférés a virtuálisgép-méretezési készletek VM API-jának használatával  |            Igen  |
+|         A virtuális gépek, a NIC-k és a lemezek teljes körű vezérlése  |            Yes  |            Korlátozott hozzáférés a virtuálisgép-méretezési készletek VM API-jának használatával  |            Yes  |
 |         Automatikus skálázás  |            Nem  |            Igen  |            Nem  |
 |         Virtuális gép hozzárendelése egy adott tartalék tartományhoz  |            Igen  |             Nem   |            Nem  |
 |         A virtuálisgép-példányok törlésekor távolítsa el a NIC-ket és a lemezeket  |            Nem  |            Igen  |            Nem  |
-|         Frissítési szabályzat (virtuálisgép-méretezési készletek) |            Nem  |            Automatikus, működés közbeni, manuális  |            N/A  |
+|         Frissítési szabályzat (virtuálisgép-méretezési készletek) |            No  |            Automatikus, működés közbeni, manuális  |            N/A  |
 |         Automatikus operációsrendszer-frissítések (virtuálisgép-méretezési készletek) |            Nem  |            Igen  |            N/A  |
 |         Vendég biztonsági javításában  |            Igen  |            Nem  |            Igen  |
 |         Leállítja az értesítéseket (virtuálisgép-méretezési készletek) |            Nem  |            Igen  |            N/A  |
 |         Példányjavítás (virtuálisgép-méretezési készletek) |            Nem  |            Igen   |            N/A  |
-|         Gyorsított hálózatkezelés  |            Igen  |            Igen  |            Igen  |
-|         Spot® âinstances and pricingà€ â  |            Igen, a Spot és a Regular prioritáspéldány is lehet  |            Igen, a példányok csak spot vagy csak normál példányok  |            Nem, csak a normál prioritású példányok  |
+|         Gyorsított hálózatkezelés  |            Igen  |            Igen  |            Yes  |
+|         Spot-példányok és díjszabás   |            Igen, a Spot és a Regular prioritáspéldány is lehet  |            Igen, a példányok csak spot vagy csak normál példányok  |            Nem, csak a normál prioritású példányok  |
 |         Operációs rendszerek vegyesen  |            Igen, a Linux és a Windows ugyanabban a rugalmas méretezési készletben is lehet |            Nem, a példányok ugyanaz az operációs rendszer  |               Igen, a Linux és a Windows ugyanabban a rugalmas méretezési készletben is lehet |
 |         Alkalmazás állapotának figyelése  |            Alkalmazás állapotbővítménye  |            Alkalmazás állapotkiterjesztése vagy Azure Load Balancer-mintavétel  |            Alkalmazás állapotbővítménye  |
-|         UltraSSDà€ àDisksâ€ à  |            Igen  |            Igen, csak zóna üzemelő példányok esetén  |            Nem  |
-|         Infiniband® à  |            Nem  |            Igen, csak egy elhelyezési csoport  |            Igen  |
-|         Writeâ€ àAccelerator® à  |            Nem  |            Igen  |            Igen  |
-|         Közelségi hely€ àPlacement Groups® à  |            Igen  |            Igen  |            Igen  |
-|         Azure-beli dedikált gazdagépek  |            Nem  |            Igen  |            Igen  |
-|         Alapszintű SLBà€ à  |            Nem  |            Igen  |            Igen  |
-|         Azure Load Balancer standard termékváltozat |            Igen  |            Igen  |            Igen  |
-|         Application Gateway  |            Nem  |            Igen  |            Igen  |
-|         Karbantartás-vezérlés  |            Nem  |            Igen  |            Igen  |
-|         A készletbe sorolt virtuális gépek listája  |            Igen  |            Igen  |            Igen, list virtuális gépek az AvSet-ban  |
-|         Azure-riasztások  |            Nem  |            Igen  |            Igen  |
-|         VM Insights  |            Nem  |            Igen  |            Igen  |
-|         Azure Backup  |            Igen  |            Igen  |            Igen  |
+|         UltraSSD-lemezek   |            Yes  |            Igen, csak zóna üzemelő példányok esetén  |            No  |
+|         Infiniband   |            No  |            Igen, csak egy elhelyezési csoport  |            Yes  |
+|         írásgyorsító   |            Nem  |            Igen  |            Yes  |
+|         Közelségi elhelyezési csoportok   |            Igen  |            Igen  |            Yes  |
+|         Azure-beli dedikált gazdagépek   |            Nem  |            Igen  |            Yes  |
+|         Alapszintű SLB   |            Nem  |            Igen  |            Yes  |
+|         Azure Load Balancer standard termékváltozat |            Igen  |            Igen  |            Yes  |
+|         Application Gateway  |            Nem  |            Igen  |            Yes  |
+|         Karbantartásvezérlés   |            Nem  |            Igen  |            Yes  |
+|         A készletbe sorolt virtuális gépek listája  |            Igen  |            Yes  |            Igen, list virtuális gépek az AvSet-ban  |
+|         Azure-riasztások  |            Nem  |            Igen  |            Yes  |
+|         VM Insights  |            Nem  |            Igen  |            Yes  |
+|         Azure Backup  |            Igen  |            Igen  |            Yes  |
 |         Azure Site Recovery  |     Nem  |            Nem  |            Igen  |
 |         Meglévő virtuális gép hozzáadása/eltávolítása a csoporthoz  |            Nem  |            Nem  |            Nem  | 
 
@@ -165,7 +165,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0 
-Az [az feature register használatával](/cli/azure/feature#az-feature-register) engedélyezheti az előzetes verzió használatát az előfizetéséhez. 
+Az [az feature register használatával](/cli/azure/feature#az_feature_register) engedélyezheti az előzetes verzió használatát az előfizetéséhez. 
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name VMOrchestratorMultiFD
