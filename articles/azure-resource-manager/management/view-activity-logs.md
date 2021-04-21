@@ -1,188 +1,188 @@
 ---
-title: Azure-Tevékenységnaplók megtekintése az erőforrások figyeléséhez
-description: A felhasználói műveletek és hibák áttekintéséhez használja a tevékenység naplóit. Azure Portal PowerShellt, az Azure CLI-t és a REST-t jeleníti meg.
+title: Azure-tevékenységnaplók megtekintése az erőforrások figyelése érdekében
+description: A tevékenységnaplók segítségével tekintse át a felhasználói műveleteket és hibákat. Megjeleníti Azure Portal PowerShellt, az Azure CLI-t és a REST-et.
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 14015e9b2792515e6818af551b8bd9f54c686bee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7612146a0f9407663631f87c57f30ea4c590c7a4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91371592"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773926"
 ---
-# <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Tevékenységek naplóinak megtekintése az erőforrásokon végzett műveletek figyeléséhez
+# <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Tevékenységnaplók megtekintése az erőforrásokon végzett műveletek figyelése érdekében
 
 A tevékenységnaplókból a következők állapíthatók meg:
 
-* milyen műveleteket végeztek az előfizetésében lévő erőforrásokon
-* a művelet elindítása
-* a művelet bekövetkeztekor
+* milyen műveleteket történt az előfizetés erőforrásain
+* ki indította el a műveletet
+* a művelet beestekor
 * a művelet állapota
-* más tulajdonságok értékei, amelyek segíthetnek a művelet megkutatásában
+* egyéb tulajdonságok értékei, amelyek segíthetnek a művelet kutatásában
 
-A tevékenységnapló az erőforrások összes írási műveletét (PUT, POST, DELETE) tartalmazza. Olvasási műveleteket (GET) nem tartalmaz. Az erőforrás-műveletek listáját az [Azure erőforrás-szolgáltatói műveletek](../../role-based-access-control/resource-provider-operations.md)című témakörben tekintheti meg. A tevékenységnaplókból hibaelhárításkor megkeresheti a hibákat, vagy nyomon követheti, hogy a szervezete felhasználói hogyan módosították az erőforrásokat.
+A tevékenységnapló az erőforrások összes írási műveletét (PUT, POST, DELETE) tartalmazza. Olvasási műveleteket (GET) nem tartalmaz. Az erőforrás-műveletek listájáért lásd: [Azure erőforrás-szolgáltatói műveletek.](../../role-based-access-control/resource-provider-operations.md) A tevékenységnaplókból hibaelhárításkor megkeresheti a hibákat, vagy nyomon követheti, hogy a szervezete felhasználói hogyan módosították az erőforrásokat.
 
 A tevékenységnaplók 90 napig érhetők el. Bármilyen dátumtartományt lekérdezhet, amíg a kezdő dátum legfeljebb 90 nappal korábbra esik.
 
-A tevékenység naplóiból információkat kérhet le a portálon, a PowerShellen, az Azure CLI-n, az elemzések REST APIon vagy a [.net-könyvtárban](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
+A tevékenységnaplókból a portálon, a PowerShellen, az Azure CLI-en, az Insights-REST API vagy az [Insights .NET-kódtáron](https://www.nuget.org/packages/Microsoft.Azure.Insights/)keresztül lehet információkat lekérni.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Az alábbi lépéseket követve tekintheti meg a tevékenységek naplóit a portálon:
+A tevékenységnaplók portálon keresztüli megtekintéséhez kövesse az alábbi lépéseket:
 
-1. A Azure Portal menüben válassza a **figyelés** lehetőséget, vagy keresse meg, majd válassza a **figyelés** lehetőséget bármelyik oldalon.
+1. A Azure Portal válassza a **Figyelás** lehetőséget, vagy keresse meg és válassza a **Figyelás** lehetőséget bármely oldalon.
 
-    ![Figyelő kiválasztása](./media/view-activity-logs/select-monitor-from-menu.png)
+    ![Monitor kiválasztása](./media/view-activity-logs/select-monitor-from-menu.png)
 
-1. Válassza a **műveletnapló** lehetőséget.
+1. Válassza **a Tevékenységnapló lehetőséget.**
 
-    ![Műveletnapló kiválasztása](./media/view-activity-logs/select-activity-log.png)
+    ![Tevékenységnapló kiválasztása](./media/view-activity-logs/select-activity-log.png)
 
-1. Ekkor megjelenik a legutóbbi műveletek összegzése. A műveletekre a szűrők alapértelmezett készlete lesz alkalmazva. Figyelje meg, hogy az összefoglalás tartalmazza-e a műveletet, és hogy mikor történt.
+1. Itt láthatja a legutóbbi műveletek összegzését. A rendszer az alapértelmezett szűrőkészletet alkalmazza a műveletekre. Figyelje meg, hogy az összefoglalásban szerepel, hogy ki és mikor indította el a műveletet.
 
-    ![Legutóbbi műveletek összegzésének megtekintése](./media/view-activity-logs/audit-summary.png)
+    ![A legutóbbi műveletek összegzésének megtekintése](./media/view-activity-logs/audit-summary.png)
 
-1. Előre definiált szűrők gyors futtatásához válassza a **gyors elemzések** lehetőséget.
+1. Előre meghatározott szűrők gyors futtatásához válassza a **gyors elemzések.**
 
-    ![Gyors áttekintések kiválasztása](./media/view-activity-logs/select-quick-insights.png)
+    ![Gyors elemzések kiválasztása](./media/view-activity-logs/select-quick-insights.png)
 
-1. Válasszon egyet a lehetőségek közül. Válassza például a **sikertelen központi telepítések** lehetőséget a központi telepítések hibáinak megtekintéséhez.
+1. Válassza ki az egyik lehetőséget. Válassza például a **Sikertelen üzembe helyezések lehetőséget** az üzemelő példányok hibáinak stb.
 
-    ![Sikertelen központi telepítések kiválasztása](./media/view-activity-logs/select-failed-deployments.png)
+    ![Sikertelen üzembe helyezések kiválasztása](./media/view-activity-logs/select-failed-deployments.png)
 
-1. Figyelje meg, hogy a szűrők úgy lettek módosítva, hogy az elmúlt 24 órában az üzembe helyezési hibákra összpontosítsanak. Csak a szűrőknek megfelelő műveletek jelennek meg.
+1. Figyelje meg, hogy a szűrők úgy módosultak, hogy az üzembe helyezési hibákra összpontosítson az elmúlt 24 órában. Csak a szűrőknek megfelelő műveletek jelennek meg.
 
     ![Szűrők megtekintése](./media/view-activity-logs/view-filters.png)
 
-1. Ha konkrét műveletekre szeretne összpontosítani, módosítsa a szűrőket, vagy alkalmazzon újakat. Az alábbi képen például a **TimeSpan** és az **erőforrástípus** új értéke látható a Storage-fiókok beállításnál.
+1. Ha adott műveletekre összpontosít, módosítsa a szűrőket, vagy alkalmazson újakat. Az alábbi képen például egy új érték látható, amely a **Timespan** (Idő) és az **Resource type** (Erőforrástípus) értéke storage accounts (tárfiókok) értékre van állítva.
 
-    ![Szűrő beállításainak megadása](./media/view-activity-logs/set-filter.png)
+    ![Szűrőbeállítások megadása](./media/view-activity-logs/set-filter.png)
 
-1. Ha később újra kell futtatnia a lekérdezést, válassza az **aktuális szűrők rögzítése** lehetőséget.
+1. Ha később újra futtatnia kell a lekérdezést, válassza az **Aktuális szűrők rögzítése lehetőséget.**
 
-    ![Szűrők rögzítése](./media/view-activity-logs/pin-filters.png)
+    ![Szűrők kitűzve](./media/view-activity-logs/pin-filters.png)
 
-1. Adja meg a szűrő nevét.
+1. Nevezze el a szűrőt.
 
-    ![Nevek szűrői](./media/view-activity-logs/name-filters.png)
+    ![Névszűrők](./media/view-activity-logs/name-filters.png)
 
-1. A szűrő elérhető az irányítópulton. Az Azure Portal menüjében válassza az **Irányítópult** lehetőséget.
+1. A szűrő az irányítópulton érhető el. Az Azure Portal menüjében válassza az **Irányítópult** lehetőséget.
 
     ![Szűrő megjelenítése az irányítópulton](./media/view-activity-logs/activity-log-on-dashboard.png)
 
-1. A portálon megtekintheti az erőforrások módosításait. Térjen vissza a figyelő alapértelmezett nézetéhez, és válasszon olyan műveletet, amely egy erőforrás módosítását érintette.
+1. A portálon megtekintheti egy erőforrás módosításait. Vissza alapértelmezett nézetre vált a Monitorban, és válasszon ki egy műveletet, amely egy erőforrás módosításával kapcsolatos.
 
     ![Művelet kiválasztása](./media/view-activity-logs/select-operation.png)
 
-1. Válassza az **Előzmények módosítása (előzetes verzió)** lehetőséget, és válasszon egyet az elérhető műveletek közül.
+1. Válassza **az Előzmények módosítása (előzetes verzió) lehetőséget,** és válasszon egyet az elérhető műveletek közül.
 
-    ![Változási előzmények kiválasztása](./media/view-activity-logs/select-change-history.png)
+    ![Változáselőzmények kiválasztása](./media/view-activity-logs/select-change-history.png)
 
-1. Megjelenik az erőforrás változásai.
+1. Megjelennek az erőforrás változásai.
 
-    ![Változások megjelenítése](./media/view-activity-logs/show-changes.png)
+    ![Módosítások megjelenítése](./media/view-activity-logs/show-changes.png)
 
-További információ a változási előzményekről: [erőforrás-változások beolvasása](../../governance/resource-graph/how-to/get-resource-changes.md).
+A módosítási előzményekről további információt az [Erőforrás-módosítások lekérte.](../../governance/resource-graph/how-to/get-resource-changes.md)
 
 ## <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-A naplóbejegyzések beolvasásához futtassa a **Get-AzLog** parancsot. A bejegyzések listájának szűréséhez további paramétereket kell megadnia. Ha nem ad meg kezdési és befejezési időpontot, a rendszer az elmúlt hét nap bejegyzéseit adja vissza.
+A naplóbejegyzések lekéréshez futtassa a **Get-AzLog parancsot.** További paramétereket is meg kell adnia a bejegyzések listájának szűréséhez. Ha nem ad meg kezdő és záró időpontokat, a visszaadott bejegyzések az utolsó hét napra esnek.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup
 ```
 
-Az alábbi példa bemutatja, hogyan használható a tevékenység naplója egy adott időszakban végrehajtott kutatási műveletekhez. A kezdő és a záró dátumokat dátumformátum formájában kell megadni.
+Az alábbi példa bemutatja, hogyan használható a tevékenységnapló a megadott időtartam alatt végzett műveletek kutatására. A kezdő és záró dátumok dátumformátumban vannak megadva.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -StartTime 2019-05-05T06:00 -EndTime 2019-05-09T06:00
 ```
 
-Emellett a Date functions használatával is megadhatja a dátumtartományt, például az elmúlt 14 napban.
+Dátum típusú függvényekkel is megadhatja a dátumtartományt, például az elmúlt 14 napot.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
 ```
 
-Egy adott felhasználó által végrehajtott műveleteket is megkeresheti.
+Egy adott felhasználó által tett műveleteket is ki lehet keresni.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
 ```
 
-A sikertelen műveletek szűrésére is lehetőség van.
+Szűrhet a sikertelen műveletekre.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -Status Failed
 ```
 
-Az adott bejegyzés állapotára vonatkozó üzenet megtekintésével az egyik hibára koncentrálhat.
+Egyetlen hibára összpontosíthat, ha az adott bejegyzéshez az állapotüzenetet nézi.
 
 ```azurepowershell-interactive
 (Get-AzLog -ResourceGroup ExampleGroup -Status Failed).Properties.Content.statusMessage | ConvertFrom-Json
 ```
 
-Kiválaszthat meghatározott értékeket a visszaadott adatok korlátozásához.
+Meghatározott értékeket kiválasztva korlátozhatja a visszaadott adatokat.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroupName ExampleGroup | Format-table EventTimeStamp, Caller, @{n='Operation'; e={$_.OperationName.value}}, @{n='Status'; e={$_.Status.value}}, @{n='SubStatus'; e={$_.SubStatus.LocalizedValue}}
 ```
 
-A megadott kezdési időponttól függően az előző parancsok az erőforráscsoport műveleteinek hosszú listáját adhatják vissza. A keresési feltételek megadásával szűrheti a keresett eredményeket. Például szűrheti a művelet típusát.
+A megadott kezdési időponttól függően az előző parancsok az erőforráscsoport műveleteinek hosszú listáját is visszaadják. Keresési feltételek megszűrése alapján szűrheti a keresett eredményeket. Szűrhet például a művelet típusa alapján.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup | Where-Object {$_.OperationName.value -eq "Microsoft.Resources/deployments/write"}
 ```
 
-Az erőforrások változási előzményeit az erőforrás-gráf használatával tekintheti meg. További információ: erőforrás- [változások beolvasása](../../governance/resource-graph/how-to/get-resource-changes.md).
+Az erőforrás Resource Graph az erőforrás módosítási előzményeit a Resource Graph használhatja. További információ: [Erőforrás-módosítások lekérte.](../../governance/resource-graph/how-to/get-resource-changes.md)
 
 ## <a name="azure-cli"></a>Azure CLI
 
-A naplóbejegyzések beolvasásához futtassa az az [monitor Activity-log List](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) parancsot egy eltolással, hogy jelezze az időtartományt.
+A naplóbejegyzések lekéréséhez futtassa [az az monitor activity-log list](/cli/azure/monitor/activity-log#az_monitor_activity_log_list) parancsot eltolással az időtartomány jelzéséhez.
 
 ```azurecli-interactive
 az monitor activity-log list --resource-group ExampleGroup --offset 7d
 ```
 
-Az alábbi példa bemutatja, hogyan használható a tevékenység naplója egy adott időszakban végrehajtott kutatási műveletekhez. A kezdő és a záró dátumokat dátumformátum formájában kell megadni.
+Az alábbi példa bemutatja, hogyan használható a tevékenységnapló az adott időszakban végzett műveletek kutatására. A kezdő és záró dátumok dátumformátumban vannak megadva.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --start-time 2019-05-01 --end-time 2019-05-15
 ```
 
-Megkeresheti egy adott felhasználó által végrehajtott műveleteket, akár egy már nem létező erőforráscsoport esetében is.
+Egy adott felhasználó által tett műveleteket akkor is meg lehet keresni, ha egy erőforráscsoport már nem létezik.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --caller someone@contoso.com --offset 5d
 ```
 
-A sikertelen műveletek szűrésére is lehetőség van.
+Szűrhet a sikertelen műveletekre.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --status Failed --offset 1d
 ```
 
-Az adott bejegyzés állapotára vonatkozó üzenet megtekintésével az egyik hibára koncentrálhat.
+Egyetlen hibára összpontosíthat az adott bejegyzés állapotüzenetének megtekintésekor.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --status Failed --offset 1d --query [].properties.statusMessage
 ```
 
-Kiválaszthat meghatározott értékeket a visszaadott adatok korlátozásához.
+Meghatározott értékeket kiválasztva korlátozhatja a visszaadott adatokat.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --offset 1d --query '[].{Operation: operationName.value, Status: status.value, SubStatus: subStatus.localizedValue}'
 ```
 
-A megadott kezdési időponttól függően az előző parancsok az erőforráscsoport műveleteinek hosszú listáját adhatják vissza. A keresési feltételek megadásával szűrheti a keresett eredményeket. Például szűrheti a művelet típusát.
+A megadott kezdési időponttól függően az előző parancsok az erőforráscsoport műveleteinek hosszú listáját is visszaadják. Keresési feltételek megszűrése alapján szűrheti az eredményeket. Szűrhet például a művelet típusa alapján.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --offset 1d --query "[?operationName.value=='Microsoft.Storage/storageAccounts/write']"
 ```
 
-Az erőforrások változási előzményeit az erőforrás-gráf használatával tekintheti meg. További információ: erőforrás- [változások beolvasása](../../governance/resource-graph/how-to/get-resource-changes.md).
+Az erőforrás Resource Graph erőforrás változáselőzményének megtekintése a következővel: . További információ: [Erőforrás-módosítások lekérte.](../../governance/resource-graph/how-to/get-resource-changes.md)
 
 ## <a name="rest-api"></a>REST API
 
@@ -190,9 +190,9 @@ A tevékenységnaplóval végzett munka REST-műveletei az [Insights REST API](/
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Az Azure-Tevékenységnaplók a Power BI használatával nagyobb információkhoz juthatnak az előfizetése műveleteivel kapcsolatban. További információ: Azure-beli [tevékenységek naplóinak megtekintése és elemzése Power bi](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
-* A biztonsági szabályzatok beállításával kapcsolatos további tudnivalókért tekintse meg az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)című témakört.
-* Az alkalmazásoknak az infrastruktúra-rétegből való módosításaival kapcsolatos további részletekért tekintse meg az alkalmazások telepítésének az [alkalmazás-módosítási elemzés használata a Azure monitorban](../../azure-monitor/app/change-analysis.md)című témakört.
-* Az üzembe helyezési műveletek megtekintésére szolgáló parancsokról az [üzembe helyezési műveletek megtekintése](../templates/deployment-history.md)című témakörben olvashat bővebben.
-* Ha meg szeretné tudni, hogyan akadályozza meg az erőforrások törlését az összes felhasználó számára, tekintse meg [az erőforrások zárolása Azure Resource Manager](lock-resources.md)használatával című témakört.
-* Az egyes Microsoft Azure Resource Manager-szolgáltatók számára elérhető műveletek listájának megtekintéséhez tekintse meg az [Azure erőforrás-szolgáltatói műveletek](../../role-based-access-control/resource-provider-operations.md) című témakört.
+* Az Azure-tevékenységnaplók és a Power BI az előfizetésben végzett műveletek részletesebb elemzéséhez. Lásd: [Az Azure-tevékenységnaplók megtekintése és elemzése Power BI és egyéb szolgáltatásokban.](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)
+* További információ a biztonsági szabályzatok beállításával kapcsolatban: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC).](../../role-based-access-control/role-assignments-portal.md)
+* Az alkalmazásoknak az infrastruktúrarétegtől az alkalmazástelepítésig végrehajtott változásaival kapcsolatos további részletekért lásd: [Use alkalmazásváltozási elemzés in Azure Monitor](../../azure-monitor/app/change-analysis.md).
+* Az üzembe helyezési műveletek megtekintésére használható parancsokkal kapcsolatos további információkért lásd: [Telepítési műveletek megtekintése.](../templates/deployment-history.md)
+* Ha szeretné megtudni, hogyan előzheti meg egy erőforrás törlését minden felhasználónál, olvassa el az Erőforrások zárolása a [Azure Resource Manager.](lock-resources.md)
+* Az egyes szolgáltatókhoz elérhető műveletek listájának Microsoft Azure Resource Manager Azure erőforrás-szolgáltatói [műveleteket.](../../role-based-access-control/resource-provider-operations.md)

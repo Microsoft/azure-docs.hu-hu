@@ -1,23 +1,23 @@
 ---
 author: baanders
-description: fájl belefoglalása Azure Digital Twins-példányok tisztításához
+description: fájlba foglalhatja a Azure Digital Twins tisztítását
 ms.service: digital-twins
 ms.topic: include
 ms.date: 2/4/2021
 ms.author: baanders
-ms.openlocfilehash: 9a02c4f5c5699b4a6308bfaa519fa9eb776414d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d8cc30c0511098caf7b6c47d7f7bd400dc32f1b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102244643"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107800254"
 ---
-* **Ha nincs szüksége az oktatóanyagban létrehozott erőforrásokra**, törölheti az Azure Digital Twins-példányt és a cikk összes többi erőforrását az az [Group delete](/cli/azure/group#az-group-delete) paranccsal. Ezzel törli az összes Azure-erőforrást egy erőforráscsoporthoz, valamint magát az erőforráscsoportot is.
+* **Ha nincs szüksége** az oktatóanyagban létrehozott erőforrásokra, az [az group delete](/cli/azure/group#az_group_delete) paranccsal törölheti a Azure Digital Twins-példányt és az összes többi erőforrást a cikkből. Ezzel törli az erőforráscsoport összes Azure-erőforrását, valamint magát az erőforráscsoportot is.
     
     > [!IMPORTANT]
     > Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen, nehogy véletlenül rossz erőforráscsoportot vagy erőforrásokat töröljön.
     
-    Nyissa meg [Azure Cloud Shell](https://shell.azure.com), és futtassa a következő parancsot az erőforráscsoport és a benne található összes elem törléséhez.
+    Nyissa [Azure Cloud Shell,](https://shell.azure.com)és futtassa a következő parancsot az erőforráscsoport és minden benne található fájl törléséhez.
     
     ```azurecli-interactive
     az group delete --name <your-resource-group>

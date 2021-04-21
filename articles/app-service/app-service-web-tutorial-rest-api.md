@@ -5,13 +5,13 @@ ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/28/2020
-ms.custom: devx-track-csharp, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18, devx-track-azurecli
-ms.openlocfilehash: 098ee1c8aac343be5ffdbe90d18c886ef74ed72f
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.custom: devx-track-csharp, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
+ms.openlocfilehash: 6d2f4d8fc7a2a7011a2417467f7131c4cfb26edc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480833"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788222"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Oktatóanyag: CORS-támogatással rendelkező RESTful API üzemeltetése az Azure App Service-ben
 
@@ -160,7 +160,7 @@ A böngészőalkalmazás (`http://localhost:5000`) és a távoli erőforrás (`h
 
 ### <a name="enable-cors"></a>CORS engedélyezése 
 
-A Cloud Shell engedélyezze a CORS-t az ügyfél URL-címéhez az [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) paranccsal. Cserélje le _&lt; az alkalmazásnevet>_ helyőrzőre.
+A Cloud Shell engedélyezze a CORS-t az ügyfél URL-címéhez az [`az webapp cors add`](/cli/azure/webapp/cors#az_webapp_cors_add) paranccsal. Cserélje le _&lt; az alkalmazásnevet>_ helyőrzőre.
 
 ```azurecli-interactive
 az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-origins 'http://localhost:5000'

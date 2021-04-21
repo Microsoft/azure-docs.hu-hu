@@ -1,57 +1,57 @@
 ---
-title: Erőforrások központi telepítése a felügyeleti csoportba
-description: Ismerteti, hogyan lehet erőforrásokat telepíteni a felügyeleti csoport hatókörében egy Azure Resource Manager sablonban.
+title: Erőforrások üzembe helyezése a felügyeleti csoportban
+description: Ismerteti, hogyan helyezhet üzembe erőforrásokat a felügyeleti csoport hatókörében egy Azure Resource Manager sablonban.
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: dc7418d9e93fb50590c5e2502b3a3ffb3847273f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 74e00921a1170a7750f4a2d239bb778150ac2cae
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043308"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781936"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>Felügyeleti csoportok üzembe helyezése ARM-sablonokkal
 
-Amikor a szervezete leállt, üzembe helyezhet egy Azure Resource Manager sablont (ARM-sablon) az erőforrások létrehozásához a felügyeleti csoport szintjén. Előfordulhat például, hogy meg kell adnia és hozzá kell rendelnie egy felügyeleti csoport [szabályzatait](../../governance/policy/overview.md) vagy az [Azure szerepköralapú hozzáférés-vezérlését (Azure RBAC)](../../role-based-access-control/overview.md) . A felügyeleti csoport szintű sablonok használatával a felügyeleti csoport szintjén deklarálhatja a házirendeket, és rendelhet hozzá szerepköröket.
+Ahogy a szervezet kiforrott, üzembe helyezhet egy Azure Resource Manager-sablont (ARM-sablont), hogy a felügyeleti csoport szintjén hozzon létre erőforrásokat. Előfordulhat például, hogy szabályzatokat [](../../governance/policy/overview.md) vagy [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../role-based-access-control/overview.md) kell meghatároznia és hozzárendelni egy felügyeleti csoporthoz. A felügyeleticsoport-szintű sablonokkal deklaratív módon alkalmazhat házirendeket, és szerepköröket rendelhet hozzá a felügyeleti csoport szintjén.
 
 ## <a name="supported-resources"></a>Támogatott erőforrások
 
-Nem minden erőforrástípust lehet központilag telepíteni a felügyeleti csoport szintjére. Ez a szakasz felsorolja, hogy milyen típusú erőforrástípusok támogatottak.
+Nem minden erőforrástípus helyezhető üzembe a felügyeleti csoport szintjén. Ez a szakasz felsorolja a támogatott erőforrástípusokat.
 
-Az Azure-tervezetek esetében használja az alábbiakat:
+A Azure Blueprints használja a következőt:
 
-* [leletek](/azure/templates/microsoft.blueprint/blueprints/artifacts)
-* [tervrajzok](/azure/templates/microsoft.blueprint/blueprints)
-* [blueprintAssignments](/azure/templates/microsoft.blueprint/blueprintassignments)
-* [verziók](/azure/templates/microsoft.blueprint/blueprints/versions)
+* [Leletek](/azure/templates/microsoft.blueprint/blueprints/artifacts)
+* [Tervrajz](/azure/templates/microsoft.blueprint/blueprints)
+* [blueprintAssignments (terv hozzárendelései)](/azure/templates/microsoft.blueprint/blueprintassignments)
+* [Verziók](/azure/templates/microsoft.blueprint/blueprints/versions)
 
-Azure Policy esetén használja a következőt:
+A Azure Policy használja a következőt:
 
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
-* [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
+* [policyDefinitions (szabályzatdefiníciók)](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 * [szervizelések](/azure/templates/microsoft.policyinsights/remediations)
 
-Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata esetén használja a következőt:
+Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) szolgáltatáshoz használja a következőt:
 
-* [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
-* [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
+* [roleAssignments (szerepkör hozzárendelései)](/azure/templates/microsoft.authorization/roleassignments)
+* [roleDefinitions (szerepkördefiníciók)](/azure/templates/microsoft.authorization/roledefinitions)
 
-Az előfizetések vagy erőforráscsoportok számára üzembe helyezett beágyazott sablonok esetében használja a következőt:
+Az előfizetésekbe vagy erőforráscsoportokba üzembe helyezett beágyazott sablonokhoz használja a következőt:
 
-* [központi telepítések](/azure/templates/microsoft.resources/deployments)
+* [Telepítések](/azure/templates/microsoft.resources/deployments)
 
 Az erőforrások kezeléséhez használja a következőt:
 
 * [Címkék](/azure/templates/microsoft.resources/tags)
 
-A felügyeleti csoportok bérlői szintű erőforrások. Felügyeleti csoportokat azonban létrehozhat egy felügyeleti csoport központi telepítésében, ha az új felügyeleti csoport hatókörét a bérlőre állítja be. Lásd: [felügyeleti csoport](#management-group).
+A felügyeleti csoportok bérlői szintű erőforrások. Felügyeleti csoportokat azonban létrehozhat a felügyeleti csoportok központi telepítésében, ha az új felügyeleti csoport hatókörét a bérlőre stb. Lásd: [Felügyeleti csoport.](#management-group)
 
 ## <a name="schema"></a>Séma
 
-A felügyeleti csoportok központi telepítéséhez használt séma eltér az erőforráscsoport-telepítések sémájától.
+A felügyeleti csoportok üzembe helyezéséhez használt séma eltér az erőforráscsoportok üzembe helyezéséhez használt sémától.
 
-Sablonok esetén használja a következőt:
+Sablonokhoz használja a következőt:
 
 ```json
 {
@@ -60,7 +60,7 @@ Sablonok esetén használja a következőt:
 }
 ```
 
-A paraméterérték sémája megegyezik az összes központi telepítési hatókörnél. A paraméter fájljaihoz használja a következőt:
+A paraméterfájl sémája minden üzembe helyezési hatókörben ugyanaz. Paraméterfájlokhoz használja a következőt:
 
 ```json
 {
@@ -71,11 +71,11 @@ A paraméterérték sémája megegyezik az összes központi telepítési hatók
 
 ## <a name="deployment-commands"></a>Üzembe helyezési parancsok
 
-Felügyeleti csoportba való központi telepítéshez használja a felügyeleti csoport telepítési parancsait.
+Felügyeleti csoportban való üzembe helyezéshez használja a felügyeleti csoport üzembe helyezési parancsokat.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Az Azure CLI esetében használja az [az Deployment mg Create](/cli/azure/deployment/mg#az-deployment-mg-create):
+Az Azure CLI-hez használja [az az deployment mg create szolgáltatásokat:](/cli/azure/deployment/mg#az_deployment_mg_create)
 
 ```azurecli-interactive
 az deployment mg create \
@@ -87,7 +87,7 @@ az deployment mg create \
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Azure PowerShell esetén használja a [New-AzManagementGroupDeployment](/powershell/module/az.resources/new-azmanagementgroupdeployment).
+A Azure PowerShell használja a [New-AzManagementGroupDeployment et.](/powershell/module/az.resources/new-azmanagementgroupdeployment)
 
 ```azurepowershell-interactive
 New-AzManagementGroupDeployment `
@@ -99,88 +99,88 @@ New-AzManagementGroupDeployment `
 
 ---
 
-További információt az üzembe helyezési parancsokról és az ARM-sablonok üzembe helyezési lehetőségeiről a következő témakörben talál:
+Az üzembe helyezési parancsokkal és az ARM-sablonok üzembe helyezésének beállításaival kapcsolatos további információkért lásd:
 
 * [Erőforrások üzembe helyezése ARM-sablonokkal és Azure Portal](deploy-portal.md)
-* [Erőforrások üzembe helyezése ARM-sablonokkal és Azure CLI-vel](deploy-cli.md)
+* [Erőforrások üzembe helyezése ARM-sablonokkal és az Azure CLI-val](deploy-cli.md)
 * [Erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](deploy-powershell.md)
 * [Erőforrások üzembe helyezése ARM-sablonokkal és Azure Resource Manager REST API](deploy-rest.md)
-* [Sablonok üzembe helyezése a GitHub-tárházból a központi telepítés gomb használatával](deploy-to-azure-button.md)
-* [ARM-sablonok üzembe helyezése Cloud Shell](deploy-cloud-shell.md)
+* [Sablonok üzembe helyezése GitHub-adattárból üzembe helyezési gombbal](deploy-to-azure-button.md)
+* [ARM-sablonok üzembe helyezése a Cloud Shell](deploy-cloud-shell.md)
 
-## <a name="deployment-location-and-name"></a>Központi telepítés helye és neve
+## <a name="deployment-location-and-name"></a>Üzembe helyezés helye és neve
 
-Felügyeleti csoport szintű központi telepítések esetén meg kell adnia egy helyet a központi telepítéshez. A központi telepítés helye nem azonos a telepített erőforrások helyétől. A központi telepítés helye határozza meg, hogy hol tárolja a telepítési adatforrásokat. Az [előfizetés](deploy-to-subscription.md) és a [bérlő](deploy-to-tenant.md) üzembe helyezéséhez is szükség van egy helyre. Az [erőforráscsoport](deploy-to-resource-group.md) -telepítések esetében az erőforráscsoport helye a központi telepítési adattárolási szolgáltatás tárolására szolgál.
+A felügyeleti csoport szintű központi telepítések esetén meg kell adnia a központi telepítés helyét. Az üzembe helyezés helye elkülönül az üzembe helyezett erőforrások helyétől. Az üzembe helyezési hely határozza meg, hogy hol tárolja az üzembe helyezési adatokat. [Az](deploy-to-subscription.md) [előfizetések és a bérlők](deploy-to-tenant.md) üzembe helyezéséhez is szükség van egy helyre. Az [erőforráscsoportok üzemelő](deploy-to-resource-group.md) példányai esetén az erőforráscsoport helye az üzembe helyezési adatok tárolására használatos.
 
-Megadhatja a központi telepítés nevét, vagy használhatja az alapértelmezett központi telepítési nevet is. Az alapértelmezett név a sablonfájl neve. Egy _azuredeploy.js_ nevű sablon üzembe helyezése például a **azuredeploy** alapértelmezett központi telepítési nevét hozza létre.
+Meg kell adnia a központi telepítés nevét, vagy használhatja az alapértelmezett központi telepítési nevet. Az alapértelmezett név a sablonfájl neve. Ha például üzembe helyez egyazuredeploy.js _nevű sablont,_ létrejön egy **azuredeploy nevű alapértelmezett üzemelő példánynév.**
 
-Az egyes központi telepítési nevek esetében a hely nem módosítható. A központi telepítést nem lehet az egyik helyen létrehozni, ha egy másik helyen már van ilyen nevű üzemelő példány. Ha például létrehoz egy felügyeleti csoport központi telepítését a **CentralUS** nevű **deployment1** , akkor később nem hozhat létre újabb telepítést a **deployment1** névvel, de a **westus** helyét. Ha a hibakódot kapja `InvalidDeploymentLocation` , használjon más nevet vagy ugyanazt a helyet, mint az adott név előző üzembe helyezését.
+A hely minden üzembe helyezési név esetén nem módosítható. Nem hozhat létre üzemelő példányokat egy helyen, ha már létezik azonos nevű üzemelő példány egy másik helyen. Ha például létrehoz egy felügyeleti csoport üzemelő példányát **deployment1** néven a **centralusban,** később nem hozhat létre másik üzemelő példányt **deployment1** néven, de a **westus** helyen. Ha a hibakód jelenik meg, vagy használjon egy másik nevet, vagy ugyanazt a helyet, mint az előző üzemelő `InvalidDeploymentLocation` példány a névhez.
 
-## <a name="deployment-scopes"></a>Központi telepítési hatókörök
+## <a name="deployment-scopes"></a>Üzembe helyezési hatókörök
 
-Felügyeleti csoportba való központi telepítés esetén az erőforrások a következőre helyezhetők:
+Felügyeleti csoportban való üzembe helyezéskor a következő erőforrásokat helyezheti üzembe:
 
 * a cél felügyeleti csoport a műveletből
 * egy másik felügyeleti csoport a bérlőben
-* a felügyeleti csoportban lévő előfizetések
+* előfizetések a felügyeleti csoportban
 * erőforráscsoportok a felügyeleti csoportban
 * az erőforráscsoport bérlője
 
-A [kiterjesztési erőforrás](scope-extension-resources.md) hatóköre olyan cél lehet, amely eltér a telepítési céltól.
+A [bővítményerőforrás](scope-extension-resources.md) hatóköre az üzembe helyezési céltól eltérő célra is kiterjedhet.
 
-A sablont telepítő felhasználónak hozzáféréssel kell rendelkeznie a megadott hatókörhöz.
+A sablont üzembe helyező felhasználónak hozzá kell férnie a megadott hatókörre.
 
-Ez a szakasz bemutatja, hogyan határozhat meg különböző hatóköröket. Ezeket a különböző hatóköröket egyetlen sablonban kombinálhatja.
+Ez a szakasz a különböző hatókörök megadását mutatja be. Ezeket a különböző hatókörök egyetlen sablonban egyesítheti.
 
-### <a name="scope-to-target-management-group"></a>Hatókör a cél felügyeleti csoportnak
+### <a name="scope-to-target-management-group"></a>Hatókör cél felügyeleti csoportra
 
-A sablon erőforrások szakaszában meghatározott erőforrások a központi telepítési paranccsal lesznek alkalmazva a felügyeleti csoportra.
+A sablon resources (erőforrások) szakaszában meghatározott erőforrások az üzembe helyezési paranccsal alkalmazhatók a felügyeleti csoportra.
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-mg.json" highlight="5":::
 
-### <a name="scope-to-another-management-group"></a>Hatókör egy másik felügyeleti csoportra
+### <a name="scope-to-another-management-group"></a>Hatókör másik felügyeleti csoportra
 
-Egy másik felügyeleti csoport megcélzásához adjon hozzá egy beágyazott központi telepítést, és adja meg a `scope` tulajdonságot. Állítsa a `scope` tulajdonságot értékre a következő formátumban: `Microsoft.Management/managementGroups/<mg-name>` .
+Egy másik felügyeleti csoport megcélhoz adjon hozzá egy beágyazott központi telepítést, és adja meg a `scope` tulajdonságot. Állítsa a `scope` tulajdonságot egy értékre a következő formátumban: `Microsoft.Management/managementGroups/<mg-name>` .
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/scope-mg.json" highlight="10,17,18,22":::
 
-### <a name="scope-to-subscription"></a>Hatókör az előfizetéshez
+### <a name="scope-to-subscription"></a>Hatókör előfizetéshez
 
-Az előfizetéseket egy felügyeleti csoporton belül is megcélozhatja. A sablont telepítő felhasználónak hozzáféréssel kell rendelkeznie a megadott hatókörhöz.
+Felügyeleti csoporton belüli előfizetéseket is megcélhat. A sablont üzembe helyező felhasználónak hozzá kell férnie a megadott hatókörre.
 
-A felügyeleti csoporton belüli előfizetés megcélzásához használjon beágyazott központi telepítést és a `subscriptionId` tulajdonságot.
+A felügyeleti csoporton belüli előfizetések megcélhoz használjon beágyazott üzemelő példányokat és a `subscriptionId` tulajdonságot.
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-subscription.json" highlight="9,10,18":::
 
-### <a name="scope-to-resource-group"></a>Hatókör az erőforráscsoporthoz
+### <a name="scope-to-resource-group"></a>Hatókör erőforráscsoportra
 
-Az erőforráscsoportok a felügyeleti csoporton belül is megadhatók. A sablont telepítő felhasználónak hozzáféréssel kell rendelkeznie a megadott hatókörhöz.
+A felügyeleti csoporton belül erőforráscsoportokat is megcélhat. A sablont üzembe helyező felhasználónak hozzá kell férnie a megadott hatókörre.
 
-Egy erőforráscsoport a felügyeleti csoporton belüli célzásához használjon egy beágyazott telepítést. Adja meg a `subscriptionId` és a `resourceGroup` tulajdonságokat. Ne állítson be helyet a beágyazott központi telepítéshez, mert az az erőforráscsoport helyén van üzembe helyezve.
+Ha a felügyeleti csoporton belül egy erőforráscsoportot céloz meg, használjon beágyazott üzemelő példányokat. Állítsa be a `subscriptionId` és a `resourceGroup` tulajdonságot. Ne állítsa be a beágyazott üzemelő példány helyét, mert az az erőforráscsoport helyén van üzembe állítva.
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-resource-group.json" highlight="9,10,18":::
 
-Ha egy felügyeleti csoport központi telepítését szeretné használni az előfizetésen belüli erőforráscsoport létrehozásához és a Storage-fiók üzembe helyezéséhez az adott erőforráscsoporthoz, tekintse meg az [előfizetés és az erőforráscsoport üzembe helyezése](#deploy-to-subscription-and-resource-group)című témakört.
+Ha felügyeleti csoport üzemelő példányát használja egy erőforráscsoport előfizetésen belüli létrehozásához és egy tárfióknak az adott erőforráscsoportban való üzembe helyezéséhez, tekintse meg a Következőt: Üzembe helyezés előfizetésben és [erőforráscsoportban.](#deploy-to-subscription-and-resource-group)
 
-### <a name="scope-to-tenant"></a>Hatókör a bérlőre
+### <a name="scope-to-tenant"></a>Hatókör bérlőre
 
-Ahhoz, hogy erőforrásokat hozzon létre a bérlőn, állítsa be a következőt: `scope` `/` . A sablont telepítő felhasználónak rendelkeznie kell a [bérlőn való üzembe helyezéshez szükséges hozzáféréssel](deploy-to-tenant.md#required-access).
+Ha erőforrásokat hoz létre a bérlőben, állítsa a `scope` következőt: `/` . A sablont üzembe helyező felhasználónak a bérlőn való üzembe helyezéshez [szükséges hozzáféréssel kell lennie.](deploy-to-tenant.md#required-access)
 
-Beágyazott központi telepítés használatához állítsa be a következőt: `scope` és `location` .
+Beágyazott üzembe helyezéshez állítsa be a és a `scope` `location` halmazt.
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-to-tenant.json" highlight="9,10,14":::
 
-A hatókört `/` bizonyos erőforrástípusok, például a felügyeleti csoportok esetében is beállíthatja. Az új felügyeleti csoport létrehozásáról a következő szakaszban olvashat.
+A hatókört egyes erőforrástípusokra, például felügyeleti csoportokra `/` is beállíthatja. Az új felügyeleti csoport létrehozását a következő szakaszban ismertetjük.
 
 ## <a name="management-group"></a>Felügyeleti csoport
 
-Ha felügyeleti csoportot szeretne létrehozni egy felügyeleti csoport központi telepítésében, a hatókört a `/` felügyeleti csoportra vonatkozóan kell beállítania.
+Felügyeleti csoport felügyeleti csoport központi telepítésében való létrehozásához a felügyeleti csoport hatókörét a következőre kell `/` beállítania: .
 
-A következő példa egy új felügyeleti csoportot hoz létre a gyökérszintű felügyeleti csoportban.
+Az alábbi példa egy új felügyeleti csoportot hoz létre a gyökér felügyeleti csoportban.
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-create-mg.json" highlight="12,15":::
 
-A következő példa létrehoz egy új felügyeleti csoportot a szülőként megadott felügyeleti csoportban. Figyelje meg, hogy a hatókör a következőre van beállítva: `/` .
+A következő példa egy új felügyeleti csoportot hoz létre a szülőként megadott felügyeleti csoportban. Figyelje meg, hogy a hatókör beállítása `/` .
 
 ```json
 {
@@ -222,19 +222,19 @@ A következő példa létrehoz egy új felügyeleti csoportot a szülőként meg
 
 ## <a name="subscriptions"></a>Előfizetések
 
-Ha egy ARM-sablon segítségével szeretne új Azure-előfizetést létrehozni egy felügyeleti csoportban, tekintse meg a következőt:
+Ha ARM-sablonnal hoz létre új Azure-előfizetést egy felügyeleti csoportban, tekintse meg a következőt:
 
-* [Azure Nagyvállalati Szerződés-előfizetések programozott létrehozása](../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md)
-* [Azure-előfizetések programozott létrehozása Microsoft-ügyfél szerződéshez](../../cost-management-billing/manage/programmatically-create-subscription-microsoft-customer-agreement.md)
-* [Azure-előfizetések programozott létrehozása Microsoft partneri szerződéshez](../../cost-management-billing/manage/programmatically-create-subscription-microsoft-partner-agreement.md)
+* [Azure-előfizetések Nagyvállalati Szerződés létrehozása](../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md)
+* [Azure-előfizetések létrehozása programozott módon egy Microsoft Ügyfélszerződés](../../cost-management-billing/manage/programmatically-create-subscription-microsoft-customer-agreement.md)
+* [Azure-előfizetések létrehozása programozott módon egy Microsoft Partnerszerződés](../../cost-management-billing/manage/programmatically-create-subscription-microsoft-partner-agreement.md)
 
-Meglévő Azure-előfizetést egy új felügyeleti csoportba áthelyező sablon üzembe helyezéséhez lásd: [előfizetések áthelyezése az ARM-sablonban](../../governance/management-groups/manage.md#move-subscriptions-in-arm-template) .
+Meglévő Azure-előfizetést új felügyeleti csoportba áthelyező sablon üzembe helyezéséhez lásd: Előfizetések áthelyezése [AZ ARM-sablonban](../../governance/management-groups/manage.md#move-subscriptions-in-arm-template)
 
 ## <a name="azure-policy"></a>Azure Policy
 
-A felügyeleti csoportba központilag telepített egyéni házirend-definíciók a felügyeleti csoport bővítményei. Egyéni szabályzat-definíció AZONOSÍTÓjának lekéréséhez használja a [extensionResourceId ()](template-functions-resource.md#extensionresourceid) függvényt. A beépített szabályzat-definíciók a bérlői szintű erőforrások. A beépített szabályzat-definíciók AZONOSÍTÓjának lekéréséhez használja a [tenantResourceId ()](template-functions-resource.md#tenantresourceid) függvényt.
+A felügyeleti csoportra telepített egyéni szabályzatdefiníciók a felügyeleti csoport bővítményei. Egy egyéni szabályzatdefiníció azonosítójának lekért értékhez használja az [extensionResourceId()](template-functions-resource.md#extensionresourceid) függvényt. A beépített szabályzatdefiníciók bérlőszintű erőforrások. Egy beépített szabályzatdefiníció azonosítójának lekért értékéhez használja a [tenantResourceId()](template-functions-resource.md#tenantresourceid) függvényt.
 
-Az alábbi példa bemutatja, hogyan [határozhat meg](../../governance/policy/concepts/definition-structure.md) egy házirendet a felügyeleti csoport szintjén, és hogyan rendelheti hozzá.
+Az alábbi példa bemutatja, hogyan [definiálhat](../../governance/policy/concepts/definition-structure.md) és rendelhet hozzá egy házirendet a felügyeleti csoport szintjén.
 
 ```json
 {
@@ -302,9 +302,9 @@ Az alábbi példa bemutatja, hogyan [határozhat meg](../../governance/policy/co
 }
 ```
 
-## <a name="deploy-to-subscription-and-resource-group"></a>Üzembe helyezés az előfizetésben és az erőforráscsoporthoz
+## <a name="deploy-to-subscription-and-resource-group"></a>Üzembe helyezés előfizetésben és erőforráscsoportban
 
-A felügyeleti csoport szintjén üzemelő példányok esetében a felügyeleti csoporton belül is megcélozhat egy előfizetést. A következő példa létrehoz egy erőforráscsoportot egy előfizetésen belül, és üzembe helyez egy Storage-fiókot az adott erőforráscsoporthoz.
+A felügyeleti csoportszintű telepítésből előfizetést célozhat meg a felügyeleti csoporton belül. Az alábbi példa létrehoz egy erőforráscsoportot egy előfizetésen belül, és üzembe helyez egy tárfiókot az adott erőforráscsoportban.
 
 ```json
 {
@@ -386,6 +386,6 @@ A felügyeleti csoport szintjén üzemelő példányok esetében a felügyeleti 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [Azure szerepkör-hozzárendelések hozzáadása Azure Resource Manager-sablonok használatával](../../role-based-access-control/role-assignments-template.md).
-* A Azure Security Center munkaterület-beállításainak központi telepítésére példát a következő témakörben talál: [deployASCwithWorkspaceSettings.js](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
-* A sablonokat [előfizetési szinten](deploy-to-subscription.md) és [bérlői szinten](deploy-to-tenant.md)is üzembe helyezheti.
+* További információ a szerepkörök hozzárendelésről: [Azure-beli szerepkör-hozzárendelések hozzáadása Azure Resource Manager sablonokkal.](../../role-based-access-control/role-assignments-template.md)
+* A munkaterület beállításainak központi telepítésére vonatkozó Azure Security Center lásd a [deployASCwithWorkspaceSettings.jsoldalon.](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)
+* A sablonokat előfizetési és [bérlői szinten](deploy-to-subscription.md) [is üzembe helyezheti.](deploy-to-tenant.md)

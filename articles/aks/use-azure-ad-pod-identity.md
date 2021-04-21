@@ -1,41 +1,41 @@
 ---
-title: Azure Active Directory Pod által felügyelt identitások használata az Azure Kubernetes Service-ben (előzetes verzió)
-description: Ismerje meg, hogyan használhatja a HRE Pod által felügyelt identitásokat az Azure Kubernetes szolgáltatásban (ak)
+title: Pod által Azure Active Directory identitások használata a Azure Kubernetes Service (előzetes verzió)
+description: Megtudhatja, hogyan használhatja az AAD pod által felügyelt felügyelt identitásokat Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 3/12/2021
-ms.openlocfilehash: f3d0db5b085fcdb9a24310cb2fe310d390b1790a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f090f5e11688f35ce090bb07ec0d23530bf9d90e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574373"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777850"
 ---
-# <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Azure Active Directory Pod által felügyelt identitások használata az Azure Kubernetes Service-ben (előzetes verzió)
+# <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Pod által Azure Active Directory identitások használata a Azure Kubernetes Service (előzetes verzió)
 
-Azure Active Directory Pod által felügyelt identitások a Kubernetes primitívek használatával társítják a [felügyelt identitásokat az Azure-erőforrásokhoz][az-managed-identities] és az identitásokhoz Azure Active Directory (HRE) és a hüvelyek esetében. A rendszergazdák identitásokat és kötéseket hoznak létre olyan Kubernetes, amelyek lehetővé teszik, hogy a hüvelyek hozzáférjenek az HRE használt Azure-erőforrásokhoz.
+Azure Active Directory pod által felügyelt identitások Kubernetes-primitívek használatával társítják a podokhoz az Azure Active Directory -ban (AAD) található [Azure-erőforrások][az-managed-identities] és identitások felügyelt identitását. A rendszergazdák Kubernetes-primitívekként hoznak létre identitásokat és kötéseket, amelyek lehetővé teszik a podok számára az AAD-t identitásszolgáltatóként kezelő Azure-erőforrásokhoz való hozzáférést.
 
 > [!NOTE]
-> Ha már rendelkezik AADPODIDENTITY-telepítéssel, el kell távolítania a meglévő telepítést. A funkció engedélyezése azt jelenti, hogy nincs szükség a MIC-összetevőre.
+> Ha már telepítettE az AADPODIDENTITY-t, el kell távolítania a meglévőt. A funkció engedélyezése azt jelenti, hogy nincs szükség a MIC összetevőre.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A következő erőforrást kell telepítenie:
+A következő erőforrásnak kell telepítve lennie:
 
-* Az Azure CLI, 2.20.0 vagy újabb verzió
-* A `azure-preview` bővítmény 0.5.5 vagy újabb verziója
+* Az Azure CLI 2.20.0-s vagy újabb verziója
+* A `azure-preview` bővítmény 0.5.5-ös vagy újabb verziója
 
 ### <a name="limitations"></a>Korlátozások
 
-* Fürthöz legfeljebb 200 Pod identitás adható meg.
-* Fürt esetében legfeljebb 200 Pod Identity-kivétel engedélyezett.
-* A pod által felügyelt identitások csak Linux rendszerű csomópont-készleteken érhetők el.
+* Egy fürthöz legfeljebb 200 pod-identitás engedélyezett.
+* Fürtön legfeljebb 200 podidentitási kivétel engedélyezett.
+* A pod által felügyelt identitások csak Linux-csomópontkészleten érhetők el.
 
-### <a name="register-the-enablepodidentitypreview"></a>Regisztrálja a `EnablePodIdentityPreview`
+### <a name="register-the-enablepodidentitypreview"></a>Regisztrálja a következőt: `EnablePodIdentityPreview`
 
-Regisztrálja a `EnablePodIdentityPreview` szolgáltatást:
+A funkció `EnablePodIdentityPreview` regisztrálása:
 
 ```azurecli
 az feature register --name EnablePodIdentityPreview --namespace Microsoft.ContainerService
@@ -43,7 +43,7 @@ az feature register --name EnablePodIdentityPreview --namespace Microsoft.Contai
 
 ### <a name="install-the-aks-preview-azure-cli"></a>Az `aks-preview` Azure CLI telepítése
 
-Szüksége lesz az *AK-előnézeti* Azure CLI-bővítmény 0.4.64 vagy újabb verziójára is. Telepítse az *AK – előzetes* verzió Azure CLI-bővítményét az az [Extension Add][az-extension-add] paranccsal. Vagy telepítse az elérhető frissítéseket az az [Extension Update][az-extension-update] paranccsal.
+Szüksége lesz az *aks-preview Azure CLI-bővítmény* 0.4.64-es vagy újabb verziójára is. Telepítse *az aks-preview* Azure CLI-bővítményt az [az extension add paranccsal.][az-extension-add] Vagy telepítse az elérhető frissítéseket az [az extension update paranccsal.][az-extension-update]
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -53,44 +53,44 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-## <a name="create-an-aks-cluster-with-azure-cni"></a>AK-fürt létrehozása az Azure CNI
+## <a name="create-an-aks-cluster-with-azure-cni"></a>AKS-fürt létrehozása Azure CNI
 
 > [!NOTE]
 > Ez az alapértelmezett ajánlott konfiguráció
 
-Hozzon létre egy AK-alapú fürtöt az Azure CNI és a pod által felügyelt identitással. A következő parancsok az [az Group Create][az-group-create] paranccsal létrehoznak egy *myResourceGroup* nevű erőforráscsoportot és az az az [AK Create][az-aks-create] parancsot egy *myAKSCluster* nevű AK-fürt létrehozásához a *myResourceGroup* erőforráscsoporthoz.
+AKS-fürt létrehozása engedélyezett Azure CNI és pod által felügyelt identitással. A következő parancsok az [az group create][az-group-create] paranccsal hoznak létre egy *myResourceGroup* nevű erőforráscsoportot és az [az aks create][az-aks-create] parancsot egy *myAKSCluster* nevű AKS-fürt létrehozásához a *myResourceGroup* erőforráscsoportban.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 az aks create -g myResourceGroup -n myAKSCluster --enable-pod-identity --network-plugin azure
 ```
 
-Az [az AK Get-hitelesítő adatok][az-aks-get-credentials] használatával jelentkezzen be az AK-fürtbe. Ez a parancs az ügyféltanúsítványt is letölti és konfigurálja a `kubectl` fejlesztői számítógépen.
+Az [az aks get-credentials használatával][az-aks-get-credentials] jelentkezzen be az AKS-fürtbe. Ez a parancs letölti és konfigurálja az ügyfél-tanúsítványt `kubectl` a fejlesztői számítógépen.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="update-an-existing-aks-cluster-with-azure-cni"></a>Meglévő AK-fürt frissítése az Azure CNI
+## <a name="update-an-existing-aks-cluster-with-azure-cni"></a>Meglévő AKS-fürt frissítése Azure CNI
 
-Frissítsen egy meglévő AK-fürtöt az Azure CNI, hogy tartalmazza a pod által felügyelt identitást.
+Frissít egy meglévő AKS-fürtöt Azure CNI, hogy pod által felügyelt identitást tartalmaznak.
 
 ```azurecli-interactive
 az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --network-plugin azure
 ```
-## <a name="using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities"></a>A Kubenet hálózati beépülő modul használata Azure Active Directory Pod által felügyelt identitásokkal 
+## <a name="using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities"></a>Kubenet hálózati beépülő modul használata Azure Active Directory pod által felügyelt identitásokkal 
 
 > [!IMPORTANT]
-> A HRE-Pod-Identity futtatása a Kubenet-ben lévő fürtben nem ajánlott konfiguráció a biztonsági következmények miatt. Kövesse a kockázatcsökkentő lépéseket, és konfigurálja a házirendeket, mielőtt engedélyezi a HRE-Pod-Identity-t egy Kubenet-alapú fürtben.
+> Az aad-pod-identity kubenetet futtató fürtben való futtatása biztonsági okokból nem ajánlott konfiguráció. Mielőtt engedélyez egy aad-pod-identityt egy Kubenet-fürtben, kövesse a megoldás lépéseit és konfigurálja a szabályzatokat.
 
 ## <a name="mitigation"></a>Kockázatcsökkentés
 
-A biztonsági rés a fürt szintjén való enyhítéséhez használhatja a OpenPolicyAgent-belépésvezérlés és a forgalomirányító ellenőrzése a webhookot. Ha a fürtben már telepítve van a forgalomirányító, adja hozzá a K8sPSPCapabilities típusú ConstraintTemplate:
+A fürt szintjén a biztonsági rés csökkentéséhez használhatja az OpenPolicyAgent belépésvezérlőt és a webhookot érvényesítő Gatekeepert. Ha a Gatekeeper már telepítve van a fürtben, adja hozzá a K8sPSPCapabilities típusú ConstraintTemplate típust:
 
 ```
 kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/capabilities/template.yaml
 ```
-Adjon hozzá egy sablont a hüvelyek ívásának korlátozásához a NET_RAW képességgel:
+Adjon hozzá egy sablont a podok a NET_RAW korlátozására:
 
 ```
 apiVersion: constraints.gatekeeper.sh/v1beta1
@@ -108,17 +108,17 @@ spec:
     requiredDropCapabilities: ["NET_RAW"]
 ```
 
-## <a name="create-an-aks-cluster-with-kubenet-network-plugin"></a>AK-fürt létrehozása a Kubenet hálózati beépülő modullal
+## <a name="create-an-aks-cluster-with-kubenet-network-plugin"></a>AKS-fürt létrehozása a Kubenet hálózati beépülő modullal
 
-Hozzon létre egy AK-fürtöt a Kubenet hálózati beépülő modullal és a pod által felügyelt identitással.
+AKS-fürt létrehozása engedélyezett Kubenet hálózati beépülő modullal és pod által felügyelt identitással.
 
 ```azurecli-interactive
 az aks create -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --enable-pod-identity-with-kubenet
 ```
 
-## <a name="update-an-existing-aks-cluster-with-kubenet-network-plugin"></a>Meglévő AK-fürt frissítése Kubenet hálózati beépülő modullal
+## <a name="update-an-existing-aks-cluster-with-kubenet-network-plugin"></a>Meglévő AKS-fürt frissítése a Kubenet hálózati beépülő modullal
 
-Frissítsen egy meglévő AK-fürtöt a Kubnet hálózati beépülő modullal, hogy tartalmazza a pod által felügyelt identitást.
+Frissítsen egy meglévő AKS-fürtöt a Kubnet hálózati beépülő modullal, hogy tartalmazza a pod által felügyelt identitást.
 
 ```azurecli-interactive
 az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --enable-pod-identity-with-kubenet
@@ -126,7 +126,7 @@ az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --enabl
 
 ## <a name="create-an-identity"></a>Identitás létrehozása
 
-Hozzon létre egy identitást az [az Identity Create][az-identity-create] paranccsal, és állítsa be a *IDENTITY_CLIENT_ID* és *IDENTITY_RESOURCE_ID* változókat.
+Hozzon létre egy identitást [az az identity create][az-identity-create] használatával, és állítsa be *IDENTITY_CLIENT_ID* *és* IDENTITY_RESOURCE_ID változókat.
 
 ```azurecli-interactive
 az group create --name myIdentityResourceGroup --location eastus
@@ -137,9 +137,9 @@ export IDENTITY_CLIENT_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n $
 export IDENTITY_RESOURCE_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME} --query id -otsv)"
 ```
 
-## <a name="assign-permissions-for-the-managed-identity"></a>Engedélyek kiosztása a felügyelt identitáshoz
+## <a name="assign-permissions-for-the-managed-identity"></a>Engedélyek hozzárendelése a felügyelt identitáshoz
 
-A *IDENTITY_CLIENT_ID* felügyelt identitásnak rendelkeznie kell olyan olvasási engedéllyel az erőforráscsoporthoz, amely az AK-fürt virtuálisgép-méretezési csoportját tartalmazza.
+A *IDENTITY_CLIENT_ID* identitásnak Olvasó engedéllyel kell rendelkeznie abban az erőforráscsoportban, amely az AKS-fürt virtuálisgép-méretezési csoportját tartalmazza.
 
 ```azurecli-interactive
 NODE_GROUP=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
@@ -147,12 +147,12 @@ NODES_RESOURCE_ID=$(az group show -n $NODE_GROUP -o tsv --query "id")
 az role assignment create --role "Reader" --assignee "$IDENTITY_CLIENT_ID" --scope $NODES_RESOURCE_ID
 ```
 
-## <a name="create-a-pod-identity"></a>Pod-identitás létrehozása
+## <a name="create-a-pod-identity"></a>Podidentitás létrehozása
 
-Hozzon létre egy Pod-identitást a fürthöz a használatával `az aks pod-identity add` .
+Hozzon létre egy podidentitást a fürthöz a `az aks pod-identity add` használatával.
 
 > [!IMPORTANT]
-> Az identitás és a szerepkör-kötés létrehozásához a megfelelő engedélyekkel kell rendelkeznie, például az `Owner` előfizetésben.
+> Az identitás- és szerepkörkötés létrehozásához megfelelő engedélyekkel kell rendelkeznie az `Owner` előfizetésében( például ).
 
 ```azurecli-interactive
 export POD_IDENTITY_NAME="my-pod-identity"
@@ -161,14 +161,14 @@ az aks pod-identity add --resource-group myResourceGroup --cluster-name myAKSClu
 ```
 
 > [!NOTE]
-> Ha engedélyezi a pod által felügyelt identitást az AK-fürtön, akkor a *rendszer a Kube-System* névtérhez adja hozzá az AzurePodIdentityException *-addon nevű kivételt* . A AzurePodIdentityException lehetővé teszi, hogy a hüvelyek bizonyos címkékkel férjenek hozzá az Azure Instance Metadata Service (IMDS) végponthoz anélkül, hogy a csomópont által felügyelt Identity (NMI) kiszolgáló elfogy volna. Az *AK-addon-Exception* lehetővé teszi, hogy a rendszer a AzurePodIdentityException manuális konfigurálása nélkül működjön, például a HRE Pod által felügyelt identitást. Igény szerint hozzáadhat, eltávolíthat és frissíthet egy AzurePodIdentityException a,, vagy rendszer `az aks pod-identity exception add` használatával `az aks pod-identity exception delete` `az aks pod-identity exception update` `kubectl` .
+> Ha engedélyezi a pod által felügyelt identitást az AKS-fürtön, egy *aks-addon-exception* nevű AzurePodIdentityException lesz hozzáadva a *kube-system* névtérhez. Az AzurePodIdentityException lehetővé teszi, hogy bizonyos címkékkel a podok anélkül férnek hozzá az Azure Instance Metadata Service- (IMDS-) végponthoz, hogy a csomópont által felügyelt identitáskiszolgáló elfogja őket. Az *aks-addon-exception* lehetővé teszi az AKS belső bővítményei, például az AAD pod által felügyelt identitások működését anélkül, hogy manuálisan konfigurálnia kell az AzurePodIdentityException kivételt. Másik lehetőségként hozzáadhat, eltávolíthat és frissíthet egy AzurePodIdentityException-t a `az aks pod-identity exception add` `az aks pod-identity exception delete` , , vagy `az aks pod-identity exception update` `kubectl` használatával.
 
-## <a name="run-a-sample-application"></a>Minta alkalmazás futtatása
+## <a name="run-a-sample-application"></a>Mintaalkalmazás futtatása
 
-Ahhoz, hogy egy Pod HRE Pod-felügyelt identitást használjon, a pod-nek olyan *aadpodidbinding* -címkével kell rendelkeznie, amely megfelel egy *AzureIdentityBinding* megadott választójának. Ha HRE Pod által felügyelt identitást használó minta alkalmazást szeretne futtatni, hozzon létre egy `demo.yaml` fájlt a következő tartalommal. Cserélje le a *POD_IDENTITY_NAME*, *IDENTITY_CLIENT_ID* és *IDENTITY_RESOURCE_GROUP* értéket az előző lépések értékeire. Cserélje le a *SUBSCRIPTION_IDt* az előfizetés-azonosítójával.
+Ahhoz, hogy egy pod AAD pod által felügyelt identitást használjon, a podnak szüksége van egy *aadpodidbinding* címkére, amely egy olyan értékkel egyezik, amely megegyezik egy *AzureIdentityBinding-választóval.* Mintaalkalmazás AAD pod által felügyelt identitással való futtatásához hozzon létre egy fájlt az `demo.yaml` alábbi tartalommal. Cserélje *POD_IDENTITY_NAME*, *IDENTITY_CLIENT_ID* és *IDENTITY_RESOURCE_GROUP* az előző lépések értékeire. Cserélje *SUBSCRIPTION_ID* az előfizetés azonosítójára.
 
 > [!NOTE]
-> Az előző lépésekben létrehozta a *POD_IDENTITY_NAME*, *IDENTITY_CLIENT_ID* és *IDENTITY_RESOURCE_GROUP* változókat. A `echo` változókhoz megadott értéket például a következő parancs használatával jelenítheti meg: `echo $IDENTITY_NAME` .
+> Az előző lépésekben létrehozta a POD_IDENTITY_NAME *,* *IDENTITY_CLIENT_ID* és *IDENTITY_RESOURCE_GROUP* változókat. A változókhoz beállított érték megjelenítéséhez használhat például egy `echo` parancsot. `echo $IDENTITY_NAME`
 
 ```yml
 apiVersion: v1
@@ -202,21 +202,21 @@ spec:
     kubernetes.io/os: linux
 ```
 
-Figyelje meg, hogy a pod-definíció egy olyan *aadpodidbinding* -címkével rendelkezik, amely megegyezik az előző lépésben futtatott Pod-identitás nevével `az aks pod-identity add` .
+Figyelje meg, hogy a poddefiníció rendelkezik *egy aadpodidbinding címkével,* amely egy olyan értékkel rendelkezik, amely megegyezik az előző lépésben futtatott podidentitás `az aks pod-identity add` nevével.
 
-Üzembe helyezés `demo.yaml` ugyanarra a névtérre, mint a pod-identitás a következő használatával `kubectl apply` :
+A használatával telepítse az üzembe helyezést a `demo.yaml` podidentitással azonos `kubectl apply` névtérbe:
 
 ```azurecli-interactive
 kubectl apply -f demo.yaml --namespace $POD_IDENTITY_NAMESPACE
 ```
 
-Ellenőrizze, hogy az alkalmazás sikeresen fut-e a használatával `kubectl logs` .
+Ellenőrizze, hogy a mintaalkalmazás sikeresen fut-e a `kubectl logs` használatával.
 
 ```azurecli-interactive
 kubectl logs demo --follow --namespace $POD_IDENTITY_NAMESPACE
 ```
 
-Győződjön meg arról, hogy a naplók a jogkivonat sikeres megszerzését mutatják be, a *Get* művelet pedig sikeres.
+Ellenőrizze, hogy a naplókban a jogkivonat sikeres beszerzése és a GET művelet *sikeres* volt-e.
  
 ```output
 ...
@@ -229,7 +229,7 @@ successfully made GET on instance metadata
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-A HRE Pod által felügyelt identitás fürtből való eltávolításához távolítsa el a minta alkalmazást és a pod-identitást a fürtből. Ezután távolítsa el az identitást.
+Ha el szeretné távolítani az AAD pod által felügyelt identitást a fürtből, távolítsa el a mintaalkalmazást és a podidentitást a fürtből. Ezután távolítsa el az identitást.
 
 ```azurecli-interactive
 kubectl delete pod demo --namespace $POD_IDENTITY_NAMESPACE
@@ -239,14 +239,14 @@ az identity delete -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME}
 
 ## <a name="next-steps"></a>Következő lépések
 
-A felügyelt identitásokkal kapcsolatos további információkért lásd: [felügyelt identitások az Azure-erőforrásokhoz][az-managed-identities].
+A felügyelt identitásokkal kapcsolatos további információkért lásd: [Azure-erőforrások felügyelt identitása.][az-managed-identities]
 
 <!-- LINKS - external -->
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-group-create]: /cli/azure/group#az-group-create
+[az-aks-create]: /cli/azure/aks#az_aks_create
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-group-create]: /cli/azure/group#az_group_create
 [az-identity-create]: /cli/azure/identity#az_identity_create
 [az-managed-identities]: ../active-directory/managed-identities-azure-resources/overview.md
 [az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create

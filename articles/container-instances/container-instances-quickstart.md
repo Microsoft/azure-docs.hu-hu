@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Docker-tároló üzembe helyezése tároló példányon – Azure CLI
-description: Ebben a rövid útmutatóban az Azure CLI használatával gyorsan üzembe helyezhet egy elkülönített Azure Container-példányon futó tároló-webalkalmazást
+title: Rövid útmutató – Docker-tároló üzembe helyezése tárolópéldányon – Azure CLI
+description: Ebben a rövid útmutatóban az Azure CLI használatával gyorsan üzembe helyezhet egy elkülönített Azure-tárolópéldányon futó tárolóba helyezett webalkalmazást
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.custom:
@@ -9,26 +9,26 @@ ms.custom:
 - mvc
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 1c327fc7fc067948b5022f989e6c86f99573bd1a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2027bdc4e77fefe2219b22671494b6d4f4b0ccb8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93100184"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763972"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban az Azure CLI használatával
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Rövid útmutató: Tárolópéldány üzembe helyezése az Azure-ban az Azure CLI használatával
 
-A Azure Container Instances használatával a kiszolgáló nélküli Docker-tárolókat az Azure-ban, az egyszerűség és a gyorsaság segítségével futtathatja. Igény szerint üzembe helyezhet egy alkalmazást egy tároló-példányon, ha nincs szüksége a teljes Container-előkészítési platformra, például az Azure Kubernetes szolgáltatásra.
+A Azure Container Instances egyszerűséggel és sebességgel futtathat kiszolgáló nélküli Docker-tárolókat az Azure-ban. Igény szerint helyezhet üzembe egy alkalmazást egy tárolópéldányon, ha nincs szüksége egy teljes körű tárolóvezénylési platformra, például a Azure Kubernetes Service.
 
-Ebben a rövid útmutatóban az Azure CLI használatával telepít egy elkülönített Docker-tárolót, és az alkalmazását teljes tartománynévvel (FQDN) teszi elérhetővé. Néhány másodperccel az egyetlen központi telepítési parancs végrehajtása után megkeresheti a tárolóban futó alkalmazást:
+Ebben a rövid útmutatóban az Azure CLI használatával üzembe helyez egy elkülönített Docker-tárolót, és elérhetővé teszi az alkalmazását egy teljes tartománynévvel (FQDN). Néhány másodperccel egyetlen üzembe helyezési parancs végrehajtása után megkeresheti a tárolóban futó alkalmazást:
 
-![Böngészőbe Azure Container Instances üzembe helyezett alkalmazás megtekintése][aci-app-browser]
+![A böngészőben üzembe helyezett Azure Container Instances megtekintése][aci-app-browser]
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ehhez a rövid útmutatóhoz az Azure CLI 2.0.55 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a rövid útmutatóhoz az Azure CLI 2.0.55-ös vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -42,11 +42,11 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Most, hogy rendelkezik egy erőforráscsoporttal, futtathat egy tárolót az Azure-ban. Egy tárolópéldány Azure CLI-vel való létrehozásához adjon meg egy erőforráscsoport-nevet, egy tárolópéldánynevet és egy Docker-tárolórendszerképet az [az container create][az-container-create] parancsban. Ebben a rövid útmutatóban a nyilvános `mcr.microsoft.com/azuredocs/aci-helloworld` rendszerképet használhatja. Ez a rendszerkép egy olyan kisméretű webalkalmazást csomagol, amely a statikus HTML-lapokat Node.js.
+Most, hogy rendelkezik egy erőforráscsoporttal, futtathat egy tárolót az Azure-ban. Egy tárolópéldány Azure CLI-vel való létrehozásához adjon meg egy erőforráscsoport-nevet, egy tárolópéldánynevet és egy Docker-tárolórendszerképet az [az container create][az-container-create] parancsban. Ebben a rövid útmutatóban a nyilvános rendszerképet `mcr.microsoft.com/azuredocs/aci-helloworld` használja. Ez a kép egy statikus HTML-oldalt Node.js webalkalmazást tartalmaz.
 
-Közzéteheti a tárolókat az interneten egy vagy több port megnyitásával, egy DNS-névcímke megadásával, vagy mindkettővel. Ebben a rövid útmutatóban egy DNS-név címkével rendelkező tárolót helyez üzembe, hogy a webalkalmazás nyilvánosan elérhető legyen.
+Közzéteheti a tárolókat az interneten egy vagy több port megnyitásával, egy DNS-névcímke megadásával, vagy mindkettővel. Ebben a rövid útmutatóban egy DNS-névcímkével fog üzembe helyezni egy tárolót, hogy a webalkalmazás nyilvánosan elérhető legyen.
 
-Egy tároló-példány elindításához a következőhöz hasonló parancsot kell végrehajtania. Olyan értéket állítson be `--dns-name-label` , amely egyedi azon az Azure-régión belül, ahol létrehozza a példányt. Ha „DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
+A tárolópéldányok indításhoz hajtsa végre az alábbihoz hasonló parancsot. Állítson be egy egyedi értéket abban az `--dns-name-label` Azure-régióban, ahol a példányt létrehozza. Ha „DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80
@@ -66,9 +66,9 @@ FQDN                               ProvisioningState
 aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-Ha a tároló `ProvisioningState` **sikeres**, nyissa meg a teljes tartománynevet a böngészőben. Ha egy, az alábbihoz hasonló weboldal jelenik meg, gratulálunk! Sikeresen üzembe helyezett egy Docker-tárolóban futó alkalmazást az Azure-ban.
+Ha a tároló teljes tartománya Sikeres, a böngészőben menjen a teljes `ProvisioningState` tartomány útjára.  Ha egy, az alábbihoz hasonló weboldal jelenik meg, gratulálunk! Sikeresen üzembe helyezett egy Docker-tárolóban futó alkalmazást az Azure-ban.
 
-![Böngészőbe Azure Container Instances üzembe helyezett alkalmazás megtekintése][aci-app-browser]
+![A böngészőben üzembe helyezett Azure Container Instances megtekintése][aci-app-browser]
 
 Ha az alkalmazás nem indul el azonnal, lehet, hogy csak várnia kell pár másodpercet, amíg a DNS elvégzi a propagálást. Ezt követően próbálja ismét frissíteni a böngészőjét.
 
@@ -95,7 +95,7 @@ listening on port 80
 
 A naplók megtekintése mellett helyi standard kimeneti és hibastreameket csatolhat a tárolóhoz.
 
-Először hajtsa végre az az [Container Attach][az-container-attach] paranccsal, hogy csatolja a helyi konzolt a tároló kimeneti streamekhez:
+Először hajtsa végre [az az container attach][az-container-attach] parancsot, hogy csatolja a helyi konzolt a tároló kimeneti streamjéhez:
 
 ```azurecli-interactive
 az container attach --resource-group myResourceGroup --name mycontainer
@@ -128,7 +128,7 @@ Miután végzett a tárolóval, az [az container delete][az-container-delete] pa
 az container delete --resource-group myResourceGroup --name mycontainer
 ```
 
-A tároló törlésének ellenőrzéséhez futtassa az [az container list](/cli/azure/container#az-container-list) parancsot:
+A tároló törlésének ellenőrzéséhez futtassa az [az container list](/cli/azure/container#az_container_list) parancsot:
 
 ```azurecli-interactive
 az container list --resource-group myResourceGroup --output table
@@ -144,12 +144,12 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy Azure Container-példányt egy nyilvános Microsoft-rendszerkép használatával. Ha szeretne létrehozni és üzembe helyezni egy tárolórendszerképet egy privát Azure-tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
+Ebben a rövid útmutatóban egy nyilvános Microsoft-rendszerkép használatával létrehozott egy Azure-tárolópéldányt. Ha szeretne létrehozni és üzembe helyezni egy tárolórendszerképet egy privát Azure-tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
 
 > [!div class="nextstepaction"]
 > [Az Azure Container Instances oktatóanyaga](./container-instances-tutorial-prepare-app.md)
 
-Ha szeretné kipróbálni a tárolók futtatásának lehetőségeit az Azure-ban, tekintse meg az [Azure Kubernetes szolgáltatás (ak)][container-service] rövid útmutatóját.
+A tárolók Azure-beli vezénylési rendszerben való futtatásának lehetőségeiért tekintse meg az Azure Kubernetes Service [(AKS)][container-service] rövid útmutatóit.
 
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/view-an-application-running-in-an-azure-container-instance.png
@@ -160,13 +160,13 @@ Ha szeretné kipróbálni a tárolók futtatásának lehetőségeit az Azure-ban
 [node-js]: https://nodejs.org
 
 <!-- LINKS - Internal -->
-[az-container-attach]: /cli/azure/container#az-container-attach
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-delete]: /cli/azure/container#az-container-delete
-[az-container-list]: /cli/azure/container#az-container-list
-[az-container-logs]: /cli/azure/container#az-container-logs
-[az-container-show]: /cli/azure/container#az-container-show
-[az-group-create]: /cli/azure/group#az-group-create
-[az-group-delete]: /cli/azure/group#az-group-delete
+[az-container-attach]: /cli/azure/container#az_container_attach
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-delete]: /cli/azure/container#az_container_delete
+[az-container-list]: /cli/azure/container#az_container_list
+[az-container-logs]: /cli/azure/container#az_container_logs
+[az-container-show]: /cli/azure/container#az_container_show
+[az-group-create]: /cli/azure/group#az_group_create
+[az-group-delete]: /cli/azure/group#az_group_delete
 [azure-cli-install]: /cli/azure/install-azure-cli
 [container-service]: ../aks/kubernetes-walkthrough.md

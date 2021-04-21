@@ -1,59 +1,59 @@
 ---
 title: Üzembe helyezési előzmények
-description: Ismerteti, hogyan lehet megtekinteni Azure Resource Manager telepítési műveleteket a portál, a PowerShell, az Azure CLI és a REST API használatával.
+description: Ez a cikk azt ismerteti Azure Resource Manager hogyan lehet megtekinteni a portál, a PowerShell, az Azure CLI és a REST API.
 tags: top-support-issue
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 898af2365dfbb0f61b6b87e7532c9256269d799a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e7ed2096a696efdc9a2654a8fd0c294c82cbd4f7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732771"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781864"
 ---
-# <a name="view-deployment-history-with-azure-resource-manager"></a>Az üzembe helyezési előzmények megtekintése Azure Resource Manager
+# <a name="view-deployment-history-with-azure-resource-manager"></a>Telepítési előzmények megtekintése Azure Resource Manager
 
-Azure Resource Manager lehetővé teszi az üzembe helyezési előzmények megtekintését. Megvizsgálhatja a korábbi üzembe helyezések adott műveleteit és megtekintheti, hogy mely erőforrások üzembe helyezésére került sor. Ez az előzmény a hibákkal kapcsolatos információkat tartalmaz.
+Azure Resource Manager lehetővé teszi az üzembe helyezési előzmények megtekintését. Megvizsgálhatja a korábbi üzembe helyezések adott műveleteit és megtekintheti, hogy mely erőforrások üzembe helyezésére került sor. Ez az előzmények a hibákkal kapcsolatos információkat tartalmaznak.
 
-Egy erőforráscsoport üzembe helyezési előzményei a 800-es üzemelő példányokra korlátozódnak. A korlát közelében az üzembe helyezések automatikusan törlődnek az előzményekből. További információ: [automatikus törlések az üzembe helyezési előzményekből](deployment-history-deletions.md).
+Egy erőforráscsoport üzembe helyezési előzményei legfeljebb 800 üzemelő példányra korlátozódnak. A korlát közeledtével az üzemelő példányok automatikusan törlődnek az előzményekből. További információ: Automatikus törlés [az üzembe helyezési előzményekből.](deployment-history-deletions.md)
 
-Az egyes telepítési hibák elhárításával kapcsolatos segítségért lásd: [gyakori hibák megoldása az erőforrások Azure-ba való telepítésekor a Azure Resource Manager használatával](common-deployment-errors.md).
+Az egyes üzembe helyezési hibák elhárításával kapcsolatos segítségért tekintse meg az Erőforrások Azure-ba való üzembe helyezésekor a következővel kapcsolatos [gyakori Azure Resource Manager.](common-deployment-errors.md)
 
-## <a name="get-deployments-and-correlation-id"></a>Központi telepítések és korrelációs AZONOSÍTÓk beolvasása
+## <a name="get-deployments-and-correlation-id"></a>Üzemelő példányok és korrelációs azonosító lekért száma
 
-A központi telepítés részleteit a Azure Portal, a PowerShell, az Azure CLI vagy a REST API segítségével tekintheti meg. Az egyes központi telepítések korrelációs AZONOSÍTÓval rendelkeznek, amely a kapcsolódó események nyomon követésére szolgál. Ha [létrehoz egy Azure-támogatási kérelmet](../../azure-portal/supportability/how-to-create-azure-support-request.md), a támogatás kérheti a KORRELÁCIÓs azonosító megadását. A támogatás a korrelációs azonosító használatával azonosítja a sikertelen telepítés műveleteit.
+Az üzembe helyezés részleteinek megtekintéséhez használja a Azure Portal, a PowerShellt, az Azure CLI-t vagy a REST API. Minden üzemelő példány rendelkezik egy korrelációs azonosítóval, amely a kapcsolódó események nyomon követésére használható. Ha létrehoz [egy Azure-támogatás,](../../azure-portal/supportability/how-to-create-azure-support-request.md)a támogatás kérheti a korrelációs azonosítót. A támogatás a korrelációs azonosítóval azonosítja a sikertelen üzembe helyezés műveleteit.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. Válassza ki azt az erőforráscsoportot, amelyet meg szeretne vizsgálni.
+1. Válassza ki a vizsgálni kívánt erőforráscsoportot.
 
-1. Válassza ki az üzemelő **példányok** alatt lévő hivatkozást.
+1. Válassza az Üzemelő **példányok alatt található hivatkozást.**
 
-   ![Telepítési előzmények kiválasztása](./media/deployment-history/select-deployment-history.png)
+   ![Üzembe helyezési előzmények kiválasztása](./media/deployment-history/select-deployment-history.png)
 
-1. Válasszon egyet az üzembe helyezési előzmények közül.
+1. Válasszon ki egy üzemelő példányt az üzembe helyezési előzmények közül.
 
-   ![Központi telepítés kiválasztása](./media/deployment-history/select-details.png)
+   ![Üzembe helyezés kiválasztása](./media/deployment-history/select-details.png)
 
-1. Megjelenik a központi telepítés összegzése, beleértve a korrelációs azonosítót is.
+1. Megjelenik az üzembe helyezés összegzése, beleértve a korrelációs azonosítót.
 
     ![A központi telepítés összegzése](./media/deployment-history/show-correlation-id.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Egy erőforráscsoport összes központi telepítésének listázásához használja a [Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment) parancsot.
+Egy erőforráscsoport összes üzemelő példányának listához használja a [Get-AzResourceGroupDeployment parancsot.](/powershell/module/az.resources/Get-AzResourceGroupDeployment)
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup
 ```
 
-Egy adott telepítés erőforráscsoporthoz való beszerzéséhez adja hozzá a **DeploymentName** paramétert.
+Ha egy adott üzembe helyezést szeretne lekért egy erőforráscsoportból, adja hozzá a **DeploymentName paramétert.**
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment
 ```
 
-A korrelációs azonosító beszerzéséhez használja a következőt:
+A korrelációs azonosító lekért használhatja a következőt:
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment).CorrelationId
@@ -61,19 +61,19 @@ A korrelációs azonosító beszerzéséhez használja a következőt:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Egy erőforráscsoport központi telepítésének listázásához használja az [az Deployment Group List](/cli/azure/group/deployment#az-deployment-group-list)lehetőséget.
+Egy erőforráscsoport üzemelő példányának listához használja [az az deployment group list listában.](/cli/azure/group/deployment#az_deployment_group_list)
 
 ```azurecli-interactive
 az deployment group list --resource-group ExampleGroup
 ```
 
-Egy adott központi telepítés beszerzéséhez használja az az [üzembe helyezési csoport megjelenítése](/cli/azure/group/deployment#az-deployment-group-show)lehetőséget.
+Egy adott üzemelő példány letelepítéséhez használja [az az deployment group show használhatja.](/cli/azure/group/deployment#az_deployment_group_show)
 
 ```azurecli-interactive
 az deployment group show --resource-group ExampleGroup --name ExampleDeployment
 ```
 
-A korrelációs azonosító beszerzéséhez használja a következőt:
+A korrelációs azonosító lekért használhatja a következőt:
 
 ```azurecli-interactive
 az deployment group show --resource-group ExampleGroup --name ExampleDeployment --query properties.correlationId
@@ -81,13 +81,13 @@ az deployment group show --resource-group ExampleGroup --name ExampleDeployment 
 
 # <a name="http"></a>[HTTP](#tab/http)
 
-Egy erőforráscsoport központi telepítésének listázásához használja a következő műveletet. A kérelemben használandó legújabb API-verzióhoz lásd:  [Deployments – List by erőforráscsoport](/rest/api/resources/resources/deployments/listbyresourcegroup).
+Egy erőforráscsoport üzemelő példányának listához használja a következő műveletet. A kérelemben használható legújabb API-verziószámért lásd: Üzemelő példányok [– Lista erőforráscsoport szerint.](/rest/api/resources/deployments/listbyresourcegroup)
 
 ```
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/?api-version={api-version}
 ```
 
-Egy adott központi telepítés beszerzéséhez. használja a következő műveletet. A kérelemben használandó legújabb API-verzióhoz lásd: [üzembe helyezések – Get](/rest/api/resources/resources/deployments/get).
+Egy adott üzemelő példány lekért példánya. használja a következő műveletet. A kérelemben használható legújabb API-verziószámért lásd: [Üzemelő példányok – Lekérés.](/rest/api/resources/deployments/get)
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
@@ -111,35 +111,35 @@ A válasz tartalmazza a korrelációs azonosítót.
 
 ---
 
-## <a name="get-deployment-operations-and-error-message"></a>Üzembe helyezési műveletek és hibaüzenetek beolvasása
+## <a name="get-deployment-operations-and-error-message"></a>Üzembehely helyezési műveletek és hibaüzenet lekért
 
-Az egyes központi telepítések több műveletet is tartalmazhatnak. A központi telepítéssel kapcsolatos további részletekért tekintse meg az üzembe helyezési műveleteket. Ha egy telepítés meghiúsul, a központi telepítési műveletek egy hibaüzenetet tartalmaznak.
+Minden üzemelő példány több műveletet is tartalmazhat. A telepítéssel kapcsolatos további részletekért tekintse meg az üzembe helyezési műveleteket. Ha egy üzembe helyezés meghiúsul, az üzembe helyezési műveletek hibaüzenetet tartalmaznak.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. A központi telepítés összegzése lapon válassza a **művelet részletei** lehetőséget.
+1. A központi telepítés összegzésében válassza a Művelet **részletei lehetőséget.**
 
     ![Művelet részleteinek kiválasztása](./media/deployment-history/get-operation-details.png)
 
-1. Ekkor megjelenik a központi telepítés adott lépésének részletei. Hiba esetén a részletek között szerepel a hibaüzenet.
+1. Itt láthatja az üzembe helyezés lépésének részleteit. Hiba esetén a részletek között a hibaüzenet is szerepel.
 
     ![Művelet részleteinek megjelenítése](./media/deployment-history/see-operation-details.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Ha szeretné megtekinteni az erőforráscsoporthoz való központi telepítés központi telepítési műveleteit, használja a [Get-AzResourceGroupDeploymentOperation](/powershell/module/az.resources/get-azdeploymentoperation) parancsot.
+Az erőforráscsoportban való üzembe helyezés üzembe helyezési műveleteinek megtekintéséhez használja a [Get-AzResourceGroupDeploymentOperation](/powershell/module/az.resources/get-azdeploymentoperation) parancsot.
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy
 ```
 
-A sikertelen műveletek megtekintéséhez szűrési műveletek **sikertelen** állapottal.
+A sikertelen műveletek megtekintéséhez szűrje a Sikertelen **állapotot a műveletekre.**
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy).Properties | Where-Object ProvisioningState -eq Failed
 ```
 
-A sikertelen műveletek állapotjelző üzenetének lekéréséhez használja a következő parancsot:
+A sikertelen műveletek állapotüzenetének lekért üzenetét a következő paranccsal használhatja:
 
 ```azurepowershell-interactive
 ((Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy ).Properties | Where-Object ProvisioningState -eq Failed).StatusMessage.error
@@ -147,19 +147,19 @@ A sikertelen műveletek állapotjelző üzenetének lekéréséhez használja a 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Ha meg szeretné tekinteni az erőforráscsoport üzembe helyezésének központi telepítési műveleteit, használja az az [Deployment Operation Group List](/cli/azure/deployment/operation/group#az-deployment-operation-group-list) parancsot. Az Azure CLI 2.6.0 vagy újabb verzióval kell rendelkeznie.
+Az erőforráscsoportban való üzembe helyezés üzembe helyezési műveleteinek megtekintéséhez használja [az az deployment operation group list parancsot.](/cli/azure/deployment/operation/group#az_deployment-operation-group-list) Az Azure CLI 2.6.0-s vagy újabb használatával kell lennie.
 
 ```azurecli-interactive
 az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment
 ```
 
-A sikertelen műveletek megtekintéséhez szűrési műveletek **sikertelen** állapottal.
+A sikertelen műveletek megtekintéséhez szűrje a Sikertelen **állapotot a műveletekre.**
 
 ```azurecli-interactive
 az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
 ```
 
-A sikertelen műveletek állapotjelző üzenetének lekéréséhez használja a következő parancsot:
+A sikertelen műveletek állapotüzenetének lekért üzenetét a következő paranccsal használhatja:
 
 ```azurecli-interactive
 az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
@@ -167,13 +167,13 @@ az deployment operation group list --resource-group ExampleGroup --name ExampleD
 
 # <a name="http"></a>[HTTP](#tab/http)
 
-Az üzembe helyezési műveletek beszerzéséhez használja a következő műveletet. A kérelemben használandó legújabb API-verzióhoz lásd: [Deployment Operations-List](/rest/api/resources/resources/deploymentoperations/list).
+Az üzembe helyezési műveletek lekért műveletéhez használja a következő műveletet. A kérelemben használt legújabb API-verziószámért lásd: Üzembe [helyezési műveletek – Lista.](/rest/api/resources/deploymentoperations/list)
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}
 ```
 
-A válasz egy hibaüzenetet tartalmaz.
+A válasz tartalmaz egy hibaüzenetet.
 
 ```json
 {
@@ -211,7 +211,6 @@ A válasz egy hibaüzenetet tartalmaz.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Az egyes telepítési hibák elhárításával kapcsolatos segítségért lásd: [gyakori hibák megoldása az erőforrások Azure-ba való telepítésekor a Azure Resource Manager használatával](common-deployment-errors.md).
-* Ha többet szeretne megtudni arról, hogy az üzembe helyezések hogyan kezelhetők az előzményekben, tekintse meg az [automatikus törlés a telepítési előzményekből](deployment-history-deletions.md)című témakört.
-* Az üzembe helyezés előtti ellenőrzéshez tekintse meg az [erőforráscsoport üzembe helyezése Azure Resource Manager sablonnal](deploy-powershell.md)című témakört.
-
+* Az egyes üzembe helyezési hibák elhárításával kapcsolatos segítségért tekintse meg az Erőforrások Azure-ba való üzembe helyezésekor a következővel kapcsolatos [gyakori Azure Resource Manager.](common-deployment-errors.md)
+* Az üzemelő példányok előzményeinek kezelése az Automatikus törlés az üzembe helyezési [előzményekből cikkből ismerkedik meg.](deployment-history-deletions.md)
+* Az üzemelő példány a végrehajtása előtt való ellenőrzéséhez lásd: Erőforráscsoport üzembe helyezése [Azure Resource Manager sablonnal.](deploy-powershell.md)

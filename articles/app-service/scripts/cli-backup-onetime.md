@@ -1,6 +1,6 @@
 ---
-title: 'CLI: alkalmazás biztonsági mentése'
-description: Ismerje meg, hogyan automatizálható az App Service-alkalmazás üzembe helyezése és kezelése az Azure CLI használatával. Ez a minta bemutatja, hogyan készíthet biztonsági mentést egy alkalmazásról.
+title: 'CLI: Alkalmazás biztonsági mentése'
+description: Megtudhatja, hogyan automatizálhatja az alkalmazás üzembe helyezését és felügyeletét az Azure CLI App Service használatával. Ez a példa bemutatja, hogyan lehet biztonságimentetni egy alkalmazásról.
 author: msangapu-msft
 tags: azure-service-management
 ms.devlang: azurecli
@@ -9,16 +9,16 @@ ms.date: 12/07/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 4f87e610c1f3315b21a9c157f127e713ff5444f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5771882e85c69ae54212b2ea8eb1e9482f27821
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98747542"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782638"
 ---
-# <a name="back-up-an-app-using-cli"></a>Alkalmazás biztonsági mentése a parancssori felületről
+# <a name="back-up-an-app-using-cli"></a>Alkalmazás biztonságimentációja a CLI használatával
 
-Ez a példa egy alkalmazást hoz létre App Service a kapcsolódó erőforrásokkal együtt, majd létrehoz egy egyszeri biztonsági mentést. 
+Ez a példaszkprogram létrehoz egy alkalmazást a App Service a kapcsolódó erőforrásokkal együtt, majd létrehoz hozzá egy egyszeres biztonsági mentést. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -38,14 +38,14 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Jegyzetek |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [`az storage account create`](/cli/azure/storage/account#az-storage-account-create) | Létrehoz egy tárfiókot. |
-| [`az storage container create`](/cli/azure/storage/container#az-storage-container-create) | Létrehoz egy Azure Storage-tárolót. |
-| [`az storage container generate-sas`](/cli/azure/storage/container#az-storage-container-generate-sas) | Létrehoz egy SAS-tokent egy Azure Storage-tárolóhoz.  |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Létrehoz egy App Service alkalmazást. |
-| [`az webapp config backup create`](/cli/azure/webapp/config/backup#az-webapp-config-backup-create) | Biztonsági másolatot készít egy App Service alkalmazásról. |
-| [`az webapp config backup list`](/cli/azure/webapp/config/backup#az-webapp-config-backup-list) | Lekéri egy App Service alkalmazás biztonsági másolatainak listáját. |
+| [`az group create`](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [`az storage account create`](/cli/azure/storage/account#az_storage_account_create) | Létrehoz egy tárfiókot. |
+| [`az storage container create`](/cli/azure/storage/container#az_storage_container_create) | Létrehoz egy Azure Storage-tárolót. |
+| [`az storage container generate-sas`](/cli/azure/storage/container#az_storage_container_generate_sas) | Létrehoz egy SAS-tokent egy Azure Storage-tárolóhoz.  |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | Létrehoz egy App Service-csomagot. |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | Létrehoz egy App Service alkalmazást. |
+| [`az webapp config backup create`](/cli/azure/webapp/config/backup#az_webapp_config_backup_create) | Biztonsági másolatot készít egy App Service alkalmazásról. |
+| [`az webapp config backup list`](/cli/azure/webapp/config/backup#az_webapp_config_backup_list) | Lekérte egy App Service biztonsági mentésének listáját. |
 
 ## <a name="next-steps"></a>Következő lépések
 
