@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 10/26/2020
-ms.openlocfilehash: 39012e1f5a0282da7dda6bab216719e31fdc5061
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 084f9aae16cfbf495f05c90c8244b2b9b71cf624
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752173"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812983"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>A biztonsági képességek Azure SQL Database SQL Managed Instance áttekintése
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -114,11 +114,11 @@ Ha például a ADO.NET illesztőt használja, ezt az  **Encrypt=True** és **a T
 
 A transzparens adattitkosítás [(TDE) SQL Database, SQL Managed Instance](transparent-data-encryption-tde-overview.md) és Azure Synapse Analytics egy biztonsági réteget biztosít, amely segít megvédeni az aktív adatokat a nyers fájlokhoz vagy biztonsági másolatokhoz való jogosulatlan vagy offline hozzáféréstől. Gyakori forgatókönyvek például az adatközpontok ellopása vagy a hardverek vagy adathordozók, például lemezmeghajtók és biztonságimásolat-szalagok nem biztonságos megsemmisítése.A TDE egy AES titkosítási algoritmussal titkosítja a teljes adatbázist, amely nem követeli meg, hogy az alkalmazásfejlesztők módosítanák a meglévő alkalmazásokat.
 
-Az Azure-ban alapértelmezés szerint minden újonnan létrehozott adatbázis titkosítva van, és az adatbázis-titkosítási kulcsot egy beépített kiszolgálói tanúsítvány védi.  A tanúsítványkarbantartást és a rotációt a szolgáltatás kezeli, és nem igényel felhasználói beavatkozást. Azok az ügyfelek, akik szeretnék át venni az irányítást a titkosítási kulcsok felett, a következő [Azure Key Vault.](../../key-vault/general/security-overview.md)
+Az Azure-ban alapértelmezés szerint minden újonnan létrehozott adatbázis titkosítva van, és az adatbázis-titkosítási kulcsot egy beépített kiszolgálói tanúsítvány védi.  A tanúsítványkarbantartást és a rotációt a szolgáltatás kezeli, és nem igényel felhasználói beavatkozást. Azok az ügyfelek, akik szeretnék át venni az irányítást a titkosítási kulcsok felett, a következő [Azure Key Vault.](../../key-vault/general/security-features.md)
 
 ### <a name="key-management-with-azure-key-vault"></a>Kulcskezelés Azure Key Vault
 
-[Bring Your Own Key](transparent-data-encryption-byok-overview.md) (BYOK) támogatása lehetővé teszi az [transzparens adattitkosítás](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) számára, hogy az azure-beli felhőalapú külső kulcskezelő rendszer, a Azure Key Vault használatával saját tulajdonba vegye a kulcskezelést és [a](../../key-vault/general/security-overview.md)rotációt. Ha visszavonják az adatbázis kulcstartóhoz való hozzáférését, az adatbázis nem lesz visszafejthető és nem olvasható be a memóriába. Azure Key Vault központi kulcskezelési platformot biztosít, szorosan figyelt hardveres biztonsági modulokat (HSM-eket) biztosít, és lehetővé teszi a kulcsok és adatok kezelése közötti feladatok elkülönítését a biztonsági megfelelőségi követelmények teljesítéséhez.
+[Bring Your Own Key](transparent-data-encryption-byok-overview.md) (BYOK) támogatása lehetővé teszi az [transzparens adattitkosítás](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) számára, hogy az azure-beli felhőalapú külső kulcskezelő rendszer, a Azure Key Vault használatával saját tulajdonba vegye a kulcskezelést és [a](../../key-vault/general/security-features.md)rotációt. Ha visszavonják az adatbázis kulcstartóhoz való hozzáférését, az adatbázis nem lesz visszafejthető és nem olvasható be a memóriába. Azure Key Vault központi kulcskezelési platformot biztosít, szorosan figyelt hardveres biztonsági modulokat (HSM-eket) biztosít, és lehetővé teszi a kulcsok és adatok kezelése közötti feladatok elkülönítését a biztonsági megfelelőségi követelmények teljesítéséhez.
 
 ### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (Használatban van titkosítás)
 

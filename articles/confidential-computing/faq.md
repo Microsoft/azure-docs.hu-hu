@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 05c98102109d1925eb78d4558faf62b366801e77
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: aa78d6495eeffd0ea733451e029f07413602ce0d
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538980"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812731"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Gyakori kérdések az Azure Confidential Computingról
 
@@ -32,7 +32,7 @@ Ha a cikk nem foglalkozik az Azure-ral kapcsolatos probléma megoldásával, ker
 
 **Minden operációsrendszer-lemezkép működni fog az Azure Confidential Computinggal?**
 
-Nem. A virtuális gépek csak Ubuntu Server 18.04, Ubuntu Server 16.04, Windows Server 2019 Datacenter és Windows Server 2016 Datacenter rendszert üzemeltető 2. generációs gépeken helyezhetők üzembe. További információ a 2. generációs virtuális gépekről [Linux és](../virtual-machines/generation-2.md) [Windows rendszeren](../virtual-machines/generation-2.md)
+Nem. A virtuális gépek csak Ubuntu Server 18.04, Ubuntu Server 20.04, Windows Server 2019 Datacenter és Windows Server 2016 Datacenter rendszert üzemeltető 2. generációs gépeken helyezhetők üzembe. További információ a 2. generációs virtuális gépekről [Linux és](../virtual-machines/generation-2.md) [Windows rendszeren](../virtual-machines/generation-2.md)
 
 **A DCsv2 virtuális gépek szürkén jelennek meg a portálon, és nem tudok kiválasztani egyet**
 
@@ -51,15 +51,15 @@ Győződjön meg arról, hogy egy elérhető [régiót választott.](https://azu
 
 **Használhatok ilyen Azure Dedicated Host gépekkel?**
 
-Igen. Azure Dedicated Host DCsv2-sorozatú virtuális gépek támogatása. Azure Dedicated Host egybérlős fizikai kiszolgálót biztosít a virtuális gépek futtatásához. A felhasználók általában Azure Dedicated Host a fizikai biztonsággal, az adatok integritásával és a monitorozásával kapcsolatos megfelelőségi követelmények teljesítésére. 
+Igen. Azure Dedicated Host DCsv2-sorozatú virtuális gépek támogatása. Azure Dedicated Host egybérlős fizikai kiszolgálót biztosít a virtuális gépek futtatásához. A felhasználók általában Azure Dedicated Host a fizikai biztonsággal, adatintegritásgal és monitorozásával kapcsolatos megfelelőségi követelmények teljesítésére. 
 
-**A következő Azure Resource Manager hiba jelenik meg: "A műveletet nem sikerült befejezni, mert túllépi a jóváhagyott szabványos DcsV2 család magkvótáját"**
+**A következő Azure Resource Manager hiba jelenik meg: "A műveletet nem sikerült befejezni, mert túllépte a jóváhagyott szabványos DcsV2-család magkvótáját"**
 
 [Hozzon létre egy támogatási kérést a kvóta növeléséhez.](../azure-portal/supportability/per-vm-quota-requests.md) Az ingyenes próbaverziós előfizetések nem tartalmaznak kvótát a bizalmas számítási virtuális gépekhez. 
 
 **Mi a különbség a virtuális gépek DCsv2-Series és DC-Series között?**
 
-DC-Series virtuális gépek régebbi, 6 magos Intel SGX processzorokkal futnak, és kevesebb memóriával és kevesebb Enklávé Lapgyorsítótár (EPC) memóriával rendelkezik, és csak két régióban érhetők el (az USA keleti régiójában és Nyugat-Európában az Standard_DC2s-ben és Standard_DC4s-méretekben). Ezeket a virtuális gépeket nem tervezik általánosan elérhetővé tenni, és éles környezetben való használatra nem ajánlottak. A virtuális gépek üzembe helyezéséhez használja a Confidential Compute virtuális  [DC-Series [előzetes verzió]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) Marketplace-példányt.
+DC-Series virtuális gépek régebbi, 6 magos Intel SGX processzorokkal futnak, és kevesebb memóriával, kevesebb Enklávé Lapgyorsítótár (EPC) memóriával rendelkezik, és csak két régióban érhetők el (az USA keleti régiójában és Nyugat-Európában az Standard_DC2s-ben és Standard_DC4s-méretekben). Ezeket a virtuális gépeket nem tervezi általánosan elérhetővé tenni, és nem ajánlott éles környezetben használni őket. A virtuális gépek üzembe helyezéséhez használja a Confidential Compute DC-Series  [[előzetes verzió]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) Marketplace-példányt.
 
 **Globálisan elérhetők a DCsv2 virtuális gépek?**
 
@@ -71,8 +71,8 @@ A hyper-threading le van tiltva az összes bizalmas Azure-számítástechnikai f
 
 **Hogyan az Open Enclave SDK-t a DCsv2 virtuális gépekre?**
    
-Ha útmutatásra van szükség az OE SDK Azure-beli vagy helyi gépen való telepítéséhez, kövesse az [Open Enclave SDK GitHubon található utasításokat.](https://github.com/openenclave/openenclave)
+Az OE SDK Azure-beli vagy helyi gépen való telepítésével kapcsolatos utasításokért kövesse az [Open Enclave SDK GitHubon található utasításokat.](https://github.com/openenclave/openenclave)
      
-Az Open Enclave SDK GitHubon az operációs rendszerre vonatkozó telepítési utasításokat is itt találja:
+Az Open Enclave SDK GitHubon az operációs rendszerre vonatkozó telepítési utasításokért is kaphat további részleteket:
    - [Az OE SDK telepítése Windows rendszeren](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md)
    - [Az OE SDK telepítése Ubuntu 18.04-re](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_18.04.md)

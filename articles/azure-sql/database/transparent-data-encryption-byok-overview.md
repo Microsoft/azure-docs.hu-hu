@@ -12,19 +12,19 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 02/01/2021
-ms.openlocfilehash: b812a3feaa900914ef5f16f2f72270d9b6008371
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: b3403558cbc07d152bbae7e901464a8aa4a8e4d2
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752941"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812767"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transzparens adattitkosítás ügyfél által kezelt kulccsal
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Azure SQL transzparens adattitkosítás kulcsokkal [(TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) való használata lehetővé teszi az Bring Your Own Key (BYOK) forgatókönyvének az adatokkal való védelmét, valamint lehetővé teszi a szervezetek számára a kulcsok és adatok kezelése során a feladatok elkülönítését. Az ügyfél által felügyelt transzparens adattitkosítással az ügyfél felelős a kulcs életciklusának kezeléséért (kulcs létrehozása, feltöltése, rotációja, törlése), a kulcshasználati engedélyekért és a kulcsokon végzett műveletek naplózásáért.
 
-Ebben a forgatókönyvben a TDE-védőnek nevezett adatbázistitkosítási kulcs (DEK) titkosításához használt kulcs egy ügyfél által felügyelt aszimmetrikus kulcs, amely egy ügyfél által birtokolt és ügyfél által felügyelt [Azure Key Vault (AKV)](../../key-vault/general/security-overview.md)felhőalapú külső kulcskezelő rendszerben van tárolva. Key Vault RSA titkosítási kulcsokhoz magas rendelkezésre áll és skálázható biztonságos tárolást biztosít, igény szerint a FIPS 140-2 2. szintje szerint ellenőrzött hardveres biztonsági modulok (HSM-ek) segítségével. Nem engedélyezi a tárolt kulcsok közvetlen hozzáférését, de titkosítási/visszafejtési szolgáltatásokat biztosít a kulcs használatával az engedélyezett entitások számára. A kulcsot a kulcstartó generálhatja, importálhatja vagy átviheti a kulcstartóba egy- vagy egy [on-prem HSM-eszközről.](../../key-vault/keys/hsm-protected-keys.md)
+Ebben a forgatókönyvben a TDE-védőnek nevezett adatbázistitkosítási kulcs (DEK) titkosításához használt kulcs egy ügyfél által felügyelt aszimmetrikus kulcs, amely egy ügyfél által birtokolt és ügyfél által felügyelt [Azure Key Vault (AKV)](../../key-vault/general/security-features.md)felhőalapú külső kulcskezelő rendszerben van tárolva. Key Vault RSA titkosítási kulcsokhoz magas rendelkezésre áll és skálázható biztonságos tárolást biztosít, igény szerint a FIPS 140-2 2. szintje szerint ellenőrzött hardveres biztonsági modulok (HSM-ek) segítségével. Nem engedélyezi a tárolt kulcsok közvetlen hozzáférését, de titkosítási/visszafejtési szolgáltatásokat biztosít a kulcs használatával az engedélyezett entitások számára. A kulcsot a kulcstartó generálhatja, importálhatja vagy átviheti a kulcstartóba egy- vagy egy [on-prem HSM-eszközről.](../../key-vault/keys/hsm-protected-keys.md)
 
 A Azure SQL Database és Azure Synapse Analytics A TDE-védő a kiszolgáló szintjén van beállítva, és a kiszolgálóhoz társított összes titkosított adatbázis örökli. A Azure SQL Managed Instance A TDE-védő a példány szintjén van beállítva, és a példány összes titkosított adatbázisa örökli. A *kiszolgáló kifejezés* a dokumentum SQL Database és Azure Synapse kiszolgálóira, valamint a dokumentumban SQL Managed Instance felügyelt példányra is vonatkozik, hacsak másként nincs megszabadulva.
 

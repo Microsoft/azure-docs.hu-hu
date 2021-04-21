@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: ad0936fddacf8f5b2e4917441f5feaa41aad9de4
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c7901dd4a238b27a31f95f1e22ddf9dc1ae5327a
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739799"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813063"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vészhelyreállítás a biztonsági mentés és visszaállítás használatával az Azure API Managementben
 
@@ -218,9 +219,9 @@ A visszaállítás egy hosszú ideig futó művelet, amely akár 30 vagy több p
 -   Amíg a biztonsági mentés folyamatban **van,** kerülje a szolgáltatás felügyeletének változásait, például a termékváltozat frissítését vagy visszalépését, a tartománynév változását stb.
 -   A biztonsági másolatok visszaállítása a létrehozás pillanata óta csak **30** napig garantált.
 -   **Előfordulhat,** hogy a biztonsági mentési művelet közben a szolgáltatás konfigurációján (például API-kon, szabályzatokon és a fejlesztői portálon) végrehajtott módosítások ki lesznek zárva a biztonsági mentésből, és **elvesznek.**
--   Ha az Azure [][azure-storage-ip-firewall] Storage-fiók engedélyezve van  a tűzfalon, az ügyfélnek engedélyeznie kell az Azure API Management vezérlősík [IP-címeinek][control-plane-ip-address] készletét a tárfiókjukban a biztonsági mentéshez vagy a visszaállításhoz. Az Azure Storage-fiók bármely Azure-régióban lehet, kivéve azt, ahol API Management szolgáltatás található. Ha például az API Management szolgáltatás az USA nyugati régiója, akkor az Azure Storage-fiók lehet az USA 2. nyugati régiója, és az ügyfélnek meg kell nyitnia a vezérlő 13.64.39.16 (API Management control Plane IP of West US) vezérlősíkját a tűzfalon. Ennek az az oka, hogy az Azure Storage-hoz való kérések nem egy nyilvános IP-címre vannak SNAT-n átvéve a Compute (Azure API Management vezérlősík) által ugyanabban az Azure-régióban. A régiók közötti tárolási kérések A nyilvános IP-címre lesznek SNAT-vé va.
+-   Ha az Azure [][azure-storage-ip-firewall] Storage-fiók engedélyezve van  a tűzfalon, az ügyfélnek engedélyeznie kell az Azure API Management vezérlősík [IP-címeinek][control-plane-ip-address] készletét a tárfiókjukban a biztonsági mentéshez vagy a visszaállításhoz. Az Azure Storage-fiók bármely Azure-régióban lehet, kivéve azt, ahol API Management szolgáltatás található. Ha például az API Management szolgáltatás az USA nyugati régiója, akkor az Azure Storage-fiók lehet az USA 2. nyugati régiója, és az ügyfélnek meg kell nyitnia a vezérlő 13.64.39.16 (API Management vezérlősík IP-címe az USA nyugati régiója) vezérlőt a tűzfalon. Ennek az az oka, hogy az Azure Storage-hoz való kérések nem egy nyilvános IP-címre vannak SNAT-n átvéve a Compute (Azure API Management vezérlősík) által ugyanabban az Azure-régióban. A régiók közötti tárolási kérelmeket a rendszer a nyilvános IP-címre fogja SNAT-vé tenni.
 -   [Az azure storage-fiók](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) blobszolgáltatásában ne legyen engedélyezve az eredetközi erőforrás-megosztás (CORS). 
--   **A helyre** visszaállított szolgáltatás termékváltozatának meg kell egyeznie a visszaállított biztonsági másolati szolgáltatás termékváltozatának. 
+-   **A helyre** visszaállított szolgáltatás termékváltozatának meg kell egyeznie a visszaállított biztonsági mentést eltárolt szolgáltatás termékváltozatának. 
 
 ## <a name="what-is-not-backed-up"></a>Miről nem történik biztonságimentás
 -   **Az elemzési** jelentések létrehozásához használt használati **adatok nem szerepelnek a** biztonsági másolatban. Az [Azure API Management REST API][azure api management rest api] rendszeres időközönként lekéri az elemzési jelentéseket a biztonság érdekében.
@@ -241,7 +242,7 @@ A biztonsági mentési/visszaállítási folyamat különböző útmutatóiért 
 -   [Azure-beli API Management fiókok replikálása](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [Az API Management biztonsági mentésének és helyreállításának automatizálása a Logic Apps használatával](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
 -   [Azure API Management: Konfiguráció biztonsági mentése és visszaállítása](/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration) 
-     A Rendszer által részletezett megközelítés nem felel meg a _hivatalos útmutatásnak, de érdekes._
+     _A The Point által részletezett megközelítés nem felel meg a hivatalos útmutatónak, de érdekes._
 
 [backup an api management service]: #step1
 [restore an api management service]: #step2

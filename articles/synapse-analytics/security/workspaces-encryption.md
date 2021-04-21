@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 11/19/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6ddafb0e76799e3d8011232534c505f97c79b22e
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 71249534c6a088088213659b5a45e042229721c7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751129"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813181"
 ---
 # <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Titkosítás Azure Synapse Analytics-munkaterületekhez
 
@@ -53,7 +53,7 @@ A munkaterületek konfigurálhatóak úgy, hogy az ügyfél által felügyelt ku
 
 ### <a name="key-access-and-workspace-activation"></a>Kulcs elérése és a munkaterület aktiválása
 
-Az Azure Synapse ügyfél által kezelt kulcsokkal való titkosítási modell magában foglalja, hogy a munkaterület hozzáfér a Azure Key Vault kulcsához, hogy szükség szerint titkosítsa és visszafejtsen. A kulcsok egy hozzáférési szabályzaton vagy [RBAC-hozzáférésen keresztül](../../key-vault/general/rbac-guide.md)érhetők el Azure Key Vault munkaterület számára. Amikor egy Azure Key Vault hozzáférési szabályzaton keresztül ad engedélyeket, válassza a ["Csak alkalmazás"](../../key-vault/general/security-overview.md#key-vault-authentication-options) lehetőséget a szabályzat létrehozása során (válassza ki a munkaterület felügyelt identitását, és ne adja hozzá hitelesített alkalmazásként).
+Az Azure Synapse ügyfél által kezelt kulcsokkal való titkosítási modell magában foglalja, hogy a munkaterület hozzáfér a Azure Key Vault kulcsához, hogy szükség szerint titkosítsa és visszafejtsen. A kulcsok egy hozzáférési szabályzaton vagy [RBAC-hozzáférésen keresztül](../../key-vault/general/rbac-guide.md)érhetők el Azure Key Vault munkaterület számára. Amikor egy Azure Key Vault hozzáférési szabályzaton keresztül ad engedélyeket, válassza a ["Csak alkalmazás"](../../key-vault/general/security-features.md#key-vault-authentication-options) lehetőséget a szabályzat létrehozása során (válassza ki a munkaterület felügyelt identitását, és ne adja hozzá hitelesített alkalmazásként).
 
  A munkaterület felügyelt identitásának rendelkeznie kell a szükséges engedélyekkel a kulcstartón a munkaterület aktiválása előtt. A munkaterület aktiválásának ezen szakaszos megközelítése biztosítja, hogy a munkaterületen lévő adatok titkosítása az ügyfél által felügyelt kulccsal történik. Vegye figyelembe, hogy a titkosítás engedélyezhető vagy letiltható dedikált SQL-készletek esetén – alapértelmezés szerint az egyes készletek titkosítása nincs engedélyezve.
 

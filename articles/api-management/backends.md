@@ -1,6 +1,6 @@
 ---
-title: Azure API Management-háttérrendszer | Microsoft Docs
-description: Ismerkedjen meg az egyéni háttérrendszer API Management
+title: Azure API Management háttérbeli | Microsoft Docs
+description: Tudnivalók az egyéni háttér API Management
 services: api-management
 documentationcenter: ''
 author: dlepow
@@ -9,33 +9,34 @@ ms.service: api-management
 ms.topic: article
 ms.date: 01/29/2021
 ms.author: apimpm
-ms.openlocfilehash: 54a46e999391507f5ec7d927f62b88fcd2169b75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a0ef3a2c1f2f1fc5cdf00737d1984f6cb13c40d0
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99500616"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813019"
 ---
-# <a name="backends-in-api-management"></a>A API Management hátterei
+# <a name="backends-in-api-management"></a>Háttér a API Management
 
-API Management egy *háttérrendszer* (vagy *API-háttér*) egy olyan http-szolgáltatás, amely megvalósítja az előtér-API-t és annak műveleteit.
+A *háttér* (vagy *API-háttér)* a API Management egy HTTP-szolgáltatás, amely megvalósítja az előtere API-t és annak műveleteit.
 
-Bizonyos API-k importálásakor a API Management automatikusan konfigurálja az API-hátteret. A API Management például a [OpenAPI-specifikáció](import-api-from-oas.md), a [SOAP API](import-soap-api.md)vagy az Azure-erőforrások, például egy http-triggeres [Azure-függvényalkalmazás](import-function-app-as-api.md) vagy [logikai alkalmazás](import-logic-app-as-api.md)importálásakor konfigurálja a hátteret.
+Bizonyos API-k importálása API Management konfigurálja az API-háttérprogramot. Például a API Management konfigurálja a háttéralkalmazást [openAPI-specifikáció,](import-api-from-oas.md) [SOAP API](import-soap-api.md)vagy Azure-erőforrások, például HTTP-eseményindítóval aktivált Azure-függvényalkalmazások vagy [logikai alkalmazások importálásakor.](import-logic-app-as-api.md) [](import-function-app-as-api.md)
 
-A API Management más Azure-erőforrások, például egy [Service Fabric-fürt](how-to-configure-service-fabric-backend.md) vagy egy egyéni szolgáltatás használatát is támogatja API-háttérként. Az egyéni háttérrendszer használata további konfigurálást igényel, például hogy hitelesítő adatokat engedélyezzen a háttérrendszer számára, és hogy definiálja az API-műveleteket. Ezeket a háttereket a Azure Portal, illetve az Azure API-k vagy eszközök használatával konfigurálhatja és kezelheti.
+API Management más Azure-erőforrások, például egy Service Fabric fürt vagy egy egyéni szolgáltatás [API-háttérszolgáltatásként](how-to-configure-service-fabric-backend.md) való használatát is támogatja. Ezeknek az egyéni háttérkiszolgálóknak a használatához további konfigurációra van szükség, például a háttérszolgáltatáshoz való kérések hitelesítő adatainak hitelesítéséhez és az API-műveletek meghatározásához. Ezeket a háttéreszközöket a Azure Portal Azure API-k vagy eszközök használatával konfigurálhatja és kezelheti.
 
-A háttérrendszer létrehozása után hivatkozhat a háttér URL-címére az API-kon. A [`set-backend-service`](api-management-transformation-policies.md#SetBackendService) házirend segítségével átirányíthat egy bejövő API-kérést az egyéni háttérrendszer helyett az adott API alapértelmezett háttérbe való átirányításához.
+A háttér létrehozása után hivatkozhat a háttérbeli URL-címre az API-kban. A szabályzat használatával átirányíthatja a bejövő API-kéréseket az egyéni háttérhez az API [`set-backend-service`](api-management-transformation-policies.md#SetBackendService) alapértelmezett háttérbeállítása helyett.
 
-## <a name="benefits-of-backends"></a>A háttérrendszer előnyei
+## <a name="benefits-of-backends"></a>A háttérbeli háttérbeliek előnyei
 
-Az egyéni háttérrendszer számos előnnyel jár, többek között:
+Az egyéni háttérnek számos előnye van, például:
 
-* Absztrakt információk a háttérrendszer-szolgáltatásról, az API-k újrahasználhatóságának elősegítése és a jobb irányítás  
-* Egyszerű használat egy átalakítási szabályzat konfigurálásával egy meglévő API-ra
-* Kihasználja API Management funkcióinak előnyeit, hogy megőrizze a titkokat Azure Key Vault ha [nevesített értékek](api-management-howto-properties.md) vannak konfigurálva a fejléc vagy a lekérdezési paraméter hitelesítéséhez
+* A háttérszolgáltatással kapcsolatos információk absztrakciója, az API-k újrahasználhatóságának elősegítése és a továbbfejlesztett irányítás  
+* Könnyen használható egy meglévő API átalakítási szabályzatának konfigurálásával
+* Kihasználja a API Management funkcióit a titkos kulcsok Azure Key Vault ha [nevestűs](api-management-howto-properties.md) értékek vannak konfigurálva a fejléc- vagy lekérdezésparaméter-hitelesítéshez
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Service Fabric háttér](how-to-configure-service-fabric-backend.md) beállítása a Azure Portal használatával.
-* A háttérrendszer a API Management [REST API](/rest/api/apimanagement), a [Azure PowerShell](/powershell/module/az.apimanagement/new-azapimanagementbackend)vagy a [Azure Resource Manager sablonok](../service-fabric/service-fabric-tutorial-deploy-api-management.md)használatával is konfigurálható.
+* Állítson be [Service Fabric háttérkészletet](how-to-configure-service-fabric-backend.md) a Azure Portal.
+* A háttér is konfigurálható a következő sablonokkal: , API Management [REST API,](/rest/api/apimanagement) [Azure PowerShell](/powershell/module/az.apimanagement/new-azapimanagementbackend)vagy [Azure Resource Manager .](../service-fabric/service-fabric-tutorial-deploy-api-management.md)
 

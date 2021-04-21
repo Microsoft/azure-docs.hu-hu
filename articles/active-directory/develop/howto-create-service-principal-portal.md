@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 621bd392c12bb6ef1269eaed4731063490664f7e
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 3ccc340727a437b3b1e953ea5e742ecdf7f21d40
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750787"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814081"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: Az erőforrásokhoz hozzáférő Azure AD-alkalmazás és -szolgáltatásnév létrehozása a portálon
 
@@ -182,7 +182,7 @@ Ha úgy dönt, hogy nem használ tanúsítványt, létrehozhat egy új titkos al
    ![Másolja ki a titkos adatokat, mert ezt később nem tudja lekérni](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>Erőforrás-hozzáférési szabályzatok konfigurálása
-Ne feledje, hogy előfordulhat, hogy további engedélyeket kell konfigurálnia az olyan erőforrásokhoz, amelyekhez az alkalmazásnak hozzá kell férni. Frissítenie kell például [a kulcstartó](../../key-vault/general/security-overview.md#privileged-access) hozzáférési szabályzatait is, hogy hozzáférést biztosítson az alkalmazásnak a kulcsokhoz, titkos kulcsokhoz vagy tanúsítványokhoz.
+Ne feledje, hogy előfordulhat, hogy további engedélyeket kell konfigurálnia az olyan erőforrásokhoz, amelyekhez az alkalmazásnak hozzá kell férni. Frissítenie kell például [a kulcstartó](../../key-vault/general/security-features.md#privileged-access) hozzáférési szabályzatait is, hogy hozzáférést biztosítson az alkalmazásnak a kulcsokhoz, titkos kulcsokhoz vagy tanúsítványokhoz.
 
 1. A <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>nyissa meg a kulcstartót, és válassza a **Hozzáférési szabályzatok lehetőséget.**
 1. Válassza **a Hozzáférési szabályzat hozzáadása lehetőséget,** majd válassza ki az alkalmazásnak meg adni kívánt kulcsot, titkos kulcsot és tanúsítványengedélyeket.  Válassza ki a korábban létrehozott egyszerű szolgáltatást.
