@@ -1,51 +1,51 @@
 ---
 title: Az Azure által delegált erőforrás-kezelés
-description: Az Azure-beli delegált erőforrás-kezelés az Azure világítótorony egyik kulcsfontosságú része, amely lehetővé teszi a szolgáltatók számára, hogy a nagy mennyiségű, rugalmasságot és pontosságot biztosító, felügyelt erőforrásokat kezelje.
+description: Az Azure-beli delegált erőforrás-kezelés kulcsfontosságú része a Azure Lighthouse, lehetővé téve a szolgáltatók számára a delegált erőforrások nagy léptékben, agilis és precíz kezelését.
 ms.date: 10/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: d484e61fc4ab3714eb362b26d64d449890065888
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93a3de257fe88de4915eff3582ff38fc03ef380e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92203857"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767762"
 ---
 # <a name="azure-delegated-resource-management"></a>Az Azure által delegált erőforrás-kezelés
 
-Az Azure-beli delegált erőforrás-kezelés az [Azure Lighthouse](../overview.md)egyik fő összetevője. Az Azure-beli delegált erőforrás-kezeléssel a szolgáltatók egyszerűsíthetik az ügyfelek bevonását és a bevezetést, miközben a delegált erőforrásokat a rugalmassággal és a pontossággal kezelik. Az ügyfelek szabályozzák, hogy mely szolgáltatók férhetnek hozzá a bérlőhöz, így az ügyfelek szabályozzák, hogy ki férhet hozzá a bérlőhöz, milyen erőforrásokhoz férhetnek hozzá, és milyen műveleteket lehet elvégezni.
+Az Azure-beli delegált erőforrás-kezelés az egyik fő összetevője a [Azure Lighthouse.](../overview.md) Az Azure-beli delegált erőforrás-kezelés segítségével a szolgáltatók leegyszerűsítik az ügyfelek bevonása és a bevezetés élményét, miközben a delegált erőforrásokat nagy méretekben, agilis és precízen kezelik. Az ügyfelek szabályozni tudják, hogy ki férhet hozzá a bérlőhöz, milyen erőforrásokhoz férhetnek hozzá, és milyen műveleteket lehet tenni.
 
-## <a name="what-is-azure-delegated-resource-management"></a>Mi az Azure-beli delegált erőforrás-kezelés?
+## <a name="what-is-azure-delegated-resource-management"></a>Mi az az Azure által delegált erőforrás-kezelés?
 
-Az Azure-beli delegált erőforrás-kezelés lehetővé teszi az erőforrások logikai kivetítését az egyik bérlőről egy másik bérlőre. Ez lehetővé teszi, hogy az egy Azure Active Directory (Azure AD) bérlő jogosult felhasználóinak felügyeleti műveleteket hajtsanak végre az ügyfelekhez tartozó különböző Azure AD-bérlők között. A szolgáltatók bejelentkezhetnek a saját Azure AD-bérlőbe, és engedéllyel rendelkeznek a delegált ügyfél-előfizetések és-erőforráscsoportok működéséhez. Ez lehetővé teszi, hogy az ügyfeleik nevében felügyeleti műveleteket végezzenek, anélkül, hogy be kellene jelentkezniük az egyes ügyfelek bérlői számára.
+Az Azure-beli delegált erőforrás-kezelés lehetővé teszi az erőforrások logikai leképezését az egyik bérlőről egy másik bérlőre. Ez lehetővé teszi, hogy az egyik Azure Active Directory (Azure AD-bérlő) jogosult felhasználói felügyeleti műveleteket végezzenek az ügyfeleikhez tartozó különböző Azure AD-bérlőkben. A szolgáltatók bejelentkezhet a saját Azure AD-bérlőjükbe, és engedélyt kaphatnak a delegált ügyfél-előfizetésekkel és erőforráscsoportokkal való munkára. Ez lehetővé teszi számukra, hogy felügyeleti műveleteket végezzenek az ügyfeleik nevében anélkül, hogy minden egyes ügyfélbérlőbe be kellene jelentkezniük.
 
 > [!TIP]
-> Az Azure-beli delegált erőforrás-kezelés [olyan vállalaton belül is felhasználható, amely több Azure ad-Bérlővel rendelkezik](enterprise.md) a bérlők közötti felügyelet egyszerűsítése érdekében.
+> Az Azure-beli delegált erőforrás-kezelés olyan vállalaton belül is használható, amely több [Azure AD-bérlővel](enterprise.md) rendelkezik a bérlők közötti felügyelet egyszerűsítése érdekében.
 
-Az Azure delegált erőforrás-kezelési szolgáltatással az engedélyezett felhasználók közvetlenül az ügyfél-előfizetés kontextusában dolgozhatnak, anélkül, hogy az ügyfél bérlője fiókjával vagy az ügyfél bérlője társtulajdonosa.
+Az Azure által delegált erőforrás-kezelés segítségével a jogosult felhasználók közvetlenül az ügyfél-előfizetés környezetében dolgozhatnak anélkül, hogy fiókkal rendelkező ügyfél bérlőjéhez vagy az ügyfél bérlőjéhez társtulajdonosa volna.
 
-A több [-bérlős felügyeleti felület](cross-tenant-management-experience.md) lehetővé teszi, hogy hatékonyabban működjön együtt az Azure felügyeleti szolgáltatásaival, például a Azure Policy, a Azure Security Center és más szolgáltatásokkal. Az összes szolgáltatói tevékenységet nyomon követik a tevékenység naplójában, amelyet az ügyfél bérlője tárol (és megtekintheti a bérlők felügyelete alatt lévő felhasználók). Ez azt jelenti, hogy a felügyelet és a felügyelt bérlőben lévő felhasználók könnyen azonosíthatják a módosításokhoz kapcsolódó felhasználókat.
+A [több-bérlős felügyeleti](cross-tenant-management-experience.md) funkcióval hatékonyabban dolgozhat olyan Azure-beli felügyeleti szolgáltatásokkal, mint Azure Policy, Azure Security Center stb. A rendszer minden szolgáltatói tevékenységet nyomon követ a tevékenységnaplóban, amelyet az ügyfél bérlője tárol (és a kezelő bérlő felhasználói megtekinthetik). Ez azt jelenti, hogy a felügyelet és a felügyelt bérlő felhasználói könnyen azonosítják a változásokhoz társított felhasználót.
 
-[Az új felügyelt szolgáltatási ajánlat típusát az Azure Marketplace](../how-to/publish-managed-services-offers.md) -en teheti közzé, így egyszerűen bevezetheti az ügyfeleket az Azure Lighthouse szolgáltatásba. Azt is megteheti, hogy [a bevezetési folyamatot Azure Resource Manager sablonok üzembe helyezésével hajtja végre](../how-to/onboard-customer.md).
+[Közzéteheti az új felügyeltszolgáltatás-ajánlattípust, hogy Azure Marketplace](../how-to/publish-managed-services-offers.md) az ügyfeleket a Azure Lighthouse. Alternatív megoldásként az üzembe helyezési folyamatot is befejezheti, ha üzembe Azure Resource Manager [sablonokat.](../how-to/onboard-customer.md)
 
-## <a name="how-azure-delegated-resource-management-works"></a>Az Azure-beli delegált erőforrás-kezelés működése
+## <a name="how-azure-delegated-resource-management-works"></a>Az Azure által delegált erőforrás-kezelés működése
 
-Magas szinten a következőképpen működik az Azure-beli delegált erőforrás-kezelés:
+Az Azure által delegált erőforrás-kezelés működése magas szinten a következő:
 
-1. Először azonosítania kell a csoportoknak, a szolgáltatásoknak vagy a felhasználóknak az ügyfél Azure-erőforrásainak felügyeletéhez szükséges hozzáférési jogosultságokat (szerepköröket). A hozzáférési definíció tartalmazza a bérlő AZONOSÍTÓját, valamint a bérlő **principalId** -identitásait a [beépített **definíciós** -értékekre](../../role-based-access-control/built-in-roles.md) (közreműködő, VM közreműködő, olvasó stb.).
-2. Ezt a hozzáférést és az ügyfelet az Azure Lighthouse-be a következő két módszer egyikével adhatja meg:
-   - Az ügyfél által elfogadásra kerülő [Azure Marketplace-beli felügyelt szolgáltatási ajánlat](../how-to/publish-managed-services-offers.md) (privát vagy nyilvános) közzététele
-   - [Azure Resource Manager-sablon üzembe helyezése az ügyfél bérlője](../how-to/onboard-customer.md) számára egy vagy több konkrét előfizetés vagy erőforráscsoport esetén
+1. Először meg kell határoznia a hozzáférést (szerepköröket), amelyekre a csoportoknak, szolgáltatásnévnek vagy felhasználóknak az ügyfél Azure-erőforrásainak kezeléséhez szükségük lesz. A hozzáférési definíció tartalmazza a kezelő bérlőazonosítót, valamint a bérlőből származó **principalId** identitásokat, amelyek beépített [ **roleDefinition** értékekre](../../role-based-access-control/built-in-roles.md) (Közreműködő, Virtuális gép közreműködője, Olvasó stb.) leképezve.
+2. Ezt a hozzáférést kell megadnia, és az ügyfél Azure Lighthouse kétféleképpen:
+   - [Az ügyfél által Azure Marketplace (privát](../how-to/publish-managed-services-offers.md) vagy nyilvános) felügyelt szolgáltatási ajánlat közzététele
+   - [Üzembe helyezhet Azure Resource Manager sablont](../how-to/onboard-customer.md) az ügyfél bérlője számára egy vagy több adott előfizetéshez vagy erőforráscsoporthoz
 
-3. Az ügyfél bevezetését követően a jogosult felhasználók bejelentkezhetnek a felügyeleti bérlőbe, és feladatokat végezhetnek el a megadott ügyfél-hatókörben a megadott hozzáférés alapján. Az ügyfelek áttekinthetik a szolgáltatói műveleteket, és szükség esetén törölhetik a hozzáférést.
+3. Az ügyfél regisztrációja után az arra jogosult felhasználók bejelentkeznek a bérlőbe, és az Ön által meghatározott hozzáférés alapján az adott ügyfélhatókörben hajthat végre feladatokat. Az ügyfelek áttekinthetik a szolgáltatói műveleteket, és szükség esetén eltávolíthatják a hozzáférést.
 
 > [!NOTE]
-> A különböző [régiókban](../../availability-zones/az-overview.md#regions)található delegált erőforrásokat is kezelheti. Azonban az előfizetések delegálása egy [nemzeti felhőben](../../active-directory/develop/authentication-national-cloud.md) és az Azure nyilvános felhőben, vagy két külön nemzeti felhők között nem támogatott.
+> A különböző régiókban található delegált erőforrásokat [kezelheti.](../../availability-zones/az-overview.md#regions) Az előfizetések delegálása azonban az országos felhőben és [az](../../active-directory/develop/authentication-national-cloud.md) Azure nyilvános felhőben, illetve két különálló országos felhőben nem támogatott.
 
-## <a name="support-for-azure-delegated-resource-management"></a>Azure-beli delegált erőforrás-kezelés támogatása
+## <a name="support-for-azure-delegated-resource-management"></a>Az Azure-beli delegált erőforrás-kezelés támogatása
 
-Ha segítségre van szüksége az Azure-beli delegált erőforrás-kezeléshez, egy támogatási kérést is megnyithat a Azure Portal. A **probléma típusa** beállításnál válassza a **technikai** lehetőséget. Válasszon ki egy előfizetést, majd válassza a **világítótorony** lehetőséget (a **figyelés & felügyelet** alatt).
+Ha segítségre van szüksége az Azure által delegált erőforrás-kezeléshez, nyisson egy támogatási kérést a Azure Portal. A **Probléma típusaként válassza** a Technikai **lehetőséget.** Válasszon ki egy előfizetést, majd válassza a **Lighthouse** lehetőséget (a **Monitoring & Management alatt).**
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [bérlők közötti felügyeleti élményekről](cross-tenant-management-experience.md).
-- Ismerje meg a [felügyelt szolgáltatások ajánlatait az Azure Marketplace-](managed-services-offers.md)en.
+- Ismerje meg [a bérlők közötti felügyeleti élményt.](cross-tenant-management-experience.md)
+- További információ [a felügyelt szolgáltatási ajánlatokról a Azure Marketplace.](managed-services-offers.md)

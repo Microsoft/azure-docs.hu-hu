@@ -1,6 +1,6 @@
 ---
-title: 'CLI: ütemezett biztonsági mentés létrehozása'
-description: Ismerje meg, hogyan automatizálható az App Service-alkalmazás üzembe helyezése és kezelése az Azure CLI használatával. Ez a példa bemutatja, hogyan hozhat létre ütemezett biztonsági mentést egy alkalmazáshoz.
+title: 'CLI: Ütemezett biztonsági mentés létrehozása'
+description: Megtudhatja, hogyan automatizálhatja a saját alkalmazás üzembe helyezését és felügyeletét az Azure CLI App Service használatával. Ez a példa bemutatja, hogyan hozhat létre ütemezett biztonsági mentést egy alkalmazáshoz.
 author: msangapu-msft
 tags: azure-service-management
 ms.devlang: azurecli
@@ -9,16 +9,16 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 500ac99cd35cfdf601be75a19a1d43f84795cbe8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db1d0558f93b203af1605663533847d32afbcffb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006424"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782548"
 ---
-# <a name="create-a-scheduled-backup-for-an-app-service-app-using-cli"></a>Ütemezett biztonsági mentés létrehozása egy App Service-alkalmazáshoz a parancssori felület használatával
+# <a name="create-a-scheduled-backup-for-an-app-service-app-using-cli"></a>Ütemezett biztonsági mentés létrehozása egy App Service alkalmazáshoz a CLI használatával
 
-Ez a példa egy alkalmazást hoz létre App Service a kapcsolódó erőforrásokkal együtt, majd létrehoz egy ütemezett biztonsági mentést. 
+Ez a példaszk szkript létrehoz egy alkalmazást a App Service kapcsolódó erőforrásokkal együtt, majd ütemezett biztonsági mentést készít hozzá. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -38,15 +38,15 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Jegyzetek |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [`az storage account create`](/cli/azure/storage/account#az-storage-account-create) | Létrehoz egy tárfiókot. |
-| [`az storage container create`](/cli/azure/storage/container#az-storage-container-create) | Létrehoz egy Azure Storage-tárolót. |
-| [`az storage container generate-sas`](/cli/azure/storage/container#az-storage-container-generate-sas) | Létrehoz egy SAS-tokent egy Azure Storage-tárolóhoz.  |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Létrehoz egy App Service alkalmazást. |
-| [`az webapp config backup update`](/cli/azure/webapp/config/backup#az-webapp-config-backup-update) | Új biztonsági mentési ütemtervet konfigurál egy App Service alkalmazáshoz. |
-| [`az webapp config backup show`](/cli/azure/webapp/config/backup#az-webapp-config-backup-show) | Egy App Service alkalmazás biztonsági mentési ütemtervét jeleníti meg. |
-| [`az webapp config backup list`](/cli/azure/webapp/config/backup#az-webapp-config-backup-list) | Lekéri egy App Service alkalmazás biztonsági másolatainak listáját. |
+| [`az group create`](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [`az storage account create`](/cli/azure/storage/account#az_storage_account_create) | Létrehoz egy tárfiókot. |
+| [`az storage container create`](/cli/azure/storage/container#az_storage_container_create) | Létrehoz egy Azure Storage-tárolót. |
+| [`az storage container generate-sas`](/cli/azure/storage/container#az_storage_container_generate_sas) | Létrehoz egy SAS-tokent egy Azure Storage-tárolóhoz.  |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | Létrehoz egy App Service-csomagot. |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | Létrehoz egy App Service alkalmazást. |
+| [`az webapp config backup update`](/cli/azure/webapp/config/backup#az_webapp_config_backup_update) | Új biztonsági mentési ütemezést konfigurál egy App Service alkalmazáshoz. |
+| [`az webapp config backup show`](/cli/azure/webapp/config/backup#az_webapp_config_backup_show) | Megjeleníti a biztonsági mentés ütemezését egy App Service alkalmazáshoz. |
+| [`az webapp config backup list`](/cli/azure/webapp/config/backup#az_webapp_config_backup_list) | Lekérte egy alkalmazás biztonsági mentésének App Service listáját. |
 
 ## <a name="next-steps"></a>Következő lépések
 

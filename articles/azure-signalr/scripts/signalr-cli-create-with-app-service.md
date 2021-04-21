@@ -1,6 +1,6 @@
 ---
-title: Szignáló szolgáltatás létrehozása App Service az Azure CLI használatával
-description: Használja az Azure CLI-t a Signal Service App Service használatával történő létrehozásához. Az Azure Signaler szolgáltatás összes CLI-parancsának megismerése.
+title: Új SignalR Service létrehozása App Service Azure CLI használatával
+description: Az Azure CLI használatával hozzon létre SignalR Service-App Service. Ismerje meg az összes parancssori felületi Azure SignalR Service.
 author: sffamily
 ms.service: signalr
 ms.devlang: azurecli
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 673a3583b1ec80fb3ad61ec35a1786a59939f6e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e6e2484dc7fffdcecb64ef3b3afa3a7a4343d29c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94563324"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787304"
 ---
 # <a name="create-a-signalr-service-with-an-app-service"></a>SignalR szolgáltatási erőforrás létrehozása App Service-szel
 
@@ -23,7 +23,7 @@ Ez a példaszkript létrehoz egy új Azure SignalR szolgáltatási erőforrást,
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - Az oktatóanyaghoz az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+ - Az oktatóanyaghoz az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -80,12 +80,12 @@ A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatk
 
 | Parancs | Jegyzetek |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az signalr create](/cli/azure/signalr#az-signalr-create) | Létrehoz egy Azure SignalR szolgáltatási erőforrást. |
-| [az signalr key list](/cli/azure/signalr/key#az-signalr-key-list) | Felsorolja az alkalmazás által a tartalomfrissítések SignalRrel történő valós idejű leküldése során használt kulcsokat. |
-| [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) | Létrehoz egy webalkalmazások futtatására szolgáló Azure App Service-csomagot. |
-| [az webapp create](/cli/azure/webapp#az-webapp-create) | Létrehoz egy Azure-webalkalmazást az App Service futtatási csomaggal. |
-| [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | Hozzáad egy új alkalmazásbeállítást a webalkalmazáshoz. Ez az alkalmazásbeállítás a SignalR kapcsolati sztring tárolására szolgál. |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az signalr create](/cli/azure/signalr#az_signalr_create) | Létrehoz egy Azure SignalR szolgáltatási erőforrást. |
+| [az signalr key list](/cli/azure/signalr/key#az_signalr_key_list) | Felsorolja az alkalmazás által a tartalomfrissítések SignalRrel történő valós idejű leküldése során használt kulcsokat. |
+| [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) | Létrehoz egy webalkalmazások futtatására szolgáló Azure App Service-csomagot. |
+| [az webapp create](/cli/azure/webapp#az_webapp_create) | Létrehoz egy Azure-webalkalmazást az App Service futtatási csomaggal. |
+| [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | Hozzáad egy új alkalmazásbeállítást a webalkalmazáshoz. Ez az alkalmazásbeállítás a SignalR kapcsolati sztring tárolására szolgál. |
 
 ## <a name="next-steps"></a>Következő lépések
 

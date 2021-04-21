@@ -1,94 +1,94 @@
 ---
 title: Azure-függvények fejlesztése a Visual Studióval
-description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functionseket a Visual Studio 2019 Azure Functions Tools használatával.
+description: Megtudhatja, hogyan fejleszthet és tesztelhet Azure Functions a Azure Functions Tools for Visual Studio 2019 használatával.
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 877c82e375b0ea469071402b83fadbd634177f3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2cba0a9ad63e319af0a5eaa1c1c018c3b285c28a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97655815"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765574"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Azure-függvények fejlesztése a Visual Studióval  
 
-A Visual Studio lehetővé teszi a C# Class Library-függvények fejlesztését, tesztelését és üzembe helyezését az Azure-ban. Ha ez a felhasználói élmény Azure Functions, tekintse meg a [Azure functions bemutatása](functions-overview.md)című témakört.
+Visual Studio C#-osztálytár függvényeket fejleszthet, tesztelhet és helyezhet üzembe az Azure-ban. Ha ez az első lépés a Azure Functions, tekintse meg [a bevezetést a Azure Functions.](functions-overview.md)
 
-A Visual Studio a következő előnyöket biztosítja a függvények fejlesztésekor: 
+Visual Studio függvények fejlesztésekor a következő előnyöket biztosítja: 
 
-* Függvények szerkesztése, létrehozása és futtatása a helyi fejlesztői számítógépen. 
-* Tegye közzé a Azure Functions projektet közvetlenül az Azure-ban, és szükség szerint hozzon létre Azure-erőforrásokat. 
-* C#-attribútumok használatával deklarálhatja a függvény kötéseit közvetlenül a C#-kódban.
-* Előre lefordított C# függvények fejlesztése és üzembe helyezése. Az előzetesen teljesített függvények jobb hidegindító teljesítményt nyújtanak, mint a C# parancsfájl-alapú függvények. 
-* A függvények C# nyelven való kódolása a Visual Studio-fejlesztés összes előnyének kihasználásával. 
+* Függvények szerkesztése, összeállítása és futtatása a helyi fejlesztői számítógépen. 
+* Tegye közzé Azure Functions projektjét közvetlenül az Azure-ban, és szükség szerint hozzon létre Azure-erőforrásokat. 
+* C#-attribútumokkal deklarálhatja a függvénykötéseket közvetlenül a C#-kódban.
+* Előre lefordított C#-függvények fejlesztése és üzembe helyezése. Az előre megfelelt függvények jobb hideg indítási teljesítményt biztosítanak, mint a C#-szkriptalapú függvények. 
+* A függvények C#-ban való megkódlása a fejlesztés Visual Studio előnyeivel. 
 
-Ez a cikk részletesen ismerteti, hogyan használható a Visual Studio a C# Class Library-függvények fejlesztéséhez és az Azure-ban való közzétételéhez. A cikk elolvasása előtt érdemes lehet befejezni a [Visual Studio functions](functions-create-your-first-function-visual-studio.md)rövid útmutatóját. 
+Ez a cikk részletesen bemutatja, hogyan használhatók Visual Studio C#-osztálytári függvények fejlesztésére és az Azure-ban való közzétételére. Mielőtt elolvassa ezt a cikket, fontolja meg a Függvények rövid [útmutató elvégzését a Visual Studio.](functions-create-your-first-function-visual-studio.md) 
 
-Hacsak másként nincs jelezve, az eljárások és a példák a Visual Studio 2019-re vonatkoznak. 
+Hacsak másként nincs jelezve, a bemutatott eljárások és példák 2019 Visual Studio re szolgálnak. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure Functions eszközök. Az Azure Function Tools hozzáadásához vegye fel az **Azure-fejlesztési** számítási feladatokat a Visual Studio-telepítésbe. Azure Functions eszközök a Visual Studio 2017-től kezdődően az Azure-fejlesztési számítási feladatban érhetők el.
+- Azure Functions Tools. Az Azure-függvényeszközök hozzáadásához foglalja bele az **Azure-fejlesztési** számítási feladatot a Visual Studio telepítésbe. Azure Functions Tools a 2017-es Visual Studio kezdve érhető el az Azure-fejlesztési számítási feladatban.
 
-- A közzétételi folyamat során a szükséges egyéb erőforrások, például az Azure Storage-fiókok az előfizetésben jönnek létre.
+- A többi szükséges erőforrás, például egy Azure Storage-fiók, a közzétételi folyamat során jön létre az előfizetésében.
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 > [!NOTE]
-> A Visual Studio 2017-es verziójában az Azure-fejlesztési munkaterhelés külön bővítményként telepíti Azure Functions eszközöket. A Visual Studio 2017 telepítésének frissítésekor ellenőrizze, hogy a Azure Functions eszközök [legújabb verzióját](#check-your-tools-version) használja-e. A következő részben bemutatjuk, hogyan lehet megtekinteni és (ha szükséges) frissíteni a Azure Functions Tools bővítményt a Visual Studio 2017-ben. 
+> 2017 Visual Studio ban az Azure-fejlesztési számítási feladat külön Azure Functions telepíti a Azure Functions Toolst. Amikor frissíti a Visual Studio 2017-es verziójának telepítését, [](#check-your-tools-version) győződjön meg arról, hogy az Azure Functions legújabb verzióját használja. A következő szakaszok azt mutatják be, hogyan ellenőrizheti és frissítheti a Azure Functions Tools bővítményt a 2017-es Visual Studio frissítéséhez. 
 >
-> Ha a Visual Studio 2019-et használja, ugorja át ezeket a szakaszt.
+> Ha a 2019-es Visual Studio használja, hagyja ki ezeket a szakaszokat.
 
-### <a name="check-your-tools-version-in-visual-studio-2017"></a><a name="check-your-tools-version"></a>Tekintse meg az eszközök verzióját a Visual Studio 2017-ben
+### <a name="check-your-tools-version-in-visual-studio-2017"></a><a name="check-your-tools-version"></a>Ellenőrizze az eszközök verzióját a 2017-es Visual Studio verzióban
 
-1. A **Tools (eszközök** ) menüben válassza a **bővítmények és frissítések** lehetőséget. Bontsa ki a **telepített**  >  **eszközök** csomópontot, majd válassza a **Azure functions és a web Jobs-eszközök** elemet.
+1. Az Eszközök **menüben** válassza a **Bővítmények és frissítések elemet.** **Bontsa ki az Installed** Tools (Telepített eszközök) et, majd Azure Functions a Web Jobs Tools  >   **(Web jobs-eszközök) et.**
 
-    ![A functions Tools verziójának ellenőrzése](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
+    ![A Functions-eszközök verziójának ellenőrzése](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
-1. Jegyezze fel a telepített **verziót** , és hasonlítsa össze ezt a verziót a [kibocsátási megjegyzésekben](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md)felsorolt legújabb verzióval. 
+1. Jegyezze fel a **telepített verziót,** és hasonlítsa össze ezt a verziót a kibocsátási [megjegyzésekben felsorolt legújabb verzióval.](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md) 
 
-1. Ha régebbi verziójú, frissítse az eszközöket a Visual Studióban, ahogy az a következő szakaszban is látható.
+1. Ha a verziója régebbi, frissítse az eszközöket a Visual Studio a következő szakaszban látható módon.
 
-### <a name="update-your-tools-in-visual-studio-2017"></a>Eszközök frissítése a Visual Studio 2017-ban
+### <a name="update-your-tools-in-visual-studio-2017"></a>Az eszközök frissítése Visual Studio 2017-ben
 
-1. A **bővítmények és frissítések** párbeszédpanelen bontsa ki a **frissítések**  >  **Visual Studio Marketplace**, majd a **Azure functions és a webjobs-eszközök** elemet, és válassza a **frissítés** lehetőséget.
+1. A Bővítmények **és frissítések párbeszédpanelen bontsa** ki a **Frissítések** Visual Studio Marketplace gombra, válassza a Azure Functions  >  és a Web Jobs Tools **gombra,** és válassza a **Frissítés lehetőséget.**
 
-    ![A functions Tools verziójának frissítése](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
+    ![A Functions-eszközök verziójának frissítése](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
 
-1. Miután letöltötte az eszközök frissítését, válassza a **Bezárás** lehetőséget, majd a Visual Studió bezárásával aktiválja az eszközök frissítését a VSIX Installer használatával.
+1. Az eszközök frissítésének letöltése után válassza a Bezárás lehetőséget, majd zárja be a Visual Studio az eszközfrissítést a VSIX-telepítővel.
 
-1. A VSIX-telepítőben válassza a **módosítás** lehetőséget az eszközök frissítéséhez. 
+1. Az eszközök frissítéséhez a VSIX-telepítőben válassza a **Módosítás** lehetőséget. 
 
-1. A frissítés befejezése után kattintson a **Bezárás** gombra, majd indítsa újra a Visual studiót.
+1. A frissítés befejezése után válassza a **Bezárás** lehetőséget, majd indítsa újra a Visual Studio.
 
 > [!NOTE]  
-> A Visual Studio 2019-es és újabb verzióiban a Azure Functions Tools bővítmény a Visual Studio részeként frissül.  
+> A Visual Studio 2019-es és újabb Azure Functions az Visual Studio.  
 
 ## <a name="create-an-azure-functions-project"></a>Azure Functions-projekt létrehozása
 
 [!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]
 
-Miután létrehozta a Azure Functions projektet, a Project sablon létrehoz egy C# projektet, telepíti a `Microsoft.NET.Sdk.Functions` NuGet csomagot, és beállítja a célként megadott keretrendszert. Az új projekt a következő fájlokat tartalmazhatja:
+Miután létrehozott egy Azure Functions, a projektsablon létrehoz egy C#-projektet, telepíti a `Microsoft.NET.Sdk.Functions` NuGet-csomagot, és beállítja a célkeretrendszert. Az új projekt a következő fájlokat tartalmazza:
 
-* **host.json**: lehetővé teszi a functions gazdagép konfigurálását. Ezek a beállítások mind a helyi, mind az Azure-beli futtatáskor érvényesek. További információ: [host.json Reference](functions-host-json.md).
+* **host.jsbe:** Lehetővé teszi a Függvénygazda konfigurálását. Ezek a beállítások a helyi és az Azure-ban való futtatáskor egyaránt érvényesek. További információt a referencia [host.jstartalmaz.](functions-host-json.md)
 
-* **local.settings.json**: megtartja a függvények helyi futtatásakor használt beállításokat. Ezek a beállítások nem használhatók az Azure-ban való futtatáskor. További információ: [Local Settings fájl](#local-settings-file).
+* **local.settings.js:** A függvények helyi futtatásakor használt beállításokat tartja fenn. Ezek a beállítások nem használhatók az Azure-ban való futtatáskor. További információ: Helyi [beállításfájl.](#local-settings-file)
 
     >[!IMPORTANT]
-    >Mivel a local.settings.jsfájl tartalmazhat titkokat, ki kell zárnia azt a projekt forrása vezérlőelemből. Győződjön meg arról, hogy a fájl **Másolás a kimeneti könyvtárba** beállítás értéke a **Másolás, ha újabb**. 
+    >Mivel a local.settings.jsfájlban található adatok titkos adatokat is tartalmazhatnak, ki kell zárnia azt a projekt forráskezelőjéhez. Győződjön meg **arról, hogy** a fájl Másolás kimeneti könyvtárba beállítása **Másolás, ha újabb.** 
 
-További információ: [functions Class Library Project](functions-dotnet-class-library.md#functions-class-library-project).
+További információkért lásd a [Functions osztálytárprojektjét.](functions-dotnet-class-library.md#functions-class-library-project)
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-A Visual Studio nem tölti fel automatikusan a local.settings.jsbeállításait a projekt közzétételekor. Ha meg szeretné győződni arról, hogy ezek a beállítások az Azure-beli Function alkalmazásban is léteznek, töltse fel őket a projekt közzététele után. További információ: [Function app Settings](#function-app-settings). A `ConnectionStrings` gyűjteményben lévő értékek soha nem lesznek közzétéve.
+Visual Studio a rendszer nem tölti fel automatikusan a local.settings.jsa projekt közzétételekor. Ha meg kell győződnie arról, hogy ezek a beállítások az Azure-beli függvényalkalmazásban is léteznek, töltse fel őket a projekt közzététele után. További információ: [Függvényalkalmazás beállításai.](#function-app-settings) A gyűjtemények `ConnectionStrings` értékei soha nem vannak közzétéve.
 
-A kód emellett környezeti változókként is beolvashatja a Function app Settings értékeit. További információ: [környezeti változók](functions-dotnet-class-library.md#environment-variables).
+A kód a függvényalkalmazás beállításainak értékeit is be tudja olvasni környezeti változókként. További információ: Környezeti [változók.](functions-dotnet-class-library.md#environment-variables)
 
-## <a name="configure-your-build-output-settings"></a>A Build kimeneti beállításainak konfigurálása
+## <a name="configure-your-build-output-settings"></a>A build kimeneti beállításainak konfigurálása
 
-Azure Functions projektek létrehozásakor a build-eszközök optimalizálja a kimenetet, így a függvények futtatókörnyezetének egyetlen példánya is megmarad. Az eredmény egy optimalizált Build, amely annyi helyet takarít meg, amennyire csak lehetséges. Ha azonban a projekt egyik szerelvényének újabb verziójára helyez át, előfordulhat, hogy a build-eszközök nem tudják, hogy ezeket a szerelvényeket meg kell őrizni. Annak ellenőrzéséhez, hogy ezek a szerelvények megmaradnak-e az optimalizálási folyamat során, megadhatja őket `FunctionsPreservedDependencies` a projekt (. csproj) fájljában található elemek használatával:
+A projekt Azure Functions a buildeszközök optimalizálják a kimenetet, hogy a függvények futásidejű példányával megosztott szerelvények csak egy példánya megmarad. Az eredmény egy optimalizált build, amely a lehető legnagyobb helyet takarítja meg. Ha azonban a projekt szerelvények egy újabb verziójára lép, előfordulhat, hogy a buildeszközök nem tudják, hogy ezeket a szerelvényeket meg kell őrizni. Annak érdekében, hogy ezek a szerelvények megmaradnak az optimalizálási folyamat során, a projektfájl (.csproj) elemeivel adhatja meg `FunctionsPreservedDependencies` őket:
 
 ```xml
   <ItemGroup>
@@ -100,35 +100,35 @@ Azure Functions projektek létrehozásakor a build-eszközök optimalizálja a k
 
 ## <a name="configure-the-project-for-local-development"></a>A projekt konfigurálása helyi fejlesztéshez
 
-A functions futtatókörnyezet belsőleg használ egy Azure Storage-fiókot. A HTTP és webhookok kivételével az összes trigger típushoz állítsa a `Values.AzureWebJobsStorage` kulcsot egy érvényes Azure Storage-fiók kapcsolati karakterláncára. A Function alkalmazás az [Azure Storage emulatort](../storage/common/storage-use-emulator.md) is használhatja a `AzureWebJobsStorage` projekthez szükséges kapcsolatbeállításokat. Az emulátor használatához állítsa a értékét a következőre `AzureWebJobsStorage` : `UseDevelopmentStorage=true` . Az üzembe helyezés előtt módosítsa a beállítást egy tényleges Storage-fiók kapcsolódási karakterláncára.
+A Functions-futtatás belsőleg egy Azure Storage-fiókot használ. A HTTP- és webhookokon kívül minden eseményindító-típushoz állítson be egy érvényes Azure Storage-fiók kapcsolati `Values.AzureWebJobsStorage` sztringet a kulcshoz. A függvényalkalmazás az [Azure Storage Emulatort](../storage/common/storage-use-emulator.md) is használhatja a projekthez szükséges `AzureWebJobsStorage` kapcsolati beállításhoz. Az emulátor használata előtt állítsa a értékét `AzureWebJobsStorage` `UseDevelopmentStorage=true` értékre. Az üzembe helyezés előtt módosítsa ezt a beállítást egy tényleges tárfiók kapcsolati sztringre.
 
-A Storage-fiók kapcsolódási karakterláncának beállítása:
+A tárfiók kapcsolati sztringének beállítása:
 
-1. A Visual Studióban válassza a  >  **Cloud Explorer** megtekintése lehetőséget.
+1. A Visual Studio a View Cloud Explorer **(Felhőkezelő**  >  **megtekintése) lehetőséget.**
 
-2. A **Cloud Explorerben** bontsa ki a **Storage-fiókok** csomópontot, majd válassza ki a Storage-fiókját. A **Tulajdonságok** lapon másolja az **elsődleges kapcsolatok karakterláncának** értékét.
+2. A **Cloud Explorerben bontsa** ki a **Tárfiókok** területet, majd válassza ki a tárfiókját. A Tulajdonságok **lapon** másolja ki az Elsődleges kapcsolati **sztring értékét.**
 
-2. A projektben nyissa meg a local.settings.jsfájlt, és állítsa be a `AzureWebJobsStorage` kulcs értékét a másolt kapcsolódási karakterláncra.
+2. A projektben nyissa meg local.settings.jsfájlt, és állítsa a kulcs értékét a kimásott kapcsolati `AzureWebJobsStorage` sztringre.
 
-3. Az előző lépés megismétlésével egyedi kulcsokat adhat hozzá a `Values` tömbhöz a függvények által igényelt egyéb kapcsolatokhoz. 
+3. Ismételje meg az előző lépést, ha egyedi kulcsokat szeretne hozzáadni a tömbhöz a függvények által `Values` megkövetelt egyéb kapcsolatokhoz. 
 
 ## <a name="add-a-function-to-your-project"></a>Függvény hozzáadása a projekthez
 
-A C# Class Library függvények esetében a függvény által használt kötések a kódban szereplő attribútumok alkalmazásával definiálhatók. Amikor létrehozza a függvény eseményindítóit a megadott sablonokból, az eseményindító attribútumai lesznek alkalmazva. 
+A C#-osztálytár függvényeiben a függvény által használt kötések a kódban attribútumok alkalmazásával vannak definiálva. Amikor a függvény eseményindítóit a megadott sablonokból hozza létre, a rendszer alkalmazza az eseményindító-attribútumokat. 
 
-1. **Megoldáskezelő** kattintson a jobb gombbal a projekt csomópontjára, és válassza az  >  **új elem hozzáadása elemet**. 
+1. A **Megoldáskezelő** kattintson a jobb gombbal a projektcsomópontra, és válassza **az Új elem** hozzáadása  >  **lehetőséget.** 
 
-2. Válassza az **Azure-függvény** lehetőséget, adja meg az osztály **nevét** , majd válassza a **Hozzáadás** lehetőséget.
+2. Válassza **az Azure-függvény** lehetőséget, **adjon** nevet az osztálynak, majd válassza a **Hozzáadás lehetőséget.**
 
-3. Válassza ki az triggert, állítsa be a kötési tulajdonságokat, majd kattintson **az OK gombra**. A következő példa a várólista-tároló trigger funkciójának létrehozási beállításait mutatja be. 
+3. Válassza ki az eseményindítót, állítsa be a kötési tulajdonságokat, majd kattintson az **OK gombra.** Az alábbi példa egy Queue Storage-eseményindító függvény létrehozásának beállításait mutatja be. 
 
-    ![Üzenetsor-tárolási trigger függvény létrehozása](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
+    ![Queue Storage-eseményindító függvény létrehozása](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
 
-    Ez az trigger-példa egy nevű kulccsal rendelkező kapcsolatok karakterláncot használ `QueueStorage` . Adja meg ezt a kapcsolattípus-beállítást a [local.settings.jsfájljában](functions-run-local.md#local-settings-file).
+    Ez az eseményindító-példa egy nevű kulccsal használt kapcsolati sztringet `QueueStorage` használ. Adja meg ezt a kapcsolati sztringbeállítást [a fájllocal.settings.jsfájlban.](functions-run-local.md#local-settings-file)
 
-4. Vizsgálja meg az újonnan hozzáadott osztályt. Ekkor megjelenik egy statikus `Run()` metódus, amely az attribútummal van társítva `FunctionName` . Ez az attribútum azt jelzi, hogy a metódus a függvény belépési pontja.
+4. Vizsgálja meg az újonnan hozzáadott osztályt. Egy statikus `Run()` metódust lát, amely a attribútummal van meg `FunctionName` rendelve. Ez az attribútum azt jelzi, hogy a metódus a függvény belépési pontja.
 
-    A következő C# osztály például egy alapszintű üzenetsor-tárolási trigger függvényt jelöl:
+    A következő C#-osztály például egy alapszintű Queue Storage eseményindító-függvényt képvisel:
 
     ```csharp
     using System;
@@ -150,25 +150,25 @@ A C# Class Library függvények esetében a függvény által használt kötése
     }
     ```
 
-A rendszer a belépési pont metódusához megadott kötési paraméterekre alkalmazza a kötés-specifikus attribútumot. Az attribútum paraméterként a kötési adatokat veszi fel. Az előző példában az első paraméter egy `QueueTrigger` attribútummal van alkalmazva, amely egy üzenetsor-tárolási trigger függvényt jelez. A várólista neve és a kapcsolódási karakterlánc beállításának neve paraméterként lesz átadva az `QueueTrigger` attribútumnak. További információ: [Azure üzenetsor-tárolási kötések Azure Functionshoz](functions-bindings-storage-queue-trigger.md).
+A rendszer kötésspecifikus attribútumot alkalmaz a belépésipont-metódushoz megadott összes kötési paraméterre. A attribútum paraméterként veszi fel a kötési információkat. Az előző példában az első paraméter egy attribútumot `QueueTrigger` alkalmazott, amely egy Queue Storage-eseményindító függvényt jelez. Az üzenetsor neve és a kapcsolati sztring beállításának neve paraméterekként lesz átkedve az `QueueTrigger` attribútumnak. További információ: [Azure Queue Storage-kötések Azure Functions.](functions-bindings-storage-queue-trigger.md)
 
-A fenti eljárás segítségével további függvényeket adhat hozzá a Function app-projekthez. A projekt egyes függvényei eltérő triggerrel rendelkezhetnek, de a függvénynek pontosan egy triggerrel kell rendelkeznie. További információ: [Azure functions triggerek és kötések fogalmai](functions-triggers-bindings.md).
+A fenti eljárással adhat hozzá további függvényeket a függvényalkalmazás-projekthez. A projekt minden függvénye más eseményindítóval is rendelkezik, de egy függvénynek pontosan egy eseményindítóval kell lennie. További információ: Azure Functions [és kötési fogalmak.](functions-triggers-bindings.md)
 
 ## <a name="add-bindings"></a>Kötések hozzáadása
 
-Ahogy az eseményindítók esetében, a bemeneti és kimeneti kötések kötési attribútumokként lesznek hozzáadva a függvényhez. Adja hozzá a kötéseket egy függvényhez a következő módon:
+Ahogyan az eseményindítók, a bemeneti és kimeneti kötések is hozzá vannak adva a függvényhez kötési attribútumként. Kötések hozzáadása egy függvényhez a következőképpen:
 
-1. Győződjön meg arról, hogy [konfigurálta a projektet a helyi fejlesztéshez](#configure-the-project-for-local-development).
+1. Győződjön meg arról, hogy [a projektet helyi fejlesztésre konfigurálta.](#configure-the-project-for-local-development)
 
-2. Adja hozzá a megfelelő NuGet-kiterjesztési csomagot az adott kötéshez. 
+2. Adja hozzá a megfelelő NuGet-bővítménycsomagot az adott kötéshez. 
 
-   További információ: [C# Class Library a Visual Studióval](./functions-bindings-register.md#local-csharp). Keresse meg a kötési NuGet-csomagra vonatkozó követelményeket a kötésre vonatkozó cikkben. Megkeresheti például a Event Hubs trigger csomagra vonatkozó követelményeit a [Event Hubs kötési útmutató cikkben](functions-bindings-event-hubs.md).
+   További információkért lásd a [C# osztálytárat a Visual Studio.](./functions-bindings-register.md#local-csharp) A kötésre vonatkozó NuGet-csomagokra vonatkozó követelményeket a kötésre vonatkozó referenciacikkben találja. Az eseményindító csomagkövetelményei például a Event Hubs a Event Hubs [referenciacikkében találhatóak.](functions-bindings-event-hubs.md)
 
-3. Ha vannak olyan Alkalmazásbeállítások, amelyekre a kötés szükséges, adja hozzá őket a `Values` gyűjteményhez a [helyi beállítási fájlban](functions-run-local.md#local-settings-file). 
+3. Ha vannak olyan alkalmazásbeállítások, amelyekre a kötésnek szüksége van, adja hozzá őket a gyűjteményhez a `Values` [helyi beállításfájlban.](functions-run-local.md#local-settings-file) 
 
-   A függvény ezeket az értékeket használja, amikor helyileg fut. Ha a függvény az Azure-beli Function alkalmazásban fut, akkor a [Function app beállításait](#function-app-settings)használja.
+   A függvény ezeket az értékeket használja helyi futtatáskor. Amikor a függvény az Azure-beli függvényalkalmazásban fut, a [függvényalkalmazás beállításait használja.](#function-app-settings)
 
-4. Adja hozzá a megfelelő kötési attribútumot a metódus aláírásához. A következő példában egy üzenetsor-üzenet elindítja a függvényt, és a kimeneti kötés egy új üzenetsor-üzenetet hoz létre, amely egy másik várólistában található azonos szöveggel rendelkezik.
+4. Adja hozzá a megfelelő kötési attribútumot a metódus aláírásához. A következő példában egy üzenetsor-üzenet aktiválja a függvényt, a kimeneti kötés pedig létrehoz egy új üzenetsor-üzenetet ugyanazokkal a szöveggel egy másik üzenetsorban.
 
     ```csharp
     public static class SimpleExampleWithOutput
@@ -184,21 +184,21 @@ Ahogy az eseményindítók esetében, a bemeneti és kimeneti kötések kötési
         }
     }
     ```
-   A várólista-tárolóhoz való kapcsolódás a `AzureWebJobsStorage` beállításból származik. További információkért tekintse meg az adott kötésre vonatkozó hivatkozási cikket. 
+   A Queue Storage-kapcsolat a beállításból `AzureWebJobsStorage` szerezhető be. További információt az adott kötésre vonatkozó referenciacikkben talál. 
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
 ## <a name="testing-functions"></a>Függvények tesztelése
 
-Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi fejlesztői számítógépen való futtatását. További információ: [a Azure functions Core Tools használata](functions-run-local.md). Ezeket az eszközöket akkor kell telepíteni, amikor először elindítja a függvényt a Visual studióból. 
+Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi fejlesztői számítógépen való futtatását. További információ: [A](functions-run-local.md)Azure Functions Core Tools. Amikor először indít el egy függvényt a függvényből, a rendszer felszólítja, hogy telepítse ezeket az Visual Studio. 
 
-A függvény tesztelése a Visual Studióban:
+A függvény tesztelése a Visual Studio:
 
-1. Nyomja le az F5 billentyűt. Ha a rendszer kéri, fogadja el a Visual Studio kérését az Azure Functions Core (CLI) eszközök telepítéséhez. Előfordulhat, hogy egy tűzfal-kivételt is engedélyeznie kell, hogy az eszközök kezelni tudják a HTTP-kérelmeket.
+1. Nyomja le az F5 billentyűt. Ha a rendszer kéri, fogadja el a Visual Studio kérését az Azure Functions Core (CLI) eszközök telepítéséhez. Előfordulhat, hogy engedélyeznie kell egy tűzfal kivételt, hogy az eszközök kezelni tudjanak HTTP-kéréseket.
 
-2. Ha a projekt fut, tesztelje a kódot úgy, ahogy az üzembe helyezett függvény tesztelését végzi. 
+2. Ha a projekt fut, tesztelje a kódot úgy, mintha egy üzembe helyezett függvényt tesztelne. 
 
-   További információ: stratégiák a [kód teszteléséhez Azure functions](functions-test-a-function.md). Ha hibakeresési módban futtatja a Visual studiót, a töréspontok a várt módon jelennek meg.
+   További információ: [Strategies for testing your code in Azure Functions.](functions-test-a-function.md) Hibakeresési módban Visual Studio futtatja a töréspontokat.
 
 <!---
 For an example of how to test a queue triggered function, see the [queue triggered function quickstart tutorial](functions-create-storage-queue-triggered-function.md#test-the-function).  
@@ -207,46 +207,46 @@ For an example of how to test a queue triggered function, see the [queue trigger
 
 ## <a name="publish-to-azure"></a>Közzététel az Azure-ban
 
-A Visual studióból való közzétételkor a két telepítési módszer egyikét használja:
+Amikor a közzétételt Visual Studio két üzembe helyezési módszer egyikét használja:
 
-* [Web Deploy](functions-deployment-technologies.md#web-deploy-msdeploy): csomagok és Windows-alkalmazások telepítése bármely IIS-kiszolgálóra.
-* A [zip üzembe helyezése a-csomaggal engedélyezve: Azure functions üzemelő](functions-deployment-technologies.md#zip-deploy)példányokhoz ajánlott.
+* [Web Deploy](functions-deployment-technologies.md#web-deploy-msdeploy): Windows-alkalmazásokat telepít és telepít bármely IIS-kiszolgálón.
+* [Tömörített üzembe helyezés engedélyezett run-From-package beállítással:](functions-deployment-technologies.md#zip-deploy)Ajánlott Azure Functions telepítéséhez.
 
-A következő lépésekkel teheti közzé a projektjét egy Azure-beli Function alkalmazásban.
+Az alábbi lépésekkel közzéteheti a projektet egy függvényalkalmazásban az Azure-ban.
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
 ## <a name="function-app-settings"></a>A függvényalkalmazás beállításai
 
-Mivel a Visual Studio nem tölti fel automatikusan ezeket a beállításokat a projekt közzétételekor, a local.settings.jsban hozzáadott beállításokat is fel kell vennie az Azure-beli Function alkalmazásba.
+Mivel Visual Studio nem tölti fel automatikusan ezeket a beállításokat a projekt közzétételekor, a local.settings.js-ban megadott beállításokat az Azure-beli függvényalkalmazáshoz is hozzá kell adni.
 
-A szükséges beállításoknak az Azure-beli Function alkalmazásba való feltöltésének legegyszerűbb módja, ha kiválasztja a projekt sikeres közzététele után megjelenő **Azure app Service-beállítások kezelése** hivatkozást.
+A szükséges beállítások azure-beli függvényalkalmazásba való feltöltésének legegyszerűbb módja, ha kiválasztja a Manage **Azure App Service settings** (Beállítások kezelése) hivatkozást, amely a projekt sikeres közzététele után jelenik meg.
 
-:::image type="content" source="./media/functions-develop-vs/functions-vstools-app-settings.png" alt-text="Beállítások a közzétételi ablakban":::
+:::image type="content" source="./media/functions-develop-vs/functions-vstools-app-settings.png" alt-text="Beállítások a Közzététel ablakban":::
 
-A hivatkozás kiválasztásakor megjelenik a Function **alkalmazás Alkalmazásbeállítások** párbeszédpanele, ahol új Alkalmazásbeállítások adhatók hozzá, vagy módosíthatók a meglévő beállítások.
+Erre a hivatkozásra kattintva **megjelenik** a függvényalkalmazás Alkalmazásbeállítások párbeszédpanelje, ahol új alkalmazásbeállításokat adhat hozzá, vagy módosíthatja a meglévőket.
 
 ![Alkalmazásbeállítások](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
-A **helyi** érték jelenik meg a local.settings.jsfájlon, a **távoli** pedig az Azure-beli Function alkalmazás aktuális beállítás értékét jeleníti meg. Új Alkalmazásbeállítás létrehozásához válassza a **beállítás hozzáadása** lehetőséget. A beállítás értékének a **helyi** hivatkozásból történő másolásához használja a Setting értéket a **távoli** mezőre. A függőben lévő módosítások a helyi beállítások fájlba és a Function alkalmazásba íródnak, amikor az **OK gombra** kattint.
+**A Helyi** érték egy beállításértéket jelenít meg  local.settings.jsfájlban, a Távoli pedig megjeleníti az aktuális beállításértéket az Azure-beli függvényalkalmazásban. Új **alkalmazásbeállítás létrehozásához** válassza a Beállítás hozzáadása lehetőséget. A Helyi **érték beszúrása** hivatkozással másoljon egy beállításértéket a **Távoli mezőbe.** A függőben lévő módosítások a helyi beállításfájlba és a függvényalkalmazásba vannak írva az **OK gombra való kiválasztásakor.**
 
 > [!NOTE]
-> Alapértelmezés szerint a fájl local.settings.jsnincs bejelölve a verziókövetésba. Ez azt jelenti, hogy ha a helyi functions-projektet a verziókövetés alapján klónozott, a projekthez nem tartozik local.settings.jsa fájlhoz. Ebben az esetben manuálisan kell létrehoznia a local.settings.jsfájlt a projekt gyökerében, hogy az **Alkalmazásbeállítások** párbeszédpanel a várt módon működjön. 
+> Alapértelmezés szerint a fájl local.settings.jsnem kerül be a forráskezelőbe. Ez azt jelenti, hogy ha helyi Functions-projektet klónoz a forráskezelőből, a projektnek nincs local.settings.jsfájlban. Ebben az esetben manuálisan kell létrehoznia a local.settings.jsfájlt a projekt  gyökerében, hogy az Alkalmazásbeállítások párbeszédpanel a várt módon működik. 
 
-Az alkalmazás beállításait az alábbi módokon is kezelheti:
+Az alkalmazásbeállításokat a következő módokon is kezelheti:
 
-* [Használja a Azure Portal](functions-how-to-use-azure-function-app-settings.md#settings).
-* [Használja a `--publish-local-settings` Azure functions Core Tools közzététel lehetőségét](functions-run-local.md#publish).
-* [Használja az Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)-t.
+* [Használja a Azure Portal.](functions-how-to-use-azure-function-app-settings.md#settings)
+* [Használja `--publish-local-settings` a közzététel lehetőséget a Azure Functions Core Tools.](functions-run-local.md#publish)
+* [Használja az Azure CLI-t.](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set)
 
-## <a name="monitoring-functions"></a>Figyelési függvények
+## <a name="monitoring-functions"></a>Monitorozási függvények
 
-A függvények végrehajtásának ajánlott figyelése a Function alkalmazás Azure Application Insights-nal való integrálásával. Ha a Azure Portalban hoz létre egy Function alkalmazást, a rendszer alapértelmezés szerint ezt az integrációt végzi. Ha azonban a Visual Studio Publishing szolgáltatásban hozza létre a Function alkalmazást, az Azure-beli Function alkalmazásban való integráció nem történik meg. A Application Insightsnak a Function alkalmazáshoz való kapcsolódásával kapcsolatos további információkért lásd: [Application Insights integrációjának engedélyezése](configure-monitoring.md#enable-application-insights-integration).
+A függvények végrehajtásának figyelése a függvényalkalmazás Azure-beli virtuális hálózatokkal való integrálásával Application Insights. Amikor függvényalkalmazást hoz létre a Azure Portal, ez az integráció alapértelmezés szerint meg lesz állítva. Amikor azonban a közzététel során létrehozza a függvényalkalmazást Visual Studio, a függvényalkalmazás azure-beli integrációja még nem történik meg. A függvényalkalmazáshoz való Application Insights lásd: Enable Application Insights integration (A [függvényalkalmazás Application Insights engedélyezése).](configure-monitoring.md#enable-application-insights-integration)
 
-Ha többet szeretne megtudni a Application Insights használatával végzett figyelésről, tekintse meg a [Azure functions figyelése](functions-monitoring.md)című témakört.
+További információ a monitorozásról a Application Insights: [Monitor Azure Functions.](functions-monitoring.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a Azure Functions Core Toolsről: a [Azure functions Core Tools használata](functions-run-local.md).
+További információ a Azure Functions Core Tools: Work [with Azure Functions Core Tools](functions-run-local.md).
 
-További információ a függvények .NET-es kódtárakkal való fejlesztéséről: [Azure functions C# fejlesztői dokumentáció](functions-dotnet-class-library.md). A cikk azt is bemutatja, hogyan használhatók az attribútumok a Azure Functions által támogatott különböző típusú kötések deklarálása céljából.    
+További információ a függvények .NET-osztálytárakként való fejlesztésről: Azure Functions [C# fejlesztői referencia.](functions-dotnet-class-library.md) Ez a cikk olyan példákra is hivatkozásokat tartalmaz, amelyek bemutatják, hogyan lehet attribútumokkal deklarálni a Azure Functions.    

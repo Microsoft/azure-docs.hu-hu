@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD biztonságos hibrid hozzáférése az F5 üzembe helyezési útmutatóval | Microsoft Docs
-description: Oktatóanyag az F5 BIG-IP Virtual Edition (VE) virtuális gép üzembe helyezéséhez az Azure IaaS a biztonságos hibrid hozzáférés érdekében
+title: Azure AD biztonságos hibrid hozzáférés F5-ös üzembe helyezési útmutatóval | Microsoft Docs
+description: 'Oktatóanyag: F5 BIG-IP Virtual Edition (VE) virtuális gép üzembe helyezése az Azure IaaS-ben a biztonságos hibrid hozzáférés érdekében'
 services: active-directory
 author: gargi-sinha
 manager: martinco
@@ -11,419 +11,420 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f962bf131b87f17712186145b8c8b8e6090f7002
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 139009c55573e1e115a22069671f66e93695a635
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98730657"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783322"
 ---
-# <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>Oktatóanyag az F5 BIG-IP Virtual Edition virtuális gép üzembe helyezéséhez az Azure IaaS a biztonságos hibrid hozzáférés érdekében
+# <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>Oktatóanyag: F5 BIG-IP Virtual Edition virtuális gép üzembe helyezése az Azure IaaS-ben a biztonságos hibrid hozzáférés érdekében
 
-Ez az oktatóanyag végigvezeti a BIG-IP Vitural Edition (VE) Azure IaaS való üzembe helyezésének teljes folyamatán. Az oktatóanyag végére a következőket kell tennie:
+Ez az oktatóanyag végigvezeti a BIG-IP Vitural Edition (VE) Azure IaaS-beli üzembe helyezésének teljes folyamatán. Az oktatóanyag végére a következőt kell látnia:
 
-- Teljes mértékben előkészített BIG-IP virtuális gép (VM) a koncepció biztonságos hibrid hozzáférési (SHA) igazolásának modellezéséhez
+- Egy teljesen előkészített BIG-IP virtuális gép (VM) a biztonságos hibrid hozzáférés (SHA) koncepció igazolásának modellezéséhez
 
-- Az új BIG-IP Rendszerfrissítések és gyorsjavítások tesztelésére szolgáló előkészítési példány
+- Előkészítési példány új BIG-IP rendszerfrissítések és gyorsjavítások teszteléséhez
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az előző F5 BIG-IP-élmény vagy-ismeret nem szükséges, azonban javasoljuk, hogy ismerkedjen meg az [F5 Big-IP terminológiával](https://www.f5.com/services/resources/glossary). Az SHA használatához a BIG-IP Azure-beli üzembe helyezéséhez a következőket kell tennie:
+Az F5 BIG-IP korábbi ismerete vagy ismerete nem szükséges, de javasoljuk, hogy ismerkedjen meg az [F5 BIG-IP terminológiával.](https://www.f5.com/services/resources/glossary) A BIG-IP üzembe helyezéséhez az Azure-ban az SHA használatához a következő szükséges:
 
-- Fizetős Azure-előfizetés vagy ingyenes 12 hónapos [próbaverziós előfizetés](https://azure.microsoft.com/free/).
+- Fizetős Azure-előfizetés vagy ingyenes, 12 hónapos [próbaverziós előfizetés.](https://azure.microsoft.com/free/)
 
-- A következő F5 BIG-IP licenc SKU-i
+- Az alábbi F5 BIG-IP licenc-termékkódok bármelyike
 
   - F5 BIG-IP® legjobb csomag
 
   - F5 BIG-IP Access Policy Manager™ (APM) önálló licenc
 
-  - F5 BIG-IP Access Policy Manager™ (APM) bővítmény licence meglévő BIG-IP F5 BIG-IP® helyi Traffic Manager™ (LTM)
+  - F5 BIG-IP Access Policy Manager™ (APM) bővítménylicenc meglévő BIG-IP F5 BIG-IP® Local Traffic Manager™ (LTM)
   
-  - 90-nap BIG-IP teljes szolgáltatás [próbaverziós licence](https://www.f5.com/trial/big-ip-trial.php).
+  - 90 napos BIG-IP teljes funkció [próbaverziós licence.](https://www.f5.com/trial/big-ip-trial.php)
 
-- Helyettesítő karakter vagy tulajdonos alternatív neve (SAN), a webalkalmazások Secure Socket Layer (SSL) protokollon keresztüli közzétételéhez. A [titkosítás](https://letsencrypt.org/) ingyenes 90 napos tanúsítványt biztosít a teszteléshez.
+- Helyettesítő vagy tulajdonos alternatív neve (SAN) tanúsítvány, amely webalkalmazásokat tesz közzé a Secure Socket Layer (SSL) használatával. [A let's encrypt](https://letsencrypt.org/) ingyenes 90 napos tanúsítványt biztosít a teszteléshez.
 
-- SSL-tanúsítvány a BIG-IPs felügyeleti felület biztonságossá tételéhez. A webalkalmazások közzétételéhez használt tanúsítvány használható, ha a tulajdonos a BIG-IP teljes tartománynevét (FQDN) is megfelel. Például a tárgy *. contoso.com definiált helyettesítő karakteres tanúsítvány a következőre alkalmas: `https://big-ip-vm.contoso.com:8443`
+- Ssl-tanúsítvány a felügyeleti felület BIG-IPs biztosításához. A webalkalmazások közzétételéhez használt tanúsítvány használható, ha a tárgya a BIG-IP teljes tartománynevének (FQDN) felel meg. Egy *.contoso.com tulajdonossal definiált helyettesítő karakteres tanúsítvány például alkalmas a következőre: `https://big-ip-vm.contoso.com:8443`
 
-A virtuális gépek üzembe helyezése és az alaprendszer-konfigurációk kb. 30 percet vesznek igénybe. Ekkor a BIG-IP platform készen áll az [itt](f5-aad-integration.md)felsorolt SHA-forgatókönyvek megvalósítására.
+A virtuális gépek üzembe helyezése és az alaprendszer-konfigurációk körülbelül 30 percet is igénybe venek, így a BIG-IP platform készen áll az itt felsorolt SHA-forgatókönyvek bármelyikének [végrehajtására.](f5-aad-integration.md)
 
-A forgatókönyvek teszteléséhez ez az oktatóanyag feltételezi, hogy a BIG-IP üzembe helyezése egy Active Directory (AD-) környezetet tartalmazó Azure-erőforráscsoporthoz történik. A környezetnek a tartományvezérlő (DC) és a webgazda (IIS) virtuális gépekből kell állnia. Ha ezek a kiszolgálók más helyen találhatók a BIG-IP virtuális gépen, akkor is rendben van, így a BIG-IP-nek minden olyan szerepköre van, amely az adott forgatókönyv támogatásához szükséges. Azok a forgatókönyvek, amelyekben a BIG-IP virtuális gép VPN-kapcsolaton keresztül egy másik környezethez csatlakozik, szintén támogatottak.
+A forgatókönyvek teszteléséhez ez az oktatóanyag feltételezi, hogy a BIG-IP egy azure-beli erőforráscsoportban lesz üzembe helyezni, amely egy Active Directory (AD) környezetet tartalmaz. A környezetnek egy tartományvezérlőből (DC) és egy webgazda (IIS) virtuális gépből kell állnia. Az is rendben van, ha ezek a kiszolgálók más helyeken vannak a BIG-IP virtuális géphez, feltéve, hogy a BIG-IP rálátást biztosít az adott forgatókönyv támogatásához szükséges szerepkörökre. Azok a forgatókönyvek is támogatottak, amelyekben a BIG-IP virtuális gép VPN-kapcsolaton keresztül csatlakozik egy másik környezethez.
 
-Ha nem rendelkezik az itt említett elemekkel a teszteléshez, a [szkript](https://github.com/Rainier-MSFT/Cloud_Identity_Lab)használatával üzembe helyezhet egy teljes ad tartományi környezetet az Azure-ban. A minta tesztelési alkalmazások gyűjteménye programozott módon is telepíthető egy IIS-webállomásra ezen [parancsfájl-automatizálás](https://github.com/jeevanbisht/DemoSuite)használatával.
+Ha nincsenek az itt említett tesztelési elemek, üzembe helyezhet egy teljes AD tartományi környezetet az Azure-ban a szkript [használatával.](https://github.com/Rainier-MSFT/Cloud_Identity_Lab) A parancsfájlokkal futtatott automatizálással a minta tesztalkalmazások gyűjteménye programozott módon is üzembe helyezhető egy [IIS-webkiszolgálón.](https://github.com/jeevanbisht/DemoSuite)
 
 >[!NOTE]
->A [Azure Portal](https://portal.azure.com/#home) folyamatosan fejlődik, így az oktatóanyag egyes lépései eltérhetnek a Azure Portalban megfigyelt tényleges elrendezéstől.
+>A [Azure Portal](https://portal.azure.com/#home) folyamatosan fejlődik, így az oktatóanyag egyes lépései eltérhetnek a tényleges elrendezéstől, amely a Azure Portal.
 
 ## <a name="azure-deployment"></a>Azure-beli üzembe helyezés
 
-A BIG-IP különböző topológiákban is üzembe helyezhető. Ez az útmutató egyetlen hálózati adapter (NIC) központi telepítésére koncentrál. Ha azonban a BIG-IP-környezet több hálózati adaptert igényel a magas rendelkezésre álláshoz, a hálózat elkülönítéséhez vagy az 1 GB-nál több átviteli sebességhez, érdemes lehet F5's előre lefordított [Azure Resource Manager (ARM) sablonokat](https://clouddocs.f5.com/cloud/public/v1/azure/Azure_multiNIC.html)használni.
+A BIG-IP különböző topológiákban helyezhető üzembe. Ez az útmutató egyetlen hálózati adapter (NIC) üzembe helyezésére összpontosít. Ha azonban a BIG-IP üzemelő példány több hálózati adaptert igényel a magas rendelkezésre álláshoz, a hálózati elkülönítéshez vagy az 1 GB-nál nagyobb átviteli sebességhez, fontolja meg az F5 előre lefordított [Azure Resource Manager-sablonjainak (ARM) használatával.](https://clouddocs.f5.com/cloud/public/v1/azure/Azure_multiNIC.html)
 
-A BIG-IP VE [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps)való üzembe helyezéséhez hajtsa végre a következő feladatokat.
+A BIG-IP VE telepítéséhez a következő feladatokat kell elvégeznie [a Azure Marketplace.](https://azuremarketplace.microsoft.com/marketplace/apps)
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/#home) egy olyan fiókkal, amely rendelkezik a virtuális gépek létrehozásához szükséges engedélyekkel. Például: közreműködő
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/#home) egy olyan fiókkal, amely rendelkezik a virtuális gépek létrehozásához szükséges engedélyekkel. Például: Közreműködő
 
-2. A felső menüszalag keresőmezőbe írja be a **piactér** kifejezést, majd **írja be** a következőt: ENTER
+2. A felső menüszalag keresőmezőbe írja be a **marketplace**, majd az **Enter lehetőséget.**
 
-3. Írja be az **F5** billentyűt a piactér szűrőbe, majd **írja be az ENTER billentyűt**
+3. Írja **be az F5 billentyűt** a Marketplace szűrőbe, majd az Enter **billentyűt**
 
-4. Válassza a felső menüszalagon a **+ Hozzáadás** lehetőséget, és írja be az **F5** billentyűt a piactér szűrőbe, majd írja **be** a következőt:
+4. A **felső menüszalagon válassza** a + Hozzáadás lehetőséget, írja be az **F5 billentyűt** a piactér szűrőjébe, majd kattintson az Enter **gombra.**
 
-5. Válassza az **F5 Big-IP Virtual Edition (BYOL)** elemet,  >  és **válassza ki az**  >  **F5 Big-IP ve-all (BYOL, 2 rendszerindítási helyszínek) csomagot.**
+5. Válassza **az F5 BIG-IP Virtual Edition (BYOL) lehetőséget Válasszon** ki egy  >    >  **szoftvercsomagot F5 BIG-IP VE - ALL (BYOL, 2 rendszerindítási hely)**
 
 6. Válassza a **Létrehozás** lehetőséget.
 
-![A rendszerkép megjeleníti a szoftvercsomagok kiválasztásának lépéseit.](./media/f5ve-deployment-plan/software-plan.png)
+![A képen a szoftvercsomag kiválasztásának lépései láthatóak](./media/f5ve-deployment-plan/software-plan.png)
 
-7. Lépjen az **alapismeretek** menüre, és használja az alábbi beállításokat
+7. Lépjen végig az **Alapvető beállítások menün,** és használja az alábbi beállításokat
 
  |  Projekt részletei     |  Érték     |
  |:-------|:--------|
- |Előfizetés|Cél-előfizetés a BIG-IP virtuális gépek üzembe helyezéséhez|
- |Erőforráscsoport | Meglévő Azure-erőforráscsoport a BIG-IP virtuális gép üzembe helyezése vagy létrehozása. A tartományvezérlő és az IIS-alapú virtuális gépek azonos erőforráscsoporthoz kell lennie|
+ |Előfizetés|Cél-előfizetés a BIG-IP virtuális gép üzembe helyezéséhez|
+ |Erőforráscsoport | Meglévő Azure-erőforráscsoport a BIG-IP virtuális gép üzembe helyezése vagy létrehozása. A tartományvezérlő és az IIS virtuális gépek erőforráscsoportja legyen|
  | **Példány adatai**|  |
- |Virtuális gép neve| Példa BIG-IP-VM |
- |Region | Cél Azure geo a BIG-IP-VM számára |
- |Rendelkezésre állási beállítások| Csak a virtuális gép éles környezetben való használatának engedélyezése|
- |Kép| F5 BIG-IP VE-ALL (BYOL, 2 rendszerindítási helyszín)|
- |Azure Spot-példány| Nem, de szükség esetén szabadon engedélyezheti |
- |Méret| A minimális specifikációnak 2 vCPU és 8 GB memóriának kell lennie|
+ |Virtuális gép neve| BIG-IP-VM példa |
+ |Region | Cél Azure Geo BIG-IP-VM-hez |
+ |Rendelkezésre állási beállítások| Csak akkor engedélyezze, ha virtuális gépet használ éles környezetben|
+ |Kép| F5 BIG-IP VE – ALL (BYOL, 2 rendszerindítási hely)|
+ |Azure Spot-példány| Nem, de nyugodtan engedélyezheti, ha szükséges. |
+ |Méret| A minimális specifikációnak 2 vCPU-nak és 8 Gb memóriának kell lennie|
  |**Rendszergazdai fiók**|  |
- |Hitelesítéstípus|Válassza a jelszó lehetőséget most. Később is válthat egy kulcspárt |
- |Felhasználónév|Az identitás, amelyet a rendszer a felügyeleti felületek eléréséhez a BIG-IP helyi fiókként hoz létre. A Felhasználónév megkülönbözteti a kis-és nagybetűket.|
- |Jelszó|Biztonságos rendszergazdai hozzáférés erős jelszóval|
- |**Bejövő portok szabályai**|  |
+ |Hitelesítéstípus|Most válassza ki a jelszót. Később kulcspárra válthat |
+ |Felhasználónév|Az identitás, amely BIG-IP helyi fiókként lesz létrehozva a felügyeleti felületeinek eléréséhez. A felhasználónév megkülönbözteti a KIS- és nagybetűket.|
+ |Jelszó|Rendszergazdai hozzáférés biztonságossáése erős jelszóval|
+ |**Bejövőport-szabályok**|  |
  |Nyilvános bejövő portok|Nincs|
 
-8. Válassza a **Next (tovább** ) lehetőséget: az összes alapértelmezett beállítást elhagyó lemezek, majd a **Tovább: hálózatkezelés** elemre.
+8. Válassza **a Tovább: Lemezek lehetőséget** az összes alapértelmezett érték meghagyása mellett, majd válassza a **Tovább: Hálózatkezelés lehetőséget.**
 
-9. A **hálózat** menüben hajtsa végre ezeket a beállításokat.
+9. A **Hálózat menüben** töltse ki ezeket a beállításokat.
 
  |Hálózati adapter|      Érték |
  |:--------------|:----------------|
- |Virtuális hálózat|A tartományvezérlő és az IIS-alapú virtuális gépek által használt Azure-VNet, vagy létrehozhat egy|
- |Alhálózat| Ugyanaz az Azure belső alhálózat, mint a tartományvezérlő és az IIS-alapú virtuális gépek, vagy hozzon létre egyet|
+ |Virtuális hálózat|A tartományvezérlő és az IIS virtuális gépek által használt Azure-beli virtuális hálózat, vagy hozzon létre egyet|
+ |Alhálózat| Ugyanaz az Azure belső alhálózat, mint a tartományvezérlő és az IIS virtuális gépek, vagy hozzon létre egyet|
  |Nyilvános IP-cím |  Nincs|
- |NIC hálózati biztonsági csoport| Válassza a nincs lehetőséget, ha az előző lépésekben kiválasztott Azure-alhálózat már társítva van egy hálózati biztonsági csoporttal (NSG). egyéb esetben válassza az alapszintű lehetőséget|
- |Hálózati gyorsítás| Ki |
+ |Hálózati adapter hálózati biztonsági csoportja| Válassza a Nincs lehetőséget, ha az előző lépésekben kiválasztott Azure-alhálózat már társítva van egy hálózati biztonsági csoporthoz (NSG-hez); egyéb esetben válassza az Alapszintű lehetőséget|
+ |A hálózatépítés felgyorsítása| Ki |
  |**Terheléselosztás**|     |
  |Virtuális gép terheléselosztása| No|
 
-10. Válassza a **Tovább: kezelés** lehetőséget, majd fejezze be ezeket a beállításokat.
+10. Válassza **a Tovább: Kezelés lehetőséget,** és adja meg ezeket a beállításokat.
 
  |Figyelés|    Érték |
  |:---------|:-----|
  |Részletes figyelés| Ki|
- |Rendszerindítási diagnosztika|Engedélyezés egyéni Storage-fiókkal. Lehetővé teszi a BIG-IP Secure Shell (SSH) felülethez való csatlakozást a Azure Portal soros konzolján keresztül. Bármely elérhető Azure Storage-fiók kiválasztása|
+ |Rendszerindítási diagnosztika|Engedélyezés egyéni tárfiókkal. Lehetővé teszi a BIG-IP Secure Shell (SSH) felülethez való csatlakozást a konzol soros konzolján keresztül a Azure Portal. Válassza ki az elérhető Azure Storage-fiókokat|
  |**Identitás**|  |
- |Rendszerhez rendelt felügyelt identitás|Ki|
- |Azure Active Directory|A BIG-IP jelenleg nem támogatja ezt a beállítást|
+ |Rendszer által hozzárendelt felügyelt identitás|Ki|
+ |Azure Active Directory|A BIG-IP jelenleg nem támogatja ezt a lehetőséget|
  |**Automatikus leállítás**|    |
- |Automatikus leállítás engedélyezése| Ha tesztelést szeretne végezni, érdemes lehet beállítani a BIG-IP-VM-t a napi leállítás érdekében|
+ |Automatikus leállítás engedélyezése| Tesztelés esetén érdemes lehet naponta leállítani a BIG-IP-VM virtuális gépet|
 
-11. Válassza a **Next (tovább** ) lehetőséget: Ha az összes alapértelmezett beállítást elhagyja, válassza a Next (tovább) lehetőséget **: címkék**.
+11. Válassza **a Tovább: Speciális lehetőséget** az összes alapértelmezett érték meghagyása mellett, majd válassza a **Tovább: Címkék lehetőséget.**
 
-12. Válassza a **Next (tovább): felülvizsgálat + létrehozás** lehetőséget a Big-IP-VM-konfigurációk áttekintéséhez, mielőtt kiválasztja a **Létrehozás** elemet a központi telepítéshez.
+12. Válassza **a Tovább: Áttekintés + létrehozás** lehetőséget a BIG-IP-VM konfigurációk áttekintéséhez, mielőtt a Létrehozás gombra választanának az üzembe helyezéshez. 
 
-13. A BIG-IP virtuális gépek teljes üzembe helyezéséhez szükséges idő általában 5 perc. Ha végzett, ne válassza az **erőforrás** megnyitása lehetőséget, és válassza ki a Azure Portal bal oldali menüjét, és válassza az **erőforráscsoportok** lehetőséget az új Big-IP-VM eléréséhez. Ha a virtuális gép létrehozása sikertelen, válassza a **vissza** és a **tovább** lehetőséget.
+13. A BIG-IP virtuális gépek teljes üzembe helyezésének ideje általában 5 perc. Ha elkészült, ne válassza az Erőforrás megnyitása **lehetőséget,** hanem bontsa ki  a Azure Portal bal oldali menüjét, és válassza az Erőforráscsoportok lehetőséget az új BIG-IP-VM-hez való navigáláshoz. Ha a virtuális gép létrehozása sikertelen, válassza a **Vissza és** a **Tovább lehetőséget.**
 
 ## <a name="network-configuration"></a>Hálózati konfiguráció
 
-Amikor a BIG-IP virtuális gép először elindul, a hálózati adaptere az Azure-alhálózat Dynamic Host Configuration Protocol (DHCP) által kiállított **elsődleges** magánhálózati IP-címmel lesz kiépítve, amelyhez csatlakozik. Ezt az IP-címet a BIG-IP Traffic Management operációs rendszere (TMOS) fogja használni a következővel való kommunikációhoz:
+Amikor a BIG-IP virtuális gép először elindul, **a** hálózati adaptere egy elsődleges magánhálózati IP-címmel lesz kiépítve, amelyet annak az Azure-alhálózatnak az Dynamic Host Configuration Protocol (DHCP) szolgáltatása ad ki, amelyhez csatlakozik. Ezt az IP-címet a BIG-IP Traffic Management operációs rendszere (TMOS) használja a következővel való kommunikációhoz:
 
 - Kommunikáció más gazdagépekkel és szolgáltatásokkal
 
 - Kimenő hozzáférés a nyilvános internethez
 
-- Bejövő hozzáférés a BIG-IPs web config és SSH felügyeleti interfészekhez
+- Bejövő hozzáférés az BIG-IPs webes konfigurációs és SSH felügyeleti felületéhez
 
-Ezen felügyeleti felületek egyike az internetre növeli a BIG-IPs támadási felületet, ezért a BIG-IPs elsődleges IP-cím nem lett kiépítve nyilvános IP-címmel az üzembe helyezés során. Ehelyett a közzétételi szolgáltatások számára a másodlagos belső IP-cím és a hozzá tartozó nyilvános IP-cím lesz kiépítve.
-Ez az 1 – 1 hozzárendelés egy virtuális gép nyilvános IP-címe és a magánhálózati IP-cím között lehetővé teszi, hogy a külső forgalom elérje a virtuális gépet. Azonban egy Azure NSG-szabály is szükséges ahhoz, hogy lehetővé váljon a forgalom, ugyanúgy, mint a tűzfal.
+Ezen felügyeleti felületek internetes elérhetővé tevésével nő az BIG-IPs támadási felülete, ezért az BIG-IPs elsődleges IP-címe nem lett kiépítve nyilvános IP-címmel az üzembe helyezés során. Ehelyett egy másodlagos belső IP-cím és a társított nyilvános IP-cím lesz kiépítve a közzétételi szolgáltatásokhoz.
+Ez a virtuális gép nyilvános IP-címe és privát IP-címe közötti 1–1. leképezés lehetővé teszi, hogy a külső forgalom elérje a virtuális gépet. Azonban egy Azure NSG-szabályra is szükség van a forgalom engedélyezése érdekében, ugyanúgy, mint a tűzfalon.
 
-Az ábrán egy, az Azure-ban található BIG-IP-cím egyetlen hálózati adapteres telepítése látható, amely az általános működés és felügyelet elsődleges IP-címével, valamint egy külön virtuális kiszolgáló IP-címeivel van konfigurálva a közzétételi szolgáltatások számára.
-Ebben a megoldásban egy NSG-szabály lehetővé teszi, hogy a távoli forgalom a `intranet.contoso.com` közzétett szolgáltatás nyilvános IP-címére irányítsa, mielőtt a Big-IP virtuális kiszolgálóra továbbítva lenne.
+Az ábrán egy BIG-IP VE üzemelő példánya látható az Azure-ban, amely egy elsődleges IP-címmel van konfigurálva az általános műveletekhez és felügyelethez, valamint egy különálló virtuális kiszolgálói IP-címmel a közzétételi szolgáltatásokhoz.
+Ebben az elrendezésben egy NSG-szabály lehetővé teszi a távoli forgalmat, amely a közzétett szolgáltatás nyilvános IP-címére irányít, mielőtt tovább lenne továbbítva a `intranet.contoso.com` BIG-IP virtuális kiszolgálóra.
 
-![A rendszerkép egyetlen NIC-telepítést jelenít ](./media/f5ve-deployment-plan/single-nic-deployment.png) meg alapértelmezés szerint, az Azure-beli virtuális gépek számára kiadott magán-és nyilvános IP-címek mindig dinamikusak, így a virtuális gép minden újraindítása valószínűleg megváltozhat. A BIG-IPs felügyeleti IP-cím statikusra változtatásával és a közzétételi szolgáltatások közzétételéhez használt másodlagos IP-címekkel megegyező módon elkerülheti a váratlan kapcsolódási problémákat.
+![A képen az egyetlen hálózati adapter üzembe helyezése látható Alapértelmezés szerint az Azure-beli virtuális gépekhez kiadott privát és nyilvános IP-k mindig dinamikusak, ezért a virtuális gépek minden újraindításakor valószínűleg ](./media/f5ve-deployment-plan/single-nic-deployment.png) változni fognak. Az előre nem látható csatlakozási problémák elkerülése érdekében BIG-IPs felügyeleti IP-címet statikusra, és tegye meg ugyanezt a szolgáltatások közzétételéhez használt másodlagos IP-címekkel.
 
-1. A Big-IP VM menüjéből válassza a **Beállítások**  >  **hálózatkezelés** lehetőséget.
+1. A BIG-IP virtuális gép menüjében válassza a Beállítások  >  **Hálózat**
 
-2. A hálózat nézetben válassza a **hálózati adaptertől** jobbra mutató hivatkozást.
+2. A hálózatnézetben válassza a Hálózati adapter jobb **oldalon található hivatkozást**
 
-![A rendszerkép a hálózati konfigurációt jeleníti meg](./media/f5ve-deployment-plan/network-config.png)
-
->[!NOTE]
->A rendszer véletlenszerűen hozza létre a virtuális gépek nevét az üzembe helyezés során.
-
-3. A bal oldali ablaktáblán válassza az **IP-konfigurációk** lehetőséget, majd válassza a **ipconfig1** sort.
-
-4. Állítsa a statikus **IP-hozzárendelés** lehetőséget, és ha szükséges, módosítsa a Big-IP virtuális gépek elsődleges IP-címét. Ezután kattintson a **Mentés** gombra, és a ipconfig1 menü bezárásához
+![A képen a hálózati konfiguráció látható](./media/f5ve-deployment-plan/network-config.png)
 
 >[!NOTE]
->Ezt az elsődleges IP-címet fogja használni a BIG-IP-VM-hez való kapcsolódáshoz és felügyelethez.
+>A virtuális gépek nevei véletlenszerűen jönnek létre az üzembe helyezés során.
 
-5. Válassza a felső menüszalagon a **+ Hozzáadás** elemet, és adjon meg egy másodlagos magánhálózati IP-címet (például ipconfig2).
+3. A bal oldali panelen  válassza az IP-konfigurációk, majd az **ipconfig1 sor lehetőséget.**
 
-6. A magánhálózati IP-cím beállításainak **foglalási** beállítását állítsa **statikusra**. Ha a következő magasabb vagy alacsonyabb szintű IP-címet adja meg, a dolgok sorrendjét is megtarthatja.
-
-7. A **hozzárendelni** kívánt nyilvános IP-cím beállítása és a **Létrehozás** kiválasztása
-
-8. Adja meg az új nyilvános IP-cím nevét, például BIG-IP-VM_ipconfig2_Public
-
-9. Ha a rendszer kéri, állítsa be a **SKU** -t a standard értékre
-
-10. Ha a rendszer kéri, állítsa a **szintet** **globális** értékre, és
-
-11. Állítsa a **hozzárendelés** beállítást **statikus** értékre, majd kattintson kétszer **az OK gombra** .
-
-A BIG-IP-VM most már készen áll a beállításra:
-
-- **Elsődleges magánhálózati IP-cím**: a Big-IP-VM a webes konfigurációs segédprogram és az SSH használatával történő felügyeletére szolgál. A BIG-IP rendszer saját **IP** -címeként fogja használni a közzétett háttér-szolgáltatásokhoz való kapcsolódáshoz. Emellett olyan külső szolgáltatásokhoz is csatlakozik, mint például az NTP, az AD és az LDAP.
-
-- **Másodlagos magánhálózati IP-cím**: olyan Big-IP APM virtuális kiszolgáló létrehozásakor használatos, amely a közzétett szolgáltatás (ok) ra irányuló bejövő kérelmeket figyeli.
-
-- **Nyilvános IP-cím**: a másodlagos magánhálózati IP-címhez van társítva, lehetővé teszi a nyilvános internetről érkező ügyfelek forgalmát, hogy elérjék a közzétett szolgáltatás (ok) hoz elérhető Big-IP virtuális kiszolgálót.
-
-A példa a virtuális gépek nyilvános és magánhálózati IP-címei közötti 1 – 1 kapcsolatot szemlélteti. Az Azure-beli virtuálisgép-ADAPTERek csak egy elsődleges IP-címmel rendelkezhetnek, és a további létrehozott IP-címeket mindig másodlagosnak nevezzük.
+4. Állítsa az **IP-hozzárendelési** beállítást statikusra, és szükség esetén módosítsa a BIG-IP virtuális gépek elsődleges IP-címét. Ezután válassza **a Mentés lehetőséget,** és zárja be az ipconfig1 menüt
 
 >[!NOTE]
->A BIG-IP-szolgáltatások közzétételéhez másodlagos IP-hozzárendelésekre van szükség.
+>Ezt az elsődleges IP-címet fogja használni a BIG-IP-VM csatlakoztatáshoz és kezeléséhez.
 
-![Ez a rendszerkép az összes másodlagos IP-címet megjeleníti](./media/f5ve-deployment-plan/secondary-ips.png)
+5. A **felső menüszalagon válassza** a + Hozzáadás lehetőséget, és adjon nevet egy másodlagos magánhálózati IP-címnek, például: ipconfig2
 
-Ha az SHA-t a BIG-IP- **hozzáférés irányított konfigurációjának** használatával kívánja megvalósítani, ismételje meg a 5-11-as lépéseket további magán-és nyilvános IP-párok létrehozásához minden olyan szolgáltatáshoz, amelyet a Big-IP APM segítségével szeretne közzétenni Ugyanezt a megközelítést is használhatja, ha BIG-IPs **Speciális konfiguráció** használatával tesz közzé szolgáltatásokat. Ebben a forgatókönyvben azonban lehetősége van a nyilvános IP-címek használatának elkerülésére a [kiszolgálónév-jelző (SNI)](https://support.f5.com/csp/#/article/K13452) konfigurációjának használatával. Ebben a konfigurációban a BIG-IP virtuális kiszolgáló fogadja az összes fogadott ügyfél-forgalmat, és továbbítja azt a célhelyre.
+6. Állítsa a **magánhálózati** IP-cím beállításainak Kiosztás beállítását **Statikusra.** A következő magasabb vagy alacsonyabb egymást követő IP-cím biztosítása segít a sorrendben tartani a dolgokat.
+
+7. A Nyilvános IP-cím mezőben adja meg a **Társítás lehetőséget,** majd válassza a **Létrehozás lehetőséget.**
+
+8. Adjon nevet az új nyilvános IP-címnek, például BIG-IP-VM_ipconfig2_Public
+
+9. Ha a rendszer kéri, állítsa a **termékváltozatot** Standardra
+
+10. Ha a rendszer kéri, állítsa **a réteget** a **Következőre: Globális** és
+
+11. Állítsa a **Hozzárendelés beállítást** **Statikusra,** majd kattintson kétszer az **OK** gombra.
+
+A BIG-IP-VM most már készen áll a beállításra a következővel:
+
+- **Elsődleges magánhálózati** IP-cím: A BIG-IP-VM webes konfigurációs segédprogrammal és SSH-n keresztüli kezelésére van kivatva. A BIG-IP rendszer ezt használja ön **IP-címként** a közzétett háttérszolgáltatásokhoz való csatlakozáshoz. Emellett olyan külső szolgáltatásokhoz is csatlakozik, mint az NTP, az AD és az LDAP.
+
+- **Másodlagos magánhálózati IP-cím:** BIG-IP APM virtuális kiszolgáló létrehozásakor használatos, amely a közzétett szolgáltatások bejövő kérését figyeli.
+
+- **Nyilvános IP-cím:** A másodlagos magánhálózati IP-címhez társítva lehetővé teszi, hogy a nyilvános internetről származó ügyfélforgalom elérje a közzétett szolgáltatás(ok) BIG-IP virtuális kiszolgálóját
+
+A példa egy virtuális gép nyilvános és privát IP-k közötti 1–1 kapcsolatát mutatja be. Az Azure-beli virtuális gép hálózati adaptere csak egy elsődleges IP-címmel lehet, és minden további létrehozott IP-címet mindig másodlagosnak nevezzük.
+
+>[!NOTE]
+>A BIG-IP-szolgáltatások közzétételéhez szüksége lesz a másodlagos IP-leképezésekre.
+
+![Ez a kép az összes másodlagos IP-t megjeleníti](./media/f5ve-deployment-plan/secondary-ips.png)
+
+Ha az SHA-t a BIG-IP **access** irányított konfigurációval valósítja meg, ismételje meg az 5–11. lépést, hogy további privát és nyilvános IP-párokat hozzon létre minden további, a BIG-IP APM-en keresztül közzétenni tervezett szolgáltatáshoz. Ugyanez a módszer akkor is használható, ha a speciális konfigurációt használó BIG-IPs **közzé.** Ebben a forgatókönyvben azonban lehetősége van elkerülni a nyilvános IP-címekkel kapcsolatos többletterhelést egy [SNI-konfiguráció](https://support.f5.com/csp/#/article/K13452) használatával. Ebben a konfigurációban a BIG-IP virtuális kiszolgáló fogadja az összes kapott ügyfélforgalmat, és továbbirányítja azt a célhelyre.
 
 ## <a name="dns-configuration"></a>DNS-konfiguráció
 
-Elengedhetetlen, hogy az ügyfelek számára a DNS-t úgy konfigurálja, hogy a közzétett SHA-szolgáltatásokat a BIG-IP-VM nyilvános IP-címére oldja fel.
+Fontos, hogy a DNS konfigurálva legyen az ügyfelek számára a közzétett SHA-szolgáltatások a BIG-IP-VM nyilvános IP-cím(i)re való feloldásához.
 
-Az alábbi lépések feltételezik, hogy az SHA-szolgáltatásokhoz használt nyilvános tartomány DNS-zónája az Azure-ban van kezelve. A lokátor rekord létrehozásakor azonban ugyanazok a DNS-alapelvek érvényesek, függetlenül attól, hogy a DNS-zóna hogyan legyen kezelve.
+A következő lépések feltételezik, hogy az SHA-szolgáltatásokhoz használt nyilvános tartomány DNS-zónáját az Azure kezeli. A lokátorrekordok létrehozásának DNS-alapelvei azonban továbbra is érvényesek, függetlenül attól, hogy a DNS-zónát hol kezeli a rendszer.
 
-1. Ha még nincs megnyitva, bontsa ki a portál bal oldali menüjét, és navigáljon a BIG-IP-VM-re az **erőforráscsoportok** lehetőség használatával
+1. Ha még nincs megnyitva, bontsa ki a portál bal oldali menüjét, és lépjen a BIG-IP-VM virtuális gépre az **Erőforráscsoportok lehetőséggel.**
 
-2. A Big-IP VM menüjéből válassza a **Beállítások**  >  **hálózatkezelés** lehetőséget.
+2. A BIG-IP virtuális gép menüjében válassza a **Beállítások**  >  **Hálózat**
 
-3. A BIG-IP-VM hálózatok nézetben válassza ki az első másodlagos IP-címet a legördülő IP-konfiguráció listából, és válassza ki a **hálózati adapter nyilvános IP-** címére mutató hivatkozást.
+3. A BIG-IP-VMs hálózatnézetben válassza ki az első másodlagos IP-címet a legördülő IP-konfiguráció listából, és válassza ki a hálózati adapter nyilvános IP-címére **mutató hivatkozást**
 
-![Képernyőkép a hálózati adapter nyilvános IP-címének megjelenítéséhez](./media/f5ve-deployment-plan/networking.png)
+![A hálózati adapter nyilvános IP-címét bemutató képernyőkép](./media/f5ve-deployment-plan/networking.png)
 
-4. A bal oldali ablaktábla **Beállítások** szakasza alatt válassza a **konfiguráció** lehetőséget a nyilvános IP-cím és a DNS-tulajdonságok menü megnyitásához a kiválasztott másodlagos IP-címhez.
+4. A bal **oldali panel** Beállítások szakasza  alatt válassza a Konfiguráció lehetőséget a kiválasztott másodlagos IP-cím nyilvános IP- és DNS-tulajdonságainak menüjének a kiválasztásához.
 
-5. Válassza ki és **hozzon létre** egy alias rekordot, és válassza ki a **DNS-zónát** a legördülő listából. Ha egy DNS-zóna még nem létezik, akkor az Azure-on kívül is felügyelhető, vagy létrehozhat egyet az Azure AD-ben ellenőrzött tartományi utótaghoz.
+5. Válassza ki **és hozza létre** az aliasrekordot, majd válassza ki a **DNS-zónát** a legördülő listából. Ha egy DNS-zóna még nem létezik, akkor az Azure-n kívül is kezelhető, vagy létrehozhat egyet az Azure AD-ben ellenőrzött tartomány-utótaghoz.
 
-6. Az első DNS-alias rekord létrehozásához használja az alábbi adatokat:
+6. Az első DNS-aliasrekord létrehozásához használja a következő adatokat:
 
  | Mező | Érték |
  |:-------|:-----------|
  |Előfizetés| Ugyanaz az előfizetés, mint a BIG-IP-VM|
- |DNS-zóna| A közzétett webhelyek által használt ellenőrzött tartomány utótagjának mérvadó DNS-zónája, például www.contoso.com |
- |Name | Az Ön által megadott állomásnév a kiválasztott másodlagos IP-címhez társított nyilvános IP-címhez lesz feloldva. Ügyeljen arra, hogy a megfelelő DNS-t adja meg az IP-megfeleltetésekhez. Lásd: az utolsó rendszerkép a hálózatkezelési konfigurációk szakaszban, például intranet.contoso.com > 13.77.148.215|
+ |DNS-zóna| A közzétett webhelyek által az ellenőrzött tartomány utótagja mérvadó DNS-zónát fog használni, például a www.contoso.com |
+ |Name | A megadott állomásnév a kiválasztott másodlagos IP-címhez társított nyilvános IP-cím lesz feloldva. Győződjön meg arról, hogy a megfelelő DNS-ről IP-címleképezésre van meghatározva. Lásd az utolsó képet a Hálózati konfigurációk szakaszban, például intranet.contoso.com > 13.77.148.215.|
  | TTL | 1 |
  |TTL-egységek | Óra |
 
-7. Válassza a **Létrehozás** az Azure-hoz lehetőséget, hogy ezeket a beállításokat a nyilvános DNS-be mentse.
+7. A **beállítások nyilvános** DNS-be mentéséhez válassza a Létrehozás az Azure-hoz lehetőséget.
 
-8. Hagyja meg a **DNS-név címkéjét (nem kötelező)** , majd a nyilvános IP-cím bezárása előtt válassza a **Mentés** lehetőséget.
+8. Hagyja meg **a DNS-név címkét (nem kötelező),** és a Nyilvános IP-cím **menü** bezárása előtt válassza a Mentés lehetőséget.
 
-9. Ismételje meg az 1 – 6. lépést, hogy további DNS-rekordokat hozzon létre minden olyan szolgáltatáshoz, amelyet a BIG-IP irányított konfigurációjának használatával szeretne közzétenni.
+9. Ismételje meg az 1–6. lépést, és hozzon létre további DNS-rekordokat minden olyan szolgáltatáshoz, amit közzé fog tenni a BIG-IP interaktív konfigurációjának használatával.
 
-  A DNS-rekordok a helyén bármely online eszköz, például a [DNS-ellenőrző](https://dnschecker.org/) használatával ellenőrizhetik, hogy egy létrehozott rekord sikeresen propagálva lett-e az összes globális nyilvános DNS-kiszolgálón.
+  A DNS-rekordok létrehozása után bármelyik online eszközt, [](https://dnschecker.org/) például a DNS-ellenőrzőt használhatja annak ellenőrzésére, hogy a létrehozott rekord sikeresen propagálva lett-e az összes globális nyilvános DNS-kiszolgálón.
 
-  Ha a DNS-tartomány névterét egy olyan külső szolgáltató használatával felügyeli, mint a [GoDaddy](https://www.godaddy.com/), akkor a saját DNS-felügyeleti létesítményével kell létrehoznia a rekordokat.
+  Ha DNS-tartománynévterét egy külső szolgáltató, például a [GoDaddy](https://www.godaddy.com/)használatával kezeli, akkor rekordokat kell létrehoznia a saját DNS-kezelési létesítményük használatával.
 
 >[!NOTE]
->A számítógép helyi gazdagép-fájlját is használhatja, ha a tesztelés és a DNS-rekordok gyakran váltanak át. A Windows rendszerű SZÁMÍTÓGÉPeken található localhost fájlok a Win + R gomb megnyomásával és a Futtatás **mezőbe való** beküldéssel érhetők el. Csak ügyeljen arra, hogy a localhost-rekordok csak a helyi számítógép DNS-feloldását biztosítják, nem más ügyfelek számára.
+>A számítógép helyi gazdagépfájlját is használhatja a DNS-rekordok tesztelése és gyakori váltása során. A Windows rendszerű számítógépen található localhosts fájl a Win + R billentyűkombináció lenyomásával érhető el, és a futtatási mezőben el kell küldje az illesztőprogramok szót.  Ne feledje, hogy a localhost rekord csak a helyi számítógép DNS-megoldását biztosítja, más ügyfeleket nem.
 
-## <a name="client-traffic"></a>Ügyfél-forgalom
+## <a name="client-traffic"></a>Ügyfélforgalom
 
-Alapértelmezés szerint az Azure virtuális hálózatok és a társított alhálózatok olyan magánhálózatok, amelyek nem tudnak internetes forgalmat fogadni. A BIG-IP-VM hálózati adapterét csatlakoztatni kell az üzembe helyezés során megadott NSG. Ahhoz, hogy a külső webes forgalom elérje a BIG-IP-VM-et, meg kell határoznia egy bejövő NSG-szabályt, amely engedélyezi a 443 (HTTPS) és a 80 (HTTP) portokat a nyilvános internetről.
+Alapértelmezés szerint az Azure-beli virtuális hálózatok és a társított alhálózatok olyan magánhálózatok, amelyek nem képesek fogadni az internetes forgalmat. A BIG-IP-VM hálózati adapterét az üzembe helyezés során megadott NSG-hez kell csatolni. Ahhoz, hogy a külső webes forgalom elérje a BIG-IP-VM virtuális gépet, meg kell határoznia egy bejövő NSG-szabályt, amely engedélyezi a nyilvános internetről a 443-as (HTTPS) és a 80-as (HTTP) portokat.
 
-1. A BIG-IP virtuális gép fő **áttekintő** menüjében válassza a **hálózatkezelés** lehetőséget.
+1. A BIG-IP virtuális gép fő Áttekintés **menüjében** válassza a **Hálózat lehetőséget**
 
-2. Válassza a Bejövő szabály **hozzáadása** lehetőséget a következő NSG-szabály tulajdonságainak megadásához:
+2. Válassza **a Bejövő** szabály hozzáadása lehetőséget a következő NSG-szabálytulajdonságok hozzáadásához:
 
  |     Mező   |   Érték        |
  |:------------|:------------|
  |Forrás| Bármely|
  |Forrásporttartományok| *|
- |Cél IP-címei|A BIG-IP-VM másodlagos magánhálózati IP-címeinek vesszővel tagolt listája|
+ |Cél IP-címek|A BIG-IP-VM másodlagos magánhálózati IP-címek vesszővel elválasztott listája|
  |Célportok| 80 443|
  |Protokoll| TCP |
  |Művelet| Engedélyezés|
- |Prioritás|A legalacsonyabb elérhető érték 100 – 4096|
+ |Prioritás|A legalacsonyabb elérhető érték 100 és 4096 között|
  |Name | Leíró név, például: `BIG-IP-VM_Web_Services_80_443`|
 
-3. Válassza a **Hozzáadás** lehetőséget a módosítások elvégzéséhez, majd a **hálózat** menü bezárásához.
+3. A **módosítások véglegesítéshez** válassza a Hozzáadás lehetőséget, majd zárja be **a Hálózat menüt.**
 
-A HTTP-és HTTPS-forgalom bárhonnan elérhető lesz az összes BIG-IP-VM másodlagos csatoló eléréséhez. Az 80-es port engedélyezése hasznos, ha a BIG-IP APM lehetővé teszi a felhasználók számára a HTTP-ről a HTTPS-re való automatikus átirányítást. Ez a szabály módosítható a cél IP-címek hozzáadásához vagy eltávolításához, ha szükséges.
+Mostantól a BÁRMELY helyről származó HTTP- és HTTPS-forgalom elérheti az összes BIG-IP-VM másodlagos felületet. A 80-as port engedélyezésével lehetővé teszi, hogy a BIG-IP APM automatikusan átirányítsa a felhasználókat a HTTP-ről a HTTPS-re. Ez a szabály szükség esetén módosítható cél IP-k hozzáadásához vagy eltávolításához.
 
 ## <a name="manage-big-ip"></a>BIG-IP kezelése
 
-A BIG-IP rendszer a webes konfigurációs felhasználói felületén keresztül lesz felügyelve, amely a következő ajánlott módszerek valamelyikével érhető el:
+A BIG-IP rendszer felügyelete a webes konfigurációs felhasználói felületen keresztül, amely a következő ajánlott módszerek valamelyikével érhető el:
 
-- A BIG-IP belső hálózatán található gépről
+- A BIG-IP belső hálózatán belüli gépről
 
-- A BIG-IP-VM belső hálózatához csatlakozó VPN-ügyfélről
+- A BIG-IP-VM belső hálózatához csatlakoztatott VPN-ügyfélről
 
-- Közzététel az [Azure ad Application Proxyon](./application-proxy-add-on-premises-application.md) keresztül
+- Közzététel [Azure AD-alkalmazásproxy](./application-proxy-add-on-premises-application.md)
 
-A többi konfiguráció folytatásához el kell döntenie a legmegfelelőbb módszert. Ha szükséges, közvetlenül kapcsolódhat a webes konfigurációhoz az internetről, ha a BIG-IP elsődleges IP-címét egy nyilvános IP-címmel konfigurálja. Ezután adjon hozzá egy NSG-szabályt, amely engedélyezi az 8443 forgalmat az adott elsődleges IP-címhez. Ügyeljen arra, hogy a forrást a saját megbízható IP-címére korlátozza, ellenkező esetben bárki csatlakozhat.
+A fennmaradó konfigurációkhoz való folytatáshoz el kell döntenie a legmegfelelőbb módszert. Szükség esetén közvetlenül csatlakozhat a webes konfigurációhoz az internetről a BIG-IP elsődleges IP-címének nyilvános IP-címmel való konfigurálásával. Ezután hozzáad egy NSG-szabályt, amely engedélyezi a 8443-as forgalmat az elsődleges IP-címhez. Ügyeljen arra, hogy a forrást a saját megbízható IP-címére korlátozza, különben bárki csatlakozhat.
 
-Ha elkészült, ellenőrizze, hogy tud-e csatlakozni a BIG-IP virtuális gép web config konfigurációjához, és jelentkezzen be a virtuális gép telepítése során megadott hitelesítő adatokkal:
+Ha elkészült, ellenőrizze, hogy tud-e csatlakozni a BIG-IP virtuális gép webes konfigurációhoz, és jelentkezzen be a virtuális gép üzembe helyezése során megadott hitelesítő adatokkal:
 
-- Ha belső hálózatán vagy VPN-en keresztül csatlakozik egy virtuális gépről, csatlakoztassa közvetlenül a BIG-IPs elsődleges IP-címet és a web config portot. Például: `https://<BIG-IP-VM_Primary_IP:8443`. A böngésző kéri a nem biztonságos kapcsolatok megadását, de figyelmen kívül hagyhatja a kérést, amíg a BIG-IP konfigurálva nem lesz. Ha a böngésző ragaszkodik a hozzáférés blokkolásához, törölje a gyorsítótárat, és próbálkozzon újra.
+- Ha egy virtuális gépről csatlakozik a belső hálózatán vagy VPN-en keresztül, csatlakozzon közvetlenül a BIG-IPs IP-címhez és a webes konfigurációs porthoz. Például: `https://<BIG-IP-VM_Primary_IP:8443`. A böngésző rákérdez, hogy a kapcsolat nem biztonságos-e, de figyelmen kívül hagyhatja a parancssort, amíg a BIG-IP nincs konfigurálva. Ha a böngésző nem blokkolja a hozzáférést, törölje a gyorsítótárát, és próbálkozzon újra.
 
-- Ha az alkalmazás-proxyn keresztül közzétette a webes konfigurációt, akkor a megadott URL-cím használatával a webkonfigurációt külsőleg is elérheti a port hozzáfűzése nélkül, például: `https://big-ip-vm.contoso.com` . A belső URL-címet a web config port használatával kell definiálni, például: `https://big-ip-vm.contoso.com:8443` 
+- Ha a webes konfigurációt a alkalmazásproxy, akkor a megadott URL-cím használatával külsőleg, a port hozzáfűzése nélkül férhet hozzá a webes konfigurációhoz, például: `https://big-ip-vm.contoso.com` . A belső URL-címet a webes konfigurációs port használatával kell meghatározni, például: `https://big-ip-vm.contoso.com:8443` 
 
-A BIG-IP rendszer a mögöttes SSH-környezettel is kezelhető, amely jellemzően parancssori (CLI) feladatokhoz és a gyökér szintű hozzáféréshez használatos. Több lehetőség is létezik a parancssori felülethez való csatlakozáshoz, beleértve a következőket:
+A BIG-IP rendszerek a mögöttes SSH-környezeten keresztül is kezelhetők, amelyet általában parancssori (CLI) feladatokhoz és gyökérszintű hozzáféréshez használnak. A CLI-hez való csatlakozásra több lehetőség is rendelkezésre áll, például:
 
-- [Azure Bastion szolgáltatás](../../bastion/bastion-overview.md): gyors és biztonságos csatlakozást tesz lehetővé a vNET belüli bármely virtuális géphez bármely helyről
+- [Azure Bastion szolgáltatás:](../../bastion/bastion-overview.md)Gyors és biztonságos kapcsolatokat tesz lehetővé a vNET-en belüli bármely virtuális géphez, bármilyen helyről
 
-- Közvetlen kapcsolat egy SSH-ügyféllel, például a JIT-módszer használatával
+- Közvetlen csatlakozás SSH-ügyfélen, például a PuTTY-n keresztül JIT módszeren keresztül
 
-- Soros konzol: a virtuális gépek menü támogatás és hibaelhárítás szakaszának alján, a portálon érhető el. Nem támogatja a fájlátvitelt.
+- Soros konzol: A portál Virtuális gépek menüjének Támogatás és hibaelhárítás szakaszában található. Nem támogatja a fájlátvitelt.
 
-- A webes konfigurációhoz hasonlóan közvetlenül is csatlakozhat az internetről a CLI-hez úgy, hogy a BIG-IP elsődleges IP-címét egy nyilvános IP-címmel konfigurálja, és egy NSG-szabályt ad hozzá az SSH-forgalom engedélyezéséhez. Ha ezt a módszert használja, ügyeljen arra, hogy a forrást a saját megbízható IP-címére korlátozza.  
+- Akárcsak a webes konfigurációnál, közvetlenül is csatlakozhat a CLI-hez az internetről úgy, hogy konfigurálja a BIG-IP elsődleges IP-címét egy nyilvános IP-címmel, és hozzáad egy NSG-szabályt az SSH-forgalom engedélyezése érdekében. Ha ezt a módszert használja, mindenképpen korlátozza a forrást a saját megbízható IP-címére.  
 
 ## <a name="big-ip-license"></a>BIG-IP-licenc
 
-A BIG-IP rendszernek aktiválva kell lennie, és az APM modullal kell kiépíteni, mielőtt a közzétételi szolgáltatások és az SHA számára konfigurálva lenne.
+A BIG-IP rendszert aktiválni és ki kellépítenünk az APM modullal, mielőtt konfigurálni lehet a szolgáltatások és az SHA közzétételére.
 
-1. Jelentkezzen be újra a webes konfigurációba, és az **Általános tulajdonságok** lapon válassza az **aktiválás** lehetőséget.
+1. Jelentkezzen be újra a webes konfigurációba, és az Általános **tulajdonságok lapon** válassza az Aktiválás **lehetőséget**
 
-2. Az **alapszintű regisztrációs kulcs** mezőben adja meg az F5 által biztosított kis-és nagybetűket megkülönböztető kulcsot
+2. Az **Alapregisztrációs kulcs mezőbe** írja be az F5 által biztosított megkülönbözteti a kis- és nagybetűket
 
-3. Hagyja meg az **aktiválási módszert** **automatikusra** , és válassza a **tovább** lehetőséget, a Big-IP ellenőrzi a licencet, és megjeleníti a végfelhasználói licencszerződést (EULA).
+3. Hagyja meg az  **Aktiválási módszer** automatikus beállítását, és válassza a **Tovább** lehetőséget. A BIG-IP érvényesíti a licencet, és megjeleníti a végfelhasználói licencszerződést (EULA).
 
-4. A **folytatáshoz** válassza az **elfogadás** lehetőséget, és várjon, amíg az aktiválás befejeződik.
+4. Válassza **az Elfogadás lehetőséget,** és várjon, amíg az aktiválás befejeződik, mielőtt a **Folytatás lehetőséget választná.**
 
-5. Jelentkezzen be újra, és a licenc összegzése lap alján kattintson a **Tovább gombra**. A BIG-IP mostantól megjeleníti az SHA-hez szükséges különböző funkciókat biztosító modulok listáját. Ha ezt nem látja, a főlapon **lépjen a**  >  **rendszererőforrás kiépítés** elemre.
+5. Jelentkezzen be újra, és a Licencösszegzés oldal alján válassza a Tovább **lehetőséget.** A BIG-IP most megjeleníti azon modulok listáját, amelyek az SHA-hez szükséges különböző funkciókat biztosítják. Ha ezt nem látja, a fő lapon válassza a Rendszererőforrás-kiépítés  >  **lapot.**
 
-6. Hozzáférési szabályzat (APM) kiépítési oszlopának keresése
+6. Ellenőrizze a hozzáférési szabályzat (APM) kiépítési oszlopát
 
-![A képen megjelenik a hozzáférés kiépítés](./media/f5ve-deployment-plan/access-provisioning.png)
+![A képen a hozzáférés-kiépítés látható](./media/f5ve-deployment-plan/access-provisioning.png)
 
-7. Válassza a **Küldés** lehetőséget, és fogadja el a figyelmeztetést
+7. Válassza **a Küldés lehetőséget,** és fogadja el a figyelmeztetést
 
-8. Legyen türelemmel, és várjon, amíg a BIG-IP befejeződik az új funkciók megvilágítása. A teljes inicializálás előtt többször is ciklusba kerülhet. 
+8. Várjon, amíg a BIG-IP befejezi az új funkciók bevilágítását. A teljes inicializálás előtt többször is ciklikus lehet. 
 
-9. Ha elkészült, válassza a **Folytatás** lehetőséget, majd a **Névjegy** lapon válassza **a telepítési segédprogram futtatása** lehetőséget.
+9. Ha készen áll, **válassza a Folytatás** lehetőséget, majd a About **(About)** lapon válassza **a Run the setup utility (Telepítési segédprogram futtatása) lehetőséget.**
 
 >[!IMPORTANT]
->Az F5-es licencek csak egyetlen BIG-IP VE-példány általi felhasználásra vannak korlátozva egyszerre. Előfordulhat, hogy az egyik példányból a másikba kívánja áttelepíteni a licencet, és ha így tesz, az aktív példányon [vissza kell vonnia](https://support.f5.com/csp/article/K41458656) a próbaverziós licencét, mielőtt leszerelik, ellenkező esetben a licenc véglegesen el fog veszni.
+>Az F5-licencek egyetlen BIG-IP VE-példány számára vannak korlátozva egyszerre. Előfordulhat, hogy a licencet egy példányról egy másikra szeretné átemelni, [](https://support.f5.com/csp/article/K41458656) és ha így tesz, mindenképpen vonja vissza a próbalicencet az aktív példányon a leszerelés előtt, különben a licenc véglegesen elveszik.
 
 ## <a name="provision-big-ip"></a>BIG-IP kiépítése
 
-A BIG-IPs web config-re irányuló és onnan érkező felügyeleti forgalom védelme rendkívül fontos. Konfiguráljon egy eszköz-felügyeleti tanúsítványt a webes konfigurációs csatorna biztonságának védelméhez.
+Alapvető fontosságú, hogy biztonságossá BIG-IPs webes konfigurációk felügyeleti forgalmát. Konfigurálnia kell egy eszközkezelési tanúsítványt, amely segít megvédeni a webes konfigurációs csatornát a biztonsági biztonságtól.
 
-1. A bal oldali navigációs sávon **válassza a**  >  **rendszertanúsítvány-kezelés**  >  **forgalmi tanúsítványkezelő**  >  **SSL-tanúsítvány lista**  >  **Importálás** lehetőséget.
+1. A bal oldali navigációs sávon válassza a **Rendszer** tanúsítványkezelési  >    >  **forgalom**  >  **tanúsítványkezelése SSL-tanúsítványlista**  >  **importálása adatokat.**
 
-2. Az **Importálás típusa** legördülő listából válassza a **PKCS 12 (IIS)** lehetőséget, és **válassza a fájl** elemet. Keressen egy olyan SSL-webtanúsítványt, amelynek a tulajdonos neve vagy a SAN, amely az FQDN-t fogja tartalmazni, a BIG-IP-VM hozzárendelését a következő néhány lépésben
+2. Az Importálás **típusa legördülő** listában válassza a **PKCS 12(IIS)** lehetőséget, majd válassza **a Fájl lehetőséget.** Keresse meg azt az SSL-web tanúsítványt, amely tulajdonosnévvel vagy SAN-nal rendelkezik, és amely lefedi a BIG-IP-VM hozzárendelésének teljes tartománynevét a következő néhány lépésben
 
-3. Adja meg a tanúsítványhoz tartozó jelszót, majd válassza az **Importálás** lehetőséget.
+3. Adja meg a tanúsítvány jelszavát, majd válassza az Importálás **lehetőséget**
 
-4. A bal oldali navigációs sávon **lépjen a**  >  **rendszerplatform** elemre.
+4. A bal oldali navigációs sávon kattintson a **Rendszerplatformra.**  >  
 
-5. Konfigurálja a BIG-IP-VM-et egy teljesen minősített állomásnévvel és a környezetének időzónáját, majd a **frissítés** után
+5. A BIG-IP-VM konfigurálása teljes állomásnévvel és a környezete időzónával, majd frissítés 
 
-![A képen az általános tulajdonságok láthatók](./media/f5ve-deployment-plan/general-properties.png)
+![A képen általános tulajdonságok láthatóak](./media/f5ve-deployment-plan/general-properties.png)
 
-6. A bal oldali navigációs sávon **lépjen a**  >  **rendszerkonfiguráció**  >  **eszköz**  >  **NTP** elemre.
+6. A bal oldali navigációs sávon kattintson a Rendszerkonfiguráció eszköz   >    >    >  **NTP-fájlja pontra.**
 
-7. Adjon meg egy megbízható NTP-forrást, és válassza a **Hozzáadás**, majd a **frissítés** elemet. Például: `time.windows.com`
+7. Adjon meg egy megbízható NTP-forrást, és **válassza a Hozzáadás,** majd a **Frissítés lehetőséget.** Például: `time.windows.com`
 
-Most egy DNS-rekordra van szüksége az előző lépésekben megadott BIG-IPs teljes tartománynév feloldásához az elsődleges magánhálózati IP-címhez. Egy rekordot fel kell venni a környezet belső DNS-fiókjába vagy egy olyan számítógép localhost fájljába, amely a BIG-IP webes konfigurációjához való kapcsolódáshoz lesz használva. Mindkét esetben a böngésző figyelmeztetése már nem jelenik meg, amikor közvetlenül csatlakozik a webes konfigurációhoz. Ez nem az alkalmazásproxy vagy más fordított proxy használatával történik.
+Most egy DNS-rekordra van szükség az előző lépésekben BIG-IPs FQDN elsődleges magánhálózati IP-címére való feloldásához. Hozzá kell adni egy rekordot a környezet belső DNS-éhez vagy egy számítógép localhost fájljéhez, amely a BIG-IP webes konfigurációhoz fog csatlakozni. Mindkét esetben a böngésző figyelmeztetése többé nem jelenik meg, amikor közvetlenül csatlakozik a webes konfigurációhoz. Ez azt jelenti, hogy nem alkalmazásproxy más fordított proxyn keresztül.
 
 ## <a name="ssl-profile"></a>SSL-profil
 
-Fordított proxyként a BIG-IP rendszer egyszerű továbbítási szolgáltatásként működhet, más néven transzparens proxyként, vagy egy teljes proxy, amely aktívan részt vesz az ügyfelek és a kiszolgálók közötti adatcsere során.
-A teljes proxy két különálló kapcsolatot hoz létre: egy előtéri TCP-ügyfélkapcsolatot, valamint egy különálló háttérbeli TCP-kiszolgáló kapcsolatát, és a közepén lévő enyhe hézagot. Az ügyfelek az egyik végponton, más néven **virtuális kiszolgálón** keresztül csatlakoznak a proxy-figyelőhöz, a proxy pedig különálló, független kapcsolatot létesít a háttér-kiszolgálóval. Ez kétirányú mindkét oldalon.
-Ebben a teljes proxy módban az F5 BIG-IP rendszer képes a forgalom vizsgálatára, ezért a kérelmekkel és a válaszokkal való interakció is lehetséges. Ezen funkció alapján bizonyos funkciók, például a terheléselosztás és a webes teljesítmény optimalizálása, valamint a fejlettebb forgalomirányítási szolgáltatások, például az alkalmazási réteg biztonsága, a webes gyorsítás, az oldal-Útválasztás és a biztonságos távoli hozzáférés.
-Az SSL-alapú szolgáltatások közzétételekor az ügyfelek és a háttérbeli szolgáltatások közötti adatforgalom visszafejtésének és titkosításának folyamatát a BIG IP SSL profilok kezelik.
+Fordított proxyként a BIG-IP-rendszerek egyszerű továbbítási szolgáltatásként, más néven transzparens proxyként vagy teljes proxyként is viselkedhetnek, amely aktívan részt vesz az ügyfelek és kiszolgálók közötti adatcserében.
+A teljes proxy két különálló kapcsolatot hoz létre: egy előteres TCP-ügyfélkapcsolatot, valamint egy különálló háttérbeli TCP-kiszolgálókapcsolatot, amelyek között egy gyenge eltérés található. Az ügyfelek az egyik végén, más néven **virtuális** kiszolgálóként csatlakoznak a proxy listenerhez, és a proxy különálló, független kapcsolatot létesít a háttérkiszolgálóval. Ez kétirányú mindkét oldalon.
+Ebben a teljes proxymódban az F5 BIG-IP rendszer képes megvizsgálni a forgalmat, így a kérésekkel és válaszokkal való interakció is lehetséges. Bizonyos funkciók, például a terheléselosztás és a webes teljesítmény optimalizálása, valamint a fejlettebb forgalomfelügyeleti szolgáltatások, például az alkalmazásréteg biztonsága, a webgyorsítás, a lapútválasztás és a biztonságos távelérés, erre a funkcióra támaszkodnak.
+SSL-alapú szolgáltatások közzétételekor az ügyfelek és a háttérszolgáltatások közötti forgalom visszafejtése és titkosítása BIG-IP SSL történik.
 
-Két típusú profil létezik:
+Kétféle profil létezik:
 
-- **Ügyfél SSL**: az SSL-t használó belső szolgáltatások közzétételének leggyakoribb módja egy ügyfél SSL-profiljának létrehozása. Az ügyfél SSL-profiljaival a BIG-IP rendszer visszafejtheti a bejövő ügyfelek kéréseit, mielőtt elküldené őket egy alsóbb rétegbeli szolgáltatásba. Ezután titkosítja a kimenő háttérbeli válaszokat, mielőtt elküldené őket az ügyfeleknek.
+- **Ügyfél SSL:** A BIG-IP rendszerek ssl használatával belső szolgáltatások közzétételére való beállításának leggyakoribb módja egy ügyfél SSL-profil létrehozása. Az ügyfél SSL-profillal a BIG-IP rendszer vissza tudja fejteni a bejövő ügyfélkéréseket, mielőtt továbbküldi őket egy lefelé irányuló szolgáltatásnak. Ezután titkosítja a kimenő háttér válaszokat, mielőtt elküldi azokat az ügyfeleknek.
 
-- **Kiszolgáló SSL**: a https-hez konfigurált háttér-szolgáltatások esetében a Big-IP protokollt a kiszolgáló SSL-profiljának használatára állíthatja be. A kiszolgálói SSL-profillal a BIG-IP újra titkosítja az ügyfél kérését, mielőtt elküldené a cél háttér-szolgáltatásba. Ha a kiszolgáló titkosított választ ad vissza, a BIG-IP rendszer visszafejti és újra titkosítja a választ, mielőtt elküldené az ügyfélnek a konfigurált ügyfél SSL-profilján keresztül.
+- **Kiszolgálói SSL:** A HTTPS-hez konfigurált háttérszolgáltatásokhoz konfigurálhatja a BIG-IP-t egy kiszolgálói SSL-profil használatára. Kiszolgálói SSL-profil esetén a BIG-IP újratitkosítja az ügyfélkérést, mielőtt továbbküldi azt a cél háttérszolgáltatásnak. Amikor a kiszolgáló titkosított választ ad vissza, a BIG-IP rendszer visszafejti és újra titkosítja a választ, mielőtt továbbküldi az ügyfélnek a konfigurált ügyfél SSL-profilon keresztül.
 
-Az ügyfél-és kiszolgálói SSL-profilok kiépítésével a BIG-IP előre konfigurálva lesz, és készen áll az összes SHA-forgatókönyvre.
+Az ügyfél- és a kiszolgálói SSL-profilok kiépítése is rendelkezik a BIG-IP előre konfigurált és készen áll az összes SHA-forgatókönyvhöz.
 
-1. A bal oldali navigációs sávon **válassza a**  >  **rendszertanúsítvány-kezelés**  >  **forgalmi tanúsítványkezelő**  >  **SSL-tanúsítvány lista**  >  **Importálás** lehetőséget.
+1. A bal oldali navigációs sávon válassza a **Rendszer** tanúsítványkezelési  >    >  **forgalom**  >  **tanúsítványkezelése SSL-tanúsítványlista**  >  **importálása adatokat.**
 
-2. Az **Importálás típusa** legördülő listából válassza a **PKCS 12 (IIS) lehetőséget.**
+2. Az Importálás **típusa legördülő** listában válassza a **PKCS 12(IIS) lehetőséget**
 
 3. Adja meg az importált tanúsítvány nevét, például:  `ContosoWilcardCert`
 
-4. Válassza a **fájl kiválasztása** lehetőséget, hogy megkeresse az SSL webes tanúsítvány tulajdonosának nevét, amely a közzétett szolgáltatásokhoz használt tartományi utótagnak felel meg
+4. Válassza **a Fájl kiválasztása** lehetőséget annak az SSL-web tanúsítványnak a tallózáshoz, amely a közzétett szolgáltatásokhoz használni kívánt tartomány-utótagnak felel meg
 
-5. Adja meg az importált tanúsítvány **jelszavát** , majd válassza az **Importálás** lehetőséget.
+5. Adja meg **az importált** tanúsítvány jelszavát, majd válassza az Importálás **lehetőséget.**
 
-6. A bal oldali navigációs sávon lépjen a **helyi forgalmi**  >  **profilok**  >  **SSL**  >  -**ügyfél** elemre, majd válassza a **Létrehozás** lehetőséget.
+6. A bal oldali navigációs sávon válassza a **Helyi** forgalmi profilok SSL-ügyfél lehetőséget,  >    >    >   majd válassza a Létrehozás **lehetőséget.**
 
-7. Az **új ügyfél SSL-profilja** lapon adja meg az új ügyfél SSL-profiljának egyedi rövid nevét, és győződjön meg arról, hogy a szülő profil **clientssl** van beállítva.
+7. Az Új **ügyfél SSL-profil oldalán** adjon meg egy egyedi rövid nevet az új ügyfél SSL-profilja számára, és győződjön meg arról, hogy a Szülő profil az **ügyfelekre van állítval**
 
-![A képen a Big-IP frissítése látható](./media/f5ve-deployment-plan/client-ssl.png)
+![A képen a big-ip frissítés látható](./media/f5ve-deployment-plan/client-ssl.png)
 
-8. Jelölje be a jobb oldali jelölőnégyzetet a **tanúsítvány kulcstartójának** sorában, és válassza a **Hozzáadás** lehetőséget.
+8. Jelölje be a jobb távoli jelölőnégyzetet a Tanúsítványkulcs-lánc **sorban,** majd válassza a Hozzáadás **lehetőséget**
 
-9. A három legördülő listából válassza ki a jelszó nélkül importált helyettesítő karaktert, majd válassza a **Hozzáadás**  >  **kész** lehetőséget.
+9. A három legördülő listában válassza ki a jelszó nélkül importált helyettesítő tanúsítványt, majd válassza a **Kész hozzáadása**  >  **lehetőséget.**
 
-![A képen a Big-IP contoso helyettesítő karakterének frissítése látható](./media/f5ve-deployment-plan/contoso-wildcard.png)
+![A képen a big-ip contoso helyettesítő karakter látható](./media/f5ve-deployment-plan/contoso-wildcard.png)
 
-10. Az **SSL-kiszolgálói tanúsítvány profiljának** létrehozásához ismételje meg a 6-9. lépést. A felső menüszalagon válassza az **SSL**-  >  **kiszolgáló**  >  **létrehozása** lehetőséget.
+10. Ismételje meg a 6–9. lépést egy **SSL-kiszolgálói tanúsítványprofil létrehozásához.** A felső menüszalagon válassza az  >  **SSL-kiszolgáló létrehozása**  >  **lehetőséget.**
 
-11. Az **új kiszolgáló SSL-profilja** lapon adja meg az új kiszolgáló SSL-profiljának egyedi rövid nevét, és győződjön meg arról, hogy a szülő profil **serverssl** van beállítva.
+11. Az Új **kiszolgálói SSL-profil lapon** adjon meg egy egyedi rövid nevet az új kiszolgálói SSL-profilnak, és győződjön meg arról, hogy a Szülő profil kiszolgálókra **van állítval**
 
-12. Jelölje be a tanúsítványhoz és a kulcshoz tartozó sorok szélsőjobboldali jelölőnégyzetét, majd a legördülő listából válassza ki az importált tanúsítványt, majd fejezze be a **befejezést**.
+12. Jelölje be a jobb far-right (jobb) jelölőnégyzetet a Certificate (Tanúsítvány) és a Key (Kulcs) soroknál, majd a legördülő listából válassza ki az importált tanúsítványt, majd kattintson a Finished (Kész) **gombra.**
 
-![A képen a Big-IP-kiszolgáló összes profiljának frissítése látható](./media/f5ve-deployment-plan/server-ssl-profile.png)
+![A képen a big-ip kiszolgáló összes profiljának frissítése látható](./media/f5ve-deployment-plan/server-ssl-profile.png)
 
 >[!NOTE]
->Ne essen kétségbe, ha nem tud SSL-tanúsítványt beszerezni, használhatja az integrált önaláírt BIG-IP-kiszolgáló és az ügyfél SSL-tanúsítványait. A böngészőben csak egy tanúsítvány jelenik meg.
+>Ne aggódjon, ha nem tud SSL-tanúsítványt beszerezni, használhatja az integrált önaírt BIG-IP-kiszolgálót és az ügyfél SSL-tanúsítványait. Csak egy tanúsítványhiba jelenik meg a böngészőben.
 
-A BIG-IP for SHA előkészítésének egyik utolsó lépése annak biztosítása, hogy képes legyen megkeresni az erőforrások közzétételét, valamint azt a címtárszolgáltatás-szolgáltatást, amely az egyszeri bejelentkezéshez is támaszkodik. A BIG-IP két névfeloldási forrással rendelkezik, kezdve a helyi/.../hosts fájllal, vagy ha a rekord nem található meg a BIG-IP rendszer által használt DNS-szolgáltatástól függetlenül. A hosts file metódus nem vonatkozik a teljes tartománynevet használó APM-csomópontokra és-készletekre.
+A BIG-IP SHA-hez való előkészítésének utolsó lépése annak biztosítása, hogy meg tudja találni a közzétételhez szükséges erőforrásokat, valamint azt a címtárszolgáltatást, amelyre az SSO-hoz támaszkodik. A BIG-IP két névfeloldási forrással rendelkezik, kezdve a helyi/.../hosts fájllal, vagy ha nem található rekord, a BIG-IP rendszer a konfigurált DNS-szolgáltatást használja. A hosts fájl metódus nem vonatkozik az FQDN-t tartalmazó APM-csomópontokra és -készletekre.
 
-1. A webes konfiguráció területen **lépjen a**  >  **rendszerkonfiguráció**  >  **eszköz**  >  **DNS** elemre.
+1. A webes konfigurációban menjen a Rendszerkonfigurációs eszköz  >    >  **DNS-éhez.**  >  
 
-2. A **DNS-keresési kiszolgáló listában** adja meg a környezetek DNS-KISZOLGÁLÓJÁNAK IP-címét.
+2. A **DNS keresési kiszolgáló listájában** adja meg a környezetek DNS-kiszolgálójának IP-címét
 
-3. Válassza a  >  **frissítés** hozzáadása elemet.
+3. Válassza a **Frissítés**  >  **hozzáadása lehetőséget**
 
-Különálló és választható lépésként érdemes lehet egy [LDAP-konfigurációt](https://somoit.net/f5-big-ip/authentication-using-active-directory) használni a Big-IP-rendszergazdák hitelesítésére az ad-ben a helyi Big-IP-fiókok kezelése helyett.
+Különálló és választható lépésként érdemes lehet [LDAP-konfigurációt](https://somoit.net/f5-big-ip/authentication-using-active-directory) használni a BIG-IP-rendszergazdai hitelesítéshez az AD-hez a helyi BIG-IP-fiókok kezelése helyett.
 
 ## <a name="update-big-ip"></a>BIG-IP frissítése
 
-A BIG-IP-VM-et frissíteni kell a [forgatókönyv-alapú útmutatóban](f5-aad-integration.md)szereplő összes új funkció zárolásának feloldásához. Az egérmutatót a Főoldal bal felső részén található BIG-IPs állomásnév fölé helyezve a System TMOS. Azt javasoljuk, hogy a v15. x vagy újabb verzióra futtassa az [F5 letöltést](https://downloads.f5.com/esd/productlines.jsp). A fő rendszeroperációs rendszer (TMOS) frissítéséhez használja az [útmutatót](https://support.f5.com/csp/article/K34745165) .
+A BIG-IP-VM-et frissíteni kell, hogy elérhető legyen a [forgatókönyv-alapú útmutatóban](f5-aad-integration.md)szereplő összes új funkció. Ellenőrizheti, hogy a rendszer TMOS-verziója az egérmutatót BIG-IPs főoldal bal felső oldalán található gazdanév fölé. Javasoljuk, hogy a 15.x vagy magasabb, az F5 letöltésből beszerezhető [et futtasa.](https://downloads.f5.com/esd/productlines.jsp) Az útmutató [segítségével](https://support.f5.com/csp/article/K34745165) frissítheti a fő rendszer operációs rendszerét (TMOS).
 
-Ha a fő TMOS frissítése nem lehetséges, akkor az alábbi lépések végrehajtásával vegye figyelembe, hogy az irányított konfigurációt csak a lehető legkevesebbre frissíti.
+Ha a fő TMOS frissítése nem lehetséges, fontolja meg az irányított konfiguráció önálló frissítését az alábbi lépésekkel.
 
-1. A Big-IP webes konfiguráció főoldaláról nyissa meg a **hozzáférés**  >  **irányított konfigurációt**
+1. A BIG-IP webes konfiguráció fő lapján válassza az **Irányított hozzáférés**  >  **konfigurációja lapot.**
 
-2. Az **irányított konfiguráció** lapon válassza az **irányított konfiguráció frissítése** elemet.
+2. Az Irányított **konfiguráció lapon** válassza az Irányított konfiguráció **frissítése lehetőséget.**
 
-![A képen a Big-IP frissítése látható](./media/f5ve-deployment-plan/update-big-ip.png)
+![A kép a big-ip frissítését mutatja be](./media/f5ve-deployment-plan/update-big-ip.png)
 
-3. A **frissítés irányított konfiguráció** párbeszédpanelen válassza a **Fájl elemet** a letöltött használati eset csomag feltöltéséhez, majd válassza a **feltöltés és telepítés** lehetőséget.
+3. Az Irányított **konfiguráció frissítése párbeszédpanelen** válassza a **Fájl** lehetőséget a letöltött esetcsomag feltöltéséhez, majd válassza a Feltöltés és **telepítés lehetőséget.**
 
-4. Ha a frissítés befejeződött, válassza a **Folytatás** lehetőséget.
+4. Ha a frissítés befejeződött, válassza a Folytatás **lehetőséget.**
 
-## <a name="backup-big-ip"></a>BIG-IP biztonsági mentés
+## <a name="backup-big-ip"></a>BIG-IP biztonsági mentése
 
-Ha a BIG-IP rendszer már teljesen kiépítve van, javasoljuk, hogy készítsen teljes biztonsági mentést a konfigurációról:
+Most, hogy a BIG-IP rendszer teljesen ki van építve, javasoljuk, hogy a konfigurációról teljes biztonsági másolatot készít:
 
-1. Ugrás a   >  **rendszerarchívumok**  >  **létrehozásához**
+1. Ugrás a **Rendszerarchivárak**  >  **létrehozása**  >  **gombra**
 
-2. Adjon meg egyedi **fájlnevet** , és engedélyezze a **titkosítást** egy hozzáférési kóddal
+2. Adjon meg egy egyedi **fájlnevet,** **és** engedélyezze a titkosítást jelszóval
 
-3. Állítsa be a **titkos kulcsok** lehetőséget, hogy az **tartalmazza** az eszköz és az SSL-tanúsítványok biztonsági mentését is
+3. Állítsa a **Titkos kulcsok beállítást** a Be include (Be) beállításra az eszköz- és SSL-tanúsítványok biztonságiának beállításhoz. 
 
-4. Válassza a **kész** lehetőséget, és várja meg, amíg a folyamat befejeződik
+4. Válassza a **Kész lehetőséget,** és várjon, amíg a folyamat befejeződik
 
-5. A biztonsági mentési eredmény állapotot biztosító műveleti állapot jelenik meg. Válassza az **OK** gombot.
+5. Megjelenik egy művelet állapota, amely a biztonsági mentés eredményét jelzi. Válassza az **OK** gombot.
 
-6. Mentse helyileg a felhasználói konfigurációs készlet (FKR) archívumát a biztonsági mentés hivatkozásának kiválasztásával, és válassza a **Letöltés** lehetőséget.
+6. Mentse helyileg a Felhasználói konfigurációs csoport (UCS) archívumát a biztonsági másolat hivatkozásának kiválasztásával, majd válassza a **Letöltés lehetőséget.**
 
-Választható lépésként a teljes rendszerlemez biztonsági mentését is elvégezheti az Azure- [Pillanatképek](../../virtual-machines/windows/snapshot-copy-managed-disk.md)használatával, amely a webkonfiguráció biztonsági mentésével ELLENTÉTBEN a TMOS-verziók közötti tesztelésre, vagy egy friss rendszerre való visszagörgetésre is lehetőséget nyújt.
+Választható lépésként biztonsági másolatot készíthet a teljes rendszerlemezről az [Azure-pillanatképek](../../virtual-machines/windows/snapshot-copy-managed-disk.md)használatával, amely a webes konfiguráció biztonsági mentésével ellentétben bizonyos válságtervet biztosít a TMOS-verziók közötti teszteléshez, vagy egy új rendszerre való visszaállításhoz.
 
 ```PowerShell
 # Install modules
@@ -448,13 +449,13 @@ New-AzVmSnapshot -ResourceGroupName '<E.g.contoso-RG>' -VmName '<E.g.BIG-IP-VM>'
 
 ## <a name="restore-big-ip"></a>BIG-IP visszaállítása
 
-A BIG-IP visszaállítása hasonló eljárást követ a biztonsági mentéshez, és a nagy IP-alapú virtuális gépek közötti konfigurációk áttelepítésére is használható. A biztonsági másolat importálása előtt meg kell figyelni a támogatott frissítési útvonalakkal kapcsolatos adatokat.
+A BIG-IP-címek visszaállítása a biztonsági mentéshez hasonló eljárást követ, és a BIG-IP virtuális gépek közötti konfigurációk áttelepítésére is használható. A biztonsági másolatok importálása előtt érdemes figyelembe venni a támogatott frissítési útvonalak részleteit.
 
-1. Ugrás a   >  **rendszerarchívumok** szolgáltatásra
+1. Ugrás a **Rendszerarchivumra**  >  
 
-2. Vagy válassza ki a visszaállítani kívánt biztonsági másolat hivatkozását, vagy válassza a **feltöltés** gombot egy korábban mentett FKR-Archívum megkereséséhez, amely nem szerepel a listában
+2. Válassza ki a visszaállítani kívánt biztonsági másolat  hivatkozását, vagy válassza a Feltöltés gombot egy korábban mentett, a listában nem található UCS-archívum megkeresásához
 
-3. Adja meg a biztonsági mentéshez használt jelszót, és válassza a **visszaállítás** lehetőséget.
+3. Adja meg a biztonsági mentéshez szükséges jelszót, és válassza a Visszaállítás **lehetőséget**
 
 ```PowerShell
 # Authenticate to Azure
@@ -469,19 +470,19 @@ Get-AzVmSnapshot -ResourceGroupName '<E.g.contoso-RG>' -VmName '<E.g.BIG-IP-VM>'
 ```
 
 >[!NOTE]
->Az írás időpontjában a AzVmSnapshot parancsmag a legutóbbi pillanatkép visszaállítására korlátozódik a dátum alapján. A pillanatképek tárolása a virtuális gép erőforráscsoport gyökerében történik. Ügyeljen arra, hogy a pillanatképek visszaállítása újraindítja az Azure-beli virtuális gépeket, így körültekintően járjon el.
+>A cikk írásakor az AzVmSnapshot parancsmag a legújabb pillanatkép visszaállítására van korlátozva a dátum alapján. A pillanatképek a virtuális gép erőforráscsoportja gyökerében vannak tárolva. Vegye figyelembe, hogy a pillanatképek visszaállítása újraindítja az Azure-beli virtuális gépet, ezért ezt gondosan gondolja át.
 
 ## <a name="additional-resources"></a>További források
 
--   [BIG-IP VE-jelszó alaphelyzetbe állítása az Azure-ban](https://clouddocs.f5.com/cloud/public/v1/shared/azure_passwordreset.html)
-    -   [A jelszó alaphelyzetbe állítása a portál használata nélkül](https://clouddocs.f5.com/cloud/public/v1/shared/azure_passwordreset.html#reset-the-password-without-using-the-portal)
+-   [BIG-IP VE-jelszó visszaállítása az Azure-ban](https://clouddocs.f5.com/cloud/public/v1/shared/azure_passwordreset.html)
+    -   [Jelszó visszaállítása a portál használata nélkül](https://clouddocs.f5.com/cloud/public/v1/shared/azure_passwordreset.html#reset-the-password-without-using-the-portal)
 
--   [A BIG-IP VE-felügyelethez használt hálózati adapter módosítása](https://clouddocs.f5.com/cloud/public/v1/shared/change_mgmt_nic.html)
+-   [A BIG-IP VE felügyeletéhez használt hálózati adapter módosítása](https://clouddocs.f5.com/cloud/public/v1/shared/change_mgmt_nic.html)
 
--   [Az egyes hálózati adapterek konfigurációjának útvonalai](https://clouddocs.f5.com/cloud/public/v1/shared/routes.html)
+-   [Útvonalak egyetlen hálózati adapter konfigurációjában](https://clouddocs.f5.com/cloud/public/v1/shared/routes.html)
 
 -   [Microsoft Azure: Waagent](https://clouddocs.f5.com/cloud/public/v1/azure/Azure_waagent.html)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Válasszon egy [üzembe helyezési forgatókönyvet](f5-aad-integration.md) , és indítsa el a megvalósítást.
+Válasszon ki egy [üzembe helyezési forgatókönyvet,](f5-aad-integration.md) és indítsa el az implementációt.

@@ -1,5 +1,5 @@
 ---
-title: Fiók hitelesítő adatainak alaphelyzetbe állítása – parancssori felület
+title: Fiók hitelesítő adatainak alaphelyzetbe állítása – CLI
 description: Ezzel az Azure CLI-szkripttel alaphelyzetbe állíthatja a fiókja hitelesítő adatait, és lekérheti az app.config beállításokat.
 services: media-services
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cc605a08147da1d076b302e515a4ebe8d411a782
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: d5604f177484d33255d2923d72b00fae124c0f9a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105964117"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783592"
 ---
-# <a name="azure-cli-example-reset-the-account-credentials"></a>Azure CLI-példa: a fiók hitelesítő adatainak alaphelyzetbe állítása
+# <a name="azure-cli-example-reset-the-account-credentials"></a>Azure CLI-példa: Fiók hitelesítő adatainak alaphelyzetbe állítása
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -30,7 +30,7 @@ A cikkben bemutatott Azure CLI-szkripttel alaphelyzetbe állíthatja a fiókja h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[Hozzon létre egy Media Services fiókot](./create-account-howto.md).
+[Hozzon létre egy Media Services-fiókot.](./create-account-howto.md)
 
 ## <a name="example-script"></a>Példaszkript
 
@@ -46,5 +46,5 @@ az ams account sp reset-credentials \
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [az AMS](/cli/azure/ams)
-* [Hitelesítő adatok visszaállítása](/cli/azure/ams/account/sp#az-ams-account-sp-reset-credentials)
+* [az ams](/cli/azure/ams)
+* [Hitelesítő adatok visszaállítása](/cli/azure/ams/account/sp#az_ams_account_sp_reset_credentials)

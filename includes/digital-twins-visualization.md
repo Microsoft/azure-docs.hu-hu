@@ -1,32 +1,32 @@
 ---
 author: baanders
-description: fájl belefoglalása az Azure Digital Twins-ba – az Azure Digital Twins Explorer megjelenítése
+description: fájl beépítése Azure Digital Twins – vizualizáció a Azure Digital Twins Explorerrel
 ms.service: digital-twins
 ms.topic: include
 ms.date: 7/10/2020
 ms.author: baanders
-ms.openlocfilehash: 37bccbcd92f627fd45a7f786725afe5b2e475f3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e752d6c6668ec751ff1e1bc3cd7fcc07d042d6fa
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94533885"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107800154"
 ---
 ## <a name="visualization"></a>Vizualizáció
 
-Habár az Azure Digital Twins-példánnyal való interakció elsődleges módja az [API-k és az SDK](../articles/digital-twins/how-to-use-apis-sdks.md)-k használatával történik, hasznos lehet a példányban létrehozott ikrek és gráfok vizualizációjának megtekintése.
+Bár az Azure Digital Twins-példánysal való interakció elsődleges módja az API-k és az [SDK-k,](../articles/digital-twins/how-to-use-apis-sdks.md)hasznos lehet a példányban létrehozott ikereket és gráfokat ábrázoló vizualizáció megjelenítése.
 
-Az [**Azure Digital Twins (ADT) Explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) egy példaként szolgáló alkalmazás az Azure digitális ikrek megjelenítéséhez és használatához. Az alkalmazás kódjának letöltéséhez és futtatásához kövesse a minta utasításait. 
+A [**Azure Digital Twins Explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) egy mintaalkalmazás a vizualizációhoz és a Azure Digital Twins. Az alkalmazáskód letöltéséhez és futtatásához kövesse a mintához megadott utasításokat. 
 
-Ezzel a mintával megtekintheti a digitális Twins és a létrehozott gráf vizuális ábrázolását más létrehozási és felügyeleti tevékenységek között.
+Ezzel a mintával vizuálisan ábrázolhatja a digitális ikereszközöket és az azok által létrehozott diagramot, valamint egyéb létrehozási és felügyeleti tevékenységeket is.
 
-A minta vizualizáció a következőképpen néz ki:
+A mintavizualizáció a következő képi megjelenítést ábrázolja:
 
-:::image type="content" source="../articles/digital-twins/media/includes/azure-digital-twins-explorer.png" alt-text="Képernyőkép az Azure Digital Twins Explorer alkalmazásról, amely a digitális ikreket jelképező csomópontok gráfját mutatja" lightbox="../articles/digital-twins/media/includes/azure-digital-twins-explorer.png":::
+:::image type="content" source="../articles/digital-twins/media/includes/azure-digital-twins-explorer.png" alt-text="Képernyőkép a Azure Digital Twins Explorer mintaalkalmazásról, amely a digitális ikereket jelképezó csomópontok grafikonján látható" lightbox="../articles/digital-twins/media/includes/azure-digital-twins-explorer.png":::
 
-A mintát is használhatja a következőhöz:...
-* Modellek feltöltése és megismerése
-* Az ikrek diagramjainak feltöltése és szerkesztése
-* Az ikrek gráf ábrázolása számos elrendezési módszerrel
-* Az ikrek tulajdonságainak szerkesztése
-* Lekérdezések futtatása az ikrek gráfján
+A mintát arra is használhatja, hogy...
+* Modellek feltöltése és megismerés
+* Ikergráfok feltöltése és szerkesztése
+* Az ikergráf vizualizációja több elrendezési technikával
+* Az ikertulajdonságok szerkesztése
+* Lekérdezések futtatása az ikergráfon

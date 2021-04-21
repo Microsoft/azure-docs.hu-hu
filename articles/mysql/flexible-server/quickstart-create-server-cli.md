@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: kiszolgáló létrehozása – Azure CLI-Azure Database for MySQL – rugalmas kiszolgáló'
-description: Ez a rövid útmutató azt ismerteti, hogyan használható az Azure CLI egy Azure Database for MySQL rugalmas kiszolgáló Azure-erőforráscsoportbeli létrehozásához.
+title: 'Rövid útmutató: Kiszolgáló létrehozása – Azure CLI – Azure Database for MySQL – Rugalmas kiszolgáló'
+description: Ez a rövid útmutató azt ismerteti, hogyan használható az Azure CLI egy rugalmas Azure Database for MySQL kiszolgáló létrehozására egy Azure-erőforráscsoportban.
 author: savjani
 ms.author: pariks
 ms.service: mysql
@@ -8,37 +8,37 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a63c6f074178794db38b47950e176dd729344a54
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 7addfc3a0d91b85c4d63afa4ee6a55b5202c3855
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492728"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770236"
 ---
-# <a name="quickstart-create-an-azure-database-for-mysql-flexible-server-using-azure-cli"></a>Gyors útmutató: Azure Database for MySQL rugalmas kiszolgáló létrehozása az Azure CLI használatával
+# <a name="quickstart-create-an-azure-database-for-mysql-flexible-server-using-azure-cli"></a>Rövid útmutató: Rugalmas Azure Database for MySQL létrehozása az Azure CLI használatával
 
-Ez a rövid útmutató bemutatja, hogyan használhatja az [Azure CLI](/cli/azure/get-started-with-azure-cli) -parancsokat a [Azure Cloud Shellban](https://shell.azure.com) egy Azure Database for MySQL rugalmas kiszolgáló öt perc alatt történő létrehozásához. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ez a rövid útmutató bemutatja, hogyan [](https://shell.azure.com) hozhat létre Azure Cloud Shell rugalmas Azure Database for MySQL öt perc alatt az Azure CLI-parancsokkal. [](/cli/azure/get-started-with-azure-cli) Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 > [!IMPORTANT] 
 > Azure Database for MySQL rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el
 
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell elindítása
 
-A [Azure Cloud Shell](../../cloud-shell/overview.md) egy ingyenes interaktív felület, amellyel a cikkben ismertetett lépéseket futtathatja. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta.
+A [Azure Cloud Shell](../../cloud-shell/overview.md) egy ingyenes interaktív felület, amely a cikkben található lépések futtatására használható. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta.
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngésző lapon is megnyithatja [https://shell.azure.com/bash](https://shell.azure.com/bash) . Válassza a **Másolás** lehetőséget a kód blokkok másolásához, illessze be a Cloud Shellba, majd válassza az **ENTER billentyűt** a futtatásához.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A böngészőlapot megnyithatja Cloud Shell böngészőlapon is, ha megnyitja a következőt: [https://shell.azure.com/bash](https://shell.azure.com/bash) . Kattintson **a Másolás** gombra a kódblokkok másoláshoz, illessze be Cloud Shell, majd az **Enter** billentyűt a futtatáshoz.
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2,0-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha inkább helyileg szeretné telepíteni és használni a CLI-t, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az az [login](/cli/azure/reference-index#az-login) parancs használatával kell bejelentkeznie a fiókjába. Jegyezze fel az **ID** tulajdonságot, amely az Azure-fiók **előfizetés-azonosítójára** utal.
+Az az login paranccsal jelentkezzen be [a fiókjába.](/cli/azure/reference-index#az_login) Jegyezze fel **az id** tulajdonságot, amely **az** Azure-fiók előfizetés-azonosítójára vonatkozik.
 
 ```azurecli-interactive
 az login
 ```
 
-Válassza ki az adott előfizetést a fiókja alatt az [az Account set](/cli/azure/account#az-account-set) parancs használatával. Jegyezze fel az **azonosító** értéket az az **login** kimenetből, amelyet a parancs **előfizetés** argumentumának értékeként kíván használni. Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetés beszerzéséhez használja [az az Account List](/cli/azure/account#az-account-list)lehetőséget.
+Válassza ki a fiókjában az adott előfizetést [az az account set paranccsal.](/cli/azure/account#az_account_set) Jegyezze fel  az az **login** kimenet azonosítóértékét,  amely a subscription argumentum értékeként lesz használva a parancsban. Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetését az [az account list használatával használhatja.](/cli/azure/account#az_account_list)
 
 ```azurecli-interactive
 az account set --subscription <subscription id>
@@ -46,29 +46,29 @@ az account set --subscription <subscription id>
 
 ## <a name="create-a-flexible-server"></a>Rugalmas kiszolgáló létrehozása
 
-Hozzon létre egy [Azure-erőforráscsoportot](../../azure-resource-manager/management/overview.md) a `az group create` paranccsal, majd hozza létre a MySQL rugalmas kiszolgálót az erőforráscsoport belsejében. Egyedi nevet adjon meg. A következő példában létrehozunk egy `eastus2` nevű erőforráscsoportot a `myresourcegroup` helyen.
+Hozzon létre [egy Azure-erőforráscsoportot](../../azure-resource-manager/management/overview.md) az paranccsal, majd hozza létre a rugalmas `az group create` MySQL-kiszolgálót ebben az erőforráscsoportban. Egyedi nevet adjon meg. A következő példában létrehozunk egy `eastus2` nevű erőforráscsoportot a `myresourcegroup` helyen.
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location eastus2
 ```
 
-Hozzon létre egy rugalmas kiszolgálót a `az mysql flexible-server create` paranccsal. Egy kiszolgáló több adatbázist tartalmazhat. A következő parancs egy kiszolgálót hoz létre az Azure CLI [helyi környezetében](/cli/azure/local-context)lévő szolgáltatás-alapértékek és-értékek használatával: 
+Hozzon létre egy rugalmas kiszolgálót az `az mysql flexible-server create` paranccsal. Egy kiszolgáló több adatbázist tartalmazhat. A következő parancs létrehoz egy kiszolgálót a szolgáltatás alapértelmezett értékeinek és értékeinek használatával az Azure CLI helyi [környezetében:](/cli/azure/local-context) 
 
 ```azurecli-interactive
 az mysql flexible-server create
 ```
 
 A létrehozott kiszolgáló az alábbi attribútumokkal rendelkezik: 
-- Automatikusan generált kiszolgálónév, rendszergazdai Felhasználónév, rendszergazdai jelszó, erőforráscsoport neve (ha még nincs meghatározva helyi környezetben), és az erőforráscsoporthoz megegyező helyen 
-- Szolgáltatás alapértelmezett értékei a fennmaradó kiszolgálói konfigurációkhoz: számítási szint (feltört), számítási méret/SKU (B1MS), biztonsági mentési megőrzési időtartam (7 nap) és MySQL-verzió (5,7)
-- Az alapértelmezett kapcsolódási módszer a privát hozzáférés (VNet-integráció) egy automatikusan generált virtuális hálózattal és alhálózattal
+- Automatikusan létrehozott kiszolgálónév, rendszergazdai felhasználónév, rendszergazdai jelszó, erőforráscsoport neve (ha még nincs megadva a helyi környezetben), és ugyanazon a helyen, ahol az erőforráscsoport található 
+- Szolgáltatás alapértelmezései a fennmaradó kiszolgálókonfigurációkhoz: számítási szint (burstable), számítási méret/termékváltozat (B1MS), biztonsági másolatok megőrzési időtartama (7 nap) és MySQL-verzió (5.7)
+- Az alapértelmezett csatlakozási módszer a privát hozzáférés (VNet-integráció) egy automatikusan létrehozott virtuális hálózattal és alhálózattal
 
 > [!NOTE] 
-> A kapcsolódási módszer nem módosítható a kiszolgáló létrehozása után. Ha például a létrehozás során a *privát hozzáférés (VNet-integráció)* lehetőséget választotta, akkor a létrehozás után nem lehet *nyilvános hozzáférésre váltani (engedélyezett IP-címek)* . Javasoljuk, hogy hozzon létre egy olyan kiszolgálót, amely privát hozzáféréssel rendelkezik a kiszolgáló biztonságos eléréséhez a VNet-integráció használatával. További információ a privát hozzáférésről a [fogalmakat ismertető cikkben](./concepts-networking.md).
+> A kapcsolati módszer a kiszolgáló létrehozása után nem módosítható. Ha például a létrehozás során a Privát hozzáférés *(VNet-integráció)* beállítást választotta, akkor a létrehozás után nem lehet nyilvános hozzáférésre *(engedélyezett IP-címekre)* módosítani. Javasoljuk, hogy hozzon létre egy privát hozzáféréssel bíró kiszolgálót a kiszolgáló VNet-integrációval való biztonságos elérése érdekében. A privát hozzáféréssel kapcsolatos további információkért olvassa el [a fogalmakat.](./concepts-networking.md)
 
-Ha módosítani szeretné az alapértelmezett beállításokat, tekintse meg az Azure CLI [dokumentációját](/cli/azure/mysql/flexible-server) a konfigurálható CLI-paraméterek teljes listájához. 
+Ha módosítani szeretné az alapértelmezett beállításokat, tekintse meg az Azure [CLI](/cli/azure/mysql/flexible-server) referenciadokumentációját a konfigurálható CLI-paraméterek teljes listájáért. 
 
-Néhány példa a kimenetre: 
+Alább látható néhány példa a kimenetre: 
 
 ```json
 Command group 'mysql flexible-server' is in preview. It may be changed/removed in a future release.
@@ -94,10 +94,10 @@ Make a note of your password. If you forget, you would have to reset your passwo
 }
 ```
 
-Ha módosítani szeretné az alapértelmezett beállításokat, tekintse meg az Azure CLI [dokumentációját](/cli/azure/mysql/flexible-server) a konfigurálható CLI-paraméterek teljes listájához. 
+Ha módosítani szeretné az alapértelmezett beállításokat, tekintse meg az Azure [CLI](/cli/azure/mysql/flexible-server) referenciadokumentációját a konfigurálható CLI-paraméterek teljes listájáért. 
 
 ## <a name="create-a-database"></a>Adatbázis létrehozása
-A következő parancs futtatásával hozzon létre egy adatbázist, **newdatabase** , ha még nem hozott létre egyet.
+Futtassa a következő parancsot  egy új adatbázis létrehozásához, ha még nem hozott létre adatbázist.
 
 ```azurecli-interactive
 az mysql flexible-server db create -d newdatabase
@@ -147,11 +147,11 @@ Az eredmény JSON formátumban van. Jegyezze fel a következőket: **fullyQualif
 }
 ```
 
-## <a name="connect-and-test-the-connection-using-azure-cli"></a>A kapcsolat csatlakoztatása és tesztelése az Azure CLI használatával
+## <a name="connect-and-test-the-connection-using-azure-cli"></a>Csatlakozás és a kapcsolat tesztelése az Azure CLI használatával
 
-Azure Database for MySQL rugalmas kiszolgáló lehetővé teszi a MySQL-kiszolgálóhoz való kapcsolódást az Azure CLI ```az mysql flexible-server connect``` paranccsal. Ezzel a paranccsal tesztelheti a kapcsolatot az adatbázis-kiszolgálóval, létrehozhat egy gyors alapszintű adatbázist, és közvetlenül a kiszolgálón futtathatja a lekérdezéseket anélkül, hogy telepítenie kellene mysql.exe vagy a MySQL Workbench-t.  A parancs futtatása interaktív módban is végezhető több lekérdezés futtatásához.
+Azure Database for MySQL rugalmas kiszolgáló lehetővé teszi a mysql-kiszolgálóhoz való csatlakozást az Azure ```az mysql flexible-server connect``` CLI-paranccsal. Ezzel a paranccsal tesztelheti az adatbázis-kiszolgálóval való kapcsolatot, gyorsindító adatbázist hozhat létre, és lekérdezéseket futtathat közvetlenül a kiszolgálón anélkül, hogy telepítenie mysql.exe vagy a MySQL Workbench alkalmazást.  A parancsot interaktív módban is futtathatja több lekérdezés futtatásához.
 
-Futtassa a következő szkriptet az adatbázishoz való kapcsolódás teszteléséhez és ellenőrzéséhez a fejlesztői környezetből.
+Futtassa a következő szkriptet a fejlesztési környezetből származó adatbázissal való kapcsolat teszteléséhez és ellenőrzéséhez.
 
 ```azurecli-interactive
 az mysql flexible-server connect -n <servername> -u <username> -p <password> -d <databasename>
@@ -160,20 +160,20 @@ az mysql flexible-server connect -n <servername> -u <username> -p <password> -d 
 ```azurecli-interactive
 az mysql flexible-server connect -n mysqldemoserver1 -u dbuser -p "dbpassword" -d newdatabase
 ```
-A sikeres csatlakoztatáshoz a következő kimenetnek kell megjelennie:
+A sikeres csatlakozáshoz a következő kimenetnek kell látsza:
 
 ```output
 Command group 'mysql flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 Connecting to newdatabase database.
 Successfully connected to mysqldemoserver1.
 ```
-Ha a kapcsolatok sikertelenek voltak, próbálkozzon a következő megoldásokkal:
-- Ellenőrizze, hogy a 3306-es port nyitva van-e az ügyfélszámítógépen.
-- Ha a kiszolgáló rendszergazdája felhasználóneve és jelszava helyes
-- Ha konfigurálta az ügyfélszámítógép tűzfalszabály-szabályát
-- Ha a kiszolgálót VPN-kapcsolaton keresztül konfigurálta a virtuális hálózatban, győződjön meg arról, hogy az ügyfélszámítógép ugyanabban a virtuális hálózatban van.
+Ha a kapcsolat sikertelen volt, próbálkozzon az alábbi megoldásokkal:
+- Ellenőrizze, hogy a 3306-os port nyitva van-e az ügyfélszámítógépen.
+- ha a kiszolgáló-rendszergazda felhasználóneve és jelszava helyes
+- ha konfigurált tűzfalszabályt az ügyfélszámítógéphez
+- Ha privát hozzáféréssel konfigurálta a kiszolgálót a virtuális hálózatban, győződjön meg arról, hogy az ügyfélszámítógép ugyanabban a virtuális hálózatban van.
 
-Futtassa az alábbi parancsot egyetlen lekérdezés végrehajtásához argumentum használatával ```--querytext``` ```-q``` .
+Egyetlen lekérdezés a argumentum használatával való végrehajtásához futtassa a következő ```--querytext``` ```-q``` parancsot: .
 
 ```azurecli-interactive
 az mysql flexible-server connect -n <server-name> -u <username> -p "<password>" -d <database-name> --querytext "<query text>"
@@ -183,17 +183,17 @@ az mysql flexible-server connect -n <server-name> -u <username> -p "<password>" 
 ```azurecli-interactive
 az mysql flexible-server connect -n mysqldemoserver1 -u dbuser -p "dbpassword" -d newdatabase -q "select * from table1;" --output table
 ```
-Ha többet szeretne megtudni a ```az mysql flexible-server connect``` parancs használatáról, tekintse meg a [Kapcsolódás és lekérdezés](connect-azure-cli.md) dokumentációját.
+A parancs használatával kapcsolatos ```az mysql flexible-server connect``` további információkért tekintse meg a csatlakozás [és lekérdezés dokumentációját.](connect-azure-cli.md)
 
-## <a name="connect-using-mysql-command-line-client"></a>Kapcsolat a MySQL parancssori ügyféllel
+## <a name="connect-using-mysql-command-line-client"></a>Csatlakozás a mysql parancssori ügyféllel
 
-Ha a rugalmas kiszolgálót privát hozzáférés (VNet-integráció) használatával hozta létre, akkor a kiszolgálóval azonos virtuális hálózaton belüli erőforrással kell csatlakoznia a kiszolgálóhoz. Létrehozhat egy virtuális gépet, és hozzáadhatja azt a rugalmas kiszolgálóval létrehozott virtuális hálózathoz. További tudnivalókért tekintse meg a [privát hozzáférési dokumentáció](how-to-manage-virtual-network-portal.md) konfigurálását ismertető témakört.
+Ha a rugalmas kiszolgálót privát hozzáféréssel (VNet-integrációval) hozta létre, akkor a kiszolgálóval azonos virtuális hálózaton belüli erőforrásból kell csatlakoznia a kiszolgálóhoz. Létrehozhat egy virtuális gépet, és hozzáadhatja a rugalmas kiszolgálóval létrehozott virtuális hálózathoz. További információért tekintse meg a [privát hozzáférés konfigurálásával](how-to-manage-virtual-network-portal.md) kapcsolatos dokumentációt.
 
-Ha a rugalmas kiszolgálót a nyilvános hozzáférés (engedélyezett IP-címek) használatával hozta létre, a helyi IP-címet hozzáadhatja a kiszolgálón található tűzfalszabályok listájához. További útmutatásért tekintse meg a [Tűzfalszabályok létrehozásával és kezelésével kapcsolatos dokumentációt](how-to-manage-firewall-portal.md) .
+Ha nyilvános hozzáféréssel hozta létre a rugalmas kiszolgálót (engedélyezett IP-címek), hozzáadhatja a helyi IP-címét a kiszolgáló tűzfalszabályainak listájához. Részletes [útmutatásért](how-to-manage-firewall-portal.md) tekintse meg a tűzfalszabályok létrehozása és kezelése dokumentációját.
 
-A helyi környezetből [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) vagy [MySQL Workbench](./connect-workbench.md) használatával kapcsolódhat a kiszolgálóhoz. Azure Database for MySQL rugalmas kiszolgáló támogatja az ügyfélalkalmazások a MySQL szolgáltatáshoz való csatlakoztatását Transport Layer Security (TLS), korábbi nevén SSL (SSL) használatával. A TLS egy iparági szabványnak megfelelő protokoll, amely biztosítja a titkosított hálózati kapcsolatokat az adatbázis-kiszolgáló és az ügyfélalkalmazások között, így biztosítva a megfelelőségi követelmények betartását. A MySQL rugalmas kiszolgálóval való kapcsolódáshoz le kell töltenie a hitelesítésszolgáltató ellenőrzéséhez szükséges [nyilvános SSL-tanúsítványt](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) . Ha többet szeretne megtudni a titkosított kapcsolatokkal való csatlakozásról vagy az SSL letiltásáról, tekintse meg a [csatlakozás Azure Database for MySQL rugalmas kiszolgáló és a titkosított kapcsolatok](how-to-connect-tls-ssl.md) dokumentációja című témakört.
+A helyi [ környezetbőlmysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) a kiszolgálóhoz való csatlakozáshoz használhatja amysql.exevagy a [MySQL Workbench](./connect-workbench.md) megoldást. Azure Database for MySQL rugalmas kiszolgáló támogatja az ügyfélalkalmazások csatlakoztatását a MySQL szolgáltatáshoz Transport Layer Security (TLS) használatával, korábbi nevén SSL (SSL) használatával. A TLS egy iparági szabványnak megfelelő protokoll, amely titkosított hálózati kapcsolatokat biztosít az adatbázis-kiszolgáló és az ügyfélalkalmazások között, így megfelel a megfelelőségi követelményeknek. A rugalmas MySQL-kiszolgálóhoz való csatlakozáshoz [](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) le kell töltenie a nyilvános SSL-tanúsítványt a hitelesítésszolgáltató ellenőrzéséhez. Ha többet szeretne megtudni a titkosított kapcsolatokkal való csatlakozásról vagy az SSL letiltásról, tekintse meg a Csatlakozás a Azure Database for MySQL – Rugalmas kiszolgáló [titkosított](how-to-connect-tls-ssl.md) kapcsolatokkal dokumentációt.
 
-Az alábbi példa bemutatja, hogyan csatlakozhat a rugalmas kiszolgálóhoz a MySQL parancssori felület használatával. Ha már nincs telepítve, először telepítenie kell a MySQL-parancssort. Le fogja tölteni az SSL-kapcsolatokhoz szükséges DigiCertGlobalRootCA-tanúsítványt. A TLS/SSL-tanúsítvány ellenőrzésének érvényesítéséhez használja a--SSL-Mode = REQUIREd kapcsolati sztring beállítást. Adja át a helyi tanúsítványfájl elérési útját a--SSL-CA paraméternek. Cserélje le az értékeket a tényleges kiszolgáló nevére és jelszavára.
+Az alábbi példa bemutatja, hogyan csatlakozhat a rugalmas kiszolgálóhoz a mysql parancssori felület használatával. Először telepítenie kell a mysql parancssort, ha még nincs telepítve. Le fogja tölteni az SSL-kapcsolatokhoz szükséges DigiCertGlobalRootCA-tanúsítványt. Használja az --ssl-mode=REQUIRED kapcsolati sztring beállítást a TLS/SSL-tanúsítvány-ellenőrzés kényszerítéhez. Adja át a helyi tanúsítványfájl elérési útját az --ssl-ca paraméternek. Cserélje le az értékeket a kiszolgáló tényleges nevére és jelszavára.
 
 ```bash
 sudo apt-get install mysql-client
@@ -201,29 +201,29 @@ wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA
 mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl-mode=REQUIRED --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
 
-Ha a rugalmas kiszolgálót **nyilvános hozzáférés** használatával állította be, akkor a [Azure Cloud Shell](https://shell.azure.com/bash) használatával is csatlakozhat a rugalmas kiszolgálóhoz az előre telepített MySQL-ügyféllel az alábbi ábrán látható módon:
+Ha nyilvános hozzáféréssel telepítette a rugalmas kiszolgálót, az Azure Cloud Shell használatával is csatlakozhat a rugalmas kiszolgálóhoz az előre telepített mysql-ügyfél használatával, az alábbi módon: [](https://shell.azure.com/bash)
 
-Ahhoz, hogy a Azure Cloud Shellt a rugalmas kiszolgálóhoz való kapcsolódáshoz használhassa, engedélyeznie kell a hálózati hozzáférést a Azure Cloud Shell a rugalmas kiszolgálóra. Ennek eléréséhez nyissa meg a **hálózatkezelés** panelt Azure Portal a MySQL-hez készült rugalmas kiszolgálónál, és jelölje be a **tűzfal** szakaszban a "nyilvános hozzáférés engedélyezése bármely Azure-szolgáltatáshoz az Azure-ban erre a kiszolgálóra" lehetőséget, ahogy az alábbi képernyőképen is látható, és kattintson a Mentés gombra a beállítás megőrzéséhez.
+Ahhoz, hogy Azure Cloud Shell a rugalmas kiszolgálóhoz való csatlakozáshoz, engedélyeznie kell a hálózati hozzáférést a Azure Cloud Shell a rugalmas kiszolgálóhoz. Ehhez a rugalmas MySQL-kiszolgáló Azure Portal hálózat paneljére kattintva jelölje be a  Tűzfal szakasz alatti "Nyilvános hozzáférés engedélyezése bármely Azure-szolgáltatásból ezen a kiszolgálón" jelölőnégyzetet az alábbi képernyőképen látható módon, majd kattintson a Mentés gombra a beállítás megőrzéséhez. 
 
- > :::image type="content" source="./media/quickstart-create-server-portal/allow-access-to-any-azure-service.png" alt-text="Képernyőkép, amely bemutatja, hogyan engedélyezhető Azure Cloud Shell hozzáférés a MySQL rugalmas kiszolgálóhoz a nyilvános hozzáférési hálózati konfigurációhoz.":::
+ > :::image type="content" source="./media/quickstart-create-server-portal/allow-access-to-any-azure-service.png" alt-text="A rugalmas MySQL-Azure Cloud Shell nyilvános hozzáférésű hálózati konfigurációhoz való hozzáférését bemutató képernyőkép.":::
  
  
 > [!NOTE]
-> Annak ellenőrzése, **hogy a nyilvános hozzáférés engedélyezése bármely Azure-szolgáltatáson belül erre a kiszolgálóra** csak fejlesztési vagy tesztelési célokra használható. Úgy konfigurálja a tűzfalat, hogy engedélyezze az Azure-szolgáltatásokhoz vagy-eszközökhöz lefoglalt IP-címekről érkező kapcsolatokat, beleértve a más ügyfelek előfizetéseit is.
+> A Nyilvános **hozzáférés engedélyezése bármely Azure-szolgáltatásból** ezen a kiszolgálón lehetőség be van vava, csak fejlesztési vagy tesztelési célokra használható. Úgy konfigurálja a tűzfalat, hogy engedélyezze a kapcsolatokat bármely Azure-szolgáltatás vagy -eszköz számára lefoglalt IP-címekről, beleértve a más ügyfelek előfizetéseiből származó kapcsolatokat is.
 
-Kattintson a **kipróbálás** gombra a Azure Cloud Shell elindításához és az alábbi parancsok használatával a rugalmas kiszolgálóhoz való kapcsolódáshoz. A parancsban használja a kiszolgáló nevét, felhasználónevét és jelszavát. 
+Kattintson a **Try it (Próbálja** ki) elemre a Azure Cloud Shell, és az alábbi parancsokkal csatlakozzon a rugalmas kiszolgálóhoz. A parancsban használja a kiszolgálónevet, a felhasználónevet és a jelszót. 
 
 ```azurecli-interactive
 wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
 mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
 > [!IMPORTANT]
-> Ha Azure Cloud Shell használatával csatlakozik a rugalmas kiszolgálóhoz, a--SSL = true paramétert kell használnia, és nem--SSL-Mode = REQUIREd.
-> Az elsődleges ok az, Azure Cloud Shell előre telepített mysql.exe-ügyfelet tartalmaz az MariaDB Distribution szolgáltatásból, amely a--SSL paramétert igényli, míg az Oracle-alapú terjesztéshez szükséges MySQL-ügyfél a--SSL-Mode paramétert igényli.
+> Amikor a rugalmas kiszolgálóhoz a Azure Cloud Shell csatlakozik, az --ssl=true paramétert kell használnia, és nem az --ssl-mode=REQUIRED paramétert.
+> Az elsődleges ok az Azure Cloud Shell hogy a MariaDB-disztribúció előre telepített mysql.exe-ügyfelet használ, amely --ssl paramétert igényel, míg az Oracle disztribúcióból származó mysql-ügyfélhez --ssl-mode paraméter szükséges.
 
-Ha a következő hibaüzenet jelenik meg, amikor a fenti parancsot követve csatlakozik a rugalmas kiszolgálóhoz, a korábban említett "nyilvános hozzáférés engedélyezése bármely Azure-szolgáltatáshoz az Azure-ban erre a kiszolgálóra" beállítást nem sikerült beállítani, vagy a beállítás nincs mentve. Próbálkozzon újra a tűzfal beállításával, és próbálkozzon újra.
+Ha az alábbi hibaüzenet jelenik meg, amikor korábban a parancsot követte a rugalmas kiszolgálóhoz való csatlakozáskor, kihagyta a tűzfalszabály beállítását a korábban említett "Bármely Azure-szolgáltatásból ezen a kiszolgálón elérhető bármely Azure-szolgáltatásból" beállítással, vagy a beállítás nincs mentve. Próbálkozzon újra a tűzfal beállításával, majd próbálkozzon újra.
 
-HIBA 2002 (HY000): nem lehet csatlakozni a MySQL-kiszolgálóhoz <servername> (115)
+2002-es HIBA (HY000): Nem lehet csatlakozni a MySQL-kiszolgálóhoz a <servername> következőn: (115)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -233,7 +233,7 @@ Ha ezekre az erőforrásokra már nincs szüksége más gyorsútmutatókhoz/okta
 az group delete --name myresourcegroup
 ```
 
-Ha csak az újonnan létrehozott kiszolgálót szeretné törölni, futtathatja a `az mysql server delete` parancsot.
+Ha csak az újonnan létrehozott kiszolgálót szeretné törölni, futtassa a `az mysql server delete` parancsot.
 
 ```azurecli-interactive
 az mysql flexible-server delete --resource-group myresourcegroup --name mydemoserver
@@ -242,6 +242,6 @@ az mysql flexible-server delete --resource-group myresourcegroup --name mydemose
 ## <a name="next-steps"></a>Következő lépések
 
 >[!div class="nextstepaction"]
-> [Csatlakozási és lekérdezés az Azure CLI](connect-azure-cli.md) 
->  -vel [Csatlakozás Azure Database for MySQL-rugalmas kiszolgálóhoz titkosított kapcsolattal](how-to-connect-tls-ssl.md) 
->  [PHP-alapú (Laravel-) Webalkalmazás létrehozása MySQL-](tutorial-php-database-app.md) sel
+> [Csatlakozás és lekérdezés az Azure CLI használatával](connect-azure-cli.md) 
+>  [Csatlakozás Azure Database for MySQL – Rugalmas kiszolgáló titkosított kapcsolatokkal](how-to-connect-tls-ssl.md) 
+>  [PHP- (Laravel-) webalkalmazás összeállítása a MySQL-lel](tutorial-php-database-app.md)

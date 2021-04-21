@@ -9,21 +9,21 @@ ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0c9b0c1948dc4ecef74cd78ec1736803a0c0b4bc
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 85d6350a36e62ace8f1922d30493d0f1d448d315
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107497370"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765934"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-the-azure-cli"></a>Az Azure-beli virtuális gép által használt operációsrendszer-lemez módosítása az Azure CLI használatával
 
 
-Ha már van virtuális gépe, de biztonsági mentési lemezre vagy más operációsrendszer-lemezre szeretné cserélni a lemezt, az Azure CLI használatával felcserélheti az operációsrendszer-lemezeket. Nem kell törölnie és újra létrehoznia a virtuális gépet. Akár felügyelt lemezt is használhat egy másik erőforráscsoportban, ha az még nincs használatban.
+Ha már van virtuális gépe, de fel szeretné cserélni a lemezt egy biztonsági mentési vagy egy másik operációsrendszer-lemezre, az Azure CLI használatával felcserélheti az operációsrendszer-lemezeket. Nem kell törölnie és újra létrehoznia a virtuális gépet. Akár felügyelt lemezt is használhat egy másik erőforráscsoportban, ha az még nincs használatban.
 
 A virtuális gépet le kell állítani/fel kell szabadodni, akkor a felügyelt lemez erőforrás-azonosítója lecserélhető egy másik felügyelt lemez erőforrás-azonosítójára. 
 
-Győződjön meg arról, hogy a virtuális gép mérete és tárolótípusa kompatibilis a csatolni kívánt lemezzel. Ha például a használni kívánt lemez egy Premium Storage-ban található, akkor a virtuális gépnek képesnek kell Premium Storage (például egy DS-sorozat méretére).
+Győződjön meg arról, hogy a virtuális gép mérete és tárolótípusa kompatibilis a csatolni kívánt lemezzel. Ha például a használni kívánt lemez az Premium Storage-ban található, akkor a virtuális gépnek képesnek Premium Storage (például DS-sorozatméret) használatára.
 
 Ehhez a cikkhez az Azure CLI 2.0.25-ös vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
 
@@ -47,7 +47,7 @@ az vm stop \
 ```
 
 
-Használja [az az vm update](/cli/azure/vm#az-vm-update) paramétert az új lemez teljes erőforrás-azonosítójával `--osdisk` 
+Használja [az az vm update](/cli/azure/vm#az_vm_update) paramétert az új lemez teljes erőforrás-azonosítójával `--osdisk` 
 
 ```azurecli-interactive 
 az vm update \

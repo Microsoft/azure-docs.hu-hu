@@ -1,54 +1,54 @@
 ---
 title: Külső hitelesítés az ACR-feladatból
-description: Konfiguráljon egy Azure Container Registry feladatot (ACR-feladatot) az Azure Key vaultban tárolt Docker hub hitelesítő adatok olvasásához az Azure-erőforrások felügyelt identitásának használatával.
+description: Konfigurál egy Azure Container Registry feladatot (ACR-feladat) egy Azure-Docker Hub-kulcstartóban tárolt hitelesítő adatok olvasására az Azure-erőforrások felügyelt identitásának használatával.
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 0bc43f958a14016146160a06372af0b36a9fff75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 16404f9244818d91c5333eb5eec5944bfdd9df98
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86058129"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781198"
 ---
-# <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Külső hitelesítés egy ACR-feladatban egy Azure által felügyelt identitás használatával 
+# <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Külső hitelesítés egy ACR-feladatban azure-beli felügyelt identitás használatával 
 
-Egy [ACR-feladatban](container-registry-tasks-overview.md) [engedélyezheti az Azure-erőforrások felügyelt identitását](container-registry-tasks-authentication-managed-identity.md). A feladat használhatja az identitást más Azure-erőforrások elérésére, anélkül, hogy hitelesítő adatokat kellene megadnia vagy kezelnie. 
+Egy [ACR-feladatban](container-registry-tasks-overview.md)engedélyezheti [a felügyelt identitást az Azure-erőforrásokhoz.](container-registry-tasks-authentication-managed-identity.md) A feladat az identitás használatával hozzáférhet más Azure-erőforrásokhoz anélkül, hogy hitelesítő adatokat kellene megadnia vagy kezelnie. 
 
-Ebből a cikkből megtudhatja, hogyan engedélyezheti a felügyelt identitásokat egy olyan feladatban, amely hozzáfér az Azure Key vaultban tárolt titkokhoz. 
+Ebből a cikkből megtudhatja, hogyan engedélyezheti a felügyelt identitásokat egy olyan feladatban, amely hozzáfér az Azure Key Vaultban tárolt titkos kulcsokhoz. 
 
-Az Azure-erőforrások létrehozásához ehhez a cikkhez az Azure CLI 2.0.68 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
+Az Azure-erőforrások létrehozásához ehhez a cikkhez az Azure CLI 2.0.68-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
 ## <a name="scenario-overview"></a>A forgatókönyv áttekintése
 
-A példa feladattal egy Azure Key vaultban tárolt Docker hub hitelesítő adatok olvashatók be. A hitelesítő adatok olyan Docker hub-fiókhoz tartoznak, amely írási (leküldéses) engedélyekkel rendelkezik egy privát Docker hub-tárházhoz. A hitelesítő adatok olvasásához a feladatot felügyelt identitással kell konfigurálni, és hozzá kell rendelnie a megfelelő engedélyeket. Az identitáshoz rendelt feladat létrehoz egy rendszerképet, és bejelentkezik a Docker hub-ba, hogy leküldje a képet a privát tárházba. 
+A példafeladat beolvassa Docker Hub Azure Key Vaultban tárolt hitelesítő adatokat. A hitelesítő adatok olyan Docker Hub fiókhoz valók, amely írási (leküldési) engedélyekkel rendelkezik egy privát Docker Hub tárházba. A hitelesítő adatok olvasásához konfigurálja a feladatot egy felügyelt identitással, és rendelje hozzá a megfelelő engedélyeket. Az identitáshoz társított feladat egy rendszerképet hoz létre, és bejelentkezik a Docker Hub, hogy a rendszerképet a privát repo-ba lek push-re. 
 
-Ez a példa egy felhasználó által hozzárendelt vagy rendszer által hozzárendelt felügyelt identitást használó lépéseket mutatja be. Az Ön által választott identitás a szervezet igényeitől függ.
+Ez a példa felhasználó vagy rendszer által hozzárendelt felügyelt identitás használatának lépéseit mutatja be. Az identitásválasztás a szervezet igényeitől függ.
 
-A valós forgatókönyvekben a vállalatok képeket tehetnek közzé egy privát tárházban a Docker hub-ban egy összeállítási folyamat részeként. 
+Valós helyzetben a vállalat a buildfolyamat részeként közzétehet képeket egy privát Docker Hub egy privát Docker Hub számára. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz egy Azure Container registryre, amelyben futtatja a feladatot. Ebben a cikkben a beállításjegyzék neve *myregistry*. Cserélje le a változót a saját beállításjegyzékbeli nevére a későbbi lépésekben.
+Szüksége van egy Azure Container Registryre, amelyben a feladatot futtatja. Ebben a cikkben ennek a regisztrációs adatbázisnak a *myregistry* a neve. A későbbi lépésekben cserélje le a helyére a saját regisztrációs adatbázisának nevét.
 
-Ha még nem rendelkezik Azure Container Registry szolgáltatással, tekintse meg a következőt: rövid útmutató [: privát tároló-beállításjegyzék létrehozása az Azure CLI használatával](container-registry-get-started-azure-cli.md). A lemezképeket még nem kell leküldeni a beállításjegyzékbe.
+Ha még nem rendelkezik Azure Container Registryvel, tekintse meg a következőt: Rövid útmutató: Privát tároló-beállításjegyzék létrehozása [az Azure CLI használatával.](container-registry-get-started-azure-cli.md) Még nem kell rendszerképeket leküldést a regisztrációs adatbázisba.
 
-Szüksége lesz egy privát adattárra is a Docker hub-ban, valamint egy Docker hub-fiókot, amely a tárházba való íráshoz szükséges engedélyekkel rendelkezik. Ebben a példában ez a tárház neve *hubuser/hubrepo*. 
+Szüksége lesz egy privát adattárra a Docker Hub, valamint egy Docker Hub-fiókra, amely rendelkezik az adattárba való íráshoz szükséges engedélyekkel. Ebben a példában ennek az objektumnak a neve *hubuser/hubrepo.* 
 
-## <a name="create-a-key-vault-and-store-secrets"></a>Key Vault létrehozása és a titkos kulcsok tárolása
+## <a name="create-a-key-vault-and-store-secrets"></a>Kulcstartó létrehozása és titkos kulcsok tárolása
 
-Először is, ha szükséges, hozzon létre egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen a következő az [Group Create][az-group-create] paranccsal:
+Először is, ha szükséges, hozzon létre egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen az alábbi [az group create paranccsal:][az-group-create]
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-A Key Vault létrehozásához használja az az kulcstartó [létrehozása][az-keyvault-create] parancsot. Ügyeljen arra, hogy egyedi kulcstároló-nevet adjon meg. 
+Kulcstartó létrehozásához használja az [az keyvault create][az-keyvault-create] parancsot. Mindenképpen egyedi kulcstartónevet adjon meg. 
 
 ```azurecli-interactive
 az keyvault create --name mykeyvault --resource-group myResourceGroup --location eastus
 ```
 
-Tárolja a szükséges Docker hub hitelesítő adatait a Key vaultban az az kulcstartó [Secret set][az-keyvault-secret-set] parancs használatával. Ezekben a parancsokban az értékek a környezeti változókban lesznek átadva:
+Tárolja a Docker Hub hitelesítő adatokat a kulcstartóban az [az keyvault secret set paranccsal.][az-keyvault-secret-set] Ezekben a parancsokban az értékek környezeti változókban vannak átkedve:
 
 ```azurecli
 # Store Docker Hub user name
@@ -64,11 +64,11 @@ az keyvault secret set \
   --vault-name mykeyvault
 ```
 
-Egy valós forgatókönyvben a titkokat valószínűleg egy külön folyamat fogja beállítani és karbantartani.
+Egy valós forgatókönyvben a titkos kulcsok valószínűleg egy külön folyamatban vannak beállítva és karbantartva.
 
-## <a name="define-task-steps-in-yaml-file"></a>Feladat lépéseinek meghatározása a YAML fájlban
+## <a name="define-task-steps-in-yaml-file"></a>Feladat lépései a YAML-fájlban
 
-A példához tartozó lépések egy [YAML fájlban](container-registry-tasks-reference-yaml.md)vannak meghatározva. Hozzon létre egy nevű fájlt `dockerhubtask.yaml` egy helyi munkakönyvtárban, és illessze be a következő tartalmakat. Ügyeljen arra, hogy a Key Vault nevét a Key Vault nevű fájlban cserélje le.
+A példafeladat lépései egy [YAML-fájlban vannak definiálva.](container-registry-tasks-reference-yaml.md) Hozzon létre egy nevű `dockerhubtask.yaml` fájlt egy helyi munkakönyvtárban, és illessze be az alábbi tartalmat. Mindenképpen cserélje le a fájlban található kulcstartó nevét a kulcstartó nevére.
 
 ```yml
 version: v1.1.0
@@ -88,23 +88,23 @@ steps:
     - {{.Values.PrivateRepo}}:$ID
 ```
 
-A feladat lépései a következők:
+A feladat lépései a következőket ják:
 
-* Titkos hitelesítő adatok kezelése a Docker hub használatával történő hitelesítéshez.
-* Hitelesítés a Docker hub használatával a titkoknak a parancsba való átadásával `docker login` .
-* Hozzon létre egy rendszerképet az [Azure-Samples/ACR-Tasks](https://github.com/Azure-Samples/acr-tasks.git) tárház Docker használatával.
-* Küldje le a rendszerképet a privát Docker hub adattárba.
+* Titkos hitelesítő adatok kezelése az Docker Hub.
+* Hitelesítés Docker Hub a titkos kulcsok a parancsnak való `docker login` átadásával.
+* Rendszerképet az [Azure-Samples/acr-tasks](https://github.com/Azure-Samples/acr-tasks.git) adattára mintáként használt Docker-fájlját használva buildelhet.
+* A rendszerkép leküldése a privát Docker Hub tárházba.
 
 
-## <a name="option-1-create-task-with-user-assigned-identity"></a>1. lehetőség: feladat létrehozása felhasználó által hozzárendelt identitással
+## <a name="option-1-create-task-with-user-assigned-identity"></a>1. lehetőség: Feladat létrehozása felhasználó által hozzárendelt identitással
 
-Az ebben a szakaszban szereplő lépések egy feladatot hoznak létre, és engedélyezik a felhasználó által hozzárendelt identitást. Ha inkább a rendszer által hozzárendelt identitást szeretné engedélyezni, tekintse meg a [2. lehetőség: feladat létrehozása a rendszer által hozzárendelt identitással](#option-2-create-task-with-system-assigned-identity)című témakört. 
+Az ebben a szakaszban található lépések létrehoznak egy feladatot, és engedélyezik a felhasználó által hozzárendelt identitást. Ha ehelyett rendszer által hozzárendelt identitást szeretne engedélyezni, lásd: 2. lehetőség: Feladat létrehozása rendszer által [hozzárendelt identitással.](#option-2-create-task-with-system-assigned-identity) 
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
 ### <a name="create-task"></a>Feladat létrehozása
 
-Hozza létre a feladat *dockerhubtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a `dockerhubtask.yaml` munkakönyvtárban található fájlra hivatkozik. A `--assign-identity` paraméter átadja a felhasználó által hozzárendelt identitás erőforrás-azonosítóját. 
+Hozza létre a *dockerhubtask* feladatot a következő [az acr task create parancs végrehajtásával.][az-acr-task-create] A feladat forráskódkörnyezet nélkül fut, és a parancs a munkakönyvtárban `dockerhubtask.yaml` található fájlra hivatkozik. A paraméter átadja a felhasználó által hozzárendelt identitás `--assign-identity` erőforrás-azonosítóját. 
 
 ```azurecli
 az acr task create \
@@ -118,9 +118,9 @@ az acr task create \
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
 
-### <a name="grant-identity-access-to-key-vault"></a>Identitás-hozzáférés biztosítása a Key vaulthoz
+### <a name="grant-identity-access-to-key-vault"></a>Identitás-hozzáférés megadása a Key Vaulthoz
 
-A Key vaultra vonatkozó hozzáférési szabályzat beállításához futtassa a következőt az kulcstartó [set-Policy][az-keyvault-set-policy] paranccsal. A következő példa lehetővé teszi, hogy az identitás a Key vaultból olvassa a titkos kulcsokat. 
+Futtassa a [következő az keyvault set-policy parancsot][az-keyvault-set-policy] egy hozzáférési szabályzat kulcstartón való beállítására. Az alábbi példa lehetővé teszi, hogy az identitás beolvassa a titkos kulcsokat a kulcstartóból. 
 
 ```azurecli
 az keyvault set-policy --name mykeyvault \
@@ -129,15 +129,15 @@ az keyvault set-policy --name mykeyvault \
   --secret-permissions get
 ```
 
-Folytassa [a feladat manuális futtatásával](#manually-run-the-task).
+Folytassa a [feladat manuális futtatásával.](#manually-run-the-task)
 
-## <a name="option-2-create-task-with-system-assigned-identity"></a>2. lehetőség: feladat létrehozása rendszer által hozzárendelt identitással
+## <a name="option-2-create-task-with-system-assigned-identity"></a>2. lehetőség: Feladat létrehozása rendszer által hozzárendelt identitással
 
-Az ebben a szakaszban szereplő lépések egy feladatot hoznak létre, és engedélyezik a rendszer által hozzárendelt identitást. Ha inkább egy felhasználó által hozzárendelt identitást szeretne engedélyezni, tekintse meg az [1. lehetőség: feladat létrehozása felhasználó által hozzárendelt identitással](#option-1-create-task-with-user-assigned-identity)című témakört. 
+Az ebben a szakaszban található lépések létrehoznak egy feladatot, és engedélyezik a rendszer által hozzárendelt identitást. Ha ehelyett felhasználó által hozzárendelt identitást szeretne engedélyezni, lásd: 1. lehetőség: Feladat létrehozása felhasználó által [hozzárendelt identitással.](#option-1-create-task-with-user-assigned-identity) 
 
 ### <a name="create-task"></a>Feladat létrehozása
 
-Hozza létre a feladat *dockerhubtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a `dockerhubtask.yaml` munkakönyvtárban található fájlra hivatkozik. Az `--assign-identity` érték nélküli paraméter lehetővé teszi a rendszer által hozzárendelt identitást a feladatban.  
+Hozza létre a *dockerhubtask* feladatot a következő [az acr task create parancs végrehajtásával.][az-acr-task-create] A feladat forráskódkörnyezet nélkül fut, és a parancs a munkakönyvtárban `dockerhubtask.yaml` található fájlra hivatkozik. A `--assign-identity` paraméter érték nélkül engedélyezi a rendszer által hozzárendelt identitást a feladaton.  
 
 ```azurecli
 az acr task create \
@@ -150,9 +150,9 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-### <a name="grant-identity-access-to-key-vault"></a>Identitás-hozzáférés biztosítása a Key vaulthoz
+### <a name="grant-identity-access-to-key-vault"></a>Identitás-hozzáférés megadása a Key Vaulthoz
 
-A Key vaultra vonatkozó hozzáférési szabályzat beállításához futtassa a következőt az kulcstartó [set-Policy][az-keyvault-set-policy] paranccsal. A következő példa lehetővé teszi, hogy az identitás a Key vaultból olvassa a titkos kulcsokat. 
+Futtassa a [következő az keyvault set-policy parancsot][az-keyvault-set-policy] egy hozzáférési szabályzat kulcstartón való beállítására. Az alábbi példa lehetővé teszi, hogy az identitás beolvassa a titkos kulcsokat a kulcstartóból. 
 
 ```azurecli
 az keyvault set-policy --name mykeyvault \
@@ -163,13 +163,13 @@ az keyvault set-policy --name mykeyvault \
 
 ## <a name="manually-run-the-task"></a>A feladat manuális futtatása
 
-Annak ellenőrzéséhez, hogy a felügyelt identitást engedélyező feladat sikeresen fut-e, manuálisan aktiválja a feladatot az az [ACR Task Run][az-acr-task-run] paranccsal. A `--set` paraméter használatával lehet átadni a privát tárház nevét a feladatnak. Ebben a példában a helyőrző adattár neve *hubuser/hubrepo*.
+Annak ellenőrzéséhez, hogy a felügyelt identitást engedélyező feladat sikeresen fut-e, manuálisan aktiválja a feladatot az [az acr task run paranccsal.][az-acr-task-run] A `--set` paraméterrel adva át a privát objektum nevét a feladatnak. Ebben a példában a helyőrző-repo neve *hubuser/hubrepo.*
 
 ```azurecli
 az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo
 ```
 
-A feladat sikeres futtatásakor a kimenet a Docker hub sikeres hitelesítését jeleníti meg, a rendszerkép pedig sikeresen felépítve és leküldve a privát tárházba:
+Ha a feladat sikeresen lefut, a kimenetben a sikeres hitelesítés látható Docker Hub, és a rendszerkép sikeresen fel lett építve és le lett küldve a privát adatokba:
 
 ```console
 Queued a run with ID: cf24
@@ -216,31 +216,31 @@ Sending build context to Docker daemon    129kB
 Run ID: cf24 was successful after 15s
 ```
 
-A rendszerkép leküldésének megerősítéséhez keresse meg a saját Docker hub-tárházban található címkét ( `cf24` ebben a példában).
+Annak ellenőrzéshez, hogy a rendszerkép lekért-e, ellenőrizze a (ebben a példában) címkét a privát `cf24` Docker Hub-ban.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a [felügyelt identitások ACR-feladatokban való engedélyezéséről](container-registry-tasks-authentication-managed-identity.md).
-* Lásd az [ACR-feladatok YAML-referenciáját](container-registry-tasks-reference-yaml.md)
+* További információ a [felügyelt identitás ACR-feladatokban való engedélyezéséről.](container-registry-tasks-authentication-managed-identity.md)
+* Lásd a [ACR-feladatok YAML-referenciát](container-registry-tasks-reference-yaml.md)
 
 
 <!-- LINKS - Internal -->
-[az-login]: /cli/azure/reference-index#az-login
-[az-acr-login]: /cli/azure/acr#az-acr-login
-[az-acr-show]: /cli/azure/acr#az-acr-show
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-repository-show-tags]: /cli/azure/acr/repository#az-acr-repository-show-tags
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
-[az-acr-login]: /cli/azure/acr#az-acr-login
-[az-identity-create]: /cli/azure/identity#az-identity-create
-[az-identity-show]: /cli/azure/identity#az-identity-show
+[az-login]: /cli/azure/reference-index#az_login
+[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-acr-show]: /cli/azure/acr#az_acr_show
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-acr-repository-show-tags]: /cli/azure/acr/repository#az_acr_repository_show_tags
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
+[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-identity-create]: /cli/azure/identity#az_identity_create
+[az-identity-show]: /cli/azure/identity#az_identity_show
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-show]: /cli/azure/acr/task#az-acr-task-show
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
-[az-acr-task-list-runs]: /cli/azure/acr/task#az-acr-task-list-runs
-[az-acr-task-credential-add]: /cli/azure/acr/task/credential#az-acr-task-credential-add
-[az-group-create]: /cli/azure/group?#az-group-create
-[az-keyvault-create]: /cli/azure/keyvault?#az-keyvault-create
-[az-keyvault-secret-set]: /cli/azure/keyvault/secret#az-keyvault-secret-set
-[az-keyvault-set-policy]: /cli/azure/keyvault#az-keyvault-set-policy
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-show]: /cli/azure/acr/task#az_acr_task_show
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
+[az-acr-task-list-runs]: /cli/azure/acr/task#az_acr_task_list_runs
+[az-acr-task-credential-add]: /cli/azure/acr/task/credential#az_acr_task_credential_add
+[az-group-create]: /cli/azure/group?#az_group_create
+[az-keyvault-create]: /cli/azure/keyvault?#az_keyvault_create
+[az-keyvault-secret-set]: /cli/azure/keyvault/secret#az_keyvault_secret_set
+[az-keyvault-set-policy]: /cli/azure/keyvault#az_keyvault_set_policy

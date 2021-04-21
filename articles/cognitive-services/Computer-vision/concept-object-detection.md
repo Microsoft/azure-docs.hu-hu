@@ -1,7 +1,7 @@
 ---
-title: Objektum észlelése – Computer Vision
+title: Objektumészlelés – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: A Computer Vision API-használat és-korlátok objektum-észlelési funkciójával kapcsolatos fogalmak megismerése.
+description: Megismeri a Computer Vision API objektumészlelési funkciójának – használat és korlátok – fogalmait.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4269209017ecc0afa740bc3ed56cbdcbd915201e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a705a4134ec22d1cb14406cab4491f2af9177b48
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96533842"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767996"
 ---
-# <a name="detect-common-objects-in-images"></a>Gyakori objektumok észlelése képekben
+# <a name="detect-common-objects-in-images"></a>Képek gyakori objektumának észlelése
 
-Az objektum észlelése hasonló a [címkézéshez](concept-tagging-images.md), de az API a megtalált objektumok koordinátáit (képpontban) adja vissza. Ha például egy rendszerkép kutyát, macskát és személyt tartalmaz, az észlelési művelet a képen látható koordinátákkal együtt listázza ezeket az objektumokat. Ezzel a funkcióval feldolgozhatja a képek objektumai közötti kapcsolatokat. Azt is megadhatja, hogy egy adott címkén belül több példány is van-e a képen.
+Az objektumészlelés hasonló a [címkézéséhez,](concept-tagging-images.md)de az API visszaadja a határolókeret koordinátáit (képpontban) minden egyes megtalált objektumhoz. Ha például egy képen kutya, macska és személy látható, a Detect művelet ezeket az objektumokat a koordinátáival együtt sorolja fel a képen. Ezzel a funkcióval feldolgozhatja a képek objektumai közötti kapcsolatokat. Azt is meghatározhatja, hogy egy címkének több példánya is van-e egy képen.
 
-Az észlelési API az objektumokon vagy a képen azonosított dolgokon alapuló címkéket alkalmaz. Jelenleg nincs formális kapcsolat a címkézési besorolás és az objektum-észlelési besorolás között. Elméleti szinten az észlelési API csak az objektumokat és az élő dolgokat észleli, míg a címke API olyan környezetfüggő kifejezéseket is tartalmazhat, mint például a "beltéri", amely nem honosítható meg a határolókeret használatával.
+A Detect API címkéket alkalmaz a képen azonosított objektumok vagy élőlények alapján. Jelenleg nincs formális kapcsolat a címkézési és az objektumészlelési taxonómia között. Elméleti szinten a Detect API csak objektumokat és élő dolgokat keres, a Tag API pedig olyan környezeti kifejezéseket is tartalmazhat, mint a "beltéri", amelyek határoló keretekkel nem honosítottak.
 
-## <a name="object-detection-example"></a>Objektum-észlelési példa
+## <a name="object-detection-example"></a>Objektumészlelési példa
 
-A következő JSON-válasz azt szemlélteti, hogy milyen Computer Vision ad vissza, amikor a példában szereplő objektumokat észleli.
+A következő JSON-válasz bemutatja, Computer Vision mit ad vissza, amikor objektumokat észlel a példaképen.
 
-![Egy Microsoft Surface-eszközt használó nő egy konyhában](./Images/windows-kitchen.jpg)
+![Egy nő, aki Egy Microsoft Surface-eszközt használ egy konyha](./Images/windows-kitchen.jpg)
 
 ```json
 {
@@ -89,14 +89,14 @@ A következő JSON-válasz azt szemlélteti, hogy milyen Computer Vision ad viss
 
 ## <a name="limitations"></a>Korlátozások
 
-Fontos megjegyezni az objektumok észlelésének korlátozásait, így elkerülhető vagy enyhíthető a hamis negatív (kihagyott objektumok) és a korlátozott részletesség hatása.
+Fontos megjegyezni az objektumészlelés korlátait, hogy elkerülheti vagy enyhítheti a téves negatívok (kihagyott objektumok) és a korlátozott részletesség hatásait.
 
-* Az objektumok általában nem észlelhetők, ha kicsik (a rendszerkép kevesebb, mint 5%-a).
-* A rendszer általában nem észleli az objektumokat, ha azok egymással szorosan vannak rendezve (például egy halom lemez).
-* Az objektumokat nem különbözteti meg a márka vagy a Terméknév (például a különböző típusú üdítőitalok egy tárolási polcon). A arculatot azonban a [márka észlelési](concept-brand-detection.md) funkciója segítségével kérheti le.
+* A rendszer általában nem észleli az objektumokat, ha kicsik (a kép kevesebb mint 5%-a).
+* A rendszer általában nem észleli az objektumokat, ha szorosan egymásba vannak rendezve (például egy lapkát).
+* Az objektumokat nem különböztetjük meg márka- vagy terméknevek alapján (például az áruházi polcokon különböző típusú fogasok). A márkainformációk azonban lekért képekről a Márkaészlelési [funkcióval.](concept-brand-detection.md)
 
 ## <a name="use-the-api"></a>Az API használata
 
-Az objektum-észlelési funkció a [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API részét képezi. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja. Belefoglalás `Objects` a **visualFeatures** lekérdezési paraméterbe. Ezután, amikor megkapja a teljes JSON-választ, egyszerűen elemezze a szakasz tartalmának karakterláncát `"objects"` .
+Az objektumészlelési funkció a Analyze Image [API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) része. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja meg. Foglalja `Objects` bele a **visualFeatures lekérdezési** paraméterbe. Ezután, amikor a teljes JSON-választ kap, egyszerűen elemezze a szakasz tartalmának `"objects"` sztringet.
 
-* [Rövid útmutató: Computer Vision REST API vagy ügyféloldali kódtárak](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Rövid útmutató: Computer Vision REST API ügyfélkódtárak létrehozása](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)

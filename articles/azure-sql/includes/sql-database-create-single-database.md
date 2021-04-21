@@ -6,92 +6,92 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: c7bd942b427bdbd2d8184f712f97dd2a0a57fa90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0568860c387aa1239ec56005e404606272ae8275
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102178072"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107799865"
 ---
-Ebben a lépésben létrehoz egy [logikai SQL-kiszolgálót](../database/logical-servers.md) és egy AdventureWorksLT-mintát használó [önálló adatbázist](../database/single-database-overview.md) . Az adatbázist Azure Portal menük és képernyők használatával, vagy az Azure Cloud Shell Azure CLI-vagy PowerShell-parancsfájllal is létrehozhatja.
+Ebben a lépésben létrehoz egy logikai [](../database/single-database-overview.md) [SQL-kiszolgálót](../database/logical-servers.md) és egy adatbázist, amely az AdventureWorksLT mintaadatokat használja. Az adatbázist létrehozhatja helyi menük Azure Portal képernyők használatával, vagy egy Azure CLI- vagy PowerShell-szkript használatával a Azure Cloud Shell.
 
-Az összes módszer magában foglalja a kiszolgálói szintű tűzfalszabály beállítását, hogy engedélyezze a kiszolgálóhoz való hozzáféréshez használt számítógép nyilvános IP-címét. A kiszolgálói szintű Tűzfalszabályok létrehozásával kapcsolatos további információkért tekintse meg [a kiszolgálói szintű tűzfal létrehozása](../database/firewall-create-server-level-portal-quickstart.md)című témakört. Az adatbázis szintű tűzfalszabályok is megadhatók. Lásd: [adatbázis-szintű tűzfalszabály létrehozása](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database).
+Az összes módszer magában foglalja egy kiszolgálószintű tűzfalszabály beállítását, amely engedélyezi a kiszolgáló eléréséhez használt számítógép nyilvános IP-címét. További információ a kiszolgálószintű tűzfalszabályok létrehozásáról: [Kiszolgálószintű tűzfal létrehozása.](../database/firewall-create-server-level-portal-quickstart.md) Adatbázisszintű tűzfalszabályokat is beállíthatja. Lásd: [Adatbázisszintű tűzfalszabály létrehozása.](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Erőforráscsoport, kiszolgáló és önálló adatbázis létrehozása a Azure Portalban:
+Erőforráscsoport, kiszolgáló és egyetlen adatbázis létrehozása a Azure Portal:
 
-1. Jelentkezzen be a [portálra](https://portal.azure.com).
-1. A keresősáv alatt keresse meg és válassza ki az **Azure SQL** elemet.
-1. Az **Azure SQL** lapon válassza a **Hozzáadás** lehetőséget.
+1. Jelentkezzen be a [portálra.](https://portal.azure.com)
+1. A keresősávon keresse meg és válassza **a** Azure SQL.
+1. A **Azure SQL** válassza a Hozzáadás **lehetőséget.**
 
-   ![Hozzáadás az Azure SQL-hez](./media/sql-database-create-single-database/sqldbportal.png)
+   ![Hozzáadás Azure SQL](./media/sql-database-create-single-database/sqldbportal.png)
 
-1. Az **SQL központi telepítési lehetőség kiválasztása** lapon válassza az **SQL-adatbázisok** csempét az **Erőforrás típusa** területen található **önálló adatbázis** elemre. A különböző adatbázisokkal kapcsolatos további információkat a **Részletek megjelenítése** lehetőség kiválasztásával tekintheti meg.
+1. Az **SQL üzembe helyezési lehetőségének kiválasztása lapon** válassza az **SQL-adatbázisok** csempét, az Erőforrástípus alatt pedig az **Egyetlen** adatbázis **lehetőséget.** A különböző adatbázisokról a Részletek megjelenítése lehetőség kiválasztásával **további információkat is megtekinthet.**
 1. Válassza a **Létrehozás** lehetőséget.
 
    ![Önálló adatbázis létrehozása](./media/sql-database-create-single-database/create-single-database.png)
 
-1. Az **SQL-adatbázis létrehozása** űrlap **alapismeretek** lapján a **projekt részletei** területen válassza ki a megfelelő Azure- **előfizetést** , ha még nincs kiválasztva.
-1. Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, írja be a *MyResourceGroup*, majd kattintson **az OK gombra**.
-1. Az **adatbázis adatai** alatt az **adatbázis neve** mezőbe írja be a következőt: *mySampleDatabase*.
-1. A **kiszolgáló** területen válassza az **új létrehozása** lehetőséget, és töltse ki az **új kiszolgáló** űrlapot a következőképpen:
-   - **Kiszolgáló neve**: adja meg a *portra beállított mysqlserver*, és néhány karaktert az egyediség érdekében.
-   - **Kiszolgáló-rendszergazdai bejelentkezés**: írja be az *Azureus* nevet.
-   - **Password (jelszó**): adjon meg egy jelszót, amely megfelel a követelményeknek, majd írja be újra a **Jelszó megerősítése** mezőbe.
-   - **Hely**: legördülő lista, válasszon egy helyet, például **(USA) az USA keleti** régióját.
+1. Az **SQL-adatbázis** létrehozása  űrlap Alapvető beállítások lapján, a **Projekt részletei** alatt válassza ki a megfelelő Azure-előfizetést, ha még nincs kiválasztva. 
+1. Az **Erőforráscsoport alatt** válassza az **Új létrehozása** lehetőséget, írja be a *myResourceGroup* gombra, majd kattintson az **OK gombra.**
+1. Az **Adatbázis adatai alatt** az Adatbázis neve alatt adja **meg** a *mySampleDatabase nevet.*
+1. A **Kiszolgáló mezőben** válassza **az Új létrehozása** lehetőséget, és töltse ki az Új **kiszolgáló** űrlapot az alábbiak szerint:
+   - **Kiszolgáló neve:** Az egyediség érdekében adja meg *a mysqlserver* nevet és néhány karaktert.
+   - **Kiszolgáló-rendszergazdai bejelentkezés:** Írja be az *azureuser nevet.*
+   - **Jelszó:** Adjon meg egy, a követelményeknek megfelelő jelszót, majd írja be újra a **Jelszó megerősítése** mezőbe.
+   - **Hely:** Legördülő menü, és válasszon egy helyet, például **(USA) AZ USA keleti régiója.**
 
    Válassza az **OK** lehetőséget.
 
    ![Új kiszolgáló](./media/sql-database-create-single-database/new-server.png)
 
-   Jegyezze fel a kiszolgáló rendszergazdai felhasználónevét és jelszavát, hogy bejelentkezzen a kiszolgálóra és az adatbázisaiba. Ha elfelejti a felhasználónevét vagy jelszavát, beolvashatja a bejelentkezési nevet, vagy visszaállíthatja a jelszót az **SQL Server** -lapon az adatbázis létrehozása után. Az **SQL Server** oldal megnyitásához válassza ki a kiszolgáló nevét az adatbázis **Áttekintés** lapján.
+   Jegyezheti fel a kiszolgáló rendszergazdai bejelentkezési nevét és jelszavát, hogy bejelentkezhet a kiszolgálóra és annak adatbázisaiba. Ha elfelejtette a bejelentkezési nevét vagy jelszavát, az adatbázis létrehozása után le tudja szerezni a bejelentkezési nevet, vagy visszaállíthatja a jelszót az **SQL Server** oldalán. Az **SQL Server oldal megnyitásához** válassza ki a kiszolgáló nevét az adatbázis Áttekintés **lapján.**
 
-1. Ha újra szeretné konfigurálni az alapértelmezett értékeket a **számítás + tárolás** területen, válassza az **adatbázis konfigurálása** lehetőséget.
+1. Ha **újra szeretné konfigurálni** az alapértelmezett beállításokat, a Számítás + tárolás alatt válassza az **Adatbázis konfigurálása lehetőséget.**
 
-   A **configure (Konfigurálás** ) lapon igény szerint:
-   - Módosítsa a **számítási szintet** a **kiépített** **kiszolgáló** nélküli értékre.
-   - Tekintse át és módosítsa a **virtuális mag** és az **adatmaximális méret** beállításait.
-   - A hardver generálásának módosításához válassza a **konfiguráció módosítása** lehetőséget.
+   A **Konfigurálás** lapon igény szerint a következőt is használhatja:
+   - Módosítsa a **Számítási szintet** **Kiépítve értékről** **Kiszolgáló nélküli szintre.**
+   - Tekintse át és  módosítsa a virtuális magok és a **Maximális adatméret beállításait.**
+   - A **hardvergenerációt a** Konfiguráció módosítása lehetőséget választva módosíthatja.
 
-   A módosítások végrehajtása után válassza az **alkalmaz** lehetőséget.
+   A módosítások után válassza az **Alkalmaz lehetőséget.**
 
-1. Válassza a **Tovább: hálózatkezelés** elemet az oldal alján.
+1. Válassza **a Tovább: Hálózat lehetőséget** a lap alján.
 
-   ![Új SQL Database-adatbázis – alapszintű lap](./media/sql-database-create-single-database/new-sql-database-basics.png)
+   ![Új SQL-adatbázis – Alapszintű lap](./media/sql-database-create-single-database/new-sql-database-basics.png)
 
-1. A **hálózatkezelés** lap **kapcsolati módszer** területén válassza a **nyilvános végpont** elemet.
-1. A **Tűzfalszabályok** területen állítsa az **aktuális ügyfél IP-címének hozzáadása** **Igen értéket**.
-1. Válassza a **Tovább: további beállítások** elemet az oldal alján.
+1. A Hálózat **lap** **Kapcsolati** módszer csoportjában válassza a Nyilvános **végpont lehetőséget.**
+1. A **Tűzfalszabályok alatt** állítsa az **Add current client IP address (Aktuális ügyfél IP-címének hozzáadása) et** **Yes (Igen) állapotra.**
+1. Válassza **a Tovább: További beállítások** lehetőséget a lap alján.
 
-   ![Hálózatkezelés lap](./media/sql-database-create-single-database/networking.png)
+   ![Hálózat lap](./media/sql-database-create-single-database/networking.png)
   
-   További információ a tűzfal beállításairól: az [Azure-szolgáltatások és-erőforrások engedélyezése a kiszolgálóhoz való hozzáféréshez](../database/network-access-controls-overview.md) és [privát végpont hozzáadása](../database/private-endpoint-overview.md).
+   További információ a tűzfalbeállításokról: [Allow Azure services and resources to access this server (Azure-szolgáltatások](../database/network-access-controls-overview.md) és -erőforrások hozzáférésének engedélyezése a kiszolgálóhoz) és [Add a private endpoint (Privát végpont hozzáadása).](../database/private-endpoint-overview.md)
 
-1. A **További beállítások** lap **adatforrás** szakaszában, a meglévő adatforrások **használatához** válassza a **minta** lehetőséget.
-1. Opcionálisan engedélyezze [Az Azure Defender for SQL](../database/azure-defender-for-sql.md)-t.
-1. Megadhatja a [karbantartási](../database/maintenance-window.md) időszakot is, hogy a tervezett karbantartás a lehető legrövidebb időn belül elvégezze az adatbázisát.
-1. Kattintson a lap alján található **felülvizsgálat + létrehozás** lehetőségre.
+1. A További **beállítások lap** Adatforrás szakaszában **a** Meglévő **adatok** használata területen válassza a Minta **lehetőséget.**
+1. Ha szeretné, engedélyezze a [Azure Defender SQL-hez.](../database/azure-defender-for-sql.md)
+1. Ha szükséges, állítsa be a karbantartási [ablakot](../database/maintenance-window.md) úgy, hogy a tervezett karbantartás az adatbázishoz leginkább megfelelő időpontban hajtható végre.
+1. A **lap alján** válassza az Áttekintés + létrehozás lehetőséget.
 
    ![További beállítások lap](./media/sql-database-create-single-database/additional-settings.png)
 
-1. A beállítások áttekintése után válassza a **Létrehozás** lehetőséget.
+1. A beállítások áttekintése után válassza a **Létrehozás lehetőséget.**
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Az Azure parancssori felületének (Azure CLI) használatával létrehozhat egy Azure-erőforráscsoportot,-kiszolgálót és egy önálló adatbázist. Ha nem szeretné használni a Azure Cloud Shell, telepítse az [Azure CLI](/cli/azure/install-azure-cli) -t a számítógépre.
+Az Azure parancssori felületével (Azure CLI) létrehozhat egy Azure-erőforráscsoportot, kiszolgálót és egy adatbázist. Ha nem szeretné használni a Azure Cloud Shell telepítse [az Azure CLI-t](/cli/azure/install-azure-cli) a számítógépre.
 
-Ha a következő kódot szeretné futtatni a Azure Cloud Shellban, válassza a **kipróbálás** elemet a kód minta címsorában. Amikor megnyílik a Cloud Shell, válassza a **Másolás** elemet a kód minta címsorában, és illessze be a kód mintát a Cloud Shell ablakába. A kódban cserélje le az `<Subscription ID>` Azure-előfizetése azonosítóját, és a és a esetében cserélje le a-t a `$startip` `$endip` `0.0.0.0` használt számítógép nyilvános IP-címére.
+Az alábbi kódminta futtatásához Azure Cloud Shell próbálja **ki a** kódminta címsorában. A Cloud Shell a kódminta  címsorában válassza a Másolás lehetőséget, és illessze be a mintakódot a Cloud Shell ablakába. A kódban cserélje le a helyére az Azure-előfizetés azonosítóját, a és a helyére pedig a használt számítógép nyilvános `<Subscription ID>` `$startip` `$endip` `0.0.0.0` IP-címét.
 
-Kövesse a képernyőn megjelenő utasításokat az Azure-ba való bejelentkezéshez és a kód futtatásához.
+A képernyőn megjelenő utasításokat követve jelentkezzen be az Azure-ba, és futtassa a kódot.
 
-A Azure Portal Azure Cloud Shell is használhatja, ha a felső sávon a Cloud Shell ikonra kattint.
+A felső sávon Azure Cloud Shell ikon Azure Portal használhatja Cloud Shell ikont.
 
    ![Azure Cloud Shell](./media/sql-database-create-single-database/cloudshell.png)
 
-Amikor első alkalommal használja Cloud Shell a portálon, válassza a **bash** lehetőséget az **üdvözlő** párbeszédpanelen. A következő munkamenetek az Azure CLI-t egy bash-környezetben fogják használni, vagy kiválaszthatja a **bash** elemet a Cloud Shell vezérlőelem sávjában.
+Amikor először használja a Cloud Shell a portálon, válassza a **Bash lehetőséget** az Üdvözlő **párbeszédpanelen.** A későbbi munkamenetek az Azure CLI-t fogják használni egy Bash-környezetben, vagy választhatja a **Basht** a Cloud Shell vezérlősávon.
 
-A következő Azure CLI-kód létrehoz egy erőforráscsoportot, egy kiszolgálót, egy önálló adatbázist és egy kiszolgálói szintű IP-tűzfalszabály-szabályt a kiszolgálóhoz való hozzáféréshez. Ügyeljen arra, hogy rögzítse a létrehozott erőforráscsoportot és a kiszolgáló nevét, így később is kezelheti ezeket az erőforrásokat.
+Az alábbi Azure CLI-kód létrehoz egy erőforráscsoportot, egy kiszolgálót, egy adatbázist és egy kiszolgálószintű IP-tűzfalszabályt a kiszolgálóhoz való hozzáféréshez. Jegyezheti fel a létrehozott erőforráscsoport- és kiszolgálóneveket, hogy később kezelni tudja ezeket az erőforrásokat.
 
 ```azurecli-interactive
 #!/bin/bash
@@ -147,35 +147,35 @@ az sql db create \
     --capacity 2 \
 ```
 
-Az előző kód az alábbi Azure CLI-parancsokat használja:
+A fenti kód ezeket az Azure CLI-parancsokat használja:
 
 | Parancs | Leírás |
 |---|---|
-| [az Account set](/cli/azure/account#az-account-set) | Egy előfizetést állít be az aktuális aktív előfizetésre. |
-| [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Adatbázisokat és rugalmas készleteket futtató kiszolgálót hoz létre. |
-| [az SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | Létrehoz egy kiszolgálói szintű tűzfalszabály-szabályt. |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Létrehoz egy adatbázist. |
+| [az account set](/cli/azure/account#az_account_set) | Beállítja, hogy az előfizetés az aktuális aktív előfizetés legyen. |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az sql server create](/cli/azure/sql/server#az_sql_server_create) | Adatbázisokat és rugalmas készleteket tartalmazó kiszolgálót hoz létre. |
+| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_create) | Kiszolgálószintű tűzfalszabályt hoz létre. |
+| [az sql db create](/cli/azure/sql/db#az_sql_db_create) | Létrehoz egy adatbázist. |
 
-További Azure SQL Database Azure CLI-mintákhoz lásd: [Azure CLI-minták](../database/az-cli-script-samples-content-guide.md).
+További Azure SQL Database Azure CLI-mintákért lásd: [Azure CLI-minták.](../database/az-cli-script-samples-content-guide.md)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Létrehozhat egy erőforráscsoportot, kiszolgálót és önálló adatbázist a Windows PowerShell használatával. Ha nem szeretné használni a Azure Cloud Shell, [telepítse a Azure PowerShell modult](/powershell/azure/install-az-ps).
+Erőforráscsoportot, kiszolgálót és egyetlen adatbázist hozhat létre a Windows PowerShell. Ha nem szeretné használni a Azure Cloud Shell, [telepítse a Azure PowerShell modult.](/powershell/azure/install-az-ps)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ha az alábbi kódrészletet szeretné futtatni a Azure Cloud Shellban, válassza a **kipróbálás** lehetőséget a kód címsorában. Amikor megnyílik a Cloud Shell, válassza a **Másolás** elemet a kód minta címsorában, és illessze be a kód mintát a Cloud Shell ablakába. A kódban cserélje le az `<Subscription ID>` Azure-előfizetése azonosítóját, és a és a esetében cserélje le a-t a `$startIp` `$endIp` `0.0.0.0` használt számítógép nyilvános IP-címére.
+A következő kódminta futtatásához a Azure Cloud Shell válassza a Próbálja **ki a** kód címsorában lehetőséget. Amikor a Cloud Shell megnyílik,  válassza a Másolás lehetőséget a kódminta címsorában, és illessze be a kódmintát a Cloud Shell ablakába. A kódban cserélje le a helyére az Azure-előfizetés azonosítóját, a és a helyére pedig a használt számítógép nyilvános `<Subscription ID>` `$startIp` `$endIp` `0.0.0.0` IP-címét.
 
 Kövesse a képernyőn megjelenő utasításokat az Azure-ba való bejelentkezéshez és a kód futtatásához.
 
-A Azure Portal Azure Cloud Shell is használhatja, ha a felső sávon a Cloud Shell ikonra kattint.
+A felső sávon Azure Cloud Shell Azure Portal ikont választva Cloud Shell is használhatja.
 
    ![Azure Cloud Shell](./media/sql-database-create-single-database/cloudshell.png)
 
-Amikor első alkalommal használja Cloud Shell a portálon, válassza a **PowerShell** lehetőséget az **üdvözlő** párbeszédpanelen. A következő munkamenetek a PowerShellt fogják használni, vagy kiválaszthatják a Cloud Shell vezérlőelem sávján.
+Amikor először használja a Cloud Shell a portálon, válassza a **PowerShell lehetőséget** az Üdvözlő **párbeszédpanelen.** A további munkamenetek a PowerShellt fogják használni, vagy kiválaszthatja azt a Cloud Shell vezérlősávon.
 
-A következő PowerShell-kód egy Azure-erőforráscsoportot, egy kiszolgálót, egy önálló adatbázist és egy tűzfalszabály-szabályt hoz létre a kiszolgálóhoz való hozzáféréshez. Ügyeljen arra, hogy rögzítse a létrehozott erőforráscsoportot és a kiszolgáló nevét, így később is kezelheti ezeket az erőforrásokat.
+A következő PowerShell-kód létrehoz egy Azure-erőforráscsoportot, egy kiszolgálót, egy adatbázist és egy tűzfalszabályt a kiszolgálóhoz való hozzáféréshez. Jegyezheti fel a létrehozott erőforráscsoport- és kiszolgálóneveket, hogy később kezelni tudja ezeket az erőforrásokat.
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -235,15 +235,15 @@ A következő PowerShell-kód egy Azure-erőforráscsoportot, egy kiszolgálót,
    $database
    ```
 
-Az előző kód ezeket a PowerShell-parancsmagokat használja:
+A fenti kód ezeket a PowerShell-parancsmagokat használja:
 
 | Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [Új – AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Adatbázisokat és rugalmas készleteket futtató kiszolgálót hoz létre. |
-| [Új – AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Kiszolgáló szintű tűzfalszabály létrehozása egy kiszolgálóhoz. |
-| [Új – AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Létrehoz egy adatbázist. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy adatbázisokat és rugalmas készleteket tartalmazó kiszolgálót. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Kiszolgálószintű tűzfalszabályt hoz létre egy kiszolgálóhoz. |
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Létrehoz egy adatbázist. |
 
-További Azure SQL Database PowerShell-példákat a következő témakörben talál: [Azure PowerShell minták](../database/powershell-script-content-guide.md).
+A PowerShell Azure SQL Database mintákról további információt a [példákat Azure PowerShell meg.](../database/powershell-script-content-guide.md)
 
 ---

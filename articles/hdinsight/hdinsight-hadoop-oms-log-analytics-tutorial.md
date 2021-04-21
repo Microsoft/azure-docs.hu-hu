@@ -1,22 +1,22 @@
 ---
-title: Azure HDInsight-fürtök figyelése Azure Monitor naplók használatával
-description: Megtudhatja, hogyan használhatók Azure Monitor naplók a HDInsight-fürtön futó feladatok figyeléséhez.
+title: A Azure Monitor naplók használata a Azure HDInsight figyelése
+description: Megtudhatja, hogyan használhatja a Azure Monitor a HDInsight-fürtökben futó feladatok figyelése érdekében.
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 05/13/2020
-ms.openlocfilehash: 0dfa89f50dedad41394cb77f1cca9b2dd3a65308
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2a81b25b08708a878fc8ff83cf19c643036b8f90
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104865536"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770326"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor-naplók használata HDInsight-fürtök monitorozásához
 
-Megtudhatja, hogyan engedélyezheti Azure Monitor naplók a Hadoop figyelését a HDInsight-ben. És hogyan adhat hozzá HDInsight-figyelési megoldást.
+Ismerje meg, hogyan engedélyezheti a Azure Monitor a Hadoop-fürtműveleteket a HDInsightban. És hogyan adhat hozzá HDInsight monitorozási megoldást.
 
-[Azure monitor a naplók](../azure-monitor/logs/log-query-overview.md) egy Azure monitor szolgáltatás, amely figyeli a Felhőbeli és a helyszíni környezeteket. A figyelés a rendelkezésre állás és a teljesítmény fenntartása. A felhőben, a helyszíni környezetekben és más figyelési eszközökben lévő erőforrások által generált adatokat gyűjt. A rendszer a több forrásból származó elemzések megadására szolgál.
+[Azure Monitor naplók](../azure-monitor/logs/log-query-overview.md) egy Azure Monitor szolgáltatás, amely figyeli a felhőbeli és a helyszíni környezeteket. A figyelés a rendelkezésre állásuk és a teljesítményük fenntartása. A felhőben, a helyszíni környezetekben és más monitorozási eszközökben található erőforrások által létrehozott adatokat gyűjti. Az adatok több forrás elemzésére használhatók.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -24,9 +24,9 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Log Analytics-munkaterület. Ezt a munkaterületet a saját adattárházával, adatforrásaival és megoldásaival kapcsolatos egyedi Azure Monitor-naplózási környezetnek tekintheti át. Az utasításokért lásd: [log Analytics munkaterület létrehozása](../azure-monitor/vm/quick-collect-azurevm.md#create-a-workspace).
+* Egy Log Analytics-munkaterület. Ez a munkaterület egy egyedi adatnapló-Azure Monitor a saját adattárával, adatforrásaival és megoldásaival. Az utasításokért [lásd: Log Analytics-munkaterület létrehozása.](../azure-monitor/vm/quick-collect-azurevm.md#create-a-workspace)
 
-* Egy Azure-beli HDInsight-fürt. Jelenleg a következő HDInsight-fürtökkel rendelkező Azure Monitor naplókat használhatja:
+* Egy Azure-beli HDInsight-fürt. Jelenleg a következő HDInsight Azure Monitor fürttípusokkal használhatja a naplókat:
 
   * Hadoop
   * HBase
@@ -35,34 +35,34 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
   * Spark
   * Storm
 
-  A HDInsight-fürtök létrehozásával kapcsolatos útmutatásért lásd: Ismerkedés [Az Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).  
+  A HDInsight-fürtök létrehozására vonatkozó utasításokért lásd: [Get started with Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).  
 
-* Ha a PowerShellt használja, szüksége lesz az az [modulra](/powershell/azure/). Győződjön meg arról, hogy a legújabb verzióval rendelkezik. Ha szükséges, futtassa a parancsot `Update-Module -Name Az` .
+* PowerShell használata esetén szüksége lesz az [Az modulra.](/powershell/azure/) Győződjön meg arról, hogy a legújabb verzióval van. Ha szükséges, futtassa az `Update-Module -Name Az` futtatását.
 
-* Ha az Azure CLI-t szeretné használni, és még nem telepítette, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
+* Ha az Azure CLI-t szeretné használni, de még nem telepítette, tekintse meg az [Azure CLI telepítését.](/cli/azure/install-azure-cli)
 
 > [!NOTE]  
-> A jobb teljesítmény érdekében ajánlott a HDInsight-fürtöt és a Log Analytics munkaterületet ugyanabba a régióba helyezni. Azure Monitor naplók nem érhetők el az összes Azure-régióban.
+> A jobb teljesítmény érdekében javasoljuk, hogy a HDInsight-fürtöt és a Log Analytics-munkaterületet is helyezze ugyanabba a régióba. Azure Monitor naplók nem érhetők el minden Azure-régióban.
 
-## <a name="enable-azure-monitor-using-the-portal"></a>Azure Monitor engedélyezése a portál használatával
+## <a name="enable-azure-monitor-using-the-portal"></a>A Azure Monitor engedélyezése a portál használatával
 
-Ebben a szakaszban egy meglévő HDInsight-Hadoop-fürtöt konfigurál egy Azure Log Analytics munkaterület használatára a feladatok, a hibakeresési naplók és így tovább.
+Ebben a szakaszban egy meglévő HDInsight Hadoop-fürtöt fog konfigurálni egy Azure Log Analytics-munkaterület használatára a feladatok figyelése, a naplók hibakeresése stb. érdekében.
 
-1. A [Azure Portal](https://portal.azure.com/)válassza ki a fürtöt. A fürt megnyílik egy új portál oldalon.
+1. A [Azure Portal](https://portal.azure.com/)válassza ki a fürtöt. A fürt egy új portállapon nyílik meg.
 
-1. A bal oldalon a **figyelés** területen válassza a **Azure monitor** lehetőséget.
+1. A bal oldali Figyelés **alatt** válassza **a** Azure Monitor.
 
-1. A fő nézet **Azure monitor integráció** területén válassza az **Engedélyezés** lehetőséget.
+1. A fő nézet integrációs **Azure Monitor válassza** az **Engedélyezés lehetőséget.**
 
-1. A **munkaterület kiválasztása** legördülő listából válasszon ki egy meglévő log Analytics munkaterületet.
+1. A Munkaterület **kiválasztása legördülő** listában válasszon ki egy meglévő Log Analytics-munkaterületet.
 
 1. Kattintson a **Mentés** gombra.  A beállítás mentése néhány percet vesz igénybe.
 
-    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png" alt-text="HDInsight-fürtök figyelésének engedélyezése":::
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png" alt-text="HDInsight-fürtök monitorozásának engedélyezése":::
 
-## <a name="enable-azure-monitor-using-azure-powershell"></a>Azure Monitor engedélyezése a Azure PowerShell használatával
+## <a name="enable-azure-monitor-using-azure-powershell"></a>Az Azure Monitor engedélyezése a Azure PowerShell
 
-Azure Monitor naplókat az Azure PowerShell az Module [enable-AzHDInsightMonitoring](/powershell/module/az.hdinsight/enable-azhdinsightmonitoring) parancsmag használatával engedélyezheti.
+A naplókat Azure Monitor Az modul [Enable-AzHDInsightMonitoring](/powershell/module/az.hdinsight/enable-azhdinsightmonitoring) parancsmag Azure PowerShell engedélyezheti.
 
 ```powershell
 # Enter user information
@@ -94,15 +94,15 @@ Get-AzHDInsightMonitoring `
     -Name $cluster
 ```
 
-A letiltásához használja a [disable-AzHDInsightMonitoring](/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) parancsmagot:
+A letiltásához használja a [Disable-AzHDInsightMonitoring](/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) parancsmagot:
 
 ```powershell
 Disable-AzHDInsightMonitoring -Name "<your-cluster>"
 ```
 
-## <a name="enable-azure-monitor-using-azure-cli"></a>Azure Monitor engedélyezése az Azure CLI-vel
+## <a name="enable-azure-monitor-using-azure-cli"></a>Az Azure Monitor engedélyezése az Azure CLI használatával
 
-A Azure Monitor naplók az Azure CLI használatával is engedélyezhetők `[az hdinsight monitor enable` ] (/CLI/Azure/hdinsight/monitor # az-hdinsight-monitor-Enable) paranccsal.
+A naplókat Azure Monitor Azure CLI `[az hdinsight monitor enable` ](/cli/azure/hdinsight/monitor#az_hdinsight_monitor_enable) paranccsal engedélyezheti.
 
 ```azurecli
 # set variables
@@ -117,45 +117,45 @@ az hdinsight monitor enable --name $cluster --resource-group $resourceGroup --wo
 az hdinsight monitor show --name $cluster --resource-group $resourceGroup
 ```
 
-A letiltásához használja a [`az hdinsight monitor disable`](/cli/azure/hdinsight/monitor#az-hdinsight-monitor-disable) parancsot.
+A letiltásához használja a [`az hdinsight monitor disable`](/cli/azure/hdinsight/monitor#az_hdinsight_monitor_disable) parancsot.
 
 ```azurecli
 az hdinsight monitor disable --name $cluster --resource-group $resourceGroup
 ```
 
-## <a name="install-hdinsight-cluster-management-solutions"></a>HDInsight-fürt felügyeleti megoldásainak telepítése
+## <a name="install-hdinsight-cluster-management-solutions"></a>HDInsight-fürtkezelési megoldások telepítése
 
-A HDInsight olyan fürtözött felügyeleti megoldásokat biztosít, amelyeket hozzáadhat Azure Monitor naplókhoz. A [felügyeleti megoldások](../azure-monitor/insights/solutions.md) funkciókkal bővítik Azure monitor naplókat, amelyek további adat-és elemzési eszközöket biztosítanak. Ezek a megoldások fontos teljesítmény-mérőszámokat gyűjtenek a HDInsight-fürtökről. És adja meg a metrikák kereséséhez szükséges eszközöket. Ezek a megoldások vizualizációkat és irányítópultokat is biztosítanak a HDInsight által támogatott legtöbb típusú fürthöz. A megoldással gyűjtött metrikák használatával egyéni figyelési szabályokat és riasztásokat hozhat létre.
+A HDInsight fürtspecifikus felügyeleti megoldásokat biztosít, amelyek hozzáadhatóak Azure Monitor naplókhoz. [A felügyeleti megoldások](../azure-monitor/insights/solutions.md) további funkciókkal Azure Monitor naplókat, további adat- és elemzőeszközöket biztosítva. Ezek a megoldások fontos teljesítménymetrikákat gyűjtenek a HDInsight-fürtökről. És adja meg a metrikák kereséséhez szükséges eszközöket. Ezek a megoldások vizualizációkat és irányítópultokat is biztosítanak a HDInsight által támogatott legtöbb fürttípushoz. A megoldással gyűjtött metrikák használatával egyéni monitorozási szabályokat és riasztásokat hozhat létre.
 
 Elérhető HDInsight-megoldások:
 
-* HDInsight Hadoop-figyelés
+* HDInsight Hadoop-monitorozás
 * HDInsight HBase Monitoring
-* HDInsight interaktív lekérdezés figyelése
-* HDInsight Kafka-figyelés
-* HDInsight Spark-figyelés
+* HDInsight Interactive Query Monitorozás
+* HDInsight Kafka-monitorozás
+* HDInsight Spark-monitorozás
 * HDInsight Storm-monitorozás
 
-A felügyeleti megoldással kapcsolatos utasításokért lásd: [felügyeleti megoldások az Azure-ban](../azure-monitor/insights/solutions.md#install-a-monitoring-solution). A kísérlethez telepítsen egy HDInsight Hadoop-figyelési megoldást. Ha elkészült, megjelenik egy **HDInsightHadoop** csempe az **Összefoglalás** területen. Válassza a **HDInsightHadoop** csempét. A HDInsightHadoop-megoldás így néz ki:
+A felügyeleti megoldásokkal kapcsolatos utasításokért lásd: Felügyeleti [megoldások az Azure-ban.](../azure-monitor/insights/solutions.md#install-a-monitoring-solution) A kísérletezéshez telepítsen egy HDInsight Hadoop monitorozási megoldást. Ha végzett, megjelenik egy **HDInsightHadoop** csempe az Összefoglalás **alatt.** Válassza a **HDInsightHadoop csempét.** A HDInsightHadoop megoldás a következő:
 
-:::image type="content" source="media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png" alt-text="HDInsight-figyelési megoldás nézete":::
+:::image type="content" source="media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png" alt-text="HDInsight monitorozási megoldás nézete":::
 
-Mivel a fürt egy teljesen új fürt, a jelentés nem jeleníti meg a tevékenységeket.
+Mivel a fürt egy teljesen új fürt, a jelentés nem mutat semmilyen tevékenységet.
 
 ## <a name="configuring-performance-counters"></a>Teljesítményszámlálók konfigurálása
 
-Az Azure monitor támogatja a fürt csomópontjaihoz tartozó teljesítmény-mérőszámok gyűjtését és elemzését. További információ: [Linux Performance adatforrások a Azure monitor-ben](../azure-monitor/agents/data-sources-performance-counters.md#linux-performance-counters).
+Az Azure Monitor támogatja a fürt csomópontjainak teljesítménymetrikák gyűjtését és elemzését. További információ: [Linux-teljesítmény-adatforrások a Azure Monitor.](../azure-monitor/agents/data-sources-performance-counters.md#linux-performance-counters)
 
 ## <a name="cluster-auditing"></a>Fürt naplózása
 
-A HDInsight a következő típusú naplók importálásával támogatja a fürt naplózását Azure Monitor naplókkal:
+A HDInsight a fürtnaplók Azure Monitor a következő naplótípusok importálásával támogatja a fürtnaplózást:
 
-* `log_gateway_audit_CL` – Ez a táblázat a fürt átjárójának csomópontjairól nyújt naplókat, amelyek sikeres és sikertelen bejelentkezési kísérleteket mutatnak.
-* `log_auth_CL` – Ez a táblázat a sikeres és sikertelen bejelentkezési kísérletekkel rendelkező SSH-naplókat tartalmaz.
-* `log_ambari_audit_CL` – Ez a tábla naplókat biztosít a Ambari.
-* `log_ranger_audti_CL` – Ez a táblázat az Apache Ranger és az ESP-fürtök naplóit tartalmazza.
+* `log_gateway_audit_CL` – Ez a táblázat a fürtátjáró-csomópontok auditnaplóit tartalmazza, amelyek a sikeres és sikertelen bejelentkezési kísérleteket mutatják.
+* `log_auth_CL` – ez a táblázat SSH-naplókat biztosít sikeres és sikertelen bejelentkezési kísérletekkel.
+* `log_ambari_audit_CL` – ez a táblázat az Ambari auditnaplóit tartalmazza.
+* `log_ranger_audti_CL` – ez a táblázat az Apache Ranger auditnaplóit tartalmazza ESP-fürtökön.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Azure Monitor naplók lekérdezése HDInsight-fürtök figyeléséhez](hdinsight-hadoop-oms-log-analytics-use-queries.md)
-* [A fürt rendelkezésre állásának figyelése az Apache Ambari és a Azure Monitor naplók használatával](./hdinsight-cluster-availability.md)
+* [HDInsight Azure Monitor fürtök figyelése naplók lekérdezése](hdinsight-hadoop-oms-log-analytics-use-queries.md)
+* [Fürtök rendelkezésre állásának figyelése az Apache Ambari és a Azure Monitor naplók segítségével](./hdinsight-cluster-availability.md)

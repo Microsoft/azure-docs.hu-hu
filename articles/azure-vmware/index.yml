@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: shortpatti
   ms.author: v-patsho
-  ms.date: 03/30/2021
-  ms.openlocfilehash: 6e97c14acc291984a90182f322cbde3462b9daee
-  ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+  ms.date: 04/20/2021
+  ms.openlocfilehash: 8c754c7855848db3119d987a4147b08cd3aa2115
+  ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/08/2021
-  ms.locfileid: "107209807"
+  ms.lasthandoff: 04/20/2021
+  ms.locfileid: "107765340"
 landingContent:
 - title: Az Azure VMware Solution ismertetése
   linkLists:
@@ -22,7 +22,7 @@ landingContent:
     links:
     - text: Mi az az Azure VMware Solution?
       url: introduction.md
-    - text: Platform frissítései
+    - text: Platformfrissítések
       url: azure-vmware-solution-platform-updates.md
   - linkListType: concept
     links:
@@ -44,19 +44,19 @@ landingContent:
     links:
     - text: Általános kérdések
       url: /azure/azure-vmware/faq#general
-    - text: Ügyfél-kommunikáció
+    - text: Ügyfélkommunikáció
       url: /azure/azure-vmware/faq#customer-communication
     - text: Konfigurálás és beállítás
       url: /azure/azure-vmware/faq#configuration-and-setup
-    - text: VMware szoftver
+    - text: VMware-szoftver
       url: /azure/azure-vmware/faq#vmware-software
-    - text: Számítás, biztonsági mentés és vész-helyreállítás
+    - text: Számítás, biztonsági mentés és vészhelyreállítás
       url: /azure/azure-vmware/faq#compute,-backup,-and-disaster-recovery
-    - text: Hálózatkezelés és kapcsolat
+    - text: Hálózat és összekapcsolás
       url: /azure/azure-vmware/faq#networking-and-interconnectivity
     - text: Tárolás
       url: /azure/azure-vmware/faq#storage
-    - text: Gazdagépek, fürtök és privát felhők
+    - text: Gazdagépek, fürtök és magánfelhők
       url: /azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds
     - text: Identitáskezelés
       url: /azure/azure-vmware/faq#identity-management
@@ -96,9 +96,9 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure VMware-megoldás kérése a gazda számára
+    - text: Gazdagépkvóta kérése Azure VMware Solution
       url: enable-azure-vmware-solution.md
-    - text: EA-és CSP-előfizetések áthelyezése
+    - text: EA- és CSP-előfizetések áthelyezése
       url: move-ea-csp-subscriptions.md
     - text: Költségcsökkentés fenntartott példánnyal
       url: reserved-instance.md
@@ -136,7 +136,7 @@ landingContent:
       url: protect-azure-vmware-solution-with-application-gateway.md
     - text: Traffic Manager
       url: deploy-traffic-manager-balance-workloads.md
-    - text: Riasztások konfigurálása és metrikák használata
+    - text: Riasztások konfigurálása és metrikákkal való munka
       url: configure-alerts-for-azure-vmware-solution.md
 - title: VMware-megoldások
   linkLists:
@@ -146,7 +146,7 @@ landingContent:
       url: vrealize-operations-for-azure-vmware-solution.md
     - text: A VMware Horizon üzembe helyezése
       url: azure-vmware-solution-horizon.md
-    - text: Virtuális gépek üzembe helyezése a tartalom könyvtárából
+    - text: Virtuális gépek üzembe helyezése a tartalomtárból
       url: deploy-vm-content-library.md
 - title: VMware-ökoszisztéma
   linkLists:
@@ -154,7 +154,7 @@ landingContent:
     links:
     - text: Biztonsági mentési megoldások virtuális gépekhez
       url: ecosystem-back-up-vms.md
-    - text: Áttelepítési megoldások a virtuális gépekhez
+    - text: Migrálási megoldások virtuális gépekhez
       url: ecosystem-migration-vms.md
 - title: Források
   linkLists:
@@ -172,13 +172,13 @@ landingContent:
     links:
     - text: Lejátszási lista
       url: https://youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin
-    - text: Integráció az Azure-szolgáltatással
+    - text: Integráció az Azure szolgáltatással
       url: https://youtu.be/m26iLu6DHbU
-    - text: Integráció az Azure Application Gateway
+    - text: Integráció a Azure Application Gateway
       url: https://youtu.be/BoQYvqzb6Y8
-    - text: Áttelepítés és kapacitás megtervezése
+    - text: Migrálás és kapacitástervezés
       url: https://youtu.be/NoNG-hkksrA
-    - text: VCenter elforgatása az Azure Logic App használatával & NSX-T jelszavakkal
+    - text: VCenter-& NSX-T-jelszavak váltása az Azure Logic App használatával
       url: https://youtu.be/cK1qY3knj88
 - title: Hibaelhárítás
   linkLists:
@@ -186,3 +186,5 @@ landingContent:
     links:
     - text: Támogatási kérés megnyitása a sikertelen üzembe helyezésekhez
       url: fix-deployment-provisioning-failures.md
+    - text: VMware-eszközök vix hibakód = 21009
+      url: https://kb.vmware.com/s/article/2129927

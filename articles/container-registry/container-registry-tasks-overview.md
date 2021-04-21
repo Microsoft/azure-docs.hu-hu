@@ -1,124 +1,124 @@
 ---
 title: Az ACR-feladatok áttekintése
-description: Az ACR-feladatok, a Azure Container Registry szolgáltatásainak egyik csomagja, amely biztonságos, automatizált tároló-rendszerképek készítését, kezelését és javítását teszi lehetővé a felhőben.
+description: A ACR-feladatok szolgáltatáscsomag, a Azure Container Registry, amely biztonságos, automatizált tárolórendszerkép-összeállítást, -felügyeletet és -javítást biztosít a felhőben.
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: 1cf9faf934cebfb5abe0d2e1b26ffd7da2d6c549
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a42a2bfcdc1621689421940c4db2fcf4f5e64b89
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104606786"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781000"
 ---
-# <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>A tárolók rendszerképének fejlesztése és karbantartása ACR-feladatokkal
+# <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Tároló rendszerkép-buildek és karbantartás automatizálása a ACR-feladatok
 
-A tárolók új virtualizációs szinteket biztosítanak, az alkalmazások és a fejlesztői függőségek elkülönítését az infrastruktúra és az üzemeltetési követelmények alapján. A továbbra is szükség van arra, hogy az alkalmazás virtualizálása hogyan legyen kezelve, és hogyan történik a tároló életciklusa.
+A tárolók új virtualizálási szinteket biztosítanak, így az alkalmazások és a fejlesztők függőségei el vannak különedve az infrastruktúrától és az üzemeltetési követelményektől. Ami azonban megmarad, az az, hogy kezelni kell az alkalmazás virtualizálásának a tároló életciklusa során való kezelése és javításának a mikéntját.
 
-## <a name="what-is-acr-tasks"></a>Mi az az ACR-feladat?
+## <a name="what-is-acr-tasks"></a>Mi az ACR-feladatok?
 
-Az **ACR-feladatok** a Azure Container Registryon belüli szolgáltatások egyik csomagja. Felhőalapú tároló-rendszerképeket kínál a platformok, például a Linux, a Windows és az ARM [platformokhoz](#image-platforms) , és automatizálja az [operációs rendszer és a keretrendszer javítását](#automate-os-and-framework-patching) a Docker-tárolók számára. Az ACR-feladatok nem csupán a "belső hurkos" fejlesztési ciklust bővítik a felhőre az igény szerinti tárolók rendszerképének létrehozásával, hanem lehetővé teszik a forráskód frissítései által aktivált automatizált buildek, a tárolók alaprendszerképének vagy időzítőinak frissítését is. Például az alaprendszerkép-frissítési eseményindítók segítségével automatizálhatja az operációs rendszer és az alkalmazás-keretrendszer javítási munkafolyamatát, és megőrizheti a biztonságos környezeteket, miközben betartja a nem változtatható tárolók alapelveit.
+**ACR-feladatok** egy szolgáltatáscsomag a Azure Container Registry. Felhőalapú tárolórendszerkép-építést biztosít olyan platformokhoz, mint a [](#automate-os-and-framework-patching) Linux, a Windows és az ARM, és automatizálhatja a Docker-tárolók operációsrendszer- és keretrendszer-javítását. [](#image-platforms) ACR-feladatok az igény szerinti tárolórendszerkép-buildekkel kiterjeszti a "belső" fejlesztési ciklust a felhőbe, hanem lehetővé teszi a forráskódfrissítések, a tárolók alapként szolgáló rendszerképének frissítései vagy időzítők által aktivált automatikus buildeket is. Az alapként szolgáló rendszerképfrissítési eseményindítók segítségével például automatizálhatja az operációs rendszer és az alkalmazás keretrendszerének javítási munkafolyamatát, megőrizve a biztonságos környezeteket, miközben a nem módosítható tárolók alapelveit is be lehet tartani.
 
-## <a name="task-scenarios"></a>Feladatok forgatókönyvei
+## <a name="task-scenarios"></a>Feladatforgatókönyvek
 
-Az ACR-feladatok több forgatókönyvet is támogatnak a tároló-lemezképek és egyéb összetevők kiépítéséhez és karbantartásához. A részletekért tekintse meg a cikk következő részeit.
+ACR-feladatok támogatja a tároló-rendszerképek és más összetevők építésének és karbantartásának számos forgatókönyvét. További részleteket a cikk alábbi szakaszaiban talál.
 
-* **[Gyors feladat](#quick-task)** – egyetlen tároló-rendszerkép létrehozása és leküldése igény szerint egy tároló-beállításjegyzékbe az Azure-ban anélkül, hogy helyi Docker-motort kellene telepítenie. Szerintem `docker build` `docker push` a felhőben.
-* **Automatikusan aktivált feladatok** – egy vagy több *eseményindító* létrehozása rendszerkép létrehozásához:
-  * **[A forráskód frissítésének indítása](#trigger-task-on-source-code-update)** 
-  * **[Aktiválás az alapszintű rendszerkép frissítése során](#automate-os-and-framework-patching)** 
-  * **[Indítás ütemezett](#schedule-a-task)** 
-* **[Többlépéses feladat](#multi-step-tasks)** – a több lépésből álló, többtárolós alapú munkafolyamatokkal kiterjesztheti az ACR-feladatok egyetlen Rendszerképbeli felépítését és leküldési képességeit. 
+* **[Gyors feladat](#quick-task)** – Egyetlen tárolólemezkép összeállítása és leküldése egy igény szerinti tároló-beállításjegyzékbe az Azure-ban, helyi Docker Engine telepítése nélkül. Gondoljon `docker build` a `docker push` felhőre.
+* **Automatikusan aktivált feladatok** – Engedélyezzen egy vagy több *eseményindítót* egy rendszerkép felépítéséhez:
+  * **[Aktiválás forráskódfrissítés során](#trigger-task-on-source-code-update)** 
+  * **[Aktiválás alapkéntkénti rendszerkép-frissítéssel](#automate-os-and-framework-patching)** 
+  * **[Eseményindító ütemezés szerint](#schedule-a-task)** 
+* **[Többlépéses feladat](#multi-step-tasks)** – Kiterjesztheti a többlépéses, többtárolós munkafolyamatokkal ACR-feladatok rendszerkép build-and-push funkcióját. 
 
-Minden ACR-feladathoz tartozik egy társított [forráskód-környezet](#context-locations) – egy tároló-rendszerkép vagy más összetevő létrehozásához használt forrásfájlok helye. Például a környezetek git-tárházat vagy helyi fájlrendszert tartalmaznak.
+Minden ACR-feladat rendelkezik egy társított forráskódkörnyezettel [–](#context-locations) egy tároló-rendszerkép vagy más összetevő felépítéséhez használt forrásfájlok halmazának helye. Ilyen környezet például egy Git-adattár vagy egy helyi fájlrendszer.
 
-A feladatok a [futtatási változók](container-registry-tasks-reference-yaml.md#run-variables)előnyeit is kihasználhatják, így felhasználhatja a feladatokhoz és az összetevőkhöz tartozó feladatokhoz tartozó és szabványosított címkéket.
+A tevékenységek a [](container-registry-tasks-reference-yaml.md#run-variables)változók futtatását is kihasználhatják, így újra felhasználhatja a feladatdefiníciókat, és szabványosíthatja a képek és összetevők címkéit.
 
 ## <a name="quick-task"></a>Gyors feladat
 
-A belső hurok fejlesztési ciklusa, az alkalmazás kódjának írásához, kiépítéséhez és teszteléséhez szükséges iterációs folyamat valóban a tároló életciklus-felügyeletének kezdete.
+A belső ciklus fejlesztési ciklusa, amely a kódírás, az alkalmazás forráskódba való véglegesítés előtti megírásának, építésének és tesztelésének iteratív folyamata, valójában a tárolók életciklus-felügyeletének kezdete.
 
-Mielőtt elvégezte a kód első sorát, az ACR-feladatok [gyors feladatával](container-registry-tutorial-quick-task.md) integrált fejlesztési élmény biztosítható a tároló rendszerképének az Azure-ba való kiszervezésével. A gyors feladatokkal ellenőrizheti az automatizált Build-definíciókat, és elvégezheti a lehetséges problémákat a kód véglegesítése előtt.
+Mielőtt véglegesítenie kell az első kódsort, ACR-feladatok gyorsfeladat-funkciója integrált fejlesztési élményt nyújthat a tárolórendszerkép-buildek Azure-ba való kiszervezésével. [](container-registry-tutorial-quick-task.md) A gyors feladatokkal ellenőrizheti az automatizált builddefiníciókat, és még a kód véglegesítése előtt megoldhatja a lehetséges problémákat.
 
-A megszokott formátum használatával az `docker build` Azure CLI-ben található az [ACR Build][az-acr-build] parancs egy [kontextust](#context-locations) (a felépített fájlok készletét), elküldi az ACR-feladatoknak, és alapértelmezés szerint leküldi a létrehozott rendszerképet a beállításjegyzékbe a befejezés után.
+A jól ismert formátumot használva az Azure CLI-ben az az acr build parancs egy környezetet (a buildelni kívánt fájlokat) használ, elküldi azt az ACR-feladatok-nek, és alapértelmezés szerint leküldi a beépített rendszerképet a regisztrációs adatbázisba a `docker build` befejezéskor. [][az-acr-build] [](#context-locations)
 
-Bevezetésért tekintse meg a Azure Container Registryban található [tároló rendszerképének elkészítéséhez és futtatásához](container-registry-quickstart-task-cli.md) szükséges rövid útmutatót.  
+Bevezetésért tekintse meg a [](container-registry-quickstart-task-cli.md) tároló rendszerképének a tárolókban való buildlének és futtatásának rövid Azure Container Registry.  
 
-Az ACR-feladatok tároló-életciklus primitívek. Például integrálhatja az ACR-feladatokat a CI/CD-megoldásba. Ha az [az login][az-login] [szolgáltatást egy egyszerű szolgáltatással][az-login-service-principal]hajtja végre, akkor a CI/CD-megoldás ezután kiadhatja [az ACR Build][az-acr-build] -parancsokat a rendszerkép-buildek elindításához.
+ACR-feladatok tároló életciklus-primitívként lett kialakítva. Például integrálja a ACR-feladatok a CI-/CD-megoldásba. Az [az login szolgáltatásnévvel][az-login] történő végrehajtásával [a][az-login-service-principal]CI/CD-megoldás kiadhat az [az acr build][az-acr-build] parancsokat a rendszerkép-buildek futtatásához.
 
-Megtudhatja, hogyan használhatja a gyors feladatokat az első ACR-feladatok oktatóanyagban, [Azure Container Registry feladatokkal felépítheti a Felhőbeli tároló lemezképeit](container-registry-tutorial-quick-task.md).
+Ismerje meg, hogyan használhatja a gyors feladatokat az első ACR-feladatok: Tároló-rendszerképek összeállítása a felhőben [a Azure Container Registry-feladatok.](container-registry-tutorial-quick-task.md)
 
 > [!TIP]
-> Ha közvetlenül a forráskódból szeretne létrehozni és leküldeni egy képet, Docker nélkül, Azure Container Registry biztosítja az az [ACR Pack Build][az-acr-pack-build] parancsot (előzetes verzió). Ez az eszköz létrehoz egy rendszerképet, és leküldi az alkalmazás forráskódját a [felhőalapú natív Buildpacks](https://buildpacks.io/)használatával.
+> Ha közvetlenül a forráskódból szeretne rendszerképet összeépíteni és leküldeni Docker-fájl nélkül, a Azure Container Registry [az az acr pack build][az-acr-pack-build] parancsot biztosítja (előzetes verzió). Ez az eszköz a Cloud [Native Buildpacks](https://buildpacks.io/)használatával buildet és leküldést ad egy rendszerképet az alkalmazás forráskódból.
 
-## <a name="trigger-task-on-source-code-update"></a>Feladat elindítása a forráskód frissítésekor
+## <a name="trigger-task-on-source-code-update"></a>Aktiválási feladat forráskódfrissítéskor
 
-Hozzon létre egy tároló-rendszerkép Build vagy többlépéses feladatot a kód véglegesítése, vagy egy lekéréses kérelem vagy frissítés után egy nyilvános vagy privát git-tárházban a GitHubon vagy az Azure DevOps. Például konfiguráljon egy Build feladatot az Azure CLI-parancs az [ACR Task Create][az-acr-task-create] paranccsal egy git-tárház és opcionálisan egy ág-és Docker megadásával. Amikor a csapat frissíti a tárházban lévő kódot, az ACR-feladatok által létrehozott webhook elindítja a tárházban definiált tároló-rendszerkép összeállítását. 
+Tároló rendszerkép-összeállítási vagy többlépéses feladat aktiválása kód vagy lekéréses kérelem végrehajtásához vagy frissítéshez nyilvános vagy privát Git-adattárba a GitHubon vagy az Azure DevOpsban. Konfigurálhat például egy összeállítási feladatot az [az acr task create][az-acr-task-create] Azure CLI-paranccsal egy Git-adattár és opcionálisan egy ág és Docker-fájl megadásával. Amikor a csapata frissíti a kódot az adattárban, egy ACR-feladatok létrehozott webhook aktiválja az adattárban meghatározott tároló-rendszerkép buildszámát. 
 
-Az ACR-feladatok a következő eseményindítókat támogatják, amikor a git-tárházat a feladat kontextusa szerint állítja be:
+ACR-feladatok a következő eseményindítókat támogatja, ha git-adattárat ad meg a feladat környezeteként:
 
 | Eseményindító | Alapértelmezés szerint engedélyezett |
 | ------- | ------------------ |
 | Véglegesítés | Yes |
 | Lekéréses kérelem | No |
 
-A forráskód-frissítési trigger konfigurálásához meg kell adnia a feladatot egy személyes hozzáférési jogkivonat (PAT) számára, hogy a webhookot a nyilvános vagy privát GitHub vagy az Azure DevOps-tárházban állítsa be.
+A forráskódfrissítési eseményindító konfiguráláskor személyes hozzáférési jogkivonatot (PAT) kell adnia a feladatnak, hogy beállítsa a webhookot a nyilvános vagy privát GitHub- vagy Azure DevOps-adattárban.
 
 > [!NOTE]
-> Az ACR-feladatok jelenleg nem támogatják a commit vagy a pull kérelem eseményindítóit a GitHub Enterprise reposban.
+> Jelenleg a ACR-feladatok nem támogatja a véglegesítési vagy lekéréses kérelmek eseményindítóit a GitHub Enterprise-adattárakban.
 
-Ismerje meg, hogyan indíthat triggert forráskód-végrehajtásra a második ACR-feladatok oktatóanyagban, és [automatizálja a tárolók rendszerképét Azure Container Registry feladatokkal](container-registry-tutorial-build-task.md).
+A következő oktatóanyagban megtudhatja, hogyan aktiválhat buildeket a forráskód véglegesítésére ACR-feladatok, a tároló rendszerkép-buildek automatizálása [a Azure Container Registry-feladatok.](container-registry-tutorial-build-task.md)
 
 ## <a name="automate-os-and-framework-patching"></a>Az operációs rendszer és a keretrendszer javításának automatizálása
 
-Az ACR-feladatok hatékonyságának növelése a tároló-Build munkafolyamattal való hatékony feladatokból származik, és képes az *alaprendszerkép* frissítésének észlelésére. A legtöbb tároló lemezképének egyik funkciója, az alaprendszerkép egy szülő lemezkép, amelyen egy vagy több alkalmazás-lemezkép alapul. Az alaplemezképek általában tartalmazzák az operációs rendszert, és esetenként az alkalmazás-keretrendszereket is. 
+A tároló ACR-feladatok-build munkafolyamatának valódi továbbfejlesztésében az a képesség áll, hogy képes észlelni az alapként szolgáló *rendszerkép frissítését.* A legtöbb tároló rendszerképének egyik funkciója, az alapként szolgáló rendszerkép egy szülő rendszerkép, amelyen egy vagy több alkalmazás-rendszerkép alapul. Az alapként használt lemezképek általában tartalmazzák az operációs rendszert, és néha alkalmazás-keretrendszereket is. 
 
-Beállíthat egy ACR-feladatot, amellyel nyomon követheti az alaprendszerképtől való függőséget, amikor létrehoz egy alkalmazás rendszerképét. Ha a frissített alaplemezképet leküldi a beállításjegyzékbe, vagy egy alaprendszerkép frissül egy nyilvános tárházban (például a Docker hub-ban), az ACR-feladatok automatikusan létrehoznak egy alkalmazás-lemezképet az alapján.
-Ezzel az Automatikus észleléssel és újjáépítéssel az ACR-feladatok elmentik azt az időt és fáradságot, amelyet a rendszer általában a frissített alaprendszerképre hivatkozó minden egyes rendszerkép manuális nyomon követéséhez és frissítéséhez szükséges.
+Beállíthatja, hogy egy ACR-feladat nyomon kövesse az alapként beállított rendszerképtől való függőséget, amikor alkalmazás-rendszerképet hoz létre. Amikor lekérte a frissített alapként szolgáló rendszerképet a regisztrációs adatbázisba, vagy egy alapként szolgáló rendszerképet frissít egy nyilvános , például az Docker Hub-ban, a ACR-feladatok automatikusan felépíthet rajta alkalmazás-rendszerképeket.
+Ezzel az automatikus észleléssel és újraépítéssel a ACR-feladatok időt és energiát takarít meg a frissített alapként rendszerképre hivatkozó minden egyes alkalmazás-rendszerkép manuális nyomon követéséhez és frissítéséhez.
 
-További információ az ACR-feladatokhoz tartozó [alaprendszerkép-frissítési eseményindítókkal](container-registry-tasks-base-images.md) kapcsolatban. És megtudhatja, hogyan indíthat el egy rendszerképet, ha alaprendszerképet küld egy tároló-beállításjegyzékbe az oktatóanyag automatizálható tároló-rendszerképének létrehozásakor, [Amikor egy alaprendszerkép frissül egy Azure Container registryben](container-registry-tutorial-base-image-update.md)
+További információ az alap [rendszerképfrissítési eseményindítókról](container-registry-tasks-base-images.md) a ACR-feladatok. A Tároló-rendszerkép-összeállítások automatizálása alapként szolgáló rendszerkép azure container registryben való frissítése esetén oktatóanyagból megtudhatja, hogyan aktiválhat rendszerkép-összeállítást, amikor egy alapként szolgáló rendszerképet leküld egy [tároló-beállításjegyzékbe](container-registry-tutorial-base-image-update.md)
 
 ## <a name="schedule-a-task"></a>Feladat ütemezése
 
-A feladat létrehozásakor vagy frissítésekor egy vagy több *időzítő eseményindító* beállításával is ütemezhet egy feladatot. A feladatok ütemezése hasznos lehet a tároló számítási feladatainak meghatározott ütemezés szerinti futtatásához, illetve karbantartási műveletek vagy tesztek futtatására a beállításjegyzékbe rendszeresen leküldve. Részletekért lásd: [ACR-feladat futtatása meghatározott ütemterven](container-registry-tasks-scheduled.md).
+Ütemezheti a feladatokat egy vagy  több időzítő eseményindító beállításával a feladat létrehozásakor vagy frissítésekkor. A feladatok ütemezése akkor hasznos, ha a tárolók számítási feladatait egy meghatározott ütemezés szerint futtatja, vagy karbantartási műveleteket vagy teszteket futtat a regisztrációs adatbázisba rendszeresen lekért rendszerképeken. Részletekért lásd: [ACR-feladat futtatása meghatározott ütemezés szerint.](container-registry-tasks-scheduled.md)
 
 ## <a name="multi-step-tasks"></a>Többlépéses feladatok
 
-A többlépéses tevékenységek a Felhőbeli tároló-lemezképek létrehozásához, teszteléséhez és javításához szükséges lépéseken alapuló feladatok meghatározását és végrehajtását teszik lehetővé. A [YAML-fájlokban](container-registry-tasks-reference-yaml.md) meghatározott feladatok lépései egyedi Build-és leküldéses műveleteket határoznak meg a tároló lemezképei vagy más összetevői számára. Emellett egy vagy több tároló végrehajtását is definiálhatják; a lépések a tárolót használják végrehajtási környezetnek.
+A többlépéses feladatok lépésalapú feladatdefiníciót és végrehajtást biztosítanak a tároló rendszerképének a felhőben való építéshez, teszteléshez és javításához. A YAML-fájlban meghatározott feladat [lépései egyedi](container-registry-tasks-reference-yaml.md) build- és leküldéses műveleteket határoznak meg a tároló-rendszerképekhez vagy más összetevőkhez. Emellett egy vagy több tároló végrehajtását is definiálhatják; a lépések a tárolót használják végrehajtási környezetnek.
 
-Létrehozhat például egy több lépésből álló feladatot, amely automatizálja a következőket:
+Létrehozhat például egy többlépéses feladatot, amely a következőket automatizálja:
 
 1. Webalkalmazás-rendszerkép összeállítása
 1. A webalkalmazás-tároló futtatása
-1. Webalkalmazás-tesztelési rendszerkép összeállítása
-1. Futtassa a webalkalmazás-teszt tárolót, amely teszteket hajt végre a futó alkalmazás tárolóján.
-1. Ha a tesztek sikeresek, hozzon létre egy Helm diagram archiválási csomagot
-1. `helm upgrade`Az új Helm chart Archive csomag használata
+1. Webalkalmazás-tesztkép összeállítása
+1. A webalkalmazás-teszttároló futtatása, amely teszteket végez a futó alkalmazástárolón
+1. Ha a tesztek megfelelőek, készítsen egy Helm-diagram archívumcsomagot
+1. Művelet végrehajtása `helm upgrade` az új Helm-diagram archívumcsomaggal
 
-A többlépéses feladatok lehetővé teszik a rendszerképek kiépítése, futtatása és tesztelése több megkomponálható lépésre, a lépésenkénti függőségek támogatásával. Az ACR-feladatok több lépésből álló feladatai esetében részletesebben szabályozható a rendszerképek kiépítése, tesztelése, valamint az operációs rendszer és a keretrendszer javítási folyamatai.
+A többlépéses feladatok lehetővé teszik, hogy a rendszerképeket több lépésből álló lépésekre ossza fel, futtatva és tesztelve, többlépéses függőségi támogatással. A többlépéses feladatoknak ACR-feladatok a rendszerkép-építés, a tesztelés, valamint az operációs rendszer és a keretrendszer javítási munkafolyamatai fölött.
 
-Ismerje meg a többlépéses feladatokat a [több lépésből álló Build-, tesztelési és javítási feladatok futtatása az ACR-feladatokban](container-registry-tasks-multi-step.md)című témakörben.
+További információ a többlépéses [feladatokról: Többlépéses build-, tesztelési](container-registry-tasks-multi-step.md)és javítási feladatok futtatása a ACR-feladatok.
 
-## <a name="context-locations"></a>Környezet helyei
+## <a name="context-locations"></a>Környezetek helyei
 
-A következő táblázat példákat mutat be az ACR-feladatok támogatott környezeti helyeire:
+Az alábbi táblázat példákat mutat be a támogatott környezeti helyekre a ACR-feladatok:
 
 | Környezet helye | Leírás | Példa |
 | ---------------- | ----------- | ------- |
-| Helyi fájlrendszer | A helyi fájlrendszer egyik könyvtárában található fájlok. | `/home/user/projects/myapp` |
-| GitHub fő ága | Egy nyilvános vagy privát GitHub-tárház fő (vagy más alapértelmezett) ágában található fájlok.  | `https://github.com/gituser/myapp-repo.git` |
-| GitHub-ág | Nyilvános vagy privát GitHub-tárház adott ága.| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| GitHub-almappa | Egy nyilvános vagy privát GitHub-tárház almappájába tartozó fájlok. Példa egy ág és almappa specifikációjának kombinációját mutatja be. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
-| GitHub-véglegesítés | Konkrét véglegesítés nyilvános vagy privát GitHub-tárházban. Példa a commit hash (SHA) és az almappák specifikációjának kombinációját mutatja be. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
-| Azure DevOps almappa | Egy nyilvános vagy privát Azure-tárház almappájába tartozó fájlok. Példa az ág és az almappa specifikációjának kombinációját mutatja be. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
-| Távoli Fez | Tömörített archívumban található fájlok egy távoli webkiszolgálón. | `http://remoteserver/myapp.tar.gz` |
-| Összetevő a tároló beállításjegyzékében | [OCI](container-registry-oci-artifacts.md) egy tároló beállításjegyzék-adattárában. | `oci://myregistry.azurecr.io/myartifact:mytag` |
+| Helyi fájlrendszer | A helyi fájlrendszer könyvtárában található fájlok. | `/home/user/projects/myapp` |
+| A GitHub főága | Nyilvános vagy privát GitHub-adattár fő (vagy más alapértelmezett) ágában található fájlok.  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub-ág | Nyilvános vagy privát GitHub-adattár adott ága.| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| GitHub-almappa | Nyilvános vagy privát GitHub-adattár almappában található fájlok. A példa egy ág és egy almappa specifikáció kombinációját mutatja be. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| GitHub-véglegesítés | Adott véglegesítés egy nyilvános vagy privát GitHub-adattárban. A példa egy véglegesítési kivonat (SHA) és egy almappa specifikáció kombinációját mutatja be. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
+| Azure DevOps almappa | Nyilvános vagy privát Azure-adattára almappában található fájlok. A példa az ág és az almappa specifikáció kombinációját mutatja be. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
+| Távoli tarball | Egy tömörített archívumban lévő fájlok egy távoli webkiszolgálón. | `http://remoteserver/myapp.tar.gz` |
+| Összetevő a tároló-beállításjegyzékben | [OCI-összetevőfájlok](container-registry-oci-artifacts.md) egy tároló-beállításjegyzék-adattárban. | `oci://myregistry.azurecr.io/myartifact:mytag` |
 
 > [!NOTE]
-> Ha privát git-tárházat használ egy tevékenység környezetében, meg kell adnia egy személyes hozzáférési jogkivonatot (PAT).
+> Ha privát Git-adattárat használ egy feladat környezeteként, meg kell adnia egy személyes hozzáférési jogkivonatot (PAT).
 
-## <a name="image-platforms"></a>Képplatformok
+## <a name="image-platforms"></a>Rendszerképplatformok
 
-Alapértelmezés szerint az ACR-feladatok lemezképeket készítenek a Linux operációs rendszerhez és az AMD64 architektúrához. Határozza meg a `--platform` címkét, hogy Windows-lemezképeket vagy Linux-rendszerképeket hozzon létre más architektúrák számára. Itt adhatja meg az operációs rendszer és az architektúra (például) által támogatott architektúrát `--platform Linux/arm` . ARM architektúrák esetén opcionálisan megadhatja az operációs rendszer/architektúra/Variant formátumú változatot (például `--platform Linux/arm64/v8` ):
+Alapértelmezés szerint a ACR-feladatok rendszerképeket épít fel a Linux operációs rendszerhez és az amd64 architektúrához. Adja meg `--platform` a címkét, ha Windows-rendszerképeket vagy Linux-rendszerképeket hoz létre más architektúrákhoz. Adja meg az operációs rendszert és opcionálisan egy támogatott architektúrát operációs rendszer/architektúra formátumban `--platform Linux/arm` (például). ARM-architektúrák esetén igény szerint megadhat egy változatot operációs rendszer/architektúra/változat formátumban `--platform Linux/arm64/v8` (például: ):
 
 | Operációs rendszer | Architektúra|
 | --- | ------- | 
@@ -127,15 +127,15 @@ Alapértelmezés szerint az ACR-feladatok lemezképeket készítenek a Linux ope
 
 ## <a name="view-task-output"></a>A tevékenység kimenetének megtekintése
 
-Minden feladat futtatásakor a rendszer naplózza a napló kimenetét, amely alapján megállapíthatja, hogy a feladat lépései sikeresen futottak-e. Ha a feladatot manuálisan indítja el, a rendszer a feladat futtatásának naplózását továbbítja a konzolon, és a későbbi lekéréshez is tárolja. Ha egy feladat automatikusan aktiválódik, például a forráskód-végrehajtás vagy egy alaprendszerkép frissítése esetén, a rendszer csak a feladat naplóit tárolja. Tekintse meg a futtatási naplókat a Azure Portal, vagy használja az az [ACR Task logs](/cli/azure/acr/task#az-acr-task-logs) parancsot.
+Minden feladatfuttatás naplókimenetet hoz létre, amelyet megvizsgálhat annak megállapításához, hogy a tevékenység lépései sikeresen lefuttak-e. Amikor manuálisan indít el egy feladatot, a rendszer a feladat futtatásának naplókimenetét a konzolra streameli, és a későbbi lekéréshez is tárolja. Amikor egy feladat automatikusan aktiválódik, például forráskód véglegesítése vagy alapként való rendszerkép-frissítés, a rendszer csak a tevékenységnaplókat tárolja. Tekintse meg a futtatás naplóit a Azure Portal, vagy használja [az az acr task logs](/cli/azure/acr/task#az_acr_task_logs) parancsot.
 
-További információ a [naplók megtekintéséről és kezeléséről](container-registry-tasks-logs.md).
+További információ a [feladatnaplók megtekintéséről és kezeléséről.](container-registry-tasks-logs.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha készen áll a tárolók rendszerképének és a Felhőbeli karbantartásának automatizálására, tekintse meg az [ACR feladatok oktatóanyag-sorozatát](container-registry-tutorial-quick-task.md).
+Ha készen áll a tároló rendszerkép-buildek automatizálni és a karbantartást a felhőben, tekintse meg a ACR-feladatok [oktatóanyag-sorozatot.](container-registry-tutorial-quick-task.md)
 
-Telepítse a [Docker-bővítményt a Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) -hoz, és az [Azure-fiók](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) bővítményét az Azure-beli tároló-beállításjegyzékkel való együttműködéshez. Lemezképek lekérése és leküldése egy Azure Container registrybe, vagy az ACR-feladatok futtatása a Visual Studio Code-ban.
+Ha szükséges, telepítse az [Visual Studio Code Docker-bővítményét](https://code.visualstudio.com/docs/azure/docker) és az [Azure-fiók](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) bővítményt az Azure-tárolóregisztrálókhoz. Rendszerképek leküldése és leküldése egy Azure Container Registrybe, vagy ACR-feladatok futtatása a Code Visual Studio belül.
 
 <!-- LINKS - External -->
 [sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip
@@ -143,11 +143,11 @@ Telepítse a [Docker-bővítményt a Visual Studio Code](https://code.visualstud
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-pack-build]: /cli/azure/acr/pack#az-acr-pack-build
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-acr-pack-build]: /cli/azure/acr/pack#az_acr_pack_build
 [az-acr-task]: /cli/azure/acr/task
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-login]: /cli/azure/reference-index#az-login
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-login]: /cli/azure/reference-index#az_login
 [az-login-service-principal]: /cli/azure/authenticate-azure-cli
 
 <!-- IMAGES -->

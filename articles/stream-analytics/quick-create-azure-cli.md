@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Stream Analytics feladatot az Azure CLI használatával.
+title: Rövid útmutató – Azure Stream Analytics létrehozása az Azure CLI használatával
+description: Ez a rövid útmutató bemutatja, hogyan használható az Azure CLI egy Azure Stream Analytics feladat létrehozására.
 services: stream-analytics
 ms.service: stream-analytics
 author: sidramadoss
@@ -10,16 +10,16 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: a3cc4c3d6936a51ca2010209ce23e4d82c9333eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58dccf56cd493782a422b0ddf0386e31d4d87daf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98016340"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765988"
 ---
-# <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával
+# <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Rövid útmutató: Azure Stream Analytics létrehozása az Azure CLI használatával
 
-Ebben a rövid útmutatóban az Azure CLI használatával határozhat meg egy olyan Stream Analytics feladatot, amely a 27-nél nagyobb hőmérséklet-olvasási feladatokkal szűri a valós idejű érzékelői üzeneteket. A Stream Analytics-feladata beolvassa az adatok IoT Hubból való beolvasását, az adatok átalakítását és az adatoknak a blob Storage tárolóba való visszaírását. Az ebben a rövid útmutatóban használt bemeneti adatokat egy málna PI online szimulátor hozza létre.
+Ebben a rövid útmutatóban az Azure CLI használatával határoz meg egy olyan Stream Analytics-feladatot, amely 27-esnél magasabb hőmérsékleti értékkel szűri a valós idejű érzékelőüzeneteket. Az Stream Analytics feladat adatokat fog beolvasni a IoT Hub, átalakítja az adatokat, és visszaírja őket egy blobtárolóba. Az ebben a rövid útmutatóban használt bemeneti adatokat egy Raspberry Pi online szimulátor generálja.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -27,9 +27,9 @@ Ebben a rövid útmutatóban az Azure CLI használatával határozhat meg egy ol
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Hozzon létre egy erőforráscsoportot. Az összes Azure-erőforrást egy erőforráscsoporthoz kell telepíteni. Az erőforráscsoportok lehetővé teszik az egymáshoz kapcsolódó Azure-erőforrások rendszerezését és kezelését.
+- Hozzon létre egy erőforráscsoportot. Minden Azure-erőforrást egy erőforráscsoportban kell üzembe helyezni. Az erőforráscsoportok lehetővé teszik az egymáshoz kapcsolódó Azure-erőforrások rendszerezését és kezelését.
 
-   Ebben a rövid útmutatóban hozzon létre egy *streamanalyticsrg* nevű erőforráscsoportot a *eastus* helyen a következő az [Group Create](/cli/azure/group#az-group-create) paranccsal:
+   Ebben a rövid útmutatóban hozzon létre egy *streamanalyticsrg* nevű erőforráscsoportot az *eastus* helyen a következő [az group create paranccsal:](/cli/azure/group#az_group_create)
 
    ```azurecli
    az group create --name streamanalyticsrg --location eastus
@@ -37,47 +37,47 @@ Ebben a rövid útmutatóban az Azure CLI használatával határozhat meg egy ol
 
 ## <a name="prepare-the-input-data"></a>A bemeneti adatok előkészítése
 
-A Stream Analytics feladatának meghatározása előtt készítse elő a feladatok bemenetéhez használt adatokat.
+A feladat Stream Analytics előtt készítse elő a feladat bemenetéhez használt adatokat.
 
-A következő Azure CLI-kódrészletek olyan parancsok, amelyek előkészítik a feladathoz szükséges bemeneti adatokat. Tekintse át az egyes szakaszokat a kód értelmezése céljából.
+A következő Azure CLI-kódblokkok olyan parancsok, amelyek előkészítik a feladathoz szükséges bemeneti adatokat. Tekintse át az egyes szakaszokat a kód értelmezése céljából.
 
-1. Hozzon létre egy IoT Hub az az [IoT hub Create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) paranccsal. Ez a példa egy **MyASAIoTHub** nevű IoT hub hoz létre. Mivel a IoT Hub nevek egyediek, a saját IoT Hub nevét kell megadnia. Állítsa az SKU-t az F1-re, hogy az ingyenes szintet használja, ha az előfizetése elérhető. Ha nem, válassza a következő legalacsonyabb szintet.
+1. Hozzon létre IoT Hub [az az iot hub create paranccsal.](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) Ez a példa egy **MyASAIoTHub** nevű IoT Hub hoz létre. Mivel IoT Hub egyedi nevek, saját nevet kell IoT Hub neve. Állítsa a termékváltozatot F1-re, hogy az ingyenes szintet használja, ha az elérhető az előfizetésében. Ha nem, válassza a következő legalacsonyabb szintet.
 
     ```azurecli
     az iot hub create --name "MyASAIoTHub" --resource-group streamanalyticsrg --sku S1
     ```
 
-    Miután létrejött az IoT hub, szerezze be a IoT Hub kapcsolati karakterláncot az az [IoT hub show-kapcsolat-string](/cli/azure/iot/hub) parancs használatával. Másolja a teljes kapcsolódási karakterláncot, és mentse azt, amikor hozzáadja a IoT Hub a Stream Analytics feladathoz.
+    Az IoT Hub létrehozása után az [az iot hub show-connection-string](/cli/azure/iot/hub) paranccsal IoT Hub le a kapcsolati sztringet. Másolja ki a teljes kapcsolati sztringet, és mentse a fájlba, amikor hozzáadja a IoT Hub a bemeneti Stream Analytics feladathoz.
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
     ```
 
-2. Az az [iothub Device-Identity Create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) paranccsal adhat hozzá IoT hub eszközt. Ez a példa egy **MyASAIoTDevice** nevű eszközt hoz létre.
+2. Adjon hozzá egy eszközt a IoT Hub [az iothub device-identity create paranccsal.](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) Ez a példa létrehoz egy **MyASAIoTDevice nevű eszközt.**
 
     ```azurecli
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
     ```
 
-3. Szerezze be az eszköz kapcsolati karakterláncát az az [IOT hub Device-Identity show-kapcsolat-string](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-show-connection-string) parancs használatával. Másolja a teljes kapcsolódási karakterláncot, és mentse azt a málna PI szimulátor létrehozásakor.
+3. Az az [iot hub device-identity show-connection-string paranccsal](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-show-connection-string) szerezze be az eszköz kapcsolati sztringet. Másolja ki a teljes kapcsolati sztringet, és mentse a hez a Raspberry Pi-szimulátor létrehozásakor.
 
     ```azurecli
     az iot hub device-identity show-connection-string --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice" --output table
     ```
 
-    **Példa a kimenetre:**
+    **Kimeneti példa:**
 
     ```output
     HostName=MyASAIoTHub.azure-devices.net;DeviceId=MyASAIoTDevice;SharedAccessKey=a2mnUsg52+NIgYudxYYUNXI67r0JmNubmfVafojG8=
     ```
 
-## <a name="create-a-blob-storage-account"></a>BLOB Storage-fiók létrehozása
+## <a name="create-a-blob-storage-account"></a>Blob Storage-fiók létrehozása
 
-A következő Azure CLI-kód blokkolja a feladatok kimenetéhez használt BLOB Storage-fiók létrehozását. Tekintse át az egyes szakaszokat a kód értelmezése céljából.
+A következő Azure CLI-kódblokkok egy blobtároló-fiókot hoznak létre, amely a feladat kimenetére szolgál. Tekintse át az egyes szakaszokat a kód értelmezése céljából.
 
 1. Az [az storage account create](/cli/azure/storage/account) paranccsal hozzon létre egy általános célú tárfiókot. Az általános célú tárfiók mind a négy szolgáltatással (blobok, fájlok, táblák és üzenetsorok) használható.
 
-   Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
+   Ne felejtse el lecserélni a szögletes zárójelben lévő helyőrzőértékeket a saját értékeire:
 
    ```azurecli
    az storage account create \
@@ -88,13 +88,13 @@ A következő Azure CLI-kód blokkolja a feladatok kimenetéhez használt BLOB S
        --encryption-services blob
    ```
 
-2. Szerezze be a Storage-fiók kulcsát az az [Storage Account Keys List](/cli/azure/storage/account/keys) parancs futtatásával. Mentse ezt a kulcsot a következő lépésben való használatra.
+2. Az az storage account keys [list](/cli/azure/storage/account/keys) paranccsal szerezze be a tárfiók kulcsát. Mentse ezt a kulcsot a következő lépésben való használathoz.
 
    ```azurecli
    az storage account keys list -g streamanalyticsrg -n <storage-account>
    ```
 
-3. Hozzon létre blobok tárolására alkalmas tárolót az [az storage container create](/cli/azure/storage/container) parancs segítségével. A Storage-fiók kulcsa segítségével engedélyezheti a művelet számára a tároló létrehozását. Az adatműveletek Azure CLI-vel való engedélyezésével kapcsolatos további információkért lásd: [hozzáférés engedélyezése blob-vagy üzenetsor-adatokhoz az Azure CLI-vel](../storage/blobs/authorize-data-operations-cli.md).
+3. Hozzon létre blobok tárolására alkalmas tárolót az [az storage container create](/cli/azure/storage/container) parancs segítségével. A tárfiókkulcs használatával engedélyezheti a tároló létrehozására szolgáló műveletet. További információ az adatműveletek Azure CLI-beli engedélyével kapcsolatban: Blob- vagy üzenetsoradatok elérésének jogosultsága [az Azure CLI használatával.](../storage/blobs/authorize-data-operations-cli.md)
 
    ```azurecli
    az storage container create \
@@ -106,9 +106,9 @@ A következő Azure CLI-kód blokkolja a feladatok kimenetéhez használt BLOB S
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
 
-A következő Azure CLI-kód blokkolja a Stream Analytics feladatok létrehozását. A kódok megismeréséhez tekintse át a szakaszt
+A következő Azure CLI-kódblokkok létrehoznak egy Stream Analytics feladatot. Tekintse át a szakaszokat a kódért
 
-1. Hozzon létre egy Stream Analytics feladatot az az [stream-Analytics Job Create](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-create) paranccsal.
+1. Hozzon létre Stream Analytics feladatot [az az stream-analytics job create paranccsal.](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-create)
 
 ```azurecli
 az stream-analytics job create \
@@ -124,9 +124,9 @@ az stream-analytics job create \
 
 ## <a name="configure-input-to-the-job"></a>A feladat bemenetének konfigurálása
 
-Adjon hozzá egy bemenetet a feladathoz az az [stream-Analytics input](/cli/azure/ext/stream-analytics/stream-analytics/input#ext-stream-analytics-az-stream-analytics-input-create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat bemenetének a neve, az erőforráscsoport neve, és a feladat bemenetének definíciója adható meg paraméterként. A feladathoz tartozó bemeneti definíció egy olyan JSON-fájl, amely a feladatok bemenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ebben a példában egy IoT Hub fog létrehozni bemenetként.
+Adjon hozzá egy bemenetet a feladathoz az [az stream-analytics input](/cli/azure/ext/stream-analytics/stream-analytics/input#ext-stream-analytics-az-stream-analytics-input-create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat bemenetének a neve, az erőforráscsoport neve, és a feladat bemenetének definíciója adható meg paraméterként. A feladat bemenetének definíciója egy JSON-fájl, amely a feladat bemenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ebben a példában egy új IoT Hub hoz létre bemenetként.
 
-Hozzon létre a helyi gépén egy `datasource.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. Győződjön meg arról, hogy az értéket lecseréli a `sharedAccessPolicyKey` `SharedAccessKey` IoT hub az előző szakaszban mentett kapcsolódási karakterlánc egy részével.
+Hozzon létre a helyi gépén egy `datasource.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. Ügyeljen arra, hogy a értékét cserélje le az előző IoT Hub mentett kapcsolati `sharedAccessPolicyKey` `SharedAccessKey` sztring részével.
 
 ```json
 {
@@ -152,7 +152,7 @@ Hozzon létre a helyi gépén egy `serialization.json` nevű fájlt, és adja ho
 }
 ```
 
-Ezután futtassa a `az stream-analytics input create` parancsmagot. Ügyeljen arra, hogy a változó értékét cserélje le arra `datasource` az elérési útra, ahol a feladathoz megadott bemeneti DEFINÍCIÓ JSON-fájlját tárolta, valamint a `serialization` változó értékét azzal a útvonallal, ahol a SZERIALIZÁLÁSi JSON-fájlt tárolta.
+Ezután futtassa a `az stream-analytics input create` parancsmagot. A változó értékét cserélje le arra az elérési útra, ahol a feladat bemenet-definíciós JSON-fájlját tárolta, a változó értékét pedig arra az elérési útra, ahol a szerializálási `datasource` `serialization` JSON-fájlt tárolta.
 
 ```azurecli
 az stream-analytics input create \
@@ -166,9 +166,9 @@ az stream-analytics input create \
 
 ## <a name="configure-output-to-the-job"></a>A feladat kimenetének konfigurálása
 
-Adja hozzá a kimenetet a feladatokhoz az az [stream-Analytics output Create](/cli/azure/ext/stream-analytics/stream-analytics/output#ext-stream-analytics-az-stream-analytics-output-create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat kimenetének a neve, az erőforráscsoport neve, és a feladat kimenetének definíciója adható meg paraméterként. A feladatok kimenetének definíciója egy olyan JSON-fájl, amely a feladatok kimenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ez a példa egy Blob Storage-tárolót használ kimenetként.
+Adjon hozzá egy kimenetet a feladathoz az [az stream-analytics output create](/cli/azure/ext/stream-analytics/stream-analytics/output#ext-stream-analytics-az-stream-analytics-output-create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat kimenetének a neve, az erőforráscsoport neve, és a feladat kimenetének definíciója adható meg paraméterként. A feladat kimenetének definíciója egy JSON-fájl, amely a feladat kimenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ez a példa egy Blob Storage-tárolót használ kimenetként.
 
-Hozzon létre a helyi gépén egy `datasink.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. Ügyeljen arra, hogy az értékét cserélje le a `accountKey` Storage-fiókja hozzáférési kulcsára, amely $storageAccountKey értékben tárolt érték.
+Hozzon létre a helyi gépén egy `datasink.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. A értékét cserélje le a tárfiók hozzáférési kulcsával, amely a tárfiókban tárolt `accountKey` $storageAccountKey érték.
 
 ```json
 {
@@ -188,7 +188,7 @@ Hozzon létre a helyi gépén egy `datasink.json` nevű fájlt, és adja hozzá 
 }
 ```
 
-Ezután futtassa a `az stream-analytics output` parancsmagot. Ne felejtse el lecserélni a változó értékét arra `datasource` az elérési útra, ahol a feladatot a kimenet definíciójának JSON-fájlját tárolja, valamint a `serialization` változó értékét azzal a útvonallal, ahol a SZERIALIZÁLÁSi JSON-fájlt tárolta.
+Ezután futtassa a `az stream-analytics output` parancsmagot. A változó értékét cserélje le arra az elérési útra, ahol a feladatkimenet-definíció JSON-fájlját tárolta, a változó értékét pedig arra az elérési útra, ahol a szerializálási `datasource` `serialization` JSON-fájlt tárolta.
 
 ```azurecli
 az stream-analytics output create \
@@ -201,9 +201,9 @@ az stream-analytics output create \
 
 ## <a name="define-the-transformation-query"></a>A transzformációs lekérdezés definiálása
 
-Vegyen fel egy átalakítási feladatot az az [stream-Analytics Transformation Create](/cli/azure/ext/stream-analytics/stream-analytics/transformation#ext-stream-analytics-az-stream-analytics-transformation-create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat transzformációjának a neve, az erőforráscsoport neve, és a feladat transzformációjának definíciója adható meg paraméterként. 
+Adjon hozzá egy transzformációt a feladathoz [az az stream-analytics transformation create](/cli/azure/ext/stream-analytics/stream-analytics/transformation#ext-stream-analytics-az-stream-analytics-transformation-create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat transzformációjának a neve, az erőforráscsoport neve, és a feladat transzformációjának definíciója adható meg paraméterként. 
 
-Futtassa a `az stream-analytics transformation create` parancsmagot.
+Futtassa `az stream-analytics transformation create` a parancsmagot.
 
 ```azurecli
 az stream-analytics transformation create \
@@ -213,19 +213,19 @@ az stream-analytics transformation create \
     --streaming-units "6" \
     --transformation-query "SELECT * INTO asabloboutput FROM asaiotinput HAVING Temperature > 27"
 ```
-## <a name="run-the-iot-simulator"></a>A IoT Simulator futtatása
+## <a name="run-the-iot-simulator"></a>Az IoT-szimulátor futtatása
 
-1. Nyissa meg a [málna PI Azure IoT online szimulátort](https://azure-samples.github.io/raspberry-pi-web-simulator/).
+1. Nyissa meg a [Raspberry Pi Azure IoT online szimulátort.](https://azure-samples.github.io/raspberry-pi-web-simulator/)
 
-2. A 15. sorban található helyőrzőt cserélje le az előző szakaszban mentett teljes Azure-IoT Hub eszköz-összekapcsolási sztringre.
+2. A 15. sorban cserélje le a helyőrzőt az Azure IoT Hub előző szakaszban mentett eszközkapcsolati sztring egészére.
 
-3. Kattintson a **Futtatás** elemre. A kimenetnek meg kell jelenítenie az érzékelő adatait és a IoT Hub küldött üzeneteket.
+3. Kattintson a **Futtatás** elemre. A kimenetnek meg kell mutatnia a rendszernek küldött érzékelőadatokat és IoT Hub.
 
     ![Online Raspberry Pi Azure IoT-szimulátor](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>A Stream Analytics-feladat indítása és a kimenet ellenőrzése
 
-Indítsa el a feladatot az az [stream-Analytics Job Start](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-start) parancsmag használatával. Ennél a parancsmagnál a feladat neve, az erőforráscsoport neve, a feladat kimenetének indítási módja, és a kezdés ideje adható meg paraméterként. Az `OutputStartMode` által elfogadott értékek: `JobStartTime`, `CustomTime` és `LastOutputEventTime`.
+Indítsa el a feladatot az [az stream-analytics job start](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-start) parancsmag használatával. Ennél a parancsmagnál a feladat neve, az erőforráscsoport neve, a feladat kimenetének indítási módja, és a kezdés ideje adható meg paraméterként. Az `OutputStartMode` által elfogadott értékek: `JobStartTime`, `CustomTime` és `LastOutputEventTime`.
 
 A következő parancsmag futtatása a `True` kimenetet adja vissza, ha a feladat elindult. A Storage-tárolóban létrejön egy kimeneti mappa, amely az átalakított adatokat tartalmazza.
 
@@ -238,7 +238,7 @@ az stream-analytics job start \
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos átviteli feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha később is szeretné használni a feladatot, akkor nem kell törölnie, hanem elég, ha leállítja. Ha nem kívánja tovább használni ezt a feladatot, törölje az ebben a rövid útmutatóban létrehozott összes erőforrást a következő parancsmag futtatásával:
+Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos átviteli feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha később is szeretné használni a feladatot, akkor nem kell törölnie, hanem elég, ha leállítja. Ha nem folytatja a feladat használatát, a következő parancsmag futtatásával törölje a rövid útmutatóhoz létrehozott összes erőforrást:
 
 ```azurecli
 az group delete \
@@ -248,7 +248,7 @@ az group delete \
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban egy egyszerű Stream Analytics feladatot telepített az Azure CLI használatával. A Stream Analytics-feladatokat az [Azure Portallal](stream-analytics-quick-create-portal.md) és a [Visual Studióval](stream-analytics-quick-create-vs.md) is üzembe helyezheti.
+Ebben a rövid útmutatóban egy egyszerű Stream Analytics helyezett üzembe az Azure CLI használatával. A Stream Analytics-feladatokat az [Azure Portallal](stream-analytics-quick-create-portal.md) és a [Visual Studióval](stream-analytics-quick-create-vs.md) is üzembe helyezheti.
 
 Az egyéb bemeneti források beállításával és a valós idejű észlelés végrehajtásával kapcsolatos információkért olvassa el az alábbi cikkeket:
 

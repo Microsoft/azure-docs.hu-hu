@@ -1,58 +1,58 @@
 ---
-title: Resource Manager-sablonok üzembe helyezése GitHub-műveletek használatával
-description: Útmutatás Azure Resource Manager sablonok (ARM-sablonok) a GitHub-műveletek használatával történő üzembe helyezéséhez.
+title: Üzembe Resource Manager sablonokat a GitHub Actions
+description: Leírja, hogyan helyezhet üzembe Azure Resource Manager sablonokat (ARM-sablonokat) a GitHub Actions.
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 564a21d565fb80eba605eece95562a809a93246f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec29ae019555c54ccdcef9dd743706f8d6401bbd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471919"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781972"
 ---
-# <a name="deploy-arm-templates-by-using-github-actions"></a>ARM-sablonok üzembe helyezése GitHub-műveletek használatával
+# <a name="deploy-arm-templates-by-using-github-actions"></a>ARM-sablonok üzembe helyezése a GitHub Actions
 
-A [GitHub-műveletek](https://docs.github.com/en/actions) a GitHub szolgáltatásainak egyik csomagja, amellyel automatizálható a szoftverfejlesztői munkafolyamatok ugyanazon a helyen, mint a kód tárolása és a lekéréses kérelmek és problémák közös használata.
+[GitHub Actions](https://docs.github.com/en/actions) a GitHub egy olyan szolgáltatáscsomagja, amely ugyanazon a helyen automatizálja a szoftverfejlesztési munkafolyamatokat, ahol a kódot tárolja, és együttműködik a lekéréses kérelmeken és problémákon.
 
-A [Azure Resource Manager sablon központi telepítése művelettel](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) automatizálhatja Azure Resource Manager-sablon (ARM-sablon) Azure-ba való telepítését.
+A [Deploy Azure Resource Manager Template Action](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) (Sablon üzembe helyezése) művelettel automatizálhatja egy Azure Resource Manager-sablon (ARM-sablon) Azure-ban való üzembe helyezését.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Egy GitHub-fiók. Ha még nem rendelkezik ilyennel, regisztráljon [ingyenesen](https://github.com/join).
-    - Egy GitHub-tárház, amely a Resource Manager-sablonokat és a munkafolyamat-fájlokat tárolja. A létrehozáshoz tekintse meg az [új Tárház létrehozása](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-new-repository)című témakört.
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Egy GitHub-fiók. Ha még nincs ilyen szolgáltatása, regisztráljon [ingyenesen.](https://github.com/join)
+    - Egy GitHub-adattár, amely tárolja a Resource Manager sablonokat és a munkafolyamat-fájlokat. Ennek létrehozásához lásd: [Új adattár létrehozása.](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-new-repository)
 
 
-## <a name="workflow-file-overview"></a>A munkafolyamat-fájl áttekintése
+## <a name="workflow-file-overview"></a>Munkafolyamat-fájl áttekintése
 
-A munkafolyamatot egy YAML-(. YML) fájl határozza meg a `/.github/workflows/` tárház elérési útjában. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza.
+A munkafolyamatokat az adattár elérési útján található YAML- (.yml-) fájl `/.github/workflows/` határozza meg. Ez a definíció a munkafolyamatot felhozó különböző lépéseket és paramétereket tartalmazza.
 
-A fájl két részből áll:
+A fájl két szakaszból áll:
 
 |Section  |Feladatok  |
 |---------|---------|
-|**Hitelesítés** | 1. Adjon meg egy szolgáltatásnevet. <br /> 2. hozzon létre egy GitHub-titkot. |
-|**Telepítés** | 1. Telepítse a Resource Manager-sablont. |
+|**Hitelesítés** | 1. Szolgáltatásnév meghatározása. <br /> 2. Hozzon létre egy titkos GitHub-et. |
+|**Telepítés** | 1. A Resource Manager üzembe helyezése. |
 
-## <a name="generate-deployment-credentials"></a>Központi telepítési hitelesítő adatok előállítása
+## <a name="generate-deployment-credentials"></a>Üzembe helyezési hitelesítő adatok létrehozása
 
 
-Az [Azure CLI](/cli/azure/)-ben létrehozhat egy [egyszerű szolgáltatást](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) az az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) parancs használatával. Futtassa ezt a parancsot [Azure Cloud Shell](https://shell.azure.com/) a Azure Portalban, vagy kattintson a **TRY IT (kipróbálás** ) gombra.
+Szolgáltatásnév az [](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) [az ad sp create-for-rbac paranccsal](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) hozható létre az [Azure CLI-n.](/cli/azure/) Futtassa ezt a [Azure Cloud Shell](https://shell.azure.com/) a Azure Portal vagy a Próbálja **ki gombot** választva.
 
-Hozzon létre egy erőforráscsoportot, ha még nem rendelkezik ilyennel.
+Hozzon létre egy erőforráscsoportot, ha még nem rendelkezik ilyen erőforrással.
 
 ```azurecli-interactive
     az group create -n {MyResourceGroup} -l {location}
 ```
 
-Cserélje le a helyőrzőt az `myApp` alkalmazás nevére.
+Cserélje le a helyőrzőt `myApp` az alkalmazás nevére.
 
 ```azurecli-interactive
    az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth
 ```
 
-A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra és az erőforráscsoport nevére. A kimenet egy JSON-objektum, amely a szerepkör-hozzárendelés hitelesítő adatait tartalmazza, amelyek hozzáférést biztosítanak a App Service alkalmazáshoz az alábbihoz hasonló módon. A JSON-objektum másolása később. Csak a `clientId` , `clientSecret` , `subscriptionId` és `tenantId` értékekkel rendelkező szakaszt kell megadnia.
+A fenti példában cserélje le a helyőrzőket az előfizetés-azonosítójára és az erőforráscsoport nevére. A kimenet egy JSON-objektum a szerepkör-hozzárendelési hitelesítő adatokkal, amelyek hozzáférést biztosítanak App Service alkalmazáshoz az alábbihoz hasonlóan. Másolja ezt a JSON-objektumot későbbire. Csak a , , és értékekkel megadott `clientId` `clientSecret` `subscriptionId` szakaszokra lesz `tenantId` szüksége.
 
 ```output
   {
@@ -65,42 +65,42 @@ A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra é
 ```
 
 > [!IMPORTANT]
-> Mindig jó gyakorlat a minimális hozzáférés megadására. Az előző példában szereplő hatókör az erőforráscsoporthoz korlátozódik.
+> Mindig jó gyakorlat a minimális hozzáférés megadása. Az előző példában a hatókör az erőforráscsoportra korlátozódik.
 
 
 
-## <a name="configure-the-github-secrets"></a>A GitHub-titkok konfigurálása
+## <a name="configure-the-github-secrets"></a>A GitHub titkos kód konfigurálása
 
-Létre kell hoznia egy titkos kulcsot az Azure-beli hitelesítő adataihoz, erőforráscsoporthoz és előfizetéséhez.
+Titkos adatokat kell létrehoznia az Azure-beli hitelesítő adataihoz, az erőforráscsoporthoz és az előfizetéséhez.
 
-1. A [githubon](https://github.com/)tallózzon a tárházban.
+1. A [GitHubon](https://github.com/)keresse meg az adattárat.
 
-1. Válassza a **beállítások > titkok > új titok** lehetőséget.
+1. Válassza **a Beállítások > Titkos kulcsok és > lehetőséget.**
 
-1. Illessze be a teljes JSON-kimenetet az Azure CLI-parancsból a titok érték mezőjébe. Adja meg a titkot a nevet `AZURE_CREDENTIALS` .
+1. Illessze be az Azure CLI-parancs teljes JSON-kimenetét a titkos gombra. Adja a titkos nak a `AZURE_CREDENTIALS` nevet.
 
-1. Hozzon létre egy másik nevű titkot `AZURE_RG` . Adja hozzá az erőforráscsoport nevét a titkos kulcs értéke mezőhöz (például: `myResourceGroup` ).
+1. Hozzon létre egy másik titkos `AZURE_RG` gombra. Adja hozzá az erőforráscsoport nevét a titkos gombra vonatkozó értékmezőhöz (például: `myResourceGroup` ).
 
-1. Hozzon létre egy nevű további titkos kulcsot `AZURE_SUBSCRIPTION` . Adja hozzá az előfizetés-azonosítót a titkos kulcs értéke mezőhöz (például: `90fd3f9d-4c61-432d-99ba-1273f236afa2` ).
+1. Hozzon létre egy nevű további titkos `AZURE_SUBSCRIPTION` gombra. Adja hozzá az előfizetés-azonosítóját a titkos kód értékmezőjéhez (például: `90fd3f9d-4c61-432d-99ba-1273f236afa2` ).
 
-## <a name="add-resource-manager-template"></a>Resource Manager-sablon hozzáadása
+## <a name="add-resource-manager-template"></a>Sablon Resource Manager hozzáadása
 
-Vegyen fel egy Resource Manager-sablont a GitHub-tárházba. Ez a sablon létrehoz egy Storage-fiókot.
+Adjon hozzá Resource Manager sablont a GitHub-adattárhoz. Ez a sablon létrehoz egy tárfiókot.
 
 ```url
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-A fájlt bárhová is elhelyezheti a tárházban. A következő szakaszban szereplő munkafolyamat-minta azt feltételezi, hogy a sablonfájl neve **azuredeploy.json**, és a tárház gyökerében tárolódik.
+A fájlt bárhol az adattárban lehet eltenni. A következő szakaszban található munkafolyamat-minta feltételezi, hogy a sablonfájl neve **azuredeploy.js** a fájlban, és az adattár gyökerében van tárolva.
 
 ## <a name="create-workflow"></a>Munkafolyamat létrehozása
 
-A munkafolyamat-fájlt a tárház gyökerében található **. GitHub/munkafolyamatok** mappában kell tárolni. A munkafolyamat-fájlkiterjesztés lehet **. YML** vagy **. YAML**.
+A munkafolyamat-fájlt az adattár gyökerében, **a .github/workflows** mappában kell tárolni. A munkafolyamat fájlkiterjesztése **.yml** vagy **.yaml lehet.**
 
-1. A GitHub-adattárból válassza a felső menü **műveletek** elemét.
-1. Válassza az **Új munkafolyamat** lehetőséget.
-1. Válassza **a munkafolyamat beállítása saját maga** lehetőséget.
-1. Nevezze át a munkafolyamat-fájlt, ha a **Main. YML** helyett más nevet szeretne adni. Például: **deployStorageAccount. YML**.
+1. A GitHub-adattárban válassza a **felső menü Műveletek** parancsát.
+1. Válassza **az Új munkafolyamat lehetőséget.**
+1. Válassza **a Munkafolyamat saját beállítása lehetőséget.**
+1. Nevezze át a munkafolyamat-fájlt, ha a **main.yml** névtől eltérő nevet szeretne. Például: **deployStorageAccount.yml**.
 1. Az .yml-fájl tartalmát írja felül a következővel:
 
     ```yml
@@ -132,27 +132,27 @@ A munkafolyamat-fájlt a tárház gyökerében található **. GitHub/munkafolya
         - run: echo ${{ steps.deploy.outputs.containerName }}
     ```
     > [!NOTE]
-    > Az ARM üzembe helyezési műveletben megadhat egy JSON formátumú paramétereket (például: `.azuredeploy.parameters.json` ).
+    > Ehelyett megadhat egy JSON-formátumparaméter-fájlt az ARM-üzembe helyezési műveletben (például: `.azuredeploy.parameters.json` ).
 
     A munkafolyamat-fájl első szakasza a következőket tartalmazza:
 
-    - **Name (név**): a munkafolyamat neve.
-    - **bekapcsolva**: a munkafolyamatot kiváltó GitHub-események neve. A munkafolyamat akkor aktiválódik, ha van egy leküldéses esemény a fő ágban, amely módosítja a két megadott fájl legalább egyikét. A két fájl a munkafolyamat-fájl és a sablonfájl.
+    - **name**: A munkafolyamat neve.
+    - **on**: A munkafolyamatot aktiváló GitHub-események neve. A munkafolyamat akkor aktiválódik, ha leküldéses esemény van a főágon, amely a megadott két fájl közül legalább egyet módosít. A két fájl a munkafolyamat-fájl és a sablonfájl.
 
 1. Válassza a **Start commit** (Véglegesítés indítása) lehetőséget.
-1. Válassza **a végrehajtás közvetlenül a fő ágat** lehetőséget.
-1. Válassza az **új fájl véglegesítés** (vagy a **módosítások elvégzése**) lehetőséget.
+1. Válassza **a Commit directly to the main branch (Véglegesítés közvetlenül a főágba) lehetőséget.**
+1. Válassza **az Új fájl véglegesítése** (vagy Módosítások **véglegesítése) lehetőséget.**
 
-Mivel a munkafolyamatot úgy konfigurálták, hogy a munkafolyamat-fájl vagy a frissítendő sablonfájl aktiválja, a munkafolyamat a módosítások véglegesítése után azonnal elindul.
+Mivel a munkafolyamat úgy van konfigurálva, hogy a munkafolyamat-fájl vagy a frissített sablonfájl aktiválja, a munkafolyamat a módosítások véglegesítését követően azonnal elindul.
 
-## <a name="check-workflow-status"></a>Munkafolyamat állapotának megtekintése
+## <a name="check-workflow-status"></a>Munkafolyamat állapotának ellenőrzése
 
-1. Válassza a **műveletek** fület. Ekkor megjelenik a **create deployStorageAccount. YML** munkafolyamat lista. A munkafolyamat futtatása 1-2 percet vesz igénybe.
-1. Válassza ki a munkafolyamatot a megnyitásához.
-1. Az üzembe helyezés ellenőrzéséhez válassza az **ARM-telepítés futtatása** lehetőséget a menüből.
+1. Válassza a **Műveletek** lapot. Megjelenik egy **Create deployStorageAccount.yml munkafolyamat.** A munkafolyamat futtatása 1–2 percet vesz igénybe.
+1. Válassza ki a megnyitni kívánt munkafolyamatot.
+1. Válassza **az ARM üzembe helyezésének** futtatása lehetőséget a menüben az üzembe helyezés ellenőrzéséhez.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha az erőforráscsoport és a tárház már nem szükséges, a telepített erőforrások tisztításához törölje az erőforráscsoportot és a GitHub-tárházat.
+Ha az erőforráscsoportra és az adattárra már nincs szükség, törölje az üzembe helyezett erőforrásokat az erőforráscsoport és a GitHub-adattár törlésével.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -160,4 +160,4 @@ Ha az erőforráscsoport és a tárház már nem szükséges, a telepített erő
 > [Az első ARM-sablon létrehozása](./template-tutorial-create-first-template.md)
 
 > [!div class="nextstepaction"]
-> [A modul ismertetése: ARM-sablonok telepítésének automatizálása GitHub-műveletek használatával](/learn/modules/deploy-templates-command-line-github-actions/)
+> [Learn-modul: ARM-sablonok üzembe helyezésének automatizálása a GitHub Actions](/learn/modules/deploy-templates-command-line-github-actions/)

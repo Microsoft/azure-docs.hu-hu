@@ -1,55 +1,55 @@
 ---
 title: Helyszíni csomópontkészlet hozzáadása egy Azure Kubernetes Service (AKS) szolgáltatásbeli fürthöz
-description: Ismerje meg, hogyan adhat hozzá egy helyszíni csomópont-készletet egy Azure Kubernetes Service-(ak-) fürthöz.
+description: Megtudhatja, hogyan adhat hozzá egy helyszíni csomópontkészletet egy Azure Kubernetes Service (AKS-) fürthöz.
 services: container-service
 ms.service: container-service
 ms.topic: article
 ms.date: 10/19/2020
-ms.openlocfilehash: 7f838b2a78f1c6993aa247f2944d4f2a9b1e9556
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f46a421ae2ad1a4d9c590c7e0b47784760ebcb9f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181125"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782800"
 ---
 # <a name="add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Helyszíni csomópontkészlet hozzáadása egy Azure Kubernetes Service (AKS) szolgáltatásbeli fürthöz
 
-A direktszínes csomópont-készlet egy [helyszíni virtuálisgép-méretezési csoport][vmss-spot]által támogatott csomópont-készlet. A helyszíni virtuális gépek használata az AK-fürttel rendelkező csomópontok esetében jelentős költségmegtakarítást biztosít az Azure-beli nem hasznosított kapacitás kihasználásához. A rendelkezésre álló kihasználatlan kapacitás mennyisége számos tényezőtől függ, többek között a csomópont méretétől, a régiótól és a napszaktól függően.
+A spot csomópontkészlet egy, a virtuálisgép-méretezési csoportot kiszolgáló [csomópontkészlet.][vmss-spot] Ha kihasználatlan virtuális gépeket használ az AKS-fürt csomópontjaihoz, azzal lehetővé teszi, hogy jelentős költségmegtakarítás mellett kihasználja az Azure kihasználatlan kapacitását. A kihasználatlan rendelkezésre álló kapacitások mennyisége számos tényezőtől függ, többek között a csomópont méretétől, a régiótól és a naptól.
 
-Egy helyszíni csomópont-készlet telepítésekor az Azure kiosztja a hely csomópontjait, ha rendelkezésre áll kapacitás. A helyszíni csomópontok esetében azonban nincs SLA. Egy tartalék tartományba helyezi a direktszín-készletet, amely biztonsági másolatot készít a helyszíni csomópontról, és nem biztosít magas rendelkezésre állású garanciát. Az Azure-infrastruktúra bármikor kizárja a helyszíni csomópontokat, amikor az Azure-nak szüksége van a kapacitás visszahívására.
+Kihasználható csomópontkészlet üzembe helyezésekor az Azure lefoglalja a kihasználható csomópontokat, ha van szabad kapacitás. A spot csomópontokhoz azonban nincs SLA. A spot csomópontkészletet kiszolgáló spot méretezési csoport egyetlen tartalék tartományban van üzembe állítva, és nem nyújt magas rendelkezésre állási garanciát. Amikor az Azure-nak vissza kell kapnia a kapacitást, az Azure-infrastruktúra ki fogja szúrni a kihasznált csomópontokat.
 
-A helyszíni csomópontok kiválóan alkalmasak olyan munkaterhelésekhez, amelyek kezelhetik a megszakításokat, a korai megszakításokat vagy a kizárásokat. A munkaterhelések, például a kötegelt feldolgozási feladatok, a fejlesztési és tesztelési környezetek, valamint a nagyméretű számítási munkaterhelések lehetnek jó jelöltek a helyszíni csomópont-készleteken.
+A spot csomópontok remekül használhatók olyan számítási feladatokhoz, amelyek a megszakításokat, a korai megszakításokat és a kilakoltatásokat is kezelik. Például az olyan számítási feladatok, mint a kötegelt feldolgozási feladatok, a fejlesztési és tesztelési környezetek, valamint a nagy számítási feladatok jó jelöltek lehetnek egy helyszíni csomópontkészleten való ütemezésre.
 
-Ebben a cikkben egy másodlagos helyszíni csomópont-készletet ad hozzá egy meglévő Azure Kubernetes-szolgáltatásbeli (ak-) fürthöz.
+Ebben a cikkben egy másodlagos csomópontkészletet fog hozzáadni egy meglévő Azure Kubernetes Service (AKS-) fürthöz.
 
-Ez a cikk a Kubernetes és a Azure Load Balancer fogalmak alapszintű megismerését feltételezi. További információ: [Az Azure Kubernetes Service (ak) Kubernetes alapfogalmai][kubernetes-concepts].
+Ez a cikk feltételezi a Kubernetes és a Azure Load Balancer alapfogalmait. További információkért lásd a Kubernetes alapfogalmait a Azure Kubernetes Service [(AKS) című oldalon.][kubernetes-concepts]
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Amikor létrehoz egy fürtöt egy direktszínes csomópont-készlet használatára, a fürtnek Virtual Machine Scale Sets kell használnia a csomópont-készletekhez és a *szabványos* SKU Load Balancerhez is. A fürt létrehozása után további csomópont-készletet is fel kell vennie a helyszíni csomópont-készlet használatára. További csomópont-készlet hozzáadását egy későbbi lépésben tárgyaljuk.
+Amikor létrehoz egy fürtöt egy spot csomópontkészlet használatára, a fürtnek a csomópontkészletek és a *standard* termékváltozatú terheléselosztási Virtual Machine Scale Sets is használnia kell. A fürt létrehozása után egy további csomópontkészletet is hozzá kell adni a spot csomópontkészletek használatára. A további csomópontkészletek hozzáadásáról egy későbbi lépésben lesz lehetőség.
 
-Ehhez a cikkhez az Azure CLI 2,14-es vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+Ehhez a cikkhez az Azure CLI 2.14-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ### <a name="limitations"></a>Korlátozások
 
-Az alábbi korlátozások érvényesek az AK-fürtök helyszíni csomópont-készlettel való létrehozásakor és kezelésekor:
+Az AKS-fürtök helyszíni csomópontkészletekkel való létrehozásakor és kezelésekor a következő korlátozások érvényesek:
 
-* A helyszíni csomópont-készlet nem lehet a fürt alapértelmezett csomópont-készlete. Egy helyszíni csomópont-készletet csak másodlagos készlethez lehet használni.
-* Nem lehet frissíteni egy direktszín-készletet, mert a Direktszínű csomópontok készletei nem garantálják a Kordon és a kiürítést. A meglévő helyszíni csomópont-készletet egy újat kell cserélnie a műveletekhez, például a Kubernetes verziójának frissítéséhez. A direktszínek készletének lecseréléséhez hozzon létre egy új, a Kubernetes eltérő verzióját tartalmazó helyszíni csomópont-készletet, várjon, amíg az állapota *elkészült*, majd távolítsa el a régi csomópont-készletet.
-* A vezérlő sík és a csomópont-készletek nem frissíthetők egyszerre. Ezeket külön kell frissítenie, vagy el kell távolítania a direktszín-készletet a vezérlő síkja és a többi csomópont-készlet egyidejű frissítéséhez.
-* A helyhez tartozó csomópont-készletnek Virtual Machine Scale Setst kell használnia.
-* A létrehozás után nem módosítható a ScaleSetPriority vagy a SpotMaxPrice.
-* A SpotMaxPrice beállításakor az értéknek-1 vagy pozitív értéknek kell lennie, legfeljebb öt tizedesjegyre.
-* Egy helyszíni csomópont-készletben a címke *kubernetes.Azure.com/scalesetpriority:spot*, a szennyező *kubernetes.Azure.com/scalesetpriority=spot:NoSchedule* és a rendszer-hüvelyek is affinitással lesznek ellátva.
-* Hozzá kell adnia egy [megfelelő tolerancia][spot-toleration] a számítási feladatok ütemezett csomópont-készleten való beosztásához.
+* A spot csomópontkészlet nem lehet a fürt alapértelmezett csomópontkészlete. A spot csomópontkészletek csak másodlagos készlethez használhatók.
+* A spot csomópontkészletek nem frissíthetőek, mivel a spot csomópontkészletek nem garantálják a cordont és az ürítését. Az olyan műveletek végrehajtásához, mint például a Kubernetes-verzió frissítése, a meglévő helyszíni csomópontkészletet egy újra kell cserélnie. A spot csomópontkészletek cseréjéhez hozzon létre egy új, a Kubernetes egy másik verziójára vonatkozó csomópontkészletet, várjon, amíg az állapota *Kész,* majd távolítsa el a régi csomópontkészletet.
+* A vezérlősík és a csomópontkészletek nem frissíthetőek egyszerre. Ezeket külön kell frissítenie, vagy el kell távolítania a spot csomópontkészletet, hogy egyszerre frissítse a vezérlősíkot és a fennmaradó csomópontkészleteket.
+* A spot csomópontkészletnek a Virtual Machine Scale Sets.
+* Létrehozás után a ScaleSetPriority és a SpotMaxPrice nem változtatható meg.
+* A SpotMaxPrice értékének -1 vagy legfeljebb öt tizedesjegy pontossággal megadott pozitív értéknek kell lennie.
+* A spot csomópontkészletek címkéje *a kubernetes.azure.com/scalesetpriority:spot*, a fertőzöttség kubernetes.azure.com/scalesetpriority=spot:NoSchedule *,* a rendszerpodok pedig antiaffinitással fognak rendelkezik.
+* A számítási [feladatoknak][spot-toleration] a spot csomópontkészleten való ütemezéséhez hozzá kell adni egy megfelelő tűrést.
 
 ## <a name="add-a-spot-node-pool-to-an-aks-cluster"></a>Kihasználatlan csomópontkészlet hozzáadása egy AKS-fürthöz
 
-Egy olyan meglévő fürthöz kell hozzáadni egy direktszín-csomópontot, amelyhez engedélyezve van több Node-készlet. Az AK-fürtök több csomópontos készlettel való létrehozásával kapcsolatban [itt][use-multiple-node-pools]talál további információt.
+A több csomópontkészletet engedélyező meglévő fürthöz hozzá kell adni egy spot csomópontkészletet. A több csomópontkészlettel rendelkező AKS-fürtök létrehozásával kapcsolatos további részletek itt [érhetők el.][use-multiple-node-pools]
 
-Hozzon létre egy csomópont-készletet az az [AK nodepool Add][az-aks-nodepool-add]paranccsal.
+Hozzon létre egy csomópontkészletet [az az aks nodepool add használatával.][az-aks-nodepool-add]
 ```azurecli-interactive
 az aks nodepool add \
     --resource-group myResourceGroup \
@@ -64,24 +64,24 @@ az aks nodepool add \
     --no-wait
 ```
 
-Alapértelmezés szerint létre kell hoznia egy olyan csomópont-készletet, amelynek *prioritása* *normál* az AK-fürtben, amikor több csomópontos készlettel rendelkező fürtöt hoz létre. A fenti parancs egy kiegészítő csomópont-készletet hoz létre egy meglévő AK-fürthöz, amelynek *prioritása* a *spot*. A *spot* *prioritása* lehetővé teszi a csomópontok számára a direktszínek készletét. A *kizárás – házirend* paraméter a *delete* értékre van állítva a fenti példában, amely az alapértelmezett érték. Amikor beállítja a *törlési* [szabályzatot][eviction-policy] , a rendszer törli a csomópont mögöttes méretezési készletben lévő csomópontokat a kizáráskor. Megadhatja a kizárási házirendet a *felszabadításhoz* is. Ha a kizárási házirendet *felszabadítja*, a rendszer az alapul szolgáló méretezési csoport csomópontjait leállított állapotra állítja a kizárás után. A leállított kiosztott állapotú csomópontok száma a számítási kvótán belül van, és problémákat okozhat a fürtök skálázásával vagy frissítésével kapcsolatban. A *prioritás* és a *kizárás – a házirend* értékei csak a csomópont-készlet létrehozásakor állíthatók be. Ezek az értékek később nem frissíthetők.
+Alapértelmezés szerint egy Normál prioritású  csomópontkészletet hoz létre az AKS-fürtben, ha több csomópontkészletet is tartalmaz.  A fenti parancs egy kiegészítő csomópontkészletet ad hozzá  egy meglévő, Spot prioritású AKS-fürthöz.  A *Spot prioritás* miatt a csomópontkészlet egy spot csomópontkészlet lesz.  A *fenti példában az eviction-policy* paraméter *Delete* értékre van állítva, amely az alapértelmezett érték. Ha a [][eviction-policy] törlési szabályzatot Törlésre adja *meg,* a csomópontkészlet mögöttes méretezési csoportjának csomópontjai törlődnek a kiesésükkor. A kiépítési szabályzatot a *Felszabadítás beállításra is beállíthatja.* Ha a felszabadításra vonatkozó kiépítési szabályzatot ad *meg,* a mögöttes méretezési csoportban lévő csomópontok leállított-felszabadított állapotba vannak állítva a kiépítéskor. A leállított-felszabadított állapotban lévő csomópontok beleszámolnak a számítási kvótába, és problémákat okozhatnak a fürtök skálázása vagy frissítése során. A *prioritás és* az *eviction-policy* értékek csak a csomópontkészlet létrehozása során beállíthatók. Ezek az értékek később nem frissíthetők.
 
-A parancs a [fürt automéretezőjét][cluster-autoscaler]is engedélyezi, amelyet a helyszíni csomópont-készletekkel való használatra ajánlott használni. A fürtben futó munkaterhelések alapján a fürt autoskálázása méretezi és méretezi a csomópontok számát. A helyszíni csomópont-készletek esetében a fürt automatikusan méretezhető, ha további csomópontok is szükségesek. Ha módosítja a csomópontok maximális számát, akkor a `maxCount` fürthöz tartozó automéretezőhöz társított értéket is módosítania kell. Ha nem használ a fürt automatikus méretezését, a kizáráskor a helyszíni készlet végül nullára csökken, és manuális műveletre van szükség a további hely-csomópontok fogadásához.
+A parancs a fürt [automatikus][cluster-autoscaler]skálázási eszközét is engedélyezi, amelyet a spot csomópontkészletekkel ajánlott használni. A fürtön futó számítási feladatok alapján az automatikus fürtméretozó felskálizálja és leskálizálja a csomópontkészletben lévő csomópontok számát. A spot csomópontkészletek esetén az automatikus fürtméretozó felskálizálja a csomópontok számát a kiesés után, ha további csomópontokra van szükség. Ha módosítja a csomópontkészletek maximális csomópontszámát, akkor az automatikus fürtméretozóhoz társított értéket `maxCount` is módosítania kell. Ha nem használ automatikus fürtméretozót, a kieséskor a spot készlet végül nullára csökken, és manuális műveletre van szükség a további spot csomópontok fogadása érdekében.
 
 > [!Important]
-> Csak olyan helyszíni csomópont-készleteken ütemezhet munkaterheléseket, amelyek kezelhetik a megszakításokat, például a kötegelt feldolgozási feladatokat és a tesztelési környezeteket. Javasoljuk, hogy a helyszíni csomópont-készleten állítsa be a [megfertőzés és a tolerancia][taints-tolerations] beállítását annak biztosítására, hogy csak a csomópont-kizárásokat kezelő munkaterhelések legyenek ütemezve egy direktszínes csomópont-készleten. Például a fenti New York-i parancs alapértelmezett értéke *kubernetes.Azure.com/scalesetpriority=spot:NoSchedule* , így a csomóponton csak a megfelelő tolerálható hüvelyek lesznek ütemezve.
+> Számítási feladatokat csak olyan helyszíni csomópontkészletekhez ütemezhet, amelyek kezelni tudnak megszakításokat, például kötegelt feldolgozási feladatokat és tesztelési környezeteket. Javasoljuk, hogy a [][taints-tolerations] fertőzöttségeket és a leranításokat a helyszíni csomópontkészleten állítsa be, hogy csak a csomópont-kilakoltatások kezelésére képes számítási feladatok legyen ütemezve a spot csomópontkészleten. A fenti ny parancs például alapértelmezés szerint  egy fertőzöttség-kubernetes.azure.com/scalesetpriority=spot:NoSchedule így csak a megfelelő tűrő podok vannak ütemezve ezen a csomóponton.
 
-## <a name="verify-the-spot-node-pool"></a>A helyszíni csomópont-készlet ellenőrzése
+## <a name="verify-the-spot-node-pool"></a>A spot csomópontkészlet ellenőrzése
 
-Annak ellenőrzéséhez, hogy a csomópont-készlet hozzá van-e adva egy direktszínes csomópont-készletként:
+Annak ellenőrzéséhez, hogy a csomópontkészlet hozzá lett-e adva spot csomópontkészletként:
 
 ```azurecli
 az aks nodepool show --resource-group myResourceGroup --cluster-name myAKSCluster --name spotnodepool
 ```
 
-Erősítse *meg a* *scaleSetPriority* .
+Győződjön meg *arról, hogy a scaleSetPriority* *Spot*.
 
-Ahhoz, hogy egy Pod-t egy helyszíni csomóponton futtasson, adjon hozzá egy, a helyszíni csomóponton alkalmazott szennyező adatmennyiséget. Az alábbi példa egy olyan YAML-fájl egy részét mutatja be, amely egy, az előző lépésben használt *kubernetes.Azure.com/scalesetpriority=spot:NoSchedule* -adatmennyiségnek megfelelő tolerancia definiálására szolgál.
+Ha egy podot úgy szeretne ütemezni, hogy egy spot csomóponton fusson, adjon hozzá egy olyan lerálást, amely megfelel a spot csomópontra alkalmazott fertőzöttségnek. Az alábbi példa egy yaml-fájl egy részét mutatja be, amely az előző lépésben használt fertőzöttségnek *kubernetes.azure.com/scalesetpriority=spot:NoSchedule* tűrést definiál.
 
 ```yaml
 spec:
@@ -95,16 +95,16 @@ spec:
    ...
 ```
 
-Ha olyan Pod-t alkalmaz, amelynél ez a tolerancia van telepítve, a Kubernetes sikeresen ütemezhetik a pod-t a csomópontokon az alkalmazott szennyező adataival.
+Ha ilyen tűrő podot helyez üzembe, a Kubernetes sikeresen ütemezheti a podot a csomópontokon a fertőzöttség alkalmazásával.
 
-## <a name="max-price-for-a-spot-pool"></a>Helyszíni készlet maximális díja
-A [helyszíni példányok díjszabása][pricing-spot]a régió és az SKU alapján változó. További információ: a [Linux][pricing-linux] és a [Windows][pricing-windows]díjszabása.
+## <a name="max-price-for-a-spot-pool"></a>A spot-készlet maximális ára
+[A spot példányok díjszabása változó a][pricing-spot]régió és a termékváltozat alapján. További információ: A [Linux és a][pricing-linux] Windows [díjszabása.][pricing-windows]
 
-A változó díjszabással maximális árat állíthat be az USA dollárban (USD), legfeljebb 5 tizedesjegyet használva. A *0,98765* érték például a maximális $0,98765 USD/óra. Ha a maximális árat a *-1* értékre állítja, a példány nem lesz kizárva az ár alapján. A példány díja a helyszínen érvényes, vagy a standard példány díjszabása, attól függően, hogy a kapacitás és a kvóta rendelkezésre áll-e.
+Változó díjszabással beállíthatja a maximális árat amerikai dollárban (USD), legfeljebb 5 tizedesjegyet használva. A *0,98765* érték például 0,98765 USD/óra maximális ára lenne. Ha a maximális árat *-1-re* adja meg, a példány nem lesz az ár alapján lesz kiszűkülve. A példány ára a Spot aktuális ára vagy egy standard példány ára lesz (amelyik kisebb, ha rendelkezésre áll kapacitás és kvóta).
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből a cikkből megtudhatta, hogyan adhat hozzá egy helyszíni csomópont-készletet egy AK-fürthöz. További információ a hüvelyek csomópontok közötti szabályozásáról: [ajánlott eljárások a speciális Scheduler-funkciókhoz az AK-ban][operator-best-practices-advanced-scheduler].
+Ebben a cikkben megtanulta, hogyan adhat hozzá egy spot csomópontkészletet egy AKS-fürthöz. A podok csomópontkészletek közötti szabályozásával kapcsolatos további információkért tekintse meg az AKS speciális ütemezői funkcióinak [ajánlott eljárásait.][operator-best-practices-advanced-scheduler]
 
 <!-- LINKS - External -->
 [kubernetes-services]: https://kubernetes.io/docs/concepts/services-networking/service/
@@ -113,7 +113,7 @@ Ebből a cikkből megtudhatta, hogyan adhat hozzá egy helyszíni csomópont-ké
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az_aks_nodepool_add
 [cluster-autoscaler]: cluster-autoscaler.md
 [eviction-policy]: ../virtual-machine-scale-sets/use-spot.md#eviction-policy
 [kubernetes-concepts]: concepts-clusters-workloads.md
