@@ -1,31 +1,32 @@
 ---
-title: A Azure Automation PowerShell-munkafolyamatának megismerése
-description: Ez a cikk bemutatja a PowerShell-munkafolyamat és a PowerShell közötti különbségeket, valamint az Automation-runbookok alkalmazható fogalmakat.
+title: A PowerShell-munkafolyamat Azure Automation
+description: Ez a cikk a PowerShell-munkafolyamat és a PowerShell közötti különbségeket, valamint az Automation-runbookokhoz alkalmazható fogalmakat tanítja be.
 services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 483d4c16f1b77bf7328857eb25e1571a741d144e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3b3beb8b3eda4dfabf9240aa328a24d5f855689b
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98896918"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833507"
 ---
-# <a name="learn-powershell-workflow-for-azure-automation"></a>A Azure Automation PowerShell-munkafolyamatának megismerése
+# <a name="learn-powershell-workflow-for-azure-automation"></a>A PowerShell-munkafolyamat Azure Automation
 
-A Azure Automationban lévő runbookok Windows PowerShell-munkafolyamatként, Windows Workflow Foundationt használó Windows PowerShell-parancsfájlokként valósulnak meg. A munkafolyamat olyan programozott, összekapcsolódó lépések sora, amik hosszan futó feladatokat végeznek el vagy több eszközön vagy felügyelt csomóponton keresztül végrehajtandó, több lépés koordinációját igénylik. 
+A Azure Automation runbookok Windows PowerShell munkafolyamatként, Windows PowerShell szkriptként vannak megvalósítva, Windows Workflow Foundation. A munkafolyamat olyan programozott, összekapcsolódó lépések sora, amik hosszan futó feladatokat végeznek el vagy több eszközön vagy felügyelt csomóponton keresztül végrehajtandó, több lépés koordinációját igénylik. 
 
-A munkafolyamatok Windows PowerShell-szintaxissal íródnak, és a Windows PowerShell indította el, Windows Workflow Foundation. A munkafolyamatok normál parancsfájlokkal való használatának előnyei közé tartozik a művelet egyidejű teljesítménye több eszközön, valamint az automatikus helyreállítás a hibáktól. 
+Bár a munkafolyamatot Windows PowerShell szintaxissal írják, Windows PowerShell elindítják, a munkafolyamatot a Windows Workflow Foundation. A munkafolyamatok normál szkriptekkel szembeni előnyei közé tartozik egy művelet egyidejű teljesítménye több eszközön, valamint az automatikus helyreállítás a hibákból. 
 
 > [!NOTE]
-> Egy PowerShell-munkafolyamati parancsfájl nagyon hasonlít egy Windows PowerShell-parancsfájlhoz, de olyan jelentős eltéréseket tartalmaz, amelyek zavaróak lehetnek az új felhasználók számára. Ezért javasoljuk, hogy csak akkor írja be a runbookok a PowerShell-munkafolyamat használatával, ha [ellenőrzőpontokat](#use-checkpoints-in-a-workflow)kell használnia. 
+> A PowerShell-munkafolyamat parancsfájlja nagyon hasonlít egy Windows PowerShell szkripthez, de van néhány jelentős különbsége, amelyek zavaróak lehetnek az új felhasználók számára. Ezért azt javasoljuk, hogy runbookokat csak akkor írjon PowerShell-munkafolyamattal, ha [ellenőrzőpontokat kell használnia.](#use-checkpoints-in-a-workflow) 
 
-A cikkben szereplő témakörök részletes ismertetését lásd: [első lépések a Windows PowerShell-munkafolyamattal](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134242(v=ws.11)).
+A cikkben található témakörök részletes részleteiért lásd: [Getting Started with Windows PowerShell Workflow (Ismerkedés a Windows PowerShell munkafolyamattal).](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134242(v=ws.11))
 
-## <a name="use-workflow-keyword"></a>Munkafolyamat-kulcsszó használata
+## <a name="use-workflow-keyword"></a>A Workflow kulcsszó használata
 
-A PowerShell-parancsfájlok PowerShell-munkafolyamatra való átalakításának első lépése a `Workflow` kulcsszóval együtt. A munkafolyamatok a `Workflow` kulcsszóval kezdődnek, majd a szkript törzsét kapcsos zárójelek közé. A munkafolyamat neve követi a `Workflow` kulcsszót, ahogy az a következő szintaxisban látható:
+A PowerShell-parancsfájlOk PowerShell-munkafolyamatká konvertálásának első lépése a kulcsszó `Workflow` bezárása. A munkafolyamat a kulcsszóval kezdődik, amelyet a szkript törzse követ `Workflow` zárójelek között. A munkafolyamat neve követi a `Workflow` kulcsszót, ahogy az az alábbi szintaxisban látható:
 
 ```powershell
 Workflow Test-Workflow
@@ -34,31 +35,31 @@ Workflow Test-Workflow
 }
 ```
 
-A munkafolyamat nevének meg kell egyeznie az Automation-runbook nevével. Ha a runbook importálása folyamatban van, akkor a fájl nevének meg kell egyeznie a munkafolyamat nevével, és a **. ps1** fájlban kell végződnie.
+A munkafolyamat nevének meg kell egyeznie az Automation-runbook nevével. Ha a runbook importálása folyamatban van, a fájlnévnek egyeznie kell a munkafolyamat nevével, és **.ps1 végződnie kell.**
 
-Ha paramétereket szeretne hozzáadni a munkafolyamathoz, használja a `Param` kulcsszót ugyanúgy, mint egy parancsfájlban.
+Ha paramétereket szeretne hozzáadni a munkafolyamathoz, használja a kulcsszót, ahogyan egy `Param` szkriptben tenné.
 
-## <a name="learn-differences-between-powershell-workflow-code-and-powershell-script-code"></a>A PowerShell-munkafolyamat kódjának és a PowerShell-parancsfájl kódjának megismerése
+## <a name="learn-differences-between-powershell-workflow-code-and-powershell-script-code"></a>Megismeri a PowerShell-munkafolyamat kódja és a PowerShell-szkriptkód közötti különbségeket
 
-A PowerShell-munkafolyamat kódja majdnem azonos a PowerShell-szkript kódjával, kivéve néhány jelentős változást. A következő szakaszok azokat a módosításokat ismertetik, amelyeket a PowerShell-szkriptek futtatásához kell végeznie egy munkafolyamatban.
+A PowerShell-munkafolyamat kódja szinte teljesen megegyezik a PowerShell-szkriptkóddal, néhány jelentős módosítás kivételével. Az alábbi szakaszok a PowerShell-parancsfájl munkafolyamatban való futtatásához szükséges módosításokat ismertetik.
 
 ### <a name="activities"></a>Tevékenységek
 
-A tevékenységek egy adott munkafolyamatban egy adott feladat, amely egy sorozatban lett elvégezve. A Windows PowerShell Workflow futtatórendszer automatikusan tevékenységgé alakít számos Windows PowerShell-parancsmagot egy munkafolyamat futtatásakor. Ha megadja a parancsmagok egyikét a runbook, a Windows Workflow Foundation a megfelelő tevékenységet futtatja. 
+A tevékenység egy adott feladat egy munkafolyamatban, amely egy sorozatban van hajtva végre. A Windows PowerShell Workflow futtatórendszer automatikusan tevékenységgé alakít számos Windows PowerShell-parancsmagot egy munkafolyamat futtatásakor. Amikor megadja ezen parancsmagok valamelyikét a runbookban, a megfelelő tevékenységet a Windows Workflow Foundation. 
 
-Ha egy parancsmaghoz nem tartozik megfelelő tevékenység, a Windows PowerShell-munkafolyamat automatikusan futtatja a parancsmagot egy [InlineScript](#use-inlinescript) tevékenységben. Egyes parancsmagok ki vannak zárva, és nem használhatók munkafolyamatban, ha explicit módon belefoglalja őket egy InlineScript-blokkba. További információ: [tevékenységek használata a parancsfájl-munkafolyamatokban](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574194(v=ws.11)).
+Ha egy parancsmag nem rendelkezik megfelelő tevékenységgel, Windows PowerShell munkafolyamat automatikusan [inlineScript-tevékenységben](#use-inlinescript) futtatja a parancsmagot. Egyes parancsmagok ki vannak zárva, és csak akkor használhatók munkafolyamatokban, ha explicit módon egy InlineScript-blokkba foglalja őket. További információ: [Tevékenységek használata szkript-munkafolyamatokban.](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574194(v=ws.11))
 
-A munkafolyamatok tevékenységeinek működése közös paraméterek egy halmazával konfigurálható. Lásd: [about_WorkflowCommonParameters](/powershell/module/psworkflow/about/about_workflowcommonparameters).
+A munkafolyamatok tevékenységeinek működése közös paraméterek egy halmazával konfigurálható. Lásd: [about_WorkflowCommonParameters.](/powershell/module/psworkflow/about/about_workflowcommonparameters)
 
-### <a name="positional-parameters"></a>Pozíciós paraméterek
+### <a name="positional-parameters"></a>Pozícióparaméterek
 
-A munkafolyamatokban nem használhat pozíciós paramétereket tevékenységekkel és parancsmagokkal. Ezért a paraméterek nevét kell használnia. Vegye figyelembe a következő kódot, amely az összes futó szolgáltatást lekéri:
+A pozícióparaméterek nem használhatók tevékenységekkel és parancsmagokkal egy munkafolyamatban. Ezért paraméterneveket kell használnia. Tekintse meg az alábbi kódot, amely lekérte az összes futó szolgáltatást:
 
 ```azurepowershell-interactive
 Get-Service | Where-Object {$_.Status -eq "Running"}
 ```
 
-Ha ezt a kódot egy munkafolyamatban próbálja meg futtatni, a `Parameter set cannot be resolved using the specified named parameters.` probléma megoldásához a következő példában látható módon adja meg a paraméter nevét:
+Ha ezt a kódot egy munkafolyamatban próbálja futtatni, a következő üzenet jelenik meg: To correct for this issue, provide the parameter name, as the `Parameter set cannot be resolved using the specified named parameters.` following example:
 
 ```powershell
 Workflow Get-RunningServices
@@ -67,18 +68,18 @@ Workflow Get-RunningServices
 }
 ```
 
-### <a name="deserialized-objects"></a>Deszerializált objektumok
+### <a name="deserialized-objects"></a>Deserializált objektumok
 
-A munkafolyamatokban lévő objektumok deszerializálva vannak, ami azt jelenti, hogy a tulajdonságaik továbbra is elérhetők, de nem a módszereiket.  Vegyük például a következő PowerShell-kódot, amely leállítja a szolgáltatást az `Stop` objektum metódusának használatával `Service` .
+A munkafolyamatokban lévő objektumok deserializálva vannak, ami azt jelenti, hogy a tulajdonságaik továbbra is elérhetők, de a metódusaik nem.  Vegyük például a következő PowerShell-kódot, amely leállít egy szolgáltatást az `Stop` objektum `Service` metódusával.
 
 ```azurepowershell-interactive
 $Service = Get-Service -Name MyService
 $Service.Stop()
 ```
 
-Ha ezt a munkafolyamatban próbálja meg futtatni, a következő hibaüzenet jelenik meg: `Method invocation is not supported in a Windows PowerShell Workflow.`
+Ha ezt egy munkafolyamatban próbálja futtatni, a következő hibaüzenet jelenik meg: `Method invocation is not supported in a Windows PowerShell Workflow.`
 
-Az egyik lehetőség, hogy becsomagolja ezt a két sornyi kódot egy [InlineScript](#use-inlinescript) -blokkba. Ebben az esetben `Service` a blokkon belüli szolgáltatási objektumot jelöli.
+Az egyik lehetőség, hogy ezt a két kódsort egy [InlineScript blokkba csomagolja.](#use-inlinescript) Ebben az esetben `Service` a egy szolgáltatásobjektumot képvisel a blokkon belül.
 
 ```powershell
 Workflow Stop-Service
@@ -90,7 +91,7 @@ Workflow Stop-Service
 }
 ```
 
-Egy másik lehetőség, hogy egy másik parancsmagot használ, amely a metódussal megegyező funkcióval rendelkezik, ha van ilyen. A példánkban a `Stop-Service` parancsmag ugyanazokat a funkciókat biztosítja, mint a `Stop` metódus, és használhatja a következő kódot egy munkafolyamathoz.
+Egy másik lehetőség egy másik parancsmag használata, amely ugyanazokkal a funkciókkal rendelkezik, mint a metódus, ha van ilyen. A példánkban a parancsmag ugyanazt a funkciót biztosítja, mint a metódus, és a következő kódot használhatja `Stop-Service` `Stop` egy munkafolyamathoz.
 
 ```powershell
 Workflow Stop-MyService
@@ -100,11 +101,11 @@ Workflow Stop-MyService
 }
 ```
 
-## <a name="use-inlinescript"></a>InlineScript használata
+## <a name="use-inlinescript"></a>Az InlineScript használata
 
-A `InlineScript` tevékenység akkor lehet hasznos, ha egy vagy több parancsot a PowerShell-munkafolyamat helyett hagyományos PowerShell-parancsfájlként kell futtatnia.  Míg a munkafolyamaton belüli parancsokat a szolgáltatás a Windows Workflow Foundation rendszernek küldi el feldolgozásra, az InlineScript blokkon belüli parancsok feldolgozását a Windows PowerShell végzi.
+A tevékenység akkor hasznos, ha egy vagy több parancsot hagyományos PowerShell-szkriptként kell futtatnia `InlineScript` a PowerShell-munkafolyamat helyett.  Míg a munkafolyamaton belüli parancsokat a szolgáltatás a Windows Workflow Foundation rendszernek küldi el feldolgozásra, az InlineScript blokkon belüli parancsok feldolgozását a Windows PowerShell végzi.
 
-A InlineScript az alábbi, alább látható szintaxist használja.
+Az InlineScript az alábbi szintaxist használja.
 
 ```powershell
 InlineScript
@@ -113,7 +114,7 @@ InlineScript
 } <Common Parameters>
 ```
 
-A kimenetet egy InlineScript adhatja vissza, ha a kimenetet egy változóhoz rendeli. A következő példa leállítja a szolgáltatást, majd kiírja a szolgáltatás nevét.
+Egy InlineScript kimenetét úgy adhatja vissza, hogy a kimenetet egy változóhoz rendeli. Az alábbi példa leállít egy szolgáltatást, majd kiállítja a szolgáltatás nevét.
 
 ```powershell
 Workflow Stop-MyService
@@ -128,7 +129,7 @@ Workflow Stop-MyService
 }
 ```
 
-Értékeket adhat át egy InlineScript blokkba, de **$using** hatókör-módosítót kell használnia.  A következő példa megegyezik az előző példával, azzal a különbséggel, hogy a szolgáltatás nevét egy változó adja meg.
+Értékeket inlineScript-blokkba is átadhat, de a **hatókör-$Using** kell használnia.  Az alábbi példa megegyezik az előző példával, azzal a kivételvel, hogy a szolgáltatásnevet egy változó biztosítja.
 
 ```powershell
 Workflow Stop-MyService
@@ -145,19 +146,19 @@ Workflow Stop-MyService
 }
 ```
 
-Habár a InlineScript tevékenységek bizonyos munkafolyamatokban kritikus fontosságúak lehetnek, nem támogatják a munkafolyamat-szerkezeteket. Ezeket csak akkor használja, ha az a következő okok miatt szükséges:
+Bár az InlineScript-tevékenységek kritikus fontosságúak lehetnek bizonyos munkafolyamatokban, nem támogatják a munkafolyamat-szerkezeteket. Csak akkor használja őket, ha az alábbi okokból szükséges:
 
-* Az [ellenőrzőpontok](#use-checkpoints-in-a-workflow) nem használhatók InlineScript blokkon belül. Ha hiba történik a blokkon belül, annak a blokk elejétől kell folytatódnia.
-* InlineScript blokkon belül nem használható [párhuzamos végrehajtás](#use-parallel-processing) .
-* A InlineScript hatással van a munkafolyamat skálázhatóságára, mivel a Windows PowerShell-munkamenetet a InlineScript-blokk teljes hosszára vonatkozóan tárolja.
+* Az InlineScript-blokkban nem használhat ellenőrzőpontokat. [](#use-checkpoints-in-a-workflow) Ha hiba történik a blokkon belül, a blokk elejétől kell folytatódni.
+* InlineScript-blokkon [belül](#use-parallel-processing) nem használhat párhuzamos végrehajtást.
+* Az InlineScript hatással van a munkafolyamat méretezhetőségére, mivel Windows PowerShell munkamenetet az InlineScript blokk teljes hosszára.
 
-További információ a InlineScript használatáról: [Windows PowerShell-parancsok futtatása munkafolyamatban](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574197(v=ws.11)) és [about_InlineScript](/powershell/module/psworkflow/about/about_inlinescript).
+Az InlineScript használatával kapcsolatos további információkért lásd: [Running Windows PowerShell Commands in a Workflow and](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574197(v=ws.11)) [about_InlineScript](/powershell/module/psworkflow/about/about_inlinescript).
 
 ## <a name="use-parallel-processing"></a>Párhuzamos feldolgozás használata
 
 A Windows PowerShell-munkafolyamatok egyik előnye, hogy az általános parancsprogramoktól eltérően párhuzamosan is végre tudnak hajtani parancsokat, nem csak egymást követően.
 
-A `Parallel` kulcsszó használatával létrehozhat egy parancsfájl-blokkot több, párhuzamosan futó paranccsal. Ez a következő szintaxist használja. Ebben az esetben a Activity1 és a Activity2 egy időben indul el. A Activity3 csak akkor indul el, ha a Activity1 és a Activity2 is befejeződött.
+A kulcsszóval egy szkriptblokkot hozhat létre több, egyidejűleg futó `Parallel` paranccsal. Ez az alábbi szintaxist használja. Ebben az esetben az Activity1 és az Activity2 tevékenység egyszerre kezdődik. Az Activity3 csak az Activity1 és az Activity2 befejeződése után indul el.
 
 ```powershell
 Parallel
@@ -168,7 +169,7 @@ Parallel
 <Activity3>
 ```
 
-Vegyük például a következő PowerShell-parancsokat, amelyek több fájlt másolnak egy hálózati célhelyre. Ezek a parancsok szekvenciálisan futnak, így az egyik fájlnak a következő elindítása előtt be kell fejeznie a másolást.
+Vegyük például a következő PowerShell-parancsokat, amelyek több fájlt másolnak egy hálózati célhelyre. Ezek a parancsok egymás után futnak, így a következő elindulása előtt egy fájlnak be kell fejeznie a másolást.
 
 ```azurepowershell-interactive
 Copy-Item -Path C:\LocalPath\File1.txt -Destination \\NetworkPath\File1.txt
@@ -176,7 +177,7 @@ Copy-Item -Path C:\LocalPath\File2.txt -Destination \\NetworkPath\File2.txt
 Copy-Item -Path C:\LocalPath\File3.txt -Destination \\NetworkPath\File3.txt
 ```
 
-A következő munkafolyamat párhuzamosan futtatja ugyanezeket a parancsokat, így azok mindegyike egyszerre kezdi a másolást.  A befejezési üzenet csak azt követően jelenik meg, hogy az összes másolása megtörtént.
+Az alábbi munkafolyamat párhuzamosan futtatja ezeket a parancsokat, hogy mindegyik egyszerre kezdje el a másolást.  A befejezési üzenet csak az összes másolása után jelenik meg.
 
 ```powershell
 Workflow Copy-Files
@@ -192,7 +193,7 @@ Workflow Copy-Files
 }
 ```
 
-A `ForEach -Parallel` létrehozással a gyűjtemény minden egyes eleménél egyszerre dolgozhat fel parancsokat. A gyűjtemény elemeinek feldolgozása párhuzamosan történik, míg a parancsblokkban levő parancsok egymást követően futnak le. Ez a folyamat az alábbi szintaxist használja. Ebben az esetben a Activity1 egy időben indul el a gyűjtemény összes eleméhez. Minden elem esetében a Activity2 a Activity1 befejezése után indul el. A Activity3 csak akkor indul el, ha a Activity1 és a Activity2 is befejeződött az összes elemnél. A `ThrottleLimit` párhuzamosság korlátozására a paramétert használjuk. A túl magas a `ThrottleLimit` problémát okozhat. A paraméter ideális értéke a `ThrottleLimit` környezetében számos tényezőtől függ. Kezdjen egy alacsony értékkel, és próbálkozzon különböző növekvő értékekkel, amíg meg nem találja, hogy az adott körülmények között működik.
+A szerkezet használatával egy gyűjtemény minden eleméhez egyidejűleg feldolgozhat `ForEach -Parallel` parancsokat. A gyűjtemény elemeinek feldolgozása párhuzamosan történik, míg a parancsblokkban levő parancsok egymást követően futnak le. Ez a folyamat az alábbi szintaxist használja. Ebben az esetben az Activity1 a gyűjtemény összes elemével egy időben kezdődik. Az Activity2 minden elemhez az Activity1 befejezése után indul el. Az Activity3 csak akkor indul el, ha az Activity1 és az Activity2 is befejeződött az összes elemnél. A párhuzamosság `ThrottleLimit` korlátozására a paramétert használjuk. Ha a túl magas, `ThrottleLimit` az problémákat okozhat. A paraméter ideális `ThrottleLimit` értéke a környezet számos tényezőjétől függ. Kezdjen egy alacsony értékkel, és próbálkozzon eltérő növekvő értékekkel, amíg nem talál olyan értéket, amely az adott körülményeknek megfelelő.
 
 ```powershell
 ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
@@ -203,7 +204,7 @@ ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
 <Activity3>
 ```
 
-Az alábbi példa hasonló az előző példában található fájlok párhuzamos másolásához.  Ebben az esetben egy üzenet jelenik meg az egyes fájlokhoz a másolás után.  A befejezést követően csak az összes másolt üzenet jelenik meg.
+Az alábbi példa hasonló az előző példához fájlok párhuzamos másolásához.  Ebben az esetben a másolás után minden fájlhoz megjelenik egy üzenet.  Csak az összes másolása után jelenik meg a végleges befejezési üzenet.
 
 ```powershell
 Workflow Copy-Files
@@ -221,17 +222,17 @@ Workflow Copy-Files
 ```
 
 > [!NOTE]
-> Nem javasoljuk, hogy párhuzamosan futtassa a gyermek runbookok, mivel ez a művelet megbízhatatlan eredményt ad. A gyermek runbook kimenete időnként nem jelenik meg, és egy gyermek runbook beállításai befolyásolhatják a másik párhuzamos gyermek runbookok. `VerbosePreference`Előfordulhat, hogy a, a, `WarningPreference` és a többi változó nem propagálja a gyermek runbookok. Ha a gyermek runbook megváltoztatja ezeket az értékeket, előfordulhat, hogy a hívás után nem lesznek megfelelően visszaállítva.
+> Nem javasoljuk a gyermek runbookok párhuzamos futtatását, mivel ez megbízhatatlan eredményekkel jár. A gyermek runbook kimenete néha nem mutatja a et, és az egyik gyermek runbook beállításai hatással lehetnek a többi párhuzamos gyermek runbookra. Előfordulhat, hogy a ,, és más változók nem propagálnak a `VerbosePreference` `WarningPreference` gyermek runbookba. Ha pedig a gyermek runbook módosítja ezeket az értékeket, előfordulhat, hogy a meghívás után nem lesznek megfelelően helyreállítva.
 
-## <a name="use-checkpoints-in-a-workflow"></a>Ellenőrzőpontok használata egy munkafolyamatban
+## <a name="use-checkpoints-in-a-workflow"></a>Ellenőrzőpontok használata munkafolyamatokban
 
-Az ellenőrzőpont a munkafolyamat aktuális állapotának pillanatképe, amely tartalmazza a változók aktuális értékeit és az adott ponthoz generált összes kimenetet. Ha egy munkafolyamat hibát jelez vagy felfüggesztve van, akkor a következő futtatásakor a legutolsó ellenőrzőponttól indul el, nem az elején. 
+Az ellenőrzőpont a munkafolyamat aktuális állapotának pillanatképe, amely tartalmazza a változók aktuális értékeit és az adott ponthoz létrehozott kimeneteket. Ha egy munkafolyamat hibába végződik vagy fel van függesztve, a következő futtatásakor az utolsó ellenőrzőponttól indul, nem pedig az elejétől. 
 
-Az ellenőrzőpontot beállíthatja a munkafolyamatban a `Checkpoint-Workflow` tevékenységgel. Azure Automation rendelkezik egy [Fair Share](automation-runbook-execution.md#fair-share)nevű funkcióval, amelynek a három órát futtató runbook el lett távolítva a más runbookok futtatásának engedélyezéséhez. Végül a memóriából eltávolított runbook újratöltődik. Ha igen, folytatja a végrehajtást a runbook utolsó ellenőrzőpontján.
+A tevékenységgel ellenőrzőpontot állíthat be egy `Checkpoint-Workflow` munkafolyamatban. Azure Automation egy igazságos megosztás nevű funkcióval [rendelkezik,](automation-runbook-execution.md#fair-share)amely számára a rendszer eltávolítja a memóriából a három órán át futó runbookokat, hogy más runbookok is futtassanak. Végül a rendszer újra betölti a eltávolított runbookot. Ha igen, a runbook utolsó ellenőrzőpontján folytatja a végrehajtást.
 
-Annak biztosításához, hogy a runbook végül is befejeződik, olyan intervallumokat kell hozzáadnia, amelyek három óránál rövidebb ideig futnak. Ha az egyes futtatások során új ellenőrzőpontot adnak hozzá, és ha a runbook egy hiba miatt három óra elteltével kizárták, akkor a runbook határozatlan időre folytatódik.
+Annak érdekében, hogy a runbook biztosan befejeződik, három óránál rövidebb időközönként ellenőrzőpontokat kell hozzáadnia. Ha minden futtatás során új ellenőrzőpontot ad hozzá, és a runbookot egy hiba miatt három óra után ki is lehet zárva, a runbook határozatlan ideig folytatódik.
 
-A következő példában kivétel keletkezik a Activity2 után, ami a munkafolyamat befejezését okozza. A munkafolyamat ismételt futtatásakor a Activity2 futtatásával indul el, mivel ez a tevékenység csak az utolsó ellenőrzőpont-készlet után volt.
+A következő példában kivétel történik az Activity2 tevékenység után, ami a munkafolyamat végét okozza. A munkafolyamat újrafuttatása az Activity2 futtatásával kezdődik, mivel ez a tevékenység nem sokkal az utolsó beállított ellenőrzőpont után történt.
 
 ```powershell
 <Activity1>
@@ -241,9 +242,9 @@ Checkpoint-Workflow
 <Activity3>
 ```
 
-Állítsa be az ellenőrzőpontokat egy munkafolyamatban olyan tevékenységek után, amelyek valószínűleg kivételt jelenthetnek, és nem ismételhetők meg, ha a munkafolyamat folytatódik. Előfordulhat például, hogy a munkafolyamat létrehoz egy virtuális gépet. A virtuális gép létrehozásához szükséges parancsok előtt és után is beállíthat ellenőrzőpontot. Ha a létrehozás sikertelen, akkor a rendszer megismétli a parancsokat, ha a munkafolyamatot újra elindítják. Ha a munkafolyamat a létrehozás sikeressége után leáll, a rendszer nem hozza létre újra a virtuális gépet a munkafolyamat folytatásakor.
+Állítson be ellenőrzőpontokat egy munkafolyamatban az olyan tevékenységek után, amelyek kivételt képeznek, és nem szabad megismételni a munkafolyamat folytatásakor. A munkafolyamat például létrehozhat egy virtuális gépet. A parancsok előtt és után is beállíthatja az ellenőrzőpontot a virtuális gép létrehozásához. Ha a létrehozás sikertelen, a rendszer megismétli a parancsokat, ha a munkafolyamatot újra elindítják. Ha a munkafolyamat a sikeres létrehozás után meghiúsul, a virtuális gép nem jön létre újra a munkafolyamat folytatásakor.
 
-Az alábbi példa egy hálózati helyre másol több fájlt, és minden fájl után beállítja az ellenőrzőpontot.  Ha a hálózati hely elvész, a munkafolyamat hibát jelez.  Ha újra elindítják, az utolsó ellenőrzőponton folytatódik. Csak a már másolt fájlok lesznek kihagyva.
+Az alábbi példa több fájlt másol egy hálózati helyre, és minden fájl után beállítja az ellenőrzőpontot.  Ha a hálózati hely elveszett, a munkafolyamat hibába fog végződni.  Amikor újra elindul, az utolsó ellenőrzőpontnál folytatódik. Csak a már másolt fájlokat hagyja ki a rendszer.
 
 ```powershell
 Workflow Copy-Files
@@ -261,9 +262,9 @@ Workflow Copy-Files
 }
 ```
 
-Mivel a felhasználói név hitelesítő adatai nem maradnak meg a [felfüggesztési munkafolyamat](/powershell/module/psworkflow/about/about_suspend-workflow) tevékenységének meghívása vagy az utolsó ellenőrzőpont után, a hitelesítő adatokat NULL értékre kell állítania, majd újra le kell kérni azokat az objektum-áruházból, `Suspend-Workflow` vagy az ellenőrzőpont neve után.  Ellenkező esetben előfordulhat, hogy a következő hibaüzenet jelenik meg: `The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
+Mivel a felhasználónév hitelesítő adatai nem maradnak meg a [Suspend-Workflow](/powershell/module/psworkflow/about/about_suspend-workflow) tevékenység hívása után vagy az utolsó ellenőrzőpont után, a hitelesítő adatokat null értékűre kell állítani, majd újra le kell hívni az eszköztárolóból az vagy az ellenőrzőpont hívása `Suspend-Workflow` után.  Ellenkező esetben a következő hibaüzenet jelenhet meg: `The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
-A következő kód bemutatja, hogyan kezelheti ezt a helyzetet a PowerShell-munkafolyamatok runbookok.
+Az alábbi kód bemutatja, hogyan kezelhető ez a helyzet a PowerShell-munkafolyamat-runbookokban.
 
 ```powershell
 workflow CreateTestVms
@@ -290,10 +291,10 @@ workflow CreateTestVms
 ```
 
 > [!NOTE]
-> A nem grafikus PowerShell-runbookok, `Add-AzAccount` valamint a `Add-AzureRMAccount` [csatlakozási-AzAccount](/powershell/module/az.accounts/connect-azaccount)aliasai. Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot. Ezeknek a parancsmagoknak a használata nem kötelező, ha a hitelesítést egy egyszerű szolgáltatásnév használatával konfigurált futtató fiókkal végzi.
+> Nem grafikus PowerShell-runbookok esetén, amelyek a `Add-AzAccount` `Add-AzureRMAccount` [Connect-AzAccount aliasai.](/powershell/module/az.accounts/connect-azaccount) Használhatja ezeket a parancsmagokat, [](automation-update-azure-modules.md) vagy frissítheti az Automation-fiókjában található modulokat a legújabb verziókra. Előfordulhat, hogy akkor is frissítenie kell a modulokat, ha most hozott létre egy új Automation-fiókot. Ezeknek a parancsmagoknak a használata nem szükséges, ha szolgáltatásnévvel konfigurált futtatott fiókkal hitelesít.
 
-Az ellenőrzőpontokkal kapcsolatos további információkért lásd: [ellenőrzőpontok hozzáadása egy parancsfájl-munkafolyamathoz](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574114(v=ws.11)).
+További információ az ellenőrzőpontokról: [Ellenőrzőpontok hozzáadása parancsfájl-munkafolyamathoz.](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574114(v=ws.11))
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A PowerShell-munkafolyamatok runbookok kapcsolatos tudnivalókat a következő témakörben talál [: oktatóanyag: PowerShell munkafolyamat-Runbook létrehozása](learn/automation-tutorial-runbook-textual.md).
+* A PowerShell-munkafolyamat-runbookokkal kapcsolatos további információkért [lásd: Oktatóanyag: PowerShell-munkafolyamat-runbook létrehozása.](learn/automation-tutorial-runbook-textual.md)

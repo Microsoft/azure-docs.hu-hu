@@ -1,6 +1,6 @@
 ---
-title: HotPatching melletti telepítéséről for Windows Server Azure Edition (előzetes verzió)
-description: Ismerje meg, hogyan működik a Windows Server Azure Edition HotPatching melletti telepítéséről, és hogyan engedélyezhető
+title: Hotpatch for Windows Server Azure Edition (előzetes verzió)
+description: A Hotpatch for Windows Server Azure Edition működése és engedélyezése
 author: ju-shim
 ms.service: virtual-machines
 ms.subservice: hotpatch
@@ -8,57 +8,58 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
-ms.openlocfilehash: 92b8bf240dfd73cc9191675db07f20816b7156a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1b3fc9f12dfa6ad4edcc120ac7c9592c9435a0e4
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104953391"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830177"
 ---
-# <a name="hotpatch-for-new-virtual-machines-preview"></a>HotPatching melletti telepítéséről az új virtuális gépekhez (előzetes verzió)
+# <a name="hotpatch-for-new-virtual-machines-preview"></a>Gyorsjavítás új virtuális gépekhez (előzetes verzió)
 
-A javítás új módszer a frissítések telepítéséhez olyan új Windows Server Azure Edition rendszerű virtuális gépeken (VM), amelyeken a telepítés után nem szükséges újraindítás. Ez a cikk a Windows Server Azure Edition rendszerű virtuális gépek HotPatching melletti telepítéséről kapcsolatos információkat ismerteti, amelyek a következő előnyöket nyújtják:
-* Alacsonyabb munkaterhelés-hatás kevesebb újraindítással
-* A frissítések gyorsabb üzembe helyezése, mivel a csomagok kisebbek, gyorsabbak, és egyszerűbben javítható az Azure Update Manager javítása
-* Jobb védelem, mivel a HotPatching melletti telepítéséről frissítési csomagjai a Windows biztonsági frissítéseire vannak korlátozva, amelyek az újraindítás nélkül gyorsabban települnek
+A gyorsjavítás egy új módszer a frissítések olyan új Windows Server Azure Edition rendszerű virtuális gépekre való telepítésére, amelyek nem igényelnek újraindítást a telepítés után. Ez a cikk a Windows Server Azure Edition virtuális gépek gyorsjavításával kapcsolatos információkat tartalmazza, amelyek a következő előnyökkel járnak:
+* Kisebb munkaterhelés-hatás kevesebb újraindítással
+* A frissítések gyorsabb üzembe helyezése, mivel a csomagok kisebbek, gyorsabban telepíthetők, és egyszerűbb a javítások vezénylése az Azure Update Managerrel
+* Jobb védelem, mivel a hotpatch frissítési csomagok hatóköre olyan Windows biztonsági frissítésekre terjed ki, amelyek újraindítás nélkül gyorsabban telepíthetők
 
-## <a name="how-hotpatch-works"></a>A HotPatching melletti telepítéséről működése
+## <a name="how-hotpatch-works"></a>A hotpatch működése
 
-A HotPatching melletti telepítéséről úgy működik, hogy először létrehoz egy alapkonfigurációt Windows Update legújabb összesítő frissítéssel. A Hotpatches rendszeres időközönként (például a hónap második keddjén) jelennek meg, amelyek az adott alaptervre épülnek. A Hotpatches olyan frissítéseket fog tartalmazni, amelyek nem igényelnek újraindítást. Időnként (három havonta kezdődően) az alapkonfiguráció egy új, legújabb összesítő frissítéssel frissül.
+A hotpatch először úgy működik, hogy alapkonfigurációt Windows Update összesítve. A hotpatches rendszeresen ki van adva (például a hónap második keddén), amelyek erre az alapkonfigurációra épülnek. A gyorsjavítások olyan frissítéseket tartalmaznak, amelyekhez nincs szükség újraindításra. Rendszeres időközönként (három hónappal kezdődően) az alapkonfiguráció frissül egy új legújabb összegző frissítéssel.
 
-:::image type="content" source="media\automanage-hotpatch\hotpatch-sample-schedule.png" alt-text="HotPatching melletti telepítéséről minta-ütemterv.":::
+:::image type="content" source="media\automanage-hotpatch\hotpatch-sample-schedule.png" alt-text="Gyorsjavítási minta ütemezése.":::
 
-Kétféle alapkonfiguráció létezik: **tervezett** alapkonfigurációk és nem **tervezett alaptervek**.
-*  A **tervezett** alapkonfigurációk egy normál ütemben jelennek meg, a HotPatching melletti telepítéséről-kiadásokkal együtt.  A tervezett alapkonfigurációk közé tartozik az adott hónaphoz hasonló, _legújabb összesítő frissítéssel_ rendelkező összes frissítés, és újraindítás szükséges.
-    * A fenti ütemezés a naptári év négy tervezett alapkiadását mutatja be (a diagram öt teljes összegét), valamint nyolc HotPatching melletti telepítéséről kiadást.
-* A nem **tervezett alaptervek** akkor jelennek meg, ha egy fontos frissítés (például egy nulla napos javítás) megjelent, és az adott frissítés nem szabadítható fel HotPatching melletti telepítéséről.  A nem tervezett alapkonfigurációk felszabadításakor a rendszer az adott hónapban egy nem tervezett alapkonfigurációval helyettesíti a HotPatching melletti telepítéséről.  A nem tervezett alapkonfigurációk tartalmazzák az adott hónap hasonló, _legújabb összesített frissítésében_ található összes frissítést is, és újraindítást igényelnek.
-    * A fenti minta ütemezés két nem tervezett alapkonfigurációt mutat be, amelyek lecserélik az adott hónap HotPatching melletti telepítéséről kiadásait (az év nem tervezett alapkonfigurációinak tényleges száma nem ismert előre).
+Az alapkonfigurációknak két típusa van: **Tervezett alaptervek** és **nem tervezett alaptervek.**
+*  **A tervezett alapkonfigurációk** rendszeres időközönként szabadulnak fel, a gyorsjavítások kiadása pedig a kettő között van.  A tervezett alapkonfigurációk  az adott hónap összes frissítését tartalmazzák egy hasonló összes összegző frissítésben, és újraindítást igényelnek.
+    * A fenti minta-ütemezés négy tervezett alapkonfigurációt ábrázol egy naptári évben (a diagramon ötöt), és nyolc gyorsjavítást tartalmazó kiadást.
+* **A nem tervezett alapkonfigurációk** egy fontos frissítés (például egy nullanapos javítás) kiadott frissítéseknél szabadulnak fel, és az adott frissítés nem oldható fel Hotpatch-frissítésként.  Nem tervezett alaptervek kiadásakor a hotpatch kiadás egy nem tervezett alapkonfigurációra lesz lecserélve az adott hónapban.  A nem tervezett alapkonfigurációk az  adott hónap összes frissítését is tartalmazzák egy összehasonlítható legújabb kumulatív frissítésben, és újraindítást igényelnek.
+    * A fenti minta-ütemezés két nem tervezett alaptervet szemléltet, amelyek lecserélik a hotpatch kiadásokat az adott hónapokra (a nem tervezett alaptervek tényleges száma egy évben előre nem ismert).
 
 ## <a name="regional-availability"></a>Regionális elérhetőség
-A HotPatching melletti telepítéséről az összes globális Azure-régióban elérhető előzetes verzióban. Az előzetes verzióban a Azure Government régiók nem támogatottak.
+A hotpatch előzetes verzióban minden globális Azure-régióban elérhető. Azure Government előzetes verzió nem támogatja a régiókat.
 
 ## <a name="how-to-get-started"></a>Első lépések
 
 > [!NOTE]
-> Az előzetes verzió ideje alatt csak a Azure Portal használatával kezdheti meg a [hivatkozást](https://aka.ms/AzureAutomanageHotPatch).
+> Az előzetes verzió fázisában csak a következő hivatkozással Azure Portal az [első lépésekhez.](https://aka.ms/AzureAutomanageHotPatch)
 
-A HotPatching melletti telepítéséről új virtuális gépen való használatának megkezdéséhez kövesse az alábbi lépéseket:
-1.  Előnézeti hozzáférés engedélyezése
-    * Előfizetés esetén egyszeri előzetes hozzáférési jogosultság szükséges.
-    * Az előnézeti hozzáférés az API, a PowerShell vagy a CLI használatával engedélyezhető a következő szakaszban leírtak szerint.
-1.  Virtuális gép létrehozása a Azure Portalból
-    * Az előzetes verzió ideje alatt meg kell kezdenie ezt a [hivatkozást](https://aka.ms/AzureAutomanageHotPatch).
-1.  Adja meg a virtuális gép részleteit
-    * Győződjön meg arról, hogy a _Windows Server 2019 Datacenter: Azure Edition_ van kiválasztva a rendszerkép legördülő menüben
-    * A kezelés lapon lépjen a "vendég operációs rendszer frissítései" szakaszra. Látni fogja, hogy a javítás be van kapcsolva, és a javítások telepítése az Azure-ban előkészített javításra van beállítva.
-    * A virtuális gépek autokezelése ajánlott eljárásai alapértelmezés szerint engedélyezve lesznek
-1. Új virtuális gép létrehozása
+A Hotpatch új virtuális gépen való használatának első lépései a következők:
+1.  Előzetes verziójú hozzáférés engedélyezése
+    * Az előzetes verzióhoz való hozzáférés engedélyezésére előfizetésenként van szükség.
+    * Az előzetes verziójú hozzáférés az API-n, a PowerShellen vagy a parancssori felületen keresztül engedélyezhető a következő szakaszban leírtak szerint.
+1.  Virtuális gép létrehozása a Azure Portal
+    * Az előzetes verzióban el kell kezdenie a [hivatkozást.](https://aka.ms/AzureAutomanageHotPatch)
+1.  Virtuális gép részleteinek megszabadása
+    * Győződjön meg arról, hogy a Rendszerkép legördülő menüben a _Windows Server 2019 Datacenter: Azure Edition_ van kiválasztva.
+    * A Felügyelet lap lépésében görgessen le a Vendég operációs rendszer frissítései szakaszhoz. Láthatja, hogy a Hotpatching be van kapcsolva, a Patch telepítés pedig alapértelmezés szerint az Azure által vezényelt javításra van beállítva.
+    * A virtuális gépek automatikus automatizálható – ajánlott eljárások alapértelmezés szerint engedélyezve lesznek
+1. Az új virtuális gép létrehozása
 
-## <a name="enabling-preview-access"></a>Az előnézeti hozzáférés engedélyezése
+## <a name="enabling-preview-access"></a>Előzetes verziójú hozzáférés engedélyezése
 
 ### <a name="rest-api"></a>REST API
 
-Az alábbi példa azt ismerteti, hogyan engedélyezhető az előfizetés előnézete:
+Az alábbi példa bemutatja, hogyan engedélyezheti az előzetes verziójú előfizetését:
 
 ```
 POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/ InGuestHotPatchVMPreview/register?api-version=2015-12-01`
@@ -66,7 +67,7 @@ POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/
 POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/InGuestPatchVMPreview/register?api-version=2015-12-01`
 ```
 
-A szolgáltatás regisztrálása akár 15 percet is igénybe vehet. A regisztráció állapotának ellenõrzése:
+A szolgáltatásregisztráció akár 15 percet is igénybe vehet. A regisztráció állapotának ellenőrzése:
 
 ```
 GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/InGuestHotPatchVMPreview?api-version=2015-12-01`
@@ -74,7 +75,7 @@ GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/M
 GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/InGuestPatchVMPreview?api-version=2015-12-01`
 ```
 
-Miután regisztrálta a szolgáltatást az előfizetéséhez, fejezze be a beléptetési folyamatot a számítási erőforrás-szolgáltatóra történő váltás propagálásával.
+Miután regisztrálta a funkciót az előfizetésben, a módosításnak a Compute erőforrás-szolgáltatóba való propagálással teljes körűen be kell fejeződött a feliratkozási folyamat.
 
 ```
 POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-12-01`
@@ -82,7 +83,7 @@ POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?ap
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-A ```Register-AzProviderFeature``` parancsmag használatával engedélyezze az előfizetéshez tartozó előnézetet.
+A ```Register-AzProviderFeature``` parancsmag használatával engedélyezheti az előzetes verziójú előfizetését.
 
 ``` PowerShell
 Register-AzProviderFeature -FeatureName InGuestHotPatchVMPreview -ProviderNamespace Microsoft.Compute
@@ -90,7 +91,7 @@ Register-AzProviderFeature -FeatureName InGuestAutoPatchVMPreview -ProviderNames
 Register-AzProviderFeature -FeatureName InGuestPatchVMPreview -ProviderNamespace Microsoft.Compute
 ```
 
-A szolgáltatás regisztrálása akár 15 percet is igénybe vehet. A regisztráció állapotának ellenõrzése:
+A szolgáltatásregisztráció akár 15 percet is igénybe vehet. A regisztráció állapotának ellenőrzése:
 
 ``` PowerShell
 Get-AzProviderFeature -FeatureName InGuestHotPatchVMPreview -ProviderNamespace Microsoft.Compute
@@ -98,7 +99,7 @@ Get-AzProviderFeature -FeatureName InGuestAutoPatchVMPreview -ProviderNamespace 
 Get-AzProviderFeature -FeatureName InGuestPatchVMPreview -ProviderNamespace Microsoft.Compute
 ```
 
-Miután regisztrálta a szolgáltatást az előfizetéséhez, fejezze be a beléptetési folyamatot a számítási erőforrás-szolgáltatóra történő váltás propagálásával.
+Miután regisztrálta a funkciót az előfizetésben, a módosításnak a Compute erőforrás-szolgáltatóba való propagálással teljes körűen be kell fejeződött a feliratkozási folyamat.
 
 ``` PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
@@ -106,7 +107,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 
 ### <a name="azure-cli"></a>Azure CLI
 
-A használatával ```az feature register``` engedélyezheti az előfizetéshez tartozó előnézetet.
+Az ```az feature register``` előzetes verzió előfizetéshez való engedélyezéséhez használja a következőt: .
 
 ```
 az feature register --namespace Microsoft.Compute --name InGuestHotPatchVMPreview
@@ -114,14 +115,14 @@ az feature register --namespace Microsoft.Compute --name InGuestAutoPatchVMPrevi
 az feature register --namespace Microsoft.Compute --name InGuestPatchVMPreview
 ```
 
-A szolgáltatás regisztrálása akár 15 percet is igénybe vehet. A regisztráció állapotának ellenõrzése:
+A szolgáltatásregisztráció akár 15 percet is igénybe vehet. A regisztráció állapotának ellenőrzése:
 ```
 az feature show --namespace Microsoft.Compute --name InGuestHotPatchVMPreview
 az feature show --namespace Microsoft.Compute --name InGuestAutoPatchVMPreview
 az feature show --namespace Microsoft.Compute --name InGuestPatchVMPreview
 ```
 
-Miután regisztrálta a szolgáltatást az előfizetéséhez, fejezze be a beléptetési folyamatot a számítási erőforrás-szolgáltatóra történő váltás propagálásával.
+Miután regisztrálta a funkciót az előfizetésben, a módosításnak a Compute erőforrás-szolgáltatóba való propagálással teljes körűen be kell fejeződött a feliratkozási folyamat.
 
 ```
 az provider register --namespace Microsoft.Compute
@@ -129,101 +130,101 @@ az provider register --namespace Microsoft.Compute
 
 ## <a name="patch-installation"></a>Javítás telepítése
 
-Az előzetes verzió során a rendszer automatikusan engedélyezi a [virtuális gépek automatikus javítását](../virtual-machines/automatic-vm-guest-patching.md) a _Windows Server 2019 Datacenter: Azure Edition_ rendszerrel létrehozott összes virtuális gép számára. Ha engedélyezve van az automatikus virtuális gép vendégének javítása:
-* A kritikus vagy biztonsági besorolású javítások automatikusan letöltődnek és alkalmazhatók a virtuális gépen.
-* A javítások a virtuális gép időzónáján kívüli órákon belül lesznek alkalmazva.
-* A javítás-előkészítést az Azure felügyeli, és a javítások a [rendelkezésre állási első alapelveket](../virtual-machines/automatic-vm-guest-patching.md#availability-first-patching)követik.
-* A platform állapotára vonatkozó jelek alapján meghatározott virtuálisgép-állapotot a rendszer figyeli a hibajavítások észlelése érdekében.
+Az előzetes verzióban az automatikus virtuálisgép-vendégjavítás automatikusan engedélyezve van a _Windows Server 2019 Datacenterrel_ létrehozott összes virtuális gépen: Azure Edition. [](../virtual-machines/automatic-vm-guest-patching.md) Az automatikus virtuálisgép-vendégjavítás engedélyezése esetén:
+* A kritikus vagy biztonsági besorolású javítások automatikusan letöltve és alkalmazva vannak a virtuális gépen.
+* A javítások a virtuális gép időzónájában, csúcsidőn kívül vannak alkalmazva.
+* A patch vezénylést az Azure kezeli, és a javítások a rendelkezésre [állásra vonatkozó alapelvek alapján vannak alkalmazva.](../virtual-machines/automatic-vm-guest-patching.md#availability-first-patching)
+* A rendszer a platform állapotjelzői alapján meghatározott virtuális gépek állapotát figyeli a javítási hibák észlelése érdekében.
 
-### <a name="how-does-automatic-vm-guest-patching-work"></a>Hogyan működik az automatikus VM-vendég-javítás?
+### <a name="how-does-automatic-vm-guest-patching-work"></a>Hogyan működik a virtuális gépek automatikus vendégjavítása?
 
-Ha egy virtuális gépen engedélyezve van az automatikus virtuálisgép- [javítás](../virtual-machines/automatic-vm-guest-patching.md) , a rendszer automatikusan letölti és alkalmazza a rendelkezésre álló kritikus és biztonsági javításokat. Ez a folyamat minden hónapban automatikusan indul el, amikor új javításokat bocsátanak ki. A javítások értékelése és telepítése automatikusan történik, és a folyamat a virtuális gép szükség szerinti újraindítását is magában foglalja.
+Ha [a virtuális gépek automatikus](../virtual-machines/automatic-vm-guest-patching.md) vendégjavítása engedélyezve van egy virtuális gépen, a rendszer automatikusan letölti és alkalmazza az elérhető kritikus és biztonsági javításokat. Ez a folyamat minden hónapban automatikusan elindul, amikor új javítások megjelenik. A javítások felmérése és telepítése automatikus, és a folyamat szükség szerint magában foglalja a virtuális gép újraindítását.
 
-Ha a HotPatching melletti telepítéséről engedélyezve van a _Windows Server 2019 Datacenter rendszerben: az Azure Edition_ rendszerű virtuális gépeken a legtöbb havi biztonsági frissítés olyan hotpatches, amely nem igényel újraindítást. A tervezett vagy nem tervezett alaphónapokban elküldett legújabb összesítő frissítések esetén a virtuális gépek újraindítása szükséges. A további kritikus vagy biztonsági javítások is rendszeres időközönként elérhetővé válhatnak, ami a virtuális gépek újraindítását igényli.
+Ha a Hotpatch engedélyezve van a _Windows Server 2019 Datacenteren: Azure Edition_ virtuális gépek, a legtöbb havi biztonsági frissítés olyan gyorsjavításként lesz kézbesítve, amely nem igényel újraindítást. A tervezett vagy nem tervezett alap hónapokra küldött legújabb összegző frissítésekhez a virtuális gép újraindítása szükséges. Rendszeres időközönként további kritikus vagy biztonsági javítások is elérhetők lehetnek, amelyekhez szükség lehet a virtuális gépek újraindítására.
 
-A virtuális gépet az adott virtuális gép megfelelő javításának megállapítása érdekében néhány naponként és többször, a 30 napos időszakon belül automatikusan értékelni kell. Ez az automatikus értékelés biztosítja, hogy a hiányzó javítások a lehető legkorábbi módon legyenek felderítve.
+A rendszer néhány naponta és többször is automatikusan értékeli a virtuális gépet egy 30 napos időszakon belül a virtuális gép megfelelő javításának meghatározásához. Ez az automatikus értékelés biztosítja, hogy a hiányzó javítások a lehető leghamarabb felderítve legyenek.
 
-A javítások a havi javításokat követő 30 napon belül települnek, a [rendelkezésre állási első alapelvek](../virtual-machines/automatic-vm-guest-patching.md#availability-first-patching)alapján. A javítások a virtuális gép időzónájától függően csak a virtuális gép időzónája szerint lesznek telepítve. Ahhoz, hogy a javítások automatikusan telepítve legyenek, a virtuális gépnek le kell futnia a leállási idő alatt. Ha egy virtuális gép ki van kapcsolva egy időszakos értékelés során, a rendszer a virtuális gépet értékeli, és a megfelelő javítások automatikusan települnek a következő rendszeres értékelés során, amikor a virtuális gép be van kapcsolva. A következő időszakos értékelés általában néhány napon belül megtörténik.
+A javítások telepítése a havi javítások kiadását követő 30 napon belül történik, a rendelkezésre [állásra vonatkozó alapelvek alapján.](../virtual-machines/automatic-vm-guest-patching.md#availability-first-patching) A javítások telepítése csak a virtuális gép csúcsidőszakán kívül, a virtuális gép időzónája alapján kerül telepítésre. A javítások automatikus telepítésének a csúcsidőn kívüli időszakban kell futnia. Ha egy virtuális gép rendszeres értékelés során ki van kapcsolva, a rendszer értékeli a virtuális gépet, és a megfelelő javítások automatikusan telepítve lesznek a következő rendszeres értékelés során, amikor a virtuális gép be van kapcsolva. A következő rendszeres értékelés általában néhány napon belül megtörténik.
 
-A definíciós frissítések és a nem kritikus vagy biztonsági besorolású javítások nem települnek automatikusan a virtuális gép vendégének javításával.
+A definíciófrissítések és a nem kritikus vagy biztonsági besorolású egyéb javítások nem lesznek telepítve a virtuális gépek vendégének automatikus javításával.
 
 ## <a name="understanding-the-patch-status-for-your-vm"></a>A virtuális gép javítási állapotának ismertetése
 
-A virtuális gép javítási állapotának megtekintéséhez navigáljon a **vendég + gazdagép frissítései** szakaszhoz a virtuális gépen a Azure Portal. A **vendég operációs rendszer frissítései** szakaszban kattintson a "Ugrás a HotPatching melletti telepítéséről (előzetes verzió)" lehetőségre a virtuális gép legújabb javítási állapotának megtekintéséhez.
+A virtuális gép javítási állapotának megtekintéséhez lépjen a virtuális gép Vendég **és** gazdagép frissítései szakaszra a Azure Portal. A Vendég **operációs rendszer frissítései** szakaszban kattintson a "Gyorsjavítás (előzetes verzió)" elemre a virtuális gép legfrissebb javítási állapotának megtekintéséhez.
 
-Ezen a képernyőn a virtuális gép HotPatching melletti telepítéséről állapota látható. Azt is megtekintheti, hogy van-e elérhető javítás a virtuális géphez, amely még nincs telepítve. A fenti "javítás telepítése" című szakaszban leírtak szerint a rendszer az összes biztonsági és kritikus frissítést automatikusan telepíti a virtuális gépre a [virtuális gép vendégének automatikus javításával](../virtual-machines/automatic-vm-guest-patching.md) , és nincs szükség további műveletekre. A más frissítési besorolású javítások nem települnek automatikusan. Ehelyett az elérhető javítások listájában láthatók a "frissítés megfelelősége" lapon. A virtuális gépen található frissítési központi telepítések előzményeit a "frissítési előzmények" segítségével is megtekintheti. Az elmúlt 30 napban frissültek az előzmények, a javítások telepítésének részleteivel együtt.
+Ezen a képernyőn a virtuális gép Hotpatch állapota látható. Azt is áttekintheti, hogy vannak-e olyan javítások a virtuális géphez, amelyek még nincsenek telepítve. A fenti "Patch installation" (Javítás telepítése) című szakaszban leírtaknak megfelelően [](../virtual-machines/automatic-vm-guest-patching.md) a rendszer automatikusan telepíti az összes biztonsági és kritikus frissítést a virtuális gépre a virtuális gépek vendégjavításának automatikus javításával, és nincs szükség további műveletekre. A rendszer nem telepíti automatikusan a más frissítési besorolásokkal együtt telepített javításokat. Ehelyett az elérhető javítások listájában, a "Megfelelőség frissítése" lapon érhetők el. A virtuális gépen a frissítéstelepítések előzményeit a frissítési előzmények között is megtekintheti. Megjelennek az elmúlt 30 nap frissítési előzményei, valamint a javítástelepítés részletei.
 
 
-:::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="HotPatching melletti telepítéséről-kezelés.":::
+:::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="Hotpatch Management.":::
 
-A virtuális gépek automatikus javításával a virtuális gép rendszeres időközönként és automatikusan kiértékelésre kerül az elérhető frissítésekhez. Ezek az időszakos értékelések biztosítják a rendelkezésre álló javítások észlelését. Az értékelés eredményeit a fenti frissítések képernyőn tekintheti meg, beleértve a legutóbbi értékelés időpontját is. Azt is megteheti, hogy az igény szerinti javítás értékelését bármikor elindítja a virtuális gépen a "felmérés most" lehetőség használatával, és az értékelés befejezése után áttekinti az eredményeket.
+Az automatikus virtuálisgép-vendégjavításokkal a rendszer rendszeres időközönként ellenőrzi a virtuális gép frissítéseit, és automatikusan ellenőrzi az elérhető frissítéseket. Ezek az időszakos értékelések biztosítják, hogy a rendszer észlelni fogja a rendelkezésre álló javításokat. Az értékelés eredményeit a fenti Frissítések képernyőn, az utolsó értékelés idejét is beleértve megtekintheti. Az "Értékelés most" lehetőséggel bármikor aktiválhat egy igény szerinti javításfelmérést a virtuális géphez, és az értékelés befejezése után áttekintheti az eredményeket.
 
-Az igény szerinti értékeléshez hasonlóan a virtuális gép igény szerinti javításait is telepítheti a "frissítések telepítése most" lehetőség használatával. Itt dönthet úgy, hogy az adott javítás besorolása alatt telepíti az összes frissítést. Megadhatja a belefoglalni vagy kizárni kívánt frissítéseket is, ha megadja az egyes tudásbáziscikkek listáját. Az igény szerint telepített javítások nincsenek telepítve a rendelkezésre állással – az első alapelveket, és a frissítés telepítéséhez több újraindításra és virtuális gépek leállására lehet szükség.
+Az igény szerinti felméréshez hasonlóan igény szerint is telepíthet javításokat a virtuális géphez a "Frissítések telepítése most" lehetőséggel. Itt telepítheti az összes frissítést adott javításbesorolások alatt. Az egyes tudásbáziscikkek listájának megadásával a tartalmazni vagy kizárni kívánt frissítéseket is megadhatja. Az igény szerint telepített javítások nem a rendelkezésre állásra vonatkozó alapelvek alapján vannak telepítve, és a frissítés telepítéséhez további újraindításra és virtuális gépek állásidejére lehet szükség.
 
 ## <a name="supported-updates"></a>Támogatott frissítések
 
-A HotPatching melletti telepítéséről kiterjed a Windows biztonsági frissítéseire, és fenntartja a paritást a rendszeres (nem HotPatching melletti telepítéséről) Windows Update Channel-ben kiadott biztonsági frissítések tartalmával.
+A Hotpatch Windows biztonság frissítéseket, és a rendszeres (nem hotpatch) Windows-frissítési csatornán kiadott biztonsági frissítések tartalmával való paritást tart fenn.
 
-Fontos szempont, hogy a Windows Server Azure Edition rendszerű virtuális gépeket a HotPatching melletti telepítéséről-t engedélyező számítógépen futtassa. Az újraindítások továbbra is szükségesek a HotPatching melletti telepítéséről programban nem szereplő frissítések telepítéséhez. Az újraindítások az új alapterv telepítése után is rendszeres időközönként szükségesek. Ezek az újraindítások megőrzik a virtuális gépet szinkronban a legújabb összesítő frissítésben található nem biztonsági javításokkal.
-* A HotPatching melletti telepítéséről programban jelenleg nem szereplő javítások közé tartoznak a Windows és a nem Windows rendszerű frissítések (például a .NET-javítások) által kiadott nem biztonsági frissítések.  Ezeket a típusú javításokat az alapkonfiguráció hónapjában kell telepíteni, és újraindítást kell végezni.
+A Hotpatch funkcióval rendelkező Windows Server Azure kiadású virtuális gépek futtatása során figyelembe kell venni néhány fontos szempontot. A Hotpatch program által nem tartalmazott frissítések telepítéséhez újraindítás szükséges. Az új alapkonfiguráció telepítése után rendszeres időközönként újraindításra is szükség van. Ezek az újraindítások szinkronban tartják a virtuális gépet a legújabb összegző frissítésben szereplő nem biztonsági javításokkal.
+* A Hotpatch program által jelenleg nem tartalmazott javítások közé tartoznak a Windowshoz kiadott nem biztonsági frissítések és a nem Windows-frissítések (például .NET-javítások).  Az ilyen típusú javításokat az alapkonfiguráció hónapja során kell telepíteni, és újraindításra van szükség.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-### <a name="what-is-hotpatching"></a>Mi az a működés közbeni javítás?
+### <a name="what-is-hotpatching"></a>Mi az a gyorsjavítás?
 
-* A javítás új módszer a frissítések telepítésére egy Windows Server 2019 Datacenter rendszeren: Azure Edition virtuális gép az Azure-ban, amely nem igényel újraindítást a telepítés után. Úgy működik, hogy a folyamat újraindítása nélkül javítja a futó folyamatok memóriában lévő kódját.
+* A gyorsjavítás egy új módszer a frissítések Windows Server 2019 Datacenterre való telepítésére: Azure Edition virtuális gép az Azure-ban, amely nem igényel újraindítást a telepítés után. Úgy működik, hogy a folyamat újraindítása nélkül javítja a futó folyamatok memóriában futó kódját.
 
-### <a name="how-does-hotpatching-work"></a>Hogyan működik a működés közbeni javítás?
+### <a name="how-does-hotpatching-work"></a>Hogyan működik a gyorsjavítás?
 
-* A javítás úgy működik, hogy létrehoz egy alapkonfigurációt egy Windows Update legújabb összesítő frissítéssel, majd az alaptervre épít olyan frissítéseket, amelyek nem igényelnek újraindítást.  Az alapterv rendszeres időközönként frissül egy új összesítő frissítéssel. Az összesítő frissítés tartalmazza az összes biztonsági és minőségi frissítést, és újraindítást igényel.
+* A gyorsjavítás úgy működik, hogy alapkonfigurációt hoz létre egy Windows Update legújabb összegző frissítéssel, majd erre az alapkonfigurációra épít olyan frissítésekkel, amelyek nem igényelnek újraindítást a életbe lépésük indításakor.  Az alapkonfiguráció rendszeres időközönként frissül egy új összegző frissítéssel. Az összegző frissítés minden biztonsági és minőségi frissítést tartalmaz, és újraindítást igényel.
 
-### <a name="why-should-i-use-hotpatch"></a>Miért érdemes használni a HotPatching melletti telepítéséről?
+### <a name="why-should-i-use-hotpatch"></a>Miért használjam a Hotpatchot?
 
-* Ha a HotPatching melletti telepítéséről-t használja a Windows Server 2019 Datacenter: Azure Edition rendszeren, a virtuális gép magasabb rendelkezésre állású lesz (kevesebb újraindítással) és gyorsabb frissítésekkel (a kisebb csomagok, amelyek a folyamatok újraindítása nélkül lettek telepítve). Ez a folyamat olyan virtuális gépet eredményez, amely mindig naprakész és biztonságos.
+* Ha a Windows Server 2019 Datacenter: Azure Edition rendszeren használja a Hotpatchet, a virtuális gép magasabb rendelkezésre állású (kevesebb újraindítással) és gyorsabb frissítésekkel (a folyamatok újraindítása nélkül gyorsabban telepített kisebb csomagokkal) fog futni. Ez a folyamat egy mindig naprakész és biztonságos virtuális gépet hoz létre.
 
-### <a name="what-types-of-updates-are-covered-by-hotpatch"></a>Milyen típusú frissítéseket érint a HotPatching melletti telepítéséről?
+### <a name="what-types-of-updates-are-covered-by-hotpatch"></a>Milyen típusú frissítésekre vonatkozik a Hotpatch?
 
-* A HotPatching melletti telepítéséről jelenleg a Windows biztonsági frissítéseit fedi le.
+* A hotpatch jelenleg a Windows biztonsági frissítéseit tartalmazza.
 
-### <a name="when-will-i-receive-the-first-hotpatch-update"></a>Mikor jelenik meg az első HotPatching melletti telepítéséről-frissítés?
+### <a name="when-will-i-receive-the-first-hotpatch-update"></a>Mikor kapom meg az első hotpatch frissítést?
 
-* A HotPatching melletti telepítéséről-frissítések általában minden hónap második keddjén jelennek meg. További információ: alább.
+* A gyorsjavítások frissítéseit általában minden hónap második keddén adták ki. További információért lásd alább.
 
-### <a name="what-will-the-hotpatch-schedule-look-like"></a>Milyen módon fog kinézni a HotPatching melletti telepítéséről-ütemterv?
+### <a name="what-will-the-hotpatch-schedule-look-like"></a>Hogyan fog kinézni a Hotpatch ütemezése?
 
-* A javítás úgy működik, hogy létrehoz egy alapkonfigurációt egy Windows Update legújabb összesítő frissítéssel, majd az alaptervre épít, és a HotPatching melletti telepítéséről-frissítések havonta jelennek meg.  Az előzetes verzió ideje alatt a rendszer három havonta elindítja az alapkonfigurációkat. Tekintse meg az alábbi ábrát egy, az éves három hónapos időszakra vonatkozó példára (például a nem tervezett alapkonfigurációkat a nulla napi javítások miatt).
+* A gyorsjavítás úgy működik, hogy alapkonfigurációt Windows Update összesítve, majd erre az alapkonfigurációra épít a havonta kiadott Hotpatch-frissítésekkel.  Az előzetes verzióban az alapkonfigurációk három hónaponként megjelenik. Az alábbi képen egy éves három hónapos ütemezésre láthat példát (a nullanapos javítások által nem tervezett alapkonfigurációkat is beleértve).
 
-    :::image type="content" source="media\automanage-hotpatch\hotpatch-sample-schedule.png" alt-text="HotPatching melletti telepítéséről minta-ütemterv.":::
+    :::image type="content" source="media\automanage-hotpatch\hotpatch-sample-schedule.png" alt-text="Gyorsjavítási minta ütemezése.":::
 
-### <a name="are-reboots-still-needed-for-a-vm-enrolled-in-hotpatch"></a>A HotPatching melletti telepítéséről-ben regisztrált virtuális gépek esetében is szükség van újraindításra?
+### <a name="are-reboots-still-needed-for-a-vm-enrolled-in-hotpatch"></a>A Hotpatchben regisztrált virtuális gépek újraindítása továbbra is szükséges?
 
-* Az újraindítások továbbra is szükségesek a HotPatching melletti telepítéséről programban nem szereplő frissítések telepítéséhez, és az alapkonfiguráció (Windows Update legújabb összesítő frissítés) után rendszeres időközönként szükségesek. Az újraindítás után a virtuális gép szinkronizálva marad a kumulatív frissítésben található összes javítással. Az alapkonfigurációk (amelyek újraindítást igényelnek) a három hónapos ütemben kezdődnek, és idővel növekednek.
+* A Hotpatch program által nem tartalmazott frissítések telepítéséhez újraindításra van szükség, és az alapkonfiguráció (Windows Update legújabb kumulatív frissítés) telepítését követően rendszeres időközönként szükség van rá. Ez az újraindítás szinkronban tartja a virtuális gépet az összegző frissítésben szereplő összes javítással. Az alapkonfigurációk (amelyek újraindítást igényelnek) három hónapos ütemben indulnak el, és idővel növekednek.
 
-### <a name="are-my-applications-affected-when-a-hotpatch-update-is-installed"></a>Vannak érintett alkalmazásaim egy HotPatching melletti telepítéséről-frissítés telepítésekor?
+### <a name="are-my-applications-affected-when-a-hotpatch-update-is-installed"></a>Érinti a rendszer az alkalmazásokat a Hotpatch-frissítések telepítésekor?
 
-* Mivel a HotPatching melletti telepítéséről megjavítja a futó folyamatok memóriában lévő kódját anélkül, hogy újra kellene indítania a folyamatot, az alkalmazásokat a javítási folyamat nem érinti. Vegye figyelembe, hogy ez elkülönül a javítás esetleges teljesítményével és funkcióinak következményeivel.
+* Mivel a Hotpatch anélkül javítja a futó folyamatok memóriában való kódját, hogy újra kellene indítania a folyamatot, a javítási folyamat nem érinti az alkalmazásokat. Vegye figyelembe, hogy ez elkülönül a javítás esetleges teljesítményre és funkciókra gyakorolt hatástól.
 
-### <a name="can-i-turn-off-hotpatch-on-my-vm"></a>Ki tudom kapcsolni a HotPatching melletti telepítéséről a virtuális gépen?
+### <a name="can-i-turn-off-hotpatch-on-my-vm"></a>Ki tudom kapcsolni a Hotpatchot a virtuális gépen?
 
-* A HotPatching melletti telepítéséről kikapcsolhatja a virtuális gépen a Azure Portal használatával.  A HotPatching melletti telepítéséről kikapcsolásával törli a virtuális gép regisztrációját a HotPatching melletti telepítéséről-ből, amely visszaállítja a virtuális gépet a Windows Server jellemző frissítési viselkedésére.  Miután törli a virtuális gép HotPatching melletti telepítéséről való regisztrációt, újból regisztrálhatja a virtuális gépet a következő HotPatching melletti telepítéséről-alapterv megjelenésekor.
+* A hotpatch a virtuális gépen a következő Azure Portal.  A Hotpatch kikapcsolásával a virtuális gép a Hotpatch szolgáltatásból való leszűkül, ami visszaállítja a virtuális gépet a Windows Server szokásos frissítési viselkedésére.  Ha egy virtuális gépen már nem regisztrált a Hotpatchre, a következő Hotpatch-alapkonfiguráció kiíratáskor újra regisztrálhatja a virtuális gépet.
 
-### <a name="can-i-upgrade-from-my-existing-windows-server-os"></a>Frissíthetem a meglévő Windows Server operációs rendszerről?
+### <a name="can-i-upgrade-from-my-existing-windows-server-os"></a>Frissíthető a meglévő Windows Server operációs rendszerről?
 
-* A Windows Server meglévő verzióiról (azaz a Windows Server 2016 vagy a 2019 nem Azure-kiadásokról) való frissítés jelenleg nem támogatott. A Windows Server Azure Edition jövőbeli kiadásaira való frissítés támogatott lesz.
+* A Windows Server meglévő verzióiról (azaz a Windows Server 2016-os vagy 2019-es nem Azure-kiadásokról) való frissítés jelenleg nem támogatott. A Windows Server Azure Edition későbbi kiadásaira való frissítés támogatott lesz.
 
-### <a name="can-i-use-hotpatch-for-production-workloads-during-the-preview"></a>Használhatom a HotPatching melletti telepítéséről az éles számítási feladatokhoz az előzetes verzióban?
+### <a name="can-i-use-hotpatch-for-production-workloads-during-the-preview"></a>Használhatom a Hotpatchot éles számítási feladatokhoz az előzetes verzióban?
 
-* Az előzetes verziók csak tesztelési célokat szolgálnak, és nem éles környezetben való használatra.
+* Az előzetes verziók csak tesztelési célokra szolgálnak, éles környezetben nem használhatók.
 
-### <a name="will-i-be-charged-during-the-preview"></a>Az előzetes verzióban kell fizetni?
+### <a name="will-i-be-charged-during-the-preview"></a>Az előzetes verzióban díjat számítunk fel?
 
-* A Windows Server Azure Edition licence ingyenes az előzetes verzió alatt. A virtuális géphez (tárolás, számítás, hálózatkezelés stb.) beállított mögöttes infrastruktúra költsége azonban továbbra is az előfizetésre lesz terhelve.
+* A Windows Server Azure Edition licence az előzetes verzióban ingyenes. A virtuális géphez beállított mögöttes infrastruktúra (tárolás, számítás, hálózat stb.) költsége azonban továbbra is az előfizetésre lesz terhelve.
 
-### <a name="how-can-i-get-troubleshooting-support-for-hotpatching"></a>Hogyan Kérhetek hibaelhárítási támogatást a működés közbeni javításhoz?
+### <a name="how-can-i-get-troubleshooting-support-for-hotpatching"></a>Hogyan kaphatok hibaelhárítási támogatást a Hotpatchinghez?
 
-* A [technikai támogatási esetekről szóló jegyet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)is megadhat. A szolgáltatás beállításnál keresse meg és válassza ki a **Windows rendszert futtató virtuális gépet** a számítás területen. Válassza ki az **Azure-szolgáltatásokat** a probléma típusa és az **automatikus VM-vendég javításához** a probléma altípusa esetében.
+* Műszaki támogatási jegyet is [be lehet nyújtatni.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) A Szolgáltatás lehetőség alatt keresse meg és válassza a **Windows rendszerű** virtuális gép lehetőséget a Számítás alatt. Válassza **az Azure-szolgáltatások** lehetőséget a probléma típusaként, és az Automatikus virtuális gép vendégjavítása lehetőséget a probléma altípusaként. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Tudjon meg többet az [Azure Update Managementról](../automation/update-management/overview.md).
-* További információ az automatikus VM vendég javításáról [](../virtual-machines/automatic-vm-guest-patching.md)
+* Az Azure Update Management [itt.](../automation/update-management/overview.md)
+* Az automatikus virtuálisgép-vendégjavításról itt olvashat [bővebben](../virtual-machines/automatic-vm-guest-patching.md)

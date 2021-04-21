@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 93c55c21bf740f2851cac1926bc673cebcd914b0
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0416ce25ed03be35c56e7fa2ed7175ad65ae6555
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107514801"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831545"
 ---
 # <a name="enable-a-managed-identity-for-your-azure-automation-account-preview"></a>Felügyelt identitás engedélyezése a Azure Automation (előzetes verzió)
 
@@ -34,7 +35,7 @@ Ez a témakör bemutatja, hogyan hozhat létre felügyelt identitást egy Azure 
 >[!IMPORTANT]
 >Az új Automation fiókszintű identitás felülbírálja az összes korábbi, vm-szintű, rendszer által hozzárendelt identitást (amelyek leírása a [Runbook-hitelesítés](/automation-hrw-run-runbooks#runbook-auth-managed-identities)felügyelt identitásokkal való használatát ismerteti). Ha olyan Azure-beli virtuális gépeken futtat hibrid feladatokat, amelyek egy virtuális gép rendszer által hozzárendelt identitásával férnek hozzá a runbook-erőforrásokhoz, akkor a hibrid feladatokhoz az Automation-fiókidentitás lesz használva. Ez azt jelenti, hogy a meglévő feladat végrehajtására hatással lehet, ha az Automation-fiók ügyfél által kezelt kulcsok (CMK) funkcióját használja.<br/><br/>Ha továbbra is használni szeretné a virtuális gép felügyelt identitását, ne engedélyezze az Automation-fiókszintű identitást. Ha már engedélyezte, letilthatja az Automation-fiók felügyelt identitását. Lásd: [Azure Automation fiók felügyelt identitásának letiltása.](https://docs.microsoft.com/azure/automation/disable-managed-identity-for-automation)
 
-A rendszer által hozzárendelt identitások Azure Automation kétféleképpen használhatja. Használhatja a Azure Portal, vagy az Azure REST API.
+A rendszer által hozzárendelt identitások Azure Automation kétféleképpen lehet. Használhatja a Azure Portal vagy az Azure REST API.
 
 >[!NOTE]
 >A felhasználó által hozzárendelt identitások még nem támogatottak.
@@ -45,11 +46,11 @@ A rendszer által hozzárendelt identitások Azure Automation kétféleképpen h
 
 1. Lépjen az Automation-fiókjához, és válassza az **Identitás lehetőséget** a **Fiókbeállítások alatt.**
 
-1. Állítsa a **Rendszer által hozzárendelt** beállítást **Be,** majd nyomja le a **Mentés gombot.** Amikor a rendszer megerősítést kér, válassza az **Igen lehetőséget.**
+1. Állítsa a **Rendszer által hozzárendelt** beállítást **Be,** majd nyomja le a **Mentés gombot.** Amikor a rendszer megerősítést kér, válassza az Igen **lehetőséget.**
 
 :::image type="content" source="media/managed-identity/managed-identity-on.png" alt-text="Rendszer által hozzárendelt identitás engedélyezése a Azure Portal.":::
 
-Az Automation-fiók most már használhatja a rendszer által hozzárendelt identitást, amely a Azure Active Directory (Azure AD) szolgáltatásban van regisztrálva, és egy objektumazonosító képviseli.
+Az Automation-fiók most már használhatja a rendszer által hozzárendelt identitást, amely regisztrálva van Azure Active Directory -ban (Azure AD), és objektumazonosító képviseli.
 
 :::image type="content" source="media/managed-identity/managed-identity-object-id.png" alt-text="Felügyelt identitás objektumazonosítója.":::
 
@@ -215,6 +216,6 @@ print(response.text)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ha le kell tiltania egy felügyelt identitást, tekintse meg a Azure Automation felügyelt identitás [(előzetes verzió) letiltását.](disable-managed-identity-for-automation.md)
+- Ha le kell tiltania egy felügyelt identitást, tekintse meg a Azure Automation-fiók felügyelt identitásának [(előzetes verzió) letiltását.](disable-managed-identity-for-automation.md)
 
-- A fiókok biztonságának Azure Automation [Automation-fiókhitelesítés áttekintését.](automation-security-overview.md)
+- A fiók biztonságának Azure Automation [Automation-fiókhitelesítés áttekintését.](automation-security-overview.md)

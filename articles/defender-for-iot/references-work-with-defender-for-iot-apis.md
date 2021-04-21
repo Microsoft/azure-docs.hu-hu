@@ -3,12 +3,12 @@ title: A Defender for IoT API-k használata
 description: Használjon külső REST API az érzékelők és a felügyeleti konzolok által felderített adatokhoz való hozzáféréshez, és hajtson végre műveleteket az adatokkal.
 ms.date: 12/14/2020
 ms.topic: reference
-ms.openlocfilehash: e7833a20d4f708ecb5b80394fae2c56fc07c9489
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 0e3659d8d5e6829651012dae02ca74c5ecacaf0c
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752731"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829961"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender az IoT-érzékelőhöz és a felügyeleti konzol API-khoz
 
@@ -42,7 +42,7 @@ Jogkivonat létrehozása:
    
    :::image type="content" source="media/references-work-with-defender-for-iot-apis/access-token-window.png" alt-text="Az Eszközkivonatok párbeszédpanel képernyőképe kitöltött jogkivonatokkal":::
 
-   **A** használat azt jelzi, hogy mikor érkezett utoljára külső hívás ezzel a jogkivonattal.
+   **A** Használat azt jelzi, hogy mikor érkezett utoljára külső hívás ezzel a jogkivonattal.
 
    Ha **n/A** jelenik meg a **jogkivonatHoz** használt mezőben, az érzékelő és a csatlakoztatott kiszolgáló közötti kapcsolat nem működik.
 
@@ -281,7 +281,7 @@ Az eszközöket képviselő JSON-objektumok tömbje.
 
 ### <a name="retrieve-device-connection-information---apiv1devicesconnections"></a>Eszközkapcsolati adatok lekérése – /api/v1/devices/connections
 
-Ezzel az API-val lekért lista az eszközönkénti kapcsolatokról.
+Ezzel az API-val kérheti le az eszközönkénti összes kapcsolat listáját.
 
 #### <a name="method"></a>Metódus
 
@@ -620,10 +620,10 @@ Riasztásokat képviselő JSON-objektumok tömbje.
 | **Üzenetet** | Sztring | No | - |
 | **Súlyossága** | Sztring | No | Figyelmeztetés, kisebb, nagyobb vagy kritikus |
 | **Motor** | Sztring | No | Protokollsértés, szabályzatsértés, kártevő, anomália vagy működési |
-| **sourceDevice** | Numerikus | Yes | Eszközazonosító |
+| **sourceDevice (forrás-adatforrás)** | Numerikus | Yes | Eszközazonosító |
 | **destinationDevice (célszámítógép)** | Numerikus | Yes | Eszközazonosító |
-| **sourceDeviceAddress (sourceDeviceAddress)** | Numerikus | Yes | IP, MAC, Null |
-| **destinationDeviceAddress** | Numerikus | Yes | IP, MAC, Null |
+| **sourceDeviceAddress (sourceDeviceAddress)** | Numerikus | Yes | IP, MAC |
+| **destinationDeviceAddress** | Numerikus | Yes | IP, MAC |
 | **szervizelésSteps** | Sztring | Yes | A riasztásban leírt javítási lépések |
 | **additionalInformation (további információk)** | További információs objektum | Yes | - |
 
@@ -829,7 +829,7 @@ Riasztásokat képviselő JSON-objektumok tömbje.
 
 | Típus | API-k | Példa |
 |--|--|--|
-| GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v1/events?minutesTimeFrame=&type=' | curl -k -H "Authorization: 1234b734a9244d54ab8d40aeddcabcd" 'https:/ <span> /127.0.0.1/api/v1/events?minutesTimeFrame=20&type=DEVICE_CONNECTION_CREATED' |
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v1/events?minutesTimeFrame=&type=' | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https:/ <span> /127.0.0.1/api/v1/events?minutesTimeFrame=20&type=DEVICE_CONNECTION_CREATED' |
 
 ### <a name="retrieve-vulnerability-information---apiv1reportsvulnerabilitiesdevices"></a>Biztonsági rések információinak lekérése – /api/v1/reports/vulnerabilities/devices
 
@@ -2054,14 +2054,14 @@ Ezzel az API-val lekérheti az összes vagy szűrt riasztást egy helyszíni fel
 | **Üzenetet** | Sztring | No | - |
 | **Súlyossága** | Sztring | No | Figyelmeztetés, kisebb, nagyobb vagy kritikus |
 | **Motor** | Sztring | No | Protokollsértés, szabályzatsértés, kártevő, anomália vagy működési |
-| **sourceDevice** | Numerikus | Yes | Eszközazonosító |
+| **sourceDevice (forrás-adatforrás)** | Numerikus | Yes | Eszközazonosító |
 | **destinationDevice (célszámítógép)** | Numerikus | Yes | Eszközazonosító |
-| **sourceDeviceAddress (sourceDeviceAddress)** | Numerikus | Yes | IP, MAC, Null |
-| **destinationDeviceAddress** | Numerikus | Yes | IP, MAC, Null |
+| **sourceDeviceAddress (sourceDeviceAddress)** | Numerikus | Yes | IP, MAC |
+| **destinationDeviceAddress** | Numerikus | Yes | IP, MAC |
 | **szervizelésSteps** | Sztring | Yes | A riasztásban látható javítási lépések|
-| **sensorName (érzékelő neve)** | Sztring | Yes | A felhasználó által a konzolon definiált érzékelő neve|
-|**zoneName (zónanév)** | Sztring | Yes | Az érzékelőhöz társított zóna neve a konzolon|
-| **siteName (helynév)** | Sztring | Yes | Az érzékelőhöz társított hely neve a konzolon |
+| **sensorName (érzékelő neve)** | Sztring | Yes | A felhasználó által definiált érzékelő neve |
+|**zoneName (zónanév)** | Sztring | Yes | Az érzékelőhöz társított zóna neve|
+| **siteName (helynév)** | Sztring | Yes | Az érzékelőhöz társított webhely neve |
 | **additionalInformation (további információk)** | További információs objektum | Yes | - |
 
 Vegye figyelembe, hogy az /api/v2/ a következő információkhoz szükséges:
@@ -2485,7 +2485,7 @@ request:
 
 - **Sikeres – msg:** A hitelesítés sikeres volt
 
-- **Hiba – hiba:** A hitelesítő adatok érvényesítése sikertelen volt
+- **Hiba – hiba:** A hitelesítő adatok érvényesítése sikertelen
 
 #### <a name="device-fields"></a>Eszközmezők
 
@@ -2665,7 +2665,7 @@ response:
 > [!div class="mx-tdBreakAll"]
 > | Típus | API-k | Példa |
 > |--|--|--|
-> | POST | curl -k -d '{"admin_username":"<ADMIN_USERNAME>","admin_password":"<ADMIN_PASSWORD>","username": "<USER_NAME>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json' https://<IP_ADDRESS>/external/authentication/set_password_by_admin | curl -k -d '{"admin_user":"adminUser","admin_password": " 1234@abcd ","username": "myUser","new_password": " abcd@1234 "}" -H 'Content-Type: application/json' https:/ <span> /127.0.0.1/external/authentication/set_password_by_admin |
+> | POST | curl -k -d '{"admin_username":"<ADMIN_USERNAME>","admin_password":"<ADMIN_PASSWORD>","username": "<USER_NAME>","new_password": "<NEW_PASSWORD>"}" -H 'Content-Type: application/json' https://<IP_ADDRESS>/external/authentication/set_password_by_admin | curl -k -d '{"admin_user":"adminUser","admin_password": " 1234@abcd ","username": "myUser","new_password": " abcd@1234 "}" -H 'Content-Type: application/json' https:/ <span> /127.0.0.1/external/authentication/set_password_by_admin |
 
 ## <a name="next-steps"></a>Következő lépések
 

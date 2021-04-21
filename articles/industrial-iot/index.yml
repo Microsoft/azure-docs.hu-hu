@@ -1,43 +1,41 @@
 ### YamlMime:Landing
-title: Az Azure Industrial IoT platform dokumentációja
-summary: Az Azure Industrial IoT platform az Azure-ban üzembe helyezett modulok és szolgáltatások Microsoft-csomagja.
+title: Az Azure Industrial IoT Platform dokumentációja
+summary: Az Azure Industrial IoT Platform a Microsoft Azure-ban üzembe helyezett moduljainak és szolgáltatásainak egy csomagja.
 metadata:
-  description: Tudnivalók a
+  description: További tudnivalók a
   ms.service: industrial-iot
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
   ms.date: 3/22/2021
-  ms.openlocfilehash: 8419316a452b9258e8b54cb333aa5fe1ef87b5b9
-  ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+  ms.openlocfilehash: bced3bdbb854af75e7b521f7c5c3f2e1022a161b
+  ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/23/2021
-  ms.locfileid: "104800176"
+  ms.lasthandoff: 04/21/2021
+  ms.locfileid: "107813829"
 landingContent:
-- title: Tudnivalók az Azure Industrial IoT platformról
+- title: Az Azure Ipari IoT-platform
   linkLists:
   - linkListType: overview
     links:
     - text: Mi az az ipari IoT (IIoT)?
       url: overview-what-is-industrial-iot.md
-    - text: Mi az ipari IoT (IIoT) platform?
-      url: overview-what-is-industrial-iot-platform.md
-    - text: Mi az OPC-közzétevő?
+    - text: Mi az az OPC-közzétevő?
       url: overview-what-is-opc-publisher.md
-- title: Ismerkedés az ipari IoT platformmal (IIoT)
+- title: Az ipari IoT platform (IIoT) használatának első lépések
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Az Azure Industrial IoT platform üzembe helyezése
+    - text: Az Azure ipari IoT-platform üzembe helyezése
       url: tutorial-deploy-industrial-iot-platform.md
     - text: Az ipari IoT-összetevők konfigurálása
       url: tutorial-configure-industrial-iot-components.md
-    - text: Azure-beli ipari IoT-adatgyűjtési ADX
+    - text: Ipari Azure IoT-adatok lekérte az ADX-be
       url: tutorial-industrial-iot-azure-data-explorer.md
-    - text: Az adatTime Series Insights (ÁME) megjelenítése
+    - text: Adatok vizualizációja Time Series Insights (TSI)
       url: tutorial-visualize-data-time-series-insights.md
-- title: Az OPC-közzétevő használata
+- title: Az OPC-közzétevővel való munka
   linkLists:
   - linkListType: tutorial
     links:
@@ -45,5 +43,5 @@ landingContent:
       url: tutorial-publisher-deploy-opc-publisher-standalone.md
     - text: Az OPC-közzétevő konfigurálása
       url: tutorial-publisher-configure-opc-publisher.md
-    - text: Az OPC-közzétevő teljesítményének és memóriájának hangolása
+    - text: Az OPC-közzétevő teljesítményének és memóriájának finomhangolása
       url: tutorial-publisher-performance-memory-tuning-opc-publisher.md

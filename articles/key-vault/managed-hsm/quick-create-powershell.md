@@ -12,12 +12,12 @@ tags:
 - azure-resource-manager
 ms.custom:
 - mode-api
-ms.openlocfilehash: ba1cd8d6b1410be30eefe9dca9675daaf6c16256
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: aa984a8f3899db72ead878e2c4381ea6a080e32d
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534668"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815431"
 ---
 # <a name="quickstart-set-and-retrieve-a-managed-key-from-azure-key-vault-using-powershell"></a>Rövid útmutató: Felügyelt kulcs beállítása és lekérése Azure Key Vault PowerShell használatával
 
@@ -57,7 +57,7 @@ A Azure PowerShell [New-AzKeyVaultManagedHsm](/powershell/module/az.keyvault/new
 - Managed HSM neve: 3–24 karakter hosszúságú sztring, amely csak számokat (0–9), betűket (a-z, A-Z) és kötőjelet (-) tartalmazhat
 
   > [!Important]
-  > Minden felügyelt HSM-nek egyedi névvel kell lennie. Cserélje <-unique-managed-hsm-name> a felügyelt HSM nevére a következő példákban.
+  > Minden felügyelt HSM-nek egyedi névvel kell lennie. Cserélje <-unique-managed-hsm-name> a felügyelt HSM nevére az alábbi példákban.
 
 - Erőforráscsoport neve: **myResourceGroup.**
 - A hely: **EastUS**.
@@ -69,7 +69,7 @@ New-AzKeyVaultManagedHsm -Name "<your-unique-managed-hsm-name>" -ResourceGroupNa
 
 A parancsmag kimenete az újonnan létrehozott felügyelt HSM tulajdonságait jeleníti meg. Jegyezze fel az alábbi két tulajdonságot:
 
-- **Managed HSM Name (Felügyelt HSM** neve): A fenti --name paraméterhez megadott név.
+- **Managed HSM Name**(Felügyelt HSM neve): A fenti --name paraméterhez megadott név.
 - **Tároló** URI-ja: A példában ez &lt; https://-your-unique-managed-hsm-name &gt; .vault.azure.net/. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
 
 Az Azure-fiókja jelenleg az egyetlen, amelyik jogosult arra, hogy műveleteket végezzen ezen az új tárolón.
@@ -79,12 +79,12 @@ Az Azure-fiókja jelenleg az egyetlen, amelyik jogosult arra, hogy műveleteket 
 A HSM aktiválásáig minden adatsíkparancs le van tiltva. Nem fog tudni kulcsokat létrehozni vagy szerepköröket hozzárendelni. A HSM-et csak a létrehozási parancs során hozzárendelt kijelölt rendszergazdák aktiválhatják. A HSM aktiválásához le kell töltenie a [biztonsági tartományt.](security-domain.md)
 
 A HSM aktiválásához a következőre lesz szüksége:
-- Legalább 3 RSA-kulcspár (legfeljebb 10)
+- Minimum 3 RSA-kulcspár (legfeljebb 10)
 - Adja meg a biztonsági tartomány visszafejtéséhez szükséges kulcsok minimális számát (kvórum)
 
-A HSM aktiválásához legalább 3 (legfeljebb 10) RSA nyilvános kulcsot kell küldenie a HSM-nek. A HSM ezekkel a kulcsokkal titkosítja a biztonsági tartományt, és visszaküldi. Ha a biztonsági tartomány letöltése sikeresen befejeződött, a HSM használatra kész. Meg kell adnia a kvórumot is, amely a biztonsági tartomány visszafejtéséhez minimálisan szükséges titkos kulcsok száma.
+A HSM aktiválásához legalább 3 (legfeljebb 10) RSA nyilvános kulcsot kell küldenie a HSM-nek. A HSM ezekkel a kulcsokkal titkosítja a biztonsági tartományt, és visszaküldi azt. Ha a biztonsági tartomány letöltése sikeresen befejeződött, a HSM használatra kész. Meg kell adnia a kvórumot is, amely a biztonsági tartomány visszafejtéséhez minimálisan szükséges titkos kulcsok száma.
 
-Az alábbi példa bemutatja, hogyan hozhat létre 3 önaírt tanúsítványt a használatával (amely itt `openssl` érhető el Windows rendszeren érhető el). [](https://slproweb.com/products/Win32OpenSSL.html)
+Az alábbi példa bemutatja, hogyan hozhat létre 3 önaírt tanúsítványt a használatával (elérhető a `openssl` Windowshoz itt). [](https://slproweb.com/products/Win32OpenSSL.html)
 
 ```console
 openssl req -newkey rsa:2048 -nodes -keyout cert_0.key -x509 -days 365 -out cert_0.cer
@@ -93,7 +93,7 @@ openssl req -newkey rsa:2048 -nodes -keyout cert_2.key -x509 -days 365 -out cert
 ```
 
 > [!IMPORTANT]
-> Hozza létre és tárolja biztonságosan az ebben a lépésben létrehozott RSA-kulcspárokat és biztonságitartomány-fájlt.
+> Hozza létre és tárolja biztonságosan az ebben a lépésben létrehozott RSA-kulcspárt és biztonságitartomány-fájlt.
 
 Az Azure PowerShell [Export-AzKeyVaultSecurityDomain](/powershell/module/az.keyvault/export-azkeyvaultsecuritydomain) parancsmaggal töltse le a biztonsági tartományt, és aktiválja a felügyelt HSM-et. Az alábbi példa 3 RSA-kulcspárt használ (ehhez a parancshoz csak nyilvános kulcsok szükségesek), és a kvórumot 2-re állítja.
 
@@ -101,7 +101,7 @@ Az Azure PowerShell [Export-AzKeyVaultSecurityDomain](/powershell/module/az.keyv
 Export-AzKeyVaultSecurityDomain -Name "<your-unique-managed-hsm-name>" -Certificates "cert_0.cer", "cert_1.cer", "cert_2.cer" -OutputPath "MHSMsd.ps.json" -Quorum 2
 ```
 
-Tárolja biztonságosan a biztonsági tartományfájlt és az RSA-kulcspárokat. Vészhelyreállításhoz vagy egy másik felügyelt HSM létrehozásához, amely ugyanazon a biztonsági tartományon osztozik, szüksége lesz rájuk a kulcsok megosztásához.
+Tárolja biztonságosan a biztonsági tartományfájlt és az RSA-kulcspárokat. Vészhelyreállításhoz vagy egy másik felügyelt HSM létrehozásához, amely ugyanazokkal a biztonsági tartománnyal rendelkezik, szüksége lesz rájuk a kulcsok megosztásához.
 
 A biztonsági tartomány sikeres letöltése után a HSM aktív állapotban lesz, és készen áll a használatra.
 
@@ -115,4 +115,4 @@ Ebben a rövid útmutatóban létrehozott egy Key Vault, és tárolt benne egy t
 
 - Olvassa el [a Azure Key Vault](../general/overview.md)
 - Lásd a Azure PowerShell Key Vault [parancsmagok referenciáit](/powershell/module/az.keyvault/)
-- Tekintse át [a Key Vault biztonsági áttekintését](../general/security-overview.md)
+- Tekintse át [a Key Vault biztonsági áttekintését](../general/security-features.md)

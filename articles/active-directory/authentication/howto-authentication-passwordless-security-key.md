@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 04/21/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a88bb7904143f69a0eea84ea291c65e3244c70a1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 436a972693aafd220d277d7411c0da12636e9cc6
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765862"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829799"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>Jelszó nélküli biztonsági kulcsos bejelentkezés engedélyezése 
 
@@ -32,6 +32,7 @@ Ez a dokumentum a biztonsági kulcson alapuló jelszó nélküli hitelesítés e
 - A WebAuthN használatához Windows 10 1903-as vagy újabb verzió szükséges**
 
 Ha biztonsági kulcsokat használ a webalkalmazások és szolgáltatásokba való bejelentkezéshez, olyan böngészővel kell lennie, amely támogatja a WebAuthN protokollt. Ezek közé tartozik a Microsoft Edge, a Chrome, a Firefox és a Safari.
+
 
 ## <a name="prepare-devices"></a>Eszközök előkészítése
 

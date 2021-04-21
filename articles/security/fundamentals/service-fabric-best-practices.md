@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 91d7e0777cbdad459e4514a0216146e0d5739f6d
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: a7d87e2496158fec8ff33ab8586c845a6207f810
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750949"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816061"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Az Azure Service Fabric ajánlott biztonsági eljárásai
 Az alkalmazások gyors, egyszerű és költséghatékony üzembe helyezése az Azure-ban. Mielőtt üzembe helyezi a felhőalkalmazást éles környezetben, tekintse át a biztonságos fürtök alkalmazáson belül való megvalósításának alapvető és ajánlott eljárásait.
@@ -155,7 +155,7 @@ Service Fabric tanúsítványokat használ a hitelesítés és a titkosítás bi
 
 Service Fabric X.509-tanúsítványokat használ a fürtök biztonságának és az alkalmazásbiztonsági funkcióknak a biztosítása érdekében. A Azure Key Vault [azure-beli](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md) fürtök tanúsítványait Service Fabric kezelheti. A fürtöt létrehozó Azure-erőforrás-szolgáltató lekérte a tanúsítványokat egy kulcstartóból. A szolgáltató ezután telepíti a tanúsítványokat a virtuális gépekre, amikor a fürt üzembe helyezése az Azure-ban történik.
 
-Tanúsítványkapcsolat áll fenn [a](../../key-vault/general/security-overview.md)Azure Key Vault, a Service Fabric fürt és a tanúsítványokat használó erőforrás-szolgáltató között. A fürt létrehozásakor a tanúsítványkapcsolatra vonatkozó információk egy kulcstartóban tárolódnak.
+Tanúsítványkapcsolat áll fenn [a](../../key-vault/general/security-features.md)Azure Key Vault, a Service Fabric fürt és a tanúsítványokat használó erőforrás-szolgáltató között. A fürt létrehozásakor a tanúsítványkapcsolatra vonatkozó információk egy kulcstartóban tárolódnak.
 
 A kulcstartó beállításának két alapvető lépése van:
 1. Hozzon létre egy erőforráscsoportot kifejezetten a kulcstartóhoz.

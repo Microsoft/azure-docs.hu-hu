@@ -1,6 +1,6 @@
 ---
-title: Szöveges runbookok szerkesztése Azure Automation
-description: Ez a cikk azt ismerteti, hogyan használható a Azure Automation szöveges szerkesztő a PowerShell és a PowerShell munkafolyamat-runbookok való együttműködéshez.
+title: Szöveges runbookok szerkesztése a Azure Automation
+description: Ez a cikk bemutatja, hogyan használhatja a Azure Automation szövegszerkesztőt PowerShell- és PowerShell-munkafolyamat-runbookok használatára.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -8,65 +8,66 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
+ms.custom: devx-track-azurepowershell
 manager: carmonm
-ms.openlocfilehash: 8d6b786ffaf309e147de27e8cd8be314a3d8a5fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 296d45fae4d59553b54a1b68923c91be4168d3a5
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98896986"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829385"
 ---
-# <a name="edit-textual-runbooks-in-azure-automation"></a>Szöveges runbookok szerkesztése Azure Automation
+# <a name="edit-textual-runbooks-in-azure-automation"></a>Szöveges runbookok szerkesztése a Azure Automation
 
-A Azure Automation szöveges szerkesztőjével szerkesztheti a PowerShell- [runbookok](automation-runbook-types.md#powershell-runbooks) és a [PowerShell-munkafolyamat runbookok](automation-runbook-types.md#powershell-workflow-runbooks). Ez a szerkesztő a más kód-szerkesztők, például az IntelliSense jellemző funkcióit tartalmazza. Emellett a színkódolást is használja további speciális funkciókkal, amelyek segítenek a runbookok-hez közös erőforrások elérésében. 
+A [PowerShell-runbookok](automation-runbook-types.md#powershell-runbooks) és a [PowerShell Azure Automation-munkafolyamat-runbookok](automation-runbook-types.md#powershell-workflow-runbooks)szerkesztéséhez használhatja az alkalmazás szövegszerkesztőjét. Ez a szerkesztő más kódszerkesztők, például az IntelliSense tipikus funkcióit is tartalmazza. Színkódolást és további speciális funkciókat is használ a runbookok közös erőforrásainak eléréséhez. 
 
-A szöveges szerkesztő tartalmaz egy funkciót, amely a parancsmagok, az eszközök és a gyermek runbookok kódját szúrja be egy runbook. A kód beírása helyett választhat az elérhető erőforrások listájából, és a szerkesztő beszúrja a megfelelő kódot a runbook.
+A szöveges szerkesztő tartalmaz egy funkciót, amely kódot szúr be a parancsmagok, az eszközök és a gyermek runbookok számára egy runbookba. Ahelyett, hogy saját maga gépelje be a kódot, választhat az elérhető erőforrások listájából, és a szerkesztő beszúrja a megfelelő kódot a runbookba.
 
-Azure Automation minden runbook két verziója, piszkozata és közzététele van. Szerkessze a runbook Piszkozat verzióját, és tegye közzé azt, hogy végrehajtható legyen. A Közzétett verzió nem szerkeszthető. További információ: [Runbook közzététele](manage-runbooks.md#publish-a-runbook).
+A Azure Automation runbook két verzióval rendelkezik: Draft és Published. Szerkessze a runbook Vázlat verzióját, majd tegye közzé, hogy végrehajtható legyen. A Közzétett verzió nem szerkeszthető. További információ: [Runbook közzététele.](manage-runbooks.md#publish-a-runbook)
 
-Ez a cikk részletesen ismerteti a különböző függvények a szerkesztővel való elvégzésének lépéseit. Ezek a [grafikus runbookok](automation-runbook-types.md#graphical-runbooks)nem alkalmazhatók. Ezekkel a runbookok kapcsolatban lásd: [grafikus létrehozás Azure Automationban](automation-graphical-authoring-intro.md).
+Ez a cikk a különböző függvények szerkesztővel való végrehajtásához nyújt részletes lépéseket. Ezek a grafikus [runbookok esetén nem alkalmazhatók.](automation-runbook-types.md#graphical-runbooks) A runbookok használatával kapcsolatban tekintse meg a grafikus tartalom [a](automation-graphical-authoring-intro.md)Azure Automation.
 
 ## <a name="edit-a-runbook-with-the-azure-portal"></a>Runbook szerkesztése a Azure Portal
 
-1. A Azure Portal válassza ki az Automation-fiókját.
-2. A **folyamat automatizálása** területen válassza a **runbookok** lehetőséget a runbookok listájának megnyitásához.
-3. Válassza ki a szerkeszteni kívánt runbook, majd kattintson a **Szerkesztés** gombra.
-4. Szerkessze a runbook.
-5. A Szerkesztés befejezéséhez kattintson a **Mentés** gombra.
-6. Kattintson a **Közzététel** elemre, ha közzé szeretné tenni a runbook legújabb vázlatos verzióját.
+1. A Azure Portal válassza ki Automation-fiókját.
+2. A **FOLYAMATAUTOMATIZÁLÁS alatt** **válassza a Runbookok** lehetőséget a runbookok listájának megnyitásához.
+3. Válassza ki a szerkeszteni szeretné runbookot, majd kattintson az **Edit (Szerkesztés) gombra.**
+4. Szerkessze a runbookot.
+5. Ha **a módosítások befejeződtek,** kattintson a Mentés gombra.
+6. Kattintson **a Közzététel** gombra, ha közzé szeretné tenni a runbook legújabb piszkozatverzióját.
 
-### <a name="insert-a-cmdlet-into-a-runbook"></a>Parancsmag beszúrása egy runbook
+### <a name="insert-a-cmdlet-into-a-runbook"></a>Parancsmag beszúrása runbookba
 
-1. A szöveges szerkesztő vászonján vigye a kurzort arra a helyre, ahová a parancsmagot helyezni kívánja.
-2. Bontsa ki a **parancsmagok** csomópontot a könyvtár vezérlőben.
-3. Bontsa ki a használni kívánt parancsmagot tartalmazó modult.
-4. Kattintson a jobb gombbal a parancsmag nevére a beszúráshoz, majd válassza a **Hozzáadás a vászonhoz** lehetőséget. Ha a parancsmag egynél több paraméterrel van beállítva, a szerkesztő hozzáadja az alapértelmezett készletet. A parancsmag kibontásával másik paramétert is kijelölhet.
-5. Vegye figyelembe, hogy a parancsmag kódja a teljes paraméterekkel együtt van beszúrva.
-6. Adja meg a megfelelő értéket a szögletes zárójelek (<>) körüli érték helyett a szükséges paraméterekhez. Távolítsa el a szükségtelen paramétereket.
+1. A szöveges szerkesztő vásznán helyezze a kurzort arra a helyre, ahová a parancsmagot el szeretné helyezze.
+2. **Bontsa ki a Parancsmagok csomópontot** a Könyvtár vezérlőben.
+3. Bontsa ki a használni használt parancsmagot tartalmazó modult.
+4. Kattintson a jobb gombbal a beszúrni kívánt parancsmag nevére, majd válassza a **Hozzáadás a vászonhoz lehetőséget.** Ha a parancsmag több paraméterkészletet is rendelkezik, a szerkesztő hozzáadja az alapértelmezett készletet. Másik paraméterkészlet kiválasztásához a parancsmagot is kibonthatja.
+5. Vegye figyelembe, hogy a parancsmag kódja a paraméterek teljes listájával együtt van beszúrva.
+6. Adjon meg egy megfelelő értéket a szögletes zárójelek (<>) által körülvett érték helyett a szükséges paraméterekhez. Távolítsa el a nem szükséges paramétereket.
 
-### <a name="insert-code-for-a-child-runbook-into-a-runbook"></a>Kód beszúrása egy runbook egy gyermek runbook
+### <a name="insert-code-for-a-child-runbook-into-a-runbook"></a>Gyermek runbook kódának beszúrása runbookba
 
-1. A szöveges szerkesztő vászonján vigye a kurzort arra a helyre, ahová a [gyermek runbook](automation-child-runbooks.md)kódot kívánja helyezni.
-2. Bontsa ki a **runbookok** csomópontot a könyvtár vezérlőben.
-3. Kattintson a jobb gombbal a beszúrandó runbook, és válassza a **Hozzáadás a vászonhoz** lehetőséget.
-4. A gyermek runbook kódja minden runbook-paraméterhez be van beszúrva.
-5. Cserélje le a helyőrzőket az egyes paraméterek megfelelő értékeivel.
+1. A szöveges szerkesztő vásznán helyezze a kurzort arra a helyre, ahová a gyermek runbook kódját [szeretné.](automation-child-runbooks.md)
+2. **Bontsa ki a Runbookok csomópontot** a Könyvtár vezérlőben.
+3. Kattintson a jobb gombbal a beszúrni kívánt runbookra, majd válassza **a Hozzáadás a vászonhoz lehetőséget.**
+4. A rendszer beszúrja a gyermek runbook kódját a Runbook-paraméterek helyőrzőivel.
+5. Cserélje le a helyőrzőket az egyes paraméterek megfelelő értékeire.
 
-### <a name="insert-an-asset-into-a-runbook"></a>Eszköz beszúrása egy runbook
+### <a name="insert-an-asset-into-a-runbook"></a>Eszköz beszúrása runbookba
 
-1. A szöveges szerkesztő vászon vezérlőjében vigye a kurzort arra a helyre, ahová a gyermek runbook kódot kívánja helyezni.
-2. Bontsa ki az **eszközök** csomópontot a könyvtár vezérlőben.
-3. Bontsa ki a kívánt eszköz típusának csomópontját.
-4. Kattintson a jobb gombbal a beszúrandó eszköz nevére, majd válassza a **Hozzáadás a vászonhoz** lehetőséget. [Változó eszközök](./shared-resources/variables.md)esetén válassza a **"változó beolvasása" lehetőséget a vászonhoz** , vagy **adja hozzá a "változó beállítása" beállítást a vászonhoz**, attól függően, hogy szeretné-e lekérni vagy beállítani a változót.
-5. Vegye figyelembe, hogy az eszköz kódját a rendszer beszúrja a runbook.
+1. A szöveges szerkesztő Vászon vezérlőelemében helyezze a kurzort arra a helyre, ahová a gyermek runbook kódját el szeretné irányítani.
+2. Bontsa **ki az Assets (Eszközök)** csomópontot a Könyvtár vezérlőben.
+3. Bontsa ki a kívánt eszköztípus csomópontját.
+4. Kattintson a jobb gombbal a beszúrni kívánt eszköz nevére, majd **válassza a Hozzáadás a vászonhoz lehetőséget.** A [változóeszközök esetében](./shared-resources/variables.md)válassza a **"Változó leése"** hozzáadása a vászonhoz vagy a **"Változó beállítása"** lehetőséget a vászonhoz attól függően, hogy le szeretné-e kapni vagy be szeretné állítani a változót.
+5. Vegye figyelembe, hogy az eszköz kódja be lesz szúrva a runbookba.
 
-## <a name="edit-an-azure-automation-runbook-using-windows-powershell"></a>Azure Automation runbook szerkesztése a Windows PowerShell használatával
+## <a name="edit-an-azure-automation-runbook-using-windows-powershell"></a>Runbook Azure Automation szerkesztése a Windows PowerShell
 
-Ha a Windows PowerShell segítségével szeretne szerkeszteni egy runbook, használja a választott szerkesztőt, és mentse a runbook egy **. ps1** fájlba. A runbook tartalmának lekéréséhez az [export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) parancsmagot használhatja. Az  [import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) parancsmag használatával lecserélheti a meglévő Piszkozat runbook a módosítottra.
+Ha egy runbookot úgy Windows PowerShell, használja a választott szerkesztőt, és mentse a runbookot **egy .ps1 fájlba.** Az [Export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) parancsmag használatával lekérheti a runbook tartalmát. Az  [Import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) parancsmaggal lecserélheti a meglévő runbook piszkozatát a módosítottra.
 
-### <a name="retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>Runbook tartalmának beolvasása a Windows PowerShell használatával
+### <a name="retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>Runbook tartalmának lekérése a Windows PowerShell
 
-A következő mintaparancsok bemutatják, hogyan kérhető le egy runbook parancsfájlja és menthető egy parancsfájlba. Ez a példa a vázlatverzió lekérését mutatja be. Lehetősége van a runbook közzétett verziójának lekérésére is, bár ez a verzió nem módosítható.
+A következő mintaparancsok bemutatják, hogyan kérhető le egy runbook parancsfájlja és menthető egy parancsfájlba. Ez a példa a vázlatverzió lekérését mutatja be. A runbook Közzétett verzióját is lekérheti, bár ez a verzió nem módosítható.
 
 ```powershell-interactive
 $resourceGroupName = "MyResourceGroup"
@@ -77,9 +78,9 @@ $scriptFolder = "c:\runbooks"
 Export-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName -OutputFolder $scriptFolder -Slot Draft
 ```
 
-### <a name="change-the-contents-of-a-runbook-using-windows-powershell"></a>Runbook tartalmának módosítása a Windows PowerShell használatával
+### <a name="change-the-contents-of-a-runbook-using-windows-powershell"></a>Runbook tartalmának módosítása a Windows PowerShell
 
-Az alábbi példák azt mutatják be, hogyan lehet lecserélni egy runbook meglévő tartalmát egy parancsfájl tartalmával. 
+Az alábbi mintaparancsok azt mutatják be, hogyan cserélheti le egy runbook meglévő tartalmát egy szkriptfájl tartalmára. 
 
 ```powershell-interactive
 $resourceGroupName = "MyResourceGroup"
@@ -93,12 +94,12 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [A Azure Automation Runbookok kezelése](manage-runbooks.md).
-* [PowerShell-munkafolyamat betanítása](automation-powershell-workflow.md).
-* [Grafikus szerzői műveletek Azure Automationban](automation-graphical-authoring-intro.md).
-* [Tanúsítványok](./shared-resources/certificates.md).
-* [Kapcsolatok](automation-connections.md).
+* [Runbookok kezelése a Azure Automation.](manage-runbooks.md)
+* [A PowerShell-munkafolyamat elsajátítása.](automation-powershell-workflow.md)
+* [Grafikus tartalom a Azure Automation.](automation-graphical-authoring-intro.md)
+* [Tanúsítványok.](./shared-resources/certificates.md)
+* [Kapcsolatok:](automation-connections.md).
 * [Azonosító adatok](./shared-resources/credentials.md).
-* [Ütemtervek](./shared-resources/schedules.md).
-* [Változók](./shared-resources/variables.md).
-* [PowerShell-parancsmagok leírása](/powershell/module/az.automation).
+* [Ütemezi a következőt:](./shared-resources/schedules.md).
+* [Változók:](./shared-resources/variables.md).
+* [PowerShell-parancsmagok referenciája.](/powershell/module/az.automation)

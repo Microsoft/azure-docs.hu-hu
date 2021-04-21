@@ -1,23 +1,23 @@
 ---
-title: Azure igazolási tanúsítvány létrehozása Azure Resource Manager sablon használatával
-description: Ismerje meg, hogyan hozhat létre Azure igazolási tanúsítványt Azure Resource Manager sablon használatával.
+title: Tanúsítvány Azure Attestation sablon használatával Azure Resource Manager létrehozása
+description: Megtudhatja, hogyan hozhat létre Azure Attestation tanúsítványt egy Azure Resource Manager használatával.
 services: azure-resource-manager
 author: msmbaldwin
 ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.author: mbaldwin
 ms.date: 10/16/2020
-ms.openlocfilehash: 8c56a37ebcc799b0170785666212eb4e3b00a5f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d70f9ebd071d6699412f56e9dca1abcebb38105
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92144968"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834245"
 ---
-# <a name="quickstart-create-an-azure-attestation-provider-with-an-arm-template"></a>Rövid útmutató: Azure igazolási szolgáltató létrehozása ARM-sablonnal
+# <a name="quickstart-create-an-azure-attestation-provider-with-an-arm-template"></a>Rövid útmutató: Azure Attestation létrehozása ARM-sablonnal
 
-[Microsoft Azure igazolás](overview.md) a megbízható végrehajtási környezetek (pólók) igazolására szolgáló megoldás. Ez a rövid útmutató egy Azure Resource Manager sablon (ARM-sablon) üzembe helyezésének folyamatát mutatja be Microsoft Azure igazolási szabályzat létrehozásához.
+[Microsoft Azure igazolás](overview.md) a megbízható végrehajtási környezetek (TEE-k) igazolásának egyik megoldása. Ez a rövid útmutató egy Azure Resource Manager (ARM-sablon) üzembe helyezésének folyamatára összpontosít egy Microsoft Azure igazolási szabályzat létrehozásához.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -37,35 +37,35 @@ Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://
 
 A sablonban definiált Azure-erőforrások:
 
-- Microsoft. igazolás/attestationProviders
+- Microsoft.Attestation/attestationProviders
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-1. Válassza ki az alábbi rendszerképet az Azure-ba való bejelentkezéshez és a sablon megnyitásához.
+1. Az alábbi kép kiválasztásával jelentkezzen be az Azure-ba, és nyissa meg a sablont.
 
     [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-attestation-provider-create%2Fazuredeploy.json)
 
 1. Válassza ki vagy adja meg a következő értékeket.
 
-    Ha meg van adva, az alapértelmezett érték használatával hozza létre az igazolási szolgáltatót.
+    Ha nincs megadva, használja az alapértelmezett értéket az igazolási szolgáltató létrehozásához.
 
-    - **Igazolási szolgáltató neve**: válassza ki az Azure igazolási szolgáltató nevét.
-    - **Hely**: válasszon ki egy helyet. Például: **USA középső régiója**.
-    - **Címkék**: válasszon helyet. Például: **USA középső régiója**.
+    - **Igazolásszolgáltató neve:** Válassza ki a Azure Attestation nevét.
+    - **Hely:** Válasszon ki egy helyet. Például: **USA középső régiója**.
+    - **Címkék:** Válasszon ki egy helyet. Például: **USA középső régiója**.
 
-1. Válassza a **Beszerzés** lehetőséget. Miután az igazolási erőforrás üzembe helyezése sikeresen megtörtént, értesítést kap.
+1. Válassza a **Beszerzés** lehetőséget. Az igazolási erőforrás sikeres üzembe helyezése után értesítést kap.
 
-Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-powershell.md).
+Az Azure Portalon helyezhető üzembe a sablon. A Azure Portal mellett az Azure PowerShell, az Azure CLI és a REST API. További információ az egyéb üzembe helyezési módszerekről: [Sablonok üzembe helyezése.](../azure-resource-manager/templates/deploy-powershell.md)
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
-Az igazolási erőforrást az Azure Portal használatával tekintheti meg.
+Az igazolási erőforrás Azure Portal a következővel ellenőrizheti: .
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A jelen rövid útmutatón kívül más Azure-igazolás is erre támaszkodik. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, ne törölje ezeket az erőforrásokat.
+Más Azure Attestation erre a rövid útmutatóra épülnek. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, ne törölje ezeket az erőforrásokat.
 
-Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli az igazolási erőforrást. Az erőforráscsoport törlése az Azure CLI vagy a Azure PowerShell használatával:
+Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli az igazolási erőforrást. Az erőforráscsoport törlése az Azure CLI vagy a Azure PowerShell:
 
 # <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
@@ -88,4 +88,4 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy igazolási erőforrást egy ARM-sablonnal, és ellenőrizte az üzembe helyezést. Az Azure igazolásával kapcsolatos további információkért lásd: [Az Azure-igazolás áttekintése](overview.md).
+Ebben a rövid útmutatóban létrehozott egy igazolási erőforrást egy ARM-sablonnal, és érvényesítette az üzembe helyezést. További információ a [Azure Attestation: Overview of Azure Attestation](overview.md).

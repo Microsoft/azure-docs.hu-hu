@@ -1,213 +1,213 @@
 ---
 title: Adaptív alkalmazásvezérlők az Azure Security Centerben
-description: Ez a dokumentum segít a Azure Security Center adaptív alkalmazás-vezérlésének használatában az Azure-gépeken futó alkalmazások listázásának engedélyezéséhez.
+description: Ez a dokumentum segítséget nyújt az adaptív alkalmazásvezérlés Azure Security Center az Azure-gépeken futó alkalmazások listába való listához.
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/07/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: de5c5fbb6673d022517bba2486ed4aa1f739d19b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9e2dcace673a1c7215634434f9e89ddc6b953a63
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439578"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834614"
 ---
-# <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Az adaptív alkalmazás-vezérlőelemek használatával csökkentheti a gépek támadási felületét
+# <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Adaptív alkalmazásvezérlők használata a gépek támadási felületének csökkentéséhez
 
-Ismerje meg az Azure Security Center adaptív alkalmazás-vezérlésének előnyeit, valamint azt, hogy miként javíthatja a biztonságot ezzel az adatvezérelt, intelligens szolgáltatással.
-
-
-## <a name="what-are-security-centers-adaptive-application-controls"></a>Mik azok az Security Center adaptív alkalmazások vezérlői?
-
-Az adaptív alkalmazás-vezérlőelemek intelligens és automatizált megoldást biztosítanak a gépek ismert és biztonságos alkalmazásainak engedélyezési listájához. 
-
-A szervezetek gyakran rendelkeznek olyan gyűjteményekkel, amelyek rendszeresen futtatják ugyanezeket a folyamatokat. Security Center a gépi tanulás segítségével elemzi a gépeken futó alkalmazásokat, és létrehoz egy listát az ismert biztonságos szoftverekről. Az engedélyezési listák az adott Azure-beli számítási feladatokon alapulnak, és a javaslatok az alábbi utasítások alapján is testreszabhatók.
-
-Ha engedélyezte és konfigurálta az adaptív alkalmazások vezérlőit, akkor biztonsági riasztásokat fog kapni, ha bármely alkalmazás a biztonságosként definiált beállításoktól eltérő módon fut.
+Megismerheti a Azure Security Center adaptív alkalmazásvezérlőinek előnyeit, és megtudhatja, hogyan javíthatja a biztonságot ezzel az adatvezérelt, intelligens funkcióval.
 
 
-## <a name="what-are-the-benefits-of-adaptive-application-controls"></a>Milyen előnyökkel jár az adaptív alkalmazások vezérlése?
+## <a name="what-are-security-centers-adaptive-application-controls"></a>Mik Security Center adaptív alkalmazásvezérlői?
 
-Ha az ismert alkalmazások listáját definiálja, és riasztásokat állít elő, amikor bármi más történik, több megerősítési célt is elérhet:
+Az adaptív alkalmazásvezérlők intelligens és automatizált megoldások, amelyek lehetővé teszik az ismerten biztonságos alkalmazások listáinak definiálása a gépeken. 
 
-- Azonosíthatja a lehetséges kártevőket, még az antimalware-megoldások által esetlegesen kihagyható lehetőségeket is
-- A csak licencelt szoftverek használatát diktáló helyi biztonsági házirendeknek való megfelelés javítása
-- A régi vagy nem támogatott alkalmazások futtatásának elkerülése
-- A szervezet által tiltott adott szoftverek letiltása
-- Bizalmas adatokhoz hozzáférő alkalmazások áttekintésének fokozása
+A szervezetek gyakran olyan gépgyűjteményekkel is vannak, amelyek rendszeresen ugyanazt a folyamatot futtatják. Security Center gépi tanulással elemzi a gépeken futó alkalmazásokat, és létrehoz egy listát az ismerten biztonságos szoftverekről. Az engedélyező listák az adott Azure-beli számítási feladatokon alapulnak, a javaslatokat pedig az alábbi utasítások alapján testreszabhatja.
 
-Jelenleg nem érhető el kényszerítési lehetőség. Az adaptív alkalmazások vezérlői a biztonsági riasztások biztosítására szolgálnak, ha bármely alkalmazás a biztonságosként megadott módon fut.
+Ha engedélyezte és konfigurálta az adaptív alkalmazásvezérlőket, biztonsági riasztásokat kap, ha az Ön által biztonságosként meghatározottakon kívül bármely alkalmazás fut.
+
+
+## <a name="what-are-the-benefits-of-adaptive-application-controls"></a>Milyen előnyökkel jár az adaptív alkalmazásvezérlők használata?
+
+Az ismerten biztonságos alkalmazások listáinak definiálása és a riasztások generálása bármely más végrehajtásakor több cél elérése is lehet:
+
+- Azonosítsa a potenciális kártevőket, még azokat is, amelyek kimaradnak a kártevőirtó megoldások által
+- A csak licencelt szoftverek használatát előírjákó helyi biztonsági házirendek megfelelőségét javítva
+- Kerülje a régi vagy nem támogatott alkalmazások futtatását
+- A szervezet által tiltott szoftverek megakadályozása
+- A bizalmas adatokhoz hozzáférő alkalmazások felügyeletének növelése
+
+Jelenleg nincsenek kényszerítési lehetőségek. Az adaptív alkalmazásvezérlők célja, hogy biztonsági riasztásokat adjanak, ha az Ön által biztonságosként meghatározottakon kívül bármely alkalmazás fut.
 
 ## <a name="availability"></a>Rendelkezésre állás
 
 |Szempont|Részletek|
 |----|:----|
-|Kiadás állapota:|Általánosan elérhető (GA)|
-|Árképzési|[Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli|
-|Támogatott gépek:|![Igen ](./media/icons/yes-icon.png) , Windows és Linux rendszerű Azure-és nem Azure-beli gépek<br>![Igen ](./media/icons/yes-icon.png) [Azure arc](../azure-arc/index.yml) -gépek|
-|Szükséges szerepkörök és engedélyek:|A **biztonsági olvasó** és **olvasó** szerepkörök a csoportok és az ismert biztonságos alkalmazások listáját egyaránt megtekinthetik<br>A **közreműködő** és a **biztonsági rendszergazdai** szerepkörök egyaránt módosíthatják a csoportokat és az ismert alkalmazások listáját|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Kiadási állapot:|Általánosan elérhető (GA)|
+|Árképzés:|Kiszolgálókhoz [Azure Defender szükséges](defender-for-servers-introduction.md)|
+|Támogatott gépek:|![Igen, Windowst és Linuxot futtató Azure- és nem ](./media/icons/yes-icon.png) Azure-beli gépek<br>![](./media/icons/yes-icon.png) [Igen Azure Arc](../azure-arc/index.yml) gépek|
+|Szükséges szerepkörök és engedélyek:|**A Biztonsági olvasó** **és** az Olvasó szerepkör a csoportokat és az ismerten biztonságos alkalmazások listáját is megtekintheti<br>**A** **közreműködői és biztonsági** rendszergazdai szerepkörök a csoportokat és az ismerten biztonságos alkalmazások listáját is szerkeszthetik|
+|Felhők:|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Országos/szuverén (US Gov, China Gov, Other Gov)|
 |||
 
 
 
-## <a name="enable-application-controls-on-a-group-of-machines"></a>Alkalmazás-vezérlőelemek engedélyezése gépek csoportján
+## <a name="enable-application-controls-on-a-group-of-machines"></a>Alkalmazásvezérlők engedélyezése gépek egy csoportján
 
-Ha a Security Center az előfizetésekben lévő olyan csoportokat azonosított, amelyek folyamatosan hasonló alkalmazásokat futtatnak, akkor a következő javaslattal kell megjelennie: az **adaptív alkalmazás-vezérlők a biztonságos alkalmazások definiálásához engedélyezni** kell a számítógépeken.
+Ha a Security Center olyan gépcsoportokat azonosított az előfizetésében, amelyek következetesen hasonló alkalmazásokat futtatnak, a rendszer a következő javaslatot fogja kérni: A biztonságos alkalmazások meghatározásához szükséges adaptív alkalmazásvezérlőket engedélyezni kell a **gépeken.**
 
-Válassza ki a javaslatot, vagy nyissa meg az adaptív alkalmazás-vezérlők lapot, ahol megtekintheti a javasolt ismert biztonságos alkalmazások és számítógépcsoportok listáját.
+Válassza ki a javaslatot, vagy nyissa meg az adaptív alkalmazásvezérlők lapot a javasolt, ismerten biztonságos alkalmazások és gépcsoportok listájának megtekintéséhez.
 
-1. Nyissa meg az Azure Defender irányítópultját, és a speciális védelem területen válassza az **adaptív alkalmazás-vezérlőelemek** lehetőséget.
+1. Nyissa meg Azure Defender irányítópultot, és a Speciális védelem területen válassza az **Adaptív alkalmazásvezérlők lehetőséget.**
 
-    :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="Az adaptív alkalmazások vezérlőinek megnyitása az Azure irányítópultról" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
+    :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="Adaptív alkalmazásvezérlők megnyitása az Azure-irányítópultról" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
 
-    Megnyílik az **adaptív alkalmazás-vezérlők** lap a virtuális gépekkel a következő lapokon csoportosítva:
+    Megnyílik **az Adaptív alkalmazásvezérlők** lap, és a virtuális gépeket a következő lapokra csoportosítja:
 
-    - **Konfigurált** – olyan gépek csoportjai, amelyek már rendelkeznek meghatározott engedélyezési listával az alkalmazásokban. Az egyes csoportok esetében a konfigurált lap a következőket jeleníti meg:
-        - a csoportban lévő gépek száma
-        - Legutóbbi riasztások
+    - **Konfigurálva** – Olyan gépek csoportjai, amelyek már rendelkezik meghatározott alkalmazás-engedélyezőlistával. A konfigurált lapon minden csoportnál a következő látható:
+        - a csoportban a gépek száma
+        - legutóbbi riasztások
 
-    - **Ajánlott** – azonos alkalmazásokat futtató, és nem konfigurált engedélyezési listával rendelkező gépek csoportjai. Javasoljuk, hogy engedélyezze a csoportok adaptív alkalmazás-vezérlőit.
+    - **Ajánlott** – Olyan gépek csoportjai, amelyek konzisztensen futtatják ugyanezeket az alkalmazásokat, és nincsenek konfigurálva az engedélyezőlistával. Javasoljuk, hogy engedélyezze az adaptív alkalmazásvezérlőket ezekhez a csoportokhoz.
     
       > [!TIP]
-      > Ha a "REVIEWGROUP" előtagú csoportnév jelenik meg, akkor az az alkalmazások részlegesen konzisztens listáját tartalmazó gépeket tartalmaz. Security Center nem lát mintázatot, de javasolja ennek a csoportnak a megtekintését annak ellenőrzéséhez, _hogy tud-_ e manuálisan definiálni valamilyen adaptív alkalmazás-vezérlési [szabályt a csoport adaptív alkalmazás-ellenőrzési szabályának szerkesztése](#edit-a-groups-adaptive-application-controls-rule)című részben leírtak szerint.
+      > Ha a csoport neve "REVIEWGROUP" előtaggal van megjelenik, akkor az alkalmazások részlegesen konzisztens listáját tartalmazó gépeket tartalmaz. Security Center minta nem látható, de javasolja ennek a csoportnak  az áttekintését annak meghatározásához, hogy definiálhat-e manuálisan adaptív alkalmazásvezérlő szabályokat a csoport adaptív alkalmazásvezérlő-szabályának szerkesztését ismertető dokumentumban leírtak [szerint.](#edit-a-groups-adaptive-application-controls-rule)
       >
-      > A csoportba tartozó gépeket más csoportokra is áthelyezheti a [gép áthelyezése az egyik csoportból a másikba](#move-a-machine-from-one-group-to-another)című témakörben leírtak szerint.
+      > A gépeket áthelyezheti ebből a csoportból más csoportokba is a Gép áthelyezése egy csoportból [egy másikba.](#move-a-machine-from-one-group-to-another)
 
-    - **Nincs javaslat** – az alkalmazások meghatározott engedélyezési listáját nem tartalmazó gépek, és amelyek nem támogatják a szolgáltatást. A gép a következő okok miatt lehet ebben a lapon:
-      - Hiányzik egy Log Analytics ügynök
-      - Az Log Analytics ügynök nem küld eseményeket
-      - Ez egy olyan Windows-gép, amelyen már meglévő [AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) -házirend van engedélyezve egy csoportházirend-objektum vagy egy helyi biztonsági házirend segítségével.
+    - **Nincs javaslat** – A meghatározott alkalmazáslista nélküli gépek, amelyek nem támogatják a funkciót. Előfordulhat, hogy a gépe a következő okok miatt van ezen a lapon:
+      - Hiányzik egy Log Analytics-ügynök
+      - A Log Analytics-ügynök nem küld eseményeket
+      - Windows rendszerű gép, amely egy csoportházirend-objektum vagy egy helyi biztonsági házirend által engedélyezett, már meglévő [AppLocker-szabályzattal](/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview)
 
       > [!TIP]
-      > Security Centernek legalább két hétig kell lennie, hogy meghatározza a számítógépek csoportjaira vonatkozó egyedi ajánlásokat. Azok a gépek, amelyek nemrég lettek létrehozva, vagy olyan előfizetésekhez tartoznak, amelyek csak nemrég voltak engedélyezve az Azure Defenderrel, a **No javaslat** lapon jelennek meg.
+      > Security Center legalább két hét adatra van szüksége az egyedi javaslatok gépcsoportonkénti meghatározásához. Azok a gépek, amelyeket nemrég hoztak létre, vagy amelyek csak a Azure Defender-val engedélyezett előfizetésekhez tartoznak, a **Nincs javaslat lapon jelennek** meg.
 
 
-1. Nyissa meg az **ajánlott** lapot. Megjelenik az ajánlott engedélyezési listával rendelkező gépek csoportjai.
+1. Nyissa meg **az Ajánlott** lapot. Megjelenik az ajánlott engedélyezőlistákkal a gépek csoportjai.
 
    ![Ajánlott lap](./media/security-center-adaptive-application/adaptive-application-recommended-tab.png)
 
 1. Válasszon ki egy csoportot. 
 
-1. Az új szabály konfigurálásához tekintse át az **alkalmazás-ellenőrzési szabályok konfigurálása** oldal különböző részeit és a tartalmakat, amelyek egyediek lesznek az adott csoportba tartozó gépeken:
+1. Az új szabály konfigurálásához tekintse  át az Alkalmazásvezérlési szabályok konfigurálása lap különböző szakaszait és tartalmát, amelyek a gépek adott csoportjára egyediek lesznek:
 
    ![Új szabály konfigurálása](./media/security-center-adaptive-application/adaptive-application-create-rule.png)
 
-   1. **Gépek kiválasztása** – alapértelmezés szerint az azonosított csoportban lévő összes gép ki van választva. Törölje a jelölést, hogy eltávolítsa őket ebből a szabályból.
+   1. **Gépek kiválasztása** – Alapértelmezés szerint az azonosított csoportban minden gép ki van választva. Törölje az egyik kijelölését a szabályból való eltávolításukhoz.
    
-   1. **Ajánlott alkalmazások** – tekintse át azon alkalmazások listáját, amelyek a csoportban lévő gépekkel közösek, és azt javasoljuk, hogy futtasson.
+   1. **Ajánlott alkalmazások** – Tekintse át az ebben a csoportban található gépeken gyakran használt alkalmazások listáját, és ajánlott a futtatás.
    
-   1. **További alkalmazások** – tekintse át azon alkalmazások listáját, amelyek vagy ritkábban láthatók a csoporton belüli gépeken, vagy ismertek a kihasználható. A figyelmeztető ikon azt jelzi, hogy egy támadó egy adott alkalmazást egy alkalmazás engedélyezési listájának megkerülésére használhat. Javasoljuk, hogy alaposan tekintse át ezeket az alkalmazásokat.
+   1. **További alkalmazások** – Tekintse át ezt a listát azokról az alkalmazásokról, amelyek ritkábban láthatók a csoportban található gépeken, vagy amelyekről ismert, hogy kihasználhatók. A figyelmeztető ikon azt jelzi, hogy a támadók egy adott alkalmazás segítségével megkerülhetik az alkalmazások engedélyezőlistát. Javasoljuk, hogy alaposan tekintse át ezeket az alkalmazásokat.
 
       > [!TIP]
-      > Mindkét alkalmazás listája magában foglalja az adott alkalmazás bizonyos felhasználókra való korlátozásának lehetőségét. Ha lehetséges, alkalmazza a legalacsonyabb jogosultsági szint elvét.
+      > Mindkét alkalmazáslista lehetővé teszi egy adott alkalmazás adott felhasználókra való korlátozását. Amikor csak lehetséges, a legkisebb jogosultság elvének elfogadása.
       > 
-      > Az alkalmazásokat a közzétevőik definiálják, ha az alkalmazás nem rendelkezik közzétevői információval (előjel nélküli), az adott alkalmazás teljes elérési útjához elérésiút-szabály jön létre.
+      > Az alkalmazásokat a közzétevőik definiálják, ha egy alkalmazás nem tartalmaz közzétevői információt (nincs aláírva), akkor létrejön egy elérésiút-szabály az adott alkalmazás teljes elérési útjával.
 
-   1. A szabály alkalmazásához válassza a **naplózás** lehetőséget. 
-
-
+   1. A szabály alkalmazáshoz válassza a Naplózás **lehetőséget.** 
 
 
-## <a name="edit-a-groups-adaptive-application-controls-rule"></a>Csoport adaptív alkalmazás-ellenőrzési szabályának szerkesztése
 
-Dönthet úgy, hogy egy adott számítógépcsoport engedélyezési listáját a szervezete ismert változásai miatt szerkeszti. 
 
-A számítógépek csoportjára vonatkozó szabályok szerkesztése:
+## <a name="edit-a-groups-adaptive-application-controls-rule"></a>Csoport adaptív alkalmazásvezérlési szabályának szerkesztése
 
-1. Nyissa meg az Azure Defender irányítópultját, és a speciális védelem területen válassza az **adaptív alkalmazás-vezérlőelemek** lehetőséget.
+Dönthet úgy, hogy a szervezet ismert változásai miatt szerkeszti a gépek egy csoportjának engedélyezőlistát. 
 
-1. A **konfigurált** lapon válassza ki a szerkeszteni kívánt szabályt tartalmazó csoportot.
+Gépek egy csoportjára vonatkozó szabályok szerkesztése:
 
-1. Tekintse át az alkalmazás- **vezérlési szabályok konfigurálása** lap különböző szakaszait az [adaptív alkalmazás-vezérlőelemek engedélyezése gépek csoportjára](#enable-application-controls-on-a-group-of-machines)című részben leírtak szerint.
+1. Nyissa meg Azure Defender irányítópultot, és a Speciális védelem területen válassza az **Adaptív alkalmazásvezérlők lehetőséget.**
 
-1. Szükség esetén adjon hozzá egy vagy több egyéni szabályt:
+1. A **Konfigurált lapon** válassza ki azt a csoportot, amely a szerkeszteni kívánt szabályt adja meg.
 
-   1. Válassza a **szabály hozzáadása** elemet.
+1. Tekintse át az  Alkalmazásvezérlési szabályok konfigurálása lap különböző szakaszait az Adaptív alkalmazásvezérlők engedélyezése [gépek egy csoportján szakaszban leírtak szerint.](#enable-application-controls-on-a-group-of-machines)
+
+1. Igény szerint hozzáadhat egy vagy több egyéni szabályt:
+
+   1. Válassza **a Szabály hozzáadása lehetőséget.**
 
       ![Egyéni szabály hozzáadása](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
 
-   1. Ha ismert biztonságos elérési utat definiál, módosítsa a **szabály típusát** "Path" értékre, és adjon meg egy elérési utat. Az elérési úthoz helyettesítő karaktereket is használhat.
+   1. Ha ismert biztonságos útvonalat definiál, módosítsa  a Szabály típusát "Elérési út" típusra, és adjon meg egyetlen elérési utat. Helyettesítő karaktereket is tartalmazhat az elérési útban.
    
       > [!TIP]
-      > Bizonyos esetekben hasznos lehet az elérési út helyettesítő karakterei:
+      > Bizonyos esetekben hasznosak lehetnek az elérési utak helyettesítő karakterei:
       > 
-      > * Egy elérési út végén található helyettesítő karakter használatával engedélyezheti a mappában és az almappákban található összes végrehajtható fájl használatát.
-      > * Egy elérési út közepén található helyettesítő karakter használatával engedélyezhető egy ismert végrehajtható név (például egy ismert végrehajtható fájlt tartalmazó személyes felhasználói mappák neve, automatikusan létrehozott mappanevek stb.).
+      > * Helyettesítő karakter használata az elérési út végén a mappában és az almappákban található összes végrehajtható fájl engedélyezése érdekében.
+      > * Helyettesítő karakter használata az elérési út közepén egy ismert végrehajtható név és egy változó mappanév (például egy ismert végrehajtható fájlt tartalmazó személyes felhasználói mappák, automatikusan létrehozott mappanevek stb.) engedélyezéséhez.
   
-   1. Adja meg az engedélyezett felhasználók és a védett fájltípusok típusát.
+   1. Határozza meg az engedélyezett felhasználókat és a védett fájltípusokat.
 
-   1. Ha befejezte a szabály definiálását, válassza a **Hozzáadás** lehetőséget.
+   1. Ha befejezte a szabály definiálása, válassza a Hozzáadás **lehetőséget.**
 
-1. A módosítások alkalmazásához válassza a **Mentés** lehetőséget.
+1. A módosítások alkalmazáshoz válassza a Mentés **lehetőséget.**
 
 
 ## <a name="review-and-edit-a-groups-settings"></a>Csoport beállításainak áttekintése és szerkesztése
 
-1. A csoport részleteinek és beállításainak megtekintéséhez válassza a **csoport beállításai** lehetőséget.
+1. A csoport részleteinek és beállításainak megtekintéséhez válassza a **Csoportbeállítások lehetőséget.**
 
-    Ez a panel a csoport nevét (amely módosítható), az operációs rendszer típusát, a helyet és az egyéb releváns adatokat jeleníti meg.
+    Ezen a panelen látható a csoport neve (amely módosítható), az operációs rendszer típusa, a hely és egyéb releváns részletek.
 
-    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="A csoport beállításai lap az adaptív alkalmazás-vezérlőkhöz" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
+    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="Az adaptív alkalmazásvezérlők csoportbeállítási oldala" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
 
-1. Szükség esetén módosíthatja a csoport nevét vagy fájltípusának védelmi módjait.
+1. Ha szeretné, módosíthatja a csoport nevét vagy fájltípus-védelmi módjai.
 
-1. Válassza az **alkalmaz** és a **Mentés** lehetőséget.
+1. Válassza az **Alkalmaz és** a **Mentés lehetőséget.**
 
 
 
-## <a name="respond-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>Válaszoljon a "engedélyezési-szabályokra az adaptív alkalmazás-vezérlési szabályzatban" frissítés ajánlott
+## <a name="respond-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>Válasz az adaptív alkalmazásvezérlési szabályzat engedélyezési szabályainak frissítésével kapcsolatos javaslatra
 
-Ez a javaslat akkor jelenik meg, ha Security Center Machine learning azonosítja a korábban nem engedélyezett, potenciálisan legitim viselkedést. Az ajánlás új szabályokat javasol a meglévő definíciók számára a hamis pozitív riasztások számának csökkentése érdekében.
+Ez a javaslat akkor látható, Security Center gépi tanulása olyan potenciálisan megbízható viselkedést azonosít, amely korábban nem volt engedélyezett. A javaslat új szabályokat javasol a meglévő definíciókhoz a téves riasztások számának csökkentése érdekében.
 
-A problémák megoldásához:
+A problémák megoldása:
 
-1. A javaslatok lapon válassza ki az **adaptív alkalmazás-vezérlési házirend engedélyezési-szabályait** , hogy az újonnan azonosított, vélhetően legitim viselkedést tartalmazó csoportok megjelenítéséhez javasolt legyen a javaslat frissítése.
+1. A javaslatok lapon válassza ki az **adaptív** alkalmazásvezérlési szabályzatBan található Engedélyezési szabályok frissítve javaslatokat az újonnan azonosított, potenciálisan megbízható viselkedéssel bíró csoportokhoz.
 
-1. Válassza ki a szerkeszteni kívánt szabályt tartalmazó csoportot.
+1. Válassza ki azt a csoportot, amely a szerkeszteni kívánt szabályt adja meg.
 
-1. Tekintse át az alkalmazás- **vezérlési szabályok konfigurálása** lap különböző szakaszait az [adaptív alkalmazás-vezérlőelemek engedélyezése gépek csoportjára](#enable-application-controls-on-a-group-of-machines)című részben leírtak szerint.
+1. Tekintse át az Alkalmazásvezérlési szabályok konfigurálása lap különböző **szakaszait** az Adaptív alkalmazásvezérlők engedélyezése gépek egy [csoportján szakaszban leírtak szerint.](#enable-application-controls-on-a-group-of-machines)
 
-1. A módosítások alkalmazásához válassza a **naplózás** lehetőséget.
+1. A módosítások alkalmazáshoz válassza a Naplózás **lehetőséget.**
 
 
 
 
 ## <a name="audit-alerts-and-violations"></a>Riasztások és szabálysértések naplózása
 
-1. Nyissa meg az Azure Defender irányítópultját, és a speciális védelem területen válassza az **adaptív alkalmazás-vezérlőelemek** lehetőséget.
+1. Nyissa meg Azure Defender irányítópultot, és a Speciális védelem területen válassza az **Adaptív alkalmazásvezérlők lehetőséget.**
 
-1. Ha olyan gépeket szeretne látni, amelyeken a legutóbbi riasztások vannak, tekintse át a **configured (konfigurált** ) lapon felsorolt csoportokat.
+1. A legutóbbi riasztásokat figyelő gépekkel kapcsolatos csoportokért tekintse át a Konfigurált lapon felsorolt **csoportokat.**
 
 1. A további vizsgálathoz válasszon ki egy csoportot.
 
    ![Legutóbbi riasztások](./media/security-center-adaptive-application/recent-alerts.png)
 
-1. További részletekért és az érintett gépek listájáért válassza ki a riasztást.
+1. További részletekért és az érintett gépek listájáért válasszon ki egy riasztást.
 
-    A riasztások lap a riasztások további részleteit jeleníti meg, és a **lépéseket** a fenyegetés enyhítésére vonatkozó javaslatokkal ismerteti.
+    A riasztások lap a riasztások további részleteit jeleníti meg, és **a** Művelet művelet hivatkozását tartalmazza, amely a fenyegetés elhárítására vonatkozó javaslatokat tartalmaz.
 
-    :::image type="content" source="media/security-center-adaptive-application/adaptive-application-alerts-start-time.png" alt-text="Az Adaptive Application Controls riasztások indítási időpontja a ":::
+    :::image type="content" source="media/security-center-adaptive-application/adaptive-application-alerts-start-time.png" alt-text="Az adaptív alkalmazásvezérlési riasztások kezdési ideje a következő: ":::
 
     > [!NOTE]
-    > Az adaptív alkalmazás-vezérlőelemek tizenkét óránként egyszer kiszámítják az eseményeket. A riasztások lapon látható "tevékenység kezdési időpontja" az az idő, amikor az adaptív alkalmazások vezérlői létrehozták a riasztást, **nem** pedig a gyanús folyamat aktív időpontját.
+    > Az adaptív alkalmazásvezérlők 12 óránként számítják ki az eseményeket. A riasztások oldalán látható "tevékenység kezdési ideje" az az idő,  amikor az adaptív alkalmazásvezérlők létrehozták a riasztást, nem pedig az az időpont, amikor a gyanús folyamat aktív volt.
 
 
 ## <a name="move-a-machine-from-one-group-to-another"></a>Gép áthelyezése egyik csoportból a másikba
 
-Ha a gépet az egyik csoportból a másikba helyezi át, a rendszer az alkalmazás-vezérlési házirendet annak a csoportnak a beállításaira módosítja, amelyre áthelyezte. A számítógépeket egy konfigurált csoportból nem konfigurált csoportba is áthelyezheti, ezzel eltávolítja a gépre alkalmazott összes alkalmazás-ellenőrzési szabályt.
+Amikor áthelyez egy gépet az egyik csoportból a másikba, az arra alkalmazott alkalmazásvezérlési szabályzat annak a csoportnak a beállításaira módosul, amelybe áthelyezte. A gépeket át is helyezze egy konfigurált csoportból egy nem konfigurált csoportba, ezzel eltávolítja a gépre alkalmazott alkalmazásvezérlési szabályokat.
 
-1. Nyissa meg az Azure Defender irányítópultját, és a speciális védelem területen válassza az **adaptív alkalmazás-vezérlőelemek** lehetőséget.
+1. Nyissa meg Azure Defender irányítópultot, és a Speciális védelem területen válassza az **Adaptív alkalmazásvezérlők lehetőséget.**
 
-1. Az **adaptív alkalmazás vezérlői** lap **konfigurált** lapján válassza ki az áthelyezni kívánt gépet tartalmazó csoportot.
+1. Az **Adaptív alkalmazásvezérlők** lapon, a **Konfigurálva** lapon válassza ki az áthelyezni kívánt gépet tartalmazó csoportot.
 
-1. Nyissa meg a  **konfigurált gépek** listáját.
+1. Nyissa meg a Konfigurált **gépek listáját.**
 
-1. Nyissa meg a gép menüjét a sor végén található három pontról, majd kattintson az **Áthelyezés** elemre. Megnyílik a **gép áthelyezése másik csoportba** panel.
+1. Nyissa meg a számítógép menüjét a sor végén található három pontból, majd válassza az Áthelyezés **lehetőséget.** Megnyílik **a Gép áthelyezése másik csoportba** panel.
 
-1. Válassza ki a célcsoportot, és válassza a **gép áthelyezése** lehetőséget.
+1. Válassza ki a célcsoportot, majd válassza a **Gép áthelyezése lehetőséget.**
 
 1. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
@@ -215,35 +215,42 @@ Ha a gépet az egyik csoportból a másikba helyezi át, a rendszer az alkalmaz�
 
 
 
-## <a name="manage-application-controls-via-the-rest-api"></a>Alkalmazás-vezérlőelemek kezelése a REST API használatával 
+## <a name="manage-application-controls-via-the-rest-api"></a>Alkalmazásvezérlők kezelése a REST API 
 
-Az adaptív alkalmazások programozott módon felügyeletéhez használja a REST API. 
+Az adaptív alkalmazásvezérlők programon keresztüli kezeléséhez használja a REST API. 
 
-A megfelelő API-dokumentáció a [Security Center API-docs adaptív alkalmazás-vezérlők szakaszában](/rest/api/securitycenter/adaptiveapplicationcontrols)érhető el.
+A megfelelő API-dokumentáció az API-dokumentáció adaptív alkalmazásvezérlőkről Security Center szakaszában [érhető el.](/rest/api/securitycenter/adaptiveapplicationcontrols)
 
-A REST API elérhető függvények:
+Néhány függvény, amely elérhető a REST API:
 
-* A **lista** lekéri az összes csoportos javaslatát, és egy olyan JSON-t biztosít, amely minden csoporthoz tartalmaz egy objektumot.
+* **A Lista** lekéri az összes csoportra vonatkozó javaslatot, és egy JSON-t biztosít az egyes csoportokhoz egy-egy objektummal.
 
-* A **Get** beolvassa a JSON-t a teljes körű ajánlási adattal (azaz a gépek listáját, a közzétevő/elérési utak szabályait stb.).
+* **Lekéri** a JSON-t a teljes javaslatadatokkal (vagyis a gépek listájával, közzétevői/elérésiút-szabályokkal stb.).
 
-* A **put** konfigurálja a szabályt (a kérés törzsének használatával a **beolvasott JSON-t használja** ).
+* **A Put** konfigurálja a szabályt (használja azt a JSON-t, amely a kérés törzseként a **Get** használatával kérhető le).
  
    > [!IMPORTANT]
-   > A **put** függvény kevesebb paramétert vár, mint amennyit a Get parancs által visszaadott JSON tartalmaz.
+   > A **Put** függvény kevesebb paramétert vár, mint a Get parancs által visszaadott JSON.
    >
-   > Távolítsa el a következő tulajdonságokat, mielőtt a JSON-t használja a Put kérelemben: recommendationStatus, configurationStatus, Issues, Location és sourceSystem.
+   > Távolítsa el a következő tulajdonságokat, mielőtt a JSON-t használná a Put kérésben: recommendationStatus, configurationStatus, issues, location és sourceSystem.
 
 
-## <a name="faq---adaptive-application-controls"></a>Gyakori kérdések – adaptív alkalmazások vezérlői
+## <a name="faq---adaptive-application-controls"></a>Gyakori kérdések – Adaptív alkalmazásvezérlők
 
-### <a name="are-there-any-options-to-enforce-the-application-controls"></a>Van lehetőség az alkalmazás vezérlőinek betartatására?
-Jelenleg nem érhető el kényszerítési lehetőség. Az adaptív alkalmazások vezérlői a **biztonsági riasztások** biztosítására szolgálnak, ha bármely alkalmazás a biztonságosként megadott módon fut. Számos előnnyel rendelkeznek ([Milyen előnyökkel jár az adaptív alkalmazások vezérlése?](#what-are-the-benefits-of-adaptive-application-controls)), és az ezen az oldalon látható módon rendkívül testreszabható.
+- [Van lehetőség az alkalmazásvezérlők kényszerítésében?](#are-there-any-options-to-enforce-the-application-controls)
+- [Miért látom a Qualys-alkalmazást az ajánlott alkalmazásokban?](#why-do-i-see-a-qualys-app-in-my-recommendeded-applications)
 
- 
+### <a name="are-there-any-options-to-enforce-the-application-controls"></a>Van lehetőség az alkalmazásvezérlők kényszerítésében?
+Jelenleg nincsenek kényszerítési lehetőségek. Az adaptív alkalmazásvezérlők  célja, hogy biztonsági riasztásokat adjanak, ha az Ön által biztonságosként meghatározottakon kívül bármely alkalmazás fut. Számos előnyt kínálnak (mik az adaptív alkalmazásvezérlők[előnyei?),](#what-are-the-benefits-of-adaptive-application-controls)és rendkívül testreszabhatók, ahogy ezen az oldalon is látható.
+
+### <a name="why-do-i-see-a-qualys-app-in-my-recommendeded-applications"></a>Miért látom a Qualys-alkalmazást az ajánlott alkalmazásokban?
+[Azure Defender a biztonsági rések](defender-for-servers-introduction.md) további költségek nélkül történő keresését is magában foglalja a gépeken. Nincs szükség Qualys-licencre vagy akár Qualys-fiókra – minden problémamentesen kezelhető a Security Center. A vizsgálat részleteiért és a telepítésével kapcsolatos utasításokért lásd a Defender integrált sebezhetőségi [felmérési megoldását.](deploy-vulnerability-assessment-vm.md)
+
+Annak érdekében, hogy a képolvasó üzembe helyezése Security Center ne generáljon riasztásokat, az adaptív alkalmazásvezérlők javasolt engedélyezése lista tartalmazza az összes gép olvasóját. 
+
 
 ## <a name="next-steps"></a>Következő lépések
-Ebből a dokumentumból megtudhatta, hogyan használhatja az adaptív alkalmazások vezérlését Azure Security Center az Azure-beli és nem Azure-alapú gépeken futó alkalmazások engedélyezési listájainak definiálásához. Ha többet szeretne megtudni Security Center más felhőalapú munkaterhelés-védelmi funkcióival kapcsolatban, tekintse meg a következőt:
+Ebben a dokumentumban megtanulta, hogyan használhatja az adaptív alkalmazásvezérlést a Azure Security Center azure-beli és nem Azure-beli gépeken futó alkalmazások engedélyező listáinak meghatározásához. A felhőbeli számítási feladatok egyéb Security Center egyes funkcióival kapcsolatos további információkért lásd:
 
 * [Az igény szerinti (JIT) virtuálisgép-hozzáférés ismertetése](just-in-time-explained.md)
-* [Az Azure Kubernetes-fürtök védelme](defender-for-kubernetes-introduction.md)
+* [Az Azure Kubernetes-fürtök biztonságossá tétele](defender-for-kubernetes-introduction.md)

@@ -3,12 +3,13 @@ title: Virtuálisgép-bővítmény engedélyezése a Azure PowerShell
 description: Ez a cikk bemutatja, hogyan helyezhet üzembe virtuálisgép-bővítményeket Azure Arc hibridfelhő-környezetekben futó, engedélyezett kiszolgálókon az Azure PowerShell.
 ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0cb854c9745e8bd7eef35c6f6467c284a6327349
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d5723655b61040c7ddf99e5f11488fff379d96a0
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388584"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832877"
 ---
 # <a name="enable-azure-vm-extensions-using-azure-powershell"></a>Azure-beli virtuálisgép-bővítmények engedélyezése Azure PowerShell
 
@@ -97,7 +98,7 @@ custom  westus2   CustomScriptExtension Succeeded
 
 ## <a name="remove-an-installed-extension"></a>Telepített bővítmény eltávolítása
 
-Ha el szeretne távolítani egy telepített virtuálisgép-bővítményt az Arc-kompatibilis kiszolgálón, használja a [Remove-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/remove-azconnectedmachineextension) paramétert a `-Name` és `-MachineName` `-ResourceGroupName` paraméterekkel.
+Ha el szeretne távolítani egy telepített virtuálisgép-bővítményt az Arc-kompatibilis kiszolgálón, használja a [Remove-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/remove-azconnectedmachineextension) paramétert a , és `-Name` `-MachineName` `-ResourceGroupName` paraméterrel.
 
 A Linuxhoz használt Log Analytics virtuálisgép-bővítmény eltávolításához például futtassa a következő parancsot:
 

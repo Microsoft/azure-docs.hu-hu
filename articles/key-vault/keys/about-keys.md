@@ -1,6 +1,6 @@
 ---
-title: A kulcsok ismertetése – Azure Key Vault
-description: A kulcsok Azure Key Vault REST-felületének és fejlesztői adatainak áttekintése.
+title: A kulcsokról – Azure Key Vault
+description: A rest Azure Key Vault és a kulcsok fejlesztői részleteinek áttekintése.
 services: key-vault
 author: amitbapat
 manager: msmbaldwin
@@ -10,80 +10,80 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 02/17/2021
 ms.author: ambapat
-ms.openlocfilehash: 3c4bb61217c7b972220a55a4837c2b3db980f2ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9565095a40052a940d7a7b31f0fd3a27e0e75c2
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101095992"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814995"
 ---
 # <a name="about-keys"></a>Információ a kulcsokról
 
-Azure Key Vault két típusú erőforrást biztosít a titkosítási kulcsok tárolásához és kezeléséhez. A tárolók támogatják a szoftveres védelemmel ellátott és HSM-védelemmel ellátott (hardveres biztonsági modul) kulcsokat. A felügyelt HSM csak a HSM-védelemmel ellátott kulcsokat támogatják. 
+Azure Key Vault titkosítási kulcsok tárolására és kezelésére kétféle erőforrást kínál. A tárolók támogatják a szoftveres és A HSM által védett (hardveres biztonsági modul) kulcsokat. A felügyelt HSM-ek csak a HSM által védett kulcsokat támogatják. 
 
-|Erőforrás típusa|Kulcsfontosságú védelmi módszerek|Adatsík-végpont alap URL-címe|
+|Erőforrás típusa|Fő védelmi módszerek|Adatsík végpontjának alap URL-címe|
 |--|--|--|
-| **Kulcstartók** | Szoftveres védelemmel ellátott<br/><br/>és<br/><br/>HSM által védett (prémium SKU-val)</li></ul> | https://{Vault-Name}. Vault. Azure. net |
-| * * Felügyelt HSM * * | HSM által védett | https://{HSM-Name}. managedhsm. Azure. net |
+| **Kulcstartók** | Szoftveres védelem<br/><br/>és<br/><br/>HSM által védett (prémium termékváltozatú)</li></ul> | https://{tároló neve}.vault.azure.net |
+| **Felügyelt HSM-ek** | HSM által védett | https://{hsm-name}.managedhsm.azure.net |
 ||||
 
-- **Tárolók – a** tárolók alacsony költséghatékonyságú, könnyen telepíthető, több-bérlős, zóna-rugalmas (ahol elérhető), nagy teljesítményű kulcskezelő megoldás, amely a leggyakoribb felhőalapú alkalmazási forgatókönyvekhez megfelelő.
-- A **felügyelt HSM** által FELÜGYELt HSM egybérlős, rugalmas (ahol elérhető), magasan elérhető HSM biztosít a titkosítási kulcsok tárolásához és kezeléséhez. A leginkább megfelelő alkalmazások és használati forgatókönyvek esetében, amelyek nagy értékű kulcsokat kezelnek. Emellett segít a legszigorúbb biztonsági, megfelelőségi és szabályozási követelményeknek való megfelelésben. 
+- **Tárolók** – A tárolók alacsony költségű, könnyen üzembe helyezhető, több-bérlős, zónatitkos (ha elérhető) kulcskezelő megoldást biztosítanak, amely a leggyakoribb felhőalkalmazás-forgatókönyvekhez alkalmas.
+- **Felügyelt HSM-ek** – A Managed HSM egybérlős, zónaredőképes (ha elérhető) HSM-eket biztosít a titkosítási kulcsok tárolására és kezelésére. Leginkább a nagy értékű kulcsokat kezelő alkalmazásokhoz és használati forgatókönyvekhez alkalmas. Emellett segít megfelelni a legszigorúbb biztonsági, megfelelőségi és szabályozási követelményeknek. 
 
 > [!NOTE]
-> A tárolók lehetővé teszik a titkosítási kulcsok mellett különféle típusú objektumok, például a titkok, a tanúsítványok és a Storage-fiókok kulcsának tárolását és kezelését is.
+> A tárolók a kriptográfiai kulcsok mellett számos objektumtípus, például titkos kulcsok, tanúsítványok és tárfiókkulcsok tárolását és kezelését is lehetővé teszik.
 
-A Key Vaultban található titkosítási kulcsok JSON webkulcs [JWK] objektumként jelennek meg. A JavaScript Object Notation (JSON) és a JavaScript Object aláírási és titkosítási (JOSE) specifikációi a következők:
+A titkosítási kulcsok Key Vault [JWK] JSON-webkulcs képviselik. A JavaScript Object Notation (JSON) és a JavaScript Object Signing and Encryption (SSL) specifikációi a következőek:
 
 -   [JSON-webkulcs (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
--   [JSON webes titkosítás (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
+-   [JSON Web Encryption (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
 -   [JSON webes algoritmusok (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
--   [JSON webes aláírás (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature) 
+-   [JSON webaláírás (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature) 
 
-Az alap JWK-/JWA-specifikációk a Azure Key Vault és a felügyelt HSM-implementációk egyedi alaptípusának engedélyezésére is kiterjednek. 
+Az alap JWK-/JWA-specifikációk is ki vannak bővülve, hogy az egyedi kulcstípusokat Azure Key Vault managed HSM-implementációkhoz. 
 
-HSM-védelemmel ellátott kulcsok (más néven HSM-kulcsok) feldolgozása egy HSM-ben (hardveres biztonsági modul) történik, és mindig az HSM védelmi határa marad. 
+A HSM által védett kulcsokat (más néven HSM-kulcsokat) egy HSM (hardveres biztonsági modul) feldolgoz, és mindig HSM-védelmi határvonalon marad. 
 
-- A tárolók az **FIPS 140-2 2. szintű** hitelesített HSM védik a HSM-kulcsok a megosztott HSM háttér-infrastruktúrában való ellátásához. 
-- A Managed HSM **FIPS 140-2 3. szintű** hitelesített HSM-modult használ a kulcsok védeleméhez. Mindegyik HSM-készlet egy elkülönített, egybérlős példány, amely saját [biztonsági tartománnyal](../managed-hsm/security-domain.md) rendelkezik, és teljes titkosítási elkülönítést biztosít minden más HSM, amely azonos hardveres infrastruktúrát használ.
+- A tárolók **a FIPS 140-2 2.** szintje szerint ellenőrzött HSM-eket használják a megosztott HSM-háttérinfra infrastruktúrában található HSM-kulcsok védelméhez. 
+- A Managed HSM **FIPS 140-2 Level 3** ellenőrzött HSM-modulokat használ a kulcsok védelméhez. Minden HSM-készlet egy elkülönített egybérlős példány, saját biztonsági tartománnyal, amely teljes kriptográfiai elkülönítést biztosít az ugyanazon hardverinfrafra infrastruktúrán osztozó többi HSM-től. [](../managed-hsm/security-domain.md)
 
-Ezek a kulcsok egyetlen bérlős HSM-készletekben vannak védve. Az RSA, az EC és a szimmetrikus kulcs importálható puha formában, vagy egy támogatott HSM-eszközről is exportálható. A HSM-készletekben is létrehozhat kulcsokat. Amikor HSM-kulcsokat importál a [BYOK (saját kulcs használata) specifikációban](../keys/byok-specification.md)ismertetett módszerrel, az lehetővé teszi a biztonságos szállítási kulcsra vonatkozó anyagok kezelését a felügyelt HSM-készletekbe. 
+Ezek a kulcsok egybérlős HSM-készletekben vannak védve. AZ RSA-, EC- és szimmetrikus kulcsokat importálhatja soft formával vagy egy támogatott HSM-eszközről való exportálással. HSM-készletekben is létrehozhat kulcsokat. Ha a [BYOK (saját](../keys/byok-specification.md)kulcs használata) specifikációban leírt módszerrel importál HSM-kulcsokat, az lehetővé teszi a biztonságos szállítási kulcsanyagokat a Managed HSM-készletekbe. 
 
-A földrajzi határokra vonatkozó további információkért lásd: [Microsoft Azure Adatvédelmi központ](https://azure.microsoft.com/support/trust-center/privacy/)
+A földrajzi határokkal kapcsolatos további információkért lásd: Microsoft Azure [Trust Center](https://azure.microsoft.com/support/trust-center/privacy/)
 
-## <a name="key-types-and-protection-methods"></a>A kulcsok típusai és védelmi módszerei
+## <a name="key-types-and-protection-methods"></a>Kulcstípusok és védelmi módszerek
 
-Key Vault támogatja az RSA-és az EK-kulcsokat. A felügyelt HSM támogatja az RSA, az EC és a szimmetrikus kulcsokat. 
+Key Vault TÁMOGATJA az RSA- és EC-kulcsokat. A Managed HSM támogatja az RSA-, EC- és szimmetrikus kulcsokat. 
 
 ### <a name="hsm-protected-keys"></a>HSM-védett kulcsok
 
-|Kulcs típusa|Tárolók (csak prémium SKU)|Felügyelt HSM|
+|Kulcs típusa|Tárolók (csak Prémium termékváltozat)|Felügyelt HSM-ek|
 |--|--|--|
-|**EC-HSM**: elliptikus görbe kulcsa | Támogatott | Támogatott|
-|**RSA-HSM**: RSA-kulcs|Támogatott|Támogatott|
-|**TOT – HSM**: szimmetrikus kulcs|Nem támogatott|Támogatott|
+|**EC-HSM:** Elliptikus görbe kulcs | Támogatott | Támogatott|
+|**RSA-HSM:** RSA-kulcs|Támogatott|Támogatott|
+|**oct-HSM:** Szimmetrikus kulcs|Nem támogatott|Támogatott|
 |||
 
-### <a name="software-protected-keys"></a>Szoftveres védelemmel ellátott kulcsok
+### <a name="software-protected-keys"></a>Szoftveres védelem alatt található kulcsok
 
-|Kulcs típusa|Kulcstartók|Felügyelt HSM|
+|Kulcs típusa|Kulcstartók|Felügyelt HSM-ek|
 |--|--|--|
-**RSA**: "szoftveres védelemmel ellátott" RSA-kulcs|Támogatott|Nem támogatott
-**EC**: "szoftveres védelemmel ellátott" elliptikus görbe kulcsa|Támogatott|Nem támogatott
+**RSA:**"Szoftveres védelem" RSA-kulcs|Támogatott|Nem támogatott
+**EC:**"Szoftveres védelem alatt" Három ponttal védett görbe kulcs|Támogatott|Nem támogatott
 |||
 
 ### <a name="compliance"></a>Megfelelőség
 
-|Kulcs típusa és célhelye|Megfelelőség|
+|Kulcs típusa és célja|Megfelelőség|
 |---|---|
-|Szoftveres védelemmel ellátott kulcsok a tárolókban (prémium & standard SKU-ban) | FIPS 140-2 1. szint|
-|HSM által védett kulcsok a tárolókban (prémium SKU)| 2. szintű FIPS 140-2|
-|HSM által védett kulcsok a felügyelt HSM-ben|FIPS 140-2 3. szint|
+|Szoftveres védelem által védett kulcsok tárolókban (Prémium & Standard SKUs) | FIPS 140-2 1. szint|
+|HSM által védett kulcsok tárolókban (prémium termékváltozat)| 2. szintű FIPS 140-2|
+|HSM által védett kulcsok a Managed HSM-ban|FIPS 140-2, 3. szint|
 |||
 
 
 
-A kulcs típusait, algoritmusait, műveleteit, attribútumait és címkéit részletesen lásd: [kulcshasználat, algoritmusok és műveletek](about-keys-details.md) .
+Az [egyes kulcstípusokkal,](about-keys-details.md) algoritmusokkal, műveletekkel, attribútumokkal és címkékkel kapcsolatos részletekért lásd: Kulcstípusok, algoritmusok és műveletek.
 
 ## <a name="next-steps"></a>Következő lépések
 - [Tudnivalók a Key Vaultról](../general/overview.md)

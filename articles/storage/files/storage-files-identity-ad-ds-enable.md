@@ -7,41 +7,41 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: f38911b1fffb083902ba67e262141b6780a43ada
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 7187563824fd7e371d6352510b9ab71c920fc1ef
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/21/2021
-ms.locfileid: "107817845"
+ms.locfileid: "107835109"
 ---
-# <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Első rész: AD DS hitelesítés engedélyezése az Azure-fájlmegosztások számára 
+# <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Első rész: AD DS azure-fájlmegosztások hitelesítésének engedélyezése 
 
 A Active Directory Domain Services (AD DS) hitelesítés engedélyezése előtt olvassa el az áttekintő cikket a támogatott forgatókönyvek és követelmények áttekintéséhez. [](storage-files-identity-auth-active-directory-enable.md)
 
-Ez a cikk a tárfiókon Active Directory Domain Services (AD DS) hitelesítés engedélyezéséhez szükséges folyamatot ismerteti. A funkció engedélyezése után úgy kell konfigurálnia a tárfiókot és AD DS, hogy AD DS hitelesítő adatokat használjanak az Azure-fájlmegosztásban való hitelesítéshez. Az Azure AD DS megosztások SMB-protokollon keresztüli hitelesítésének engedélyezéséhez regisztrálnia kell a tárfiókot az AD DS-ban, majd be kell állítania a szükséges tartománytulajdonságokat a tárfiókon.
+Ez a cikk a tárfiókon Active Directory Domain Services (AD DS) hitelesítés engedélyezésének folyamatát ismerteti. A funkció engedélyezése után úgy kell konfigurálnia a tárfiókot és a AD DS, hogy AD DS hitelesítő adatokat használjanak az Azure-fájlmegosztásban való hitelesítéshez. Az Azure AD DS megosztások SMB-protokollon keresztüli hitelesítésének engedélyezéséhez regisztrálnia kell a tárfiókot az AD DS-ban, majd be kell állítania a szükséges tartománytulajdonságokat a tárfiókon.
 
-Ha regisztrálnia kell a tárfiókot a AD DS, hozzon létre egy fiókot, amely a tárfiókban AD DS. Ez a folyamat olyan, mintha egy helyszíni Windows-fájlkiszolgálót képviselő fiókot hoztunk volna létre a AD DS. Ha a funkció engedélyezve van a tárfiókon, az a fiókban lévő összes új és meglévő fájlmegosztásra érvényes lesz.
+Ha regisztrálnia kell a tárfiókot a AD DS, hozzon létre egy fiókot, amely azt jelképez a AD DS. Ez a folyamat olyan, mintha egy helyszíni Windows-fájlkiszolgálót képviselő fiókot hoz létre a AD DS. Ha a szolgáltatás engedélyezve van a tárfiókon, az a fiókban lévő összes új és meglévő fájlmegosztásra vonatkozik.
 
 ## <a name="option-one-recommended-use-azfileshybrid-powershell-module"></a>Első lehetőség (ajánlott): Az AzFilesHybrid PowerShell-modul használata
 
-Az AzFilesHybrid PowerShell-modul parancsmagja biztosítja a szükséges módosításokat, és engedélyezi a funkciót. Mivel a parancsmagok egyes részei együttműködnek a helyszíni AD DS-sel, elmagyarázzuk a parancsmagok műveletét, így megállapíthatja, hogy a módosítások megfelelnek-e a megfelelőségi és biztonsági szabályzatának, és biztosíthatja a megfelelő engedélyeket a parancsmagok végrehajtásához. Bár javasoljuk az AzFilesHybrid modul használatát, ha ezt nem tudja megtenni, a lépéseket azért biztosítjuk, hogy manuálisan is végrehajtsa őket.
+Az AzFilesHybrid PowerShell-modul parancsmagja biztosítja a szükséges módosításokat, és engedélyezi a funkciót. Mivel a parancsmagok egyes részei együttműködnek a helyszíni AD DS-sel, elmagyarázzuk a parancsmagok műveletét, így megállapíthatja, hogy a módosítások megfelelnek-e a megfelelőségi és biztonsági szabályzatának, és biztosíthatja a megfelelő engedélyeket a parancsmagok végrehajtásához. Bár javasoljuk az AzFilesHybrid modul használatát, ha ezt nem tudja megtenni, meg kell adnia a lépéseket, hogy manuálisan is végrehajtsa őket.
 
 ### <a name="download-azfileshybrid-module"></a>Az AzFilesHybrid modul letöltése
 
-- [Töltse le és csomagolja ki az AzFilesHybrid modult (GA modul: v0.2.0+)](https://github.com/Azure-Samples/azure-files-samples/releases) Vegye figyelembe, hogy az AES 256 Kerberos-titkosítás a 0.2.2-es vagy magasabb verziókban támogatott. Ha a funkciót az AzFilesHybrid 0.2.2-es verziónál korábbi verziójával engedélyezte, és frissíteni szeretne az AES 256 Kerberos-titkosítás támogatásához, tekintse meg ezt a [cikket.](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption) 
-- Telepítse és hajtsa végre a modult egy olyan eszközön, amely tartományhoz csatlakozik a helyszíni AD DS AD DS-hoz egy olyan hitelesítő adatokkal, amelyek engedéllyel rendelkezik egy szolgáltatás-bejelentkezési fiók vagy számítógépfiók létrehozásához a cél AD-ben.
+- [Töltse le és csomagolja ki az AzFilesHybrid modult (GA modul: v0.2.0+)](https://github.com/Azure-Samples/azure-files-samples/releases) Vegye figyelembe, hogy az AES 256 Kerberos titkosítás a 0.2.2-es vagy magasabb verziókban támogatott. Ha a 0.2.2-es verziónál régebbi AzFilesHybrid verzióval engedélyezte a funkciót, és frissíteni szeretne az AES 256 Kerberos titkosítás támogatásához, tekintse meg ezt a [cikket.](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption) 
+- Telepítse és hajtsa végre a modult egy olyan eszközön, amely tartományhoz csatlakozik a helyszíni AD DS AD DS-hoz olyan hitelesítő adatokkal, amelyek engedéllyel rendelkezik egy szolgáltatás-bejelentkezési fiók vagy egy számítógépfiók létrehozásához a cél AD-ben.
 -  Futtassa a szkriptet egy helyszíni AD DS, amely szinkronizálva van az Azure AD-be. A helyszíni AD DS hitelesítő adatoknak rendelkezniük kell a tárfiók tulajdonosával vagy a közreműködő Azure-szerepkör engedélyével.
 
-### <a name="run-join-azstorageaccountforauth"></a>Run Join-AzStorageAccountForAuth
+### <a name="run-join-azstorageaccountforauth"></a>Futtassa Join-AzStorageAccountForAuth
 
-A parancsmag az offline tartományhoz való csatlakozásnak megfelelőt hajt végre `Join-AzStorageAccountForAuth` a megadott tárfiók nevében. A szkript a parancsmag használatával hoz létre [számítógépfiókot](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) az AD-tartományban. Ha bármilyen okból nem használhat számítógépfiókot, módosíthatja a parancsfájlt, hogy ehelyett [szolgáltatás-bejelentkezési fiókot hozzon](/windows/win32/ad/about-service-logon-accounts) létre. Ha úgy dönt, hogy manuálisan futtatja a parancsot, válassza ki a környezetének leginkább megfelelő fiókot.
+A parancsmag az offline tartományhoz való csatlakozásnak megfelelő műveletet hajt végre `Join-AzStorageAccountForAuth` a megadott tárfiók nevében. A szkript a parancsmag használatával hoz létre [számítógépfiókot](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) az AD-tartományban. Ha bármilyen okból nem használhat számítógépfiókot, módosíthatja a parancsfájlt, hogy ehelyett szolgáltatás-bejelentkezési [fiókot hozzon](/windows/win32/ad/about-service-logon-accounts) létre. Ha úgy dönt, hogy manuálisan futtatja a parancsot, válassza ki a környezetének leginkább megfelelő fiókot.
 
-A AD DS által létrehozott fiók jelöli a tárfiókot. Ha a AD DS-fiókot a jelszó lejáratát kikényszerő szervezeti egységben (OU) hozták létre, a jelszót a jelszó maximális kora előtt kell frissítenie. Ha nem frissíti a fiók jelszavát az ezen dátum előtt, hitelesítési hibákat fog okozhatni az Azure-fájlmegosztások elérésekor. A jelszó frissítésének mikéntjére a fiók jelszavának [frissítésével AD DS olvashat.](storage-files-identity-ad-ds-update-password.md)
+A AD DS által létrehozott fiók jelöli a tárfiókot. Ha a AD DS-fiókot a jelszó lejáratát kikényszerő szervezeti egységben (OU) hozták létre, a jelszót a jelszó maximális kora előtt kell frissítenie. A fiók jelszavának ezen dátum előtti frissítése hitelesítési hibákat okozhat az Azure-fájlmegosztások elérésekor. A jelszó frissítésének mikéntjére a fiókjelszó [frissítését AD DS olvashat.](storage-files-identity-ad-ds-update-password.md)
 
-A helyőrzőket cserélje le a saját értékeire az alábbi paraméterekben, mielőtt végrehajtja őket a PowerShellben.
+Cserélje le a helyőrző értékeket a saját értékeire az alábbi paraméterekben, mielőtt végrehajtja őket a PowerShellben.
 > [!IMPORTANT]
-> A tartományhoz való csatlakozás parancsmagja létrehoz egy AD-fiókot, amely a tárfiókot (fájlmegosztást) képviseli az AD-ben. Dönthet úgy, hogy számítógépfiókként vagy szolgáltatás bejelentkezési fiókként regisztrál, a részletekért tekintse meg a [gyakori](./storage-files-faq.md#security-authentication-and-access-control) kérdéseket. A számítógépfiókok esetében a jelszó alapértelmezett lejárati ideje az AD-ben 30 nap. Hasonlóképpen, a szolgáltatás bejelentkezési fiókjának alapértelmezett jelszó-lejárati ideje az AD-tartományon vagy szervezeti egységen (OU) lehet beállítva.
-> Javasoljuk, hogy mindkét fióktípus esetében ellenőrizze az AD-környezetben [](storage-files-identity-ad-ds-update-password.md) konfigurált jelszó lejárati életkorát, és tervezze meg az AD-fiók tárfiók-identitása jelszavának frissítését a jelszó maximális kora előtt. Érdemes lehet új AD szervezeti egységet [(OU)](/powershell/module/addsadministration/new-adorganizationalunit) létrehozni az AD-ben, és ennek megfelelően letiltani a jelszó-lejárati szabályzatot a számítógépfiókok vagy a szolgáltatás bejelentkezési fiókjain. [](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)) 
+> A tartományhoz való csatlakozás parancsmagja létrehoz egy AD-fiókot, amely a tárfiókot (fájlmegosztást) képviseli az AD-ben. Dönthet úgy, hogy számítógépfiókként vagy szolgáltatás bejelentkezési fiókként regisztrál, a részletekért tekintse meg a [gyakori](./storage-files-faq.md#security-authentication-and-access-control) kérdéseket. A számítógépfiókok esetében a jelszó alapértelmezett lejárati ideje az AD-ben 30 nap. Hasonlóképpen, előfordulhat, hogy a szolgáltatás bejelentkezési fiókjához az AD-tartomány vagy szervezeti egység (OU) jelszó-lejárati ideje van beállítva.
+> Javasoljuk, hogy mindkét fióktípus esetében ellenőrizze az AD-környezetben [](storage-files-identity-ad-ds-update-password.md) konfigurált jelszó lejárati életkorát, és a jelszó maximális kora előtt tervezze meg frissíteni az AD-fiók tárfiók-identitásának jelszavát. Érdemes lehet létrehozni egy új AD szervezeti egységet [(OU)](/powershell/module/addsadministration/new-adorganizationalunit) az [](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)) AD-ben, és ennek megfelelően letiltani a jelszó-elévülési szabályzatot a számítógépfiókok vagy szolgáltatás-bejelentkezési fiókok esetében. 
 
 ```PowerShell
 # Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -59,7 +59,7 @@ Import-Module -Name AzFilesHybrid
 # for more information.
 Connect-AzAccount
 
-# Define parameters
+# Define parameters, $StorageAccountName currently has a maximum limit of 15 characters
 $SubscriptionId = "<your-subscription-id-here>"
 $ResourceGroupName = "<resource-group-name-here>"
 $StorageAccountName = "<storage-account-name-here>"
@@ -88,15 +88,15 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 ## <a name="option-2-manually-perform-the-enablement-actions"></a>2. lehetőség: Az engedélyező műveletek manuális végrehajtása
 
-Ha már sikeresen végrehajtotta a fenti szkriptet, akkor a Funkció engedélyezése `Join-AzStorageAccountForAuth` [szakaszt kell végrehajtania.](#confirm-the-feature-is-enabled) A következő manuális lépéseket nem kell végrehajtania.
+Ha már sikeresen végrehajtotta a fenti szkriptet, kattintson a Funkció engedélyezése `Join-AzStorageAccountForAuth` [szakaszra.](#confirm-the-feature-is-enabled) A következő manuális lépéseket nem kell végrehajtania.
 
 ### <a name="checking-environment"></a>Környezet ellenőrzése
 
-Először ellenőriznie kell a környezet állapotát. Pontosabban azt kell ellenőriznie, [Active Directory powerShell telepítve](/powershell/module/addsadministration/) van-e, és hogy a rendszerhéj rendszergazdai jogosultságokkal van-e végrehajtva. Ezután ellenőrizze, hogy az [Az.Storage 2.0 modul](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) telepítve van-e, és ha nincs, telepítse. Az ellenőrzések elvégzése után ellenőrizze a AD DS-t, hogy van-e olyan [](/windows/win32/ad/about-service-logon-accounts) számítógépfiók [(alapértelmezett)](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) vagy szolgáltatás bejelentkezési fiók, amely már létre lett hozva "cifs/your-storage-account-name-here.file.core.windows.net" néven. Ha a fiók nem létezik, hozzon létre egyet a következő szakaszban leírtak szerint.
+Először ellenőriznie kell a környezet állapotát. Pontosabban azt kell ellenőriznie, Active Directory telepítve van-e a [PowerShell,](/powershell/module/addsadministration/) és hogy a rendszerhéj végrehajtása rendszergazdai jogosultságokkal történik-e. Ezután ellenőrizze, hogy az [Az.Storage 2.0 modul](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) telepítve van-e, és ha nincs, telepítse. Az ellenőrzések elvégzése után ellenőrizze a AD DS-ben, hogy van-e olyan [](/windows/win32/ad/about-service-logon-accounts) számítógépfiók [(alapértelmezett)](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) vagy szolgáltatás bejelentkezési fiók, amely már létre lett hozva "cifs/your-storage-account-name-here.file.core.windows.net" néven. Ha a fiók nem létezik, hozzon létre egyet a következő szakaszban leírtak szerint.
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>A tárfiókot képviselő identitás manuális létrehozása az AD-ban
 
-A fiók manuális létrehozásához hozzon létre egy új Kerberos-kulcsot a tárfiókhoz. Ezután használja ezt a Kerberos-kulcsot a fiókja jelszavaként az alábbi PowerShell-parancsmagokkal. Ez a kulcs csak a telepítés során használatos, és nem használható semmilyen vezérlő- vagy adatsíkművelethez a tárfiókon. 
+A fiók manuális létrehozásához hozzon létre egy új Kerberos-kulcsot a tárfiókhoz. Ezután használja ezt a Kerberos-kulcsot a fiókja jelszavaként az alábbi PowerShell-parancsmagokkal. Ez a kulcs csak a telepítés során használatos, és nem használható a tárfiókon bármilyen vezérlő- vagy adatsíkművelethez. 
 
 ```PowerShell
 # Create the Kerberos key on the storage account and get the Kerb1 key as the password for the AD identity to represent the storage account
@@ -117,7 +117,7 @@ Tartsa meg az újonnan létrehozott identitás biztonsági azonosítóját, mert
 
 ### <a name="enable-the-feature-on-your-storage-account"></a>A funkció engedélyezése a tárfiókon
 
-Most már engedélyezheti a funkciót a tárfiókon. Adja meg a következő parancsban a tartománytulajdonságok néhány konfigurációs részletét, majd futtassa azt. Az alábbi parancsban a tárfiók sid-azonosítójára az előző szakaszban AD DS identitás sid-azonosítójára [van szükség.](#creating-an-identity-representing-the-storage-account-in-your-ad-manually)
+Most már engedélyezheti a funkciót a tárfiókon. Adja meg a következő parancsban a tartománytulajdonságok néhány konfigurációs részletét, majd futtassa azt. A tárfiók következő parancsban szükséges biztonsági azonosítója az előző szakaszban létrehozott AD DS [SID.](#creating-an-identity-representing-the-storage-account-in-your-ad-manually)
 
 ```PowerShell
 # Set the feature flag on the target storage account and provide the required AD domain information
@@ -135,7 +135,7 @@ Set-AzStorageAccount `
 
 ### <a name="debugging"></a>Hibakeresés
 
-A Debug-AzStorageAccountAuth parancsmag futtatásával alapszintű ellenőrzéseket futtathat az AD-konfiguráción a bejelentkezett AD-felhasználóval. Az AzFilesHybrid v0.1.2+ verziója támogatja ezt a parancsmagot. A parancsmagban végrehajtott ellenőrzésekkel kapcsolatos további információkért lásd a Windows hibaelhárítási útmutatójának Nem hajtható végre Azure Files csatlakoztatása [AD-hitelesítő](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials) adatokkal témakört.
+A Debug-AzStorageAccountAuth parancsmag futtatásával alapszintű ellenőrzéseket futtathat az AD-konfiguráción a bejelentkezett AD-felhasználóval. Az AzFilesHybrid v0.1.2+ verziója támogatja ezt a parancsmagot. Az ebben a parancsmagban végrehajtott ellenőrzésekkel kapcsolatos további információkért lásd a Windows hibaelhárítási útmutatójának Nem csatlakoztatható Azure Files [az AD](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials) hitelesítő adataival.
 
 ```PowerShell
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
@@ -143,7 +143,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 ## <a name="confirm-the-feature-is-enabled"></a>Ellenőrizze, hogy a funkció engedélyezve van-e
 
-A következő szkript használatával ellenőrizheti, hogy a szolgáltatás engedélyezve van-e a tárfiókon:
+A következő szkript használatával ellenőrizheti, hogy a funkció engedélyezve van-e a tárfiókban:
 
 ```PowerShell
 # Get the target storage account

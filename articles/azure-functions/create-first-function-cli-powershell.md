@@ -1,117 +1,118 @@
 ---
 title: PowerShell-függvény létrehozása a parancssorból – Azure Functions
-description: Megtudhatja, hogyan hozhat létre PowerShell-függvényt a parancssorból, majd hogyan teheti közzé a helyi projektet a Azure Functions kiszolgáló nélküli üzemeltetéséhez.
+description: Megtudhatja, hogyan hozhat létre PowerShell-függvényt a parancssorból, majd hogyan tehet közzé helyi projektet kiszolgáló nélküli üzemeltetésre a Azure Functions.
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom:
 - devx-track-powershell
 - devx-track-azurecli
-ms.openlocfilehash: abbe3b9ed4d9a8c9bf30c6be3e6980228d319090
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+- devx-track-azurepowershell
+ms.openlocfilehash: 59532ce4dcc0c967777afd3080a2cb54dbaa6491
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97937229"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831959"
 ---
-# <a name="quickstart-create-a-powershell-function-in-azure-from-the-command-line"></a>Gyors útmutató: PowerShell-függvény létrehozása az Azure-ban a parancssorból
+# <a name="quickstart-create-a-powershell-function-in-azure-from-the-command-line"></a>Rövid útmutató: PowerShell-függvény létrehozása az Azure-ban a parancssorból
 
 [!INCLUDE [functions-language-selector-quickstart-cli](../../includes/functions-language-selector-quickstart-cli.md)]
 
-Ebben a cikkben parancssori eszközöket használ egy olyan PowerShell-függvény létrehozásához, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe.
+Ebben a cikkben parancssori eszközökkel hoz létre egy PowerShell-függvényt, amely HTTP-kérésekre válaszol. A kód helyi tesztelése után üzembe helyezheti a virtuális gép kiszolgáló nélküli Azure Functions.
 
-A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
+Ennek a rövid útmutatónak az elvégzése néhány dollár vagy annál kisebb költséggel jár az Azure-fiókjában.
 
-A cikk [Visual Studio Code-alapú verziója](create-first-function-vs-code-powershell.md) is létezik.
+A cikk [kódalapú Visual Studio is](create-first-function-vs-code-powershell.md) elérhető.
 
 ## <a name="configure-your-local-environment"></a>A helyi környezet konfigurálása
 
-Mielőtt elkezdené, a következőkkel kell rendelkeznie:
+Mielőtt hozzákezd, a következőkre lesz majd elég:
 
-+ Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
++ Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-+ A [Azure functions Core Tools](functions-run-local.md#v2) 3. x verzió.
++ A [Azure Functions Core Tools](functions-run-local.md#v2) 3.x verzió.
 
 + Az alábbi eszközök egyike az Azure-erőforrások létrehozásához:
 
-    + [Azure PowerShell](/powershell/azure/install-az-ps) 5,0-es vagy újabb verzió.
+    + [Azure PowerShell](/powershell/azure/install-az-ps) 5.0-s vagy újabb verzió.
 
-    + Az [Azure CLI](/cli/azure/install-azure-cli) 2,4-es vagy újabb verziója.
+    + [Az Azure CLI](/cli/azure/install-azure-cli) 2.4-es vagy újabb verziója.
 
-+ A [.NET Core SDK 3,1](https://www.microsoft.com/net/download)
++ A [.NET Core SDK 3.1](https://www.microsoft.com/net/download)
 
-### <a name="prerequisite-check"></a>Előfeltételek ellenőrzése
+### <a name="prerequisite-check"></a>Előfeltétel-ellenőrzés
 
-Ellenőrizze az előfeltételeket, amelyek attól függnek, hogy az Azure CLI-t vagy Azure PowerShell Azure-erőforrások létrehozásához használja-e:
+Ellenőrizze az előfeltételeket, amelyek attól függnek, hogy az Azure CLI-t Azure PowerShell azure-erőforrások létrehozásához használja:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-+ A terminál vagy a parancssorablakban futtassa a parancsot az `func --version` Azure functions Core Tools 3. x verziójának megadásához.
++ Egy terminálban vagy parancsablakban futtassa a parancsot annak ellenőrzéshez, hogy a Azure Functions Core Tools `func --version` 3.x verziójú-e.
 
-+ Futtassa az parancsot az `az --version` Azure CLI 2,4-es vagy újabb verziójának megadásához.
++ A `az --version` futtatásával ellenőrizze, hogy az Azure CLI 2.4-es vagy újabb verziója van-e.
 
-+ A futtatásával `az login` Jelentkezzen be az Azure-ba, és ellenőrizze az aktív előfizetést.
++ Az `az login` futtatásával jelentkezzen be az Azure-ba, és ellenőrizze az aktív előfizetést.
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-+ A terminál vagy a parancssorablakban futtassa a parancsot az `func --version` Azure functions Core Tools 3. x verziójának megadásához.
++ Egy terminálban vagy parancsablakban futtassa a parancsot annak ellenőrzéshez, hogy a Azure Functions Core Tools `func --version` 3.x verziójú-e.
 
-+ Futtassa `(Get-Module -ListAvailable Az).Version` és ellenőrizze a 5,0-es vagy újabb verziót. 
++ Futtassa `(Get-Module -ListAvailable Az).Version` és ellenőrizze az 5.0-s vagy újabb verziót. 
 
-+ A futtatásával `Connect-AzAccount` Jelentkezzen be az Azure-ba, és ellenőrizze az aktív előfizetést.
++ Az `Connect-AzAccount` futtatásával jelentkezzen be az Azure-ba, és ellenőrizze az aktív előfizetést.
 
 ---
 
-## <a name="create-a-local-function-project"></a>Helyi függvény projekt létrehozása
+## <a name="create-a-local-function-project"></a>Helyi függvényprojekt létrehozása
 
-Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény tárolója, amely mindegyik reagál egy adott triggerre. Egy projekt összes funkciója ugyanazokat a helyi és üzemeltetési konfigurációkat használja. Ebben a szakaszban egy függvény-projektet hoz létre, amely egyetlen függvényt tartalmaz.
+A Azure Functions a függvényprojekt egy tároló egy vagy több egyéni függvény számára, amelyek egy adott eseményindítóra válaszolnak. Egy projekt összes függvénye azonos helyi és üzemeltetési konfigurációval rendelkezik. Ebben a szakaszban egy függvényprojektet hoz létre, amely egyetlen függvényt tartalmaz.
 
-1. Futtassa a `func init` parancsot az alábbiak szerint, hogy hozzon létre egy functions-projektet egy *LocalFunctionProj* nevű mappában a megadott futtatókörnyezettel:  
+1. Futtassa a parancsot az alábbiak szerint, hogy létrehozzon egy függvényprojektet `func init` egy *LocalFunctionProj* nevű mappában a megadott futásidővel:  
 
     ```console
     func init LocalFunctionProj --powershell
     ```
 
-1. Navigáljon a projekt mappájába:
+1. Lépjen a projektmappába:
 
     ```console
     cd LocalFunctionProj
     ```
     
-    Ez a mappa a projekthez különböző fájlokat tartalmaz, beleértve a [local.settings.json](functions-run-local.md#local-settings-file) és a [host.js](functions-host-json.md)nevű konfigurációs fájlokat is. Mivel a *local.settings.json* az Azure-ból letöltött titkos kódok is lehetnek, a fájl a *. gitignore* fájlban alapértelmezés szerint ki van zárva a forrás-vezérlőelemből.
+    Ez a mappa a projekt különböző fájljait [](functions-run-local.md#local-settings-file) tartalmazza, beleértve alocal.settings.jsnevű konfigurációs fájlokat, [valaminthost.jsfájlját.](functions-host-json.md) Mivel *local.settings.js* fájl tartalmazhatja az Azure-ból letöltött titkos adatokat, a fájl alapértelmezés szerint ki van zárva a verziókezelőből a *.gitignore fájlban.*
     
-1. Adjon hozzá egy függvényt a projekthez a következő parancs használatával, ahol az `--name` argumentum a függvény egyedi neve (HttpExample), az argumentum pedig a `--template` függvény triggerét (http) adja meg. 
+1. Adjon hozzá egy függvényt a projekthez a következő paranccsal, ahol az argumentum a függvény (HttpExample) egyedi neve, az argumentum pedig a függvény eseményindítóját `--name` `--template` (HTTP) határozza meg. 
 
     ```console
     func new --name HttpExample --template "HTTP trigger" --authlevel "anonymous"
     ```   
     
-    `func new` egy olyan almappát hoz létre, amely megfelel a projekt választott nyelvének és a *function.json* nevű konfigurációs fájlnak.
+    `func new` létrehoz egy almappát, amely megegyezik a függvény nevével, amely tartalmazza a projekt választott nyelvének megfelelő kódfájlt, valamint egy nevű konfigurációs *function.jsa következőn:*.
 
-### <a name="optional-examine-the-file-contents"></a>Választható A fájl tartalmának vizsgálata
+### <a name="optional-examine-the-file-contents"></a>(Nem kötelező) A fájl tartalmának vizsgálata
 
-Ha szeretné, kihagyhatja [a függvény helyi futtatását](#run-the-function-locally) , és később is megvizsgálhatja a fájl tartalmát.
+Ha szeretné, ugorjon a Függvény helyi [futtatása](#run-the-function-locally) részhez, és később vizsgálja meg a fájl tartalmát.
 
 #### <a name="runps1"></a>run.ps1
 
-*run.ps1* definiál egy olyan függvény-parancsfájlt, amely a *function.js* beállításának megfelelően aktiválódik.
+*run.ps1* definiál egy függvényszk szkriptet, amely a fájlban a(function.js *konfigurációja alapján aktiválódik.*
 
 :::code language="powershell" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-PowerShell/run.ps1":::
 
-A HTTP-triggerek esetében a függvény fogadja a `$Request` *function.js* által megadott paraméternek átadott kérelmeket. A rendszer a (z)function.jsban definiált visszaadott objektumot adja `Response` át  `Push-OutputBinding` válaszként a parancsmagnak. 
+HTTP-eseményindítók esetén a függvény a paraméterben meghatározott paraméternek átadott `$Request` *kérelemadatokatfunction.jsa következőn:*. A parancsmag válaszként a parancsmagnak adjafunction.jsa parancsmagnak a parancsmagban meghatározott `Response`  `Push-OutputBinding` visszaadott objektumot. 
 
 #### <a name="functionjson"></a>function.json
 
-A *function.json* egy konfigurációs fájl, amely meghatározza a függvény bemenetét és kimenetét `bindings` , beleértve az trigger típusát is. 
+*function.jsegy konfigurációs* fájl, amely meghatározza a függvény bemenetét és kimenetét, beleértve `bindings` az eseményindító típusát is. 
 
 :::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-PowerShell/function.json":::
 
-Minden kötéshez meg kell adni egy irányt, egy típust és egy egyedi nevet. A HTTP-trigger típusa [`httpTrigger`](functions-bindings-http-webhook-trigger.md) és kimeneti kötése típusú bemeneti kötést tartalmaz [`http`](functions-bindings-http-webhook-output.md) .
+Minden kötéshez szükség van egy irányra, egy típusra és egy egyedi névre. A HTTP-eseményindító típusú bemeneti és kimeneti [`httpTrigger`](functions-bindings-http-webhook-trigger.md) kötéssel [`http`](functions-bindings-http-webhook-output.md) rendelkezik.
 
 [!INCLUDE [functions-run-function-test-local-cli](../../includes/functions-run-function-test-local-cli.md)]
 
 [!INCLUDE [functions-create-azure-resources-cli](../../includes/functions-create-azure-resources-cli.md)]
 
-4. A Function alkalmazás létrehozása az Azure-ban:
+4. Hozza létre a függvényalkalmazást az Azure-ban:
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
         
@@ -119,7 +120,7 @@ Minden kötéshez meg kell adni egy irányt, egy típust és egy egyedi nevet. A
     az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime powershell --functions-version 3 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     
-    Az az [functionapp Create](/cli/azure/functionapp#az_functionapp_create) parancs létrehozza a Function alkalmazást az Azure-ban. 
+    Az [az functionapp create parancs](/cli/azure/functionapp#az_functionapp_create) létrehozza a függvényalkalmazást az Azure-ban. 
     
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
     
@@ -127,13 +128,13 @@ Minden kötéshez meg kell adni egy irányt, egy típust és egy egyedi nevet. A
     New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -Runtime PowerShell -FunctionsVersion 3 -Location 'West Europe'
     ```
     
-    A [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) parancsmag létrehozza a Function alkalmazást az Azure-ban. 
+    A [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) parancsmag létrehozza a függvényalkalmazást az Azure-ban. 
     
     ---
     
-    Az előző példában a helyére írja be az `<STORAGE_NAME>` előző lépésben használt fiók nevét, és cserélje le az értékét a `<APP_NAME>` megfelelő globálisan egyedi névre. Az `<APP_NAME>` egyben a függvényalkalmazás alapértelmezett DNS-tartományaként is szolgál, 
+    Az előző példában cserélje le a helyére az előző lépésben használt fiók nevét, a helyére pedig az Önnek megfelelő globálisan egyedi `<STORAGE_NAME>` `<APP_NAME>` nevet. Az `<APP_NAME>` egyben a függvényalkalmazás alapértelmezett DNS-tartományaként is szolgál, 
     
-    Ez a parancs létrehoz egy, a megadott nyelvi futtatókörnyezetben futó Function alkalmazást a [Azure functions használati terv](consumption-plan.md)alatt, amely ingyenesen használható az itt felmerülő felhasználási mennyiséghez. A parancs egy kapcsolódó Azure Application Insights-példányt is kiépít ugyanabban az erőforráscsoporthoz, amellyel nyomon követheti a Function alkalmazást, és megtekintheti a naplókat. További információ: [Azure functions figyelése](functions-monitoring.md). A példány nem jár költséggel, amíg be nem aktiválja.
+    Ez a parancs létrehoz egy függvényalkalmazást, amely a megadott nyelvi futtatókörnyezetben fut a [Azure Functions Használat](consumption-plan.md)alapján csomag alatt, amely ingyenes az itt használt mennyiséghez. A parancs egy társított Azure Application Insights-példányt is kiad ugyanabban az erőforráscsoportban, amellyel figyelheti a függvényalkalmazást és megtekintheti a naplókat. További információ: [Monitor Azure Functions.](functions-monitoring.md) A példány nem jár költségekkel, amíg ön nem aktiválja.
 
 [!INCLUDE [functions-publish-project-cli](../../includes/functions-publish-project-cli.md)]
 
@@ -146,6 +147,6 @@ Minden kötéshez meg kell adni egy irányt, egy típust és egy egyedi nevet. A
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Kapcsolódás Azure Storage-várólistához]
+> [Csatlakozás Azure Storage-üzenetsorhoz]
 
-[Kapcsolódás Azure Storage-várólistához]: functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-powershell
+[Csatlakozás Azure Storage-üzenetsorhoz]: functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-powershell

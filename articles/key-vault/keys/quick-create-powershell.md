@@ -1,6 +1,6 @@
 ---
-title: Kulcsok attribútumainak létrehozása és lekérése Azure Key Vaultban – Azure PowerShell
-description: Gyors útmutató, amely bemutatja, hogyan állíthatja be és kérhet le egy kulcsot a Azure Key Vault használatával Azure PowerShell
+title: Kulcs attribútumainak létrehozása és lekérése a Azure Key Vault – Azure PowerShell
+description: Rövid útmutató, amely bemutatja, hogyan állíthat be és Azure Key Vault kulcsokat Azure PowerShell
 services: key-vault
 author: msmbaldwin
 tags: azure-resource-manager
@@ -9,22 +9,22 @@ ms.subservice: keys
 ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: adbf3080367e54147c981c8ccf0bb6236111b8c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ede01de815a65aede410fe539b6205f1f4e4fd68
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99071205"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815449"
 ---
-# <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-powershell"></a>Gyors útmutató: kulcs beállítása és lekérése Azure Key Vault használatával Azure PowerShell
+# <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-powershell"></a>Rövid útmutató: Kulcs beállítása és lekérése a Azure Key Vault használatával Azure PowerShell
 
-Ebben a rövid útmutatóban egy kulcstartót hoz létre Azure Key Vaultban Azure PowerShell. Az Azure Key Vault egy felhőszolgáltatás, amely biztonságos titkoskulcs-tárolóként működik. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. További információ a Key Vaultről: [Áttekintés](../general/overview.md). Azure PowerShell az Azure-erőforrások parancsok vagy parancsfájlok használatával történő létrehozására és kezelésére szolgál. Ha ezt elvégezte, egy kulcsot fog tárolni.
+Ebben a rövid útmutatóban egy kulcstartót hoz létre a Azure Key Vault a Azure PowerShell. Az Azure Key Vault egy felhőszolgáltatás, amely biztonságos titkoskulcs-tárolóként működik. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. További információt a Key Vault áttekintésében [talál.](../general/overview.md) Azure PowerShell azure-erőforrások parancsokkal vagy szkriptekkel való létrehozására és kezelésére szolgál. Miután ezt befejezte, egy kulcsot fog tárolni.
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz a Azure PowerShell-modul 1.0.0-as vagy újabb verziójára lesz szükség. `$PSVersionTable.PSVersion`A verzió megkereséséhez írja be a következőt:. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítését és használatát választja, az oktatóanyaghoz Azure PowerShell modul 1.0.0-s vagy újabb verziójára lesz szükség. A `$PSVersionTable.PSVersion` verzió megkereshez írja be a következőt: . Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ```azurepowershell-interactive
 Login-AzAccount
@@ -38,17 +38,17 @@ Login-AzAccount
 
 [!INCLUDE [Create a key vault](../../../includes/key-vault-powershell-kv-creation.md)]
 
-## <a name="add-a-key-to-key-vault"></a>Kulcs hozzáadása a Key Vaulthoz
+## <a name="add-a-key-to-key-vault"></a>Kulcs hozzáadása a Key Vault
 
-A kulcs a tárolóhoz való hozzáadásához mindössze néhány további lépést kell elvégeznie. Ezt a kulcsot egy alkalmazás használhatja. 
+Ha kulcsokat szeretne hozzáadni a tárolóhoz, csak néhány további lépést kell tennie. Ezt a kulcsot egy alkalmazás is használni tudja. 
 
-A nevezett **ExampleKey** létrehozásához írja be az alábbi parancsokat:
+Írja be az alábbi parancsokat egy **ExampleKey nevű létrehozásához:**
 
 ```azurepowershell-interactive
 Add-AzKeyVaultKey -VaultName "<your-unique-keyvault-name>" -Name "ExampleKey" -Destination "Software"
 ```
 
-Most már hivatkozhat erre a kulcsra, amelyet a Azure Key Vaulthoz adott hozzá az URI használatával. A jelenlegi verziójának lekéréséhez használja a **"https://<Your-Unique-kulcstartó-name>. Vault.Azure.net/Keys/ExampleKey"** lehetőséget. 
+Most már hivatkozhat erre a kulcsra, amelyet hozzáadott a Azure Key Vault az URI-ját használva. A **"https://<-unique-keyvault-name>.vault.azure.net/keys/ExampleKey"** használatával lekérte az aktuális verziót. 
 
 A korábban tárolt kulcs megtekintése:
 
@@ -56,7 +56,7 @@ A korábban tárolt kulcs megtekintése:
 Get-AzKeyVaultKey -VaultName "<your-unique-keyvault-name>" -KeyName "ExampleKey"
 ```
 
-Most létrehozott egy Key Vault, tárolt egy kulcsot, és beolvasta azt.
+Most már létrehozott egy Key Vault, tárolt egy kulcsot, és lekérte azt.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -64,8 +64,8 @@ Most létrehozott egy Key Vault, tárolt egy kulcsot, és beolvasta azt.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy Key Vault, és tárolt benne egy tanúsítványt. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
+Ebben a rövid útmutatóban létrehozott egy Key Vault, és tárolt benne egy tanúsítványt. Ha többet szeretne megtudni a Key Vault és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 
-- [A Azure Key Vault áttekintése](../general/overview.md)
-- Tekintse meg a [Azure PowerShell Key Vault-parancsmagok](/powershell/module/az.keyvault/) referenciáját
-- Tekintse át a [Key Vault biztonsági áttekintést](../general/security-overview.md)
+- Áttekintés a [Azure Key Vault](../general/overview.md)
+- Lásd a Azure PowerShell Key Vault [parancsmagok referenciáit](/powershell/module/az.keyvault/)
+- Tekintse át [a Key Vault biztonsági áttekintését](../general/security-features.md)

@@ -6,14 +6,14 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6e595f7ff313ff85a12209e8c124b9aa376b20b6
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: d30ab051e58573daefd16f178feb4fc94f2ec83f
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739745"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835469"
 ---
-# <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Oktatóanyag: A Azure Remote Rendering és a modelltárolás biztonságossá tétele
+# <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Oktatóanyag: Az Azure Remote Rendering és a modelltárolás biztonságossá tétele
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -25,7 +25,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ez az oktatóanyag az Oktatóanyag: Anyagok, megvilágítás és hatások [finomítását ismertető oktatóanyagra épül.](..\materials-lighting-effects\materials-lighting-effects.md)
+* Ez az oktatóanyag az Oktatóanyag: Anyagok, megvilágítás és hatások [finomítására épül.](..\materials-lighting-effects\materials-lighting-effects.md)
 
 ## <a name="why-additional-security-is-needed"></a>Miért van szükség további biztonságra?
 
@@ -33,13 +33,13 @@ Az alkalmazás aktuális állapota és az Azure-erőforrásokhoz való hozzáfé
 
 ![Kezdeti biztonság](./media/security-one.png)
 
-Az "AccountID + AccountKey" és az "URL + SAS-jogkivonat" is alapvetően együtt tárolja a felhasználónevet és a jelszót. Ha például az "AccountID + AccountKey" elérhetővé lenne téve, a támadók triviálisan használná az ARR-erőforrásokat az Ön engedélye nélkül.
+Az "AccountID + AccountKey" és az "URL + SAS-jogkivonat" is alapvetően együtt tárolja a felhasználónevet és a jelszót. Ha például az "AccountID + AccountKey" elérhetővé lenne téve, a támadók triviálisan használná az ARR-erőforrásokat az Ön engedélye nélkül, az Ön rovására.
 
 ## <a name="securing-your-content-in-azure-blob-storage"></a>Tartalom biztonságossá tétele Azure Blob Storage
 
-Azure Remote Rendering a megfelelő konfigurációval biztonságosan hozzáférhet Azure Blob Storage-fájl tartalmaihoz. Lásd: [How-to: Link storage accounts](../../../how-tos/create-an-account.md#link-storage-accounts) to configure your Azure Remote Rendering instance with your blob storage accounts (A tárfiókok összekapcsolása a Azure Remote Rendering példányt a Blob Storage-fiókokkal).
+Azure Remote Rendering a megfelelő konfigurációval biztonságosan elérhetik Azure Blob Storage-fájl tartalmát. Lásd: [How-to: Link storage accounts](../../../how-tos/create-an-account.md#link-storage-accounts) to configure your Azure Remote Rendering instance with your blob storage accounts (A tárfiókok összekapcsolása a Azure Remote Rendering-példány a Blob Storage-fiókokkal).
 
-Csatolt blobtároló használata esetén némileg eltérő módszereket fog használni a modellek betöltéséhez:
+Csatolt blobtárolók használata esetén némileg eltérő módszereket fog használni a modellek betöltéséhez:
 
 ```cs
 var loadModelParams = new LoadModelFromSasOptions(modelPath, modelEntity);
@@ -55,8 +55,8 @@ var task = ARRSessionService.CurrentActiveSession.Connection.LoadModelAsync(load
 
 Módosítsuk a **RemoteRenderingCoordinatort** egy egyéni modell betöltéséhez egy csatolt Blob Storage-fiókból.
 
-1. Ha még nem, a Tárfiókok csatolása dokumentumban adjon engedélyt az [ARR-példánynak](../../../how-tos/create-an-account.md#link-storage-accounts) a Blob Storage eléréséhez.
-1. Adja hozzá a következő módosított **LoadModel** metódust a **RemoteRenderingCoordinator metódushoz** az aktuális **LoadModel metódus** alatt:
+1. Ha még nem, a Tárfiókok csatolása– dokumentumban adjon engedélyt az [ARR-példánynak](../../../how-tos/create-an-account.md#link-storage-accounts) a Blob Storage eléréséhez.
+1. Adja hozzá a következő módosított **LoadModel** metódust a **RemoteRenderingCoordinator** metódushoz az aktuális **LoadModel metódus** alatt:
 
     ```cs
     /// <summary>
@@ -111,7 +111,7 @@ Módosítsuk a **RemoteRenderingCoordinatort** egy egyéni modell betöltéséhe
 
     A és a `storageAccountName` további `blobContainerName` bemenetek is hozzá vannak adva az argumentumhoz. Ezt az új **LoadModel** metódust egy másik, az első oktatóanyagban létrehozott **LoadTestModel** metódushoz hasonló metódusból hívjuk meg.
 
-1. Adja hozzá a következő metódust a **RemoteRenderingCoordinator metódushoz a** **LoadTestModel után**
+1. Adja hozzá a következő metódust a **RemoteRenderingCoordinatorhoz a** **LoadTestModel után**
 
     ```cs
     private bool loadingLinkedCustomModel = false;
@@ -161,52 +161,52 @@ Módosítsuk a **RemoteRenderingCoordinatort** egy egyéni modell betöltéséhe
     ```
 
     Ez a kód három további sztringváltozót ad hozzá a **RemoteRenderingCoordinator összetevőhez.**
-    ![Képernyőkép a RemoteRenderingCoordinator összetevő Tárfiók neve, Blobtároló neve és Modell elérési útja elemével.](./media/storage-account-linked-model.png)
+    ![Képernyőkép a RemoteRenderingCoordinator összetevő Tárfiók neve, Blobtároló neve és Modell elérési útja elemről.](./media/storage-account-linked-model.png)
 
-1. Adja hozzá az értékeket a **RemoteRenderingCoordinator összetevőhez.** A modellátalakítás [gyorsútmutatója után](../../../quickstarts/convert-model.md)a következő értékeknek kell lennie:
+1. Adja hozzá az értékeket a **RemoteRenderingCoordinator összetevőhez.** A modellátalakítás [rövid útmutatója után](../../../quickstarts/convert-model.md)az értékeknek a következőnek kell lennie:
 
     * **Tárfiók neve:** A tárfiók neve, a tárfiókhoz választott globálisan egyedi név. A rövid útmutatóban ez *az arrtutorialstorage* volt, az Ön értéke más lesz.
     * **Blobtároló neve:** arroutput, Blob Storage tároló
-    * **Modell elérési** útja: Az "outputFolderPath" és az "outputAssetFileName" fájlban meghatározott "outputAssetFileName" *arrconfig.jsfájlban.* A rövid útmutatóban ez a következő volt: "outputFolderPath":"converted/robot", "outputAssetFileName": "robot.arrAsset". Ennek eredményeként a Modell elérési útja értéke "converted/robot/robot.arrAsset" lesz, az Ön értéke eltérő lesz.
+    * **Modell elérési** útja: Az "outputFolderPath" és az "outputAssetFileName" fájlban meghatározott "outputAssetFileName" *arrconfig.jsfájlban.* A rövid útmutatóban ez a következő volt: "outputFolderPath":"converted/robot", "outputAssetFileName": "robot.arrAsset". Ez a "converted/robot/robot.arrAsset" modellútvonal-értéket eredményezné, az Ön értéke eltérő lesz.
 
     >[!TIP]
-    > Ha [a  ](../../../quickstarts/convert-model.md#run-the-conversion)Conversion.ps1szkriptet a "-UseContainerSas" argumentum nélkül futtatja, a szkript az SAS-jogkivonat helyett a fenti értékek mindegyikét kiadja az Ön számára. ![Csatolt modell](./media/converted-output.png)
-1. Egy ideig távolítsa el vagy tiltsa le a GameObject **TestModel** modellt, hogy helyet ad az egyéni modell betöltésének.
-1. Lejátszhatja a jelenet, és csatlakozhat egy távoli munkamenethez.
-1. Kattintson a jobb gombbal a **RemoteRenderingCoordinator** elemre, és válassza **a Csatolt egyéni modell betöltése lehetőséget.**
+    > Ha [a  ](../../../quickstarts/convert-model.md#run-the-conversion)Conversion.ps1szkriptet a "-UseContainerSas" argumentum nélkül futtatja, a szkript az SAS-jogkivonat helyett a fenti értékek mindegyikét az Ön számára fogja kiadni. ![Csatolt modell](./media/converted-output.png)
+1. Egy ideig távolítsa el vagy tiltsa le a GameObject **TestModel modellt,** hogy helyet ásson az egyéni modellnek.
+1. A jelenet lejátszása és csatlakozás egy távoli munkamenethez.
+1. Kattintson a jobb gombbal a **RemoteRenderingCoordinator elemre, és** válassza **a Csatolt egyéni modell betöltése lehetőséget.**
     ![Csatolt modell betöltése](./media/load-linked-model.png)
 
 Ezek a lépések megnövelték az alkalmazás biztonságát azáltal, hogy eltávolítják az SAS-jogkivonatot a helyi alkalmazásból.
 
-Az alkalmazás jelenlegi állapota és az Azure-erőforrásokhoz való hozzáférése így néz ki:
+Az alkalmazás aktuális állapota és az Azure-erőforrásokhoz való hozzáférése így néz ki:
 
 ![Nagyobb biztonság](./media/security-two.png)
 
-Van még egy "jelszó", az AccountKey, amit el kell távolítani a helyi alkalmazásból. Ez az (AAD Azure Active Directory hitelesítéssel használhatja.
+Van még egy "jelszó", az AccountKey, amit el kell távolítani a helyi alkalmazásból. Ez egy AAD Azure Active Directory használatával használhatja.
 
 ## <a name="azure-active-directory-azure-ad-authentication"></a>Azure Active Directory (Azure AD) hitelesítése
 
-Az AAD-hitelesítés lehetővé teszi annak megállapítását, hogy mely személyek vagy csoportok használják szabályozottabb módon az ARR-t. Az ARR beépített támogatást nyújt a hozzáférési jogkivonatok elfogadásához [fiókkulcs](../../../../active-directory/develop/access-tokens.md) használata helyett. A hozzáférési jogkivonatok időkorccsal korlátozott, felhasználóspecifikus kulcsként is fel vannak gondoljon, amely csak a kért erőforrás bizonyos részeit oldja fel.
+Az AAD-hitelesítés lehetővé teszi annak megállapítását, hogy mely személyek vagy csoportok használják az ARR-t szabályozottabb módon. Az ARR beépített támogatást nyújt a hozzáférési [jogkivonatok](../../../../active-directory/develop/access-tokens.md) elfogadásához fiókkulcs használata helyett. A hozzáférési jogkivonatokat időkorlikát jelző, felhasználóspecifikus kulcsnak is felhasználhatja, amely csak a kért erőforrás bizonyos részeit oldja fel.
 
 A **RemoteRenderingCoordinator** szkript egy **ARRCredentialGetter** nevű delegáltat tartalmaz, amely egy olyan metódust tartalmaz, amely **egy SessionConfiguration** objektumot ad vissza, amellyel konfigurálható a távoli munkamenet-kezelés. Hozzárendelhet egy másik metódust az **ARRCredentialGetterhez,** amely lehetővé teszi egy Azure bejelentkezési folyamat használatát, és egy **SessionConfiguration** objektumot hoz létre, amely egy Azure-hozzáférési jogkivonatot tartalmaz. Ez a hozzáférési jogkivonat a bejelentkező felhasználóra vonatkozik.
 
-1. Kövesse a [How To: Configure authentication - Authentication for deployed applications (Útmutató:](../../../how-tos/authentication.md#authentication-for-deployed-applications)Hitelesítés konfigurálása – Hitelesítés az üzembe helyezett alkalmazásokhoz) útmutatót, konkrétan az Azure Spatial Anchors-dokumentáció Azure AD-felhasználóhitelesítéssel kapcsolatos dokumentációjában szereplő utasításokat [fogja követni.](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication) Ez magában foglalja egy új alkalmazás Azure Active Directory és az ARR-példányhoz való hozzáférés konfigurálását.
-1. Az új AAD-alkalmazás konfigurálása után ellenőrizze, hogy az AAD-alkalmazás a következő képekhez hasonlít-e:
+1. Kövesse a [How To: Configure authentication - Authentication for deployed applications (Útmutató:](../../../how-tos/authentication.md#authentication-for-deployed-applications)Hitelesítés konfigurálása – Hitelesítés az üzembe helyezett alkalmazások esetében) útmutatót, pontosabban az Azure Spatial Anchors-dokumentáció Azure AD-felhasználóhitelesítéssel kapcsolatos dokumentációjában szereplő utasításokat [fogja követni.](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication) Ez magában foglalja egy új Azure Active Directory regisztrálását és az ARR-példányhoz való hozzáférés konfigurálását.
+1. Az új AAD-alkalmazás konfigurálása után ellenőrizze, hogy az AAD-alkalmazás az alábbi rendszerképekhez hasonlít-e:
 
     **AAD-alkalmazás -> hitelesítése** ![ Alkalmazáshitelesítés](./media/app-authentication-public.png)
 
     **AAD-alkalmazás –> API-engedélyek** ![ Alkalmazás API-k](./media/request-api-permissions-step-five.png)
 
-1. A fiók Remote Rendering után ellenőrizze, hogy a konfiguráció az alábbi képen láthatóhoz hasonló:
+1. A fiók Remote Rendering után ellenőrizze, hogy a konfiguráció az alábbi képen láthatóhoz hasonló-e:
 
     **AAR -> AccessControl (IAM)** ![ ARR-szerepkör](./media/azure-remote-rendering-role-assignment-complete.png)
 
     >[!NOTE]
-    > A *tulajdonosi* szerepkör nem elegendő a munkamenetek ügyfélalkalmazáson keresztüli kezeléséhez. Minden olyan felhasználó számára, aki számára a munkamenetek kezelését szeretné biztosítani, meg kell adnia a Remote Rendering **szerepkört.** Minden olyan felhasználónak, aki munkameneteket szeretne kezelni és modelleket konvertálni, meg kell adnia a Remote Rendering **szerepkört.**
+    > A *tulajdonosi* szerepkör nem elegendő a munkamenetek ügyfélalkalmazáson keresztüli kezeléséhez. Minden felhasználóhoz, aki számára a munkamenetek kezelését szeretné biztosítani, meg kell adnia a Remote Rendering **szerepkört.** Minden olyan felhasználónak, aki munkameneteket szeretne kezelni és modelleket konvertálni, meg kell adnia a Remote Rendering **szerepkört.**
 
 Most, hogy a dolgok Azure-oldalán van, módosítanunk kell, hogy a kód hogyan csatlakozzon az AAR szolgáltatáshoz. Ezt a **BaseARRAuthentication** egy példányának megvalósításával tejük meg, amely egy új **SessionConfiguration** objektumot ad vissza. Ebben az esetben a fiókadatok az Azure Hozzáférési jogkivonattal lesznek konfigurálva.
 
-1. Hozzon létre egy **új szkriptet AADAuthentication** névvel, és cserélje le a kódját a következőre:
+1. Hozzon létre egy **új, AADAuthentication nevű szkriptet,** és cserélje le a kódját a következőre:
 
     ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -363,11 +363,11 @@ Most, hogy a dolgok Azure-oldalán van, módosítanunk kell, hogy a kód hogyan 
     ```
 
 >[!NOTE]
-> Ez a kód egyáltalán nem teljes, és nem áll készen kereskedelmi alkalmazáshoz. Előfordulhat például, hogy legalább a kijelentkező képességet is hozzá szeretné adni. Ez az ügyfélalkalmazás által biztosított `Task RemoveAsync(IAccount account)` metódussal használhatja. Ez a kód csak oktatóanyag-használatra szolgál, az implementációja csak az alkalmazásra vonatkozik.
+> Ez a kód semmilyen módon nem teljes, és nem áll készen kereskedelmi alkalmazásokhoz. Például legalább a kijelentkező képességet is valószínűleg hozzá szeretné adni. Ez az ügyfélalkalmazás által biztosított `Task RemoveAsync(IAccount account)` módszerrel használhatja. Ez a kód csak oktatóanyagban való használatra szolgál, az implementációja csak az alkalmazásra vonatkozik.
 
-A kód először csendesen próbálja meg lehozni a jogkivonatot az **AquireTokenSilent használatával.** Ez sikeres lesz, ha a felhasználó korábban már hitelesítette ezt az alkalmazást. Ha nem sikerül, lépjen tovább egy felhasználó által is érintett stratégiára.
+A kód először az **AquireTokenSilent** használatával próbálja meg csendesen lekért jogkivonatot. Ez sikeres lesz, ha a felhasználó korábban már hitelesítette az alkalmazást. Ha nem sikerül, lépjen tovább egy felhasználó által is érintett stratégiára.
 
-Ehhez a kódhoz az [eszközkód-folyamatot](../../../../active-directory/develop/v2-oauth2-device-code.md) használjuk egy hozzáférési jogkivonat beszerzéséhez. Ez a folyamat lehetővé teszi, hogy a felhasználó bejelentkezett Azure-fiókjába egy számítógépen vagy mobileszközön, és az eredményül kapott jogkivonatot visszaküldje a HoloLens-alkalmazásnak.
+Ebben a kódban az eszköz [kódfolyamával](../../../../active-directory/develop/v2-oauth2-device-code.md) szerezünk be egy hozzáférési jogkivonatot. Ez a folyamat lehetővé teszi, hogy a felhasználó bejelentkezik az Azure-fiókjába egy számítógépen vagy mobileszközön, és az eredményül kapott jogkivonatot visszaküldje a HoloLens-alkalmazásnak.
 
 Az osztály legfontosabb része az ARR szempontjából a következő sor:
 
@@ -375,44 +375,46 @@ Az osztály legfontosabb része az ARR szempontjából a következő sor:
 return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountDomain, AzureRemoteRenderingDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
-Itt egy új **SessionConfiguration** objektumot hozunk létre a távoli renderelési tartomány, a fiókazonosító, a fióktartomány és a hozzáférési jogkivonat használatával. Ezt a jogkivonatot ezután az ARR szolgáltatás használja távoli renderelési munkamenetek lekérdezésére, létrehozására és csatlakozására, ha a felhasználó a korábban konfigurált szerepköralapú engedélyek alapján van engedélyezve.
+Itt létrehozunk egy új **SessionConfiguration** objektumot a távoli renderelési tartomány, a fiókazonosító, a fióktartomány és a hozzáférési jogkivonat használatával. Az ARR szolgáltatás ezután ezt a jogkivonatot használja távoli renderelési munkamenetek lekérdezéséhez, létrehozásához és csatlakozáshoz, ha a felhasználó a korábban konfigurált szerepköralapú engedélyek alapján van engedélyezve.
 
 Ezzel a módosítással az alkalmazás aktuális állapota és az Azure-erőforrásokhoz való hozzáférése a következő:
 
 ![Még nagyobb biztonság](./media/security-three.png)
 
-Mivel a felhasználói hitelesítő adatokat a rendszer nem tárolja az eszközön (vagy ebben az esetben még az eszközön is), a kitettségi kockázat nagyon alacsony. Az eszköz most egy felhasználóspecifikus, időkorrekált hozzáférési jogkivonattal fér hozzá az ARR-hez, amely hozzáférés-vezérléssel (IAM) fér hozzá a Blob Storage. Ez a két lépés teljesen eltávolította a "jelszavakat" a forráskódból, és jelentősen megnövelte a biztonságot. Ez azonban nem a legbiztonságosabb, a modell és a munkamenet-kezelés webszolgáltatásba való áthelyezésével tovább javíthatja a biztonságot. A további biztonsági szempontokról a Kereskedelmi készenlét [fejezetben olvashat.](../commercial-ready/commercial-ready.md)
+Mivel a felhasználói hitelesítő adatokat a rendszer nem tárolja az eszközön (vagy ebben az esetben még az eszközön is), nagyon alacsony a kitettség kockázata. Az eszköz mostantól felhasználóspecifikus, időkorrekta hozzáférési jogkivonattal fér hozzá az ARR-hez, amely hozzáférés-vezérléssel (IAM) fér hozzá a Blob Storage. Ez a két lépés teljesen eltávolította a "jelszavakat" a forráskódból, és jelentősen megnövelte a biztonságot. Ez azonban nem a legbiztonságosabb, a modell és a munkamenet-kezelés webszolgáltatásba való áthelyezésével tovább javíthatja a biztonságot. A további biztonsági szempontokat a Kereskedelmi készenlét [fejezet tárgyalja.](../commercial-ready/commercial-ready.md)
 
 ### <a name="testing-aad-auth"></a>Az AAD-hitelesítés tesztelése
 
-A Unity-szerkesztőben, ha az AAD-hitelesítés aktív, minden alkalommal hitelesítenie kell magát, amikor elindítja az alkalmazást. Az eszközön a hitelesítési lépés az első alkalommal történik meg, és csak akkor lesz rá szükség, amikor a jogkivonat lejár vagy érvénytelenül.
+A Unity-szerkesztőben, ha az AAD-hitelesítés aktív, minden alkalommal hitelesítenie kell magát, amikor elindítja az alkalmazást. Az eszközön a hitelesítési lépés először történik meg, és csak akkor lesz rá szükség, amikor a jogkivonat lejár vagy érvénytelenné válik.
 
-1. Adja hozzá **az AADAuthentication** összetevőt a **RemoteRenderingCoordinator** GameObjecthez.
+1. Adja hozzá **az AADAuthentication** összetevőt a **RemoteRenderingCoordinator** GameObject elemhez.
 
     ![AAD-hitelesítési összetevő](./media/azure-active-directory-auth-component.png)
 
-1. Adja meg az Ügyfél-azonosító és a Bérlőazonosító értékét. Ezek az értékek az alkalmazásregisztráció Áttekintés oldalán találhatók:
+1. Adja meg az Ügyfél-azonosító és a Bérlőazonosító értékét. Ezek az értékek az alkalmazásregisztráció Áttekintő oldalán találhatók:
 
-    * Active Directory alkalmazás **ügyfél-azonosítója** az AAD-alkalmazásregisztrációban található *alkalmazás-(ügyfél-)* azonosító (lásd az alábbi képet).
-    * **Az Azure-bérlőazonosító** az AAD-alkalmazásregisztrációban található címtár- *(bérlő-)* azonosító (lásd az alábbi képet).
+    * **Active Directory** alkalmazás ügyfél-azonosítója az AAD-alkalmazásregisztrációban *található alkalmazás- (ügyfél-)* azonosító (lásd az alábbi képet).
+    * **Az Azure-bérlő** azonosítója az AAD-alkalmazásregisztrációban található címtár- *(bérlő-)* azonosító (lásd az alábbi képet).
     * **Azure Remote Rendering tartomány** megegyezik a **RemoteRenderingCoordinator** tartományában használt Remote Rendering tartományával.
-    * **Azure Remote Rendering fiókazonosító** **megegyezik** a **RemoteRenderingCoordinator fiókazonosítójával.**
-    * **Azure Remote Rendering fióktartomány** ugyanaz a  fióktartomány, mint amit a **RemoteRenderingCoordinatorban használt.**
+    * **Azure Remote Rendering a fiókazonosító** megegyezik  a **RemoteRenderingCoordinatorhoz használt fiókazonosítóval.**
+    * **Azure Remote Rendering fióktartomány** **megegyezik** a **RemoteRenderingCoordinatorban használt fióktartománysal.**
 
-    ![Képernyőkép az alkalmazás -azonosítójának (ügyfél- és címtár- (bérlő-) azonosítójának kiemeléséhez.](./media/app-overview-data.png)
+    ![Képernyőkép az alkalmazás- (ügyfél-) azonosítóról és a címtár- (bérlő-) azonosítóról.](./media/app-overview-data.png)
 
 1. A Unity-szerkesztőben nyomja le a Play billentyűt, és járuljon hozzá egy munkamenet futtatásához.
     Mivel az **AADAuthentication** összetevő rendelkezik nézetvezérlővel, automatikusan csatlakoztatva van, hogy megjelenítsen egy kérést a munkamenet-engedélyezési modális panel után.
 1. Kövesse az AppMenu jobb oldalon található panel **utasításait.**
-    Az alábbihoz hasonlót kell látnia: Az AppMenu jobb oldalon megjelenő utasításpanelt bemutató ![ ábra.](./media/device-flow-instructions.png)
-    Miután megadta a megadott kódot a másodlagos eszközön (vagy ugyanazon az eszközön egy böngészőben), és bejelentkezett a hitelesítő adataival, a rendszer egy hozzáférési jogkivonatot ad vissza a kérelmező alkalmazásnak, ebben az esetben a Unity Editornak.
-1. Ezután az alkalmazás mindennek a szokásos módon kell működnie. Ellenőrizze a Unity-konzolon, hogy vannak-e hibák, ha nem a várt módon halad végig a szakaszokon.
+    Az alábbihoz hasonlónak kell megjelennie: Ábra, amely az AppMenu jobb oldalon megjelenő ![ utasításpanelt mutatja.](./media/device-flow-instructions.png)
+    
+    Miután megadta a megadott kódot a másodlagos eszközön (vagy ugyanazon az eszközön a böngészőben), és bejelentkezik a hitelesítő adataival, a rendszer egy hozzáférési jogkivonatot ad vissza a kérelmező alkalmazásnak, ebben az esetben a Unity-szerkesztőnek.
+
+Ezután az alkalmazás mindennek a szokásos módon kell haladni. Ellenőrizze a Unity-konzolon, hogy vannak-e hibák, ha nem a várt módon halad végig a szakaszokon.
 
 ## <a name="build-to-device"></a>Felépítés az eszközre
 
-Ha egy alkalmazást az MSAL eszközre való használatával hoz létre, bele kell foglalnia egy fájlt a projekt **Assets (Eszközök) mappájába.** Ez segít a fordítónak az alkalmazás megfelelő összeállításában az *oktatóanyagMicrosoft.Identity.Client.dll* eszközökben **található kódtitkok használatával.**
+Ha MSAL-t használó alkalmazást hoz létre egy eszközön, bele kell foglalnia egy fájlt a projekt **Assets (Eszközök) mappájába.** Ez segít a fordítónak az alkalmazás megfelelő összeállításában az *oktatóanyagMicrosoft.Identity.Client.dll* eszközökben található **kódtitkok használatával.**
 
-1. Adjon hozzá egy új fájlt az **Assets (Eszközök)** **link.xml**
+1. Adjon hozzá egy új fájlt az **Assets** (Eszközök) **link.xml**
 1. Adja hozzá a következőt a fájlhoz:
 
     ```xml
@@ -427,7 +429,7 @@ Ha egy alkalmazást az MSAL eszközre való használatával hoz létre, bele kel
 
 1. Mentse a módosításokat.
 
-Kövesse a Következő rövid [útmutatóban található lépéseket: Unity-minta üzembe helyezése a HoloLensben – A](../../../quickstarts/deploy-to-hololens.md#build-the-sample-project)Mintaprojekt létrehozása a HoloLensbe való buildelésével.
+Kövesse a Rövid útmutató: Unity-minta üzembe helyezése [a HoloLensben – A](../../../quickstarts/deploy-to-hololens.md#build-the-sample-project)mintaprojekt buildelésével a HoloLensbe való buildelését.
 
 ## <a name="next-steps"></a>Következő lépések
 

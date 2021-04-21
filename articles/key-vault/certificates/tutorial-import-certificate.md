@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Tanúsítvány importálása a Key Vault Azure Portal | Microsoft Docs
+title: Oktatóanyag – Tanúsítvány importálása a Key Vault a Azure Portal | Microsoft Docs
 description: Oktatóanyag, amely bemutatja, hogyan importálhat tanúsítványt a Azure Key Vault
 services: key-vault
 author: msmbaldwin
@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 67531c1c5d37b02f9107dfc487c10b2fcac734d8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: aebb0fa5da4cef655acc424c5ac90b628a4ba3af
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791966"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814441"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Oktatóanyag: Tanúsítvány importálása a Azure Key Vault
 
-Az Azure Key Vault egy olyan felhőszolgáltatás, amely a titkos kulcsok biztonságos tárolására szolgál. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. Az Azure-kulcstartók létrehozhatók és kezelhetők az Azure Portal segítségével is. Ebben az oktatóanyagban létrehoz egy kulcstartót, majd annak használatával importál egy tanúsítványt. A Key Vaulttal kapcsolatosan további információt az [Áttekintés](../general/overview.md) szakaszban talál.
+Az Azure Key Vault egy olyan felhőszolgáltatás, amely a titkos kulcsok biztonságos tárolására szolgál. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. Az Azure-kulcstartók létrehozhatók és kezelhetők az Azure Portal segítségével is. Ebben az oktatóanyagban létre fog hozni egy kulcstartót, majd a használatával importál egy tanúsítványt. A Key Vaulttal kapcsolatosan további információt az [Áttekintés](../general/overview.md) szakaszban talál.
 
 Ez az oktatóanyag a következőket mutatja be:
 
@@ -30,7 +30,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > * Importálhat egy tanúsítványt a Key Vault PowerShell használatával.
 
 
-Mielőtt hozzákezd, olvassa el [a Key Vault alapfogalmait.](../general/basic-concepts.md) 
+Mielőtt hozzákezd, olvassa [el Key Vault alapfogalmakat.](../general/basic-concepts.md) 
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -47,30 +47,30 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 5. A **Kulcstartó létrehozása** szakaszban adja meg a következő információkat:
     - **Név**: Egy egyedi nevet kell megadnia. Ebben a rövid útmutatóban az **Example-Vaultot használjuk.** 
     - **Előfizetés**: Válassza ki az előfizetést.
-    - Az **Erőforráscsoport alatt válassza** az Új létrehozása **lehetőséget,** és adjon meg egy erőforráscsoport-nevet.
+    - Az **Erőforráscsoport alatt válassza** az Új létrehozása **lehetőséget,** és adja meg az erőforráscsoport nevét.
     - A **Hely** legördülő menüből válassza ki a helyet.
     - A többi beállítást hagyja az alapértelmezett értéken.
 6. A fenti adatok megadása után válassza a **Létrehozás** elemet.
 
 Jegyezze fel az alábbi két tulajdonságot:
 
-* **Tároló neve:** A példában ez az **Example-Vault.** Ezt a nevet fogja majd más lépésekben is használni.
+* **Tároló neve:** A példában ez **az Example-Vault.** Ezt a nevet fogja majd más lépésekben is használni.
 * **Tár URI-ja**: A példában ez a https://example-vault.vault.azure.net/. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
 
 Jelenleg csak az Azure-fiókja jogosult arra, hogy műveleteket végezzen ezen az új kulcstartón.
 
 ![Kimenet a Key Vault létrehozási parancsának befejeződése után](../media/certificates/tutorial-import-cert/vault-properties.png)
 
-## <a name="import-a-certificate-to-key-vault"></a>Tanúsítvány importálása a Key Vault
+## <a name="import-a-certificate-to-key-vault"></a>Tanúsítvány importálása Key Vault
 
-Ahhoz, hogy tanúsítványt importálni tudja a tárolóba, szüksége lesz egy PEM- vagy PFX-tanúsítványfájlra a lemezen. Ebben az esetben egy **ExampleCertificate nevű tanúsítványt importálunk.**
+Ha tanúsítványt importál a tárolóba, szüksége lesz egy PEM- vagy PFX-tanúsítványfájlra a lemezen. Ebben az esetben egy **ExampleCertificate nevű tanúsítványt importálunk.**
 
 > [!IMPORTANT]
 > Az Azure Key Vault által támogatott tanúsítványformátumok a PFX és a PEM. 
 > - A .pem fájlformátum egy vagy több X509-tanúsítványfájlt tartalmaz.
-> - A .pfx fájlformátum egy archivált fájlformátum, amely számos titkosítási objektumot tárol egyetlen fájlban, például kiszolgálói tanúsítványban (a tartomány számára kiadott), egy megfelelő titkos kulcsot, és opcionálisan tartalmazhat köztes hitelesítésszolgáltatót is.  
+> - A .pfx fájlformátum egy archivált fájlformátum, amely számos titkosítási objektumot tárol egyetlen fájlban, például kiszolgálói tanúsítványt (a tartomány számára kiadott), egy megfelelő titkos kulcsot, és opcionálisan tartalmazhat köztes hitelesítésszolgáltatót is.  
 
-1. A tulajdonságokat Key Vault oldalon válassza a Tanúsítványok **lehetőséget.**
+1. A Tulajdonságok Key Vault oldalon válassza a Tanúsítványok **lehetőséget.**
 2. Kattintson a **Létrehozás/Importálás** gombra.
 3. A Tanúsítvány **létrehozása képernyőn** válassza a következő értékeket:
     - **Tanúsítvány-létrehozási módszer:** Importálás.
@@ -153,4 +153,4 @@ Ebben az oktatóanyagban létrehozott egy Key Vault és importált egy tanúsít
 
 - További információ: [Tanúsítvány-létrehozás kezelése a Azure Key Vault](./create-certificate-scenarios.md)
 - Példák tanúsítványok [IMPORTÁLÁSára REST API-k használatával](/rest/api/keyvault/importcertificate/importcertificate)
-- Tekintse át [a Key Vault biztonsági áttekintését](../general/security-overview.md)
+- Tekintse át [a Key Vault biztonsági áttekintését](../general/security-features.md)

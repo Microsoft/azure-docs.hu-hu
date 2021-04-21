@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: a4c06cf13b3988891f3c4b45c96f7153b3014ce0
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 9679157e7871b043711fff688a8cbb69cf9bb4d8
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752155"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813613"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Felhasználó által kezelt kulcsok konfigurálása adattitkosításhoz a Azure Cognitive Search
 
@@ -146,7 +146,7 @@ Hagyja ki ezt a lépést, ha már rendelkezik kulccsal a Azure Key Vault.
 
 Ebben a lépésben egy hozzáférési szabályzatot fog létrehozni a Key Vault. Ez a szabályzat engedélyt ad a Active Directory regisztrált alkalmazásnak az ügyfél által kezelt kulcs használatára.
 
-A hozzáférési engedélyek bármikor visszavonhatóak. A visszavonás után a kulcstartót használó keresési szolgáltatás indexe vagy szinonimatérképe használhatatlanná válik. A Key Vault hozzáférési engedélyeinek későbbi visszaállítása visszaállítja az index-szinonimatérkép-hozzáférést. További információ: [Kulcstartóhoz való biztonságos hozzáférés.](../key-vault/general/security-overview.md)
+A hozzáférési engedélyek bármikor visszavonhatóak. A visszavonás után a kulcstartót használó keresési szolgáltatás indexe vagy szinonimatérképe használhatatlanná válik. A Key Vault hozzáférési engedélyeinek későbbi visszaállítása visszaállítja az index-szinonimatérkép-hozzáférést. További információ: [Kulcstartóhoz való biztonságos hozzáférés.](../key-vault/general/security-features.md)
 
 1. Még mindig a Azure Portal nyissa meg a kulcstartó Áttekintés **lapját.** 
 

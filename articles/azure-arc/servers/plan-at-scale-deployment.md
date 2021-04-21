@@ -1,93 +1,93 @@
 ---
-title: Azure arc-kompatibilis kiszolgálók tervezése és üzembe helyezése
-description: Megtudhatja, hogyan engedélyezheti a nagy számú gépet az Azure arc használatára képes kiszolgálókon az Azure-ban az alapvető biztonsági, felügyeleti és monitorozási képességek konfigurálásának egyszerűbbé tételéhez.
-ms.date: 03/18/2021
+title: Az engedélyezett kiszolgálók Azure Arc üzembe helyezése
+description: Megtudhatja, hogyan engedélyezheti nagy számú gép számára, hogy engedélyező Azure Arc az Azure alapvető biztonsági, felügyeleti és monitorozási képességeinek konfigurálásán.
+ms.date: 04/21/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5aa7022dba943fa3de247404522408f4660e80e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3f8fe410da56f627ceab5f17c980f2daa1a262c
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023282"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831977"
 ---
-# <a name="plan-and-deploy-arc-enabled-servers"></a>Arc-kompatibilis kiszolgálók tervezése és üzembe helyezése
+# <a name="plan-and-deploy-arc-enabled-servers"></a>Arc-kompatibilis kiszolgálók megterv helyezése és üzembe helyezése
 
-Egy informatikai infrastruktúra-szolgáltatás vagy üzleti alkalmazás üzembe helyezése bármely vállalat számára kihívást jelenthet. Annak érdekében, hogy megfelelően fusson, és elkerülje az esetleges váratlan meglepetéseket és a nem tervezett költségeket, alaposan tervezze meg, hogy a lehető leghamarabb készen álljon. Az Azure arc-kompatibilis kiszolgálók bármilyen méretű üzembe helyezésének megtervezéséhez meg kell felelnie a feladatok sikeres elvégzéséhez szükséges tervezési és telepítési feltételeknek.
+Az it-infrastruktúra-szolgáltatások vagy üzleti alkalmazások üzembe helyezése minden vállalat számára kihívást jelent. A jó végrehajtás és a nem várt meglepetések és nem tervezett költségek elkerülése érdekében alaposan meg kell tervezni, hogy a lehető legnagyobb mértékben felkészült legyen. Az engedélyezett Azure Arc nagy léptékű üzembe helyezésének tervezéséhez meg kell tervezni a feladatok sikeres végrehajtásához szükséges tervezési és telepítési feltételeket.
 
-Ahhoz, hogy az üzembe helyezés zökkenőmentesen járjon el, a tervnek világosan meg kell ismernie a következőket:
+Ahhoz, hogy az üzembe helyezés zökkenőmentesen folytatódjon, a tervnek a következő ismereteket kell egyértelműen megértenie:
 
 * Szerepkörök és felelősségek.
 * Fizikai kiszolgálók vagy virtuális gépek leltára annak ellenőrzéséhez, hogy megfelelnek-e a hálózati és rendszerkövetelményeknek.
-* Az üzembe helyezés és a folyamatos felügyelet sikeres végrehajtásához szükséges szaktudás és képzés.
-* Elfogadási feltételek és a siker nyomon követése.
-* Az üzemelő példányok automatizálására szolgáló eszközök és módszerek.
-* Azonosított kockázatok és kockázatcsökkentő tervek a késések, fennakadások stb. elkerüléséhez.
-* Az üzembe helyezés során felmerülő fennakadások elkerülése.
-* Mi a eszkalációs útvonal jelentős probléma esetén?
+* A sikeres üzembe helyezéshez és a felügyelethez szükséges készségkészlet és képzés.
+* Elfogadási feltételek és a sikeresség nyomon követése.
+* Az üzembe helyezés automatizálása érdekében használható eszközök vagy módszerek.
+* Azonosított kockázatok és kockázatcsökkentési tervek a késések, kimaradások stb. elkerülése érdekében.
+* Hogyan kerülheti el a kimaradást az üzembe helyezés során.
+* Mi az eszkalációs útvonal jelentős probléma esetén?
 
-Ennek a cikknek a célja annak biztosítása, hogy készen áll az Azure arc-kompatibilis kiszolgálók sikeres üzembe helyezésére a környezetben található több éles fizikai kiszolgáló vagy virtuális gép között.
+Ennek a cikknek az a célja, hogy felkészült legyen az engedélyezett Azure Arc több éles fizikai kiszolgálón vagy a környezetben lévő virtuális gépeken történő sikeres telepítésére.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A gépek [támogatott operációs rendszert](agent-overview.md#supported-operating-systems) futtatnak a csatlakoztatott gépi ügynökhöz.
-* A gépek közvetlenül vagy egy proxykiszolgálón keresztül kapcsolódnak a helyszíni hálózatról vagy más felhőalapú környezetről az Azure-beli erőforrásokhoz.
-* Az arc-kompatibilis kiszolgálók csatlakoztatott számítógép-ügynök, egy emelt szintű (azaz rendszergazda vagy gyökér) jogosultsággal rendelkező fiók telepítése és konfigurálása a gépeken.
-* A gépek bevezetéséhez Ön az **Azure Connected Machine** bevezetési szerepkör tagja.
-* Egy gép olvasásához, módosításához és törléséhez az **Azure Connected machine erőforrás-rendszergazdai** szerepkör tagja.
+* A gépek egy támogatott [operációs rendszert futtatnak](agent-overview.md#supported-operating-systems) a Csatlakoztatott gép ügynök számára.
+* A gépek közvetlenül vagy proxykiszolgálón keresztül is csatlakoztatva vannak a helyszíni hálózatról vagy más felhőalapú környezetből az Azure-beli erőforrásokhoz.
+* Az Arc-kompatibilis kiszolgálók csatlakoztatottgép-ügynökének telepítéséhez és konfiguráláshoz emelt szintű (azaz rendszergazdai vagy rendszergazdai) jogosultságokkal rendelkező fióknak kell lennie a gépeken.
+* A gépek az Azure Connected Machine **szerepkörbe való bevetésében vannak bevetve.**
+* A gépek olvasása, módosítása és törlése az **erőforrás-rendszergazdai Azure Connected Machine tagja.**
 
 ## <a name="pilot"></a>Próbaüzem
 
-Mielőtt az összes üzemi gépre telepítené az üzembe helyezést, kezdje a telepítési folyamat kiértékelésével, mielőtt széles körben befogadja a környezetét. Egy próba esetében azonosítsa a vállalatoknak a vállalatok üzleti tevékenysége szempontjából nem kritikus fontosságú, reprezentatív mintavételét. Ügyeljen arra, hogy elegendő időt hagyjon a próbaüzem futtatására és a hatás értékelésére: legalább 30 napot ajánlunk.
+Mielőtt az összes éles gépre üzembe helyezi az üzembe helyezést, először kiértékelheti ezt az üzembe helyezési folyamatot, mielőtt széles körben beveszi a környezetében. A próba során azonosítsa azon gépek reprezentatív mintavételezését, amelyek nem kritikus fontosságúak a vállalat üzleti tevékenységének szempontjából. Mindenképpen hagyjon elegendő időt a próba futtatására és a hatás felmérésére: javasoljuk, hogy legalább 30 napot tartsunk.
 
-Hozzon létre egy formális tervet, amely leírja a pilóta hatókörét és részleteit. Az alábbi példa egy olyan tervet tartalmaz, amelyet az első lépések megtételéhez érdemes megtervezni.
+Hozzon létre egy formális tervet, amely leírja a próbaterv hatókörét és részleteit. Az alábbiakban egy példa arra, hogy mit kell tartalmaznia egy tervnek az első lépésekhez.
 
-* Célkitűzések – azokat az üzleti és technikai illesztőprogramokat ismerteti, amelyek a próbaüzem meghozatalához szükségesek.
-* Kiválasztási feltételek – azokat a feltételeket adja meg, amelyekkel kiválaszthatja, hogy a megoldás mely szempontjait kell bemutatni a próbaüzem segítségével.
-* Hatókör – ismerteti a pilóta hatókörét, amely magában foglalja a megoldás-összetevőkre, a várt ütemtervre, a próbaüzem időtartamára és a célként kijelölt gépek számára vonatkozó korlátozásokat.
-* Sikerességi feltételek és mérőszámok – határozza meg a próbaüzem sikerességi feltételeit és a siker szintjének meghatározására szolgáló konkrét mértékeket.
-* Képzési terv – az Azure-ban és az IT-szolgáltatásokban új, a kísérleti időszakban a rendszermérnökök, a rendszergazdák stb. betanítási terve.
-* Áttérési terv – a próbaüzem és az éles környezet közötti áttérés irányításához használt stratégia és feltételek leírása.
-* Visszaállítás – a pilóta előzetes üzembe helyezési állapotba való visszaállításának eljárásait ismerteti.
-* Kockázatok – felsorolja az összes azonosított kockázatot a próbaüzem végrehajtásához és az éles környezetben való üzembe helyezéshez.
+* Célkitűzések – Azokat az üzleti és technikai hajtókat ismerteti, amelyek a próbakra vonatkozó döntéshez vezettek.
+* Kiválasztási feltételek – Meghatározza azokat a kritériumokat, amelyek alapján kiválasztható, hogy a megoldás mely aspektusait mutatja be egy próba.
+* Hatókör – A próbaterv hatókörét ismerteti, beleértve többek között a megoldás összetevőit, a tervezett ütemezést, a próbaterv időtartamát és a megcélzható gépek számát.
+* Sikerességi feltételek és mérőszámok – A próba próba sikerességi feltételeinek és a siker szintjének meghatározásához használt konkrét intézkedések meghatározása.
+* Képzési terv – Ismerteti azokat a rendszermérnököket, rendszergazdákat stb. betanító tervet, akik még nem írják le az Azure-t és az informatikai szolgáltatásokat a próbaterv során.
+* Áttérési terv – A próbatervről az éles környezetbe való áttérést útmutató stratégiát és kritériumokat ismerteti.
+* Visszaállítás – A próba próbatelepítés előtti állapotra való visszaállításának eljárásait ismerteti.
+* Kockázatok – Sorolja fel a próba elvégzésével és az éles üzembe helyezéssel kapcsolatos összes azonosított kockázatot.
 
-## <a name="phase-1-build-a-foundation"></a>1. fázis: alaprendszer létrehozása
+## <a name="phase-1-build-a-foundation"></a>1. fázis: Alap kiépítése
 
-Ebben a fázisban a rendszermérnökök vagy a rendszergazdák lehetővé teszik, hogy a szervezetük Azure-előfizetésének alapvető funkciói a gépeket az arc-kompatibilis kiszolgálók és más Azure-szolgáltatások általi felügyeletre engedélyezzék.
-
-|Feladat |Részletek |Időtartam |
-|-----|-------|---------|
-| [Erőforráscsoport létrehozása](../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) | Egy dedikált erőforráscsoport, amely csak az ív használatára képes kiszolgálókat tartalmazza, és központosítja ezeknek az erőforrásoknak a felügyeletét és figyelését. | Egy óra |
-| [Címkék](../../azure-resource-manager/management/tag-resources.md) alkalmazása a gépek rendszerezéséhez. | Kiértékelheti és kifejlesztheti az ÁLTALa igazított [címkézési stratégiát](/azure/cloud-adoption-framework/decision-guides/resource-tagging/) , amely csökkentheti az ív-kompatibilis kiszolgálók kezelésének bonyolultságát, és egyszerűbbé teheti a felügyeleti döntések meghozatalát. | Egy nap |
-| [Azure monitor naplók](../../azure-monitor/logs/data-platform-logs.md) megtervezése és üzembe helyezése | A [tervezési és telepítési szempontok](../../azure-monitor/logs/design-logs-deployment.md) kiértékelésével megállapíthatja, hogy a szervezetnek meglévő vagy egy másik log Analytics-munkaterületet kell-e használnia az összegyűjtött naplófájlok hibrid kiszolgálókról és gépekről történő tárolásához. <sup>1</sup> | Egy nap |
-| [Azure Policy](../../governance/policy/overview.md) irányítási terv kidolgozása | Határozza meg, hogyan fogja megvalósítani a hibrid kiszolgálók és gépek irányítását az előfizetésben vagy az erőforráscsoport hatókörében Azure Policy. | Egy nap |
-| [Szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md) konfigurálása (RBAC) | Kialakíthat egy hozzáférési tervet, amellyel szabályozhatja, hogy ki férhet hozzá az arc-kompatibilis kiszolgálók kezeléséhez, és hogy a többi Azure-szolgáltatásból és-megoldásból származó adatok megtekinthessék. | Egy nap |
-| A már telepített Log Analytics ügynökkel rendelkező gépek azonosítása | Futtassa a következő naplózási lekérdezést a [log Analyticsban](../../azure-monitor/logs/log-analytics-overview.md) , hogy támogassa a meglévő log Analytics ügynök telepítéseit a bővítmény által felügyelt ügynökre:<br> Szívverés <br> &#124;, ahol a TimeGenerated > ezelőtt (30d) <br> &#124;, ahol a ResourceType = = "Machines" és a (ComputerEnvironment = = "nem Azure") <br> &#124; a számítógép, a ResourceProvider, a ResourceType, a ComputerEnvironment és az összefoglalás alapján | Egy óra |
-
-<sup>1</sup> a log Analytics munkaterület kialakításának kiértékelésének részeként fontos szempont, hogy a Update Management és a Change Tracking és a leltár funkció, valamint Azure Security Center és az Azure Sentinel támogatásával Azure Automation integrációja. Ha a szervezete már rendelkezik egy Automation-fiókkal, és engedélyezte a felügyeleti funkcióit egy Log Analytics munkaterülethez társítva, akkor kiértékelheti, hogy központosíthatja és egyszerűsítheti a felügyeleti műveleteket, valamint csökkentheti a költségeket a meglévő erőforrások használatával, illetve duplikált fiók, munkaterület stb. létrehozásával.
-
-## <a name="phase-2-deploy-arc-enabled-servers"></a>2. fázis: az ív használatára képes kiszolgálók üzembe helyezése
-
-Ezután hozzáadjuk az 1. fázisban meghatározott alapítványhoz az arc-kompatibilis kiszolgálók csatlakoztatott számítógép-ügynökének előkészítésével és üzembe helyezésével.
+Ebben a fázisban a rendszermérnökök vagy rendszergazdák lehetővé teszik, hogy a szervezetük Azure-előfizetésének alapvető funkciói elindítsák az alaprendszert, mielőtt engedélyezték volna a gépek számára az Arc-kompatibilis kiszolgálók és más Azure-szolgáltatások felügyeletét.
 
 |Feladat |Részletek |Időtartam |
 |-----|-------|---------|
-| Az előre definiált telepítési parancsfájl letöltése | Tekintse át és szabja testre az előre definiált telepítési parancsfájlt a csatlakoztatott számítógép-ügynök helyszíni telepítéséhez, hogy támogassa az automatikus üzembe helyezési követelményeket.<br><br> Példa a bevezetési erőforrások méretezésére:<br><br> <ul><li> [Alapszintű üzembe helyezési parancsfájl](onboard-service-principal.md)</ul></li> <ul><li>[VMware vSphere Windows Server rendszerű virtuális gépek méretezése](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_win/_index.md)</ul></li> <ul><li>[Nagyszabású bevezetési VMware vSphere Linux rendszerű virtuális gépek](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_linux/_index.md)</ul></li> <ul><li>[Integrált AWS EC2-példányok méretezése a Ansible használatával](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/aws_scaled_ansible/_index.md)</ul></li> <ul><li>[Központi telepítés a PowerShell távelérési szolgáltatásával](./onboard-powershell.md) (csak Windows)</ul></li>| Egy vagy több nap a követelményektől, a szervezeti folyamattól (például a módosítási és kiadási felügyelettől) és az Automation-módszertől függően. |
-| [Egyszerű szolgáltatás létrehozása](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) |Hozzon létre egy egyszerű szolgáltatást, amely nem interaktív módon, Azure PowerShell vagy a portálon keresztül csatlakozik a gépekhez.| Egy óra |
-| A csatlakoztatott számítógép ügynökének üzembe helyezése a célkiszolgálón és a gépeken |Az Automation eszközzel telepítse a parancsfájlokat a kiszolgálókra, és kapcsolódjon az Azure-hoz.| Egy vagy több nap a kiadási tervtől függően, és a szakaszos bevezetést követően. |
+| [Erőforráscsoport létrehozása](../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) | Dedikált erőforráscsoport, amely csak Arc-kompatibilis kiszolgálókat tartalmaz, és központosítja ezeknek az erőforrásoknak a felügyeletét és monitorozását. | Egy óra |
+| Címkék [alkalmazása a](../../azure-resource-manager/management/tag-resources.md) gépek rendszerezésének segítése. | Értékelje ki és fejlessze ki az iterált címkézési stratégiát, amely csökkentheti az Arc-kompatibilis kiszolgálók kezelésének összetettségét, és leegyszerűsítheti a felügyeleti döntések meghozatalát. [](/azure/cloud-adoption-framework/decision-guides/resource-tagging/) | Egy nap |
+| A naplók tervezése [és Azure Monitor telepítése](../../azure-monitor/logs/data-platform-logs.md) | Értékelje [ki a tervezési és üzembe helyezési](../../azure-monitor/logs/design-logs-deployment.md) szempontokat annak meghatározásához, hogy a szervezet használhat-e meglévő Log Analytics-munkaterületet, vagy implementálja-e egy másik Log Analytics-munkaterületet a hibrid kiszolgálókról és gépekről gyűjtött naplóadatok tárolására. <sup>1</sup> | Egy nap |
+| [Cégirányítási Azure Policy](../../governance/policy/overview.md) kidolgozása | Határozza meg, hogyan valósítja meg a hibrid kiszolgálók és gépek irányítását az előfizetés vagy az erőforráscsoport hatókörében a Azure Policy. | Egy nap |
+| Szerepköralapú [hozzáférés-vezérlés](../../role-based-access-control/overview.md) (RBAC) konfigurálása | Egy hozzáférési terv kidolgozása annak szabályozására, hogy ki férhet hozzá az Arc-kompatibilis kiszolgálók kezeléséhez, és hogy más Azure-szolgáltatásokból és -megoldásokból származó adatokat is megtekinthet. | Egy nap |
+| Gépek azonosítása, amelyeken már telepítve van a Log Analytics-ügynök | Futtassa a következő naplólekérdezéseket a [Log Analyticsben](../../azure-monitor/logs/log-analytics-overview.md) a meglévő Log Analytics-ügynöktelepítések bővítmény által felügyelt ügynökre konvertálásának támogatásához:<br> Szívverés <br> &#124; a TimeGenerated > ago(30d) <br> &#124; resourceType == "machines" és (ComputerEnvironment == "Non-Azure") <br> &#124;, ResourceProvider, ResourceType, ComputerEnvironment szerint | Egy óra |
 
-## <a name="phase-3-manage-and-operate"></a>3. fázis: kezelés és üzemeltetés
+<sup>1</sup> Fontos szempont a Log Analytics-munkaterület kialakításának kiértékelése során, hogy integrálni kell az Azure Automation-t az Update Management és változáskövetés és leltározás funkció, valamint a Azure Security Center és Azure Sentinel. Ha a szervezet már rendelkezik Automation-fiókkal, és engedélyezte a Log Analytics-munkaterülethez kapcsolt felügyeleti funkcióit, értékelje ki, hogy központosíthatja és egyszerűsítheti-e a felügyeleti műveleteket, valamint minimalizálhatja-e a költségeket, ha ezeket a meglévő erőforrásokat használja, vagy duplikált fiókot, munkaterületet stb. hoz létre.
 
-A 3. fázis azt látja, hogy a rendszergazdák vagy a rendszermérnökök lehetővé teszik a manuális feladatok automatizálását a csatlakoztatott gépi ügynök és a gép kezeléséhez és működtetéséhez az életciklusuk során.
+## <a name="phase-2-deploy-arc-enabled-servers"></a>2. fázis: Arc-kompatibilis kiszolgálók üzembe helyezése
+
+Ezután az 1. fázisban lefektetett alaphoz az Arc-kompatibilis kiszolgálók előkészítésével és üzembe helyezésével adjuk hozzá a Connected Machine ügynököt.
 
 |Feladat |Részletek |Időtartam |
 |-----|-------|---------|
-|Resource Health riasztás létrehozása |Ha egy kiszolgáló 15 percnél hosszabb ideig nem küld szívveréseket az Azure-nak, az azt jelenti, hogy offline állapotban van, a hálózati kapcsolat le lett tiltva, vagy az ügynök nem fut. Dolgozzon ki egy tervet az incidensek megválaszolásához és kivizsgálásához, valamint [Resource Health riasztások](../..//service-health/resource-health-alert-monitor-guide.md) használatával, hogy értesítést kapjon az indításakor.<br><br> A riasztás konfigurálásakor a következőket kell megadnia:<br> **Erőforrás típusa**  =  **Azure arc-kompatibilis kiszolgálók**<br> **Aktuális erőforrás állapota**  =  Nem **érhető el**<br> **Korábbi erőforrás állapota**  =  **Elérhető** | Egy óra |
-|Azure Advisor riasztás létrehozása | A legjobb megoldás és a legújabb biztonsági és hibajavítások esetében ajánlott az Azure arc-kompatibilis kiszolgálók ügynökének naprakészen tartása. Az elavult ügynökök [Azure Advisor riasztással](../../advisor/advisor-alerts-portal.md)lesznek azonosítva.<br><br> A riasztás konfigurálásakor a következőket kell megadnia:<br> **Javaslat típusa**  =  **Frissítés az Azure Connected Machine Agent legújabb verziójára** | Egy óra |
-|[Azure-szabályzatok kiosztása](../../governance/policy/assign-policy-portal.md) az előfizetéshez vagy az erőforráscsoport hatóköréhez |Az előfizetés vagy az erőforráscsoport hatóköréhez rendelje hozzá a **Azure monitor for VMS** [házirend](../../azure-monitor/vm/vminsights-enable-policy.md) engedélyezése (és az igényeinek megfelelő többi) beállítást. Azure Policy lehetővé teszi, hogy olyan szabályzat-definíciókat rendeljen hozzá, amelyek a szükséges ügynököket telepítik Azure Monitor for VMs a környezetében.| Változó |
-|[Update Management engedélyezése az ív használatára képes kiszolgálókon](../../automation/update-management/enable-from-automation-account.md) |Update Management konfigurálása Azure Automation az arc-kompatibilis kiszolgálókon regisztrált Windows-és Linux-alapú virtuális gépek operációsrendszer-frissítéseinek kezeléséhez. | 15 perc |
+| Az előre definiált telepítési szkript letöltése | Tekintse át és szabja testre az előre meghatározott telepítési szkriptet a Csatlakoztatott gép ügynök nagy léptékű telepítéséhez az automatikus központi telepítési követelmények támogatása érdekében.<br><br> Példa nagy léptékű be- és beiratás erőforrásaira:<br><br> <ul><li> [Nagy léptékű alapszintű üzembe helyezési szkript](onboard-service-principal.md)</ul></li> <ul><li>[Nagy léptékű VMware vSphere Windows Server rendszerű virtuális gépekhez](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_win/_index.md)</ul></li> <ul><li>[Linux rendszerű virtuális gépek VMware vSphere nagy léptékű telepítése](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_linux/_index.md)</ul></li> <ul><li>[AWS EC2-példányok nagy léptékű, Ansible-hez való használata](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/aws_scaled_ansible/_index.md)</ul></li> <ul><li>[Nagy léptékű üzembe helyezés PowerShell-alapú eltolás használatával](./onboard-powershell.md) (csak Windowson)</ul></li>| A követelményektől, a szervezeti folyamatoktól (például a változás- és kiadáskezeléstől) és a használt automatizálási módszertől függően egy vagy több nap. |
+| [Egyszerű szolgáltatás létrehozása](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) |Hozzon létre egy egyszerű szolgáltatást a gépek nem interaktív csatlakoztatására a Azure PowerShell vagy a portálról.| Egy óra |
+| A Connected Machine-ügynök telepítése a célkiszolgálókra és gépekre |Az automatizálási eszközzel üzembe helyezheti a szkripteket a kiszolgálókon, és csatlakoztathatja őket az Azure-hoz.| A kiadási tervtől és a szakaszos bevezetéstől függően egy vagy több nap. |
+
+## <a name="phase-3-manage-and-operate"></a>3. fázis: Kezelés és működés
+
+A 3. fázisban a rendszergazdák vagy a rendszermérnökök lehetővé teszik a manuális feladatok automatizálását a csatlakoztatott gép ügynökének és a gépnek az életciklusuk során való kezeléséhez és működtetéséhez.
+
+|Feladat |Részletek |Időtartam |
+|-----|-------|---------|
+|Riasztás Resource Health létrehozása |Ha egy kiszolgáló 15 percnél tovább nem küld szívveréseket az Azure-nak, az azt jelentheti, hogy offline állapotban van, a hálózati kapcsolat le lett tiltva, vagy az ügynök nem fut. Tervezze meg, hogyan reagál majd ezekre az [](../..//service-health/resource-health-alert-monitor-guide.md) incidensekre, és hogyan vizsgálja meg ezeket az Resource Health, hogy értesítést kapjon, amikor elindulnak.<br><br> A riasztás konfigurálásakor adja meg a következőket:<br> **Erőforrástípus**  =  **Azure Arc engedélyezett kiszolgálók**<br> **Az erőforrás aktuális állapota**  =  **Nem érhető el**<br> **Előző erőforrás állapota**  =  **Elérhető** | Egy óra |
+|Riasztás Azure Advisor létrehozása | A legjobb élmény, valamint a legújabb biztonsági és hibajavítások érdekében javasoljuk, hogy a Azure Arc-kompatibilis kiszolgálók ügynökét naprakészen tartsa. Az elavult ügynököket a rendszer egy új [riasztással Azure Advisor azonosítja.](../../advisor/advisor-alerts-portal.md)<br><br> A riasztás konfigurálásakor adja meg a következőket:<br> **Javaslat típusa**  =  **Frissítsen a legújabb verzióra** Azure Connected Machine Agent | Egy óra |
+|[Azure-szabályzatok hozzárendelése](../../governance/policy/assign-policy-portal.md) az előfizetés vagy az erőforráscsoport hatóköréhez |Rendelje hozzá **az Azure Monitor for VMs** [szabályzatot](../../azure-monitor/vm/vminsights-enable-policy.md) (és az igényeinek megfelelőket) az előfizetés vagy az erőforráscsoport hatóköréhez. Azure Policy lehetővé teszi olyan szabályzatdefiníciók hozzárendelését, amelyek a virtuális gépek elemzéséhez szükséges ügynököket telepítik a környezetben.| Változó |
+|[Az Update Management engedélyezése az Arc-kompatibilis kiszolgálókhoz](../../automation/update-management/enable-from-automation-account.md) |Konfigurálja Update Management-Azure Automation az Arc-kompatibilis kiszolgálókon regisztrált Windows és Linux rendszerű virtuális gépek operációsrendszer-frissítéseit. | 15 perc |
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A hibaelhárítási információ a [csatlakoztatott gép ügynökének hibaelhárítása című útmutatóban](troubleshoot-agent-onboard.md)található.
+* A hibaelhárítási információkat a Csatlakoztatott gép ügynök hibaelhárítása [útmutatóban talál.](troubleshoot-agent-onboard.md)
 
-* Megtudhatja, hogyan egyszerűsítheti az üzembe helyezést más Azure-szolgáltatásokkal, például az Azure Automation [állapot-konfigurációval](../../automation/automation-dsc-overview.md) és más támogatott Azure virtuálisgép- [bővítményekkel](manage-vm-extensions.md)
+* Megtudhatja, hogyan egyszerűsítheti az üzembe helyezést más Azure-szolgáltatásokkal, például Azure Automation [State Configuration](../../automation/automation-dsc-overview.md) és más támogatott Azure-beli virtuálisgép-bővítményekkel. [](manage-vm-extensions.md)

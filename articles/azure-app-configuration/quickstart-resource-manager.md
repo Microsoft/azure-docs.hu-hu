@@ -1,27 +1,27 @@
 ---
-title: Azure-alkalmazás konfigurációs tárolójának létrehozása Azure Resource Manager sablon használatával (ARM-sablon)
+title: Tároló Azure App Configuration létrehozása egy Azure Resource Manager (ARM-sablon) használatával
 titleSuffix: Azure App Configuration
-description: Ismerje meg, hogyan hozhat létre Azure-alkalmazás-konfigurációs tárolót Azure Resource Manager sablon (ARM-sablon) használatával.
+description: Megtudhatja, hogyan hozhat létre Azure App Configuration tárolót egy Azure Resource Manager (ARM-sablon) használatával.
 author: GrantMeStrength
 ms.author: jken
 ms.date: 10/16/2020
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.custom: subject-armqs
-ms.openlocfilehash: c5976053e32bcc97e57ef8f74b3249df83d322c4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: subject-armqs, devx-track-azurepowershell
+ms.openlocfilehash: 92ca80a6c807394c45be8f0187c7add736ba83ce
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933236"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831779"
 ---
-# <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>Rövid útmutató: Azure-alkalmazás konfigurációs tárolójának létrehozása ARM-sablonnal
+# <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>Rövid útmutató: Azure App Configuration létrehozása ARM-sablonnal
 
-Ez a rövid útmutató a következőket ismerteti:
+Ez a rövid útmutató a következőt ismerteti:
 
-- Alkalmazás-konfigurációs tároló üzembe helyezése Azure Resource Manager sablon használatával (ARM-sablon).
-- Hozzon létre kulcs-értékeket egy alkalmazás-konfigurációs tárolóban ARM-sablon használatával.
-- Az ARM-sablonban lévő alkalmazás-konfigurációs tárolóban lévő kulcs-értékek beolvasása.
+- Üzembe helyezhet App Configuration tárolót egy Azure Resource Manager sablonnal (ARM-sablonnal).
+- Kulcsértékek létrehozása egy App Configuration ARM-sablonnal.
+- Kulcs-értékek olvasása egy App Configuration ARM-sablonból.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -35,33 +35,33 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-app-configuration-store-kv/) közül származik. Létrehoz egy új alkalmazás-konfigurációs tárolót, amely két kulcs-értékkel rendelkezik belül. Ezután a függvény használatával `reference` kiírja a két kulcs-érték erőforrás értékét. A kulcs értékének olvasása így lehetővé teszi, hogy a sablon más helyein is használni lehessen.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-app-configuration-store-kv/) közül származik. Létrehoz egy új App Configuration két kulcs-értékkel a tárolóban. Ezután a függvényt `reference` használja a két kulcs-érték erőforrás értékeinek kimenetére. A kulcs értékének ily módon való beolvasása lehetővé teszi, hogy a sablon más helyei is használva legyen.
 
-A rövid útmutató a `copy` kulcs-érték erőforrás több példányának létrehozásához használja az elemet. Az elemmel kapcsolatos további tudnivalókért `copy` tekintse meg az [erőforrás-ITERÁCIÓ az ARM-sablonokban](../azure-resource-manager/templates/copy-resources.md)című témakört.
+A rövid útmutató a `copy` elemmel hozza létre a kulcs-érték erőforrás több példányát. Az elemmel kapcsolatos további `copy` információkért lásd: [Erőforrás-iteráció AZ ARM-sablonokban.](../azure-resource-manager/templates/copy-resources.md)
 
 > [!IMPORTANT]
-> Ehhez a sablonhoz az alkalmazás-konfiguráció erőforrás-szolgáltatójának vagy újabb verziójára van szükség `2020-07-01-preview` . Ez a verzió a `reference` függvényt használja a kulcsok értékének olvasására. Az `listKeyValue` előző verzióban a kulcs-érték olvasására használt függvény nem érhető el a verziótól kezdődően `2020-07-01-preview` .
+> Ehhez a sablonhoz App Configuration vagy újabb `2020-07-01-preview` verzió szükséges. Ez a verzió a `reference` függvényt használja a kulcs-értékek beolvassa. Az előző verzió kulcs-értékeinek olvasásához használt függvény a verziótól kezdődően nem `listKeyValue` érhető `2020-07-01-preview` el.
 
 :::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json":::
 
-Két Azure-erőforrás van definiálva a sablonban:
+A sablonban két Azure-erőforrás van meghatározva:
 
-- [Microsoft. AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2020-07-01-preview/configurationstores): hozzon létre egy alkalmazás-konfigurációs tárolót.
-- [Microsoft. AppConfiguration/configurationStores/Key értékek](/azure/templates/microsoft.appconfiguration/2020-07-01-preview/configurationstores/keyvalues): hozzon létre egy kulcs-értéket az alkalmazás konfigurációs tárolóján belül.
+- [Microsoft.AppConfiguration/configurationStores:](/azure/templates/microsoft.appconfiguration/2020-07-01-preview/configurationstores)hozzon létre App Configuration tárolót.
+- [Microsoft.AppConfiguration/configurationStores/keyValues:](/azure/templates/microsoft.appconfiguration/2020-07-01-preview/configurationstores/keyvalues)hozzon létre egy kulcs-értéket a App Configuration tárolóban.
 
 > [!TIP]
-> Az `keyValues` Erőforrás neve a kulcs és a címke kombinációja. A kulcs és a címke a határolójeltel van összekötve `$` . A címke nem kötelező. A fenti példában a `keyValues` Name nevű erőforrás egy `myKey` címke nélküli kulcs-értéket hoz létre.
+> Az `keyValues` erőforrás neve kulcs és címke kombinációja. A kulcsot és a címkét az `$` elválasztójel összekapcsolja. A címke nem kötelező. A fenti példában a névvel jelölt erőforrás egy címke nélküli `keyValues` `myKey` kulcs-értéket hoz létre.
 >
-> A kódolás, más néven URL-kódolás, lehetővé teszi, hogy a kulcsok vagy címkék olyan karaktereket tartalmazzanak, amelyek nem engedélyezettek az ARM-sablon erőforrásainak neveiben. `%` a nem engedélyezett karakter vagy, ezért a `~` helyén kell használni. A név megfelelő kódolásához kövesse az alábbi lépéseket:
+> A százalékkódolás, más néven URL-kódolás lehetővé teszi, hogy a kulcsok vagy címkék olyan karaktereket tartalmazzanak, amelyek nem engedélyezettek az ARM-sablonok erőforrásnevében. `%` A sem megengedett karakter, ezért a helyén `~` használatos. A név megfelelő kódolásához kövesse az alábbi lépéseket:
 >
 > 1. URL-kódolás alkalmazása
-> 2. Csere `~` erre `~7E`
-> 3. Csere `%` erre `~`
+> 2. Cserélje le a `~` helyére a következőt `~7E`
+> 3. Cserélje le a `%` helyére a következőt `~`
 >
-> Ha például kulcs-érték párokat szeretne létrehozni a kulcsnévvel `AppName:DbEndpoint` és a címke nevével `Test` , az erőforrás nevének a következőnek kell lennie: `AppName~3ADbEndpoint$Test` .
+> Ha például kulcsnévvel és címkenévvel hoz létre kulcs-érték párt, az erőforrás nevének `AppName:DbEndpoint` `Test` a következőnek kell lennie: `AppName~3ADbEndpoint$Test` .
 
 > [!NOTE]
-> Az alkalmazás konfigurációja lehetővé teszi a kulcs-érték adatelérést a virtuális hálózatról származó [privát kapcsolaton](concept-private-endpoint.md) keresztül. Alapértelmezés szerint, ha a szolgáltatás engedélyezve van, a rendszer megtagadja az alkalmazás konfigurációs adataira vonatkozó összes kérést a nyilvános hálózaton. Mivel az ARM-sablon a virtuális hálózaton kívül fut, az ARM-sablonból való adathozzáférés nem engedélyezett. Ha engedélyezni szeretné az adathozzáférést egy ARM-sablonból privát hivatkozás használata esetén, az alábbi Azure CLI-paranccsal engedélyezheti a nyilvános hálózati hozzáférést. Fontos figyelembe venni a nyilvános hálózati hozzáférés engedélyezésének biztonsági következményeit ebben a forgatókönyvben.
+> App Configuration kulcs-érték adatelérést tesz lehetővé egy privát [kapcsolaton](concept-private-endpoint.md) keresztül a virtuális hálózatról. Alapértelmezés szerint ha a funkció engedélyezve van, a nyilvános hálózaton App Configuration adatokra vonatkozó összes kérés le lesz tiltva. Mivel az ARM-sablon a virtuális hálózaton kívül fut, az ARM-sablonból való adatelérés nem engedélyezett. Ha privát kapcsolat használata esetén szeretné engedélyezni az adatok arm-sablonból való hozzáférését, a következő Azure CLI-paranccsal engedélyezheti a nyilvános hálózati hozzáférést. Ebben a forgatókönyvben fontos figyelembe venni a nyilvános hálózati hozzáférés engedélyezésének biztonsági következményeit.
 >
 > ```azurecli-interactive
 > az appconfig update -g MyResourceGroup -n MyAppConfiguration --enable-public-network true
@@ -69,11 +69,11 @@ Két Azure-erőforrás van definiálva a sablonban:
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-Kattintson az alábbi gombra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon létrehoz egy alkalmazás-konfigurációs tárolót két kulcs-értékkel belül.
+Kattintson az alábbi gombra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon létrehoz egy App Configuration tárolót két kulcs-értékkel.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store-kv%2Fazuredeploy.json)
 
-A sablont a következő PowerShell-parancsmag használatával is üzembe helyezheti. A kulcs-érték a PowerShell-konzol kimenetében jelenik meg.
+A sablont a következő PowerShell-parancsmag használatával is üzembe helyezheti. A kulcs-értékek a PowerShell-konzol kimenetében lesznek.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -88,17 +88,17 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 Read-Host -Prompt "Press [ENTER] to continue ..."
 ```
 
-## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
+## <a name="review-deployed-resources"></a>Az üzembe helyezett erőforrások áttekintése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A Azure Portal keresőmezőbe írja be az **alkalmazás konfigurációja** kifejezést. Válassza ki az **alkalmazás konfigurációját** a listából.
-1. Válassza ki az újonnan létrehozott alkalmazás-konfigurációs erőforrást.
-1. A **műveletek** területen kattintson a **Configuration Explorer** elemre.
-1. Ellenőrizze, hogy a két kulcs-érték létezik-e.
+1. A Azure Portal keresőmezőbe írja be a **következőt: App Configuration.** Válassza **App Configuration** lehetőséget a listából.
+1. Válassza ki az újonnan létrehozott App Configuration erőforrást.
+1. A **Műveletek alatt kattintson** a Configuration Explorer **elemre.**
+1. Ellenőrizze, hogy létezik-e két kulcs-érték.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje az erőforráscsoportot, az alkalmazás konfigurációs tárolóját és az összes kapcsolódó erőforrást. Ha a jövőben az alkalmazás-konfigurációs tárolót tervezi használni, kihagyhatja a törlését. Ha nem kívánja tovább használni ezt a tárolót, törölje az ebben a rövid útmutatóban létrehozott összes erőforrást a következő parancsmag futtatásával:
+Ha már nincs rá szükség, törölje az erőforráscsoportot, a App Configuration tárolót és az összes kapcsolódó erőforrást. Ha a jövőben a App Configuration használni, kihagyhatja annak törlését. Ha nem folytatja az áruház használatát, a következő parancsmag futtatásával törölje a rövid útmutatóhoz létrehozott összes erőforrást:
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -108,7 +108,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha szeretné megtudni, hogyan adhat hozzá a szolgáltatás jelölőjét és Key Vault az alkalmazás-konfigurációs tárolóra mutató hivatkozást, tekintse meg az alábbi ARM-sablon példáit.
+Ha többet szeretne megtudni a szolgáltatásjelölő hozzáadásáról és Key Vault egy App Configuration tárolóra való hivatkozásról, tekintse meg az alábbi ARM-sablonpéékokat.
 
-- [101 – app-Configuration-Store-FF](https://github.com/Azure/azure-quickstart-templates/tree/master/101-app-configuration-store-ff)
-- [101 – app-Configuration-Store-keyvaultref](https://github.com/Azure/azure-quickstart-templates/tree/master/101-app-configuration-store-keyvaultref)
+- [101-app-configuration-store-ff](https://github.com/Azure/azure-quickstart-templates/tree/master/101-app-configuration-store-ff)
+- [101-app-configuration-store-keyvaultref](https://github.com/Azure/azure-quickstart-templates/tree/master/101-app-configuration-store-keyvaultref)

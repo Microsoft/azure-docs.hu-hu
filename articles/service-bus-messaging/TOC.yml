@@ -110,8 +110,6 @@
           href: message-transfers-locks-settlement.md
         - name: Kézbesíthetetlen levelek sorai
           href: service-bus-dead-letter-queues.md
-        - name: Üzenetszámlálók
-          href: message-counters.md
         - name: Teljesítmény optimalizálása
           href: service-bus-performance-improvements.md
         - name: Georeplikációs vészhelyreállítás és georeplikáció
@@ -244,6 +242,10 @@
           href: enable-partitions.md
         - name: Üzenetsor vagy előfizetés automatikus továbbításának engedélyezése
           href: enable-auto-forward.md
+        - name: Üzenetsor vagy előfizetés el nem küldött levelének engedélyezése
+          href: enable-dead-letter.md
+        - name: Üzenetszámlálók lekérte
+          href: message-counters.md
         - name: Áthelyezés régiók között
           href: move-across-regions.md
         - name: Az üzenetkezelési egységek automatikus frissítése

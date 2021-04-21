@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/16/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: e698061122fcc8ff8019907b5fdeba5b2df58407
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 605d1e0f67ac959d2c7325e04e2fd10d9d2419be
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779344"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829493"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Linux Python-alkalmazás konfigurálása Azure App Service
 
@@ -38,7 +38,7 @@ A konfigurációhoz használhatja [a Azure Portal](https://portal.azure.com) vag
 
 - **Azure CLI:**
 
-    -  Az aktuális Python-verzió megjelenítése [az az webapp config show használatával:](/cli/azure/webapp/config#az_webapp_config_show)
+    -  A Python aktuális verziójának megjelenítése [az az webapp config show használatával:](/cli/azure/webapp/config#az_webapp_config_show)
     
         ```azurecli
         az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
@@ -99,7 +99,7 @@ A Python-alkalmazások Linuxon való App Service és buildjére vonatkozó tová
 
 ## <a name="migrate-existing-applications-to-azure"></a>Meglévő alkalmazások áttelepítése az Azure-ba
 
-A meglévő webalkalmazások a következőképpen újra üzembe is használhatja az Azure-ban:
+A meglévő webalkalmazások a következőképpen újra üzembe lehet őket használhatja az Azure-ban:
 
 1. **Forrástár:** A forráskódot egy megfelelő adattárban, például a GitHubon tarthatja fenn, így a folyamat későbbi része lehetővé teszi a folyamatos üzembe helyezés beállítását.
     1. A *requirements.txt* fájlnak az adattár gyökerében kell lennie, hogy App Service a szükséges csomagokat.    
@@ -140,7 +140,7 @@ Ha a Django-webalkalmazás statikus előoldali fájlokat [](https://docs.djangop
 
 A App Service a következő módosításokat kell követnie:
 
-1. Fontolja meg környezeti változók (helyi fejlesztéshez) és alkalmazásbeállítások (a felhőben való üzembe helyezéskor) alkalmazását a Django és a `STATIC_URL` `STATIC_ROOT` változók dinamikus beállításában. Például:    
+1. Fontolja meg környezeti változók (helyi fejlesztéshez) és alkalmazásbeállítások (a felhőben való üzembe helyezéskor) alkalmazását a Django és a változók `STATIC_URL` `STATIC_ROOT` dinamikus beállításában. Például:    
 
     ```python
     STATIC_URL = os.environ.get("DJANGO_STATIC_URL", "/static/")
@@ -169,8 +169,10 @@ A App Service a következő módosításokat kell követnie:
 1. Módosítsa a és a `MIDDLEWARE` `INSTALLED_APPS` listákat is, hogy tartalmazzák a Whitenoise (Fehér) listákat:
 
     ```python
-    MIDDLEWARE = [
-        "whitenoise.middleware.WhiteNoiseMiddleware",
+    MIDDLEWARE = [                                                                   
+        'django.middleware.security.SecurityMiddleware',
+        # Add whitenoise middleware after the security middleware                             
+        'whitenoise.middleware.WhiteNoiseMiddleware',
         # Other values follow
     ]
 
@@ -207,7 +209,7 @@ Rendszerindítás során a Linux-tárolóban lévő App Service a következő l�
 
 1. Ha meg [van téve, használjon](#customize-startup-command)egyéni indítási parancsot.
 2. Ellenőrizze, hogy létezik-e [Django-alkalmazás,](#django-app)és indítsa el hozzá a Gunicorn alkalmazást, ha azt észleli.
-3. Ellenőrizze, hogy létezik-e [Flask-alkalmazás,](#flask-app)és ha a rendszer észleli, indítsa el a Gunicorn alkalmazást.
+3. Ellenőrizze, hogy létezik-e [Flask-alkalmazás,](#flask-app)és ha észlelte, indítsa el a Gunicorn alkalmazást.
 4. Ha más alkalmazás nem található, indítson el egy alapértelmezett alkalmazást, amely a tárolóba van beépítve.
 
 A következő szakaszok további információkkal szolgálnak az egyes beállításokról.
@@ -251,7 +253,7 @@ Ha azt várja, hogy az alapértelmezett alkalmazás helyett egy üzembe helyezet
 
 ## <a name="customize-startup-command"></a>Indítási parancs testreszabása
 
-Amint azt a cikk korábbi cikke is ismerteti, a Gunicorn konfigurációs beállításait *a* projekt gyökerében található gunicorn.conf.py-fájlon keresztül használhatja, a Gunicorn konfigurációjának [áttekintésében leírtak szerint.](https://docs.gunicorn.org/en/stable/configure.html#configuration-file)
+Amint azt a cikk korábbi cikkében említettük, a Gunicorn konfigurációs beállításait *a* projekt gyökerében található gunicorn.conf.py-fájlon keresztül használhatja, a Gunicorn konfigurációjának [áttekintésében leírtak szerint.](https://docs.gunicorn.org/en/stable/configure.html#configuration-file)
 
 Ha ez a konfiguráció nem elegendő, a tároló indítási viselkedését úgy szabályozhatja, hogy egyéni indítási parancsot vagy több parancsot ad meg egy indítási parancsfájlban. Az indítási parancsfájl bármilyen választott nevet használhat, például *startup.sh*, *startup.cmd,* *startup.txt* stb.
 
@@ -294,7 +296,7 @@ App Service figyelmen kívül hagyja az egyéni indítási parancsok vagy fájlo
 
     További információ: [Gunicorn-naplózás](https://docs.gunicorn.org/en/stable/settings.html#logging) (docs.gunicorn.org).
     
-- **Custom Flask főmodul:** alapértelmezés szerint App Service, hogy a Flask-alkalmazás fő modulja application.py *vagy* *app.py.* Ha a fő modul más nevet használ, testre kell szabni az indítási parancsot. Tegyük fel például, hogy van egy Flask-alkalmazása, amelynek fő modulja hello.py és a fájl *Flask-alkalmazásobjektumának* neve , akkor a parancs a `myapp` következő:
+- **Custom Flask főmodul:** alapértelmezés szerint a App Service feltételezi, hogy a Flask-alkalmazás fő modulja application.py *vagy* *app.py.* Ha a fő modul más nevet használ, testre kell szabni az indítási parancsot. Tegyük fel például, hogy van egy Flask-alkalmazása, amelynek fő modulja hello.py és a fájl *Flask-alkalmazásobjektumának* neve , akkor a parancs a `myapp` következő:
 
     ```bash
     gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -337,11 +339,11 @@ A népszerű webes keretrendszerekkel a szokásos `X-Forwarded-*` alkalmazásmin
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-linux-no-h.md)]
 
-A naplók eléréséhez Azure Portal alkalmazás bal oldali menüjében válassza a Figyelési naplóstream  >   lehetőséget.
+A naplók eléréséhez Azure Portal alkalmazás bal oldali menüjében válassza a  >  **Monitorozási** naplóstream lehetőséget.
 
 ## <a name="access-deployment-logs"></a>Hozzáférés az üzembe helyezési naplókhoz
 
-A kód üzembe helyezésekor a App Service végrehajtja a buildautomatizálás testreszabása című szakaszban [korábban ismertetett buildfolyamatot.](#customize-build-automation) Mivel a build a saját tárolójában fut, a buildnaplókat a rendszer az alkalmazás diagnosztikai naplóitól elkülönítve tárolja.
+A kód üzembe helyezésekor a App Service a buildautomatizálás testreszabása című szakaszban korábban ismertetett [buildfolyamatot.](#customize-build-automation) Mivel a build a saját tárolójában fut, a buildnaplókat a rendszer az alkalmazás diagnosztikai naplóitól elkülönítve tárolja.
 
 Az üzembe helyezési naplók eléréséhez kövesse az alábbi lépéseket:
 
@@ -389,7 +391,7 @@ A következő szakaszok további útmutatást nyújtanak az egyes problémákhoz
     
     - Az [SSH használatával](#open-ssh-session-in-browser) közvetlenül csatlakozhat a App Service tárolóhoz, és ellenőrizheti, hogy a fájlok léteznek-e a *site/wwwroot helyen.* Ha a fájlok nem léteznek, kövesse az alábbi lépéseket:
       1. Hozzon létre egy nevű alkalmazásbeállítást 1 értékkel, újból üzembe kell hoznia a kódot, várjon néhány percet, majd próbálja meg ismét elérni `SCM_DO_BUILD_DURING_DEPLOYMENT` az alkalmazást. További információ az alkalmazásbeállítások létrehozásáról: [Alkalmazásalkalmazás App Service konfigurálása a Azure Portal.](configure-common.md)
-      1. Tekintse át az üzembe helyezési folyamatot, ellenőrizze az [üzembe helyezési naplókat,](#access-deployment-logs)javítsa ki az esetleges hibákat, majd üzembe helyezése újra az alkalmazást.
+      1. Tekintse át az üzembe helyezési folyamatot, ellenőrizze az [üzembe helyezési naplókat,](#access-deployment-logs)javítsa ki az esetleges hibákat, majd az alkalmazás ismételt üzembe helyezését.
     
     - Ha a fájlok léteznek, az App Service nem tudta azonosítani az adott indítási fájlt. Ellenőrizze, hogy az alkalmazás struktúrája megfelel-e annak, amit az App Service a [Django](#django-app) vagy a [Flask](#flask-app) számára elvár, vagy használjon [egyéni indítási parancsot](#customize-startup-command).
 

@@ -2,7 +2,7 @@
   href: index.yml
 - name: Áttekintés
   href: overview.md
-- name: A Azure Sentinel újdonsága
+- name: Újdonságok a Azure Sentinel?
   href: whats-new.md
 - name: Rövid útmutatók
   expanded: true
@@ -53,7 +53,7 @@
       href: import-threat-intelligence.md
     - name: Saját gépi tanulási platform használata
       href: bring-your-own-ml.md
-    - name: A Defender Microsoft 365 integrálása a Azure Sentinel
+    - name: Az Microsoft 365 Defender integrálása a Azure Sentinel
       href: microsoft-365-defender-sentinel-integration.md
     - name: Külső adatok használata figyelőlistákkal
       href: watchlists.md
@@ -61,6 +61,8 @@
       href: extend-sentinel-across-workspaces-tenants.md
     - name: Adatok normalizálása táblázatok között
       href: normalization.md
+    - name: A Azure Data Explorer hosszú távú naplómegőrzéshez használja a Azure Data Explorer.
+      href: store-logs-in-azure-data-explorer.md
     - name: Biztonság
       items:
         - name: Biztonsági alapkonfiguráció
@@ -130,7 +132,7 @@
               href: connect-alcide-kaudit.md
             - name: Alsid a Active Directory
               href: connect-alsid-active-directory.md
-            - name: Apache HTTP Server
+            - name: Apache HTTP-kiszolgáló
               href: connect-apache-http-server.md
             - name: Barracuda WAF
               href: connect-barracuda.md
@@ -264,7 +266,7 @@
           href: monitor-data-connector-health.md
     - name: Felhasználói és entitásviselkedés-elemzés engedélyezése
       href: enable-entity-behavior-analytics.md
-    - name: Adatmezők leképezása entitásokhoz
+    - name: Adatmezők leképezés entitásokhoz
       href: map-data-fields-to-entities.md
     - name: Több bérlő (MSSP) kezelése
       href: multiple-tenants-service-providers.md
@@ -272,7 +274,7 @@
       href: multiple-workspace-view.md
     - name: Az ügyfél által kezelt kulcsok (CMK) beállítása
       href: customer-managed-keys.md
-    - name: Egyéni részletek kijelzése a riasztások között
+    - name: Egyéni részletek felülete a riasztások között
       href: surface-custom-details-in-alerts.md
     - name: Incidens létrehozása riasztásból
       href: create-incidents-from-alerts.md
@@ -293,7 +295,7 @@
       href: offboard.md
 - name: Referencia
   items:
-    - name: Felső Azure Sentinel munkafüzetek
+    - name: A Azure Sentinel munkafüzetek
       href: top-workbooks.md
     - name: Azure CLI
       href: /cli/azure/ext/sentinel/sentinel
@@ -317,7 +319,7 @@
       href: entities-reference.md
     - name: Hálózati normalizációs séma
       href: normalization-schema.md
-    - name: Adatforrás-séma referenciája
+    - name: Adatforrás sémareferenciája
       href: data-source-schema-reference.md
     - name: Kusto Query Language
       items:
@@ -329,7 +331,7 @@
           href: ../azure-monitor/logs/query-optimization.md
     - name: UEBA-bővítések
       href: ueba-enrichments.md
-    - name: CEF-naplómező-leképezés
+    - name: CEF naplómező-leképezés
       href: cef-name-mapping.md
 - name: További források
   items:

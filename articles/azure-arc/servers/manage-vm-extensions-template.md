@@ -3,12 +3,13 @@ title: Virtuálisgép-bővítmény engedélyezése Azure Resource Manager haszn�
 description: Ez a cikk bemutatja, hogyan helyezhet üzembe virtuálisgép-bővítményeket Azure Arc hibrid felhőkörnyezetekben futó, engedélyezett kiszolgálókon egy Azure Resource Manager sablon használatával.
 ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 095f95192a2054d34e438d8683ac9c2e20a824f1
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d32be184a7e5bb713aee83cd3023f271299d3872
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389638"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832859"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Azure-beli virtuálisgép-bővítmények engedélyezése ARM-sablonnal
 
@@ -140,15 +141,15 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 ## <a name="deploy-the-custom-script-extension"></a>Az egyéni szkriptbővítmény üzembe helyezése
 
-Az egyéni szkriptbővítmény használata esetén a következő minta futtatását biztosítjuk Windows és Linux rendszeren. Ha nem ismeri az egyéni szkriptbővítményt, lásd: Egyéni szkriptbővítmény [Windows](../../virtual-machines/extensions/custom-script-windows.md) rendszeren vagy Egyéni [szkriptbővítmény Linux rendszeren.](../../virtual-machines/extensions/custom-script-linux.md) A bővítmény hibrid gépekkel való használata esetén érdemes tisztában lennie néhány különböző tulajdonsággal:
+Az egyéni szkriptbővítmény használata esetén a következő minta futtatását biztosítjuk Windows és Linux rendszeren. Ha nem ismeri az egyéni szkriptbővítményt, lásd: Egyéni szkriptbővítmény [Windows rendszeren](../../virtual-machines/extensions/custom-script-windows.md) vagy Egyéni [szkriptbővítmény Linux rendszeren.](../../virtual-machines/extensions/custom-script-linux.md) A bővítmény hibrid gépekkel való használatakor tisztában kell lennie néhány különböző tulajdonsággal:
 
 * Az Azure-beli virtuális gépek egyéni szkriptbővítménye által támogatott operációs rendszerek listája nem alkalmazható Azure Arc kiszolgálókra. Az Arc-kompatibilis kiszolgálók támogatott operációs rendszereit itt [talál.](agent-overview.md#supported-operating-systems)
 
-* Az Azure-beli Virtual Machine Scale Sets virtuális gépekkel kapcsolatos konfigurációs adatok nem alkalmazhatók.
+* Az Azure-beli Virtual Machine Scale Sets vagy klasszikus virtuális gépekkel kapcsolatos konfigurációs adatok nem alkalmazhatók.
 
-* Ha a gépeknek kívülről kell letöltenie egy szkriptet, és [](manage-agent.md#update-or-remove-proxy-settings) csak proxykiszolgálón keresztül tudnak kommunikálni, a Csatlakoztatott gép ügynököt úgy kell konfigurálnia, hogy beállítsa a proxykiszolgáló környezeti változóját.
+* Ha a gépeknek kívülről kell letöltenie egy szkriptet, és [](manage-agent.md#update-or-remove-proxy-settings) csak proxykiszolgálón keresztül tudnak kommunikálni, konfigurálnia kell a Csatlakoztatott gép ügynököt a proxykiszolgáló környezeti változójának beállításhoz.
 
-Az egyéni szkriptbővítmény konfigurációja olyan adatokat ad meg, mint a szkript helye és a futtatni szükséges parancs. Ezt a konfigurációt egy Azure Resource Manager adja meg, amely linuxos és windowsos hibrid gépekhez is elérhető alább.
+Az egyéni szkriptbővítmény konfigurációja olyan adatokat ad meg, mint a szkript helye és a futtatandó parancs. Ezt a konfigurációt egy Azure Resource Manager meg, amely linuxos és windowsos hibrid gépekhez is az alábbiakban található.
 
 ### <a name="template-file-for-linux"></a>Sablonfájl Linuxhoz
 
@@ -296,7 +297,7 @@ Az egyéni szkriptbővítmény konfigurációja olyan adatokat ad meg, mint a sz
 
 ## <a name="deploy-the-dependency-agent-extension"></a>A függőségi ügynök bővítmény üzembe helyezése
 
-A függőségi Azure Monitor bővítményének használatával a következő minta futtatható Windows és Linux rendszeren. Ha nem ismeri a függőségi ügynököt, tekintse meg a következőt: Overview of Azure Monitor agents (A függőségi [ügynökök áttekintése).](../../azure-monitor/agents/agents-overview.md#dependency-agent)
+A függőségi Azure Monitor bővítményének használatával a következő minta futtatását biztosítjuk Windows és Linux rendszeren. Ha nem ismeri a függőségi ügynököt, tekintse meg a következő témakört: Az Azure Monitor [áttekintése.](../../azure-monitor/agents/agents-overview.md#dependency-agent)
 
 ### <a name="template-file-for-linux"></a>Sablonfájl Linuxhoz
 

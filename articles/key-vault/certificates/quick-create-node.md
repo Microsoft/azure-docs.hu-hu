@@ -1,6 +1,6 @@
 ---
-title: Gyors útmutató – Azure Key Vault tanúsítvány ügyféloldali kódtára a JavaScripthez (4-es verzió)
-description: Ismerje meg, hogyan hozhat létre, kérhet le és törölhet tanúsítványokat egy Azure Key vaultból a JavaScript ügyféloldali kódtár használatával
+title: Rövid útmutató – Azure Key Vault JavaScripthez (4-es verzió) elérhető tanúsítvány ügyféloldali kódtára
+description: Megtudhatja, hogyan hozhat létre, olvashat be és törölhet tanúsítványokat egy Azure-kulcstartóból a JavaScript ügyféloldali kódtár használatával
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 12/6/2020
@@ -8,33 +8,33 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 1064c6a1e2dddaae98e94ccceca7b1d550897393
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f933a564e62bf3aae1ec05c6dde048100c22967
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97930854"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815845"
 ---
-# <a name="quickstart-azure-key-vault-certificate-client-library-for-javascript-version-4"></a>Gyors útmutató: Azure Key Vault tanúsítvány ügyféloldali kódtára a JavaScripthez (4-es verzió)
+# <a name="quickstart-azure-key-vault-certificate-client-library-for-javascript-version-4"></a>Rövid útmutató: Azure Key Vault JavaScripthez (4-es verzió) elérhető tanúsítvány ügyféloldali kódtára
 
-Ismerkedjen meg az Azure Key Vault Certificate Client Library for JavaScript szolgáltatással. A [Azure Key Vault](../general/overview.md) egy felhőalapú szolgáltatás, amely biztonságos tárolót biztosít a tanúsítványokhoz. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. Az Azure-kulcstartók létrehozhatók és kezelhetők az Azure Portal segítségével is. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre, kérhet le és törölhet tanúsítványokat egy Azure Key vaultból a JavaScript ügyféloldali kódtár használatával
+A JavaScripthez Azure Key Vault tanúsítvány ügyféloldali kódtárának első lépések. [Azure Key Vault](../general/overview.md) egy felhőszolgáltatás, amely biztonságos tárolót biztosít a tanúsítványok számára. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. Az Azure-kulcstartók létrehozhatók és kezelhetők az Azure Portal segítségével is. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre, olvashat be és törölhet tanúsítványokat egy Azure Key Vaultból a JavaScript ügyféloldali kódtár használatával
 
 Key Vault ügyféloldali kódtár erőforrásai:
 
-[API-referenciák dokumentációja](/javascript/api/overview/azure/key-vault-index)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/keyvault-certificates)
+[API-referenciadokumentáció](/javascript/api/overview/azure/key-vault-index)  |  [Kódtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Csomag (npm)](https://www.npmjs.com/package/@azure/keyvault-certificates)
 
-A Key Vault és a tanúsítványokról további információt a következő témakörben talál:
-- [Key Vault áttekintése](../general/overview.md)
-- A [tanúsítványok áttekintése](about-certificates.md).
+További információ a tanúsítványokról Key Vault tanúsítványokról:
+- [Key Vault áttekintés](../general/overview.md)
+- [Tanúsítványok áttekintése.](about-certificates.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Az operációs rendszer jelenlegi [Node.js](https://nodejs.org) .
+- Azure-előfizetés – [hozzon létre egyet ingyenesen.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Aktuális [Node.js](https://nodejs.org) az operációs rendszer számára.
 - [Azure CLI](/cli/azure/install-azure-cli)
-- A Key Vault létrehozhat egyet [Azure Portal](../general/quick-create-portal.md) [Azure CLI](../general/quick-create-cli.md)használatával, vagy [Azure PowerShell](../general/quick-create-powershell.md)
+- Egy Key Vault – létrehozhat egyet az [Azure CLI Azure Portal](../general/quick-create-cli.md) [](../general/quick-create-powershell.md) vagy a Azure PowerShell [](../general/quick-create-portal.md)
 
-Ez a rövid útmutató feltételezi, hogy az [Azure CLI](/cli/azure/install-azure-cli)-t futtatja.
+Ez a rövid útmutató feltételezi, hogy az [Azure CLI-t futtatja.](/cli/azure/install-azure-cli)
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -44,38 +44,38 @@ Ez a rövid útmutató feltételezi, hogy az [Azure CLI](/cli/azure/install-azur
     az login
     ```
 
-    Ha a parancssori felület megnyithatja az alapértelmezett böngészőt, akkor az egy Azure-beli bejelentkezési oldal betöltésével végezhető el.
+    Ha a CLI meg tudja nyitni az alapértelmezett böngészőt, akkor ezt fogja megtenni, és betölt egy Azure bejelentkezési oldalt.
 
-    Ellenkező esetben nyisson meg egy böngészőt, [https://aka.ms/devicelogin](https://aka.ms/devicelogin) és adja meg a terminálon megjelenő engedélyezési kódot.
+    Ellenkező esetben nyisson meg egy böngészőoldalt a oldalon, és adja meg a terminálon [https://aka.ms/devicelogin](https://aka.ms/devicelogin) megjelenő engedélyezési kódot.
 
 2. A böngészőben jelentkezzen be fiókja hitelesítő adataival.
 
-## <a name="create-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
+## <a name="create-new-nodejs-application"></a>Új Node.js létrehozása
 
-Ezután hozzon létre egy Node.js alkalmazást, amely üzembe helyezhető a felhőben. 
+Ezután hozzon létre egy Node.js, amely üzembe helyezhető a felhőben. 
 
-1. A parancs-rendszerhéjban hozzon létre egy nevű mappát `key-vault-node-app` :
+1. A parancshéjban hozzon létre egy nevű `key-vault-node-app` mappát:
 
 ```azurecli
 mkdir key-vault-node-app
 ```
 
-1. Váltson az újonnan létrehozott *Key-Vault-Node-app* könyvtárra, és futtassa az "init" parancsot a Node projekt inicializálásához:
+1. Váltsa át az újonnan *létrehozott key-vault-node-app* könyvtárat, és futtassa az "init" parancsot a node-projekt inicializálásához:
 
 ```azurecli
 cd key-vault-node-app
 npm init -y
 ```
 
-## <a name="install-key-vault-packages"></a>Key Vault csomagok telepítése
+## <a name="install-key-vault-packages"></a>A Key Vault csomagok telepítése
 
-A konzol ablakban telepítse a Node.js Azure Key Vault [tanúsítványok könyvtárát](https://www.npmjs.com/package/@azure/keyvault-certificates) .
+A konzolablakból telepítse a Azure Key Vault [tanúsítványtárát](https://www.npmjs.com/package/@azure/keyvault-certificates) a Node.js.
 
 ```azurecli
 npm install @azure/keyvault-certificates
 ```
 
-Az [Azure. Identity](https://www.npmjs.com/package/@azure/identity) csomag telepítése Key Vault hitelesítéséhez
+Telepítse az [azure.identity](https://www.npmjs.com/package/@azure/identity) csomagot a hitelesítéshez egy Key Vault
 
 ```azurecli
 npm install @azure/identity
@@ -83,7 +83,7 @@ npm install @azure/identity
 
 ## <a name="set-environment-variables"></a>Környezeti változók beállítása
 
-Ez az alkalmazás a Key Vault nevét használja a nevű környezeti változóként `KEY_VAULT_NAME` .
+Ez az alkalmazás a kulcstartó nevét használja a nevű környezeti `KEY_VAULT_NAME` változóként.
 
 Windows
 ```cmd
@@ -99,9 +99,9 @@ macOS vagy Linux
 export KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
-## <a name="grant-access-to-your-key-vault"></a>Hozzáférés biztosítása a kulcstartóhoz
+## <a name="grant-access-to-your-key-vault"></a>Hozzáférés megadása a kulcstartóhoz
 
-Hozzon létre egy hozzáférési szabályzatot a kulcstartó számára, amely engedélyt ad a felhasználói fióknak.
+Hozzáférési szabályzat létrehozása a kulcstartóhoz, amely tanúsítványengedélyeket ad a felhasználói fióknak
 
 ```azurecli
 az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --certificate-permissions delete get list create purge
@@ -109,15 +109,15 @@ az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --certifi
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Az alábbi kódrészletek bemutatják, hogyan hozhat létre ügyfelet, beállíthat tanúsítványt, kérhet le egy tanúsítványt, és törölhet egy tanúsítványt. 
+Az alábbi kódminták megmutatják, hogyan hozhat létre ügyfelet, állíthat be tanúsítványt, olvashat be tanúsítványt, és hogyan törölhet tanúsítványt. 
 
 ### <a name="set-up-the-app-framework"></a>Az alkalmazás-keretrendszer beállítása
 
-1. Új szövegfájl létrehozása és mentése a következőként: "index.js"
+1. Hozzon létre egy új szövegfájlt, és mentse "index.js"
 
-1. Az Azure-és Node.js-modulok betöltéséhez szükséges hívások hozzáadása
+1. Hívásokra van szükség az Azure és a Node.js hozzáadásához
 
-1. A program struktúrájának létrehozása, beleértve az alapszintű kivételek kezelését
+1. A program struktúrájának létrehozása, beleértve az alapszintű kivételkezelést
 
 ```javascript
 const readline = require('readline');
@@ -141,9 +141,9 @@ async function main() {
 main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
 ```
 
-### <a name="add-directives"></a>Irányelvek hozzáadása
+### <a name="add-directives"></a>Direktíva hozzáadása
 
-Adja hozzá a következő irányelveket a kód elejéhez:
+Adja hozzá a következő irányelveket a kód tetejéhez:
 
 ```javascript
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -152,11 +152,11 @@ const { CertificateClient } = require("@azure/keyvault-certificates");
 
 ### <a name="authenticate-and-create-a-client"></a>Ügyfél hitelesítése és létrehozása
 
-Ebben a rövid útmutatóban a bejelentkezett felhasználó a Key Vault hitelesítésére szolgál, amely a helyi fejlesztés előnyben részesített módszere. Az Azure-ban üzembe helyezett alkalmazások esetében a felügyelt identitást App Service vagy virtuális géphez kell rendelni, további információért lásd: a [felügyelt identitás áttekintése](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Ebben a rövid útmutatóban a bejelentkezett felhasználó hitelesítést használ a key vaultban, amely a helyi fejlesztés előnyben részesített módszere. Az Azure-ban üzembe helyezett alkalmazások esetében felügyelt identitást kell hozzárendelni egy App Service virtuális géphez. További információ: Felügyelt identitás [áttekintése.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-Az alábbi példában a kulcstartó neve a Key Vault URI-ra van kibontva, a "https:// \<your-key-vault-name\> . Vault.Azure.net" formátumban. Ez a példa az [Azure Identity Library](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme) ["DefaultAzureCredential ()"](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential) osztályát használja, amely lehetővé teszi, hogy ugyanazt a kódot használja különböző környezetekben különböző beállításokkal az identitás biztosításához. További információ a Key Vault hitelesítéséről: [fejlesztői útmutató](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
+Az alábbi példában a kulcstartó neve ki van bontva a kulcstartó URI-nevére, "https:// \<your-key-vault-name\> .vault.azure.net" formátumban. Ebben a példában az Azure Identity [Library](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme) ["DefaultAzureCredential()"](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential) osztályát használjuk, amely lehetővé teszi, hogy ugyanazt a kódot különböző környezetekben használjuk különböző identitás-beállításokkal. További információ a Key Vaultban való hitelesítésről: [Fejlesztői útmutató.](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)
 
-Adja hozzá a következő kódot a "Main ()" függvényhez
+Adja hozzá a következő kódot a main()' függvényhez
 
 ```javascript
 const keyVaultName = process.env["KEY_VAULT_NAME"];
@@ -168,7 +168,7 @@ const client = new Certificate(KVUri, credential);
 
 ### <a name="save-a-certificate"></a>Tanúsítvány mentése
 
-Most, hogy az alkalmazás hitelesítése megtörtént, a [beginCreateCertificate metódussal](/javascript/api/@azure/keyvault-certificates/certificateclient?#beginCreateCertificate_string__CertificatePolicy__BeginCreateCertificateOptions_) a kulcstartóba helyezheti a tanúsítványt, és a[tanúsítvány házirend-](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificatepolicy) házirendjének [tulajdonságai](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificatepolicyproperties)
+Most, hogy az alkalmazás hitelesítve van, a [beginCreateCertificate](/javascript/api/@azure/keyvault-certificates/certificateclient?#beginCreateCertificate_string__CertificatePolicy__BeginCreateCertificateOptions_) metódussal tanúsítványt is betehet a[](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificatepolicy) kulcstartóba. Ez megköveteli a tanúsítvány nevét és a tanúsítványházi házirend tanúsítvány-házirendjéhez a tanúsítványházi házirend tulajdonságait. [](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificatepolicyproperties)
 
 ```javascript
 const certificatePolicy = {
@@ -180,10 +180,10 @@ const certificate = await poller.pollUntilDone();
 ```
 
 > [!NOTE]
-> Ha a tanúsítvány neve létezik, a fenti kód a tanúsítvány új verzióját fogja létrehozni.
+> Ha létezik tanúsítványnév, a fenti kód létrehozza a tanúsítvány új verzióját.
 ### <a name="retrieve-a-certificate"></a>Tanúsítvány lekérése
 
-Most már lekérheti a korábban beállított értéket a [GetCertificate hívásakor metódussal](/javascript/api/@azure/keyvault-certificates/certificateclient?#getCertificate_string__GetCertificateOption).
+Most már lekérheti a korábban beállított értéket a [getCertificate metódussal.](/javascript/api/@azure/keyvault-certificates/certificateclient?#getCertificate_string__GetCertificateOption)
 
 ```javascript
 const retrievedCertificate = await client.getCertificate(certificateName);
@@ -191,7 +191,7 @@ const retrievedCertificate = await client.getCertificate(certificateName);
 
 ### <a name="delete-a-certificate"></a>Tanúsítvány törlése
 
-Végül töröljük és kiürítjük a tanúsítványt a kulcstartóból a [beginDeleteCertificate] és a https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificateclient?#beginDeleteCertificate_string__BeginDeleteCertificateOptions_) [purgeDeletedCertificate](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificateclient?#purgeDeletedCertificate_string__PurgeDeletedCertificateOptions_) metódussal.
+Végül töröljük és töröljük a tanúsítványt a kulcstartóból a [beginDeleteCertificate] és https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificateclient?#beginDeleteCertificate_string__BeginDeleteCertificateOptions_) [a purgeDeletedCertificate](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificateclient?#purgeDeletedCertificate_string__PurgeDeletedCertificateOptions_) metódussal.
 
 ```javascript
 const deletePoller = await client.beginDeleteCertificate(certificateName);
@@ -279,11 +279,11 @@ Purging your certificate from mykeyvault ... done
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy kulcstartót, tárolt egy tanúsítványt, és lekérte a tanúsítványt. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
+Ebben a rövid útmutatóban létrehozott egy kulcstartót, tárolt egy tanúsítványt, és lekérte a tanúsítványt. Ha többet szeretne megtudni a Key Vault és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 
-- [A Azure Key Vault áttekintése](../general/overview.md)
-- [A tanúsítványok áttekintésének](about-certificates.md) beolvasása
-- [Hozzáférési Key Vault megtekintése app Service alkalmazásról – oktatóanyag](../general/tutorial-net-create-vault-azure-web-app.md)
-- [Hozzáférési Key Vault megtekintése a virtuális gépről – oktatóanyag](../general/tutorial-net-virtual-machine.md)
-- Tekintse [meg a Azure Key Vault fejlesztői útmutatóját](../general/developers-guide.md)
-- Tekintse át a [Key Vault biztonsági áttekintést](../general/security-overview.md)
+- Áttekintés a [Azure Key Vault](../general/overview.md)
+- Olvassa el a [tanúsítványok áttekintését](about-certificates.md)
+- Hozzáférési útmutató [Key Vault App Service alkalmazásból](../general/tutorial-net-create-vault-azure-web-app.md)
+- [Hozzáférés-Key Vault virtuális gépről – oktatóanyag](../general/tutorial-net-virtual-machine.md)
+- Lásd Azure Key Vault [fejlesztői útmutatót](../general/developers-guide.md)
+- A biztonsági [Key Vault áttekintése](../general/security-features.md)

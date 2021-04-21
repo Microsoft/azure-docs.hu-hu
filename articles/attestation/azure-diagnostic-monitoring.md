@@ -1,26 +1,27 @@
 ---
-title: Azure diagnosztikai monitorozás az Azure-hoz – igazolás
-description: Azure diagnosztikai monitorozás az Azure-hoz – igazolás
+title: Azure diagnosztikai monitorozás Azure Attestation
+description: Azure diagnosztikai monitorozás Azure Attestation
 services: attestation
 author: msmbaldwin
 ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d2773be4bc67e125c18d5d38c951685e4f4fceaf
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2b0cd0402348e4aa45b291f30b677fc9e4bbdb98
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168348"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833633"
 ---
-# <a name="set-up-diagnostics-with-a-trusted-platform-module-tpm-endpoint-of-azure-attestation"></a>Diagnosztika beállítása az Azure igazolás platformmegbízhatósági modul (TPM) végpontján
+# <a name="set-up-diagnostics-with-a-trusted-platform-module-tpm-endpoint-of-azure-attestation"></a>Diagnosztikai eszközök platformmegbízhatósági modul (TPM) végponttal Azure Attestation
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat diagnosztikai beállításokat a platform metrikáinak és a platformok naplóinak különböző célhelyekre küldéséhez. Az Azure [platform-naplói](/azure/azure-monitor/platform/platform-logs-overview) , beleértve az Azure-tevékenység naplóját és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokról és az azoktól függő Azure-platformról. A rendszer alapértelmezés szerint gyűjti a [platform metrikáit](/azure/azure-monitor/platform/data-platform-metrics) , és azokat a Azure monitor metrikai adatbázisban tárolja.
+Ez a cikk segítséget nyújt a diagnosztikai beállítások létrehozásában és konfigurálásában, hogy platformmetrikákat és platformnaplókat küldjön különböző célokra. [Az](/azure/azure-monitor/platform/platform-logs-overview) Azure platformnaplói, beleértve az Azure-tevékenységnaplót és az erőforrásnaplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokról és az azure-platformról, amelyektől függenek. [A platformmetrikákat](/azure/azure-monitor/platform/data-platform-metrics) a rendszer alapértelmezés szerint gyűjti, és a Azure Monitor Metrikák adatbázisban tárolja.
 
-Mielőtt elkezdené, győződjön meg róla, hogy [beállította az Azure-igazolást Azure PowerShell](quickstart-powershell.md).
+Mielőtt hozzákezd, győződjön meg arról, hogy beállította a Azure Attestation [a Azure PowerShell.](quickstart-powershell.md)
 
-A platformmegbízhatósági modul (TPM) végponti szolgáltatás engedélyezve van a diagnosztikai beállításokban, és a tevékenységek figyelésére használható. Állítsa be a TPM szolgáltatás végpontjának [Azure-figyelését](/azure/azure-monitor/overview) a következő kód használatával.
+A platformmegbízhatósági modul (TPM) végpontszolgáltatás engedélyezve van a diagnosztikai beállításokban, és használható a tevékenységek figyelése érdekében. Állítsa be [az Azure Monitoringot](/azure/azure-monitor/overview) a TPM-szolgáltatásvégponthoz az alábbi kóddal.
 
 ```powershell
 
@@ -40,4 +41,4 @@ A platformmegbízhatósági modul (TPM) végponti szolgáltatás engedélyezve v
 
 ```
 
-A Tevékenységnaplók a Storage- **fiók tárolók szakaszában találhatók** . További információ: [erőforrás-naplók összegyűjtése és elemzése Azure-erőforrásokból](/azure/azure-monitor/learn/tutorial-resource-logs).
+A tevékenységnaplók a tárfiók **Tárolók** szakaszában találhatóak. További információ: Erőforrásnaplók gyűjtése és elemzése [Egy Azure-erőforrásból.](/azure/azure-monitor/learn/tutorial-resource-logs)
