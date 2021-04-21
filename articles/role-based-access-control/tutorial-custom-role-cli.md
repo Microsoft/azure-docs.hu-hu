@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: egyéni Azure-szerepkör létrehozása az Azure CLI-vel – Azure RBAC'
-description: Első lépésként hozzon létre egy Azure-beli egyéni szerepkört az Azure CLI és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával ebben az oktatóanyagban.
+title: 'Oktatóanyag: Egyéni Azure-szerepkör létrehozása az Azure CLI használatával – Azure RBAC'
+description: Ebben az oktatóanyagban az Azure CLI és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával elkezdünk egyéni Azure-szerepkört létrehozni.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 319bca74c8e781e5dc5022e9fb901b2edca24a80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3743697d58d0f5b167b123df59bc5638aa60489
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87485643"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771676"
 ---
-# <a name="tutorial-create-an-azure-custom-role-using-azure-cli"></a>Oktatóanyag: egyéni Azure-szerepkör létrehozása az Azure CLI használatával
+# <a name="tutorial-create-an-azure-custom-role-using-azure-cli"></a>Oktatóanyag: Egyéni Azure-szerepkör létrehozása az Azure CLI használatával
 
-Ha az [Azure beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni szerepköröket is. Ebben az oktatóanyagban egy Reader Support Tickets (Olvasó – Támogatási jegyek) nevű egyéni szerepkört fog létrehozni az Azure CLI-vel. Az egyéni szerepkör lehetővé teszi a felhasználó számára, hogy megtekintse az előfizetés felügyeleti síkja összes adatát, valamint a támogatási jegyek megnyitását is.
+Ha az [Azure beépített szerepkörei](built-in-roles.md) nem felelnie meg a szervezet igényeinek, létrehozhatja saját egyéni szerepköreit. Ebben az oktatóanyagban egy Reader Support Tickets (Olvasó – Támogatási jegyek) nevű egyéni szerepkört fog létrehozni az Azure CLI-vel. Az egyéni szerepkör lehetővé teszi a felhasználó számára, hogy mindent megtekintsen az előfizetés felügyeleti síkon, és támogatási jegyeket is nyisson.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -40,11 +40,11 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 Az oktatóanyag elvégzéséhez a következőkre van szükség:
 
 - Egyéni szerepkörök létrehozására vonatkozó engedélyre, amely lehet például [Tulajdonos](built-in-roles.md#owner) vagy [Felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator)
-- [Azure Cloud Shell](../cloud-shell/overview.md) vagy [Azure CLI](/cli/azure/install-azure-cli)
+- [Azure Cloud Shell](../cloud-shell/overview.md) vagy [Az Azure CLI](/cli/azure/install-azure-cli)
 
 ## <a name="sign-in-to-azure-cli"></a>Bejelentkezés az Azure CLI-be
 
-Jelentkezzen be az [Azure CLI](/cli/azure/authenticate-azure-cli)-be.
+Jelentkezzen be az [Azure CLI-be.](/cli/azure/authenticate-azure-cli)
 
 ## <a name="create-a-custom-role"></a>Egyéni szerepkör létrehozása
 
@@ -62,7 +62,7 @@ Legegyszerűbben úgy hozhat létre egyéni szerepkört, ha egy JSON-sablonnal k
 
 1. Nyissa meg a ReaderSupportRole.json fájlt egy szövegszerkesztőben, és adja hozzá a következő JSON-t.
 
-    További információ a különböző tulajdonságokkal kapcsolatban: [Egyéni Azure-szerepkörök](custom-roles.md).
+    További információ a különböző tulajdonságokról: [Egyéni Azure-szerepkörök.](custom-roles.md)
 
     ```json
     {
@@ -86,7 +86,7 @@ Legegyszerűbben úgy hozhat létre egyéni szerepkört, ha egy JSON-sablonnal k
     "Microsoft.Support/*"
     ```
 
-1. Kérje le az előfizetése azonosítóját az [az account list](/cli/azure/account#az-account-list) paranccsal.
+1. Kérje le az előfizetése azonosítóját az [az account list](/cli/azure/account#az_account_list) paranccsal.
 
     ```azurecli
     az account list --output table
@@ -118,7 +118,7 @@ Legegyszerűbben úgy hozhat létre egyéni szerepkört, ha egy JSON-sablonnal k
     }
     ```
     
-1. Az új egyéni szerepkör létrehozásához használja az [az role definition create](/cli/azure/role/definition#az-role-definition-create) parancsot, és adja meg a JSON szerepkör-definíciós fájlt.
+1. Az új egyéni szerepkör létrehozásához használja az [az role definition create](/cli/azure/role/definition#az_role_definition_create) parancsot, és adja meg a JSON szerepkör-definíciós fájlt.
 
     ```azurecli
     az role definition create --role-definition "~/CustomRoles/ReaderSupportRole.json"
@@ -155,7 +155,7 @@ Legegyszerűbben úgy hozhat létre egyéni szerepkört, ha egy JSON-sablonnal k
 
 ## <a name="list-custom-roles"></a>Egyéni szerepkörök listázása
 
-- Az összes egyéni szerepkör listázásához használja az [az role definition list](/cli/azure/role/definition#az-role-definition-list) parancsot a `--custom-role-only` paraméterrel.
+- Az összes egyéni szerepkör listázásához használja az [az role definition list](/cli/azure/role/definition#az_role_definition_list) parancsot a `--custom-role-only` paraméterrel.
 
     ```azurecli
     az role definition list --custom-role-only true
@@ -225,7 +225,7 @@ Egyéni szerepkör frissítéséhez módosítsa a JSON-fájlt, majd frissítse a
     }
     ```
         
-1. Az egyéni szerepkör frissítéséhez használja az [az role definition update](/cli/azure/role/definition#az-role-definition-update) parancsot, és adja meg a frissített JSON-fájlt.
+1. Az egyéni szerepkör frissítéséhez használja az [az role definition update](/cli/azure/role/definition#az_role_definition_update) parancsot, és adja meg a frissített JSON-fájlt.
 
     ```azurecli
     az role definition update --role-definition "~/CustomRoles/ReaderSupportRole.json"
@@ -261,7 +261,7 @@ Egyéni szerepkör frissítéséhez módosítsa a JSON-fájlt, majd frissítse a
     
 ## <a name="delete-a-custom-role"></a>Egyéni szerepkörök törlése
 
-- Használja az [az role definition delete](/cli/azure/role/definition#az-role-definition-delete) parancsot, és adja meg a szerepkör nevét vagy azonosítóját az egyéni szerepkör törléséhez.
+- Használja az [az role definition delete](/cli/azure/role/definition#az_role_definition_delete) parancsot, és adja meg a szerepkör nevét vagy azonosítóját az egyéni szerepkör törléséhez.
 
     ```azurecli
     az role definition delete --name "Reader Support Tickets"
@@ -270,4 +270,4 @@ Egyéni szerepkör frissítéséhez módosítsa a JSON-fájlt, majd frissítse a
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Egyéni Azure-szerepkörök létrehozása vagy frissítése az Azure CLI-vel](custom-roles-cli.md)
+> [Egyéni Azure-szerepkörök létrehozása vagy frissítése az Azure CLI használatával](custom-roles-cli.md)

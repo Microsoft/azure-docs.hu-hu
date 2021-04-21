@@ -8,16 +8,13 @@ ms.topic: quickstart
 ms.service: azure-analysis-services
 tags:
 - azure-resource-manager
-ms.custom:
-- subject-armqs
-- references_regions
-- mode-arm
-ms.openlocfilehash: 3e9210bb94cca354a7c0a5cb5c81b6153900b4ec
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell - subject-armqs - references_regions - mode-arm
+ms.openlocfilehash: e7203f4b5890ab81cbf337c5f3201d85a3aef0c0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538217"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769367"
 ---
 # <a name="quickstart-create-a-server---arm-template"></a>Rövid útmutató: Kiszolgáló létrehozása – ARM-sablon
 
@@ -58,15 +55,15 @@ A [sablonban egyetlen Microsoft.AnalysisServices/servers](/azure/templates/micro
     * **Kiszolgáló neve:** Adja meg a kiszolgálói erőforrás nevét. 
     * **Hely:** Hagyja figyelmen kívül Analysis Services. A hely a Kiszolgáló helye helyen van megadva.
     * **Kiszolgáló helye:** Adja meg a Analysis Services helyét. Ez gyakran megegyezik az erőforráscsoporthoz megadott alapértelmezett hely régiójával, de nem kötelező. Például: **USA északi középső középső országa.** A támogatott régiókat lásd: [Analysis Services rendelkezésre állása.](analysis-services-overview.md#availability-by-region)
-    * **Termékváltozat neve:** Adja meg a létrehozni Analysis Services termékváltozat nevét. Válasszon a következők közül: B1, B2, D1, S0, S1, S2, S3, S4, S8v2, S9v2. A termékváltozatok rendelkezésre állása a régiótól függ. A kiértékelési és tesztelési folyamathoz az S0 vagy a D1 használata ajánlott.
-    * **Kapacitás:** Itt adhatja meg a lekérdezésreplikák horizontális felskálás példányainak teljes számát. A több példányra való horizontális felskálás csak bizonyos régiókban támogatott.
-    * **Tűzfalbeállítások:** Adja meg a kiszolgálóra vonatkozó bejövő tűzfalszabályokat. Ha nincs megadva, a tűzfal le van tiltva.
-    * **Biztonsági mentési blobtároló** URI-ja: Adja meg egy olvasási, írási és listás Azure Blob Storage rendelkező privát tároló SAS URI-ját. Csak akkor szükséges, ha biztonsági [mentést/visszaállítást kíván használni.](analysis-services-backup.md)
+    * **Termékváltozat neve:** Adja meg a létrehozni Analysis Services termékváltozat nevét. Válasszon a következők közül: B1, B2, D1, S0, S1, S2, S3, S4, S8v2, S9v2. A termékváltozat rendelkezésre állása a régiótól függ. A kiértékelési és tesztelési folyamathoz S0 vagy D1 ajánlott.
+    * **Kapacitás:** Itt adhatja meg a lekérdezésreplikák horizontálisan felskálánkénti példányainak teljes számát. A több példányra való horizontális felskálás csak bizonyos régiókban támogatott.
+    * **Tűzfalbeállítások:** Adja meg a kiszolgálóhoz definiálni akaró bejövő tűzfalszabályokat. Ha nincs megadva, a tűzfal le van tiltva.
+    * **Backup Blob-tároló** URI-ja: Adja meg az SAS URI-t egy Azure Blob Storage tárolóhoz olvasási, írási és listás engedélyekkel. Csak akkor szükséges, ha biztonsági [mentést/visszaállítást kíván használni.](analysis-services-backup.md)
     * **Elfogadom a fenti használati feltételeket**: Válassza ezt.
 
 3. Válassza a **Beszerzés** lehetőséget. A kiszolgáló sikeres üzembe helyezése után értesítést kap:
 
-   ![ARM-sablon, portál üzembe helyezése – értesítés](./media/analysis-services-create-template/notification.png)
+   ![ARM-sablon, portál üzembe helyezési értesítése](./media/analysis-services-create-template/notification.png)
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
@@ -84,7 +81,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, a Azure Portal, az Azure CLI vagy a Azure PowerShell az erőforráscsoport és a kiszolgálói erőforrás törléséhez.
+Ha már nincs rá szükség, a Azure Portal, az Azure CLI-Azure PowerShell használatával törölheti az erőforráscsoportot és a kiszolgálói erőforrást.
 
 # <a name="cli"></a>[Parancssori felület](#tab/CLI)
 

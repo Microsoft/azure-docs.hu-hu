@@ -1,7 +1,7 @@
 ---
 title: Hálózati útválasztási beállítás konfigurálása
 titleSuffix: Azure Storage
-description: Konfigurálja az Azure Storage-fiók hálózati útválasztási beállításait annak megadásához, hogy a hálózati forgalom hogyan legyen átirányítva a fiókjához az interneten keresztül.
+description: Konfigurálja az Azure-tárfiók hálózati útválasztási beállítását annak megadásához, hogy a rendszer hogyan irányíthatja a hálózati forgalmat a fiókba az interneten keresztül az ügyfelektől.
 services: storage
 author: normesta
 ms.service: storage
@@ -10,61 +10,61 @@ ms.date: 03/17/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 0738f7e427c2ff094c9b6df7539ba67dff80d095
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed248480803370a75b40c18ee7d0e2641254d84a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589854"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790454"
 ---
-# <a name="configure-network-routing-preference-for-azure-storage"></a>Hálózati útválasztási beállítások konfigurálása az Azure Storage-hoz
+# <a name="configure-network-routing-preference-for-azure-storage"></a>Hálózati útválasztási beállítás konfigurálása az Azure Storage-hoz
 
-Ez a cikk azt ismerteti, hogyan konfigurálhatja a hálózati útválasztási beállításokat és az adott útvonalhoz tartozó végpontokat a Storage-fiókhoz. 
+Ez a cikk bemutatja, hogyan konfigurálhatja a hálózati útválasztási beállításokat és az útvonal-specifikus végpontokat a tárfiókhoz. 
 
-A hálózati útválasztási beállítások azt határozzák meg, hogy a hálózati forgalom hogyan legyen átirányítva a fiókjához az interneten keresztül. Az útvonal-specifikus végpontok olyan új végpontok, amelyeket az Azure Storage hoz létre a Storage-fiókhoz. Ezek a végpontok az alapértelmezett útválasztási beállítások módosítása nélkül irányítják át a forgalmat a kívánt útvonalon. További információ: [hálózati útválasztási preferencia az Azure Storage](network-routing-preference.md)-hoz.
+A hálózati útválasztási beállítás határozza meg, hogyan lesz irányítva a hálózati forgalom a fiókhoz az ügyfelektől az interneten keresztül. Az útvonal-specifikus végpontok új végpontok, amelyek az Azure Storage-ban létrejönnek a tárfiókhoz. Ezek a végpontok az alapértelmezett útválasztási beállítások módosítása nélkül irányítják a forgalmat a kívánt útvonalon. További információ: Hálózati [útválasztási beállítások az Azure Storage-hoz.](network-routing-preference.md)
 
-## <a name="configure-the-routing-preference-for-the-default-public-endpoint"></a>Az alapértelmezett nyilvános végpont útválasztási beállításainak konfigurálása
+## <a name="configure-the-routing-preference-for-the-default-public-endpoint"></a>Az alapértelmezett nyilvános végpont útválasztási beállításának konfigurálása
 
-Alapértelmezés szerint a Storage-fiók nyilvános végpontjának útválasztási beállításai a Microsoft globális hálózat értékre vannak beállítva. A Microsoft globális hálózat és az internetes útválasztás lehetőség közül választhat alapértelmezett útválasztási előnyként a Storage-fiók nyilvános végpontja számára. Ha többet szeretne megtudni a két típusú útválasztás közötti különbségről, tekintse meg az Azure Storage-hoz készült [hálózati útválasztási beállítások](network-routing-preference.md)című témakört. 
+Alapértelmezés szerint a tárfiók nyilvános végpontjának útválasztási beállítása a Microsoft globális hálózata. A tárfiók nyilvános végpontjának alapértelmezett útválasztási beállításaként választhat a Microsoft globális hálózata és az internetes útválasztás között. További információ a két útválasztási típus közötti különbségről: Hálózati útválasztási [beállítások az Azure Storage-hoz.](network-routing-preference.md) 
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Az útválasztási preferencia módosítása az internetes útválasztásra:
+Az útválasztási beállítás módosítása internetes útválasztásra:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Navigáljon a Storage-fiókjához a portálon.
+2. Keresse meg a tárfiókját a portálon.
 
-3. A **Beállítások** területen válassza a **hálózatkezelés** lehetőséget.
+3. A **Beállítások alatt** válassza a Hálózat **lehetőséget.**
 
     > [!div class="mx-imgBorder"]
-    > ![Hálózatkezelés menüpont](./media/configure-network-routing-preference/networking-option.png)
+    > ![Hálózat menüpont](./media/configure-network-routing-preference/networking-option.png)
 
-4.  A **tűzfalak és virtuális hálózatok** lapon a **hálózati útválasztás** területen módosítsa az **útválasztási** beállítások beállítást az **Internet-útválasztás** értékre.
+4.  A **Tűzfalak és virtuális hálózatok** lap Hálózati útválasztás csoportjában **módosítsa** az Útválasztási **beállítások** beállítást internetes **útválasztásra.**
 
 5.  Kattintson a **Mentés** gombra.
 
     > [!div class="mx-imgBorder"]
-    > ![internetes útválasztási beállítás](./media/configure-network-routing-preference/internet-routing-option.png)
+    > ![internetes útválasztási lehetőség](./media/configure-network-routing-preference/internet-routing-option.png)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` paranccsal, és kövesse a képernyőn megjelenő utasításokat a hitelesítéshez.
+1. Jelentkezzen be az Azure-előfizetésbe az paranccsal, és kövesse a képernyőn megjelenő `Connect-AzAccount` utasításokat a hitelesítéshez.
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Ha az identitása egynél több előfizetéshez van társítva, akkor állítsa be az aktív előfizetést a statikus webhelyét futtató Storage-fiók előfizetésére.
+2. Ha az identitása több előfizetéshez is társítva van, állítsa az aktív előfizetést a statikus webhelyet tároló tárfiók előfizetésére.
 
    ```powershell
    $context = Get-AzSubscription -SubscriptionId <subscription-id>
    Set-AzContext $context
    ```
 
-   Cserélje le a `<subscription-id>` helyőrző értékét az előfizetés azonosítójával.
+   Cserélje le `<subscription-id>` a helyőrző értékét az előfizetése azonosítójára.
 
-3. Ha módosítani szeretné az útválasztási beállításokat az internetes útválasztásra, használja a [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) parancsot, és állítsa a paramétert a következőre: `--routing-choice` `InternetRouting` .
+3. Az útválasztási beállítás internetes útválasztásra való váltásához használja a [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) parancsot, és állítsa a paramétert a `--routing-choice` következőre: `InternetRouting` .
 
    ```powershell
    Set-AzStorageAccount -ResourceGroupName <resource-group-name> `
@@ -72,67 +72,67 @@ Az útválasztási preferencia módosítása az internetes útválasztásra:
     -RoutingChoice InternetRouting
    ```
 
-   Cserélje le a `<resource-group-name>` helyőrző értékét a Storage-fiókot tartalmazó erőforráscsoport nevére.
+   Cserélje le a helyőrző értékét a tárfiókot tartalmazó erőforráscsoport `<resource-group-name>` nevére.
 
-   Cserélje le a `<storage-account-name>` helyőrző értékét a Storage-fiók nevére.
+   Cserélje le `<storage-account-name>` a helyőrző értékét a tárfiók nevére.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. Jelentkezzen be az Azure-előfizetésbe.
 
-   - Azure Cloud Shell indításához jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+   - A Azure Cloud Shell elindításához jelentkezzen be a [Azure Portal.](https://portal.azure.com)
 
-   - A CLI helyi telepítésére való bejelentkezéshez futtassa az az [login](/cli/azure/reference-index#az-login) parancsot:
+   - A parancssori felület helyi telepítésére való bejelentkezéshez futtassa [az az login](/cli/azure/reference-index#az_login) parancsot:
 
      ```azurecli
      az login
      ```
-2. Ha az identitása egynél több előfizetéshez van társítva, akkor állítsa be az aktív előfizetést a statikus webhelyét futtató Storage-fiók előfizetésére.
+2. Ha az identitása több előfizetéshez is társítva van, állítsa be az aktív előfizetést a statikus webhelyet tároló tárfiók előfizetésére.
 
    ```azurecli
    az account set --subscription <subscription-id>
    ```
 
-   Cserélje le a `<subscription-id>` helyőrző értékét az előfizetés azonosítójával.
+   Cserélje le `<subscription-id>` a helyőrző értékét az előfizetése azonosítójára.
 
-3. Ha módosítani szeretné az útválasztási beállításokat az internetes útválasztásra, használja az az [Storage Account Update](/cli/azure/storage/account#az_storage_account_update) parancsot, és állítsa a paramétert a következőre: `--routing-choice` `InternetRouting` .
+3. Az útválasztási beállítás internetes útválasztásra való váltásához használja [az az storage account update](/cli/azure/storage/account#az_storage_account_update) parancsot, és állítsa a `--routing-choice` paramétert a következőre: `InternetRouting` .
 
    ```azurecli
    az storage account update --name <storage-account-name> --routing-choice InternetRouting
    ```
 
-   Cserélje le a `<storage-account-name>` helyőrző értékét a Storage-fiók nevére.
+   Cserélje le `<storage-account-name>` a helyőrző értékét a tárfiókja nevére.
 
 ---
 
 ## <a name="configure-a-route-specific-endpoint"></a>Útvonal-specifikus végpont konfigurálása
 
-Egy útvonal-specifikus végpont is konfigurálható. Megadhatja például az alapértelmezett végpont útválasztási beállításait az *internetes útválasztás* beállításnál, majd közzétehet egy útvonal-specifikus végpontot, amely lehetővé teszi az interneten lévő ügyfelek és a Storage-fiók közötti adatforgalmat a Microsoft globális hálózatán keresztül.
+Útvonal-specifikus végpontot is konfigurálhat. Beállíthatja például az alapértelmezett végpont útválasztási beállítását internetes útválasztásra, majd közzétehet egy útvonal-specifikus végpontot, amely lehetővé teszi az internetes ügyfelek és a tárfiók közötti forgalom átirányítását a Microsoft globális hálózatán keresztül.
 
-Ez a beállítás csak az útvonal-specifikus végpontra van hatással. Ez a beállítás nem befolyásolja az alapértelmezett útválasztási beállítást.  
+Ez a beállítás csak az útvonalspecifikus végpontra van hatással. Ez a beállítás nincs hatással az alapértelmezett útválasztási beállításra.  
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1.  Navigáljon a Storage-fiókjához a portálon.
+1.  Lépjen a tárfiókra a portálon.
 
-2.  A **Beállítások** területen válassza a **hálózatkezelés** lehetőséget.
+2.  A **Beállítások alatt** válassza a Hálózat **lehetőséget.**
 
-3.  A **tűzfalak és virtuális hálózatok** lap **útvonal-specifikus végpontok közzététele** területén válassza az útvonal-specifikus végpont útválasztási beállításait, majd kattintson a **Mentés** gombra.
+3.  A **Tűzfalak és virtuális** hálózatok lap Útvonalspecifikus végpontok közzététele csoportjában válassza ki az útvonalspecifikus végpont útválasztási beállítását, majd kattintson a Mentés **gombra.**
 
-    A következő képen a kiválasztott **Microsoft hálózati útválasztási** lehetőség látható.
+    Az alábbi képen a **Microsoft hálózati útválasztási lehetőség van kiválasztva.**
 
     > [!div class="mx-imgBorder"]
-    > ![Microsoft hálózati útválasztási lehetőség](./media/configure-network-routing-preference/microsoft-network-routing-option.png)
+    > ![A Microsoft hálózati útválasztási lehetősége](./media/configure-network-routing-preference/microsoft-network-routing-option.png)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. Egy Route-specifikus végpont konfigurálásához használja a [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) parancsot. 
+1. Útvonal-specifikus végpont konfigurálhoz használja a [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) parancsot. 
 
-   - Ha olyan útvonal-specifikus végpontot szeretne létrehozni, amely a Microsoft hálózati útválasztási beállításait használja, állítsa a paramétert a következőre: `-PublishMicrosoftEndpoint` `true` . 
+   - A Microsoft hálózati útválasztási beállítását használó útvonal-specifikus végpont létrehozásához állítsa a paramétert a `-PublishMicrosoftEndpoint` következőre: `true` . 
 
-   - Az internetes útválasztási beállításokat használó útvonal-specifikus végpont létrehozásához állítsa a paramétert a következőre: `-PublishInternetEndpointTo` `true` .  
+   - Az internetes útválasztási beállítást használó útvonal-specifikus végpont létrehozásához állítsa a paramétert a `-PublishInternetEndpointTo` következőre: `true` .  
 
-   A következő példa egy útvonal-specifikus végpontot hoz létre, amely a Microsoft hálózati útválasztási beállításait használja.
+   Az alábbi példa egy útvonal-specifikus végpontot hoz létre, amely a Microsoft hálózati útválasztási beállítását használja.
 
    ```powershell
    Set-AzStorageAccount -ResourceGroupName <resource-group-name> `
@@ -140,73 +140,73 @@ Ez a beállítás csak az útvonal-specifikus végpontra van hatással. Ez a be�
     -PublishMicrosoftEndpoint $true
    ```
 
-   Cserélje le a `<resource-group-name>` helyőrző értékét a Storage-fiókot tartalmazó erőforráscsoport nevére.
+   Cserélje le a helyőrző értékét a tárfiókot tartalmazó `<resource-group-name>` erőforráscsoport nevére.
 
-   Cserélje le a `<storage-account-name>` helyőrző értékét a Storage-fiók nevére.
+   Cserélje le `<storage-account-name>` a helyőrző értékét a tárfiók nevére.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. Egy Route-specifikus végpont konfigurálásához használja az az [Storage Account Update](/azure/storage/account#az-storage-account-update) parancsot. 
+1. Útvonal-specifikus végpont konfigurálhoz használja az [az storage account update](/azure/storage/account#az_storage_account_update) parancsot. 
 
-   - Ha olyan útvonal-specifikus végpontot szeretne létrehozni, amely a Microsoft hálózati útválasztási beállításait használja, állítsa a paramétert a következőre: `--publish-microsoft-endpoints` `true` . 
+   - A Microsoft hálózati útválasztási beállítását használó útvonal-specifikus végpont létrehozásához állítsa a paramétert a `--publish-microsoft-endpoints` következőre: `true` . 
 
-   - Az internetes útválasztási beállításokat használó útvonal-specifikus végpont létrehozásához állítsa a paramétert a következőre: `--publish-internet-endpoints` `true` .  
+   - Az internetes útválasztási beállítást használó útvonal-specifikus végpont létrehozásához állítsa a paramétert a `--publish-internet-endpoints` következőre: `true` .  
 
-   A következő példa egy útvonal-specifikus végpontot hoz létre, amely a Microsoft hálózati útválasztási beállításait használja.
+   Az alábbi példa egy útvonal-specifikus végpontot hoz létre, amely a Microsoft hálózati útválasztási beállítását használja.
 
    ```azurecli
    az storage account update --name <storage-account-name> --publish-microsoft-endpoints true
    ```
 
-   Cserélje le a `<storage-account-name>` helyőrző értékét a Storage-fiók nevére.
+   Cserélje le `<storage-account-name>` a helyőrző értékét a tárfiók nevére.
 
 ---
 
-## <a name="find-the-endpoint-name-for-a-route-specific-endpoint"></a>A végpont nevének megkeresése egy adott útválasztási végponthoz
+## <a name="find-the-endpoint-name-for-a-route-specific-endpoint"></a>Útvonalspecifikus végpont végpontnevének megkeresve
 
-Ha egy útvonal-specifikus végpontot konfigurált, a végpontot a Storage-fiók tulajdonságainál találja.
+Ha útvonal-specifikus végpontot konfigurált, a végpontot a tárfiók tulajdonságai között találja.
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1.  A **Beállítások** területen válassza a **Tulajdonságok** lehetőséget.
+1.  A **Beállítások alatt** válassza a Tulajdonságok **lehetőséget.**
 
     > [!div class="mx-imgBorder"]
-    > ![Tulajdonságok menü lehetőség](./media/configure-network-routing-preference/properties.png)
+    > ![tulajdonságok menüpont](./media/configure-network-routing-preference/properties.png)
 
-2.  A **Microsoft hálózati útválasztási** végpontja minden olyan szolgáltatás esetében megjelenik, amely támogatja az útválasztási beállításokat. Ez a rendszerkép a blob és a Fájlszolgáltatások végpontját jeleníti meg.
+2.  A **Microsoft hálózati útválasztási** végpontja minden olyan szolgáltatásnál megjelenik, amely támogatja az útválasztási beállításokat. Ezen a képen a blob- és fájlszolgáltatások végpontja látható.
 
     > [!div class="mx-imgBorder"]
-    > ![Microsoft hálózati útválasztási beállítás az útválasztási specifikus végpontokhoz](./media/configure-network-routing-preference/routing-url.png)
+    > ![A Microsoft hálózati útválasztási lehetősége útvonal-specifikus végpontok esetén](./media/configure-network-routing-preference/routing-url.png)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. A végpontok konzolra való kinyomtatásához használja a `PrimaryEndpoints` Storage-fiók objektum tulajdonságát.
+1. A végpontok konzolra való nyomtatásához használja `PrimaryEndpoints` a tárfiók objektum tulajdonságát.
 
    ```powershell
    Get-AzStorageAccount -ResourceGroupName <resource-group-name> -Name <storage-account-name>
    write-Output $StorageAccount.PrimaryEndpoints
    ```
 
-   Cserélje le a `<resource-group-name>` helyőrző értékét a Storage-fiókot tartalmazó erőforráscsoport nevére.
+   Cserélje le a helyőrző értékét a tárfiókot tartalmazó `<resource-group-name>` erőforráscsoport nevére.
 
-   Cserélje le a `<storage-account-name>` helyőrző értékét a Storage-fiók nevére.
+   Cserélje le `<storage-account-name>` a helyőrző értékét a tárfiók nevére.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. A végpontok konzolra való kinyomtatásához használja az az [Storage Account show](/cli/azure/storage/account#az_storage_account_show) tulajdonságot a Storage Account objektumhoz.
+1. A végpontok konzolra való nyomtatásához használja a tárfiók [objektum az storage account show](/cli/azure/storage/account#az_storage_account_show) tulajdonságát.
 
    ```azurecli
    az storage account show -g <resource-group-name> -n <storage-account-name>
    ```
 
-   Cserélje le a `<resource-group-name>` helyőrző értékét a Storage-fiókot tartalmazó erőforráscsoport nevére.
+   Cserélje le a helyőrző értékét a tárfiókot tartalmazó erőforráscsoport `<resource-group-name>` nevére.
 
-   Cserélje le a `<storage-account-name>` helyőrző értékét a Storage-fiók nevére.
+   Cserélje le `<storage-account-name>` a helyőrző értékét a tárfiók nevére.
 
 ---
 
 ## <a name="see-also"></a>Lásd még
 
-- [Hálózati útválasztási beállítások](network-routing-preference.md)
+- [Hálózati útválasztási beállítás](network-routing-preference.md)
 - [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](storage-network-security.md)
-- [Biztonsági javaslatok a blob Storage-hoz](../blobs/security-recommendations.md)
+- [Biztonsági javaslatok a Blob Storage-hez](../blobs/security-recommendations.md)

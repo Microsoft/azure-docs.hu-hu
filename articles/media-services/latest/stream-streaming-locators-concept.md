@@ -1,6 +1,6 @@
 ---
-title: Streaming-lokátorok a Azure Media Services
-description: Ez a cikk azt ismerteti, hogy milyen a folyamatos átviteli lokátorok, és hogyan használják őket a Azure Media Services.
+title: Streamelési lokátorok a Azure Media Services
+description: Ez a cikk bemutatja, mik azok a streamelési lokátorok, és hogyan használják őket a Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -12,38 +12,38 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cd7dd5b5be7af5e4c65ae88a138fff627105003a
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: bcee8d0554b9c3349c7efc88c10e9eee8b185acb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106282130"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773278"
 ---
 # <a name="streaming-locators"></a>Streamelési lokátor
 
-Ahhoz, hogy a kimeneti adategységben található videók elérhetők legyenek az ügyfelek számára lejátszásra, létre kell hozni egy [streamelési lokátort](/rest/api/media/streaminglocators), majd streamelési URL-címeket. URL-cím létrehozásához összefűzni kell a streaming Endpoint Host nevét és a folyamatos átviteli lokátor elérési útját. Egy .NET-példáért tekintse meg a [streamelési lokátor beszerzését](stream-files-tutorial-with-api.md#get-a-streaming-locator) bemutató cikket.
+Ahhoz, hogy a kimeneti adategységben található videók elérhetők legyenek az ügyfelek számára lejátszásra, létre kell hozni egy [streamelési lokátort](/rest/api/media/streaminglocators), majd streamelési URL-címeket. URL-cím felépítéséhez össze kell egészítenie a streamvégpont gazdagépnevét és a streamelési lokátor elérési útját. Egy .NET-példáért tekintse meg a [streamelési lokátor beszerzését](stream-files-tutorial-with-api.md#get-a-streaming-locator) bemutató cikket.
 
-Az **adatfolyam-kereső** létrehozásának folyamatát közzétételnek nevezzük. Alapértelmezés szerint az **adatfolyam-kereső** azonnal érvényes az API-hívások létrehozása után, és addig tart, amíg meg nem történik a törlés, hacsak nem konfigurálja a nem kötelező kezdési és befejezési időpontokat. 
+A streamelési lokátor **létrehozásának** folyamatát közzétételnek nevezzük. Alapértelmezés szerint a **streamelési** lokátor az API-hívások után azonnal érvényes, és a törlésig érvényes, hacsak nem konfigurálja a választható kezdési és záró időpontokat. 
 
-**Adatfolyam-kereső** létrehozásakor meg kell adnia egy **eszköz** nevét és egy **streaming Policy** -nevet. További információkért tekintse át a következők témaköröket:
+Streamelési **lokátor létrehozásakor** meg  kell adnia egy eszköznevet és egy **streamelési** szabályzat nevét. További információkért tekintse át a következők témaköröket:
 
 * [Adategységek](assets-concept.md)
-* [Folyamatos átviteli házirendek](stream-streaming-policy-concept.md)
-* [Tartalmi kulcs házirendjei](drm-content-key-policy-concept.md)
+* [Streamelési szabályzatok](stream-streaming-policy-concept.md)
+* [Tartalomkulcs-szabályzatok](drm-content-key-policy-concept.md)
 
-Megadhatja a kezdő és a záró időpontot is a folyamatos átviteli lokátorban, így a felhasználó csak a következő időpontok közötti tartalmat fogja lejátszani (például 5/1/2019 – 5/5/2019).  
+Megadhatja a kezdő és záró időt is a streamelési lokátoron, így a felhasználó csak ezen időpontok között (például 2019. 05. és 2019. 05. 05. között) lejátszhatja a tartalmat.  
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-* A **streaming-lokátorok** nem frissíthető. 
-* A DateTime típusú **adatfolyam-kereső** tulajdonságai mindig UTC formátumban jelennek meg.
-* A Media Service-fiókhoz korlátozott számú szabályzatot kell terveznie, és újra fel kell használni őket a streaming-lokátorok számára, amikor ugyanazok a beállítások szükségesek. További információ: [kvóták és korlátozások](limits-quotas-constraints-reference.md).
+* **A streamelési lokátorok** nem frissíthetők. 
+* A Datetime **típusú streamelési lokátorok** tulajdonságai mindig UTC formátumúak.
+* Korlátozott számú szabályzatot kell tervezni a Media Service-fiókhoz, és újra fel kell használni őket a streamelési lokátorokhoz, ha ugyanazokra a beállításokra van szükség. További információ: [Kvóták és korlátok.](limits-quotas-constraints-reference.md)
 
-## <a name="create-streaming-locators"></a>Folyamatos átviteli lokátorok létrehozása  
+## <a name="create-streaming-locators"></a>Streamelési lokátorok létrehozása  
 
 ### <a name="not-encrypted"></a>Nincs titkosítva
 
-Ha a fájlt a-The-Clear (nem titkosított) formátumban szeretné továbbítani, állítsa be az előre definiált tiszta folyamatos átviteli szabályzatot: "Predefined_ClearStreamingOnly" (a .NET-ben használhatja a PredefinedStreamingPolicy. ClearStreamingOnly enumerálást).
+Ha a fájlt titkosítatlan (nem titkosított) streamelni szeretné, állítsa az előre definiált tiszta streamelési szabályzatot "Predefined_ClearStreamingOnly" (a .NET-ben használhatja a PredefinedStreamingPolicy.ClearStreamingOnly enumot).
 
 ```csharp
 StreamingLocator locator = await client.StreamingLocators.CreateAsync(
@@ -59,7 +59,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 ### <a name="encrypted"></a>Titkosított 
 
-Ha titkosítania kell a tartalmat a CENC titkosítással, állítsa a szabályzatot "Predefined_MultiDrmCencStreaming" értékre. A Widevine-titkosítás egy kötőjel-adatfolyamra lesz alkalmazva, és a PlayReady zökkenőmentes. A kulcs a konfigurált DRM-licencek alapján lesz továbbítva a lejátszási ügyfeleknek.
+Ha CENC-titkosítással kell titkosítania a tartalmat, állítsa a szabályzatot "Predefined_MultiDrmCencStreaming". A Widevine-titkosítás egy DASH-streamre, a PlayReady pedig Smoothra lesz alkalmazva. A kulcs a konfigurált DRM-licencek alapján lesz kézbesítve a lejátszást lehetővé tő ügyfélnek.
 
 ```csharp
 StreamingLocator locator = await client.StreamingLocators.CreateAsync(
@@ -74,38 +74,38 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
     });
 ```
 
-Ha a HLS streamet a CBCS (FairPlay) használatával is titkosítani szeretné, használja a következőt: "Predefined_MultiDrmStreaming".
+Ha a HLS-streamet CBCS (FairPlay) használatával is szeretné titkosítani, használja a Predefined_MultiDrmStreaming.
 
 > [!NOTE]
-> A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
+> A Widevine a Google Inc. által biztosított szolgáltatás, amely a Google, Inc. szolgáltatási feltételeire és adatvédelmi szabályzatára vonatkozik.
 
-## <a name="associate-filters-with-streaming-locators"></a>Szűrők hozzárendelése adatfolyam-keresővel
+## <a name="associate-filters-with-streaming-locators"></a>Szűrők társítása streamelési lokátorokkal
 
-Lásd [: szűrők: társítsa a folyamatos átviteli lokátorokat](filters-concept.md#associating-filters-with-streaming-locator).
+Lásd: [Szűrők: társítás streamelési lokátorokkal.](filters-concept.md#associating-filters-with-streaming-locator)
 
-## <a name="filter-order-page-streaming-locator-entities"></a>Szűrés, rendelés, oldal adatfolyam-kereső entitásai
+## <a name="filter-order-page-streaming-locator-entities"></a>Szűrés, sorrend, oldalstreamelési lokátor entitások
 
-Lásd: [Media Services entitások szűrése, rendezése és lapozása](filter-order-page-entitites-how-to.md).
+Lásd: [Entitások szűrése, sorrendbe Media Services lapozása.](filter-order-page-entitites-how-to.md)
 
-## <a name="list-streaming-locators-by-asset-name"></a>A streaming-lokátorok listázása az eszköz neve szerint
+## <a name="list-streaming-locators-by-asset-name"></a>Streamelési lokátorok listája eszköznév szerint
 
-A következő műveletek végrehajtásával lekérheti a streaming-keresőket a társított eszköz neve alapján:
+Ha a streamelési lokátorokat a társított eszköznév alapján le kell kapnia, használja a következő műveleteket:
 
 |Nyelv|API|
 |---|---|
-|REST|[liststreaminglocators](/rest/api/media/assets/liststreaminglocators)|
-|parancssori felület|[az AMS Asset List-streaming-Locators](/cli/azure/ams/asset#az-ams-asset-list-streaming-locators)|
-|.NET|[ListStreamingLocators](/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
+|REST|[liststreaminglocators (liststreaminglocators)](/rest/api/media/assets/liststreaminglocators)|
+|parancssori felület|[az ams asset list-streaming-locators](/cli/azure/ams/asset#az_ams_asset_list_streaming_locators)|
+|.NET|[ListStreamingLocators (ListStreamingLocators)](/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
 |Java|[AssetStreamingLocator](/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
-|Node.js|[listStreamingLocators](/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
+|Node.js|[listStreamingLocators (ListStreamingLocators)](/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
 ## <a name="see-also"></a>Lásd még
 
 * [Adategységek](assets-concept.md)
-* [Folyamatos átviteli házirendek](stream-streaming-policy-concept.md)
-* [Tartalmi kulcs házirendjei](drm-content-key-policy-concept.md)
-* [Oktatóanyag: videók feltöltése, kódolása és továbbítása a .NET-tel](stream-files-tutorial-with-api.md)
+* [Streamelési szabályzatok](stream-streaming-policy-concept.md)
+* [Tartalomkulcs-szabályzatok](drm-content-key-policy-concept.md)
+* [Oktatóanyag: Videók feltöltése, kódolása és streamelése a .NET használatával](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Folyamatos átviteli lokátor létrehozása és URL-címek összeállítása](create-streaming-locator-build-url.md)
+[Streamelési lokátor és URL-címek létrehozása](create-streaming-locator-build-url.md)

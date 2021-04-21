@@ -109,7 +109,7 @@
                 - name: A SharePoint Online-ba
                   href: /sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=%2fazure%2fdatabox%2fcontext%2fcontext
                 - name: Az Azure File Syncre
-                  href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                  href: ../storage/file-sync/file-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: A HDFS-tárolóról
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: Az Azure Backupba
@@ -232,7 +232,7 @@
                 - name: A SharePoint Online-ba
                   href: data-box-heavy-migrate-spo.md
                 - name: Az Azure File Syncre
-                  href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                  href: ../storage/file-sync/file-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: A HDFS-tárolóról
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
     - name: Referencia

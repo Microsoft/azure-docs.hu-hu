@@ -1,17 +1,17 @@
 ---
-title: 'Gyors útmutató: egyéni események küldése a Event Grid és az Azure CLI használatával'
-description: A rövid útmutató a Azure Event Grid és az Azure CLI használatával tesz közzé egyéni témakört, és előfizethet az adott témakör eseményeire. Az eseményeket egy webalkalmazás kezeli.
+title: 'Rövid útmutató: Egyéni események küldése a Event Grid és az Azure CLI használatával'
+description: 'Rövid útmutató: Azure Event Grid és az Azure CLI használatával egyéni témakört tehet közzé, és feliratkozhat az adott témakör eseményeire. Az eseményeket egy webalkalmazás kezeli.'
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0a3d8f5a1614704cea4242ce64ecc6c4504da754
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d97c956e0b3da556ea9fc58ef61e0d1da984c055
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97702021"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786782"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Gyors útmutató: egyéni események továbbítása webes végponthoz az Azure CLI-vel és a Event Grid
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Rövid útmutató: Egyéni események webes végpontra való útválasztása az Azure CLI és a Event Grid
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben létrehozunk egy egyéni témakört az Azure CLI-vel, feliratkozunk az adott témakörre, majd elindítjuk az eseményt az eredmény megtekintéséhez.
 
@@ -19,19 +19,19 @@ Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a c
 
 A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a webalkalmazásnak.
 
-![Eredmények megtekintése a Azure Event Grid-megjelenítőben](./media/custom-event-quickstart/azure-event-grid-viewer-record-inserted-event.png)
+![Eredmények megtekintése a Azure Event Grid Viewerben](./media/custom-event-quickstart/azure-event-grid-viewer-record-inserted-event.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ehhez a cikkhez az Azure CLI 2.0.70 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a cikkhez az Azure CLI 2.0.70-es vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni. Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. 
 
 A következő példában létrehozunk egy *gridResourceGroup* nevű erőforráscsoportot a *westus2* helyen.
 
@@ -43,7 +43,7 @@ az group create --name gridResourceGroup --location westus2
 
 ## <a name="create-a-custom-topic"></a>Egyéni témakör létrehozása
 
-Az Event Grid-témakörök egy felhasználó által meghatározott végpontot biztosítanak, amelyben közzéteheti az eseményeket. Az alábbi példa az erőforráscsoportban létrehozza az egyéni témakört. A `<your-topic-name>` elemet a témakör egyedi nevére cserélje le. Az egyéni témakör nevének egyedinek kell lennie, mert a DNS-bejegyzés része. Ezenkívül 3-50 karakter közöttinek kell lennie, és csak a-z, A-Z, A 0-9 és a "-" értékeket tartalmazza.
+Az Event Grid-témakörök egy felhasználó által meghatározott végpontot biztosítanak, amelyben közzéteheti az eseményeket. Az alábbi példa az erőforráscsoportban létrehozza az egyéni témakört. A `<your-topic-name>` elemet a témakör egyedi nevére cserélje le. Az egyéni témakör nevének egyedinek kell lennie, mert a DNS-bejegyzés része. Emellett 3–50 karakter hosszúságú lehet, és csak a–z, A–Z, 0–9 és "-" értékeket tartalmazhatja
 
 ```azurecli-interactive
 topicname=<your-topic-name>
@@ -88,7 +88,7 @@ az eventgrid event-subscription create \
 
 Tekints meg újra a webalkalmazást, ahol láthatja, hogy az fogadta az előfizetés érvényesítési eseményét. Az eseményadatok kibontásához kattintson a szem ikonra. Az Event Grid elküldi az érvényesítési eseményt, így a végpont megerősítheti, hogy eseményadatokat akar kapni. A webalkalmazás az előfizetés érvényesítéséhez szükséges kódot tartalmaz.
 
-![Az előfizetési esemény megtekintése Azure Event Grid megjelenítőben](./media/custom-event-quickstart/azure-event-grid-viewer-subscription-validation-event.png)
+![Az előfizetési esemény megtekintése a Azure Event Grid Viewerben](./media/custom-event-quickstart/azure-event-grid-viewer-subscription-validation-event.png)
 
 
 ## <a name="send-an-event-to-your-custom-topic"></a>Esemény elküldése az egyéni témakörbe

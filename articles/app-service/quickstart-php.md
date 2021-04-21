@@ -1,21 +1,21 @@
 ---
-title: 'Gyors útmutató: PHP-alapú Webalkalmazás létrehozása'
-description: Percek alatt üzembe helyezheti az első PHP-Hello World Azure App Service. Az üzembe helyezés a git használatával történik, amely a App Service üzembe helyezésének számos módszerének egyike.
+title: 'Rövid útmutató: PHP-webalkalmazás létrehozása'
+description: Percek alatt üzembe helyezheti az Hello World PHP-Azure App Service üzembe helyezéséhez. Az üzembe helyezést a Git használatával kell üzembe helyezni, amely az üzembe helyezés számos App Service.
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/01/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: f6876d0aef0d3d87e038b623c395f8368a14e90c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c04e1b33233abebde746fd7fb1ef8d761dba7e4e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97561851"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788204"
 ---
-# <a name="create-a-php-web-app-in-azure-app-service"></a>PHP-alapú Webalkalmazás létrehozása Azure App Service
+# <a name="create-a-php-web-app-in-azure-app-service"></a>PHP-webalkalmazás létrehozása a Azure App Service
 
 ::: zone pivot="platform-windows"  
-Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy PHP-alkalmazást a Windows Azure App Service.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy PHP-alkalmazást Azure App Service Windows rendszeren.
 ::: zone-end  
 
 ::: zone pivot="platform-linux"
@@ -78,9 +78,9 @@ A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolg�
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-A Cloud Shellben az [](/cli/azure/webapp#az-webapp-create) paranccsal hozzon létre egy webalkalmazást`az webapp create` a `myAppServicePlan` App Service-csomagban. 
+A Cloud Shellben az [](/cli/azure/webapp#az_webapp_create) paranccsal hozzon létre egy webalkalmazást`az webapp create` a `myAppServicePlan` App Service-csomagban. 
 
-A következő példában cserélje ki az `<app-name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `PHP|7.4` lett. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa a parancsot [`az webapp list-runtimes`](/cli/azure/webapp#az-webapp-list-runtimes) . 
+A következő példában cserélje ki az `<app-name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `PHP|7.4` lett. Az összes támogatott futásidőt a futtatásával [`az webapp list-runtimes`](/cli/azure/webapp#az_webapp_list_runtimes) láthatja. 
 
 ```azurecli-interactive
 # Bash
@@ -90,7 +90,7 @@ az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --
 ```
 
 > [!NOTE]
-> A PowerShell 3,0-ben bevezetett leállítás-elemzési szimbólum `(--%)` arra utasítja a PowerShellt, hogy tartózkodjanak a bevitel PowerShell-parancsként vagy-kifejezésként való értelmezésének.
+> A PowerShell 3.0-ban bevezetett leállítási-elemzési szimbólum arra irányítja a PowerShellt, hogy ne értelmezze a bemenetet PowerShell-parancsokként vagy `(--%)` -kifejezésekként.
 >
 
 A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló eredményeket jelenít meg:
@@ -110,13 +110,13 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;app-name&gt;.s
 }
 </pre>
 
-Létrehozott egy üres új webalkalmazást, amelyen engedélyezve van a git üzembe helyezése.
+Létrehozott egy üres új webalkalmazást, engedélyezett Git-üzembe helyezéssel.
 
 > [!NOTE]
 > A távoli Git URL-címe a `deploymentLocalGitUrl` tulajdonságban látható, a következő formátumban: `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git`. Mentse ezt az URL-t, mert később még szüksége lesz rá.
 >
 
-Tallózással keresse meg az újonnan létrehozott webalkalmazást. Cserélje le az _&lt; app-Name>t_ az előző lépésben létrehozott egyedi alkalmazás nevére.
+Tallózással keresse meg az újonnan létrehozott webalkalmazást. Cserélje _&lt; le az app-name>_ az előző lépésben létrehozott egyedi alkalmazásnévre.
 
 ```bash
 http://<app-name>.azurewebsites.net
@@ -188,19 +188,19 @@ Az üzembe helyezés befejezését követően térjen vissza **Az alkalmazás me
 
 ## <a name="manage-your-new-azure-app"></a>Az új Azure-alkalmazás kezelése
 
-1. A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>. Keresse meg és válassza ki a **app Services**.
+1. A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>. Keresse meg és válassza a **App Services.**
 
-    ![App Services keresése, Azure Portal, PHP-alapú Webalkalmazás létrehozása](media/quickstart-php/navigate-to-app-services-in-the-azure-portal.png)
+    ![Php-App Services, Azure Portal létrehozása](media/quickstart-php/navigate-to-app-services-in-the-azure-portal.png)
 
 2. Válassza ki az Azure-alkalmazás nevét.
 
     ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
 
-    Ekkor megjelenik a webalkalmazás **áttekintő** lapja. Itt olyan alapszintű felügyeleti feladatokat hajthat végre, mint a **Tallózás**, **Leállítás**, **Újraindítás** és **Törlés**.
+    Megjelenik a webalkalmazás **Áttekintés** lapja. Itt olyan alapvető felügyeleti feladatokat hajthat végre, mint a **Tallózás,** a **Leállítás,** az **Újraindítás** és a **Törlés.**
 
     ![Az App Service lap az Azure Portalon](media/quickstart-php/php-docs-hello-world-app-service-detail.png)
 
-    A webalkalmazás menü különböző beállításokat biztosít az alkalmazás konfigurálásához. 
+    A webalkalmazás menüje különböző lehetőségeket kínál az alkalmazás konfigurálásához. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
@@ -210,4 +210,4 @@ Az üzembe helyezés befejezését követően térjen vissza **Az alkalmazás me
 > [PHP és MySQL](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
-> [A PHP-alkalmazás konfigurálása](configure-language-php.md)
+> [PHP-alkalmazás konfigurálása](configure-language-php.md)

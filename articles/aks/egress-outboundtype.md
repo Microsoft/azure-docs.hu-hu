@@ -1,85 +1,85 @@
 ---
-title: Felhasználó által megadott útvonalak (UDR-EK) testreszabása az Azure Kubernetes szolgáltatásban (ak)
-description: Ismerje meg, hogyan határozhat meg egyéni kimenő útvonalakat az Azure Kubernetes szolgáltatásban (ak)
+title: Felhasználó által megadott útvonalak (UDR) testreszabása a Azure Kubernetes Service (AKS)
+description: Megtudhatja, hogyan definiálhat egyéni bejövő forgalomútvonalat a Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 06/29/2020
-ms.openlocfilehash: 72ba90510afb00ee001c97612e88f452039f53a4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e9433978c8ee855ec66901c7692e4d2b59261fd3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182128"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773044"
 ---
-# <a name="customize-cluster-egress-with-a-user-defined-route"></a>A fürt kilépésének testreszabása User-Defined útvonalon
+# <a name="customize-cluster-egress-with-a-user-defined-route"></a>Fürt ki- és becslérek testreszabása User-Defined útvonalon
 
-Az AK-fürtökből való kilépések testreszabhatók az adott forgatókönyvek kihasználása érdekében. Alapértelmezés szerint az AK kiépít egy szabványos SKU-Load Balancer, amelyet a kimenő forgalomhoz kell beállítani és használni. Előfordulhat azonban, hogy az alapértelmezett beállítás nem teljesíti az összes forgatókönyv követelményeit, ha a nyilvános IP-címek nem megengedettek, vagy további ugrásokra van szükség a kimenő forgalomhoz.
+Az AKS-fürtből való ki- és beúsulás adott forgatókönyvekhez szabható testre. Alapértelmezés szerint az AKS kiépít egy standard termékváltozatot, Load Balancer be kell állítani és használni a forgalomhoz. Előfordulhat azonban, hogy az alapértelmezett beállítás nem felel meg az összes forgatókönyv követelményeinek, ha a nyilvános IP-k nem engedélyezettek, vagy további ugrások szükségesek a forgalomhoz.
 
-Ez a cikk bemutatja, hogyan szabhatja testre a fürt kimenő útvonalát az egyéni hálózati forgatókönyvek támogatásához, például a nyilvános IP-címek használatát, és a fürtnek a hálózati virtuális berendezés (NVA) mögött kell lennie.
+Ez a cikk bemutatja, hogyan szabhatja testre egy fürt kivezeti útvonalát az egyéni hálózati forgatókönyvek támogatása érdekében, például amelyek nem támogatják a nyilvános IP-címeket, és amelyek megkövetelik, hogy a fürt egy hálózati virtuális berendezés (NVA) mögött legyen.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Az Azure CLI verziója 2.0.81 vagy újabb
-* API-verziója `2020-01-01` vagy nagyobb
+* Az Azure CLI 2.0.81-es vagy újabb verziója
+* A vagy újabb `2020-01-01` API-verziója
 
 
 ## <a name="limitations"></a>Korlátozások
-* A OutboundType csak a fürt létrehozási idején definiálható, és ezt követően nem lehet frissíteni.
-* A beállításhoz a `outboundType` és a rendszerhez tartozó AK-fürtök szükségesek `vm-set-type` `VirtualMachineScaleSets` `load-balancer-sku` `Standard` .
-* A `outboundType` érték beállításához a `UDR` fürthöz érvényes kimenő kapcsolattal rendelkező felhasználó által megadott útvonal szükséges.
-* Az `outboundType` értékre való beállítás azt jelenti, hogy a `UDR` bemenő forrás IP-címe, amely a terheléselosztó felé van átirányítva, előfordulhat, hogy **nem felel** meg a fürt kimenő kilépési céljának.
+* Az OutboundType csak a fürt létrehozásakor határozható meg, és később nem frissíthető.
+* A `outboundType` beállításhoz olyan AKS-fürtökre van szükség, amelyek és `vm-set-type` `VirtualMachineScaleSets` `load-balancer-sku` típusúak. `Standard`
+* A értékre való beállításához egy felhasználó által megadott útvonalra van szükség, amely `outboundType` `UDR` érvényes kimenő kapcsolattal rendelkezik a fürthöz.
+* Ha értéket ad meg, az azt jelenti, hogy a terheléselosztási eszközre irányítva a bejövő forrás IP-címe nem egyezik meg a fürt kimenő `outboundType` `UDR` célcímével. 
 
-## <a name="overview-of-outbound-types-in-aks"></a>A kimenő típusok áttekintése az AK-ban
+## <a name="overview-of-outbound-types-in-aks"></a>Az AKS kimenő típusainak áttekintése
 
-Az AK-fürtök testreszabhatók egyedi `outboundType` típussal `loadBalancer` vagy `userDefinedRouting` .
+Az AKS-fürtök egyedi típusú vagy `outboundType` típussal `loadBalancer` szabhatók `userDefinedRouting` testre.
 
 > [!IMPORTANT]
-> A kimenő típus csak a fürt kimenő forgalmára van hatással. További információ: a [beáramló vezérlők beállítása](ingress-basic.md).
+> A kimenő típus csak a fürt kimenő forgalmára van hatással. További információ: [Bejövő vezérlők beállítása.](ingress-basic.md)
 
 > [!NOTE]
-> Saját [útválasztási táblázatot][byo-route-table] is használhat UDR és kubenet hálózatkezeléssel. Győződjön meg arról, hogy a fürt identitása (egyszerű szolgáltatásnév vagy felügyelt identitás) közreműködői engedélyekkel rendelkezik az egyéni útválasztási táblázathoz.
+> Saját útvonaltáblát [UDR-][byo-route-table] és Kubenet-hálózattal is használhat. Győződjön meg arról, hogy a fürtidentitás (szolgáltatásnév vagy felügyelt identitás) Közreműködői engedélyekkel rendelkezik az egyéni útvonaltáblához.
 
-### <a name="outbound-type-of-loadbalancer"></a>A terheléselosztó kimenő típusa
+### <a name="outbound-type-of-loadbalancer"></a>A loadBalancer kimenő típusa
 
-Ha `loadBalancer` be van állítva, az AK a következő konfigurációt automatikusan végrehajtja. A terheléselosztó egy AK-beli hozzárendelt nyilvános IP-címen keresztüli kimenő forgalomhoz használatos. Egy kimenő típus `loadBalancer` támogatja a típusú Kubernetes-szolgáltatásokat `loadBalancer` , ami várhatóan kilép az AK erőforrás-szolgáltató által létrehozott terheléselosztó alól.
+Ha `loadBalancer` be van állítva, az AKS automatikusan befejezi az alábbi konfigurációt. A terheléselosztás az AKS-hez hozzárendelt nyilvános IP-címeken keresztüli bejövő forgalomhoz használatos. A kimenő típusa támogatja a `loadBalancer` típusú Kubernetes-szolgáltatásokat, amelyek az AKS erőforrás-szolgáltató által létrehozott terheléseltöltőből kimenő forgalmat `loadBalancer` várnak.
 
-A következő konfigurációt az AK hajtja végre.
-   * Nyilvános IP-cím van kiépítve a fürt kimenő forgalmához.
-   * A rendszer a terheléselosztó erőforráshoz rendeli a nyilvános IP-címet.
-   * A terheléselosztó backend-készletei a fürtben lévő ügynökök csomópontjain vannak beállítva.
+A következő konfigurációt az AKS-nek kell konfigurálni.
+   * A rendszer kiépít egy nyilvános IP-címet a fürt ki- és visszacsatolt forgalom számára.
+   * A nyilvános IP-cím a terheléselosztási erőforráshoz van rendelve.
+   * A terheléselosztás háttérkészlete a fürt ügynökcsomópontjaihoz van beállítva.
 
-Az alábbiakban egy olyan hálózati topológia található, amely alapértelmezésben egy AK-alapú fürtbe van telepítve, amely a-t használja `outboundType` `loadBalancer` .
+Az alábbiakban az AKS-fürtökben alapértelmezés szerint üzembe helyezett hálózati topológia látható, amely a értéket `outboundType` `loadBalancer` használja.
 
-![Ábrán látható a bejövő i P és a kimenő I p, ahol a bejövő I P egy terheléselosztó felé irányítja át a forgalmat, amely egy belső fürtre irányuló, illetve a kimenő I P-re irányuló egyéb forgalomra irányítja a forgalmat, amely az internetre, az M C R-re, az Azure-ra vonatkozó szükséges szolgáltatásokra és az a K-vezérlési síkra](media/egress-outboundtype/outboundtype-lb.png)
+![Az ábra azt mutatja, hogy az I P bejövő forgalom és a bejövő forgalom P p. egy terheléselosztási kiszolgálóra irányítja a forgalmat, amely egy belső fürtre és más forgalomra irányít át, az I P pedig az internetre, az M C R-re, az Azure szükséges szolgáltatásaira és az A K S vezérlősíkra.](media/egress-outboundtype/outboundtype-lb.png)
 
 ### <a name="outbound-type-of-userdefinedrouting"></a>A userDefinedRouting kimenő típusa
 
 > [!NOTE]
-> A kimenő típus használata fejlett hálózati forgatókönyv, és megfelelő hálózati konfigurációt igényel.
+> A kimenő típus használata speciális hálózati forgatókönyv, és megfelelő hálózati konfigurációt igényel.
 
-Ha `userDefinedRouting` be van állítva, az AK nem konfigurálja automatikusan a kimenő útvonalakat. A kimenő telepítést Önnek kell elvégeznie.
+Ha be van állítva, az AKS nem konfigurálja automatikusan a `userDefinedRouting` bejövő útvonalakat. A forgalom beállítását Önnek kell beállítania.
 
-Az AK-fürtöt egy korábban konfigurált alhálózattal rendelkező meglévő virtuális hálózatba kell telepíteni, mert ha nem használ standard Load Balancer (SLB) architektúrát, explicit kimenő forgalmat kell létrehoznia. Ebben az architektúrában explicit módon kell elküldeni a kimenő forgalmat egy olyan készülékre, mint például a tűzfal, az átjáró, a proxy vagy a hálózati címfordítás (NAT) a standard Load Balancerhez vagy berendezéshez rendelt nyilvános IP-cím használatával.
+Az AKS-fürtöt egy meglévő virtuális hálózatban kell üzembe helyezni egy korábban konfigurált alhálózattal, mert ha nem standard terheléselosztási (SLB) architektúrát használ, explicit ki- és be kell állítania a ki- és betöltést. Ennek az architektúrának a használatához explicit módon kell küldeni a bejövő forgalmat egy berendezésnek, például tűzfalnak, átjárónak, proxynak, vagy engedélyezni, hogy a hálózati címfordítást (NAT) a standard terheléselosztáshoz vagy berendezéshez rendelt nyilvános IP-cím tegye lehetővé.
 
-#### <a name="load-balancer-creation-with-userdefinedrouting"></a>Terheléselosztó létrehozása a userDefinedRouting
+#### <a name="load-balancer-creation-with-userdefinedrouting"></a>Terheléselosztás létrehozása a userDefinedRouting függvővel
 
-A kimenő UDR rendelkező AK-fürtök csak akkor kapnak standard Load balancert (SLB), ha az első, "terheléselosztó" típusú Kubernetes szolgáltatás telepítve van. A terheléselosztó nyilvános IP-címmel van konfigurálva a *bejövő* kérelmekhez, valamint egy háttérbeli készlet a *bejövő* kérésekhez. A bejövő szabályokat az Azure Cloud Provider konfigurálja, de a kimenő **nyilvános IP-címek és a kimenő szabályok nem** konfigurálhatók a kimenő UDR. A UDR továbbra is az egyetlen forrása a kimenő forgalomnak.
+Az UDR kimenő típusú AKS-fürtök csak az első loadBalancer típusú Kubernetes-szolgáltatás üzembe helyezésekor kapnak standard terheléseltöltőt (SLB). A terheléselosztás nyilvános IP-címmel van  konfigurálva a bejövő kérések számára, és egy háttérkészlet a bejövő *kérések* számára. A bejövő szabályokat az Azure-felhőszolgáltató konfigurálja, de nem konfigurálja a kimenő nyilvános **IP-címet** vagy a kimenő szabályokat az UDR kimenő típusa miatt. Továbbra is az UDR lesz a bejövő forgalom egyetlen forrása.
 
-Az Azure Load Balancer [nem számít fel díjat, amíg meg nem kerül egy szabály](https://azure.microsoft.com/pricing/details/load-balancer/).
+Az Azure Load Balancer nem számít fel díjat, [amíg egy szabályt nem helyez el.](https://azure.microsoft.com/pricing/details/load-balancer/)
 
-## <a name="deploy-a-cluster-with-outbound-type-of-udr-and-azure-firewall"></a>Fürt üzembe helyezése kimenő UDR-típussal és Azure Firewall
+## <a name="deploy-a-cluster-with-outbound-type-of-udr-and-azure-firewall"></a>Fürt üzembe helyezése kimenő UDR és Azure Firewall
 
-Egy felhasználó által megadott útvonal használatával a kimenő típusú fürt alkalmazásának szemléltetéséhez egy fürt konfigurálható egy, a saját alhálózatán lévő Azure Firewall rendelkező virtuális hálózaton. Tekintse meg ezt a példát a [kimenő forgalom korlátozása az Azure Firewall-mel – példa](limit-egress-traffic.md#restrict-egress-traffic-using-azure-firewall).
+Egy felhasználó által megadott útvonalon kimenő típusú fürt alkalmazásának szemléltetésére egy fürt konfigurálható egy virtuális hálózaton, amely saját alhálózatán Azure Firewall virtuális gépekkel. Tekintse meg ezt a példát a bejövő forgalom Azure [Firewalllal való korlátozására példát.](limit-egress-traffic.md#restrict-egress-traffic-using-azure-firewall)
 
 > [!IMPORTANT]
-> A UDR kimenő típusa megköveteli, hogy az útválasztási táblázatban a 0.0.0.0/0 és a következő ugrási cél NVA (hálózati virtuális berendezés) legyen.
-> Az útválasztási táblázathoz már tartozik egy alapértelmezett 0.0.0.0/0 az internetre, anélkül, hogy a nyilvános IP-cím SNAT csak ezt az útvonalat adja hozzá, a kimenő forgalom nem fog megjelenni. Az AK ellenőrzi, hogy nem hoz létre 0.0.0.0/0 útvonalat az interneten, hanem NVA vagy átjáróként, stb. A UDR kimenő típusának használatakor a rendszer nem hoz létre terheléselosztó nyilvános IP-címet a **bejövő kérelmekhez** , kivéve, ha a *terheléselosztó* típusú szolgáltatások konfigurálva vannak. A **kimenő kérésekhez** tartozó nyilvános IP-címet soha nem hozza létre a rendszer, ha a UDR kimenő típusa van beállítva.
+> Az UDR kimenő típusa megköveteli, hogy legyen egy útvonal a 0.0.0.0/0 útvonalhoz és az NVA következő ugrási céljához (hálózati virtuális berendezés) az útvonaltáblában.
+> Az útvonaltábla már rendelkezik egy alapértelmezett 0.0.0.0/0-s internettel, és a SNAT-nek nem kell nyilvános IP-címet hozzáadnia ehhez az útvonalhoz, az nem fogja biztosítani a ki- és beadást. Az AKS ellenőrzi, hogy nem az internetre, hanem NVA-ra vagy átjáróra stb. mutató 0.0.0.0/0-s útvonalat hoz-e létre. Ha kimenő típusú UDR-t használ, a terheléselelosztási nyilvános IP-cím csak akkor  jön létre a bejövő kérelmekhez, ha be van állítva terheléselegyenlő típusú szolgáltatás.  Az AKS  soha nem hoz létre nyilvános IP-címet a kimenő kérelmekhez, ha be van állítva kimenő UDR-típus.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Lásd: [Azure Networking UDR – áttekintés](../virtual-network/virtual-networks-udr-overview.md).
+Lásd: [Az Azure hálózati UDR áttekintése.](../virtual-network/virtual-networks-udr-overview.md)
 
-Lásd: [útválasztási táblázat létrehozása, módosítása vagy törlése](../virtual-network/manage-route-table.md).
+Tekintse [meg, hogyan hozhat létre, módosíthat vagy törölhet útválasztási táblázatot.](../virtual-network/manage-route-table.md)
 
 <!-- LINKS - internal -->
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [byo-route-table]: configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet

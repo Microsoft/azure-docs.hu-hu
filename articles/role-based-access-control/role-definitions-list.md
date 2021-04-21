@@ -1,6 +1,6 @@
 ---
-title: Azure-szerepkör-definíciók listázása – Azure RBAC
-description: Ismerje meg, hogyan listázhatja az Azure beépített és egyéni szerepköreit Azure Portal, Azure PowerShell, Azure CLI vagy REST API használatával.
+title: Azure-beli szerepkör-definíciók felsorolása – Azure RBAC
+description: Megtudhatja, hogyan sorolja fel az Azure beépített és egyéni szerepköreit a Azure Portal, Azure PowerShell, az Azure CLI vagy az REST API.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -9,68 +9,68 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 03/26/2021
 ms.author: rolyon
-ms.openlocfilehash: f354e3bb7fc0f7ced17d43acacf29c726ce1329c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b285755d24cdbf1f8ef06eb850fc218a00734f16
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629156"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771730"
 ---
-# <a name="list-azure-role-definitions"></a>Azure-szerepkör-definíciók listázása
+# <a name="list-azure-role-definitions"></a>Azure-beli szerepkör-definíciók felsorolása
 
-A szerepkör-definíció az engedélyek olyan gyűjteménye, amely elvégezhető, például olvasás, írás és törlés. Általában csak szerepkörnek nevezik. Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](overview.md) több mint 120 [beépített szerepkörrel](built-in-roles.md) rendelkezik, vagy létrehozhat saját egyéni szerepköröket is. Ez a cikk az Azure-erőforrásokhoz való hozzáférés biztosításához használható beépített és egyéni szerepkörök listázását ismerteti.
+A szerepkör-definíciók olyan engedélyek gyűjteményei, amelyek elvégezhetők, például olvasás, írás és törlés. Ezt általában csak szerepkörnek nevezik. [Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](overview.md) több mint 120 [](built-in-roles.md) beépített szerepkört biztosít, de saját egyéni szerepköröket is létrehozhat. Ez a cikk az Azure-erőforrásokhoz való hozzáférés megadásához használható beépített és egyéni szerepkörök felsorolását ismerteti.
 
-A Azure Active Directory rendszergazdai szerepköreinek megtekintéséhez tekintse [meg a Azure Active Directory rendszergazdai szerepkör engedélyei](../active-directory/roles/permissions-reference.md)című témakört.
+A rendszergazdai szerepkörök listájának Azure Active Directory lásd: Rendszergazdai szerepkör engedélyei a [Azure Active Directory.](../active-directory/roles/permissions-reference.md)
 
 ## <a name="azure-portal"></a>Azure Portal
 
-### <a name="list-all-roles"></a>Az összes szerepkör listázása
+### <a name="list-all-roles"></a>Az összes szerepkör felsorolása
 
-Kövesse az alábbi lépéseket a Azure Portal összes szerepkörének listázásához.
+Kövesse az alábbi lépéseket a lista összes szerepkörének Azure Portal.
 
-Ha érdekli a frissített szerepkörök megtekintése, tekintse meg a jelenleg nyilvános előzetes verzióban elérhető **szerepkörök (előzetes verzió)** lapot. A **szerepkörök (előzetes verzió)** lapon ugyanazok a szerepkörök jelennek meg, mint a **szerepkörök lap,** néhány további funkcióval. Használhatja a szerepkörök fület is a szerepkörökkel való együttműködéshez, azonban ha egyéni szerepköröket hoz létre vagy töröl, előfordulhat, hogy manuálisan kell frissítenie a lapot a legutóbbi módosítások megtekintéséhez.
+Ha meg szeretne jelenni egy frissített szerepkör-felhasználói élményt, tekintse meg a Szerepkörök **(előzetes verzió)** lapot, amely jelenleg nyilvános előzetes verzióban érhető el. A **Szerepkörök (előzetes verzió)** lap néhány  további funkcióval együtt ugyanazt a szerepkörlistát jeleníti meg, mint a Szerepkörök lap. A szerepkörök bármelyikét használhatja a szerepkörökkel való munkához, azonban ha egyéni szerepköröket hoz létre vagy töröl, előfordulhat, hogy manuálisan kell frissítenie az oldalt a legújabb módosításokhoz.
 
 #### <a name="roles"></a>[Szerepkörök](#tab/roles/)
 
-1. A Azure Portal kattintson a **minden szolgáltatás** elemre, majd válasszon ki egy hatókört. Kiválaszthatja például a **felügyeleti csoportokat**, **előfizetéseket**, **erőforráscsoportokat** vagy egy erőforrást.
+1. A Azure Portal kattintson a **Minden szolgáltatás elemre,** majd válasszon ki egy hatókört. Kiválaszthat például felügyeleti csoportokat, **előfizetéseket,** **erőforráscsoportokat vagy** egy erőforrást.
 
 1. Kattintson az adott erőforrásra.
 
 1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
 
-1. Kattintson a **szerepkörök** fülre az összes beépített és egyéni szerepkör listájának megtekintéséhez.
+1. Kattintson **a Szerepkörök** fülre az összes beépített és egyéni szerepkör listájának a listájának a listájához.
 
-   Az aktuális hatókörben az egyes szerepkörökhöz hozzárendelt felhasználók és csoportok számát láthatja.
+   Az egyes szerepkörhöz rendelt felhasználók és csoportok számát az aktuális hatókörben láthatja.
 
    ![Szerepkörök listája](./media/role-definitions-list/roles-list-current.png)
 
 #### <a name="roles-preview"></a>[Szerepkörök (előzetes verzió)](#tab/roles-preview/)
 
-1. A Azure Portal kattintson a **minden szolgáltatás** elemre, majd válasszon ki egy hatókört. Kiválaszthatja például a **felügyeleti csoportokat**, **előfizetéseket**, **erőforráscsoportokat** vagy egy erőforrást.
+1. A Azure Portal kattintson a **Minden szolgáltatás elemre,** majd válasszon ki egy hatókört. Kiválaszthat például felügyeleti csoportokat, **előfizetéseket,** **erőforráscsoportokat vagy** egy erőforrást.
 
 1. Kattintson az adott erőforrásra.
 
 1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
 
-1. A beépített és az egyéni szerepkörök listájának megtekintéséhez kattintson a **szerepkörök (előzetes verzió)** fülre.
+1. Kattintson **a Szerepkörök (előzetes verzió)** fülre az összes beépített és egyéni szerepkör listájának megtekintéséhez.
 
-   ![Szerepkörök listája az előzetes verzió használatával](./media/role-definitions-list/roles-list.png)
+   ![Szerepkörök listája az előzetes verzióval](./media/role-definitions-list/roles-list.png)
 
-1. Egy adott szerepkör engedélyeinek megtekintéséhez kattintson a **nézet** hivatkozásra a **részletek** oszlopban.
+1. Egy adott szerepkör engedélyeinek megtekintéséhez  kattintson a Részletek oszlopBan található Megtekintés **hivatkozásra.**
 
-    Megjelenik az engedélyek panel.
+    Megjelenik az Engedélyek panel.
 
-1. Kattintson az **engedélyek** lapra a kiválasztott szerepkör engedélyeinek megtekintéséhez és kereséséhez.
+1. Kattintson az **Engedélyek lapra** a kiválasztott szerepkör engedélyeinek megtekintéséhez és kereséshez.
 
-   ![Szerepkör-engedélyek az előzetes verzió használatával](./media/role-definitions-list/role-permissions.png)
+   ![Szerepkör-engedélyek az előzetes verzió használata esetén](./media/role-definitions-list/role-permissions.png)
 
 ---
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-### <a name="list-all-roles"></a>Az összes szerepkör listázása
+### <a name="list-all-roles"></a>Az összes szerepkör felsorolása
 
-Azure PowerShell összes szerepkörének listázásához használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+A szerepkör összes szerepkörének listához Azure PowerShell [Get-AzRoleDefinition használatával.](/powershell/module/az.resources/get-azroledefinition)
 
 ```azurepowershell
 Get-AzRoleDefinition | FT Name, Description
@@ -90,9 +90,9 @@ Automation Operator                               Automation Operators are able 
 ...
 ```
 
-### <a name="list-a-role-definition"></a>Szerepkör-definíció listázása
+### <a name="list-a-role-definition"></a>Szerepkör-definíciók felsorolása
 
-Egy adott szerepkör részleteinek listázásához használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+Egy adott szerepkör részleteinek listához használja a [Get-AzRoleDefinition adatokat.](/powershell/module/az.resources/get-azroledefinition)
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name>
@@ -113,9 +113,9 @@ NotDataActions   : {}
 AssignableScopes : {/}
 ```
 
-### <a name="list-a-role-definition-in-json-format"></a>Szerepkör-definíciók listázása JSON formátumban
+### <a name="list-a-role-definition-in-json-format"></a>Szerepkör-definíció listázása JSON formátumban
 
-Ha JSON formátumú szerepkört szeretne listázni, használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+Egy szerepkör JSON formátumban való listázásához használja a [Get-AzRoleDefinition parancsokat.](/powershell/module/az.resources/get-azroledefinition)
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name> | ConvertTo-Json
@@ -147,9 +147,9 @@ PS C:\> Get-AzRoleDefinition "Contributor" | ConvertTo-Json
 }
 ```
 
-### <a name="list-permissions-of-a-role-definition"></a>Szerepkör-definíció engedélyeinek listázása
+### <a name="list-permissions-of-a-role-definition"></a>Szerepkör-definíció engedélyeinek felsorolása
 
-Egy adott szerepkör engedélyeinek listázásához használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+Egy adott szerepkör engedélyeinek listához használja a [Get-AzRoleDefinition használhatja a következőt:](/powershell/module/az.resources/get-azroledefinition).
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name> | FL Actions, NotActions
@@ -185,9 +185,9 @@ Microsoft.Network/loadBalancers/backendAddressPools/join/action
 
 ## <a name="azure-cli"></a>Azure CLI
 
-### <a name="list-all-roles"></a>Az összes szerepkör listázása
+### <a name="list-all-roles"></a>Az összes szerepkör felsorolása
 
-Az Azure CLI összes szerepkörének listázásához használja [az az role definition List](/cli/azure/role/definition#az-role-definition-list).
+Az Azure CLI összes szerepkörének listához használja [az az role definition list et.](/cli/azure/role/definition#az_role_definition_list)
 
 ```azurecli
 az role definition list
@@ -248,15 +248,15 @@ az role definition list --custom-role-only false --output json --query '[].{role
 ]
 ```
 
-### <a name="list-a-role-definition"></a>Szerepkör-definíció listázása
+### <a name="list-a-role-definition"></a>Szerepkör-definíció listába sorolva
 
-Egy szerepkör részleteinek listázásához használja [az az role definition List](/cli/azure/role/definition#az-role-definition-list)lehetőséget.
+Egy szerepkör részleteinek listához használja az [az role definition list et.](/cli/azure/role/definition#az_role_definition_list)
 
 ```azurecli
 az role definition list --name {roleName}
 ```
 
-Az alábbi példa a *közreműködő* szerepkör definícióját sorolja fel:
+Az alábbi példa a Közreműködő *szerepkör-definíciót* sorolja fel:
 
 ```azurecli
 az role definition list --name "Contributor"
@@ -294,9 +294,9 @@ az role definition list --name "Contributor"
 ]
 ```
 
-### <a name="list-permissions-of-a-role-definition"></a>Szerepkör-definíció engedélyeinek listázása
+### <a name="list-permissions-of-a-role-definition"></a>Szerepkör-definíció engedélyeinek felsorolása
 
-Az alábbi példa csak a közreműködő szerepkör *műveleteit* *és a* *hozzájuk* tartozó tevékenységeket sorolja fel.
+Az alábbi példa csak a *műveleteket sorolja fel,* a Közreműködő *szerepkört* *nem.*
 
 ```azurecli
 az role definition list --name "Contributor" --output json --query '[].{actions:permissions[0].actions, notActions:permissions[0].notActions}'
@@ -319,7 +319,7 @@ az role definition list --name "Contributor" --output json --query '[].{actions:
 ]
 ```
 
-A következő példa csak a *virtuális gép közreműködői* szerepkörének műveleteit sorolja fel.
+Az alábbi példa csak a Virtuális gépek közreműködője szerepkör *műveletét sorolja* fel.
 
 ```azurecli
 az role definition list --name "Virtual Machine Contributor" --output json --query '[].permissions[0].actions'
@@ -354,7 +354,7 @@ az role definition list --name "Virtual Machine Contributor" --output json --que
 
 ### <a name="list-role-definitions"></a>Szerepkör-definíciók felsorolása
 
-A szerepkör-definíciók listázásához használja a [szerepkör-definíciók – lista](/rest/api/authorization/roledefinitions/list) REST API. Az eredmények pontosításához meg kell adnia egy hatókört és egy opcionális szűrőt.
+A szerepkör-definíciók listához használja a [Szerepkör-definíciók – Lista REST API.](/rest/api/authorization/roledefinitions/list) Az eredmények finomításhoz meg kell adnia egy hatókört és egy nem kötelező szűrőt.
 
 1. Kezdje a következő kéréssel:
 
@@ -362,7 +362,7 @@ A szerepkör-definíciók listázásához használja a [szerepkör-definíciók 
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?$filter={$filter}&api-version=2015-07-01
     ```
 
-1. Az URI-n belül cserélje le a *{scope}* elemet arra a hatókörre, amelyre a szerepkör-definíciókat szeretné listázni.
+1. Az URI-ben cserélje le a *{scope}* helyére azt a hatókört, amelyhez fel szeretné sorolni a szerepkör-definíciókat.
 
     > [!div class="mx-tableFixed"]
     > | Hatókör | Típus |
@@ -372,23 +372,23 @@ A szerepkör-definíciók listázásához használja a [szerepkör-definíciók 
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Erőforrás |
 
-    Az előző példában a Microsoft. web egy olyan erőforrás-szolgáltató, amely egy App Service példányra hivatkozik. Hasonlóképpen használhatja bármely más erőforrás-szolgáltatót, és megadhatja a hatókört. További információ: [Azure erőforrás-szolgáltatók és típusok](../azure-resource-manager/management/resource-providers-and-types.md) és támogatott [Azure erőforrás-szolgáltatói műveletek](resource-provider-operations.md).  
+    Az előző példában a microsoft.web egy erőforrás-szolgáltató, amely egy App Service hivatkozik. Hasonlóképpen bármely más erőforrás-szolgáltatót is használhat, és megadhatja a hatókört. További információ: [Azure-erőforrás-szolgáltatók és](../azure-resource-manager/management/resource-providers-and-types.md) -típusok, valamint támogatott [Azure-erőforrás-szolgáltatói műveletek.](resource-provider-operations.md)  
      
-1. Cserélje le a *{Filter}* helyére azt a feltételt, amelyet alkalmazni szeretne a szerepkör-definíciós lista szűréséhez.
+1. Cserélje *le a {filter}* helyére a szerepkör-definíciók listájának szűréséhez alkalmazni kívánt feltételt.
 
     > [!div class="mx-tableFixed"]
-    > | Szűrő | Leírás |
+    > | Szűrő | Description |
     > | --- | --- |
-    > | `$filter=atScopeAndBelow()` | Felsorolja a megadott hatókör és az alhatókörek szerepkör-definícióit. |
+    > | `$filter=atScopeAndBelow()` | Felsorolja a megadott hatókör és alhatókör szerepkör-definícióit. |
     > | `$filter=type+eq+'{type}'` | Felsorolja a megadott típusú szerepkör-definíciókat. A szerepkör típusa lehet `CustomRole` vagy `BuiltInRole` . |
 
-Az alábbi kérelem felsorolja az egyéni szerepkör-definíciókat az előfizetés hatókörében:
+A következő kérés az előfizetés hatókörében található egyéni szerepkör-definíciókat sorolja fel:
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=type+eq+'CustomRole'
 ```
 
-Az alábbi ábrán egy példa látható a kimenetre:
+Az alábbiakban egy példa látható a kimenetre:
 
 ```json
 {
@@ -431,9 +431,9 @@ Az alábbi ábrán egy példa látható a kimenetre:
 }
 ```
 
-### <a name="list-a-role-definition"></a>Szerepkör-definíció listázása
+### <a name="list-a-role-definition"></a>Szerepkör-definíció listába sorolva
 
-Egy adott szerepkör részleteinek listázásához használja a [Get](/rest/api/authorization/roledefinitions/get) vagy a szerepkör-definíciókat – [get by id](/rest/api/authorization/roledefinitions/getbyid) REST API.
+Egy adott szerepkör részleteinek listához használja a Szerepkör-definíciók – Get vagy Role [Definitions](/rest/api/authorization/roledefinitions/get) [– Get By Id](/rest/api/authorization/roledefinitions/getbyid) (Szerepkör-definíciók – Beszerepkedő azonosító alapján) REST API.
 
 1. Kezdje a következő kéréssel:
 
@@ -441,13 +441,13 @@ Egy adott szerepkör részleteinek listázásához használja a [Get](/rest/api/
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-    A címtár-szintű szerepkör-definícióhoz a következő kérelem használható:
+    Címtárszintű szerepkör-definíciókhoz a következő kérést használhatja:
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-1. Az URI-n belül cserélje le a *{scope}* elemet arra a hatókörre, amelyre a szerepkör-definíciót szeretné listázni.
+1. Az URI-ben cserélje *le a {scope}* helyére azt a hatókört, amelyhez fel szeretné sorolni a szerepkör-definíciót.
 
     > [!div class="mx-tableFixed"]
     > | Hatókör | Típus |
@@ -457,15 +457,15 @@ Egy adott szerepkör részleteinek listázásához használja a [Get](/rest/api/
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Erőforrás |
      
-1. Cserélje le a *{roleDefinitionId}* helyére a szerepkör-definíció azonosítóját.
+1. Cserélje *le a {roleDefinitionId} helyére* a szerepkör-definíció azonosítóját.
 
-A következő kérelem felsorolja az [olvasói](built-in-roles.md#reader) szerepkör definícióját:
+A következő kérés az Olvasó szerepkör [definícióját sorolja](built-in-roles.md#reader) fel:
 
 ```http
 GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7?api-version=2015-07-01
 ```
 
-Az alábbi ábrán egy példa látható a kimenetre:
+Az alábbiakban egy példát mutatunk be a kimenetre:
 
 ```json
 {
@@ -499,5 +499,5 @@ Az alábbi ábrán egy példa látható a kimenetre:
 
 - [Beépített Azure-szerepkörök](built-in-roles.md)
 - [Egyéni Azure-szerepkörök](custom-roles.md)
-- [Azure-beli szerepkör-hozzárendelések listázása a Azure Portal használatával](role-assignments-list-portal.md)
-- [Azure-szerepkörök kiosztása a Azure Portal használatával](role-assignments-portal.md)
+- [Azure-beli szerepkör-hozzárendelések felsorolása a Azure Portal](role-assignments-list-portal.md)
+- [Azure-szerepkörök hozzárendelése a Azure Portal](role-assignments-portal.md)

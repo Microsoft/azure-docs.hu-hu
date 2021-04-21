@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 02/14/2021
-ms.openlocfilehash: 727196f274db3abae75a38d3ecdf31a78dec0fab
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: d21ee7a60d11a154737c5380ec20d3e9c4490962
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725943"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786062"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Riasztási szabályok vagy műveletszabályok frissítése, ha a célerőforrásuk egy másik Azure-régióba kerül
 
@@ -65,9 +65,9 @@ Ha **a hatókörben** lévő erőforrásoknak csak egy része lett áthelyezve, 
 
 ### <a name="identifying-rules-associated-with-a-moved-resource-from-the-azure-portal"></a>Az erőforrásból áthelyezott erőforráshoz társított szabályok Azure Portal
 
-- **Riasztási szabályok esetén** – Lépjen a Riasztások > riasztási szabályok kezelése > az azt tartalmazó előfizetés és az áthelyezott erőforrás alapján szűrhet.
+- **Riasztási szabályok esetén** – Lépjen a Riasztások lapra> Riasztási szabályok kezelése > az azt tartalmazó előfizetés és az áthelyezott erőforrás alapján szűrhet.
 > [!NOTE]
-> A tevékenységnapló-riasztási szabályok nem támogatják ezt a folyamatot. A tevékenységnapló-riasztási szabály hatóköre nem frissítható, és nem mutatatható egy másik előfizetés egyik erőforrására. Ehelyett létrehozhat egy új szabályt, amely lecseréli a régit.
+> A tevékenységnapló-riasztási szabályok nem támogatják ezt a folyamatot. Nem lehet frissíteni egy tevékenységnapló-riasztási szabály hatókörét, hogy egy másik előfizetésben egy erőforrásra mutasson. Ehelyett létrehozhat egy új szabályt, amely lecseréli a régit.
 
 - **Műveletszabályok esetén** – Lépjen a Riasztások lapra> Műveletek kezelése > (előzetes verzió) lehetőséget, > az azt tartalmazó előfizetésre és az áthelyezett erőforrásra szűrhet.
 
@@ -87,7 +87,7 @@ Ha **a hatókörben** lévő erőforrásoknak csak egy része lett áthelyezve, 
    2. Az Áttekintés szakaszban jelölje be a Rejtett típus **megjelenítése** jelölőnégyzetet, és szűrje a szabályt a megfelelő típus szerint.
    3. A részletek megtekintéséhez válassza ki a megfelelő szabályt.
    4. A **Beállítások alatt** válassza a Sablon **exportálása lehetőséget.**
-2. Módosítsa a sablont. Szükség esetén ossza fel két szabályra (ez a metrikákra vonatkozó riasztások egyes esetekben releváns, ahogy azt fent említettük).
+2. Módosítsa a sablont. Szükség esetén ossza fel két szabályra (ez a metrikákra vonatkozó riasztások bizonyos esetekben releváns, ahogy azt fent említettük).
 3. A sablon ismételt üzembe mentése.
 
 ### <a name="change-scope-of-a-rule-using-rest-api"></a>Szabály hatókörének módosítása a REST API
@@ -104,8 +104,8 @@ Ha **a hatókörben** lévő erőforrásoknak csak egy része lett áthelyezve, 
 
 ### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>Szabály hatókörének módosítása az Azure CLI használatával
 
-1.  A meglévő szabály[(metrikariasztás,](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-show) [tevékenységnapló-riasztások) lekérte.](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)
-2.  A szabály hatókörének közvetlen frissítése ([metrikariasztás,](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update) [tevékenységnapló-riasztások](/cli/azure/monitor/activity-log/alert/scope))
+1.  A meglévő szabály[(metrikariasztás,](/cli/azure/monitor/metrics/alert#az_monitor_metrics_alert_show) [tevékenységnapló-riasztások) lekérte.](/cli/azure/monitor/activity-log/alert#az_monitor_activity_log-alert_list)
+2.  A szabály hatókörének közvetlen frissítése ([metrikariasztás,](/cli/azure/monitor/metrics/alert#az_monitor_metrics_alert_update) [tevékenységnapló-riasztások](/cli/azure/monitor/activity-log/alert/scope))
 3.  Szükség esetén ossza fel őket két szabályra (amelyek a metrikákra vonatkozó riasztások egyes esetekben relevánsak, a fent említettek szerint).
 
 ## <a name="next-steps"></a>Következő lépések
