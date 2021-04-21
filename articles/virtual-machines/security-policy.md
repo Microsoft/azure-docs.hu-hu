@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 840045da33938d4c1cd725fd5a99bf1b8014f6b1
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 6754e4e60c31c35531b27e6cc2047e9f8ce3d0bc
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107748465"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817394"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Szabályzatok biztonsága és használata virtuális gépeken az Azure-ban
 
@@ -53,7 +53,7 @@ Az Azure-beli virtuális lemezek titkosítása díjmentes. A titkosítási kulcs
 
 A titkos kulcsok és tanúsítványok erőforrásokként modellelve és a következő által [Key Vault.](../key-vault/general/basic-concepts.md) Az azure Azure PowerShell kulcstartókat hozhat létre [Windows](windows/key-vault-setup.md) rendszerű virtuális gépekhez és az Azure [CLI-vel Linux rendszerű virtuális gépekhez.](linux/key-vault-setup.md) A titkosításhoz kulcsokat is létrehozhat.
 
-A kulcstartó-hozzáférési szabályzatok külön biztosítják a kulcsokra, titkos kulcsokra és tanúsítványokra vonatkozó engedélyeket. Egy adott felhasználó számára hozzáférést engedélyezhet például kizárólag a kulcsokhoz, de a titkos kulcsokhoz nem. A kulcsok, titkos kulcsok és tanúsítványok hozzáférése ugyanakkor tárolószinten engedélyezett. Más szóval a [kulcstartó-hozzáférési szabályzat](../key-vault/general/security-overview.md) nem támogatja az objektumszintű engedélyeket.
+A kulcstartó-hozzáférési szabályzatok külön biztosítják a kulcsokra, titkos kulcsokra és tanúsítványokra vonatkozó engedélyeket. Egy adott felhasználó számára hozzáférést engedélyezhet például kizárólag a kulcsokhoz, de a titkos kulcsokhoz nem. A kulcsok, titkos kulcsok és tanúsítványok hozzáférése ugyanakkor tárolószinten engedélyezett. Más szóval a [kulcstartó-hozzáférési szabályzat](../key-vault/general/security-features.md) nem támogatja az objektumszintű engedélyeket.
 
 Amikor virtuális gépekhez csatlakozik, nyilvános kulcsú titkosítást kell használnia a bejelentkezés biztonságosabb módja érdekében. Ez a folyamat magában foglalja egy nyilvános és titkos kulcscserét a Secure Shell (SSH) paranccsal, amely felhasználónév és jelszó helyett saját magát hitelesíti. A jelszavak ki vannak téve a találgatásos támadásoknak, különösen az internetes virtuális gépek, például webkiszolgálók esetén. A Secure Shell- (SSH-) kulcspárokkal létrehozhat egy [Linux](linux/mac-create-ssh-keys.md) rendszerű virtuális gépet, amely SSH-kulcsokat használ a hitelesítéshez, így nincs szükség jelszavakra a bejelentkezéshez. SSH-kulcsokkal windowsos virtuális gépről [linuxos](linux/ssh-from-windows.md) virtuális géphez is csatlakozhat.
 

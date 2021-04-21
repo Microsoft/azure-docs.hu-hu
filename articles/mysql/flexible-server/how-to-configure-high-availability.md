@@ -1,69 +1,90 @@
 ---
-title: A zóna redundáns magas rendelkezésre állásának kezelése – Azure Portal – Azure Database for MySQL rugalmas kiszolgáló
-description: Ez a cikk azt ismerteti, hogyan engedélyezhető vagy tiltható le a zóna redundáns magas rendelkezésre állása Azure Database for MySQL rugalmas kiszolgálón a Azure Portal használatával.
+title: Zónaredundáns magas rendelkezésre állás kezelése – Azure Portal – Azure Database for MySQL rugalmas kiszolgáló
+description: Ez a cikk azt ismerteti, hogyan engedélyezheti vagy tilthatja le a zónaredundáns magas rendelkezésre állást Azure Database for MySQL rugalmas kiszolgálón a Azure Portal.
 author: mksuni
 ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: d65b074385311e74444929ef74901e402e29ec03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e217dcaeafd553803f5c9699ab6d7779ed755b67
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93241735"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818284"
 ---
-# <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-preview"></a>A zóna redundáns magas rendelkezésre állásának kezelése Azure Database for MySQL rugalmas kiszolgálóban (előzetes verzió)
+# <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-preview"></a>Zónaredundáns magas rendelkezésre állás kezelése rugalmas Azure Database for MySQL (előzetes verzió)
 
-Ez a cikk azt ismerteti, hogyan engedélyezheti vagy tilthatja le a zóna redundáns magas rendelkezésre állási konfigurációját a rugalmas kiszolgálókon.
+Ez a cikk azt ismerteti, hogyan engedélyezheti vagy tilthatja le a zónaredundáns magas rendelkezésre állású konfigurációt a rugalmas kiszolgálón.
 
-A magas rendelkezésre állási funkció a különböző zónákban lévő elsődleges és készenléti replikák fizikai elkülönítését. További részletekért tekintse meg a [magas rendelkezésre állással kapcsolatos fogalmak dokumentációját](./concepts/../concepts-high-availability.md). 
-
-> [!IMPORTANT]
-> A zóna rugalmas, magas rendelkezésre állása csak a kiszolgáló rugalmas létrehozásakor engedélyezhető.
-
-Ez az oldal útmutatást nyújt a magas rendelkezésre állás engedélyezéséhez vagy letiltásához. Ez a művelet nem változtatja meg a többi beállítást, például a VNET konfigurációját, a tűzfal beállításait és a biztonsági másolatok megőrzését. Hasonlóképpen, a magas rendelkezésre állás letiltása egy online művelet, amely nem befolyásolja az alkalmazás kapcsolatát és műveleteit.
+A magas rendelkezésre állású funkció fizikailag elkülönített elsődleges és készenléti replikát biztosít különböző zónákban. További részletekért tekintse meg [a magas rendelkezésre állás fogalmait tartalmazó dokumentációt.](./concepts/../concepts-high-availability.md) 
 
 > [!IMPORTANT]
-> A zóna redundáns magas rendelkezésre állása korlátozott számú régióban érhető el: Délkelet-Ázsia, 2. WestUS, Nyugat-Európa és az USA keleti régiója.  
+> A zónaredundáns magas rendelkezésre állást csak a rugalmas kiszolgáló létrehozása során engedélyezheti.
+
+Ez az oldal a magas rendelkezésre állás engedélyezésére vagy letiltására vonatkozó irányelveket tartalmaz. Ez a művelet nem módosítja a többi beállítást, például a virtuális hálózat konfigurációját, a tűzfalbeállításokat és a biztonsági másolatok megőrzését. Hasonlóképpen, a magas rendelkezésre állás letiltása online művelet, és nem befolyásolja az alkalmazás kapcsolatát és műveleteit.
+
+> [!IMPORTANT]
+> A zónaredundáns magas rendelkezésre állás korlátozott régiókban érhető el: Délkelet-Ázsia, USA 2. nyugati régiója, Nyugat-Európa és az USA keleti régiója.  
 
 ## <a name="enable-high-availability-during-server-creation"></a>Magas rendelkezésre állás engedélyezése a kiszolgáló létrehozása során
 
-Ez a szakasz részletesen ismerteti a HA kapcsolódó mezőket. Az alábbi lépések végrehajtásával magas rendelkezésre állást helyezhet üzembe a rugalmas kiszolgáló létrehozása során.
+Ez a szakasz kifejezetten a HA-hez kapcsolódó mezők adatait tartalmazza. Az alábbi lépéseket követve magas rendelkezésre állást helyezhet üzembe a rugalmas kiszolgáló létrehozása során.
 
-1.  A [Azure Portal](https://portal.azure.com/)válassza a rugalmas kiszolgáló elemet, majd kattintson a **Létrehozás** gombra.  A részleteket, például az **előfizetést**, az **erőforráscsoportot**, a **kiszolgálónevet**, a **régiót** és az egyéb mezőket a kiszolgáló létrehozásának dokumentációjában találja.
+1.  A [Azure Portal](https://portal.azure.com/)válassza a rugalmas kiszolgálót, majd kattintson a **Létrehozás gombra.**  Az előfizetéssel, erőforráscsoporttal, kiszolgálónévvel, régióval és egyéb mezőkkel kapcsolatos részletekért tekintse meg a kiszolgáló létrehozásának dokumentációját. 
 
-2.  A rendelkezésre állási lehetőségnél kattintson a **zóna redundáns magas rendelkezésre állása** jelölőnégyzetére.
+2.  A Rendelkezésre állás  lehetőségben jelölje be a Zónaredundáns magas rendelkezésre állás jelölőnégyzetet.
 
-3.  Ha módosítani szeretné az alapértelmezett számítási és tárolási tárterületet, kattintson a  **kiszolgáló konfigurálása** elemre.
+3.  Ha módosítani szeretné az alapértelmezett számítást és tárolást, kattintson a **Kiszolgáló konfigurálása elemre.**
 
-4.  Ha a magas rendelkezésre állás beállítás be van jelölve, a feltört szint nem lesz elérhető a választáshoz. Kiválaszthatja az **általános célú** vagy a **memóriára optimalizált** számítási szinteket is.
+4.  Ha be van jelölve a magas rendelkezésre állási lehetőség, akkor az adatlok-ható szint nem lesz kiválasztható. Választhat az Általános célú **vagy** a **Memóriaoptimalált** számítási szintek közül.
 
     > [!IMPORTANT]
-    > Csak a zóna redundáns magas rendelkezésre állását támogatjuk az ***általános célú** _ és a *_memória-optimalizált_** díjszabási szinten.
+    > A zónaredundáns magas rendelkezésre állást csak az ***Általános** célú _ és *___* Memóriaoptimalált * tarifacsomag esetében támogatjuk.
 
-5.  Válassza ki a legördülő menüből választott **számítási méretet** .
+5.  Válassza ki **a kívánt** Számítási méretet a legördülő menüből.
 
-6.  A kicsúsztatható sáv használatával válassza ki a **Storage-méretet** , és válassza ki a **biztonsági mentés megőrzési időtartamát** 7 nap és 35 nap között.   
+6.  A **csúszkával** válassza a Tárolási méret  GiB-ban lehetőséget, majd válassza ki a Biztonsági másolat megőrzési időszakát 7 nap és 35 nap között.   
 
-## <a name="disable-high-availability"></a>Magas rendelkezésre állás letiltása
+## <a name="disable-high-availability"></a>A magas rendelkezésre állás letiltása
 
-A következő lépésekkel letilthatja a rugalmas kiszolgáló magas rendelkezésre állását, amely már konfigurálva van a zóna-redundanciával.
+Az alábbi lépésekkel letilthatja a magas rendelkezésre állást a zónaredundaniával már konfigurált rugalmas kiszolgálón.
 
-1.  A [Azure Portal](https://portal.azure.com/)válassza ki a meglévő Azure Database for MySQL rugalmas kiszolgálót.
+1.  A [Azure Portal](https://portal.azure.com/)válassza ki a meglévő rugalmas Azure Database for MySQL kiszolgálót.
 
-2.  A rugalmas kiszolgáló lapon kattintson a **magas rendelkezésre állás** lehetőségre az előlapon a magas rendelkezésre állású lap megnyitásához.
+2.  A rugalmas kiszolgáló oldalán kattintson **a** Magas rendelkezésre állás elemre az előlapon a magas rendelkezésre állás lap megnyitásához.
 
-3.  Kattintson a **zóna redundáns magas rendelkezésre állása** jelölőnégyzetre a beállítás letiltásához, majd kattintson a **Save (Mentés** ) gombra a módosítás mentéséhez.
+3.  Kattintson a zónaredundáns **magas** rendelkezésre állás  jelölőnégyzetére a beállítás letiltásához, majd kattintson a Mentés gombra a módosítás mentéshez.
 
-4.  Ekkor megjelenik egy megerősítő párbeszédpanel, ahol ellenőrizheti, hogy le kell-e tiltani A letiltást.
+4.  Megjelenik egy megerősítő párbeszédpanel, ahol megerősítheti a hatékony letiltásának megerősítését.
 
-5.  Ha le szeretné tiltani a magas rendelkezésre állást, kattintson a **Letiltás** gombra.
+5.  A **magas rendelkezésre állás letiltásához** kattintson a Magas rendelkezésre állás letiltása gombra.
 
-6.  Egy értesítés jelenik meg a magas rendelkezésre állású központi telepítés leszerelése közben.
+6.  Egy értesítés jelenik meg, amely szerint folyamatban van a magas rendelkezésre állású üzemelő példány leszerelése.
+
+
+## <a name="forced-failover"></a>Kényszerített feladatátvétel
+
+Kövesse az alábbi lépéseket az elsődleges kiszolgálóról a készenléti rugalmas kiszolgálóra való feladatátvétel kényszerítéhez
+
+1.  A [Azure Portal](https://portal.azure.com/)válassza ki a meglévő rugalmas Azure Database for MySQL, amelyen engedélyezve van a magas rendelkezésre állási funkció.
+
+2.  A rugalmas kiszolgáló oldalán kattintson **a** Magas rendelkezésre állás elemre az előlapon a magas rendelkezésre állás lap megnyitásához.
+
+3.  Ellenőrizze az **elsődleges rendelkezésre állási zónát** és **a készenléti rendelkezésre állási zónát**
+
+4.  Kattintson a **Kényszerített feladatátvétel elemre** a manuális feladatátvételi eljárás kezdeményezéshez. Egy előugró ablak tájékoztatja a feladatátvétel várható idejét az elsődleges feladat aktuális számítási feladatától és az utolsó ellenőrzőpont helyességétől függően, olvassa el az üzenetet, és kattintson az OK gombra.
+ 
+5. Megjelenik egy értesítés, amely megemlíti, hogy a feladatátvétel folyamatban van.
+
+6. Ha a feladatátvétel sikeresen befejeződött a készenléti kiszolgálóra, megjelenik egy értesítés.
+
+7. Ellenőrizze az új **elsődleges rendelkezésre állási zónát** és **a készenléti rendelkezésre állási zónát.**
+
+![Kényszerített feladatátvétel](media/how-to-configure-high-availability/how-to-forced-failover.png) 
 
 ## <a name="next-steps"></a>Következő lépések
 
--   Az [üzletmenet folytonosságának](./concepts-business-continuity.md) megismerése
--   További információ a [zónák redundáns magas rendelkezésre állásáról](./concepts-high-availability.md)
+-   További információ az [üzletmenet-folytonosságról](./concepts-business-continuity.md)
+-   Tudnivalók a [zónaredundáns magas rendelkezésre állásról](./concepts-high-availability.md)

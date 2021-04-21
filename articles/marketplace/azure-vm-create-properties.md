@@ -1,89 +1,89 @@
 ---
-title: Virtuálisgép-ajánlat tulajdonságainak konfigurálása az Azure Marketplace-en
-description: Ismerje meg, hogyan konfigurálhatja a virtuális gépek ajánlatának tulajdonságait az Azure Marketplace-en.
+title: Virtuálisgép-ajánlat tulajdonságainak konfigurálása a Azure Marketplace
+description: Ismerje meg, hogyan konfigurálhatja a virtuális gépek ajánlattulajdonságokat a Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 281553782774c31ec8cfaf614542fd739c4d3dd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5942368ba1709127b815a35676b716955c1bee8f
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629529"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819087"
 ---
-# <a name="how-to-configure-virtual-machine-offer-properties"></a>A virtuális gépek ajánlati tulajdonságainak konfigurálása
+# <a name="configure-virtual-machine-offer-properties"></a>Virtuálisgép-ajánlat tulajdonságainak konfigurálása
 
-A **Tulajdonságok** lapon (válassza ki a partner Center bal oldali navigációs menüjéből) adja meg a virtuális gép (VM) ajánlatának csoportosításához használt kategóriákat az Azure Marketplace-en, az alkalmazás verzióját, valamint az ajánlatot támogató jogi szerződéseket.
+A Tulajdonságok **lapon** (a bal oldali navigációs menüből kiválasztva) meghatározhatja azokat a kategóriákat, amelyek a virtuálisgép-ajánlat (VM) Azure Marketplace-ben való csoportosításához, az alkalmazás verziójához és az ajánlatot támogató jogi szerződésekhez használhatók.
 
 ## <a name="select-a-category"></a>Kategória kiválasztása
 
-Válassza ki a kategóriákat és alkategóriákat, hogy az ajánlatot a megfelelő Azure Marketplace-beli keresési területeken helyezze el. Ügyeljen arra, hogy az ajánlat leírásában később ismertesse, hogy az ajánlat hogyan támogatja ezeket a kategóriákat.
+Válassza ki a kategóriákat és alkategóriákat, hogy az ajánlatot a megfelelő keresési Azure Marketplace helyezze el. Mindenképpen írja le az ajánlat leírásának későbbi részében, hogy az ajánlat hogyan támogatja ezeket a kategóriákat.
 
-- Válasszon ki egy elsődleges kategóriát.
-- Második választható kategória (másodlagos) hozzáadásához válassza a **+ Kategóriák** hivatkozást.
-- Válasszon legfeljebb két alkategóriát az elsődleges és/vagy másodlagos kategóriához. Ha nem alkalmazható alkategória az ajánlatra, válassza a **nem alkalmazható** lehetőséget. Egy második alkategória kiválasztásához használja a CTRL billentyűt és kattintson rá.
+- Válasszon ki egy Elsődleges kategóriát.
+- Egy második választható kategória (másodlagos) hozzáadásához válassza a **+Kategóriák hivatkozást.**
+- Legfeljebb két alkategóriát válasszon az Elsődleges és/vagy a Másodlagos kategóriához. Ha az ajánlatra nem vonatkozik alkategória, válassza a **Nem alkalmazható lehetőséget.** A Ctrl+kattintással válasszon ki egy második alkategóriát.
 
-Tekintse meg a kategóriák és alkategóriák teljes listáját az [ajánlatban az ajánlott eljárásokat felsorolva](gtm-offer-listing-best-practices.md). A virtuális gép az Azure Marketplace-en mindig a **számítási** kategóriában jelenik meg.
+A kategóriák és alkategóriák teljes listáját az Ajánlatlistázással kapcsolatos ajánlott [eljárások rész tartalmazza.](gtm-offer-listing-best-practices.md) A virtuálisgép-ajánlatok mindig a Számítási **kategória alatt jelennek** meg a Azure Marketplace.
 
-## <a name="provide-terms-and-conditions"></a>Feltételek és kikötések megadása
+## <a name="provide-terms-and-conditions"></a>Használati feltételek és feltételek megszabad
 
-A **jogi** területen adja meg az ajánlat használati feltételeit. Erre két lehetősége van:
+A **Jogi alatt** adja meg az ajánlat feltételeit és feltételeit. Erre két lehetősége van:
 
-- [A standard szerződés használata opcionális módosításokkal](#use-the-standard-contract)
+- [A standard szerződés használata választható módosításokkal](#use-the-standard-contract)
 - [Saját használati feltételek használata](#use-your-own-terms-and-conditions)
 
-A standard szerződéssel és a választható módosításokkal kapcsolatos további információkért lásd: [standard szintű szerződés a Microsoft kereskedelmi piactéren](standard-contract.md). Letöltheti a [normál szerződés](https://go.microsoft.com/fwlink/?linkid=2041178) PDF-fájlját (Győződjön meg róla, hogy az előugró ablakok blokkolása ki van kapcsolva).
+A standard szerződéssel és a választható módosításokkal kapcsolatos további információkért tekintse meg standard szerződés Microsoft kereskedelmi [piactérre vonatkozó cikkeket.](standard-contract.md) Letöltheti a [](https://go.microsoft.com/fwlink/?linkid=2041178) standard szerződés PDF-fájlt (győződjön meg arról, hogy az előugró ablak blokkoló ki van kapcsolva).
 
-### <a name="use-the-standard-contract"></a>A standard szintű szerződés használata
+### <a name="use-the-standard-contract"></a>A standard szerződés használata
 
-Az ügyfelek beszerzési folyamatának leegyszerűsítése és a szoftvergyártók jogi összetettségének csökkentése érdekében a Microsoft szabványos szerződést kínál, amely a kereskedelmi piactéren elérhető ajánlatokhoz használható. Ha a standard szintű szerződés keretében nyújtja a szoftverét, az ügyfeleknek csak egyszer kell elolvasniuk és elfogadniuk, és nem kell egyéni használati feltételeket létrehozniuk.
+Az ügyfelek beszerzési folyamatának egyszerűsítése és a szoftverszállítók jogi összetettségének csökkentése érdekében a Microsoft egy szabványos szerződést kínál, amely a kereskedelmi piactéren elérhető ajánlatokkal használható. Ha a szoftverét a szokásos szerződés keretében kínálja, az ügyfeleknek csak egyszer kell elolvasni és elfogadniuk azt, és önnek nem kell egyéni feltételeket és feltételeket létrehoznia.
 
-1. Jelölje be a **szabványos szerződés használata a Microsoft kereskedelmi piactérhez** jelölőnégyzetet.
+1. Jelölje be a Use the standard szerződés for Microsoft's commercial marketplace (Az alkalmazás **használata a Microsoft kereskedelmi piacterén)** jelölőnégyzetet.
 
-   ![Bemutatja a Microsoft kereskedelmi Marketplace-re vonatkozó standard szerződés használatát jelölőnégyzetet.](partner-center-portal/media/use-standard-contract.png)
+   ![Bemutatja a Standard szerződés használata a Microsoft kereskedelmi piacterén jelölőnégyzetet.](partner-center-portal/media/use-standard-contract.png)
 
-1. A **megerősítő** párbeszédpanelen válassza az **elfogadás** lehetőséget. A képernyő méretétől függően előfordulhat, hogy fel kell görgetni, hogy megjelenjen.
-1. A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
+1. A Megerősítés **párbeszédpanelen** válassza az **Elfogadás lehetőséget.** A képernyő méretétől függően előfordulhat, hogy fel kell görgetnie, hogy lássa.
+1. A **folytatás előtt válassza a Piszkozat** mentése lehetőséget.
 
    > [!NOTE]
-   > Miután közzétett egy ajánlatot a kereskedelmi piactérre vonatkozó standard szerződéssel, nem használhatja a saját egyéni használati feltételeit. Akár a standard szerződés keretében, opcionális módosításokkal vagy a saját használati feltételeinek megfelelően kínálja a megoldását.
+   > Miután közzétett egy ajánlatot standard szerződés kereskedelmi piactérhez, nem használhatja a saját egyéni használati feltételeit. A megoldást vagy a standard szerződés keretében, opcionális módosításokkal, vagy a saját használati feltételei szerint kínálják fel.
 
 #### <a name="add-amendments-to-the-standard-contract-optional"></a>Módosítások hozzáadása a standard szerződéshez (nem kötelező)
 
-Kétféle módosítás érhető el: *univerzális* és *Egyéni*.
+Kétféle módosítás érhető *el:* univerzális és *egyéni*.
 
-##### <a name="add-universal-amendment-terms"></a>Univerzális módosítási feltételek hozzáadása
+##### <a name="add-universal-amendment-terms"></a>Általános módosítási feltételek hozzáadása
 
-Az **univerzális módosítási feltételek a Microsoft kereskedelmi Marketplace-re vonatkozó szabványos szerződés** mezőjébe írja be az univerzális módosítási feltételeket. Ebben a mezőben korlátlan számú karaktert adhat meg. Ezek a feltételek a AppSource, az Azure Marketplace-en és/vagy Azure Portalban jelennek meg a felderítési és vásárlási folyamat során.
+A **Microsoft kereskedelmi piacterének** standard szerződésének univerzális módosítási feltételei mezőben adja meg az univerzális módosítás feltételeit. Ebben a mezőben korlátlan számú karaktert beírhat. Ezek a feltételek az AppSource-ban, a Azure Marketplace és/vagy a Azure Portal a felderítési és vásárlási folyamat során jelennek meg.
 
-##### <a name="add-one-or-more-custom-amendments"></a>Adjon hozzá egy vagy több egyéni módosítást
+##### <a name="add-one-or-more-custom-amendments"></a>Egy vagy több egyéni módosítás hozzáadása
 
-1. A **Microsoft kereskedelmi Marketplace-re vonatkozó standard szerződésének egyéni módosítások** területén válassza az **Egyéni módosítási időszak hozzáadása (maximum 10)** hivatkozást.
-2. Adja meg az **Egyéni módosítási feltételeket** a mezőben.
-3. Adja meg a **bérlő azonosítóját** a mezőben. Az ajánlat beszerzési folyamatában csak az egyéni feltételekhez megadott bérlői azonosítókkal rendelkező ügyfelek látják majd az Azure Portal.
+1. A **Microsoft kereskedelmi** piacterének Egyéni kiegészítések feltételei standard szerződés alatt válassza az Egyéni módosítási időszak hozzáadása **(max. 10)** hivatkozást.
+2. Írja be **az egyéni módosítás kifejezését** a mezőbe.
+3. Írja be **a bérlőazonosítót** a mezőbe. Csak az ezen egyéni feltételekhez megadott bérlői adatokkal társított ügyfelek láthatják őket az ajánlat vásárlási folyamatában a Azure Portal.
 
    > [!TIP]
-   > A bérlői azonosító azonosítja az ügyfelet az Azure-ban. Megkérheti az ügyfelet erre az azonosítóra, és megkeresheti a [**https://portal.azure.com**](https://portal.azure.com)  >  **Azure Active Directory**  >  **Tulajdonságok** lehetőséggel. A címtár-azonosító értéke a bérlő azonosítója (például: `50c464d3-4930-494c-963c-1e951d15360e` ). A szervezet bérlői AZONOSÍTÓját is megkeresheti a saját tartománynév URL-címével, amely a [Microsoft Azure és az Office 365-bérlői azonosítóját használja?](https://www.whatismytenantid.com/).
+   > A bérlőazonosító azonosítja az ügyfelet az Azure-ban. Ezt az azonosítót az ügyféltől kérheti, és a Tulajdonságok gombra [**https://portal.azure.com**](https://portal.azure.com)  >  **Azure Active Directory**  >  **rá.** A címtár-azonosító értéke a bérlő azonosítója (például `50c464d3-4930-494c-963c-1e951d15360e` ). A Céges fiókom és az [Office 365-bérlőazonosító?](https://www.whatismytenantid.com/)cím alatt található tartománynév Microsoft Azure URL-címével is ki tudja keresni az ügyfél bérlőazonosítóját.
 
-4. Szükség esetén a bérlői azonosító rövid **leírását** is megadhatja. Ez a leírás segít azonosítani a módosítással megcélzott ügyfelet.
-5. Egy másik bérlői azonosító hozzáadásához jelölje be az **ügyfél hozzáadása a bérlői azonosítóhoz (max. 10)** hivatkozást, és ismételje meg a 3. és 4. lépést. Legfeljebb 20 bérlői azonosítót adhat hozzá.
-6. Egy másik módosítási kifejezés hozzáadásához ismételje meg az 1 – 5. lépést. Ajánlatunk legfeljebb tíz egyéni módosítási kifejezést biztosíthat.
-7. A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
+4. Ha szükséges, adjon meg egy rövid **Leírást** a bérlőazonosítóhoz. Ez a leírás segít azonosítani a módosítás céljaként érintett ügyfelet.
+5. Egy másik bérlőazonosító hozzáadásához válassza **az Add a customer's tenant ID (Max 10) (Ügyfél bérlőazonosítójának hozzáadása (max. 10) hivatkozást,** és ismételje meg a 3. és a 4. lépést. Legfeljebb 20 bérlői adatbázist adhat hozzá.
+6. Egy újabb módosítási kifejezés hozzáadásához ismételje meg az 1–5. lépést. Ajánlatonként legfeljebb tíz egyéni módosítási feltételt tud biztosítani.
+7. A **folytatás előtt válassza a Piszkozat** mentése lehetőséget.
 
 ### <a name="use-your-own-terms-and-conditions"></a>Saját használati feltételek használata
 
-A normál szerződés helyett saját használati feltételeket is megadhat. Az ügyfeleknek el kell fogadniuk ezeket a feltételeket, mielőtt kipróbálhatják az ajánlatot.
+A standard szerződés használata helyett saját használati feltételeket is meg lehet adni. Az ügyfeleknek el kell fogadniuk ezeket a feltételeket, mielőtt kipróbálhatják az ajánlatot.
 
-1. A **jogi** területen szüntesse **meg a szabványos szerződés használata a Microsoft kereskedelmi piactérhez** jelölőnégyzet jelölését.
-1. A **feltételek és kikötések** mezőben adja meg a legfeljebb 10 000 karakter hosszúságú szöveget.
+1. A **Jogi osztály** alatt törölje a Standard szerződés használata a Microsoft kereskedelmi **piacterén** jelölőnégyzet jelölését.
+1. A Használati **feltételek mezőbe** legfeljebb 10 000 karakterből állhat.
 
    > [!NOTE]
-   > Ha további leírásra van szüksége, adjon meg egy webcímet, amely arra a pontra mutat, ahol a feltételek és kikötések találhatók. Az ügyfelek aktív hivatkozásként jelennek meg.
+   > Ha hosszabb leírásra van szüksége, adjon meg egy webcímet, amely arra mutat, hogy hol találhatók a használati feltételek. Ez aktív hivatkozásként jelenik meg az ügyfelek számára.
 
-1. A bal oldali navigációs menü következő lapján a Tovább gombra kattintva megadhatja a **Piszkozat mentése** **lehetőséget.**
+1. Válassza **a Piszkozat** mentése lehetőséget, mielőtt továbblép a bal oldali navigációs menü **Ajánlatlista lapján található következő lapra.**
 
 ## <a name="next-steps"></a>Következő lépések
 

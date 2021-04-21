@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: a MySQL online migrálása a Azure Database for MySQLba'
+title: 'Oktatóanyag: MySQL online mi áttelepítése Azure Database for MySQL'
 titleSuffix: Azure Database Migration Service
-description: Ismerje meg, hogyan végezheti el a helyszíni MySQL online áttelepítését, hogy Azure Database for MySQL a Azure Database Migration Service használatával.
+description: Ismerje meg, hogyan végezhet online migrálást a mySQL-ről Azure Database for MySQL mysql-be a Azure Database Migration Service.
 services: dms
 author: arunkumarthiags
 ms.author: arthiaga
@@ -12,39 +12,39 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 050356dc74641e7e7154d6a3976e6cc8d5f4ce3d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 754d8cc9e79bc100e87f56c6fc33102963e53e8d
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063610"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818075"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Oktatóanyag: MySQL online migrálása az Azure Database for MySQL-be a DMS használatával
 
-A Azure Database Migration Service segítségével telepítheti át az adatbázisokat egy helyszíni MySQL-példányból, hogy [Azure Database for MySQL](../mysql/index.yml) minimális állásidővel. Ez azt jelenti, hogy a migrálás az alkalmazás minimális ideig tartó leállásával végezhető el. Ebben az oktatóanyagban áttelepíti az **alkalmazottak** minta-adatbázisát a MySQL 5,7 helyszíni példányáról, hogy Azure Database for MySQL a Azure Database Migration Service Online áttelepítési tevékenységével.
+Az adatbázisokat Azure Database Migration Service mySQL-példányról minimális állásidővel át Azure Database for MySQL [](../mysql/index.yml) át a Azure Database for MySQL használatával. Ez azt jelenti, hogy a migrálás az alkalmazás minimális ideig tartó leállásával végezhető el. Ebben az oktatóanyagban az **Employees** mintaadatbázist a MySQL 5.7 egy helyszíni példányából a Azure Database for MySQL-be migráljuk egy online migrálási tevékenységgel a Azure Database Migration Service.
 
 > [!IMPORTANT]
-> A "MySQL to Azure Database for MySQL" Online áttelepítési forgatókönyv helyébe egy párhuzamos, nagy teljesítményű offline áttelepítési forgatókönyv kerül, amely 2021. június 1-jén történik. Online Migrálás esetén ezt az új ajánlatot használhatja az [adatreplikációval](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)együtt. Másik lehetőségként olyan nyílt forráskódú eszközöket használhat, mint az [MyDumper/MyLoader](https://centminmod.com/mydumper.html) az online áttelepítéshez szükséges adatreplikációval. 
+> A "MySQL to Azure Database for MySQL" online migrálási forgatókönyv 2021. június 1-én párhuzamos, nagy mértékben teljesítő offline migrálási forgatókönyvre lesz lecserélve. Online migrálások esetén használhatja ezt az új ajánlatot és [a beható adatreplikációt.](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication) Alternatív megoldásként használjon olyan nyílt forráskódú eszközöket, mint a [MyDumper/MyLoader,](https://centminmod.com/mydumper.html) és használjon adatreplikációt az online migráláshoz. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 >
 > * A mintaséma migrálása a mysqldump segédprogrammal.
 > * Hozzon létre egy Azure Database Migration Service-példányt.
-> * Hozzon létre egy áttelepítési projektet Azure Database Migration Service használatával.
+> * Hozzon létre egy migrálási projektet a Azure Database Migration Service.
 > * A migrálás futtatása.
 > * Az áttelepítés monitorozása.
 
 > [!NOTE]
-> A Azure Database Migration Service használata az online áttelepítés végrehajtásához a prémium szintű díjszabás alapján kell létrehoznia egy példányt.
+> Ha Azure Database Migration Service online migrálást hajt végre, akkor a Prémium tarifacsomag alapján kell létrehoznia egy példányt.
 
 > [!IMPORTANT]
-> Az optimális áttelepítési élmény érdekében a Microsoft azt javasolja, hogy Azure Database Migration Service-példányt hozzon létre ugyanabban az Azure-régióban, mint a célként megadott adatbázis. Az adatok különböző régiók és földrajzi helyek közötti áthelyezése lelassíthatja a migrálási folyamatot, és hibákat eredményezhet.
+> Az optimális migrálási élmény érdekében a Microsoft azt javasolja, hogy hozzon létre egy Azure Database Migration Service a céladatbázissal azonos Azure-régióban. Az adatok különböző régiók és földrajzi helyek közötti áthelyezése lelassíthatja a migrálási folyamatot, és hibákat eredményezhet.
 
 > [!NOTE]
-> Elfogultság – ingyenes kommunikáció
+> Torzításmentes kommunikáció
 >
-> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a slave szóra mutató _hivatkozásokat tartalmaz._ A Microsoft [torzításmentes kommunikációra](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) vonatkozó stíluskalauza ezt kizárási szóként ismeri fel. Ebben a cikkben a konzisztencia szót használjuk, mert jelenleg ez jelenik meg a szoftverben. Ha a szoftver frissítve lett, hogy eltávolítsa a szót, a cikk a megfelelőnek megfelelően frissül.
 >
 
 
@@ -52,24 +52,24 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-* Töltse le és telepítse a [MySQL Community Edition](https://dev.mysql.com/downloads/mysql/) 5.6-os vagy 5.7-es verzióját. A helyszíni MySQL-verziónak egyeznie kell az Azure Database for MySQL verziójával. Például a MySQL 5.6 csak az Azure Database for MySQL 5.6-ba migrálható, az 5.7-es verzióra nem frissíthető. A MySQL 8,0-ből vagy-ból való Migrálás nem támogatott.
-* [Példány létrehozása az Azure Database for MySQL-ben](../mysql/quickstart-create-mysql-server-database-using-azure-portal.md). Az adatbázisok az Azure Portal használatával való csatlakoztatásának és létrehozásának részleteiért tekintse meg az [Azure Database for MySQL: Csatlakozás és adatlekérdezés a MySQL Workbench használatával](../mysql/connect-workbench.md) című cikket.  
-* Hozzon létre egy Microsoft Azure Virtual Network a Azure Database Migration Servicehoz Azure Resource Manager üzembe helyezési modell használatával, amely helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgáló számára a [ExpressRoute](../expressroute/expressroute-introduction.md) vagy a [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)használatával. A virtuális hálózatok létrehozásával kapcsolatos további információkért tekintse meg a [Virtual Network dokumentációt](../virtual-network/index.yml), és különösen a gyors üzembe helyezési cikkeket részletesen ismerteti.
+* Töltse le és telepítse a [MySQL Community Edition](https://dev.mysql.com/downloads/mysql/) 5.6-os vagy 5.7-es verzióját. A helyszíni MySQL-verziónak egyeznie kell az Azure Database for MySQL verziójával. Például a MySQL 5.6 csak az Azure Database for MySQL 5.6-ba migrálható, az 5.7-es verzióra nem frissíthető. A MySQL 8.0-ra vagy onnan más verzióra való migrálás nem támogatott.
+* [Példány létrehozása az Azure Database for MySQL-ben](../mysql/quickstart-create-mysql-server-database-using-azure-portal.md). Az adatbázisok Workbench alkalmazással való csatlakoztatásával és létrehozásával kapcsolatos részletekért tekintse meg a Csatlakozás és adatok lekérdezése a [MySQL Workbench](../mysql/connect-workbench.md) használatával cikket.  
+* Hozzon létre egy Microsoft Azure Virtual Network Azure Database Migration Service-kiszolgálóhoz egy üzembe helyezési modellel, amely [expressRoute](../expressroute/expressroute-introduction.md) vagy VPN használatával biztosítja Azure Resource Manager helyszíni forráskiszolgálókhoz való hely–hely [kapcsolatot.](../vpn-gateway/vpn-gateway-about-vpngateways.md) A virtuális hálózatok létrehozásával kapcsolatos további [](../virtual-network/index.yml)információkért tekintse meg a Virtual Network dokumentációját, és különösen a részletes információkat tartalmazó gyorsútmutató-cikkeket.
 
     > [!NOTE]
-    > Ha a virtuális networkNet telepítésekor a ExpressRoute-t használja a Microsofthoz, adja hozzá a következő szolgáltatási [végpontokat](../virtual-network/virtual-network-service-endpoints-overview.md) ahhoz az alhálózathoz, amelyben a szolgáltatást kiépíti:
+    > A virtuális hálózat beállítása során, ha az ExpressRoute-et a [](../virtual-network/virtual-network-service-endpoints-overview.md) Microsofttal való hálózati társviszony-létesítés során használja, adja hozzá a következő szolgáltatásvégpontokat ahhoz az alhálózathoz, amelyben a szolgáltatást kiépíti:
     >
-    > * Céladatbázis végpontja (például SQL-végpont, Cosmos DB végpont stb.)
+    > * Céladatbázis végpontja (például SQL-végpont, Cosmos DB végpont és így tovább)
     > * Tárolási végpont
     > * Service Bus-végpont
     >
     > Erre a konfigurációra azért van szükség, mert Azure Database Migration Service nem rendelkezik internetkapcsolattal.
 
-* Győződjön meg arról, hogy a virtuális hálózati hálózati biztonsági csoport szabályai nem gátolják meg a ServiceTag kimenő 443-es portját a ServiceBus, a Storage és a AzureMonitor esetében. A Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/virtual-network-vnet-plan-design-arm.md)című cikket.
+* Győződjön meg arról, hogy a virtuális hálózat hálózati biztonsági csoport szabályai nem blokkolják a ServiceTag 443-as kimenő portját a ServiceBus, a Storage és az AzureMonitor számára. A virtuális hálózati NSG-forgalom szűrésével kapcsolatos további részletekért tekintse meg a Hálózati forgalom szűrése hálózati [biztonsági csoportokkal cikket.](../virtual-network/virtual-network-vnet-plan-design-arm.md)
 * Konfigurálja a [Windows tűzfalat az adatbázismotorhoz való hozzáféréshez](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-* Nyissa meg a Windows tűzfalat, hogy a Azure Database Migration Service hozzáférhessen a forrás MySQL-kiszolgálóhoz, amely alapértelmezés szerint a 3306-es TCP-port.
-* Ha a forrásadatbázis (ok) előtt tűzfal-berendezést használ, előfordulhat, hogy olyan tűzfalszabályok hozzáadására van szükség, amelyek lehetővé teszik a Azure Database Migration Service számára a forrás-adatbázis (ok) elérését az áttelepítéshez.
-* Hozzon létre egy kiszolgálói szintű [Tűzfalszabály-szabályt](../azure-sql/database/firewall-configure.md) a Azure Database for MySQL számára, hogy lehetővé tegye Azure Database Migration Service hozzáférést a célként megadott adatbázisokhoz. Adja meg a Azure Database Migration Service használt virtuális hálózat alhálózati tartományát.
+* Nyissa meg a Windows tűzfalat, hogy Azure Database Migration Service a MySQL Server forráshoz, amely alapértelmezés szerint a 3306-os TCP-port.
+* Ha tűzfalberendezést használ a forrásadatbázis(ak) előtt, előfordulhat, hogy tűzfalszabályokat kell hozzáadnia ahhoz, hogy a Azure Database Migration Service hozzáférjenek a forrásadatbázis(okkal) a migráláshoz.
+* Hozzon létre egy kiszolgálószintű [tűzfalszabályt](../azure-sql/database/firewall-configure.md) a Azure Database for MySQL, hogy Azure Database Migration Service a céladatbázishoz. Adja meg a virtuális hálózat alhálózati tartományát, Azure Database Migration Service.
 * A forrásként szolgáló MySQL-nek a MySQL közösségi kiadásának kell lennie. A MySQL-példány verziójának megállapításához futtassa a következő parancsot a MySQL segédprogramban vagy a MySQL Workbenchben:
 
     ```
@@ -81,9 +81,9 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 * Engedélyezze a bináris naplózást a forrásadatbázisban szereplő my.ini (Windows) vagy a my.cnf (Unix) fájlban az alábbi konfiguráció használatával:
 
   * **server_id** = 1 vagy nagyobb (csak a MySQL 5.6-os verziójára vonatkozik)
-  * **log-bin** = \<path> (csak a MySQL 5,6 esetén releváns)    Például: log-bin = E:\ MySQL_logs \BinLog
+  * **naplógyűjtő** = \<path> (csak a MySQL 5.6 esetén releváns)    Például: log-bin = E:\MySQL_logs\BinLog
   * **binlog_format** = row
-  * **Expire_logs_days** = 5 (javasolt, hogy ne használjon nullát, ami csak a MySQL 5,6 esetén szükséges)
+  * **Expire_logs_days** = 5 (javasoljuk, hogy ne használja a nullát; csak a MySQL 5.6 esetén releváns)
   * **Binlog_row_image** = full (csak a MySQL 5.6-os verziójára vonatkozik)
   * **log_slave_updates** = 1
 
@@ -97,7 +97,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és tárolt eljárásokként egészíthessük ki, ki kell bontanunk a forrásadatbázis sémáját, és alkalmaznunk kell az adatbázisra. A séma kibontásához használhatja a mysqldump segédprogramot a `--no-data` paraméterrel.
 
-Feltételezve, hogy rendelkezik a MySQL- **alkalmazottak** mintaadatbázis használatával a helyszíni rendszerben, a mysqldump-t használó séma-áttelepítési parancs a következő:
+Feltételezve, hogy a mySQL **Employees** mintaadatbázis a helyszíni rendszerben található, a séma migrálásának parancsa a mysqldump használatával a következő:
 
 ```
 mysqldump -h [servername] -u [username] -p[password] --databases [db name] --no-data > [schema file path]
@@ -121,7 +121,7 @@ Például:
 mysql.exe -h shausample.mysql.database.azure.com -u dms@shausample -p employees < d:\employees.sql
  ```
 
-Ha a sémában idegen kulcsok szerepelnek, a migrálás első betöltése és folyamatos szinkronizálása sikertelen lesz.  Futtassa a következő szkriptet a MySQL Workbenchben a drop Foreign Key szkript kibontásához és a külső kulcsú parancsfájl hozzáadásához.
+Ha a sémában idegen kulcsok szerepelnek, a migrálás első betöltése és folyamatos szinkronizálása sikertelen lesz.  Hajtsa végre a következő szkriptet a MySQL Workbenchben a drop foreign key szkript kinyerés és a idegenkulcs-hozzáadási szkript kinyerésében.
 
 ```sql
 SET group_concat_max_len = 8192;
@@ -144,127 +144,143 @@ SET group_concat_max_len = 8192;
 Az idegen kulcs elvetéséhez futtassa a drop foreign key (második oszlop) szkriptet a lekérdezési eredményekben.
 
 > [!NOTE]
-> Az Azure DMS nem támogatja a lépcsőzetes hivatkozási műveletet, amely segít automatikusan törölni vagy frissíteni a gyermektábla egyező sorát, amikor egy sort törölnek vagy frissítenek a fölérendelt táblában. További információ a MySQL dokumentációjában található a [FOREIGN Key megkötések](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)című cikk hivatkozási műveletek című szakasza.
-> Az Azure DMS-nek szüksége van arra, hogy a kezdeti adatterhelés során dobja el a külső kulcsra vonatkozó korlátozásokat a célként megadott adatbázis-kiszolgálón, és nem használhat hivatkozási műveleteket. Ha a számítási feladat a kapcsolódó alárendelt tábla ezen hivatkozási művelettel való frissítésének függvénye, akkor azt javasoljuk, hogy ehelyett végezzen el egy [memóriaképet és egy visszaállítást](../mysql/concepts-migrate-dump-restore.md) . 
+> Az Azure DMS nem támogatja a CASCADE hivatkozási műveletet, amely segít automatikusan törölni vagy frissíteni egy megfelelő sort a gyermektáblában egy sor szülőtáblában való törlésekor vagy frissítésekor. További információt a MySQL dokumentációjának FOREIGN KEY Constraints (IDEGEN KULCSkorlátozások) című cikk Referential Actions (Hivatkozási műveletek) [szakaszában talál.](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)
+> Az Azure DMS megköveteli, hogy a kezdeti adatbetöltés során elejtse a céladatbázis-kiszolgálóra vonatkozó idegenkulcs-korlátozásokat, és nem használhat hivatkozási műveleteket. Ha a számítási feladat egy kapcsolódó gyermektábla ezen a hivatkozási műveleten keresztüli frissítésétől függ, javasoljuk, hogy inkább memóriaképet és visszaállítást [hajtson](../mysql/concepts-migrate-dump-restore.md) végre. 
 
 
 > [!IMPORTANT]
-> Ha biztonsági másolat használatával importálja az adatimportálást, távolítsa el manuálisan vagy a--skip-depontosító parancs használatával a mysqldump végrehajtásakor. A definomabb jogosultságok létrehozásához és korlátozásához Azure Database for MySQL.
+> Ha biztonsági mentéssel importál adatokat, manuálisan vagy a --skip-definer paranccsal távolítsa el a CREATE DEFINER parancsokat a mysqldump végrehajtásakor. A DEFINER-nek felügyelői jogosultságra van szüksége a létrehozásához, és korlátozott a Azure Database for MySQL.
 
-Ha van egy trigger az adatokban (INSERT vagy Update trigger), akkor a rendszer az adatok integritását a forrástól kezdve a replikált adatok előtt kikényszeríti. Javasoljuk, hogy migráláskor tiltsa le a triggereket a cél minden táblájában, majd a migrálás végeztével engedélyezze őket ismét.
+Ha az adatbázisban eseményindítók vannak, az kikényszeríteni fogja az adatok integritását a célban a forrásból való teljes adatáttelepítés előtt. Javasoljuk, hogy a migrálás során tiltsa le az eseményindítókat a célban lévő összes táblán, majd engedélyezze az eseményindítókat a migrálás után.
 
-A céladatbázis eseményindítóinak letiltásához használja a következő parancsot:
+Hajtsa végre az alábbi szkriptet a MySQL Workbenchben a céladatbázison az eseményindító-szkript kibontása és az eseményindító-szkript hozzáadása érdekében.
 
+```sql
+SELECT
+    SchemaName,
+    GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery,
+    Concat('DELIMITER $$ \n\n', GROUP_CONCAT(AddQuery SEPARATOR '$$\n'), '$$\n\nDELIMITER ;') as AddQuery
+FROM
+(
+SELECT 
+    TRIGGER_SCHEMA as SchemaName,
+    Concat('DROP TRIGGER `', TRIGGER_NAME, "`") as DropQuery,
+    Concat('CREATE TRIGGER `', TRIGGER_NAME, '` ', ACTION_TIMING, ' ', EVENT_MANIPULATION, 
+            '\nON `', EVENT_OBJECT_TABLE, '`\n' , 'FOR EACH ', ACTION_ORIENTATION, ' ',
+            ACTION_STATEMENT) as AddQuery
+FROM  
+    INFORMATION_SCHEMA.TRIGGERS
+ORDER BY EVENT_OBJECT_SCHEMA, EVENT_OBJECT_TABLE, ACTION_TIMING, EVENT_MANIPULATION, ACTION_ORDER ASC
+) AS Queries
+GROUP BY SchemaName
 ```
-SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
-```
+
+Futtassa a létrehozott drop trigger lekérdezést (DropQuery oszlop) az eredményben az eseményindítók céladatbázisban való eldobása érdekében. Az eseményindító hozzáadása lekérdezés menthető, és az adatáttelepítés befejezése után használható.
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>A Microsoft.DataMigration erőforrás-szolgáltató regisztrálása
 
 1. Jelentkezzen be az Azure Portalra, és válassza a **Minden szolgáltatás**, majd az **Előfizetések** elemet.
 
-   ![Portál-előfizetések megtekintése](media/tutorial-mysql-to-azure-mysql-online/portal-select-subscriptions.png)
+   ![Portál-előfizetések megtekintése](media/tutorial-mysql-to-azure-mysql-online/01-portal-select-subscriptions.png)
 
-2. Válassza ki azt az előfizetést, amelyben létre kívánja hozni a Azure Database Migration Service példányát, majd válassza az **erőforrás-szolgáltatók** lehetőséget.
+2. Válassza ki azt az előfizetést, amelyben létre szeretné hozni a Azure Database Migration Service, majd válassza az **Erőforrás-szolgáltatók lehetőséget.**
 
-    ![Erőforrás-szolgáltatók megtekintése](media/tutorial-mysql-to-azure-mysql-online/portal-select-resource-provider.png)
+    ![Erőforrás-szolgáltatók megtekintése](media/tutorial-mysql-to-azure-mysql-online/02-01-portal-select-resource-provider.png)
 
-3. Keresse meg az áttelepítést, majd a **Microsoft. DataMigration** jobb oldalán válassza a **regisztráció** lehetőséget.
+3. Keressen rá a migrálás kifejezésre, majd a **Microsoft.DataMigration** jobb oldalon válassza a **Regisztráció lehetőséget.**
 
-    ![Erőforrás-szolgáltató regisztrálása](media/tutorial-mysql-to-azure-mysql-online/portal-register-resource-provider.png)
+    ![Erőforrás-szolgáltató regisztrálása](media/tutorial-mysql-to-azure-mysql-online/02-02-portal-register-resource-provider.png)
 
-## <a name="create-a-dms-instance"></a>DMS-példány létrehozása
+## <a name="create-a-database-migration-service-instance"></a>Új Database Migration Service létrehozása
 
 1. Az Azure Portalon válassza a + **Erőforrás létrehozása** lehetőséget, keresse meg az Azure Database Migration Service-t, és a legördülő menüben válassza ki az **Azure Database Migration Service**-t.
 
-    ![Azure Piactér](media/tutorial-mysql-to-azure-mysql-online/portal-marketplace.png)
+    ![Azure Piactér](media/tutorial-mysql-to-azure-mysql-online/03-dms-portal-marketplace.png)
 
 2. Az **Azure Database Migration Service** képernyőn válassza a **Létrehozás** lehetőséget.
 
-    ![Azure Database Migration Service-példány létrehozása](media/tutorial-mysql-to-azure-mysql-online/dms-create1.png)
+    ![Azure Database Migration Service-példány létrehozása](media/tutorial-mysql-to-azure-mysql-online/04-dms-portal-marketplace-create.png)
   
 3. **A migrálási szolgáltatás létrehozása** képernyőn adja meg a szolgáltatás, az előfizetés és egy új vagy meglévő erőforráscsoport nevét.
 
-4. Válasszon egy meglévő virtuális hálózatot, vagy hozzon létre egy újat.
-
-    A virtuális hálózat Azure Database Migration Service hozzáférést biztosít a forrás-SQL Server és a célként megadott Azure SQL Database példányhoz.
-
-    Ha további információt szeretne arról, hogyan hozhat létre virtuális hálózatot a Azure Portalban, tekintse meg a [virtuális hálózat létrehozása a Azure Portal használatával](../virtual-network/quick-create-portal.md)című cikket.
-
-5. Válasszon tarifacsomagot.
+4. Válasszon ki egy tarifacsomagot, és lépjen a hálózati képernyőre. Az offline migrálás a Standard és a Prémium tarifacsomagban is elérhető.
 
     További tájékoztatás a költségekről és a tarifacsomagokról a [díjszabási lapon](https://aka.ms/dms-pricing) olvasható.
 
-    ![Az Azure Database Migration Service-példány beállításainak konfigurálása](media/tutorial-mysql-to-azure-mysql-online/dms-settings3.png)
+    ![Alapszintű Azure Database Migration Service konfigurálása](media/tutorial-mysql-to-azure-mysql-online/05-dms-portal-create-basic.png)
 
-6. A szolgáltatás létrehozásához válassza a **Létrehozás** lehetőséget.
+5. Válasszon ki egy meglévő virtuális hálózatot a listából, vagy adja meg a létrehozni kívánt új virtuális hálózat nevét. Lépjen az áttekintés + létrehozás képernyőre. A címkék képernyő használatával címkéket is hozzáadhat a szolgáltatáshoz.
+
+    A virtuális hálózat hozzáférést Azure Database Migration Service a forrás- SQL Server a célként Azure SQL Database példányhoz.
+
+    ![Hálózati Azure Database Migration Service konfigurálása](media/tutorial-mysql-to-azure-mysql-online/06-dms-portal-create-networking.png)
+
+    További információ a virtuális hálózatok létrehozásáról a Azure Portal: Virtuális hálózat létrehozása [a](../virtual-network/quick-create-portal.md)Azure Portal.
+
+6. Tekintse át a konfigurációkat, és **válassza a Létrehozás lehetőséget** a szolgáltatás létrehozásához.
+    
+    ![Azure Database Migration Service létrehozása](media/tutorial-mysql-to-azure-mysql-online/07-dms-portal-create-submit.png)
 
 ## <a name="create-a-migration-project"></a>Migrálási projekt létrehozása
 
-A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa meg, és hozzon létre egy új migrálási projektet.
+A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa meg, és hozzon létre egy új migrálási projektet.  
 
 1. Az Azure Portalon válassza a **Minden szolgáltatás** lehetőséget, keresse meg az Azure Database Migration Service-t, majd válassza ki az **Azure Database Migration Servicest**.
 
-      ![Azure Database Migration Service összes példányának megkeresése](media/tutorial-mysql-to-azure-mysql-online/dms-search.png)
+    ![A példányok összes példányának Azure Database Migration Service](media/tutorial-mysql-to-azure-mysql-online/08-01-dms-portal-search-service.png)
 
-2. Az **Azure Database Migration Services** képernyőn keresse meg a létrehozott Azure Database Migration Service példány nevét, majd válassza ki a példányt.
+2. Válassza ki a migrálási szolgáltatás példányát a keresési eredmények közül, majd válassza az + **Új migrálási projekt lehetőséget.**
+    
+    ![Új migrálási projekt létrehozása](media/tutorial-mysql-to-azure-mysql-online/08-02-dms-portal-new-project.png)
 
-     ![Azure Database Migration Service példányának megkeresése](media/tutorial-mysql-to-azure-mysql-online/dms-instance-search.png)
+3. Az  Új migrálási projekt képernyőn adja meg  a projekt nevét, majd a Forráskiszolgáló típusa választómezőben válassza a **MySQL**  lehetőséget, majd a Célkiszolgáló típusa választómezőben válassza az Azure Database **for MySQL** lehetőséget, majd a Migrálási tevékenység típusa választómezőben válassza az **Online** adatáttelepítés lehetőséget.  Válassza a **Tevékenység létrehozása és futtatása** lehetőséget.
 
-3. Válassza a + **Új migrálási projekt** lehetőséget.
-4. Az **Új migrálási projekt** képernyőn nevezze el a projektet, majd a **Forráskiszolgáló típusa** szövegbeviteli mezőben válassza ki a **MySQL**, a **Célkiszolgáló típusa** szövegbeviteli mezőben pedig az **AzureDbForMySQL** elemet.
-5. A **Tevékenység típusának kiválasztása** szakaszban válassza az **Online adatok migrálása** lehetőséget.
-
-    ![Azure Database Migration Service-projekt létrehozása](media/tutorial-mysql-to-azure-mysql-online/dms-create-project4.png)
+    ![Azure Database Migration Service-projekt létrehozása](media/tutorial-mysql-to-azure-mysql-online/09-dms-portal-project-mysql-create.png)
 
     > [!NOTE]
-    > Másik lehetőségként választhatja a **projekt létrehozása** lehetőséget az áttelepítési projekt létrehozásához, és később végrehajthatja az áttelepítést.
+    > Azt is választhatja, hogy a Csak projekt létrehozása **lehetőséget** választja a migrálási projekt létrehozásához, és később végrehajtja a migrálást.
 
-6. Kattintson a **Mentés** gombra, jegyezze fel a DMS-sel történő sikeres adatmigráláshoz szükséges követelményeket, majd válassza a **Tevékenység létrehozása és futtatása** lehetőséget.
+## <a name="configure-migration-project"></a>Migrálási projekt konfigurálása
 
-## <a name="specify-source-details"></a>Forrás adatainak megadása
+1. A Forrás **kiválasztása képernyőn** adja meg a forrás MySQL-példány kapcsolati adatait, majd válassza a **Tovább: Cél** kiválasztása lehetőséget>>
 
-1. A **Forrás adatainak hozzáadása** képernyőn adja meg a forrásként szolgáló MySQL-példány kapcsolati adatait.
+    ![Forrásadatok hozzáadása képernyő](media/tutorial-mysql-to-azure-mysql-online/10-dms-portal-project-mysql-source.png)
 
-    ![A Forrás adatainak hozzáadása képernyő](media/tutorial-mysql-to-azure-mysql-online/dms-add-source-details.png)
+2. A Cél **kiválasztása képernyőn** adja meg a célpéldány kapcsolati Azure Database for MySQL, majd válassza a **Tovább: Válassza** ki a>>
 
-## <a name="specify-target-details"></a>Cél adatainak megadása
+    ![Céladatok hozzáadása képernyő](media/tutorial-mysql-to-azure-mysql-online/11-dms-portal-project-mysql-target.png)
 
-1. Válassza a **Mentés** lehetőséget, majd a **Cél részletei** képernyőn adja meg a célul szolgáló Azure Database for MySQL-kiszolgáló kapcsolati adatait. Ez a cél az Azure Database for MySQL azon példánya, amelyen üzembe helyezte az **Employees** sémát a mysqldump segédprogrammal.
+3. Az Adatbázisok **kiválasztása képernyőn** leképezheti a forrás- és a céladatbázist az áttelepítéshez, majd válassza a **Tovább: Áttelepítési** beállítások konfigurálása>>. Ha a  Forráskiszolgáló csak olvashatóként beállítást választja, a forrás csak olvasható lesz, de ügyeljen rá, hogy ez egy kiszolgálószintű beállítás. Ha be van jelölve, a teljes kiszolgálót írásra állítja, nem csak a kiválasztott adatbázisokat.
+    
+    Ha a céladatbázis ugyanazt az adatbázisnevet tartalmazza, mint a forrásadatbázis, Azure Database Migration Service a céladatbázist választja ki alapértelmezés szerint.
+    ![Adatbázis részleteinek kiválasztása képernyő](media/tutorial-mysql-to-azure-mysql-online/12-dms-portal-project-mysql-select-db.png)
+    
+    > [!NOTE] 
+   > Bár ebben a lépésben több adatbázist is kiválaszthat, a Azure Database Migration Service minden példánya legfeljebb 4 adatbázist támogat az egyidejű migráláshoz. Emellett előfizetésenként legfeljebb 10 példány Azure Database Migration Service régiónként. Ha például 80 adatbázist kell átemelni, akkor 40 adatbázist mi egyiket egyidejűleg is át lehet milegálni ugyanoda a régióba, de csak akkor, ha 10 példányt hozott létre a Azure Database Migration Service.
 
-    ![A részleteket tartalmazó képernyő](media/tutorial-mysql-to-azure-mysql-online/dms-add-target-details.png)
+4. A Configure **migration settings (Áttelepítési beállítások konfigurálása)** képernyőn válassza ki a migrálás részétni kívánt táblákat, majd válassza a **Next : Summary (Tovább: Összegzés)>>.** Ha a céltáblák tartalmaznak adatokat, alapértelmezés szerint nincsenek kiválasztva, de explicit módon kijelölheti őket, és a migrálás megkezdése előtt csonkolva lesznek.
 
-2. Válassza a **Mentés** lehetőséget, majd a **Leképezés céladatbázisokra** képernyőn képezze le a forrás- és a céladatbázist a migráláshoz.
+    ![Táblák kiválasztása képernyő](media/tutorial-mysql-to-azure-mysql-online/13-dms-portal-project-mysql-select-tbl.png)
 
-    Ha a céladatbázis ugyanazt az adatbázisnevet tartalmazza, mint a forrás-adatbázis, akkor a Azure Database Migration Service alapértelmezés szerint kiválasztja a céladatbázis-adatbázist.
+5. Az Összefoglalás **képernyő** Tevékenység  neve szövegmezőjében adja meg a migrálási tevékenység nevét, és tekintse át az összegzést, hogy a forrás és a cél adatai megegyeznek-e a korábban megadott adatokval.
 
-    ![Leképezés céladatbázisokra](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
-   > [!NOTE] 
-   > Bár ebben a lépésben több adatbázist is kiválaszthat, a Azure Database Migration Service minden példánya legfeljebb 4 adatbázist támogat egyidejű áttelepítéshez. Az előfizetések régiónként legfeljebb 10 példányt Azure Database Migration Service. Ha például az áttelepíteni kívánt 80-es adatbázissal rendelkezik, a 40-et áttelepítheti ugyanahhoz a régióhoz, de csak akkor, ha a Azure Database Migration Service 10 példányát hozta létre.
+    ![Migrálási projekt áttekintése](media/tutorial-mysql-to-azure-mysql-online/14-dms-portal-project-mysql-activity-summary.png)
 
-3. Válassza a **Mentés** lehetőséget. **A migrálás összegzése** képernyő **Tevékenység neve** szövegbeviteli mezőjében adja meg a migrálási tevékenység nevét, majd tekintse át az összegzést, és ellenőrizze, hogy a forrás és a cél adatai megegyeznek-e a korábban megadottakkal.
-
-    ![A migrálás összegzése](media/tutorial-mysql-to-azure-mysql-online/dms-migration-summary.png)
-
-## <a name="run-the-migration"></a>A migrálás futtatása
-
-* Válassza a **Migrálás futtatása** lehetőséget.
-
-    Megjelenik az áttelepítési tevékenység ablak, és a tevékenység **állapota** **inicializálva** van.
+6. Válassza a **Migrálás kezdete lehetőséget.** Megjelenik a migrálás műveletének ablaka. A tevékenység **Állapota**: **Inicializálás**. A **tábla migrálásának** **kezdetekor** az Állapot Fut állapotra változik.
 
 ## <a name="monitor-the-migration"></a>A migrálás monitorozása
 
 1. A migrálás műveletének ablakában válassza a **Frissítés** lehetőséget a megjelenítés frissítéséhez addig, amíg a migrálás **Állapota** át nem vált **Befejezve** értékre.
 
-     ![Tevékenység állapota: Befejezve](media/tutorial-mysql-to-azure-mysql-online/dms-activity-completed.png)
+     ![Tevékenység állapota: Befejezve](media/tutorial-mysql-to-azure-mysql-online/15-dms-activity-completed.png)
 
 2. Az **Adatbázis neve** mezőben válassza ki az adatbázist, az **Adatok teljes betöltése** és a **Növekményes adatszinkronizálás** műveletek migrálási állapotának megtekintéséhez.
 
     Az Adatok teljes betöltésénél az első betöltés migrálási állapota jelenik meg, a Növekményes adatszinkronizálásnál pedig az Adatváltozások rögzítése (CDC) állapot látható.
 
-     ![Tevékenység állapota – Teljes betöltés kész](media/tutorial-mysql-to-azure-mysql-online/dms-activity-full-load-completed.png)
+     ![Tevékenység állapota – Teljes betöltés kész](media/tutorial-mysql-to-azure-mysql-online/16-dms-activity-full-load-completed.png)
 
-     ![Tevékenység állapota – Növekményes adatszinkronizálás](media/tutorial-mysql-to-azure-mysql-online/dms-activity-incremental-data-sync.png)
+     ![Tevékenység állapota – Növekményes adatszinkronizálás](media/tutorial-mysql-to-azure-mysql-online/17-dms-activity-incremental-data-sync.png)
 
 ## <a name="perform-migration-cutover"></a>Átállásos áttelepítés végrehajtása
 
@@ -272,7 +288,7 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
 
 1. Ha készen áll az adatbázis migrálásának befejezésére, kattintson az **Átállás indítása** gombra.
 
-    ![Átállás indítása](media/tutorial-mysql-to-azure-mysql-online/dms-start-cutover.png)
+    ![Átállás indítása](media/tutorial-mysql-to-azure-mysql-online/18-dms-start-cutover.png)
 
 2. Mindenképpen állítsa le a forrásadatbázis összes bejövő tranzakcióját, és várjon, amíg a **Függőben lévő módosítások** számlálója **0**-t nem mutat.
 3. Kattintson a **Megerősítés**, majd az **Alkalmaz** gombra.
@@ -281,5 +297,5 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
 ## <a name="next-steps"></a>Következő lépések
 
 * Az Azure Database for MySQL-be történő online migrálás végrehajtásakor felmerülő ismert hibákhoz és korlátozásokhoz kapcsolódó információk: [Az Azure Database for MySQL online migrálásával kapcsolatos ismert hibák és kerülő megoldások](known-issues-azure-mysql-online.md).
-* További információ a Azure Database Migration Serviceről: mi a [Azure Database Migration Service?](./dms-overview.md).
-* További információ a Azure Database for MySQLről: mi a [Azure Database for MySQL?](../mysql/overview.md).
+* További információt a Azure Database Migration Service a Mi a [Azure Database Migration Service? cikkben talál.](./dms-overview.md)
+* További információt a Azure Database for MySQL a Mi a [Azure Database for MySQL? cikkben talál.](../mysql/overview.md)

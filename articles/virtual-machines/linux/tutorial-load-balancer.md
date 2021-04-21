@@ -1,47 +1,42 @@
 ---
-title: Oktatóanyag – Linux rendszerű virtuális gépek terheléselosztása az Azure-ban
+title: Oktatóanyag – Virtuális gépek terheléselosztása magas rendelkezésre álláshoz
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre három Linux rendszerű virtuális gépen terheléselosztót az Azure CLI-vel egy magas rendelkezésre állású és biztonságos alkalmazáshoz
-services: virtual-machines
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
 ms.subservice: networking
-ms.assetid: ''
 ms.service: virtual-machines
 ms.collection: linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/13/2017
+ms.date: 04/20/2021
 ms.author: cynthn
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 433bbd51618cfb5624c8ed2c549e1793488f0e81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 191eb1338533cf1a5f81f4d04c5dfc6fd5cc569c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553765"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818745"
 ---
-# <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek terheléselosztása az Azure CLI használatával az Azure-ban magas rendelkezésre állású alkalmazások létrehozásához
+# <a name="tutorial-load-balance-vms-for-high-availability"></a>Oktatóanyag: Virtuális gépek terheléselosztása magas rendelkezésre álláshoz
 
 A terheléselosztás magasabb szintű rendelkezésre állást biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. Ebben az oktatóanyagban megismerkedhet az Azure Load Balancer különböző összetevőivel, amelyek elosztják a forgalmat, és gondoskodnak a magas rendelkezésre állásról. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Azure-terheléselosztó létrehozása
-> * Terheléselosztó állapotmintájának létrehozása
-> * Terheléselosztó forgalmára vonatkozó szabályok létrehozása
-> * Alapszintű Node.js-alkalmazás létrehozása a cloud-init használatával
-> * Virtuális gépek létrehozása és terheléselosztóhoz csatolása
-> * Terheléselosztó megtekintése működés közben
-> * Virtuális gépek hozzáadása a terheléselosztóhoz és eltávolításuk a terheléselosztóból
+> * Terheléselosztó létrehozása
+> * Állapotminta létrehozása
+> * Forgalmi szabályok létrehozása
+> * Alapszintű alkalmazás telepítése a cloud-init Node.js használatával
+> * Virtuális gépek létrehozása és csatolása a terheléselosztáshoz
+> * A terheléselosztás megtekintése művelet közben
+> * Virtuális gépek hozzáadása és eltávolítása a terheléselosztási eszközből
 
-Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](../../cloud-shell/overview.md)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
+Ez az oktatóanyag a cli-t használja [a Azure Cloud Shell,](../../cloud-shell/overview.md)amely folyamatosan frissül a legújabb verzióra. A kód Cloud Shell válassza a Try **it (Próbálja** ki) gombra a kódblokkok tetején.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="azure-load-balancer-overview"></a>Az Azure-terheléselosztók áttekintése
+
 Az Azure-terheléselosztók 4. rétegbeli (TCP, UDP) terheléselosztók, amelyek magas rendelkezésre állást biztosítanak azáltal, hogy a bejövő forgalmat elosztják az ép virtuális gépek között. A terheléselosztó állapotmintája ez egyes virtuális gépek adott portjait monitorozza, és csak a működő virtuális gépekre terjeszt forgalmat.
 
 Meg kell adnia egy előtérbeli IP-konfigurációt, amely egy vagy több nyilvános IP-címet tartalmaz. Ez az előtérbeli IP-konfiguráció lehetővé teszi, hogy a terheléselosztó és az alkalmazások elérhetők legyenek az interneten keresztül. 
@@ -219,7 +214,7 @@ runcmd:
 ### <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 Az alkalmazás magas rendelkezésre állásának növeléséhez helyezze a virtuális gépeket egy rendelkezésre állási csoportba. A rendelkezésre állási csoportokról további információt az előző, a [magas rendelkezésre állású virtuális gépek létrehozásával](tutorial-availability-sets.md) foglalkozó oktatóanyagban talál.
 
-Hozzon létre egy rendelkezésre állási készletet az [az VM rendelkezésre állása-set Create](/cli/azure/vm/availability-set)paranccsal. Az alábbi példa egy *myAvailabilitySet* nevű rendelkezésre állási csoportot hoz létre:
+Hozzon létre egy rendelkezésre állási készletet [az az vm availability-set create gombra.](/cli/azure/vm/availability-set) Az alábbi példa egy *myAvailabilitySet* nevű rendelkezésre állási csoportot hoz létre:
 
 ```azurecli-interactive 
 az vm availability-set create \

@@ -1,27 +1,24 @@
 ---
 title: Az ElasticSearch telepítése egy fejlesztési virtuális gépre Azure-ban
-description: Oktatóanyag – Az Elastic Stack telepítése egy fejlesztési célú linuxos virtuális gépre az Azure-ban
+description: Az Elastic Stack (ELK) telepítése egy fejlesztési Linux rendszerű virtuális gépre az Azure-ban
 services: virtual-machines
-documentationcenter: virtual-machines
 author: rloutlaw
 manager: justhe
-tags: azure-resource-manager
 ms.service: virtual-machines
 ms.collection: linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: b3213d7de9aee88486fa1db1388c51948fbde430
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ce28efa30b04a2a762c39f47dac739633eac209
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557811"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818475"
 ---
-# <a name="install-the-elastic-stack-on-an-azure-vm"></a>Az Elastic Stack telepítése egy Azure-beli virtuális gépen
+# <a name="install-the-elastic-stack-elk-on-an-azure-vm"></a>Az Elastic Stack (ELK) telepítése Azure-beli virtuális gépen
 
 Ez a cikk ismerteti az [Elasticsearch](https://www.elastic.co/products/elasticsearch), a [Logstash](https://www.elastic.co/products/logstash) és a [Kibana](https://www.elastic.co/products/kibana) egy Ubuntu rendszerű virtuális gépre történő telepítését az Azure-ban. Ha szeretné működés közben megtekinteni az Elastic Stacket, lehetősége van csatlakozni a Kibanához, és használhatja a mintául szolgáló naplózási adatokat. 
 
@@ -38,7 +35,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ehhez a cikkhez az Azure CLI 2.0.4 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a cikkhez az Azure CLI 2.0.4-es vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -82,7 +79,7 @@ A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonl�
 
 ## <a name="ssh-into-your-vm"></a>Bejelentkezés a virtuális gépre SSH-val
 
-Ha még nem ismeri a virtuális gép nyilvános IP-címét, futtassa az az [Network Public-IP List](/cli/azure/network/public-ip) parancsot:
+Ha még nem ismeri a virtuális gép nyilvános IP-címét, futtassa az [az network public-ip list parancsot:](/cli/azure/network/public-ip)
 
 ```azurecli-interactive
 az network public-ip list --resource-group myResourceGroup --query [].ipAddress
@@ -165,7 +162,7 @@ Tesztelje a Logstasht interaktív módban, hogy meggyőződhessen a helyes műk�
 sudo /usr/share/logstash/bin/logstash -e 'input { stdin { } } output { stdout {} }'
 ```
 
-Ez egy alapszintű logstash-[folyamat](https://www.elastic.co/guide/en/logstash/5.6/pipeline.html), amely a standard bemenetet egy standard kimenetbe adja vissza. 
+Ez egy alapszintű [Logstash-folyamat,](https://www.elastic.co/guide/en/logstash/5.6/pipeline.html) amely standard bemenetet ad vissza standard kimenetre. 
 
 ```output
 The stdin plugin is now waiting for input:
@@ -229,7 +226,7 @@ az vm open-port --port 5601 --resource-group myResourceGroup --name myVM
 
 Nyissa meg a Kibana-konzolt, és a **Create** (Létrehozás) elemet választva hozzon létre egy alapértelmezett indexet az Elasticsearchbe korábban elküldött rendszernaplóadatok alapján. 
 
-![Képernyőkép, amely a Kibana-konzolt mutatja, és kiemeli a létrehozás gombot.](media/elasticsearch-install/kibana-index.png)
+![Képernyőkép a Kibana-konzolról, és kiemeli a Létrehozás gombot.](media/elasticsearch-install/kibana-index.png)
 
 A Kibana-konzolon a **Discover** (Felderítés) elemet választva kereshet és tallózhat a rendszernapló-események között, és szűrheti is őket.
 

@@ -45,7 +45,9 @@
           href: tutorial-sql-server-managed-instance-online.md
     - name: MySQL migrálása
       items:
-        - name: az Azure Database for MySQL-be
+        - name: a Azure Database for MySQL (offline)
+          href: tutorial-mysql-azure-mysql-offline-portal.md
+        - name: to Azure Database for MySQL (online)
           href: tutorial-mysql-azure-mysql-online.md
     - name: RDS MySQL migrálása
       items:
@@ -83,10 +85,12 @@
       items:
         - name: "SQL\_Serverről SQL Database-re"
           href: howto-sql-server-to-azure-sql-powershell.md
-        - name: SQL Server az SQL MI (online) szolgáltatáshoz
+        - name: SQL Server SQL MI-hez (online)
           href: howto-sql-server-to-azure-sql-managed-instance-powershell-online.md
-        - name: SQL Server az SQL MI (offline)
+        - name: SQL Server SQL MI-hez (offline)
           href: howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md
+        - name: MySQL-Azure Database for MySQL (offline)
+          href: migrate-mysql-to-azure-mysql-powershell.md
     - name: SSIS-csomagok ismételt üzembe helyezése
       items:
         - name: Azure SQL Database
@@ -141,11 +145,11 @@
               href: known-issues-azure-sql-db-managed-instance-online.md
             - name: MySQL-hez készült Azure DB
               href: known-issues-azure-mysql-online.md
-            - name: PostgreSQL – Azure-adatbázis PostgreSQL-hez
+            - name: PostgreSQL a Azure DB for PostgreSQL
               href: known-issues-azure-postgresql-online.md
-            - name: Oracle – Azure-adatbázis PostgreSQL-hez
+            - name: Oracle–Azure DB for PostgreSQL
               href: known-issues-oracle-azure-postgresql-online.md
-            - name: MongoDB Azure Cosmos DB API-hoz a MongoDB
+            - name: MongoDB–Azure Cosmos DB API a MongoDB-hez
               href: known-issues-mongo-cosmos-db.md
     - name: Videók
       items:

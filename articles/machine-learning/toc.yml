@@ -390,15 +390,12 @@
           href: how-to-migrate-from-estimators-to-scriptrunconfig.md
         - name: Képzés nyomon követése és monitorozása
           items:
-            - name: 'Futtatások indítása, monitorozása vagy megszakítása'
+            - name: 'Futtatás nyomon követése, figyelése és elemzése'
               displayName: 'cancel, fail, status, child run'
-              href: how-to-manage-runs.md
-            - name: Naplók engedélyezése
-              displayName: 'troubleshoot, log, files, tracing'
-              href: how-to-track-experiments.md
-            - name: Futtatás naplóinak és metrikainak megtekintése
+              href: how-to-track-monitor-analyze-runs.md
+            - name: Napló & metrikák és naplófájlok megtekintése
               displayName: 'troubleshoot, log, files, tracing, metrics'
-              href: how-to-monitor-view-training-logs.md
+              href: how-to-log-view-metrics.md
             - name: Futtatások megjelenítése a TensorBoard használatával
               displayName: 'log, monitor, metrics'
               href: how-to-monitor-tensorboard.md

@@ -1,7 +1,7 @@
 ---
-title: Naplózási mérőszámok a Designerben
+title: Naplómetrikák a tervezőben
 titleSuffix: Azure Machine Learning
-description: Az Azure ML Designer-kísérletek monitorozása. Engedélyezze a naplózást a Python parancsfájl-futtatási moduljának használatával, és tekintse meg a naplózott eredményeket a Studióban.
+description: Az Azure ML tervezőkísérleteinek figyelése. Engedélyezze a naplózást a Python-szkript végrehajtása modullal, és tekintse meg a naplózott eredményeket a studióban.
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,31 +11,31 @@ ms.subservice: core
 ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: designer
-ms.openlocfilehash: b940f5c9bd14bcec404827daaef666da802d969b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13a3b86514428b0219aaf671260c07b4e197d2de
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98065252"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817300"
 ---
-# <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Azure Machine Learning Designer-folyamatok naplózásának engedélyezése
+# <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Naplózás engedélyezése Azure Machine Learning tervezői folyamatokban
 
 
-Ebből a cikkből megtudhatja, hogyan adhat hozzá naplózási kódot a tervezői folyamatokhoz. Azt is megtudhatja, hogyan tekintheti meg ezeket a naplókat a Azure Machine Learning Studio webes portál használatával.
+Ebből a cikkből megtudhatja, hogyan adhat naplózási kódot a tervezői folyamatokhoz. Azt is megtudhatja, hogyan lehet megtekinteni ezeket a naplókat a Azure Machine Learning stúdió webportálon.
 
-További információ a metrikák az SDK-létrehozási funkcióval való naplózásáról: az [Azure ml-kísérletek futtatásának és metrikáinak monitorozása](how-to-track-experiments.md).
+A metrikák SDK-beli szerzői élmény használatával való naplózásával kapcsolatos további információkért lásd: Azure ML-kísérletek futtatásának és [metrikamonitorozása.](how-to-log-view-metrics.md)
 
-## <a name="enable-logging-with-execute-python-script"></a>A naplózás engedélyezése a Python-szkript végrehajtásával
+## <a name="enable-logging-with-execute-python-script"></a>Naplózás engedélyezése Python-szkript végrehajtásával
 
-A [Python-szkript végrehajtása](./algorithm-module-reference/execute-python-script.md) modul használatával engedélyezheti a naplózást a Designer-folyamatokban. Bár bármilyen értéket naplózhat ezzel a munkafolyamattal, különösen hasznos a mérőszámok naplózása a __modell kiértékelése__ modulból a modell teljesítményének nyomon követéséhez a futtatások között.
+A [Python-szkript végrehajtása modullal](./algorithm-module-reference/execute-python-script.md) engedélyezheti a naplózást a tervezői folyamatokban. Bár ezzel a munkafolyamattal bármilyen értéket naplózhat, különösen hasznos, ha a Modell kiértékelése modulból naplóz metrikákat a modell teljesítményének nyomon követéséhez a futtatás során. 
 
-Az alábbi példa bemutatja, hogyan naplózhatja a két betanított modell közepes négyzetes hibáját a modell kiértékelése és a Python parancsfájl-modulok végrehajtása segítségével.
+Az alábbi példa bemutatja, hogyan naplózhatja két betanított modell átlagos négyzetes hibaértékét az Evaluate Model (Modell kiértékelése) és az Execute Python Script (Python-szkript végrehajtása) modulokkal.
 
-1. A __modell kiértékelése__ modul kimenetéhez csatlakoztasson egy __Python parancsfájl__ -modult.
+1. Egy __Python-szkript végrehajtása modul csatlakoztatása__ a Modell __kiértékelése modul kimenetéhez.__
 
-    ![A modell modul kiértékeléséhez kapcsolja össze a Python parancsfájl-modult](./media/how-to-track-experiments/designer-logging-pipeline.png)
+    ![A Python-szkript végrehajtása modul csatlakoztatása a Modell kiértékelése modulhoz](./media/how-to-log-view-metrics/designer-logging-pipeline.png)
 
-1. Illessze be a következő kódot a __Python parancsfájl__ -szerkesztő végrehajtása mezőbe, hogy naplózza a betanított modell átlagos abszolút hibáját. A tervező bármely más értékének naplózásához hasonló mintát használhat:
+1. Illessze be az alábbi kódot a __Python-szkript__ végrehajtása kódszerkesztőbe, hogy naplózhatja a betanított modell átlagos abszolút hibaértékét. Hasonló mintát használhat bármely más érték naplózásához a tervezőben:
 
     ```python
     # dataframe1 contains the values from Evaluate Model
@@ -59,26 +59,26 @@ Az alábbi példa bemutatja, hogyan naplózhatja a két betanított modell köze
         return dataframe1,
     ```
     
-Ez a kód a Azure Machine Learning Python SDK-t használja az értékek naplózásához. Run.get_context () használatával kéri le az aktuális Futtatás környezetét. Ezután a Run. Parent. log () metódussal naplózza az értékeket a környezetbe. A használatával a rendszer az `parent` értékeket a fölérendelt folyamat futtatására használja a modul futtatása helyett.
+Ez a kód az Azure Machine Learning Python SDK-t használja az értékek naplózásához. A Run.get_context() segítségével lekérte az aktuális futtatás környezetét. Ezután ebben a környezetben naplózza az értékeket a run.parent.log() metódussal. A használatával `parent` naplóz értékeket a szülő folyamatfuttassa a modul futtatása helyett.
 
-További információ a Python SDK-nak az értékek naplózására való használatáról: [a naplózás engedélyezése az Azure ml betanítási futtatásával](how-to-track-experiments.md).
+A Python SDK értékek naplózásához való használatával kapcsolatos további információkért lásd: Naplózás engedélyezése [az Azure ML betanításfuttaiban.](how-to-log-view-metrics.md)
 
 ## <a name="view-logs"></a>Naplók megtekintése
 
-A folyamat futásának befejeződése után megtekintheti a *Mean_Absolute_Error* a kísérletek lapon.
+Miután a folyamat futása befejeződött,  a kísérletek Mean_Absolute_Error használhatja.
 
-1. Navigáljon a **kísérletek** szakaszhoz.
+1. Lépjen a **Kísérletek szakaszra.**
 1. Válassza ki a kísérletet.
 1. Válassza ki a megtekinteni kívánt kísérlet futtatását.
 1. Válassza a **Metrikák** lehetőséget.
 
-    ![A Studio futtatási metrikáinak megtekintése](./media/how-to-track-experiments/experiment-page-metrics-across-runs.png)
+    ![Futtatás metrika megtekintése a Studióban](./media/how-to-log-view-metrics/experiment-page-metrics-across-runs.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta, hogyan használhatja a naplókat a tervezőben. A következő lépésekért tekintse meg az alábbi kapcsolódó cikkeket:
+Ebben a cikkben megtanulta, hogyan használhatja a naplókat a tervezőben. A következő lépésekért tekintse meg a következő kapcsolódó cikkeket:
 
 
-* Ismerje meg, hogyan lehet a tervezői folyamatokat elhárítani: [hibakeresés & ml-folyamatok hibaelhárítása](how-to-debug-pipelines.md#azure-machine-learning-designer).
-* Megtudhatja, hogyan használhatja a Python SDK-t a mérőszámok naplózására az SDK-létrehozási élményben: a [naplózás engedélyezése az Azure ml betanítási futtatásával](how-to-track-experiments.md).
-* Megtudhatja, hogyan használhatja a [Python-szkriptek futtatását](./algorithm-module-reference/execute-python-script.md) a tervezőben.
+* További információ a tervezői folyamatok hibaelhárításáról: Gépi tanulási [folyamatok & hibaelhárítása.](how-to-debug-pipelines.md#azure-machine-learning-designer)
+* Ismerje meg, hogyan naplózható metrikák naplózása a Python SDK használatával az SDK szerzői élményében: Naplózás engedélyezése [Az Azure ML betanításai futtatásaiban.](how-to-log-view-metrics.md)
+* Megtudhatja, hogyan használhatja [a Python-szkript végrehajtását](./algorithm-module-reference/execute-python-script.md) a tervezőben.

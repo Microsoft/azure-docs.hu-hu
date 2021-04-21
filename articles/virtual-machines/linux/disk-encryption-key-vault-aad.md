@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 2d385357f7d4b1d1edec1cf336628bf8b3f9dda3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4f256ced9444a67d5e2618b6fd816cb811f2920a
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764638"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818835"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release-for-linux-vms"></a>Kulcstartó létrehozása és konfigurálása Azure Disk Encryption Linux rendszerű virtuális gépekhez Azure Disk Encryption Azure AD-vel
 
 **A virtuális gépek új Azure Disk Encryption szükségtelenné teszi, hogy Azure AD-alkalmazásparamétert biztosítsunk a virtuális gépek lemeztitkosításának engedélyezéséhez. Az új kiadásban már nem kell Azure AD-beli hitelesítő adatokat megadnia a titkosítás engedélyezése lépés során. Minden új virtuális gépnek titkosítva kell lennie az Azure AD alkalmazásparaméterei nélkül az új kiadással. A virtuálisgép-lemeztitkosítás új kiadással való engedélyezésére vonatkozó utasításokért lásd: [Azure Disk Encryption.](disk-encryption-overview.md) Az Azure AD-alkalmazásparaméterekkel már titkosított virtuális gépek továbbra is támogatottak, és továbbra is az AAD-szintaxissal kell fenntartani őket.**
 
-Azure Disk Encryption titkosítási Azure Key Vault a lemeztitkosítási kulcsok és titkos kulcsok vezérlésére és kezelésére.  További információ a kulcstartókról: [A kulcstartók Azure Key Vault](../../key-vault/general/overview.md) a [Kulcstartó biztonságossá biztosítása.](../../key-vault/general/security-overview.md) 
+Azure Disk Encryption titkosítási Azure Key Vault a lemeztitkosítási kulcsok és titkos kulcsok vezérlésére és kezelésére.  További információ a kulcstartókról: [A kulcstartók Azure Key Vault](../../key-vault/general/overview.md) a [Kulcstartó biztonságossá biztosítása.](../../key-vault/general/security-features.md) 
 
 Az Azure AD-val (Azure Disk Encryption) való használatra használt kulcstartó létrehozása és konfigurálása három lépésből áll:
 
@@ -38,7 +38,7 @@ Az eszközök [telepítésének és az](disk-encryption-key-vault.md) Azure-hoz 
 
 
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása 
-Azure Disk Encryption integrálva van a [Azure Key Vault,](https://azure.microsoft.com/documentation/services/key-vault/) így vezérelhetőek és kezelhetők a lemeztitkosítási kulcsok és titkos kulcsok a Key Vault-előfizetésben. Létrehozhat egy kulcstartót, vagy használhat egy meglévőt a Azure Disk Encryption. További információ a kulcstartókról: [A](../../key-vault/general/overview.md) kulcstartók Azure Key Vault [a Key Vault biztonságossá tere.](../../key-vault/general/security-overview.md) Kulcstartó létrehozásához Resource Manager sablont, Azure PowerShell az Azure CLI-t. 
+Azure Disk Encryption integrálva van a [Azure Key Vault,](https://azure.microsoft.com/documentation/services/key-vault/) így vezérelhetőek és kezelhetők a lemeztitkosítási kulcsok és titkos kulcsok a Key Vault-előfizetésben. Létrehozhat egy kulcstartót, vagy használhat egy meglévőt a Azure Disk Encryption. További információ a kulcstartókról: [A](../../key-vault/general/overview.md) kulcstartók Azure Key Vault [a Key Vault biztonságossá tere.](../../key-vault/general/security-features.md) Kulcstartó létrehozásához Resource Manager sablont, Azure PowerShell az Azure CLI-t. 
 
 
 >[!WARNING]
@@ -227,22 +227,22 @@ Az [az keyvault update parancs használatával](/cli/azure/keyvault#az_keyvault_
 
 
 ## <a name="set-up-a-key-encryption-key-optional"></a><a name="bkmk_KEK"></a> Kulcstitkosítási kulcs beállítása (nem kötelező)
-Ha kulcstitkosítási kulcsot (KEK) szeretne használni a titkosítási kulcsok további biztonsági rétegeként, adjon hozzá egy KEK-et a kulcstartóhoz. Az [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) parancsmag használatával hozzon létre egy kulcstitkosítási kulcsot a kulcstartóban. A KEK-et a helyszíni kulcskezelő HSM-ről is importálhatja. További információt a [dokumentációban Key Vault talál.](../../key-vault/keys/hsm-protected-keys.md) Ha kulcstitkosítási kulcs van megadva, a Azure Disk Encryption használja a titkosítási titkos kulcsok becsomagolása előtt, mielőtt Key Vault. 
+Ha kulcstitkosítási kulcsot (KEK) szeretne használni a titkosítási kulcsok további biztonsági rétegeként, adjon hozzá egy KEK-et a kulcstartóhoz. Az [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) parancsmag használatával hozzon létre egy kulcstitkosítási kulcsot a kulcstartóban. A KEK-et a helyszíni kulcskezelő HSM-ről is importálhatja. További információt a [dokumentációban Key Vault talál.](../../key-vault/keys/hsm-protected-keys.md) Ha kulcstitkosítási kulcs van megadva, a Azure Disk Encryption ezzel a kulccsal burk szóval burköli a titkosítási titkos kódokat, mielőtt Key Vault. 
 
-* Kulcsok generálásakor RSA-kulcstípust használjon. Azure Disk Encryption még nem támogatja az elliptikus görbét használó kulcsokat.
+* Kulcsok generálásakor RSA-kulcstípust használjon. Azure Disk Encryption az elliptikus görbe kulcsok használata még nem támogatott.
 
-* A Key Vault titkos kulcsát és KEK URL-címeit verziószámozva kell lennie. Az Azure kikényszeríteni a verziószámozás ezen korlátozását. Az érvényes titkos kódért és a KEK URL-címekért tekintse meg az alábbi példákat:
+* A Key Vault titkos kulcsának és kek URL-címének verziószámozva kell lennie. Az Azure kikényszeríteni a verziószámozás ezen korlátozását. Érvényes titkos kódért és KEK URL-címekért tekintse meg az alábbi példákat:
 
-  * Példa egy érvényes titkos URL-címre:   *https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Példa érvényes titkos URL-címre:   *https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
   * Példa érvényes KEK URL-címre:   *https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-* Azure Disk Encryption nem támogatja a portszámok kulcstartókulcsok és KEK URL-címek részeként való megadását. A nem támogatott és támogatott kulcstartó-URL-címekre az alábbi példákban talál példákat:
+* Azure Disk Encryption nem támogatja a portszámok kulcstartókulcsok és KEK URL-címek részeként való megadását. A key vault nem támogatott és támogatott URL-címeit az alábbi példákban láthatja:
 
   * A Key Vault elfogadhatatlan URL-címe  *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
   * Elfogadható kulcstartó URL-címe:   *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-### <a name="set-up-a-key-encryption-key-with-azure-powershell"></a><a name="bkmk_KEKPSH"></a> Kulcstitkosítási kulcs beállítása Azure PowerShell 
-A PowerShell-szkript használata előtt ismernie kell a Azure Disk Encryption előfeltételeit, hogy megismerheti a szkript lépéseit. Előfordulhat, hogy a mint szkriptnek módosításokra van szüksége a környezetben. Ez a szkript létrehozza Azure Disk Encryption összes előfeltételt, és titkosít egy meglévő IaaS virtuális gépet, kulcstitkosítási kulccsal burkolva a lemeztitkosítási kulcsot. 
+### <a name="set-up-a-key-encryption-key-with-azure-powershell"></a><a name="bkmk_KEKPSH"></a> Kulcstitkosítási kulcs beállítása a Azure PowerShell 
+A PowerShell-szkript használata előtt ismernie kell a Azure Disk Encryption előfeltételeit, hogy megismerheti a szkript lépéseit. Előfordulhat, hogy a mint szkriptnek módosításokra van szüksége a környezetben. Ez a szkript létrehozza az Azure Disk Encryption összes előfeltételt, és titkosít egy meglévő IaaS virtuális gépet, és egy kulcstitkosítási kulccsal burkolva becsomagolja a lemeztitkosítási kulcsot. 
 
  ```powershell
  # Step 1: Create a new resource group and key vault in the same location.
@@ -370,10 +370,10 @@ Ha tanúsítványhitelesítést szeretne használni, feltölthet egyet a kulcsta
 
 ## <a name="certificate-based-authentication-and-a-kek-optional"></a><a name="bkmk_CertKEK"></a> Tanúsítványalapú hitelesítés és KEK (nem kötelező)
 
-Ha tanúsítványhitelesítést szeretne használni, és a titkosítási kulcsot egy KEK-hez szeretné csomagolni, használhatja példaként az alábbi szkriptet. A PowerShell-szkript használata előtt ismernie kell az összes korábbi Azure Disk Encryption előfeltételt, hogy megértse a szkript lépéseit. Előfordulhat, hogy a mint szkriptnek módosításokra van szüksége a környezetben.
+Ha tanúsítványhitelesítést szeretne használni, és a titkosítási kulcsot egy KEK-hez szeretné burkni, használhatja példaként az alábbi szkriptet. A PowerShell-szkript használata előtt ismernie kell az összes korábbi Azure Disk Encryption előfeltételt, hogy megismerheti a szkript lépéseit. Előfordulhat, hogy a mint szkriptnek módosításokra van szüksége a környezetben.
 
 > [!IMPORTANT]
-> Az Azure AD tanúsítványalapú hitelesítése jelenleg nem támogatott Linux rendszerű virtuális gépeken.
+> Az Azure AD tanúsítványalapú hitelesítése linuxos virtuális gépeken jelenleg nem támogatott.
 
 
 

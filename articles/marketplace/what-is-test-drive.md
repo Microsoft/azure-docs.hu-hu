@@ -1,98 +1,98 @@
 ---
 title: Mit jelent a tesztverzió? Microsoft kereskedelmi piactér
-description: A Marketplace Test Drive funkció magyarázata
+description: A Marketplace teszt meghajtó funkció magyarázata
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 06/19/2020
-ms.openlocfilehash: 193e7bd78046a1d73cb55171c15c9cb6a7278297
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e44d5d94a8dc172962a26f3e0dae9ccbb7f8a865
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96490040"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818889"
 ---
 # <a name="what-is-a-test-drive"></a>Mit jelent a tesztverzió?
 
-A test Drive nagyszerű lehetőséget nyújt arra, hogy ajánlatot nyújtson a potenciális ügyfelek számára azáltal, hogy a vásárlás előtt megpróbál kipróbálni, magas minősítésű érdeklődőket generál, és nagyobb átalakítást eredményez. A tesztelési meghajtó valós megvalósítási forgatókönyvben teszi lehetővé a termék életbe lépését. Azok az ügyfelek, akik kipróbálják a terméket, egyértelmű szándékot mutatnak a hasonló megoldás megvásárlására. Használja ki az előnyeit a fejlettebb érdeklődők követésével.
+A tesztverzió remek módja annak, hogy bemutassa ajánlatát a potenciális ügyfeleknek azáltal, hogy lehetőséget ad nekik, hogy a vásárlás előtt kipróbálják a vásárlást, magas minősítésű érdeklődőket generálva, és nagyobb konverziót eredményezve. Egy teszt meghajtó valós megvalósítási forgatókönyvben kelti életre a terméket. Azok az ügyfelek, akik kipróbálják a terméket, egyértelmű szándékot mutatnak egy hasonló megoldás vásárlására. Ezt a speciálisabb érdeklődőket követő lépések segítségével saját használhatja ki az Ön előnyét.
 
-Az ügyfelek kihasználhatják a tesztelési meghajtókat is. Azáltal, hogy először kipróbálják a terméket, csökkenti a vásárlási folyamat súrlódását. Emellett a test Drive előre kiépített, azaz az ügyfeleknek nem kell letölteniük, beállítaniuk vagy konfigurálniuk a terméket.
+Az ügyfelek számára is előnyös egy tesztteszt. Ha engedélyezi számukra, hogy először kipróbálják a terméket, azzal csökkenti a vásárlási folyamat súrlódását. Emellett a teszt meghajtó előre ki van építve, vagyis az ügyfeleknek nem kell letölteniük, beállítaniuk vagy konfigurálni a terméket.
 
 ## <a name="how-does-it-work"></a>Hogyan működik?
 
-A tesztelési meghajtók olyan felügyelt példányok, amelyek igény szerint elindítják a megoldást vagy az alkalmazást a kérelmező ügyfelek számára. A test Drive-példány hozzárendelése után az adott ügyfél számára elérhetővé válik egy meghatározott időtartamra. Az időszak lejárta után a rendszer törli a helyet egy másik ügyfél számára.
+A tesztmeghajtók felügyelt példányok, amelyek igény szerint indítják el a megoldást vagy az alkalmazást az azt kérelmező ügyfelek számára. Miután hozzárendelt egy teszt meghajtópéldányt, az adott ügyfél egy meghatározott ideig használhatja. Az időszak vége után a rendszer törli, hogy helyet hozzon létre egy másik ügyfélnek.
 
-Közzétevőként kezelheti és konfigurálhatja a tesztelési meghajtó beállításait a partner Centerben. A technikai konfiguráció részletei az ajánlat típusától függően változnak. Részletes útmutatásért tekintse meg a [Test Drive technikai konfigurációját](./test-drive-technical-configuration.md).
+Közzétevőként kezelheti és konfigurálhatja a teszt meghajtó beállításait a Partnerközpont. A technikai konfiguráció részletei az ajánlat típusától függően változnak. Részletes útmutatásért tekintse meg a [Teszt meghajtó műszaki konfigurációját.](./test-drive-technical-configuration.md)
 
-A potenciális ügyfelek a [AppSource](https://appsource.microsoft.com/en-US/)-on keresztül, az Ön ajánlatán keresztül felderítik a teszt-meghajtót. Megadják a kapcsolattartási adataikat, és elfogadják az ajánlat használati feltételeit és adatvédelmi szabályzatát, majd hozzáférhetnek az előre konfigurált környezethez, hogy kipróbálják azt egy rögzített időtartamra. Az ügyfelek a termék főbb funkcióit és előnyeit igénybe vevő, saját irányítású próbaidőszakot kapnak, és értékes érdeklődőket kapnak.
+A lehetséges ügyfelek CTA-ként fedezhetik fel a teszt meghajtóját az [AppSource-on.](https://appsource.microsoft.com/en-US/) Meg kell adniuk a kapcsolattartási adataikat, és meg kell adniuk az ajánlat feltételeit és adatvédelmi szabályzatát, majd hozzáférést kapnak az előre konfigurált környezethez, hogy egy meghatározott ideig kipróbálják. Az ügyfelek a termék legfontosabb funkcióinak és előnyeinek gyakorlati, önkiszolgáló próbaverzióját kapják meg, Ön pedig értékes érdeklődőt kap.
 
-## <a name="types-of-test-drives"></a>A tesztelési meghajtók típusai
+## <a name="types-of-test-drives"></a>A tesztmeghajtók típusai
 
-A kereskedelmi piactéren különböző tesztelési meghajtók érhetők el, a termékek, a forgatókönyvek és a piactér típusától függően:
+A kereskedelmi piactéren különböző tesztmeghajtók érhetők el a kiválasztott ajánlatokhoz attól függően, hogy milyen terméktípust, forgatókönyvet és piacteret használt:
 
 - Azure Resource Manager
     - Azure-alkalmazások
     - SaaS
     - Virtual Machines
-- Szolgáltatott tesztelési meghajtó
+- Üzemeltetett teszt meghajtó
     - Dynamics 365 for Business Central (jelenleg nem támogatott)
     - Dynamics 365 for Customer Engagement
     - Dynamics 365 for Operations
 - Logikai alkalmazás (csak támogatási módban)
 - Power BI
 
-A tesztelési meghajtók egyikének konfigurálásával kapcsolatos részletekért tekintse meg a [meghajtó technikai konfigurációjának tesztelése](./test-drive-technical-configuration.md)című témakört. 
+A tesztmeghajtók konfigurálásával kapcsolatos részletekért lásd: A meghajtó [technikai konfigurációjának tesztelése.](./test-drive-technical-configuration.md) 
 
-### <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager tesztelési meghajtó
+### <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager teszt meghajtó
 
-Ez a központi telepítési sablon tartalmazza a megoldását alkotó összes Azure-erőforrást. Az ehhez a forgatókönyvhöz illeszkedő termékek csak az Azure-erőforrásokat használják. A Azure Resource Manager tesztelési meghajtó elérhető az alábbi típusú ajánlatokhoz: 
+Ez az üzembe helyezési sablon tartalmazza a megoldást tartalmazó összes Azure-erőforrást. Az ehhez a forgatókönyvhöz illeszkedő termékek csak Azure-erőforrásokat használnak. A Azure Resource Manager teszt meghajtó a következő ajánlattípusokhoz érhető el: 
 
 - Azure-alkalmazások
 - SaaS
 - Virtual machines (Virtuális gépek)
 
 >[!NOTE]
->Ez az egyetlen tesztelési mód a virtuális gépekhez és az Azure-alkalmazások ajánlatához.
+>Ez az egyetlen teszt meghajtó lehetőség a virtuális gép és az Azure-alkalmazás ajánlatokhoz.
 
-### <a name="hosted-test-drive-recommended"></a>Üzemeltetett tesztelési meghajtó (ajánlott)
+### <a name="hosted-test-drive-recommended"></a>Üzemeltetett teszt meghajtó (ajánlott)
 
-Az üzemeltetett tesztvezetés eltávolítja a telepítő összetettségét azáltal, hogy a Microsoft gazdagépet és karbantartja a tesztelési meghajtó felhasználójának kiépítési és kiépítés utáni szolgáltatását. Ha Microsoft AppSource ajánlata van, készítse el a tesztelési meghajtót a Dynamics AX/CRM-példánnyal való kapcsolódáshoz. A következő AppSource-ajánlatokat használhatja:
+Az üzemeltetett teszt meghajtó megszünteti a telepítés összetettségét azáltal, hogy a Microsoft üzemelteti és karbantartja a teszt meghajtót használó felhasználóáthelyezést és -kiépítést végző szolgáltatást. Ha ajánlata van a Microsoft AppSource, készítse el teszt meghajtóját a Dynamics AX/CRM-példányhoz való csatlakozáshoz. A következő AppSource-ajánlatok típusait használhatja:
 
-- Használja a Dynamics 365-et a [Customer engagement](partner-center-portal/create-new-customer-engagement-offer.md) szolgáltatáshoz, például az értékesítés, a szolgáltatás, a Project Service és a Field Service szolgáltatáshoz.
-- A [Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md) for Finance and Operations vállalati erőforrás-tervezési rendszer, például a pénzügy, a műveletek és a gyártás, az ellátási lánc használata.
+- A [Dynamics 365 for Customer Engagement és](dynamics-365-customer-engage-offer-setup.md) a Power Apps olyan Customer Engagement-rendszerekhez használhatók, mint az értékesítés, a szolgáltatás, a projektszolgáltatás és a helyszíni szolgáltatás.
+- A [Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md) használata a Finance and Operations nagyvállalati erőforrás-tervezési rendszerhez, például a pénzügyhez, az üzemeltetéshez és a gyártáshoz, az ellátási lánchoz.
 
-### <a name="logic-app-test-drive"></a>Logic app Test Drive
+### <a name="logic-app-test-drive"></a>Logikai alkalmazás teszt meghajtója
 
-Az ilyen típusú tesztelési meghajtót nem a Microsoft üzemelteti, és Azure Resource Manager (ARM) sablonokat használ a Dynamics AX/CRM-ajánlatok típusaihoz. A szükséges erőforrások létrehozásához futtatnia kell az ARM-sablont az Azure-előfizetésében. A Logic app Test Drive jelenleg csak támogatási módban érhető el, és a Microsoft nem ajánlja a Logic app test-meghajtó konfigurálásával kapcsolatos részletekért lásd: a [Test Drive technikai konfigurálása](./test-drive-technical-configuration.md).
+Az ilyen típusú teszt meghajtót nem a Microsoft üzemelteti, és Azure Resource Manager (ARM) sablonokat használ a Dynamics AX/CRM-ajánlattípusokhoz. Az ARM-sablon futtatásával létre kell hoznia a szükséges erőforrásokat az Azure-előfizetésben. A Logic App Test Drive jelenleg csak támogatási módban érhető el, és a Microsoft nem támogatja. A Logikai alkalmazás teszt meghajtójának konfigurálásával kapcsolatos részletekért lásd: A meghajtó műszaki [konfigurációjának tesztelése.](./test-drive-technical-configuration.md)
 
-### <a name="power-bi-test-drive"></a>Power BI tesztelési meghajtó
+### <a name="power-bi-test-drive"></a>Power BI meghajtó tesztelése
 
-Ez egyszerűen egy egyéni kialakítású irányítópultra mutató beágyazott hivatkozás. Minden olyan termék, amely csak interaktív Power BI vizualizációt mutat be, ezt a típusú tesztelési meghajtót kell használnia.
+Ez egyszerűen egy egyéni irányítópultra mutató beágyazott hivatkozás. Minden olyan terméknek, amely csak interaktív Power BI mutat be, ezt a teszt meghajtótípust kell használnia.
 
 ## <a name="transforming-examples"></a>Példák átalakítása
 
-Az erőforrások egy tesztelési meghajtóba való bekapcsolásának folyamata ijesztő lehet. Tekintse át ezeket a példákat a jelenlegi architektúrák legjobb átalakításához.
+Az erőforrások architektúrája teszt meghajtóként való fordítása ijesztő folyamat lehet. Tekintse meg ezeket a példákat a jelenlegi architektúrák legjobb átalakításáról.
 
-[Webhely-sablon átalakítása tesztelési meghajtóra](https://github.com/Azure/AzureTestDrive/wiki/Transforming-Website-Deployment-Template-for-Test-Drive)
+[Webhelysablon átalakítása teszt meghajtóvá](https://github.com/Azure/AzureTestDrive/wiki/Transforming-Website-Deployment-Template-for-Test-Drive)
 
-[Virtuálisgép-sablon átalakítása tesztelési meghajtóra](https://github.com/Azure/AzureTestDrive/wiki/Transforming-Virtual-Machine-Deployment-Template-for-Test-Drive)
+[Virtuálisgép-sablon átalakítása teszt meghajtóvá](https://github.com/Azure/AzureTestDrive/wiki/Transforming-Virtual-Machine-Deployment-Template-for-Test-Drive)
 
-[Meglévő Resource Manager-sablon átalakítása tesztelési meghajtóra](https://github.com/Azure/AzureTestDrive/wiki/Deploying-Existing-Solutions)
+[Meglévő Resource Manager átalakítása teszt meghajtóvá](https://github.com/Azure/AzureTestDrive/wiki/Deploying-Existing-Solutions)
 
-## <a name="generate-leads-from-your-test-drive"></a>Érdeklődők előállítása a test Drive-ból
+## <a name="generate-leads-from-your-test-drive"></a>Érdeklődők létrehozása a teszt meghajtóról
 
-A kereskedelmi Piactéri tesztvezetés nagyszerű eszköz a marketingesek számára. Azt javasoljuk, hogy a piacra jutást a piaci megjelenéssel kapcsolatos erőfeszítésekben érdemes beépíteni. Részletes útmutatásért tekintse [meg a kereskedelmi Marketplace-ajánlat ügyfeleinek vezetőit](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads.md).
+A kereskedelmi piactér teszteszköze remek eszköz a marketingesek számára. Javasoljuk, hogy a bevezetési tevékenységbe foglalja bele, amikor további érdeklődőket hoz létre a vállalkozása számára. Részletes útmutatásért tekintse meg a kereskedelmi [piactéri ajánlatban érdeklődőket.](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads.md)
 
-Ha lezárta a tesztelési meghajtóval rendelkező üzletet, ügyeljen arra, hogy regisztrálja azt a [Microsoft partner Sales kapcsolódási](https://support.microsoft.com/help/3155788/getting-started-with-microsoft-partner-sales-connect)szolgáltatásban. Azt is szeretnénk hallani az ügyfél-WINS-ről, hogy a tesztvezetés milyen szerepet játszott.
+Ha egy tesztvezetővel kötött ajánlatot, regisztrálja a [Microsoft Partner Sales Connectben.](https://support.microsoft.com/help/3155788/getting-started-with-microsoft-partner-sales-connect) Azt is szeretnénk, ha az ügyfél nyerne, ha egy teszt meghajtó szerepet játszott volna.
 
 ## <a name="other-resources"></a>Egyéb erőforrások
 
-További tesztelési meghajtó erőforrásai:
+További teszt meghajtó-erőforrások:
 
-- [Tesztelési meghajtó – ajánlott eljárások](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [Áttekintés](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF; ellenőrizze, hogy ki van-e kapcsolva az előugró ablakok blokkolása)
+- [Teszt meghajtó – ajánlott eljárások](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [Áttekintés](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF; győződjön meg arról, hogy az előugró ablak blokkoló ki van kapcsolva)
 
 ## <a name="next-step"></a>Következő lépés
 

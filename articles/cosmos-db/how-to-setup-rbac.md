@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/19/2021
 ms.author: thweiss
-ms.openlocfilehash: 209d18dfbadea89f14fd90da9a1bc57b3ccf0dfe
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 9de41835e33d50a670a44089cb10d44cc57e92a7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728072"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818699"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Szerepköralapú hozzáférés-vezérlés konfigurálása Azure Active Directory fiókhoz Azure Cosmos DB (előzetes verzió)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -91,9 +91,9 @@ A művelet által engedélyezett tényleges metaadat-kérelmek attól függnek, 
 
 | Hatókör | A művelet által engedélyezett kérelmek |
 |---|---|
-| Fiók | – A fiókhoz sorolja fel az adatbázisokat<br>– A fiókhoz tartozó összes adatbázishoz az adatbázis hatókörében engedélyezett műveletek tartoznak |
+| Fiók | – A fiókhoz sorolja fel az adatbázisokat<br>– A fiókhoz tartozó összes adatbázishoz az adatbázis hatókörében engedélyezett műveletek |
 | Adatbázis | - Adatbázis-metaadatok olvasása<br>– Az adatbázis alatt található tárolók listázása<br>– Az adatbázis minden egyes tárolója számára a tároló hatókörében engedélyezett műveletek |
-| Tároló | - Tároló metaadatainak olvasása<br>– Fizikai partíciók listázása a tároló alatt<br>- Az egyes fizikai partíciók címének feloldása |
+| Tároló | – Tároló metaadatainak olvasása<br>– A tárolóban található fizikai partíciók listázása<br>- Az egyes fizikai partíciók címének feloldása |
 
 ## <a name="create-role-definitions"></a><a id="role-definitions"></a> Szerepkör-definíciók létrehozása
 
@@ -101,7 +101,7 @@ Szerepkör-definíció létrehozásakor meg kell adnia a következő adatokat:
 
 - A fiók Azure Cosmos DB neve.
 - A fiókját tartalmazó erőforráscsoport.
-- A szerepkör-definíció típusa; A `CustomRole` jelenleg csak a következőt támogatja: .
+- A szerepkör-definíció típusa; csak `CustomRole` a jelenleg támogatott.
 - A szerepkör-definíció neve.
 - A szerepkör [által](#permission-model) engedélyezni kívánt műveletek listája.
 - Egy vagy több hatókör, amely(ök)hez a szerepkör-definíció hozzárendelhető; támogatott hatókörök:
@@ -145,7 +145,7 @@ New-AzCosmosDBSqlRoleDefinition -AccountName $accountName `
     -AssignableScope "/"
 ```
 
-Sorolja fel azokat a szerepkör-definíciókat, amelyek az ön által létrehozott, a sajátjukhoz való beolvasásához vannak létrehozva:
+Sorolja fel a létrehozott szerepkör-definíciókat, hogy lekérni tudja az 1D-jüket:
 
 ```powershell
 Get-AzCosmosDBSqlRoleDefinition -AccountName $accountName `
@@ -219,7 +219,7 @@ Hozzon létre egy *MyReadWriteRole nevű szerepkört,* amely az összes művelet
 az cosmosdb sql role definition create --account-name $accountName --resource-group $resourceGroupName --body @role-definition-rw.json
 ```
 
-Sorolja fel azokat a szerepkör-definíciókat, amelyek az ön által létrehozott, a sajátjukhoz való beolvasásához vannak létrehozva:
+Sorolja fel a létrehozott szerepkör-definíciókat, hogy lekérni tudja az 1D-jüket:
 
 ```azurecli
 az cosmosdb sql role definition list --account-name $accountName --resource-group $resourceGroupName
@@ -289,7 +289,7 @@ Miután létrehozta a szerepkör-definíciókat, társíthatja őket az AAD-iden
   A hatókörnek egyeznie kell, vagy a szerepkör-definíció egyik hozzárendelhető hatókörének alhatókörének kell lennie.
 
 > [!NOTE]
-> Ha szerepkör-hozzárendelést szeretne létrehozni egy szolgáltatásnévhez,  ügyeljen arra, hogy  az objektumazonosítóját használja a portál panel Vállalati alkalmazások **Azure Active Directory** szakaszában.
+> Ha szerepkör-hozzárendelést szeretne létrehozni egy szolgáltatásnévhez,  ügyeljen arra, hogy  a portál panelének Vállalati alkalmazások szakaszában található objektumazonosítóját **Azure Active Directory** használja.
 
 > [!NOTE]
 > Az alábbiakban ismertetett műveletek jelenleg a következőben érhetők el:
@@ -298,7 +298,7 @@ Miután létrehozta a szerepkör-definíciókat, társíthatja őket az AAD-iden
 
 ### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
 
-Szerepkör hozzárendelése egy identitáshoz:
+Szerepkör hozzárendelése identitáshoz:
 
 ```powershell
 $resourceGroupName = "<myResourceGroup>"
@@ -326,15 +326,16 @@ az cosmosdb sql role assignment create --account-name $accountName --resource-gr
 
 ## <a name="initialize-the-sdk-with-azure-ad"></a>Az SDK inicializálása az Azure AD-val
 
-Ahhoz, hogy a Azure Cosmos DB RBAC-t az alkalmazásban használva tudja használni, frissítenie kell a Azure Cosmos DB SDK inicializálását. A fiók elsődleges kulcsának átadása helyett át kell adni egy osztály egy `TokenCredential` példányát. Ez a példány biztosítja Azure Cosmos DB SDK-t a használni kívánt identitás nevében az AAD-jogkivonat lekéréséhez szükséges környezethez.
+Ahhoz, hogy a Azure Cosmos DB RBAC-t használnia az alkalmazásban, frissítenie kell a Azure Cosmos DB SDK inicializálását. A fiók elsődleges kulcsának átadása helyett át kell adni egy osztály egy `TokenCredential` példányát. Ez a példány biztosítja a Azure Cosmos DB SDK számára a használni kívánt identitás nevében az AAD-jogkivonat lekéréséhez szükséges környezetet.
 
-A példányok létrehozási módja túlmutat ennek `TokenCredential` a cikknek a hatókörében. Egy ilyen példányt számos módon létrehozhat a használni kívánt AAD-identitás típusától függően (egyszerű felhasználó, szolgáltatásnév, csoport stb.). A legfontosabb, hogy a példánynak arra az identitásra (rendszerbiztonsági tagazonosítóra) kell feloldva lennie, `TokenCredential` amelyhez a szerepköröket rendelte. Példákat találhat egy osztály `TokenCredential` létrehozására:
+A példányok `TokenCredential` létrehozási módja túlmutat ennek a cikknek a hatókörében. Az ilyen példányok számos módon létrehozhatóak a használni kívánt AAD-identitás típusától függően (felhasználónév, szolgáltatásnév, csoport stb.). A legfontosabb, hogy a példánynak arra az identitásra (rendszerbiztonsági tagazonosítóra) kell feloldva lennie, `TokenCredential` amelyhöz a szerepköröket rendelte. Példákat találhat egy osztály `TokenCredential` létrehozására:
 
-- [.NET-en](/dotnet/api/overview/azure/identity-readme#credential-classes)
-- [Java nyelven](/java/api/overview/azure/identity-readme#credential-classes)
+- [A .NET-en](/dotnet/api/overview/azure/identity-readme#credential-classes)
+- [A Javában](/java/api/overview/azure/identity-readme#credential-classes)
 - [JavaScriptben](/javascript/api/overview/azure/identity-readme#credential-classes)
+- A REST API
 
-Az alábbi példák egyszerű szolgáltatást használnak a `ClientSecretCredential` példányokkal.
+Az alábbi példák szolgáltatásnévvel és egy példán keresztül `ClientSecretCredential` mutatnak be egy példányt.
 
 ### <a name="in-net"></a>A .NET-en
 
@@ -379,6 +380,12 @@ const client = new CosmosClient({
     aadCredentials: servicePrincipal
 });
 ```
+
+### <a name="in-rest-api"></a>A REST API
+
+A Azure Cosmos DB RBAC jelenleg a 2021. 03. 15- és 15-ös verzióban REST API. Az engedélyezési fejléc  [beállításakor](/rest/api/cosmos-db/access-control-on-cosmosdb-resources)állítsa a típusparamétert **aad,a** kivonataláírást **(sig)** pedig az **oauth-jogkivonatra,** ahogy az alábbi példában látható:
+
+`type=aad&ver=1.0&sig=<token-from-oauth>`
 
 ## <a name="auditing-data-requests"></a>Adatkérések naplózása
 

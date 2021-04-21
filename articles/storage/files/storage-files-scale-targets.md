@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 276dd7aa1925fefaaa94dfdd5d7a5baba5164f56
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: bdcee6b8ced45dba34309724e5a634cbb60a6d37
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790256"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818817"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Az Azure Files méretezhetőségi és teljesítménycéljai
 [Azure Files](storage-files-introduction.md) szolgáltatás teljes körűen felügyelt felhőbeli fájlmegosztásokat kínál, amelyek az SMB- és NFS-fájlrendszer protokolljain keresztül érhetők el. Ez a cikk a méretezési és teljesítménycélokat ismerteti a Azure Files és Azure File Sync.
@@ -35,8 +35,8 @@ Az Azure többféle tárfióktípust támogat az ügyfelek különböző tárol�
 | Tárfiók maximális kapacitása | 5 PiB<sup>1</sup> | 100 TiB (kiépítve) |
 | Fájlmegosztások maximális száma | Korlátlan | Korlátlan, az összes megosztás teljes kiépített méretének a tárfiók maximális kapacitásábanál kisebbnek kell lennie a maximális értéknél |
 | Egyidejű kérelmek maximális száma | 20 000 IOPS<sup>1</sup> | 100 000 IOPS |
-| Maximális bejövő forgalom | <ul><li>USA/Európa: 10 Gb/s<sup>1</sup></li><li>Egyéb régiók (LRS/ZRS): 10 Gb/s<sup>1</sup></li><li>Egyéb régiók (GRS): 5 Gb/s<sup>1</sup></li></ul> | 4136 MiB/s |
-| Maximális bejövő forgalom | 50 Gb/s<sup>1</sup> | 6204 MiB/s |
+| Maximális bejövő forgalom | <ul><li>USA/Európa: 9536 MiB/s<sup>1</sup></li><li>Egyéb régiók (LRS/ZRS): 9536 MiB/mp<sup>1</sup></li><li>Egyéb régiók (GRS): 4768 GiB/mp<sup>1</sup></li></ul> | 4136 MiB/s |
+| Maximális bejövő forgalom | 47 683 MiB/s<sup>1</sup> | 6204 MiB/s |
 | Virtuális hálózati szabályok maximális száma | 200 | 200 |
 | IP-címekre vonatkozó szabályok maximális száma | 200 | 200 |
 | Felügyeleti olvasási műveletek | 5 percenként 800 | 5 percenként 800 |
@@ -52,22 +52,22 @@ Az Azure többféle tárfióktípust támogat az ügyfelek különböző tárol�
 | Kiépített méret növelése/csökkentése egység | N/A | 1 GiB |
 | Fájlmegosztás maximális mérete | <ul><li>100 TiB, engedélyezett nagyméretű fájlmegosztási<sup>funkcióval 2</sup></li><li>5 TiB, alapértelmezett</li></ul> | 100 TiB |
 | Fájlmegosztásban található fájlok maximális száma | Nincs korlát | Nincs korlát |
-| Maximális kérelemarány (maximális IOPS) | <ul><li>10 000, engedélyezett nagyméretű fájlmegosztási<sup>funkcióval 2</sup></li><li>1000 vagy 100 kérés/100 ms, alapértelmezés szerint</li></ul> | <ul><li>Alap IOPS: 400 + 1 IOPS GiB-onként, legfeljebb 100 000-ig</li><li>IOPS-meglúdítás: Maximum (4000,3x IOPS GiB-nként), legfeljebb 100 000</li></ul> |
+| Maximális kérelemarány (maximális IOPS) | <ul><li>10 000, engedélyezett nagy fájlmegosztási<sup>funkcióval 2</sup></li><li>1000 vagy 100 kérés/100 ms, alapértelmezés szerint</li></ul> | <ul><li>Alap IOPS: 400 + 1 IOPS GiB-onként, legfeljebb 100 000-ig</li><li>IOPS-megll-ing: Maximum (4000,3x IOPS GiB-nként), legfeljebb 100 000</li></ul> |
 | Egyetlen fájlmegosztás maximális bejövő forgaloma | <ul><li>Legfeljebb 300 MiB/s, engedélyezett nagy fájlmegosztási funkcióval<sup>2</sup></li><li>Legfeljebb 60 MiB/s, alapértelmezés szerint</li></ul> | 40 MiB/s + 0,04 * kiépítve GiB |
-| Egyetlen fájlmegosztás maximális ki- és visszalépése | <ul><li>Legfeljebb 300 MiB/s, engedélyezett nagy fájlmegosztási funkcióval<sup>2</sup></li><li>Legfeljebb 60 MiB/s, alapértelmezés szerint</li></ul> | 60 MiB/s + 0,06 * kiépítve GiB |
+| Egyetlen fájlmegosztás maximális bejövő forgaloma | <ul><li>Legfeljebb 300 MiB/s, engedélyezett nagy fájlmegosztási funkcióval<sup>2</sup></li><li>Legfeljebb 60 MiB/s, alapértelmezés szerint</li></ul> | 60 MiB/s + 0,06 * kiépítve GiB |
 | Megosztási pillanatképek maximális száma | 200 pillanatkép | 200 pillanatkép |
-| Objektumnév maximális hossza (könyvtárak és fájlok) | 2048 karakter | 2048 karakter |
+| Objektum (könyvtárak és fájlok) nevének maximális hossza | 2048 karakter | 2048 karakter |
 | Maximális elérésiút-név összetevő (az \A\B\C\D elérési úton minden betű egy összetevő) | 255 karakter | 255 karakter |
-| Merevlemez-korlát (csak NFS) | N/A | 178 |
+| Kapcsolati korlát (csak NFS) | N/A | 178 |
 | Többcsatornás SMB-csatornák maximális száma | N.A. | 4 |
 | Tárolt hozzáférési házirendek maximális száma fájlmegosztásonként | 5 | 5 |
 
-<sup>1</sup> A standard fájlmegosztások korlátai a standard fájlmegosztások mind a három rétegére vonatkoznak: a tranzakcióoptimalált, a gyors és a hűtési szintre.
+<sup>1</sup> A standard fájlmegosztások korlátai mindhárom standard fájlmegosztáshoz elérhető szintre vonatkoznak: a tranzakcióoptimalált, a gyors és a hűtési szintre.
 
 <sup>2</sup> A standard fájlmegosztások alapértelmezett értéke [](./storage-files-how-to-create-large-file-share.md) 5 TiB. A standard fájlmegosztások 100 TiB-ra való növelésével kapcsolatos részletekért lásd: Nagyméretű fájlmegosztások engedélyezése és létrehozása.
 
 ### <a name="file-scale-targets"></a>Fájlskálacélok
-| Attribútum | Szabványos fájlmegosztások fájljai  | Prémium fájlmegosztások fájljai  |
+| Attribútum | Standard fájlmegosztásban lévő fájlok  | Prémium fájlmegosztások fájljai  |
 |-|-|-|
 | Maximális fájlméret | 4 TiB | 4 TiB |
 | Egyidejű kérelmek maximális száma | 1000 IOPS | Legfeljebb 8000<sup>1</sup> |

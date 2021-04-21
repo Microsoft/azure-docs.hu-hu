@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 65dc9da03a6b763d419c51e53bf756550e8b56a4
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 1a1cd8c051f9e04c09ef2986805873d8e7fea54e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751849"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817629"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Egy Azure-kulcstartó áthelyezése egy másik előfizetésbe
 
@@ -123,5 +123,5 @@ Ha felügyelt identitást használ, akkor frissítenie kell az identitást is, m
 - További információ a [kulcsokról, titkos kulcsokról és tanúsítványokról](about-keys-secrets-certificates.md)
 - Fogalmi információkért, beleértve a naplók Key Vault értelmezését, lásd: Key Vault [naplózás](logging.md)
 - [Key Vault fejlesztői útmutató](../general/developers-guide.md)
-- [A kulcstartó biztonságossá tere](security-overview.md)
+- [Azure Key Vault biztonsági funkciók](security-features.md)
 - [Tűzfalak Azure Key Vault virtuális hálózatok konfigurálása](network-security.md)

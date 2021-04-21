@@ -9,16 +9,16 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 77a2fc900e3888575fb6411a8c2b76b2c639d719
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: c9706176e537ec926a5335b54d667081773d76b1
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107748587"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817358"
 ---
 # <a name="create-and-configure-a-key-vault-for-azure-disk-encryption"></a>Kulcstartó létrehozása és konfigurálása Azure Disk Encryption
 
-Azure Disk Encryption a Azure Key Vault a lemeztitkosítási kulcsok és titkos kulcsok vezérlésére és kezelésére.  A kulcstartókról további információt a Biztonsági [funkciókkal](../key-vault/general/overview.md) Azure Key Vault és Azure Key Vault [kapcsolatos Azure Key Vault tartalmaz.](../key-vault/general/security-overview.md)
+Azure Disk Encryption a Azure Key Vault a lemeztitkosítási kulcsok és titkos kulcsok vezérlésére és kezelésére.  A kulcstartókról további információt a Biztonsági [funkciókkal](../key-vault/general/overview.md) Azure Key Vault és Azure Key Vault [kapcsolatos Azure Key Vault tartalmaz.](../key-vault/general/security-features.md)
 
 A kulcstartók létrehozása és konfigurálása a Azure Disk Encryption három lépésből áll:
 

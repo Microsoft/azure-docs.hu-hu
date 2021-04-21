@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2d8bfdf3a4ad8b713fb6c937d61fa437fc7977f2
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 93c0c77ad36be82802fd53e4130e48ac431b0280
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749671"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819285"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>Rövid útmutató: Kulcstartó létrehozása a Azure Portal
 
@@ -69,5 +69,5 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a k
 Ebben a rövid útmutatóban létrehozott egy Key Vault a Azure Portal. Ha többet szeretne megtudni a Key Vault és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 
 - Áttekintés a [Azure Key Vault](overview.md)
-- A biztonsági [Azure Key Vault áttekintése](security-overview.md)
+- A biztonsági [Azure Key Vault áttekintése](security-features.md)
 - Lásd Azure Key Vault [fejlesztői útmutatót](developers-guide.md)

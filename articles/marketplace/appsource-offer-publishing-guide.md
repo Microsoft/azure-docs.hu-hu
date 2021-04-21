@@ -1,42 +1,42 @@
 ---
-title: A Microsoft AppSource közzétételi útmutatója
-description: Részletes útmutató és közzétételi ellenőrzőlista az alkalmazások közzétételéhez a Microsoft 365, a Dynamics 365, a Power apps és a Power BI Microsoft AppSource.
+title: Ajánlat-közzétételi útmutató Microsoft AppSource
+description: Részletes útmutató és ellenőrzőlisták közzététele az alkalmazások Microsoft AppSource for Microsoft 365, Dynamics 365, Power Apps és Power BI.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 09/04/2020
-ms.openlocfilehash: 8b500a87613dee094c63e71fc76fb751d72aa049
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c9aa3c7258ceba73215e2b003e92bc43676ce6a7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94491154"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818925"
 ---
-# <a name="offer-publishing-guide-for-microsoft-365-dynamics-365-power-apps-and-power-bi"></a>A Microsoft 365, a Dynamics 365, a Power apps és a Power BI közzétételi útmutatója
+# <a name="offer-publishing-guide-for-microsoft-365-dynamics-365-power-apps-and-power-bi"></a>Ajánlat-közzétételi útmutató Microsoft 365, Dynamics 365, Power Apps és Power BI
 
-A Microsoft AppSource olyan ajánlatokat tartalmaz, amelyek Microsoft 365, Dynamics 365, Power apps és Power BI-ra épülő vagy azokon kiterjeszthető. Ezen termékek mindegyike rendelkezik egy adott dokumentációval, amely végigvezeti Önt a közzétételi folyamaton. 
+Microsoft AppSource olyan ajánlatokat tartalmaz, amelyek a Microsoft 365, a Dynamics 365,Power Apps és a Power BI. Ezen termékek mindegyikének külön dokumentációja van, amely végigvezeti a közzétételi folyamaton. 
 
-A AppSource fizetős, listázási és próbaverziós ajánlatokat tartalmaz, és a listázási *lehetőséggel azonnal* *kapcsolatba léphet velem*, és *kipróbálhatja*.
+Az AppSource fizetős, listázási és próbaverziós ajánlatokkal rendelkezik, a *Get It Now*(Szerezze be most) és a Contact *Me*(Kapcsolatfelvétel) lehetőséggel, és próbálja *ki most.*
 
 ## <a name="product-specific-guides"></a>Termékspecifikus útmutatók
 
-Az egyes ajánlati típusokhoz kapcsolódó folyamatok és irányelvek közzétételére mutató hivatkozásokat az alábbi táblázat tartalmazza:
+Az egyes ajánlattípusokkal kapcsolatos közzétételi folyamatokra és irányelvekre mutató hivatkozásokért tekintse meg a következő táblázatot:
 
 | Termék    | Közzétételi útmutató  |
 | :------------------- | :-------------------|
-| Microsoft 365 | Tekintse át a [közzétételi folyamatot és az irányelveket](/office/dev/store/submit-to-appsource-via-partner-center). |
-| Dynamics 365 Business Central | Ha közzé szeretne tenni egy ajánlatot a partner Centerben, tekintse meg az [új Dynamics 365 Business Central-ajánlat létrehozását](./partner-center-portal/create-new-business-central-offer.md)ismertető témakört. |
-| Dynamics 365 for Finance and Operations | A vállalati kiadás létrehozásakor tekintse át a [közzétételi folyamatot és az irányelveket](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source).<br/>Ha közzé szeretne tenni egy ajánlatot a partner Centerben, tekintse meg az [új Dynamics 365 for Operations ajánlat létrehozása](./partner-center-portal/create-new-operations-offer.md)című témakört.  |
-| Dynamics 365 for Customer Engagement | Tekintse át a [közzétételi folyamatot és az irányelveket](/dynamics365/customer-engagement/developer/publish-app-appsource).<br/>Ha közzé szeretne tenni egy ajánlatot a partner Centerben, tekintse meg a következőt: [create a New Dynamics 365 for Customer Engagement & Power apps ajánlat](./partner-center-portal/create-new-customer-engagement-offer.md).  |
-| Power Apps | Megtudhatja, hogyan [teheti lehetővé az ügyfelek számára, hogy tesztelje az alkalmazást a AppSource-on](https://powerapps.microsoft.com/blog/appsource-test-drive/). |
-| Power BI | Tekintse át a [közzétételi folyamatot és az irányelveket](/power-bi/developer/office-store). |
+| Microsoft 365 | Tekintse át [a közzétételi folyamatot és az irányelveket.](/office/dev/store/submit-to-appsource-via-partner-center) |
+| Dynamics 365 Business Central | Ha közzéten egy ajánlatot a Partnerközpont, tekintse meg [az új Dynamics 365 Business Central-ajánlat létrehozása című témakört.](./partner-center-portal/create-new-business-central-offer.md) |
+| Dynamics 365 for Finance and Operations | Ha a közzétételi folyamatra Enterprise kiadás, tekintse át a [közzétételi folyamatot és az irányelveket.](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)<br/>Ha közzéten egy ajánlatot a Partnerközpont, tekintse meg [az új Dynamics 365 for Operations-ajánlat létrehozása című témakört.](./partner-center-portal/create-new-operations-offer.md)  |
+| Dynamics 365 for Customer Engagement & Power Apps | Tekintse át [a közzétételi folyamatot és az irányelveket.](/dynamics365/customer-engagement/developer/publish-app-appsource)<br/>Ha közzéten egy ajánlatot a Partnerközpont, tekintse meg [a Dynamics 365 for Customer Engagement-ajánlat & Power Apps című témakört.](dynamics-365-customer-engage-offer-setup.md)  |
+| Power Apps | Megtudhatja, hogyan [tesztelni tudja az ügyfelek az alkalmazást az AppSource-on.](https://powerapps.microsoft.com/blog/appsource-test-drive/) |
+| Power BI | Tekintse át [a közzétételi folyamatot és az irányelveket.](/power-bi/developer/office-store) |
 
 ---
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha még nem tette meg, Ismerje meg, hogyan [növelheti Felhőbeli üzletét az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
+Ha még nem tette meg, megtudhatja, hogyan növekedhet a felhőalapú üzlete a [Azure Marketplace.](https://azuremarketplace.microsoft.com/sell)
 
-Új ajánlat létrehozásához vagy egy meglévő kitöltéséhez lépjen a [partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)weboldalára.
+Új ajánlat létrehozásához vagy egy meglévő ajánlat létrehozásához a [Partnerközpont.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
