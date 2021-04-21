@@ -5,74 +5,89 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 04/11/2021
+ms.date: 04/20/2021
 ms.author: memildin
-ms.openlocfilehash: 5f94b17fac17a7238b3f4b7eef218961df7a42d5
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 92138b0253d28c8bf2617ee7b17474f30ac5cafe
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739961"
+ms.locfileid: "107751202"
 ---
-# <a name="whats-new-in-azure-security-center"></a>Újdonságok a Azure Security Center?
+# <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonsága
 
-Security Center fejlesztés alatt áll, és folyamatosan kap fejlesztéseket. Annak érdekében, hogy naprakész maradjon a legújabb fejlesztésekkel kapcsolatban, ez az oldal az új funkciókkal, hibajavításokkal és elavult funkciókkal kapcsolatos információkat tartalmaz.
+Security Center fejlesztés alatt áll, és folyamatosan kap fejlesztéseket. Hogy naprakész maradjon a legújabb fejlesztésekkel kapcsolatban, ez az oldal az új funkciókkal, hibajavításokkal és elavult funkciókkal kapcsolatos információkat tartalmaz.
 
 Ez az oldal gyakran frissül, ezért gyakran újra meg kell jelenni. 
 
-A hamarosan *várható* tervezett változásokról a Fontos közelgő változások a Security Center( ) [Azure Security Center.](upcoming-changes.md) 
+A hamarosan *várható* tervezett változásokról további Security Center [fontos](upcoming-changes.md)közelgő változásokat a Azure Security Center. 
 
 > [!TIP]
-> Ha hat hónapnál régebbi elemeket keres, azokat az Archívumban találja meg az Újdonságok a [Azure Security Center.](release-notes-archive.md)
+> Ha hat hónapnál régebbi elemeket keres, azokat az újdonságok archívumában találja [Azure Security Center.](release-notes-archive.md)
 
 ## <a name="april-2021"></a>2021. április
 
-Áprilisi frissítések többek között a következők:
-- [A közelmúltban lekért tároló-beállításjegyzék-rendszerképeket mostantól hetente újra el lehet helyezni (általánosan elérhető)](#recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability)
+Áprilisi frissítések:
+- [A közelmúltban lekért tároló-beállításjegyzék-rendszerképek mostantól hetente újra vannak szkenzve (általánosan elérhető)](#recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability)
 - [A Azure Defender for Kubernetes és a többfelhős Kubernetes-környezetek védelme (előzetes verzió)](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
+- [Javaslatok a dns Azure Defender- és Resource Manager engedélyezéséhez (előzetes verzió)](#recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview)
 - [Négy új javaslat a vendégkonfigurációval kapcsolatban (előzetes verzió)](#four-new-recommendations-related-to-guest-configuration-preview)
-- [A CMK-javaslatok átkerültek az ajánlott eljárások biztonsági vezérlése alá](#cmk-recommendations-moved-to-best-practices-security-control)
-- [11 Azure Defender riasztás elavult](#11-azure-defender-alerts-deprecated)
+- [A CMK-javaslatok átkerültek az ajánlott eljárások biztonsági szabályozására](#cmk-recommendations-moved-to-best-practices-security-control)
+- [11 Azure Defender riasztások elavultak](#11-azure-defender-alerts-deprecated)
 - [A "Rendszerfrissítések alkalmazása" biztonsági vezérlő két ajánlása elavult](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
+- [Azure Defender sql on machine csempe eltávolítása az Azure Defender irányítópultról](#azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard)
 
-### <a name="recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability"></a>A közelmúltban lekért tároló-beállításjegyzék-rendszerképeket mostantól hetente újra el lehet helyezni (általánosan elérhető)
+### <a name="recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability"></a>A közelmúltban lekért tároló-beállításjegyzék-rendszerképek mostantól hetente újra vannak szkenzve (általánosan elérhető)
 
-Azure Defender tárolóregisztrálókhoz beépített biztonsági réseket ellenőrző ellenőrzőeszköz is tartozik. Ez a szkenner azonnal átvizsgálja a regisztrációs adatbázisba leküldött összes képet és az elmúlt 30 napban lekért rendszerképeket.
+Azure Defender tárolóregisztrálókhoz való regisztrálás beépített biztonsági réseket ellenőrző ellenőrzőeszközt tartalmaz. Ez a szkenner azonnal átvizsgálja a regisztrációs adatbázisba leküldött összes képet és az elmúlt 30 napban lekért rendszerképeket.
 
-Naponta új biztonsági réseket fedeznek fel. Ezzel a frissítéssel a tárolóregisztrálókból az elmúlt 30 napban lekért tároló-rendszerképeket a rendszer minden héten újra el **fogja** helyezni. Ez biztosítja, hogy az újonnan felfedezett biztonsági rések azonosíthatók a lemezképek között.
+Naponta új biztonsági réseket fedeznek fel. Ezzel a frissítéssel a regisztrációs tárolókból az elmúlt 30 napban lekért tároló-rendszerképeket a rendszer hetente újra **el** fogja helyezni. Ez biztosítja, hogy az újonnan felfedezett biztonsági rések azonosíthatók a képeken.
 
 A vizsgálat díja rendszerképenként történik, így ezekért az újravizsgálatokért nem számítunk fel további díjat.
 
-További információ erről a [scannerről: Use Azure Defender for container registries to scan your images for vulnerabilities](defender-for-container-registries-usage.md)(Tárolóregisztrálók használata Azure Defender biztonsági rések kereséséhez).
+További információ erről a [scannerről: Use Azure Defender for container registries to scan your images for](defender-for-container-registries-usage.md)vulnerabilities (Tárolóregisztrálók használata a tárolóregisztrálókhoz biztonsági rések kereséséhez a képeken).
 
 
 ### <a name="use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview"></a>A Azure Defender for Kubernetes és a többfelhős Kubernetes-környezetek védelme (előzetes verzió)
 
-Azure Defender for Kubernetes bővíti a fenyegetésvédelmi képességeit, hogy megvédhesse a fürtöt, bárhol is legyen az üzembe helyezésük. Ezt az új [Kubernetes-Azure Arc](../azure-arc/kubernetes/overview.md) és új bővítményi képességeivel való [integrációval engedélyezték.](../azure-arc/kubernetes/extensions.md) 
+Azure Defender for Kubernetes bővíti a fenyegetésvédelmi képességeit, hogy megvédhesse a fürtöt, bárhol is legyen az üzembe helyezésük. Ezt az engedélyezett [Kubernetes-Azure Arc és](../azure-arc/kubernetes/overview.md) új bővítményi képességeinek [integrálásával engedélyezték.](../azure-arc/kubernetes/extensions.md) 
 
-Ha engedélyezte a Azure Arc-t a nem Azure Kubernetes-fürtökön, az Azure Security Center egy új javaslatával csupán néhány kattintással telepítheti hozzájuk az Azure Defender-bővítményt.
+Ha engedélyezte az Azure Arc-t a nem Azure Kubernetes-fürtökön, az Azure Security Center egy új javaslatával csupán néhány kattintással üzembe helyezheti bennük az Azure Defender-bővítményt.
 
-Használja a javaslatot (Azure Arc engedélyezett **Kubernetes-fürtökön** telepítve kell lennie a Azure Defender-bővítménynek) és a bővítménynek a más felhőszolgáltatókban üzembe helyezett Kubernetes-fürtök védelmére, bár a felügyelt Kubernetes-szolgáltatásokon nem.
+Használja a javaslatot (Azure Arc engedélyezett **Kubernetes-fürtökön** telepítve kell lennie a Azure Defender-bővítménynek) és a bővítménynek a más felhőszolgáltatóknál üzembe helyezett Kubernetes-fürtök védelmére, bár a felügyelt Kubernetes-szolgáltatásokon nem.
 
-Az Azure Security Center, Azure Defender és Azure Arc Kubernetes közötti integráció a következőt hozza:
+A kubernetes-Azure Security Center, Azure Defender és Azure Arc integráció a következőt hozza:
 
-- Az Azure Defender bővítmény egyszerű kiépítése Azure Arc kubernetes-fürtökhöz (manuálisan és nagy léptékben)
-- Az Azure Defender bővítmény és kiépítési állapotának monitorozása a Azure Arc portálról
-- A biztonsági javaslatok Security Center a portál új Biztonság lapján Azure Arc javaslatokat
-- A biztonsági fenyegetések Azure Defender a portál új Biztonság lapján Azure Arc nak.
+- A Azure Defender bővítmény egyszerű kiépítése Azure Arc kubernetes-fürtökhöz (manuálisan és nagy léptékben)
+- Az Azure Defender bővítmény és kiépítési állapotának monitorozása a Azure Arc Portálról
+- A biztonsági javaslatok Security Center a portál új Biztonsági oldalán Azure Arc meg
+- A biztonsági fenyegetések Azure Defender a portál új Biztonsági oldalán Azure Arc jelentve
 - Azure Arc engedélyezett Kubernetes-fürtök integrálva vannak a Azure Security Center platformba és felhasználói élménybe
 
 További információ: Azure Defender for Kubernetes helyszíni és többfelhős [Kubernetes-fürtök használata.](defender-for-kubernetes-azure-arc.md)
 
 :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Security Center az engedélyezett Kubernetes-fürtökhöz Azure Defender üzembe Azure Arc bővítmény üzembe helyezését." lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
 
+
+### <a name="recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview"></a>Javaslatok a dns Azure Defender- és Resource Manager engedélyezéséhez (előzetes verzió)
+
+Két új javaslat lett hozzáadva a [](defender-for-resource-manager-introduction.md) DNS-hez való Azure Defender és Resource Manager Azure Defender [egyszerűsítése érdekében:](defender-for-dns-introduction.md)
+
+- **Azure Defender az Resource Manager** számára – a Defender for Resource Manager automatikusan figyeli a szervezetben az erőforrás-kezelési műveleteket. Azure Defender észleli a fenyegetéseket, és riasztást küld a gyanús tevékenységekről.
+- **Azure Defender** DNS-t engedélyezni kell – A Defender for DNS egy további védelmi réteget biztosít a felhőbeli erőforrások számára az Azure-erőforrásokból származó összes DNS-lekérdezés folyamatos monitorozása által. Azure Defender riasztást küld a DNS-réteg gyanús tevékenységével kapcsolatban.
+
+A Azure Defender engedélyezése díjakat fog fizetni. A régiónkénti díjszabásról a Security Center díjszabási oldalán olvashat: https://aka.ms/pricing-security-center .
+
+> [!TIP]
+> Az előzetes verzióra vonatkozó javaslatok nem renderelik az erőforrásokat nem megfelelőnek, és nem szerepelnek a biztonsági pontszám kiszámításakor. Ahol csak lehetséges, szervizeljük őket, hogy az előzetes verzió időszakának végén hozzájáruljanak a pontszámhoz. További információ a javaslatokra való válaszadásról: Javaslatok szervize [a Azure Security Center.](security-center-remediate-recommendations.md)
+
 ### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>Négy új javaslat a vendégkonfigurációval kapcsolatban (előzetes verzió)
 
-Az Azure [vendégkonfigurációs bővítményének](../governance/policy/concepts/guest-configuration.md) jelentései Security Center, hogy a virtuális gépek vendégen lévő beállításai megsokosodnak. A bővítmény nem szükséges az Arc-kompatibilis kiszolgálókhoz, mert szerepel az Arc connected Machine-ügynökben. A bővítményhez a gép rendszer által felügyelt identitása szükséges.
+Az Azure [vendégkonfigurációs bővítménye](../governance/policy/concepts/guest-configuration.md) Security Center, hogy a virtuális gépek vendégen lévő beállításai megsokosodnak. A bővítmény nem szükséges az Arc-kompatibilis kiszolgálókhoz, mert szerepel az Arc connected Machine-ügynökben. A bővítményhez rendszer által felügyelt identitás szükséges a gépen.
 
 Négy új javaslatot adtunk hozzá, hogy Security Center a bővítményt a legtöbbet hozva ki.
 
-- Két javaslat arra kéri, hogy telepítse a bővítményt és a szükséges, rendszer által felügyelt identitást:
+- Két javaslat arra kéri, hogy telepítse a bővítményt és annak szükséges, rendszer által felügyelt identitását:
     - **A vendégkonfigurációs bővítményt telepíteni kell a gépekre**
     - **A virtuális gépek vendégkonfigurációs bővítményét rendszer által hozzárendelt felügyelt identitással kell üzembe helyezni**
 
@@ -86,7 +101,7 @@ További [információ: A Azure Policy vendégkonfigurációjának megismerve.](
 
 Minden szervezet biztonsági programja tartalmaz adattitkosítási követelményeket. Alapértelmezés szerint az Azure-ügyfelek adatai szolgáltatás által kezelt kulcsokkal vannak titkosítva. Az ügyfél által kezelt kulcsokra (CMK) azonban általában szükség van a jogszabályi megfelelőségi szabványoknak való megfeleléshez. A CMK-k az Ön által létrehozott Azure Key Vault [kulcsokkal](../key-vault/general/overview.md) titkosítják az adatokat. Ez teljes körű vezérlést és felelősséget biztosít a kulcs életciklusa felett, beleértve a rotációt és a felügyeletet is.
 
-Azure Security Center biztonsági vezérlői a kapcsolódó biztonsági javaslatok logikai csoportjai, és tükrözik a sebezhető támadási felületeket. Minden vezérlő a biztonsági pontszámhoz hozzáadható pontok maximális számával rendelkezik, ha a vezérlőben felsorolt összes javaslatot helyreigazító javaslatokat tesz az összes erőforráshoz. Az **Ajánlott biztonsági eljárások megvalósítása** biztonsági vezérlő nulla pontot ér. Így a vezérlő javaslatai nincsenek hatással a biztonsági pontszámra.
+Azure Security Center biztonsági vezérlői a kapcsolódó biztonsági javaslatok logikai csoportjai, és tükrözik a sebezhető támadási felületet. Minden vezérlő a biztonsági pontszámhoz hozzáadható pontok maximális számával rendelkezik, ha a vezérlőben felsorolt összes javaslatot az összes erőforrásra vonatkozóan orvosolja. Az **Ajánlott biztonsági eljárások megvalósítása biztonsági** vezérlő nulla pontot ér. Tehát a vezérlő javaslatai nincsenek hatással a biztonsági pontszámra.
 
 Az alább felsorolt javaslatok átkerülnek az Ajánlott biztonsági eljárások megvalósítása biztonsági vezérlőbe, hogy jobban tükrözzék igényüket.  Ez az áthelyezés biztosítja, hogy ezek a javaslatok a legmegfelelőbben szabályozhatóak a célkitűzésük elérése érdekében.
 
@@ -113,12 +128,12 @@ Az Azure Defender felsorolt riasztások elavultak.
     | ARM_MicroBurstRunbook    | ELŐZETES VERZIÓ – A rendszer a "Get-AzurePasswords" függvény futtatását észlelte a MicroBurst eszközkészletben  |
     |                          |                                                                          |
 
-- Ez a kilenc riasztás egy már Azure Active Directory Identity Protection összekötőhöz (IPC) kapcsolódik:
+- Ez a kilenc riasztás egy már elavult Azure Active Directory Identity Protection összekötőhöz (IPC) kapcsolódik:
 
     | AlertType (Riasztástípus)           | AlertDisplayName              |
     |---------------------|-------------------------------|
     | UnfamiliarLocation (Ismeretlen hely)  | Szokatlan bejelentkezési tulajdonságok |
-    | AnonymousLogin (Névtelen bejelentkezés)      | Névtelen IP-cím          |
+    | AnonymousLogin      | Névtelen IP-cím          |
     | InfectedDeviceLogin (InfectedDeviceLogin) | kártevő szoftverrel összekapcsolt IP-cím     |
     | ImpossibleTravel    | Szokatlan utazás               |
     | MaliciousIP         | rosszindulatú IP-cím          |
@@ -129,7 +144,7 @@ Az Azure Defender felsorolt riasztások elavultak.
     |                     |                               |
  
     > [!TIP]
-    > Ez a kilenc IPC-riasztás soha nem Security Center riasztásokat. Ezek az Azure Active Directory (AAD) Identity Protection-összekötő (IPC) részei, amely a Security Center. Az elmúlt két évben csak azok az ügyfelek kapták meg ezeket a riasztásokat, amelyek 2019-ben vagy korábban konfigurálták az exportálást (az összekötőből az ASC-be). Az AAD IPC továbbra is a saját riasztási rendszerében mutatja ezeket, és továbbra is elérhetők a Azure Sentinel. Az egyetlen változás az, hogy már nem jelennek meg a Security Center.
+    > Ez a kilenc IPC-riasztás soha nem Security Center riasztásokat. A Azure Active Directory (AAD) Identity Protection-összekötő (IPC) részét Security Center. Az elmúlt két évben csak azok az ügyfelek láthatták ezeket a riasztásokat, amelyek 2019-ben vagy korábban konfigurálták az exportálást (az összekötőből az ASC-be). Az AAD IPC továbbra is a saját riasztási rendszerében mutatja őket, és továbbra is elérhetők a Azure Sentinel. Az egyetlen változás az, hogy már nem jelennek meg a Security Center.
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-were-deprecated"></a>A "Rendszerfrissítések alkalmazása" biztonsági vezérlő két ajánlása elavult 
 
@@ -141,6 +156,10 @@ Az alábbi két javaslat elavult, és a módosítások a biztonsági pontszámra
 Javasoljuk, hogy ellenőrizze a folyamatos exportálási és munkafolyamat-automatizálási konfigurációkat annak ellenőrzésére, hogy ezek a javaslatok szerepelnek-e bennük. Emellett az ezeket használó irányítópultokat vagy más figyelési eszközöket is ennek megfelelően kell frissíteni.
 
 Ezekről a javaslatokról a biztonsági javaslatok [referenciaoldalán olvashat bővebben.](recommendations-reference.md)
+
+### <a name="azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard"></a>Azure Defender sql on machine csempe eltávolítása az Azure Defender irányítópultról
+
+Az Azure Defender irányítópult lefedettségi területe a környezetéhez kapcsolódó Azure Defender csempéket tartalmaz. A védett és nem védett erőforrások számáról szóló jelentéskészítési probléma miatt úgy döntöttünk, hogy a probléma megoldásáig ideiglenesen eltávolítjuk a **Azure Defender for SQL** erőforrás-lefedettségi állapotát a gépeken.
 
 
 ## <a name="march-2021"></a>2021. március
@@ -154,7 +173,7 @@ A márciusi frissítések a következők:
 - [A javaslati adatok a "Explore in ARG Azure Resource Graph" (Feltárás az ARG-ban)](#recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg)
 - [A munkafolyamat-automatizálás üzembe helyezésére vonatkozó szabályzatok frissítései](#updates-to-the-policies-for-deploying-workflow-automation)
 - [Két örökölt javaslat már nem ír adatokat közvetlenül az Azure-tevékenységnaplóba](#two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log)
-- [A Javaslatok lap fejlesztései](#recommendations-page-enhancements)
+- [Javaslatok oldal fejlesztései](#recommendations-page-enhancements)
 
 
 ### <a name="azure-firewall-management-integrated-into-security-center"></a>Azure Firewall beépített Security Center
@@ -172,7 +191,7 @@ Erről az irányítópultról további Azure Security Center [áttekintési olda
 
 ### <a name="sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview"></a>Az SQL sebezhetőségi felmérése mostantól tartalmazza a "Szabály letiltása" (előzetes verzió) élményt
 
-Security Center beépített biztonsági rések vizsgálatával felderítheti, nyomon követheti és orvosolhatja az adatbázisok lehetséges biztonsági réseit. Az értékelési vizsgálatok eredményei áttekintést nyújtanak az SQL-gépek biztonsági állapotáról és a biztonsági eredmények részleteiről.
+Security Center beépített biztonsági rések vizsgálatával felderítheti, nyomon követheti és orvosolhatja az adatbázisok lehetséges biztonsági réseit. Az értékelési vizsgálatok eredményei áttekintést nyújtanak az SQL-gépek biztonsági állapotáról és az esetleges biztonsági eredményekről.
 
 Ha a cégnek nem kell megtalálnia, hanem figyelmen kívül kell hagynia azt, és nem kell orvosolni, letilthatja. A letiltott eredmények nem befolyásolják a biztonsági pontszámot vagy nem kívánt zajt generálnak.
 
@@ -184,7 +203,7 @@ További információ: [Egyes eredmények letiltása.](defender-for-sql-on-machi
 
 Az Ignite 2021. tavaszi részeként bejelentettük a Azure Monitor-munkafüzetek integrált felhasználói Security Center.
 
-Az új integráció segítségével használatba is kezdheti a használatra elérhető sablonokat a Security Center katalógusából. A munkafüzetsablonok használatával dinamikus és vizuális jelentéseket is kiépíthet, amelyek nyomon követik a szervezet biztonsági környezetét. Emellett új munkafüzeteket hozhat létre az Security Center-adatok vagy bármely más támogatott adattípus alapján, és gyorsan üzembe helyezhet közösségi munkafüzeteket Security Center GitHub-közösségből.
+Az új integráció segítségével használatba is kezdheti a használatra elérhető sablonokat a Security Center katalógusából. A munkafüzetsablonok használatával dinamikus és vizuális jelentéseket is készíthet, amelyek nyomon követik a szervezet biztonsági környezetét. Emellett új munkafüzeteket hozhat létre az Security Center-adatok vagy bármely más támogatott adattípus alapján, és gyorsan üzembe helyezhet közösségi munkafüzeteket Security Center GitHub-közösségből.
 
 Három sablonjelentés áll rendelkezésre:
 
@@ -283,19 +302,19 @@ Februári frissítések a következők:
 - [A Kubernetes számítási feladatok védelmére vonatkozó javaslatok általánosan elérhető (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
 - [A Microsoft Defender az Azure Defender támogatja a Windows Server 2019-et és a Windows 10 Virtual Desktopot (WVD) (előzetes verzió)](#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-in-preview)
 - [Szabályzatra mutató közvetlen hivatkozás a javaslat részleteit tartalmazó oldalon](#direct-link-to-policy-from-recommendation-details-page)
-- [Az SQL-adatbesorolásra vonatkozó javaslat már nincs hatással a biztonsági pontszámra](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
+- [Az SQL-adatbesorolási javaslat már nincs hatással a biztonsági pontszámra](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
 - [A munkafolyamat-automatizálást a jogszabályi megfelelési értékelések változásai aktiválják (előzetes verzióban)](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-in-preview)
 - [Az eszközleltár oldalának fejlesztései](#asset-inventory-page-enhancements)
 
 
 ### <a name="new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga"></a>Új biztonsági riasztások lap a Azure Portal általánosan elérhető (GA) számára
 
-Azure Security Center biztonsági riasztások lapját úgy átalakítottuk, hogy a következő adatokat biztosítják:
+Azure Security Center biztonsági riasztások lapját a következő tervezéssel lett áttervezve:
 
 - **Továbbfejlesztett osztályozási** élmény a riasztások számára – segít csökkenteni a riasztások elszennyedtségét és a legfontosabb fenyegetésekre való összpontosítást. A lista testre szabható szűrőket és csoportosítási lehetőségeket tartalmaz.
 - **További információ a riasztások listájában** – például MITRE ATT&ACK-taktikák.
 - **A mintariasztásokat** létrehozására Azure Defender és a riasztások tesztelésére. konfiguráció (SIEM-integrációhoz, e-mail-értesítésekhez és munkafolyamat-automatizáláshoz), mintariasztásokat hozhat létre az összes Azure Defender tervből.
-- **Igazodás Azure Sentinel** az incidensek felhasználói élményével – a mindkét terméket használatba vevő ügyfelek számára a váltás mostantól egyszerűbb, és könnyű egymástól tanulni.
+- **Igazodás Azure Sentinel** az incidensek élményével – a mindkét terméket használatba vevő ügyfelek számára a váltás már egyszerűbb folyamat, és könnyű egymástól tanulni.
 - **Nagyobb méretű riasztáslisták** jobb teljesítménye.
 - **Navigálás billentyűzettel** a riasztások listájában.
 - **Riasztások a Azure Resource Graph** – az összes erőforrásához Azure Resource Graph Kusto-hez hasonló API-ban is lekérdezhet riasztásokat. Ez akkor is hasznos, ha saját riasztási irányítópultokat épít. [További információ a Azure Resource Graph.](../governance/resource-graph/index.yml)
@@ -324,7 +343,7 @@ További információ: A Számítási feladatok védelme – ajánlott [eljárá
 
 A Microsoft Defender for Endpoint egy holisztikus, felhőben elérhető végpontbiztonsági megoldás. Kockázatalapú biztonsági rések kezelését és értékelését, valamint végpontészlelést és -választ (EDR) biztosít. A Defender for Endpoint és a Azure Security Center együttes használatának előnyeinek teljes listájáért lásd: A végpontok védelme az Security Center integrált [EDR-megoldásával: Microsoft Defender végponthoz.](security-center-wdatp.md)
 
-Ha engedélyezi a Azure Defender windowsos kiszolgálókon, a csomag tartalmazza a Defender for Endpoint licencét. Ha már engedélyezte a Azure Defender számára a kiszolgálókhoz, és windows 2019-kiszolgálókkal rendelkezik az előfizetésében, a rendszer ezzel a frissítéssel automatikusan megkapja a Defender for Endpoint szolgáltatást. Nincs szükség manuális műveletre. 
+Ha engedélyezi a Azure Defender windowsos kiszolgálókon, a csomag tartalmazza a Defender for Endpoint licencét. Ha már engedélyezte a Azure Defender számára a kiszolgálókhoz, és Windows 2019-kiszolgálókkal rendelkezik az előfizetésében, a rendszer ezzel a frissítéssel automatikusan megkapja a Defendert a végponthoz. Nincs szükség manuális műveletre. 
 
 A támogatás mostantól a Windows Server 2019-re és a Windows Virtual Desktop [(WVD)](../virtual-desktop/overview.md)is kiterjed.
 
@@ -333,7 +352,7 @@ A támogatás mostantól a Windows Server 2019-re és a Windows Virtual Desktop 
 
 ### <a name="direct-link-to-policy-from-recommendation-details-page"></a>Szabályzatra mutató közvetlen hivatkozás a javaslat részleteit tartalmazó lapon
 
-Egy javaslat részleteinek áttekintésekor gyakran hasznos lehet a mögöttes szabályzat megtekintése. A szabályzatok által támogatott összes javaslathoz új hivatkozás található a javaslat részleteit tartalmazó oldalon:
+Egy javaslat részleteinek áttekintésekor gyakran hasznos lehet a mögöttes szabályzat megtekintése. Minden szabályzat által támogatott javaslathoz új hivatkozás található a javaslat részleteit tartalmazó oldalon:
 
 :::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="Hivatkozás Azure Policy javaslatot támogató adott szabályzat lapjára":::
 
@@ -344,8 +363,8 @@ Ha áttekinti a biztonsági javaslatok referencia-útmutatójában található j
 :::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Egy adott szabályzat Azure Policy oldalának elérése közvetlenül a Azure Security Center javaslatok referenciaoldalán" lightbox="media/release-notes/view-policy-definition-from-documentation.png":::
 
 
-### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>Az SQL-adatbesorolásra vonatkozó javaslat már nincs hatással a biztonsági pontszámra
-A bizalmas **adatok SQL-adatbázisokban** való besorolása már nem befolyásolja a biztonsági pontszámot. Ez az egyetlen javaslat  az Adatbesorolási biztonsági vezérlő alkalmazása alatt, így a vezérlő biztonsági pontszáma mostantól 0.
+### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>Az SQL-adatbesorolási javaslat már nincs hatással a biztonsági pontszámra
+A bizalmas **adatok SQL-adatbázisokban** való besorolása a továbbiakban nem befolyásolja a biztonsági pontszámot. Ez az egyetlen javaslat  az Adatbesorolási biztonsági vezérlő alkalmazása alatt, így a vezérlő biztonsági pontszáma mostantól 0.
 
 Az egyes Security Center biztonsági vezérlőinek teljes listáját és azok pontszámait, valamint az egyes ajánlások listáját a Biztonsági vezérlők és a javaslatok [között talál.](secure-score-security-controls.md#security-controls-and-their-recommendations)
 
@@ -446,7 +465,7 @@ További információ a biztonsági pontszámról és a biztonsági [vezérlőkr
 
 ### <a name="secure-score-api-is-released-for-general-availability-ga"></a>Megjelent a Biztonsági pontszám API az általánosan elérhető (GA) verzióhoz
 
-Most már elérheti a pontszámát a [biztonsági pontszám API-n keresztül.](/rest/api/securitycenter/securescores/) Az API-metódusokkal rugalmasan lekérdezheti az adatokat, és saját jelentéskészítési mechanizmust építhet ki a biztonsági pontszámok alapján. Például:
+Most már elérheti a pontszámát a [biztonsági pontszám API-n keresztül.](/rest/api/securitycenter/securescores/) Az API-metódusok rugalmasan lekérdezik az adatokat, és saját jelentéskészítési mechanizmust hoznak létre a biztonsági pontszámok alapján. Például:
 
 - a **Secure Scores** API-val lekért pontszám egy adott előfizetéshez
 - A Secure **Score Controls** API használatával listába foglalhatja az előfizetések biztonsági vezérlőit és aktuális pontszámát
@@ -539,7 +558,7 @@ A teljesítményteszt lefedettségének növelése érdekében az alábbi 35 el�
 | Ajánlott biztonsági eljárások megvalósítása    | – Az előfizetések biztonsági problémák esetén egy kapcsolattartási e-mail-címmel kell, hogy rendelkezik<br> – Engedélyezni kell a Log Analytics-ügynök automatikus kiépítését az előfizetésben<br> – Engedélyezni kell a nagy súlyosságú riasztások e-mailes értesítését<br> – Engedélyezni kell a nagy súlyosságú riasztások e-mailes értesítését az előfizetés tulajdonosának<br> – A kulcstartókban engedélyezni kell a véglegesen kiürítés elleni védelmet<br> – A kulcstartókban engedélyezni kell a soft delete parancsot |
 | Hozzáférés és engedélyek kezelése        | – A függvényalkalmazásokban engedélyezni kell az "Ügyféltanúsítványok (bejövő ügyféltanúsítványok)" beállítást |
 | Alkalmazások védelme DDoS-támadásokkal szemben | – Web Application Firewall (WAF) számára engedélyezni kell a Application Gateway<br> – Web Application Firewall (WAF) számára engedélyezni kell az Azure Front Door Service szolgáltatást |
-| Jogosulatlan hálózati hozzáférés korlátozása | – A tűzfalat engedélyezni kell a Key Vault<br> – A privát végpontot konfigurálni kell a Key Vault<br> – App Configuration használjon privát hivatkozást<br> – Azure Cache for Redis virtuális hálózaton belül kell lennie<br> – Azure Event Grid tartománynak privát kapcsolatot kell használnia<br> – Azure Event Grid témaköröknek privát hivatkozást kell használniuk<br> – Azure Machine Learning munkaterületnek privát hivatkozást kell használnia<br> – Azure SignalR Service kapcsolat használata<br> – Azure Spring Cloud használjon hálózati injektálást<br> – A tárolóregisztrálók nem engedélyezhetik a korlátlan hálózati hozzáférést<br> – A tárolóregisztrálóknak privát kapcsolatot kell használniuk<br> – A MariaDB-kiszolgálók nyilvános hálózati hozzáférését le kell tiltani<br> – A nyilvános hálózati hozzáférést le kell tiltani a MySQL-kiszolgálókon<br> – A PostgreSQL-kiszolgálók nyilvános hálózati hozzáférését le kell tiltani<br> – A tárfióknak privát kapcsolati kapcsolatot kell használnia<br> – A tárfiókok virtuális hálózati szabályokkal korlátozzák a hálózati hozzáférést<br> – A virtuálisgép Image Builder sablonnak privát hivatkozást kell használnia|
+| Jogosulatlan hálózati hozzáférés korlátozása | – A tűzfalat engedélyezni kell a Key Vault<br> – A privát végpontot konfigurálni kell a Key Vault<br> – App Configuration használjon privát hivatkozást<br> – Azure Cache for Redis virtuális hálózaton belül kell lennie<br> – Azure Event Grid tartománynak privát kapcsolatot kell használnia<br> – Azure Event Grid témaköröknek privát hivatkozást kell használniuk<br> – Azure Machine Learning munkaterületnek privát hivatkozást kell használnia<br> – Azure SignalR Service kapcsolat használata<br> – Azure Spring Cloud használjon hálózati injektálást<br> – A tárolóregisztrálók nem engedélyezhetik a korlátlan hálózati hozzáférést<br> – A tárolóregisztrálóknak privát kapcsolatot kell használniuk<br> – Le kell tiltani a nyilvános hálózati hozzáférést a MariaDB-kiszolgálókhoz<br> – A nyilvános hálózati hozzáférést le kell tiltani a MySQL-kiszolgálókon<br> – A PostgreSQL-kiszolgálók nyilvános hálózati hozzáférését le kell tiltani<br> – A tárfióknak privát kapcsolati kapcsolatot kell használnia<br> – A tárfiókok virtuális hálózati szabályokkal korlátozzák a hálózati hozzáférést<br> – A virtuálisgép Image Builder sablonnak privát hivatkozást kell használnia|
 |                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 Kapcsolódó hivatkozások:
@@ -598,7 +617,7 @@ A decemberi frissítések a következők:
 - [Az eszközleltár eszközei és szűrői frissültek](#asset-inventory-tools-and-filters-updated)
 - [Az SSL-tanúsítványokat kérő webalkalmazásokra vonatkozó javaslat már nem része a biztonsági pontszámnak](#recommendation-about-web-apps-requesting-ssl-certificates-no-longer-part-of-secure-score)
 - [A Javaslatok lap új szűrőket tartalmaz a környezethez, a súlyossághoz és az elérhető válaszokhoz](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)
-- [A folyamatos exportálás új adattípusokat és továbbfejlesztett üzembe helyezési szabályzatokat kap](#continuous-export-gets-new-data-types-and-improved-deployifnotexist-policies)
+- [A folyamatos exportálás új adattípusokat és továbbfejlesztett üzembe helyezésimegjegyzési szabályzatokat kap](#continuous-export-gets-new-data-types-and-improved-deployifnotexist-policies)
 
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>Azure Defender sql-kiszolgálók általánosan elérhetőek a gépeken
@@ -626,9 +645,9 @@ Azure Synapse Analytics (korábban SQL DW) egy elemzési szolgáltatás, amely e
 Azure Defender SQL-hez való használata a következőkkel védi a dedikált SQL-készleteket:
 
 - **Komplex veszélyforrások elleni védelem** a fenyegetések és támadások észlelésére 
-- **Biztonsági rések felmérésére vonatkozó** képességek a hibás biztonsági konfigurációk azonosításához és orvoslásához
+- **Biztonsági rések felmérési képességei** a hibás biztonsági konfigurációk azonosításához és orvoslásához
 
-Azure Defender SQL sql-támogatásához a Azure Synapse Analytics SQL-készletek automatikusan hozzá vannak adva a Azure SQL adatbáziscsomaghoz a Azure Security Center. A Synapse-munkaterület oldalának új "SQL-Azure Defender" lapját fogja Azure Portal.
+Azure Defender SQL sql-támogatásához a Azure Synapse Analytics SQL-készletek automatikusan hozzá vannak adva a Azure SQL adatbáziscsomaghoz a Azure Security Center. A Synapse-munkaterület oldalán új "SQL-Azure Defender" lapot fog találni a Azure Portal.
 
 További információ az [SQL Azure Defender való használatával kapcsolatban.](defender-for-sql-introduction.md)
 
@@ -659,7 +678,7 @@ Ezek az új védelmi funkciók jelentősen növelik a fenyegetést védő aknák
 
 ### <a name="new-security-alerts-page-in-the-azure-portal-preview"></a>Új biztonsági riasztások lap a Azure Portal (előzetes verzió)
 
-Azure Security Center biztonsági riasztások lapját úgy átalakítottuk, hogy a következő adatokat biztosítják:
+Azure Security Center biztonsági riasztások lapját a következő tervezéssel lett áttervezve:
 
 - **Továbbfejlesztett osztályozási** élmény a riasztások számára – segít csökkenteni a riasztások elszennyedtségét és a legfontosabb fenyegetésekre való összpontosítást. A lista testre szabható szűrőket és csoportosítási lehetőségeket tartalmaz
 - **További információ a riasztások listájában** – például MITRE ATT&ACK-taktikák
@@ -681,17 +700,17 @@ Mintariasztásokat az új riasztások felhasználói élményében a Mintariaszt
 Az Security Center sql-hez való hozzáférés a következő szolgáltatásokhoz biztosít hozzáférést Security Center és Azure Defender SQL-funkciókhoz:
 
 - **Biztonsági javaslatok** – Security Center rendszeresen elemzi az összes csatlakoztatott Azure-erőforrás biztonsági állapotát a lehetséges biztonsági konfigurációk azonosítása érdekében. Ezután javaslatokat tesz a biztonsági rések orvoslása és a szervezetek biztonsági javítására.
-- **Biztonsági riasztások** – Egy észlelési szolgáltatás, amely folyamatosan figyeli a Azure SQL, például az SQL-injektálást, a találgatásos támadásokat és a jogosultságokkal való visszaélést. Ez a szolgáltatás részletes és műveletorientált biztonsági riasztásokat aktivál a Security Center-ban, és lehetőségeket biztosít a Azure Sentinel, a Microsoft natív SIEM-megoldásával végzett vizsgálatok folytatására.
-- **Eredmények –** Egy biztonsági rések felmérésére alkalmas szolgáltatás, amely folyamatosan figyeli Azure SQL konfigurációit, és segít a biztonsági rések megoldásában. Az értékelési vizsgálatok áttekintést nyújtanak a Azure SQL biztonsági Azure SQL részletes biztonsági eredményekkel együtt.     
+- **Biztonsági riasztások** – Egy észlelési szolgáltatás, amely folyamatosan figyeli a Azure SQL, például az SQL-injektálást, a találgatásos támadásokat és a jogosultságokkal való visszaélést. Ez a szolgáltatás részletes és műveletorientált biztonsági riasztásokat aktivál a Security Center-ban, és lehetőségeket biztosít a Azure Sentinel, a Microsoft azure-natív SIEM-megoldásával végzett vizsgálatok folytatására.
+- **Eredmények –** Egy biztonsági rések felmérésére alkalmas szolgáltatás, amely folyamatosan figyeli Azure SQL konfigurációit, és segít a biztonsági rések megoldásában. Az értékelési vizsgálatok áttekintést nyújtanak Azure SQL biztonsági Azure SQL részletes biztonsági eredményekkel együtt.     
 
-:::image type="content" source="media/release-notes/azure-security-center-experience-in-sql.png" alt-text="Azure Security Center SQL-hez elérhető biztonsági funkciói a Azure SQL":::
+:::image type="content" source="media/release-notes/azure-security-center-experience-in-sql.png" alt-text="Azure Security Center SQL biztonsági funkciói a szolgáltatáson belül Azure SQL":::
 
 
 ### <a name="asset-inventory-tools-and-filters-updated"></a>Az eszközleltár eszközei és szűrői frissültek
 
-A leltárlap Azure Security Center a következő módosításokkal frissült:
+A Azure Security Center a következő módosításokkal frissült:
 
-- **Az eszköztárhoz hozzáadott** útmutatók és visszajelzések. Ez megnyit egy panelt, amely a kapcsolódó információkra és eszközökre mutató hivatkozásokat tartalmaz. 
+- **Útmutatók és visszajelzések** az eszköztárhoz adva. Ez megnyit egy panelt, amely a kapcsolódó információkra és eszközökre mutató hivatkozásokat tartalmaz. 
 - **Az előfizetések szűrője** hozzá van adva az erőforrásokhoz elérhető alapértelmezett szűrőkhöz.
 - **Nyisson meg** egy lekérdezési hivatkozást, amely megnyitja az aktuális szűrési beállításokat Azure Resource Graph lekérdezésként (korábbi nevén "Megtekintés az erőforrás-gráfkezelőben").
 - **Az egyes szűrők** operátori beállításai. Mostantól a "=" helyett több logikai operátor közül is választhat. Előfordulhat például, hogy meg szeretné találni az összes olyan aktív javaslatokkal rendelkezik erőforrást, amelynek a címe tartalmazza az "encrypt" sztringet. 
@@ -745,7 +764,7 @@ Ezeket az eszközöket a következő módokon bővítettük és bővítettük:
 
 - **A folyamatos exportálás deployifnotexist szabályzata továbbfejlesztett**. A szabályzatok most:
 
-    - **Ellenőrizze, hogy a konfiguráció engedélyezve van-e.** Ha nem, a szabályzat nem megfelelőként fog mutatni, és létrehoz egy megfelelő erőforrást. További információ a Azure Policy sablonjairól: "Nagy léptékű üzembe helyezés Azure Policy lapon" A folyamatos [exportálás beállítása.](continuous-export.md#set-up-a-continuous-export)
+    - **Ellenőrizze, hogy a konfiguráció engedélyezve van-e.** Ha nem, a szabályzat nem megfelelőként fog mutatni, és létrehoz egy megfelelő erőforrást. További információ a Azure Policy sablonjairól: "Üzembe helyezés nagy méretben Azure Policy lapon" A folyamatos [exportálás beállítása.](continuous-export.md#set-up-a-continuous-export)
 
     - **Biztonsági eredmények exportálásának támogatása.** A sablonsablonok Azure Policy a folyamatos exportálást úgy konfigurálhatja, hogy tartalmazza az eredményeket. Ez akkor releváns, ha olyan javaslatokat exportál, amelyek "sub" javaslatokkal is szolgálnak, például a biztonsági rések felmérésére vonatkozó ellenőrzők eredményei vagy a "Rendszerfrissítések telepítve kell a gépekre" "szülő" javaslat adott rendszerfrissítései.
     
@@ -760,7 +779,7 @@ Ezeket az eszközöket a következő módokon bővítettük és bővítettük:
 
 Novemberi frissítések többek között a következők:
 
-- [29 előzetes verzióra vonatkozó javaslat hozzáadva az Azure biztonsági teljesítményteszt lefedettségének növeléséhez](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
+- [29 előzetes verzióra vonatkozó javaslat az Azure biztonsági teljesítményteszt lefedettségének növelése érdekében](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
 - [NIST SP 800 171 R2 hozzáadva Security Center megfelelőségi irányítópultjához](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
 - [A javaslatok listája már szűrőket is tartalmaz](#recommendations-list-now-includes-filters)
 - [Továbbfejlesztett és bővített automatikus kiépítési élmény](#auto-provisioning-experience-improved-and-expanded)
@@ -780,9 +799,9 @@ Az előzetes verzióra vonatkozó javaslatok nem renderelik az erőforrásokat n
 |--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Átvitel közbeni adatok titkosítása              | – Az SSL-kapcsolat kényszerítését engedélyezni kell a PostgreSQL-adatbáziskiszolgálókhoz<br>– Engedélyezni kell az SSL-kapcsolat kényszerítését a MySQL-adatbáziskiszolgálókhoz<br>– A TLS-t frissíteni kell az API-alkalmazás legújabb verziójára<br>– A TLS-t frissíteni kell a függvényalkalmazás legújabb verziójára<br>– A TLS-t frissíteni kell a webalkalmazás legújabb verziójára<br>– AZ FTPS-t kötelező megadni az API-alkalmazásban<br>– FtpS-re van szükség a függvényalkalmazásban<br>– A webalkalmazásban FTPS-re van szükség                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | Hozzáférés és engedélyek kezelése        | – A webalkalmazásnak SSL-tanúsítványt kell igényelni minden bejövő kéréshez<br>– A felügyelt identitást az API-alkalmazásban kell használni<br>– A felügyelt identitást a függvényalkalmazásban kell használni<br>– A felügyelt identitást a webalkalmazásban kell használni                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| Jogosulatlan hálózati hozzáférés korlátozása | – A privát végpontot engedélyezni kell a PostgreSQL-kiszolgálókhoz<br>– A privát végpontot engedélyezni kell a MariaDB-kiszolgálókhoz<br>– A privát végpontot engedélyezni kell a MySQL-kiszolgálókhoz                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| Jogosulatlan hálózati hozzáférés korlátozása | – A privát végpontot engedélyezni kell a PostgreSQL-kiszolgálókhoz<br>– A privát végpontot engedélyezni kell a MariaDB-kiszolgálókhoz<br>– Engedélyezni kell a privát végpontot a MySQL-kiszolgálókhoz                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | Naplózás és naplózás engedélyezése          | – A diagnosztikai naplókat App Services engedélyezni kell                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| Ajánlott biztonsági eljárások megvalósítása    | – Azure Backup engedélyezni kell a virtuális gépekhez<br>– A georedundáns biztonsági mentést engedélyezni kell a Azure Database for MariaDB<br>– A georedundáns biztonsági mentést engedélyezni kell a Azure Database for MySQL<br>– A georedundáns biztonsági mentést engedélyezni kell a Azure Database for PostgreSQL<br>– A PHP-t frissíteni kell az API-alkalmazás legújabb verziójára<br>– A PHP-t frissíteni kell a webalkalmazás legújabb verziójára<br>– A Java-t frissíteni kell az API-alkalmazás legújabb verziójára<br>– A Java-t frissíteni kell a függvényalkalmazás legújabb verziójára<br>– A Java-t frissíteni kell a webalkalmazás legújabb verziójára<br>– A Pythont frissíteni kell az API-alkalmazás legújabb verziójára<br>– A Pythont frissíteni kell a függvényalkalmazás legújabb verziójára<br>– A Pythont frissíteni kell a webalkalmazás legújabb verziójára<br>– Az SQL-kiszolgálók naplózási megőrzését legalább 90 napra kell állítani |
+| Ajánlott biztonsági eljárások megvalósítása    | – Azure Backup virtuális gépeken engedélyezni kell a virtuális gépeket<br>– A georedundáns biztonsági mentést engedélyezni kell a Azure Database for MariaDB<br>– A georedundáns biztonsági mentést engedélyezni kell a Azure Database for MySQL<br>– A georedundáns biztonsági mentést engedélyezni kell a Azure Database for PostgreSQL<br>– A PHP-t frissíteni kell az API-alkalmazás legújabb verziójára<br>– A PHP-t frissíteni kell a webalkalmazás legújabb verziójára<br>– A Java-t frissíteni kell az API-alkalmazás legújabb verziójára<br>– A Java-t frissíteni kell a függvényalkalmazás legújabb verziójára<br>– A Java-t frissíteni kell a webalkalmazás legújabb verziójára<br>– A Pythont frissíteni kell az API-alkalmazás legújabb verziójára<br>– A Pythont frissíteni kell a függvényalkalmazás legújabb verziójára<br>– A Pythont frissíteni kell a webalkalmazás legújabb verziójára<br>– Az SQL-kiszolgálók naplózási megőrzését legalább 90 napra kell állítani |
 |                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 Kapcsolódó hivatkozások:
@@ -822,7 +841,7 @@ Most már számos feltételnek megfelelően szűrheti a biztonsági javaslatok l
 
 Az automatikus kiépítési funkció segít csökkenteni a felügyeleti terhelést azáltal, hogy a szükséges bővítményeket új – és meglévő – Azure-beli virtuális gépekre telepíti, hogy kihasználják a Security Center által védelmet. 
 
-A Azure Security Center növekedésével egyre több bővítményt fejlesztettek ki, és Security Center az erőforrástípusok nagyobb listáját figyelheti. Az automatikus kiépítési eszközök mostantól ki vannak bővítve, hogy más bővítményeket és erőforrástípusokat is támogassanak a Azure Policy.
+A Azure Security Center növekedésével egyre több bővítményt fejlesztettek ki, és Security Center az erőforrástípusok nagyobb listáját figyelheti. Az automatikus kiépítési eszközök mostantól más bővítmények és erőforrástípusok támogatására is kibővültek a szolgáltatás Azure Policy.
 
 Most már konfigurálhatja a következő automatikus kiépítést:
 

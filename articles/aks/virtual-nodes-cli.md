@@ -1,37 +1,37 @@
 ---
-title: Virtuális csomópontok létrehozása az Azure CLI-vel
+title: Virtuális csomópontok létrehozása az Azure CLI használatával
 titleSuffix: Azure Kubernetes Service
-description: Ismerje meg, hogyan használhatja az Azure CLI-t olyan Azure Kubernetes Services-(ak-) fürt létrehozásához, amely virtuális csomópontokat használ a hüvelyek futtatásához.
+description: Megtudhatja, hogyan hozhat létre az Azure CLI használatával olyan Azure Kubernetes Services- (AKS-) fürtöt, amely virtuális csomópontokat használ podok futtatásához.
 services: container-service
 ms.topic: conceptual
 ms.date: 03/16/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 1c673cae41fcbd3d54aa9b4062dd030ace9f0767
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 86f1d8923eea961471883c44168c4fa848ac12d1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577801"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769282"
 ---
-# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure Kubernetes Services (ak) fürt létrehozása és konfigurálása virtuális csomópontok használatára az Azure CLI használatával
+# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure Kubernetes Services- (AKS-) fürt létrehozása és konfigurálása virtuális csomópontok használatára az Azure CLI használatával
 
-Ez a cikk bemutatja, hogyan hozhatja létre és konfigurálhatja a virtuális hálózati erőforrásokat és az AK-fürtöt az Azure CLI használatával, majd engedélyezheti a virtuális csomópontokat.
+Ez a cikk bemutatja, hogyan hozhatja létre és konfigurálhatja a virtuális hálózati erőforrásokat és az AKS-fürtöt az Azure CLI használatával, majd hogyan engedélyezheti a virtuális csomópontokat.
 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A virtuális csomópontok hálózati kommunikációt tesznek lehetővé Azure Container Instances (ACI) és az AK-fürtön futó hüvelyek között. A kommunikáció biztosításához létre kell hozni egy virtuális hálózati alhálózatot, és hozzá kell rendelni a delegált engedélyeket. A virtuális csomópontok csak a *speciális* hálózatkezelés (Azure CNI) használatával létrehozott AK-fürtökkel működnek. Alapértelmezés szerint az AK-fürtök *alapszintű* hálózatkezeléssel (kubenet) jönnek létre. Ebből a cikkből megtudhatja, hogyan hozhat létre virtuális hálózatot és alhálózatokat, majd helyezzen üzembe egy speciális hálózatkezelést használó AK-fürtöt.
+A virtuális csomópontok lehetővé teszik a hálózati kommunikációt a Azure Container Instances (ACI) és az AKS-fürtben futó podok között. A kommunikáció érdekében létrejön egy virtuális hálózat alhálózata, és hozzárendeli a delegált engedélyeket. A virtuális csomópontok csak a speciális  hálózat használatával létrehozott AKS-fürtökön működnek (Azure CNI). Alapértelmezés szerint az AKS-fürtök *alapszintű* hálózattal (kubenet) vannak létrehozva. Ez a cikk bemutatja, hogyan hozhat létre virtuális hálózatot és alhálózatokat, és hogyan helyezhet üzembe speciális hálózatokat használó AKS-fürtöt.
 
 > [!IMPORTANT]
-> Mielőtt virtuális csomópontokat használ az AK-val, tekintse át az [AK virtuális csomópontok korlátozásait][virtual-nodes-aks] és az [ACI virtuális hálózati korlátozásait][virtual-nodes-networking-aci]. Ezek a korlátozások az AK-fürt és a virtuális csomópontok helyét, hálózati konfigurációját és egyéb konfigurációs adatait érintik.
+> Mielőtt virtuális csomópontokat használ az AKS-sel, tekintse át az [AKS][virtual-nodes-aks] virtuális csomópontokra és az ACI virtuális hálózatra vonatkozó [korlátozását.][virtual-nodes-networking-aci] Ezek a korlátozások az AKS-fürt és a virtuális csomópontok helyét, hálózati konfigurációját és egyéb konfigurációs adatait is érintik.
 
-Ha korábban még nem használta az ACI-t, regisztrálja a szolgáltatót az előfizetésében. Az ACI-szolgáltató regisztrációjának állapotát az az [Provider List][az-provider-list] parancs használatával tekintheti meg, ahogy az az alábbi példában is látható:
+Ha korábban még nem használta az ACI-t, regisztrálja a szolgáltatót az előfizetésében. Az ACI-szolgáltató regisztrációjának állapotát az [az provider list][az-provider-list] paranccsal ellenőrizheti az alábbi példában látható módon:
 
 ```azurecli-interactive
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
 ```
 
-A *Microsoft. ContainerInstance* szolgáltatónak *regisztráltként* kell jelentenie, ahogy az alábbi példában is látható:
+A *Microsoft.ContainerInstance szolgáltatónak* Regisztráltként kell jelentenie, ahogyan az alábbi példakimenetben látható: 
 
 ```output
 Namespace                    RegistrationState    RegistrationPolicy
@@ -39,7 +39,7 @@ Namespace                    RegistrationState    RegistrationPolicy
 Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```
 
-Ha a szolgáltató *NotRegistered*-ként jelenik meg, regisztrálja a szolgáltatót az az [Provider Register][az-provider-register] paranccsal az alábbi példában látható módon:
+Ha a szolgáltató *NotRegistered*(Regisztrált) ként jelenik meg, regisztrálja a szolgáltatót [az az provider register használatával][az-provider-register] az alábbi példában látható módon:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
@@ -49,9 +49,9 @@ az provider register --namespace Microsoft.ContainerInstance
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta.
 
-A Cloud Shell megnyitásához válassza a **kipróbálás** elemet a kód jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/bash](https://shell.azure.com/bash) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A kód Cloud Shell a kódblokk jobb felső sarkában található Try **it** (Próbálja ki) lehetőséget. A böngészőlapot Cloud Shell böngészőlapon is elindíthatja a következő gombra: [https://shell.azure.com/bash](https://shell.azure.com/bash) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.49 vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
+Ha inkább helyileg szeretné telepíteni és használni a CLI-t, ehhez a cikkhez az Azure CLI 2.0.49-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -63,7 +63,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy virtuális hálózatot az az [Network vnet Create][az-network-vnet-create] paranccsal. A következő példában létrehozunk egy *myVnet* nevű virtuális hálózatot a *10.0.0.0/8*, valamint egy *myAKSSubnet* nevű alhálózatot. Ennek az alhálózatnak az alapértelmezett *10.240.0.0/16* előtagja:
+Hozzon létre egy virtuális hálózatot [az az network vnet create paranccsal.][az-network-vnet-create] Az alábbi példa egy *myVnet* nevű virtuális hálózatot hoz létre *a 10.0.0.0/8* címelőtaggal és egy *myAKSSubnet* nevű alhálózattal. Az alhálózat címelőtagja alapértelmezés szerint *a 10.240.0.0/16:*
 
 ```azurecli-interactive
 az network vnet create \
@@ -74,7 +74,7 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 ```
 
-Most hozzon létre egy további alhálózatot a virtuális csomópontok számára az az [Network vnet subnet Create][az-network-vnet-subnet-create] paranccsal. A következő példa létrehoz egy *myVirtualNodeSubnet* nevű alhálózatot a *10.241.0.0/16* előtaggal.
+Most hozzon létre egy további alhálózatot a virtuális csomópontokhoz [az az network vnet subnet create paranccsal.][az-network-vnet-subnet-create] A következő példa létrehoz egy *myVirtualNodeSubnet* nevű alhálózatot *a 10.241.0.0/16 címelőtaggal.*
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -84,9 +84,9 @@ az network vnet subnet create \
     --address-prefixes 10.241.0.0/16
 ```
 
-## <a name="create-a-service-principal-or-use-a-managed-identity"></a>Egyszerű szolgáltatásnév létrehozása vagy felügyelt identitás használata
+## <a name="create-a-service-principal-or-use-a-managed-identity"></a>Szolgáltatásnév létrehozása vagy felügyelt identitás használata
 
-Annak engedélyezéséhez, hogy egy AK-fürt más Azure-erőforrásokkal is működjön, a rendszer a fürt identitását használja. Ez a fürtkonfiguráció automatikusan létrehozható az Azure CLI vagy a portál használatával, vagy előre létrehozhat egyet, és további engedélyeket is hozzárendelhet. Alapértelmezés szerint a fürt identitása felügyelt identitás. További információ: [felügyelt identitások használata](use-managed-identity.md). A fürt identitását is használhatja egyszerű szolgáltatásnévként. A következő lépések bemutatják, hogyan lehet manuálisan létrehozni és hozzárendelni az egyszerű szolgáltatást a fürthöz.
+Ahhoz, hogy egy AKS-fürt kommunikálhat más Azure-erőforrásokkal, fürtidentitást használ. Ezt a fürtidentitást automatikusan létrehozhatja az Azure CLI vagy a portál, vagy létrehozhat egyet előre, és további engedélyeket rendelhet hozzá. Alapértelmezés szerint ez a fürtidentitás egy felügyelt identitás. További információ: [Felügyelt identitások használata.](use-managed-identity.md) Fürtidentitásként szolgáltatásnév is használható. A következő lépések azt mutatják be, hogyan hozhatja létre és rendelheti hozzá a szolgáltatásnév manuálisan a fürthöz.
 
 Hozzon létre egy szolgáltatásnevet az [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] paranccsal. A `--skip-assignment` paraméter korlátozza a további engedélyek hozzárendelését.
 
@@ -108,17 +108,17 @@ A kimenet a következő példához hasonló:
 
 Jegyezze fel az *appID* és a *password* értékét. A következő lépésekben szükség lesz ezekre az értékekre.
 
-## <a name="assign-permissions-to-the-virtual-network"></a>Engedélyek kiosztása a virtuális hálózathoz
+## <a name="assign-permissions-to-the-virtual-network"></a>Engedélyek hozzárendelése a virtuális hálózathoz
 
-Annak engedélyezéséhez, hogy a fürt használhassa és felügyelje a virtuális hálózatot, meg kell adnia a megfelelő jogosultságokat a hálózati erőforrások használatához.
+Ha engedélyeznie kell a fürt számára a virtuális hálózat használatát és kezelését, meg kell adnunk az AKS-szolgáltatásnévnek a megfelelő jogosultságokat a hálózati erőforrások használatára.
 
-Először szerezze be a virtuális hálózati erőforrás AZONOSÍTÓját az [az Network vnet show][az-network-vnet-show]paranccsal:
+Először szerezze be a virtuális hálózat erőforrás-azonosítóját [az az network vnet show használatával:][az-network-vnet-show]
 
 ```azurecli-interactive
 az network vnet show --resource-group myResourceGroup --name myVnet --query id -o tsv
 ```
 
-Ahhoz, hogy a virtuális hálózat használatára megfelelő hozzáférést biztosítson az AK-fürt számára, hozzon létre egy szerepkör-hozzárendelést az az [role hozzárendelés Create][az-role-assignment-create] paranccsal. Cserélje le az `<appId`> és `<vnetId>` helyőrzőket az előző két lépésben beszerzett értékekre.
+Ahhoz, hogy megfelelő hozzáférést adjon az AKS-fürtnek a virtuális hálózat használatára, hozzon létre egy szerepkör-hozzárendelést [az az role assignment create paranccsal.][az-role-assignment-create] Cserélje le az `<appId`> és `<vnetId>` helyőrzőket az előző két lépésben beszerzett értékekre.
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope <vnetId> --role Contributor
@@ -126,13 +126,13 @@ az role assignment create --assignee <appId> --scope <vnetId> --role Contributor
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
-Egy AK-fürtöt az előző lépésben létrehozott AK alhálózatba helyez üzembe. Az alhálózat AZONOSÍTÓjának lekérése az [az Network vnet subnet show][az-network-vnet-subnet-show]paranccsal:
+Üzembe helyez egy AKS-fürtöt az előző lépésben létrehozott AKS-alhálózaton. Az az network vnet subnet show használatával szerezze be [az alhálózat azonosítóját:][az-network-vnet-subnet-show]
 
 ```azurecli-interactive
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-Használja az [az aks create][az-aks-create] parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. Cserélje le az `<subnetId>` értéket az előző lépésben beszerzett azonosítóra, majd az `<appId>` `<password>` előző szakaszban összegyűjtött értékekre.
+Használja az [az aks create][az-aks-create] parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. Cserélje le a helyére az előző lépésben lekért azonosítót, majd a helyére az előző szakaszban `<subnetId>` `<appId>` összegyűjtött `<password>` értékeket.
 
 ```azurecli-interactive
 az aks create \
@@ -150,9 +150,9 @@ az aks create \
 
 Néhány perc múlva befejeződik a parancs végrehajtása, és visszaadja a fürttel kapcsolatos adatokat JSON formátumban.
 
-## <a name="enable-virtual-nodes-addon"></a>A virtuális csomópontok addon engedélyezése
+## <a name="enable-virtual-nodes-addon"></a>Virtuális csomópontok bővítményének engedélyezése
 
-A virtuális csomópontok engedélyezéséhez használja az az [AK Enable-addons][az-aks-enable-addons] parancsot. A következő példa a *myVirtualNodeSubnet* nevű alhálózatot használja az előző lépésben:
+A virtuális csomópontok engedélyezéséhez használja az [az aks enable-addons parancsot.][az-aks-enable-addons] Az alábbi példa az előző lépésben létrehozott *myVirtualNodeSubnet* nevű alhálózatot használja:
 
 ```azurecli-interactive
 az aks enable-addons \
@@ -176,7 +176,7 @@ A fürthöz való csatlakozás ellenőrzéséhez használja a [kubectl get][kube
 kubectl get nodes
 ```
 
-A következő példa kimenete az egyetlen virtuálisgép-csomópontot mutatja, majd a Linux, *Virtual-Node-ACI-Linux* virtuális csomópontot:
+Az alábbi példakimeneten látható az egyetlen létrehozott virtuálisgép-csomópont, majd a Linux virtuális csomópontja, a *virtual-node-aci-linux:*
 
 ```output
 NAME                          STATUS    ROLES     AGE       VERSION
@@ -184,9 +184,9 @@ virtual-node-aci-linux        Ready     agent     28m       v1.11.2
 aks-agentpool-14693408-0      Ready     agent     32m       v1.11.2
 ```
 
-## <a name="deploy-a-sample-app"></a>Minta alkalmazás üzembe helyezése
+## <a name="deploy-a-sample-app"></a>Mintaalkalmazás üzembe helyezése
 
-Hozzon létre egy nevű fájlt `virtual-node.yaml` , és másolja a következő YAML. A tárolónak a csomóponton való megadásához meg kell adni a [nodeSelector][node-selector] és a [tolerancia][toleration] értéket.
+Hozzon létre egy nevű `virtual-node.yaml` fájlt, és másolja be a következő YAML-fájlt. A csomóponton a tároló ütemezése egy [nodeSelector][node-selector] és [egy leratómező][toleration] definiálása.
 
 ```yaml
 apiVersion: apps/v1
@@ -219,13 +219,13 @@ spec:
         effect: NoSchedule
 ```
 
-Futtassa az alkalmazást az [kubectl Apply][kubectl-apply] paranccsal.
+Futtassa az alkalmazást a [kubectl apply paranccsal.][kubectl-apply]
 
 ```console
 kubectl apply -f virtual-node.yaml
 ```
 
-A [kubectl Get hüvely][kubectl-get] parancs használatával adja `-o wide` meg az argumentumot a hüvelyek és az ütemezett csomópontok listájának kimenetéhez. Figyelje meg, hogy a `aci-helloworld` Pod ütemezve van a `virtual-node-aci-linux` csomóponton.
+Használja a [kubectl get pods][kubectl-get] parancsot a argumentummal a podok listájának és az ütemezett `-o wide` csomópont kimenetének kimeneteként. Figyelje meg, `aci-helloworld` hogy a pod ütemezve van a `virtual-node-aci-linux` csomóponton.
 
 ```console
 kubectl get pods -o wide
@@ -236,32 +236,32 @@ NAME                            READY     STATUS    RESTARTS   AGE       IP     
 aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.0.4   virtual-node-aci-linux
 ```
 
-A pod a virtuális csomópontokkal való használatra delegált Azure virtuális hálózati alhálózatból származó belső IP-címet kap.
+A podhoz egy belső IP-cím van hozzárendelve az Azure-beli virtuális hálózat alhálózatán, amely a virtuális csomópontokkal való használatra van delegálva.
 
 > [!NOTE]
-> Ha Azure Container Registryban tárolt rendszerképeket használ, [konfigurálja és használja a Kubernetes titkos kulcsát][acr-aks-secrets]. A virtuális csomópontok jelenlegi korlátozása az, hogy nem használhatja az integrált Azure AD szolgáltatás egyszerű hitelesítését. Ha nem használ titkos kódot, a virtuális csomópontokon ütemezett hüvelyek nem indulnak el, és nem jelentik a hibát `HTTP response status code 400 error code "InaccessibleImage"` .
+> Ha a tárolóban tárolt rendszerképeket Azure Container Registry, konfigurálja [és használja a Kubernetes titkos adatokat.][acr-aks-secrets] A virtuális csomópontok aktuális korlátja, hogy nem használhat integrált Azure AD-szolgáltatásnév-hitelesítést. Ha nem használ titkos kódokat, a virtuális csomópontokon ütemezett podok nem indulnak el, és hibát `HTTP response status code 400 error code "InaccessibleImage"` jeleznek.
 
-## <a name="test-the-virtual-node-pod"></a>A virtuális csomópont-Pod tesztelése
+## <a name="test-the-virtual-node-pod"></a>A virtuális csomópont podjának tesztelése
 
-A virtuális csomóponton futó Pod teszteléséhez keresse meg a bemutató alkalmazást egy webes ügyféllel. Mivel a pod belső IP-cím van hozzárendelve, gyorsan tesztelheti ezt a kapcsolatot egy másik Pod-on az AK-fürtön. Hozzon létre egy teszt Pod-t, és csatoljon hozzá egy terminál-munkamenetet:
+A virtuális csomóponton futó pod tesztelésére keresse meg a bemutató alkalmazást egy webes ügyféllel. Mivel a podhoz belső IP-cím van hozzárendelve, ezt a kapcsolatot gyorsan tesztelheti az AKS-fürt egy másik podján. Hozzon létre egy tesztpodot, és csatoljon hozzá egy terminál-munkamenetet:
 
 ```console
 kubectl run -it --rm testvk --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
 ```
 
-Telepítés `curl` a pod használatával `apt-get` :
+Telepítse `curl` a podot a `apt-get` használatával:
 
 ```console
 apt-get update && apt-get install -y curl
 ```
 
-Most nyissa meg a pod `curl` -t a használatával, például: *http://10.241.0.4* . Az előző parancsban megjelenő saját belső IP-cím megadása `kubectl get pods` :
+Most a használatával férhet hozzá a pod `curl` címhez, *http://10.241.0.4* például: . Adja meg az előző parancsban látható saját belső `kubectl get pods` IP-címét:
 
 ```console
 curl -L http://10.241.0.4
 ```
 
-Megjelenik a bemutató alkalmazás, ahogy az a következő tömörített példában látható:
+Megjelenik a bemutató alkalmazás, ahogyan az a következő rövid példakimenetben is látható:
 
 ```output
 <html>
@@ -271,21 +271,21 @@ Megjelenik a bemutató alkalmazás, ahogy az a következő tömörített példá
 [...]
 ```
 
-Zárjuk be a terminál-munkamenetet a test Pod-be a használatával `exit` . Ha a munkamenet véget ér, a rendszer törli a pod-t.
+Zárja be a tesztpod terminál-munkamenetét a `exit` következővel: . A munkamenet befejezésekor a pod lesz törölve.
 
 ## <a name="remove-virtual-nodes"></a>Virtuális csomópontok eltávolítása
 
-Ha már nem szeretné használni a virtuális csomópontokat, letilthatja azokat az az [AK disable-addons][az aks disable-addons] parancs használatával. 
+Ha már nem szeretne virtuális csomópontokat használni, letilthatja őket [az az aks disable-addons paranccsal.][az aks disable-addons] 
 
-Ha szükséges, [https://shell.azure.com](https://shell.azure.com) nyissa meg a Azure Cloud shellt a böngészőben.
+Ha szükséges, nyissa meg a [https://shell.azure.com](https://shell.azure.com) Azure Cloud Shell a böngészőben.
 
-Először törölje a `aci-helloworld` virtuális csomóponton futó Pod-t:
+Először törölje a `aci-helloworld` virtuális csomóponton futó podot:
 
 ```console
 kubectl delete -f virtual-node.yaml
 ```
 
-A következő példa parancs letiltja a linuxos virtuális csomópontokat:
+Az alábbi példaparancs letiltja a Linux rendszerű virtuális csomópontokat:
 
 ```azurecli-interactive
 az aks disable-addons --resource-group myResourceGroup --name myAKSCluster --addons virtual-node
@@ -315,14 +315,14 @@ az network vnet subnet update --resource-group $RES_GROUP --vnet-name $AKS_VNET 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben egy Pod-t ütemeztek a virtuális csomóponton, és egy privát, belső IP-címet rendeltek hozzá. Ehelyett hozzon létre egy szolgáltatás központi telepítését, és irányítsa a forgalmat a pod-ra egy terheléselosztó vagy egy bejövő vezérlő használatával. További információkért lásd: [alapszintű bejövő vezérlő létrehozása az AK-ban][aks-basic-ingress].
+Ebben a cikkben egy podot ütemezünk a virtuális csomóponton, és hozzárendelünk egy privát, belső IP-címet. Ehelyett létrehozhat egy szolgáltatástelepítést, és egy terheléselosztási vagy bejövőforgalom-vezérlőn keresztül irányíthat forgalmat a podra. További információ: Alapszintű bejövő forgalomvezérlő létrehozása az [AKS-ban.][aks-basic-ingress]
 
-A virtuális csomópontok gyakran az AK-ban lévő skálázási megoldás egyik összetevője. A megoldások méretezésével kapcsolatos további információkért tekintse meg a következő cikkeket:
+A virtuális csomópontok gyakran az AKS méretezési megoldásának egyik összetevője. A megoldások méretezésével kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [A Kubernetes vízszintes Pod automéretező használata][aks-hpa]
-- [A Kubernetes-fürt automéretező használata][aks-cluster-autoscaler]
-- [Tekintse meg a virtuális csomópontok méretezési mintáját][virtual-node-autoscale]
-- [További információ a virtuális Kubelet nyílt forráskódú könyvtáráról][virtual-kubelet-repo]
+- [A Kubernetes automatikus horizontális podméretozó használata][aks-hpa]
+- [A Kubernetes-fürt automatikus skálázó használata][aks-cluster-autoscaler]
+- [Tekintse meg a virtuális csomópontok automatikus skálázási mintáját][virtual-node-autoscale]
+- [További információ a Virtual Kubelet nyílt forráskódú kódtárról][virtual-kubelet-repo]
 
 <!-- LINKS - external -->
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
@@ -336,22 +336,22 @@ A virtuális csomópontok gyakran az AK-ban lévő skálázási megoldás egyik 
 
 <!-- LINKS - internal -->
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-group-create]: /cli/azure/group#az-group-create
-[az-network-vnet-create]: /cli/azure/network/vnet#az-network-vnet-create
-[az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-create
-[az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
-[az-network-vnet-show]: /cli/azure/network/vnet#az-network-vnet-show
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
-[az-network-vnet-subnet-show]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-show
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az aks disable-addons]: /cli/azure/aks#az-aks-disable-addons
+[az-group-create]: /cli/azure/group#az_group_create
+[az-network-vnet-create]: /cli/azure/network/vnet#az_network_vnet_create
+[az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az_network_vnet_subnet_create
+[az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az_ad_sp_create_for_rbac
+[az-network-vnet-show]: /cli/azure/network/vnet#az_network_vnet_show
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
+[az-network-vnet-subnet-show]: /cli/azure/network/vnet/subnet#az_network_vnet_subnet_show
+[az-aks-create]: /cli/azure/aks#az_aks_create
+[az-aks-enable-addons]: /cli/azure/aks#az_aks_enable_addons
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[az aks disable-addons]: /cli/azure/aks#az_aks_disable_addons
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: ./cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
-[az-provider-list]: /cli/azure/provider#az-provider-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-provider-list]: /cli/azure/provider#az_provider_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
 [virtual-nodes-aks]: virtual-nodes.md
 [virtual-nodes-networking-aci]: ../container-instances/container-instances-virtual-network-concepts.md

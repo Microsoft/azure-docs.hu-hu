@@ -1,70 +1,70 @@
 ---
 title: Személyes adatok
-description: Megtudhatja, hogyan kezelheti Azure Resource Manager műveletekhez társított személyes adatok kezelését.
+description: Ismerje meg, hogyan kezelheti a Azure Resource Manager személyes adatait.
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 2f616fa58c53a7f666978bd1db60d10a9266e342
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9087d3e46f38aab3de7774ea341ebd9cbc2d7d1f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934206"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785954"
 ---
-# <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Azure Resource Managerhoz társított személyes adatai kezelése
+# <a name="manage-personal-data-associated-with-azure-resource-manager"></a>A felhasználókhoz társított személyes Azure Resource Manager
 
-A bizalmas adatok kiírásának elkerüléséhez törölje a központi telepítések, erőforráscsoportok vagy címkék által megadott személyes adatokat. Azure Resource Manager olyan műveleteket biztosít, amelyek lehetővé teszik a központi telepítések, erőforráscsoportok vagy címkék által megadott személyes adatok kezelését.
+A bizalmas információk felfedése érdekében törölje az üzemelő példányok, erőforráscsoportok vagy címkék által megadott személyes adatokat. Azure Resource Manager olyan műveleteket biztosít, amelyek lehetővé teszi az üzemelő példányok, erőforráscsoportok vagy címkék által biztosított személyes adatok kezelését.
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="delete-personal-data-in-deployment-history"></a>Személyes adatértékek törlése a telepítési előzményekben
+## <a name="delete-personal-data-in-deployment-history"></a>Személyes adatok törlése az üzembe helyezési előzményekben
 
-Központi telepítések esetén a Resource Manager a telepítési előzményekben megőrzi a paramétereket és az állapotüzenetek értékét. Ezek az értékek mindaddig megmaradnak, amíg el nem távolítja az üzembe helyezést az előzményekből. Ha szeretné megtekinteni, hogy az ilyen értékekben adta-e meg a személyes adatait, sorolja fel a központi telepítéseket. Ha személyes adatok találhatók, törölje a központi telepítéseket az előzményekből.
+Az üzemelő példányok Resource Manager megőrzi a paraméterértékeket és az állapotüzeneteket az üzembe helyezési előzményekben. Ezek az értékek mindaddig megmaradnak, amíg nem törli az üzembe helyezést az előzményekből. Ha meg kell tudni, hogy megadott-e személyes adatokat ezekben az értékekben, sorolja fel az üzemelő példányokat. Ha személyes adatokat talál, törölje az üzemelő példányokat az előzményekből.
 
-Az előzményekben lévő **központi telepítések** listázásához használja a következőt:
+Az **előzményekben található üzemelő példányok** listához használja a következőt:
 
-* [Csoportosítás erőforráscsoport szerint](/rest/api/resources/resources/deployments/listbyresourcegroup)
+* [List By Resource Group](/rest/api/resources/deployments/listbyresourcegroup)
 * [Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment)
-* [az üzembe helyezési csoport listája](/cli/azure/deployment/group#az_deployment_group_list)
+* [az deployment group list](/cli/azure/deployment/group#az_deployment_group_list)
 
-Az előzményekből való **központi telepítés** törléséhez használja a következőt:
+Az **üzemelő példányok előzményekből** való törléséhez használja a következőt:
 
-* [Törlés](/rest/api/resources/resources/deployments/delete)
+* [Törlés](/rest/api/resources/deployments/delete)
 * [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/Remove-AzResourceGroupDeployment)
-* [az üzembe helyezési csoport törlése](/cli/azure/deployment/group#az_deployment_group_delete)
+* [az deployment group delete](/cli/azure/deployment/group#az_deployment_group_delete)
 
-## <a name="delete-personal-data-in-resource-group-names"></a>Személyes adatértékek törlése az erőforráscsoport-nevekben
+## <a name="delete-personal-data-in-resource-group-names"></a>Az erőforráscsoportok nevében szereplő személyes adatok törlése
 
-Az erőforráscsoport neve mindaddig megmarad, amíg nem törli az erőforráscsoportot. Ha szeretné megtekinteni, hogy a nevekben adta-e meg a személyes adatforrásokat, sorolja fel az erőforráscsoportot. Ha személyes adatforrásokat talál, [Helyezze át az erőforrásokat](move-resource-group-and-subscription.md) egy új erőforráscsoporthoz, és törölje az erőforráscsoportot a személyes adattal a névben.
+Az erőforráscsoport neve mindaddig megmarad, amíg nem törli az erőforráscsoportot. Ha meg kell tudni, hogy megadott-e személyes adatokat a nevekben, listából láthatja az erőforráscsoportokat. Ha személyes adatokat [talál,](move-resource-group-and-subscription.md) helyezze át az erőforrásokat egy új erőforráscsoportba, és törölje azt az erőforráscsoportot, amely nevében személyes adatok vannak.
 
-Az **erőforráscsoportok** listázásához használja a következőt:
+Az **erőforráscsoportok listához használja** a következőt:
 
-* [Lista](/rest/api/resources/resources/resourcegroups/list)
+* [Lista](/rest/api/resources/resourcegroups/list)
 * [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup)
-* [az Group List](/cli/azure/group#az-group-list)
+* [az group list](/cli/azure/group#az_group_list)
 
-Az **erőforráscsoportok** törléséhez használja a következőt:
+Az **erőforráscsoportok törléséhez használja** a következőt:
 
-* [Törlés](/rest/api/resources/resources/resourcegroups/delete)
+* [Törlés](/rest/api/resources/resourcegroups/delete)
 * [Remove-AzResourceGroup](/powershell/module/az.resources/Remove-AzResourceGroup)
-* [az group delete](/cli/azure/group#az-group-delete)
+* [az group delete](/cli/azure/group#az_group_delete)
 
-## <a name="delete-personal-data-in-tags"></a>Személyes adatértékek törlése a címkékben
+## <a name="delete-personal-data-in-tags"></a>Személyes adatok törlése címkékben
 
-A címkék nevei és értékei mindaddig megmaradnak, amíg nem törli vagy nem módosítja a címkét. Ha szeretné megtekinteni, hogy a címkéket adta-e meg személyes adatként, sorolja fel a címkéket. Ha személyes adatként keres, törölje a címkéket.
+A címkék nevei és értékei mindaddig megmaradnak, amíg nem törli vagy módosítja a címkét. A címkék listájával láthatja, hogy megadott-e személyes adatokat a címkékben. Ha személyes adatokat talál, törölje a címkéket.
 
-**Címkék** listázásához használja a következőt:
+A címkék **listához használja** a következőt:
 
-* [Lista](/rest/api/resources/resources/tags/list)
+* [Lista](/rest/api/resources/tags/list)
 * [Get-AzTag](/powershell/module/az.resources/Get-AzTag)
-* [az az tag List](/cli/azure/tag#az-tag-list)
+* [az tag list](/cli/azure/tag#az_tag_list)
 
-**Címkék** törléséhez használja a következőt:
+A címkék **törléséhez használja** a következőt:
 
-* [Törlés](/rest/api/resources/resources/tags/delete)
+* [Törlés](/rest/api/resources/tags/delete)
 * [Remove-AzTag](/powershell/module/az.resources/Remove-AzTag)
-* [az tag delete](/cli/azure/tag#az-tag-delete)
+* [az tag delete](/cli/azure/tag#az_tag_delete)
 
 ## <a name="next-steps"></a>Következő lépések
-* A Azure Resource Manager áttekintése: [Mi az a Resource Manager?](overview.md)
+* Az áttekintést a Azure Resource Manager a Mi [a Resource Manager?](overview.md)

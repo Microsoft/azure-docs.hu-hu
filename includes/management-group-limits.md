@@ -7,21 +7,21 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: cdcf6215973755444da9e513761de7ac71e479d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53e3f37d14153f3a2d7b5886a49b08ca9052b128
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98738682"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107800258"
 ---
 | Erőforrás | Korlát |
 | --- | --- |
-| Felügyeleti csoportok száma Azure AD-bérlőn | 10,000 |
+| Felügyeleti csoportok Azure AD-bérlőnként | 10,000 |
 | Előfizetések felügyeleti csoportonként | Korlátlan. |
-| Felügyeleti csoport hierarchiájának szintjei | Gyökérszintű szint plusz 6 szint<sup>1</sup> |
-| Felügyeleti csoport közvetlen fölérendelt felügyeleti csoportja | Eggyel |
-| [Felügyeleti csoport szintjén üzemelő központi telepítések](../articles/azure-resource-manager/templates/deploy-to-management-group.md) száma | 800<sup>2</sup> |
+| Felügyeleticsoport-hierarchia szintjei | Gyökérszint plusz 6<sup>szint 1</sup> |
+| Közvetlen szülő felügyeleti csoport felügyeleti csoportonként | Eggyel |
+| [Felügyeleti csoportszintű központi telepítések](../articles/azure-resource-manager/templates/deploy-to-management-group.md) hely szerint | 800<sup>2</sup> |
 
 <sup>1</sup> A 6 szint nem tartalmazza az előfizetési szintet.
 
-<sup>2</sup> Ha eléri a 800-es üzemelő példányok korlátját, törölje a már nem szükséges előzményekből származó központi telepítéseket. A felügyeleti csoport szintű központi telepítések törléséhez használja a [Remove-AzManagementGroupDeployment](/powershell/module/az.resources/Remove-AzManagementGroupDeployment) vagy [az az Deployment mg delete](/cli/azure/deployment/mg#az-deployment-mg-delete)parancsot.
+<sup>2</sup> Ha eléri a 800 üzemelő példány korlátját, törölje az üzemelő példányokat a már nem szükséges előzményekből. Felügyeleticsoport-szintű üzemelő példányok törléséhez használja a [Remove-AzManagementGroupDeployment](/powershell/module/az.resources/Remove-AzManagementGroupDeployment) vagy [az az deployment mg delete parancsot.](/cli/azure/deployment/mg#az_deployment_mg_delete)

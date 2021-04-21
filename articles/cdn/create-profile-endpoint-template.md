@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: profil és végpont – Resource Manager-sablon létrehozása'
+title: 'Rövid útmutató: Profil és végpont létrehozása – Resource Manager sablon'
 titleSuffix: Azure Content Delivery Network
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Content Delivery Network-profilt és egy Resource Manager-sablon végpontját
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Content Delivery Network-profilt és végpontot egy Resource Manager sablonhoz
 services: cdn
 author: asudbring
 manager: KumudD
@@ -12,16 +12,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: a36484bea3a2bc9caadc5cf4482aae3bea84eafa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31f0510ed50c9d48a46524a353d7c872b368f75c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560463"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779038"
 ---
-# <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Gyors útmutató: Azure CDN profil és végpont-ARM sablon létrehozása
+# <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Rövid útmutató: Azure CDN profil és végpont létrehozása – ARM-sablon
 
-Az Azure Content Delivery Network (CDN) használatának első lépései Azure Resource Manager sablon (ARM-sablon) használatával. A sablon egy profilt és egy végpontot telepít.
+Az Azure Content Delivery Network (CDN) használatának első Azure Resource Manager sablon (ARM-sablon) használatával. A sablon üzembe helyez egy profilt és egy végpontot.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -46,7 +46,7 @@ Ez a sablon a következő létrehozására van konfigurálva:
 
 A sablonban egyetlen Azure-erőforrás van definiálva:
 
-* **[Microsoft. CDN/profilok](/azure/templates/microsoft.cdn/profiles)**
+* **[Microsoft.Cdn/profiles](/azure/templates/microsoft.cdn/profiles)**
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
@@ -86,11 +86,11 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Válassza ki az **erőforráscsoportok** elemet a bal oldali ablaktáblán.
+2. A **bal oldali panelen** válassza az Erőforráscsoportok lehetőséget.
 
-3. Válassza ki az előző szakaszban létrehozott erőforráscsoportot. Az erőforráscsoport alapértelmezett neve **myResourceGroupCDN**
+3. Válassza ki az előző szakaszban létrehozott erőforráscsoportot. Az alapértelmezett erőforráscsoport neve **myResourceGroupCDN**
 
-4. Ellenőrizze, hogy az erőforráscsoport az alábbi erőforrásokat hozta-e létre:
+4. Ellenőrizze, hogy a következő erőforrások létrejöttek-e az erőforráscsoportban:
 
     :::image type="content" source="media/create-profile-endpoint-template/cdn-profile-template-rg.png" alt-text="Azure CDN erőforráscsoport" border="true":::
 
@@ -98,7 +98,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-delete) paranccsal eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást.
+Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az_group_delete) paranccsal eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást.
 
 ```azurecli-interactive 
   az group delete \
@@ -107,7 +107,7 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-dele
 
 ### <a name="powershell"></a>PowerShell
 
-Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal távolíthatja el az erőforráscsoportot és a benne található összes erőforrást.
+Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal eltávolíthatja az erőforráscsoportot és a benne lévő összes erőforrást.
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupCDN
@@ -115,16 +115,16 @@ Remove-AzResourceGroup -Name myResourceGroupCDN
 
 ### <a name="portal"></a>Portál
 
-Ha már nincs rá szükség, törölje az erőforráscsoportot, a CDN-profilt és az összes kapcsolódó erőforrást. Válassza ki a CDN-profilt és-végpontot tartalmazó erőforráscsoport **myResourceGroupCDN** , majd válassza a **Törlés** lehetőséget.
+Ha már nincs rá szükség, törölje az erőforráscsoportot, a CDN-profilt és az összes kapcsolódó erőforrást. Válassza ki a CDN-profilt és -végpontot tartalmazó **myResourceGroupCDN** erőforráscsoportot, majd válassza a **Törlés lehetőséget.**
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozta a következőket:
+Ebben a rövid útmutatóban a következőt hozta létre:
 
 * CDN-profil
 * Végpont
 
-Ha többet szeretne megtudni a Azure CDN és a Azure Resource Managerról, folytassa az alábbi cikkekkel.
+Ha többet szeretne megtudni a Azure CDN és Azure Resource Manager, folytassa az alábbi cikkekkel.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: a CDN használata a statikus tartalmak kiszolgálására egy webalkalmazásból](cdn-add-to-web-app.md)
+> [Oktatóanyag: Statikus tartalom szolgáltatása webalkalmazásból a CDN használatával](cdn-add-to-web-app.md)

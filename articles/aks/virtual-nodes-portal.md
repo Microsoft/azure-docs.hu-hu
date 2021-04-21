@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: references_regions
-ms.openlocfilehash: bfb9e4a9a7c788255ea7fcba0fb42404829f82f3
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: fad021dc92753013234a3b0831e76e87fa25db10
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379349"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769300"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure Kubernetes Services- (AKS-) fürt létrehozása és konfigurálása az Azure Portal
 
@@ -100,7 +100,7 @@ aks-agentpool-14693408-0       Ready     agent     32m       v1.11.2
 
 ## <a name="deploy-a-sample-app"></a>Mintaalkalmazás üzembe helyezése
 
-A Azure Cloud Shell hozzon létre egy nevű fájlt, és másolja be a `virtual-node.yaml` következő YAML-fájlt. A csomóponton a tároló ütemezése egy [nodeSelector][node-selector] és [egy leratómező][toleration] definiálása. Ezek a beállítások lehetővé teszik, hogy a pod ütemezve legyen a virtuális csomóponton, és ellenőrizze, hogy a szolgáltatás engedélyezve van-e.
+A Azure Cloud Shell hozzon létre egy nevű fájlt, és másolja be a `virtual-node.yaml` következő YAML-fájlt. A csomóponton a tároló ütemezése egy [nodeSelector][node-selector] és [egy leratómező][toleration] definiálása. Ezekkel a beállításokkal ütemezheti a podot a virtuális csomóponton, és megerősítheti, hogy a szolgáltatás engedélyezve van.
 
 ```yaml
 apiVersion: apps/v1
@@ -167,7 +167,7 @@ Telepítse `curl` a podot a `apt-get` használatával:
 apt-get update && apt-get install -y curl
 ```
 
-Most hozzáférés a pod címére a `curl` használatával, *http://10.241.0.4* például: . Adja meg az előző parancsban látható saját belső `kubectl get pods` IP-címét:
+Most az használatával férhet hozzá a pod `curl` címhez, például: *http://10.241.0.4* . Adja meg az előző parancsban látható saját belső `kubectl get pods` IP-címét:
 
 ```console
 curl -L http://10.241.0.4
@@ -210,9 +210,9 @@ A virtuális csomópontok az AKS méretezési megoldásának egyik összetevője
 
 <!-- LINKS - internal -->
 [aks-network]: ./configure-azure-cni.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
-[az-provider-list]: /cli/azure/provider#az-provider-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-provider-list]: /cli/azure/provider#az_provider_list
+[az-provider-register]: /cli/azure/provider#az_provider_register

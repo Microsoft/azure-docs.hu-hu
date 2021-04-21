@@ -1,44 +1,44 @@
 ---
-title: Az Azure Kubernetes Service-fürt figyelésének leállítása | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan szüntetheti meg az Azure AK-fürt figyelését a Container-információkkal.
+title: A fürtcsomópont Azure Kubernetes Service monitorozásának | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan szüntetheti meg az Azure AKS-fürt monitorozását a Container Insights használatával.
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eab34f27d1e33b166971203082cce99fb2b0e106
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 619b6fc4cce860e5869fd0b31e303b4a474f8428
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101723537"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774016"
 ---
-# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-container-insights"></a>Az Azure Kubernetes szolgáltatás (ak) figyelésének leállítása a Container bepillantást
+# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-container-insights"></a>A tárolók monitorozásának Azure Kubernetes Service (AKS) a Container Insights segítségével
 
-Miután engedélyezte az AK-fürt figyelését, leállíthatja a fürt figyelését, ha úgy dönt, hogy már nem szeretné figyelni. Ez a cikk bemutatja, hogyan hajthatja végre ezt az Azure CLI vagy a megadott Azure Resource Manager sablonok használatával.  
+Miután engedélyezi az AKS-fürt monitorozását, leállíthatja a fürt monitorozását, ha úgy dönt, hogy már nem szeretné figyelni. Ez a cikk bemutatja, hogyan valósítja meg ezt az Azure CLI vagy a rendelkezésre bocsátott Azure Resource Manager sablonokkal.  
 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Az az [AK disable-addons](/cli/azure/aks#az-aks-disable-addons) paranccsal tiltsa le a tárolók bepillantást. A parancs eltávolítja az ügynököt a fürtcsomópontokből, nem távolítja el a megoldást, vagy a már összegyűjtött és a Azure Monitor erőforrásban tárolt adatokat.  
+A Container Insights letiltásához használja az [az aks disable-addons](/cli/azure/aks#az_aks_disable_addons) parancsot. A parancs eltávolítja az ügynököt a fürtcsomópontokról, nem távolítja el a megoldást vagy a már összegyűjtött és a fürterőforrásban tárolt Azure Monitor adatokat.  
 
 ```azurecli
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
 ```
 
-A fürt figyelésének újbóli engedélyezéséhez tekintse meg a [figyelés engedélyezése az Azure CLI használatával](container-insights-enable-new-cluster.md#enable-using-azure-cli)című témakört.
+A fürt monitorozásának engedélyezéséhez lásd: [Monitorozás engedélyezése az Azure CLI használatával.](container-insights-enable-new-cluster.md#enable-using-azure-cli)
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
-A megadott két Azure Resource Manager sablon, amely támogatja a megoldás erőforrásainak következetes és ismétlődő eltávolítását az erőforráscsoporthoz. Az egyik egy JSON-sablon, amely meghatározza, hogy a rendszer hogyan állítsa le a figyelést, a másik pedig a konfigurált paraméterek értékeit, amelyekkel megadhatja azt az AK-fürterőforrás-azonosítót és erőforráscsoportot, amelyben a fürt telepítve van.
+A megadott két Azure Resource Manager támogatja a megoldás-erőforrások következetes és ismétlődő eltávolítását az erőforráscsoportban. Az egyik egy JSON-sablon, amely megadja a figyelés leállításának konfigurációját, a másik pedig olyan paraméterértékeket tartalmaz, amelyek segítségével megadhatja az AKS-fürt azon erőforrás-azonosítóját és erőforráscsoportját, amelybe a fürt telepítve van.
 
-Ha nem ismeri az erőforrások sablon használatával történő központi telepítésének fogalmát, tekintse meg a következőt:
+Ha nem ismeri az erőforrások sablonnal való üzembe helyezésének fogalmát, tekintse meg a következőt:
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/templates/deploy-powershell.md)
-* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/templates/deploy-cli.md)
+* [Erőforrások üzembe helyezése Resource Manager sablonokkal és az Azure CLI-val](../../azure-resource-manager/templates/deploy-cli.md)
 
 >[!NOTE]
->A sablont a fürt azonos erőforráscsoporthoz kell telepíteni. Ha a sablon használatakor kihagyja a többi tulajdonságot vagy bővítményt, akkor azt eredményezheti a fürtből való eltávolításuk. Például *enableRBAC* a fürtben megvalósított Kubernetes RBAC-házirendekhez, vagy *aksResourceTagValues* , ha CÍMKÉKET ad meg az AK-fürthöz.  
+>A sablont a fürt ugyanabban az erőforráscsoportban kell üzembe helyezni. Ha a sablon használatakor kihagy bármilyen más tulajdonságot vagy bővítményt, az a fürtről való eltávolításukat eredményezheti. Például engedélyezze az *enableRBAC-t* a fürtben megvalósított Kubernetes RBAC-szabályzatok számára, vagy az *aksResourceTagValues* szabályzatot, ha meg vannak adva címkék az AKS-fürthöz.  
 >
 
-Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.27 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a parancsot `az --version` . Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
+Ha az Azure CLI használatát választja, először helyileg kell telepítenie és használnia a CLI-t. Az Azure CLI 2.0.27-es vagy újabb verziójával kell futnia. A verzió azonosításához futtassa az `az --version` -t. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [az Azure CLI telepítését.](/cli/azure/install-azure-cli)
 
 ### <a name="create-template"></a>Sablon létrehozása
 
@@ -90,9 +90,9 @@ Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és haszn�
     }
     ```
 
-2. Mentse ezt a fájlt **OptOutTemplate.jsként** egy helyi mappába.
+2. Mentse ezt a fájlt **OptOutTemplate.jsegy** helyi mappába.
 
-3. Illessze be a következő JSON-szintaxist a fájlba:
+3. Illessze be az alábbi JSON-szintaxist a fájlba:
 
     ```json
     {
@@ -116,21 +116,21 @@ Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és haszn�
     }
     ```
 
-4. Szerkessze a **aksResourceId** és a **aksResourceLocation** értékeit az AK-fürt értékeivel, amelyet a kiválasztott fürt **Tulajdonságok** lapján talál.
+4. Szerkessze **az aksResourceId** és **az aksResourceLocation** értékeit az AKS-fürt értékeinek használatával, amelyeket a kiválasztott fürt **Tulajdonságok** lapján talál.
 
-    ![Tároló tulajdonságai lap](media/container-insights-optout/container-properties-page.png)
+    ![Tárolótulajdonságok lap](media/container-insights-optout/container-properties-page.png)
 
-    A **Tulajdonságok** lapon a **munkaterület erőforrás-azonosítóját** is másolja. Erre az értékre akkor van szükség, ha később szeretné törölni az Log Analytics munkaterületet. A Log Analytics munkaterület törlése nem a folyamat részeként történik.
+    Amíg a Tulajdonságok **lapon** van, másolja a munkaterület **erőforrás-azonosítóját is.** Erre az értékre akkor van szükség, ha később törölni szeretné a Log Analytics-munkaterületet. A Log Analytics-munkaterület törlése nem a folyamat részeként történik.
 
-    Szerkessze a **aksResourceTagValues** értékeit, hogy azok megfeleljenek az AK-fürthöz megadott meglévő címkék értékének.
+    Szerkessze **az aksResourceTagValues** értékeit úgy, hogy megegyeznek az AKS-fürthöz megadott meglévő címkeértékekkel.
 
-5. Mentse ezt a fájlt **OptOutParam.jsként** egy helyi mappába.
+5. Mentse ezt a fájlt **OptOutParam.jsegy** helyi mappába.
 
 6. Készen áll a sablon üzembe helyezésére.
 
 ### <a name="remove-the-solution-using-azure-cli"></a>A megoldás eltávolítása az Azure CLI használatával
 
-Futtassa a következő parancsot az Azure CLI-vel Linuxon a megoldás eltávolításához, és törölje a konfigurációt az AK-fürtön.
+A megoldás eltávolításához és az AKS-fürtön a konfiguráció eltávolításához hajtsa végre a következő parancsot az Azure CLI-val Linux rendszeren.
 
 ```azurecli
 az login   
@@ -138,7 +138,7 @@ az account set --subscription "Subscription Name"
 az deployment group create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
 ```
 
-A konfiguráció módosítása több percet is igénybe vehet. Ha elkészült, az alábbihoz hasonló üzenet jelenik meg, amely tartalmazza a kapott eredményt:
+A konfiguráció módosítása eltarthat néhány percig. Ha elkészült, a rendszer az alábbihoz hasonló üzenetet ad vissza, amely tartalmazza az eredményt:
 
 ```output
 ProvisioningState       : Succeeded
@@ -148,7 +148,7 @@ ProvisioningState       : Succeeded
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Hajtsa végre a következő PowerShell-parancsokat a sablont tartalmazó mappában, és távolítsa el a megoldást, és törölje a konfigurációt az AK-fürtből.    
+Hajtsa végre a következő PowerShell-parancsokat a sablont tartalmazó mappában a megoldás eltávolításához és az AKS-fürt konfigurációjának eltávolításához.    
 
 ```powershell
 Connect-AzAccount
@@ -156,7 +156,7 @@ Select-AzSubscription -SubscriptionName <yourSubscriptionName>
 New-AzResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupName> -TemplateFile .\OptOutTemplate.json -TemplateParameterFile .\OptOutParam.json
 ```
 
-A konfiguráció módosítása több percet is igénybe vehet. Ha elkészült, az alábbihoz hasonló üzenet jelenik meg, amely tartalmazza a kapott eredményt:
+A konfiguráció módosítása eltarthat néhány percig. Ha elkészült, a rendszer az alábbihoz hasonló üzenetet ad vissza, amely tartalmazza az eredményt:
 
 ```output
 ProvisioningState       : Succeeded
@@ -165,4 +165,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha a munkaterület csak a fürt figyelésének támogatásához lett létrehozva, és már nincs rá szükség, manuálisan kell törölnie. Ha nem ismeri a munkaterületek törlésének módját, tekintse meg az [Azure log Analytics munkaterület törlése a Azure Portal](../logs/delete-workspace.md)használatával című témakört. Ne felejtse el a 4. lépésben korábban átmásolt **munkaterület-erőforrás azonosítóját** , amelyre szüksége lesz.
+Ha a munkaterület csak a fürt monitorozásának támogatására lett létrehozva, és már nincs rá szükség, manuálisan kell törölnie. Ha nem jártas a munkaterületek törlésében, tekintse meg Az Azure Log Analytics-munkaterület törlése a [Azure Portal.](../logs/delete-workspace.md) Ne feledkezzünk meg  a 4. lépésben másolt munkaterületi erőforrás-azonosítóról. Erre szüksége lesz.

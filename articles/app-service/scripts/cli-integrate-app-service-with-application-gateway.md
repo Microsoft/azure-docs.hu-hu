@@ -1,6 +1,6 @@
 ---
-title: Azure CLI parancsfájl-minta – App Service integrálása Application Gateway használatával | Microsoft Docs
-description: Azure CLI parancsfájl-minta – App Service integrálása a Application Gateway
+title: Azure CLI-példaszkret – App Service integrálása Application Gateway | Microsoft Docs
+description: Azure CLI-példaszkret – App Service integrálása Application Gateway
 services: appservice
 documentationcenter: appservice
 author: madsd
@@ -16,22 +16,22 @@ ms.workload: web
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3820e7bf00f99a846dd2be0edeaf4248e0dfd8ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d30cc27fc3c546619e85bb9aabd0b31c10102e96
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006081"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787808"
 ---
-# <a name="integrate-app-service-with-application-gateway-using-cli"></a>App Service integrálása Application Gateway a parancssori felület használatával
+# <a name="integrate-app-service-with-application-gateway-using-cli"></a>Integráció App Service és Application Gateway CLI használatával
 
-Ez a minta parancsfájl egy Azure App Service webalkalmazást, egy Azure-Virtual Network és egy Application Gateway hoz létre. Ezután korlátozza a webalkalmazás forgalmát, hogy csak a Application Gateway alhálózatból származzanak.
+Ez a példaszk Azure App Service egy webalkalmazást, egy Azure-Virtual Network és egy Application Gateway. Ezután úgy korlátozza a webalkalmazás forgalmát, hogy az csak a Application Gateway származzon.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - Az oktatóanyaghoz az Azure CLI 2.0.74 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+ - Az oktatóanyaghoz az Azure CLI 2.0.74-es vagy újabb verziójára lesz szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -41,20 +41,20 @@ Ez a minta parancsfájl egy Azure App Service webalkalmazást, egy Azure-Virtual
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a szkript a következő parancsokat használja egy erőforráscsoport, App Service alkalmazás, Cosmos DB és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja egy erőforráscsoport, App Service alkalmazás, Cosmos DB és az összes kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Jegyzetek |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [`az network vnet create`](/cli/azure/network/vnet#az-network-vnet-create) | Virtuális hálózatot hoz létre. |
-| [`az network public-ip create`](/cli/azure/network/public-ip#az-network-public-ip-create) | Egy nyilvános IP-címet hoz létre. |
-| [`az network public-ip show`](/cli/azure/network/public-ip#az-network-public-ip-show) | Nyilvános IP-cím részleteinek megjelenítése. |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Létrehoz egy App Service webalkalmazást. |
-| [`az webapp show`](/cli/azure/webapp#az-webapp-show) | Egy App Service webalkalmazás részleteinek megjelenítése. |
-| [`az webapp config access-restriction add`](/cli/azure/webapp/config/access-restriction#az-webapp-config-access-restriction-add) | Hozzáférési korlátozást hoz létre a App Service webalkalmazáshoz. |
-| [`az network application-gateway create`](/cli/azure/network/application-gateway#az-network-application-gateway-create) | Létrehoz egy Application Gateway. |
-| [`az network application-gateway http-settings update`](/cli/azure/network/application-gateway/http-settings#az-network-application-gateway-http-settings-update) | A Application Gateway HTTP-beállításokat frissíti. |
+| [`az group create`](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [`az network vnet create`](/cli/azure/network/vnet#az_network_vnet_create) | Virtuális hálózatot hoz létre. |
+| [`az network public-ip create`](/cli/azure/network/public-ip#az_network_public_ip_create) | Egy nyilvános IP-címet hoz létre. |
+| [`az network public-ip show`](/cli/azure/network/public-ip#az_network_public_ip_show) | Nyilvános IP-cím részleteinek megjelenítése. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | Létrehoz egy App Service-csomagot. |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | Létrehoz egy App Service webalkalmazást. |
+| [`az webapp show`](/cli/azure/webapp#az_webapp_show) | Egy webalkalmazás részleteinek App Service megjelenítése. |
+| [`az webapp config access-restriction add`](/cli/azure/webapp/config/access-restriction#az_webapp_config_access_restriction_add) | Hozzáférési korlátozást ad hozzá a App Service webalkalmazáshoz. |
+| [`az network application-gateway create`](/cli/azure/network/application-gateway#az_network_application_gateway_create) | Létrehoz egy Application Gateway. |
+| [`az network application-gateway http-settings update`](/cli/azure/network/application-gateway/http-settings#az_network-application-gateway-http_settings_update) | A Application Gateway HTTP-beállításokat. |
 
 ## <a name="next-steps"></a>Következő lépések
 

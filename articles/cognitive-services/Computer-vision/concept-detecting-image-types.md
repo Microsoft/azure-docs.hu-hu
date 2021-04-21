@@ -1,7 +1,7 @@
 ---
 title: Képtípus észlelése – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: A Computer Vision API képtípus-észlelési funkciójával kapcsolatos fogalmak.
+description: A Computer Vision API képtípus-észlelési funkciójának fogalmai.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,33 +11,33 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6d2ed00f3fc6f5b52a9a13a96f1e1659e30f02d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc24788ddd21ca2b7df1f9f92238c776dee33016
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96532601"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778876"
 ---
-# <a name="detecting-image-types-with-computer-vision"></a>Rendszerképek típusának észlelése Computer Vision
+# <a name="detecting-image-types-with-computer-vision"></a>Képtípusok észlelése Computer Vision
 
-A [kép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API-val a Computer Vision képes elemezni a képek tartalmának típusát, jelezve, hogy egy kép ClipArt vagy vonalas rajz-e.
+A [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) API Computer Vision segítségével elemezheti a képek tartalomtípusát, jelezve, hogy a kép ClipArt vagy vonalrajz.
 
-## <a name="detecting-clip-art"></a>ClipArt-elemek észlelése
+## <a name="detecting-clip-art"></a>ClipArt észlelése
 
-Computer Vision elemez egy rendszerképet, és az alábbi táblázatban leírtak szerint a képfájlnak azt a valószínűségét határozza meg, hogy a kép egy 0 és 3 közötti skálán legyen.
+Computer Vision egy képet elemez, és az alábbi táblázatban leírtak szerint 0 és 3 között skálán megméri annak valószínűségét.
 
 | Érték | Értelmezés |
 |-------|---------|
 | 0 | Nem ClipArt |
-| 1 | Nem egyértelmű |
-| 2 | Normál – ClipArt |
-| 3 | Jó – ClipArt |
+| 1 | Kétértelmű |
+| 2 | Normál ClipArt |
+| 3 | Jó ClipArt |
 
 ### <a name="clip-art-detection-examples"></a>ClipArt-észlelési példák
 
-A következő JSON-válaszok azt szemléltetik, hogy milyen Computer Vision ad vissza, ha a példa képének valószínűségét a Clip Art ábrázolja.
+Az alábbi JSON-válaszok azt szemléltetik, Computer Vision milyen értéket ad vissza, amikor a példaként megadott képek valószínűségét a ClipArt típusú képként minősíti.
 
-![Egy szeletes sajttal rendelkező ClipArt-kép](./Images/cheese_clipart.png)
+![Egy sajtszelet ClipArt-képe](./Images/cheese_clipart.png)
 
 ```json
 {
@@ -54,7 +54,7 @@ A következő JSON-válaszok azt szemléltetik, hogy milyen Computer Vision ad v
 }
 ```
 
-![Egy kék ház és az első udvar](./Images/house_yard.png)
+![Egy kék ház és az elülső ház](./Images/house_yard.png)
 
 ```json
 {
@@ -71,15 +71,15 @@ A következő JSON-válaszok azt szemléltetik, hogy milyen Computer Vision ad v
 }
 ```
 
-## <a name="detecting-line-drawings"></a>Vonalas rajzok észlelése
+## <a name="detecting-line-drawings"></a>Vonalrajzok észlelése
 
-Computer Vision egy képet elemez, és egy logikai értéket ad vissza, amely azt jelzi, hogy a képen egy vonal típusú rajz található-e.
+Computer Vision egy képet, és egy logikai értéket ad vissza, amely jelzi, hogy a kép vonalrajz-e.
 
-### <a name="line-drawing-detection-examples"></a>Példák a vonalas rajzolás észlelésére
+### <a name="line-drawing-detection-examples"></a>Vonalrajzészlelési példák
 
-A következő JSON-válaszok azt szemléltetik, hogy milyen Computer Vision ad vissza, ha azt jelzi, hogy a képek vonalas rajzok-e.
+Az alábbi JSON-válaszok azt szemléltetik, Computer Vision mit ad vissza, amikor jelzi, hogy a példaképek vonalrajzok-e.
 
-![Egy oroszlánból álló vonalas rajzolási ábra](./Images/lion_drawing.png)
+![Egy vonal, amely egy oroszlánt rajzol](./Images/lion_drawing.png)
 
 ```json
 {
@@ -96,7 +96,7 @@ A következő JSON-válaszok azt szemléltetik, hogy milyen Computer Vision ad v
 }
 ```
 
-![Fehér virág Zöld háttérrel](./Images/flower.png)
+![Fehér virág zöld háttérrel](./Images/flower.png)
 
 ```json
 {
@@ -115,6 +115,6 @@ A következő JSON-válaszok azt szemléltetik, hogy milyen Computer Vision ad v
 
 ## <a name="use-the-api"></a>Az API használata
 
-A rendszerkép típusú észlelési funkció a [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API részét képezi. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja. Belefoglalás `ImageType` a **visualFeatures** lekérdezési paraméterbe. Ezután, amikor megkapja a teljes JSON-választ, egyszerűen elemezze a szakasz tartalmának karakterláncát `"imageType"` .
+A képtípus-észlelési funkció a Analyze Image [RÉSZE.](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) Ezt az API-t egy natív SDK-n vagy REST-hívásokon keresztül hívhatja meg. Foglalja `ImageType` bele a **visualFeatures lekérdezési** paraméterbe. Ezután, amikor a teljes JSON-választ kap, egyszerűen elemezze a szakasz tartalmának `"imageType"` sztringet.
 
-* [Rövid útmutató: Computer Vision REST API vagy ügyféloldali kódtárak](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Rövid útmutató: Computer Vision REST API ügyfélkódtárak létrehozása](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)

@@ -1,6 +1,6 @@
 ---
-title: 'CLI: Alkalmazás csatlakoztatása a Cosmos DB'
-description: Megtudhatja, hogyan automatizálhatja az alkalmazás üzembe helyezését és felügyeletét az Azure CLI App Service használatával. Ez a példa bemutatja, hogyan csatlakoztathat egy alkalmazást a MongoDB-hez (Cosmos DB).
+title: 'CLI: Alkalmazás csatlakoztatása Cosmos DB'
+description: Megtudhatja, hogyan automatizálhatja a saját alkalmazás üzembe helyezését és felügyeletét az Azure CLI App Service használatával. Ez a példa bemutatja, hogyan csatlakoztathat egy alkalmazást a MongoDB-hez (Cosmos DB).
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: bbbdbc42-efb5-4b4f-8ba6-c03c9d16a7ea
@@ -9,16 +9,16 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: b29609d2bc2c518312bc777d1464755091c11b26
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: f76f036e2101fb1dbb4483ba417f5cf10f3e37f4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482585"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782387"
 ---
 # <a name="connect-an-app-service-app-to-cosmos-db-using-cli"></a>Alkalmazás App Service csatlakoztatása Cosmos DB CLI használatával
 
-Ez a példaszk Azure Cosmos DB fiókot hoz létre a mongoDB-hez Azure Cosmos DB API és egy App Service használatával. Ezután alkalmazásbeállítások használatával egy MongoDB kapcsolati sztringet kapcsolódik a webalkalmazáshoz.
+Ez a példaszk Azure Cosmos DB fiókot hoz létre a mongoDB-hez Azure Cosmos DB API és egy App Service használatával. Ezután az alkalmazásbeállítások használatával egy MongoDB kapcsolati sztringet kapcsolódik a webalkalmazáshoz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -38,12 +38,12 @@ Ez a szkript a következő parancsokat használja egy erőforráscsoport, App Se
 
 | Parancs | Jegyzetek |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Létrehoz egy App Service alkalmazást. |
-| [`az cosmosdb create`](/cli/azure/cosmosdb#az-cosmosdb-create) | Létrehoz egy Cosmos DB-fiókot. |
-| [`az cosmosdb list-connection-strings`](/cli/azure/cosmosdb#az-cosmosdb-list-connection-strings) | Listázza a megadott Cosmos DB-fiókhoz tartozó kapcsolati sztringekat. |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | Létrehoz vagy frissíti egy alkalmazásbeállítást egy App Service számára. Az alkalmazásbeállítások környezeti változókként érhetők el az alkalmazás számára. |
+| [`az group create`](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | Létrehoz egy App Service-csomagot. |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | Létrehoz egy App Service alkalmazást. |
+| [`az cosmosdb create`](/cli/azure/cosmosdb#az_cosmosdb_create) | Létrehoz egy Cosmos DB-fiókot. |
+| [`az cosmosdb list-connection-strings`](/cli/azure/cosmosdb#az_cosmosdb_list_connection_strings) | Listázza a megadott Cosmos DB-fiókhoz tartozó kapcsolati sztringekat. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | Létrehoz vagy frissíti egy alkalmazásbeállítást egy App Service alkalmazáshoz. Az alkalmazásbeállítások környezeti változókként érhetők el az alkalmazás számára. |
 
 ## <a name="next-steps"></a>Következő lépések
 

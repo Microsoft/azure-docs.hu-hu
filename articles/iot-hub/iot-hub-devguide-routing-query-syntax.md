@@ -1,6 +1,6 @@
 ---
-title: Lekérdezés az Azure IoT Hub üzenet-útválasztásban | Microsoft Docs
-description: Ismerkedjen meg az IoT Hub üzenet-útválasztási lekérdezési nyelvvel, amely segítségével gazdag lekérdezéseket alkalmazhat az üzenetekre, hogy megkapja az Ön számára fontos információkat.
+title: Üzenet-Azure IoT Hub lekérdezése | Microsoft Docs
+description: Ismerje meg IoT Hub üzenet-útválasztás lekérdezési nyelvét, amely segítségével gazdag lekérdezéseket alkalmazhat az üzenetekre a fontos adatok fogadásához.
 author: ash2017
 ms.service: iot-hub
 services: iot-hub
@@ -10,24 +10,24 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 83c290adea02915db1dc52bd359b4d3165611522
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4ba48377d868404ff130ec458e50e2b42fae977
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92547707"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790516"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT-központ üzenet-útválasztásának lekérdezési szintaxisa
 
-Az üzenet-útválasztás lehetővé teszi a felhasználók számára a különböző adattípusok, például az eszköz telemetria üzeneteinek, az eszköz életciklusának eseményeinek és az eszközök kettős módosítási eseményeinek különböző végpontokra való továbbítását Ezen az adathalmazon is alkalmazhat Rich lekérdezéseket, mielőtt az útválasztási művelettel megkapja az Ön számára fontos adatforrásokat. Ez a cikk a IoT Hub üzenet-útválasztási lekérdezési nyelvet ismerteti, és néhány gyakori lekérdezési mintát is tartalmaz.
+Az üzenet-útválasztással a felhasználók különböző adattípusokat, eszköz-telemetriai üzeneteket, eszköz életciklus-eseményeket és ikereszköz-módosítási eseményeket irányíthatnak át különböző végpontokra. Emellett gazdag lekérdezéseket is alkalmazhat ezekre az adatokra, mielőtt azokat az Ön számára fontos adatok fogadásához útválasztásként átveszi. Ez a cikk az üzenetek IoT Hub lekérdezési nyelvét ismerteti, és néhány gyakori lekérdezési mintát ismertet.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Az üzenet-útválasztás lehetővé teszi, hogy lekérdezze az üzenet tulajdonságait és az üzenet törzsét, valamint az eszköz Twin címkéit és az eszköz Twin tulajdonságait. Ha az üzenet törzse nem JSON, az üzenet-útválasztás továbbra is köröztetheti az üzenetet, de a lekérdezések nem alkalmazhatók az üzenet törzsére.  A lekérdezések olyan logikai kifejezésként vannak leírva, amelyben egy logikai igaz érték esetén a lekérdezés sikeres lesz, és az összes bejövő adat átirányítható, és a logikai hamis sikertelen lesz a lekérdezés, és nem történik adat. Ha a kifejezés kiértékelése null vagy nem definiált értékre történik, akkor FALSE (hamis) értékre van állítva, és a rendszer hibát okoz a IoT Hub [útvonalak erőforrás-naplófájljaiban](monitor-iot-hub-reference.md#routes) . A lekérdezés szintaxisának helyesnek kell lennie az útvonal mentéséhez és kiértékeléséhez.  
+Az üzenetek útválasztása lehetővé teszi az üzenettulajdonságok és az üzenet törzsének, valamint az ikereszköz-címkék és az ikertulajdonságok lekérdezését. Ha az üzenet törzse nem JSON, az üzenetek útválasztása továbbra is irányíthatja az üzenetet, de nem lehet lekérdezéseket alkalmazni az üzenet törzsére.  A lekérdezések olyan logikai kifejezésekként vannak leírva, amelyekben a logikai igaz érték sikeressé teszi a lekérdezést, amely minden bejövő adatot irányít át, a logikai hamis pedig meghiúsul a lekérdezésben, és egyetlen adat sem lesz irányítva. Ha [a](monitor-iot-hub-reference.md#routes) kifejezés kiértékelése null vagy nincs meghatározva, akkor a rendszer false (hamis) értékként kezeli, és hiba esetén hibát generál a IoT Hub az erőforrásnaplók naplóit. A lekérdezési szintaxisnak helyesnek kell lennie a menteni és kiértékelni tervezett útvonalhoz.  
 
-## <a name="message-routing-query-based-on-message-properties"></a>Üzenet-útválasztási lekérdezés üzenet tulajdonságai alapján 
+## <a name="message-routing-query-based-on-message-properties"></a>Üzenet-útválasztási lekérdezés üzenettulajdonságok alapján 
 
-A IoT Hub a protokollok közötti együttműködés [általános formátumát](iot-hub-devguide-messages-construct.md) határozza meg az összes eszközről a felhőbe irányuló üzenetkezeléshez. IoT Hub üzenet feltételezi az üzenet következő JSON-ábrázolását. A rendszer a minden felhasználó számára hozzáadja a rendszertulajdonságokat, és azonosítja az üzenet tartalmát. A felhasználók szelektív módon adhatnak hozzá alkalmazás-tulajdonságokat az üzenethez. Azt javasoljuk, hogy a IoT Hub eszközről a felhőbe irányuló üzenetkezeléshez használjon egyedi tulajdonságokat, nem pedig a kis-és nagybetűket. Ha például több azonos nevű tulajdonsága van, akkor a IoT Hub csak a tulajdonságok egyikét küldi el.  
+A IoT Hub közös [formátumot](iot-hub-devguide-messages-construct.md) határoz meg az összes eszközről a felhőbe való üzenetkezeléshez a protokollok közötti együttműködés érdekében. IoT Hub üzenet az üzenet következő JSON-ábrázolását feltételezi. A rendszer minden felhasználó számára hozzáadja a rendszertulajdonságokat, és azonosítja az üzenet tartalmát. A felhasználók szelektíven adhatnak alkalmazástulajdonságokat az üzenethez. Javasoljuk, hogy egyedi tulajdonságneveket IoT Hub az eszközről a felhőbe való üzenetküldéshez, és ne legyen megkülönböztetve a kis- és nagybetűktől. Ha például több azonos nevű tulajdonsággal rendelkezik, a IoT Hub csak az egyik tulajdonságot fogja küldeni.  
 
 ```json
 { 
@@ -51,52 +51,52 @@ A IoT Hub a protokollok közötti együttműködés [általános formátumát](i
 
 ### <a name="system-properties"></a>Rendszertulajdonságok
 
-A rendszer tulajdonságai segítenek az üzenetek tartalmának és forrásának azonosításában. 
+A rendszertulajdonságok segítenek azonosítani az üzenetek tartalmát és forrását. 
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
-| contentType | sztring | A felhasználó az üzenet tartalmának típusát adja meg. Az üzenet törzse lekérdezésének engedélyezéséhez ennek az értéknek az Application/JSON értéket kell beállítania. |
-| contentEncoding | sztring | A felhasználó megadja az üzenet kódolási típusát. Az engedélyezett értékek: UTF-8, UTF-16, UTF-32, ha a contentType alkalmazás/JSON értékre van beállítva. |
-| iothub--összekötő-eszköz-azonosító | sztring | Ezt az értéket IoT Hub állítja be, és azonosítja az eszköz AZONOSÍTÓját. A lekérdezéshez használja a következőt: `$connectionDeviceId` . |
-| iothub – enqueuedtime | sztring | Ezt az értéket a IoT Hub állítja be, és a tényleges időpontot jelöli, hogy az üzenet enqueuing az UTC-ben. A lekérdezéshez használja a következőt: `enqueuedTime` . |
-| DT – DataSchema | sztring |  Ezt az értéket az IoT hub állítja be az eszközről a felhőbe irányuló üzenetekben. Ez tartalmazza az eszköz-kapcsolatban beállított eszköz-modell AZONOSÍTÓját. A lekérdezéshez használja a következőt: `$dt-dataschema` . |
-| DT – tárgy | sztring | Annak az összetevőnek a neve, amely az eszközről a felhőbe irányuló üzeneteket küld. A lekérdezéshez használja a következőt: `$dt-subject` . |
+| contentType (tartalomtípus) | sztring | A felhasználó megadja az üzenet tartalomtípusát. Az üzenet törzsére vonatkozó lekérdezések engedélyezése érdekében ezt az értéket alkalmazás/JSON értékre kell állítani. |
+| contentEncoding (tartalom kódolása) | sztring | A felhasználó megadja az üzenet kódolási típusát. Megengedett értékek: UTF-8, UTF-16, UTF-32, ha a contentType értéke application/JSON. |
+| iothub-connection-device-id | sztring | Ezt az értéket a IoT Hub és azonosítja az eszköz azonosítóját. A lekérdezéshez használja a `$connectionDeviceId` et. |
+| iothub-enqueuedtime | sztring | Ezt az értéket a rendszer IoT Hub, és az üzenetbesorolás tényleges idejét jelöli UTC időzónában. A lekérdezéshez használja a `enqueuedTime` et. |
+| dt-dataschema | sztring |  Ezt az értéket az IoT Hub adja meg az eszközről a felhőbe küldött üzeneteken. Ez tartalmazza az eszközkapcsolatban beállított eszközmodell-azonosítót. A lekérdezéshez használja a `$dt-dataschema` et. |
+| dt-subject | sztring | Az eszközről a felhőbe üzeneteket küldő összetevő neve. A lekérdezéshez használja a `$dt-subject` et. |
 
-A [IoT hub üzeneteiben](iot-hub-devguide-messages-construct.md)leírtak szerint további Rendszertulajdonságok találhatók egy üzenetben. Az előző táblázat fenti tulajdonságai mellett a **connectionModuleId** is lekérdezheti a **connectionDeviceId**.
+Ahogy azt a [IoT Hub Messages](iot-hub-devguide-messages-construct.md)(Üzenetek) IoT Hub is ismerteti, az üzenetek további rendszertulajdonságokat tartalmaznak. Az előző táblázat fenti tulajdonságai mellett lekérdezheti a **connectionDeviceId**, **connectionModuleId adatokat is.**
 
 ### <a name="application-properties"></a>Az alkalmazás tulajdonságai
 
-Az alkalmazás tulajdonságai olyan felhasználó által definiált karakterláncok, amelyek hozzáadhatók az üzenethez. Ezeket a mezőket nem kötelező megadni.  
+Az alkalmazástulajdonságok felhasználó által definiált sztringek, amelyek hozzáadhatóak az üzenethez. Ezek a mezők nem kötelezőek.  
 
 ### <a name="query-expressions"></a>Lekérdezési kifejezések
 
-Az üzenetsor-tulajdonságok lekérdezését előtaggal kell ellátni a `$` szimbólummal. Az alkalmazás tulajdonságainak lekérdezései a nevükkel érhetők el, és nem szabad a szimbólummal előtaggal ellátni `$` . Ha egy alkalmazás-tulajdonságnév a `$` következővel kezdődik, akkor IoT hub megkeresi a rendszer tulajdonságai között, és nem található, akkor az alkalmazás tulajdonságai között fog megjelenni. Például: 
+Az üzenetrendszer tulajdonságaira rákérdező lekérdezést a szimbólummal kell `$` előtagként használni. Az alkalmazástulajdonságok lekérdezései a nevük alapján érhetők el, és nem előtagként kell őket használni a `$` szimbólummal. Ha egy alkalmazástulajdonság neve a kifejezéssel kezdődik, IoT Hub a rendszertulajdonságok között keresi azt, és nem található, akkor az alkalmazás tulajdonságai `$` között fog keresni. Például: 
 
-Lekérdezés a rendszertulajdonság contentEncoding 
+A contentEncoding rendszertulajdonság lekérdezése 
 
 ```sql
 $contentEncoding = 'UTF-8'
 ```
 
-Lekérdezés az Application Property processingPath:
+A processingPath alkalmazástulajdonság lekérdezése:
 
 ```sql
 processingPath = 'hot'
 ```
 
-A lekérdezések kombinálásával logikai kifejezéseket és függvényeket használhat:
+A lekérdezések kombinálhatóak logikai kifejezésekkel és függvényekkel:
 
 ```sql
 $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 ```
 
-A támogatott operátorok és függvények teljes listája a [kifejezés és a kikötések között](iot-hub-devguide-query-language.md#expressions-and-conditions)látható.
+A támogatott operátorok és függvények teljes listája a Kifejezés és feltételek [alatt látható.](iot-hub-devguide-query-language.md#expressions-and-conditions)
 
-## <a name="message-routing-query-based-on-message-body"></a>Üzenet-útválasztási lekérdezés üzenet törzse alapján
+## <a name="message-routing-query-based-on-message-body"></a>Üzenet-útválasztási lekérdezés az üzenet törzse alapján
 
-Az üzenettörzs lekérdezésének engedélyezéséhez az üzenetnek egy UTF-8, UTF-16 vagy UTF-32 kódolású JSON-fájlban kell lennie. A `contentType` `application/JSON` `contentEncoding` tulajdonságot a következőre kell beállítani: és értékre kell állítani a System (rendszer) tulajdonság egyik támogatott UTF-kódolásához. Ha ezek a tulajdonságok nincsenek megadva, a IoT Hub nem értékeli ki a lekérdezési kifejezést az üzenet törzsében. 
+Ha engedélyezni szeretné a lekérdezést az üzenet törzsén, az üzenetnek UTF-8, UTF-16 vagy UTF-32 kódolású JSON-fájlban kell lennie. A és a tulajdonságot a rendszertulajdonság által támogatott `contentType` `application/JSON` UTF-kódolások `contentEncoding` egyikére kell állítani. Ha ezek a tulajdonságok nincsenek megadva, IoT Hub nem értékeli ki a lekérdezési kifejezést az üzenet törzsében. 
 
-Az alábbi példa bemutatja, hogyan hozhat létre egy megfelelően formázott és kódolt JSON-törzsű üzenetet: 
+Az alábbi példa bemutatja, hogyan hozhat létre egy üzenetet egy megfelelően formázott és kódolt JSON-törzstel: 
 
 ```javascript
 var messageBody = JSON.stringify(Object.assign({}, {
@@ -146,12 +146,12 @@ deviceClient.sendEvent(message, (err, res) => {
 ```
 
 > [!NOTE] 
-> Ez azt mutatja be, hogyan kezelhető a törzs kódolása a JavaScriptben. Ha a C#-ban szeretné megtekinteni a mintát, töltse le az [Azure IoT c#-mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Bontsa ki a master.zip fájlt. A Visual Studio Solution *SimulatedDevice* program. cs fájlja azt mutatja be, hogyan lehet üzeneteket kódolni és elküldeni egy IoT hubba. Ez ugyanaz a minta, amely az üzenet-útválasztás tesztelésére szolgál az üzenet- [útválasztási oktatóanyagban](tutorial-routing.md)leírtak szerint. A program. cs alján egy metódust is olvashat az egyik kódolt fájl olvasásához, dekódolja azt, és az ASCII-ként írja vissza, hogy elolvassa. 
+> Ez bemutatja, hogyan kezelhető a törzs kódolása JavaScriptben. Ha C# környezetben szeretne mintát látni, töltse le az [Azure IoT C#-mintákat.](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) Csomagolja ki a master.zip fájlt. A Visual Studio *SimulatedDevice* Program.cs fájlja bemutatja, hogyan kódolhat és küldhet el üzeneteket egy IoT Hub. Ez ugyanaz a minta, mint az üzenetek útválasztásának tesztelésére, ahogy azt a [Message Routing oktatóanyagban is ismertettuk.](tutorial-routing.md) A Program.cs fájl alján található egy metódus is, amely beolvassa az egyik kódolt fájlt, dekódolja, majd ASCII-ként kiírja, hogy el tudja olvasni. 
 
 
 ### <a name="query-expressions"></a>Lekérdezési kifejezések
 
-Az üzenettörzs lekérdezését előtaggal kell ellátni `$body` . A lekérdezési kifejezésben használhat egy szövegtörzs-hivatkozást, törzsi tömböt vagy több szövegtörzs-hivatkozást is. A lekérdezési kifejezés egy szövegtörzs-hivatkozást is egyesítheti az üzenetrendszer tulajdonságaival és az üzenet alkalmazás tulajdonságainak hivatkozásával. A következők például az összes érvényes lekérdezési kifejezés: 
+Az üzenet törzsére rákérdező lekérdezést a előtaggal kell előtagként `$body` használni. Használhat törzshivatkozást, törzstömbhivatkozást vagy több törzshivatkozást a lekérdezési kifejezésben. A lekérdezési kifejezés egy törzshivatkozást is kombinálhat üzenetrendszer-tulajdonságokkal és üzenetalkalmazás-tulajdonságok hivatkozásával. A következők például mind érvényes lekérdezési kifejezések: 
 
 ```sql
 $body.Weather.HistoricalData[0].Month = 'Feb' 
@@ -169,9 +169,16 @@ length($body.Weather.Location.State) = 2
 $body.Weather.Temperature = 50 AND processingPath = 'hot'
 ```
 
-## <a name="message-routing-query-based-on-device-twin"></a>Üzenet-útválasztási lekérdezés a Twin eszköz alapján 
+> [!NOTE] 
+> Lekérdezéseket és függvényeket csak a törzshivatkozás tulajdonságain futtathat. Nem futtathat lekérdezéseket vagy függvényeket a teljes törzshivatkozáson. A következő lekérdezés például nem *támogatott,* és a következőt adja `undefined` vissza:
+> 
+> ```sql
+> $body[0] = 'Feb'
+> ```
 
-Az üzenet-útválasztás lehetővé teszi, hogy lekérdezze a JSON-objektumokat az [eszköz kettős](iot-hub-devguide-device-twins.md) címkéi és tulajdonságai között. A Twin modul lekérdezése is támogatott. Alább látható az eszköz két címkéje és a tulajdonságok mintája.
+## <a name="message-routing-query-based-on-device-twin"></a>Ikereszközön alapuló üzenet-útválasztási lekérdezés 
+
+Az üzenetek útválasztása lehetővé teszi az [ikereszközcímkék](iot-hub-devguide-device-twins.md) és -tulajdonságok, azaz JSON-objektumok lekérdezését. Az ikermodulon való lekérdezés is támogatott. Alább látható az ikereszközcímkék és -tulajdonságok mintája.
 
 ```JSON
 {
@@ -204,7 +211,7 @@ Az üzenet-útválasztás lehetővé teszi, hogy lekérdezze a JSON-objektumokat
 
 ### <a name="query-expressions"></a>Lekérdezési kifejezések
 
-Az üzenet Twin lekérdezését előtaggal kell ellátni `$twin` . A lekérdezés kifejezése egy kettős címkét vagy egy tulajdonság hivatkozását is egyesítheti egy szövegtörzs-hivatkozással, egy üzenetrendszer tulajdonságaival és az üzenet alkalmazás tulajdonságainak hivatkozásával. Azt javasoljuk, hogy a címkék és a tulajdonságok egyedi nevét használják, mivel a lekérdezés nem megkülönbözteti a kis-és nagybetűket. Ez az összes eszközre és az ikrekre is vonatkozik. A, a, a, a, a, a, a `twin` `$twin` és a `body` `$body` tulajdonság neve is. A következők például az összes érvényes lekérdezési kifejezés: 
+Az ikerüzenetre rákérdező lekérdezést a előtaggal kell előtagként `$twin` használni. A lekérdezési kifejezés egy ikercímkét vagy tulajdonsághivatkozást is kombinálhat egy törzshivatkozással, az üzenetrendszer tulajdonságaival és az üzenetalkalmazás tulajdonságainak hivatkozásával. Javasoljuk, hogy egyedi neveket használ a címkékben és tulajdonságokban, mivel a lekérdezés nem megkülönbözteti a kis- és nagybetűket. Ez az ikereszközre és a modulikre egyaránt vonatkozik. Emellett ne használja a `twin` `$twin` , , vagy `body` `$body` tulajdonságneveket. A következők például mind érvényes lekérdezési kifejezések: 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'
@@ -218,9 +225,9 @@ $body.Weather.Temperature = 50 AND $twin.properties.desired.telemetryConfig.send
 $twin.tags.deploymentLocation.floor = 1 
 ```
 
-A szövegtörzsön vagy eszközön lévő, a hasznos adattartalomban vagy a tulajdonság nevében lévő időszakra vonatkozó útválasztási lekérdezés nem támogatott.
+Nem támogatott az útválasztási lekérdezés a törzsön vagy az ikereszközön, ha a hasznos adat vagy a tulajdonság neve pontból áll.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Tudnivalók az [üzenetek útválasztásáról](iot-hub-devguide-messages-d2c.md).
-* Próbálja ki az [üzenet-útválasztási oktatóanyagot](tutorial-routing.md).
+* Ismerje meg az [üzenetek útválasztását.](iot-hub-devguide-messages-d2c.md)
+* Próbálja ki [az üzenet-útválasztási oktatóanyagot.](tutorial-routing.md)

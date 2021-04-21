@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 901f2b938512f842a5b4c34adbfc61f9379e5131
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 479181e851e6f54246a2ad89e7529bf3f50bb8a4
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772162"
+ms.locfileid: "107751975"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Oktatóanyag: Felügyelt identitás használata egy azure Key Vault-webalkalmazáshoz való csatlakozáshoz a .NET-en
 
@@ -85,7 +85,7 @@ git commit -m "first commit"
 
 Az FTP és a helyi Git használatával üzembe helyezhet egy Azure-webalkalmazást egy üzembe *helyező felhasználó használatával.* Miután konfigurálta az üzembe helyezési felhasználót, azt az összes Azure-beli üzemelő példányhoz használhatja. A fiókszintű üzemelő példány felhasználóneve és jelszava eltér az Azure-előfizetés hitelesítő adataitól. 
 
-Az üzembe helyezési felhasználó konfiguráláshoz futtassa [az az webapp deployment user set](/cli/azure/webapp/deployment/user?#az_webapp_deployment_user_set) parancsot. Válasszon olyan felhasználónevet és jelszót, amely megfelel az alábbi irányelveknek: 
+Az üzembe helyezési felhasználó konfiguráláshoz futtassa [az az webapp deployment user set](/cli/azure/webapp/deployment/user?#az-webapp-deployment-user-set) parancsot. Válasszon olyan felhasználónevet és jelszót, amely megfelel az alábbi irányelveknek: 
 
 - A felhasználónévnek egyedinek kell lennie az Azure-on belül. Helyi Git-leküldésekkor nem tartalmazhatja az at jel szimbólumot (@). 
 - A jelszónak legalább nyolc karakter hosszúságúnak kell lennie, és tartalmaznia kell a következő három elemből kettőt: betűket, számokat és szimbólumokat. 
@@ -100,7 +100,7 @@ Jegyezheti fel a felhasználónevét és jelszavát, hogy a webalkalmazások üz
 
 ### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az erőforráscsoport egy logikai tároló, amelyben Azure-erőforrásokat helyezhet üzembe és kezelhet. Az az group create paranccsal hozzon létre egy erőforráscsoportot, amely a kulcstartót és a webalkalmazást [is tartalmazza:](/cli/azure/group?#az_group_create)
+Az erőforráscsoport egy logikai tároló, amelyben Azure-erőforrásokat helyezhet üzembe és kezelhet. Az az group create paranccsal hozzon létre egy erőforráscsoportot, amely a kulcstartót és a webalkalmazást [is tartalmazza:](/cli/azure/group?#az-group-create)
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" -l "EastUS"
@@ -243,7 +243,7 @@ Ebben a szakaszban webes hozzáférést fog konfigurálni a Key Vault és friss�
 
 Ebben az oktatóanyagban felügyelt identitást fogunk [használni](../../active-directory/managed-identities-azure-resources/overview.md) a hitelesítéshez a Key Vault. A felügyelt identitás automatikusan kezeli az alkalmazás hitelesítő adatait.
 
-Az Azure CLI-ban az alkalmazás identitásának létrehozásához futtassa [az az webapp-identity assign](/cli/azure/webapp/identity?#az_webapp_identity_assign) parancsot:
+Az Azure CLI-ban az alkalmazás identitásának létrehozásához futtassa [az az webapp-identity assign](/cli/azure/webapp/identity?#az-webapp-identity-assign) parancsot:
 
 ```azurecli-interactive
 az webapp identity assign --name "<your-webapp-name>" --resource-group "myResourceGroup"
@@ -259,7 +259,7 @@ A parancs a következő JSON-kódrészletet adja vissza:
 }
 ```
 
-Ha engedélyt ad a  webalkalmazásnak a kulcstartón a le- és listás műveletek végrehajtásához, adja át a parancsot az Azure CLI az  `principalId` [keyvault set-policy parancsának:](/cli/azure/keyvault?#az_keyvault_set_policy)
+Ha engedélyt ad a  webalkalmazásnak a kulcstartón a le- és listás műveletek végrehajtásához, adja át a parancsot az Azure CLI az  `principalId` [keyvault set-policy parancsának:](/cli/azure/keyvault?#az-keyvault-set-policy)
 
 ```azurecli-interactive
 az keyvault set-policy --name "<your-keyvault-name>" --object-id "<principalId>" --secret-permissions get list

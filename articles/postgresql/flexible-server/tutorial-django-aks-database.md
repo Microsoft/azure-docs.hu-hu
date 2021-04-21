@@ -7,22 +7,22 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 12/10/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b79b470a25a63c0a46ddef94ee65f47f37c560cb
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 9315e6fd7dd9880d20108e3f0ed28cd32904f1a3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107477808"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791534"
 ---
-# <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>Oktatóanyag: Django-alkalmazás üzembe helyezése az AKS-Azure Database for PostgreSQL rugalmas kiszolgálóval
+# <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>Oktatóanyag: Django-alkalmazás üzembe helyezése az AKS-Azure Database for PostgreSQL – Rugalmas kiszolgáló
 
-Ebben a rövid útmutatóban egy Django-alkalmazást fog üzembe helyezni egy Azure Kubernetes Service-fürtön egy rugalmas Azure Database for PostgreSQL (előzetes verzió) kiszolgálóval az Azure CLI használatával.
+Ebben a rövid útmutatóban egy Django-alkalmazást fog üzembe helyezni egy Azure Kubernetes Service- (AKS-) fürtön Azure Database for PostgreSQL rugalmas kiszolgálóval (előzetes verzió) az Azure CLI használatával.
 
 **[Az AKS](../../aks/intro-kubernetes.md)** egy felügyelt Kubernetes-szolgáltatás, amely lehetővé teszi a fürtök gyors üzembe helyezését és kezelését. Azure Database for PostgreSQL – A rugalmas kiszolgáló **[(előzetes verzió)](overview.md)** egy teljes körűen felügyelt adatbázis-szolgáltatás, amely részletesebb vezérlést és rugalmasságot biztosít az adatbázis-kezelési funkciókhoz és a konfigurációs beállításokhoz.
 
 > [!NOTE]
 > - Azure Database for PostgreSQL rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el
-> - Ez a rövid útmutató feltételezi, hogy alapszintű ismereteket biztosít a Kubernetes, a Django és a PostgreSQL fogalmairól.
+> - Ez a rövid útmutató feltételezi a Kubernetes, a Django és a PostgreSQL alapszintű ismereteit.
 
 ## <a name="pre-requisites"></a>Előfeltételek
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -31,12 +31,12 @@ Ebben a rövid útmutatóban egy Django-alkalmazást fog üzembe helyezni egy Az
 
    [![Indítás beágyazása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell elindítása")](https://shell.azure.com)  
 - Ha szeretné, telepítse [az](/cli/azure/install-azure-cli) Azure CLI-t a CLI-referenciaparancsok futtatásához.
-  - Ha helyi telepítést használ, jelentkezzen be az Azure CLI-vel az [az login](/cli/azure/reference-index#az-login) parancs futtatásával.  A hitelesítési folyamat befejezéséhez kövesse a terminálon megjelenő lépéseket.  További bejelentkezési lehetőségek megismeréséhez tekintse meg a [Bejelentkezés az Azure CLI használatával](/cli/azure/authenticate-azure-cli) című szakaszt.
+  - Ha helyi telepítést használ, jelentkezzen be az Azure CLI-vel az [az login](/cli/azure/reference-index#az_login) parancs futtatásával.  A hitelesítési folyamat befejezéséhez kövesse a terminálon megjelenő lépéseket.  További bejelentkezési lehetőségek megismeréséhez tekintse meg a [Bejelentkezés az Azure CLI használatával](/cli/azure/authenticate-azure-cli) című szakaszt.
   - Ha a rendszer kéri, az első használatkor telepítse az Azure CLI-bővítményeket.  További információ a bővítményekről: [Bővítmények használata az Azure CLI-vel](/cli/azure/azure-cli-extensions-overview).
   - Futtassa az [az version](/cli/azure/reference-index?#az_version) parancsot a telepített verzió és a függő kódtárak megkereséséhez. A legújabb verzióra az [az upgrade](/cli/azure/reference-index?#az_upgrade) paranccsal frissíthet. Ehhez a cikkhez az Azure CLI legújabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 > [!NOTE]
-> Ha ebben a rövid útmutatóban helyileg futtatja a parancsokat (nem Azure Cloud Shell), akkor a parancsokat rendszergazdaként kell futtatnia.
+> Ha a rövid útmutatóban a parancsokat helyileg futtatja (a Azure Cloud Shell helyett), győződjön meg arról, hogy rendszergazdaként futtatja a parancsokat.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -67,33 +67,33 @@ Az alábbi példakimeneten a sikeresen létrehozott erőforráscsoport látható
 
 ## <a name="create-aks-cluster"></a>AKS-fürt létrehozása
 
-Használja az [az aks create](/cli/azure/aks#az-aks-create) parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. Ez eltarthat néhány percig.
+Használja az [az aks create](/cli/azure/aks#az_aks_create) parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. Ez eltarthat néhány percig.
 
 ```azurecli-interactive
 az aks create --resource-group django-project --name djangoappcluster --node-count 1 --generate-ssh-keys
 ```
 
-Néhány perc múlva befejeződik a parancs, és visszaadja a fürttel kapcsolatos JSON-formátumú információkat.
+Néhány perc múlva befejeződik a parancs, és visszaadja a fürt JSON-formátumú adatait.
 
 > [!NOTE]
 > AKS-fürt létrehozásakor a rendszer automatikusan létrehoz egy második erőforráscsoportot az AKS-erőforrások tárolására. Lásd: [Miért jön létre két erőforráscsoport az AKS-sel?](../../aks/faq.md#why-are-two-resource-groups-created-with-aks)
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
-A Kubernetes-fürtök kezeléséhez használja a [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), a Kubernetes parancssori ügyfelét. Ha az alkalmazást Azure Cloud Shell, `kubectl` a már telepítve van. A helyi `kubectl` telepítéshez használja az [az aks install-cli](/cli/azure/aks#az-aks-install-cli) parancsot:
+A Kubernetes-fürtök kezeléséhez használja a [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), a Kubernetes parancssori ügyfelét. Ha az alkalmazást Azure Cloud Shell, `kubectl` a már telepítve van. A helyi `kubectl` telepítéshez használja az [az aks install-cli](/cli/azure/aks#az_aks_install_cli) parancsot:
 
 ```azurecli-interactive
 az aks install-cli
 ```
 
-Az [az aks get-credentials](/cli/azure/aks#az-aks-get-credentials) paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes parancssori felületét azok használatára.
+Az [az aks get-credentials](/cli/azure/aks#az_aks_get_credentials) paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes parancssori felületét azok használatára.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group django-project --name djangoappcluster
 ```
 
 > [!NOTE]
-> A fenti parancs a [Kubernetes](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)konfigurációs fájljának alapértelmezett helyét használja, amely `~/.kube/config` . A --file használatával más helyet is megadhat a Kubernetes *konfigurációs fájlhoz.*
+> A fenti parancs a [Kubernetes](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)konfigurációs fájljának alapértelmezett helyét használja, amely `~/.kube/config` . A --file használatával más helyet is megadhat a Kubernetes konfigurációs *fájlhoz.*
 
 A fürthöz való csatlakozás ellenőrzéséhez használja a [kubectl get]( https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) parancsot a fürtcsomópontok listájának lekéréséhez.
 
@@ -116,9 +116,9 @@ az postgres flexible-server create --public-access <YOUR-IP-ADDRESS>
 ```
 
 A létrehozott kiszolgáló az alábbi attribútumokkal rendelkezik:
-- A kiszolgáló első kiépítésekor létrejön egy új ```postgres``` üres adatbázis. Ebben a rövid útmutatóban ezt az adatbázist fogjuk használni.
+- A kiszolgáló első kiépítésekor létrejön egy új üres ```postgres``` adatbázis. Ebben a rövid útmutatóban ezt az adatbázist fogjuk használni.
 - Automatikusan létrehozott kiszolgálónév, rendszergazdai felhasználónév, rendszergazdai jelszó, erőforráscsoport neve (ha még nincs megadva a helyi környezetben), és ugyanazon a helyen, ahol az erőforráscsoport található
-- Szolgáltatás alapértelmezései a fennmaradó kiszolgálói konfigurációkhoz: számítási szint (általános célú), számítási méret/termékváltozat (Standard_D2s_v3, amely 2 virtuális magot használ), biztonsági másolatok megőrzési időtartama (7 nap) és PostgreSQL-verzió (12)
+- A szolgáltatás alapértelmezései a fennmaradó kiszolgálókonfigurációk esetében: számítási szint (általános célú), számítási méret/termékváltozat (Standard_D2s_v3, amely 2 virtuális magot használ), biztonsági másolatok megőrzési időtartama (7 nap) és PostgreSQL-verzió (12)
 - A nyilvános hozzáférésű argumentum használatával tűzfalszabályok által védett nyilvános hozzáférésű kiszolgálót hozhat létre. Adja meg az IP-címét a tűzfalszabály hozzáadásához, hogy engedélyezze a hozzáférést az ügyfélszámítógépről.
 - Mivel a parancs helyi környezetet használ, a kiszolgálót az erőforráscsoportban és a ```django-project``` régióban hozza ```eastus``` létre.
 
@@ -128,25 +128,25 @@ A létrehozott kiszolgáló az alábbi attribútumokkal rendelkezik:
 Hozzon létre egy [új Django-alkalmazást,](https://docs.djangoproject.com/en/3.1/intro/) vagy használja a meglévő Django-projektet. Győződjön meg arról, hogy a kód ebben a mappastruktúrában található.
 
 ```
-â””â”€â”€â”€my-djangoapp
-    â””â”€â”€â”€views.py
-    â””â”€â”€â”€models.py
-    â””â”€â”€â”€forms.py
-    â”œâ”€â”€â”€templates
+└───my-djangoapp
+    └───views.py
+    └───models.py
+    └───forms.py
+    ├───templates
           . . . . . . .
-    â”œâ”€â”€â”€static
+    ├───static
          . . . . . . .
-â””â”€â”€â”€my-django-project
-    â””â”€â”€â”€settings.py
-    â””â”€â”€â”€urls.py
-    â””â”€â”€â”€wsgi.py
+└───my-django-project
+    └───settings.py
+    └───urls.py
+    └───wsgi.py
         . . . . . . .
-    â””â”€â”€â”€ Dockerfile
-    â””â”€â”€â”€ requirements.txt
-    â””â”€â”€â”€ manage.py
+    └─── Dockerfile
+    └─── requirements.txt
+    └─── manage.py
     
 ```
-Frissítse ```ALLOWED_HOSTS``` az -t, hogy a ```settings.py``` Django-alkalmazás a kubernetes-alkalmazáshoz hozzárendelt külső IP-címet használja.
+Frissítse ```ALLOWED_HOSTS``` az ```settings.py``` -t, hogy a Django-alkalmazás a kubernetes-alkalmazáshoz rendelt külső IP-címet használja.
 
 ```python
 ALLOWED_HOSTS = ['*']
@@ -169,7 +169,7 @@ DATABASES={
 ```
 
 ### <a name="generate-a-requirementstxt-file"></a>Új requirements.txt létrehozása
-Hozzon ```requirements.txt``` létre egy fájlt a Django-alkalmazás függőségeinek felsorolásához. 1. ```requirements.txt``` Példafájl. A használatával [``` pip freeze > requirements.txt```](https://pip.pypa.io/en/stable/reference/pip_freeze/) létrehozhat egy requirements.txt fájlt a meglévő alkalmazáshoz.
+Hozzon ```requirements.txt``` létre egy fájlt a Django-alkalmazás függőségeinek felsorolásához. ```requirements.txt```Példafájl. A használatával [``` pip freeze > requirements.txt```](https://pip.pypa.io/en/stable/reference/pip_freeze/) létrehozhat egy requirements.txt fájlt a meglévő alkalmazáshoz.
 
 ``` text
 Django==2.2.17
@@ -223,11 +223,11 @@ A rendszerkép üzembe helyezése [a Docker Hubon vagy](https://docs.docker.com/
 
 ## <a name="create-kubernetes-manifest-file"></a>Kubernetes-jegyzékfájl létrehozása
 
-A Kubernetes-jegyzékfájl meghatározza a fürt célállapotát, például hogy milyen tárolólemezképeket kell futtatni. Hozzunk létre egy nevű jegyzékfájlt, és másolja be a következő ```djangoapp.yaml``` YAML-definíciót.
+A Kubernetes-jegyzékfájl meghatározza a fürt célállapotát, például azt, hogy milyen tárolólemezképeket kell futtatni. Hozzunk létre egy nevű jegyzékfájlt, ```djangoapp.yaml``` és másolja be az alábbi YAML-definíciót.
 
 >[!IMPORTANT]
 > - Cserélje ```[DOCKER-HUB-USER/ACR ACCOUNT]/[YOUR-IMAGE-NAME]:[TAG]``` le a helyére a tényleges Django Docker-rendszerkép nevét és címkét, ```docker-hub-user/myblog:latest``` például: .
-> - Az alábbi szakaszt frissítse a rugalmas ```env``` ```SERVERNAME``` ```YOUR-DATABASE-USERNAME``` ```YOUR-DATABASE-PASSWORD``` Postgres-kiszolgáló , , és útjára.
+> - Az alábbi szakaszt frissítse a rugalmas ```env``` ```SERVERNAME``` ```YOUR-DATABASE-USERNAME``` ```YOUR-DATABASE-PASSWORD``` Postgres-kiszolgáló , és kiszolgálójának rel.
 
 
 ```yaml
@@ -289,18 +289,18 @@ Telepítse az alkalmazást a [kubectl apply paranccsal,](https://kubernetes.io/d
 kubectl apply -f djangoapp.yaml
 ```
 
-Az alábbi példakimenet a sikeresen létrehozott üzemelő példányokat és szolgáltatásokat mutatja be:
+Az alábbi példakimeneten a sikeresen létrehozott üzemelő példányok és szolgáltatások láthatóak:
 
 ```output
 deployment "django-app" created
 service "python-svc" created
 ```
 
-Az üzemelő példányok lehetővé teszik az üzemelő példány részleteinek, például az alkalmazáshoz használt rendszerképek, a podok számának és a ```django-app``` podkonfigurációnak a részleteit. Létrejön egy ```python-svc``` szolgáltatás, amely egy külső IP-címmel teszi elérhetővé az alkalmazást.
+Az üzemelő példányok lehetővé teszik az üzemelő példány részleteinek leírását, például hogy mely rendszerképeket kell használni az alkalmazáshoz, a podok számát és a ```django-app``` podkonfigurációt. Létrejön egy ```python-svc``` szolgáltatás, amely egy külső IP-címmel teszi elérhetővé az alkalmazást.
 
 ## <a name="test-the-application"></a>Az alkalmazás tesztelése
 
-Az alkalmazás futtatásakor egy Kubernetes-szolgáltatás teszi elérhetővé az alkalmazás előtere számára az internetet. A folyamat eltarthat pár percig.
+Az alkalmazás futtatásakor a Kubernetes-szolgáltatás elérhetővé teszi az alkalmazás előtere számára az internetet. A folyamat eltarthat pár percig.
 
 A folyamat állapotának monitorozásához használja [kubectl get service](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) parancsot a `--watch` argumentummal.
 
@@ -308,14 +308,14 @@ A folyamat állapotának monitorozásához használja [kubectl get service](http
 kubectl get service django-app --watch
 ```
 
-Kezdetben a *django-app* szolgáltatás *EXTERNAL-IP-címe* *függőben van.*
+Kezdetben a *django-app* szolgáltatás *EXTERNAL-IP-je* függőben *van.*
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 django-app   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-Ha *az EXTERNAL-IP*  cím függőben értékről tényleges nyilvános IP-címre változik, a használatával állítsa le a `CTRL-C` `kubectl` figyelés folyamatát. Az alábbi példakimenet egy érvényes, a szolgáltatáshoz rendelt nyilvános IP-címet mutat be:
+Amikor az *EXTERNAL-IP*  cím függőben értékről tényleges nyilvános IP-címre változik, a használatával állítsa le `CTRL-C` a `kubectl` figyelés folyamatát. Az alábbi példakimenet egy érvényes, a szolgáltatáshoz rendelt nyilvános IP-címet mutat be:
 
 ```output
 django-app  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
@@ -324,10 +324,10 @@ django-app  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 Most nyisson meg egy webböngészőt a szolgáltatás külső IP-címére, és tekintse meg a Django-alkalmazást.  
 
 >[!NOTE]
-> - A Django-webhely jelenleg nem használ HTTPS-t. Javasoljuk, hogy engedélyezze a [TLS-t a saját tanúsítványokkal.](../../aks/ingress-own-tls.md)
+> - A Django-webhely jelenleg nem használ HTTPS-t. Javasoljuk, hogy saját tanúsítványokkal engedélyezze [a TLS-t.](../../aks/ingress-own-tls.md)
 > - Engedélyezheti a [HTTP-útválasztást](../../aks/http-application-routing.md) a fürt számára. Ha a HTTP-útválasztás engedélyezve van, konfigurál egy bejövő forgalomvezérlőt az AKS-fürtben. Az alkalmazások üzembe helyezésekor a megoldás nyilvánosan elérhető DNS-neveket is létrehoz az alkalmazásvégponthoz.
 
-## <a name="run-database-migrations"></a>Adatbázis-áttelepítések futtatása
+## <a name="run-database-migrations"></a>Adatbázis-migrálások futtatása
 
 Minden django-alkalmazás esetén adatbázis-migrálást kell futtatnia, vagy statikus fájlokat kell gyűjtenie. Ezeket a django rendszerhéjparancsokat a paranccsal ```$ kubectl exec <pod-name> -- [COMMAND]``` futtathatja.  A parancs futtatása előtt meg kell találnia a pod nevét a ```kubectl get pods``` használatával. 
 
@@ -341,13 +341,13 @@ NAME                             READY   STATUS          RESTARTS   AGE
 django-app-5d9cd6cd8-l6x4b     1/1     Running              0       2m
 ```
 
-Ha megtalálta a pod nevét, a paranccsal futtathatja a django-adatbázis migrálását. ```$ kubectl exec <pod-name> -- [COMMAND]``` Megjegyzés: ```/code/``` a fentiben definiált projekt munkakönyvtára. ```Dockerfile```
+Ha megtalálta a pod nevét, a következő paranccsal futtathatja a django-adatbázis migrálását: ```$ kubectl exec <pod-name> -- [COMMAND]``` . Megjegyzés: ```/code/``` a fentiben definiált projekt munkakönyvtára. ```Dockerfile```
 
 ```bash
 $ kubectl exec django-app-5d9cd6cd8-l6x4b -- python /code/manage.py migrate
 ```
 
-A kimenet így nézne ki: 
+A kimenet a következő lenne: 
 ```output 
 Operations to perform:
   Apply all migrations: admin, auth, contenttypes, sessions
@@ -360,7 +360,7 @@ Running migrations:
   . . . . . . 
 ```
 
-Ha problémákba fog belefutni, futtassa a következőt: , hogy ```kubectl logs <pod-name>```  lássa, milyen kivételt okozott az alkalmazás. Ha az alkalmazás sikeresen működik, a futtatásakor ehhez hasonló kimenetet fog ```kubectl logs``` látni.
+Ha problémákba belefut, futtassa a következőt: , hogy ```kubectl logs <pod-name>```  lássa, milyen kivételt okozott az alkalmazás. Ha az alkalmazás sikeresen működik, a futtatásakor ehhez hasonló kimenetet fog ```kubectl logs``` látni.
 
 ```output
 Watching for file changes with StatReloader
@@ -378,7 +378,7 @@ Quit the server with CONTROL-C.
 
 ## <a name="clean-up-the-resources"></a>Az erőforrások eltávolítása
 
-Az Azure-díjak elkerülése érdekében el kell tisztítania a felesleges erőforrásokat.  Ha a fürtre már nincs szükség, az [az group delete](/cli/azure/group#az_group_delete) paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
+Az Azure-díjak elkerülése érdekében érdemes felesleges erőforrásokat megtisztítani.  Ha a fürtre már nincs szükség, az [az group delete](/cli/azure/group#az_group_delete) paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive
 az group delete --name django-project --yes --no-wait
@@ -389,8 +389,8 @@ az group delete --name django-project --yes --no-wait
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan [férhet hozzá a Kubernetes webes irányítópultjához](../../aks/kubernetes-dashboard.md) az AKS-fürthöz
-- Útmutató a folyamatos [üzembe helyezés engedélyezéséhez](../../aks/deployment-center-launcher.md)
+- Megtudhatja, hogyan férhet hozzá az AKS-fürthöz használt [Kubernetes webes](../../aks/kubernetes-dashboard.md) irányítópultjához
+- Útmutató a [folyamatos üzembe helyezés engedélyezéséhez](../../aks/deployment-center-launcher.md)
 - Ismerje meg, hogyan [skálázható a fürt](../../aks/tutorial-kubernetes-scale.md)
 - Megtudhatja, hogyan kezelheti rugalmas [Postgres-kiszolgálóját](./quickstart-create-server-cli.md)
 - Megtudhatja, [hogyan konfigurálhatja az adatbázis-kiszolgáló](./howto-configure-server-parameters-using-cli.md) kiszolgálóparaméterét.

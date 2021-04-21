@@ -1,6 +1,6 @@
 ---
 title: Java-függvény létrehozása a parancssorból – Azure Functions
-description: Ismerje meg, hogyan hozhat létre Java-függvényeket a parancssorból, majd hogyan teheti közzé a helyi projektet a Azure Functions kiszolgáló nélküli üzemeltetéséhez.
+description: Megtudhatja, hogyan hozhat létre Java-függvényt a parancssorból, majd hogyan tehet közzé egy helyi projektet a kiszolgáló nélküli üzemeltetéshez a Azure Functions.
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom:
@@ -10,49 +10,49 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-java-uiex
-ms.openlocfilehash: 261ba24a360dd49a9759bc70f561810a9e1fd2c8
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 1a1571e83e33ee0aec40df4cf68b3d01b6ef5f04
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277079"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787502"
 ---
-# <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Gyors útmutató: Java-függvény létrehozása az Azure-ban a parancssorból
+# <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Rövid útmutató: Java-függvény létrehozása az Azure-ban a parancssorból
 
 [!INCLUDE [functions-language-selector-quickstart-cli](../../includes/functions-language-selector-quickstart-cli.md)]
 
-Ebben a cikkben parancssori eszközöket használ egy olyan Java-függvény létrehozásához, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe.
+Ebben a cikkben parancssori eszközökkel hoz létre egy Java-függvényt, amely HTTP-kérésekre válaszol. A kód helyi tesztelése után üzembe kell helyeznie a Azure Functions.
 
-A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
+A rövid útmutató elvégzése néhány dollár vagy annál kisebb költséggel jár az Azure-fiókban.
 
 > [!NOTE]
-> Ha a Maven nem az Ön előnyben részesített fejlesztői eszköze, tekintse meg a Java-fejlesztőknek szóló hasonló oktatóanyagokat a [Gradle](./functions-create-first-java-gradle.md), a [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) és a [Visual Studio Code](create-first-function-vs-code-java.md)használatával.
+> Ha nem a Maven az Ön által előnyben részesített fejlesztői eszköz, tekintse meg a [Gradle-](./functions-create-first-java-gradle.md), [IntelliJ IDEA-](/azure/developer/java/toolkit-for-intellij/quickstart-functions) és Visual Studio Code-et használó [Java-fejlesztőknek készült hasonló oktatóanyagokat.](create-first-function-vs-code-java.md)
 
 ## <a name="configure-your-local-environment"></a>A helyi környezet konfigurálása
 
-Mielőtt elkezdené, a következőkkel kell rendelkeznie:
+Mielőtt hozzákezd, a következőkre lesz majd kíváncsi:
 
-+ Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
++ Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-+ A [Azure functions Core Tools](functions-run-local.md#v2) 3. x verzió.
++ A [Azure Functions Core Tools](functions-run-local.md#v2) 3.x. verzió.
 
-+ Az [Azure CLI](/cli/azure/install-azure-cli) 2,4-es vagy újabb verziója.
++ Az [Azure CLI](/cli/azure/install-azure-cli) 2.4-es vagy újabb verziója.
 
-+ A [Java fejlesztői csomag](/azure/developer/java/fundamentals/java-jdk-long-term-support)8-as vagy 11-es verziója. A `JAVA_HOME` környezeti változót a JDK megfelelő verziójának telepítési helyére kell beállítani.     
++ A [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support)8-as vagy 11-es verziója. A környezeti változót a JDK megfelelő verziójának telepítési `JAVA_HOME` helyére kell beállítani.     
 
-+ [Apache Maven](https://maven.apache.org), 3,0-es vagy újabb verzió.
++ [Apache Maven,](https://maven.apache.org)3.0-s vagy újabb verzió.
 
-### <a name="prerequisite-check"></a>Előfeltételek ellenőrzése
+### <a name="prerequisite-check"></a>Előfeltétel-ellenőrzés
 
-+ A terminál vagy a parancssorablakban futtassa a parancsot az `func --version` Azure functions Core Tools 3. x verziójának megadásához.
++ Egy terminálban vagy parancsablakban futtassa a parancsot annak ellenőrzéshez, hogy a Azure Functions Core Tools `func --version` 3.x verziójú-e.
 
-+ Futtassa az parancsot az `az --version` Azure CLI 2,4-es vagy újabb verziójának megadásához.
++ Az `az --version` futtatásával ellenőrizze, hogy az Azure CLI 2.4-es vagy újabb verziója van-e.
 
-+ A futtatásával `az login` Jelentkezzen be az Azure-ba, és ellenőrizze az aktív előfizetést.
++ Az `az login` futtatásával jelentkezzen be az Azure-ba, és ellenőrizze az aktív előfizetést.
 
-## <a name="create-a-local-function-project"></a>Helyi függvény projekt létrehozása
+## <a name="create-a-local-function-project"></a>Helyi függvényprojekt létrehozása
 
-Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény tárolója, amely mindegyik reagál egy adott triggerre. Egy projekt összes funkciója ugyanazokat a helyi és üzemeltetési konfigurációkat használja. Ebben a szakaszban egy függvény-projektet hoz létre, amely egyetlen függvényt tartalmaz.
+A Azure Functions a függvényprojekt egy tároló egy vagy több különálló függvény számára, amelyek egy adott eseményindítóra válaszolnak. Egy projekt összes függvénye azonos helyi és üzemeltetési konfigurációval rendelkezik. Ebben a szakaszban egy függvényprojektet hoz létre, amely egyetlen függvényt tartalmaz.
 
 1. Egy üres mappában futtassa a következő parancsot a Functions-projekt [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)-ból való létrehozásához. 
 
@@ -77,64 +77,64 @@ Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény t�
     ---
 
     > [!IMPORTANT]
-    > + Használja a `-DjavaVersion=11` kapcsolót, ha a függvényeket Java 11-en szeretné futtatni. További információ: Java- [verziók](functions-reference-java.md#java-versions). 
-    > + A `JAVA_HOME` környezeti változót a JDK megfelelő verziójának telepítési helyére kell beállítani a cikk elvégzéséhez.
+    > + Használja a `-DjavaVersion=11` kapcsolót, ha a függvényeket Java 11-en szeretné futtatni. További információ: [Java-verziók.](functions-reference-java.md#java-versions) 
+    > + A cikk befejezéséhez a környezeti változót a JDK megfelelő verziójának telepítési `JAVA_HOME` helyére kell állítani.
 
-1. A Maven megkéri, hogy a projektnek a telepítéskor való létrehozásának befejezéséhez szükséges értékeket is megkeresse.   
-    Ha a rendszer kéri, adja meg a következő értékeket:
+1. A Maven az üzembe helyezés során a projekt létrehozásához szükséges értékeket kéri.   
+    Amikor a rendszer kéri, adja meg a következő értékeket:
 
     | Adatkérés | Érték | Leírás |
     | ------ | ----- | ----------- |
-    | **csoportazonosító** | `com.fabrikam` | Egy érték, amely egyedileg azonosítja a projektet az összes projektben, a Java [csomag elnevezési szabályait](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) követve. |
-    | **artifactId** | `fabrikam-functions` | Egy érték, amely a jar neve, verziószám nélkül. |
-    | **verziója** | `1.0-SNAPSHOT` | Válassza ki az alapértelmezett értéket. |
-    | **csomag** | `com.fabrikam` | Egy érték, amely a generált függvény kódjához tartozó Java-csomag. Használja az alapértelmezettet. |
+    | **csoportazonosító** | `com.fabrikam` | Egy érték, amely egyedileg azonosítja a projektet az összes projektben, a Java csomagelnevezési [szabályait](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) követve. |
+    | **artifactId (összetevő-azonosító)** | `fabrikam-functions` | Egy érték, amely a jar neve verziószám nélkül. |
+    | **Változat** | `1.0-SNAPSHOT` | Válassza ki az alapértelmezett értéket. |
+    | **Csomag** | `com.fabrikam` | Egy érték, amely a generált függvénykód Java-csomagja. Használja az alapértelmezettet. |
 
-1. `Y`A megerősítéshez írja be vagy nyomja le az ENTER billentyűt.
+1. A `Y` megerősítéshez írja be vagy nyomja le az Enter billentyűt.
 
-    A Maven létrehoz egy új, _artifactId_ nevű mappában található projektfájlt, amely ebben a példában a `fabrikam-functions` . 
+    A Maven létrehozza a projektfájlokat egy új mappában _artifactId_ néven, amely ebben a példában `fabrikam-functions` a . 
 
-1. Navigáljon a projekt mappájába:
+1. Lépjen a projektmappába:
 
     ```console
     cd fabrikam-functions
     ```
 
-    Ez a mappa a projekthez különböző fájlokat tartalmaz, beleértve a [local.settings.json](functions-run-local.md#local-settings-file) és a [host.js](functions-host-json.md)nevű konfigurációs fájlokat is. Mivel a *local.settings.json* az Azure-ból letöltött titkos kódok is lehetnek, a fájl a *. gitignore* fájlban alapértelmezés szerint ki van zárva a forrás-vezérlőelemből.
+    Ez a mappa a projekt különböző fájljait tartalmazza, beleértve a fájlnevű konfigurációslocal.settings.js[és](functions-run-local.md#local-settings-file)host.js[a fájlban.](functions-host-json.md) Mivel *local.settings.jsa fájl* tartalmazhat az Azure-ból letöltött titkos adatokat, a fájl alapértelmezés szerint ki van zárva a verziókezelőből a *.gitignore fájlban.*
 
-### <a name="optional-examine-the-file-contents"></a>Választható A fájl tartalmának vizsgálata
+### <a name="optional-examine-the-file-contents"></a>(Nem kötelező) A fájl tartalmának vizsgálata
 
-Ha szeretné, kihagyhatja [a függvény helyi futtatását](#run-the-function-locally) , és később is megvizsgálhatja a fájl tartalmát.
+Ha szeretné, ugorjon a Függvény helyi [futtatása](#run-the-function-locally) részhez, és később vizsgálja meg a fájl tartalmát.
 
-#### <a name="functionjava"></a>Function. Java
-*Function. Java* olyan `run` metódust tartalmaz, amely fogadja a kérelmeket a `request` változóban a [HttpTrigger](/java/api/com.microsoft.azure.functions.annotation.httptrigger) jegyzettel díszített [HttpRequestMessage](/java/api/com.microsoft.azure.functions.httprequestmessage) , amely meghatározza az trigger viselkedését. 
+#### <a name="functionjava"></a>Function.java
+*A Function.java* tartalmaz egy metódust, amely a változóban fogadja a kérésadatokat egy `run` `request` [HttpRequestMessage,](/java/api/com.microsoft.azure.functions.httprequestmessage) amely az eseményindító viselkedését meghatározó [HttpTrigger-jegyzetet](/java/api/com.microsoft.azure.functions.annotation.httptrigger) tartalmazza. 
 
 :::code language="java" source="~/azure-functions-samples-java/src/main/java/com/functions/Function.java":::
 
-A válaszüzenetet a [HttpResponseMessage. Builder](/java/api/com.microsoft.azure.functions.httpresponsemessage.builder) API hozza létre.
+A válaszüzenetet a [HttpResponseMessage.Builder](/java/api/com.microsoft.azure.functions.httpresponsemessage.builder) API generálja.
 
 #### <a name="pomxml"></a>pom.xml
 
-Az alkalmazás üzemeltetéséhez létrehozott Azure-erőforrások beállításai a beépülő modul **konfigurációs** elemében vannak meghatározva a  `com.microsoft.azure` generált pom.xml fájl GroupID. Az alábbi konfigurációs elem például arra utasítja a Maven-alapú telepítést, hogy hozzon létre egy Function alkalmazást a `java-functions-group` régióban található erőforráscsoporthoz `westus` . A Function alkalmazás maga fut a csomagban lévő Windows rendszeren `java-functions-app-service-plan` , amely alapértelmezés szerint kiszolgáló nélküli fogyasztási csomag.
+Az alkalmazás gazdagépeként létrehozott Azure-erőforrások  beállításai **a** beépülő modul konfigurációs elemében vannak meghatározva, a generált fájlban pedig a `com.microsoft.azure` pom.xml meg. Az alábbi konfigurációs elem például arra utasít egy Maven-alapú üzemelő példányt, hogy hozzon létre egy függvényalkalmazást a régióban `java-functions-group` található `westus` erőforráscsoportban. Maga a függvényalkalmazás a csomagban üzemeltetett Windows rendszeren fut, amely alapértelmezés szerint egy kiszolgáló nélküli `java-functions-app-service-plan` használatra szánt csomag.
 
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-107":::
 
-Ezen beállítások módosításával szabályozhatja, hogy az erőforrások hogyan jöjjenek létre az Azure-ban, például a verzióról a verzióra való váltással a `runtime.os` `windows` `linux` kezdeti üzembe helyezés előtt. A Maven beépülő modul által támogatott beállítások teljes listájáért tekintse meg a [konfiguráció részleteit](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details).
+Ezeket a beállításokat módosíthatja, hogy szabályozni tudja az erőforrások Azure-beli létrehozási mikéntját, például a kezdeti üzembe helyezés előtt a következőre `runtime.os` `windows` `linux` váltva: . A Maven beépülő modul által támogatott beállítások teljes listájáért tekintse meg a [konfiguráció részleteit.](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)
 
-#### <a name="functiontestjava"></a>FunctionTest. Java
+#### <a name="functiontestjava"></a>FunctionTest.java
 
-Az archetípus is létrehoz egy egység tesztet a függvényhez. Ha módosítja a függvényt kötések hozzáadására vagy új függvények hozzáadására a projekthez, a *FunctionTest. Java* fájlban is módosítania kell a teszteket.
+Az archetípus egy egységtesztet is létrehoz a függvényhez. Ha úgy módosítja a függvényt, hogy kötéseket adjon hozzá, vagy új függvényeket adjon a projekthez, módosítania kell a *FunctionTest.java* fájlban található teszteket is.
 
 ## <a name="run-the-function-locally"></a>A függvény helyi futtatása
 
-1. A függvény futtatásához indítsa el a helyi Azure Functions Runtime-gazdagépet a *LocalFunctionProj* mappából:
+1. Futtassa a függvényt a local Azure Functions a *LocalFunctionProj* mappából:
 
     ```console
     mvn clean package
     mvn azure-functions:run
     ```
     
-    A kimenet vége felé a következő soroknak kell megjelenniük:
+    A kimenet vége felé a következő soroknak kell megjelennie:
     
     <pre>
     ...
@@ -150,38 +150,38 @@ Az archetípus is létrehoz egy egység tesztet a függvényhez. Ha módosítja 
     </pre>
     
     > [!NOTE]  
-    > Ha a HttpExample nem jelenik meg a fentiekben látható módon, valószínűleg elindította a gazdagépet a projekt gyökérkönyvtárán kívülről. Ebben az esetben a **CTRL** + **C** billentyűkombinációval állítsa le a gazdagépet, navigáljon a projekt gyökérmappa mappájához, és futtassa újra az előző parancsot.
+    > Ha a HttpExample nem a fent látható módon jelenik meg, valószínűleg a projekt gyökérmappán kívülről indította el a gazdagépet. Ebben az esetben a **Ctrl** C billentyűkombinációval állítsa le a gazdagépet, navigáljon a projekt gyökérmappához, és futtassa újra az +  előző parancsot.
 
-1. Másolja a függvény URL-címét `HttpExample` ebből a kimenetből egy böngészőbe, és fűzze hozzá a lekérdezési karakterláncot `?name=<YOUR_NAME>` , így a teljes URL-címet, például: `http://localhost:7071/api/HttpExample?name=Functions` . A böngészőnek egy üzenetet kell megjelenítenie, amely visszhangot jelez a lekérdezési karakterlánc értékét. A terminál, amelyben elindította a projektet, a naplók kimenetét is megjeleníti a kérések elkészítésekor.
+1. Másolja a függvény URL-címét ebből a kimenetből egy böngészőbe, és fűzza hozzá a lekérdezési sztringet, így a `HttpExample` `?name=<YOUR_NAME>` teljes URL-cím a következőhöz hasonló `http://localhost:7071/api/HttpExample?name=Functions` lesz: . A böngészőnek egy üzenetet kell megjelenítenie, amely megismétli a lekérdezési sztring értékét. A terminál, amelyen elindította a projektet, a naplókimenetet is megjeleníti a kérések igénylése során.
 
-1. Ha elkészült, használja a **CTRL C billentyűt**, +  és válassza `y` a functions gazdagép leállítását.
+1. Ha végzett, a Ctrl C **billentyűkombinációval** állítsa +  le `y` a függvénygazdát.
 
-## <a name="deploy-the-function-project-to-azure"></a>A Function projekt üzembe helyezése az Azure-ban
+## <a name="deploy-the-function-project-to-azure"></a>A függvényprojekt üzembe helyezése az Azure-ban
 
-A functions-alkalmazás és a kapcsolódó erőforrások az Azure-ban jönnek létre, amikor először telepíti a functions-projektet. Az alkalmazás üzemeltetéséhez létrehozott Azure-erőforrások beállításai a [pom.xml fájlban](#pomxml)vannak meghatározva. Ebben a cikkben fogadja el az alapértelmezett értékeket.
+A függvényalkalmazások és a kapcsolódó erőforrások a függvényprojekt első üzembe helyezésekor vannak létrehozva az Azure-ban. Az alkalmazáshoz létrehozott Azure-erőforrások beállításait a következő [ fájlbanpom.xml meg:](#pomxml). Ebben a cikkben az alapértelmezett beállításokat fogja elfogadni.
 
 > [!TIP]
-> Ha a Windows helyett Linux rendszeren futó Function alkalmazást szeretne létrehozni, módosítsa a `runtime.os` pom.xml fájl elemét a verzióról a következőre: `windows` `linux` . [Ezekben a régiókban](https://github.com/Azure/azure-functions-host/wiki/Linux-Consumption-Regions)támogatott a Linux futtatása a használati tervekben. Nem rendelkezhet olyan alkalmazásokkal, amelyek Linux rendszeren futnak, és ugyanazon az erőforráscsoporthoz futtatják a Windowson futó alkalmazásokat.
+> Ha Windows helyett Linuxon futó függvényalkalmazást hoz létre, módosítsa a fájl pom.xml `runtime.os` elemét a `windows` következőre: `linux` . A Linux használat alapú csomagon való futtatása ezekben a [régiókban támogatott.](https://github.com/Azure/azure-functions-host/wiki/Linux-Consumption-Regions) Nem lehet linuxos és Windowson futó alkalmazás ugyanabban az erőforráscsoportban.
 
-1. Az üzembe helyezés előtt jelentkezzen be az Azure-előfizetésbe az Azure CLI vagy a Azure PowerShell használatával. 
+1. Az üzembe helyezés előtt jelentkezzen be az Azure-előfizetésbe az Azure CLI vagy a Azure PowerShell. 
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     ```azurecli
     az login
     ```
 
-    Az az [login](/cli/azure/reference-index#az-login) parancs aláírja az Azure-fiókját.
+    Az [az login](/cli/azure/reference-index#az_login) parancs bejelentkeztet az Azure-fiókjába.
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
     ```azurepowershell
     Connect-AzAccount
     ```
 
-    A [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmag bejelentkezik az Azure-fiókjába.
+    A [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmag bejelentkezik az Azure-fiókjába.
 
     ---
 
-1. A következő parancs használatával telepítheti a projektet egy új Function alkalmazásba.
+1. A következő paranccsal üzembe helyezheti a projektet egy új függvényalkalmazásban.
 
     ```console
     mvn azure-functions:deploy
@@ -189,12 +189,12 @@ A functions-alkalmazás és a kapcsolódó erőforrások az Azure-ban jönnek l�
     
     Ez a következő erőforrásokat hozza létre az Azure-ban:
     
-    + Erőforráscsoport. Neve: _Java-functions-Group_.
-    + Storage-fiók. A függvények igénylik. A név véletlenszerűen jön létre a Storage-fióknév követelményei alapján.
-    + Üzemeltetési csomag. A _westus_ régióban lévő Function App kiszolgáló nélküli üzemeltetése. A név a _Java-functions-app-Service-Plan_.
-    + Function alkalmazás. A functions alkalmazás a függvények üzembe helyezési és végrehajtási egysége. A név véletlenszerűen jön létre a _artifactId_ alapján, amely véletlenszerűen generált számmal van hozzáfűzve.
+    + Erőforráscsoport. Neve _java-functions-group._
+    + Tárfiók. A Functions által megkövetelt. A nevet a rendszer véletlenszerűen generálja a Storage-fiók nevére vonatkozó követelmények alapján.
+    + Üzemeltetési csomag. Kiszolgáló nélküli üzemeltetés a függvényalkalmazás számára a _westus_ régióban. A név _java-functions-app-service-plan._
+    + Függvényalkalmazás. A függvényalkalmazás a függvények üzembe helyezési és végrehajtási egysége. A rendszer véletlenszerűen generálja a nevet az _artifactId_ alapján, és egy véletlenszerűen generált számmal egészül ki.
     
-    A központi telepítés a Project fájljait csomagolja és telepíti az új Function alkalmazásba a [zip-telepítés](functions-deployment-technologies.md#zip-deploy)használatával. A kód a központi telepítési csomagból fut az Azure-ban.
+    Az üzembe helyezés csomagba tömöríti a projektfájlokat, és üzembe helyezheti őket az új függvényalkalmazásban [a zip-telepítés használatával.](functions-deployment-technologies.md#zip-deploy) A kód az Azure-beli üzembe helyezési csomagból fut.
 
 [!INCLUDE [functions-run-remote-azure-cli](../../includes/functions-run-remote-azure-cli.md)]
 
@@ -202,9 +202,9 @@ A functions-alkalmazás és a kapcsolódó erőforrások az Azure-ban jönnek l�
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha folytatja a [következő lépéssel](#next-steps) , és hozzáadja az Azure Storage-várólista kimeneti kötését, az összes erőforrást helyben kell tartania, ahogy a már elvégzett műveletekre épít.
+Ha folytatja [](#next-steps) a következő lépéssel, és hozzáad egy Azure Storage-üzenetsor kimeneti kötését, tartsa a helyén az összes erőforrást, miközben a már végzett munka alapján fog felépíteni.
 
-Ellenkező esetben a következő paranccsal törölheti az erőforráscsoportot és az összes benne lévő erőforrást, hogy elkerülje a további költségek felmerülését.
+Ellenkező esetben a következő paranccsal törölheti az erőforráscsoportot és annak összes tartalmazott erőforrását, hogy elkerülje a további költségeket.
 
  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -223,4 +223,4 @@ Remove-AzResourceGroup -Name java-functions-group
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Kapcsolódás Azure Storage-várólistához](functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-java)
+> [Csatlakozás Azure Storage-üzenetsorhoz](functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-java)

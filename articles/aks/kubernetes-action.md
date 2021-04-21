@@ -1,53 +1,53 @@
 ---
-title: Tárolók létrehozása, tesztelése és üzembe helyezése az Azure Kubernetes Service-ben GitHub-műveletek használatával
-description: Ismerje meg, hogyan helyezhet üzembe a tárolót a GitHub-műveletek használatával a Kubernetes
+title: Tárolók összeállítása, tesztelése és üzembe helyezése Azure Kubernetes Service a GitHub Actions
+description: Megtudhatja, hogyan használhatja GitHub Actions a tároló Kubernetesben való üzembe helyezéséhez
 services: container-service
 author: azooinmyluggage
 ms.topic: article
 ms.date: 11/06/2020
 ms.author: atulmal
 ms.custom: github-actions-azure
-ms.openlocfilehash: 94134360de49a066f825cbb0c85712995d90b37f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a8e91f74fe3c862a814d7660e64748df9553f1d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98761452"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779758"
 ---
-# <a name="github-actions-for-deploying-to-kubernetes-service"></a>A Kubernetes szolgáltatás üzembe helyezéséhez szükséges GitHub-műveletek
+# <a name="github-actions-for-deploying-to-kubernetes-service"></a>GitHub Actions Kubernetes Service-be való üzembe helyezéshez
 
-A [GitHub-műveletek](https://docs.github.com/en/actions) révén rugalmasan hozhat létre automatizált szoftverfejlesztési életciklus-munkafolyamatot. Több Kubernetes műveletet is használhat a Azure Container Registry tárolók számára az Azure Kubernetes Service-be a GitHub-műveletekkel való üzembe helyezéshez. 
+[GitHub Actions](https://docs.github.com/en/actions) lehetővé teszi egy automatizált szoftverfejlesztési életciklus-munkafolyamat felépítésének rugalmasságát. Több Kubernetes-művelettel is üzembe helyezhet tárolókat a Azure Container Registry- és Azure Kubernetes Service-GitHub Actions. 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Egy GitHub-fiók. Ha még nem rendelkezik ilyennel, regisztráljon [ingyenesen](https://github.com/join).  
-- Egy működő Kubernetes-fürt
-    - [Oktatóanyag: alkalmazás előkészítése az Azure Kubernetes Service-hez](tutorial-kubernetes-prepare-app.md)
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Egy GitHub-fiók. Ha még nem tudja, regisztráljon [ingyenesen.](https://github.com/join)  
+- Működő Kubernetes-fürt
+    - [Oktatóanyag: Alkalmazás előkészítése Azure Kubernetes Service](tutorial-kubernetes-prepare-app.md)
 
-## <a name="workflow-file-overview"></a>A munkafolyamat-fájl áttekintése
+## <a name="workflow-file-overview"></a>Munkafolyamat-fájl áttekintése
 
-A munkafolyamatot egy YAML-(. YML) fájl határozza meg a `/.github/workflows/` tárház elérési útjában. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza.
+A munkafolyamatot egy YAML- (.yml-) fájl definiálja az `/.github/workflows/` adattár elérési útján. Ez a definíció tartalmazza a munkafolyamatot felhozó különböző lépéseket és paramétereket.
 
-Az AK-t tartalmazó munkafolyamatok esetében a fájl három szakaszt tartalmaz:
+Az AKS-t célzó munkafolyamatok fájlja három szakaszból áll:
 
 |Section  |Feladatok  |
 |---------|---------|
-|**Hitelesítés** | Bejelentkezés a Private Container registrybe (ACR) |
-|**Létrehozás** | Build & a tároló rendszerképének leküldése  |
-|**Telepítés** | 1. a cél AK-fürt beállítása |
-| |2. hozzon létre egy általános/Docker-beállításjegyzékbeli titkot a Kubernetes-fürtben  |
-||3. üzembe helyezés a Kubernetes-fürtön|
+|**Hitelesítés** | Bejelentkezés privát tároló-beállításjegyzékbe (ACR) |
+|**Létrehozás** | Build & tároló rendszerképének leküldése  |
+|**Telepítés** | 1. A cél AKS-fürt beállítása |
+| |2. Általános/docker-registry titkos kulcs létrehozása a Kubernetes-fürtben  |
+||3. Üzembe helyezés a Kubernetes-fürtön|
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-[Egyszerű szolgáltatásnév](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) létrehozásához használja az az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) parancsot az [Azure CLI](/cli/azure/)-ben. Ezt a parancsot a Azure Portal [Azure Cloud Shell](https://shell.azure.com/) használatával vagy a **kipróbálás** gombra kattintva futtathatja.
+Szolgáltatásnév [létrehozásához](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) használja az [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) parancsot az [Azure CLI-n.](/cli/azure/) Ezt a parancsot [futtathatja](https://shell.azure.com/) a Azure Cloud Shell a Azure Portal a Próbálja **ki gombot** választva.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
 ```
 
-A fenti parancsban cserélje le a helyőrzőket az előfizetés-azonosítójával és az erőforráscsoporthoz. A kimenet a szerepkör-hozzárendelés hitelesítő adatai, amelyek hozzáférést biztosítanak az erőforráshoz. A parancsnak a következőhöz hasonló JSON-objektumot kell kiadnia.
+A fenti parancsban cserélje le a helyőrzőket az előfizetés-azonosítójára és az erőforráscsoportra. A kimenet a szerepkör-hozzárendelési hitelesítő adatok, amelyek hozzáférést biztosítanak az erőforráshoz. A parancs kimenete egy ehhez hasonló JSON-objektum lesz.
 
 ```json
   {
@@ -58,30 +58,30 @@ A fenti parancsban cserélje le a helyőrzőket az előfizetés-azonosítójáva
     (...)
   }
 ```
-Másolja ezt a JSON-objektumot, amelyet a GitHubról történő hitelesítéshez használhat.
+Másolja ezt a JSON-objektumot, amellyel a GitHubról hitelesíthet.
 
-## <a name="configure-the-github-secrets"></a>A GitHub-titkok konfigurálása
+## <a name="configure-the-github-secrets"></a>A GitHub titkos kód konfigurálása
 
-A titkok konfigurálásához kövesse a következő lépéseket:
+Kövesse a titkos kulcsok konfigurálásának lépéseit:
 
-1. A [githubon](https://github.com/)tallózással keresse meg a tárházat, válassza a **beállítások > titkok > új titok hozzáadása** lehetőséget.
+1. A [GitHubon](https://github.com/)keresse meg az adattárat, és válassza a Settings > Secrets > Add a new secret (Titkos kulcsok hozzáadása) **lehetőséget.**
 
-    ![Képernyőfelvétel: az új titkos kulcs hozzáadása egy adattárhoz.](media/kubernetes-action/secrets.png)
+    ![Képernyőkép az Új titkos adattár hozzáadása hivatkozásról.](media/kubernetes-action/secrets.png)
 
-2. Illessze be a fenti parancs tartalmát a `az cli` titkos változó értékére. Például: `AZURE_CREDENTIALS`.
+2. Illessze be a fenti `az cli` parancs tartalmát a titkos változó értékeként. Például: `AZURE_CREDENTIALS`.
 
-3. Hasonlóképpen adja meg a következő további titkokat a tároló beállításjegyzékbeli hitelesítő adataihoz, és állítsa be őket a Docker bejelentkezési műveletben. 
+3. Hasonlóképpen határozza meg a következő további titkos kulcsokat a tároló-beállításjegyzék hitelesítő adataihoz, és állítsa be őket a Docker bejelentkezési műveletében. 
 
     - REGISTRY_USERNAME
     - REGISTRY_PASSWORD
 
-4. A titkokat az alább látható módon fogja látni.
+4. A titkos kulcsok az alább látható módon jelennek meg, amint definiálva van.
 
-    ![Képernyőfelvétel: egy adattár meglévő titkait jeleníti meg.](media/kubernetes-action/kubernetes-secrets.png)
+    ![Az adattár meglévő titkosait bemutató képernyőkép.](media/kubernetes-action/kubernetes-secrets.png)
 
-##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>Tároló lemezképének létrehozása és üzembe helyezése az Azure Kubernetes Service-fürtön
+##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>Tárolólemezkép létrehozása és üzembe helyezése Azure Kubernetes Service fürtön
 
-A tároló lemezképek felépítésének és leküldésének lépései a művelet használatával hajthatók végre `Azure/docker-login@v1` . 
+A tároló rendszerképének összeállítása és leküldése művelet használatával `Azure/docker-login@v1` történik. 
 
 
 ```yml
@@ -112,20 +112,20 @@ jobs:
 
 ```
 
-### <a name="deploy-to-azure-kubernetes-service-cluster"></a>Üzembe helyezés az Azure Kubernetes Service-fürtben
+### <a name="deploy-to-azure-kubernetes-service-cluster"></a>Üzembe helyezés Azure Kubernetes Service fürtön
 
-Ha a Container-lemezképet AK-ba szeretné telepíteni, akkor a műveletet kell használnia `Azure/k8s-deploy@v1` . Ehhez a művelethez öt paraméter tartozik:
+Tároló rendszerképének AKS-hez való üzembe helyezéséhez a műveletet kell `Azure/k8s-deploy@v1` használnia. Ennek a műveletnek öt paramétere van:
 
 | **Paraméter**  | **Magyarázat**  |
 |---------|---------|
-| **névtér** | Választható Válassza ki a cél Kubernetes-névteret. Ha a névtér nincs megadva, a parancsok az alapértelmezett névtérben fognak futni. | 
-| **jegyzékek** |  Szükséges A jegyzékfájl elérési útja, amelyet a rendszer az üzembe helyezéshez fog használni |
-| **képek** | Választható A jegyzékfájlok helyettesítéséhez használni kívánt rendszerkép (ek) teljes erőforrás-URL-címe |
-| **imagepullsecrets** | Választható Egy olyan Docker-beállításjegyzékbeli titok neve, amely már be van állítva a fürtön belül. Az egyes titkos nevek a imagePullSecrets mezőben találhatók a bemeneti jegyzékfájlban található munkaterhelések esetében. |
-| **kubectl – verzió** | Választható A kubectl bináris fájl egy adott verzióját telepíti. |
+| **Névtér** | (Nem kötelező) Válassza ki a cél Kubernetes-névteret. Ha a névtér nincs megjelölve, a parancsok az alapértelmezett névtérben fognak futni | 
+| **Rakományjegyzék** |  (Kötelező) Az üzembe helyezéshez használt jegyzékfájlok elérési útja |
+| **Képek** | (Nem kötelező) A jegyzékfájlok helyettesítésére használt kép(ek) teljes erőforrás-URL-címe |
+| **imagepullsecrets (képpullsecrets)** | (Nem kötelező) A fürtön belül már beállított docker-registry titkos kulcs neve. Mindegyik titkos név hozzá lesz adva az imagePullSecrets mező alatt a bemeneti jegyzékfájlokban található számítási feladatokhoz |
+| **kubectl-version** | (Nem kötelező) Telepíti a kubectl binary egy adott verzióját |
 
 
-Az AK-ra való üzembe helyezés előtt be kell állítania a TARGET Kubernetes-névteret, és létre kell hoznia egy rendszerkép-lekérési titkot. A képek húzásának működéséről további információt a [képek lekérése egy Azure Container registryből egy Kubernetes-fürtre](../container-registry/container-registry-auth-kubernetes.md)című témakörben talál. 
+Az AKS-hez való üzembe helyezés előtt be kell állítania a cél Kubernetes-névteret, és létre kell hoznia egy rendszerkép lekért titkos nevét. A [rendszerképek lehúzásával](../container-registry/container-registry-auth-kubernetes.md)kapcsolatos további információkért lásd: Rendszerképek lehúzása Egy Azure-beli tároló-beállításjegyzékből egy Kubernetes-fürtbe. 
 
 ```yaml
   # Create namespace if doesn't exist
@@ -144,7 +144,7 @@ Az AK-ra való üzembe helyezés előtt be kell állítania a TARGET Kubernetes-
 ```
 
 
-Fejezze be a telepítést a `k8s-deploy` művelettel. Cserélje le a környezeti változókat az alkalmazás értékeire. 
+Az üzembe helyezés befejezéséhez a műveletet `k8s-deploy` kell végrehajtania. Cserélje le a környezeti változókat az alkalmazás értékeire. 
 
 ```yaml
 
@@ -213,20 +213,20 @@ jobs:
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a Kubernetes-fürt, a tároló-beállításjegyzék és a tárház már nem szükséges, a telepített erőforrások tisztításához törölje az erőforráscsoportot és a GitHub-tárházat. 
+Ha a Kubernetes-fürtre, a tárolójegyzékre és az adattárra már nincs szükség, törölje az üzembe helyezett erőforrásokat az erőforráscsoport és a GitHub-adattár törlésével. 
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [További tudnivalók az Azure Kubernetes szolgáltatásról](/azure/architecture/reference-architectures/containers/aks-start-here)
+> [További információ a Azure Kubernetes Service](/azure/architecture/reference-architectures/containers/aks-start-here)
 
-### <a name="more-kubernetes-github-actions"></a>További Kubernetes GitHub-műveletek
+### <a name="more-kubernetes-github-actions"></a>További Kubernetes-GitHub Actions
 
-* [Kubectl Tool Installer](https://github.com/Azure/setup-kubectl) ( `azure/setup-kubectl` ): a Kubectl adott verzióját telepíti a futón.
-* [Kubernetes set Context](https://github.com/Azure/k8s-set-context) ( `azure/k8s-set-context` ): állítsa be azt a cél Kubernetes-fürtöt, amelyet más műveletek használni fognak, vagy futtasson bármely kubectl-parancsot.
-* [AK set Context](https://github.com/Azure/aks-set-context) ( `azure/aks-set-context` ): állítsa be a cél Azure Kubernetes szolgáltatás-fürt környezetét.
-* [Kubernetes Create Secret](https://github.com/Azure/k8s-create-secret) ( `azure/k8s-create-secret` ): hozzon létre egy általános titkos vagy Docker-beállításjegyzékbeli titkot a Kubernetes-fürtben.
-* [Kubernetes üzembe helyezése](https://github.com/Azure/k8s-deploy) ( `azure/k8s-deploy` ): a Kubernetes-fürtökhöz tartozó jegyzékfájlok sütni és üzembe helyezése.
-* [Setup Helm](https://github.com/Azure/setup-helm) ( `azure/setup-helm` ): telepítse a Helm bináris egy adott verzióját a futóra.
-* [Kubernetes Bake](https://github.com/Azure/k8s-bake) ( `azure/k8s-bake` ): a helm2, kustomize vagy kompose használatával üzemelő példányokhoz használandó manifest-fájl.
-* [Kubernetes](https://github.com/azure/k8s-lint) ( `azure/k8s-lint` ): a jegyzékfájlok érvényességének ellenőrzése/beadása.
+* [Kubectl-eszköz telepítője](https://github.com/Azure/setup-kubectl) ( ): A kubectl egy adott verzióját telepíti `azure/setup-kubectl` a futón.
+* [Kubernetes set context](https://github.com/Azure/k8s-set-context) ( ): A cél Kubernetes-fürt környezetének beállítása, amelyet más műveletek fognak használni, vagy bármilyen `azure/k8s-set-context` kubectl-parancs futtatása.
+* [AKS set context](https://github.com/Azure/aks-set-context) ( `azure/aks-set-context` ): A célként Azure Kubernetes Service fürtkörnyezetben.
+* [Kubernetes create secret](https://github.com/Azure/k8s-create-secret) ( ): Hozzon létre egy általános titkos adatokat vagy `azure/k8s-create-secret` docker-registry titkos adatokat a Kubernetes-fürtben.
+* [Kubernetes deploy](https://github.com/Azure/k8s-deploy) ( ): Jegyzékfájlokat sikkeszthet és helyezhet üzembe `azure/k8s-deploy` a Kubernetes-fürtökön.
+* [Setup Helm](https://github.com/Azure/setup-helm) ( ): Telepítse a Helm bináris fájl egy adott verzióját `azure/setup-helm` a futón.
+* [Kubernetes bake](https://github.com/Azure/k8s-bake) ( ): A helm2, kustomize vagy kompose használatával üzembe helyezéshez használt `azure/k8s-bake` jegyzékfájl beépítése.
+* [Kubernetes lint](https://github.com/azure/k8s-lint) ( `azure/k8s-lint` ): Ellenőrizze/lint a jegyzékfájlokat.

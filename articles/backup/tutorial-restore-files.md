@@ -1,15 +1,15 @@
 ---
-title: Oktatóanyag – fájlok visszaállítása egy virtuális gépre Azure Backup
+title: Oktatóanyag – Fájlok visszaállítása virtuális gépre Azure Backup
 description: Megtudhatja, hogyan végezhet fájlszintű helyreállítást egy Azure-beli virtuális gépen a Backup és a Recovery Services használatával.
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d977919b806be32b84001a9b91dc9e396fbd63ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc3ce601a92020c0fe405935b8dc57242d852a1f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96557909"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765322"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Fájlok visszaállítása Azure-beli virtuális gépekre
 
@@ -29,11 +29,11 @@ A környezet előkészítése:
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-- Ehhez a cikkhez az Azure CLI 2.0.18 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a cikkhez az Azure CLI 2.0.18-as vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="backup-overview"></a>A biztonsági mentés áttekintése
 
-Amikor az Azure biztonsági mentést kezdeményez, a virtuális gépen futó biztonsági mentési bővítmény időponthoz kötött pillanatképet készít. A biztonsági mentési bővítmény az első biztonsági mentés kérésekor települ a virtuális gépre. Azure Backup az alapul szolgáló tárterületről is készíthet pillanatképet, ha a virtuális gép nem fut a biztonsági mentés során.
+Amikor az Azure biztonsági mentést kezdeményez, a virtuális gépen futó biztonsági mentési bővítmény időponthoz kötött pillanatképet készít. A biztonsági mentési bővítmény az első biztonsági mentés kérésekor települ a virtuális gépre. Azure Backup pillanatképet is készíthet a mögöttes tárolóról, ha a virtuális gép nem fut a biztonsági mentés során.
 
 Alapértelmezés szerint az Azure Backup a fájlrendszerrel konzisztens biztonsági másolatot készít. Amikor az Azure Backup elkészítette a pillanatképet, az adatok átkerülnek a helyreállítási tárba. A maximális hatékonyság érdekében az Azure Backup csak azokat az adatblokkokat azonosítja és továbbítja, amelyek az előző biztonsági mentés óta változtak.
 
@@ -43,7 +43,7 @@ Ha az adatátvitel befejeződött, a rendszer eltávolítja a pillanatképet, é
 
 Ha véletlenül törölt vagy módosított egy fájlt, arra is van lehetősége, hogy a helyreállítási pontból csak egyes fájlokat állítson vissza. Ez a folyamat lehetővé teszi a helyreállítási pont biztonsági másolatában szereplő fájlok tallózását, és csak a szükséges fájlok visszaállítását. Ebben a példában a fájlszintű helyreállítási folyamat bemutatásához törölni fogunk egy fájlt egy webkiszolgálóról.
 
-1. A virtuális géphez való csatlakozáshoz kérje le a virtuális gép IP-címét az [az vm show](/cli/azure/vm#az-vm-show) paranccsal:
+1. A virtuális géphez való csatlakozáshoz kérje le a virtuális gép IP-címét az [az vm show](/cli/azure/vm#az_vm_show) paranccsal:
 
      ```azurecli-interactive
      az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
@@ -79,7 +79,7 @@ Ha véletlenül törölt vagy módosított egy fájlt, arra is van lehetősége,
 
 A fájlok visszaállításához az Azure Backup egy, a virtuális gépen futtatható szkriptet biztosít, amely helyi meghajtóként csatlakoztatja a helyreállítási pontot. Ezen a helyi meghajtón megkeresheti és visszaállíthatja a fájlokat a virtuális gépre. Ha ezzel végzett, válassza le a helyreállítási pont. Az Azure Backup a hozzárendelt ütemezési és megőrzési szabályzat szerint folytatja az adatok biztonsági mentését.
 
-1. A virtuális gép helyreállítási pontjainak listázásához használja [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) parancsot. Ebben a példában a *myVM* nevű virtuális gép legutóbbi helyreállítási pontját választjuk, amelyet a *myRecoveryServicesVault* véd:
+1. A virtuális gép helyreállítási pontjainak listázásához használja [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az_backup_recoverypoint_list) parancsot. Ebben a példában a *myVM* nevű, *myRecoveryServicesVault* nevű virtuális gép legutóbbi helyreállítási pontját választjuk ki:
 
     ```azurecli-interactive
     az backup recoverypoint list \
@@ -91,7 +91,7 @@ A fájlok visszaállításához az Azure Backup egy, a virtuális gépen futtath
         --output tsv
     ```
 
-2. A helyreállítási pontot a virtuális géphez kapcsoló vagy csatlakoztató szkript beszerzéséhez használja az [az backup restore files mount-rp](/cli/azure/backup/restore/files#az-backup-restore-files-mount-rp) parancsot. A következő példa a *myVM* nevű virtuális gép parancsfájlját szerzi be a *myRecoveryServicesVault*-ben védettként.
+2. A helyreállítási pontot a virtuális géphez kapcsoló vagy csatlakoztató szkript beszerzéséhez használja az [az backup restore files mount-rp](/cli/azure/backup/restore/files#az_backup_restore_files_mount_rp) parancsot. Az alábbi példa a *myRecoveryServicesVault virtuális gép myRecoveryServicesVault* nevű virtuális gépének parancsfájlját szerezheti be. 
 
     Cserélje le a *myRecoveryPointName* kifejezést az előző paranccsal beszerzett helyreállítási pont nevére:
 
@@ -121,7 +121,7 @@ A fájlok visszaállításához az Azure Backup egy, a virtuális gépen futtath
 Most, hogy a helyreállítási szkript a virtuális gépre van másolva, csatlakoztathatja a helyreállítási pontot, és visszaállíthatja a fájlokat.
 
 >[!NOTE]
-> [Itt](backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) tekintheti meg, hogy a folytatás előtt futtathatja-e a parancsfájlt a virtuális gépen.
+> A [folytatás előtt](backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) ellenőrizze itt, hogy tudja-e futtatni a szkriptet a virtuális gépen.
 
 1. Csatlakozzon a virtuális géphez SSH-val. Cserélje le *publicIpAddress* kifejezést a virtuális gép nyilvános IP-címére az alább látható módon:
 
@@ -141,7 +141,7 @@ Most, hogy a helyreállítási szkript a virtuális gépre van másolva, csatlak
     ./myVM_we_1571974050985163527.sh
     ```
 
-    A szkript futtatásakor a rendszer felszólítja, hogy adjon meg egy jelszót a helyreállítási pont eléréséhez. Adja meg a helyreállítási szkriptet létrehozó, előzőleg futtatott [az backup restore files mount-rp](/cli/azure/backup/restore/files#az-backup-restore-files-mount-rp) parancs kimenetében szereplő jelszót.
+    A szkript futtatásakor a rendszer felkéri, hogy adjon meg egy jelszót a helyreállítási pont eléréséhez. Adja meg a helyreállítási szkriptet létrehozó, előzőleg futtatott [az backup restore files mount-rp](/cli/azure/backup/restore/files#az_backup_restore_files_mount_rp) parancs kimenetében szereplő jelszót.
 
     A szkript kimenetében megtalálható a helyreállítási pont elérési útja. Az alábbi példa kimenetében látható, hogy a helyreállítási pont csatlakoztatva van a */home/azureuser/myVM-20170919213536/Volume1* címen:
 
@@ -181,7 +181,7 @@ Most, hogy a helyreállítási szkript a virtuális gépre van másolva, csatlak
     exit
     ```
 
-7. Válassza le a helyreállítási pontot a virtuális gépről az [az backup restore files unmount-rp](/cli/azure/backup/restore/files#az-backup-restore-files-unmount-rp) paranccsal. Az alábbi példa leválasztja a helyreállítási pontot a *myRecoveryServicesVault* tárolóban őrzött *myVM* nevű virtuális gépről.
+7. Válassza le a helyreállítási pontot a virtuális gépről az [az backup restore files unmount-rp](/cli/azure/backup/restore/files#az_backup_restore_files_unmount_rp) paranccsal. Az alábbi példa leválasztja a helyreállítási pontot a *myRecoveryServicesVault* tárolóban őrzött *myVM* nevű virtuális gépről.
 
     Cserélje le a *myRecoveryPointName* kifejezést az előző parancsokkal beszerzett helyreállítási pont nevére:
 

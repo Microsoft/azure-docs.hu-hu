@@ -1,7 +1,7 @@
 ---
-title: Azure CLI-parancsfájl mintája – IPv6-előtér konfigurálása
+title: Azure CLI-példaszkennelt – IPv6-előtér konfigurálása
 titlesuffix: Azure Virtual Network
-description: Az Azure CLI-parancsfájl használatával IPv6-végpontokat konfigurálhat, és egy Dual stack (IPv4 + IPv6) alkalmazást helyezhet üzembe az Azure-ban.
+description: Egy Azure CLI-példaszk szkript használatával konfigurálhatja az IPv6-végpontokat, és kettős vermű (IPv4 + IPv6) alkalmazást helyezhet üzembe az Azure-ban.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,37 +13,37 @@ ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9058fb4b9b92719f7abcc534632f983cafe2aae8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1cbfcf5f9e916c982e3a4cda9577becf343158fa
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99550810"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776471"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample"></a>IPv6-végpontok konfigurálása a Virtual Network script Sample-ben
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample"></a>IPv6-végpontok konfigurálása virtuális hálózatban – példaszk szkript
 
-Ez a cikk bemutatja, hogyan helyezhet üzembe egy kettős verem (IPv4 + IPv6) alkalmazást az Azure-ban, amely egy Dual stack-alhálózattal rendelkező kettős veremű virtuális hálózatot, egy kettős (IPv4 + IPv6-alapú) előtér-konfigurációkat, a kettős IP-konfigurációval rendelkező virtuális gépeket, a kettős hálózati biztonsági csoport szabályait és a kettős nyilvános IP-címeket tartalmazza.
+Ez a cikk bemutatja, hogyan helyezhet üzembe egy kettős veremű (IPv4 + IPv6) alkalmazást az Azure-ban, amely kettős verem alhálózattal és kettős veremű alhálózattal, kettős (IPv4 + IPv6) előtér-konfigurációval, kettős IP-konfigurációval és kettős hálózati biztonságicsoport-szabályokkal és kettős nyilvános IP-címekkel konfigurált virtuális gépeket tartalmaz.
 
 A szkriptet az Azure [Cloud Shellben](https://shell.azure.com/bash) vagy egy helyi Azure CLI-telepítésből futtathatja. Ha a parancssori felületet helyileg használja, akkor ehhez a szkripthez az Azure CLI 2.0.28-as vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. Ha helyileg futtatja a parancssori felületet, akkor emellett a `az login` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az IPv6 az Azure Virtual Network szolgáltatáshoz való használatához az előfizetést csak egyszer kell konfigurálnia az alábbiak szerint:
+Az IPv6 Azure-beli virtuális hálózathoz funkció használatához az előfizetést csak egyszer kell konfigurálnia az alábbiak szerint:
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
 
-A szolgáltatás regisztrációjának befejezéséhez akár 30 percet is igénybe vehet. A regisztrációs állapotát a következő Azure CLI-parancs futtatásával tekintheti meg:
+A szolgáltatásregisztráció befejezése akár 30 percet is igénybe vehet. A regisztrációs állapotot a következő Azure CLI-parancs futtatásával ellenőrizheti:
 
 ```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
 
-A regisztráció befejeződése után futtassa a következő parancsot:
+A regisztráció befejezése után futtassa a következő parancsot:
 
 ```azurecli
 az provider register --namespace Microsoft.Network
@@ -279,19 +279,19 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 
 | Parancs | Jegyzetek |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) | Létrehoz egy Azure-beli virtuális hálózatot és alhálózatot. |
-| [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) | Létrehoz egy nyilvános IP-címet egy statikus IP-címmel és egy hozzárendelt DNS-névvel. |
-| [az network lb create](/cli/azure/network/lb#az-network-lb-create) | Azure-terheléselosztót hoz létre. |
-| [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create) | Terheléselosztói mintavételt hoz létre. A terheléselosztói mintavétel a terheléselosztó-készlet egyes virtuális gépeinek figyelésére használható. Ha valamelyik virtuális gép elérhetetlenné válik, a terheléselosztó nem irányít rá forgalmat. |
-| [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) | Terheléselosztó-szabályt hoz létre. Ebben a példában egy, a 80-es portra vonatkozó szabály jön létre. A hálózati terheléselosztóra érkező HTTP-forgalom a terheléselosztó csoporthoz tartozó egyik virtuális gép 80-as portjára lesz irányítva. |
-| [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule#az-network-lb-inbound-nat-rule-create) | Létrehoz egy terheléselosztó hálózati címfordítási (Network Address Translation, NAT) szabályt.  A NAT-szabályok a terheléselosztó egyik portját hozzárendelik egy virtuális gép valamelyik portjához. Ebben a példában egy NAT-szabályt hozunk létre az SSH-forgalomnak a terheléselosztó csoportba tartozó egyes virtuális gépekre történő irányítására.  |
-| [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) | Létrehoz egy hálózati biztonsági csoportot (NSG), amely biztonsági határként szolgál az internet és a virtuális gép között. |
-| [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) | Létrehoz egy NSG-szabályt a befelé irányuló forgalom engedélyezésére. Ebben a példában a 22-es portot nyitjuk meg az SSH-forgalom számára. |
-| [az network nic create](/cli/azure/network/nic#az-network-nic-create) | Létrehoz egy virtuális hálózati kártyát, és csatlakoztatja a virtuális hálózathoz, az alhálózathoz és az NSG-hez. |
-| [az vm availability-set create](/cli/azure/network/lb/rule#az-network-lb-rule-create) | Létrehoz egy rendelkezésre állási csoportot. A rendelkezésre állási csoportok az alkalmazások rendelkezésre állását biztosítják a virtuális gépek fizikai erőforrások közötti elosztásával, hogy az esetlegesen fellépő hibák ne érintsék a teljes készletet. |
-| [az vm create](/cli/azure/vm#az-vm-create) | Létrehozza a virtuális gépet, és csatlakoztatja a hálózati kártyához, a virtuális hálózathoz, az alhálózathoz és az NSG-hez. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
-| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) | Létrehoz egy Azure-beli virtuális hálózatot és alhálózatot. |
+| [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) | Létrehoz egy nyilvános IP-címet egy statikus IP-címmel és egy hozzárendelt DNS-névvel. |
+| [az network lb create](/cli/azure/network/lb#az_network_lb_create) | Azure-terheléselosztót hoz létre. |
+| [az network lb probe create](/cli/azure/network/lb/probe#az_network_lb_probe_create) | Terheléselosztói mintavételt hoz létre. A terheléselosztói mintavétel a terheléselosztó-készlet egyes virtuális gépeinek figyelésére használható. Ha valamelyik virtuális gép elérhetetlenné válik, a terheléselosztó nem irányít rá forgalmat. |
+| [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) | Terheléselosztó-szabályt hoz létre. Ebben a példában egy, a 80-es portra vonatkozó szabály jön létre. A hálózati terheléselosztóra érkező HTTP-forgalom a terheléselosztó csoporthoz tartozó egyik virtuális gép 80-as portjára lesz irányítva. |
+| [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule#az_network_lb_inbound_nat_rule_create) | Létrehoz egy terheléselosztó hálózati címfordítási (Network Address Translation, NAT) szabályt.  A NAT-szabályok a terheléselosztó egyik portját hozzárendelik egy virtuális gép valamelyik portjához. Ebben a példában egy NAT-szabályt hozunk létre az SSH-forgalomnak a terheléselosztó csoportba tartozó egyes virtuális gépekre történő irányítására.  |
+| [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) | Létrehoz egy hálózati biztonsági csoportot (NSG), amely biztonsági határként szolgál az internet és a virtuális gép között. |
+| [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) | Létrehoz egy NSG-szabályt a befelé irányuló forgalom engedélyezésére. Ebben a példában a 22-es portot nyitjuk meg az SSH-forgalom számára. |
+| [az network nic create](/cli/azure/network/nic#az_network_nic_create) | Létrehoz egy virtuális hálózati kártyát, és csatlakoztatja a virtuális hálózathoz, az alhálózathoz és az NSG-hez. |
+| [az vm availability-set create](/cli/azure/network/lb/rule#az_network_lb_rule_create) | Létrehoz egy rendelkezésre állási csoportot. A rendelkezésre állási csoportok az alkalmazások rendelkezésre állását biztosítják a virtuális gépek fizikai erőforrások közötti elosztásával, hogy az esetlegesen fellépő hibák ne érintsék a teljes készletet. |
+| [az vm create](/cli/azure/vm#az_vm_create) | Létrehozza a virtuális gépet, és csatlakoztatja a hálózati kártyához, a virtuális hálózathoz, az alhálózathoz és az NSG-hez. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
+| [az group delete](/cli/azure/vm/extension#az_vm_extension_set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 0e75eebc7aa63efe6d28069bf7ca82234ac15a25
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 67531c1c5d37b02f9107dfc487c10b2fcac734d8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749995"
+ms.locfileid: "107791966"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Oktatóanyag: Tanúsítvány importálása a Azure Key Vault
 
@@ -81,7 +81,7 @@ Ahhoz, hogy tanúsítványt importálni tudja a tárolóba, szüksége lesz egy 
 
 ![Tanúsítvány tulajdonságai](../media/certificates/tutorial-import-cert/cert-import.png)
 
-Ha importálási  módszerrel ad hozzá egy tanúsítványt, az Azure Key Vault automatikusan kitölti a tanúsítványparamétereket (például az érvényességi időszakot, a kiállító nevét, az aktiválás dátumát stb.).
+Ha importálási  módszerrel ad hozzá tanúsítványt, az Azure Key Vault automatikusan kitölti a tanúsítványparamétereket (például az érvényességi időszakot, a kiállító nevét, az aktiválás dátumát stb.).
 
 Miután megjelenik az üzenet arról, hogy a tanúsítvány importálása sikeresen megtörtént, kattintson rá a listában a tulajdonságainak megtekintéséhez. 
 
@@ -89,7 +89,7 @@ Miután megjelenik az üzenet arról, hogy a tanúsítvány importálása sikere
 
 ## <a name="import-a-certificate-using-azure-cli"></a>Tanúsítvány importálása az Azure CLI használatával
 
-Tanúsítvány importálása egy megadott kulcstartóba. Ha egy meglévő, titkos kulcsot tartalmazó tanúsítványt Azure Key Vault importálni, az importálni kívánt fájl PFX vagy PEM formátumban is lehet. Ha a tanúsítvány PEM formátumú, a PEM-fájlnak tartalmaznia kell a kulcsot és az x509-tanúsítványokat. Ehhez a művelethez a tanúsítványokra/importálásra vonatkozó engedély szükséges.
+Tanúsítvány importálása egy megadott kulcstartóba. Ha egy meglévő, titkos kulcsot tartalmazó tanúsítványt Azure Key Vault importálni, az importálni kívánt fájl PFX vagy PEM formátumban is lehet. Ha a tanúsítvány PEM formátumú, a PEM-fájlnak tartalmaznia kell a kulcsot és az x509 tanúsítványokat. Ehhez a művelethez a tanúsítványokra/importálásra vonatkozó engedély szükséges.
 
 ```azurecli
 az keyvault certificate import --file
@@ -103,9 +103,9 @@ az keyvault certificate import --file
                                [--tags]
 ```
 
-További információ a [paraméterekről:](/cli/azure/keyvault/certificate#az-keyvault-certificate-import).
+További információ a [paraméterekről:](/cli/azure/keyvault/certificate#az_keyvault_certificate_import).
 
-A tanúsítvány importálása után a Tanúsítvány megjelenítése segítségével megtekintheti [a tanúsítványt](/cli/azure/keyvault/certificate#az-keyvault-certificate-show)
+A tanúsítvány importálása után a Tanúsítvány megjelenítése használatával megtekintheti [a tanúsítványt](/cli/azure/keyvault/certificate#az_keyvault_certificate_show)
 
 
 ```azurecli
@@ -149,8 +149,8 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a k
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban létrehozott egy Key Vault, és importált benne egy tanúsítványt. Ha többet szeretne megtudni a Key Vault és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
+Ebben az oktatóanyagban létrehozott egy Key Vault és importált egy tanúsítványt. Ha többet szeretne megtudni a Key Vault és az alkalmazásokba való integrálásáról, folytassa az alábbi cikkekkel.
 
-- További információ: [Tanúsítvány létrehozásának kezelése a Azure Key Vault](./create-certificate-scenarios.md)
-- Példák tanúsítványok [importálására REST API-k használatával](/rest/api/keyvault/importcertificate/importcertificate)
-- A biztonsági [Key Vault áttekintése](../general/security-overview.md)
+- További információ: [Tanúsítvány-létrehozás kezelése a Azure Key Vault](./create-certificate-scenarios.md)
+- Példák tanúsítványok [IMPORTÁLÁSára REST API-k használatával](/rest/api/keyvault/importcertificate/importcertificate)
+- Tekintse át [a Key Vault biztonsági áttekintését](../general/security-overview.md)

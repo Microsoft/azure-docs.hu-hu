@@ -1,0 +1,268 @@
+- name: Azure File Sync dokumentációja
+  href: index.yml
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: Mi az az Azure File Sync?
+      href: file-sync-introduction.md
+- name: Oktatóanyagok
+  items:
+    - name: Windows-fájlkiszolgálók kiterjesztése az Azure File Sync használatával
+      href: file-sync-extend-servers.md
+- name: Alapelvek
+  items:
+    - name: Az Azure File Sync üzembe helyezésének megtervezése
+      href: file-sync-planning.md
+    - name: A hibrid hozzáféréssel kapcsolatos hálózati megfontolások
+      href: file-sync-networking-overview.md
+    - name: Felhőbeli rétegzés
+      items:
+        - name: Felhőbeli rétegezés áttekintése
+          href: file-sync-cloud-tiering-overview.md
+        - name: Felhőbeli rétegezés szabályzatának áttekintése
+          href: file-sync-cloud-tiering-policy.md
+        - name: Felhőbeli rétegezésre vonatkozó szabályzatok kiválasztása
+          href: file-sync-choose-cloud-tiering-policies.md
+        - name: Felhőbeli rétegezés monitorozása
+          href: file-sync-monitor-cloud-tiering.md
+    - name: Méretezhetőségi és teljesítménycélok
+      href: ../files/storage-files-scale-targets.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Véletlen adattörlések megakadályozása
+      href: ../files/storage-files-prevent-file-share-deletion.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Fájlmegosztások biztonsági mentése
+      href: ../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: A számlázás ismertetése
+      href: ../files/understanding-billing.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Titkosítás
+      items:
+        - name: Inaktív adatok titkosítása
+          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Titkosítás inaktív állapotban ügyfél által felügyelt kulcsokkal
+          href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Megfelelőségi ajánlatok
+      href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: GYIK
+      href: ../files/storage-files-faq.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+- name: Útmutatók
+  items:
+    - name: Üzembe helyezés
+      items:
+        - name: SMB-fájlmegosztás létrehozása
+          href: ../files/storage-how-to-create-file-share.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Az Azure File Sync üzembe helyezése
+          href: file-sync-deployment-guide.md
+    - name: Network (Hálózat)
+      items:
+        - name: Az Azure File Sync hálózati végpontjainak konfigurálása
+          href: file-sync-networking-endpoints.md
+        - name: A File Sync proxy- és tűzfalbeállításainak konfigurálása
+          href: file-sync-firewall-and-proxy.md
+        - name: Helyek közötti VPN konfigurálása
+          href: ../files/storage-files-configure-s2s-vpn.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Pont–hely típusú VPN-átjáró konfigurálása Windowson
+          href: ../files/storage-files-configure-p2s-vpn-windows.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Kezelés
+      items:
+        - name: Kiszolgáló regisztrálása az Azure File Sync használatával
+          href: file-sync-server-registration.md
+        - name: Azure Files Sync-kiszolgálóvégpont hozzáadása
+          href: file-sync-server-endpoint.md
+        - name: Tárhely kezelése a független Azure-felhőkben
+          href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Fiók feladatátvételének indítása
+          href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Rétegzett fájlok kezelése
+          href: file-sync-how-to-manage-tiered-files.md
+        - name: 'Erőforrások áthelyezése más erőforráscsoportokba, előfizetésekbe és AAD-bérlőkbe'
+          href: file-sync-resource-move.md
+    - name: Adatvédelem
+      items:
+        - name: Helyreállítható törlés engedélyezése
+          href: ../files/storage-files-enable-soft-delete.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Az adatreplikálás módjának megváltoztatása
+          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Adatredundancia kezelése
+          items:
+            - name: Az adatreplikálás módjának megváltoztatása
+              href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Magas rendelkezésre állású alkalmazások tervezése
+              href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Vészhelyreállítás kezelése
+          items:
+            - name: Az Utolsó szinkronizálás időpontja tulajdonság ellenőrzése
+              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Fiók feladatátvételének indítása
+              href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Fájlmegosztások biztonsági mentése
+          items:
+            - name: Portál
+              href: ../../backup/backup-afs.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: parancssori felület
+              href: ../../backup/backup-afs-cli.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/backup-azure-afs-automation.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: REST API
+              href: ../../backup/backup-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Fájlmegosztások visszaállítása
+          items:
+            - name: Portál
+              href: ../../backup/restore-afs.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: parancssori felület
+              href: ../../backup/restore-afs-cli.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/restore-afs-powershell.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: REST API
+              href: ../../backup/restore-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Fájlmegosztások kezelése
+          items:
+            - name: Portál
+              href: ../../backup/manage-afs-backup.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: parancssori felület
+              href: ../../backup/manage-afs-backup-cli.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/manage-afs-powershell.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: REST API
+              href: ../../backup/manage-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Figyelés
+      items:
+        - name: Az Azure Files monitorozása
+          href: ../files/storage-files-monitoring.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Az Azure File Sync monitorozása
+          href: file-sync-monitoring.md
+    - name: Migrate (Áttelepítés)
+      items:
+        - name: Migrálás Azure-fájlmegosztásokba
+          href: ../files/storage-files-migration-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Hibrid telepítés megcélzása
+          items:
+            - name: Tömeges adatmigrálás az Azure File Syncbe az Azure Data Boxszal
+              href: file-sync-offline-data-transfer.md
+            - name: Migrálás Linuxról hibrid fájlkiszolgálóra az Azure File Sync használatával
+              href: ../files/storage-files-migration-linux-hybrid.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Migrálás helyszíni NAS-ról hibrid fájlkiszolgálóra az Azure File Sync használatával
+              href: ../files/storage-files-migration-nas-hybrid.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Áttelepítés helyszíni NAS-ról hibrid fájlkiszolgálóra a DataBoxgal
+              href: ../files/storage-files-migration-nas-hybrid-databox.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: A StorSimple-ből
+          items:
+            - name: StorSimple 8100 és 8600 migrálási útmutató
+              href: ../files/storage-files-migration-storsimple-8000.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: StorSimple 1200 migrálási útmutató
+              href: ../files/storage-files-migration-storsimple-1200.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Nagy fájlok megosztásának engedélyezése
+      href: ../files/storage-files-how-to-create-large-file-share.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Biztonságos
+      items:
+        - name: Tárfiók titkosítási kulcsainak kezelése
+          items:
+            - name: A fiók titkosításikulcs-modelljének ellenőrzése
+              href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Ügyfél által felügyelt kulcsokkal végzett titkosítás konfigurálása
+              items:
+                - name: Ügyfél által felügyelt kulcsok tárolása egy kulcstartóban
+                  href: ../common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+                - name: Ügyfél által felügyelt kulcsok tárolása egy felügyelt HSM-ben
+                  href: ../common/customer-managed-keys-configure-key-vault-hsm.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Infrastruktúra titkosításának engedélyezése a fiókban
+          href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Az Azure Defender konfigurálása veszélyforrások elleni védelem céljából
+          href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Tűzfalak és virtuális hálózatok konfigurálása
+          href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Biztonságos átvitel megkövetelése
+          href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: A Transport Layer Security (TLS) kezelése
+          items:
+            - name: Minimális TLS-verzió kényszerítése a bejövő kérések esetében
+              href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: TLS-verzió konfigurálása ügyfélalkalmazáshoz
+              href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Hibaelhárítás
+      items:
+        - name: Azure-fájlok hibaelhárítása Windows rendszeren (SMB)
+          href: ../files/storage-troubleshoot-windows-file-connection-problems.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Az Azure-fájlmegosztások teljesítményének hibaelhárítása
+          href: ../files/storage-troubleshooting-files-performance.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Azure-fájlok szinkronizálásának hibaelhárítása
+          href: file-sync-troubleshoot.md
+        - name: Az Azure-fájlmegosztások törlésének hibaelhárítása
+          href: ../files/storage-troubleshoot-cannot-delete-files-azure-file-share.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Fájlmegosztások biztonsági mentésével kapcsolatos hibák elhárítása
+          href: ../../backup/troubleshoot-azure-files.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+- name: Referencia
+  items:
+    - name: Azure Files-referenciák
+      href: ../files/reference.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Az Azure Files monitorozása – referencia
+      href: ../files/storage-files-monitoring-reference.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Resource Manager-sablon
+      displayName: arm
+      href: /azure/templates/microsoft.storage/allversions
+    - name: Példák
+      href: 'https://azure.microsoft.com/documentation/samples/?service=storage&term=file'
+    - name: Azure Files és Azure NetApp Files összehasonlítása
+      href: ../files/storage-files-netapp-comparison.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+- name: További források
+  items:
+    - name: Azure-frissítések
+      href: 'https://azure.microsoft.com/updates/?category=storage'
+    - name: Az Azure File Sync kibocsátási megjegyzései
+      href: file-sync-release-notes.md
+    - name: Microsoft Azure Files a Microsoft Q&A oldalán
+      href: /answers/topics/azure-files.html
+    - name: Azure Files a Stack Overflow-n
+      href: 'https://stackoverflow.com/questions/tagged/azure-files'
+    - name: Az Azure Files díjszabása
+      href: 'https://azure.microsoft.com/pricing/details/storage/files/'
+    - name: Azure-díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
+    - name: NuGet-csomagok (.NET)
+      items:
+        - name: Microsoft.Azure.Storage.Common (11.x verzió)
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/'
+        - name: Azure.Storage.Common (12.x verzió – előzetes)
+          href: 'https://www.nuget.org/packages/Azure.Storage.Common/'
+        - name: Microsoft.Azure.Storage.File (11. x verzió)
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.File/'
+        - name: Azure.Storage.file (12.x verzió – előzetes)
+          href: 'https://www.nuget.org/packages/Azure.Storage.Files/'
+        - name: Azure Configuration Manager
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
+        - name: Azure Storage adatátviteli könyvtár
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
+        - name: Storage Resource Provider-kódtár
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/'
+    - name: Forráskód
+      items:
+        - name: .NET
+          items:
+            - name: Azure Storage-ügyfélkódtár
+              items:
+                - name: 12.x verzió (előzetes)
+                  href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage'
+                - name: 11.x és korábbi verziók
+                  href: 'https://github.com/Azure/azure-storage-net'
+            - name: Adatátviteli kódtár
+              href: 'https://github.com/Azure/azure-storage-net-data-movement'
+            - name: Storage Resource Provider-kódtár
+              href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.Management.Storage'
+        - name: Java
+          items:
+            - name: Azure Storage-ügyfélkódtár 12.x verzió (előzetes)
+              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
+            - name: Azure Storage-ügyfélkódtár 8.x és korábbi verziók
+              href: 'https://github.com/Azure/azure-storage-java'
+        - name: Node.js
+          items:
+            - name: Azure Storage-ügyfélkódtár 12.x verzió (előzetes)
+              href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage'
+            - name: Azure Storage-ügyfélkódtár 10.x verzió
+              href: 'https://github.com/Azure/azure-storage-node'
+        - name: Python
+          items:
+            - name: Azure Storage-ügyfélkódtár 12.x verzió (előzetes)
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage'
+            - name: Azure Storage-ügyfélkódtár 2.1 verzió
+              href: 'https://github.com/Azure/azure-storage-python'

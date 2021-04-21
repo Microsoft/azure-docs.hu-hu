@@ -1,7 +1,7 @@
 ---
-title: Azure CLI-parancsfájl minta – Azure-alkalmazás konfigurációs tárolójának létrehozása
+title: Azure CLI-példaszktár – Azure App Configuration létrehozása
 titleSuffix: Azure App Configuration
-description: Azure-alkalmazás konfigurációs tárolójának létrehozása minta Azure CLI-parancsfájl használatával. Lásd a parancsfájlban használt parancsokra mutató hivatkozásokat.
+description: Hozzon létre Azure App Configuration tárolót egy Azure CLI-példaszkret használatával. A referenciacikk a szkriptben használt parancsokra mutató hivatkozásokat tartalmaz.
 services: azure-app-configuration
 author: AlexandraKemperMS
 ms.service: azure-app-configuration
@@ -9,22 +9,22 @@ ms.topic: sample
 ms.date: 01/24/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4554ca64dccaa69e3a6fb63e5c28a6bcbb1a32e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a341e9772c67da7781a5cec92f286c037c55ce9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96930840"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768902"
 ---
-# <a name="create-an-azure-app-configuration-store"></a>Azure-alkalmazás konfigurációs tárolójának létrehozása
+# <a name="create-an-azure-app-configuration-store"></a>Új Azure App Configuration létrehozása
 
-Ez a példa az Azure app Configuration új példányát hozza létre egy új erőforráscsoporthoz.
+Ez a példaszkprogram egy új példányt hoz Azure App Configuration egy új erőforráscsoportban.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - Az oktatóanyaghoz az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+ - Ehhez az oktatóanyaghoz az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -65,16 +65,16 @@ Jegyezze fel az új erőforráscsoporthoz létrehozott tényleges nevet. Ezt az 
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a szkript a következő parancsokat használja egy új erőforráscsoport és egy alkalmazás-konfigurációs tároló létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja egy új erőforráscsoport és egy App Configuration létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Jegyzetek |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az appconfig Create](/cli/azure/appconfig#az-appconfig-create) | Létrehoz egy alkalmazás-konfigurációs tároló erőforrást. |
-| [az appconfig hitelesítőadat-lista](/cli/azure/appconfig/credential#az-appconfig-credential-list) | Az alkalmazás konfigurációs tárolójának hozzáférési kulcsainak listázása. |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az appconfig create](/cli/azure/appconfig#az_appconfig_create) | Létrehoz egy App Configuration-erőforrást. |
+| [az appconfig credential list](/cli/azure/appconfig/credential#az_appconfig_credential_list) | List access keys for an App Configuration store .list.list access keys for an App Configuration store. |
 
 ## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
-Az alkalmazások konfigurációjának további parancssori felületi mintái az [Azure app CONFIGURATION CLI-mintákban](../cli-samples.md)találhatók.
+További App Configuration CLI-szkriptmintákat az Azure App Configuration [CLI-minták között talál.](../cli-samples.md)

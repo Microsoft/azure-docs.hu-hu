@@ -1,42 +1,42 @@
 ---
-title: 'Oktatóanyag: régiók közötti terheléselosztó létrehozása az Azure CLI-vel'
+title: 'Oktatóanyag: Régiók közötti terheléselosztás létrehozása az Azure CLI használatával'
 titleSuffix: Azure Load Balancer
-description: Ismerkedjen meg ezzel az Oktatóanyaggal, és telepítsen egy régiók közötti Azure Load Balancer az Azure CLI használatával.
+description: Az oktatóanyag első lépésekben régiók közötti virtuális gépeket helyez Azure Load Balancer Azure CLI használatával.
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 03/04/2021
-ms.openlocfilehash: 83efb428a94d49b77ecd923d4868afe034374b5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca4134ff25dc9915f256b5a7bdd9404021b60a8e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103225183"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791912"
 ---
-# <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-cli"></a>Oktatóanyag: régiók közötti Azure Load Balancer létrehozása az Azure CLI-vel
+# <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-cli"></a>Oktatóanyag: Régiók közötti Azure Load Balancer létrehozása az Azure CLI használatával
 
-A régiók közötti terheléselosztó biztosítja, hogy a szolgáltatások globálisan elérhetők legyenek több Azure-régió között. Ha az egyik régió meghibásodik, a rendszer átirányítja a forgalmat a legközelebbi, legközelebb egészséges regionális Load balancerbe.  
+A régiók közötti terheléselosztás biztosítja, hogy a szolgáltatás globálisan több Azure-régióban is elérhető. Ha az egyik régió meghibásodik, a forgalom a legközelebbi megfelelő állapotú regionális terheléselosztáshoz lesz irányítva.  
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Hozza létre a régiók közötti Load balancert.
+> * Régiók közötti terheléselosztás létrehozása.
 > * Hozzon létre egy terheléselosztó-szabályt.
-> * Hozzon létre két regionális terheléselosztó-t tartalmazó háttér-készletet.
-> * A terheléselosztó tesztelése.
+> * Hozzon létre egy két regionális terheléselosztást tartalmazó háttérkészletet.
+> * A terheléselosztás tesztelése.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés.
-- Két különböző Azure-régióban üzembe helyezett backend-készletekkel rendelkező **standard** SKU Azure Load Balancer.
-    - A regionális standard Load Balancer és a backend-készletek virtuális gépei létrehozásával kapcsolatos információkért lásd [: rövid útmutató: nyilvános terheléselosztó létrehozása a virtuális gépek terheléselosztásához az Azure CLI használatával](quickstart-load-balancer-standard-public-cli.md).
-        - Fűzze hozzá az egyes régiókban található terheléselosztó és virtuális gépek nevét az **-R1** és **-R2** értékkel. 
-- Az Azure CLI helyileg vagy Azure Cloud Shell van telepítve.
+- Két **standard** termékváltozat az Azure Load Balancer két különböző Azure-régióban üzembe helyezett háttérkészletekkel.
+    - További információ regionális standard terheléselosztás létrehozásáról és virtuális gépek háttérkészletek számára való létrehozásáról: Rövid útmutató: Nyilvános terheléselosztás létrehozása a virtuális gépek Terheléselosztáshoz az [Azure CLI használatával.](quickstart-load-balancer-standard-public-cli.md)
+        - Minden régióban fűzheti hozzá a terheléselosztások és virtuális gépek nevét egy **-R1 és** **-R2 egymáshoz.** 
+- Az Azure CLI helyileg vagy helyileg Azure Cloud Shell.
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.28 verziójára vagy újabb verziójára van szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
+Ha a CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.28-as vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
 ## <a name="sign-in-to-azure-cli"></a>Bejelentkezés az Azure CLI-be
 
@@ -46,18 +46,18 @@ Jelentkezzen be az Azure CLI-be:
 az login
 ```
 
-## <a name="create-cross-region-load-balancer"></a>Régiók közötti Load Balancer létrehozása
+## <a name="create-cross-region-load-balancer"></a>Régiók közötti terheléselosztás létrehozása
 
-Ebben a szakaszban egy régiók közötti terheléselosztó, nyilvános IP-cím és terheléselosztási szabály jön létre.
+Ebben a szakaszban egy régiók közötti terheléselosztási, nyilvános IP-címet és terheléselosztási szabályt fog létrehozni.
 
 ### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group#az-group-create)paranccsal:
+Hozzon létre egy erőforráscsoportot [az az group create gombra:](/cli/azure/group#az_group_create)
 
-* **Myresourcegrouplb erőforráscsoportban-CR** névvel ellátott.
-* A **westus** helyen.
+* A **neve myResourceGroupLB-CR.**
+* A **westus helyen.**
 
 ```azurecli-interactive
   az group create \
@@ -65,13 +65,13 @@ Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group#az-
     --location westus
 ```
 
-### <a name="create-the-load-balancer-resource"></a>A terheléselosztó erőforrásának létrehozása
+### <a name="create-the-load-balancer-resource"></a>A terheléselosztási erőforrás létrehozása
 
-Régiók közötti terheléselosztó létrehozása az [az Network Cross-region-LB Create](/cli/azure/network/cross-region-lb#az_network_cross_region_lb_create):
+Hozzon létre egy régiók közötti terheléselosztást [az az network cross-region-lb create segítségével:](/cli/azure/network/cross-region-lb#az_network_cross_region_lb_create)
 
-* **MyLoadBalancer-CR** névvel ellátott.
-* Egy **myFrontEnd-CR** nevű frontend-készlet.
-* Egy **myBackEndPool-CR** nevű háttér-készlet.
+* A **neve myLoadBalancer-CR.**
+* Egy **myFrontEnd-CR nevű előtérben található készlet.**
+* Egy **myBackEndPool-CR** nevű háttérkészlet.
 
 ```azurecli-interactive
   az network cross-region-lb create \
@@ -83,18 +83,18 @@ Régiók közötti terheléselosztó létrehozása az [az Network Cross-region-L
 
 ### <a name="create-the-load-balancer-rule"></a>A terheléselosztási szabály létrehozása
 
-A terheléselosztó szabálya az alábbiakat határozza meg:
+A terheléselosztási szabályok a következőt határozzák meg:
 
-* A bejövő forgalom előtérbeli IP-konfigurációja.
-* A háttérbeli IP-készlet a forgalom fogadásához.
-* A szükséges forrás-és célport. 
+* A bejövő forgalom előtere IP-konfigurációja.
+* A forgalom fogadására a háttér-IP-készlet.
+* A szükséges forrás- és célport. 
 
-Terheléselosztó-szabály létrehozása az [az Network Cross-region-LB Rule Create](/cli/azure/network/cross-region-lb/rule#az_network_cross_region_lb_rule_create):
+Hozzon létre egy terheléselosztási szabályt [az az network cross-region-lb rule create segítségével:](/cli/azure/network/cross-region-lb/rule#az_network_cross_region_lb_rule_create)
 
-* Elnevezett **: myhttprule-CR**
-* Hallgassa meg a 80-es **portot** a **myFrontEnd-CR** felületi készletben.
-* Elosztott terhelésű hálózati forgalom küldése a háttérbeli címkészlet **myBackEndPool-CR** használatával a **80-es porton** keresztül. 
-* **TCP** protokoll.
+* **MyHTTPRule-CR nevű**
+* A **myFrontEnd-CR** előterekészlet **80-as** portján figyel.
+* Elosztott terhelésű hálózati forgalom küldése a **myBackEndPool-CR** háttércímkészletbe a **80-as port használatával.** 
+* TCP **protokoll**.
 
 ```azurecli-interactive
   az network cross-region-lb rule create \
@@ -110,18 +110,18 @@ Terheléselosztó-szabály létrehozása az [az Network Cross-region-LB Rule Cre
 
 ## <a name="create-backend-pool"></a>Háttérkészlet létrehozása
 
-Ebben a szakaszban két regionális standard Load balancert fog hozzáadni a régiók közötti terheléselosztó háttér-készletéhez.
+Ebben a szakaszban két regionális standard terheléselosztást fog hozzáadni a régiók közötti terheléselosztás háttérkészlethez.
 
 > [!IMPORTANT]
-> A lépések elvégzéséhez győződjön meg arról, hogy az előfizetésében két regionális terheléselosztó van telepítve a háttér-készletek használatával.  További információ: gyors üzembe helyezés – **[nyilvános terheléselosztó létrehozása a virtuális gépek terheléselosztásához az Azure CLI használatával](quickstart-load-balancer-standard-public-cli.md)**.
+> A lépések befejezéséhez győződjön meg arról, hogy két, háttérkészletekkel bíró regionális terheléselosztást helyezett üzembe az előfizetésében.  További információkért lásd: Rövid útmutató: Nyilvános terheléselosztás létrehozása a virtuális gépek terhelésének az Azure CLI használatával **[való terheléselosztása érdekében.](quickstart-load-balancer-standard-public-cli.md)**
 
-### <a name="add-the-regional-frontends-to-load-balancer"></a>A regionális frontendek hozzáadása a Load Balancerhez
+### <a name="add-the-regional-frontends-to-load-balancer"></a>A regionális előterek hozzáadása a terheléselosztáshoz
 
-Ebben a szakaszban a két regionális terheléselosztó felületének erőforrás-azonosítóit kell változókba helyezni.  Ezután a változók használatával adja hozzá a frontendeket a régiók közötti terheléselosztó háttérbeli címkészlet.
+Ebben a szakaszban két regionális terheléselosztási frontend erőforrás-értékét fogja változókba venni.  Ezután a változók használatával hozzáadja az előtereket a régiók közötti terheléselosztás háttércímkészletének.
 
-Az erőforrás-azonosítók lekérése az [az Network LB frontend-IP show](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_show)paranccsal.
+Az erőforrás-idok lekérése az [az network lb frontend-ip show val.](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_show)
 
-Használja az [az Network Cross-region-LB-címkészlet címe Hozzáadás](/cli/azure/network/cross-region-lb/address-pool/address#az_network_cross_region_lb_address_pool_address_add) lehetőséget, hogy hozzáadja a változókban a régiók közötti Load Balancer háttér-készletében elhelyezett előtérbeli felületeket:
+Az [az network cross-region-lb address-pool add](/cli/azure/network/cross-region-lb/address-pool/address#az_network_cross_region_lb_address_pool_address_add) használatával adja hozzá a régiók közötti terheléselosztás háttérkészletének változóiban elhelyezett előtereket:
 
 ```azurecli-interactive
   region1id=$(az network lb frontend-ip show \
@@ -155,9 +155,9 @@ Használja az [az Network Cross-region-LB-címkészlet címe Hozzáadás](/cli/a
 
 ## <a name="test-the-load-balancer"></a>A terheléselosztó tesztelése
 
-Ebben a szakaszban tesztelni fogja a régiók közötti Load balancert. A nyilvános IP-címhez egy böngészőben fog csatlakozni.  A virtuális gépeket a regionális terheléselosztó backend-készletek egyikében állíthatja le, és megfigyelheti a feladatátvételt.
+Ebben a szakaszban a régiók közötti terheléselosztást fogja tesztelni. Egy webböngészőben fog csatlakozni a nyilvános IP-címhez.  Leállítja az egyik regionális terheléselosztási háttérkészlet virtuális gépeit, és megfigyeli a feladatátvételt.
 
-1. A terheléselosztó nyilvános IP-címének lekéréséhez használja az [az Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show):
+1. A terheléselosztás nyilvános IP-címének leához használja [az az network public-ip show címet:](/cli/azure/network/public-ip#az_network_public_ip_show)
 
     ```azurecli-interactive
       az network public-ip show \
@@ -168,13 +168,13 @@ Ebben a szakaszban tesztelni fogja a régiók közötti Load balancert. A nyilv�
     ```
 2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Az IIS-webkiszolgáló alapértelmezett oldala jelenik meg a böngészőben.
 
-3. Állítsa le a virtuális gépeket az egyik regionális terheléselosztó háttér-készletében.
+3. Állítsa le az egyik regionális terheléselosztás háttérkészletében található virtuális gépeket.
 
-4. Frissítse a webböngészőt, és figyelje meg a másik regionális terheléselosztó kapcsolatának feladatátvételét.
+4. Frissítse a webböngészőt, és figyelje meg a kapcsolat feladatátvételét a másik regionális terheléseltöltővel.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-delete) paranccsal távolítsa el az erőforráscsoportot, a Load balancert és az összes kapcsolódó erőforrást.
+Ha már nincs rá szükség, az [az group delete paranccsal](/cli/azure/group#az_group_delete) távolítsa el az erőforráscsoportot, a terheléselosztást és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive
   az group delete \
@@ -185,10 +185,10 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-dele
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
-* Létrehozta a régiók közötti Load balancert.
+* Létrehozott egy régiók közötti terheléselosztást.
 * Létrehozott egy terheléselosztási szabályt.
-* Regionális terheléselosztó hozzáadása a régiók közötti terheléselosztó háttér-készletéhez.
-* Tesztelte a terheléselosztó.
+* Regionális terheléselosztások hozzáadva a régiók közötti terheléselosztás háttérkészletében.
+* Tesztelte a terheléseltöltőt.
 
 A következő cikkből megtudhatja, hogyan...
 > [!div class="nextstepaction"]

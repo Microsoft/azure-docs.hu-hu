@@ -1,6 +1,6 @@
 ---
-title: Foglalási vásárló keresése Azure Monitor naplókból
-description: Ez a cikk segít megkeresni a foglalások beszerzését Azure Monitor naplókból származó információkkal.
+title: Foglalásvásárló megkeresi a Azure Monitor naplókban
+description: Ez a cikk segít megtalálni a foglalás vásárlóját a naplókban Azure Monitor információkkal.
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
@@ -8,29 +8,29 @@ ms.subservice: reservations
 ms.topic: troubleshooting
 ms.date: 03/13/2021
 ms.author: banders
-ms.openlocfilehash: eedb5e7a55b50a353fd16498500b891e289e61e5
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 965e90eed0690d57b6ad3cf3a1543b1329c0fe74
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103477054"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773371"
 ---
-# <a name="find-a-reservation-purchaser-from-azure-logs"></a>Foglalási vásárló keresése az Azure-naplókból
+# <a name="find-a-reservation-purchaser-from-azure-logs"></a>Foglalás megvásárlója az Azure-naplókban
 
-Ebből a cikkből megtudhatja, hogyan keresheti meg a foglalások beszerzését a címtár naplóiból származó információkkal. A Azure Monitor Directory naplói a foglalások beszerzését biztosító felhasználók e-mail-azonosítóit jelenítik meg.
+Ez a cikk segít megtalálni a foglalás vásárlóját a címtárnaplókban található információkkal. A foglalásvásárlásokat Azure Monitor felhasználók e-mail-címének a naplói.
 
-## <a name="find-the-purchaser"></a>A vásárló megkeresése
+## <a name="find-the-purchaser"></a>A vásárló megkeresi
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Navigáljon a  >  **tevékenység naplójának** figyelése  >  **tevékenységhez**.  
-    :::image type="content" source="./media/find-reservation-purchaser-from-logs/activity-log-activity.png" alt-text="Képernyőfelvétel: Navigálás a tevékenység naplójában – tevékenység." lightbox="./media/find-reservation-purchaser-from-logs/activity-log-activity.png" :::
-1. Válassza a **címtár tevékenység** lehetőséget. Ha megjelenik egy üzenet, amely jogosult *a címtár-szintű naplók megtekintésére*, válassza a [hivatkozást](../../role-based-access-control/elevate-access-global-admin.md) , amelyből megtudhatja, hogyan szerezhet be engedélyeket.  
-    :::image type="content" source="./media/find-reservation-purchaser-from-logs/directory-activity-no-permission.png" alt-text="Képernyőfelvétel: a címtár tevékenységének engedélye a napló megtekintéséhez." lightbox="./media/find-reservation-purchaser-from-logs/directory-activity-no-permission.png" :::
-1. Ha rendelkezik a jogosultsággal, szűrje a **bérlői erőforrás-szolgáltatót** a **Microsoft. Capacity kapacitással**. A kiválasztott időtartományhoz tartozó összes foglalással kapcsolatos eseményt látnia kell. Ha szükséges, módosítsa az időtartományt.  
-    :::image type="content" source="./media/find-reservation-purchaser-from-logs/user-that-purchased-reservation.png" alt-text="A foglalást megvásárló felhasználót bemutató képernyőkép." lightbox="./media/find-reservation-purchaser-from-logs/user-that-purchased-reservation.png" :::
-    Szükség esetén előfordulhat, hogy **módosítania kell az oszlopokat** az **által kezdeményezett esemény** kiválasztásához.
-   A foglalás megvásárlását kezdeményező felhasználó a **által kezdeményezett esemény** alatt jelenik meg.
+1. Lépjen a   >  **Tevékenységnapló-tevékenység figyelése**  >  **lapra.**  
+    :::image type="content" source="./media/find-reservation-purchaser-from-logs/activity-log-activity.png" alt-text="Képernyőkép a Tevékenységnapló – Tevékenységre való navigálásról." lightbox="./media/find-reservation-purchaser-from-logs/activity-log-activity.png" :::
+1. Válassza a **Címtártevékenység lehetőséget.** Ha megjelenik egy üzenet, amely szerint Engedélyre van [](../../role-based-access-control/elevate-access-global-admin.md) szüksége a címtárszintű naplók megtekintéséhez, kattintson a hivatkozásra, hogy megtudja, hogyan kérheti le az engedélyeket.  
+    :::image type="content" source="./media/find-reservation-purchaser-from-logs/directory-activity-no-permission.png" alt-text="Képernyőkép a címtártevékenységről a napló megtekintéséhez szükséges engedély nélkül." lightbox="./media/find-reservation-purchaser-from-logs/directory-activity-no-permission.png" :::
+1. Ha rendelkezik engedéllyel, szűrje a **bérlői erőforrás-szolgáltatót** a **Microsoft.Capacity mezőben.** A kiválasztott időtartományra vonatkozó összes foglalással kapcsolatos eseményt meg kell látnia. Ha szükséges, módosítsa az időtartományt.  
+    :::image type="content" source="./media/find-reservation-purchaser-from-logs/user-that-purchased-reservation.png" alt-text="Képernyőkép a foglalást megvásároló felhasználóról." lightbox="./media/find-reservation-purchaser-from-logs/user-that-purchased-reservation.png" :::
+    Ha szükséges, előfordulhat, hogy az által kezdeményezett **esemény kiválasztásához** oszlopok szerkesztése **szükséges.**
+   A foglalást megvásároló felhasználó megjelenik a **által kezdeményezett esemény alatt.**
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ha szükséges, a számlázási rendszergazdák elérhetik a [foglalások tulajdonosát](view-reservations.md#how-billing-administrators-view-or-manage-reservations).
+- Ha szükséges, a számlázási rendszergazdák [átvehetik a foglalás tulajdonjogát.](view-reservations.md#how-billing-administrators-can-view-or-manage-reservations)

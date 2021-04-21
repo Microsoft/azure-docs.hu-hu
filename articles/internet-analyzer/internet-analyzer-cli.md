@@ -1,22 +1,22 @@
 ---
-title: Internet Analyzer-teszt létrehozása a parancssori felület használatával | Microsoft Docs
-description: Ebből a cikkből megtudhatja, hogyan hozhatja létre az első Internet Analyzer-tesztet az Azure CLI használatával.
+title: Teszt létrehozása Internet Analyzer CLI-| Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogyan hozhatja létre az első Internet Analyzer az Azure CLI használatával.
 services: internet-analyzer
 author: diego-perez-botero
 ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: a9a9fe93ebe302a76d69249dc56933e1bcc924d1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 46caae53ed81de335c2b9d5ddbd3fd7f89424fdd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200087"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780414"
 ---
-# <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Internet Analyzer-teszt létrehozása a parancssori felület használatával (előzetes verzió)
+# <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Teszt létrehozása Internet Analyzer CLI (előzetes verzió) használatával
 
-Az Internet Analyzer erőforrásait kétféleképpen lehet létrehozni – a [Azure Portal](internet-analyzer-create-test-portal.md) vagy a parancssori felület használatával. Ez a szakasz segítséget nyújt egy új Azure Internet Analyzer-erőforrás létrehozásához a CLI-élmény használatával. 
+Kétféleképpen hozhat létre erőforrást Internet Analyzer a Azure Portal [cli](internet-analyzer-create-test-portal.md) használatával. Ez a szakasz segítséget nyújt egy új Azure Internet Analyzer létrehozásához a CLI-felület használatával. 
 
 
 > [!IMPORTANT]
@@ -25,32 +25,32 @@ Az Internet Analyzer erőforrásait kétféleképpen lehet létrehozni – a [Az
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A nyilvános előzetes verzió globálisan használható; az adattárolás azonban az *USA 2. nyugati* régiójára korlátozódik az előzetes verzióban.
+A nyilvános előzetes verzió globálisan használható; az előzetes verzióban azonban az adattárolás az *USA 2.* nyugati régiója.
 
 ## <a name="object-model"></a>Objektummodell
-Az Internet Analyzer CLI a következő típusú erőforrásokat teszi elérhetővé:
-* **Tesztek** – a teszt összehasonlítja a két internetes végpont (A és B) végfelhasználói teljesítményét az idő múlásával.
-* **Profilok** – a tesztek egy Internet Analyzer-profil alatt jönnek létre. A profilok lehetővé teszik a kapcsolódó tesztek csoportosítását; egy profil egy vagy több tesztet is tartalmazhat.
-* Előre **konfigurált végpontok** – különböző konfigurációkkal (régiókkal, gyorsítási technológiákkal stb.) rendelkező végpontokat állítottunk be. Ezen előre konfigurált végpontok bármelyikét felhasználhatja a tesztekbe.
-* **Scorecardok** – a scorecard gyors és hasznos összefoglalókat biztosít a mérési eredményekről. Tekintse át [a scorecard értelmezését](internet-analyzer-scorecard.md)ismertető témakört.
-* **Idősorozat** – egy idősorozat azt mutatja, hogyan változik a metrika időbeli változása.
+A Internet Analyzer CLI a következő típusú erőforrásokat teszi elérhetővé:
+* **Tesztek** – Egy teszt összehasonlítja két internetes végpont (A és B) végfelhasználói teljesítményét az idő során.
+* **Profilok** – A tesztek egy profilban Internet Analyzer létre. A profilok lehetővé teszik a kapcsolódó tesztek csoportosítását; egy profil egy vagy több tesztet is tartalmazhat.
+* **Előre konfigurált végpontok** – Számos különböző konfigurációval (régiókkal, gyorsítási technológiákkal stb.) beállítottunk végpontokat. A tesztekben használhatja ezen előre konfigurált végpontok bármelyikét.
+* **Mutatószámok** – A mutatószámok a mérési eredmények gyors és jelentéssel bíró összegzését biztosítják. Tekintse meg [a mutatószámrendszer értelmezését.](internet-analyzer-scorecard.md)
+* **Time Series** – Egy idősorozat azt mutatja be, hogyan változik egy metrika az idő alatt.
 
-## <a name="profile-and-test-creation"></a>Profil és tesztelés létrehozása
-1. Az Internet Analyzer előnézeti hozzáférésének beszerzése a **hogyan az előzetes** verzióban való részvétel után? az [Azure Internet Analyzer – gyakori kérdések](internet-analyzer-faq.md)című témakörben olvashat.
-2. [Telepítse az Azure CLI](/cli/azure/install-azure-cli)-t.
-3. Futtassa a `login` parancsot egy CLI-munkamenet elindításához:
+## <a name="profile-and-test-creation"></a>Profil és teszt létrehozása
+1. Az Internet Analyzer elérésének megtekintéséhez kövesse az Hogyan az előzetes verzióban való részvételre vonatkozó **útmutatót?** című [Azure Internet Analyzer tartalmaz.](internet-analyzer-faq.md)
+2. [Telepítse az Azure CLI-t.](/cli/azure/install-azure-cli)
+3. Futtassa `login` a parancsot egy parancssori felületi munkamenet futtatásához:
     ```azurecli-interactive
     az login
     ```
 
-    Ha a parancssori felület megnyithatja az alapértelmezett böngészőt, akkor az egy Azure-beli bejelentkezési oldal betöltésével végezhető el.
-    Ellenkező esetben nyisson meg egy böngészőt, https://aka.ms/devicelogin és adja meg a terminálon megjelenő engedélyezési kódot.
+    Ha a CLI meg tudja nyitni az alapértelmezett böngészőt, akkor ezt fogja megtenni, és betölt egy Azure bejelentkezési oldalt.
+    Ellenkező esetben nyisson meg egy böngészőoldalt a oldalon, és adja meg a terminálon https://aka.ms/devicelogin megjelenő engedélyezési kódot.
 
 4. A böngészőben jelentkezzen be fiókja hitelesítő adataival.
 
-5. Válassza ki az előfizetési azonosítót, amely hozzáférést kapott az Internet Analyzer nyilvános előzetes verziójához.
+5. Válassza ki azt az előfizetés-azonosítót, amely hozzáféréssel rendelkezik Internet Analyzer nyilvános előzetes verzióhoz.
 
-    A bejelentkezést követően megjelenik az Azure-fiókjához társított előfizetések listája. Az előfizetési információ az a `isDefault: true` jelenleg aktivált előfizetés a bejelentkezés után. Egy másik előfizetés kiválasztásához használja az az [Account set](/cli/azure/account#az-account-set) parancsot az előfizetés-azonosítóval a következőre való váltáshoz:. További információ az előfizetés kiválasztásáról: [több Azure-előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli).
+    Bejelentkezés után megjelenik az Azure-fiókjához társított előfizetések listája. A-val kapcsolatos `isDefault: true` előfizetési adatok a jelenleg aktivált előfizetés a bejelentkezés után. Másik előfizetés kiválasztásához használja [az az account set](/cli/azure/account#az_account_set) parancsot az előfizetés azonosítójával, hogy átváltson a következőre: . További információ az előfizetés kiválasztásáról: [Több Azure-előfizetés használata.](/cli/azure/manage-azure-subscriptions-azure-cli)
 
     Nem interaktív módok is rendelkezésre állnak a bejelentkezéshez, amelyekről részletesen [az Azure CLI-vel történő bejelentkezést](/cli/azure/authenticate-azure-cli) ismertető részben olvashat.
 
@@ -64,24 +64,24 @@ Az Internet Analyzer CLI a következő típusú erőforrásokat teszi elérhető
     az extension add --name internet-analyzer
     ```
 
-8. Hozzon létre egy új Internet Analyzer-profilt:
+8. Hozzon létre egy új Internet Analyzer profilt:
     ```azurecli-interactive
     az internet-analyzer profile create --location eastus --resource-group "MyInternetAnalyzerResourceGroup" --name "MyInternetAnalyzerProfile" --enabled-state Enabled
     ```
 
-9. Az újonnan létrehozott profilhoz elérhető összes előre konfigurált végpont listázása:
+9. Sorolja fel az újonnan létrehozott profilhoz elérhető összes előre konfigurált végpontot:
     ```azurecli-interactive
     az internet-analyzer preconfigured-endpoint list --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile"
     ```
 
-10. Hozzon létre egy új tesztet az újonnan létrehozott InternetAnalyzer-profilban:
+10. Hozzon létre egy új tesztet az újonnan létrehozott InternetAnalyzer profil alatt:
     ```azurecli-interactive
     az internet-analyzer test create --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --endpoint-a-name "contoso" --endpoint-a-endpoint "www.contoso.com/some/path/to/trans.gif" --endpoint-b-name "microsoft" --endpoint-b-endpoint "www.microsoft.com/another/path/to/trans.gif" --name "MyFirstInternetAnalyzerTest" --enabled-state Enabled
     ```
 
-    A fenti parancs feltételezi, hogy mindkettő `www.contoso.com` és `www.microsoft.com` az egyéni elérési utakon található egypixeles rendszerképet ([trans.gif](https://fpc.msedge.net/apc/trans.gif)) üzemelteti. Ha az objektum elérési útja nincs explicit módon megadva, az Internet Analyzer `/apc/trans.gif` alapértelmezés szerint az objektum elérési útjaként fog megjelenni, ami azt eredményezi, hogy az előre konfigurált végpontok az egy képpontos képet használják. Azt is vegye figyelembe, hogy a sémát (https/http) nem kell megadni; Az Internet Analyzer csak HTTPS-végpontokat támogat, ezért a rendszer a HTTPS használatát feltételezi.
+    A fenti parancs feltételezi, hogy a és a is egy képpontos képet (trans.gif) az `www.contoso.com` egyéni elérési `www.microsoft.com` utakon.[ ](https://fpc.msedge.net/apc/trans.gif) Ha az objektum elérési útja nincs explicit módon megadva, a Internet Analyzer alapértelmezés szerint az objektum elérési útjaként fogja használni, ahol az előre konfigurált végpontok az egy képpontos képet `/apc/trans.gif` tetszetik. Azt is vegye figyelembe, hogy a sémát (https/http) nem kell megadni; Internet Analyzer csak a HTTPS-végpontokat támogatja, ezért a rendszer a HTTPS-t feltételezi.
 
-11. Az új tesztnek az Internet Analyzer-profil alatt kell megjelennie:
+11. Az új tesztnek a következő profil alatt Internet Analyzer meg:
     ```azurecli-interactive
     az internet-analyzer test list --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile"
     ```
@@ -113,14 +113,14 @@ Az Internet Analyzer CLI a következő típusú erőforrásokat teszi elérhető
     ]
     ````
 
-12. A mérések létrehozásának megkezdéséhez a teszt **scriptFileUri** mutató JavaScript-fájlt be kell ágyazni a webalkalmazásba. A konkrét utasítások az [Internet Analyzer-ügyfél beágyazása](internet-analyzer-embed-client.md) oldalon találhatók.
+12. A mérések generálásának megkezdéséhez a teszt **scriptFileUri** fájlja által mutatott JavaScript-fájlt be kell ágyazni a webalkalmazásba. A részletes utasításokat a Beágyazás és Internet Analyzer [oldalon talál.](internet-analyzer-embed-client.md)
 
-13. A teszt előrehaladását a "status" (állapot) érték nyomon követésével figyelheti:
+13. A teszt előrehaladását az "állapot" értékének nyomon követésével figyelheti:
     ```azurecli-interactive
     az internet-analyzer test show --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --name "MyFirstInternetAnalyzerTest"
     ```
 
-14. A teszt összegyűjtött eredményeit idősor vagy scorecardok létrehozásával ellenőrizheti:
+14. A teszt összegyűjtött eredményeit időzők vagy mutatószámok generálása alapján vizsgálhatja meg:
     ```azurecli-interactive
     az internet-analyzer show-scorecard --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --name "MyFirstInternetAnalyzerTest" --aggregation-interval "Daily" --end-date-time-utc "2019-10-24T00:00:00"
     ```
@@ -132,6 +132,6 @@ Az Internet Analyzer CLI a következő típusú erőforrásokat teszi elérhető
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A támogatott parancsok és használati példák teljes listájáért keresse fel az [Internet Analyzer CLI-referenciáját](/cli/azure/ext/internet-analyzer/internet-analyzer) .
-* Olvassa el az [Internet Analyzer – gyakori kérdések](internet-analyzer-faq.md)című részt.
-* További információ az [Internet Analyzer-ügyfél](internet-analyzer-embed-client.md) beágyazásáról és az [Egyéni végpontok](internet-analyzer-custom-endpoint.md)létrehozásáról.
+* A támogatott [Internet Analyzer](/cli/azure/ext/internet-analyzer/internet-analyzer) és használati példák teljes listájáért tekintse meg a parancssori felület referenciáját.
+* Olvassa el [a gyakori Internet Analyzer.](internet-analyzer-faq.md)
+* További információ a Internet Analyzer [ügyfél beágyazásról](internet-analyzer-embed-client.md) és egyéni [végpont létrehozásáról.](internet-analyzer-custom-endpoint.md)

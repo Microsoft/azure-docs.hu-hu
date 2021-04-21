@@ -1,6 +1,6 @@
 ---
-title: Forgalom irányítása hálózati virtuális készüléken keresztül – Azure CLI parancsfájl minta
-description: Forgalom irányítása tűzfal hálózati virtuális készüléken keresztül – Azure CLI parancsfájl minta.
+title: Forgalom útválasztása hálózati virtuális berendezésen keresztül – Azure CLI-példaszkret
+description: Forgalom útválasztása hálózati virtuális berendezésen keresztül – Azure CLI-példaszkret.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 964fda8168867c115502c7262dc1d41e55075866
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7dca5e36144fe17b39f76bb61543f59a1c6d7772
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91317650"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790184"
 ---
-# <a name="route-traffic-through-a-network-virtual-appliance---azure-cli-script-sample"></a>Forgalom irányítása hálózati virtuális készüléken keresztül – Azure CLI parancsfájl minta
+# <a name="route-traffic-through-a-network-virtual-appliance---azure-cli-script-sample"></a>Forgalom útválasztása hálózati virtuális berendezésen keresztül – Azure CLI-példaszkret
 
 Ez a példaszkript előtérbeli és háttérbeli alhálózattal rendelkező virtuális hálózatot hoz létre. Ezen kívül létrehoz egy virtuális gépet, amelyen az IP-továbbítás két alhálózat közötti útválasztása engedélyezve van. A szkript futtatása után hálózati szoftvereket, például tűzfal-alkalmazást telepíthet a virtuális gépre.
 
@@ -58,8 +58,8 @@ Ez a szkript az alábbi parancsokkal létrehoz egy erőforráscsoportot, egy vir
 | [az network nsg create](/cli/azure/network/nsg) | Egy hálózati biztonsági csoportot (NSG) hoz létre. |
 | [az network nsg rule create](/cli/azure/network/nsg/rule) | NSG-szabályokat hoz létre, amelyek engedélyezik a virtuális gép bejövő HTTP- és HTTPS-portjait. |
 | [az network vnet subnet update](/cli/azure/network/vnet/subnet)| Az alhálózatokhoz rendeli az NSG-ket és az útválasztási táblázatokat. |
-| [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create)| Útválasztási táblázatot hoz létre minden útvonalhoz. |
-| [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create)| Útvonalakat hoz létre, amellyel irányíthatja a forgalmat az alhálózatok és az internet között a virtuális gépen keresztül. |
+| [az network route-table create](/cli/azure/network/route-table#az_network_route_table_create)| Útválasztási táblázatot hoz létre minden útvonalhoz. |
+| [az network route-table route create](/cli/azure/network/route-table/route#az_network_route_table_route_create)| Útvonalakat hoz létre, amellyel irányíthatja a forgalmat az alhálózatok és az internet között a virtuális gépen keresztül. |
 | [az vm create](/cli/azure/vm) | Létrehoz egy virtuális gépet, és csatolja hozzá a NIC-t. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai hitelesítő adatokat. |
 | [az group delete](/cli/azure/group) | Töröl egy erőforráscsoportot és a benne található összes erőforrást. |
 

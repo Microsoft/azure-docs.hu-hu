@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 598bbef0ceb24f3eb5932239a4146e1693521f24
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 62249f579909c3f8bfa9bcdf4e77e45453fcb68b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751327"
+ms.locfileid: "107792020"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>Rövid útmutató: Azure Key Vault pythonos tanúsítvány ügyféloldali kódtárának létrehozása
 
@@ -183,7 +183,7 @@ A tanúsítvány beolvassa a Key Vault, használja a [get_certificate](/python/a
 retrieved_certificate = client.get_certificate(certificateName)
  ```
 
-Azt is ellenőrizheti, hogy a tanúsítvány be lett-e állítva az [az keyvault certificate show Azure CLI-paranccsal.](/cli/azure/keyvault/certificate?#az-keyvault-certificate-show)
+Azt is ellenőrizheti, hogy a tanúsítvány be lett-e állítva az [az keyvault certificate show Azure CLI-paranccsal.](/cli/azure/keyvault/certificate?#az_keyvault_certificate_show)
 
 ### <a name="delete-a-certificate"></a>Tanúsítvány törlése
 
@@ -196,7 +196,7 @@ deleted_certificate = poller.result()
 
 A `begin_delete_certificate` metódus aszinkron, és egy poller objektumot ad vissza. A poller metódusának `result` hívása megvárja annak befejezését.
 
-A tanúsítványt az [az keyvault certificate show](/cli/azure/keyvault/certificate?#az-keyvault-certificate-show)Azure CLI-paranccsal ellenőrizheti.
+A tanúsítványt az [az keyvault certificate show](/cli/azure/keyvault/certificate?#az_keyvault_certificate_show)Azure CLI-paranccsal ellenőrizheti.
 
 A törlés után a tanúsítvány egy ideig törölt, de helyreállítható állapotban marad. Ha újra futtatja a kódot, használjon másik tanúsítványnevet.
 

@@ -1,6 +1,6 @@
 ---
-title: Tartalék tartományok kezelése az Azure-beli virtuálisgép-méretezési csoportokban
-description: Megtudhatja, hogyan választhatja ki a megfelelő számú tartalék a virtuálisgép-méretezési csoport létrehozásakor.
+title: Tartalék tartományok kezelése azure-beli virtuálisgép-méretezési készletekben
+description: Megtudhatja, hogyan választhatja ki a megfelelő számú FD-t a virtuálisgép-méretezési készlet létrehozása során.
 author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
@@ -9,23 +9,23 @@ ms.subservice: availability
 ms.date: 12/18/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 8c114d6260cf81bcc4fb256fc8a09947ab9ce1d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10d45662f84a354ee4b261c2e7255a57aa81ad0f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102502484"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774484"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>A tartalék tartományok számának megválasztása a virtuálisgép-méretezési csoportnak megfelelően
-A virtuálisgép-méretezési csoportok alapértelmezés szerint öt tartalék tartománnyal jönnek létre a zónák nélküli Azure-régiókban. A virtuálisgép-méretezési csoportok zónákra épülő telepítését támogató régiók esetén a tartalék tartomány alapértelmezett értéke 1 az egyes zónák esetében. Ebben az esetben az FD = 1 érték azt jelenti, hogy a méretezési csoportba tartozó virtuálisgép-példányok számos rackben lesznek elosztva a legjobb erőfeszítés alapján.
+A virtuálisgép-méretezési csoportokat a rendszer alapértelmezés szerint öt tartalék tartománysal hozta létre a zónákkal nem nem rendelkezik Azure-régiókban. A virtuálisgép-méretezési csoport zónaális üzembe helyezését támogató régiók esetében, ha ez a beállítás be van jelölve, a tartalék tartományok alapértelmezett értéke 1 minden zónában. Az FD=1 ebben az esetben azt jelenti, hogy a méretezési csoporthoz tartozó virtuálisgép-példányok az ajánlott munkamennyiség alapján számos állvány között lesznek elterülve.
 
-Azt is megteheti, hogy összehangolja a méretezési csoport tartalék tartományának számát Managed Disks tartalék tartományok számával. Ez az igazítás segíthet megakadályozni a kvórum elvesztését, ha egy teljes Managed Disks tartalék tartomány leáll. Az FD-szám beállítható úgy, hogy az egyes régiókban elérhető Managed Disks tartalék tartományok száma kisebb vagy egyenlő legyen. Tekintse át ezt a [dokumentumot](../virtual-machines/availability.md) , és ismerkedjen meg az Managed Disks a tartalék tartományok régiónként való számával.
+A méretezési készlet tartalék tartományának számát a tartalék tartományok számának és a tartalék tartományok számának Managed Disks is érdemes lehet. Ez az igazítás segíthet megakadályozni a kvórum elvesztését, ha egy teljes Managed Disks meghibásodik a tartalék tartomány. Az FD-szám beállítható az egyes régiókban Managed Disks tartalék tartományok számának kisebbre vagy egyenlőre. Ebben a [dokumentumban](../virtual-machines/availability.md) további információt olvashat a tartalék tartományok Managed Disks régiónkénti számról.
 
 ## <a name="rest-api"></a>REST API
-A tulajdonságot `properties.platformFaultDomainCount` 1, 2 vagy 3 értékre állíthatja (ha nincs megadva az alapértelmezett 3). Tekintse [meg REST API](/rest/api/compute/virtualmachinescalesets/createorupdate)dokumentációját.
+A tulajdonságot beállíthatja 1, 2 vagy 3 (ha nincs megadva, az alapértelmezett `properties.platformFaultDomainCount` érték 3). A dokumentációt itt REST API [meg.](/rest/api/compute/virtualmachinescalesets/createorupdate)
 
 ## <a name="azure-cli"></a>Azure CLI
-A paramétert beállíthatja `--platform-fault-domain-count` 1, 2 vagy 3 (alapértelmezés szerint 3, ha nincs megadva). Tekintse meg az Azure CLI dokumentációját [itt](/cli/azure/vmss#az-vmss-create).
+A paraméter beállítható 1, 2 vagy 3 (ha nincs megadva, az alapértelmezett `--platform-fault-domain-count` érték 3). Az Azure CLI dokumentációját itt [találhatja.](/cli/azure/vmss#az_vmss_create)
 
 ```azurecli-interactive
 az vmss create \
@@ -41,4 +41,4 @@ az vmss create \
 A méretezési csoport erőforrásainak és virtuális gépeinek létrehozása és konfigurálása néhány percet vesz igénybe.
 
 ## <a name="next-steps"></a>Következő lépések
-- További információ az Azure-környezetek [rendelkezésre állásával és redundanciával kapcsolatos funkcióival](../virtual-machines/availability.md) kapcsolatban.
+- További információ az [Azure-környezetek rendelkezésre állási és](../virtual-machines/availability.md) redundancia-funkcióiról.

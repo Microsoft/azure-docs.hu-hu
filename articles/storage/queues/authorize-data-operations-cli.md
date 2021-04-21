@@ -1,7 +1,7 @@
 ---
-title: Válassza ki, hogyan engedélyezze a hozzáférést az üzenetsor-kezeléshez az Azure CLI-vel
+title: Válassza ki, hogyan engedélyezze az üzenetsoradatokhoz való hozzáférést az Azure CLI-val
 titleSuffix: Azure Storage
-description: Itt adhatja meg, hogy az Azure CLI-vel hogyan engedélyezze az adatműveleteket a várólista-adatokon. Az adatműveletek az Azure AD hitelesítő adataival, a fiók hozzáférési kulcsával vagy egy közös hozzáférés-aláírási (SAS-) jogkivonattal is engedélyezhető.
+description: Adja meg, hogyan engedélyezze az adatműveleteket az üzenetsor adatain az Azure CLI használatával. Az adatműveleteket Azure AD-beli hitelesítő adatokkal, a fiók hozzáférési kulcsával vagy közös hozzáférésű jogosultság jogosultsági (SAS) jogkivonattal engedélyezheti.
 author: tamram
 services: storage
 ms.author: tamram
@@ -11,59 +11,59 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2f7092d8ce184d7021774814e96935e46d1ffb56
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b3ac012da97194134f58d061dd9d84e945db554
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363168"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774466"
 ---
-# <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>Válassza ki, hogyan engedélyezze a hozzáférést az üzenetsor-kezeléshez az Azure CLI-vel
+# <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>Válassza ki, hogyan engedélyezze az üzenetsoradatokhoz való hozzáférést az Azure CLI-val
 
-Az Azure Storage olyan bővítményeket biztosít az Azure CLI-hez, amelyek lehetővé teszik annak megadását, hogy hogyan kívánja engedélyezni az üzenetsor-adatokon végzett műveleteket A következő módokon engedélyezheti az adatműveleteket:
+Az Azure Storage olyan bővítményeket biztosít az Azure CLI-hez, amelyek lehetővé teszik annak megadását, hogyan szeretné engedélyezni a műveleteket az üzenetsor adatain. Az adatműveleteket a következő módokon engedélyezheti:
 
-- Egy Azure Active Directory (Azure AD) rendszerbiztonsági tag. A Microsoft az Azure AD-beli hitelesítő adatok használatát javasolja a kiváló biztonság és a könnyű használat érdekében.
-- A fiók-hozzáférési kulccsal vagy egy közös hozzáférésű aláírási (SAS-) jogkivonattal.
+- Egy Azure Active Directory (Azure AD) rendszerbiztonsági taggal. A Microsoft az Azure AD hitelesítő adatainak használatát javasolja a kiváló biztonság és könnyű használat érdekében.
+- A fiók hozzáférési kulcsával vagy egy közös hozzáférésű jogosultság jogosultsági (SAS) jogkivonattal.
 
-## <a name="specify-how-data-operations-are-authorized"></a>Az adatműveletek engedélyezésének meghatározása
+## <a name="specify-how-data-operations-are-authorized"></a>Az adatműveletek engedélyének megadása
 
-A várólista-információk olvasására és írására szolgáló Azure CLI-parancsok a választható `--auth-mode` paramétert is tartalmazzák. Adja meg ezt a paramétert, hogy jelezze, hogyan legyen engedélyezve az adatművelet:
+Az üzenetsoradatok olvasásakor és írásában használható Azure CLI-parancsok a választható paramétert `--auth-mode` is tartalmazzák. Adja meg ezt a paramétert az adatműveletek engedélyének megadásához:
 
-- Állítsa be a `--auth-mode` paramétert `login` úgy, hogy bejelentkezzen egy Azure ad rendszerbiztonsági tag használatával (ajánlott).
-- Állítsa a `--auth-mode` paramétert az örökölt `key` értékre, hogy megpróbálja lekérni az engedélyezéshez használni kívánt fiók-hozzáférési kulcsot. Ha kihagyja a `--auth-mode` paramétert, akkor az Azure CLI a hozzáférési kulcs lekérését is megkísérli.
+- Állítsa a `--auth-mode` paramétert a következőre: Azure AD-beli rendszerbiztonsági `login` tag használatával való bejelentkezéshez (ajánlott).
+- Állítsa a paramétert az örökölt értékre, hogy megpróbálja lekérni a fiók hozzáférési kulcsát `--auth-mode` `key` az engedélyezéshez. Ha kihagyja a paramétert, az Azure CLI megpróbálja lekérni `--auth-mode` a hozzáférési kulcsot is.
 
-A paraméter használatához győződjön `--auth-mode` meg arról, hogy telepítette az Azure CLI v 2.0.46 vagy újabb verzióját. Futtassa a parancsot a `az --version` telepített verziójának vizsgálatához.
+A paraméter használata érdekében győződjön meg arról, hogy telepítette az `--auth-mode` Azure CLI 2.0.46-os vagy újabbát. A `az --version` telepített verzió ellenőrzéshez futtassa a (futtatás) futtatását.
 
 > [!NOTE]
-> Ha egy Storage-fiók zárolva van egy Azure Resource Manager **írásvédett** zárolással, a [kulcsok listázása](/rest/api/storagerp/storageaccounts/listkeys) művelet nem engedélyezett ehhez a Storage-fiókhoz. A **kulcsok listázása** post művelet, és az összes post művelet meg lesz akadályozva, ha **írásvédett** zárolás van konfigurálva a fiókhoz. Emiatt, ha a fiók **írásvédett** zárolással van zárolva, a fiók kulcsaival nem rendelkező felhasználóknak az Azure ad hitelesítő adatait kell használniuk a várólista adatainak eléréséhez.
+> Ha egy tárfiók zárolva van egy **readOnly** Azure Resource Manager zárolással, a tárfiók nem engedélyezi a Kulcslista műveletet. [](/rest/api/storagerp/storageaccounts/listkeys) **A kulcslista** egy POST művelet, és minden POST-művelet le van akadályozva, ha **readOnly** zárolás van konfigurálva a fiókhoz. Emiatt, ha a fiók **ReadOnly** zárolással van zárolva, a fiókkulcsokkal még nem rendelkező felhasználóknak Azure AD hitelesítő adatokat kell használniuk az üzenetsor adataihoz való hozzáféréshez.
 
 > [!IMPORTANT]
-> Ha kihagyja a `--auth-mode` paramétert, vagy beállítja a értékre `key` , az Azure CLI a fiók hozzáférési kulcsát próbálja használni az engedélyezéshez. Ebben az esetben a Microsoft azt javasolja, hogy a hozzáférési kulcsot a parancson vagy a `AZURE_STORAGE_KEY` környezeti változón keresztül adja meg. A környezeti változókról további információt a [környezeti változók beállítása az engedélyezési paraméterekhez](#set-environment-variables-for-authorization-parameters)című szakaszban talál.
+> Ha kihagyja a paramétert, vagy a értékét a következőre adja meg: , akkor az Azure CLI megkísérli a fiók hozzáférési kulcsát `--auth-mode` `key` használni az engedélyezéshez. Ebben az esetben a Microsoft azt javasolja, hogy adja meg a hozzáférési kulcsot a parancsban vagy a környezeti `AZURE_STORAGE_KEY` változóban. További információ a környezeti változókról: Környezeti változók [beállítása engedélyezési paraméterekhez.](#set-environment-variables-for-authorization-parameters)
 >
-> Ha nem adja meg a hozzáférési kulcsot, az Azure CLI megkísérli meghívni az Azure Storage erőforrás-szolgáltatót az egyes műveletek lekéréséhez. Az erőforrás-szolgáltató hívását igénylő számos adatművelet végrehajtása szabályozást eredményezhet. Az erőforrás-szolgáltatói korlátokkal kapcsolatos további információkért tekintse [meg az Azure Storage erőforrás-szolgáltató skálázhatósági és teljesítménybeli céljait](../common/scalability-targets-resource-provider.md)ismertető témakört.
+> Ha nem adja meg a hozzáférési kulcsot, az Azure CLI megkísérli az Azure Storage erőforrás-szolgáltatójának hívását, hogy lekéri azt minden művelethez. Számos olyan adatművelet végrehajtása, amely az erőforrás-szolgáltató hívását igényli, szabályozást eredményezhet. További információ az erőforrás-szolgáltató korlátairól: Skálázhatósági és [teljesítménycélok az Azure Storage erőforrás-szolgáltató számára.](../common/scalability-targets-resource-provider.md)
 
-## <a name="authorize-with-azure-ad-credentials"></a>Engedélyezés Azure AD-beli hitelesítő adatokkal
+## <a name="authorize-with-azure-ad-credentials"></a>Hitelesítés Azure AD hitelesítő adatokkal
 
-Ha Azure AD-beli hitelesítő adatokkal jelentkezik be az Azure CLI-be, az OAuth 2,0 hozzáférési tokent ad vissza. Ezt a tokent a rendszer automatikusan használja az Azure CLI-vel a következő adatműveletek engedélyezéséhez Queue Storage. A támogatott műveletek esetében már nem kell átadnia egy fiók kulcsát vagy SAS-jogkivonatát a paranccsal.
+Amikor Azure AD hitelesítő adatokkal jelentkezik be az Azure CLI-be, a rendszer OAuth 2.0 hozzáférési jogkivonatot ad vissza. Az Azure CLI automatikusan ezt a jogkivonatot használja a további adatműveletek Queue Storage. A támogatott műveletekhez már nem kell fiókkulcsot vagy SAS-jogkivonatot átadnia az paranccsal.
 
-Engedélyeket rendelhet az Azure AD rendszerbiztonsági tag számára az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával az üzenetsor-adathoz. Az Azure Storage-beli Azure-szerepkörökkel kapcsolatos további információkért lásd: [hozzáférési jogosultságok kezelése az Azure Storage-adatokhoz az Azure RBAC](../common/storage-auth-aad-rbac-portal.md).
+Az Azure szerepköralapú hozzáférés-vezérlésével (Azure RBAC) rendelhet engedélyeket az adatok várólistára való sorához egy Azure AD-rendszerbiztonsági taghoz. További információ az Azure Storage Azure-szerepköreiről: Az Azure Storage-adatok hozzáférési jogosultságának kezelése [az Azure RBAC használatával.](../common/storage-auth-aad-rbac-portal.md)
 
-### <a name="permissions-for-calling-data-operations"></a>Az adatműveletek meghívására vonatkozó engedélyek
+### <a name="permissions-for-calling-data-operations"></a>Adatműveletek hívására vonatkozó engedélyek
 
-Az Azure Storage-bővítmények az üzenetsor-adatokon végrehajtott műveletek esetében támogatottak. A hívható műveletek attól függnek, hogy az Azure AD rendszerbiztonsági tag milyen engedélyekkel rendelkezik, amelyekkel bejelentkezhet az Azure CLI-be. A várólisták engedélyei az Azure RBAC keresztül rendelhetők hozzá. Ha például hozzá van rendelve a **tárolási várólista Adatolvasói** szerepköréhez, futtathat olyan parancsfájl-parancsokat, amelyek az adatok egy várólistából való olvasására szolgálnak. Ha a **Storage-várólista adatközreműködői** szerepkört rendelte hozzá, akkor futtathat parancsfájl-parancsokat, amelyek egy várólistát vagy a bennük található adat olvasását, írását vagy törlését írják le, írhatják vagy törölhetik.
+Az Azure Storage-bővítmények az üzenetsor-adatokon való műveletekhez támogatottak. A hívható műveletek az Azure AD rendszerbiztonsági tagnak megadott engedélyektől függnek, amellyel bejelentkezik az Azure CLI-be. Az üzenetsorok engedélyei az Azure RBAC-n keresztül vannak hozzárendelve. Ha például a Storage **Queue Data Reader** (Tárolási üzenetsor adatolvasója) szerepkör van hozzárendelve, akkor olyan parancsokat futtathat, amelyek adatokat olvasnak be egy üzenetsorból. Ha a Storage **Queue Data Contributor (Tárolási** üzenetsor adatai közreműködője) szerepkört kap, futtathat olyan parancsprogram-parancsokat, amelyek egy üzenetsort vagy az abban lévő adatokat olvassák, írnak vagy törölnek.
 
-További információ az egyes Azure Storage-műveletekhez szükséges engedélyekről a várólistán: [tárolási műveletek hívása OAuth-jogkivonatokkal](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
+Az egyes Azure Storage-műveletekhez az üzenetsoron szükséges engedélyekkel kapcsolatos részletekért lásd: Tárolási műveletek hívása [OAuth-jogkivonatokkal.](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)  
 
-### <a name="example-authorize-an-operation-to-create-a-queue-with-azure-ad-credentials"></a>Példa: művelet engedélyezése üzenetsor létrehozásához Azure AD-beli hitelesítő adatokkal
+### <a name="example-authorize-an-operation-to-create-a-queue-with-azure-ad-credentials"></a>Példa: Üzenetsor létrehozására használt művelet hitelesítése Azure AD hitelesítő adatokkal
 
-Az alábbi példa bemutatja, hogyan hozhat létre várólistát az Azure CLI-vel az Azure AD-beli hitelesítő adataival. A várólista létrehozásához be kell jelentkeznie az Azure CLI-be, és szüksége lesz egy erőforráscsoport és egy Storage-fiókra.
+Az alábbi példa bemutatja, hogyan hozhat létre üzenetsort az Azure CLI-ről az Azure AD hitelesítő adataival. Az üzenetsor létrehozásához be kell jelentkeznie az Azure CLI-be, és szüksége lesz egy erőforráscsoportra és egy tárfiókra.
 
-1. A várólista létrehozása előtt rendelje hozzá a [tárolási üzenetsor adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) szerepkörét. Annak ellenére, hogy Ön a fiók tulajdonosa, explicit engedélyekkel kell rendelkeznie az adatműveletek elvégzéséhez a Storage-fiókon. Az Azure-szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [a Azure Portal használata Azure-szerepkör hozzárendeléséhez a blob-és üzenetsor-adatokhoz való hozzáféréshez](../common/storage-auth-aad-rbac-portal.md).
+1. Az üzenetsor létrehozása előtt rendelje hozzá saját magahoz a [Storage Queue-adatok közreműködője](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) szerepkört. Annak ellenére, hogy Ön a fiók tulajdonosa, explicit engedélyekre van szüksége ahhoz, hogy adatműveleteket hajtson végre a tárfiókon. Az Azure-szerepkörök hozzárendelésével kapcsolatos további információkért lásd: Azure Portal azure-beli szerepkör hozzárendelése a blob- és üzenetsoradatokhoz [való hozzáféréshez.](../common/storage-auth-aad-rbac-portal.md)
 
     > [!IMPORTANT]
-    > Az Azure-beli szerepkör-hozzárendelések eltartása néhány percet is igénybe vehet.
+    > Az Azure-beli szerepkör-hozzárendelések propagálása eltarthat néhány percig.
 
-1. Az [`az storage queue create`](/cli/azure/storage/queue#az-storage-queue-create) Azure ad-beli `--auth-mode` `login` hitelesítő adataival hozza létre az üzenetsor létrehozásához szükséges paramétert a parancs meghívásával. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
+1. Az [`az storage queue create`](/cli/azure/storage/queue#az_storage_queue_create) üzenetsor Azure AD-beli hitelesítő adatokkal való létrehozásához hívja meg a parancsot a `--auth-mode` `login` paraméterrel. Ne felejtse el lecserélni a szögletes zárójelben lévő helyőrzőértékeket a saját értékeire:
 
     ```azurecli
     az storage queue create \
@@ -72,11 +72,11 @@ Az alábbi példa bemutatja, hogyan hozhat létre várólistát az Azure CLI-vel
         --auth-mode login
     ```
 
-## <a name="authorize-with-the-account-access-key"></a>Engedélyezés a fiók hozzáférési kulcsával
+## <a name="authorize-with-the-account-access-key"></a>Jogosultság a fiók hozzáférési kulcsával
 
-Ha rendelkezik a fiók kulcsával, meghívhat bármilyen Azure Storage-adatműveletet. Általánosságban elmondható, hogy a fiók kulcsának használata kevésbé biztonságos. Ha a fiók kulcsa biztonságban van, a fiókban lévő összes adattal kapcsolatban lehet sérült.
+Ha rendelkezik a fiókk kulccsal, bármilyen Azure Storage-adatműveletet hívhat. A fiókkulcs használata általában kevésbé biztonságos. Ha a fiókkulcs biztonsága sérül, a fiókban minden adat biztonsága sérülhet.
 
-Az alábbi példa bemutatja, hogyan hozhat létre üzenetsor-kapcsolatot a fiók hozzáférési kulcsa alapján. Adja meg a fiók kulcsát, és adja meg a `--auth-mode` paramétert az `key` értékkel:
+Az alábbi példa bemutatja, hogyan hozhat létre üzenetsort a fiók hozzáférési kulcsával. Adja meg a fiókkulcsot, és adja meg `--auth-mode` a paraméter `key` értékét:
 
 ```azurecli
 az storage queue create \
@@ -86,9 +86,9 @@ az storage queue create \
     --auth-mode key
 ```
 
-## <a name="authorize-with-a-sas-token"></a>Engedélyezés SAS-jogkivonattal
+## <a name="authorize-with-a-sas-token"></a>Jogosultság SAS-jogkivonattal
 
-Ha SAS-jogkivonattal rendelkezik, meghívhatja az SAS által engedélyezett adatműveleteket. Az alábbi példa bemutatja, hogyan hozhat létre üzenetsor-tokent egy SAS-jogkivonat használatával:
+Ha rendelkezik SAS-jogkivonattal, az SAS által engedélyezett adatműveleteket hívhat meg. Az alábbi példa bemutatja, hogyan hozhat létre üzenetsort SAS-jogkivonat használatával:
 
 ```azurecli
 az storage queue create \
@@ -97,19 +97,19 @@ az storage queue create \
     --sas-token <token>
 ```
 
-## <a name="set-environment-variables-for-authorization-parameters"></a>Környezeti változók beállítása az engedélyezési paraméterekhez
+## <a name="set-environment-variables-for-authorization-parameters"></a>Környezeti változók beállítása engedélyezési paraméterekhez
 
-A környezeti változókban megadhatja az engedélyezési paramétereket, így elkerülhető, hogy azok az Azure Storage-adatműveletek minden hívásán bekerüljenek. Az alábbi táblázat az elérhető környezeti változókat ismerteti.
+A környezeti változókban engedélyezési paramétereket is megadhat, hogy ne kelljen minden Azure Storage-adatművelet minden hívásában megadni őket. Az alábbi táblázat az elérhető környezeti változókat ismerteti.
 
-| Környezeti változó | Leírás |
+| Környezeti változó | Description |
 |--|--|
-| **AZURE_STORAGE_ACCOUNT** | A tárfiók neve. Ezt a változót a Storage-fiók kulcsával vagy egy SAS-tokenrel együtt kell használni. Ha egyik sincs jelen, az Azure CLI a hitelesített Azure AD-fiók használatával megkísérli lekérni a Storage-fiók hozzáférési kulcsát. Ha egyszerre nagy számú parancs fut, az Azure Storage erőforrás-szolgáltató szabályozási korlátja is elérhető. Az erőforrás-szolgáltatói korlátokkal kapcsolatos további információkért tekintse [meg az Azure Storage erőforrás-szolgáltató skálázhatósági és teljesítménybeli céljait](../common/scalability-targets-resource-provider.md)ismertető témakört. |
-| **AZURE_STORAGE_KEY** | A tárfiókkulcs. Ezt a változót a Storage-fiók nevével együtt kell használni. |
-| **AZURE_STORAGE_CONNECTION_STRING** | Egy kapcsolati sztring, amely tartalmazza a Storage-fiók kulcsát vagy egy SAS-tokent. Ezt a változót a Storage-fiók nevével együtt kell használni. |
-| **AZURE_STORAGE_SAS_TOKEN** | Közös hozzáférésű aláírási (SAS) jogkivonat. Ezt a változót a Storage-fiók nevével együtt kell használni. |
-| **AZURE_STORAGE_AUTH_MODE** | Az engedélyezési mód, amellyel a parancsot futtatni kívánja. A megengedett értékek a következők: `login` (ajánlott) vagy `key` . Ha megadja `login` , az Azure CLI az Azure ad hitelesítő adatait használja az adatok műveletének engedélyezéséhez. Ha az örökölt módot adta meg `key` , az Azure CLI megkísérli lekérdezni a fiók hozzáférési kulcsát, és engedélyezi a parancsot a kulccsal. |
+| **AZURE_STORAGE_ACCOUNT** | A tárfiók neve. Ezt a változót a tárfiók kulcsával vagy egy SAS-jogkivonattal együtt kell használni. Ha egyik sem, az Azure CLI megkísérli lekérni a tárfiók hozzáférési kulcsát a hitelesített Azure AD-fiók használatával. Ha egyszerre nagy számú parancsot futtat, előfordulhat, hogy eléri az Azure Storage erőforrás-szolgáltató szabályozási korlátját. További információ az erőforrás-szolgáltató korlátairól: Skálázhatósági és [teljesítménycélok az Azure Storage erőforrás-szolgáltató számára.](../common/scalability-targets-resource-provider.md) |
+| **AZURE_STORAGE_KEY** | A tárfiókkulcs. Ezt a változót a tárfiók nevével együtt kell használni. |
+| **AZURE_STORAGE_CONNECTION_STRING** | Egy kapcsolati sztring, amely tartalmazza a tárfiók kulcsát vagy egy SAS-jogkivonatot. Ezt a változót a tárfiók nevével együtt kell használni. |
+| **AZURE_STORAGE_SAS_TOKEN** | Közös hozzáférésű jogosultság jogosultsága (SAS) jogkivonata. Ezt a változót a tárfiók nevével együtt kell használni. |
+| **AZURE_STORAGE_AUTH_MODE** | Az engedélyezési mód, amellyel a parancsot futtatni kell. Az engedélyezett értékek `login` a (ajánlott) vagy `key` a . Ha a értéket adja meg, az Azure CLI az Azure AD hitelesítő adatait használja `login` az adatművelet hitelesítéséhez. Ha az örökölt módot adja meg, az Azure CLI megkísérli lekérdezni a fiók hozzáférési kulcsát, és engedélyezni a `key` parancsot a kulccsal. |
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure parancssori felületének használata Azure-szerepkörök hozzárendeléséhez a blob-és üzenetsor-adateléréshez](../common/storage-auth-aad-rbac-cli.md)
-- [Hozzáférés engedélyezése a blob-és üzenetsor-szolgáltatásokhoz az Azure-erőforrások felügyelt identitásával](../common/storage-auth-aad-msi.md)
+- [Azure-szerepkör hozzárendelése blob- és üzenetsoradatokhoz az Azure CLI használatával](../common/storage-auth-aad-rbac-cli.md)
+- [Blob- és üzenetsoradatokhoz való hozzáférés jogosultsága az Azure-erőforrások felügyelt identitásával](../common/storage-auth-aad-msi.md)
