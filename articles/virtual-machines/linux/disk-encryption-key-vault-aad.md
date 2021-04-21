@@ -9,40 +9,40 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 4a01429e938b09752fa93b440877a5a4928b9d27
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 2d385357f7d4b1d1edec1cf336628bf8b3f9dda3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750931"
+ms.locfileid: "107764638"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release-for-linux-vms"></a>Kulcstartó létrehozása és konfigurálása Azure Disk Encryption Linux rendszerű virtuális gépekhez Azure Disk Encryption Azure AD-vel
 
-**Az új Azure Disk Encryption szükségtelenné teszi, hogy Azure AD-alkalmazásparamétert biztosítsunk a virtuális gépek lemeztitkosításának engedélyezéséhez. Az új kiadással már nem kell Azure AD-beli hitelesítő adatokat megadnia a titkosítás engedélyezése lépés során. Az új kiadással minden új virtuális gépnek titkosítva kell lennie az Azure AD alkalmazásparaméterei nélkül. A virtuális gépek lemeztitkosításának új kiadással való engedélyezésére vonatkozó utasításokért lásd: [Azure Disk Encryption.](disk-encryption-overview.md) Az Azure AD-alkalmazásparaméterekkel már titkosított virtuális gépek továbbra is támogatottak, és továbbra is az AAD-szintaxissal kell karbantartani őket.**
+**A virtuális gépek új Azure Disk Encryption szükségtelenné teszi, hogy Azure AD-alkalmazásparamétert biztosítsunk a virtuális gépek lemeztitkosításának engedélyezéséhez. Az új kiadásban már nem kell Azure AD-beli hitelesítő adatokat megadnia a titkosítás engedélyezése lépés során. Minden új virtuális gépnek titkosítva kell lennie az Azure AD alkalmazásparaméterei nélkül az új kiadással. A virtuálisgép-lemeztitkosítás új kiadással való engedélyezésére vonatkozó utasításokért lásd: [Azure Disk Encryption.](disk-encryption-overview.md) Az Azure AD-alkalmazásparaméterekkel már titkosított virtuális gépek továbbra is támogatottak, és továbbra is az AAD-szintaxissal kell fenntartani őket.**
 
-Azure Disk Encryption a Azure Key Vault a lemeztitkosítási kulcsok és titkos kulcsok vezérlésére és kezelésére.  További információ a kulcstartókról: [A](../../key-vault/general/overview.md) kulcstartók Azure Key Vault [a Key Vault biztonságossá tere.](../../key-vault/general/security-overview.md) 
+Azure Disk Encryption titkosítási Azure Key Vault a lemeztitkosítási kulcsok és titkos kulcsok vezérlésére és kezelésére.  További információ a kulcstartókról: [A kulcstartók Azure Key Vault](../../key-vault/general/overview.md) a [Kulcstartó biztonságossá biztosítása.](../../key-vault/general/security-overview.md) 
 
-Az Azure AD-val (Azure Disk Encryption kiadással) való használatra használt kulcstartó létrehozása és konfigurálása három lépésből áll:
+Az Azure AD-val (Azure Disk Encryption) való használatra használt kulcstartó létrehozása és konfigurálása három lépésből áll:
 
 1. Kulcstartó létrehozása. 
 2. Azure AD-alkalmazás és -szolgáltatásnév beállítása.
 3. A kulcstartó hozzáférési szabályzatának beállítása az Azure AD-alkalmazás számára.
 4. A kulcstartó speciális hozzáférési szabályzatainak beállítása.
  
-Szükség esetén létrehozhat vagy importálhat kulcstitkosítási kulcsot (KEK).
+Szükség esetén létrehozhat vagy importálhat egy kulcstitkosítási kulcsot (KEK).
 
-Az eszközök [telepítésének és az Azure-hoz](disk-encryption-key-vault.md) való csatlakozásnak a lépéseit a Kulcstartó létrehozása és konfigurálása Azure Disk Encryption cikkben [olvashatja.](disk-encryption-key-vault.md#install-tools-and-connect-to-azure)
+Az eszközök [telepítésének és az](disk-encryption-key-vault.md) Azure-hoz való csatlakozásnak a lépéseit a Kulcstartó létrehozása és konfigurálása Azure Disk Encryption cikkben [talál.](disk-encryption-key-vault.md#install-tools-and-connect-to-azure)
 
 > [!Note]
-> A cikkben található lépések az előfeltételként szükséges parancssori [Azure Disk Encryption](https://github.com/ejarvi/ade-cli-getting-started) és az előfeltételként Azure Disk Encryption [PowerShell-szkriptben vannak automatizálva.](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
+> A cikkben található lépések az előfeltételként szükséges [parancssori Azure Disk Encryption és](https://github.com/ejarvi/ade-cli-getting-started) az előfeltételként Azure Disk Encryption [PowerShell-szkriptben vannak automatizálva.](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
 
 
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása 
-Azure Disk Encryption integrálva van a [Azure Key Vault,](https://azure.microsoft.com/documentation/services/key-vault/) így szabályozhatja és kezelheti a lemeztitkosítási kulcsokat és titkos kulcsokat a Key Vault-előfizetésben. Létrehozhat egy kulcstartót, vagy használhat egy meglévőt a Azure Disk Encryption. További információ a kulcstartókról: [A kulcstartók Azure Key Vault](../../key-vault/general/overview.md) a [Kulcstartó biztonságossá biztosítása.](../../key-vault/general/security-overview.md) Kulcstartó létrehozásához használhat Resource Manager sablont, Azure PowerShell vagy az Azure CLI-t. 
+Azure Disk Encryption integrálva van a [Azure Key Vault,](https://azure.microsoft.com/documentation/services/key-vault/) így vezérelhetőek és kezelhetők a lemeztitkosítási kulcsok és titkos kulcsok a Key Vault-előfizetésben. Létrehozhat egy kulcstartót, vagy használhat egy meglévőt a Azure Disk Encryption. További információ a kulcstartókról: [A](../../key-vault/general/overview.md) kulcstartók Azure Key Vault [a Key Vault biztonságossá tere.](../../key-vault/general/security-overview.md) Kulcstartó létrehozásához Resource Manager sablont, Azure PowerShell az Azure CLI-t. 
 
 
 >[!WARNING]
->Annak érdekében, hogy a titkosítási titkos kulcsok ne lépik át a régiók határait, Azure Disk Encryption a Key Vault és a virtuális gépeket ugyanabban a régióban kell elhelyezni. Hozzon létre és Key Vault, amely ugyanabban a régióban található, mint a titkosítani szükséges virtuális gép. 
+>Annak érdekében, hogy a titkosítási titkos kulcsok ne lépik át a régiók határait, a Azure Disk Encryption a Key Vault és a virtuális gépeket ugyanabban a régióban kell elhelyezni. Hozzon létre és Key Vault, amely ugyanabban a régióban található, mint a titkosítani szükséges virtuális gép. 
 
 
 ### <a name="create-a-key-vault-with-powershell"></a><a name="bkmk_KVPSH"></a> Kulcstartó létrehozása a PowerShell használatával
@@ -62,40 +62,40 @@ A [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVault) parancsmaggal 
      New-AzKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -Location 'East US'
      ```
 
-4. Jegyezze fel a tároló **nevét,** az **erőforráscsoport** nevét, az erőforrás-azonosítót, a tároló  **URI-ját** és a lemez titkosításához visszaadott objektumazonosítót.  
+4. Jegyezze fel a tároló **nevét,** az **erőforráscsoport** nevét, az erőforrás-azonosítót, a tároló  **URI-ját** és az objektumazonosítót, amelyek később a lemezek titkosításakor vannak visszaadva.  
 
 
 ### <a name="create-a-key-vault-with-azure-cli"></a><a name="bkmk_KVCLI"></a> Kulcstartó létrehozása az Azure CLI használatával
-Kulcstartóját az az [keyvault](/cli/azure/keyvault#commands) parancsokkal kezelheti az Azure CLI-val. Kulcstartó létrehozásához használja az [az keyvault create et.](/cli/azure/keyvault#az-keyvault-create)
+Kulcstartóját az az [keyvault](/cli/azure/keyvault#commands) parancsokkal kezelheti az Azure CLI-val. Kulcstartó létrehozásához használja az [az keyvault create kulcsot.](/cli/azure/keyvault#az_keyvault_create)
 
-1. Szükség esetén hozzon létre egy új erőforráscsoportot [az az group create segítségével.](/cli/azure/group#az-group-create) A helyek listához használja [az az account list-locations et](/cli/azure/account#az-account-list) 
+1. Szükség esetén hozzon létre egy új erőforráscsoportot [az az group create gombra.](/cli/azure/group#az_group_create) A helyek listához használja [az az account list-locations et](/cli/azure/account#az_account_list) 
      
      ```azurecli-interactive
      # To list locations: az account list-locations --output table
      az group create -n "MyKeyVaultResourceGroup" -l "East US"
      ```
 
-3. Hozzon létre egy új kulcstartót [az az keyvault create használatával.](/cli/azure/keyvault#az-keyvault-create)
+3. Hozzon létre egy új kulcstartót [az az keyvault create használatával.](/cli/azure/keyvault#az_keyvault_create)
     
      ```azurecli-interactive
      az keyvault create --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --location "East US"
      ```
 
-4. Jegyezze fel a tároló **nevét** (nevét), az **erőforráscsoport** **nevét,** az erőforrás-azonosítót (ID), a tároló **URI-ját** és a későbbi használatra visszaadott objektumazonosítót.  
+4. Jegyezze fel a tároló **nevét** (nevét), **az erőforráscsoport** **nevét,** az erőforrás-azonosítót (ID), a tároló  **URI-ját** és a később használatra visszaadott objektumazonosítót. 
 
 ### <a name="create-a-key-vault-with-a-resource-manager-template"></a><a name="bkmk_KVRM"></a> Kulcstartó létrehozása Resource Manager sablonnal
 
 Kulcstartót a következő sablonnal [hozhat Resource Manager:](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
 
-1. Az Azure gyorsindítási sablonban kattintson az **Üzembe helyezés az Azure-ban elemre.**
-2. Válassza ki az előfizetést, az erőforráscsoportot, az erőforráscsoport helyét, Key Vault nevét, az objektumazonosítót, a jogi feltételeket és a szerződést, majd kattintson a **Vásárlás elemre.** 
+1. Az Azure gyorsindítási sablonban kattintson az Üzembe **helyezés az Azure-ban elemre.**
+2. Válassza ki az előfizetést, az erőforráscsoportot, az erőforráscsoport helyét, Key Vault nevét, az objektumazonosítót, a jogi feltételeket és a szerződést, majd kattintson a **Vásárlás gombra.** 
 
 
 ## <a name="set-up-an-azure-ad-app-and-service-principal"></a><a name="bkmk_ADapp"></a> Azure AD-alkalmazás és -szolgáltatásnév beállítása 
 Ha engedélyeznie kell a titkosítást egy futó Azure-beli virtuális gépen, a Azure Disk Encryption létrehozza és beírja a titkosítási kulcsokat a kulcstartóba. A kulcstartóban található titkosítási kulcsok kezeléséhez Azure AD-hitelesítés szükséges. Hozzon létre egy Azure AD-alkalmazást erre a célra. Hitelesítési célokra használhatja az ügyfél titkos kulcsán alapuló hitelesítést vagy az ügyfél-tanúsítványalapú [Azure AD-hitelesítést.](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)
 
 
-### <a name="set-up-an-azure-ad-app-and-service-principal-with-azure-powershell"></a><a name="bkmk_ADappPSH"></a> Azure AD-alkalmazás és -szolgáltatásnév beállítása a Azure PowerShell 
+### <a name="set-up-an-azure-ad-app-and-service-principal-with-azure-powershell"></a><a name="bkmk_ADappPSH"></a> Azure AD-alkalmazás és -szolgáltatásnév beállítása Azure PowerShell 
 A következő parancsok végrehajtásához szerezze be és használja az [Azure AD PowerShell-modult.](/powershell/azure/active-directory/install-adv2) 
 
 1. Azure AD-alkalmazás létrehozásához használja a [New-AzADApplication](/powershell/module/az.resources/new-azadapplication) PowerShell-parancsmagot. A MyApplicationHomePage és a MyApplicationUri bármilyen érték lehet.
@@ -107,7 +107,7 @@ A következő parancsok végrehajtásához szerezze be és használja az [Azure 
      $servicePrincipal = New-AzADServicePrincipal –ApplicationId $azureAdApplication.ApplicationId
      ```
 
-3. A $azureAdApplication.ApplicationId az Azure AD ClientID, a $aadClientSecret pedig az ügyfél titkos azonosítója, amely később a Azure Disk Encryption. Az Azure AD titkos ügyféltitkának megfelelő védelme. A `$azureAdApplication.ApplicationId` futtatása megmutatja az ApplicationID-t.
+3. A $azureAdApplication.ApplicationId az Azure AD-ügyfélazonosító, a $aadClientSecret pedig az ügyfél titkos Azure Disk Encryption. Az Azure AD-ügyfél titkos titokban való megfelelő védelme. A `$azureAdApplication.ApplicationId` futtatása megmutatja az ApplicationID-t.
 
 
 ### <a name="set-up-an-azure-ad-app-and-service-principal-with-azure-cli"></a><a name="bkmk_ADappCLI"></a> Azure AD-alkalmazás és -szolgáltatásnév beállítása az Azure CLI-val
@@ -119,27 +119,27 @@ A szolgáltatásnéveket az Azure CLI-val kezelheti [az az ad sp parancsokkal.](
      ```azurecli-interactive
      az ad sp create-for-rbac --name "ServicePrincipalName" --password "My-AAD-client-secret" --skip-assignment 
      ```
-3.  A visszaadott appId a más parancsokban használt Azure AD-ügyfélazonosító. Az az keyvault set-policy esetében is ezt az SPN-t fogja használni. A jelszó az a titkos ügyféloldali titkos ügyfél, amely később a jelszó Azure Disk Encryption. Az Azure AD-ügyfél titkos titokban való megfelelő védelme.
+3.  A visszaadott appId a más parancsokban használt Azure AD-ügyfélazonosító. Az az keyvault set-policy esetében is ezt az SPN-t fogja használni. A jelszó az ügyfél titkos jelszava, amely később a jelszó engedélyezéséhez Azure Disk Encryption. Az Azure AD titkos ügyféltitkának megfelelő védelme.
  
 ### <a name="set-up-an-azure-ad-app-and-service-principal-though-the-azure-portal"></a><a name="bkmk_ADappRM"></a> Azure AD-alkalmazás és -szolgáltatásnév beállítása a Azure Portal
-Az Azure AD-alkalmazás létrehozásához kövesse [a](../../active-directory/develop/howto-create-service-principal-portal.md) Portál használata Azure Active Directory-alkalmazás és -szolgáltatásnév létrehozásához, amely erőforrásokhoz fér hozzá. Az alább felsorolt összes lépés közvetlenül a cikk szakaszba lép a befejezéséhez. 
+Az Azure AD-alkalmazás létrehozásához kövesse [a](../../active-directory/develop/howto-create-service-principal-portal.md) Portál használata Azure Active Directory-alkalmazás és -szolgáltatásnév létrehozásához szükséges lépéseket, amelyek hozzáférhetnek az erőforrásokhoz. Az alábbi lépésenként közvetlenül a cikk szakaszba lép, és csak ezt kell végrehajtania. 
 
 1. [A szükséges engedélyek ellenőrzése](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)
 2. [Új Azure Active Directory létrehozása](../../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) 
      - Az alkalmazás létrehozásakor bármilyen nevet és bejelentkezési URL-címet használhat.
 3. [Szerezze be az alkalmazásazonosítót és a hitelesítési kulcsot.](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) 
-     - A hitelesítési kulcs a titkos ügyfélkód, és a Set-AzVMDiskEncryptionExtension AadClientSecret fájljaként használható. 
-        - Az alkalmazás a hitelesítési kulcsot használja hitelesítő adatként az Azure AD-be való bejelentkezéshez. A Azure Portal ezt a titkos kulcsot kulcsoknak nevezzük, de nincs kapcsolatuk a kulcstartókhoz. Ennek a titkos nak a megfelelő biztonságossá kell tennie. 
-     - Az alkalmazásazonosítót később a rendszer a Set-AzVMDiskEncryptionExtension AadClientId azonosítójaként, a Set-AzKeyVaultAccessPolicy esetében pedig a ServicePrincipalName azonosítót fogja használni. 
+     - A hitelesítési kulcs a titkos ügyfélkód, és a Set-AzVMDiskEncryptionExtension AadClientSecret szolgáltatása. 
+        - Az alkalmazás a hitelesítési kulcsot használja hitelesítő adatként az Azure AD-be való bejelentkezéshez. A Azure Portal ezt a titkos kulcsot kulcsoknak nevezzük, de nincs kapcsolatuk a kulcstartókhoz. Ennek a titkos nak a megfelelő biztonságának biztosítása. 
+     - Az alkalmazásazonosítót később az alkalmazás AadClientId azonosítójaként fogja használni a Set-AzVMDiskEncryptionExtension és a Set-AzKeyVaultAccessPolicy ServicePrincipalName paramétereként. 
 
-## <a name="set-the-key-vault-access-policy-for-the-azure-ad-app"></a><a name="bkmk_KVAP"></a> Az Azure AD-alkalmazás kulcstartó-hozzáférési szabályzatának beállítása
-Ahhoz, hogy titkosítási titkos kódokat írjon egy Key Vault- Azure Disk Encryption, szüksége van annak a Azure Active Directory-alkalmazásnak az ügyfél-azonosítójára és titkos ügyféltitkjára, amely engedéllyel rendelkezik a titkos kulcsok írásához a Key Vault. 
+## <a name="set-the-key-vault-access-policy-for-the-azure-ad-app"></a><a name="bkmk_KVAP"></a> Kulcstartó hozzáférési szabályzatának beállítása az Azure AD-alkalmazáshoz
+Ahhoz, hogy titkosítási titkos kódokat írjon egy adott Key Vault-Azure Disk Encryption, szüksége van annak a Azure Active Directory-alkalmazásnak az ügyfél-azonosítójára és titkos ügyféltitkjára, amely engedéllyel rendelkezik a titkos kulcsok írásához a Key Vault. 
 
 > [!NOTE]
 > Azure Disk Encryption a következő hozzáférési szabályzatokat kell konfigurálnia az Azure AD-ügyfélalkalmazáshoz: _WrapKey_ és _Set_ engedélyek.
 
-### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-azure-powershell"></a><a name="bkmk_KVAPPSH"></a> Az Azure AD-alkalmazás kulcstartó-hozzáférési szabályzatának beállítása Azure PowerShell
-Az Azure AD-alkalmazásnak jogosultságokkal kell hozzáférnie a tárolóban található kulcsokhoz vagy titkos kulcsokhoz. A [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) parancsmaggal engedélyeket adhat az alkalmazásnak a _–ServicePrincipalName_ paraméterértékként megadott ügyfél-azonosítóval (amelyet az alkalmazás regisztrálva lett). További tudnivalókért tekintse meg a következő [blogbejegyzést: Azure Key Vault - Step by Step (Részletes).](/archive/blogs/kv/azure-key-vault-step-by-step) 
+### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-azure-powershell"></a><a name="bkmk_KVAPPSH"></a> Kulcstartó-hozzáférési szabályzat beállítása az Azure AD-alkalmazáshoz Azure PowerShell
+Az Azure AD-alkalmazásnak jogosultságokkal kell hozzáférnie a tárolóban található kulcsokhoz vagy titkos kulcsokhoz. A [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) parancsmaggal engedélyeket adhat az alkalmazásnak a _–ServicePrincipalName_ paraméterértékként használt ügyfél-azonosító (amelyet az alkalmazás regisztrálva lett) használatával. További tudnivalókért tekintse meg a következő [blogbejegyzést: Azure Key Vault – Lépésről lépésre.](/archive/blogs/kv/azure-key-vault-step-by-step) 
 
 1. Állítsa be az AD-alkalmazás kulcstartó-hozzáférési szabályzatát a PowerShell használatával.
 
@@ -150,32 +150,32 @@ Az Azure AD-alkalmazásnak jogosultságokkal kell hozzáférnie a tárolóban ta
      Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ServicePrincipalName $aadClientID -PermissionsToKeys 'WrapKey' -PermissionsToSecrets 'Set' -ResourceGroupName $KVRGname
      ```
 
-### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-azure-cli"></a><a name="bkmk_KVAPCLI"></a> Kulcstartó-hozzáférési szabályzat beállítása az Azure AD-alkalmazáshoz az Azure CLI használatával
-A hozzáférési szabályzat beállítását az [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) használatával állíthatja be. További információ: [Manage Key Vault using CLI 2.0 (Az alkalmazások kezelése a CLI 2.0 használatával).](../../key-vault/general/manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret)
+### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-azure-cli"></a><a name="bkmk_KVAPCLI"></a> Az Azure AD-alkalmazás kulcstartó-hozzáférési szabályzatának beállítása az Azure CLI-val
+A hozzáférési szabályzat beállítását az [az keyvault set-policy](/cli/azure/keyvault#az_keyvault_set_policy) használatával állíthatja be. További információ: [Manage Key Vault using CLI 2.0 (Az alkalmazások kezelése a CLI 2.0 használatával).](../../key-vault/general/manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret)
 
-Adjon hozzáférést az Azure CLI-n keresztül létrehozott szolgáltatásnévnek a titkos kulcsok lekérte és a kulcsok burkoltatása érdekében a következő paranccsal:
+Adjon hozzáférést az Azure CLI-n keresztül létrehozott szolgáltatásnévnek, hogy titkos kulcsokat lekért és kulcsokat burkol a következő paranccsal:
 
 ```azurecli-interactive
 az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the Azure AD ClientID>" --key-permissions wrapKey --secret-permissions set
 ```
 
-### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-the-portal"></a><a name="bkmk_KVAPRM"></a> Kulcstartó-hozzáférési szabályzat beállítása az Azure AD-alkalmazáshoz a portálon
+### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-the-portal"></a><a name="bkmk_KVAPRM"></a> Az Azure AD-alkalmazás kulcstartó-hozzáférési szabályzatának beállítása a portálon
 
 1. Nyissa meg az erőforráscsoportot a kulcstartóval.
 2. Válassza ki a kulcstartót, válassza a Hozzáférési **szabályzatok lehetőséget,** majd kattintson az **Új hozzáadása elemre.**
-3. A **Rendszerbiztonsági tag kiválasztása alatt** keresse meg és jelölje ki a létrehozott Azure AD-alkalmazást. 
-4. A **Kulcsengedélyek alatt** jelölje be a Wrap Key (Kulcs **becsomagolása) jelölőnégyzetet** **a Cryptographic Operations (Titkosítási műveletek) alatt.**
-5. A **Titkos hozzáférések beállításnál** jelölje be a **Set (Beállítás) halmazt** **a Secret Management Operations (Titkos adatkezelési műveletek) alatt.**
-6. A **hozzáférési szabályzat** mentéshez kattintson az OK gombra. 
+3. A **Rendszerbiztonsági tag kiválasztása alatt** keresse meg és válassza ki a létrehozott Azure AD-alkalmazást. 
+4. A **Kulcsengedélyek alatt** jelölje be a Wrap Key (Kulcs **burkelése)** jelölőnégyzetet **a Cryptographic Operations (Titkosítási műveletek) alatt.**
+5. Titkos **engedélyekkel kapcsolatosakért** jelölje be a **Set (Beállítás) jelölőnégyzetet** a **Secret Management Operations (Titkos hozzáférés-kezelési műveletek) alatt.**
+6. Kattintson **az OK** gombra a hozzáférési szabályzat mentéshez. 
 
 ![Azure Key Vault titkosítási műveletek – Kulcs becsomagolása](./media/disk-encryption/keyvault-portal-fig3.png)
 
 ![Azure Key Vault titkos tok engedélyei – Beállítás](./media/disk-encryption/keyvault-portal-fig3b.png)
 
 ## <a name="set-key-vault-advanced-access-policies"></a><a name="bkmk_KVper"></a> Kulcstartó speciális hozzáférési szabályzatának beállítása
-Az Azure platformnak hozzá kell férni a kulcstartóban található titkosítási kulcsokhoz vagy titkos kulcsokhoz, hogy elérhetők legyenek a virtuális gép számára a kötetek indításához és visszafejtéséhez. Engedélyezze a lemeztitkosítást a kulcstartón, különben az üzembe helyezések sikertelenek lesznek.  
+Az Azure platformnak hozzá kell férni a kulcstartóban található titkosítási kulcsokhoz vagy titkos kulcsokhoz, hogy elérhetővé tegye őket a virtuális gép számára a kötetek indításához és visszafejtéséhez. Engedélyezze a lemeztitkosítást a kulcstartón, különben az üzembe helyezések sikertelenek lesznek.  
 
-### <a name="set-key-vault-advanced-access-policies-with-azure-powershell"></a><a name="bkmk_KVperPSH"></a> Kulcstartó speciális hozzáférési szabályzatának beállítása a Azure PowerShell
+### <a name="set-key-vault-advanced-access-policies-with-azure-powershell"></a><a name="bkmk_KVperPSH"></a> Kulcstartó speciális hozzáférési szabályzatok beállítása Azure PowerShell
  A Key Vault [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) PowerShell-parancsmagját használva engedélyezze a lemeztitkosítást a kulcstartóhoz.
 
   - **A Key Vault engedélyezése lemeztitkosításhoz:** Az Azure Disk Encryptionhez enabledForDiskEncryption szükséges.
@@ -184,33 +184,33 @@ Az Azure platformnak hozzá kell férni a kulcstartóban található titkosítá
      Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -EnabledForDiskEncryption
      ```
 
-  - **Engedélyezze Key Vault telepítéshez, ha szükséges:** Engedélyezi a Microsoft.Compute erőforrás-szolgáltatónak, hogy titkos kulcsokat lekérje ebből a kulcstartóból, amikor az erőforrás létrehozásakor erre a kulcstartóra hivatkozik, például egy virtuális gép létrehozásakor.
+  - **Engedélyezze Key Vault központi telepítéshez, ha szükséges:** Engedélyezi a Microsoft.Compute erőforrás-szolgáltatónak, hogy titkos kulcsokat lekérje ebből a kulcstartóból, amikor az erőforrás létrehozásakor erre a kulcstartóra hivatkozik, például egy virtuális gép létrehozásakor.
 
      ```azurepowershell-interactive
       Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -EnabledForDeployment
      ```
 
-  - **Engedélyezze Key Vault sablontelepítéshez, ha szükséges:** Lehetővé Azure Resource Manager, hogy titkos kulcsokat lekértek ebből a kulcstartóból, amikor erre a kulcstartóra hivatkozik egy sablon üzembe helyezése során.
+  - **Engedélyezze Key Vault sablontelepítéshez, ha szükséges:** Engedélyezi Azure Resource Manager, hogy titkos kulcsokat lekért erről a kulcstartóról, amikor erre a kulcstartóra hivatkozik egy sablon üzembe helyezése során.
 
      ```azurepowershell-interactive             
      Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -EnabledForTemplateDeployment
      ```
 
 ### <a name="set-key-vault-advanced-access-policies-using-the-azure-cli"></a><a name="bkmk_KVperCLI"></a> Kulcstartó speciális hozzáférési szabályzatának beállítása az Azure CLI használatával
-A [kulcstartó lemeztitkosításának](/cli/azure/keyvault#az-keyvault-update) engedélyezéséhez használja az az keyvault update eszközt. 
+Az [az keyvault update parancs használatával](/cli/azure/keyvault#az_keyvault_update) engedélyezze a lemeztitkosítást a kulcstartóhoz. 
 
- - **A Key Vault engedélyezése lemeztitkosításhoz:** Engedélyezni kell a lemeztitkosítást. 
+ - **A Key Vault engedélyezése lemeztitkosításhoz:** A lemeztitkosítás engedélyezése kötelező. 
 
      ```azurecli-interactive
      az keyvault update --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --enabled-for-disk-encryption "true"
      ```  
 
- - **Engedélyezze Key Vault telepítéshez, ha szükséges:** Engedélyezze Virtual Machines számára a titkos kulcsként tárolt tanúsítványok lekérését a tárolóból.
+ - **Engedélyezze Key Vault központi telepítéshez, ha szükséges:** Engedélyezze Virtual Machines számára a titkos kulcsként tárolt tanúsítványok lekérését a tárolóból.
      ```azurecli-interactive
      az keyvault update --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --enabled-for-deployment "true"
      ``` 
 
- - **Engedélyezze Key Vault sablontelepítéshez, ha szükséges:** Engedélyezze Resource Manager, hogy titkos kulcsokat olvassanak be a tárolóból.
+ - **Engedélyezze Key Vault sablontelepítéshez, ha szükséges:** Engedélyezze Resource Manager számára a titkos kulcsok lekérését a tárolóból.
      ```azurecli-interactive  
      az keyvault update --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --enabled-for-template-deployment "true"
      ```
@@ -218,31 +218,31 @@ A [kulcstartó lemeztitkosításának](/cli/azure/keyvault#az-keyvault-update) e
 
 ### <a name="set-key-vault-advanced-access-policies-through-the-azure-portal"></a><a name="bkmk_KVperrm"></a> Kulcstartó speciális hozzáférési szabályzatának beállítása a Azure Portal
 
-1. Válassza ki a kulcstartót, válassza a Hozzáférési **szabályzatok** lehetőséget, majd kattintson **ide a speciális hozzáférési szabályzatok kiválasztásához.**
+1. Válassza ki a kulcstartót, válassza a **Hozzáférési** szabályzatok lehetőséget, majd kattintson ide **a speciális hozzáférési szabályzatok kiválasztásához.**
 2. Jelölje be az Enable access to Azure Disk Encryption for volume encryption (Hozzáférés engedélyezése Azure Disk Encryption **kötettitkosításhoz) feliratú jelölőnégyzetet.**
-3. Jelölje **be a Hozzáférés engedélyezése az Azure Virtual Machines az** üzembe helyezéshez és/vagy **a** Hozzáférés engedélyezése Azure Resource Manager a sablonok üzembe helyezéséhez, ha szükséges. 
+3. Jelölje **be az Azure-Virtual Machines** hozzáférésének engedélyezése az üzembe helyezéshez és/vagy a Hozzáférés engedélyezése Azure Resource Manager a sablonok üzembe helyezéséhez lehetőséget, ha szükséges.  
 4. Kattintson a **Mentés** gombra.
 
 ![Azure Key Vault – speciális hozzáférési szabályzatok](./media/disk-encryption/keyvault-portal-fig4.png)
 
 
 ## <a name="set-up-a-key-encryption-key-optional"></a><a name="bkmk_KEK"></a> Kulcstitkosítási kulcs beállítása (nem kötelező)
-Ha kulcstitkosítási kulcsot (KEK) szeretne használni a titkosítási kulcsok további biztonsági rétegeként, adjon hozzá egy KEK-et a kulcstartóhoz. Az [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) parancsmag használatával hozzon létre egy kulcstitkosítási kulcsot a kulcstartóban. A KEK-et a helyszíni kulcskezelő HSM-ről is importálhatja. További információt a [dokumentációban Key Vault talál.](../../key-vault/keys/hsm-protected-keys.md) Ha kulcstitkosítási kulcs van megadva, a Azure Disk Encryption ezzel a kulccsal burk szóval burköli a titkosítási titkos kódokat, mielőtt Key Vault. 
+Ha kulcstitkosítási kulcsot (KEK) szeretne használni a titkosítási kulcsok további biztonsági rétegeként, adjon hozzá egy KEK-et a kulcstartóhoz. Az [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) parancsmag használatával hozzon létre egy kulcstitkosítási kulcsot a kulcstartóban. A KEK-et a helyszíni kulcskezelő HSM-ről is importálhatja. További információt a [dokumentációban Key Vault talál.](../../key-vault/keys/hsm-protected-keys.md) Ha kulcstitkosítási kulcs van megadva, a Azure Disk Encryption használja a titkosítási titkos kulcsok becsomagolása előtt, mielőtt Key Vault. 
 
-* Kulcsok generálásakor RSA-kulcstípust használjon. Azure Disk Encryption az elliptikus görbe kulcsok használata még nem támogatott.
+* Kulcsok generálásakor RSA-kulcstípust használjon. Azure Disk Encryption még nem támogatja az elliptikus görbét használó kulcsokat.
 
-* A Key Vault titkos kulcsának és kek URL-címének verziószámozva kell lennie. Az Azure kikényszeríteni a verziószámozás ezen korlátozását. Érvényes titkos kódért és KEK URL-címekért tekintse meg az alábbi példákat:
+* A Key Vault titkos kulcsát és KEK URL-címeit verziószámozva kell lennie. Az Azure kikényszeríteni a verziószámozás ezen korlátozását. Az érvényes titkos kódért és a KEK URL-címekért tekintse meg az alábbi példákat:
 
-  * Példa érvényes titkos URL-címre:   *https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Példa egy érvényes titkos URL-címre:   *https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
   * Példa érvényes KEK URL-címre:   *https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-* Azure Disk Encryption nem támogatja a portszámok kulcstartókulcsok és KEK URL-címek részeként való megadását. A key vault nem támogatott és támogatott URL-címeit az alábbi példákban láthatja:
+* Azure Disk Encryption nem támogatja a portszámok kulcstartókulcsok és KEK URL-címek részeként való megadását. A nem támogatott és támogatott kulcstartó-URL-címekre az alábbi példákban talál példákat:
 
   * A Key Vault elfogadhatatlan URL-címe  *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
   * Elfogadható kulcstartó URL-címe:   *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-### <a name="set-up-a-key-encryption-key-with-azure-powershell"></a><a name="bkmk_KEKPSH"></a> Kulcstitkosítási kulcs beállítása a Azure PowerShell 
-A PowerShell-szkript használata előtt ismernie kell a Azure Disk Encryption előfeltételeit, hogy megismerheti a szkript lépéseit. Előfordulhat, hogy a mint szkriptnek módosításokra van szüksége a környezetben. Ez a szkript létrehozza az Azure Disk Encryption összes előfeltételt, és titkosít egy meglévő IaaS virtuális gépet, és egy kulcstitkosítási kulccsal burkolva becsomagolja a lemeztitkosítási kulcsot. 
+### <a name="set-up-a-key-encryption-key-with-azure-powershell"></a><a name="bkmk_KEKPSH"></a> Kulcstitkosítási kulcs beállítása Azure PowerShell 
+A PowerShell-szkript használata előtt ismernie kell a Azure Disk Encryption előfeltételeit, hogy megismerheti a szkript lépéseit. Előfordulhat, hogy a mint szkriptnek módosításokra van szüksége a környezetben. Ez a szkript létrehozza Azure Disk Encryption összes előfeltételt, és titkosít egy meglévő IaaS virtuális gépet, kulcstitkosítási kulccsal burkolva a lemeztitkosítási kulcsot. 
 
  ```powershell
  # Step 1: Create a new resource group and key vault in the same location.
@@ -370,10 +370,10 @@ Ha tanúsítványhitelesítést szeretne használni, feltölthet egyet a kulcsta
 
 ## <a name="certificate-based-authentication-and-a-kek-optional"></a><a name="bkmk_CertKEK"></a> Tanúsítványalapú hitelesítés és KEK (nem kötelező)
 
-Ha tanúsítványhitelesítést szeretne használni, és a titkosítási kulcsot egy KEK-hez szeretné burkni, használhatja példaként az alábbi szkriptet. A PowerShell-szkript használata előtt ismernie kell az összes korábbi Azure Disk Encryption előfeltételt, hogy megismerheti a szkript lépéseit. Előfordulhat, hogy a mint szkriptnek módosításokra van szüksége a környezetben.
+Ha tanúsítványhitelesítést szeretne használni, és a titkosítási kulcsot egy KEK-hez szeretné csomagolni, használhatja példaként az alábbi szkriptet. A PowerShell-szkript használata előtt ismernie kell az összes korábbi Azure Disk Encryption előfeltételt, hogy megértse a szkript lépéseit. Előfordulhat, hogy a mint szkriptnek módosításokra van szüksége a környezetben.
 
 > [!IMPORTANT]
-> Az Azure AD tanúsítványalapú hitelesítése linuxos virtuális gépeken jelenleg nem támogatott.
+> Az Azure AD tanúsítványalapú hitelesítése jelenleg nem támogatott Linux rendszerű virtuális gépeken.
 
 
 

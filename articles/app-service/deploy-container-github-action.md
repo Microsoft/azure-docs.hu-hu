@@ -1,62 +1,62 @@
 ---
-title: Egyéni tároló CI/CD a GitHub-műveletekből
-description: Megtudhatja, hogyan helyezhet üzembe egyéni linuxos tárolót a GitHub-műveletek használatával App Service egy CI/CD-folyamatból.
+title: Egyéni CI/CD tároló GitHub Actions
+description: Megtudhatja, hogyan helyezheti GitHub Actions egyéni Linux-tárolót a CI/CD-App Service való üzembe helyezéséhez.
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 1fe09970bcb9b9432b9b6f22de04bb24f1e84fa8
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: bf9fba9142de82c6e8518198d54b5e74f1807838
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106582241"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789428"
 ---
-# <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Egyéni tároló üzembe helyezése a GitHub-műveletek használatával App Service
+# <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Egyéni tároló üzembe helyezése App Service GitHub Actions
 
-A [GitHub-műveletek](https://docs.github.com/en/actions) révén rugalmasan hozhat létre automatizált szoftverfejlesztői munkafolyamatokat. Az [Azure web Deploy művelettel](https://github.com/Azure/webapps-deploy)automatizálhatja a munkafolyamatot, hogy egyéni tárolókat helyezzen üzembe [app Service](overview.md) a GitHub-műveletek használatával.
+[GitHub Actions](https://docs.github.com/en/actions) biztosítja az automatizált szoftverfejlesztési munkafolyamatok felépítésének rugalmasságát. Az [Azure Web Deploy művelet használatával](https://github.com/Azure/webapps-deploy)automatizálhatja az egyéni tárolók üzembe helyezésének munkafolyamatát a App Service üzembe GitHub Actions. [](overview.md)
 
-A munkafolyamatot egy YAML-(. YML) fájl határozza meg a `/.github/workflows/` tárház elérési útjában. Ez a definíció a munkafolyamat különböző lépéseit és paramétereit tartalmazza.
+A munkafolyamatot egy YAML- (.yml-) fájl definiálja az `/.github/workflows/` adattár elérési útján. Ez a definíció tartalmazza a munkafolyamatban található különböző lépéseket és paramétereket.
 
-Azure App Service tároló munkafolyamathoz a fájl három szakaszt tartalmaz:
+Egy tároló Azure App Service munkafolyamathoz a fájl három szakaszból áll:
 
 |Section  |Feladatok  |
 |---------|---------|
-|**Hitelesítés** | 1. az egyszerű szolgáltatásnév vagy a közzétételi profil beolvasása. <br /> 2. hozzon létre egy GitHub-titkot. |
-|**Létrehozás** | 1. hozza létre a környezetet. <br /> 2. hozza létre a tároló rendszerképét. |
-|**Telepítés** | 1. Telepítse a tároló lemezképét. |
+|**Hitelesítés** | 1. Szolgáltatásnév lekérése vagy közzétételi profil. <br /> 2. GitHub-titkos kód létrehozása. |
+|**Létrehozás** | 1. Hozza létre a környezetet. <br /> 2. A tároló rendszerképének összeállítása. |
+|**Telepítés** | 1. A tároló rendszerképének üzembe helyezése. |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Egy GitHub-fiók. Ha még nem rendelkezik ilyennel, regisztráljon [ingyenesen](https://github.com/join). A Azure App Service üzembe helyezéséhez programkódot kell létrehoznia egy GitHub-tárházban. 
-- Egy működő tároló-beállításjegyzék és Azure App Service-alkalmazás tárolók számára. Ez a példa Azure Container Registry használ. Győződjön meg arról, hogy a teljes telepítést a tárolók Azure App Serviceához hajtja végre. A hagyományos webalkalmazásokkal ellentétben a tárolók Web Apps szolgáltatás nem rendelkezik alapértelmezett kezdőlaptal. Tegye közzé a tárolót, hogy legyen egy működő példája.
-    - [Megtudhatja, hogyan hozhat létre egy tárolóval Node.js alkalmazást a Docker használatával, leküldheti a tároló lemezképét egy beállításjegyzékbe, majd üzembe helyezheti a rendszerképet Azure App Service](/azure/developer/javascript/tutorial-vscode-docker-node-01)
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Ingyenes fiók létrehozása](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Egy GitHub-fiók. Ha még nem tudja, regisztráljon [ingyenesen.](https://github.com/join) Az üzembe helyezéshez egy GitHub-adattárban kell kódot Azure App Service. 
+- Egy működő tároló-beállításjegyzék és Azure App Service alkalmazás tárolókhoz. Ebben a példában a Azure Container Registry. Mindenképpen teljes körű üzembe helyezést kell végrehajtania Azure App Service tárolókhoz. A hagyományos webalkalmazásokkal ellentétben a tárolókhoz használt webalkalmazások nem alapértelmezett kezdőlapot stb. Tegye közzé a tárolót, hogy legyen egy működő példa.
+    - [Megtudhatja, hogyan hozhat létre tárolóba helyezett Node.js-alkalmazást a Docker használatával, hogyan helyezheti le a tároló rendszerképét egy regisztrációs adatbázisba, majd hogyan helyezheti üzembe a Azure App Service](/azure/developer/javascript/tutorial-vscode-docker-node-01)
         
-## <a name="generate-deployment-credentials"></a>Központi telepítési hitelesítő adatok előállítása
+## <a name="generate-deployment-credentials"></a>Üzembe helyezési hitelesítő adatok létrehozása
 
-Az Azure App Services a GitHub-műveletekhez való hitelesítésének ajánlott módja a közzétételi profil. A hitelesítést egy egyszerű szolgáltatással is elvégezheti, de a folyamat további lépéseket igényel. 
+Az Azure-fiókkal való App Services ajánlott GitHub Actions közzétételi profillal. Szolgáltatásnévvel is hitelesíthet, de a folyamathoz további lépésekre van szükség. 
 
-Mentse a közzétételi profil hitelesítő adatait vagy egyszerű szolgáltatásnevet [GitHub-titokként](https://docs.github.com/en/actions/reference/encrypted-secrets) az Azure-beli hitelesítéshez. A titkos kulcsot a munkafolyamaton belül érheti el. 
+Az Azure-ral való hitelesítéshez mentse a közzétételi profil hitelesítő adatait vagy szolgáltatásnévét [GitHub-titkos](https://docs.github.com/en/actions/reference/encrypted-secrets) kódként. A titkos elérést a munkafolyamaton belül fogja elérni. 
 
 # <a name="publish-profile"></a>[Profil közzététele](#tab/publish-profile)
 
-A közzétételi profil egy alkalmazás szintű hitelesítő adat. A közzétételi profil beállítása GitHub-titokként. 
+A közzétételi profil egy alkalmazásszintű hitelesítő adat. Állítsa be a közzétételi profilt GitHub titkos kódként. 
 
-1. Nyissa meg az App Service-t a Azure Portal. 
+1. Az app service-t a Azure Portal. 
 
-1. Az **Áttekintés** lapon válassza a **közzétételi profil beolvasása** elemet.
+1. Az Áttekintés **lapon** válassza a **Közzétételi profil lekérte lehetőséget.**
 
     > [!NOTE]
-    > Október 2020 a linuxos webalkalmazások `WEBSITE_WEBDEPLOY_USE_SCM` számára a `true` **Fájl letöltése előtt** be kell állítani az Alkalmazásbeállítások beállítást. Ez a követelmény a jövőben el lesz távolítva. Lásd: [app Service alkalmazás konfigurálása a Azure Portalban](./configure-common.md), hogy megtudja, hogyan konfigurálhatja a Common Web App-beállításokat.  
+    > 2020 októberében a Linux-webalkalmazások esetében a fájl letöltése előtt a következőre kell beállítani az `WEBSITE_WEBDEPLOY_USE_SCM` `true` **alkalmazásbeállítást:**. Ez a követelmény a jövőben el lesz távolítva. A [gyakori webalkalmazás App Service beállítások](./configure-common.md)konfigurálásról Azure Portal alkalmazás konfigurálása a Azure Portal-ban.  
 
-1. Mentse a letöltött fájlt. A fájl tartalmát a GitHub-titok létrehozásához fogja használni.
+1. Mentse a letöltött fájlt. A github titkos kód létrehozásához a fájl tartalmát fogja használni.
 
 # <a name="service-principal"></a>[Szolgáltatásnév](#tab/service-principal)
 
-Az [Azure CLI](/cli/azure/)-ben létrehozhat egy [egyszerű szolgáltatást](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) az az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) parancs használatával. Futtassa ezt a parancsot [Azure Cloud Shell](https://shell.azure.com/) a Azure Portalban, vagy kattintson a **TRY IT (kipróbálás** ) gombra.
+Szolgáltatásnév az [](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) [az ad sp create-for-rbac paranccsal](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) hozható létre az [Azure CLI-n.](/cli/azure/) Futtassa ezt a [Azure Cloud Shell](https://shell.azure.com/) a Azure Portal vagy a Próbálja **ki gombot** választva.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -64,7 +64,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
                             --sdk-auth
 ```
 
-A példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra, az erőforráscsoport nevére és az alkalmazás nevére. A kimenet egy JSON-objektum, amelynek a szerepkör-hozzárendelési hitelesítő adatai biztosítják a hozzáférést a App Service alkalmazáshoz. A JSON-objektum másolása később.
+A példában cserélje le a helyőrzőket az előfizetés azonosítójára, az erőforráscsoport nevére és az alkalmazás nevére. A kimenet egy JSON-objektum a szerepkör-hozzárendelési hitelesítő adatokkal, amelyek hozzáférést biztosítanak a App Service alkalmazáshoz. Másolja ezt a JSON-objektumot későbbire.
 
 ```output 
   {
@@ -77,18 +77,18 @@ A példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra, az erő
 ```
 
 > [!IMPORTANT]
-> Mindig jó gyakorlat a minimális hozzáférés megadására. Az előző példában szereplő hatókör az adott App Service alkalmazásra korlátozódik, nem a teljes erőforráscsoporthoz.
+> Mindig jó gyakorlat a minimális hozzáférés megadása. Az előző példában a hatókör nem a teljes erőforráscsoportra, App Service alkalmazásra van korlátozva.
 
 ---
-## <a name="configure-the-github-secret-for-authentication"></a>A GitHub-titok konfigurálása a hitelesítéshez
+## <a name="configure-the-github-secret-for-authentication"></a>A GitHub titkos kód konfigurálása hitelesítéshez
 
 # <a name="publish-profile"></a>[Profil közzététele](#tab/publish-profile)
 
-A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beállítások > titkok > új titok hozzáadása** lehetőséget.
+A [GitHubon](https://github.com/)keresse meg az adattárat, és válassza a Settings > Secrets > Add a new secret (Új titkos kód **hozzáadása) lehetőséget.**
 
-Az [alkalmazás szintű hitelesítő adatok](#generate-deployment-credentials)használatához illessze be a letöltött közzétételi profil tartalmát a titkos kulcs érték mezőjébe. Nevezze el a titkot `AZURE_WEBAPP_PUBLISH_PROFILE` .
+Alkalmazásszintű [hitelesítő adatok](#generate-deployment-credentials)használata érdekében illessze be a letöltött közzétételi profilfájl tartalmát a titkos adatokat tároló érték mezőbe. A titkos nak nevezze el `AZURE_WEBAPP_PUBLISH_PROFILE` a következőt: .
 
-A GitHub-munkafolyamatok konfigurálásakor használja az `AZURE_WEBAPP_PUBLISH_PROFILE` Azure-webalkalmazás üzembe helyezése műveletet. Például:
+A GitHub-munkafolyamat konfigurálásakor a et kell `AZURE_WEBAPP_PUBLISH_PROFILE` használnia az Azure-webalkalmazás üzembe helyezése műveletben. Például:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -98,11 +98,11 @@ A GitHub-munkafolyamatok konfigurálásakor használja az `AZURE_WEBAPP_PUBLISH_
 
 # <a name="service-principal"></a>[Szolgáltatásnév](#tab/service-principal)
 
-A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beállítások > titkok > új titok hozzáadása** lehetőséget.
+A [GitHubon](https://github.com/)keresse meg az adattárat, és válassza a Settings > Secrets > Add a new secret (Új titkos kód **hozzáadása) lehetőséget.**
 
-[Felhasználói szintű hitelesítő adatok](#generate-deployment-credentials)használatához illessze be a teljes JSON-kimenetet az Azure CLI-parancsból a titkos kulcs érték mezőjébe. Adja meg a titkot a nevet, például: `AZURE_CREDENTIALS` .
+Felhasználói szintű hitelesítő adatok használata esetén illessze be az Azure [CLI-parancs](#generate-deployment-credentials)teljes JSON-kimenetét a titkos adat értékmezőjére. Adja meg a titkos nak a következő nevet: `AZURE_CREDENTIALS` .
 
-Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Például:
+Amikor később konfigurálja a munkafolyamat-fájlt, a titkos adatokat kell használnia az `creds` Azure Login művelet bemenetéhez. Például:
 
 ```yaml
 - uses: azure/login@v1
@@ -112,19 +112,19 @@ Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentk
 
 ---
 
-## <a name="configure-github-secrets-for-your-registry"></a>GitHub-titkok konfigurálása a beállításjegyzékhez
+## <a name="configure-github-secrets-for-your-registry"></a>GitHub-titkos kulcsok konfigurálása a beállításjegyzékhez
 
-Adja meg a Docker bejelentkezési művelettel használni kívánt titkokat. A dokumentumban szereplő példa Azure Container Registryt használ a tároló-beállításjegyzékhez. 
+Definiálja a Docker Bejelentkezési művelethez használni szükséges titkos adatokat. A dokumentumban található példa az Azure Container Registry tárolójegyzékhez használja. 
 
-1. Nyissa meg a tárolót a Azure Portal vagy a Docker-ben, és másolja a felhasználónevet és a jelszót. A Azure Container Registry felhasználónevét és jelszavát a beállításjegyzék **Beállítások**  >  **hozzáférési kulcsok** területén található Azure Portalban találja. 
+1. A tárolóhoz a Azure Portal Dockerben, és másolja ki a felhasználónevet és a jelszót. A felhasználónevet és Azure Container Registry a beállításjegyzék beállítások **Azure Portal kulcsok** alatt  >   találja. 
 
-2. Adjon meg egy új titkot a nevű beállításjegyzékbeli felhasználónévhez `REGISTRY_USERNAME` . 
+2. Határozzon meg egy új titkos kulcsot a beállításjegyzékbeli felhasználónévhez `REGISTRY_USERNAME` névvel. 
 
-3. Adjon meg egy új titkot a nevű beállításjegyzék-jelszóhoz `REGISTRY_PASSWORD` . 
+3. Definiálja a nevű új titkos kulcsot a beállításjegyzékbeli `REGISTRY_PASSWORD` jelszóhoz. 
 
 ## <a name="build-the-container-image"></a>A tároló rendszerképének összeállítása
 
-Az alábbi példa egy Node.JS Docker-rendszerképet felépítő munkafolyamat egy részét mutatja be. A [Docker-bejelentkezés](https://github.com/azure/docker-login) használatával jelentkezzen be egy privát tároló-beállításjegyzékbe. Ez a példa Azure Container Registry használ, de ugyanez a művelet más beállításjegyzékek esetében is működik. 
+Az alábbi példa a munkafolyamat egy részét mutatja be, amely egy Node.JS Docker-rendszerképet. A [Docker Login használatával](https://github.com/azure/docker-login) jelentkezzen be egy privát tárolójegyzékbe. Ez a példa Azure Container Registry, de ugyanez a művelet más beállításregisztrálókhoz is működik. 
 
 
 ```yaml
@@ -148,7 +148,7 @@ jobs:
         docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
 ```
 
-A [Docker-bejelentkezés](https://github.com/azure/docker-login) használatával egyszerre több tároló-beállításjegyzékbe is bejelentkezhet. Ez a példa két új GitHub-titkot tartalmaz a docker.io-vel történő hitelesítéshez. A példa azt feltételezi, hogy a beállításjegyzék legfelső szintjén van egy Docker. 
+A [Docker Login használatával egyidejűleg](https://github.com/azure/docker-login) több tárolóregisztrálóba is bejelentkezhet. Ebben a példában két új GitHub-titkos kód található a docker.io. A példa feltételezi, hogy a regisztrációs adatbázis gyökérszintje egy Dockerfile. 
 
 ```yml
 name: Linux Container Node Workflow
@@ -176,19 +176,19 @@ jobs:
         docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
 ```
 
-## <a name="deploy-to-an-app-service-container"></a>Üzembe helyezés App Service tárolón
+## <a name="deploy-to-an-app-service-container"></a>Üzembe helyezés egy App Service tárolóban
 
-Ha a lemezképet a App Serviceban lévő egyéni tárolóba szeretné telepíteni, használja a `azure/webapps-deploy@v2` műveletet. Ehhez a művelethez hét paraméter tartozik:
+A rendszerkép egyéni tárolóban való üzembe helyezéséhez használja App Service `azure/webapps-deploy@v2` műveletet. Ennek a műveletnek hét paramétere van:
 
 | **Paraméter**  | **Magyarázat**  |
 |---------|---------|
-| **alkalmazás neve** | Szükséges A App Service alkalmazás neve | 
-| **közzétételi profil** | Választható A következőkre vonatkozik: Web Apps (Windows és Linux) és Web App containers (Linux). A multi-Container forgatókönyv nem támogatott. A profil ( \* . publishsettings) fájl tartalmának közzététele a web Deploy Secrets szolgáltatásban | 
-| **tárolóhely neve** | Választható Adja meg az üzemi tárolóhelytől eltérő meglévő tárolóhelyet |
-| **csomag** | Választható Csak a webalkalmazásra vonatkozik: csomag vagy mappa elérési útja. \*. zip, \* . War, \* . jar vagy egy telepítendő mappa |
-| **képek** | Szükséges Csak a webalkalmazás-tárolók esetében érvényes: adja meg a teljes tároló rendszerkép (ek) nevét. Például: "myregistry.azurecr.io/nginx:latest" vagy "Python: 3.7.2-Alpine/". Többtárolós alkalmazások esetén több tároló-rendszerkép is megadható (több sorba tagolt) |
-| **konfigurációs fájl** | Választható Csak a webalkalmazás-tárolók esetében érvényes: a Docker-Compose fájl elérési útja. Teljes elérési útnak kell lennie, vagy az alapértelmezett munkakönyvtárhoz viszonyítva kell lennie. Többtárolós alkalmazások esetén szükséges. |
-| **indítás – parancs** | Választható Adja meg az indítási parancsot. Pl.: DotNet-Futtatás vagy DotNet filename.dll |
+| **alkalmazás neve** | (Kötelező) A App Service neve | 
+| **közzétételi profil** | (Nem kötelező) A Web Apps (Windows és Linux) és a Web App Containers (linux) tárolókra vonatkozik. A többtárolós forgatókönyv nem támogatott. Publish profile ( .publishsettings) file contents with Web Deploy secrets (Profil közzététele ( \* .publishsettings) fájl tartalma a Web Deploy titkos kulcsok segítségével | 
+| **slot-name (tárolóhely neve)** | (Nem kötelező) Adjon meg egy meglévő, az éles tárolóhelyen kívül található tárolóhelyet |
+| **Csomag** | (Nem kötelező) Csak a webalkalmazásra vonatkozik: csomag vagy mappa elérési útja. \*.zip, \* .war, \* .jar vagy üzembe helyezni kívánt mappa |
+| **Képek** | (Kötelező) Csak webalkalmazás-tárolókra vonatkozik: Adja meg a tároló rendszerkép(ök) teljes nevét. Például "myregistry.azurecr.io/nginx:latest" vagy "python:3.7.2-alpine/". Többtárolós alkalmazások esetén több tároló rendszerképnevét is meg lehet adni (többsoros elválasztva) |
+| **konfigurációs fájl** | (Nem kötelező) Csak a webalkalmazás-tárolókra vonatkozik: a Docker-Compose elérési útja. Teljes elérési útnak kell lennie, vagy az alapértelmezett munkakönyvtárhoz képest relatívnak kell lennie. Többtárolós alkalmazásokhoz szükséges. |
+| **indítási parancs** | (Nem kötelező) Adja meg az indítási parancsot. Például: dotnet run vagy dotnet filename.dll |
 
 # <a name="publish-profile"></a>[Profil közzététele](#tab/publish-profile)
 
@@ -263,15 +263,15 @@ jobs:
 
 ## <a name="next-steps"></a>Következő lépések
 
-Megtalálhatja a GitHubon különböző adattárakba csoportosított műveleteit, amelyek mindegyike dokumentációt és példákat tartalmaz, amelyek segítséget nyújtanak a GitHub használatához a CI/CD-hez, és az alkalmazások üzembe helyezését az Azure-ban.
+A GitHubon található különböző adattárakba csoportosított műveleteket találhat, amelyek dokumentációt és példákat tartalmaznak, amelyek segítenek a GitHub CI/CD-hez való használatában és az alkalmazások Azure-ban való üzembe helyezésében.
 
-- [Az Azure-ba telepítendő műveletek munkafolyamatai](https://github.com/Azure/actions-workflow-samples)
+- [Az Azure-ban üzembe helyező műveletek munkafolyamatai](https://github.com/Azure/actions-workflow-samples)
 
 - [Azure-bejelentkezés](https://github.com/Azure/login)
 
 - [Azure WebApp](https://github.com/Azure/webapps-deploy)
 
-- [Docker-bejelentkezés/kijelentkezés](https://github.com/Azure/docker-login)
+- [Docker– bejelentkezés/kijelentkezés](https://github.com/Azure/docker-login)
 
 - [Munkafolyamatokat kiváltó események](https://docs.github.com/en/actions/reference/events-that-trigger-workflows)
 

@@ -1,93 +1,93 @@
 ---
-title: Kiszolgáló kezelése – Azure CLI – Azure Database for MySQL rugalmas kiszolgáló
-description: Megtudhatja, hogyan kezelheti Azure Database for MySQL rugalmas kiszolgálóját az Azure CLI-vel.
+title: Kiszolgáló kezelése – Azure CLI – Azure Database for MySQL kiszolgáló kezelése
+description: Megtudhatja, hogyan kezelheti a rugalmas Azure Database for MySQL kiszolgálót az Azure CLI-ről.
 author: mksuni
 ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: b58a9dd7901f85c59b09bc4ccb197d012bce2200
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ef1408d5f7afc3b78ab021cdd25eedd75110849
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92545055"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776931"
 ---
-# <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-the-azure-cli"></a>Azure Database for MySQL rugalmas kiszolgáló (előzetes verzió) kezelése az Azure CLI-vel
+# <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-the-azure-cli"></a>Rugalmas Azure Database for MySQL (előzetes verzió) kezelése az Azure CLI használatával
 
 > [!IMPORTANT]
-> Azure Database for MySQL – a rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el.
+> Azure Database for MySQL – A rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el.
 
-Ez a cikk bemutatja, hogyan kezelheti az Azure-ban üzembe helyezett rugalmas kiszolgálókat (előzetes verzió). A felügyeleti feladatok közé tartozik a számítási és tárolási skálázás, a rendszergazdai jelszó alaphelyzetbe állítása és a kiszolgáló adatainak megtekintése.
+Ez a cikk bemutatja, hogyan kezelheti az Azure-ban üzembe helyezett rugalmas kiszolgálót (előzetes verzió). A felügyeleti feladatok közé tartozik a számítási és tárolási skálázás, a rendszergazdai jelszó-visszaállítás és a kiszolgáló részleteinek megtekintése.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot. Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verzióját kell futtatnia helyileg. A telepített verziók megtekintéséhez futtassa az `az --version` parancsot. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot. Ehhez a cikkhez az Azure CLI 2.0-s vagy újabb verziójára lesz szükség helyileg. A telepített verziók megtekintéséhez futtassa az `az --version` parancsot. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-Az az [login](/cli/azure/reference-index#az-login) parancs használatával kell bejelentkeznie a fiókjába. Jegyezze fel az **ID** tulajdonságot, amely az Azure-fiók **előfizetés-azonosítójára** utal.
+Az az login paranccsal jelentkezzen be [a fiókjába.](/cli/azure/reference-index#az_login) Jegyezze fel **az id** tulajdonságot, amely **az** Azure-fiók előfizetés-azonosítójára vonatkozik.
 
 ```azurecli-interactive
 az login
 ```
 
-Válassza ki az adott előfizetést a fiókja alatt az [az Account set](/cli/azure/account) parancs használatával. Jegyezze fel az **azonosító** értéket az az **login** kimenetből, amelyet a parancs **előfizetés** argumentumának értékeként kíván használni. Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetés beszerzéséhez használja [az az Account List](/cli/azure/account#az-account-list)lehetőséget.
+Válassza ki a fiókjában az adott előfizetést [az az account set paranccsal.](/cli/azure/account) Jegyezze fel  az az **login** kimenet azonosítóértékét,  amely a subscription argumentum értékeként lesz használva a parancsban. Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetését az [az account list használatával használhatja.](/cli/azure/account#az_account_list)
 
 ```azurecli
 az account set --subscription <subscription id>
 ```
 
 > [!Important]
-> Ha még nem hozott létre rugalmas kiszolgálót, hozzon létre egyet, hogy megismerkedjen az útmutatóval.
+> Ha még nem hozott létre rugalmas kiszolgálót, hozzon létre egyet az útmutató első lépésekhez.
 
-## <a name="scale-compute-and-storage"></a>Számítási és tárolási méretezés
+## <a name="scale-compute-and-storage"></a>Számítás és tárolás skálázható
 
-A számítási szintet, a virtuális mag és a tárterületet könnyedén méretezheti a következő parancs használatával. Megtekintheti az összes olyan kiszolgálói műveletet, amelyet végrehajthat az [az MySQL rugalmas kiszolgáló frissítése](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_update) lehetőséggel
+A számítási réteget, a virtuális magokat és a tárterületet az alábbi paranccsal skálázhatja fel egyszerűen. Láthatja az összes olyan kiszolgálóműveletet, amely [az az mysql flexible-server update végrehajtásához szükséges](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_update)
 
 ```azurecli-interactive
 az mysql flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v4 --storage-size 6144
 ```
 
-A fenti argumentumok részletei:
+A fenti argumentumok részletei a következőek:
 
 **Beállítás** | **Mintaérték** | **Leírás**
 ---|---|---
-name | mydemoserver | Adjon meg egy egyedi nevet a Azure Database for MySQL-kiszolgálónak. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. 3–63 karakter hosszúságú lehet.
+name | mydemoserver | Adjon egyedi nevet a Azure Database for MySQL kiszolgálónak. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. 3–63 karakter hosszúságú lehet.
 resource-group | myResourceGroup | Adja meg az Azure-erőforráscsoport nevét.
-sku-name|Standard_D4ds_v4|Adja meg a számítási rétegek és a méret nevét. A következő konvenciót követi: Standard_ {VM size} a gyorsírásban. További információkért tekintse meg a [díjszabási szintet](../concepts-pricing-tiers.md) .
-storage-size | 6144 | A kiszolgáló tárkapacitása (megabájtban megadva). A 5120 minimális és a 1024-os növekmények száma.
+sku-name|Standard_D4ds_v4|Adja meg a számítási szint nevét és méretét. Röviden követi a Standard_{VM size} (Virtuális gép mérete} méret) konvenciót. További [információért tekintse meg](../concepts-pricing-tiers.md) a tarifacsomagokat.
+storage-size | 6144 | A kiszolgáló tárkapacitása (megabájtban megadva). Minimum 5120, és 1024 növekményben növekszik.
 
 > [!Important]
-> - A tárterület felskálázása lehetséges (azonban nem méretezheti le a tárterületet)
+> - A tárterület skálázható felfelé (a tárterület azonban nem skálázható le)
 
 
-## <a name="manage-mysql-databases-on-a-server"></a>MySQL-adatbázisok kezelése kiszolgálón.
-Ezen parancsok bármelyikével létrehozhat, törölhet, listázhat és megtekinthet adatbázis-tulajdonságokat a kiszolgálón
+## <a name="manage-mysql-databases-on-a-server"></a>MySQL-adatbázisok kezelése egy kiszolgálón.
+A következő parancsok bármelyikét használhatja egy adatbázis adatbázis-tulajdonságainak létrehozásához, törléséhez, listához és megtekintéséhez a kiszolgálón
 
-| Parancsmag | Használat| Leírás |
+| Parancsmag | Használat| Description |
 | --- | ---| --- |
-|[az MySQL flexibilis-Server db Create](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_create)|```az mysql flexible-server db create -g myresourcegroup -s mydemoserver -n mydatabasename``` |Létrehoz egy adatbázist|
-|[az MySQL flexibilis-Server db delete](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_delete)|```az mysql flexible-server db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|Törölje az adatbázist a kiszolgálóról. Ez a parancs nem törli a kiszolgálót. |
-|[az MySQL flexibilis-Server db List](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_list)|```az mysql flexible-server db list -g myresourcegroup -s mydemoserver```|a kiszolgálón található összes adatbázis listája|
-|[az MySQL rugalmas-Server db show](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_show)|```az mysql flexible-server db show -g myresourcegroup -s mydemoserver -n mydatabasename```|Az adatbázis további részleteit jeleníti meg|
+|[az mysql flexible-server db create](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_create)|```az mysql flexible-server db create -g myresourcegroup -s mydemoserver -n mydatabasename``` |Létrehoz egy adatbázist|
+|[az mysql flexible-server db delete](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_delete)|```az mysql flexible-server db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|Törölje az adatbázist a kiszolgálóról. Ez a parancs nem törli a kiszolgálót. |
+|[az mysql flexible-server db list](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_list)|```az mysql flexible-server db list -g myresourcegroup -s mydemoserver```|listázza a kiszolgálón található összes adatbázist|
+|[az mysql flexible-server db show](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_show)|```az mysql flexible-server db show -g myresourcegroup -s mydemoserver -n mydatabasename```|Az adatbázis további részleteit jeleníti meg|
 
 ## <a name="update-admin-password"></a>Rendszergazdai jelszó frissítése
-A rendszergazdai szerepkör jelszava ezzel a paranccsal módosítható
+Ezzel a paranccsal módosíthatja a rendszergazdai szerepkör jelszavát
 ```azurecli-interactive
 az mysql flexible-server update --resource-group myresourcegroup --name mydemoserver --admin-password <new-password>
 ```
 
 > [!Important]
->  Ügyeljen arra, hogy a jelszó legalább 8 karakterből álljon, és legfeljebb 128 karakterből álljon.
-> A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs betűk, számok és nem alfanumerikus karakterek.
+>  Győződjön meg arról, hogy a jelszó legalább 8 karakterből és legfeljebb 128 karakterből állhat.
+> A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számok és nem alfanumerikus karakterek.
 
 ## <a name="delete-a-server"></a>Kiszolgáló törlése
-Ha a MySQL rugalmas kiszolgálót szeretné törölni, futtathatja az [az MySQL flexibilis-Server Server delete](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_delete) parancsot.
+Ha csak a rugalmas MySQL-kiszolgálót szeretné törölni, futtathatja [az az mysql flexible-server server delete](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_delete) parancsot.
 
 ```azurecli-interactive
 az mysql flexible-server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-- [Útmutató a kiszolgálók indításához és leállításához](how-to-stop-start-server-portal.md)
-- [Ismerje meg, hogyan kezelheti a virtuális hálózatokat](how-to-manage-virtual-network-cli.md)
+- [Tudnivalók a kiszolgálók indításról vagy leállításról](how-to-stop-start-server-portal.md)
+- [Tudnivalók a virtuális hálózatok kezelésével](how-to-manage-virtual-network-cli.md)
 - [Kapcsolati problémák hibaelhárítása](how-to-troubleshoot-common-connection-issues.md)
 - [Tűzfal létrehozása és kezelése](how-to-manage-firewall-cli.md)

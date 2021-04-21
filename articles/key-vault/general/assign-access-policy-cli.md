@@ -1,80 +1,79 @@
 ---
-title: Azure Key Vault hozzáférési szabályzat (CLI) társítása
-description: Az Azure CLI használata egy Key Vault hozzáférési szabályzat hozzárendeléséhez egy rendszerbiztonsági tag vagy egy alkalmazás identitása számára.
+title: Hozzáférés-Azure Key Vault szabályzat hozzárendelése (CLI)
+description: Hogyan használhatja az Azure CLI-t egy Key Vault hozzáférési szabályzat hozzárendelésére egy rendszerbiztonsági taghoz vagy alkalmazásidentitáshoz.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a9dc03f776ac430072e456332955cbfc75d73bf2
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 349d7453962a736c9f15bb7d31d5a44098f463a4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968849"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791948"
 ---
-# <a name="assign-a-key-vault-access-policy"></a>Key Vault hozzáférési szabályzat kiosztása
+# <a name="assign-a-key-vault-access-policy"></a>Hozzáférési szabályzat Key Vault hozzárendelése
 
-A Key Vault hozzáférési szabályzat meghatározza, hogy egy adott rendszerbiztonsági tag, azaz felhasználó, alkalmazás vagy felhasználói csoport különböző műveleteket hajthat végre Key Vault [titkokon](../secrets/index.yml), [kulcsokon](../keys/index.yml)és [tanúsítványokon](../certificates/index.yml). Hozzáférési szabályzatokat a [Azure Portal](assign-access-policy-portal.md), az Azure CLI (ez a cikk) vagy [Azure PowerShell](assign-access-policy-powershell.md)használatával rendelhet hozzá.
+A Key Vault házirend határozza meg, hogy egy adott rendszerbiztonsági tag, nevezetesen egy felhasználó, egy alkalmazás vagy [](../keys/index.yml)egy felhasználói csoport különböző műveleteket hajthat-e végre Key Vault titkos kulcsokon, [](../secrets/index.yml)kulcsokon és [tanúsítványokon.](../certificates/index.yml) A hozzáférési szabályzatokat a következő [Azure Portal,](assign-access-policy-portal.md)az Azure CLI (ez a cikk) vagy [a](assign-access-policy-powershell.md)Azure PowerShell.
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
-A Azure Active Directory csoportok Azure CLI-vel történő létrehozásával kapcsolatos további információkért lásd az [ad Group Create](/cli/azure/ad/group#az-ad-group-create) és [az ad Group tag Add](/cli/azure/ad/group/member#az-ad-group-member-add).
+A csoportok Azure CLI-Azure Active Directory való létrehozásával kapcsolatos további információkért lásd: [az ad group create](/cli/azure/ad/group#az_ad_group_create) és az az [ad group member add](/cli/azure/ad/group/member#az_ad_group_member_add).
 
 ## <a name="configure-the-azure-cli-and-sign-in"></a>Az Azure CLI konfigurálása és bejelentkezés
 
-1. Az Azure CLI-parancsok helyi futtatásához telepítse az [Azure CLI](/cli/azure/install-azure-cli)-t.
+1. Az Azure CLI-parancsok helyi futtatásához telepítse az [Azure CLI-t.](/cli/azure/install-azure-cli)
  
-    Ha közvetlenül a felhőben szeretné futtatni a parancsokat, használja a [Azure Cloud Shell](../../cloud-shell/overview.md).
+    A parancsok közvetlenül a felhőben való futtatásához használja a [Azure Cloud Shell.](../../cloud-shell/overview.md)
 
-1. Csak helyi CLI: Jelentkezzen be az Azure-ba a következő használatával `az login` :
+1. Csak helyi CLI esetén: jelentkezzen be az Azure-ba a `az login` használatával:
 
     ```bash
     az login
     ```
 
-    A `az login` parancs megnyit egy böngészőablakot a hitelesítő adatok összegyűjtéséhez, ha szükséges.
+    A `az login` parancs megnyit egy böngészőablakot, amely szükség esetén gyűjti a hitelesítő adatokat.
 
-## <a name="acquire-the-object-id"></a>Az objektumazonosító beszerzése
+## <a name="acquire-the-object-id"></a>Az objektumazonosító lekérte
 
-Határozza meg annak az alkalmazásnak, csoportnak vagy felhasználónak az AZONOSÍTÓját, amelyhez hozzá szeretné rendelni a hozzáférési házirendet:
+Határozza meg annak az alkalmazásnak, csoportnak vagy felhasználónak az objektumazonosítóját, amelyhez hozzá szeretné rendelni a hozzáférési szabályzatot:
 
-- Alkalmazások és egyéb egyszerű szolgáltatások: az az [ad SP List](/cli/azure/ad/sp#az-ad-sp-list) paranccsal kérheti le az egyszerű szolgáltatásokat. Vizsgálja meg a parancs kimenetét annak a rendszerbiztonsági tag objektum-AZONOSÍTÓjának a meghatározásához, amelyhez a hozzáférési házirendet hozzá kívánja rendelni.
+- Alkalmazások és egyéb szolgáltatásnév: a szolgáltatásnév lekéréséhez használja [az az ad sp list](/cli/azure/ad/sp#az_ad_sp_list) parancsot. Vizsgálja meg a parancs kimenetét annak a rendszerbiztonsági tagnak az objektumazonosítójának meghatározásához, amelyhez hozzá szeretné rendelni a hozzáférési szabályzatot.
 
     ```azurecli-interactive
     az ad sp list --show-mine
     ```
 
-- Csoportok: használja az az [ad Group List](/cli/azure/ad/group#az-ad-group-list) parancsot, és az eredményt a `--display-name` paraméterrel szűrheti:
+- Csoportok: használja az [az ad group list parancsot,](/cli/azure/ad/group#az_ad_group_list) és szűrje az eredményeket a `--display-name` paraméterrel:
 
      ```azurecli-interactive
     az ad group list --display-name <search-string>
     ```
 
-- Felhasználók: használja az az [ad User show](/cli/azure/ad/user#az-ad-user-show) parancsot, és adja át a felhasználó e-mail-címét a következő `--id` paraméterben:
+- Felhasználók: használja az [az ad user show parancsot,](/cli/azure/ad/user#az_ad_user_show) és a paraméterben továbbadva a felhasználó e-mail-címét: `--id`
 
     ```azurecli-interactive
     az ad user show --id <email-address-of-user>
     ```
 
-## <a name="assign-the-access-policy"></a>Hozzáférési házirend kiosztása
+## <a name="assign-the-access-policy"></a>A hozzáférési szabályzat hozzárendelése
     
-A kívánt engedélyek hozzárendeléséhez használja az az Key [Vault set-Policy](/cli/azure/keyvault#az-keyvault-set-policy) parancsot:
+Az [az keyvault set-policy paranccsal](/cli/azure/keyvault#az_keyvault_set_policy) rendelje hozzá a kívánt engedélyeket:
 
 ```azurecli-interactive
 az keyvault set-policy --name myKeyVault --object-id <object-id> --secret-permissions <secret-permissions> --key-permissions <key-permissions> --certificate-permissions <certificate-permissions>
 ```
 
-Cserélje le a `<object-id>` azonosítót a rendszerbiztonsági tag objektumazonosítóára.
+Cserélje `<object-id>` le a helyére a rendszerbiztonsági tag objektumazonosítóját.
 
-`--secret-permissions` `--key-permissions` Az adott típusokhoz csak a, a és az `--certificate-permissions` engedélyek kiosztása szükséges. A, a és a engedélyezett értékei az az Key `<secret-permissions>` `<key-permissions>` `<certificate-permissions>` [Vault set-Policy](/cli/azure/keyvault#az-keyvault-set-policy) dokumentációjában találhatók.
+Csak a , a és a típust kell tartalmaznia, amikor engedélyeket rendel az `--secret-permissions` `--key-permissions` adott `--certificate-permissions` típusokhoz. A , és megengedett értékei `<secret-permissions>` `<key-permissions>` az az `<certificate-permissions>` [keyvault set-policy dokumentációban vannak megadva.](/cli/azure/keyvault#az_keyvault_set_policy)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Azure Key Vault biztonság: identitás-és hozzáférés-kezelés](security-overview.md#identity-management)
-- [A kulcstartó védelme](secure-your-key-vault.md).
+- [Azure Key Vault biztonság: Identitás- és hozzáférés-kezelés](security-overview.md#identity-management)
+- [Kulcstartó biztonságossá tere.](security-overview.md)
 - [Azure Key Vault fejlesztői útmutató](developers-guide.md)

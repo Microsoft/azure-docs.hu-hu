@@ -1,200 +1,200 @@
 ---
 title: Integrálás az Azure SignalR szolgáltatással
 titleSuffix: Azure Digital Twins
-description: Ismerje meg, hogyan stream Azure Digital Twins telemetria az ügyfeleknek az Azure Signaler használatával
+description: Tekintse meg, hogyan streamelhet Azure Digital Twins telemetriai adatokat az ügyfelek számára az Azure SignalR használatával
 author: dejimarquis
 ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 89bd77c30ec52a72087598b86f22e85659fa1b0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8bdb843ab6304f2f38228f37d8709e4084ee52e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102203895"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775330"
 ---
-# <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Az Azure Digital Twins integrálása az Azure Signaler szolgáltatással
+# <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integráció Azure Digital Twins Azure SignalR Service
 
-Ebből a cikkből megtudhatja, hogyan integrálhatja az Azure Digital Twins-t az [Azure signaler szolgáltatással](../azure-signalr/signalr-overview.md).
+Ebből a cikkből megtudhatja, hogyan integrálhatja a Azure Digital Twins a [Azure SignalR Service.](../azure-signalr/signalr-overview.md)
 
-Az ebben a cikkben ismertetett megoldás lehetővé teszi a digitális kettős telemetria-információk leküldését a csatlakoztatott ügyfelekre, például egyetlen weboldalra vagy egy mobil alkalmazásra. Ennek eredményeképpen az ügyfelek valós idejű metrikákkal és állapottal frissülnek a IoT-eszközökről, anélkül, hogy le kellene kérdezni a kiszolgálót, vagy új HTTP-kéréseket kell elküldeniük a frissítésekhez.
+Az ebben a cikkben ismertetett megoldás lehetővé teszi a digitális iker telemetriaadatok leküldését a csatlakoztatott ügyfelekre, például egy weblapra vagy egy mobilalkalmazásba. Ennek eredményeképpen az ügyfelek valós idejű metrikákkal és állapottal frissülnek az IoT-eszközökről anélkül, hogy le kellene kérniük a kiszolgálót, vagy új HTTP-kéréseket kellene beküldenünk frissítésekért.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A továbblépés előtt végezze el a következő előfeltételeket:
+A folytatás előtt a következő előfeltételeket kell végrehajtania:
 
-* A megoldás az Azure Signaler szolgáltatással való integrálása előtt ebben a cikkben el kell végeznie az Azure digitális ikrek [_**oktatóanyagát: a teljes körű megoldás csatlakoztatása**_](tutorial-end-to-end.md), mivel ez a cikk a fenti útmutató alapján épül fel. Az oktatóanyag végigvezeti egy olyan Azure Digital Twins-példány beállításán, amely egy virtuális IoT-eszközzel működik együtt a digitális kettős frissítések elindításához. Ez a cikk ezeket a frissítéseket egy minta-webalkalmazáshoz fogja kapcsolni az Azure Signaler szolgáltatás használatával.
+* Mielőtt integrálja a megoldást a Azure SignalR Service-val ebben a cikkben, el kell látnia az Azure Digital Twins [_**Oktatóanyag:**_](tutorial-end-to-end.md)Végpontok között megoldás csatlakoztatása oktatóanyagot, mert ez az útmutató cikk erre épül. Az oktatóanyag végigvezeti egy virtuális IoT Azure Digital Twins példány beállításán, amely egy virtuális IoT-eszközzel együtt aktiválja a digitális ikerfrissítéseket. A cikk ezeket a frissítéseket egy minta-webalkalmazáshoz csatlakoztatja a Azure SignalR Service.
 
-* Az oktatóanyagban a következő értékeket kell megadnia:
+* Az oktatóanyag következő értékeire lesz szüksége:
   - Event Grid-témakör
   - Erőforráscsoport
-  - App Service/Function alkalmazás neve
+  - App Service/függvényalkalmazás neve
     
-* Telepítenie kell [**Node.js**](https://nodejs.org/) a gépre.
+* A számítógépen [**Node.js**](https://nodejs.org/) kell telepítenie.
 
-Emellett jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure-fiókjával.
+Emellett jelentkezzen be a fiókkal [](https://portal.azure.com/) Azure Portal Azure-fiókjával.
 
 ## <a name="solution-architecture"></a>Megoldásarchitektúra
 
-Az Azure Signaler szolgáltatást az alábbi elérési úton csatlakoztathatja az Azure Digital Twins szolgáltatáshoz. A diagram "A", "B" és "C" szakaszában a rendszer a [végpontok közötti oktatóanyag előfeltételének architektúra-](tutorial-end-to-end.md)diagramját veszi alapul. Ebben a útmutatóban a D szakaszt fogja létrehozni a meglévő architektúrán.
+Az alábbi útvonalon Azure SignalR Service Azure Digital Twins kell csatolnia. A diagram A, B és C szakasza a végpontok között oktatóanyag előfeltételének [architektúradiagramja.](tutorial-end-to-end.md) Ebben a cikkben a D szakaszt fogja összeépíteni a meglévő architektúrával.
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-integration-topology.png" alt-text="Az Azure-szolgáltatások egy végpontok közötti forgatókönyvben való megtekintése. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása. A D. szakasz a &quot;Broadcast&quot; címkével ellátott Azure-függvényhez tartozó, azonos Event Gridból áramló adatok megjelenítését jeleníti meg. a &quot;Broadcast&quot; az &quot;egyeztetés&quot; címkével ellátott másik Azure-függvénysel kommunikál, és a &quot;szórás&quot; és az &quot;egyeztetés&quot; is számítógépes eszközökkel kommunikál." lightbox="media/how-to-integrate-azure-signalr/signalr-integration-topology.png":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-integration-topology.png" alt-text="Az Azure-szolgáltatások teljes forgatókönyvben való megtekintése. Az eszközről az IoT Hub-be áramló adatokat ábrázolja egy Azure-függvényen (B nyíl) keresztül egy Azure Digital Twins-példányba (A szakasz), majd az Event Grid-on keresztül egy másik Azure-függvénybe feldolgozás céljából (c nyíl). A D szakasz a C nyílból a &quot;broadcast&quot; (szórás) címkével Event Grid azure-függvényre mutató adatokat mutatja. A broadcast egy másik, &quot;negotiate&quot; címkével jelölt Azure-függvénysel kommunikál, és a &quot;broadcast&quot; és a &quot;negotiate&quot; is kommunikál a számítógép-eszközökkel." lightbox="media/how-to-integrate-azure-signalr/signalr-integration-topology.png":::
 
-## <a name="download-the-sample-applications"></a>A minta alkalmazások letöltése
+## <a name="download-the-sample-applications"></a>A mintaalkalmazások letöltése
 
-Először töltse le a szükséges minta alkalmazásokat. A következőkre lesz szüksége:
-* [**Azure digitális Twins végpontok közötti minták**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/): Ez a minta egy olyan *AdtSampleApp* tartalmaz, amely két Azure-függvényt biztosít az adatok Azure digitális Twins-példány körüli áthelyezéséhez (ezt a forgatókönyvet részletesebben is megtudhatja az [*oktatóanyagban: teljes körű megoldás csatlakoztatása*](tutorial-end-to-end.md)). Emellett egy *DeviceSimulator* -minta alkalmazást is tartalmaz, amely egy IoT-eszközt szimulál, és másodpercenként új hőmérséklet-értéket generál.
-    - Ha még nem töltötte le a mintát az oktatóanyag [*előfeltételeinek*](#prerequisites)részeként, keresse meg a minta [hivatkozást](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) , és válassza a cím alatt található *tallózási kód* gombot. Ekkor megnyílik a minták GitHub-tárháza, amelyet a-ként tölthet le *. ZIP* -t a *Code (kód* ) gomb kiválasztásával és a *zip letöltésével*.
+Először töltse le a szükséges mintaalkalmazásokat. Az alábbiak közül mindkettőre szüksége lesz:
+* [**Azure Digital Twins**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)teljes minták: Ez a minta egy *AdtSampleApp* alkalmazást tartalmaz, amely két [*Azure-függvényt*](tutorial-end-to-end.md)tartalmaz az adatok egy Azure Digital Twins-példányon való áthelyezéséhez (erről a forgatókönyvről részletesebben az Oktatóanyag: Teljes megoldás csatlakoztatása) című cikkből olvashat. Emellett tartalmaz egy *DeviceSimulator* mintaalkalmazást is, amely szimulál egy IoT-eszközt, és másodpercenként új hőmérsékletértéket hoz létre.
+    - Ha még nem letöltötte a mintát az Előfeltételek című oktatóanyag [](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) [*részeként,*](#prerequisites)lépjen a mintahivatkozásra, és válassza a cím alatti *Kód* tallózása gombot. Ezzel a GitHub-adattárba fogja vinni a mintákat, amelyeket letölthet a következőként: *. A* ZIP-fájlhoz válassza *a Kód gombot,* majd *a ZIP letöltése gombot.*
 
-        :::image type="content" source="media/includes/download-repo-zip.png" alt-text="A Digital-Twins-Samples tárház áttekintése a GitHubon. A kód gomb be van jelölve, és létrehoz egy kis párbeszédpanelt, ahol ki van emelve a ZIP-Letöltés gomb." lightbox="media/includes/download-repo-zip.png":::
+        :::image type="content" source="media/includes/download-repo-zip.png" alt-text="A digital-twins-samples adattár megtekintése a GitHubon. A Kód gomb van kiválasztva, amely egy kis párbeszédpanelt hoz, ahol a ZIP letöltése gomb ki van emelve." lightbox="media/includes/download-repo-zip.png":::
 
-    Ezzel letölti a minta-tárház egy példányát a gépre, **digital-twins-samples-master.zip**. Csomagolja ki a mappát.
-* A [**signaler Integration Web App minta**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): ez egy példa a webalkalmazásra, amely az Azure-beli digitális Twins telemetria adatait az Azure Signaler szolgáltatásból fogja felhasználni.
-    -  Navigáljon a minta hivatkozáshoz, és ugyanazzal a letöltési folyamattal töltse le a minta egy példányát a gépre, _**digitaltwins-signalr-webapp-sample-main.zip**_. Csomagolja ki a mappát.
+    Ezzel letölti a mintaadattára egy példányát a gépére, **digital-twins-samples-master.zip.** Csomagolja ki a mappát.
+* [**SignalR-integrációs webalkalmazás-minta:**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/)Ez egy minta React-webalkalmazás, amely Azure Digital Twins telemetriai adatokat fog Azure SignalR Service.
+    -  Nyissa meg a mintahivatkozást, és ugyanezen letöltési folyamattal töltse le a minta másolatát a gépére, ahogy _**digitaltwins-signalr-webapp-sample-main.zip.**_ Csomagolja ki a mappát.
 
 [!INCLUDE [Create instance](../azure-signalr/includes/signalr-quickstart-create-instance.md)]
 
-Hagyja nyitva a böngészőablakot a Azure Portal, ahogy azt a következő szakaszban újra használni fogja.
+Hagyja megnyitva a böngészőablakot a Azure Portal, mivel a következő szakaszban ismét használni fogja.
 
-## <a name="publish-and-configure-the-azure-functions-app"></a>A Azure Functions alkalmazás közzététele és konfigurálása
+## <a name="publish-and-configure-the-azure-functions-app"></a>A Azure Functions közzététele és konfigurálása
 
 Ebben a szakaszban két Azure-függvényt fog beállítani:
-* **egyeztetés** – http-trigger függvény. A *SignalRConnectionInfo* bemeneti kötését használja az érvényes kapcsolati adatok létrehozásához és visszaadásához.
-* **Broadcast** – egy [Event Grid](../event-grid/overview.md) trigger függvény. Az Azure digitális Twins telemetria adatokat fogad az Event griden keresztül, és az előző lépésben létrehozott *Signal* -példány kimeneti kötését használja az üzenetnek az összes csatlakoztatott ügyfélalkalmazás számára történő szórásához.
+* **negotiate** – EGY HTTP-eseményindító függvény. A *SignalRConnectionInfo bemeneti kötéssel* hoz létre és ad vissza érvényes kapcsolati adatokat.
+* **broadcast** – Egy [Event Grid](../event-grid/overview.md) trigger függvény. Az eseményrácson keresztül fogadja Azure Digital Twins telemetriai adatokat, és az előző lépésben létrehozott *SignalR-példány* kimeneti kötését használja az üzenet elküldését az összes csatlakoztatott ügyfélalkalmazásnak.
 
-Indítsa el a Visual studiót (vagy egy másik szerkesztőprogramot), és nyissa meg a kód megoldást a *Digital-Twins-Samples-master > ADTSampleApp* mappában. Ezután végezze el a következő lépéseket a függvények létrehozásához:
+Indítsa Visual Studio alkalmazást (vagy egy másik választott kódszerkesztőt), és nyissa meg a kódmegoldást a *digital-twins-samples-master > ADTSampleApp mappában.* Ezután a következő lépésekkel hozza létre a függvényeket:
 
-1. A *SampleFunctionsApp* projektben hozzon létre egy új, **SignalRFunctions. cs** nevű C#-osztályt.
+1. A *SampleFunctionsApp projektben* hozzon létre egy új C#-osztályt **SignalRFunctions.cs néven.**
 
-1. Cserélje le a Class (osztály) fájl tartalmát a következő kódra:
+1. Cserélje le a osztályfájl tartalmát a következő kódra:
     
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/signalRFunction.cs":::
 
-1. A Visual Studio *csomagkezelő konzoljának* ablakában vagy a számítógép bármelyik parancssori ablakában navigáljon a *Digital-Twins-Samples-master\AdtSampleApp\SampleFunctionsApp* mappába, és futtassa a következő parancsot a `SignalRService` NuGet-csomag projektbe történő telepítéséhez:
+1. Az Visual Studio *Csomagkezelő-konzolablakában* vagy a gép bármely parancsablakában keresse meg a *digital-twins-samples-master\AdtSampleApp\SampleFunctionsApp* mappát, és futtassa a következő parancsot a NuGet-csomag projekthez való `SignalRService` telepítéséhez:
     ```cmd
     dotnet add package Microsoft.Azure.WebJobs.Extensions.SignalRService --version 1.2.0
     ```
 
-    Ennek során fel kell oldania a függőségi problémákat az osztályban.
+    Ezzel meg kell oldania a osztály függőségi problémáit.
 
-1. Tegye közzé a függvényt az Azure-ban, az [ *alkalmazás közzététele* című szakaszban](tutorial-end-to-end.md#publish-the-app) ismertetett lépéseket követve a *Kapcsolódás végpontok közötti megoldásról* Közzéteheti ugyanazt az App Service/Function alkalmazásban, amelyet a végpontok közötti oktatóanyag [előfeltételében](#prerequisites)használt, vagy létrehozhat egy újat – de érdemes lehet ugyanezt is használni a Duplikálás minimalizálásához. 
+1. Tegye közzé a függvényt az Azure-ban a Végpontok között megoldás csatlakoztatása oktatóanyag Alkalmazás közzététele *szakaszának lépéseit* követve. [](tutorial-end-to-end.md#publish-the-app) Közzéteheti ugyanazt az App Service-t/függvényalkalmazást, mint amit a végpontok között oktatóanyag előfeltételei között [használt,](#prerequisites)vagy létrehozhat egy újat– de a duplikálás minimalizálása érdekében ugyanezt a függvényt is használhatja. 
 
-Ezután konfigurálja a függvényeket az Azure Signaler-példánnyal való kommunikációhoz. Először össze kell gyűjtenie a Signaler-példányhoz tartozó **kapcsolódási karakterláncot**, majd hozzá kell adnia a functions alkalmazás beállításaihoz.
+Ezután konfigurálja a függvényeket, hogy kommunikáljanak az Azure SignalR-példánysal. Először begyűjti a SignalR-példány kapcsolati sztringét, majd hozzáadja a függvényalkalmazás beállításaihoz.
 
-1. Lépjen a [Azure Portal](https://portal.azure.com/) , és keresse meg a signaler-példány nevét a portál felső részén található keresési sávon. A megnyitáshoz válassza ki a példányt.
-1. Válassza a példány menü **kulcsok** elemét, hogy megtekintse a signaler szolgáltatás példányához tartozó kapcsolódási karakterláncokat.
-1. Az elsődleges kapcsolódási sztring másolásához kattintson a *Másolás* ikonra.
+1. A portál [Azure Portal](https://portal.azure.com/) keresse meg a SignalR-példány nevét a portál tetején található keresősávban. A megnyitáshoz válassza ki a példányt.
+1. A **SignalR** szolgáltatáspéldány kapcsolati sztringek megtekintéséhez válassza a Példány menü Kulcsok parancsát.
+1. Az elsődleges *kapcsolati* sztring másoláshoz válassza a Másolás ikont.
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="Képernyőkép a Azure Portalről, amely a Signaler-példány kulcsok lapját jeleníti meg. Az elsődleges KAPCSOLÓDÁSi karakterlánc melletti &quot;másolás a vágólapra&quot; ikon ki van emelve." lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="Képernyőkép a Azure Portal SignalR-példány Kulcsok oldalának képernyőképe. Az Elsődleges KAPCSOLATI SZTRING melletti Másolás a vágólapra ikon ki van emelve." lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
-1. Végül adja hozzá az Azure Signaler- **kapcsolódási karakterláncot** a függvény alkalmazás-beállításaihoz az alábbi Azure CLI-parancs használatával. Továbbá cserélje le a helyőrzőket az erőforráscsoport és az App Service/Function alkalmazás neve elemre az [oktatóanyag előfeltételeiben](how-to-integrate-azure-signalr.md#prerequisites). A parancs [Azure Cloud Shell](https://shell.azure.com)vagy helyileg is futtatható, ha telepítve van az Azure CLI a [gépen](/cli/azure/install-azure-cli):
+1. Végül adja hozzá az Azure SignalR kapcsolati **sztringet** a függvény alkalmazásbeállításihoz az alábbi Azure CLI-paranccsal. Emellett cserélje le a helyőrzőket az erőforráscsoportra és az app service/function alkalmazás nevére az [oktatóanyag előfeltételeből.](how-to-integrate-azure-signalr.md#prerequisites) A parancs futtatható a következő [Azure Cloud Shell,](https://shell.azure.com)vagy helyileg, ha az Azure CLI telepítve [van a gépen:](/cli/azure/install-azure-cli)
  
     ```azurecli-interactive
     az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
     ```
 
-    A parancs kimenete kinyomtatja az Azure-függvényhez beállított összes alkalmazást. A `AzureSignalRConnectionString` lista alján keresse meg a hozzáadásának ellenőrzését.
+    A parancs kimenete kinyomtatja az Azure-függvényhez beállított összes alkalmazásbeállítást. Keresse meg `AzureSignalRConnectionString` a lista alján, és ellenőrizze, hogy hozzá lett-e adva.
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/output-app-setting.png" alt-text="A parancs kimenetének kivonata, amely egy &quot;AzureSignalRConnectionString&quot; nevű listaelemet mutat be":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/output-app-setting.png" alt-text="A parancsablak kimenetének kivonata, amely egy &quot;AzureSignalRConnectionString&quot; nevű listaelemet mutat be":::
 
-#### <a name="connect-the-function-to-event-grid"></a>A függvény összekötése Event Grid
+#### <a name="connect-the-function-to-event-grid"></a>A függvény csatlakoztatása Event Grid
 
-Ezután fizessen elő a *Broadcast* Azure-függvényt az [oktatóanyag előfeltétele](how-to-integrate-azure-signalr.md#prerequisites)során létrehozott **Event Grid-témakörre** . Ez lehetővé teszi, hogy a telemetria-adatok a thermostat67 Twin-ből folynak az Event Grid-témakörben és a függvényben. Innen a függvény az összes ügyfélnek továbbíthatja az adatait.
+Ezután iratkozzon fel *a szórásos* Azure-függvényre az oktatóanyag előfeltétele során létrehozott Event [Grid-témakörre.](how-to-integrate-azure-signalr.md#prerequisites)  Ez lehetővé teszi a telemetriai adatok áramlását a termosztát67 ikereszközről az event grid témakörben és a függvényben. Innen a függvény az összes ügyfélnek közvetítheti az adatokat.
 
-Ehhez létre kell hoznia egy esemény- **előfizetést** az Event Grid-témakörből a *Broadcast* Azure-függvényhez végpontként.
+Ehhez létre kell hoznia egy esemény-előfizetést **az** Event Grid-témakörből a szórásos  Azure-függvénybe végpontként.
 
-A [Azure Portalban](https://portal.azure.com/)keresse meg az Event Grid-témakört úgy, hogy a felső keresési sávban keresi a nevét. Válassza a *+ Esemény-előfizetés* lehetőséget.
+A [Azure Portal](https://portal.azure.com/)keresse meg az Event Grid-témakört úgy, hogy rákeres a nevére a felső keresősávban. Válassza a *+ Esemény-előfizetés* lehetőséget.
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/event-subscription-1b.png" alt-text="Azure Portal: Event Grid esemény-előfizetés":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/event-subscription-1b.png" alt-text="Azure Portal: Event Grid előfizetése":::
 
-Az *esemény-előfizetés létrehozása* lapon töltse ki a mezőket a következő módon (alapértelmezés szerint kitöltött mezők nincsenek megemlítve):
-* *esemény-előfizetés részletei*  >  **Név**: adjon nevet az esemény-előfizetésnek.
-* *VÉGPONT részletei*  >  **Végpont típusa**: válassza az *Azure Function* lehetőséget a menüpontok közül.
-* *VÉGPONT részletei*  >  **Végpont**: nyomja meg a *végpont kiválasztása* hivatkozást. Ekkor megnyílik az *Azure-függvény kiválasztása* ablak:
-    - Töltse ki az **előfizetést**, az **erőforráscsoportot**, a **Function app** és a Function (*szórás*) **függvényt** . Ezek némelyike az előfizetés kiválasztása után automatikusan feltölthető.
-    - Nyomja **meg a megerősítés jóváhagyása elemet**.
+Az *Esemény-előfizetés létrehozása lapon* töltse ki a mezőket a következőképpen (az alapértelmezés szerint kitöltött mezőket a rendszer nem említi):
+* *ESEMÉNY-ELŐFIZETÉS RÉSZLETEI*  >  **Név:** Adjon nevet az esemény-előfizetésnek.
+* *VÉGPONT RÉSZLETEI*  >  **Végpont típusa:** Válassza az *Azure-függvény lehetőséget* a menüpontok közül.
+* *VÉGPONT RÉSZLETEI*  >  **Végpont:** Kattintson a *Végpont kiválasztása hivatkozásra.* Ez megnyit egy *Select Azure Function (Azure-függvény kiválasztása)* ablakot:
+    - Töltse ki az **előfizetést,** az **erőforráscsoportot,** **a függvényalkalmazást** és a **függvényt** *(szórás).* Ezek némelyike automatikusan kitöltődik az előfizetés kiválasztása után.
+    - Nyomja le **a Confirm Selection (Kijelölés megerősítése) jelölőt.**
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="Azure Portal esemény-előfizetés létrehozásának nézete. A fenti mezők ki vannak töltve, a &quot;kijelölés megerősítése&quot; és a &quot;létrehozás&quot; gomb ki van emelve.":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="Azure Portal esemény-előfizetés létrehozásának nézete. A fenti mezők ki vannak töltve, és ki vannak emelve a &quot;Kijelölés megerősítése&quot; és a &quot;Létrehozás&quot; gombok.":::
 
-Az esemény- *előfizetés létrehozása* lapon kattintson a **create (létrehozás**) elemre.
+Az Esemény-előfizetés *létrehozása oldalon* kattintson a **Létrehozás gombra.**
 
-Ezen a ponton két esemény-előfizetésnek kell megjelennie a *Event Grid témakör* oldalon.
+Ezen a ponton két esemény-előfizetést kell látnia a *Event Grid lapján.*
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/view-event-subscriptions.png" alt-text="Azure Portal a két esemény-előfizetés nézetét az Event Grid-témakör oldalon." lightbox="media/how-to-integrate-azure-signalr/view-event-subscriptions.png":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/view-event-subscriptions.png" alt-text="Azure Portal event subscriptions (Eseményrács-témakör) lapon megtekintheti a két esemény-előfizetést." lightbox="media/how-to-integrate-azure-signalr/view-event-subscriptions.png":::
 
 ## <a name="configure-and-run-the-web-app"></a>A webalkalmazás konfigurálása és futtatása
 
-Ebben a szakaszban a művelet eredményét fogja látni. Először konfigurálja a **minta ügyfél-webalkalmazást** úgy, hogy az Ön által beállított Azure-szignáló folyamathoz kapcsolódjon. Ezután elindítja a **szimulált eszköz minta alkalmazást** , amely telemetria adatokat küld az Azure Digital Twins-példányon keresztül. Ezt követően megtekintheti a mintául szolgáló webalkalmazást, amely valós időben frissíti a mintául szolgáló webalkalmazást.
+Ebben a szakaszban az eredmény látható műveletben. Először konfigurálja a minta **ügyfél-webalkalmazást,** hogy csatlakozzon a beállított Azure SignalR-folyamathoz. Ezután elindítja a szimulált eszköz mintaalkalmazást, amely telemetriai adatokat küld a Azure Digital Twins példányon keresztül.  Ezt követően megtekintheti a minta-webalkalmazást, hogy valós időben megtekintsen egy szimulált eszközadatokat, amelyek frissítik a minta-webalkalmazást.
 
-### <a name="configure-the-sample-client-web-app"></a>A minta-ügyfél webalkalmazásának konfigurálása
+### <a name="configure-the-sample-client-web-app"></a>A minta ügyfél-webalkalmazás konfigurálása
 
-Ezután konfigurálja a minta ügyfél-webalkalmazást. Először Gyűjtse össze az *egyeztetési* függvény **http-végpontjának URL-címét** , majd használja az alkalmazás kódjának konfigurálásához a gépen.
+A következő lépés a minta ügyfél-webalkalmazás konfigurálása. Először gyűjti össze a *negotiate* függvény **HTTP-végponti** URL-címét, majd ezzel konfigurálja az alkalmazáskódot a gépen.
 
-1. Lépjen a Azure Portal [Function apps](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) oldalára, és válassza ki a függvény alkalmazást a listából. Az alkalmazás menüben válassza a *függvények* lehetőséget, majd válassza az *egyeztetés* funkciót.
+1. A függvényalkalmazás Azure Portal [oldalára,](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) és válassza ki a függvényalkalmazást a listából. Az alkalmazás menüjében válassza a *Függvények lehetőséget,* majd válassza ki a *negotiate* függvényt.
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Azure Portal a Function alkalmazás nézetét, és a &quot;functions&quot; elem ki van emelve a menüben. A függvények listája megjelenik az oldalon, és az &quot;egyeztetés&quot; függvény is ki van emelve.":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Azure Portal a függvényalkalmazás nézetét, a menüben a &quot;Függvények&quot; elemet kiemelve. A függvények listája megjelenik az oldalon, és a &quot;negotiate&quot; függvény is ki van emelve.":::
 
-1. A *függvény URL-címének lekérése* és az érték másolása a **_/API_ használatával (ne szerepeljen az utolsó _/Negotiate?_)**. Ezt a következő lépésben fogja használni.
+1. Nyomja *le a Get function URL (Függvény URL-címének* le szolgáltatása) gombra, és másolja felfelé az értéket az /api használatával (ne tartalmazza az utolsó **/negotiate? ) _adatokat._** Ezt a következő lépésben fogja használni.
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Az &quot;egyeztetés&quot; függvény Azure Portal nézete. A &quot;függvény URL-címének beolvasása&quot; gomb ki van emelve, az URL-cím része pedig az elejétől a &quot;/API&quot;":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Azure Portal &quot;negotiate&quot; függvény nézetét. A &quot;Függvény URL-címének le szolgáltatása&quot; gomb ki van emelve, és az URL-cím része az elejétől az /api-n keresztül":::
 
-1. A Visual Studióval vagy bármely más Kódszerkesztő használatával nyissa meg a [*minta alkalmazások letöltése*](#download-the-sample-applications) szakaszban letöltött kibontott _**digitaltwins-signaler-WebApp-Sample-Main**_ mappát.
+1. A Visual Studio vagy bármely választott kódszerkesztővel nyissa meg a mintaalkalmazások letöltése szakaszban letöltött _**kicsomagolt digitaltwins-signalr-webapp-sample-main**_ [*mappát.*](#download-the-sample-applications)
 
-1. Nyissa meg a *src/App.js* fájlt, és cserélje le a függvény URL-címét az `HubConnectionBuilder` előző lépésben mentett **egyeztetési** függvény URL-címére:
+1. Nyissa meg *az src/App.js* fájlt, és cserélje le a függvény URL-címét az előző lépésben mentett negotiate függvény `HubConnectionBuilder` HTTP-végponti URL-címére: 
 
     ```javascript
         const hubConnection = new HubConnectionBuilder()
             .withUrl('<Function URL>')
             .build();
     ```
-1. A Visual Studio *fejlesztői parancssorában* vagy a számítógép bármelyik parancssori ablakában navigáljon a *digitaltwins-signalr-WebApp-Sample-main\src* mappára. Futtassa a következő parancsot a függő csomópont-csomagok telepítéséhez:
+1. Az Visual Studio *fejlesztői* parancssorában vagy a gép bármely parancsablakában keresse meg a *digitaltwins-signalr-webapp-sample-main\src* mappát. Futtassa a következő parancsot a függő csomópontcsomagok telepítéséhez:
 
     ```cmd
     npm install
     ```
 
-Ezután állítsa be az engedélyeket a Function alkalmazásban a Azure Portalban:
-1. A Azure Portal [Function apps](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) lapon válassza ki a Function app-példányt.
+Ezután állítsa be az engedélyeket a függvényalkalmazásban a Azure Portal:
+1. A Azure Portal alkalmazás [lapján](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) válassza ki a függvényalkalmazás példányát.
 
-1. Görgessen le a példány menüben, és válassza a *CORS* lehetőséget. A CORS lapon adja hozzá a következőt `http://localhost:3000` engedélyezett forrásként az üres mezőbe való beírásával. Jelölje be a *hozzáférés-vezérlés – engedélyezés – hitelesítő adatok engedélyezése* jelölőnégyzetet, és kattintson a *Mentés gombra*.
+1. Görgessen le a példány menüjében, és válassza a *CORS lehetőséget.* A CORS lapon adja hozzá az et engedélyezett forrásként az `http://localhost:3000` üres mezőben. Jelölje be az *Enable Access-Control-Allow-Credentials (Hozzáférés-vezérlés engedélyezése– Hitelesítő adatok engedélyezése) jelölőnégyzetet,* majd kattintson a Save (Mentés) *gombra.*
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/cors-setting-azure-function.png" alt-text="CORS-beállítás az Azure-függvényben":::
 
-### <a name="run-the-device-simulator"></a>Az eszköz-szimulátor futtatása
+### <a name="run-the-device-simulator"></a>Az eszközszimulátor futtatása
 
-A végpontok közötti oktatóanyag előfeltétele, hogy az eszközt egy IoT Hub és az Azure Digital Twins-példányon keresztül küldje el [az eszközön](tutorial-end-to-end.md#configure-and-run-the-simulation) .
+A végpontok között oktatóanyag előfeltétele [](tutorial-end-to-end.md#configure-and-run-the-simulation) során úgy konfigurálta az eszközszimulátort, hogy adatokat küldjön egy IoT Hub a saját Azure Digital Twins számára.
 
-Most mindössze annyit kell tennie, hogy elindítja a szimulátor projektet, amely a *Digital-Twins-Samples-master > DeviceSimulator > DeviceSimulator. SLN* címen található. Ha a Visual studiót használja, nyissa meg a projektet, majd futtassa ezt a gombot az eszköztáron:
+Most már csak el kell kezdenie a szimulátorprojektet, amely a *DeviceSimulator.sln digital-twins-samples-master > a DeviceSimulator.sln*> található. Ha a böngészőt Visual Studio, nyissa meg a projektet, majd futtassa az eszköztáron ezzel a gombbal:
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="A Visual Studio Start gombja (DeviceSimulator projekt)":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="A Visual Studio gomb (DeviceSimulator projekt)":::
 
-Ekkor megnyílik egy konzolablak szimulált hőmérsékleti telemetria üzenetek. Ezeket az Azure Digital Twins-példányon keresztül küldi el a rendszer, ahol ezeket az Azure functions és a Signaler is felvette.
+Megnyílik egy konzolablak, és megjeleníti a szimulált hőmérséklet telemetriai üzeneteket. Ezeket a virtuális Azure Digital Twins küldi el, ahol az Azure Functions és a SignalR is átveszi őket.
 
-Ebben a konzolban nem kell mást tennie, de a következő lépés végrehajtása közben ne futtassa.
+Ebben a konzolban semmi mást nem kell végrehajtania, de hagyja futni a következő lépés befejezése közben.
 
 ### <a name="see-the-results"></a>Az eredmények megtekintése
 
-Az eredmények működés közbeni megjelenítéséhez indítsa el a **signaler Integration Web App mintát**. Ezt a következő parancs futtatásával bármely, a *digitaltwins-signalr-WebApp-Sample-main\src* helyen található konzolról elvégezheti:
+Az eredmények művelet közbeni eléréséhez indítsa el a **SignalR-integrációs webalkalmazás-mintát.** Ezt a *digitaltwins-signalr-webapp-sample-main\src* helyen található bármelyik konzolablakból meg lehet tenni a következő paranccsal:
 
 ```cmd
 npm start
 ```
 
-Ekkor megnyílik a minta alkalmazást futtató böngészőablak, amely egy vizuális hőmérsékleti mérőműszert jelenít meg. Az alkalmazás futása után érdemes megtekinteni az telemetria az Azure Digital Twins-n keresztül propagált hőmérséklet-értékeit, amelyeket a webalkalmazás valós időben tükröz.
+Ez megnyit egy böngészőablakot, amely a mintaalkalmazást futtatja, és megjeleníti a vizualizáció hőmérséklet-mérőműszerét. Az alkalmazás futása után meg kell kezdenie látni az eszközszimulátor hőmérsékleti telemetriai értékeit, amelyek a Azure Digital Twins keresztül propagálnak, és a webalkalmazás valós időben tükrözi őket.
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-webapp-output.png" alt-text="A mintául szolgáló ügyfél-webalkalmazás kivonata, amely egy vizuális hőmérsékleti mérőműszert mutat. A mért hőmérséklet 67,52":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-webapp-output.png" alt-text="A minta ügyfél-webalkalmazás kivonata, amely egy vizualizáció hőmérséklet-mérőműszerét mutatja be. A hőmérséklet 67,52":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az ebben a cikkben létrehozott erőforrásokra, a következő lépésekkel törölheti őket. 
+Ha már nincs szüksége a cikkben létrehozott erőforrásokra, az alábbi lépésekkel törölheti őket. 
 
-Az Azure Cloud Shell vagy a helyi Azure CLI használatával törölheti az erőforráscsoport összes Azure-erőforrását az az [Group delete](/cli/azure/group#az-group-delete) paranccsal. Az erőforráscsoport eltávolítása is el lesz távolítva...
-* Az Azure Digital Twins-példány (a végpontok közötti oktatóanyagból)
-* az IoT hub és a hub-eszköz regisztrálása (a végpontok közötti oktatóanyagból)
-* az Event Grid-témakör és a hozzá tartozó előfizetések
-* a Azure Functions alkalmazás, beleértve mindhárom funkciót és a hozzájuk kapcsolódó erőforrásokat, például a Storage-t
-* Az Azure Signaler-példány
+A Azure Cloud Shell vagy helyi Azure CLI használatával egy erőforráscsoport összes Azure-erőforrását törölheti [az az group delete paranccsal.](/cli/azure/group#az_group_delete) Az erőforráscsoport eltávolítása a...
+* Azure Digital Twins példány (a végpontok között oktatóanyagból)
+* az IoT Hub és a hub eszközregisztrációja (a végpontok között oktatóanyagból)
+* az Event Grid-témakör és a társított előfizetések
+* az Azure Functions alkalmazást, beleértve mindhárom funkciót és a társított erőforrásokat, például a tárolást
+* az Azure SignalR-példány
 
 > [!IMPORTANT]
 > Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. 
@@ -203,14 +203,14 @@ Az Azure Cloud Shell vagy a helyi Azure CLI használatával törölheti az erőf
 az group delete --name <your-resource-group>
 ```
 
-Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (*digital-twins-samples-master.zip*, *digitaltwins-signalr-webapp-sample-main.zip* és a kibontott társaik).
+Végül törölje a helyi gépre *letöltött* projektmintamappákat (digital-twins-samples-master.zip, *digitaltwins-signalr-webapp-sample-main.zip*, és azok kicsomagolt megfelelői).
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben a Signaler Azure functions szolgáltatással állíthatja be az Azure Digital Twins telemetria-eseményeit egy minta ügyfélalkalmazás számára.
+Ebben a cikkben beállít egy Azure Functions-függvényt a SignalR-sel, hogy Azure Digital Twins telemetriai eseményeket közvetítsen egy minta ügyfélalkalmazásnak.
 
-Következő lépésként Ismerkedjen meg az Azure Signaler szolgáltatással:
+A következő lépés az Azure SignalR Service:
 * [*Mi az az Azure SignalR Service?*](../azure-signalr/signalr-overview.md)
 
-Vagy további információ az Azure Signaler szolgáltatás hitelesítéséről Azure Functions:
-* [*Azure Signaler szolgáltatás hitelesítése*](../azure-signalr/signalr-tutorial-authenticate-azure-functions.md)
+Vagy további információ a Azure SignalR Service hitelesítésről Azure Functions:
+* [*Azure SignalR Service hitelesítés*](../azure-signalr/signalr-tutorial-authenticate-azure-functions.md)

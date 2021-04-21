@@ -1,264 +1,264 @@
 ---
-title: Fogalmak – hozzáférés és identitás az Azure Kubernetes Servicesben (ak)
-description: Ismerje meg az Azure Kubernetes szolgáltatás (ak) hozzáférését és identitását, beleértve a Azure Active Directory integrációt, a szerepköralapú hozzáférés-vezérlést (Kubernetes RBAC), valamint a szerepköröket és kötéseket.
+title: Alapfogalmak – Hozzáférés és identitás az Azure Kubernetes Servicesben (AKS)
+description: Megismeri az Azure Kubernetes Service (AKS) hozzáférését és identitását, beleértve a Azure Active Directory-integrációt, a Kubernetes szerepköralapú hozzáférés-vezérlését (Kubernetes RBAC), valamint a szerepköröket és kötéseket.
 services: container-service
 ms.topic: conceptual
 ms.date: 03/24/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 76871565e0bb4ca1811d46531d07b89181d07e19
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: b10d31cf069bc4f28a1597ec12160fa6ed98b8ce
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105918"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789554"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Hozzáférési és identitás-beállítások az Azure Kubernetes Service (AKS) szolgáltatáshoz
 
-A Kubernetes-fürtökhöz való hozzáférés több módon is hitelesíthető, engedélyezhető, biztosítható és szabályozható. 
-* A Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC) használatával a felhasználók, csoportok és szolgáltatásfiókok hozzáférése csak a szükséges erőforrásokhoz biztosítható. 
-* Az Azure Kubernetes Service (ak) használatával tovább javíthatja a biztonsági és az engedélyezési struktúrát Azure Active Directory és az Azure RBAC használatával. 
+A Kubernetes-fürtökhöz való hozzáférést többféleképpen hitelesítheti, engedélyezheti, biztosíthatja és szabályozhatja. 
+* A Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC) használatával csak a szükséges erőforrásokhoz adhat hozzáférést a felhasználóknak, csoportoknak és szolgáltatásfiókoknak. 
+* A Azure Kubernetes Service (AKS) segítségével tovább javíthatja a biztonság és az engedélyek struktúráját a Azure Active Directory és az Azure RBAC használatával. 
 
-A Kubernetes RBAC és az AK segítségével biztonságossá teheti a fürt hozzáférését, és csak a minimálisan szükséges engedélyeket biztosítja a fejlesztők és a kezelők számára.
+A Kubernetes RBAC és az AKS segítségével biztonságossá teszi a fürthöz való hozzáférést, és csak a minimálisan szükséges engedélyeket biztosítja a fejlesztők és az operátorok számára.
 
-Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek segítséget nyújtanak az AK-ban lévő engedélyek hitelesítéséhez és hozzárendeléséhez.
+Ez a cikk az AKS-engedélyek hitelesítését és hozzárendelését segítő alapvető fogalmakat mutat be.
 
-## <a name="aks-service-permissions"></a>AK szolgáltatás engedélyei
+## <a name="aks-service-permissions"></a>Az AKS-szolgáltatás engedélyei
 
-Fürt létrehozásakor az AK létrehozza vagy módosítja a szükséges erőforrásokat (például virtuális gépeket és hálózati adaptereket) a fürt létrehozásához és futtatásához a felhasználó nevében. Ez az identitás különbözik a fürt személyazonossági engedélyével, amely a fürt létrehozásakor jön létre.
+Fürt létrehozásakor az AKS létrehozza vagy módosítja a szükséges erőforrásokat (például virtuális gépeket és NIC-ket) a fürt létrehozásához és futtatásához a felhasználó nevében. Ez az identitás nem azonos a fürt identitásengedélyével, amely a fürt létrehozása során jön létre.
 
-### <a name="identity-creating-and-operating-the-cluster-permissions"></a>A fürt engedélyeinek létrehozásához és üzemeltetéséhez szükséges identitás
+### <a name="identity-creating-and-operating-the-cluster-permissions"></a>Identitás létrehozása és a fürtengedélyek üzemeltetése
 
-A fürt létrehozásához és üzemeltetéséhez a következő engedélyekre van szükség.
+A fürtöt létrehozására és üzemeltetési identitásának a következő engedélyekre van szüksége.
 
 | Engedély | Ok |
 |---|---|
-| `Microsoft.Compute/diskEncryptionSets/read` | A lemez titkosítási készletének AZONOSÍTÓjának olvasásához szükséges. |
-| `Microsoft.Compute/proximityPlacementGroups/write` | A közelségi elhelyezési csoportok frissítéséhez szükséges. |
-| `Microsoft.Network/applicationGateways/read` <br/> `Microsoft.Network/applicationGateways/write` <br/> `Microsoft.Network/virtualNetworks/subnets/join/action` | Az Application Gateway konfigurálásához és az alhálózat csatlakoztatásához szükséges. |
-| `Microsoft.Network/virtualNetworks/subnets/join/action` | Egyéni VNET használata esetén az alhálózat hálózati biztonsági csoportjának konfigurálásához szükséges.|
-| `Microsoft.Network/publicIPAddresses/join/action` <br/> `Microsoft.Network/publicIPPrefixes/join/action` | A kimenő nyilvános IP-címek a standard Load Balancer való konfigurálásához szükséges. |
-| `Microsoft.OperationalInsights/workspaces/sharedkeys/read` <br/> `Microsoft.OperationalInsights/workspaces/read` <br/> `Microsoft.OperationsManagement/solutions/write` <br/> `Microsoft.OperationsManagement/solutions/read` <br/> `Microsoft.ManagedIdentity/userAssignedIdentities/assign/action` | Log Analytics munkaterületek létrehozásához és frissítéséhez, valamint a tárolók Azure-figyeléséhez szükséges. |
+| `Microsoft.Compute/diskEncryptionSets/read` | A lemeztitkosítási készlet azonosítójának olvasásához szükséges. |
+| `Microsoft.Compute/proximityPlacementGroups/write` | Közelségi elhelyezési csoportok frissítéséhez szükséges. |
+| `Microsoft.Network/applicationGateways/read` <br/> `Microsoft.Network/applicationGateways/write` <br/> `Microsoft.Network/virtualNetworks/subnets/join/action` | Az alkalmazásátjárók konfigurálásához és az alhálózathoz való csatlakozáshoz szükséges. |
+| `Microsoft.Network/virtualNetworks/subnets/join/action` | Az alhálózat hálózati biztonsági csoportjának egyéni virtuális hálózat használata esetén való konfigurálához szükséges.|
+| `Microsoft.Network/publicIPAddresses/join/action` <br/> `Microsoft.Network/publicIPPrefixes/join/action` | A kimenő nyilvános IP-k konfigurálához szükséges a standard Load Balancer. |
+| `Microsoft.OperationalInsights/workspaces/sharedkeys/read` <br/> `Microsoft.OperationalInsights/workspaces/read` <br/> `Microsoft.OperationsManagement/solutions/write` <br/> `Microsoft.OperationsManagement/solutions/read` <br/> `Microsoft.ManagedIdentity/userAssignedIdentities/assign/action` | Log Analytics-munkaterületek létrehozásához és frissítéséhez, valamint tárolók Azure-monitorozásához szükséges. |
 
-### <a name="aks-cluster-identity-permissions"></a>AK-fürt identitásának engedélyei
+### <a name="aks-cluster-identity-permissions"></a>AKS-fürtidentitás engedélyei
 
-A következő engedélyeket használja az AK-fürt identitása, amely az AK-fürthöz lett létrehozva és társítva. Az alábbi okokból minden engedély használatos:
+Az AKS-fürt identitása a következő engedélyeket használja, amely az AKS-fürthöz van társítva. Az engedélyeket az alábbi okokból használjuk:
 
 | Engedély | Ok |
 |---|---|
 | `Microsoft.ContainerService/managedClusters/*`  <br/> | A felhasználók létrehozásához és a fürt üzemeltetéséhez szükséges
-| `Microsoft.Network/loadBalancers/delete` <br/> `Microsoft.Network/loadBalancers/read` <br/> `Microsoft.Network/loadBalancers/write` | A terheléselosztó terheléselosztó-szolgáltatáshoz való konfigurálásához szükséges. |
-| `Microsoft.Network/publicIPAddresses/delete` <br/> `Microsoft.Network/publicIPAddresses/read` <br/> `Microsoft.Network/publicIPAddresses/write` | A terheléselosztó szolgáltatás nyilvános IP-címeinek megkereséséhez és konfigurálásához szükséges. |
-| `Microsoft.Network/publicIPAddresses/join/action` | A terheléselosztó szolgáltatás nyilvános IP-címeinek konfigurálásához szükséges. |
-| `Microsoft.Network/networkSecurityGroups/read` <br/> `Microsoft.Network/networkSecurityGroups/write` | A terheléselosztó szolgáltatás biztonsági szabályainak létrehozásához vagy törléséhez szükséges. |
-| `Microsoft.Compute/disks/delete` <br/> `Microsoft.Compute/disks/read` <br/> `Microsoft.Compute/disks/write` <br/> `Microsoft.Compute/locations/DiskOperations/read` | A AzureDisks konfigurálásához szükséges. |
-| `Microsoft.Storage/storageAccounts/delete` <br/> `Microsoft.Storage/storageAccounts/listKeys/action` <br/> `Microsoft.Storage/storageAccounts/read` <br/> `Microsoft.Storage/storageAccounts/write` <br/> `Microsoft.Storage/operations/read` | A AzureFile vagy AzureDisk tartozó Storage-fiókok konfigurálásához szükséges. |
-| `Microsoft.Network/routeTables/read` <br/> `Microsoft.Network/routeTables/routes/delete` <br/> `Microsoft.Network/routeTables/routes/read` <br/> `Microsoft.Network/routeTables/routes/write` <br/> `Microsoft.Network/routeTables/write` | A csomópontok útválasztási tábláinak és útvonalának konfigurálásához szükséges. |
-| `Microsoft.Compute/virtualMachines/read` | Egy VMAS található virtuális gépek információinak megkereséséhez szükséges, például a zónák, a tartalék tartomány, a méret és az adatlemezek. |
-| `Microsoft.Compute/virtualMachines/write` | Egy VMAS lévő virtuális géphez való AzureDisks csatolásához szükséges. |
-| `Microsoft.Compute/virtualMachineScaleSets/read` <br/> `Microsoft.Compute/virtualMachineScaleSets/virtualMachines/read` <br/> `Microsoft.Compute/virtualMachineScaleSets/virtualmachines/instanceView/read` | A virtuálisgép-méretezési csoportokban lévő virtuális gépek információinak megkereséséhez szükséges, például a zónák, a tartalék tartomány, a méret és az adatlemezek. |
-| `Microsoft.Network/networkInterfaces/write` | Ahhoz szükséges, hogy egy VMAS egy virtuális gépet egy terheléselosztó háttérbeli címkészlet számára adjon hozzá. |
-| `Microsoft.Compute/virtualMachineScaleSets/write` | Egy virtuálisgép-méretezési csoport terheléselosztásához szükséges a virtuálisgép-méretezési csoportokban, és bővíteni kell a csomópontokat. |
-| `Microsoft.Compute/virtualMachineScaleSets/virtualmachines/write` | A AzureDisks csatolásához és egy virtuális gép virtuálisgép-méretezési csoportból a terheléselosztó számára való hozzáadásához szükséges. |
-| `Microsoft.Network/networkInterfaces/read` | A VMAS virtuális gépei számára a belső IP-címek és a terheléselosztó háttér-címkészlet esetében szükséges. |
-| `Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/read` | A virtuálisgép-méretezési csoportokban lévő virtuális gépekhez tartozó belső IP-címek és terheléselosztó háttér-címkészlet számára szükséges. |
-| `Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/ipconfigurations/publicipaddresses/read` | A virtuálisgép-méretezési csoportokban lévő virtuális gépek nyilvános IP-címeinek megkereséséhez szükséges. |
-| `Microsoft.Network/virtualNetworks/read` <br/> `Microsoft.Network/virtualNetworks/subnets/read` | Szükséges annak ellenőrzéséhez, hogy létezik-e alhálózat a belső terheléselosztó számára egy másik erőforráscsoporthoz. |
-| `Microsoft.Compute/snapshots/delete` <br/> `Microsoft.Compute/snapshots/read` <br/> `Microsoft.Compute/snapshots/write` | A AzureDisk Pillanatképek konfigurálásához szükséges. |
-| `Microsoft.Compute/locations/vmSizes/read` <br/> `Microsoft.Compute/locations/operations/read` | A virtuálisgép-méretek megkereséséhez szükséges a AzureDisk. |
+| `Microsoft.Network/loadBalancers/delete` <br/> `Microsoft.Network/loadBalancers/read` <br/> `Microsoft.Network/loadBalancers/write` | A LoadBalancer-szolgáltatás terheléselosztásának konfigurálához szükséges. |
+| `Microsoft.Network/publicIPAddresses/delete` <br/> `Microsoft.Network/publicIPAddresses/read` <br/> `Microsoft.Network/publicIPAddresses/write` | A LoadBalancer szolgáltatás nyilvános IP-ip-ének megkereséséhez és konfigurálásához szükséges. |
+| `Microsoft.Network/publicIPAddresses/join/action` | Nyilvános IP-k loadBalancer szolgáltatáshoz való konfigurálásához szükséges. |
+| `Microsoft.Network/networkSecurityGroups/read` <br/> `Microsoft.Network/networkSecurityGroups/write` | Egy LoadBalancer-szolgáltatás biztonsági szabályainak létrehozásához vagy törléséhez szükséges. |
+| `Microsoft.Compute/disks/delete` <br/> `Microsoft.Compute/disks/read` <br/> `Microsoft.Compute/disks/write` <br/> `Microsoft.Compute/locations/DiskOperations/read` | Az AzureDisks konfigurálásához szükséges. |
+| `Microsoft.Storage/storageAccounts/delete` <br/> `Microsoft.Storage/storageAccounts/listKeys/action` <br/> `Microsoft.Storage/storageAccounts/read` <br/> `Microsoft.Storage/storageAccounts/write` <br/> `Microsoft.Storage/operations/read` | Az AzureFile vagy az AzureDisk tárfiókok konfigurálához szükséges. |
+| `Microsoft.Network/routeTables/read` <br/> `Microsoft.Network/routeTables/routes/delete` <br/> `Microsoft.Network/routeTables/routes/read` <br/> `Microsoft.Network/routeTables/routes/write` <br/> `Microsoft.Network/routeTables/write` | A csomópontok útválasztási táblázatai és útvonalai konfigurálására van szükség. |
+| `Microsoft.Compute/virtualMachines/read` | A VMAS virtuális gépekkel kapcsolatos információk, például zónák, tartalék tartomány, méret és adatlemezek kereséséhez szükséges. |
+| `Microsoft.Compute/virtualMachines/write` | Az AzureDisks virtuális géphez VMAS-ban való csatolásához szükséges. |
+| `Microsoft.Compute/virtualMachineScaleSets/read` <br/> `Microsoft.Compute/virtualMachineScaleSets/virtualMachines/read` <br/> `Microsoft.Compute/virtualMachineScaleSets/virtualmachines/instanceView/read` | A virtuálisgép-méretezési csoportban lévő virtuális gépek (például zónák, tartalék tartomány, méret és adatlemezek) információinak kereséséhez szükséges. |
+| `Microsoft.Network/networkInterfaces/write` | Virtuális gép VMAS-ban való hozzáadásához szükséges egy terheléselosztási háttércímkészlethez. |
+| `Microsoft.Compute/virtualMachineScaleSets/write` | Virtuálisgép-méretezési csoport terheléselosztási háttércímkészlethez való hozzáadásához és egy virtuálisgép-méretezési csoport csomópontjainak horizontális felskálához szükséges. |
+| `Microsoft.Compute/virtualMachineScaleSets/virtualmachines/write` | Az AzureDisks csatolásához és virtuális gép virtuálisgép-méretezési készletből a terheléselosztáshoz való hozzáadásához szükséges. |
+| `Microsoft.Network/networkInterfaces/read` | A belső IP-címek és a terheléselosztási háttércímkészletek VMAS-ban lévő virtuális gépek kereséséhez szükséges. |
+| `Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/read` | Belső IP-címek és terheléselosztási háttércímkészletek kereséséhez szükséges egy virtuálisgép-méretezési készletben lévő virtuális géphez. |
+| `Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/ipconfigurations/publicipaddresses/read` | A virtuálisgép-méretezési készletben lévő virtuális gépek nyilvános IP-ip-ének megkereséhez szükséges. |
+| `Microsoft.Network/virtualNetworks/read` <br/> `Microsoft.Network/virtualNetworks/subnets/read` | Annak ellenőrzéséhez szükséges, hogy létezik-e alhálózat a belső terheléselosztáshoz egy másik erőforráscsoportban. |
+| `Microsoft.Compute/snapshots/delete` <br/> `Microsoft.Compute/snapshots/read` <br/> `Microsoft.Compute/snapshots/write` | Az AzureDisk pillanatkép-beállításainak konfigurálához szükséges. |
+| `Microsoft.Compute/locations/vmSizes/read` <br/> `Microsoft.Compute/locations/operations/read` | Az AzureDisk-kötetkorlátok megkereséhez szükséges a virtuális gépek méretének megállapítása. |
 
-### <a name="additional-cluster-identity-permissions"></a>További fürt-identitási engedélyek
+### <a name="additional-cluster-identity-permissions"></a>További fürtidentitási engedélyek
 
-Ha adott attribútumokkal rendelkező fürtöt hoz létre, akkor a fürt identitásához a következő további engedélyek szükségesek. Mivel ezek az engedélyek nem lesznek automatikusan hozzárendelve, a létrehozás után hozzá kell adni őket a fürt identitásához.
+Adott attribútumokkal rendelkező fürt létrehozásakor a következő további engedélyekre lesz szüksége a fürtidentitáshoz. Mivel ezek az engedélyek nincsenek automatikusan hozzárendelve, a létrehozásuk után hozzá kell adni őket a fürtidentitáshoz.
 
 | Engedély | Ok |
 |---|---|
-| `Microsoft.Network/networkSecurityGroups/write` <br/> `Microsoft.Network/networkSecurityGroups/read` | Akkor szükséges, ha egy másik erőforráscsoport hálózati biztonsági csoportját használja. A terheléselosztó szolgáltatás biztonsági szabályainak konfigurálásához szükséges. |
-| `Microsoft.Network/virtualNetworks/subnets/read` <br/> `Microsoft.Network/virtualNetworks/subnets/join/action` | Kötelező, ha egy alhálózatot használ egy másik erőforráscsoporthoz, például egy egyéni VNET. |
-| `Microsoft.Network/routeTables/routes/read` <br/> `Microsoft.Network/routeTables/routes/write` | Kötelező, ha egy másik erőforráscsoport útválasztási táblájához társított alhálózatot használ, például egy egyéni VNET egyéni útválasztási táblázattal. Szükséges annak ellenőrzéséhez, hogy egy alhálózat már létezik-e a másik erőforráscsoport alhálózatához. |
-| `Microsoft.Network/virtualNetworks/subnets/read` | A belső terheléselosztó egy másik erőforráscsoporthoz való használata esetén kötelező. Szükséges annak ellenőrzéséhez, hogy már létezik-e alhálózat a belső terheléselosztó számára az erőforráscsoporthoz. |
-| `Microsoft.Network/privatednszones/*` | Kötelező, ha egy privát DNS-zónát használ egy másik erőforráscsoporthoz, például egy egyéni privateDNSZone. |
+| `Microsoft.Network/networkSecurityGroups/write` <br/> `Microsoft.Network/networkSecurityGroups/read` | Akkor szükséges, ha egy másik erőforráscsoportban hálózati biztonsági csoportot használ. A LoadBalancer szolgáltatás biztonsági szabályainak konfigurálához szükséges. |
+| `Microsoft.Network/virtualNetworks/subnets/read` <br/> `Microsoft.Network/virtualNetworks/subnets/join/action` | Kötelező, ha egy másik erőforráscsoportban, például egyéni virtuális hálózatban található alhálózatot használ. |
+| `Microsoft.Network/routeTables/routes/read` <br/> `Microsoft.Network/routeTables/routes/write` | Kötelező, ha egy másik erőforráscsoportban található útvonaltáblához társított alhálózatot használ, például egy egyéni útvonaltáblát használó egyéni VNET-et. Annak ellenőrzéséhez szükséges, hogy létezik-e már alhálózat a másik erőforráscsoport alhálózatához. |
+| `Microsoft.Network/virtualNetworks/subnets/read` | Kötelező, ha egy másik erőforráscsoportban belső terheléselosztást használ. Annak ellenőrzéséhez szükséges, hogy létezik-e már alhálózat az erőforráscsoport belső terheléselosztásához. |
+| `Microsoft.Network/privatednszones/*` | Kötelező, ha privát DNS-zónát használ egy másik erőforráscsoportban, például egy egyéni privateDNSZone erőforráscsoportban. |
 
 ## <a name="kubernetes-rbac"></a>A Kubernetes szerepköralapú hozzáférés-vezérlése (RBAC)
 
-A Kubernetes RBAC a felhasználói műveletek részletes szűrését teszi lehetővé. Ezzel a vezérlési mechanizmussal:
-* Az erőforrások létrehozásához és módosításához, illetve az alkalmazás-munkaterhelések naplóinak megtekintéséhez engedélyeket kell rendelnie a felhasználókhoz vagy a felhasználói csoportokhoz. 
-* A hatókörre vonatkozó engedélyeket egyetlen névtérhez vagy a teljes AK-fürthöz használhatja. 
-* Hozzon létre *szerepköröket* az engedélyek definiálásához, majd rendelje hozzá ezeket a szerepköröket a felhasználókhoz *szerepkör-kötésekkel*.
+A Kubernetes RBAC a felhasználói műveletek részletes szűrését biztosítja. Ezzel a vezérlési mechanizmussal:
+* Felhasználókat vagy felhasználói csoportokat rendelhet hozzá az erőforrások létrehozásához és módosításához, illetve a futó alkalmazások számítási feladataiból származó naplók megtekintéséhez. 
+* Az engedélyek hatóköre egyetlen névtérre vagy a teljes AKS-fürtre terjedhet ki. 
+* Létrehozhat *szerepköröket az* engedélyek meghatározásához, majd hozzárendelheti ezeket a szerepköröket a *szerepkörkötésekkel rendelkező felhasználókhoz.*
 
-További információ: [a KUBERNETES RBAC-hitelesítés használata][kubernetes-rbac].
+További információ: [A Kubernetes RBAC-hitelesítés használata.][kubernetes-rbac]
 
-### <a name="roles-and-clusterroles"></a>Szerepkörök és ClusterRoles
+### <a name="roles-and-clusterroles"></a>Szerepkörök és fürtszerepkepkök
 
 #### <a name="roles"></a>Szerepkörök
-Ahhoz, hogy engedélyeket rendeljen a felhasználókhoz a Kubernetes RBAC, a felhasználói engedélyeket *szerepkörként* kell meghatároznia. Engedélyeket adhat meg a névtéren belül a szerepkörök használatával. 
+Mielőtt engedélyeket rendelne a Kubernetes RBAC-t használó felhasználókhoz, a felhasználói engedélyeket szerepkörként kell *meghatároznia.* Engedélyek megadása egy névtéren belül szerepkörök használatával. 
 
 > [!NOTE]
-> A Kubernetes szerepkörei engedélyeket *biztosítanak* ; nem *tagadják* meg az engedélyeket.
+> A Kubernetes-szerepkörök *engedélyeket* engedélyeznek; nem tagadják *meg az* engedélyeket.
 
-Ha engedélyeket szeretne adni a teljes fürtön vagy egy adott névtéren kívüli fürtözött erőforrásokon, használhatja a *ClusterRoles*-t.
+Ha a teljes fürtre vagy egy adott névtéren kívüli fürterőforrásokra vonatkozó engedélyeket is meg kell adni, használhatja a *ClusterRoles használhatja a következőt:*.
 
-#### <a name="clusterroles"></a>ClusterRoles
+#### <a name="clusterroles"></a>ClusterRoles (Fürtiroles)
 
-A ClusterRole a teljes fürtön lévő erőforrásokra vonatkozó engedélyeket biztosít és alkalmaz, nem pedig egy adott névteret.
+A ClusterRole a teljes fürt erőforrásaira vonatkozó engedélyeket biztosít és alkalmaz, nem pedig egy adott névtérre.
 
 ### <a name="rolebindings-and-clusterrolebindings"></a>RoleBindings és ClusterRoleBindings
 
-Miután definiálta a szerepköröket az erőforrásokra vonatkozó engedélyek megadásához, hozzá kell rendelnie a Kubernetes RBAC engedélyeit egy *RoleBinding*. Ha az AK-fürt [integrálva van Azure Active Directory (Azure ad) szolgáltatással](#azure-ad-integration), a RoleBindings engedélyeket biztosít az Azure ad-felhasználóknak a fürtön belüli műveletek végrehajtásához. Megtudhatja, hogyan [vezérelheti a Kubernetes a szerepköralapú hozzáférés-vezérlés és a Azure Active Directory identitások használatával a fürt erőforrásaihoz való hozzáférést](azure-ad-rbac.md).
+Miután definiálta az erőforrásokra vonatkozó engedélyek megadására vonatkozó szerepköröket, a Kubernetes RBAC-engedélyeket a *RoleBinding szerepkörhöz kell rendelnie.* Ha az AKS-fürt integrálható az [Azure Active Directory (Azure AD)](#azure-ad-integration)használatával, a RoleBindings engedélyeket ad az Azure AD-felhasználóknak a fürtön belüli műveletek végrehajtásához. Tekintse meg a Fürterőforrásokhoz való hozzáférés szabályozása [a Kubernetes](azure-ad-rbac.md)szerepköralapú hozzáférés-vezérlése és identitások használatával Azure Active Directory című bemutatja.
 
-#### <a name="rolebindings"></a>RoleBindings
+#### <a name="rolebindings"></a>RoleBindings (Szerepkörkötések)
 
-Szerepkörök kiosztása egy adott névtér felhasználói számára a RoleBindings használatával. A RoleBindings használatával logikailag elkülönítheti egyoszlopos fürtöket, így csak a felhasználók férhetnek hozzá a hozzárendelt névtérben lévő alkalmazás-erőforrásokhoz. 
+Szerepkörök hozzárendelése felhasználókhoz egy adott névtérhez a RoleBindings használatával. A RoleBindings segítségével logikailag elkülöníthet egyetlen AKS-fürtöt, így a felhasználók csak a hozzárendelt névtér alkalmazás-erőforrásaihoz férhetnek hozzá. 
 
-Ha a szerepköröket a teljes fürtön kívánja kötni, vagy egy adott névtéren kívüli fürt erőforrásaira, használja inkább a *ClusterRoleBindings*-t.
+A szerepkörök a teljes fürthöz vagy egy adott névtéren kívüli fürterőforrásokhoz való kötéséhez ehelyett a *ClusterRoleBindings nevet használja.*
 
 #### <a name="clusterrolebinding"></a>ClusterRoleBinding
 
-A ClusterRoleBinding a szerepköröket a felhasználókhoz köti, és a teljes fürtön lévő erőforrásokra, nem pedig egy adott névtérre vonatkozik. Ez a megközelítés lehetővé teszi, hogy a rendszergazdák vagy a támogatási mérnökök hozzáférjenek az AK-fürt összes erőforrásához.
+A ClusterRoleBinding használata esetén a szerepköröket felhasználókhoz köti, és a teljes fürt erőforrásaira alkalmazza, nem pedig egy adott névtérre. Ezzel a megközelítéssel hozzáférést adhat a rendszergazdáknak vagy a támogatási mérnököknek az AKS-fürt összes erőforrásához.
 
 
 > [!NOTE]
-> A Microsoft/AK egy beépített Kubernetes-szerepkörhöz `aks-service` és beépített szerepkör-kötéshez tartozó felhasználói beleegyező műveleteket hajt végre `aks-service-rolebinding` . 
+> A Microsoft/AKS felhasználói jóváhagyással hajt végre fürtműveleteket egy beépített Kubernetes-szerepkör és beépített `aks-service` szerepkörkötés `aks-service-rolebinding` keretében. 
 > 
-> Ez a szerepkör lehetővé teszi az AK számára a fürtökkel kapcsolatos problémák hibaelhárítását és diagnosztizálását, de nem módosíthatja az engedélyeket, és nem hozhat létre szerepköröket vagy szerepkör-kötéseket, illetve egyéb magas jogosultsági A szerepkör-hozzáférés csak az aktív támogatási jegyek esetében engedélyezett az igény szerinti (JIT) hozzáféréssel. Tudjon meg többet az [AK-támogatási szabályzatokról](support-policies.md).
+> Ez a szerepkör lehetővé teszi az AKS számára a fürtproblémák elhárítását és diagnosztizálát, de nem módosíthatja az engedélyeket, és nem hozhat létre szerepköröket vagy szerepkörkötéseket, illetve egyéb magas jogosultságú műveleteket. A szerepkör-hozzáférés csak az aktív támogatási jegyeken van engedélyezve igény szerinti (JIT) hozzáféréssel. További információ az [AKS támogatási szabályzatairól.](support-policies.md)
 
 
 ### <a name="kubernetes-service-accounts"></a>Kubernetes-szolgáltatásfiókok
 
-A *szolgáltatásfiókok* a Kubernetes egyik elsődleges felhasználói típusa. A Kubernetes API a szolgáltatásfiókok tárolására és kezelésére szolgál. A szolgáltatásfiók hitelesítő adatait Kubernetes titokként tárolja a rendszer, így az engedélyezett hüvelyek is használhatják az API-kiszolgálóval folytatott kommunikációt. A legtöbb API-kérelem hitelesítési jogkivonatot biztosít egy szolgáltatásfiók vagy egy normál felhasználói fiók számára.
+*A szolgáltatásfiókok* a Kubernetes egyik elsődleges felhasználótípusa. A Kubernetes API szolgáltatásfiókokat tart és kezel. A szolgáltatásfiók hitelesítő adatait a rendszer Kubernetes titkos kulcsként tárolja, így az arra jogosult podok az API-kiszolgálóval kommunikálhatnak. A legtöbb API-kérés hitelesítési jogkivonatot biztosít egy szolgáltatásfiókhoz vagy egy normál felhasználói fiókhoz.
 
-A normál felhasználói fiókok több hagyományos hozzáférést tesznek lehetővé az emberi rendszergazdák vagy a fejlesztők számára, nem csupán a szolgáltatásokhoz és folyamatokhoz. Míg a Kubernetes nem biztosít a normál felhasználói fiókok és jelszavak tárolására szolgáló Identitáskezelés megoldását, integrálhatja a külső identitási megoldásokat a Kubernetes-be. AK-fürtök esetében ez az integrált Identity megoldás az Azure AD.
+A normál felhasználói fiókok hagyományosabb hozzáférést szolgáltatásokat és folyamatokat, de emberi rendszergazdáknak és fejlesztőknek is lehetővé teszik. Bár a Kubernetes nem biztosít identitáskezelési megoldást a normál felhasználói fiókok és jelszavak tárolására, külső identitáskezelési megoldásokat integrálhat a Kubernetesbe. AKS-fürtök esetén ez az integrált identitásmegoldás az Azure AD.
 
-További információ a Kubernetes identitási lehetőségeiről: Kubernetes- [hitelesítés][kubernetes-authentication].
+További információ a Kubernetes identitási lehetőségeiről: [Kubernetes-hitelesítés.][kubernetes-authentication]
 
 ## <a name="azure-ad-integration"></a>Azure AD-integráció
 
-Az AK-fürt biztonságának növelése az Azure AD-integrációval. Az Azure AD egy több-bérlős, felhőalapú címtár-és Identitáskezelő szolgáltatás, amely az alapszintű címtárszolgáltatások, az alkalmazás-hozzáférés-kezelés és az identitások védelmét ötvözi. Az Azure AD lehetővé teszi, hogy a helyszíni identitásokat AK-fürtökbe integrálva egyetlen forrást biztosítson a fiókok kezeléséhez és biztonságához.
+Az AKS-fürt biztonságának növelése az Azure AD-integrációval. A vállalati identitáskezelés évtizedeiből álló Azure AD egy több-bérlős, felhőalapú címtár- és identitáskezelési szolgáltatás, amely egyesíti az alapvető címtárszolgáltatásokat, az alkalmazás-hozzáférés-kezelési és az identitásvédelmet. Az Azure AD-val helyszíni identitásokat integrálhat AKS-fürtökbe, így egyetlen forrást biztosít a fiókkezeléshez és a biztonsághoz.
 
-![Azure Active Directory-integráció AK-fürtökkel](media/concepts-identity/aad-integration.png)
+![Azure Active Directory AKS-fürtök integrációja](media/concepts-identity/aad-integration.png)
 
-Az Azure AD-vel integrált AK-fürtök segítségével a felhasználók vagy csoportok hozzáférést biztosíthatnak a Kubernetes-erőforrásokhoz a névtérben vagy a fürtön belül. 
+Az Azure AD-be integrált AKS-fürtök segítségével hozzáférést adhat a felhasználóknak vagy csoportoknak a Kubernetes-erőforrásokhoz egy névtérben vagy a fürtön belül. 
 
-1. A konfigurációs környezet beszerzéséhez `kubectl` a felhasználó az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot futtatja. 
-1. Ha a felhasználó együttműködik az AK-beli fürttel `kubectl` , a rendszer felszólítja, hogy jelentkezzen be az Azure ad-beli hitelesítő adataival. 
+1. A konfigurációs `kubectl` környezet beszerzéséhez a felhasználó futtatja [az az aks get-credentials][az-aks-get-credentials] parancsot. 
+1. Amikor egy felhasználó kapcsolatba lép az AKS-fürtön az -ral, a rendszer arra kéri, hogy jelentkezzen be `kubectl` Az Azure AD-beli hitelesítő adataival. 
 
-Ez a megközelítés egyetlen forrást biztosít a felhasználói fiókok felügyeletéhez és a jelszó hitelesítő adataihoz. A felhasználó csak a fürt rendszergazdája által meghatározott erőforrásokat érheti el.
+Ez a megközelítés egyetlen forrást biztosít a felhasználói fiókok kezeléséhez és a jelszó hitelesítő adataihoz. A felhasználó csak a fürt rendszergazdája által meghatározott erőforrásokhoz férhet hozzá.
 
-Az Azure AD-hitelesítés az OpenID-kapcsolattal rendelkező AK-fürtökhöz van megadva. Az OpenID Connect egy OAuth 2,0 protokollra épülő identitási réteg. Az OpenID Connecttel kapcsolatos további információkért tekintse meg az [ID Connect dokumentációját][openid-connect]. A Kubernetes-fürtön belül a rendszer [webhook jogkivonat-hitelesítést][webhook-token-docs] használ a hitelesítési tokenek ellenőrzéséhez. A webhook-jogkivonat hitelesítése az AK-fürt részeként van konfigurálva és felügyelve.
+Az Azure AD-hitelesítést az AKS-fürtök biztosítják OpenID Connect. OpenID Connect az OAuth 2.0 protokollra épülő identitásréteg. További információt a OpenID Connect Open [ID Connect dokumentációjában talál.][openid-connect] A Kubernetes-fürtön belül a [webhook-jogkivonatok][webhook-token-docs] hitelesítése a hitelesítési jogkivonatok ellenőrzésére használható. A webhook-jogkivonatok hitelesítése az AKS-fürt részeként van konfigurálva és kezelhető.
 
 ### <a name="webhook-and-api-server"></a>Webhook és API-kiszolgáló
 
-![Webhook és API-kiszolgáló hitelesítési folyamata](media/concepts-identity/auth-flow.png)
+![Webhook- és API-kiszolgálóhitelesítési folyamat](media/concepts-identity/auth-flow.png)
 
-Ahogy az a fenti ábrán is látható, az API-kiszolgáló meghívja az AK webhook-kiszolgálót, és a következő lépéseket hajtja végre:
+Ahogy a fenti ábrán látható, az API-kiszolgáló az AKS-webhook-kiszolgálót hívja meg, és a következő lépéseket végzi el:
 
-1. `kubectl` Az Azure AD ügyfélalkalmazás használatával jelentkezik be a felhasználók számára az [OAuth 2,0-es eszköz engedélyezési folyamatával](../active-directory/develop/v2-oauth2-device-code.md).
-2. Az Azure AD egy access_token, id_token és egy refresh_token biztosít.
-3. A felhasználó elküld egy kérést a `kubectl` access_token `kubeconfig` .
-4. `kubectl` a access_token küldése az API-kiszolgálónak.
-5. Az API-kiszolgáló a hitelesítési webhook-kiszolgálóval van konfigurálva az érvényesítés végrehajtásához.
-6. A hitelesítési webhook-kiszolgáló megerősíti, hogy a JSON Web Token aláírása érvényes az Azure AD nyilvános aláíró kulcsának ellenőrzésével.
-7. A kiszolgálóalkalmazás felhasználó által megadott hitelesítő adatok használatával kérdezi le a bejelentkezett felhasználó csoporttagságait az MS Graph APIból.
-8. A rendszer választ kap az API-kiszolgálónak a felhasználói adatokkal, például a hozzáférési jogkivonat egyszerű felhasználóneve (UPN) jogcímével, valamint a felhasználó csoporttagság alapján.
-9. Az API a Kubernetes szerepkör/RoleBinding alapján hajt végre engedélyezési döntést.
-10. Az engedélyezést követően az API-kiszolgáló egy választ küld vissza `kubectl` .
-11. `kubectl` visszajelzést nyújt a felhasználónak.
+1. `kubectl` az Azure AD-ügyfélalkalmazással jelentkeztet be felhasználókat [az OAuth 2.0](../active-directory/develop/v2-oauth2-device-code.md)eszközengedélyezési folyamatával.
+2. Az Azure AD egy access_token, id_token és egy refresh_token.
+3. A felhasználó kérést tesz a `kubectl` következőre: , access_token a következőből: `kubeconfig` .
+4. `kubectl` elküldi a access_token az API Servernek.
+5. Az API-kiszolgáló az Auth WebHook-kiszolgálóval van konfigurálva az ellenőrzés végrehajtásához.
+6. A hitelesítési webhook-kiszolgáló az Azure AD JSON-webtoken aláírókulcs ellenőrzéséhez ellenőrzi, hogy az aláírás érvényes-e.
+7. A kiszolgálóalkalmazás a felhasználó által megadott hitelesítő adatokkal lekérdezi a bejelentkezett felhasználó csoporttagságait az MS Graph API.
+8. A rendszer egy választ küld az API-kiszolgálónak olyan felhasználói adatokkal, mint a hozzáférési jogkivonat egyszerű felhasználóneve (UPN) jogcíme, valamint a felhasználó csoporttagságának az objektumazonosító alapján.
+9. Az API a Kubernetes-szerepkör/RoleBinding alapján hoz engedélyezési döntést.
+10. Az engedély után az API-kiszolgáló választ ad vissza a következőnek: `kubectl` .
+11. `kubectl` visszajelzést küld a felhasználónak.
  
-Ismerje meg, hogyan integrálhatja az AK-t az Azure AD-val az [AK-nal felügyelt Azure ad-integráció útmutatójának](managed-aad.md)segítségével.
+Ismerje meg, hogyan integrálhatja az AKS-t az Azure AD-be az [AKS által felügyelt Azure AD-integrációs útmutatóval.](managed-aad.md)
 
 ## <a name="azure-role-based-access-control"></a>Azure-beli szerepköralapú hozzáférés-vezérlés
 
-Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) egy [Azure Resource Managerra](../azure-resource-manager/management/overview.md) épülő engedélyezési rendszer, amely részletes hozzáférést biztosít az Azure-erőforrások kezeléséhez.
+Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) [](../azure-resource-manager/management/overview.md) egy olyan engedélyezési rendszer, amely Azure Resource Manager az Azure-erőforrások részletes hozzáférés-kezelését biztosítja.
 
-| RBAC-rendszeren | Description |
+| RBAC-rendszer | Description |
 |---|---|
-| A Kubernetes szerepköralapú hozzáférés-vezérlése (RBAC) | Az Kubernetes-erőforrások az AK-fürtön belüli működésére lett tervezve. |
-| Azure RBAC-vel | Az Azure-előfizetésen belüli erőforrásokkal való munkavégzésre lett tervezve. |
+| A Kubernetes szerepköralapú hozzáférés-vezérlése (RBAC) | Az AKS-fürtön belüli Kubernetes-erőforrásokon való használatra tervezték. |
+| Azure RBAC-vel | Az Azure-előfizetésen belüli erőforrásokon való használatra tervezték. |
 
-Az Azure RBAC létrehoz egy szerepkör- *definíciót* , amely az alkalmazandó engedélyeket ismerteti. Ezután hozzárendelheti a szerepkör-definícióhoz tartozó felhasználót vagy csoportot egy adott *hatókörhöz* tartozó *szerepkör-hozzárendelés* használatával. A hatókör lehet önálló erőforrás, erőforráscsoport vagy az előfizetés egésze.
+Az Azure RBAC használatával  létrehoz egy szerepkör-definíciót, amely felvázolja az alkalmazandó engedélyeket. Ezután hozzárendelheti ezt a szerepkör-definíciót egy felhasználóhoz vagy csoporthoz egy adott hatókör szerepkör-hozzárendelése *révén.*  A hatókör lehet egyéni erőforrás, erőforráscsoport vagy az előfizetésen belül.
 
 További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?][azure-rbac]
 
-Az AK-fürtök teljes körű működtetéséhez két hozzáférési szint szükséges: 
-* [Hozzáférés az AK-erőforráshoz az Azure-előfizetésében](#azure-rbac-to-authorize-access-to-the-aks-resource). 
-  * Szabályozhatja a fürt méretezését vagy frissítését az AK API-k használatával.
-  * Húzza ki a t `kubeconfig` .
-* Hozzáférés a Kubernetes API-hoz. Ezt a hozzáférést a következők vezérlik:
-  * [KUBERNETES RBAC](#kubernetes-rbac) (hagyományosan).
-  * [Az Azure RBAC és az AK Kubernetes-engedélyezésének integrálása](#azure-rbac-for-kubernetes-authorization-preview).
+Az AKS-fürt teljes működtetéséhez két hozzáférési szint szükséges: 
+* [Hozzáférés az AKS-erőforráshoz az Azure-előfizetésben.](#azure-rbac-to-authorize-access-to-the-aks-resource) 
+  * Szabályozhatja a fürt skálázását vagy frissítését az AKS API-k használatával.
+  * Húzza le a `kubeconfig` et.
+* Hozzáférés a Kubernetes API-hoz. Ezt a hozzáférést a következő feltételek valamelyike vezérli:
+  * [Kubernetes RBAC](#kubernetes-rbac) (hagyományosan).
+  * [Az Azure RBAC integrálása az AKS-sel a Kubernetes-hitelesítéshez.](#azure-rbac-for-kubernetes-authorization-preview)
 
-### <a name="azure-rbac-to-authorize-access-to-the-aks-resource"></a>Azure-RBAC az AK-erőforráshoz való hozzáférés engedélyezéséhez
+### <a name="azure-rbac-to-authorize-access-to-the-aks-resource"></a>Azure RBAC az AKS-erőforráshoz való hozzáféréshez
 
-Az Azure RBAC segítségével megadhatja a felhasználók (vagy identitások) számára az AK-erőforrások részletes elérését egy vagy több előfizetésben. Használhatja például az [Azure Kubernetes szolgáltatás közreműködői szerepkörét](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-contributor-role) a fürt skálázásához és frissítéséhez. Eközben egy másik felhasználónak, aki az [Azure Kubernetes Service-fürt rendszergazdai szerepkörrel](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-admin-role) rendelkezik, csak engedélyt kap a rendszergazda lekérésére `kubeconfig` .
+Az Azure RBAC segítségével részletes hozzáférést nyújthat a felhasználóknak (vagy identitások) az AKS-erőforrásokhoz egy vagy több előfizetésben. A fürt méretezéséhez és [frissítéséhez például](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-contributor-role) használhatja Azure Kubernetes Service Közreműködő szerepkört. Eközben egy másik, [Azure Kubernetes Service fürt-rendszergazdai](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-admin-role) szerepkörsel rendelkező felhasználó csak a rendszergazda lekért engedélyével `kubeconfig` rendelkezik.
 
-Másik lehetőségként megadhatja a felhasználónak az általános [közreműködő](../role-based-access-control/built-in-roles.md#contributor) szerepkört. Az általános közreműködő szerepkörrel a felhasználók a fenti engedélyeket és minden lehetséges műveletet elvégezhetik az AK-erőforráson, kivéve az engedélyek kezelését.
+Másik lehetőségként általános közreműködői szerepkört is adhat [a](../role-based-access-control/built-in-roles.md#contributor) felhasználónak. Az általános közreműködői szerepkörben a felhasználók a fenti engedélyeket és minden lehetséges műveletet elvégeznek az AKS-erőforráson az engedélyek kezelése kivételével.
 
-Az [Azure RBAC segítségével definiálhatja a Kubernetes konfigurációs fájlhoz való hozzáférést az AK-ban](control-kubeconfig-access.md).
+[Az Azure RBAC használatával meghatározhatja a Hozzáférést a Kubernetes konfigurációs fájlhoz az AKS-ban.](control-kubeconfig-access.md)
 
-### <a name="azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC for Kubernetes-engedélyezés (előzetes verzió)
+### <a name="azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC Kubernetes-hitelesítéshez (előzetes verzió)
 
-Az Azure RBAC-integrációja révén az AK egy Kubernetes-hitelesítési webhook-kiszolgálót használ, így az Azure AD-hez integrált Kubernetes-fürterőforrás-engedélyeket és-hozzárendeléseket az Azure szerepkör-definíció és a szerepkör-hozzárendelések segítségével kezelheti.
+Az Azure RBAC-integrációval az AKS egy Kubernetes-engedélyezési webhook-kiszolgálót fog használni, így az Azure AD-hez integrált Kubernetes-fürterőforrás-engedélyeket és -hozzárendeléseket azure-beli szerepkör-definíciók és szerepkör-hozzárendelések használatával kezelheti.
 
-![Azure-RBAC az Kubernetes engedélyezési folyamatához](media/concepts-identity/azure-rbac-k8s-authz-flow.png)
+![Azure RBAC a Kuberneteshez engedélyezési folyamat](media/concepts-identity/azure-rbac-k8s-authz-flow.png)
 
-Ahogy a fenti ábrán is látható, az Azure RBAC-integráció használatakor a Kubernetes API-nak küldött összes kérelem ugyanazt a hitelesítési folyamatot fogja követni, ahogy az a [Azure Active Directory Integration (integráció) szakaszban](#azure-ad-integration)is szerepel. 
+Ahogy a fenti ábrán is látható, az Azure RBAC-integráció használata esetén a Kubernetes API felé minden kérés ugyanazt a hitelesítési folyamatot fogja követni, mint a Azure Active Directory [integráció szakasza.](#azure-ad-integration) 
 
-Ha a kérést az Azure AD-ben megjelenő identitás már létezik, az Azure a Kubernetes RBAC-vel együttműködve engedélyezi a kérést. Ha az identitás az Azure AD-n kívül van (azaz egy Kubernetes-szolgáltatásfiók), az engedélyezés megakadályozza a normál Kubernetes-RBAC.
+Ha a kérést érvénybe hozó identitás létezik az Azure AD-ban, az Azure a Kubernetes RBAC csapatával együtt engedélyezi a kérést. Ha az identitás az Azure AD-n kívül található (pl. Egy Kubernetes-szolgáltatásfiók), az engedélyezés a normál Kubernetes RBAC-re fog visszaesni.
 
-Ebben az esetben az Azure RBAC-mechanizmusok és API-k segítségével a felhasználók beépített szerepköröket rendelhet hozzá, vagy egyéni szerepköröket hozhat létre, ugyanúgy, mint a Kubernetes-szerepkörökkel. 
+Ebben a forgatókönyvben Azure RBAC-mechanizmusokat és API-kat használ a felhasználók beépített szerepkörök hozzárendeléséhez vagy egyéni szerepkörök létrehozásához, ahogyan a Kubernetes-szerepkörök esetében tenné. 
 
-Ezzel a szolgáltatással nem csak a felhasználók jogosultak engedélyeket az AK-erőforrásra az előfizetések között, de a szerepköröket és engedélyeket is konfigurálja a Kubernetes API-hozzáférését vezérlő ezen fürtökön belül. Például megadhatja a `Azure Kubernetes Service RBAC Viewer` szerepkört az előfizetés hatókörében. A szerepkör címzettjei az összes fürt összes Kubernetes-objektumát megtekinthetik és lekérhetik anélkül, hogy módosítani kellene őket.
+Ezzel a funkcióval nem csupán engedélyeket ad a felhasználóknak az AKS-erőforráshoz az előfizetések között, hanem konfigurálja a Kubernetes API-hozzáférést vezérlő fürtök szerepkörét és engedélyét is. Megadhatja például a `Azure Kubernetes Service RBAC Viewer` szerepkört az előfizetés hatókörében. A szerepkör-címzett az összes fürt összes Kubernetes-objektumát le tudja majd listába sorolni és le tudja szerezni módosítás nélkül.
 
 > [!IMPORTANT]
-> A funkció használata előtt engedélyeznie kell az Azure RBAC Kubernetes-engedélyezést. További részletekért és részletes útmutatásért kövesse az [Azure RBAC használata Kubernetes-hitelesítéshez](manage-azure-rbac.md) című útmutatót.
+> A funkció használata előtt engedélyeznie kell az Azure RBAC-t a Kubernetes-hitelesítéshez. További részletekért és részletes útmutatásért kövesse az [Azure RBAC használata Kubernetes-hitelesítéshez](manage-azure-rbac.md) című útmutatót.
 
 #### <a name="built-in-roles"></a>Beépített szerepkörök
 
-Az AK a következő négy beépített szerepkört biztosítja. Hasonlóak a [Kubernetes beépített szerepköreihez](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) , néhány különbséggel, például a CRDs támogatásával. Tekintse meg az egyes [Azure-beli beépített szerepkörök](../role-based-access-control/built-in-roles.md)által engedélyezett műveletek teljes listáját.
+Az AKS az alábbi négy beépített szerepkört biztosítja. Hasonlóak a [Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) beépített szerepköreihez, néhány különbséggel, például a CRD-k támogatásával. Tekintse meg az egyes [Beépített Azure-szerepkör](../role-based-access-control/built-in-roles.md)által engedélyezett műveletek teljes listáját.
 
 | Szerepkör                                | Leírás  |
 |-------------------------------------|--------------|
-| Az Azure Kubernetes Service RBAC megjelenítője  | Lehetővé teszi a csak olvasási hozzáférést a névtérben lévő legtöbb objektum megtekintéséhez. <br> Nem engedélyezi a szerepkörök és a szerepkör-kötések megtekintését.<br> Nem engedélyezi a megtekintést `Secrets` . A tartalom olvasása `Secrets` lehetővé teszi `ServiceAccount` a névtérben lévő hitelesítő adatok elérését, ami lehetővé TENNÉ az API-hozzáférés használatát `ServiceAccount` a névtérben (a jogosultságok kiterjesztésének formája).  |
-| Az Azure Kubernetes Service RBAC-írója | Olvasási/írási hozzáférést tesz lehetővé a névtér legtöbb objektumához. <br> Nem engedélyezi a szerepkörök és a szerepkör-kötések megtekintését és módosítását. <br> Lehetővé teszi a `Secrets` hüvelyek elérését és futtatását a névtér bármely ServiceAccount, így felhasználható a névtérben található bármely SERVICEACCOUNT API-hozzáférési szintjeinek megszerzésére. |
-| Az Azure Kubernetes Service RBAC rendszergazdája  | A rendszergazdai hozzáférés engedélyezése a névtéren belül. <br> Írási/olvasási hozzáférés engedélyezése a névtér (vagy a fürt hatóköre) legtöbb erőforrásához, beleértve a szerepkörök és a szerepkör-kötések létrehozását a névtéren belül. <br> Az erőforrás-kvótához vagy a névtérhez való írási hozzáférés nem engedélyezett. |
-| Azure Kubernetes Service RBAC-fürt rendszergazdája  | Lehetővé teszi a felügyelők számára, hogy bármilyen műveletet végezzenek bármilyen erőforráson. <br> Teljes körű vezérlést biztosít a fürt összes erőforrásához és az összes névtérhez. |
+| Azure Kubernetes Service RBAC-megjelenítő  | Csak olvasási hozzáférést biztosít a névtér legtöbb objektumának eléréséhez. <br> Nem engedélyezi a szerepkörök vagy szerepkörkötések megtekintését.<br> Nem engedélyezi a `Secrets` megtekintését. A tartalom olvasása hozzáférést biztosít a névtérben a hitelesítő adatokhoz, ami lehetővé teszi az API-hozzáférést, mint bármely más a névtérben (a jogosultságok `Secrets` `ServiceAccount` `ServiceAccount` eszkalálásának egyik formája).  |
+| Azure Kubernetes Service RBAC-író | Olvasási/írási hozzáférést biztosít a névtér legtöbb objektumához. <br> Nem engedélyezi a szerepkörök vagy szerepkörkötések megtekintését vagy módosítását. <br> Lehetővé teszi a podok bármely ServiceAccount-ként való hozzáférését és futtatását a névtérben, így bármely ServiceAccount API-hozzáférési szintje elérhető a `Secrets` névtérben. |
+| Azure Kubernetes Service RBAC-rendszergazda  | Engedélyezi a rendszergazdai hozzáférést, amely egy névtérben adható meg. <br> Olvasási/írási hozzáférést biztosít a névtér (vagy fürthatókör) legtöbb erőforrása számára, beleértve a szerepkörök és szerepkörkötések névtérben való létrehozására vonatkozó képességet is. <br> Nem engedélyezi az írási hozzáférést az erőforráskvótához vagy a névtérhez. |
+| Azure Kubernetes Service RBAC-fürt rendszergazdája  | Lehetővé teszi, hogy a felügyelői hozzáférés bármilyen műveletet hajtson végre bármely erőforráson. <br> Teljes körű vezérlést biztosít a fürt összes erőforrása és az összes névtér felett. |
 
 
 ## <a name="summary"></a>Összefoglalás
 
-Tekintse meg a táblázatot, amelyben gyorsan összefoglalhatja, hogy a felhasználók hogyan tudják hitelesíteni magukat a Kubernetes, ha engedélyezve van az Azure AD-integráció. A felhasználói parancsok minden esetben a következőket tartalmazzák:
-1. `az login`Az Azure-ban való hitelesítéshez futtassa a parancsot.
-1. Futtassa `az aks get-credentials` a parancsot a fürthöz tartozó hitelesítő adatok letöltéséhez a alkalmazásban `.kube/config` .
-1. `kubectl`Parancsok futtatása. 
-   * Az első parancs a következő táblázatban leírtak szerint engedélyezheti a böngészőalapú hitelesítést a fürtön végzett hitelesítéshez.
+Tekintse meg a táblázatot, hogy röviden összefoglalja, hogyan hitelesíthetők a felhasználók a Kubernetesben, ha az Azure AD-integráció engedélyezve van. A felhasználó parancssorozata minden esetben a következő:
+1. Az `az login` Azure-beli hitelesítéshez futtassa a (futtatás) adatokat.
+1. A fürt hitelesítő adatainak letöltéséhez futtassa a `az aks get-credentials` következőt: `.kube/config` .
+1. `kubectl`Futtatassa a parancsokat. 
+   * Az első parancs böngészőalapú hitelesítést aktiválhat a fürtön való hitelesítéshez az alábbi táblázatban leírtak szerint.
 
-A Azure Portal a következőket találja:
-* A második oszlopban hivatkozott *szerepkör-engedélyezési* (Azure RBAC-szerepkör engedélyezése) megjelenik a **Access Control** lapon. 
-* A fürt rendszergazdája Azure AD-csoport a **konfiguráció** lapon jelenik meg.
-  * A paraméter neve is megtalálható `--aad-admin-group-object-ids` Az Azure CLI-ben.
+A Azure Portal a következőt találja:
+* A *második oszlopban* hivatkozott szerepkör-engedély (Azure RBAC szerepkör-Access Control **jelenik** meg. 
+* A Fürt rendszergazdája Azure AD-csoport a Konfiguráció **lapon jelenik** meg.
+  * Paraméternévvel is megtalálható `--aad-admin-group-object-ids` az Azure CLI-ban.
 
 
-| Description        | Szerepkör megadása kötelező| Fürt rendszergazdai Azure AD-csoport (ok) | A következő esetekben használja |
+| Description        | Szerepkör megadása szükséges| Fürt-rendszergazdai Azure AD-csoport(ak) | A következő esetekben használja |
 | -------------------|------------|----------------------------|-------------|
-| Örökölt rendszergazdai bejelentkezés ügyféltanúsítvány használatával| Az **Azure Kubernetes rendszergazdai szerepköre**. Ez a szerepkör lehetővé teszi `az aks get-credentials` a jelzővel való használatot `--admin` , amely egy [örökölt (nem Azure ad-) fürt rendszergazdai tanúsítványát](control-kubeconfig-access.md) tölti le a felhasználó számára `.kube/config` . Ez az egyetlen célja az "Azure Kubernetes-rendszergazdai szerepkör".|n.a.|Ha véglegesen letiltja azt, hogy nem fér hozzá a fürthöz hozzáféréssel rendelkező érvényes Azure AD-csoporthoz.| 
-| Azure AD manuális (fürt) RoleBindings| Az **Azure Kubernetes felhasználói szerepköre**. A "user" szerepkör lehetővé teszi a `az aks get-credentials` jelző nélküli használatot `--admin` . (Ez az egyetlen célja az "Azure Kubernetes felhasználói szerepkör".) Ennek eredményeképpen egy Azure AD-kompatibilis fürtön [egy üres bejegyzés](control-kubeconfig-access.md) tölthető le `.kube/config` , amely a böngészőalapú hitelesítést indítja el, amikor először használja `kubectl` .| A felhasználó nem szerepel ezen csoportok egyikében sem. Mivel a felhasználó nem tagja a fürt rendszergazdai csoportjainak, a jogosultságokat teljes mértékben a RoleBindings vagy ClusterRoleBindings vezérli. A (fürt) RoleBindings az [Azure ad-felhasználókat vagy az Azure ad-csoportokat jelölik](azure-ad-rbac.md) `subjects` . Ha nincsenek beállítva ilyen kötések, a felhasználó nem fog tudni Excute egyetlen `kubectl` parancsot sem.|Ha részletes hozzáférés-vezérlést szeretne, és nem használja az Azure RBAC-t a Kubernetes engedélyezéséhez. Vegye figyelembe, hogy a kötéseket beállító felhasználónak a táblázatban felsorolt más módszerek egyikével kell bejelentkeznie.|
-| Azure AD a rendszergazda csoport tagjaként| Lásd fent|A felhasználó az itt felsorolt csoportok egyikének tagja. Az AK automatikusan létrehoz egy ClusterRoleBinding, amely az összes felsorolt csoportot a `cluster-admin` Kubernetes szerepkörhöz köti. Az ezekben a csoportokban lévő felhasználók az összes parancsot is futtathatják `kubectl` `cluster-admin` .|Ha a felhasználók számára teljes körű rendszergazdai jogosultságot szeretne biztosítani, és _nem_ használja az Azure RBAC-t a Kubernetes engedélyezéséhez.|
-| Azure AD az Azure RBAC Kubernetes-engedélyezéshez|Két szerepkör: <br> Első lépésként az **Azure Kubernetes felhasználói szerepköre** (a fentiek szerint). <br> Másodszor, az egyik "Azure Kubernetes Service **RBAC**..." a fent felsorolt szerepkörök vagy a saját egyéni alternatívája.|A konfiguráció lap rendszergazdai szerepkörök mezője nem releváns, ha engedélyezve van az Azure-RBAC az Kubernetes-hitelesítéshez.|Azure RBAC-t használ a Kubernetes engedélyezéséhez. Ez a megközelítés részletes szabályozást biztosít anélkül, hogy be kellene állítania a RoleBindings vagy a ClusterRoleBindings.|
+| Régi rendszergazdai bejelentkezés ügyfél-tanúsítvánnyal| **Azure Kubernetes rendszergazdai szerepkör.** Ez a szerepkör lehetővé teszi a jelölővel való használatot, amely letölt egy örökölt `az aks get-credentials` `--admin` [(nem Azure AD-beli)](control-kubeconfig-access.md) fürt-rendszergazdai tanúsítványt a felhasználó `.kube/config` azonosítójába. Ez az "Azure Kubernetes rendszergazdai szerepkör" egyetlen célja.|n.a.|Ha véglegesen le van tiltva, mert nem rendelkezik hozzáféréssel a fürthöz hozzáféréssel rendelkező érvényes Azure AD-csoporthoz.| 
+| Azure AD manuális (fürt)RoleBindings használatával| **Azure Kubernetes felhasználói szerepkör.** A "User" (Felhasználó) szerepkör használata `az aks get-credentials` a jelző nélkül is lehetővé `--admin` teszi. (Ez az "Azure Kubernetes felhasználói szerepkör" egyetlen célja.) Az eredmény egy Azure AD-kompatibilis fürtön egy üres bejegyzés letöltése a-be, amely elindítja [a](control-kubeconfig-access.md) böngészőalapú hitelesítést, amikor a először `.kube/config` `kubectl` használja.| A felhasználó egyik csoportban sem van. Mivel a felhasználó egyetlen fürtgazdai csoportban sem található meg, a jogosultságai teljes mértékben a fürt rendszergazdái által beállított RoleBindings vagy ClusterRoleBindings alapján lesznek szabályozva. A (fürt)RoleBindings Azure AD-felhasználókat vagy [Azure AD-csoportokat](azure-ad-rbac.md) nevez meg sajátjukként. `subjects` Ha nincs ilyen kötés beállítva, a felhasználó nem fog tudni parancsokat `kubectl` használni.|Ha finomhangolt hozzáférés-vezérlést szeretne, és nem használja az Azure RBAC-t a Kubernetes-hitelesítéshez. Vegye figyelembe, hogy a kötéseket beállítja felhasználónak a táblázatban felsorolt módszerek egyikével kell bejelentkeznie.|
+| Azure AD a rendszergazdai csoport tagja szerint| Lásd fent|A felhasználó tagja az itt felsorolt csoportok egyikének. Az AKS automatikusan létrehoz egy ClusterRoleBinding szerepkört, amely az összes felsorolt csoportot a `cluster-admin` Kubernetes-szerepkörhöz köti. Így az ezekben a csoportokban a felhasználók az összes `kubectl` parancsot a következőként futtatják: `cluster-admin` .|Ha kényelmes módon szeretne teljes rendszergazdai jogosultságokat ad a felhasználóknak, és nem használja az Azure RBAC-t a Kubernetes-hitelesítéshez. |
+| Azure AD És Azure RBAC a Kubernetes-hitelesítéshez|Két szerepkör: <br> Először az **Azure Kubernetes felhasználói szerepkörét** (a fentiek szerint). <br> Másodszor, az egyik "Azure Kubernetes Service **RBAC..."** a fent felsorolt szerepköröket, vagy a saját egyéni alternatívát.|A Konfiguráció lap Rendszergazdai szerepkörök mezője irreleváns, ha az Azure RBAC for Kubernetes Authorization engedélyezve van.|Azure RBAC-t használ a Kubernetes-hitelesítéshez. Ezzel a módszersel a RoleBindings vagy a ClusterRoleBindings beállítása nélkül is finomhangolhatja az irányítást.|
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az Azure AD és a Kubernetes RBAC megismeréséhez tekintse meg a következőt: [Azure Active Directory integrálása az AK-val][aks-aad].
-- A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a hitelesítéshez és engedélyezéshez az AK-ban][operator-best-practices-identity].
-- Az Azure RBAC Kubernetes-hitelesítéssel való használatának megkezdéséhez lásd: az Azure [RBAC használata az Azure Kubernetes Service (ak) fürtön belüli hozzáférés engedélyezéséhez](manage-azure-rbac.md).
-- A fájl védelmének megkezdéséhez `kubeconfig` lásd: a [fürt konfigurációs fájljához való hozzáférés korlátozása](control-kubeconfig-access.md)
+- Az Azure AD és a Kubernetes RBAC használatának első lépésekért lásd: Integráció Azure Active Directory [AKS-sel.][aks-aad]
+- A kapcsolódó ajánlott eljárásokért lásd: Ajánlott eljárások az AKS-sel való hitelesítéshez [és engedélyezéshez.][operator-best-practices-identity]
+- Az Azure RBAC Kubernetes-hitelesítéshez való használatának első lépésekért lásd: Hozzáférés engedélyezése az Azure RBAC használatával az [Azure Kubernetes Service-fürtön belül.](manage-azure-rbac.md)
+- A fájl biztonságossá tétele: A fürtkonfigurációs `kubeconfig` [fájlhoz való hozzáférés korlátozása](control-kubeconfig-access.md)
 
-Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információkért tekintse meg a következő cikkeket:
+A Kubernetes és az AKS alapvető fogalmairól a következő cikkekben talál további információt:
 
-- [Kubernetes/AK-fürtök és-munkaterhelések][aks-concepts-clusters-workloads]
-- [Kubernetes/AK biztonság][aks-concepts-security]
-- [Kubernetes/AK virtuális hálózatok][aks-concepts-network]
-- [Kubernetes/AK-tároló][aks-concepts-storage]
-- [Kubernetes/AK-skála][aks-concepts-scale]
+- [Kubernetes/ AKS-fürtök és számítási feladatok][aks-concepts-clusters-workloads]
+- [Kubernetes/ AKS-biztonság][aks-concepts-security]
+- [Kubernetes/ AKS virtuális hálózatok][aks-concepts-network]
+- [Kubernetes/ AKS-tároló][aks-concepts-storage]
+- [Kubernetes/ AKS-méretezés][aks-concepts-scale]
 
 <!-- LINKS - External -->
 [kubernetes-authentication]: https://kubernetes.io/docs/reference/access-authn-authz/authentication
@@ -267,7 +267,7 @@ Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információk
 
 <!-- LINKS - Internal -->
 [openid-connect]: ../active-directory/develop/v2-protocols-oidc.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [azure-rbac]: ../role-based-access-control/overview.md
 [aks-aad]: managed-aad.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md

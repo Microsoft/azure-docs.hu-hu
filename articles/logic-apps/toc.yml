@@ -36,8 +36,12 @@
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic'
 - name: Alapelvek
   items:
-    - name: Összekötők a Logic Apps számára
+    - name: Összekötők áttekintése Logic Apps
       href: ../connectors/apis-list.md
+    - name: Felügyelt összekötők Logic Apps
+      href: ../connectors/managed.md
+    - name: Beépített összekötők a Logic Apps
+      href: ../connectors/built-in.md
     - name: Ismétlődő munkafolyamatok ütemezése
       href: concepts-schedule-automated-recurring-tasks-workflows.md
     - name: Kiszolgáló nélküli használat az Azure-ral

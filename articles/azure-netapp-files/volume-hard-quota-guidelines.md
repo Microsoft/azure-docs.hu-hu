@@ -1,6 +1,6 @@
 ---
-title: A mennyiségi merevlemez-kvóták módosítása a Azure NetApp Files szolgáltatáshoz | Microsoft Docs
-description: Leírja, hogyan lehet módosítani a mennyiségi merevlemez-kvótát, hogyan tervezze meg a változást, és hogyan felügyelheti és kezelheti a kapacitásokat.
+title: Mit jelent a mennyiségi kvóta módosítása a Azure NetApp Files szolgáltatási | Microsoft Docs
+description: Ismerteti a mennyiségi kvóta használatának változását, a változás tervezésének, valamint a kapacitások figyelése és kezelése mikéntját.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,266 +14,266 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 52e855cb4ab42ed78a055ecdc31cffa886dc9bf2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5e7f71f91e5778b4f096bb760bfe5a0a89b5cbcb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731989"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764278"
 ---
-# <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>Mi a mennyiségű kemény kvóta módosítása a Azure NetApp Files szolgáltatáshoz
+# <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>Mit jelent a kvótakvóta mennyiségi módosítása a Azure NetApp Files számára
 
-A szolgáltatás kezdetétől Azure NetApp Files kapacitás-készlet létesítési és automatikus növekedési mechanizmust használtak. Azure NetApp Files kötetek kiosztása a kiválasztott réteg és méret alapján, az ügyfél által kiosztott kapacitás készletén történik. A mennyiségi méretek (kvóták) a teljesítmény és a kapacitás biztosítására szolgálnak, és a kvóták bármikor módosíthatók. Ez azt jelenti, hogy a kötet kvótája jelenleg a kötet sávszélességének szabályozására szolgáló teljesítmény. Jelenleg a kapacitás kitöltésekor a kapacitás automatikusan növekszik.   
+A szolgáltatás elejétől kezdve a Azure NetApp Files egy kapacitáskészlet-kiépítési és automatikus növekedési mechanizmust használt. Azure NetApp Files kötetek egy kiválasztott réteg és méret aláfedő, ügyfél által kiépített kapacitáskészleten vannak jelölve. A kötetméretek (kvóták) a teljesítményt és a kapacitást biztosítják, és a kvóták bármikor módosíthatók működés közben. Ez a viselkedés azt jelenti, hogy jelenleg a kötetkvóta a kötet sávszélességének szabályozására használt teljesítménykvóta. Az aláfedő kapacitáskészletek jelenleg automatikusan növekednek, amikor a kapacitás megtelik.   
 
 > [!IMPORTANT] 
-> A kötet és a kapacitás-készlet kiépítés Azure NetApp Files viselkedése *manuális* és *ellenőrizhető* mechanizmusra változik. **A 2021 (frissítve), a mennyiségi méretek (kvóta) a sávszélesség teljesítményének, valamint a kiépített kapacitásnak és a mögöttes kapacitás-készletek a továbbiakban nem fognak automatikusan növekedni.** 
+> A Azure NetApp Files és a kapacitáskészlet-kiépítés viselkedése  manuális és vezérelhető *mechanizmusra változik.* **2021. április 30-tól (frissítve) a kötetméretek (kvóta) kezelik a sávszélesség teljesítményét, valamint a kiépített kapacitást, és a mögöttes kapacitáskészletek nem növekednek automatikusan.** 
 
-## <a name="reasons-for-the-change-to-volume-hard-quota"></a>A mennyiségi rögzített kvóta változásának okai
+## <a name="reasons-for-the-change-to-volume-hard-quota"></a>A mennyiségi kvóta változásának okai
 
-Számos ügyfél három fő kihívást jelzett a *kezdeti* viselkedéssel kapcsolatban:
-* A virtuálisgép-ügyfelek a dinamikusan kiosztott (100 TiB) kapacitást fogják látni az operációsrendszer-terület vagy a kapacitás-figyelési eszközök használatakor, ami pontatlan ügyfél-vagy alkalmazás-oldalsó kapacitást biztosít.
-* Az alkalmazás tulajdonosai a kapacitás készletének automatikus növekedése miatt nem szabályozzák a kiépített kapacitási készlet területét (és a kapcsolódó költségeket). Ez a helyzet nehézkes olyan környezetekben, ahol a "elindítást végző folyamatok" gyorsan kitölthetik és növelhetik a kiosztott kapacitást és költségeket.
-* Az ügyfelek a kötet mérete (kvóta) és a teljesítmény közötti közvetlen korrelációt szeretnék látni és karbantartani. Ha a (implicit) egy kötet (kapacitás-Wise) és a készlet automatikus növekedésének aktuális viselkedését (implicit) túllépi, az ügyfeleknek nincs közvetlen korrelációja, amíg a mennyiségi kvótát aktívan be nem állította vagy nem állították vissza. 
+Számos ügyfél a kezdeti viselkedés három fő *kihívását jelezte* ki:
+* A virtuálisgép-ügyfelek az operációs rendszer tárhelyének vagy kapacitásfigyelő eszközeinek használata esetén bármely kötet vékonyan kiépített (100 TiB) kapacitását látják, ami pontatlan ügyfél- vagy alkalmazásoldali kapacitás-láthatóságot biztosít.
+* A kapacitáskészlet automatikus növekedésének viselkedése miatt az alkalmazástulajdonosok nem szabályoznék a kiépített kapacitáskészlet-területet (és a kapcsolódó költségeket). Ez a helyzet nehézkes olyan környezetekben, ahol a "kifutott folyamatok" gyorsan megtelhetnek, és növekedhetnek a kiépített kapacitás és költségek.
+* Az ügyfelek közvetlen korrelációt szeretnék látni és fenntartani a kötetméret (kvóta) és a teljesítmény között. A kötetek (kapacitás alapján történő) előfizetése és a készlet automatikus növelése aktuális (implicit) viselkedése miatt az ügyfelek nem rendelkeznek közvetlen korrelációval, amíg a kötetkvóta aktív beállítása vagy alaphelyzetbe nem állítása meg nem történt. 
 
-Számos ügyfél közvetlen irányítást kért a kiosztott kapacitás felett. A tároló kapacitásának és kihasználtságának szabályozására és kiegyensúlyozására van szükségük. Azt is szeretnék, hogy a költségeket, valamint az alkalmazási kötetek elérhető, felhasznált és kiosztott kapacitásának és teljesítményének az alkalmazás-és ügyféloldali láthatóságát is szabályozni tudják. 
+Számos ügyfél kérte a kiépített kapacitás közvetlen vezérlését. Szabályozni és egyensúlyba szeretnék tartani a tárkapacitást és a kihasználtságot. Emellett szeretnék szabályozni a költségeket, valamint az alkalmazásoldali és ügyféloldali láthatóságot az alkalmazásköteteik elérhető, felhasznált és kiépített kapacitásával és teljesítményével. 
 
-## <a name="what-is-the-volume-hard-quota-change"></a>Mi a kötethez tartozó rögzített kvóta változása   
+## <a name="what-is-the-volume-hard-quota-change"></a>Mi a mennyiségi kvótakvóta módosítása?   
 
-A kötet rögzített kvótájának változása esetén Azure NetApp Files kötetek nem lesznek dinamikusan kiépítve a következőnél: (maximum) 100 TiB. A kötetek a tényleges konfigurált méret (kvóta) szerint lesznek kiépítve. Emellett a befektetett kapacitású készletek már nem növekednek automatikusan a teljes kapacitású felhasználás elérése után. Ez a változás tükrözi az Azure Managed Disks szolgáltatásait, amelyek az automatikus kapacitás növekedése nélkül is kiépítve lesznek.
+A kötetkvóta-módosítással a Azure NetApp Files kötetek 100 TiB-os értéken már nem lesznek vékonyan kiépítve. A kötetek a tényleges konfigurált méretben (kvótában) lesznek kiépítve. Emellett az aláfedő kapacitáskészletek nem növekednek automatikusan a teljes kapacitásfelhasználás elérésekor. Ez a változás az Azure-beli felügyelt lemezekhez hasonló viselkedést tükrözi, amelyek szintén a jelen esetben vannak kiépítve, automatikus kapacitásnövekedés nélkül.
 
-Vegyünk például egy olyan Azure NetApp Files kötetet, amely 1-TIB-méret (kvóta) szerint van konfigurálva egy 4 TiB-os Ultra Service szintű kapacitási készleten. Egy alkalmazás folyamatosan adatírást készít a kötetre.
+Tegyük fel például, hogy Azure NetApp Files 1-TiB mérettel (kvótával) konfigurált kötet egy 4 TiB Ultra szintű kapacitáskészleten. Az alkalmazások folyamatosan írnak adatokat a kötetre.
 
-A *kezdeti* viselkedés:  
+A *kezdeti viselkedés:*  
 * Várt sávszélesség: 128 MiB/s
-* Teljes használható (és az ügyfél látható) kapacitása: 100 TiB   
-    Ezen a méreten túl nem fog tudni további adatmennyiséget írni a köteten.
-* Kapacitási készlet: az automatikusan növekszik 1 TiB-növekményekkel, amikor megtelt.
-* Mennyiségi kvóta módosítása: csak a kötet teljesítményének (sávszélességének) változása. Nem változtatja meg az ügyfél látható vagy felhasználható kapacitását.
+* Teljes használható (és látható ügyfél) kapacitás: 100 TiB   
+    Ennél a méretnél több adatot nem tud majd írni a köteten.
+* Kapacitáskészlet: Ha megtelt, 1 TiB-os növekményekkel automatikusan növekszik.
+* Kötetkvóta módosítása: Csak a kötet teljesítményét (sávszélességét) módosítja. Nem módosítja az ügyfél látható vagy használható kapacitását.
 
-A *megváltozott* viselkedés:  
+A *módosított* viselkedés:  
 * Várt sávszélesség: 128 MiB/s
-* Teljes felhasználható (és az ügyfél látható) kapacitása: 1 TiB nem fog tudni többet írni a köteten ezen a méreten túl.
-* Kapacitási készlet: marad 4 TiB méretű, és nem növekszik automatikusan. 
-* Mennyiségi kvóta módosítása: a kötet (sávszélesség) és az ügyfél látható vagy felhasználható kapacitásának módosítása.
+* Teljes használható (és az ügyfél számára látható) kapacitás: 1 TiB Nem fog tudni ennél nagyobb méretű adatot írni a kötetre.
+* Kapacitáskészlet: 4 TiB méretű marad, és nem nő automatikusan. 
+* Kötetkvóta módosítása: Módosítja a kötet teljesítményét (sávszélességét) és az ügyfél látható vagy használható kapacitását.
 
-Proaktívan kell figyelnie Azure NetApp Files kötetek és kapacitás-készletek kihasználtságát. Szándékosan kell módosítania a kötet és a készlet kihasználtságát a teljes felhasználás érdekében. A Azure NetApp Files továbbra is engedélyezi az [on-fly kötet és a kapacitás-készlet átméretezési műveleteit](azure-netapp-files-resize-capacity-pools-or-volumes.md).
+A kötetek és kapacitáskészletek kihasználtságának proaktív Azure NetApp Files monitorokat kell követnie. A teljes használathoz szándékosan módosítania kell a kötet és a készlet kihasználtságát. Azure NetApp Files továbbra is engedélyezi a működés közbeni kötet- és [kapacitáskészlet-átméretezési műveleteket.](azure-netapp-files-resize-capacity-pools-or-volumes.md)
 
-## <a name="how-to-operationalize-the-volume-hard-quota-change"></a>A kötet működővé tenni módosítása
+## <a name="how-to-operationalize-the-volume-hard-quota-change"></a>A kötetkvóta-módosítás működőképesizálása
 
-Ez a szakasz útmutatást nyújt ahhoz, hogyan működővé tenni a köteten rögzített kvóták módosítása a zökkenőmentes áttéréshez. Emellett a jelenleg kiosztott kötetek és kapacitás-készletek kezelésére, a folyamatos figyelésre, valamint a riasztásra és a kapacitás-felügyeleti lehetőségekre vonatkozó megállapításokat is biztosít.
+Ez a szakasz útmutatást nyújt a kötetkvóta változásának a zökkenőmentes átállás érdekében való működéshez. Emellett betekintést nyújt a jelenleg kiépített kötetek és kapacitáskészletek kezeléséhez, a folyamatos monitorozáshoz, valamint a riasztási és kapacitáskezelési lehetőségekhez.
 
-### <a name="currently-provisioned-volumes-and-capacity-pools"></a>Jelenleg kiépített kötetek és kapacitási készletek
+### <a name="currently-provisioned-volumes-and-capacity-pools"></a>Jelenleg kiépített kötetek és kapacitáskészletek
 
-A mennyiségi kvóta változása miatt módosítania kell az operációs modellt. A kiépített kötetek és kapacitás-készletek folyamatos kapacitás-kezelést igényelnek.  Mivel a megváltozott működés azonnal megtörténik, az Azure NetApp Files csapata a meglévő, korábban kiosztott kötetek és kapacitási készletek egy sorozatát javasolja, az ebben a szakaszban leírtak szerint.
+A kötetkvóta-kvóta módosítása miatt módosítania kell az üzemeltetési modellt. A kiépített kötetek és kapacitáskészletek folyamatos kapacitáskezelést igényelnek.  Mivel a módosított viselkedés azonnal bekövetkezik, a Azure NetApp Files csapata egy sor, a meglévő, korábban kiépített kötetek és kapacitáskészletek számára javasolt, az ebben a szakaszban leírtak szerint.
 
-#### <a name="one-time-corrective-or-preventative-measures-recommendations"></a>Javaslatok az egyszeri javítási vagy megelőző intézkedésekre  
+#### <a name="one-time-corrective-or-preventative-measures-recommendations"></a>Egyszeres korrekciós vagy megelőző intézkedésekre vonatkozó javaslatok  
 
-A kötet rögzített kvótájának változása a korábban kiosztott kötetek és készletek kiépített és rendelkezésre álló kapacitásának változását eredményezi. Ennek eredményeképpen előfordulhat, hogy bizonyos kapacitás-elosztási kihívások történnek. A Azure NetApp Files csapat az alábbi, egyszeri javítási/megelőző intézkedéseket ajánlja az ügyfelek számára, hogy elkerülje a rövid távú kihagyható helyzeteket: 
+A kötetkvóta-módosítás a korábban kiépített kötetek és készletek kiépített és rendelkezésre álló kapacitásának változásait eredményezi. Ennek eredményeképpen bizonyos kapacitáskiosztási kihívások fordulhatnak elő. Annak érdekében, hogy az ügyfelek ne kerüljék el a rövid távon eltűrő helyzeteket, az Azure NetApp Files csapata a következő, egyszeres korrekciós/megelőző intézkedéseket javasolja: 
 
-* **Kiépített kötetek mérete**:   
-    Méretezze át az összes kiosztott kötetet úgy, hogy a megfelelő puffer legyen a változási arány és a riasztás vagy az átméretezési idő (például 20% a tipikus számítási feladatok alapján) alapján, legfeljebb 100 TiB-vel (amely a [kötet maximális mérete](azure-netapp-files-resource-limits.md#resource-limits)). Az új kötet méretének, beleértve a puffer kapacitását, a következő tényezők alapján kell alapulnia:
-    * **Kiépített** kötet kapacitása abban az esetben, ha a felhasznált kapacitás kisebb, mint a kiépített mennyiségi kvóta.
-    * A **felhasznált** kötet kapacitása abban az esetben, ha a felhasznált kapacitás meghaladja a kiosztott mennyiségi kvótát.  
-    A mennyiségi kapacitás növelésére nem számítunk fel további díjat, ha nem kell megtermelni az adott kapacitású készletet. Ennek a változásnak a hatására előfordulhat, hogy megfigyelheti a kötet sávszélesség *-korlátját* (az [automatikus QoS-kapacitás készletének](azure-netapp-files-understand-storage-hierarchy.md#qos_types) használata esetén).
+* **Kiépített kötetméretek:**   
+    Méretezze át az összes kiépített kötetet a megfelelő pufferre a változási sebesség és a riasztások vagy a rendelkezésre állási idő (például 20% a jellemző számítási feladatok alapján) alapján, legfeljebb 100 TiB (a kötet méretkorlátja) [alapján.](azure-netapp-files-resource-limits.md#resource-limits) Az új kötetméretnek, beleértve a pufferkapacitást is, a következő tényezők alapján kell figyelembe vennie:
+    * **Kiépített** kötetkapacitás, ha a felhasznált kapacitás kisebb, mint a kiépített kötetkvóta.
+    * **Felhasznált** kötetkapacitás, ha a felhasznált kapacitás nagyobb, mint a kiépített kötetkvóta.  
+    A kötetszintű kapacitás növelése nem számít fel további díjat, ha az aláfedő kapacitáskészletet nem kell növelni. Ennek a változásnak a hatállyal  a kötet sávszélességkorlát-növekedését figyelheti meg (ha az automatikus QoS-kapacitáskészlet-típust használja). [](azure-netapp-files-understand-storage-hierarchy.md#qos_types)
 
-* **Kiosztott kapacitások készletének méretei**:   
-    A kötetek méretének módosítása után, ha a kötetek mérete nagyobb, mint a szolgáltatói kapacitás készlete, a kapacitás-készletet a kötetek összegével megegyező vagy annál nagyobb méretre kell növelni, legfeljebb 500 TiB-val (amely a [Kapacitási készlet maximális mérete](azure-netapp-files-resource-limits.md#resource-limits)). A kapacitások további kapacitása a normál módon ACR-díj lesz.
+* **Kiépített kapacitáskészletek méretei:**   
+    A kötetméretek módosítása után, ha a kötetméretek összege nagyobb, mint az üzemeltetési kapacitáskészlet mérete, a kapacitáskészletet a kötetek összegével egyenlő vagy annál nagyobb méretre [](azure-netapp-files-resource-limits.md#resource-limits)kell növelni, amely legfeljebb 500 TiB (ez a kapacitáskészlet méretkorlátja). A további kapacitáskészlet-kapacitásra a szokásos módon az ACR-díj vonatkozik.
 
-Ha segítségre van szüksége az alábbi szakaszokban leírtak szerint, a környezet ellenőrzéséhez és a riasztások beállításához segítséget kell nyújtania a Azure NetApp Files szakembereinek.
+Ha segítségre van szüksége a monitorozás és a riasztások beállításához, Azure NetApp Files a környezet ellenőrzéséhez az alábbi szakaszokban leírtak szerint működjön együtt a biztonsági szakemberekkel.
 
-### <a name="ongoing-capacity-management"></a>Folyamatos kapacitások kezelése  
+### <a name="ongoing-capacity-management"></a>Folyamatos kapacitáskezelés  
 
-Az egyszeri javító intézkedések végrehajtása után a kapacitás figyelése és kezelése érdekében a folyamatban lévő folyamatokat össze kell állítani. A következő szakaszokban a kapacitás figyelésével és kezelésével kapcsolatos javaslatokat és alternatívákat talál.
+Miután végrehajtotta az egyszer szükséges korrekciós intézkedéseket, össze kell hoznia a kapacitás figyelése és kezelése érdekében folyamatban lévő folyamatokat. A következő szakaszok a kapacitás monitorozására és kezelésére vonatkozó javaslatokat és alternatív megoldásokat tartalmaznak.
 
-### <a name="monitor-capacity-utilization"></a>A kapacitás kihasználtságának figyelése
+### <a name="monitor-capacity-utilization"></a>Kapacitás kihasználtságának figyelése
 
-A kapacitás kihasználtságát különböző szinteken figyelheti. 
+A kapacitáskihasználtságot különböző szinteken figyelheti. 
 
-#### <a name="vm-level-monitoring"></a>VIRTUÁLIS gépek szintjének figyelése 
+#### <a name="vm-level-monitoring"></a>Virtuálisgép-szintű monitorozás 
 
-A legmagasabb szintű monitorozás (az alkalmazáshoz legközelebb) az alkalmazás virtuális gépén belülről származik. A kapacitás-jelentéskészítés működésének változását a virtuálisgép-ügyfél operációs rendszerén belül kell megfigyelni.
+A legmagasabb szintű figyelés (az alkalmazáshoz legközelebb) az alkalmazás virtuális gépről való. Megfigyelheti a virtuálisgép-ügyfél operációs rendszeréről származó kapacitásjelentések viselkedésének változását.
 
-A következő két forgatókönyvben vegyünk fel egy Azure NetApp Files kötetet, amely 1 – TiB-méret (kvóta) szerint van konfigurálva egy 4 TiB-os, ultra Service-szintű kapacitási készleten. 
+A következő két esetben érdemes egy 1–TiB méretű (kvótával) konfigurált Azure NetApp Files-kötetet egy 4 TiB méretű, ultra szintű kapacitáskészleten. 
 
 ##### <a name="windows"></a>Windows
 
-A Windows-ügyfelek a hálózati csatlakoztatott meghajtó tulajdonságaival ellenőrizhetők a kötetek felhasznált és rendelkezésre álló kapacitása. Használhatja az **Explorer**  ->  **meghajtó**  ->  **tulajdonságai** lehetőséget.  
+A Windows-ügyfelek a csatlakoztatott hálózati meghajtó tulajdonságaival ellenőrizhetik a kötet felhasznált és elérhető kapacitását. Használhatja az **Explorer**  ->  **meghajtótulajdonságokat.**  ->    
 
-A következő példák a kötet kapacitásainak jelentéskészítését mutatják be a Windowsban a megváltozott viselkedés *előtt* :
+Az alábbi példák a windowsos kötetkapacitás *jelentéskészítését mutatják be a* módosított viselkedés előtt:
 
-![A működés megváltozása előtt a kötetek tárolási kapacitását bemutató képernyőképek.](../media/azure-netapp-files/hard-quota-windows-capacity-before.png)
+![Képernyőképek a kötet tárolási kapacitásának példáiról a viselkedés módosítása előtt.](../media/azure-netapp-files/hard-quota-windows-capacity-before.png)
 
-A parancsot a parancssorban is használhatja az `dir` alábbi ábrán látható módon:
+Az parancsot a `dir` parancssorban is használhatja az alább látható módon:
 
-![Képernyőkép, amely azt mutatja, hogy egy parancs használatával jelenítse meg a kötetek tárolási kapacitását a működés megváltozása előtt.](../media/azure-netapp-files/hard-quota-command-capacity-before.png)
+![Képernyőkép egy kötet tárolási kapacitásának a viselkedés módosítása előtti megjelenítéséhez használt paranccsal.](../media/azure-netapp-files/hard-quota-command-capacity-before.png)
 
-A következő példák a kötetek kapacitásának jelentéskészítését mutatják be a Windows rendszerben a megváltozott viselkedés *után* :
+Az alábbi példák a windowsos kötetkapacitás *jelentéskészítését mutatják be a* módosított viselkedés után:
 
-![A kötetek tárolási kapacitását bemutató Képernyőképek a működés változása után.](../media/azure-netapp-files/hard-quota-windows-capacity-after.png)
+![Képernyőképek a kötet tárolási kapacitásának példáiról a viselkedés módosítása után.](../media/azure-netapp-files/hard-quota-windows-capacity-after.png)
 
-A következő példában a `dir` parancs kimenete látható:  
+Az alábbi példa a parancs `dir` kimenetét mutatja be:  
 
-![Képernyőkép, amely egy parancs használatával jeleníti meg a kötetek tárolási kapacitását a viselkedés változása után.](../media/azure-netapp-files/hard-quota-command-capacity-after.png)
+![Képernyőkép egy kötet tárolási kapacitásának a viselkedés módosítása utáni megjelenítésére parancs használatával.](../media/azure-netapp-files/hard-quota-command-capacity-after.png)
 
 ##### <a name="linux"></a>Linux 
 
-A Linux-ügyfelek a [ `df` parancs](https://linux.die.net/man/1/df)használatával ellenőrizhetők a kötetek felhasznált és rendelkezésre álló kapacitása. A `-h` beállítás megjeleníti a méretet, a felhasznált területet és a rendelkezésre álló területet az emberi használatra alkalmas formátumban, az M, a G és a T egység méretével.
+A Linux-ügyfelek a paranccsal ellenőrizhetik egy kötet felhasznált és elérhető [ `df` kapacitását.](https://linux.die.net/man/1/df) A beállítás a méretet, a felhasznált területet és a rendelkezésre álló területet mutatja ember által olvasható formátumban, M, G és `-h` T egységméretek használatával.
 
-A következő példa a kötetek kapacitásainak jelentéskészítését mutatja be a Linux rendszerben a megváltozott viselkedés *előtt* :  
+Az alábbi példa a linuxos kötetkapacitás jelentéskészítését *mutatja be a* módosított viselkedés előtt:  
 
-![Képernyőkép, amely bemutatja, hogy a Linux hogyan jeleníti meg a kötetek tárolási kapacitását a működés megváltozása előtt.](../media/azure-netapp-files/hard-quota-linux-capacity-before.png)
+![Képernyőkép egy kötet tárolási kapacitásának Linuxszal való megjelenítéséről a viselkedés módosítása előtt.](../media/azure-netapp-files/hard-quota-linux-capacity-before.png)
 
-A következő példa a kötetek kapacitásainak jelentéskészítését mutatja be a Linux rendszerben a megváltozott viselkedést *követően* :  
+Az alábbi példa a linuxos kötetkapacitás jelentéskészítését *mutatja be a* módosított viselkedés után:  
 
-![Képernyőkép, amely bemutatja, hogy a Linux hogyan jeleníti meg a kötetek tárolási kapacitását a működés megváltozása után.](../media/azure-netapp-files/hard-quota-linux-capacity-after.png)
+![Képernyőkép egy kötet tárolási kapacitásának Linuxszal való megjelenítéséről a viselkedés módosítása után.](../media/azure-netapp-files/hard-quota-linux-capacity-after.png)
 
 
-### <a name="configure-alerts-using-anfcapacitymanager"></a>Riasztások konfigurálása a ANFCapacityManager használatával
+### <a name="configure-alerts-using-anfcapacitymanager"></a>Riasztások konfigurálása az ANFCapacityManager használatával
 
-A Közösség által támogatott Logic Apps ANFCapacityManager eszköz segítségével figyelheti a Azure NetApp Files kapacitását és személyre szabott riasztásokat fogadhat. A ANFCapacityManager eszköz a [ANFCapacityManager GitHub oldalon](https://github.com/ANFTechTeam/ANFCapacityManager)érhető el.
+Az ANFCapacityManager eszköz közösségi támogatású Logic Apps segítségével figyelheti a kapacitást Azure NetApp Files és testre szabott riasztásokat kaphat. Az ANFCapacityManager eszköz az [ANFCapacityManager GitHub-oldalon érhető el.](https://github.com/ANFTechTeam/ANFCapacityManager)
 
-A ANFCapacityManager egy Azure logikai alkalmazás, amely a kapacitáson alapuló riasztási szabályokat kezeli. Ez automatikusan növeli a kötetek méretét, hogy megakadályozza, hogy a Azure NetApp Files kötetek ne fussanak a szabad területről. Egyszerűen üzembe helyezhető, és a következő Alert Management lehetőségeket biztosítja:
+Az ANFCapacityManager egy kapacitásalapú riasztási szabályokat kezelő Azure Logic App. Automatikusan növeli a kötetméretet, hogy Azure NetApp Files kötetek ne fogynak el a rendelkezésre álló területből. Könnyen üzembe helyezhető, és a következő funkciókat Alert Management biztosítja:
 
-* Azure NetApp Files kapacitási készlet vagy kötet létrehozásakor a ANFCapacityManager metrikai riasztási szabályt hoz létre a megadott százalékos felhasznált küszöbérték alapján.
-* Azure NetApp Files kapacitási készlet vagy kötet átméretezése esetén a ANFCapacityManager módosítja a metrika riasztási szabályát a megadott százalékos kapacitás felhasznált küszöbértéke alapján. Ha a riasztási szabály nem létezik, a rendszer létrehozza.
-* Azure NetApp Files kapacitású készlet vagy kötet törlésekor a rendszer törli a megfelelő metrika-riasztási szabályt.
+* A kapacitáskészlet Azure NetApp Files kötet létrehozásakor az ANFCapacityManager létrehoz egy metrikriasztás-szabályt a megadott százalékos felhasznált mennyiség küszöbértéke alapján.
+* Egy Azure NetApp Files kapacitáskészlet vagy kötet átméretezhetők, az ANFCapacityManager módosítja a metrikaalapú riasztási szabályt a kapacitás által felhasznált kapacitás megadott százalékának küszöbértéke alapján. Ha a riasztási szabály nem létezik, létrejön.
+* Ha egy Azure NetApp Files vagy kötetet törölnek, a vonatkozó metrikriasztás-szabály törlődik.
 
-A következő kulcsfontosságú riasztási beállításokat állíthatja be:  
+A következő fő riasztási beállításokat konfigurálhatja:  
 
-* **Kapacitási készlet –% teljes küszöbérték** – ez a beállítás határozza meg a felhasználható küszöbértéket, amely riasztást indít a kapacitási készletekhez. 90 érték esetén a riasztás akkor aktiválódik, ha a kapacitási készlet eléri az 90%-ot.
-* **Kötet teljes mérete (%)** – ez a beállítás határozza meg a kötetekre vonatkozó riasztást kiváltó felhasználható küszöbértéket. A 80 érték azt eredményezi, hogy a riasztás akkor aktiválódik, ha a kötet eléri a 80%-ot.
-* **Meglévő műveleti csoport a kapacitási értesítések számára** – ez a beállítás az a műveleti csoport, amely a kapacitás alapú riasztások esetén aktiválódik. Ezt a beállítást Önnek előre kell létrehoznia. A műveleti csoport küldhet e-mailt, SMS-t vagy más formátumot.
+* **Kapacitáskészlet %-os teljes küszöbértéke** – Ez a beállítás határozza meg a felhasznált küszöbértéket, amely riasztást vált ki a kapacitáskészletek számára. A 90 érték riasztást vált ki, ha a kapacitáskészlet eléri a 90%-ot.
+* **Kötet %-os teljes küszöbértéke** – Ez a beállítás határozza meg a felhasznált küszöbértéket, amely riasztást vált ki a kötetek számára. A 80 érték riasztást vált ki, ha a kötet eléri a 80%-ot.
+* **Kapacitásértesítések** meglévő műveletcsoportja – Ez a beállítás a kapacitásalapú riasztáshoz aktivált műveletcsoport. Ezt a beállítást Önnek kell előre létrehoznia. A műveletcsoport küldhet e-mailt, SMS-t vagy más formátumot.
 
-A következő ábra a riasztás konfigurációját mutatja be:  
+Az alábbi ábra a riasztás konfigurációját mutatja be:  
 
-![A riasztások konfigurálását a ANFCapacityManager használatával bemutató ábra.](../media/azure-netapp-files/hard-quota-anfcapacitymanager-configuration.png)
+![Az ANFCapacityManager használatával riasztáskonfigurációt bemutató ábra.](../media/azure-netapp-files/hard-quota-anfcapacitymanager-configuration.png)
 
-A ANFCapacityManager telepítése után a következő viselkedés várható: Ha egy Azure NetApp Files kapacitású készletet vagy kötetet hoz létre, módosítanak vagy törölnek, a logikai alkalmazás automatikusan létrehoz, módosít vagy töröl egy kapacitás alapú metrika riasztási szabályt a névvel `ANF_Pool_poolname` vagy `ANF_Volume_poolname_volname` . 
+Az ANFCapacityManager telepítése után a következő viselkedés várható Azure NetApp Files: Kapacitáskészlet vagy kötet létrehozásakor, módosításakor vagy törlésekor a logikai alkalmazás automatikusan létrehoz, módosít vagy töröl egy kapacitásalapú metrikaalapú riasztási szabályt vagy `ANF_Pool_poolname` `ANF_Volume_poolname_volname` néven. 
 
 ### <a name="manage-capacity"></a>Kapacitás kezelése
 
-A figyelés és a riasztás mellett érdemes beépíteni egy alkalmazás-kapacitás felügyeleti gyakorlatot is a Azure NetApp Files (megnövekedett) kapacitás-felhasználás kezelésére. Ha egy Azure NetApp Files kötet vagy kapacitás-készlet is megtelik, [az alkalmazások megszakítása nélkül további kapacitást is megadhat a menet közben](azure-netapp-files-resize-capacity-pools-or-volumes.md). Ez a szakasz különböző manuális és automatizált módszereket ismertet a kötetek és a kapacitások kiépített területének igény szerinti növelésére.
+A monitorozás és a riasztások mellett egy alkalmazáskapacitás-kezelési gyakorlatot is érdemes beépítenie a Azure NetApp Files (megnövekedett) kapacitásfelhasználás kezeléséhez. Ha egy Azure NetApp Files vagy kapacitáskészlet megtelik, az alkalmazás megszakítása nélkül lehet további kapacitást biztosítani a [gépről.](azure-netapp-files-resize-capacity-pools-or-volumes.md) Ez a szakasz különböző manuális és automatizált módszereket ismertet a kötet- és kapacitáskészlet által kiépített terület szükség szerinti növeléséhez.
  
 #### <a name="manual"></a>Kézi 
 
-A-portál vagy a parancssori felület használatával manuálisan növelheti a kötetek és a kapacitások készletének méretét. 
+A kötet- vagy kapacitáskészletek méretének manuális növeléséhez használhatja a portált vagy a cli-t. 
 
 ##### <a name="portal"></a>Portál 
 
-Szükség szerint [módosíthatja a kötetek méretét](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-volume) . A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába.
+A kötet [méretét szükség szerint](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-volume) módosíthatja. A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába.
 
-1. A NetApp-fiók kezelése panelen kattintson a **kötetek** elemre.  
-2. Kattintson a jobb gombbal az átméretezni kívánt kötet nevére, vagy kattintson a `…` kötet sor végén található ikonra a helyi menü megjelenítéséhez. 
-3. A kötet átméretezéséhez vagy törléséhez használja a helyi menü beállításait.   
+1. A Manage NetApp Account (NetApp-fiók kezelése) panelen kattintson a **Volumes (Kötetek) elemre.**  
+2. Kattintson a jobb gombbal az átméretezni kívánt kötet nevére, vagy kattintson a kötet sorának végén található ikonra a helyi `…` menü megjelenítéséhez. 
+3. A helyi menü beállításaival átméretezheti vagy törölheti a kötetet.   
 
    ![A kötet helyi menüjének beállításait bemutató képernyőkép.](../media/azure-netapp-files/hard-quota-volume-options.png) 
 
-   ![A mennyiségi kvóta frissítése ablakot megjelenítő képernyőkép.](../media/azure-netapp-files/hard-quota-update-volume-quota.png) 
+   ![A Kötetkvóta frissítése ablakot bemutató képernyőkép.](../media/azure-netapp-files/hard-quota-update-volume-quota.png) 
 
-Bizonyos esetekben a gazdagép-kapacitási készlet nem rendelkezik elegendő kapacitással a kötetek átméretezéséhez. [A kapacitási készlet mérete](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-the-capacity-pool) azonban 1 – TiB-növekményekben vagy-csökkentésekben is módosítható. A kapacitási készlet mérete nem lehet kisebb, mint 4 TiB. *A kapacitás-készlet átméretezése megváltoztatja a megvásárolt Azure NetApp Files kapacitást.*
+Bizonyos esetekben az üzemeltetési kapacitáskészlet nem rendelkezik elegendő kapacitással a kötetek átméretezéshez. A kapacitáskészlet [méretét](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-the-capacity-pool) azonban módosíthatja 1 TiB-os növekményekben vagy növelésekben. A kapacitáskészlet mérete nem lehet kisebb 4 TiB-osnál. *A kapacitáskészlet átméretezése módosítja a megvásárolt Azure NetApp Files kapacitást.*
 
-1. A NetApp-fiók kezelése panelen kattintson az átméretezni kívánt kapacitási készletre.
-2. Kattintson a jobb gombbal a kapacitási készlet nevére, vagy a `…` helyi menü megjelenítéséhez kattintson a kapacitási készlet sora végén található ikonra.
-3. A kapacitási készlet átméretezéséhez vagy törléséhez használja a helyi menü beállításait.    
+1. A Manage NetApp Account (NetApp-fiók kezelése) panelen kattintson az átméretezni kívánt kapacitáskészletre.
+2. Kattintson a jobb gombbal a kapacitáskészlet nevére, vagy kattintson a kapacitáskészlet sorának végén található ikonra a `…` helyi menü megjelenítéséhez.
+3. A helyi menü beállításaival átméretezheti vagy törölheti a kapacitáskészletet.    
 
-   ![A kapacitási készlet helyi menüjének beállításait bemutató képernyőkép.](../media/azure-netapp-files/hard-quota-pool-options.png) 
+   ![A kapacitáskészlet helyi menüjének beállításait bemutató képernyőkép.](../media/azure-netapp-files/hard-quota-pool-options.png) 
 
-   ![A készlet átméretezése ablakot megjelenítő képernyőkép.](../media/azure-netapp-files/hard-quota-update-resize-pool.png) 
+   ![A Készlet átméretezése ablakot bemutató képernyőkép.](../media/azure-netapp-files/hard-quota-update-resize-pool.png) 
 
 
 ##### <a name="cli-or-powershell"></a>CLI vagy PowerShell
 
-A kötet vagy a kapacitási készlet méretének manuális módosításához használhatja a [Azure NETAPP Files CLI-eszközöket](azure-netapp-files-sdk-cli.md#cli-tools), beleértve az Azure CLI-t és Azure PowerShellt is.  A következő két parancs használható Azure NetApp Files kötet-és készlet-erőforrások kezeléséhez:  
+A kötet vagy [a Azure NetApp Files](azure-netapp-files-sdk-cli.md#cli-tools)méretének manuális módosíthatósága érdekében használhatja a Azure NetApp Files CLI-eszközöket, beleértve az Azure CLI-t és a Azure PowerShell is.  Az alábbi két paranccsal felügyelheti a Azure NetApp Files- és készleterőforrásokat:  
 
 * [`az netappfiles pool`](/cli/azure/netappfiles/pool)
 * [`az netappfiles volume`](/cli/azure/netappfiles/volume)
 
-Azure NetApp Files erőforrások Azure CLI-vel való kezeléséhez nyissa meg a Azure Portal, és válassza ki az Azure **Cloud Shell** hivatkozást a menüsáv tetején: 
+A Azure NetApp Files Azure CLI használatával való kezeléséhez nyissa meg a Azure Portal, és válassza az Azure **Cloud Shell** hivatkozást a menüsáv tetején: 
 
-[![A Cloud Shell hivatkozás elérését bemutató képernyőkép. ](../media/azure-netapp-files/hard-quota-update-cloud-shell-link.png)](../media/azure-netapp-files/hard-quota-update-cloud-shell-link.png#lightbox)
+[![A hivatkozás elérésének Cloud Shell képernyőképe. ](../media/azure-netapp-files/hard-quota-update-cloud-shell-link.png)](../media/azure-netapp-files/hard-quota-update-cloud-shell-link.png#lightbox)
 
-A művelettel megnyílik a Azure Cloud Shell:
+Ez a művelet megnyitja a Azure Cloud Shell:
 
-[![Képernyőkép, amely Cloud Shell ablakot jelenít meg. ](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png)](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png#lightbox)
+[![Képernyőkép az Cloud Shell ablakról. ](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png)](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png#lightbox)
 
-Az alábbi példák a következő parancsokat használják a kötetek méretének [megjelenítéséhez](/cli/azure/netappfiles/volume#az-netappfiles-volume-show) és [frissítéséhez](/cli/azure/netappfiles/volume#az-netappfiles-volume-update) :
+Az alábbi példák a [](/cli/azure/netappfiles/volume#az_netappfiles_volume_show) parancsokkal [](/cli/azure/netappfiles/volume#az_netappfiles_volume_update) mutatják be és frissítik egy kötet méretét:
  
-[![Képernyőkép a kötet méretének megjelenítéséhez a PowerShell használatával. ](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png)](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png#lightbox)
+[![Képernyőkép a kötetméret PowerShell-rel való megjelenítésekor. ](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png)](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png#lightbox)
 
-[![Képernyőkép a kötet méretének frissítéséhez a PowerShell használatával. ](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png)](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png#lightbox)
+[![Képernyőkép a kötetméret PowerShell használatával való frissítésével. ](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png)](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png#lightbox)
 
-Az alábbi példák a következő parancsokat használják a kapacitási készlet méretének [megjelenítéséhez](/cli/azure/netappfiles/pool#az-netappfiles-pool-show) és [frissítéséhez](/cli/azure/netappfiles/pool#az-netappfiles-pool-update) :
+Az alábbi példák a [](/cli/azure/netappfiles/pool#az_netappfiles_pool_show) parancsokkal [](/cli/azure/netappfiles/pool#az_netappfiles_pool_update) mutatják be és frissítik a kapacitáskészletek méretét:
 
-[![Képernyőfelvétel: a PowerShell használatával jeleníthető meg a kapacitási készlet mérete. ](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png)](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png#lightbox) 
+[![Képernyőkép a kapacitáskészlet méretének PowerShell-rel való megjelenítésekor. ](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png)](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png#lightbox) 
 
-[![Képernyőkép a kapacitási készlet méretének frissítéséhez a PowerShell használatával. ](../media/azure-netapp-files/hard-quota-update-powershell-pool-update.png)](../media/azure-netapp-files/hard-quota-update-powershell-pool-update.png#lightbox)
+[![Képernyőkép a kapacitáskészlet méretének PowerShell használatával való frissítésével. ](../media/azure-netapp-files/hard-quota-update-powershell-pool-update.png)](../media/azure-netapp-files/hard-quota-update-powershell-pool-update.png#lightbox)
 
 #### <a name="automated"></a>Automatizált  
 
-Létrehozhat egy automatizált folyamatot a megváltozott viselkedés kezeléséhez.
+A módosított viselkedés kezelésére automatizált folyamatot is felépíthet.
 
 ##### <a name="rest-api"></a>REST API   
 
-A Azure NetApp Files szolgáltatás REST API a HTTP-műveleteket definiálja az erőforrásokon, például a NetApp-fiókon, a kapacitás-készleten, a köteteken és a pillanatképeken. A Azure NetApp Files REST API-specifikációja a [Azure NetApp Files Resource Manager GitHub oldalán](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)] jelenik meg. A GitHubon megtalálhatja a REST API-kkal való [használatra szolgáló kódot](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager/Microsoft.NetApp/stable/2020-06-01/examples) .
+A REST API szolgáltatás Azure NetApp Files http-műveleteket határoz meg az olyan erőforrásokon, mint a NetApp-fiók, a kapacitáskészlet, a kötetek és a pillanatképek. A REST API specifikációja Azure NetApp Files a következő [GitHub Azure NetApp Files Resource Manager oldalon](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)érhető el: ]. A REST [API-khoz használható](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager/Microsoft.NetApp/stable/2020-06-01/examples) példakódot a GitHubon találhatja meg.
 
-Lásd: [Azure NetApp Files fejlesztése a REST APIsal](azure-netapp-files-develop-with-rest-api.md). 
+Lásd: [Fejlesztés Azure NetApp Files a REST API.](azure-netapp-files-develop-with-rest-api.md) 
 
 ##### <a name="rest-api-using-powershell"></a>A REST API használata a PowerShell-lel  
 
-A Azure NetApp Files szolgáltatás REST API a HTTP-műveleteket definiálja az erőforrásokon, például a NetApp-fiókon, a kapacitás-készleten, a köteteken és a pillanatképeken. A [Azure NetApp Files REST API-specifikációját](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager) a githubon keresztül tesszük közzé.
+A REST API szolgáltatás Azure NetApp Files http-műveleteket határoz meg az olyan erőforrásokon, mint a NetApp-fiók, a kapacitáskészlet, a kötetek és a pillanatképek. A [REST API specifikációja Azure NetApp Files](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager) a GitHubon keresztül érhető el.
 
-Lásd: [Azure NetApp Files fejlesztése a REST API PowerShell használatával](develop-rest-api-powershell.md).
+Lásd: [Fejlesztés Azure NetApp Files és REST API PowerShell használatával.](develop-rest-api-powershell.md)
 
-##### <a name="capacity-management-using-anfcapacitymanager"></a>Kapacitások kezelése a ANFCapacityManager használatával
+##### <a name="capacity-management-using-anfcapacitymanager"></a>Kapacitáskezelés az ANFCapacityManager használatával
 
-A ANFCapacityManager egy Azure logikai alkalmazás, amely a kapacitáson alapuló riasztási szabályokat kezeli. Ez automatikusan növeli a kötetek méretét, hogy megakadályozza, hogy a Azure NetApp Files kötetek ne fussanak a szabad területről. A riasztások küldésén kívül a kötetek és a kapacitások méretének automatikus növelését is lehetővé teszi, hogy a Azure NetApp Files kötetek ne fussanak a szabad területről: 
+Az ANFCapacityManager egy kapacitásalapú riasztási szabályokat kezelő Azure Logic App. Automatikusan növeli a kötetméretet, hogy Azure NetApp Files kötetek ne fogynak el a rendelkezésre álló területből. A riasztások küldése mellett lehetővé teszi a kötet- és kapacitáskészletek méretének automatikus növekedését is, hogy a Azure NetApp Files kötetek ne fogynak el a rendelkezésre álló területből: 
 
-* Ha egy Azure NetApp Files kötet eléri a megadott százalékos felhasználható küszöbértéket, a rendszer a mennyiségi kvótát (méretet) a 10-100-as számú százalékban megadott százalékkal növeli.  
-* Ha a kötet méretének növelése meghaladja a kapacitást tartalmazó készlet kapacitását, akkor a kapacitási készlet mérete is megnő az új kötet méretének megfelelően.
+* Ha egy Azure NetApp Files eléri a megadott százalékos felhasznált mennyiséget, a kötetkvóta (méret) a 10 és 100 között megadott százalékkal nő.  
+* Ha a kötet méretének növelése meghaladja a kapacitáskészlet kapacitását, a kapacitáskészlet mérete is nő az új kötetméretnek való igazodás érdekében.
 
-A következő kulcsfontosságú kapacitás-kezelési beállítást állíthatja be:  
+A következő kulcskapacitás-kezelési beállítást konfigurálhatja:  
 
-* Az automatikus növekedés százalékos arányának **növelése** – a meglévő kötetek méretének százalékos aránya, hogy automatikusan növelje a kötetet, ha eléri a megadott **%-os teljes küszöbértéket**. A 0 (nulla) érték letiltja az automatikus növekedés funkciót. A 10 és 100 közötti érték ajánlott.
+* **Automatikus növekedés százalékának növelése** – A kötet méretének százalékos aránya a kötet automatikus növeléséhez, ha eléri a megadott **%-os teljes küszöbértéket.** A 0 (nulla) érték letiltja az automatikus növekedés funkciót. A javasolt érték 10 és 100 között van.
 
-    ![Képernyőfelvétel: a kötet automatikus növekedési százalékának beállítása ablak.](../media/azure-netapp-files/hard-quota-volume-anfcapacitymanager-auto-grow-percent.png) 
+    ![Képernyőkép a Kötet automatikus növekedési arányának beállítása ablakról.](../media/azure-netapp-files/hard-quota-volume-anfcapacitymanager-auto-grow-percent.png) 
 
 ## <a name="faq"></a>GYIK 
 
-Ez a szakasz a mennyiségi kvóta változásával kapcsolatos kérdésekre ad választ. 
+Ez a szakasz a mennyiségi kvótakvóta-módosítással kapcsolatos néhány kérdésre ad választ. 
 
-### <a name="does-snapshot-space-count-towards-the-usable-or-provisioned-capacity-of-a-volume"></a>A pillanatkép-terület a kötetek felhasználható vagy kiosztott kapacitása felé is érvényes?
+### <a name="does-snapshot-space-count-towards-the-usable-or-provisioned-capacity-of-a-volume"></a>Számít a pillanatkép-terület egy kötet használható vagy kiépíthető kapacitásában?
 
-Igen, a felhasznált Pillanatképek kapacitása a kötet kiépített területe felé is beleszámít. Ha a kötet teljes mértékben fut, vegye figyelembe a két szervizelési beállítást:
+Igen, a felhasznált pillanatkép-kapacitás beleszámol a köteten kihelyelt területbe. Ha a kötet megtelt, fontolja meg a következő két szervizelési lehetőséget:
 
-* Méretezze át a kötetet a jelen cikkben leírtak szerint.
-* Távolítsa el a régebbi pillanatképeket, és szabadítson fel helyet az üzemeltetési köteten.
+* Méretezze át a kötetet a cikkben leírtak szerint.
+* Távolítsa el a régebbi pillanatképeket, hogy helyet szabadítson fel az üzemeltetési köteten.
 
-### <a name="does-this-change-mean-the-volume-auto-grow-behavior-will-disappear-from-azure-netapp-files"></a>Ez a módosítás azt jelenti, hogy a kötet automatikus növekedésének viselkedése eltűnik a Azure NetApp Filesből?
+### <a name="does-this-change-mean-the-volume-auto-grow-behavior-will-disappear-from-azure-netapp-files"></a>Ez a változás azt jelenti, hogy a kötet automatikus növekedésének viselkedése eltűnik a Azure NetApp Files?
 
-Gyakori tévhit, hogy Azure NetApp Files *kötetek* automatikusan növekednek a kitöltéskor. A kötetek kiosztása a tényleges készlettől függetlenül 100 TiB-mérettel történt, míg az üzembe helyezési *kapacitás készlete* automatikusan 1 TIB-os növekedéssel nő. Ez a változás a beállított kvótához tartozó (látható és használható) *kötet* méretével foglalkozik, és a *kapacitás-készletek* többé nem növekednek automatikusan. Ez a változás általában az ügyféloldali terület és a kapacitás jelentésének pontos eredményét eredményezi. Elkerüli a "szökevény" kapacitás felhasználását.
+Gyakori félreértés, hogy a Azure NetApp Files *mennyiségei* automatikusan növekednek a feltöltéskor. A kötetek 100 TiB mérettel, a tényleges beállított kvótától függetlenül vékonyan voltak kiépítve, míg az átfedésben található kapacitáskészlet automatikusan növekedett 1 TiB-os növekményekkel.  Ez a módosítás a beállított kvótára fogja módosítani a  (látható és *használható)* kötetméretet, és a kapacitáskészletek nem növekednek automatikusan. Ez a változás gyakran kívánt pontos ügyféloldali területet és kapacitásjelentést ad. Elkerüli az "elfogyott" kapacitásfelhasználást.
 
-### <a name="does-this-change-have-any-effect-on-volumes-replicated-with-cross-region-replication-preview"></a>Befolyásolja ez a változás a régiók közötti replikációval (előzetes verzió) replikált kötetek esetében? 
+### <a name="does-this-change-have-any-effect-on-volumes-replicated-with-cross-region-replication-preview"></a>Ez a módosítás hatással van a régiók közötti replikációval (előzetes verzió) replikált kötetre? 
 
-A rögzített kötetre vonatkozó kvóta nincs kikényszerítve a replikálási célként megadott köteteken.
+A rendszer nem kényszeríti a kötetkvóta kényszerítése a replikáció célkötetei esetében.
 
-### <a name="does-this-change-have-any-effect-on-metrics-currently-available-in-azure-monitor"></a>Befolyásolja ez a változás a Azure Monitor jelenleg elérhető metrikák esetében?
+### <a name="does-this-change-have-any-effect-on-metrics-currently-available-in-azure-monitor"></a>Van ez a módosítás hatással a jelenleg a Azure Monitor?
 
-A portál metrikái és Azure Monitor statisztikái pontosan tükrözik az új kiosztási és kihasználtsági modellt.
+A portál mérőszámai és Azure Monitor statisztikák pontosan tükrözik az új foglalási és kihasználtsági modellt.
 
-### <a name="does-this-change-have-any-effect-on-the-resource-limits-for-azure-netapp-files"></a>Befolyásolja ez a változás a Azure NetApp Files erőforrás-korlátozásait?
+### <a name="does-this-change-have-any-effect-on-the-resource-limits-for-azure-netapp-files"></a>Ez a módosítás hatással van az erőforráskorlátra a Azure NetApp Files?
 
-A jelen cikkben ismertetett kvóták változásain túli Azure NetApp Files erőforrás-korlátai nem változnak.
+Az erőforráskorlátok nem módosulnak a Azure NetApp Files a cikkben ismertetett kvótaváltozások után.
 
-### <a name="is-there-an-example-anfcapacitymanager-workflow"></a>Van példa ANFCapacityManager munkafolyamat?  
+### <a name="is-there-an-example-anfcapacitymanager-workflow"></a>Van példa ANFCapacityManager munkafolyamatra?  
 
-Igen. Tekintse meg a [kötet automatikus növekedési munkafolyamat-példa GitHub-lapját](https://github.com/ANFTechTeam/ANFCapacityManager/blob/master/ResizeWorkflow.md).
+Igen. Lásd a [Kötet automatikus növekedés munkafolyamata – példa GitHub-oldalt.](https://github.com/ANFTechTeam/ANFCapacityManager/blob/master/ResizeWorkflow.md)
 
-### <a name="is-anfcapacitymanager-microsoft-supported"></a>Támogatott-e a Microsoft ANFCapacityManager?  
+### <a name="is-anfcapacitymanager-microsoft-supported"></a>Az ANFCapacityManager Microsoft támogatott?  
 
-[A ANFCapacityManager logikai alkalmazás a-ben van megadva, és a NetApp vagy a Microsoft nem támogatja](https://github.com/ANFTechTeam/ANFCapacityManager#disclaimer). Javasoljuk, hogy módosítsa az adott környezethez vagy követelményekhez igazodva. Az üzleti szempontból kritikus vagy éles környezetekben való üzembe helyezés előtt tesztelje a funkcionalitást.
+[Az ANFCapacityManager](https://github.com/ANFTechTeam/ANFCapacityManager#disclaimer)logikai alkalmazást a rendszer adott ként biztosítja, és a NetApp vagy a Microsoft nem támogatja. Javasolt a saját környezetéhez vagy követelményeihez illeszkedő módosítás. Tesztelje a funkciót, mielőtt üzleti kritikus vagy éles környezetben üzembe helyezi.
 
-### <a name="how-can-i-report-a-bug-or-submit-a-feature-request-for-anfcapacitymanger"></a>Hogyan jelenthetem be a hibát vagy a ANFCapacityManger vonatkozó szolgáltatási kérelmet?
-A [ANFCapacityManager GitHub oldalán](https://github.com/ANFTechTeam/ANFCapacityManager/issues)az **új probléma** lehetőségre kattintva elküldheti a hibákat és a szolgáltatásra vonatkozó kéréseket.
+### <a name="how-can-i-report-a-bug-or-submit-a-feature-request-for-anfcapacitymanger"></a>Hogyan küldhetek hibajelentést vagy funkciókérést az ANFCapacityMangerhez?
+A hibákat és a funkciókéréseket az [ANFCapacityManager GitHub-oldalon](https://github.com/ANFTechTeam/ANFCapacityManager/issues)található Új probléma elemre kattintva küldheti el. 
 
 ## <a name="next-steps"></a>Következő lépések
 * [A kapacitáskészlet vagy kötet átméretezése](azure-netapp-files-resize-capacity-pools-or-volumes.md) 

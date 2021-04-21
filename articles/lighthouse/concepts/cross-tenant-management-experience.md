@@ -1,186 +1,186 @@
 ---
 title: Bérlők közötti felügyeleti megoldások
-description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
+description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a bérlők közötti felügyeleti élményt.
 ms.date: 03/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 12c4aaa4dda159862344675c802603fcbda2f254
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 027d1d5e81d5a652a7e2d5441c40440c661f730f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934325"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778624"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
-Szolgáltatóként az [Azure Lighthouse](../overview.md) segítségével több ügyfél számára is kezelhet erőforrásokat a saját Azure Active Directory (Azure ad) bérlőn belül. A felügyelt bérlők számos feladatot és szolgáltatást végezhetnek el az [Azure-beli delegált erőforrás-kezelés](../concepts/azure-delegated-resource-management.md)használatával.
+Szolgáltatóként a Azure Lighthouse kezelheti [](../overview.md) több ügyfél erőforrásait a saját Azure Active Directory (Azure AD)-bérlőn belül. Az Azure-beli delegált erőforrás-kezelés használatával számos feladat és szolgáltatás elvégezhető a felügyelt [bérlők között.](../concepts/azure-delegated-resource-management.md)
 
 > [!TIP]
-> Az Azure-beli delegált erőforrás-kezelés [olyan vállalaton belül is felhasználható, amely több Azure ad-Bérlővel rendelkezik a több](enterprise.md) -bérlős felügyelet egyszerűsítése érdekében.
+> Az Azure-beli delegált erőforrás-kezelés olyan vállalaton belül is használható, amely több [Azure AD-bérlővel](enterprise.md) rendelkezik a több-bérlős adminisztráció egyszerűsítése érdekében.
 
 ## <a name="understanding-tenants-and-delegation"></a>A bérlők és a delegálás ismertetése
 
-Az Azure AD-bérlő egy szervezet képviselete. Ez az Azure AD dedikált példánya, amelyet a szervezet akkor kap, amikor kapcsolatot hoz létre a Microsofttal az Azure-ra, Microsoft 365ra vagy más szolgáltatásokra való feliratkozással. Minden Azure AD-bérlő különálló, és elkülönül a többi Azure AD-bérlőtől, és saját bérlői AZONOSÍTÓval (GUID) rendelkezik. További információ: [Mi az Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
+Az Azure AD-bérlő egy szervezetet képvisel. Ez az Azure AD egy dedikált példánya, amelyet a szervezetek megkapnak, amikor kapcsolatot hoznak létre a Microsofttal az Azure-ba, Microsoft 365 vagy más szolgáltatásokra való regisztrációval. Minden Azure AD-bérlő különálló, elkülönül a többi Azure AD-bérlőtől, és saját bérlőazonosítóval (GUID) rendelkezik. További információ: [Mi a Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
 
-Az ügyfelekhez tartozó Azure-erőforrások kezeléséhez általában a szolgáltatóknak az ügyfél bérlője által hozzárendelt fiókkal kell bejelentkezniük a Azure Portalba, és az ügyfél bérlője számára meg kell adni a rendszergazdának, hogy a szolgáltatóhoz tartozó felhasználói fiókokat hozzanak létre és kezeljenek.
+Az ügyfelek Azure-erőforrásainak kezeléséhez a szolgáltatóknak általában az adott ügyfél bérlője által hozzárendelt fiókkal kell bejelentkezniük az Azure Portal-be, így az ügyfél bérlői rendszergazdájának kell létrehoznia és kezelnie a szolgáltató felhasználói fiókjait.
 
-Az Azure Lighthouse használatával a bevezetési folyamat meghatározza a szolgáltató bérlője azon felhasználóit, akik jogosultak lesznek a delegált előfizetéseken és erőforráscsoportoknál az ügyfél bérlője számára. Ezek a felhasználók ezután a saját hitelesítő adataikkal jelentkezhetnek be a Azure Portalba. A Azure Portalon belül az összes olyan ügyfél erőforrásait kezelhetik, amelyhez hozzáféréssel rendelkeznek. Ezt úgy teheti meg, hogy felkeresi a [saját ügyfelek](../how-to/view-manage-customers.md) lapját a Azure Portalon, vagy közvetlenül az ügyfél előfizetésének kontextusában, akár a Azure Portal, akár API-n keresztül.
+A Azure Lighthouse az előjegyzési folyamat határozza meg a szolgáltató bérlőjébe azokat a felhasználókat, akik dolgozhatnak az ügyfél bérlőjéhez delegált előfizetésekkel és erőforráscsoportokkal. Ezek a felhasználók ezután bejelentkeznek a Azure Portal a saját hitelesítő adataik használatával. A Azure Portal kezelhetik az összes olyan ügyfélhez tartozó erőforrásokat, akikhez hozzáféréssel rendelkezik. Ehhez látogasson el a [](../how-to/view-manage-customers.md) Azure Portal oldalára, vagy közvetlenül az ügyfél előfizetésének kontextusában, a Azure Portal api-kon keresztül.
 
-Az Azure Lighthouse nagyobb rugalmasságot biztosít a több ügyfél erőforrásainak kezeléséhez anélkül, hogy a különböző bérlők különböző fiókjaiba kellene bejelentkezniük. Előfordulhat például, hogy a szolgáltatónak két ügyfele van, akik eltérő felelősséggel és hozzáférési szinttel rendelkeznek. Az Azure Lighthouse használatával a jogosult felhasználók bejelentkezhetnek a szolgáltató bérlőbe az erőforrások eléréséhez.
+Azure Lighthouse nagyobb rugalmasságot biztosít több ügyfél erőforrásainak kezeléséhez anélkül, hogy különböző bérlők különböző fiókjaiba jelentkezik be. Egy szolgáltatónak például két különböző feladatkörű és hozzáférési szintű ügyfele lehet. A Azure Lighthouse jogosult felhasználók bejelentkeznek a szolgáltató bérlőbe ezen erőforrások eléréséhez.
 
-![Az egyik szolgáltatói bérlőn keresztül felügyelt ügyfelek erőforrásait bemutató ábra.](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
+![Az egyetlen szolgáltató bérlőn keresztül felügyelt ügyfélerőforrásokat bemutató ábra.](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
 ## <a name="apis-and-management-tool-support"></a>API-k és felügyeleti eszközök támogatása
 
-A delegált erőforrásokon közvetlenül a portálon, vagy API-k és felügyeleti eszközök (például az Azure CLI és a Azure PowerShell) használatával is elvégezheti a felügyeleti feladatokat. A rendszer minden meglévő API-t felhasználhat a delegált erőforrások használata esetén, ha a funkció támogatott a több-bérlős felügyelet esetében, és a felhasználó rendelkezik a megfelelő engedélyekkel.
+A delegált erőforrásokon közvetlenül a portálon, vagy API-k és felügyeleti eszközök (például az Azure CLI és a Azure PowerShell) használatával végezhet felügyeleti feladatokat. A delegált erőforrásokkal való munka során minden meglévő API használható, ha a funkció támogatott a bérlők közötti felügyelethez, és a felhasználó rendelkezik a megfelelő engedélyekkel.
 
-A Azure PowerShell [Get-AzSubscription parancsmag](/powershell/module/Az.Accounts/Get-AzSubscription) alapértelmezés szerint a következőt fogja megjeleníteni a `TenantId` bérlő kezeléséhez. `HomeTenantId` `ManagedByTenantIds` Minden előfizetéshez használhatja a és attribútumokat, így meghatározhatja, hogy egy visszaadott előfizetés felügyelt bérlőhöz vagy a felügyeleti bérlőhöz tartozik-e.
+A Azure PowerShell [Get-AzSubscription parancsmag](/powershell/module/Az.Accounts/Get-AzSubscription) alapértelmezés szerint a kezelő bérlőhöz a értéket `TenantId` fogja mutatni. Az egyes előfizetések és attribútumai segítségével megállapíthatja, hogy a visszaadott előfizetés egy felügyelt bérlőhöz vagy a felügyelt `HomeTenantId` `ManagedByTenantIds` bérlőhöz tartozik-e.
 
-Ehhez hasonlóan az Azure CLI-parancsok, például az [az Account List](/cli/azure/account#az-account-list) a és az attribútumok láthatók `homeTenantId` `managedByTenants` . Ha nem látja ezeket az értékeket az Azure CLI használatakor, a következő lépésekkel próbálja meg törölni a gyorsítótárat `az account clear` `az login --identity` .
+Hasonlóképpen az Azure CLI olyan parancsai, mint az [az account list,](/cli/azure/account#az_account_list) a és az `homeTenantId` `managedByTenants` attribútumot mutatják. Ha az Azure CLI használata közben nem látja ezeket az értékeket, próbálja meg törölni a gyorsítótárat a `az account clear` futtatásával, majd a `az login --identity` következővel: .
 
-Az Azure REST API az [előfizetések – Get](/rest/api/resources/subscriptions/get) és [Subscriptions-List](/rest/api/resources/subscriptions/list) parancs tartalmazza `ManagedByTenant` .
+Az Azure REST API előfizetések [– Get](/rest/api/resources/subscriptions/get) és [Subscriptions – List](/rest/api/resources/subscriptions/list) parancsok közé tartoznak a `ManagedByTenant` következők: .
 
 > [!NOTE]
-> Az Azure Lighthouse-hoz kapcsolódó bérlői információk mellett az API-k által megjelenített bérlők a Azure Databricks és az Azure által felügyelt alkalmazások partner bérlőit is tükrözheti.
+> Az API-k által Azure Lighthouse bérlőkre vonatkozó információk mellett a bérlők a partnerbérlőket is tükrözhetnek a Azure Databricks Azure által felügyelt alkalmazások esetében.
 
-Olyan API-kat is biztosítunk, amelyek az Azure Lighthouse-feladatok végrehajtására vonatkoznak. További információért lásd a **hivatkozási** szakaszt.
+Emellett olyan API-kat is biztosítunk, amelyek csak az adott Azure Lighthouse elvégzésére vonatkoznak. További információért tekintse meg a **Referencia szakaszt.**
 
 ## <a name="enhanced-services-and-scenarios"></a>Továbbfejlesztett szolgáltatások és forgatókönyvek
 
-A legtöbb feladat és szolgáltatás elvégezhető a delegált erőforrásokon, különböző felügyelt bérlőkön. Az alábbiakban néhány olyan főbb forgatókönyvet talál, ahol a több-bérlős felügyelet különösen hatékony lehet.
+A legtöbb feladat és szolgáltatás elvégezhető a delegált erőforrásokon, különböző felügyelt bérlőkön. Az alábbiakban néhány olyan kulcsfontosságú forgatókönyvet olvashat, amelyekben a bérlők közötti felügyelet különösen hatékony lehet.
 
-[Azure-ív](../../azure-arc/index.yml):
+[Azure Arc:](../../azure-arc/index.yml)
 
-- Hibrid kiszolgálók kezelése a skálán – [Azure arc-kompatibilis kiszolgálók](../../azure-arc/servers/overview.md):
-  - Az Azure-on kívüli delegált előfizetésekhez és/vagy erőforráscsoportokhoz [csatlakoztatott Windows Server-vagy Linux-alapú gépek felügyelete](../../azure-arc/servers/onboard-portal.md)
-  - Csatlakoztatott gépek kezelése Azure-konstrukciók használatával, például Azure Policy és címkézés
-  - Győződjön meg arról, hogy ugyanazokat a szabályzatokat alkalmazza az ügyfelek hibrid környezetei között
-  - Azure Security Center használata az ügyfelek hibrid környezetei közötti megfelelés figyeléséhez
-- Hibrid Kubernetes-fürtök kezelése a skálán – [Azure arc-kompatibilis Kubernetes (előzetes verzió)](../../azure-arc/kubernetes/overview.md):
-  - Az Azure-ban delegált előfizetésekhez és/vagy erőforráscsoportokhöz [kapcsolódó Kubernetes-fürtök kezelése](../../azure-arc/kubernetes/quickstart-connect-cluster.md)
-  - [GitOps használata](../../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md) csatlakoztatott fürtökhöz
-  - Házirendek betartatása a csatlakoztatott fürtök között
+- Hibrid kiszolgálók nagy léptékű kezelése – [Azure Arc kiszolgálók:](../../azure-arc/servers/overview.md)
+  - [Az Azure-on kívüli,](../../azure-arc/servers/onboard-portal.md) delegált előfizetéshez és/vagy erőforráscsoportokhoz kapcsolódó Windows Server- vagy Linux-gépek kezelése az Azure-ban
+  - Csatlakoztatott gépek kezelése Azure-szerkezetekkel, például Azure Policy címkézéssel
+  - Győződjön meg arról, hogy az ügyfelek hibrid környezetei ugyanazt a szabályzatkészletet alkalmazzák
+  - A Azure Security Center a megfelelőség figyelése az ügyfelek hibrid környezetében
+- Hibrid Kubernetes-fürtök nagy léptékű kezelése – Azure Arc [Kubernetes (előzetes verzió) :](../../azure-arc/kubernetes/overview.md)
+  - [Delegált](../../azure-arc/kubernetes/quickstart-connect-cluster.md) előfizetéshez és/vagy erőforráscsoportokhoz csatlakoztatott Kubernetes-fürtök kezelése az Azure-ban
+  - [A GitOps használata](../../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md) csatlakoztatott fürtökhöz
+  - Szabályzatok érvényesítése csatlakoztatott fürtökön
 
-[Azure Automation](../../automation/index.yml):
+[Azure Automation:](../../automation/index.yml)
 
-- Az Automation-fiókok használata a delegált erőforrások eléréséhez és használatához
+- Automation-fiókok használata a delegált erőforrások eléréséhez és a velük való munkához
 
-[Azure Backup](../../backup/index.yml):
+[Azure Backup:](../../backup/index.yml)
 
-- A helyszíni számítási feladatokból [, Azure-beli virtuális gépekből, Azure-fájlmegosztásból és egyebekből származó](../..//backup/backup-overview.md#what-can-i-back-up) ügyféladatok biztonsági mentése és visszaállítása
-- Az összes delegált ügyfél-erőforrásra vonatkozó információk megtekintése a [Backup Centerben](../../backup/backup-center-overview.md)
-- A [Backup Explorer](../../backup/monitor-azure-backup-with-backup-explorer.md) segítségével megtekintheti a biztonsági másolati elemek működési információit (beleértve a biztonsági mentéshez még nem konfigurált Azure-erőforrásokat), valamint a delegált előfizetések figyelési információit (feladatok és riasztások). A Backup Explorer jelenleg csak az Azure-beli virtuálisgép-szolgáltatásokhoz érhető el.
-- [Készítsen biztonsági mentési jelentéseket](../../backup/configure-reports.md) a delegált előfizetések között a korábbi trendek nyomon követéséhez, a biztonsági mentési tárolók felhasználásának elemzéséhez, valamint a biztonsági másolatok és visszaállítások ellenőrzéséhez
+- Ügyféladatok biztonsági mentése és visszaállítása helyszíni számítási [feladatokból, Azure-beli virtuális gépekről, Azure-fájlmegosztásokból és egyéb szolgáltatásokból](../..//backup/backup-overview.md#what-can-i-back-up)
+- Az összes delegált ügyfélerőforrás adatainak megtekintése a [Backup Centerben](../../backup/backup-center-overview.md)
+- A [Backup-kezelő](../../backup/monitor-azure-backup-with-backup-explorer.md) segítségével megtekintheti a biztonsági mentési elemek működési adatait (beleértve a még nem konfigurált Azure-erőforrásokat) és a delegált előfizetések figyelési információit (feladatokat és riasztásokat). A Backup-kezelő jelenleg csak az Azure-beli virtuális gépek adataihoz érhető el.
+- A [Backup-jelentések](../../backup/configure-reports.md) előfizetések között az előzménytrendek nyomon követéséhez, a biztonsági másolatok tárhelyhasználatának elemzéséhez, valamint a biztonsági mentések és visszaállítások naplózásához.
 
-[Azure-tervezetek](../../governance/blueprints/index.yml):
+[Azure Blueprints:](../../governance/blueprints/index.yml)
 
-- Az Azure tervrajzai segítségével összehangolhatja az erőforrás-sablonok és egyéb összetevők üzembe helyezését (az ügyfél-előfizetés előkészítéséhez [További hozzáférés](https://www.wesleyhaakman.org/preparing-azure-lighthouse-customer-subscriptions-for-azure-blueprints/) szükséges)
+- A Azure Blueprints erőforrássablonok és egyéb összetevők üzembe helyezésének [](https://www.wesleyhaakman.org/preparing-azure-lighthouse-customer-subscriptions-for-azure-blueprints/) vezénylése (további hozzáférés szükséges az ügyfél-előfizetés előkészítéséhez)
 
-[Azure Cost Management + számlázás](../../cost-management-billing/index.yml):
+[Azure Cost Management + Billing:](../../cost-management-billing/index.yml)
 
-- A bérlők felügyelete alatt a CSP-partnerek megtekinthetik, kezelhetik és elemezhetik az előfizetéssel kapcsolatos használati költségeket (nem tartalmazza a vásárlásokat) az Azure-csomag alatti ügyfelek számára. A költségek a kiskereskedelmi díjak és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) alapján érhetők el, amelyhez a partner az ügyfél előfizetéséhez tartozik. Jelenleg az Azure RBAC-hozzáférés alapján minden egyes ügyfél-előfizetés esetében megtekintheti a használati költségeket a kiskereskedelmi díjszabás szerint.
+- A kezelő bérlőben a CSP-partnerek megtekinthetik, kezelhetik és elemezhetik (a vásárlásokat nem beleértve) az Azure-csomaghoz kapcsolódó, adók előtti költségeket. A költségek a kiskereskedelmi árakon és az Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC) hozzáférésén alapulnak, amely a partner számára az ügyfél előfizetéséhez szükséges. Jelenleg az Egyes ügyfél-előfizetések fogyasztási költségeit megtekintheti kiskereskedelmi díjszabás szerint az Azure RBAC-hozzáférés alapján.
 
-[Azure Key Vault](../../key-vault/general/index.yml):
+[Azure Key Vault:](../../key-vault/general/index.yml)
 
-- Kulcstartók létrehozása az ügyfelek bérlői számára
-- Felügyelt identitás használata kulcstartók létrehozásához az ügyfelek bérlői számára
+- Kulcstartók létrehozása az ügyfélbérlőkben
+- Kulcstartók létrehozása felügyelt identitással az ügyfélbérlőkben
 
-[Azure Kubernetes szolgáltatás (ak)](../../aks/index.yml):
+[Azure Kubernetes Service (AKS) :](../../aks/index.yml)
 
-- Üzemeltetett Kubernetes-környezetek kezelése, tárolón belüli alkalmazások üzembe helyezése és kezelése az ügyfelek bérlői között
-- Fürtök üzembe helyezése és kezelése az ügyfelek bérlői számára
--   Azure Monitor használata tárolók számára a teljesítmény figyeléséhez az ügyfél-bérlők között
+- Üzemeltetett Kubernetes-környezetek kezelése, valamint tárolóba helyezett alkalmazások üzembe helyezése és kezelése az ügyfélbérlőkben
+- Fürtök üzembe helyezése és kezelése az ügyfélbérlőkben
+-   A Azure Monitor használata a különböző ügyfélbérlők teljesítményének figyelése tárolókhoz
 
-[Azure Migrate](../../migrate/index.yml):
+[Azure Migrate:](../../migrate/index.yml)
 
-- Áttelepítési projektek létrehozása az ügyfél-bérlőben és a virtuális gépek áttelepítése
+- Migrálási projektek létrehozása az ügyfélbérlőben és virtuális gépek migrálása
 
-[Azure monitor](../../azure-monitor/index.yml):
+[Azure Monitor:](../../azure-monitor/index.yml)
 
-- A delegált előfizetésekre vonatkozó riasztások megtekintése, valamint a riasztások megtekintésének és frissítésének lehetősége az összes előfizetésben
-- A delegált előfizetések tevékenységi naplójának részleteinek megtekintése
-- [Log Analytics](../../azure-monitor/logs/service-providers.md): a távoli munkaterületekről származó adatok lekérdezése több bérlőn (vegye figyelembe, hogy az ügyfél bérlői munkaterületeiről származó adatokhoz való hozzáféréshez használt Automation-fiókokat ugyanabban a bérlőben kell létrehozni)
-- [Műveletnapló-riasztások létrehozása, megtekintése és kezelése](../../azure-monitor/alerts/alerts-activity-log.md) az ügyfelek bérlői számára
-- Hozzon létre riasztásokat az olyan ügyfél-bérlők számára, amelyek automatizálják az automatizálást, például Azure Automation runbookok vagy Azure Functionst a bérlő kezelése webhookokon keresztül
-- [Diagnosztikai beállítások](../..//azure-monitor/essentials/diagnostic-settings.md) létrehozása az ügyfelek bérlői számára az erőforrás-naplók elküldéséhez a munkaterületek kezeléséhez a bérlőben
-- SAP-alapú számítási [feladatokhoz az SAP-megoldások metrikáinak figyelése összesített nézettel az ügyfél-bérlők között](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
+- A delegált előfizetések riasztásának megtekintése, valamint a riasztások megtekintése és frissítése az összes előfizetésben
+- A delegált előfizetések tevékenységnapló-részleteinek megtekintése
+- [Log Analytics:](../../azure-monitor/logs/service-providers.md)Több bérlőben lévő távoli munkaterületek adatainak lekérdezése (vegye figyelembe, hogy az ügyfélbérlők munkaterületeiről való adateléréshez használt Automation-fiókokat ugyanabban a bérlőben kell létrehozni)
+- [Tevékenységnapló-riasztások létrehozása,](../../azure-monitor/alerts/alerts-activity-log.md) megtekintése és kezelése az ügyfélbérlőkben
+- Hozzon létre olyan riasztásokat az ügyfélbérlőkben, amelyek automatizálást aktiválnak( például Azure Automation runbookokat vagy Azure Functions webhookokon keresztül a kezelő bérlőben
+- Diagnosztikai [beállítások létrehozása az](../..//azure-monitor/essentials/diagnostic-settings.md) ügyfélbérlőkben az erőforrásnaplóknak a kezelő bérlő munkaterületei számára való elküldéhez
+- SAP-számítási feladatok esetén az [SAP-megoldások](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293) metrikák figyelése az ügyfélbérlők összesített nézetében
 
-[Azure hálózatkezelés](../../networking/networking-overview.md):
+[Azure-hálózatkezelés:](../../networking/networking-overview.md)
 
-- [Azure Virtual Network](../../virtual-network/index.yml) -és virtuális hálózati adapterek (vnic-EK) üzembe helyezése és kezelése felügyelt bérlők keretében
-- [Azure Firewall](../../firewall/overview.md) üzembe helyezése és konfigurálása az ügyfelek Virtual Network erőforrásainak védeleméhez
-- A kapcsolódási szolgáltatások, például az [Azure Virtual WAN](../../virtual-wan/virtual-wan-about.md), a [ExpressRoute](../../expressroute/expressroute-introduction.md)és a [VPN-átjárók](../../vpn-gateway/vpn-gateway-about-vpngateways.md) kezelése
-- Az Azure- [beli hálózati MSP-program](../../networking/networking-partners-msp.md) főbb forgatókönyvei az Azure Lighthouse használatával támogatottak
+- Azure-beli [hálózati Virtual Network](../../virtual-network/index.yml) és virtuális hálózati adapterek (vNIC-k) üzembe helyezése és kezelése felügyelt bérlőkben
+- Az ügyfelek [Azure Firewall](../../firewall/overview.md) erőforrásainak védelme érdekében üzembe helyezheti és Virtual Network konfigurálhatja
+- Kapcsolati szolgáltatások, például a [Azure Virtual WAN,](../../virtual-wan/virtual-wan-about.md) [az ExpressRoute](../../expressroute/expressroute-introduction.md)és [a VPN-átjárók kezelése](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
+- A Azure Lighthouse [MSP-program](../../networking/networking-partners-msp.md) kulcsfontosságú forgatókönyvei Azure-hálózatkezelés támogatásához
 
-[Azure Policy](../../governance/policy/index.yml):
+[Azure Policy:](../../governance/policy/index.yml)
 
-- Szabályzat-definíciók létrehozása és szerkesztése a delegált előfizetéseken belül
-- Házirend-definíciók és szabályzat-hozzárendelések telepítése több bérlő között
-- Ügyfél által definiált szabályzat-definíciók kiosztása delegált előfizetéseken belül
-- Az ügyfelek a szolgáltató által készített szabályzatokat a saját maguk által létrehozott szabályzatok mellett látják
-- Javíthatja [a felügyelt bérlőn belüli deployIfNotExists, vagy módosíthatja a hozzárendeléseket](../how-to/deploy-policy-remediation.md)
-- Vegye figyelembe, hogy az ügyfél bérlői nem megfelelő erőforrásainak megfelelőségi adatainak megtekintése jelenleg nem támogatott
+- Szabályzatdefiníciók létrehozása és szerkesztése a delegált előfizetések között
+- Szabályzatdefiníciók és szabályzat-hozzárendelések üzembe helyezése több bérlőn
+- Ügyfél által definiált szabályzatdefiníciók hozzárendelése a delegált előfizetések között
+- Az ügyfelek a szolgáltató által a saját maguk által meghozott szabályzatokkal együtt látják a szabályzatokat
+- Helyre [tudja helyezni a deployIfNotExists függvényt, vagy](../how-to/deploy-policy-remediation.md) módosíthatja a hozzárendeléseket a felügyelt bérlőn belül
+- Vegye figyelembe, hogy a nem megfelelő erőforrások megfelelőségi részleteinek megtekintése az ügyfélbérlőkben jelenleg nem támogatott
 
-[Azure-erőforrás gráf](../../governance/resource-graph/index.yml):
+[Azure Resource Graph:](../../governance/resource-graph/index.yml)
 
-- A most már tartalmazza a bérlő AZONOSÍTÓját a visszaadott lekérdezés eredményei között, így meghatározhatja, hogy egy előfizetés felügyelt bérlőhöz tartozik-e
+- Most már tartalmazza a bérlőazonosítót a visszaadott lekérdezési eredményekben, így azonosíthatja, hogy egy előfizetés felügyelt bérlőhöz tartozik-e
 
-[Azure Security Center](../../security-center/index.yml):
+[Azure Security Center:](../../security-center/index.yml)
 
-- Több-bérlős láthatóság
-  - A biztonsági szabályzatoknak való megfelelőség monitorozása és a biztonsági lefedettség biztosítása az összes bérlő erőforrásai között
-  - Folyamatos szabályozási megfelelőség monitorozása több bérlőn egyetlen nézetben
-  - Gyakorlati biztonsági javaslatok monitorozása, osztályozása és rangsorolása biztonságos pontszámok számításával
-- Több-bérlős biztonsági testhelyzet kezelése
+- Bérlők közötti láthatóság
+  - A biztonsági szabályzatok megfelelőségét figyelheti, és biztosíthatja a bérlők összes erőforrásának biztonsági lefedettségét
+  - Folyamatos jogszabályi megfelelés monitorozása több bérlőn egyetlen nézetben
+  - A beavatkozást élvező biztonsági javaslatok monitorozása, osztályozása és rangsorolása biztonságos pontszámszámítással
+- Bérlők közötti biztonsági biztonság kezelése
   - Biztonsági szabályzatok kezelése
-  - Tegyen lépéseket olyan erőforrásokra, amelyek nem felelnek meg a végrehajtható biztonsági javaslatoknak
+  - Beavatkozás olyan erőforrásokon, amelyek nem követelményeknek megfelelnek a beavatkozásra használható biztonsági javaslatoknak
   - Biztonsággal kapcsolatos adatok gyűjtése és tárolása
-- Több-bérlős fenyegetések észlelése és védelme
-  - Fenyegetések észlelése a bérlők erőforrásai között
-  - Komplex veszélyforrások elleni védelem szabályozása, például igény szerinti (JIT) virtuálisgép-hozzáférés alkalmazása
-  - Hálózati biztonsági csoport konfigurációjának megerősítése adaptív hálózati megerősítéssel
-  - Győződjön meg arról, hogy a kiszolgálók csak azokat az alkalmazásokat és folyamatokat futtatják, amelyeknek adaptív alkalmazás-vezérlőkkel kell rendelkezniük
-  - Fontos fájlok és beállításjegyzék-bejegyzések változásainak figyelése a fájlok integritásának figyelésével (FIM)
-- Vegye figyelembe, hogy a teljes előfizetést delegálni kell a bérlői felügyelethez; A Azure Security Center-forgatókönyvek nem támogatottak a delegált erőforráscsoportok esetében
+- Bérlők közötti fenyegetésészlelés és -védelem
+  - Fenyegetések észlelése bérlői erőforrások között
+  - Fejlett fenyegetésvédelmi vezérlők, például igény szerinti (JIT) virtuálisgép-hozzáférés alkalmazása
+  - A hálózati biztonsági csoportok konfigurációjának megsokosodása adaptív hálózat-megsokolással
+  - Győződjön meg arról, hogy a kiszolgálók csak az adaptív alkalmazásvezérlőkkel futtatott alkalmazásokat és folyamatokat futtatják
+  - Fontos fájlok és beállításjegyzék-bejegyzések változásainak figyelése a fájlintegritás-figyelés (FIM) segítségével
+- Vegye figyelembe, hogy a teljes előfizetést delegálni kell a kezelő bérlőnek; Azure Security Center forgatókönyveket a delegált erőforráscsoportok nem támogatják
 
-[Azure Sentinel](../../sentinel/multiple-tenants-service-providers.md):
+[Azure Sentinel:](../../sentinel/multiple-tenants-service-providers.md)
 
-- Azure Sentinel-erőforrások kezelése [az ügyfelek bérlői számára](../../sentinel/multiple-tenants-service-providers.md)
-- [Támadások követése és a biztonsági riasztások megtekintése több bérlőn](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
-- Több Azure Sentinel-munkaterületre kiterjedő [incidensek megtekintése](../../sentinel/multiple-workspace-view.md) a bérlők között
+- Ügyfélbérlők Azure Sentinel [erőforrások kezelése](../../sentinel/multiple-tenants-service-providers.md)
+- [Támadások követése és biztonsági riasztások megtekintése több bérlőn](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
+- [Több munkaterületen](../../sentinel/multiple-workspace-view.md) Azure Sentinel bérlők közötti incidensek megtekintése
 
-[Azure Service Health](../../service-health/index.yml):
+[Azure Service Health:](../../service-health/index.yml)
 
-- Az ügyfelek erőforrásainak állapotának figyelése Azure Resource Health
+- Ügyfélerőforrások állapotának figyelése a Azure Resource Health
 - Az ügyfelek által használt Azure-szolgáltatások állapotának nyomon követése
 
-[Azure site Recovery](../../site-recovery/index.yml):
+[Azure Site Recovery:](../../site-recovery/index.yml)
 
-- Az Azure-beli virtuális gépek vész-helyreállítási lehetőségeinek kezelése az ügyfelek bérlői számára (vegye figyelembe, hogy a virtuálisgép- `RunAs` bővítmények másolására nem használhatók fiókok)
+- Azure-beli virtuális gépek vészhelyreállítási beállításainak kezelése az ügyfélbérlőkben (vegye figyelembe, hogy a virtuálisgép-bővítmények másolására nem használhat `RunAs` fiókokat)
 
-[Azure Virtual Machines](../../virtual-machines/index.yml):
+[Azure Virtual Machines:](../../virtual-machines/index.yml)
 
-- Virtuálisgép-bővítmények használata az üzembe helyezés utáni konfigurációs és automatizálási feladatok biztosításához az Azure-beli virtuális gépeken
-- Rendszerindítási diagnosztika használata Azure-beli virtuális gépek hibakereséséhez
+- Virtuálisgép-bővítmények használata üzembe helyezés utáni konfigurációs és automatizálási feladatok végrehajtásához Azure-beli virtuális gépeken
+- Rendszerindítási diagnosztika használata Azure-beli virtuális gépek hibaelhárításához
 - Virtuális gépek elérése soros konzollal
-- A virtuális gépeket a szabályzattal [felügyelt identitás](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret)használatával integrálhatja a jelszavakhoz, a titkokhoz vagy a titkosítási kulcsokhoz Azure Key Vaultokkal, így biztosíthatja, hogy a titkokat a felügyelt bérlők egyik Key Vault tárolja.
-- Vegye figyelembe, hogy a virtuális gépekhez nem használhat Azure Active Directory távoli bejelentkezéshez
+- Virtuális gépek integrálása Azure Key Vault jelszavakhoz, titkos kulcsokhoz vagy titkosítási kulcsokhoz a lemeztitkosításhoz felügyelt identitás használatával szabályzat [használatával,](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret)amely biztosítja, hogy a titkos kulcsok tárolása a felügyelt bérlőkben Key Vault tárolódva
+- Vegye figyelembe, hogy a virtuális gépekre való távoli Azure Active Directory nem használható távoli bejelentkezéshez
 
-Támogatási kérelmek:
+Támogatási kérések:
 
-- A [ **Súgó és támogatás** támogatási kéréseinek megnyitása](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) a Azure Portal a delegált erőforrások esetében (a delegált hatókörhöz elérhető támogatási csomag kiválasztása)
-- Az Azure [kvóta API](/rest/api/reserved-vm-instances/quotaapi) használatával megtekintheti és kezelheti az Azure-szolgáltatási kvótákat a delegált ügyfelek erőforrásaihoz
+- [A delegált  ](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) erőforrásokra vonatkozó támogatási kéréseket a Azure Portal súgóból és támogatásból nyithatja meg (a delegált hatókör számára elérhető támogatási csomag kiválasztása)
+- Az [Azure Quota API használata](/rest/api/reserved-vm-instances/quotaapi) a delegált ügyfélerőforrások Azure-szolgáltatási kvótáinak megtekintéséhez és kezeléséhez
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
-Az összes forgatókönyv esetén vegye figyelembe a következő korlátozásokat:
+Az összes forgatókönyv esetében vegye figyelembe az alábbi aktuális korlátozásokat:
 
-- Az Azure Resource Manager által kezelt kérelmeket az Azure Lighthouse használatával lehet elvégezni. A kérelmekhez tartozó műveleti URI-k a következővel kezdődnek: `https://management.azure.com` . Azonban az erőforrástípus egy példánya által kezelt kérelmek (Key Vault például a Secrets Access vagy a Storage adatelérése) nem támogatottak az Azure Lighthouse-ban. Ezeknek a kérelmeknek a műveleti URI-k jellemzően a példány egyedi címeivel kezdődnek, például: `https://myaccount.blob.core.windows.net` vagy `https://mykeyvault.vault.azure.net/` . Az utóbbi általában az adatműveletek, nem pedig a felügyeleti műveletek.
-- A szerepkör-hozzárendeléseknek az [Azure beépített szerepköreit](../../role-based-access-control/built-in-roles.md)kell használniuk. Az Azure-beli delegált erőforrás-kezelés jelenleg minden beépített szerepkört támogat, kivéve a tulajdonost vagy az engedéllyel rendelkező beépített szerepköröket [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) . A felhasználói hozzáférés rendszergazdai szerepköre csak korlátozott használat esetén támogatott a [szerepkörök hozzárendeléséhez a felügyelt identitásokhoz](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Az egyéni szerepkörök és a [klasszikus előfizetés-rendszergazdai szerepkörök](../../role-based-access-control/classic-administrators.md) nem támogatottak.
-- A Azure Databrickst használó előfizetések előállítása közben a bérlők kezelése szolgáltatásban lévő felhasználók jelenleg nem indíthatnak Azure Databricks-munkaterületeket a delegált előfizetéseken.
-- Az erőforrás-zárolással rendelkező előfizetések és erőforráscsoportok bevezetése közben ezek a zárolások nem akadályozzák meg a felhasználók által végzett műveletek végrehajtását a bérlők felügyeletében. A rendszer által felügyelt erőforrások, például az Azure által felügyelt alkalmazások vagy az Azure-tervrajzok (rendszer által hozzárendelt megtagadási hozzárendelések) által létrehozott [hozzárendelések megtagadása](../../role-based-access-control/deny-assignments.md) , hogy a bérlők ne tudják eljárni az adott erőforráson. Ugyanakkor az ügyfél bérlője jelenleg nem hozhat létre saját megtagadási hozzárendeléseket (felhasználó által hozzárendelt megtagadási hozzárendeléseket).
-- Az előfizetések delegálása egy [nemzeti felhőben](../../active-directory/develop/authentication-national-cloud.md) és az Azure nyilvános felhőben, vagy két külön nemzeti felhők között nem támogatott.
+- A Azure Resource Manager által kezelt kérések az Azure Lighthouse. A kérések műveleti URI-i a következővel `https://management.azure.com` kezdődnek: . Az erőforrástípus egy példánya Key Vault (például a titkos kulcsokhoz való hozzáférés vagy a tárolási adatok elérése) által kezelt kérések azonban nem támogatottak a Azure Lighthouse. A kérések műveleti URI-i általában a példány egyedi címével kezdődnek, például vagy `https://myaccount.blob.core.windows.net` `https://mykeyvault.vault.azure.net/` . Az utóbbi általában adatművelet, és nem felügyeleti művelet.
+- A szerepkör-hozzárendelések az [Azure beépített szerepköreit kell használniuk.](../../role-based-access-control/built-in-roles.md) Az Azure-beli delegált erőforrás-kezelés jelenleg minden beépített szerepkört támogat, kivéve a Tulajdonost vagy bármely olyan beépített szerepkört, amely [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) rendelkezik engedéllyel. A Felhasználói hozzáférés rendszergazdája szerepkör csak korlátozott használatra támogatott a szerepkörök felügyelt identitásokhoz [való hozzárendelése esetén.](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)  Az egyéni szerepkörök [és a klasszikus előfizetés-rendszergazdai szerepkörök](../../role-based-access-control/classic-administrators.md) nem támogatottak.
+- Bár az előfizetéseket használó előfizetéseket Azure Databricks, a kezelő bérlő felhasználói jelenleg nem Azure Databricks a munkaterületeket egy delegált előfizetésen.
+- Bár az előfizetések és az erőforrás-zárolással felhasználhatja az erőforrás-csoportokat, ezek a zárolások nem akadályozzák meg, hogy a kezelő bérlő felhasználói műveleteket végeznek el. A rendszer [által](../../role-based-access-control/deny-assignments.md) felügyelt erőforrásokat ,például az Azure által felügyelt alkalmazások vagy az Azure Blueprints által létrehozott erőforrásokat (rendszer által hozzárendelt megtagadási hozzárendelések) védő hozzárendelések megakadályozzák, hogy a kezelő bérlő felhasználói az erőforrásokat használják; az ügyfélbérlő felhasználói azonban jelenleg nem hozhatnak létre saját megtagadási hozzárendeléseket (felhasználó által hozzárendelt megtagadási hozzárendeléseket).
+- Az előfizetések delegálása az országos [felhőben](../../active-directory/develop/authentication-national-cloud.md) és a nyilvános Azure-felhőben, illetve két különálló országos felhőben nem támogatott.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az ügyfeleket az Azure világítótoronyba [Azure Resource Manager sablonok használatával](../how-to/onboard-customer.md) vagy [egy magán-vagy nyilvános felügyelt szolgáltatás Azure Marketplace-re való közzétételével](../how-to/publish-managed-services-offers.md)teheti közzé.
-- [Megtekintheti és kezelheti az ügyfeleket](../how-to/view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .
+- Az ügyfeleket Azure Lighthouse, akár Azure Resource Manager, [](../how-to/onboard-customer.md) akár egy privát vagy nyilvános felügyelt szolgáltatási ajánlat közzétételével a [Azure Marketplace.](../how-to/publish-managed-services-offers.md)
+- [Az ügyfelek megtekintéséhez és](../how-to/view-manage-customers.md) kezeléséhez a saját **ügyfeleket a** Azure Portal.

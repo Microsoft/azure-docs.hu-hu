@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLI: adatbázis másolása Azure SQL Database új kiszolgálóra'
-description: Példa az Azure CLI-szkriptre egy adatbázis Azure SQL Database egy új kiszolgálóra való másolásához
+title: 'Azure CLI: Adatbázis másolása Azure SQL Database új kiszolgálóra'
+description: Azure CLI-példaszk szkript egy új kiszolgálóra Azure SQL Database adatbázisban való másolásához
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: e22d28215c06de96d31faec71f4fb595bb74a4a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88032183825443aa3a3945530e2203e5500248a6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87495267"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791318"
 ---
-# <a name="use-cli-to-copy-a-database-in-azure-sql-database-to-a-new-server"></a>Adatbázis másolása Azure SQL Database új kiszolgálóra a CLI használatával
+# <a name="use-cli-to-copy-a-database-in-azure-sql-database-to-a-new-server"></a>Adatbázis másolása új kiszolgálóra a Azure SQL Database cli használatával
 
-Ez az Azure CLI-parancsfájl egy meglévő adatbázis másolatát hozza létre egy új kiszolgálón.
+Ez az Azure CLI-példaszk szkript másolatot készít egy meglévő adatbázisról egy új kiszolgálón.
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
@@ -42,20 +42,20 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A következő parancs használatával távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást.
+A következő paranccsal távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást.
 
 ```azurecli-interactive
 az group delete --name $resource
 az group delete --name $targetResource
 ```
 
-## <a name="sample-reference"></a>Minta leírása
+## <a name="sample-reference"></a>Mintahivatkozás
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Leírás |
 |---|---|
-| [az SQL db Copy](/cli/azure/sql/db#az-sql-db-copy) | Másolatot készít egy adatbázisról, amely az aktuális időpontban készített pillanatképet használja. |
+| [az sql db copy](/cli/azure/sql/db#az_sql_db_copy) | Másolatot készít egy adatbázisról, amely az aktuális időpontban készített pillanatképet használja. |
 
 ## <a name="next-steps"></a>Következő lépések
 

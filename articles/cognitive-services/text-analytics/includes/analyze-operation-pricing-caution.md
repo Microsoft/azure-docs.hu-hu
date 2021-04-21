@@ -1,5 +1,5 @@
 ---
-title: A művelet díjszabásának elemzése
+title: Az Elemzés művelet díjszabása
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -7,14 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 01/20/2021
+ms.date: 04/19/2021
 ms.author: aahi
-ms.openlocfilehash: ce0c6292f4d4517ba68b2d52ed6e2261f42ce19a
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.custom: references_regions
+ms.openlocfilehash: 9b5c30651f6ed3a4b6fc04ef369368ae63bc492f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090723"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765085"
 ---
 > [!CAUTION]
-> Az elemzési művelet használatához győződjön meg arról, hogy az Azure-erőforrás az S Standard díjszabási szintet használja.
+> * Az Elemzés művelethez győződjön meg arról, hogy az Azure-erőforrás az S standard tarifacsomagot használja.
+> * Az Elemzés művelet csak a következő régiókban érhető el: USA 2. nyugati régiója, USA 2. keleti régiója, USA középső régiója, Észak-Európa és Nyugat-Európa.

@@ -1,65 +1,65 @@
 ---
-title: Azure Kubernetes Service-fürt kezelése a webes irányítópulttal
-description: Ismerje meg, hogyan kezelheti az Azure Kubernetes Service (ak) fürtjét a beépített Kubernetes webes felhasználói felületi irányítópult használatával
+title: Fürt Azure Kubernetes Service kezelése a webes irányítópult használatával
+description: Megtudhatja, hogyan használhatja a beépített Kubernetes webes felhasználói felületi irányítópultját egy Azure Kubernetes Service -fürt kezelésére
 services: container-service
 author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: acaeaa2e5338c86fa59d0e2941719f8fa2708ef1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0d872a60c4aea89e621fe25ade45697244a74fa8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176821"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779722"
 ---
-# <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>A Kubernetes web Dashboard elérése az Azure Kubernetes szolgáltatásban (ak)
+# <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>A Kubernetes webes irányítópultjának elérése Azure Kubernetes Service (AKS)
 
-A Kubernetes tartalmaz egy webes irányítópultot, amely alapszintű felügyeleti műveletekhez használható. Ez az irányítópult lehetővé teszi az alkalmazások alapvető állapotának és mérőszámának megtekintését, szolgáltatások létrehozását és üzembe helyezését, valamint meglévő alkalmazások szerkesztését. Ez a cikk bemutatja, hogyan érheti el a Kubernetes-irányítópultot az Azure CLI használatával, majd végigvezeti az irányítópultok alapszintű műveletein.
+A Kubernetes tartalmaz egy webes irányítópultot, amely alapszintű felügyeleti műveletekhez használható. Ezen az irányítópulton megtekintheti az alkalmazások alapvető állapot- és metrikaállapotát, szolgáltatásokat hozhat létre és telepíthet, valamint szerkesztheti a meglévő alkalmazásokat. Ez a cikk bemutatja, hogyan férhet hozzá a Kubernetes-irányítópulthoz az Azure CLI használatával, majd végigvezeti néhány alapvető irányítópult-műveleten.
 
-A Kubernetes-irányítópulttal kapcsolatos további információkért lásd: [Kubernetes webes felhasználói felület irányítópultja][kubernetes-dashboard]. Az AK a 2,0-es és újabb verziójú nyílt forráskódú irányítópultot használja.
+További információ a Kubernetes-irányítópultról: [Kubernetes webes felhasználói felületi irányítópult.][kubernetes-dashboard] Az AKS a nyílt forráskódú irányítópult 2.0-s és újabb verzióját használja.
 
 > [!WARNING]
-> **Az AK-irányítópult bővítmény az elavultság beállítására van beállítva. Ehelyett használja a [Azure Portal (előzetes verzió) Kubernetes erőforrás nézetét][kubernetes-portal] .** 
-> * A Kubernetes irányítópultja alapértelmezés szerint engedélyezve van a 1,18-nál kisebb Kubernetes-verziót futtató fürtök esetében.
-> * Az irányítópult-bővítmény alapértelmezés szerint le lesz tiltva az 1,18-es vagy újabb Kubernetes létrehozott összes új fürt esetében. 
- > * Az előzetes verzióban az Kubernetes 1,19-es verziójától kezdve az AK többé nem támogatja a felügyelt Kube-irányítópult-bővítmény telepítését. 
- > * A bővítményt engedélyező meglévő fürtöket nem érinti a rendszer. A felhasználók továbbra is képesek lesznek manuálisan telepíteni a nyílt forráskódú irányítópultot felhasználó által telepített szoftverként.
+> **Az AKS-irányítópult bővítménye elajátításra van beállítva. Használja inkább a [Kubernetes erőforrásnézetet a Azure Portal (előzetes verzió)][kubernetes-portal] nézetben.** 
+> * A Kubernetes-irányítópult alapértelmezés szerint engedélyezve van az 1.18-asnál régebbi Kubernetes-verziót futtató fürtök számára.
+> * Az irányítópult-bővítmény alapértelmezés szerint le lesz tiltva a Kubernetes 1.18-as vagy újabb rendszerében létrehozott összes új fürtön. 
+ > * Az előzetes verzióban elérhető Kubernetes 1.19-es verziótól kezdve az AKS már nem támogatja a felügyelt kube-dashboard bővítmény telepítését. 
+ > * A bővítményt engedélyező meglévő fürtökre ez nem lesz hatással. A felhasználók továbbra is manuálisan telepítheti a nyílt forráskódú irányítópultot felhasználó által telepített szoftverként.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A dokumentumban részletezett lépések feltételezik, hogy létrehozott egy AK-fürtöt, és létesítettek egy, `kubectl` a fürttel létesített kapcsolatokat. Ha AK-fürtöt kell létrehoznia, tekintse meg a rövid útmutató [: Azure Kubernetes Service-fürt üzembe helyezése az Azure CLI használatával][aks-quickstart]című témakört.
+A dokumentumban részletezett lépések feltételezik, hogy létrehozott egy AKS-fürtöt, és létrehozott egy kapcsolatot a `kubectl` fürthöz. Ha létre kell hoznia egy AKS-fürtöt, tekintse meg a rövid útmutató: Azure Kubernetes Service-fürt üzembe helyezése [az Azure CLI használatával.][aks-quickstart]
 
-Szüksége lesz az Azure CLI-es vagy újabb verziójára is, amely telepítve van és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
+Emellett az Azure CLI 2.6.0-s vagy újabb verziójára is telepítve és konfigurálva kell. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
-## <a name="disable-the-kubernetes-dashboard"></a>A Kubernetes irányítópult letiltása
+## <a name="disable-the-kubernetes-dashboard"></a>A Kubernetes-irányítópult letiltása
 
-A Kube-irányítópult addon **alapértelmezés szerint engedélyezve van a K8s 1,18-nál régebbi fürtökön**. Az addon le lehet tiltani a következő parancs futtatásával.
+A kube-dashboard bővítmény alapértelmezés szerint engedélyezve van a **K8s 1.18-asnál régebbi fürtökön.** A bővítmény az alábbi parancs futtatásával tiltható le.
 
 ``` azurecli
 az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 ```
 
-## <a name="start-the-kubernetes-dashboard"></a>A Kubernetes irányítópult elindítása
+## <a name="start-the-kubernetes-dashboard"></a>Indítsa el a Kubernetes-irányítópultot
 
 > [!WARNING]
-> Az AK-irányítópult bővítmény elavult a 1.19 + verzióban. Ehelyett használja a [Azure Portal (előzetes verzió) Kubernetes erőforrás nézetét][kubernetes-portal] . 
-> * A következő parancs most megnyitja az Azure Portal erőforrás nézetét a 1,19-es és újabb verziók kubernetes irányítópultja helyett.
+> Az AKS-irányítópult bővítménye az 1.19-es és újabb verziók esetén elavult. Használja inkább a [Kubernetes erőforrásnézetet a Azure Portal (előzetes verzió)][kubernetes-portal] nézetben. 
+> * A következő parancs ekkor megnyitja az Azure Portal erőforrásnézetét a kubernetes-irányítópult helyett az 1.19-es és újabb verziókhoz.
 
-A Kubernetes-irányítópult fürtön való elindításához használja az az [AK Browse][az-aks-browse] parancsot. Ehhez a parancshoz a Kube-Dashboard addon telepítése szükséges a fürtön, amely alapértelmezés szerint a Kubernetes 1,18-nál régebbi verziót futtató fürtökön található.
+A Kubernetes-irányítópult fürtön való indításához használja az [az aks browse][az-aks-browse] parancsot. Ehhez a parancshoz telepíteni kell a kube-dashboard bővítményt a fürtön, amely alapértelmezés szerint megtalálható a Kubernetes 1.18-as verziójánál régebbi verziót futtató fürtökön.
 
-Az alábbi példa megnyitja az irányítópultot a *myAKSCluster* nevű fürthöz az *myResourceGroup* nevű erőforráscsoport:
+Az alábbi példa megnyitja a *myResourceGroup* nevű erőforráscsoportban lévő *myAKSCluster* nevű fürt irányítópultját:
 
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Ez a parancs létrehoz egy proxyt a fejlesztői rendszer és a Kubernetes API között, és egy webböngészőt nyit meg a Kubernetes-irányítópulton. Ha egy webböngésző nem nyílik meg a Kubernetes irányítópultra, másolja és illessze be az Azure CLI-ben feljegyzett URL-címet, jellemzően `http://127.0.0.1:8001` .
+Ez a parancs létrehoz egy proxyt a fejlesztői rendszer és a Kubernetes API között, és megnyit egy webböngészőt a Kubernetes-irányítópulton. Ha egy webböngésző nem nyílik meg a Kubernetes-irányítópulton, másolja és illessze be az Azure CLI-ben feljegyzett URL-címet( általában `http://127.0.0.1:8001` ).
 
 > [!NOTE]
-> Ha nem látja az irányítópultot, akkor `http://127.0.0.1:8001` manuálisan is átirányíthatja a következő címekre. A 1,16-es vagy újabb fürtökön HTTPS protokollt használnak, és külön végpontot igényelnek.
-> * K8s 1,16 vagy újabb: `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
-> * K8s 1,15 és alacsonyabb: `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy`
+> Ha nem látja az irányítópultot a következő címekre manuálisan `http://127.0.0.1:8001` is. Az 1.16-os vagy annál nagyobb fürtök a https protokollt használják, és külön végpontot igényelnek.
+> * K8s 1.16 vagy nagyobb: `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
+> * K8s 1.15 és az alábbi: `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy`
 
 <!--
 ![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)
@@ -103,36 +103,36 @@ After you choose a method to sign in, the Kubernetes dashboard is displayed. If 
 > For more information on using the different authentication methods, see the Kubernetes dashboard wiki on [access controls][dashboard-authentication].
 -->
 
-## <a name="sign-in-to-the-dashboard-kubernetes-116"></a>Bejelentkezés az irányítópultra (kubernetes 1.16 +)
+## <a name="sign-in-to-the-dashboard-kubernetes-116"></a>Bejelentkezés az irányítópultra (kubernetes 1.16+)
 
 > [!IMPORTANT]
-> [A Kubernetes-irányítópult](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) vagy a Kubernetes v 1.16-nek és a "Kubernetes-Dashboard" 1.10.1 a továbbiakban nem használhatók erőforrások lekérésére az [adott kiadásban található biztonsági javítás](https://github.com/kubernetes/dashboard/pull/3400)miatt. Ennek eredményeképpen a hitelesítési adatok nélküli kérések [401 jogosulatlan hibát](https://github.com/Azure/AKS/issues/1573#issuecomment-703040998)adnak vissza. Egy szolgáltatásfiók által beolvasott tulajdonosi jogkivonat továbbra is használható ebben a Kubernetes- [irányítópulton](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui), de ez hatással van az irányítópult-bővítmény bejelentkezési folyamatára a régebbi verziókhoz képest.
+> A [Kubernetes-irányítópult vagy a kubernetes](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) v1.16+ 1.10-es vagy újabb verziókban a "kubernetes-dashboard" szolgáltatásfiók már nem használható erőforrások lekérésekor a kiadásban található biztonsági javítás [miatt.](https://github.com/kubernetes/dashboard/pull/3400) Ennek eredményeképpen a hitelesítési adatok nélküli kérelmek [401-es jogosulatlan hibát eredményeznek.](https://github.com/Azure/AKS/issues/1573#issuecomment-703040998) A szolgáltatásfiókból lekért bearer token továbbra is használható, mint ebben a [Kubernetes-irányítópult-példában,](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui)de ez hatással van az irányítópult bővítményének bejelentkezési folyamatára a régebbi verziókhoz képest.
 >
->Ha továbbra is a 1,16 előtti verziót futtatja, akkor továbbra is megadhatja a "kubernetes-Dashboard" szolgáltatásfiók engedélyeit, de ez **nem ajánlott**:
+>Ha az 1.16-osnál korábbi verziót futtat, továbbra is adhat engedélyeket a "kubernetes-dashboard" szolgáltatásfiókhoz, de ez **nem ajánlott:**
 > ```console
 > kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 > ```
 
-A kezdeti képernyőn egy kubeconfig vagy token szükséges. Mindkét beállításhoz erőforrás-engedély szükséges ahhoz, hogy megjelenjenek az erőforrások az irányítópulton.
+A megjelenő kezdeti képernyőn kubeconfig vagy token szükséges. Mindkét lehetőséghez erőforrás-engedélyre van szükség az erőforrások irányítópulton való megjelenítéséhez.
 
 ![bejelentkezési képernyő](./media/kubernetes-dashboard/login.png)
 
 **Kubeconfig használata**
 
-Az Azure AD-t és a nem Azure AD-t használó fürtök esetében a kubeconfig is átadható. Győződjön meg arról, hogy a hozzáférési jogkivonatok érvényesek, ha a tokenek lejártak, a kubectl-on keresztül frissítheti a jogkivonatokat.
+Az Azure AD-t és a nem Azure AD-t engedélyező fürtök esetén is át lehet adni egy kubeconfig-t. Győződjön meg arról, hogy a hozzáférési jogkivonatok érvényesek, ha a jogkivonatok lejártak, a kubectl használatával frissítheti a jogkivonatokat.
 
-1. A rendszergazdai kubeconfig beállítása a `az aks get-credentials -a --resource-group <RG_NAME> --name <CLUSTER_NAME>`
-1. Válassza ki `Kubeconfig` , majd kattintson `Choose kubeconfig file` a fájl-választó megnyitásához
-1. Válassza ki a kubeconfig-fájlt (az alapértelmezett érték a $HOME/.Kube/config)
+1. A rendszergazdai kubeconfig beállítása a következővel: `az aks get-credentials -a --resource-group <RG_NAME> --name <CLUSTER_NAME>`
+1. Válassza ki `Kubeconfig` a fájlt, `Choose kubeconfig file` és kattintson rá a fájlválasztó megnyitásához
+1. Válassza ki a kubeconfig fájlt (alapértelmezés szerint $HOME/.kube/config)
 1. Kattintson a következőre: `Sign In`
 
-**Token használata**
+**Jogkivonat használata**
 
-1. **Nem Azure ad-kompatibilis fürt** esetén futtassa `kubectl config view` és másolja a fürt felhasználói fiókjához társított jogkivonatot.
-1. Illessze be a tokent a bejelentkezés elemre.    
+1. A **nem Azure AD-t használó fürtök esetén** futtassa és másolja ki a fürt felhasználói fiókjához társított `kubectl config view` jogkivonatot.
+1. Bejelentkezéskor illessze be a token lehetőséget.    
 1. Kattintson a következőre: `Sign In`
 
-Az Azure AD-kompatibilis fürtök esetében a következő paranccsal kérje le az HRE tokent. Ellenőrizze, hogy lecserélte-e az erőforráscsoportot és a fürt nevét a parancsban.
+Az Azure AD-t engedélyező fürtök esetén az alábbi paranccsal olvassa be az AAD-jogkivonatot. Ellenőrizze, hogy lecserélte-e az erőforráscsoportot és a fürt nevét a parancsban.
 
 ```
 ## Update <RESOURCE_GROUP and <AKS_NAME> with your input.
@@ -140,63 +140,63 @@ Az Azure AD-kompatibilis fürtök esetében a következő paranccsal kérje le a
 kubectl config view -o jsonpath='{.users[?(@.name == "clusterUser_<RESOURCE GROUP>_<AKS_NAME>")].user.auth-provider.config.access-token}'
 ```
 
-A sikeres művelet után az alábbihoz hasonló oldal jelenik meg.
+A sikeres művelet után megjelenik egy, az alábbihoz hasonló oldal.
 
-![A Kubernetes webes irányítópultjának Áttekintés lapja](./media/kubernetes-dashboard/dashboard-overview.png)
+![A Kubernetes webes irányítópultjának áttekintő oldala](./media/kubernetes-dashboard/dashboard-overview.png)
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 
-A következő lépések végrehajtásához a felhasználónak rendelkeznie kell a megfelelő erőforrásokhoz szükséges engedélyekkel. 
+A következő lépésekhez a felhasználónak engedélyekkel kell rendelkeznie a megfelelő erőforrásokhoz. 
 
-Ha szeretné megtudni, hogyan csökkentheti a Kubernetes irányítópultja a felügyeleti feladatok összetettségét, hozzon létre egy alkalmazást. Létrehozhat egy alkalmazást a Kubernetes-irányítópulton egy szövegbeviteli, egy YAML-fájl vagy egy grafikus varázsló segítségével.
+Ahhoz, hogy lássuk, hogyan csökkentheti a Kubernetes-irányítópult a felügyeleti feladatok összetettségét, hozzunk létre egy alkalmazást. Alkalmazásokat a Kubernetes irányítópultján hozhat létre szövegbevitel, YAML-fájl vagy grafikus varázsló segítségével.
 
-Alkalmazás létrehozásához hajtsa végre a következő lépéseket:
+Alkalmazás létrehozásához kövesse az alábbi lépéseket:
 
 1. Válassza a **Létrehozás** gombot a jobb felső ablakban.
-1. A grafikus varázsló használatához válassza az **alkalmazás létrehozása** lehetőséget.
-1. Adja meg az üzemelő példány nevét, például *Nginx*
-1. Adja meg a használni kívánt tároló-rendszerkép nevét, például *Nginx: 1.15.5*
-1. Ahhoz, hogy a 80-es port elérhető legyen a webes forgalom számára, létre kell hoznia egy Kubernetes szolgáltatást. A **szolgáltatás** területen válassza a **külső** lehetőséget, majd adja meg a **80** értéket a port és a célport esetében is.
-1. Ha elkészült, válassza a **telepítés** lehetőséget az alkalmazás létrehozásához.
+1. A grafikus varázslót úgy használhatja, hogy létrehoz **egy alkalmazást.**
+1. Adja meg az üzemelő példány nevét, például *nginx*
+1. Adja meg a használni használt tároló rendszerképének nevét, például *nginx:1.15.5*
+1. Ha a 80-as portot webes forgalomhoz is elérhetővé teszi, hozzon létre egy Kubernetes-szolgáltatást. A **Szolgáltatás alatt** válassza a **Külső** lehetőséget, majd adja meg a **80-as** portot a port és a célport számára is.
+1. Ha elkészült, válassza az Üzembe **helyezés** lehetőséget az alkalmazás létrehozásához.
 
 ![Alkalmazás üzembe helyezése a Kubernetes webes irányítópultján](./media/kubernetes-dashboard/create-app.png)
 
-A Kubernetes szolgáltatáshoz hozzárendelt nyilvános külső IP-címekhez egy-két percet vesz igénybe. A bal oldali méretnél a **felderítés és** terheléselosztás területen válassza a **szolgáltatások** lehetőséget. Az alkalmazás szolgáltatása szerepel a listáján, beleértve a *külső végpontokat* is, ahogy az az alábbi példában is látható:
+Egy-két percet vesz igénybe, hogy egy nyilvános külső IP-cím hozzá legyen rendelve a Kubernetes-szolgáltatáshoz. A bal oldali méretben, a Felderítés és **terheléselosztás** alatt válassza a Szolgáltatások **lehetőséget.** Megjelenik az alkalmazás szolgáltatása, beleértve a *külső* végpontokat is, ahogy az alábbi példában látható:
 
 ![Szolgáltatások és végpontok listájának megtekintése](./media/kubernetes-dashboard/view-services.png)
 
-Válassza ki a végpontot, és nyissa meg a webböngésző ablakát az alapértelmezett NGINX-lapra:
+Válassza ki a végpont címét az alapértelmezett NGINX-oldal webböngészőablakának megnyitásához:
 
-![Az üzembe helyezett alkalmazás alapértelmezett NGINX-lapjának megtekintése](./media/kubernetes-dashboard/default-nginx.png)
+![Az üzembe helyezett alkalmazás alapértelmezett NGINX oldalának megtekintése](./media/kubernetes-dashboard/default-nginx.png)
 
-## <a name="view-pod-information"></a>Pod-adatok megtekintése
+## <a name="view-pod-information"></a>Podok információinak megtekintése
 
-A Kubernetes irányítópulton alapszintű figyelési mérőszámok és hibaelhárítási információk, például naplók adhatók meg.
+A Kubernetes irányítópultja alapvető monitorozási metrikákat és hibaelhárítási információkat, például naplókat biztosít.
 
-Ha többet szeretne megtudni az alkalmazás hüvelyéről, válassza a bal oldali menüben a **hüvelyek** lehetőséget. Megjelenik az elérhető hüvelyek listája. Válassza ki az *Nginx* Pod-t az információk, például az erőforrás-felhasználás megtekintéséhez:
+Az alkalmazáspodokkal kapcsolatos további információkért válassza a **podok** lehetőséget a bal oldali menüben. Megjelenik az elérhető podok listája. Válassza ki *az nginx-podot* az információk, például az erőforrás-használat megtekintéséhez:
 
-![Pod-adatok megtekintése](./media/kubernetes-dashboard/view-pod-info.png)
+![Podok információinak megtekintése](./media/kubernetes-dashboard/view-pod-info.png)
 
 ## <a name="edit-the-application"></a>Az alkalmazás szerkesztése
 
-Az alkalmazások létrehozása és megtekintése mellett a Kubernetes irányítópultja is használható az alkalmazások központi telepítésének szerkesztéséhez és frissítéséhez. Az alkalmazás további redundancia biztosítása érdekében növeljük az NGINX-replikák számát.
+Az alkalmazások létrehozása és megtekintése mellett a Kubernetes-irányítópult is használható az alkalmazástelepítések szerkesztésére és frissítésére. Az alkalmazás további redundanciának biztosításához növeljük az NGINX-replikák számát.
 
-Központi telepítés szerkesztése:
+Üzemelő példány szerkesztése:
 
-1. Válassza a **központi telepítések** lehetőséget a bal oldali menüben, majd válassza ki a *Nginx* -telepítést.
-1. Válassza a **Szerkesztés** lehetőséget a jobb felső navigációs sávon.
-1. Keresse meg az `spec.replica` értéket a következő helyen: 20. sor. Az alkalmazás replikáinak számának növeléséhez módosítsa az értéket *1* és *3* között.
-1. Ha elkészült, válassza a **frissítés** lehetőséget.
+1. Válassza **az Üzemelő példányok** elemet a bal oldali menüben, majd válassza ki *az nginx üzemelő példányát.*
+1. A **jobb felső** navigációs sávon válassza a Szerkesztés lehetőséget.
+1. Keresse meg `spec.replica` az értéket a 20. sor körül. Az alkalmazás replikái számának növeléséhez módosítsa ezt az értéket *1-ről* *3-ra.*
+1. Ha **készen áll,** válassza a Frissítés lehetőséget.
 
-![A központi telepítés szerkesztése a replikák számának frissítéséhez](./media/kubernetes-dashboard/edit-deployment.png)
+![Az üzemelő példány szerkesztése a replikák számának frissítéséhez](./media/kubernetes-dashboard/edit-deployment.png)
 
-Néhány percet vesz igénybe, hogy az új hüvelyek létre legyenek hozva egy replikakészlet-készleten belül. A bal oldali menüben válassza a **replika készletek** lehetőséget, majd válassza ki az *Nginx* -replikát. A hüvelyek listája most már a frissített replikák számát tükrözi, ahogy az a következő példában látható:
+Az új podok létrehozása egy replikakészleten belül néhány percet vesz igénybe. A bal oldali menüben válassza a **Replikakészletek** lehetőséget, majd válassza ki *az nginx replikakészletet.* A podok listája most már tükrözi a frissített replikaszámokat, ahogy az a következő példakimenetben látható:
 
 ![A replikakészlet információinak megtekintése](./media/kubernetes-dashboard/view-replica-set.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Kubernetes-irányítópulttal kapcsolatos további információkért tekintse meg a [Kubernetes webes felhasználói felületének irányítópultját][kubernetes-dashboard].
+További információ a Kubernetes-irányítópultról: [Kubernetes webes felhasználói felületi irányítópult.][kubernetes-dashboard]
 
 <!-- LINKS - external -->
 [dashboard-authentication]: https://github.com/kubernetes/dashboard/wiki/Access-control
@@ -209,8 +209,8 @@ A Kubernetes-irányítópulttal kapcsolatos további információkért tekintse 
 [aad-cluster]: ./azure-ad-integration-cli.md
 [aks-quickstart]: ./kubernetes-walkthrough.md
 [aks-service-accounts]: ./concepts-identity.md#kubernetes-service-accounts
-[az-account-get-access-token]: /cli/azure/account#az-account-get-access-token
-[az-aks-browse]: /cli/azure/aks#az-aks-browse
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-account-get-access-token]: /cli/azure/account#az_account_get-access-token
+[az-aks-browse]: /cli/azure/aks#az_aks_browse
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [install-azure-cli]: /cli/azure/install-azure-cli
 [kubernetes-portal]: ./kubernetes-portal.md

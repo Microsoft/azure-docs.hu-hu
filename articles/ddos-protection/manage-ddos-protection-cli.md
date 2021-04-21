@@ -1,6 +1,6 @@
 ---
-title: Azure DDoS Protection terv létrehozása és konfigurálása az Azure CLI használatával
-description: Megtudhatja, hogyan hozhat létre DDoS Protection tervet az Azure CLI használatával
+title: Tervterv létrehozása Azure DDoS Protection konfigurálása az Azure CLI használatával
+description: Megtudhatja, hogyan hozhat létre DDoS Protection-tervet az Azure CLI használatával
 services: ddos-protection
 documentationcenter: na
 author: aletheatoh
@@ -11,35 +11,35 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 98c71f3cf1c521c08d177acb89aad85301e61579
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 8a8da50dc703d59dc16b5cb6253d39aeb33fd76d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103011"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777634"
 ---
-# <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>Rövid útmutató: Azure DDoS Protection standard létrehozása és konfigurálása az Azure CLI-vel
+# <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>Rövid útmutató: Standard Azure DDoS Protection létrehozása és konfigurálása az Azure CLI használatával
 
-Ismerkedjen meg Azure DDoS Protection standard szintű Azure CLI használatával. 
+A Standard Azure DDoS Protection használatának első lépések az Azure CLI használatával. 
 
-A DDoS Protection-csomag olyan virtuális hálózatokat határoz meg, amelyeken engedélyezve van a DDoS Protection standard, az előfizetések között. Beállíthat egy DDoS Protection-tervet a szervezet számára, és a virtuális hálózatokat több előfizetésből ugyanahhoz a csomaghoz kapcsolhatja. 
+A DDoS Protection-csomag olyan virtuális hálózatok készletét határozza meg, amelyeken engedélyezve van a DDoS Protection Standard, több előfizetésben. Konfigurálhat egy DDoS protection-tervet a szervezet számára, és több előfizetésből származó virtuális hálózatokat kapcsolhat ugyanhez a csomaghoz. 
 
-Ebben a rövid útmutatóban létrehoz egy DDoS Protection-tervet, és összekapcsolja azt egy virtuális hálózattal. 
+Ebben a rövid útmutatóban egy DDoS Protection-tervet fog létrehozni, és egy virtuális hálózathoz fogja azt csatolni. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - Helyileg telepített Azure CLI vagy Azure Cloud Shell
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.28 verziójára vagy újabb verziójára van szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
+Ha a CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.28-as vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
-## <a name="create-a-ddos-protection-plan"></a>DDoS Protection terv létrehozása
+## <a name="create-a-ddos-protection-plan"></a>Új DDoS Protection létrehozása
 
-Az Azure-ban kapcsolódó erőforrásokat oszt ki egy erőforráscsoporthoz. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat.
+Az Azure-ban a kapcsolódó erőforrásokat egy erőforráscsoporthoz rendeli hozzá. Használhat egy meglévő erőforráscsoportot, vagy létrehozhat egy újat.
 
-Erőforráscsoport létrehozásához használja [az az Group Create](/cli/azure/group#az-group-create)paranccsal. Ebben a példában az erőforráscsoport _MyResourceGroup_ nevet fogjuk használni, és az _USA keleti_ régióját használjuk:
+Erőforráscsoport létrehozásához használja az [az group create et.](/cli/azure/group#az_group_create) Ebben a példában az erőforráscsoportnak a _MyResourceGroup_ nevet adhatja, és az USA keleti _régiója helyet fogjuk_ használni:
 
 ```azurecli-interactive
 az group create \
@@ -47,7 +47,7 @@ az group create \
     --location eastus
 ```
 
-Most hozzon létre egy _MyDdosProtectionPlan_ nevű DDoS Protection-csomagot:
+Most hozzon létre egy _MyDdosProtectionPlan nevű_ DDoS protection-tervet:
 
 ```azurecli-interactive
 az network ddos-protection create \
@@ -57,9 +57,9 @@ az network ddos-protection create \
 
 ## <a name="enable-ddos-protection-for-a-virtual-network"></a>DDoS-védelem engedélyezése virtuális hálózathoz
 
-### <a name="enable-ddos-protection-for-a-new-virtual-network"></a>DDoS-védelem engedélyezése új virtuális hálózat esetén
+### <a name="enable-ddos-protection-for-a-new-virtual-network"></a>DDoS-védelem engedélyezése új virtuális hálózathoz
 
-A DDoS Protection a virtuális hálózatok létrehozásakor engedélyezhető. Ebben a példában a virtuális hálózati _MyVnet_ fogjuk elnevezni: 
+Virtuális hálózat létrehozásakor engedélyezheti a DDoS-védelmet. Ebben a példában a myVnet nevet adhatja a virtuális _hálózatnak:_ 
 
 ```azurecli-interactive
 az network vnet create \
@@ -70,11 +70,11 @@ az network vnet create \
     --ddos-protection-plan MyDdosProtectionPlan
 ```
 
-A virtuális hálózat nem helyezhető át másik erőforráscsoporthoz vagy előfizetésbe, ha a DDoS standard engedélyezve van a virtuális hálózathoz. Ha a virtuális hálózatot a DDoS standard használatával kell áthelyeznie, először tiltsa le a DDoS standardot, helyezze át a virtuális hálózatot, majd engedélyezze a DDoS standard használatát. Az áthelyezést követően a rendszer alaphelyzetbe állítja a virtuális hálózatban lévő összes védett nyilvános IP-cím automatikusan beállított szabályzatának küszöbértékeit.
+A virtuális hálózatok nem áthelyezhetőek másik erőforráscsoportba vagy előfizetésbe, ha a DDoS Standard engedélyezve van a virtuális hálózaton. Ha olyan virtuális hálózatot kell áthelyezni, amelynél engedélyezve van a DDoS Standard, először tiltsa le a Standard DDoS-t, helyezze át a virtuális hálózatot, majd engedélyezze a DDoS Standardot. Az áthelyezés után a virtuális hálózatban lévő összes védett nyilvános IP-cím szabályzati küszöbértékei alaphelyzetbe állnak.
 
-### <a name="enable-ddos-protection-for-an-existing-virtual-network"></a>DDoS-védelem engedélyezése meglévő virtuális hálózat esetén
+### <a name="enable-ddos-protection-for-an-existing-virtual-network"></a>DDoS Protection engedélyezése meglévő virtuális hálózathoz
 
-[A DDoS elleni védelmi terv létrehozásakor](#create-a-ddos-protection-plan)egy vagy több virtuális hálózatot is hozzárendelhet a csomaghoz. Több virtuális hálózat hozzáadásához egyszerűen sorolja fel a neveket vagy az azonosítókat, szóközzel elválasztva. Ebben a példában a következő _MyVnet_ vesszük fel:
+[DDoS protection-csomag létrehozásakor](#create-a-ddos-protection-plan)egy vagy több virtuális hálózatot társíthat a tervhez. Ha egynél több virtuális hálózatot szeretne hozzáadni, egyszerűen listába kell sorolni a neveket vagy az neveket, szóközök elválasztva. Ebben a példában hozzáadjuk a _MyVnet alhálózatot:_
 
 ```azurecli-interactive
 az group create \
@@ -87,7 +87,7 @@ az network ddos-protection create \
     --vnets MyVnet
 ```
 
-Azt is megteheti, hogy egy adott virtuális hálózat esetében engedélyezte a DDoS-védelmet:
+Másik lehetőségként engedélyezheti a DDoS Protectiont egy adott virtuális hálózathoz:
 
 ```azurecli-interactive
 az network vnet update \
@@ -99,7 +99,7 @@ az network vnet update \
 
 ## <a name="validate-and-test"></a>Ellenőrzés és tesztelés
 
-Először olvassa el a DDoS Protection-terv részleteit:
+Először ellenőrizze a DDoS Protection-terv részleteit:
 
 ```azurecli-interactive
 az network ddos-protection show \
@@ -107,20 +107,20 @@ az network ddos-protection show \
     --name MyDdosProtectionPlan
 ```
 
-Ellenőrizze, hogy a parancs visszaadja-e a DDoS Protection-terv helyes részleteit.
+Ellenőrizze, hogy a parancs a DDoS Protection-terv megfelelő adatait adja-e vissza.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A következő oktatóanyagban megtarthatja az erőforrásait. Ha már nincs rá szükség, törölje a _MyResourceGroup_ erőforráscsoportot. Az erőforráscsoport törlésekor a DDoS elleni védelmi tervet és az ahhoz kapcsolódó összes erőforrást is törli. 
+A következő oktatóanyagban megtarthatja az erőforrásait. Ha már nincs rá szükség, törölje a _MyResourceGroup_ erőforráscsoportot. Az erőforráscsoport törlésekor a DDoS Protection-tervet és annak összes kapcsolódó erőforrását is törli. 
 
-Az erőforráscsoport törléséhez használja az [az Group delete](/cli/azure/group#az_group_delete):
+Az erőforráscsoport törléséhez használja [az az group delete parancsot:](/cli/azure/group#az_group_delete)
 
 ```azurecli-interactive
 az group delete \
 --name MyResourceGroup 
 ```
 
-Egy adott virtuális hálózat frissítése a DDoS-védelem letiltásához:
+Egy adott virtuális hálózat frissítése a DDoS Protection letiltásához:
 
 ```azurecli-interactive
 az network vnet update \
@@ -130,11 +130,11 @@ az network vnet update \
     --ddos-protection-plan ""
 ```
 
-Ha törölni szeretné a DDoS Protection-csomagot, először el kell távolítania az összes virtuális hálózatot. 
+Ha törölni szeretne egy DDoS Protection-tervet, először el kell különítania az összes virtuális hálózatot. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha szeretné megtudni, hogyan tekintheti meg és konfigurálhatja a DDoS elleni védelmi terv telemetria, folytassa az oktatóanyagokkal.
+A DDoS Protection-terv telemetriai adatainak megtekintéséről és konfigurálásról az oktatóanyagokban olvashat.
 
 > [!div class="nextstepaction"]
 > [DDoS Protection-telemetria megtekintése és konfigurálása](telemetry.md)

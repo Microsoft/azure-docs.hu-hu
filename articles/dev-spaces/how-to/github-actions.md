@@ -1,31 +1,31 @@
 ---
-title: GitHub-műveletek & Azure Kubernetes Service (előzetes verzió)
+title: GitHub Actions & Azure Kubernetes Service (előzetes verzió)
 services: azure-dev-spaces
 ms.date: 04/03/2020
 ms.topic: conceptual
-description: Lekéréses kérelem módosításainak áttekintése és tesztelése közvetlenül az Azure Kubernetes Service-ben a GitHub-műveletek és az Azure dev Spaces használatával
-keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, GitHub-műveletek, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
+description: A lekéréses kérelmek módosításainak áttekintése és tesztelése közvetlenül a Azure Kubernetes Service a GitHub Actions és az Azure Dev Spaces használatával
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, GitHub Actions, Helm, service mesh, service mesh routing, kubectl, k8s
 manager: gwallace
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 37ad621609f5a5631b498e55483e5d16e8ac4472
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 84d4f94cdb756b0bc11026baaa3acf065604c421
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202110"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777544"
 ---
-# <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-műveletek & Azure Kubernetes Service (előzetes verzió)
+# <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub Actions & Azure Kubernetes Service (előzetes verzió)
 
 [!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
-Az Azure dev Spaces egy olyan GitHub-műveletekkel rendelkező munkafolyamatot biztosít, amely lehetővé teszi, hogy a lekéréses kérelmeket közvetlenül az AK-ban tesztelje, mielőtt a pull-kérelem beolvad az adattár fő ágában. A lekéréses kérelmek változásainak áttekintéséhez futó alkalmazásokkal növelheti a fejlesztő és a csapattagok megbízhatóságát is. Ez a futó alkalmazás segítheti a csoporttagokat, például a termék-kezelőket és a tervezőket, a fejlesztés korai szakaszában a felülvizsgálati folyamat részévé válnak.
+Az Azure Dev Spaces a GitHub Actions használatával munkafolyamatot biztosít, amely lehetővé teszi, hogy közvetlenül az AKS-ban tesztelje a lekéréses kérelmek módosításait, mielőtt egyesítené a lekéréses kérelmet az adattár fő ágával. Ha egy futó alkalmazás áttekinti a lekéréses kérelmek módosításait, az növelheti a fejlesztő és a csapattagok bizalmát is. Ez a futó alkalmazás abban is segíthet, hogy a csapat tagjai, például a termékmenedzserek és a tervezők a fejlesztés korai szakaszaiban a felülvizsgálati folyamat részeivé válnak.
 
 Ebből az útmutatóból a következőket tudhatja meg:
 
-* Azure fejlesztői tárhelyek beállítása egy felügyelt Kubernetes-fürtön az Azure-ban.
-* Helyezzen üzembe egy nagyméretű alkalmazást több szolgáltatással egy fejlesztői tárhelyen.
-* A CI/CD beállítása GitHub-műveletekkel.
-* Egyetlen, a teljes alkalmazás kontextusában lévő, elkülönített fejlesztési területen tesztelheti a szolgáltatást.
+* Az Azure Dev Spaces beállítása egy felügyelt Kubernetes-fürtön az Azure-ban.
+* Több mikroszolgáltatással rendelkező nagyméretű alkalmazás üzembe helyezése egy Dev Space-térben.
+* CI/CD beállítása GitHub-műveletekkel.
+* Egyetlen mikroszolgáltatás tesztelése elkülönített Dev Space-térben a teljes alkalmazás kontextusában.
 
 > [!IMPORTANT]
 > Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
@@ -33,47 +33,47 @@ Ebből az útmutatóból a következőket tudhatja meg:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free).
-* Az [Azure CLI telepítve van][azure-cli-installed].
-* A [Helm 3 telepítve van][helm-installed].
-* Egy GitHub-fiók, amelyen [engedélyezve van a GitHub-művelet][github-actions-beta-signup].
-* Az [Azure dev Spaces Bike Sharing minta alkalmazás](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp/README.md) egy AK-fürtön fut.
+* [Telepítette az Azure CLI-t.][azure-cli-installed]
+* [A Helm 3 telepítve van.][helm-installed]
+* GitHub-fiók engedélyezett [GitHub Actions használatával.][github-actions-beta-signup]
+* Az [AKS-fürtön](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp/README.md) futó Azure Dev Spaces Bike Sharing mintaalkalmazás.
 
 ## <a name="create-an-azure-container-registry"></a>Azure Container Registry létrehozása
 
-Azure Container Registry létrehozása (ACR):
+Hozzon létre egy Azure Container Registry (ACR):
 
 ```azurecli
 az acr create --resource-group MyResourceGroup --name <acrName> --sku Basic
 ```
 
 > [!IMPORTANT]
-> Az ACR nevének egyedinek kell lennie az Azure-on belül, és 5-50 alfanumerikus karaktert kell tartalmaznia. A használt betűknek kisbetűsnek kell lenniük.
+> Az ACR nevének egyedinek kell lennie az Azure-ban, és 5–50 alfanumerikus karaktert kell tartalmaznia. Minden használt betűnek kisbetűnek kell lennie.
 
-Mentse a *lekéréséhez* értéket a kimenetből, mert azt egy későbbi lépésben használják.
+Mentse a *loginServer* értéket a kimenetből, mert egy későbbi lépésben használni kell.
 
-## <a name="create-a-service-principal-for-authentication"></a>Egyszerű szolgáltatásnév létrehozása a hitelesítéshez
+## <a name="create-a-service-principal-for-authentication"></a>Szolgáltatásnév létrehozása hitelesítéshez
 
-Egyszerű szolgáltatásnév létrehozásához használja [az az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Például:
+Szolgáltatásnév létrehozásához használja az [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] használhatja. Például:
 
 ```azurecli
 az ad sp create-for-rbac --sdk-auth --skip-assignment
 ```
 
-Mentse a JSON-kimenetet, mert egy későbbi lépésben használatos.
+Mentse a JSON-kimenetet, mert egy későbbi lépésben használni kell.
 
-Az az [AK show][az-aks-show] paranccsal jelenítheti meg az AK-fürt *azonosítóját* :
+Az [az aks show használatával][az-aks-show] jelenítse meg az AKS-fürt azonosítóját: 
 
 ```azurecli
 az aks show -g MyResourceGroup -n MyAKS  --query id
 ```
 
-Az ACR *azonosítójának* megjelenítéséhez használja az [az ACR show következőt][az-acr-show] :
+Az [az acr show használatával][az-acr-show] jelenítse meg *az* ACR azonosítóját:
 
 ```azurecli
 az acr show --name <acrName> --query id
 ```
 
-Használja az [az role hozzárendelés Create][az-role-assignment-create] lehetőséget, hogy *közreműködői* hozzáférést biztosítson az AK-fürthöz, és *AcrPush* a hozzáférést az ACR-hez.
+Az az role assignment  create [használatával][az-role-assignment-create] közreműködői hozzáférést adhat az AKS-fürthöz, és *AcrPush-hozzáférést adhat* az ACR-hez.
 
 ```azurecli
 az role assignment create --assignee <ClientId> --scope <AKSId> --role Contributor
@@ -81,52 +81,52 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 ```
 
 > [!IMPORTANT]
-> Ahhoz, hogy a szolgáltatás egyszerű hozzáférést biztosítson az adott erőforrásokhoz, mindkét AK-fürt és az ACR tulajdonosának kell lennie.
+> Az AKS-fürtnek és az ACR-nek is tulajdonosnak kell lennie ahhoz, hogy hozzáférést biztosítson a szolgáltatásnévnek ezekhez az erőforrásokhoz.
 
 ## <a name="configure-your-github-action"></a>A GitHub-művelet konfigurálása
 
 > [!IMPORTANT]
-> A tárházhoz engedélyezve kell lennie a GitHub-műveleteknek. Ha engedélyezni szeretné a GitHub-műveleteket a tárházban, navigáljon a tárházhoz a GitHubon, kattintson a műveletek lapra, és válassza a műveletek engedélyezése ehhez a tárházhoz lehetőséget.
+> Az adattárhoz GitHub Actions engedélyeznie kell a tárházat. Az GitHub Actions engedélyezéséhez lépjen a GitHubon az adattárra, kattintson a Műveletek lapra, és engedélyezze a műveleteket ehhez az adattárhoz.
 
-Navigáljon az elágazó tárházhoz, és kattintson a *Beállítások* elemre. Kattintson a *Secrets* elemre a bal oldali oldalsávon. Kattintson *az új titkos kulcs hozzáadása* lehetőségre az alábbi új titkos kódok hozzáadásához:
+Keresse meg az eltárolt adattárat, és kattintson a *Beállítások elemre.* A bal *oldali oldalsávon* kattintson a Titkos kulcsok elemre. Kattintson *az Add a new secret (Új titkos gombra)* elemre az alábbi új titkos gombra kattintva:
 
-1. *AZURE_CREDENTIALS*: az egyszerű szolgáltatás létrehozásának teljes kimenete.
-1. *RESOURCE_GROUP*: az AK-fürthöz tartozó erőforráscsoport, amely ebben a példában a *MyResourceGroup*.
-1. *CLUSTER_NAME*: az AK-fürt neve, amely ebben a példában a *MyAKS*.
-1. *CONTAINER_REGISTRY*: az ACR *lekéréséhez* .
-1. *Gazdagép*: a fejlesztői terület gazdagépe, amely az űrlapot *<MASTER_SPACE>. <APP_NAME>. <HOST_SUFFIX>*, amely ebben a példában a *dev.bikesharingweb.fedcab0987.EUs.azds.IO*.
-1. *IMAGE_PULL_SECRET*: a használni kívánt titok neve, például *demo-Secret*.
-1. *MASTER_SPACE*: a szülő fejlesztői terület neve, amely ebben a példában a *dev*.
-1. *REGISTRY_USERNAME*: az egyszerű *clientId* származó JSON-kimenetből származó adatok.
-1. *REGISTRY_PASSWORD*: az egyszerű *clientSecret* származó JSON-kimenetből származó adatok.
+1. *AZURE_CREDENTIALS:* a szolgáltatásnév létrehozásának teljes kimenete.
+1. *RESOURCE_GROUP:* az AKS-fürt erőforráscsoportja, amely ebben a példában *MyResourceGroup.*
+1. *CLUSTER_NAME*: az AKS-fürt neve, amely ebben a példában *MyAKS*.
+1. *CONTAINER_REGISTRY:* az ACR *bejelentkezési* kiszolgálója.
+1. *HOST*: a Dev Space gazdagépe, amely a *<MASTER_SPACE>.<APP_NAME>.<HOST_SUFFIX>* formát veszi fel, amely ebben a példában a *dev.bikesharingweb.fedcab0987.eus.azds.io.*
+1. *IMAGE_PULL_SECRET*: a használni kívánt titkos titkos név, például *demo-secret*.
+1. *MASTER_SPACE*: a szülő Dev Space neve, amely ebben a példában *dev*.
+1. *REGISTRY_USERNAME:* a szolgáltatásnév létrehozásának JSON-kimenetében a *clientId.*
+1. *REGISTRY_PASSWORD:* a *clientSecret a* szolgáltatásnév létrehozásának JSON-kimenetében.
 
 > [!NOTE]
-> Az összes ilyen titkot a GitHub-művelet használja, és a [. GitHub/munkafolyamatok/Bikes. YML][github-action-yaml]-ben vannak konfigurálva.
+> Ezeket a titkos kódokat a GitHub-művelet használja, és a [.github/workflows/bikes.yml fájlban vannak konfigurálva.][github-action-yaml]
 
-Ha szeretné frissíteni a főtárhelyet a PR-összefésülés után, adja hozzá a *GATEWAY_HOST* titkot, amely az űrlapot *<MASTER_SPACE>. Gateway. <* HOST_SUFFIX>, amely ebben a példában a *dev.Gateway.fedcab0987.EUs.azds.IO*. Miután összevonta a módosításokat az elágazás fő ágában, egy másik művelet fog futni, és a teljes alkalmazást futtatja a fő fejlesztői térben. Ebben a példában a fő terület a *dev*. Ez a művelet a [. GitHub/workflows/bikesharing. YML][github-action-bikesharing-yaml]-ben van konfigurálva.
+Ha a pr-egyesítés után frissíteni szeretné a fő területet, adja hozzá a GATEWAY_HOST titkos formában *<MASTER_SPACE>.gateway.<HOST_SUFFIX>*, amely ebben *a* példában *dev.gateway.fedcab0987.eus.azds.io.* Miután egyesítette a módosításokat az elágazás fő ágával, egy másik művelet fog futni a teljes alkalmazás újraépítésére és futtatására a fő Dev Space-térben. Ebben a példában a főtér a *dev*. Ez a művelet a [.github/workflows/bikesharing.yml fájlban van konfigurálva.][github-action-bikesharing-yaml]
 
-Továbbá, ha szeretné, hogy a PR-ban lévő módosítások egy unoka-térben fussanak, frissítse a *MASTER_SPACE* és a *gazdagép* titkait. Ha például az alkalmazás a fejlesztés és a *azureuser1* területén fut a *dev* -ben, akkor a PR-t a *dev/azureuser1*:
+Továbbá, ha azt szeretné, hogy a lekért adatok változásai egy grandy térben fusson, frissítse a MASTER_SPACE *és* a HOST titkos *térben.* Ha például az alkalmazás *dev/azureuser1* gyermektéren fut a *Dev/azureuser1* gyermektérben, a le pr-kérelmet a dev/azureuser1 gyermektérben futtatja: 
 
-* Frissítse *MASTER_SPACE* a fölérendelt területként használni kívánt gyermek területre, ebben a példában *azureuser1*.
-* A *gazdagép* frissítése *<GRANDPARENT_SPACE>. <APP_NAME>. <HOST_SUFFIX>*, ebben a példában *dev.bikesharingweb.fedcab0987.EUs.azds.IO*.
+* Frissítse *MASTER_SPACE* a kívánt gyermektérre szülőtérként, ebben a példában: *azureuser1*.
+* Ebben a *példában* frissítse a *HOST<GRANDPARENT_SPACE>.<APP_NAME>.<HOST_SUFFIX>,* a következőre: *dev.bikesharingweb.fedcab0987.eus.azds.io.*
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Új ág létrehozása a kód módosításaihoz
 
-Navigáljon, `BikeSharingApp/` és hozzon létre egy *Bike-images* nevű új ágat.
+Lépjen a `BikeSharingApp/` webhelyre, és hozzon létre egy *bike-images nevű új ágat.*
 
 ```cmd
 cd dev-spaces/samples/BikeSharingApp/
 git checkout -b bike-images
 ```
 
-[Kerékpárok/server.js][bikes-server-js] szerkesztése a 232 és 233 sorok eltávolításához:
+[Szerkessze a Bikes/server.js][bikes-server-js] a 232. és a 233. sor eltávolításához:
 
 ```javascript
     // Hard code image url *FIX ME*
     theBike.imageUrl = "/static/logo.svg";
 ```
 
-A szakasznak így kell kinéznie:
+A szakasznak most így kell kinéznie:
 
 ```javascript
     var theBike = result;
@@ -134,37 +134,37 @@ A szakasznak így kell kinéznie:
     delete theBike._id;
 ```
 
-Mentse a fájlt, majd használja a és a lehetőséget a `git add` `git commit` módosítások előkészítéséhez.
+Mentse a fájlt, majd használja a `git add` és a fájlt a módosítások `git commit` szakaszhoz.
 
 ```cmd
 git add Bikes/server.js 
 git commit -m "Removing hard coded imageUrl from /bikes/:id route"
 ```
 
-## <a name="push-your-changes"></a>A módosítások leküldése
+## <a name="push-your-changes"></a>Módosítások leküldése
 
-A használatával `git push` leküldheti az új ágat az elágazó adattárba:
+Az `git push` használatával leküldi az új ágat az elágaztatásos adattárba:
 
 ```cmd
 git push origin bike-images
 ```
 
-A leküldéses folyamat befejezése után navigáljon a GitHubon található elágazó adattárhoz, és hozzon létre egy pull-kérést *az elágazó tárház főágában,* a *Bike-images* ág összevetésével.
+A leküldés befejezése után keresse meg az elágaztatásos adattárat a  GitHubon, és hozzon létre egy lekéréses kérelmet, amely az elágaztatásos adattár fő ágát alapágként hasonlítja össze a *bike-images ággal.*
 
-A lekéréses kérelem megnyitása után navigáljon a *műveletek* lapra. Ellenőrizze, hogy az új művelet elindult-e, és hogy a *Bikes* szolgáltatást épít-e ki.
+A lekéréses kérelem megnyitása után lépjen a *Műveletek lapra.* Ellenőrizze, hogy elindult-e egy új művelet, és hogy a *Bikes szolgáltatást építi-e.*
 
-## <a name="view-the-child-space-with-your-changes"></a>Az alárendelt terület megtekintése a módosításaival
+## <a name="view-the-child-space-with-your-changes"></a>A gyermekterület megtekintése a módosításokkal
 
-A művelet befejezését követően egy megjegyzés jelenik meg az új gyermekobjektum URL-címével, a lekéréses kérelem módosításai alapján.
+A művelet befejezése után egy megjegyzés fog látni egy URL-címet az új gyermektérhez a lekéréses kérelem változásai alapján.
 
 > [!div class="mx-imgBorder"]
 > ![GitHub-művelet URL-címe](../media/github-actions/github-action-url.png)
 
-Nyissa meg a *bikesharingweb* szolgáltatást, és nyissa meg az URL-címet a megjegyzésből. Válassza az *Aurelia Briggs (ügyfél)* lehetőséget felhasználóként, majd válassza ki a bérelni kívánt kerékpárt. Győződjön meg arról, hogy már nem jelenik meg a bike helyőrző képe.
+Navigáljon *a bikesharingweb szolgáltatáshoz* a megjegyzésből származó URL-cím megnyitásával. Felhasználóként *válassza az Aurelia Ezután (ügyfél)* lehetőséget, majd válasszon ki egy kerékpárt, amit bérelni fog. Ellenőrizze, hogy már nem látja-e a kerékpár helyőrző képét.
 
-Ha egyesíti a módosításokat az elágazás *fő* ágában, egy másik művelet fog futni, és a teljes alkalmazást futtatja a szülő fejlesztői térben. Ebben a példában a szülő terület a *dev*. Ez a művelet a [. GitHub/workflows/bikesharing. YML][github-action-bikesharing-yaml]-ben van konfigurálva.
+Ha egyesíti a módosításokat az elágazás fő ágával, egy másik művelet futtatásával újraépíti és futtatja a teljes alkalmazást a szülő Dev Space-térben.  Ebben a példában a szülőtér a *dev*. Ez a művelet a [.github/workflows/bikesharing.yml fájlban van konfigurálva.][github-action-bikesharing-yaml]
 
-## <a name="clean-up-your-azure-resources"></a>Azure-erőforrások karbantartása
+## <a name="clean-up-your-azure-resources"></a>Az Azure-erőforrások megtisztítása
 
 ```azurecli
 az group delete --name MyResourceGroup --yes --no-wait
@@ -172,16 +172,16 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ az Azure dev Spaces működéséről.
+További információ az Azure Dev Spacesről.
 
 > [!div class="nextstepaction"]
 > [Az Azure Dev Spaces működése](../how-dev-spaces-works.md)
 
 [azure-cli-installed]: /cli/azure/install-azure-cli
-[az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
-[az-acr-show]: /cli/azure/acr#az-acr-show
-[az-aks-show]: /cli/azure/aks#az-aks-show
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
+[az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az_ad_sp_create_for_rbac
+[az-acr-show]: /cli/azure/acr#az_acr_show
+[az-aks-show]: /cli/azure/aks#az_aks_show
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
 [bikes-server-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/Bikes/server.js#L232-L233
 [bike-sharing-gh]: https://github.com/Azure/dev-spaces/
 [bike-sharing-values-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/charts/values.yaml

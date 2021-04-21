@@ -1,36 +1,36 @@
 ---
-title: Rövid útmutató – Azure API Management-példány létrehozása a parancssori felület használatával
-description: Hozzon létre egy új Azure API Management Service-példányt az Azure CLI használatával.
+title: Rövid útmutató – Azure API Management-példány létrehozása a CLI használatával
+description: Hozzon létre egy új Azure API Management-szolgáltatáspéldányt az Azure CLI használatával.
 author: dlepow
 ms.service: api-management
 ms.topic: quickstart
 ms.custom: ''
 ms.date: 09/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 72d1faac02a21f23d46eb992af1d501bca89e71f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19fc2e1629e7f67063e3cc3eec8cb3707b6dd2e4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688076"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775852"
 ---
-# <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-cli"></a>Rövid útmutató: új Azure API Management Service-példány létrehozása az Azure CLI használatával
+# <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-cli"></a>Rövid útmutató: Új Azure API Management-szolgáltatáspéldány létrehozása az Azure CLI használatával
 
-Az Azure API Management (APIM) segít közzétenni az API-kat a külső, a partner- és a belső fejlesztők számára, hogy ki tudják használni az adataikban és szolgáltatásaikban rejlő lehetőségeket. Az API Management a fejlesztők bevonásán, az üzleti elemzéseken, a biztonságon és a védelmen keresztül biztosítja az alapvető kompetenciákat az API-program sikeressé tételéhez. A APIM lehetővé teszi modern API Gateway-átjárók létrehozását és felügyeletét a bárhol üzemeltetett meglévő háttér-szolgáltatásokhoz. További információ: [Áttekintés](api-management-key-concepts.md).
+Az Azure API Management (APIM) segít közzétenni az API-kat a külső, a partner- és a belső fejlesztők számára, hogy ki tudják használni az adataikban és szolgáltatásaikban rejlő lehetőségeket. Az API Management a fejlesztők bevonásán, az üzleti elemzéseken, a biztonságon és a védelmen keresztül biztosítja az alapvető kompetenciákat az API-program sikeressé tételéhez. Az APIM segítségével modern API-átjárókat hozhat létre és kezelhet meglévő háttérszolgáltatásokhoz, amelyek bárhol üzemeltetve vannak. További információ: [Áttekintés](api-management-key-concepts.md).
 
-Ez a rövid útmutató ismerteti, hogyan hozhat létre új API Management példányt az az [APIM](/cli/azure/apim) parancsok használatával az Azure CLI-ben.
+Ez a rövid útmutató az új virtuális API Management [az apim parancsokkal](/cli/azure/apim) való létrehozásának lépéseit ismerteti az Azure CLI-n.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ehhez a cikkhez az Azure CLI 2.11.1 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a cikkhez az Azure CLI 2.11.1-es vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az Azure API Management példányokat, például az összes Azure-erőforrást, egy erőforráscsoporthoz kell telepíteni. Az erőforráscsoportok lehetővé teszik az egymáshoz kapcsolódó Azure-erőforrások rendszerezését és kezelését.
+Az Azure API Management-példányokat, mint minden Azure-erőforrást, egy erőforráscsoportban kell üzembe helyezni. Az erőforráscsoportok lehetővé teszik az egymáshoz kapcsolódó Azure-erőforrások rendszerezését és kezelését.
 
-Először hozzon létre egy *myResourceGroup* nevű ERŐFORRÁSCSOPORTOT az USA középső régiójában a következő az [Group Create](/cli/azure/group#az-group-create) paranccsal:
+Először hozzon létre egy *myResourceGroup* nevű erőforráscsoportot az USA középső helyén a következő [az group create paranccsal:](/cli/azure/group#az_group_create)
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location centralus
@@ -38,9 +38,9 @@ az group create --name myResourceGroup --location centralus
 
 ## <a name="create-a-new-service"></a>Új szolgáltatás létrehozása
 
-Most, hogy már rendelkezik erőforráscsoporthoz, létrehozhat egy API Management Service-példányt. Hozzon létre egyet az az [APIM Create](/cli/azure/apim#az-apim-create) paranccsal, és adja meg a szolgáltatás nevét és a közzétevő részleteit. A szolgáltatás nevének egyedinek kell lennie az Azure-on belül. 
+Most, hogy már van egy erőforráscsoportja, létrehozhat egy API Management szolgáltatáspéldányt. Hozzon létre egyet az [az apim create paranccsal,](/cli/azure/apim#az_apim_create) és adja meg a szolgáltatás nevét és a közzétevő adatait. A szolgáltatás nevének egyedinek kell lennie az Azure-ban. 
 
-A következő példában a *myapim* használja a szolgáltatás neve. Frissítse a nevet egy egyedi értékre. Az értesítések fogadásához frissítse az API-közzétevő szervezetének nevét és az e-mail-címet is. 
+A következő példában a *szolgáltatásnév a myapim* nevet használja. Frissítse a nevet egy egyedi értékre. Frissítse az API-közzétevő szervezetének nevét és e-mail-címét is az értesítések fogadásához. 
 
 ```azurecli-interactive
 az apim create --name myapim --resource-group myResourceGroup \
@@ -48,18 +48,18 @@ az apim create --name myapim --resource-group myResourceGroup \
   --no-wait
 ```
 
-Alapértelmezés szerint a parancs létrehozza a példányt a fejlesztői szinten, amely egy gazdaságos megoldás az Azure API Management kiértékeléséhez. Ez a rétegek nem használhatók éles környezetben. További információt az API Management szintjeinek skálázásáról a [frissítés és skálázás](upgrade-and-scale.md) oldalon talál. 
+Alapértelmezés szerint a parancs a Fejlesztői szinten hozza létre a példányt, amely egy gazdaságos lehetőség az Azure-beli API Management. Ez a szint nem használható éles környezetben. További információt az API Management szintjeinek skálázásáról a [frissítés és skálázás](upgrade-and-scale.md) oldalon talál. 
 
 > [!TIP]
-> Ezen a szinten 30 és 40 percet is igénybe vehet egy API Management szolgáltatás létrehozása és aktiválása. Az előző parancs azt a `--no-wait` lehetőséget használja, hogy a parancs a szolgáltatás létrehozásakor azonnal visszaadja.
+> Ezen a szinten 30–40 percet is igénybe API Management szolgáltatás létrehozása és aktiválása. Az előző parancs az kapcsolót használja, így a parancs azonnal visszatér `--no-wait` a szolgáltatás létrehozása közben.
 
-A központi telepítés állapotának ellenőrzéséhez futtassa az az [APIM show](/cli/azure/apim#az-apim-show) parancsot:
+Ellenőrizze az üzemelő példány állapotát az [az apim show parancs futtatásával:](/cli/azure/apim#az_apim_show)
 
 ```azurecli-interactive
 az apim show --name myapim --resource-group myResourceGroup --output table
 ```
 
-Kezdetben a kimenet a következőhöz hasonló, az `Activating` állapotot mutatja:
+A kimenet kezdetben az alábbihoz hasonló, és az állapotot `Activating` mutatja:
 
 ```console
 NAME         RESOURCE GROUP    LOCATION    GATEWAY ADDR    PUBLIC IP    PRIVATE IP    STATUS      TIER       UNITS
@@ -67,7 +67,7 @@ NAME         RESOURCE GROUP    LOCATION    GATEWAY ADDR    PUBLIC IP    PRIVATE 
 myapim       myResourceGroup   Central US                                             Activating  Developer  1
 ```
 
-Az aktiválás után a szolgáltatás állapota `Online` és a szolgáltatási példány átjáró címe és nyilvános IP-címe. Egyelőre ezek a címek semmilyen tartalmat nem tesznek elérhetővé. Például:
+Az aktiválás után az állapot lesz, a szolgáltatáspéldány pedig egy átjárócímet és egy `Online` nyilvános IP-címet. Ezek a címek jelenleg nem fednek fel tartalmakat. Például:
 
 ```console
 NAME         RESOURCE GROUP    LOCATION    GATEWAY ADDR                       PUBLIC IP     PRIVATE IP    STATUS    TIER       UNITS
@@ -75,11 +75,11 @@ NAME         RESOURCE GROUP    LOCATION    GATEWAY ADDR                       PU
 myapim       myResourceGroup   Central US  https://myapim.azure-api.net       203.0.113.1                 Online    Developer  1
 ```
 
-Ha a API Management Service-példány online állapotban van, készen áll a használatára. Kezdje az Oktatóanyaggal az [első API importálásához és közzétételéhez](import-and-publish.md).
+Ha a API Management szolgáltatáspéldány online állapotban van, készen áll a használatára. Kezdje azzal az oktatóanyagmal, amely az első API importálását és [közzétételét teszi közzé.](import-and-publish.md)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-delete) paranccsal eltávolíthatja az erőforráscsoportot és a API Management Service-példányt.
+Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az_group_delete) paranccsal eltávolíthatja az erőforráscsoportot és a API Management szolgáltatáspéldányt.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

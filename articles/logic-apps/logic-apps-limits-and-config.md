@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 04/16/2021
-ms.openlocfilehash: 9887350842749809dd4c3708acc71a08f416e54f
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 286da1412e8a74ffbf34e4abb493241914d4f925
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565882"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764872"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Információ az Azure Logic Apps korlátozásaival és konfigurálásával kapcsolatban
 
-Ez a cikk az automatizált munkafolyamatok létrehozásához és futtatásához szükséges korlátokat és konfigurációs részleteket ismerteti Azure Logic Apps. További Power Automate lásd: [Korlátok és konfiguráció](/flow/limits-and-config)a Power Automate.
+Ez a cikk az automatizált munkafolyamatok létrehozásának és futtatásának korlátait és konfigurációs részleteit ismerteti a Azure Logic Apps. További Power Automate [lásd: Korlátozások és](/flow/limits-and-config)konfiguráció a Power Automate.
 
 <a name="definition-limits"></a>
 
@@ -25,11 +25,11 @@ Egyetlen logikai alkalmazás definíciójának korlátai a következőek:
 
 | Name | Korlát | Jegyzetek |
 | ---- | ----- | ----- |
-| Műveletek munkafolyamatonként | 500 | A korlát kiterjesztéséhez szükség szerint hozzáadhat beágyazott munkafolyamatokat. |
-| Műveletek beágyazásának engedélyezett mélysége | 8 | A korlát kiterjesztéséhez szükség szerint hozzáadhat beágyazott munkafolyamatokat. |
+| Műveletek munkafolyamatonként | 500 | A korlát kiterjesztéséhez szükség szerint beágyazott munkafolyamatokat adhat hozzá. |
+| Műveletek beágyazásának engedélyezett mélysége | 8 | A korlát kiterjesztéséhez szükség szerint beágyazott munkafolyamatokat adhat hozzá. |
 | Régiónkénti munkafolyamatok előfizetésenként | 1,000 | |
-| Eseményindítók munkafolyamatonként | 10 | Kódnézetben dolgozik, nem a tervezőben |
-| A kapcsoló hatókörének esetkorlátja | 25 | |
+| Eseményindítók munkafolyamatonként | 10 | Kódnézetben dolgozva, nem a tervezőben |
+| Hatókör esetkorlátja váltása | 25 | |
 | Változók munkafolyamatonként | 250 | |
 | A vagy a `action` neve `trigger` | 80 karakter | |
 | Karakterek kifejezésenként | 8,192 | |
@@ -37,8 +37,8 @@ Egyetlen logikai alkalmazás definíciójának korlátai a következőek:
 | Maximális száma `parameters` | 50 | |
 | Maximális száma `outputs` | 10 | |
 | A maximális mérete a `trackedProperties` | 16 000 karakter |
-| Beágyazott kód művelet – A kód karakterének maximális száma | 1024 karakter | A korlát 100 000 karakterre való kiterjesztéséhez logikai alkalmazásokat a **Logic App (előzetes verzió)** erőforrástípussal hozhat létre az [Azure Portal](create-stateful-stateless-workflows-azure-portal.md) vagy a Visual Studio Code és az [Azure Logic Apps **(előzetes verzió)**](create-stateful-stateless-workflows-visual-studio-code.md)bővítmény használatával. |
-| Beágyazott kód művelete – A kód futtatásának maximális időtartama | 5 másodperc | A korlát 15 másodpercre való kiterjesztéséhez logikai alkalmazásait a Logikai alkalmazás **(előzetes verzió)** erőforrástípussal hozza létre, akár az [Azure Portal,](create-stateful-stateless-workflows-azure-portal.md) akár az Visual Studio Code és az [Azure Logic Apps **(előzetes verzió) bővítmény használatával.**](create-stateful-stateless-workflows-visual-studio-code.md) |
+| Beágyazott kód művelet – A kód karakterének maximális száma | 1024 karakter | A korlát 100 000 karakterre való kiterjesztéséhez logikai alkalmazásait a Logikai alkalmazás **(előzetes verzió)** erőforrástípussal hozza létre az [Azure Portal](create-stateful-stateless-workflows-azure-portal.md) vagy a Visual Studio Code és az [Azure Logic Apps **(előzetes verzió)**](create-stateful-stateless-workflows-visual-studio-code.md)bővítmény használatával. |
+| Beágyazott kód művelet – A kód futtatásának maximális időtartama | 5 másodperc | A korlát 15 másodpercre való kiterjesztéséhez logikai alkalmazásait a Logikai alkalmazás **(előzetes verzió)** erőforrástípussal hozza létre, akár az [Azure Portal,](create-stateful-stateless-workflows-azure-portal.md) akár az Visual Studio Code és az [Azure Logic Apps **(előzetes verzió) bővítmény használatával.**](create-stateful-stateless-workflows-visual-studio-code.md) |
 ||||
 
 <a name="run-duration-retention-limits"></a>
@@ -49,8 +49,8 @@ Az egyes logikai alkalmazások futtatásának korlátai a következőek:
 
 | Name | Több-bérlős korlát | Integrációs szolgáltatási környezet korlátja | Jegyzetek |
 |------|--------------------|---------------------------------------|-------|
-| Futtatás időtartama | 90 nap | 366 nap | A futtatás időtartamát a futtatás kezdési ideje és a Futtatás [](#change-duration) előzményeinek megőrzése napokban az adott kezdési időpontban munkafolyamat-beállításban megadott korlát alapján számítja ki a rendszer. <p><p>Az alapértelmezett korlát módosítása: A futtatás időtartamának és [az előzmények megőrzésének módosítása a tárolóban.](#change-duration) |
-| Futtatáselőzmények megőrzése a tárolóban | 90 nap | 366 nap | Ha egy futtatás időtartama meghaladja az aktuális futtatáselőzmény-megőrzési korlátot, a rendszer eltávolítja a futtatás előzményeit a tárolóból. Függetlenül attól, hogy a futtatás befejeződik vagy túllépi az időkorlátot, a futtatás előzményeinek megőrzése mindig a futtatás kezdési ideje és a munkafolyamat-beállításban (a Futtatás előzményeinek megőrzése napokban) megadott jelenlegi korlát alapján van [**kiszámítva.**](#change-retention) Az előző korláttól függetlenül a rendszer mindig az aktuális korlátot használja a megőrzés kiszámításához. <p><p>Az alapértelmezett korlát és további információért lásd: A tárterület időtartamának és [futtatáselőzmény-megőrzésének módosítása.](#change-retention) A maximális korlát növeléséhez lépjen kapcsolatba a Logic Apps [csapatával](mailto://logicappspm@microsoft.com) a követelményekkel kapcsolatos segítségért. |
+| Futtatás időtartama | 90 nap | 366 nap | A futtatás időtartamát a futtatás kezdési ideje és a Futtatás [](#change-duration) előzményeinek megőrzése napokban az adott kezdési időpontban munkafolyamat-beállításban megadott korlát alapján számítja ki a rendszer. <p><p>Az alapértelmezett korlát módosítása: A futtatás időtartamának és az [előzmények megőrzésének módosítása a tárolóban.](#change-duration) |
+| Futtatáselőzmények megőrzése a tárolóban | 90 nap | 366 nap | Ha egy futtatás időtartama meghaladja az aktuális futtatáselőzmény-megőrzési korlátot, a futtatás el lesz távolítva a tároló futtatáselőzményeiből. Függetlenül attól, hogy a futtatás befejeződött vagy túllépi az időkorlátot, a futtatás előzményeinek megőrzése mindig a futtatás kezdési ideje és a munkafolyamat-beállításban (a Futtatás előzményeinek megőrzése napokban) megadott jelenlegi korlát alapján [**van kiszámítva.**](#change-retention) Az előző korláttól függetlenül a rendszer mindig az aktuális korlátot használja a megőrzés kiszámításához. <p><p>Az alapértelmezett korlát és további információért lásd: A tárterület időtartamának és [futtatáselőzmény-megőrzésének módosítása.](#change-retention) A maximális korlát növeléséhez vegye fel a kapcsolatot [Logic Apps csapatával,](mailto://logicappspm@microsoft.com) akik segítséget keresnek a követelményekkel kapcsolatban. |
 | Minimális ismétlődési időköz | 1 másodperc | 1 másodperc ||
 | Ismétlődési időköz maximális száma | 500 nap | 500 nap ||
 |||||
@@ -60,16 +60,16 @@ Az egyes logikai alkalmazások futtatásának korlátai a következőek:
 
 ### <a name="change-run-duration-and-history-retention-in-storage"></a>A futtatás időtartamának és az előzmények megőrzésének módosítása a tárolóban
 
-Ugyanez a beállítás határozza meg a munkafolyamat által futtatható napok maximális számát, valamint a futtatás előzményeinek tárolását. A tulajdonságok alapértelmezett vagy aktuális korlátját az alábbi lépésekkel módosíthatja.
+Ugyanez a beállítás szabályozza a munkafolyamat által futtatható napok maximális számát, valamint a futtatás előzményeinek tárolását. A tulajdonságok alapértelmezett vagy aktuális korlátját az alábbi lépésekkel módosíthatja.
 
 * A több-bérlős Azure-beli logikai alkalmazások esetében a 90 napos alapértelmezett korlát megegyezik a maximális korlát értékéhez. Ezt az értéket csak csökkentheti.
 
 * Integrációs szolgáltatási környezetben a logikai alkalmazások esetében csökkentheti vagy növelheti a 90 napos alapértelmezett korlátot.
 
-Tegyük fel például, hogy a megőrzési korlátot 90 napról 30 napra csökkenti. A 60 napos futtatás el lesz távolítva a futtatás előzményeiből. Ha a megőrzési időszakot 30 napról 60 napra növeli, a 20 napos futtatás a futtatás előzményeiben marad további 40 napig.
+Tegyük fel például, hogy a megőrzési korlátot 90 napról 30 napra csökkenti. A 60 napos futtatás el lesz távolítva a futtatás előzményeiből. Ha a megőrzési időszakot 30 napról 60 napra növeli, a 20 napos futtatás további 40 napig marad a futtatás előzményeiben.
 
 > [!IMPORTANT]
-> Ha egy futtatás időtartama meghaladja az aktuális futtatáselőzmény-megőrzési korlátot, a rendszer eltávolítja a futtatás előzményeit a tárolóból. A futtatás előzményeinek elvesztésének elkerülése  érdekében győződjön meg arról, hogy a megőrzési korlát mindig nagyobb, mint a futtatás leghosszabb lehetséges időtartama.
+> Ha egy futtatás időtartama meghaladja az aktuális futtatáselőzmény-megőrzési korlátot, a futtatás el lesz távolítva a tároló futtatáselőzményeiből. A futtatás előzményeinek elvesztésének elkerülése  érdekében győződjön meg arról, hogy a megőrzési korlát mindig nagyobb, mint a futtatás leghosszabb lehetséges időtartama.
 
 1. A [Azure Portal](https://portal.azure.com) keresőmezőben keresse meg és válassza a **Logic Apps lehetőséget.**
 
@@ -83,7 +83,7 @@ Tegyük fel például, hogy a megőrzési korlátot 90 napról 30 napra csökken
 
 1. Ha végzett, a Munkafolyamat beállításai **eszköztáron** válassza a Mentés **lehetőséget.**
 
-Ha létrehoz egy Azure Resource Manager-sablont a logikai alkalmazáshoz, ez a beállítás tulajdonságként jelenik meg a munkafolyamat erőforrás-definíciójában, amelyet a [Microsoft.Logic-munkafolyamatok sablonreferenciája ismertet:](/azure/templates/microsoft.logic/workflows)
+Ha létrehoz egy Azure Resource Manager-sablont a logikai alkalmazáshoz, ez a beállítás tulajdonságként jelenik meg a munkafolyamat erőforrás-definíciójában, amelyet a [Microsoft.Logic workflows sablonreferenciája ismertet:](/azure/templates/microsoft.logic/workflows)
 
 ```json
 {
@@ -108,27 +108,27 @@ Ha létrehoz egy Azure Resource Manager-sablont a logikai alkalmazáshoz, ez a b
 
 ## <a name="concurrency-looping-and-debatching-limits"></a>Egyidejűségi, hurkolási és kicsatolási korlátok
 
-Egyetlen logikai alkalmazás futtatásának korlátai a következőek:
+Az egyes logikai alkalmazások futtatásának korlátai a következőek:
 
 ### <a name="loops"></a>Hurkok
 
 | Name | Korlát | Jegyzetek |
 | ---- | ----- | ----- |
-| Foreach tömbelemek | 100.000 | Ez a korlát azt írja le, hogy legfeljebb hány tömbelemet képes feldolgozni egy "for each" hurok. <p><p>Nagyobb tömbök szűréséhez használhatja a [lekérdezési műveletet.](logic-apps-perform-data-operations.md#filter-array-action) |
-| Foreach egyidejűség | Egyidejűség kikapcsolása: 20 <p><p>Egyidejűség-sel a következőn: <p><p>- Alapértelmezett: 20 <br>- Min: 1 <br>– Maximum: 50 | Ez a korlát az egyidejűleg vagy párhuzamosan futtatható "for each" iterációk maximális száma. <p><p>A korlát módosítása: [A "for each"](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) egyidejűségi korlát módosítása vagy a [Run "for each"](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)hurkok sorrendben. |
-| Until-iterációk | - Alapértelmezett: 60 <br>- Min: 1 <br>– Maximum: 5000 | Az "Until" ciklusok maximális száma a logikai alkalmazás futtatása során. <p><p>A korlát megadásához az "Until" hurok alakzatában válassza a Korlátok módosítása lehetőséget, és adja meg a Count (Darabszám) **tulajdonság** értékét. |
-| Időtúllépésig | - Alapértelmezett: PT1H (1 óra) | A "Until" ciklus futásának legnagyobb ideje a kilépés előtt, [és ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)formátumban van megadva. Az időtúllépési érték minden hurokciklusra ki lesz értékelve. Ha a hurok bármely művelete hosszabb ideig tart, mint az időtúllépési korlát, az aktuális ciklus nem áll le. A következő ciklus azonban nem indul el, mert a korlátozási feltétel nem teljesül. <p><p>A korlát megadásához az "Until" hurok alakzatában válassza a Korlátok módosítása lehetőséget, és adja meg az **Időtúllépés tulajdonság** értékét. |
+| Foreach tömbelemek | 100.000 | Ez a korlát a tömbelemek azon maximális számát írja le, amit egy "for each" hurok feldolgozhat. <p><p>Nagyobb tömbök szűréséhez használhatja a [lekérdezési műveletet.](logic-apps-perform-data-operations.md#filter-array-action) |
+| Foreach-egyidejűség | Egyidejűség kikapcsolása: 20 <p><p>Egyidejűség a következőn: <p><p>– Alapértelmezett érték: 20 <br>- Min: 1 <br>– Maximum: 50 | Ez a korlát az egyszerre vagy párhuzamosan futtatható "for each" iterációk maximális száma. <p><p>A korlát módosítása: [Az "egyes"](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) egyidejűségi korlát módosítása vagy ["Mindegyikre"](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)futtatása hurkok sorrendben. |
+| Until-iterációk | - Alapértelmezett: 60 <br>- Min: 1 <br>- Maximum: 5000 | Az "Until" ciklusok maximális száma a logikai alkalmazás futtatása során. <p><p>Ennek a korlátnak a beállítását a "Until" ciklus alakzatában válassza a Korlátok módosítása lehetőséget, és adja meg a Count (Darabszám) **tulajdonság** értékét. |
+| Időtúllépésig | - Alapértelmezett: PT1H (1 óra) | A "Until" ciklus futásának legnagyobb ideje a kilépés előtt, és [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)formátumban van megadva. Az időtúllépési érték minden ciklusra ki lesz értékelve. Ha a hurok bármely művelete hosszabb ideig tart, mint az időkorlát, az aktuális ciklus nem áll le. A következő ciklus azonban nem indul el, mert a korlátozási feltétel nem teljesül. <p><p>Ennek a korlátnak a beállítását a "Until" ciklus alakzatban válassza a Korlátok módosítása lehetőséget, és adja meg az **Időtúllépés tulajdonság** értékét. |
 ||||
 
 <a name="concurrency-debatching"></a>
 
-### <a name="concurrency-and-debatching"></a>Egyidejűség és kicsatolás
+### <a name="concurrency-and-debatching"></a>Egyidejűség és visszacsatolás
 
 | Name | Korlát | Jegyzetek |
 | ---- | ----- | ----- |
-| Egyidejűség aktiválása | Az egyidejűség kikapcsolása: Korlátlan <p><p>Az egyidejűség bekapcsoláskor, amelyet a engedélyezése után nem lehet visszavonni: <p><p>- Alapértelmezett: 25 <br>- Min: 1 <br>– Maximum: 100 | Ez a korlát az egyidejűleg vagy párhuzamosan futtatható logikaialkalmazás-példányok maximális száma. <p><p>**Megjegyzés:** Ha az egyidejűség be van kapcsolva, a SplitOn korlátja 100 elemre csökken a tömbök [kicsatolásakor.](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) <p><p>A korlát módosítása: [Eseményindító](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) egyidejűségi korlát módosítása vagy [Példányok aktiválása sorrendben.](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger) |
-| Várakozó futtatás maximális mérete | Ha az egyidejűség ki van kapcsolva: <p><p>- Min: 1 <br>– Maximum: 50 <p><p>Egyidejűség a következőn: <p><p>- Min: 10 plusz az egyidejű futtatások száma (egyidejű eseményindító) <br>– Maximum: 100 | Ez a korlát azon logikaialkalmazás-példányok maximális száma, amelyek várakozni tudnak, ha a logikai alkalmazás már futtatja az egyidejű példányok maximális számát. <p><p>A korlátot a [Várakozási futtatás korlát módosítása( ) alatt módosíthatja.](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs) |
-| SplitOn-elemek | Egyidejűség kikapcsolása: 100 000 <p><p>Egyidejűség a következőn: 100 | A tömböt visszafejtő eseményindítókhoz megadhat egy "SplitOn" tulajdonságot használó kifejezést, amely a "Foreach" hurok használata helyett több munkafolyamat-példányra osztja fel vagy osztja szét a tömbelemeket. [](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) Ez a kifejezés a munkafolyamat-példányok minden tömbelemhez való létrehozásához és futtatásához használt tömbre hivatkozik. <p><p>**Megjegyzés:** Ha az egyidejűség be van kapcsolva, a SplitOn korlátja 100 elemre csökken. |
+| Egyidejűség aktiválása | Egyidejűség kikapcsolása: Korlátlan <p><p>Az egyidejűség engedélyezésével, amelyet az engedélyezés után nem lehet visszavonni: <p><p>- Alapértelmezett: 25 <br>- Min: 1 <br>– Maximum: 100 | Ez a korlát az egyidejűleg vagy párhuzamosan futtatható logikaialkalmazás-példányok maximális száma. <p><p>**Megjegyzés:** Ha az egyidejűség be van kapcsolva, a SplitOn korlátja 100-ra csökken a [tömbök kicsatolására.](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) <p><p>A korlát módosítása: [Eseményindító](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) egyidejűségi korlát módosítása vagy Példányok aktiválása [sorrendben.](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger) |
+| Várakozó futtatás maximális | Ha az egyidejűség ki van kapcsolva: <p><p>- Min: 1 <br>– Maximum: 50 <p><p>Egyidejűség a következőn: <p><p>- Min: 10 plusz az egyidejű futtatások száma (egyidejű trigger) <br>– Maximum: 100 | Ez a korlát azon logikaialkalmazás-példányok maximális száma, amelyek várakozni tudnak, ha a logikai alkalmazás már futtatja az egyidejű példányok maximális számát. <p><p>A korlátot a [Várakozási futtatás korlát módosítása( ) alatt módosíthatja.](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs) |
+| SplitOn-elemek | Egyidejűség kikapcsolása: 100 000 <p><p>Egyidejűség a következőn: 100 | A tömböt visszafejtő eseményindítókhoz megadhat egy "SplitOn" tulajdonságot használó kifejezést, amely a "Foreach" hurok használata helyett több munkafolyamat-példányra osztja vagy darabolását teszi elérhetőre. [](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) Ez a kifejezés arra a tömbre hivatkozik, amely minden tömbelemhez munkafolyamat-példány létrehozásához és futtatásához használható. <p><p>**Megjegyzés:** Ha az egyidejűség be van kapcsolva, a SplitOn korlátja 100 elemre csökken. |
 ||||
 
 <a name="throughput-limits"></a>
@@ -153,7 +153,7 @@ Egyetlen logikai alkalmazás definíciójának korlátai a következőek:
 
 #### <a name="run-in-high-throughput-mode"></a>Futtatás nagy átviteli sebességű módban
 
-Egyetlen logikai alkalmazás definíciója esetén az 5 percenként végrehajtható műveletek száma alapértelmezett [korlát.](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) A logikai alkalmazás alapértelmezett [](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) korlátjának (amely az alapértelmezett korlát háromszorosának) felső korlátjának emeléséhez engedélyezheti a nagy átviteli sebességű módot, amely előzetes verzióban érhető el. Vagy szükség szerint több logikai alkalmazás között is eloszthatja [a](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) számítási feladatot.
+Egyetlen logikai alkalmazás definíciója esetén az 5 percenként végrehajtható műveletek száma alapértelmezett [korlát.](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) Ha az alapértelmezett korlátot az alapértelmezett korlátnak az alapértelmezett korlát háromszorosára szeretné növelni a logikai alkalmazásra, engedélyezheti a nagy átviteli sebességű módot, amely előzetes verzióban érhető el. [](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) Vagy szükség szerint több logikai alkalmazás között is [eloszthatja a](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) számítási feladatot.
 
 1. A Azure Portal a logikai alkalmazás menüjének Beállítások **menüjében válassza** a **Munkafolyamat-beállítások lehetőséget.**
 
@@ -191,22 +191,22 @@ Ha engedélyezni szeretné ezt a beállítást egy ARM-sablonban a logikai alkal
 }
 ```
 
-A logikai alkalmazás erőforrás-definícióval kapcsolatos további információkért [lásd: Áttekintés: Automatizálja](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)az üzembe helyezést a Azure Logic Apps sablon Azure Resource Manager okkal.
+A logikai alkalmazás erőforrás-definícióval kapcsolatos további információkért lásd: Áttekintés: Automatikus üzembe helyezés Azure Logic Apps [sablonokkal Azure Resource Manager használatával.](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)
 
 ### <a name="integration-service-environment-ise"></a>Integrációs szolgáltatási környezet (ISE)
 
 * [Fejlesztői ISE termékváltozat:](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)Percenként legfeljebb 500 végrehajtást biztosít, de vegye figyelembe a következő szempontokat:
 
-  * Ügyeljen arra, hogy ezt a termékváltozatot csak feltárásra, kísérletekre, fejlesztésre vagy tesztelésre használja, éles környezetben vagy teljesítményt tesztelve ne. Ez a termékváltozat nem rendelkezik szolgáltatásiszint-szerződéssel (SLA), skálázható felskálás képességgel vagy redundanciával az újrahasznosítás során, ami azt jelenti, hogy késést vagy állásidőt tapasztalhat.
+  * Győződjön meg arról, hogy ezt a termékváltozatot csak feltárásra, kísérletekre, fejlesztésre vagy tesztelésre használja, éles környezetben vagy teljesítményt tesztelni nem. Ez a termékváltozat nem rendelkezik szolgáltatásiszint-szerződéssel (SLA), skálázható felskálával vagy redundanciával az újrahasznosítás során, ami azt jelenti, hogy késést vagy állásidőt tapasztalhat.
 
   * A háttérfrissítések időnként megszakítják a szolgáltatást.
 
-* [Prémium ISE termékváltozat:](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)Az alábbi táblázat ismerteti ennek a termékváltozatnak az átviteli sebességére vonatkozó korlátokat, de a normál feldolgozás során ezen korlátok túllépése vagy a korlátokon túli terhelési tesztek futtatása érdekében lépjen kapcsolatba az [Logic Apps](mailto://logicappsemail@microsoft.com) csapatával a követelményekkel kapcsolatos segítségért.
+* [Prémium ISE termékváltozat:](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)Az alábbi táblázat ismerteti ennek a termékváltozatnak az átviteli sebességére vonatkozó korlátokat, de a korlátok normál feldolgozás esetén történő túllépése, vagy a korlátokon túli terheléstesztelések futtatása érdekében forduljon az [Logic Apps](mailto://logicappsemail@microsoft.com) csapatához, hogy segítsenek a követelményekkel kapcsolatban.
 
   | Name | Korlát | Jegyzetek |
   |------|-------|-------|
-  | Alapegység végrehajtási korlátja | Rendszer által szabályozás alatt, ha az infrastruktúra kapacitása eléri a 80%-ot | Percenként 4000 műveletvégrehajtást biztosít, ami havonta ~160 millió műveletvégrehajtás |
-  | Skáláztatási egység végrehajtási korlátja | Rendszer által szabályozás alatt, ha az infrastruktúra kapacitása eléri a 80%-ot | Minden skálázegység ~2000 további műveletvégrehajtást biztosít percenként, ami havonta ~80 millióval több műveletvégrehajtást biztosít |
+  | Alapegység végrehajtási korlátja | Rendszer által szabályozás alatt, ha az infrastruktúra-kapacitás eléri a 80%-ot | Percenként 4000 műveletvégrehajtást biztosít, ami havonta ~160 millió műveletvégrehajtást biztosít |
+  | Skálázásegység végrehajtási korlátja | Rendszer által szabályozás alatt, ha az infrastruktúra-kapacitás eléri a 80%-ot | Minden skálázegység ~2000 további műveletvégrehajtást biztosít percenként, ami havonta ~80 millióval több műveletvégrehajtást biztosít |
   | Felvehető méretezési egységek maximális száma | 10 | |
   ||||
 
@@ -214,7 +214,7 @@ A logikai alkalmazás erőforrás-definícióval kapcsolatos további informáci
 
 ## <a name="gateway-limits"></a>Átjáróra vonatkozó korlátok
 
-Azure Logic Apps támogatja az átjárón keresztüli írási műveleteket, beleértve a beszúrásokat és a frissítéseket is. Ezeknek a műveleteknek azonban [korlátaik vannak a hasznos tartalom méretére.](/data-integration/gateway/service-gateway-onprem#considerations)
+Azure Logic Apps támogatja az átjárón keresztüli írási műveleteket, beleértve a beszúrásokat és a frissítéseket is. Ezeknek a műveleteknek azonban [korlátaik vannak a hasznosság méretére.](/data-integration/gateway/service-gateway-onprem#considerations)
 
 <a name="http-limits"></a>
 
@@ -226,12 +226,12 @@ Egyetlen bejövő vagy kimenő hívás korlátai a következőek:
 
 #### <a name="timeout-duration"></a>Időtúllépés időtartama
 
-Egyes összekötőműveletek aszinkron hívásokat kezdeményeznek, vagy figyelik a webhookkéréseket, így ezeknek a műveleteknek az időkorlátja hosszabb lehet ezen korlátoknál. További információkért tekintse meg az adott összekötő technikai részleteit, valamint a [munkafolyamat-eseményindítókat és műveleteket.](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)
+Egyes összekötőműveletek aszinkron hívásokat kezdeményeznek, vagy webhookkéréseket figyelnek, így ezeknek a műveleteknek az időkorlátja hosszabb lehet ezen korlátoknál. További információkért tekintse meg az adott összekötő technikai részleteit, valamint a [munkafolyamat-eseményindítókat és műveleteket.](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)
 
 | Name | Logic Apps (több-bérlős) | Logic Apps (előzetes verzió) | Integrációs szolgáltatási környezet | Jegyzetek |
 |------|---------------------------|----------------------|---------------------------------|-------|
-| Kimenő kérelem | 120 másodperc <br>(2 perc) | 230 másodperc <br>(3,9 perc) | 240 másodperc <br>(4 perc) | A kimenő kérések közé tartoznak például a HTTP-eseményindító vagy -művelet által indított hívások. További információ az előzetes verzióról: Azure Logic Apps [előzetes verzió.](logic-apps-overview-preview.md) <p><p>**Tipp:** Hosszabb ideig futó műveletekhez használjon [aszinkron](../logic-apps/logic-apps-create-api-app.md#async-pattern) lekérdezési mintát vagy egy [until ciklust.](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action) Az időtúllépési korlátokat úgy lehet túllépni, ha egy másik, hívható végponttal ellátott logikai alkalmazást hív meg, ehelyett használhatja a beépített Azure Logic Apps-műveletet, amelyet az **összekötőválasztóban** találhat a Beépített alatt. [](logic-apps-http-endpoint.md) |
-| Bejövő kérés | 120 másodperc <br>(2 perc) | 230 másodperc <br>(3,9 perc) | 240 másodperc <br>(4 perc) | A bejövő kérések közé tartoznak például a Kérés eseményindító által fogadott hívások, a HTTP-webhook-eseményindító és a HTTP-webhook művelet. További információ az előzetes verzióról: Azure Logic Apps [előzetes verzió.](logic-apps-overview-preview.md) <p><p>**Megjegyzés:** Ahhoz, hogy az eredeti hívó le tudja kapni a választ, a válasz összes lépésének a korláton belül kell befejeződnie, hacsak nem hív meg egy másik logikai alkalmazást beágyazott munkafolyamatként. További információ: Logikai alkalmazások [hívása, aktiválása vagy beágyazása.](../logic-apps/logic-apps-http-endpoint.md) |
+| Kimenő kérelem | 120 másodperc <br>(2 perc) | 230 másodperc <br>(3,9 perc) | 240 másodperc <br>(4 perc) | A kimenő kérések közé tartoznak például a HTTP-eseményindító vagy -művelet által indított hívások. További információ az előzetes verzióról: Azure Logic Apps [előzetes verzió.](logic-apps-overview-preview.md) <p><p>**Tipp:** Hosszabb ideig futó műveletekhez használjon [aszinkron](../logic-apps/logic-apps-create-api-app.md#async-pattern) lekérdezési mintát vagy [egy until ciklust.](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action) Ha egy másik, hívható végponttal ellátott [](logic-apps-http-endpoint.md)logikai alkalmazás hívása során időtúllépési korlátokat kell túllépni, használhatja helyette a beépített Azure Logic Apps-műveletet, amelyet az **összekötőválasztóban** találhat a Beépített alatt. |
+| Bejövő kérelem | 120 másodperc <br>(2 perc) | 230 másodperc <br>(3,9 perc) | 240 másodperc <br>(4 perc) | A bejövő kérések közé tartoznak például a Kérés eseményindító által fogadott hívások, a HTTP-webhook-eseményindítók és a HTTP-webhook-művelet. További információ az előzetes verzióról: Azure Logic Apps [előzetes verzió.](logic-apps-overview-preview.md) <p><p>**Megjegyzés:** Ahhoz, hogy az eredeti hívó le tudja kapni a választ, a válasz összes lépésének a korláton belül kell befejeződnie, hacsak nem hív meg egy másik logikai alkalmazást beágyazott munkafolyamatként. További információ: Logikai alkalmazások [hívása, aktiválása vagy beágyazása.](../logic-apps/logic-apps-http-endpoint.md) |
 ||||||
 
 <a name="message-size-limits"></a>
@@ -241,7 +241,7 @@ Egyes összekötőműveletek aszinkron hívásokat kezdeményeznek, vagy figyeli
 | Name | Több-bérlős korlát | Integrációs szolgáltatási környezet korlátja | Jegyzetek |
 |------|--------------------|---------------------------------------|-------|
 | Üzenet mérete | 100 MB | 200 MB | A korlátot a nagy méretű üzenetek adattömbökben [való kezelését leíró(](../logic-apps/logic-apps-handle-large-messages.md)) Előfordulhat azonban, hogy egyes összekötők és API-k nem támogatják az adattömbök feldarabolását vagy akár az alapértelmezett korlátot. <p><p>– Az OLYAN összekötők, mint az AS2, az X12 és az EDIFACT, saját [B2B üzenetkorlátokkal rendelkezik.](#b2b-protocol-limits) <br>– Az ISE-összekötők az ISE-korlátot használják, nem a nem ISE-összekötőkre vonatkozó korlátokat. |
-| Üzenetméret darabolással | 1 GB | 5 GB | Ez a korlát olyan műveletekre vonatkozik, amelyek natív módon támogatják az adattömbök feldarabolását, vagy lehetővé teszik az adattömbök beállítását a futásidejű konfigurációban. <p><p>Ha ISE-t használ, az Logic Apps-motor támogatja ezt a korlátot, de az összekötők saját, a motor korlátjának megfelelő adattömbökre vonatkozó korlátokkal is rendelkezik, lásd például az [Azure Blob Storage-összekötő API-referenciáját.](/connectors/azureblob/) További információ az adattömbökről: Nagy méretű üzenetek kezelés [darabolással.](../logic-apps/logic-apps-handle-large-messages.md) |
+| Üzenetméret darabolással | 1 GB | 5 GB | Ez a korlát olyan műveletekre vonatkozik, amelyek natív módon támogatják az adattömbök feldarabolását, vagy lehetővé teszik az adattömbök beállítását a futásidejű konfigurációban. <p><p>HA ISE-t használ, az Logic Apps-motor támogatja ezt a korlátot, de az összekötők saját, a motor korlátjának megfelelő adattömbökre vonatkozó korlátokkal is rendelkezik, lásd például az [Azure Blob Storage-összekötő API-referenciáját.](/connectors/azureblob/) További információ az adattömbökről: Nagy méretű üzenetek kezelés [darabolással.](../logic-apps/logic-apps-handle-large-messages.md) |
 |||||
 
 #### <a name="character-limits"></a>Karakterkorlátok
@@ -273,7 +273,7 @@ A kérelem-eseményindítóval indítható logikai alkalmazások korlátai a kö
 | ---- | ----- | ----- |
 | Azure AD engedélyezési szabályzatok | 5 | |
 | Jogcímek engedélyezési szabályzatonként | 10 | |
-| Jogcím értéke – Karakterek maximális száma | 150 |
+| Jogcímérték – Karakterek maximális száma | 150 |
 ||||
 
 <a name="custom-connector-limits"></a>
@@ -304,19 +304,19 @@ A webes API-kból létrehozható egyéni összekötők korlátai a következőek
 
 Minden Azure-előfizetésre a következő integrációs fiókok korlátai vonatkoznak:
 
-* [Azure-régiónként](../logic-apps/logic-apps-pricing.md#integration-accounts) egy ingyenes szintű integrációs fiók. Ez a szint csak az Azure nyilvános régióiban érhető el, például az USA nyugati régiójában vagy [Délkelet-Ázsiában,](/azure/china/overview-operations) de nem érhető el Azure China 21Vianet [vagy](../azure-government/documentation-government-welcome.md)Azure Government.
+* [Azure-régiónként](../logic-apps/logic-apps-pricing.md#integration-accounts) egy ingyenes szintű integrációs fiók. Ez a szint csak az Azure nyilvános régióiban érhető el, például az USA nyugati régiójában vagy [Délkelet-Ázsiában,](/azure/china/overview-operations) de nem érhető el a Azure China 21Vianet vagy a [Azure Government.](../azure-government/documentation-government-welcome.md)
 
-* Összesen 1000 integrációs fiók, beleértve az integrációs fiókokat bármely integrációs szolgáltatási [környezetben (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) mind a fejlesztői, mind a [prémium szintű SKUS-ban.](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)
+* Összesen 1000 integrációs fiók, beleértve az integrációs szolgáltatási környezetekben [(ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) lévő integrációs fiókokat mind a fejlesztői, mind a [prémium szintű SKUS-ban.](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)
 
-* Minden ISE( fejlesztői vagy [prémium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)szintű) egyetlen integrációs fiókot használhat további költségek nélkül, bár a benne foglalt fiók típusa isE termékváltozattól függ. További integrációs fiókokat is létrehozhat az ISE-hez a további költségek teljes [korlátja alatt:](logic-apps-pricing.md#fixed-pricing)
+* Minden ISE( fejlesztői vagy [prémium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)szintű) egyetlen integrációs fiókot használhat további költség nélkül, bár a benne foglalt fiók típusa ISE termékváltozattól függ. További integrációs fiókokat is létrehozhat az ISE-hez a további költségek teljes [korlátja alatt:](logic-apps-pricing.md#fixed-pricing)
 
   | ISE termékváltozat | Integrációs fiók korlátai |
   |---------|----------------------------|
   | **Prémium** | Összesen 20 fiók, beleértve egy Standard fiókot további költségek nélkül. Ezzel a termékváltozatkal csak Standard [fiókokkal lehet.](../logic-apps/logic-apps-pricing.md#integration-accounts) Ingyenes vagy alapszintű fiókok nem engedélyezettek. |
-  | **Fejlesztő** | Összesen 20 fiók, [](../logic-apps/logic-apps-pricing.md#integration-accounts) köztük egy ingyenes fiók (legfeljebb 1 fiók). Ezzel a termékváltozatkal az alábbi két kombinációt használhatja: <p>– Ingyenes fiók és legfeljebb 19 [Standard fiók.](../logic-apps/logic-apps-pricing.md#integration-accounts) <br>– Nincs ingyenes fiók és legfeljebb 20 Standard fiók. <p>Alapszintű vagy további ingyenes fiókok nem engedélyezettek. <p><p>**Fontos:** A fejlesztői [termékváltozatot](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) kísérletezésre, fejlesztésre és tesztelésre használja, éles környezetben vagy teljesítményt tesztelve azonban nem. |
+  | **Fejlesztő** | Összesen 20 fiók, [](../logic-apps/logic-apps-pricing.md#integration-accounts) köztük egy ingyenes fiók (legfeljebb 1). Ezzel a termékváltozatkal az alábbi két kombinációt használhatja: <p>– Ingyenes fiók és legfeljebb 19 [Standard fiók.](../logic-apps/logic-apps-pricing.md#integration-accounts) <br>– Nincs ingyenes fiók és legfeljebb 20 Standard fiók. <p>Alapszintű vagy további ingyenes fiókok nem engedélyezettek. <p><p>**Fontos:** A fejlesztői [termékváltozatot](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) kísérletezésre, fejlesztésre és tesztelésre használhatja, éles környezetben vagy teljesítményt tesztelve azonban nem. |
   |||
 
-Az ISE-k díjszabásának és számlázásának a következő Logic Apps [meg.](../logic-apps/logic-apps-pricing.md#fixed-pricing) A díjszabást a [díjszabást Logic Apps meg.](https://azure.microsoft.com/pricing/details/logic-apps/)
+Az ISE-k díjszabásának és számlázásának a következő Logic Apps [meg:](../logic-apps/logic-apps-pricing.md#fixed-pricing). A díjszabást a [díjszabást Logic Apps meg.](https://azure.microsoft.com/pricing/details/logic-apps/)
 
 <a name="artifact-number-limits"></a>
 
@@ -345,7 +345,7 @@ Az integrációs fiók egyes rétegei esetében a következő korlátok vonatkoz
 | Összetevő | Korlát | Jegyzetek |
 | -------- | ----- | ----- |
 | Szerelvény | 8 MB | A 2 MB-nál nagyobb fájlok feltöltéséhez használjon [Egy Azure Storage-fiókot és egy blobtárolót.](../logic-apps/logic-apps-enterprise-integration-schemas.md) |
-| Leképezés (XSLT-fájl) | 8 MB | A 2 MB-nál nagyobb fájlok feltöltéséhez használja a [Azure Logic Apps REST API – Maps használatával.](/rest/api/logic/maps/createorupdate) <p><p>**Megjegyzés:** A leképezés által sikeresen feldolgozhat adatok vagy rekordok mennyisége az üzenetek méretén és a művelet időtúllépési korlátain Azure Logic Apps. Ha például HTTP-műveletet használ a [HTTP-üzenetek](#http-limits)mérete és az időtúllépési korlátok alapján, a térkép képes a HTTP-üzenetek méretének korlátig feldolgozni az adatokat, ha a művelet a HTTP-időtúllépési korláton belül fejeződik be. |
+| Térkép (XSLT-fájl) | 8 MB | A 2 MB-nál nagyobb fájlok feltöltéséhez használja a [Azure Logic Apps REST API Maps használatával.](/rest/api/logic/maps/createorupdate) <p><p>**Megjegyzés:** A térkép által sikeresen feldolgozhatja az adatok vagy rekordok mennyiségét a rendszer üzenetmérete és a művelet időtúllépési Azure Logic Apps. Ha például HTTP-műveletet használ a [HTTP-üzenetek](#http-limits)mérete és az időtúllépési korlátok alapján, a térkép a HTTP-üzenetek méretkorlátig feldolgozhatja az adatokat, ha a művelet a HTTP-időtúllépési korláton belül fejeződik be. |
 | Séma | 8 MB | A 2 MB-nál nagyobb fájlok feltöltéséhez használjon [Egy Azure Storage-fiókot és egy blobtárolót.](../logic-apps/logic-apps-enterprise-integration-schemas.md) |
 ||||
 
@@ -378,7 +378,7 @@ A B2B protokollokra vonatkozó üzenetméretkorlátok a következőek:
 
 ## <a name="disabling-or-deleting-logic-apps"></a>Logikai alkalmazások letiltása vagy törlése
 
-Amikor letilt egy logikai alkalmazást, a rendszer nem példányosít új futtatásokat. Az összes folyamatban lévő és függőben lévő futtatás a befejezésig folytatódik, ami időt vehet igénybe.
+Amikor letilt egy logikai alkalmazást, a rendszer nem példányosít új futtatásokat. Az összes folyamatban lévő és függőben lévő futtatás a befejezésükig folytatódik, ami időt vehet igénybe.
 
 Amikor törli a logikai alkalmazást, a rendszer nem kezdeményez új futtatásokat. A rendszer minden folyamatban lévő és függő futtatást megszakít. Ha több ezer futtatása van, a megszakítás jelentős ideig eltarthat.
 
@@ -387,13 +387,13 @@ Amikor törli a logikai alkalmazást, a rendszer nem kezdeményez új futtatáso
 
 ## <a name="firewall-configuration-ip-addresses-and-service-tags"></a>Tűzfal konfigurációja: IP-címek és szolgáltatáscímkék
 
-Ha a logikai alkalmazásnak olyan tűzfalon keresztül kell kommunikálnia, amely adott  IP-címekre [](#outbound) korlátozza a forgalmat, a tűzfalnak engedélyeznie kell a hozzáférést az Logic Apps szolgáltatás vagy a futásidő által használt bejövő és kimenő IP-címek számára is abban az Azure-régióban, ahol a logikai alkalmazás létezik. [](#inbound) *Az* ugyanabban a régióban található összes logikai alkalmazás ugyanazt az IP-címtartományt használja.
+Ha a logikai alkalmazásnak egy olyan tűzfalon keresztül kell kommunikálnia, amely  adott [](#inbound) IP-címekre korlátozza a forgalmat, a tűzfalnak engedélyeznie kell a hozzáférést az Logic Apps szolgáltatás vagy a logikai alkalmazást tároló Azure-régióban használt kimenő és bejövő IP-címek számára is. [](#outbound) *Az* ugyanabban a régióban található összes logikai alkalmazás ugyanazt az IP-címtartományt használja.
 
-Ha például az USA nyugati régiójában található logikai alkalmazások által küldött vagy fogadott hívásokat támogatja beépített eseményindítók és műveletek, például a [HTTP-eseményindító](../connectors/connectors-native-http.md)  vagy művelet használatával, a tűzfalnak engedélyeznie kell a hozzáférést az Logic Apps-szolgáltatás összes bejövő IP-címéhez és kimenő IP-címéhez, amely az USA nyugati régiójában található. 
+Ha például az USA nyugati régiójában található logikai alkalmazások által küldött vagy fogadott hívásokat támogatja olyan beépített triggerekkel és  műveletekkel, mint a [HTTP-eseményindító](../connectors/connectors-native-http.md)vagy -művelet, a tűzfalnak engedélyeznie kell a hozzáférést az Logic Apps szolgáltatás összes bejövő IP-címéhez és kimenő IP-címéhez, amely az USA nyugati régiójában található. 
 
-Ha a logikai [](../connectors/apis-list.md#managed-api-connectors)alkalmazás felügyelt összekötőket is használ , például az Office 365 Outlook-összekötőt vagy az  SQL-összekötőt, vagy egyéni összekötőket használ, a tűzfalnak a felügyelt összekötő összes kimenő [IP-címének](#outbound) hozzáférését is engedélyeznie kell a logikai alkalmazás Azure-régiójában. [](/connectors/custom-connectors/) Továbbá, ha olyan egyéni összekötőket használ, amelyek az Azure helyszíni adatátjáró-erőforrásán keresztül férnek hozzá a helyszíni erőforrásokhoz, be kell állítania az átjáró telepítését, hogy engedélyezze a megfelelő felügyelt összekötők kimenő *[IP-címeinek hozzáférését.](#outbound)* [](logic-apps-gateway-connection.md)
+Ha a logikai alkalmazás felügyelt összekötőket is használ , például az Office 365 Outlook-összekötőt vagy az  SQL-összekötőt, vagy egyéni összekötőket használ, a tűzfalnak hozzáférést kell engedélyeznie a felügyelt összekötő összes kimenő [IP-címéhez](#outbound) a logikai alkalmazás Azure-régiójában. [](../connectors/managed.md) [](/connectors/custom-connectors/) Emellett ha olyan egyéni összekötőket használ, amelyek a helyszíni erőforrásokhoz az Azure helyszíni adatátjáró-erőforrásán keresztül férnek hozzá, akkor be kell állítania az átjáró telepítését, hogy engedélyezze a megfelelő felügyelt összekötők kimenő *[IP-címeinek hozzáférését.](#outbound)* [](logic-apps-gateway-connection.md)
 
-Az átjáró kommunikációs beállításainak beállításával kapcsolatos további információkért tekintse meg a következő témaköröket:
+Az átjáró kommunikációs beállításainak beállításával kapcsolatos további információkért tekintse meg az alábbi témaköröket:
 
 * [Helyszíni adatátjáró kommunikációs beállításainak módosítása](/data-integration/gateway/service-gateway-communication)
 * [Helyszíni adatátjáró proxybeállításainak konfigurálása](/data-integration/gateway/service-gateway-proxy)
@@ -404,9 +404,9 @@ Az átjáró kommunikációs beállításainak beállításával kapcsolatos tov
 
 Mielőtt beállít egy IP-címet a tűzfalon, tekintse át az alábbi szempontokat:
 
-* Ha az Power Automate, néhány művelet, például a **HTTP** és [a](/power-automate/getting-started) **HTTP + OpenAPI,** közvetlenül az Azure Logic Apps szolgáltatáson keresztül történik, és az itt felsorolt IP-címekről indul. A szolgáltatás által használt IP-címekkel kapcsolatos további Power Automate [lásd:](/flow/limits-and-config#ip-address-configuration)A Power Automate.
+* Ha a következőt Power Automate: [,](/power-automate/getting-started)néhány művelet, például a **HTTP** és a **HTTP + OpenAPI,** közvetlenül a Azure Logic Apps szolgáltatáson keresztül, és az itt felsorolt IP-címekről indul. A szolgáltatás által használt IP-címekkel kapcsolatos további Power Automate [lásd:](/flow/limits-and-config#ip-address-configuration)A Power Automate.
 
-* A [Azure China 21Vianet](/azure/china/)esetén a rögzített vagy fenntartott IP-címek nem érhetők el az egyéni összekötőkhöz és a felügyelt összekötőkhöz, például az Azure Storage-hoz, az SQL Server-hoz, az Office 365 Outlookhoz stb. [](../logic-apps/custom-connector-overview.md) [](../connectors/apis-list.md#managed-api-connectors)
+* A [Azure China 21Vianet](/azure/china/)esetén a rögzített vagy fenntartott IP-címek nem érhetők el az egyéni összekötőkhöz és a felügyelt összekötőkhöz, például az Azure Storage-hoz, az SQL Server-hoz, az Office 365 Outlookhoz stb. [](../logic-apps/custom-connector-overview.md) [](../connectors/managed.md)
 
 * Ha a logikai alkalmazások integrációs szolgáltatási [környezetben (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md)futnak, győződjön meg arról, hogy ezeket a portokat is [megnyitja.](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise)
 
@@ -416,7 +416,7 @@ Mielőtt beállít egy IP-címet a tűzfalon, tekintse át az alábbi szempontok
 
   * **LogicApps:** A szolgáltatás kimenő IP-címelőtagját Logic Apps jelöli.
 
-  * **AzureConnectors:** A felügyelt összekötők IP-címelőtagját jelöli, amelyek bejövő webhook-visszahívást kezdeményeznek az Logic Apps-szolgáltatásba, illetve kimenő hívásokat a megfelelő szolgáltatásokhoz, például az Azure Storage-hoz vagy a Azure Event Hubs.
+  * **AzureConnectors:** A felügyelt összekötők IP-címelőtagját jelöli, amelyek bejövő webhook-visszahívást kezdeményeznek az Logic Apps-szolgáltatásba, valamint kimenő hívásokat a megfelelő szolgáltatásokhoz, például az Azure Storage-hoz vagy a Azure Event Hubs.
 
 * Ha a logikai alkalmazásokban problémák merültek [](../storage/common/storage-network-security.md)fel a tűzfalakat és tűzfalszabályokat felhasználó Azure Storage-fiókok elérésekor, a hozzáférés engedélyezésére számos egyéb [lehetőség áll rendelkezésre.](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)
 
@@ -429,13 +429,13 @@ Mielőtt beállít egy IP-címet a tűzfalon, tekintse át az alábbi szempontok
 Ez a szakasz csak a szolgáltatás bejövő IP-Azure Logic Apps sorolja fel. Ha már van Azure Government, [lásd: Azure Government – Bejövő IP-címek.](#azure-government-inbound)
 
 > [!TIP]
-> A biztonsági szabályok létrehozása során az összetettség csökkentése [](../virtual-network/service-tags-overview.md)érdekében használhatja a **LogicAppsManagement** szolgáltatáscímkét ( ) ahelyett, hogy minden régióhoz Logic Apps ip-címelőtagokat ad meg. Az **AzureConnectors** szolgáltatáscímkét olyan felügyelt összekötőkhöz is használhatja, amelyek bejövő webhook-visszahívást hoznak a Logic Apps-szolgáltatásba ahelyett, hogy minden régióhoz megadnék a bejövő felügyelt összekötő IP-címelőtagját. Ezek a címkék minden olyan régióban működnek, ahol Logic Apps szolgáltatás elérhető.
+> A biztonsági szabályok létrehozásakor a bonyolultság csökkentése érdekében [](../virtual-network/service-tags-overview.md)igény szerint használhatja a **LogicAppsManagement** szolgáltatáscímkét ahelyett, hogy minden régióhoz Logic Apps ip-címelőtagokat ad meg. Használhatja az **AzureConnectors** szolgáltatáscímkét olyan felügyelt összekötőkhöz is, amelyek bejövő webhook-visszahívást hoznak a Logic Apps-szolgáltatásba ahelyett, hogy minden régióhoz megadnék a bejövő felügyelt összekötő IP-címelőtagját. Ezek a címkék minden olyan régióban működnek, ahol Logic Apps szolgáltatás elérhető.
 >
 > Az alábbi összekötők bejövő webhook-visszahívásokat hoznak Logic Apps szolgáltatásba:
 >
 > Adobe Creative Cloud, Adobe Sign, Adobe Sign Demo, Adobe Sign Preview, Adobe Sign Stage, Azure Sentinel, Business Central, Calendly, Common Data Service, DocuSign, DocuSign Demo, Dynamics 365 for Fin & Ops, LiveChat, Office 365 Outlook, Outlook.com, Parserr, SAP*, Shifts for Microsoft Teams, Teamwork Projects, Typeform
 >
-> \***SAP:** A visszatérő hívó attól függ, hogy az üzembe helyezési környezet több-bérlős Azure-beli vagy ISE-e. A több-bérlős környezetben a helyszíni adatátjáró visszahívja a Logic Apps szolgáltatást. Az ISE-összekötőkben az SAP-összekötő visszahívja a Logic Apps szolgáltatást.
+> \***SAP:** A visszatérő hívó attól függ, hogy az üzembe helyezési környezet több-bérlős Azure-beli vagy ISE-e. A több-bérlős környezetben a helyszíni adatátjáró visszahívja a Logic Apps szolgáltatáshoz. Az ISE-összekötőkben az SAP-összekötő visszahívja a Logic Apps szolgáltatást.
 
 <a name="multi-tenant-inbound"></a>
 
@@ -473,7 +473,7 @@ Ez a szakasz csak a szolgáltatás bejövő IP-Azure Logic Apps sorolja fel. Ha 
 | Észak-Svájc | 51.103.128.52, 51.103.132.236, 51.103.134.138, 51.103.136.209 |
 | Nyugat-Svájc | 51.107.225.180, 51.107.225.167, 51.107.225.163, 51.107.239.66 |
 | Egyesült Arab Emírségek középső | 20.45.75.193, 20.45.64.29, 20.45.64.87, 20.45.71.213 |
-| Egyesült Arab Emírségek északi részén | 20.46.42.220, 40.123.224.227, 40.123.224.143, 20.46.46.173 |
+| Egyesült Arab Emírségek északi iránya | 20.46.42.220, 40.123.224.227, 40.123.224.143, 20.46.46.173 |
 | Az Egyesült Királyság déli régiója | 51.140.79.109, 51.140.78.71, 51.140.84.39, 51.140.155.81 |
 | Az Egyesült Királyság nyugati régiója | 51.141.48.98, 51.141.51.145, 51.141.53.164, 51.141.119.150 |
 | USA nyugati középső régiója | 52.161.26.172, 52.161.8.128, 52.161.19.82, 13.78.137.247 |
@@ -499,10 +499,10 @@ Ez a szakasz csak a szolgáltatás bejövő IP-Azure Logic Apps sorolja fel. Ha 
 
 ### <a name="outbound-ip-addresses"></a>Kimenő IP-címek
 
-Ez a szakasz a szolgáltatás és a felügyelt összekötők Azure Logic Apps IP-címeit sorolja fel. Ha már van Azure Government, Azure Government [- Kimenő IP-címek.](#azure-government-outbound)
+Ez a szakasz a szolgáltatás és a felügyelt összekötők Azure Logic Apps IP-címeit sorolja fel. Ha már van Azure Government, [lásd: Azure Government - Kimenő IP-címek.](#azure-government-outbound)
 
 > [!TIP]
-> A biztonsági szabályok létrehozása során a bonyolultság csökkentése [](../virtual-network/service-tags-overview.md)érdekében használhatja a **LogicApps** szolgáltatáscímkét ( ) ahelyett, hogy minden régióhoz Logic Apps ip-címelőtagokat ad meg. Használhatja az **AzureConnectors** szolgáltatáscímkét olyan felügyelt összekötőkhöz is, amelyek kimenő hívásokat kezdeményeznek a megfelelő szolgáltatásokhoz, például az Azure Storage-hoz vagy az Azure Event Hubs-hoz, ahelyett, hogy minden régióhoz megadnál kimenő felügyelt összekötő IP-címelőtagokat. Ezek a címkék minden olyan régióban működnek, ahol Logic Apps szolgáltatás elérhető.
+> A biztonsági szabályok létrehozása során a bonyolultság csökkentése [](../virtual-network/service-tags-overview.md)érdekében igény szerint használhatja a **LogicApps** szolgáltatáscímkét, és nem kell minden régióhoz kimenő Logic Apps IP-címelőtagokat megadnia. Használhatja az **AzureConnectors** szolgáltatáscímkét olyan felügyelt összekötőkhöz is, amelyek kimenő hívásokat kezdeményeznek a megfelelő szolgáltatásokhoz, például az Azure Storage-hoz vagy az Azure Event Hubs-hoz, ahelyett, hogy minden régióhoz megadnál kimenő felügyelt összekötő IP-címelőtagokat. Ezek a címkék minden olyan régióban működnek, ahol Logic Apps szolgáltatás elérhető.
 
 <a name="multi-tenant-outbound"></a>
 
@@ -540,7 +540,7 @@ Ez a szakasz a szolgáltatás és a felügyelt összekötők Azure Logic Apps IP
 | Észak-Svájc | 51.103.137.79, 51.103.135.51, 51.103.139.122, 51.103.134.69, 51.103.138.96, 51.103.138.28, 51.103.136.37, 51.103.136.210 | 51.103.142.22, 51.107.86.217, 51.107.59.16 - 51.107.59.31, 51.107.60.224 - 51.107.60.255 |
 | Nyugat-Svájc | 51.107.239.66, 51.107.231.86, 51.107.239.112, 51.107.239.123, 51.107.225.190, 51.107.225.179, 51.107.225.186, 51.107.225.151, 51.107.239.83 | 51.107.156.224, 51.107.231.190, 51.107.155.16 - 51.107.155.31, 51.107.156.224 - 51.107.156.255 |
 | Egyesült Arab Emírségek középső | 20.45.75.200, 20.45.72.72, 20.45.75.236, 20.45.79.239, 20.45.67.170, 20.45.72.54, 20.45.67.134, 20.45.67.135 | 20.45.67.45, 20.45.67.28, 20.37.74.192 - 20.37.74.207, 40.120.8.0 - 40.120.8.31 |
-| Egyesült Arab Emírségek északi részén | 40.123.230.45, 40.123.231.179, 40.123.231.186, 40.119.166.152, 40.123.228.182, 40.123.217.165, 40.123.216.73, 40.123.212.104 | 65.52.250.208, 40.123.224.120, 40.120.64.64 - 40.120.64.95, 65.52.250.208 - 65.52.250.223 |
+| Egyesült Arab Emírségek északi iránya | 40.123.230.45, 40.123.231.179, 40.123.231.186, 40.119.166.152, 40.123.228.182, 40.123.217.165, 40.123.216.73, 40.123.212.104 | 65.52.250.208, 40.123.224.120, 40.120.64.64 - 40.120.64.95, 65.52.250.208 - 65.52.250.223 |
 | Az Egyesült Királyság déli régiója | 51.140.74.14, 51.140.73.85, 51.140.78.44, 51.140.137.190, 51.140.153.135, 51.140.28.225, 51.140.142.28, 51.140.158.24 | 51.140.74.150, 51.140.80.51, 51.140.61.124, 51.105.77.96 - 51.105.77.127, 51.140.148.0 - 51.140.148.15 |
 | Az Egyesült Királyság nyugati régiója | 51.141.54.185, 51.141.45.238, 51.141.47.136, 51.141.114.77, 51.141.112.112, 51.141.113.36, 51.141.118.119, 51.141.119.63 | 51.141.52.185, 51.141.47.105, 51.141.124.13, 51.140.211.0 - 51.140.211.15, 51.140.212.224 - 51.140.212.255 |
 | USA nyugati középső régiója | 52.161.27.190, 52.161.18.218, 52.161.9.108, 13.78.151.161, 13.78.137.179, 13.78.148.140, 13.78.129.20, 13.78.141.75 | 52.161.101.204, 52.161.102.22, 13.78.132.82, 13.71.195.32 - 13.71.195.47, 13.71.199.192 - 13.71.199.223 |
