@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 04/09/2021
 ms.custom: generated
-ms.openlocfilehash: f4112d4b9bf55e45ec865f5c8606ead9088a7983
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 0e8363ee29df84478e5ab5c14b43ea07e3bea8ee
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752389"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815305"
 ---
 # <a name="azure-built-in-roles"></a>Beépített Azure-szerepkörök
 
@@ -36,7 +36,7 @@ Az alábbi táblázat az egyes beépített szerepkör rövid leírását tartalm
 > | [Felhasználói hozzáférés adminisztrátora](#user-access-administrator) | Lehetővé teszi az Azure-erőforrások felhasználói hozzáférésének kezelését. | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | **Számítás** |  |  |
 > | [Klasszikus virtuális gépek közreműködője](#classic-virtual-machine-contributor) | Lehetővé teszi a klasszikus virtuális gépek kezelését, de a hozzájuk való hozzáférést nem, és nem azt a virtuális hálózatot vagy tárfiókot, amelyhez csatlakoznak. | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
-> | [Virtuális gép rendszergazdai bejelentkezése](#virtual-machine-administrator-login) | Tekintse Virtual Machines a portálon, és jelentkezzen be rendszergazdaként | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
+> | [Virtuális gép rendszergazdai bejelentkezése](#virtual-machine-administrator-login) | Tekintse Virtual Machines portálon, és jelentkezzen be rendszergazdaként | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
 > | [Virtuális gépek közreműködője](#virtual-machine-contributor) | Lehetővé teszi a virtuális gépek kezelését, de a hozzájuk való hozzáférést nem, és nem azt a virtuális hálózatot vagy tárfiókot, amelyhez csatlakoznak. | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | [Virtuális gép felhasználói bejelentkezése](#virtual-machine-user-login) | Tekintse Virtual Machines portálon, és jelentkezzen be normál felhasználóként. | fb879df8-f326-4884-b1cf-06f3ad86be52 |
 > | **Hálózat** |  |  |
@@ -44,20 +44,20 @@ Az alábbi táblázat az egyes beépített szerepkör rövid leírását tartalm
 > | [CDN-végpontolvasó](#cdn-endpoint-reader) | Megtekintheti a CDN-végpontokat, de nem tud módosításokat tenni. | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
 > | [CDN-profil közreműködője](#cdn-profile-contributor) | Kezelheti a CDN-profilokat és azok végpontjait, de nem adhat hozzáférést más felhasználóknak. | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
 > | [CDN-profilolvasó](#cdn-profile-reader) | Megtekintheti a CDN-profilokat és azok végpontjait, de nem tud módosításokat tenni. | 8f96442b-4075-438f-813d-ad51ab4019af |
-> | [Klasszikus hálózati közreműködő](#classic-network-contributor) | Lehetővé teszi a klasszikus hálózatok kezelését, de nem férhet hozzájuk. | b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
+> | [Klasszikus hálózati közreműködő](#classic-network-contributor) | Lehetővé teszi a klasszikus hálózatok kezelését, de a hozzájuk való hozzáférést nem. | b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
 > | [DNS-zóna közreműködője](#dns-zone-contributor) | Lehetővé teszi a DNS-zónák és -rekordhalmazok kezelését a Azure DNS, de nem teszi lehetővé annak szabályozását, hogy ki férhet hozzájuk. | befefa01-2a29-4197-83a8-272ff33ce314 |
-> | [Hálózati közreműködő](#network-contributor) | Lehetővé teszi a hálózatok kezelését, de a hozzáférésük nem. | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
-> | [saját DNS Zóna-közreműködő](#private-dns-zone-contributor) | Lehetővé teszi a privát DNS-zóna erőforrásainak kezelését, de a virtuális hálózatokat, amelyekhez kapcsolódnak, nem. | b12aa53e-6015-4669-85d0-8515ebb3ae7f |
+> | [Hálózati közreműködő](#network-contributor) | Lehetővé teszi a hálózatok kezelését, de nem férhet hozzájuk. | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
+> | [saját DNS Zóna közreműködője](#private-dns-zone-contributor) | Lehetővé teszi a privát DNS-zóna erőforrásainak kezelését, de a virtuális hálózatokat, amelyekhez kapcsolódnak. | b12aa53e-6015-4669-85d0-8515ebb3ae7f |
 > | [Traffic Manager Közreműködő](#traffic-manager-contributor) | Lehetővé teszi a Traffic Manager kezelését, de nem teszi lehetővé annak szabályozását, hogy ki férhet hozzájuk. | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
 > | **Storage** |  |  |
 > | [Avere-közreműködő](#avere-contributor) | Létrehozhat és kezelhet egy Avere vFXT fürtöt. | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
-> | [Avere-operátor](#avere-operator) | A fürt Avere vFXT a fürt kezelésére | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
-> | [Biztonsági mentés közreműködője](#backup-contributor) | Lehetővé teszi a Backup szolgáltatás kezelését, de nem hozhat létre tárolókat, és nem adhat hozzáférést másoknak | 5e467623-éva1f-42f4-a55d-6e525e11384b |
+> | [Avere-operátor](#avere-operator) | A fürt Avere vFXT fürt által használt | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
+> | [Biztonsági mentés közreműködője](#backup-contributor) | Lehetővé teszi a Backup szolgáltatás kezelését, de nem hozhat létre tárolókat, és nem adhat hozzáférést másoknak | 5e467623-f-42f4-a55d-6e525e11384b |
 > | [Biztonságimásolat-felelős](#backup-operator) | Lehetővé teszi a biztonsági mentési szolgáltatások kezelését, kivéve a biztonsági mentések eltávolítását, a tárolók létrehozását és a hozzáférés mások számára való elérhetősítését | 00c29273-979b-4161-815c-10b084fb9324 |
 > | [Biztonságimásolat-olvasó](#backup-reader) | Megtekintheti a biztonsági mentési szolgáltatásokat, de nem tud módosításokat tenni | a795c7a0-d4a2-40c1-ae25-d81f01202912 |
 > | [Klasszikus tárfiók-közreműködő](#classic-storage-account-contributor) | Lehetővé teszi a klasszikus tárfiókok kezelését, de a hozzájuk való hozzáférést nem. | 86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
-> | [Klasszikus tárfiókkulcs-kezelői szolgáltatásszerepk](#classic-storage-account-key-operator-service-role) | A klasszikus tárfiók kulcskezelői listálhatnak és újragenerálhatnak kulcsokat a klasszikus tárfiókok esetében | 985d6b00-f706-48f5-a6fe-d0ca12fb668d |
-> | [Data Box Közreműködő](#data-box-contributor) | Lehetővé teszi, hogy mindent kezeljen a Data Box szolgáltatás alatt, kivéve, hogy hozzáférést biztosít másoknak. | add466c9-e687-43fc-8d98-dfcf8d720be5 |
+> | [Klasszikus tárfiókkulcs-kezelői szolgáltatásszerepk](#classic-storage-account-key-operator-service-role) | A klasszikus tárfiókkulcs-kezelők listálhatnak és újragenerálhatnak kulcsokat a klasszikus tárfiókok esetében | 985d6b00-f706-48f5-a6fe-d0ca12fb668d |
+> | [Data Box Közreműködő](#data-box-contributor) | Lehetővé teszi, hogy mindent kezelhet a Data Box szolgáltatás alatt, kivéve, hogy hozzáférést biztosít másoknak. | add466c9-e687-43fc-8d98-dfcf8d720be5 |
 > | [Data Box Olvasó](#data-box-reader) | Lehetővé teszi a Data Box szolgáltatás kezelését, kivéve a rendelési adatok létrehozását vagy szerkesztését, valamint a hozzáférést másoknak. | 028f4ed7-e2a9-465e-a8f4-9c0ffdfdc027 |
 > | [Data Lake Analytics Developer](#data-lake-analytics-developer) | Lehetővé teszi, hogy saját feladatokat küldjön el, figyelje és kezeljen, de ne hozzon létre vagy töröljön Data Lake Analytics fiókokat. | 47b7735b-770e-4598-a7da-8b91488b4c88 |
 > | [Olvasó és adatelérés](#reader-and-data-access) | Lehetővé teszi, hogy mindent megtekintsen, de nem teszi lehetővé tárfiók vagy tartalmazott erőforrás törlését vagy létrehozását. Emellett olvasási/írási hozzáférést is biztosít a tárfiókban található összes adathoz a tárfiókkulcsok elérése révén. | c12c1c16-33a1-487b-954d-41c89c60f349 |
@@ -72,11 +72,11 @@ Az alábbi táblázat az egyes beépített szerepkör rövid leírását tartalm
 > | [Storage-fájladatok SMB-megosztásának olvasója](#storage-file-data-smb-share-reader) | Olvasási hozzáférést biztosít az Azure-fájlmegosztások fájljaihoz/könyvtárihoz. Ez a szerepkör egyenértékű a Windows-fájlkiszolgálókon olvasott fájlmegosztásICL-ekkel. | aba4ae5f-2193-4029-9191-0cb91df5e314 |
 > | [Storage Queue-adatok közreműködője](#storage-queue-data-contributor) | Azure Storage-üzenetsorok és üzenetsor-üzenetek olvasása, írása és törlése. Az adott adatművelethez szükséges műveletekről a blob- és üzenetsor-adatműveletek hívására vonatkozó [engedélyeket lásd:](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
 > | [Tárolási üzenetsor adatüzenet-feldolgozója](#storage-queue-data-message-processor) | Üzenetek betekintése, lekérése és törlése egy Azure Storage-üzenetsorból. Az adott adatművelethez szükséges műveletekről a blob- és üzenetsor-adatműveletek hívására vonatkozó [engedélyeket lásd:](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
-> | [Storage Queue-adatüzenet küldője](#storage-queue-data-message-sender) | Üzenetek hozzáadása egy Azure Storage-üzenetsorhoz. Az adott adatművelethez szükséges műveletekről a blob- és üzenetsor-adatműveletek hívására vonatkozó [engedélyeket lásd:](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
-> | [Tárolási üzenetsor adatolvasója](#storage-queue-data-reader) | Azure Storage-üzenetsorok és üzenetsor-üzenetek olvasása és listába írása. Az adott adatművelethez szükséges műveletekről a blob- és üzenetsor-adatműveletek hívására vonatkozó [engedélyeket lásd:](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 19e7f393-937e-4f77-808e-94535e297925 |
+> | [Tárolási üzenetsor adatüzenet-küldője](#storage-queue-data-message-sender) | Üzenetek hozzáadása egy Azure Storage-üzenetsorhoz. Az adott adatművelethez szükséges műveletekről a blob- és üzenetsor-adatműveletek hívására vonatkozó [engedélyeket lásd:](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
+> | [Storage Queue-adatolvasó](#storage-queue-data-reader) | Azure Storage-üzenetsorok és üzenetsor-üzenetek olvasása és felsorolása. Az adott adatművelethez szükséges műveletekről a blob- és üzenetsor-adatműveletek hívására vonatkozó [engedélyeket lásd:](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **Web** |  |  |
 > | [Azure Maps adat-közreműködő](#azure-maps-data-contributor) | Olvasási, írási és törlési hozzáférést biztosít a kapcsolódó adatok Azure Maps-fiókból való leképezéséhez. | 8f5e0ce6-4f7b-4dcf-bddf-e6f48634a204 |
-> | [Azure Maps adatolvasó](#azure-maps-data-reader) | Hozzáférést biztosít egy Azure Maps-fiók térképpel kapcsolatos adatainak olvassa. | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
+> | [Azure Maps adatolvasó](#azure-maps-data-reader) | Hozzáférést biztosít egy Azure Maps-fiók térképekkel kapcsolatos adatainak olvasására. | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [Azure Spring Cloud adatolvasó](#azure-spring-cloud-data-reader) | Olvasási hozzáférés engedélyezése Azure Spring Cloud adatokhoz | b5537268-8956-4941-a8f0-646150406f0c |
 > | [Keresési szolgáltatás közreműködője](#search-service-contributor) | Lehetővé teszi a keresési szolgáltatások kezelését, de nem férhet hozzájuk. | 7ca78c08-252a-4471-8644-ff32d4ba0 |
 > | [SignalR AccessKey Reader](#signalr-accesskey-reader) | Hozzáférési SignalR Service olvasása | 04165923-9d83-45d5-8227-78b77b0a687e |
@@ -126,32 +126,32 @@ Az alábbi táblázat az egyes beépített szerepkör rövid leírását tartalm
 > | [Az adatolvasó végleges nézete](#purview-data-reader) | A Microsoft.Purview adatolvasó olvashatja a katalógus adatobjektumokat. Ez a szerepkör előzetes verzióban érhető el, és változhat. | ff100721-1b9d-43d8-af52-42b69c1272db |
 > | [Adatforrás-rendszergazdai jogosultságok](#purview-data-source-administrator) | A Microsoft.Purview adatforrás rendszergazdája kezelheti az adatforrásokat és az adatvizsgálatokat. Ez a szerepkör előzetes verzióban érhető el, és változhat. | 200bba9e-f0c8-430f-892b-6f0794863803 |
 > | [Sémajegyzék közreműködője (előzetes verzió)](#schema-registry-contributor-preview) | Séma-beállításjegyzék-csoportok és -sémák olvasása, írása és törlése. | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
-> | [Sémajegyzék-olvasó (előzetes verzió)](#schema-registry-reader-preview) | Olvassa el és listába sorolja a séma-beállításjegyzék-csoportokat és -sémákat. | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
+> | [Sémajegyzék-olvasó (előzetes verzió)](#schema-registry-reader-preview) | Olvassa el és listába sorolja fel a séma-beállításjegyzék-csoportokat és -sémákat. | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
 > | **Blockchain** |  |  |
-> | [Blokklánctagcsomópont-hozzáférés (előzetes verzió)](#blockchain-member-node-access-preview) | Engedélyezi a hozzáférést a Blockchain-tagcsomópontokhoz | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
+> | [Blokklánctagcsomópont-hozzáférés (előzetes verzió)](#blockchain-member-node-access-preview) | Hozzáférést biztosít a Blockchain-tagcsomópontokhoz | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | **AI + gépi tanulás** |  |  |
 > | [Cognitive Services Közreműködő](#cognitive-services-contributor) | Segítségével létrehozhatja, olvashatja, frissítheti, törölheti és kezelheti a Cognitive Services. | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
-> | [Cognitive Services Custom Vision Közreműködő](#cognitive-services-custom-vision-contributor) | Teljes hozzáférés a projekthez, beleértve a projektek megtekintésének, létrehozásának, szerkesztésének vagy törlésének képességét. | c1ff6cc2-c111-46fe-8896-e0ef812ad9f3 |
-> | [Cognitive Services Custom Vision üzembe helyezése](#cognitive-services-custom-vision-deployment) | Modellek közzététele, közzététele vagy exportálása. Az üzembe helyezés megtekintheti a projektet, de nem frissíthet. | 5c4089e1-6d96-4d2f-b296-c1bc7137275f |
-> | [Cognitive Services Custom Vision Labeler](#cognitive-services-custom-vision-labeler) | Megtekintheti, szerkesztheti a betanítás képeit, és létrehozhatja, hozzáadhatja, eltávolíthatja vagy törölheti a képcímkéket. A címkézők megtekinthetik a projektet, de csak a betanítás képeit és címkéit frissítik. | 88424f51-ebe7-446f-bc41-7fa16989e96c |
+> | [Cognitive Services Custom Vision Közreműködő](#cognitive-services-custom-vision-contributor) | Teljes hozzáférés a projekthez, beleértve a projektek megtekintésének, létrehozásának, szerkesztésének és törlésének képességét. | c1ff6cc2-c111-46fe-8896-e0ef812ad9f3 |
+> | [Cognitive Services Custom Vision üzembe helyezés](#cognitive-services-custom-vision-deployment) | Modellek közzététele, közzététele vagy exportálása. Az üzembe helyezés megtekintheti a projektet, de nem frissíthet. | 5c4089e1-6d96-4d2f-b296-c1bc7137275f |
+> | [Cognitive Services Custom Vision Labeler](#cognitive-services-custom-vision-labeler) | Megtekintheti, szerkesztheti a betanítás képeit, és létrehozhatja, hozzáadhatja, eltávolíthatja vagy törölheti a képcímkéket. A feliratozók megtekinthetik a projektet, de csak a betanítás képeit és címkéit frissítik. | 88424f51-ebe7-446f-bc41-7fa16989e96c |
 > | [Cognitive Services Custom Vision Olvasó](#cognitive-services-custom-vision-reader) | Csak olvasható műveletek a projektben. Az olvasók nem hozhatják létre vagy frissítheti a projektet. | 93586559-c37d-4a6b-ba08-b9f0940c2d73 |
 > | [Cognitive Services Custom Vision oktató](#cognitive-services-custom-vision-trainer) | Projektek megtekintése, szerkesztése és a modellek betanítása, beleértve a modellek közzétételének, közzétételének és exportálásának képességét. Az oktatók nem hozhatják létre vagy törölhetik a projektet. | 0a5ae4ab-0d65-4eeb-be61-29fc9b54394b |
 > | [Cognitive Services adatolvasó (előzetes verzió)](#cognitive-services-data-reader-preview) | Lehetővé teszi a Cognitive Services olvasását. | b59867f0-fa02-499b-be73-45a86b5b3e1c |
 > | [Cognitive Services Metrics Advisor rendszergazda](#cognitive-services-metrics-advisor-administrator) | Teljes hozzáférés a projekthez, beleértve a rendszerszintű konfigurációt is. | cb43c632-a144-4ec5-977c-e80c4affc34a |
 > | [Cognitive Services QnA Maker Editor](#cognitive-services-qna-maker-editor) | Hozzunk létre, szerkesszünk, importálunk és exportálunk egy tudásbázist. Tudásbázist nem tehet közzé vagy törölhet. | f4cc2bf9-21be-47a1-bdf1-5c5804381025 |
 > | [Cognitive Services QnA Maker Olvasó](#cognitive-services-qna-maker-reader) | Csak a tudásbázist olvassa és tesztelje. | 466ccd10-b268-4a11-b098-b4849f024126 |
-> | [Cognitive Services felhasználó](#cognitive-services-user) | Lehetővé teszi a kulcsok olvasását és list Cognitive Services. | a97b65f3-24c7-4388-baec-2e87135dc908 |
+> | [Cognitive Services felhasználó](#cognitive-services-user) | Lehetővé teszi a kulcskulcsok olvasását és Cognitive Services. | a97b65f3-24c7-4388-baec-2e87135dc908 |
 > | **Dolgok internetes hálózata** |  |  |
 > | [Eszközfrissítés-rendszergazda](#device-update-administrator) | Teljes hozzáférést biztosít a felügyeleti és tartalomműveleti műveletekhez | 02ca0879-e8e4-47a5-a61e-5c618b76e64a |
 > | [Eszközfrissítési tartalom rendszergazdája](#device-update-content-administrator) | Teljes hozzáférést biztosít a tartalomművelethez | 0378884a-3af5-44ab-8323-f5b22f9f3c98 |
-> | [Eszközfrissítés tartalomolvasója](#device-update-content-reader) | Olvasási hozzáférést biztosít a tartalomművelethez, de nem engedélyezi a módosításokat | d1ee9a80-8b14-47f0-bdc2-f4a351625a7b |
+> | [Eszközfrissítési tartalom olvasója](#device-update-content-reader) | Olvasási hozzáférést biztosít a tartalomművelethez, de nem engedélyezi a módosításokat | d1ee9a80-8b14-47f0-bdc2-f4a351625a7b |
 > | [Eszközfrissítések központi telepítésének rendszergazdája](#device-update-deployments-administrator) | Teljes hozzáférést biztosít a felügyeleti műveletekhez | e4237640-0e3d-4a46-8fda-70bc94856432 |
 > | [Eszközfrissítések központi telepítésének olvasója](#device-update-deployments-reader) | Olvasási hozzáférést biztosít a felügyeleti műveletekhez, de nem engedélyezi a módosításokat | 49e2f5d2-7741-4835-8efa-19e1fe35e47f |
 > | [Eszközfrissítés olvasója](#device-update-reader) | Olvasási hozzáférést biztosít a felügyeleti és tartalomműveleti műveletekhez, de nem engedélyezi a módosításokat | e9dba6fb-3d52-4cf0-bce3-f06ce71b9e0f |
 > | **Vegyes valóság** |  |  |
-> | [Remote Rendering rendszergazda](#remote-rendering-administrator) | Átalakítási, munkamenet-, renderelési és diagnosztikai képességeket biztosít a felhasználók számára a Azure Remote Rendering | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
-> | [Remote Rendering-ügyfél](#remote-rendering-client) | Munkamenet-, renderelési és diagnosztikai képességeket biztosít a felhasználók számára a Azure Remote Rendering. | d39065c4-c120-43c9-ab0a-63eed9795f0a |
-> | [Spatial Anchors fiók közreműködője](#spatial-anchors-account-contributor) | Lehetővé teszi a fiók térbeli horgonyok kezelését, de nem törli őket | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
+> | [Remote Rendering rendszergazda](#remote-rendering-administrator) | Felhasználói konverziós, munkamenet-, renderelési és diagnosztikai képességeket biztosít a Azure Remote Rendering | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
+> | [Remote Rendering-ügyfél](#remote-rendering-client) | Munkamenet-, renderelési és diagnosztikai képességeket biztosít a Azure Remote Rendering. | d39065c4-c120-43c9-ab0a-63eed9795f0a |
+> | [Spatial Anchors fiók közreműködője](#spatial-anchors-account-contributor) | Lehetővé teszi a fiók térbeli horgonyok kezelését, de nem törölheti őket | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
 > | [Spatial Anchors fióktulajdonos](#spatial-anchors-account-owner) | Lehetővé teszi a fiók térbeli horgonyok kezelését, beleértve azok törlését is | 70bbe301-9835-447d-afdd-19eb3167307c |
 > | [Spatial Anchors fiókolvasó használata](#spatial-anchors-account-reader) | Lehetővé teszi a fiók térbeli horgonyai tulajdonságainak megkeresét és olvasását | 5d51204f-eb77-4b1c-b86a-2ec626c49413 |
 > | **Integráció** |  |  |
@@ -4347,7 +4347,7 @@ Lehetővé teszi az SQL-adatbázisok kezelését, de nem férhet hozzájuk. Emel
 
 ### <a name="sql-managed-instance-contributor"></a>SQL Managed Instance Közreműködő
 
-Lehetővé teszi a felügyelt SQL-példányok és a szükséges hálózati konfigurációk kezelését, de nem adhat hozzáférést másoknak.
+Lehetővé teszi a felügyelt SQL-példányok és a szükséges hálózati konfiguráció kezelését, de nem adhat hozzáférést másoknak.
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -4361,7 +4361,7 @@ Lehetővé teszi a felügyelt SQL-példányok és a szükséges hálózati konfi
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/locations/instanceFailoverGroups/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/* |  |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
-> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/alhálózatok/* |  |
+> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/* |  |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/* |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Szerepkörök és szerepkör-hozzárendelések olvasása |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikariasztás létrehozása és kezelése |
@@ -4372,7 +4372,7 @@ Lehetővé teszi a felügyelt SQL-példányok és a szükséges hálózati konfi
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/write | Adott felügyelt kiszolgáló hozzáadása vagy frissítése Azure Active Directory csak hitelesítési objektummal |
 > | **DataActions (Adattitkok)** |  |
 > | *nincs* |  |
-> | **NotDataActions (Nem adataktívok)** |  |
+> | **NotDataActions (NotDataActions)** |  |
 > | *nincs* |  |
 
 ```json
@@ -4418,7 +4418,7 @@ Lehetővé teszi a felügyelt SQL-példányok és a szükséges hálózati konfi
 
 ### <a name="sql-security-manager"></a>SQL-biztonságkezelő
 
-Lehetővé teszi az SQL-kiszolgálók és adatbázisok biztonsággal kapcsolatos házirendek kezelését, de a hozzáférésük nem. [További információ](../azure-sql/database/azure-defender-for-sql.md)
+Lehetővé teszi az SQL-kiszolgálók és adatbázisok biztonsággal kapcsolatos házirendek kezelését, de nem férhet hozzájuk. [További információ](../azure-sql/database/azure-defender-for-sql.md)
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -8210,7 +8210,7 @@ Az engedélyek kezelése kivételével minden műveletet végrehajt a kulcstart�
 
 ### <a name="key-vault-contributor"></a>Key Vault Közreműködő
 
-Kulcstartók kezelése, de nem teszi lehetővé szerepkörök hozzárendelését az Azure RBAC-ban, és nem teszi lehetővé a titkos kulcsok, kulcsok és tanúsítványok hozzáférését. [További információ](../key-vault/general/security-overview.md)
+Kulcstartók kezelése, de nem teszi lehetővé szerepkörök hozzárendelését az Azure RBAC-ban, és nem teszi lehetővé a titkos kulcsok, kulcsok és tanúsítványok hozzáférését. [További információ](../key-vault/general/security-features.md)
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -10037,7 +10037,7 @@ Képes Azure-beli csatlakoztatott gépeket is bevetni. [További információ](.
 > | *nincs* |  |
 > | **DataActions (Adattitkok)** |  |
 > | *nincs* |  |
-> | **NotDataActions (NotDataActions)** |  |
+> | **NotDataActions (Nem adataktívok)** |  |
 > | *nincs* |  |
 
 ```json
@@ -10069,22 +10069,22 @@ Képes Azure-beli csatlakoztatott gépeket is bevetni. [További információ](.
 
 ### <a name="azure-connected-machine-resource-administrator"></a>Azure Connected Machine erőforrás-rendszergazda
 
-Képes olvasni, írni, törölni és újra bevetni az Azure-beli csatlakoztatott gépeket.
+Olvashatja, írhatja, törölheti és újra felhasználhatja az Azure Connected Machines-t.
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
 > | --- | --- |
-> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | A virtuális gépek Azure Arc olvasása |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | Az esetlegesen Azure Arc gépek olvasása |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | Gépeket Azure Arc ír |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/delete | Töröl egy Azure Arc gépet |
-> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/write | Telepíti vagy frissíti a Azure Arc bővítményeit |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/write | Bővítmény telepítése vagy Azure Arc frissítése |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/privateLinkScopes/* |  |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/*/read |  |
 > | **NotActions** |  |
 > | *nincs* |  |
 > | **DataActions (Adattitkok)** |  |
 > | *nincs* |  |
-> | **NotDataActions (Nem adataktívok)** |  |
+> | **NotDataActions (NotDataActions)** |  |
 > | *nincs* |  |
 
 ```json
@@ -10127,14 +10127,14 @@ Olvasási hozzáférés a számlázási adatokhoz [További információ](../cos
 > | [Microsoft.Billing](resource-provider-operations.md#microsoftbilling)/*/read | Számlázási adatok olvasása |
 > | [Microsoft.Commerce](resource-provider-operations.md#microsoftcommerce)/*/read |  |
 > | [Microsoft.Consumption](resource-provider-operations.md#microsoftconsumption)/*/read |  |
-> | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | Listába sorolja a hitelesített felhasználó felügyeleti csoportjait. |
+> | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | List management groups for the hitelesített felhasználó. |
 > | [Microsoft.CostManagement](resource-provider-operations.md#microsoftcostmanagement)/*/read |  |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
 > | **NotActions** |  |
 > | *nincs* |  |
 > | **DataActions (Adattitkok)** |  |
 > | *nincs* |  |
-> | **NotDataActions (Nem adataktívok)** |  |
+> | **NotDataActions (NotDataActions)** |  |
 > | *nincs* |  |
 
 ```json
@@ -10183,7 +10183,7 @@ Kezelheti a tervdefiníciókat, de nem rendelhet hozzájuk. [További informáci
 > | *nincs* |  |
 > | **DataActions (Adattitkok)** |  |
 > | *nincs* |  |
-> | **NotDataActions (NotDataActions)** |  |
+> | **NotDataActions (Nem adataktívok)** |  |
 > | *nincs* |  |
 
 ```json
@@ -10214,7 +10214,7 @@ Kezelheti a tervdefiníciókat, de nem rendelhet hozzájuk. [További informáci
 }
 ```
 
-### <a name="blueprint-operator"></a>Blueprint Operator
+### <a name="blueprint-operator"></a>Blueprint Operátor
 
 Hozzárendelhet meglévő közzétett terveket, de nem hozhat létre új terveket. Vegye figyelembe, hogy ez csak akkor működik, ha a hozzárendelés felhasználó által hozzárendelt felügyelt identitással történik. [További információ](../governance/blueprints/overview.md)
 
@@ -10230,7 +10230,7 @@ Hozzárendelhet meglévő közzétett terveket, de nem hozhat létre új terveke
 > | *nincs* |  |
 > | **DataActions (Adattitkok)** |  |
 > | *nincs* |  |
-> | **NotDataActions (Nem adataktívok)** |  |
+> | **NotDataActions (NotDataActions)** |  |
 > | *nincs* |  |
 
 ```json
@@ -10263,7 +10263,7 @@ Hozzárendelhet meglévő közzétett terveket, de nem hozhat létre új terveke
 
 ### <a name="cost-management-contributor"></a>Cost Management-közreműködő
 
-Megtekintheti a költségeket és kezelheti a költségkonfigurációt (például költségvetéseket, exportálásokat) [További információ](../cost-management-billing/costs/understand-work-scopes.md)
+Megtekintheti a költségeket és kezelheti a költségkonfigurációt (pl. költségvetések, exportálások) [További információ](../cost-management-billing/costs/understand-work-scopes.md)
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -10276,13 +10276,13 @@ Megtekintheti a költségeket és kezelheti a költségkonfigurációt (példáu
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
 > | [Microsoft.Advisor](resource-provider-operations.md#microsoftadvisor)/configurations/read | Konfigurációk lekérte |
 > | [Microsoft.Advisor](resource-provider-operations.md#microsoftadvisor)/recommendations/read | Olvasási javaslatok |
-> | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | List management groups for the hitelesített felhasználó. |
+> | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | Listába sorolja a hitelesített felhasználó felügyeleti csoportjait. |
 > | [Microsoft.Billing](resource-provider-operations.md#microsoftbilling)/billingProperty/read |  |
 > | **NotActions** |  |
 > | *nincs* |  |
 > | **DataActions (Adattitkok)** |  |
 > | *nincs* |  |
-> | **NotDataActions (NotDataActions)** |  |
+> | **NotDataActions (Nem adataktívok)** |  |
 > | *nincs* |  |
 
 ```json
@@ -10320,7 +10320,7 @@ Megtekintheti a költségeket és kezelheti a költségkonfigurációt (példáu
 
 ### <a name="cost-management-reader"></a>Cost Management Olvasó
 
-Megtekintheti a költségadatokat és a konfigurációt (pl. költségvetések, exportálások) [További információ](../cost-management-billing/costs/understand-work-scopes.md)
+Megtekintheti a költségadatokat és a konfigurációt (például költségvetéseket, exportálásokat) [További információ](../cost-management-billing/costs/understand-work-scopes.md)
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |

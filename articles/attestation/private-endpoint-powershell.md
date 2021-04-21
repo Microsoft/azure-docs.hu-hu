@@ -1,38 +1,39 @@
 ---
-title: Privát végpont létrehozása Azure PowerShell használatával
-description: Privát végpont létrehozása az Azure igazolásához Azure PowerShell használatával
+title: Privát végpont létrehozása a Azure PowerShell
+description: Privát végpont létrehozása Azure Attestation Azure PowerShell
 services: attestation
 author: msmbaldwin
 ms.service: attestation
 ms.topic: overview
 ms.date: 03/26/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 8ff2e73a8557c6b1761c852ac58a46037a122ddb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ceefd4695583822536d8cc4c14614af7f6736f70
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628526"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830123"
 ---
-# <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>Rövid útmutató: privát végpont létrehozása Azure PowerShell használatával
+# <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>Rövid útmutató: Privát végpont létrehozása a Azure PowerShell
 
-Ismerkedjen meg az Azure Private-hivatkozással, ha privát végpontot használ az Azure-igazoláshoz való biztonságos csatlakozáshoz.
+Az Azure Private Link használatának első lépésekhez egy privát végponttal csatlakozhat biztonságosan a Azure Attestation.
 
-Ebben a rövid útmutatóban létrehoz egy privát végpontot az Azure-igazoláshoz, és üzembe helyez egy virtuális gépet a magánhálózati kapcsolatok teszteléséhez.  
+Ebben a rövid útmutatóban létrehoz egy privát végpontot a Azure Attestation és üzembe helyez egy virtuális gépet a privát kapcsolat teszteléséhez.  
 
 > [!NOTE]
-> Az aktuális implementáció csak automatikus jóváhagyási lehetőséget tartalmaz. Az előfizetést fel kell venni egy engedélyezési listára, hogy el tudja érni a magánhálózati végpontok létrehozását. Az alábbi lépések elvégzése előtt lépjen kapcsolatba a szolgáltatás csapatával, vagy küldjön Azure-támogatási kérést az [Azure támogatási oldalára](https://azure.microsoft.com/support/options/) .
+> A jelenlegi implementáció csak az automatikus jóváhagyási lehetőséget tartalmazza. Az előfizetést hozzá kell adni egy engedélyező listához, hogy folytatni tudja a privát végpont létrehozását. Az alábbi lépések előtt forduljon a szolgáltatási csapathoz, vagy küldjön Azure-támogatás a Azure-támogatás [oldalon.](https://azure.microsoft.com/support/options/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* További információ az [Azure Private linkről](../private-link/private-link-overview.md)
-* [Azure-igazolás beállítása Azure PowerShell](./quickstart-powershell.md)
+* További információ a [Azure Private Link](../private-link/private-link-overview.md)
+* [A Azure Attestation beállítása Azure PowerShell](./quickstart-powershell.md)
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup):
+Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup segítségével:](/powershell/module/az.resources/new-azresourcegroup)
 
 ```azurepowershell-interactive
 ## Create to your Azure account subscription and create a resource group in a desired location. ##
@@ -45,15 +46,15 @@ New-AzResourceGroup -Name $rg -Location $loc
 
 ## <a name="create-a-virtual-network-and-bastion-host"></a>Virtuális hálózat és megerősített gazdagép létrehozása
 
-Ebben a szakaszban létrehoz egy virtuális hálózatot, alhálózatot és egy megerősített gazdagépet. 
+Ebben a szakaszban egy virtuális hálózatot, egy alhálózatot és egy megerősített gazdagépet fog létrehozni. 
 
-A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuális géphez való biztonságos kapcsolódást fogja használni.
+A bástyagazdagép segítségével biztonságosan csatlakozhat a virtuális géphez a privát végpont tesztelése céljából.
 
-Hozzon létre egy virtuális hálózatot és egy megerősített gazdagépet az alábbiakkal:
+Hozzon létre egy virtuális hálózatot és egy megerősített gazdagépet a következővel:
 
-* [Új – AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)
-* [Új – AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)
-* [Új – AzBastion](/powershell/module/az.network/new-azbastion)
+* [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)
+* [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)
+* [New-AzBastion](/powershell/module/az.network/new-azbastion)
 
 ```azurepowershell-interactive
 ## Create backend subnet config. ##
@@ -72,18 +73,18 @@ $publicip = New-AzPublicIpAddress -Name "myBastionIP" -ResourceGroupName $rg -Lo
 New-AzBastion -ResourceGroupName $rg -Name "myBastion" -PublicIpAddress $publicip -VirtualNetwork $vnet
 ```
 
-Az Azure Bastion-gazdagép üzembe helyezése néhány percet is igénybe vehet.
+A gazdagép üzembe helyezése eltarthat néhány Azure Bastion.
 
 ## <a name="create-test-virtual-machine"></a>Teszt virtuális gép létrehozása
 
-Ebben a szakaszban létre fog hozni egy virtuális gépet, amely a privát végpont tesztelésére szolgál.
+Ebben a szakaszban egy virtuális gépet fog létrehozni, amely a privát végpont tesztelésére lesz használva.
 
-A virtuális gép létrehozása a rel:
+Hozza létre a virtuális gépet a következővel:
 
   * [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential)
-  * [Új – AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) 
+  * [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) 
   * [New-AzVM](/powershell/module/az.compute/new-azvm)
-  * [Új – AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
+  * [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
   * [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem)
   * [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage)
   * [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface)
@@ -103,7 +104,7 @@ $vmConfig = New-AzVMConfig -VMName "myVM" -VMSize "Standard_DS1_v2" | Set-AzVMOp
 New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig
 ```
 
-## <a name="create-an-attestation-provider"></a>Tanúsító szolgáltató létrehozása
+## <a name="create-an-attestation-provider"></a>Igazolásszolgáltató létrehozása
 
 ```azurepowershell-interactive
 ## Create an attestation provider ##
@@ -131,7 +132,7 @@ Aliases:  myattestationprovider.eus.attest.azure.net
 
 ## <a name="create-private-endpoint"></a>Privát végpont létrehozása
 
-Ebben a szakaszban a következő módon hozza létre a privát végpontot és a kapcsolatokat a használatával:
+Ebben a szakaszban a privát végpontot és a kapcsolatot a következővel fogja létrehozni:
 
 * [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection)
 * [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint)
@@ -147,14 +148,14 @@ $vnet | Set-AzVirtualNetwork
 ## Create private endpoint
 New-AzPrivateEndpoint  -ResourceGroupName $rg -Name "myPrivateEndpoint" -Location $loc -Subnet $vnet.Subnets[0] -PrivateLinkServiceConnection $privateEndpointConnection
 ```
-## <a name="configure-the-private-dns-zone"></a>A magánhálózati DNS-zóna konfigurálása
+## <a name="configure-the-private-dns-zone"></a>A privát DNS-zóna konfigurálása
 
-Ebben a szakaszban a következő módon hozza létre és konfigurálja a magánhálózati DNS-zónát:
+Ebben a szakaszban a privát DNS-zónát a következővel fogja létrehozni és konfigurálni:
 
-* [Új – AzPrivateDnsZone](/powershell/module/az.privatedns/new-azprivatednszone)
-* [Új – AzPrivateDnsVirtualNetworkLink](/powershell/module/az.privatedns/new-azprivatednsvirtualnetworklink)
-* [Új – AzPrivateDnsZoneConfig](/powershell/module/az.network/new-azprivatednszoneconfig)
-* [Új – AzPrivateDnsZoneGroup](/powershell/module/az.network/new-azprivatednszonegroup)
+* [New-AzPrivateDnsZone](/powershell/module/az.privatedns/new-azprivatednszone)
+* [New-AzPrivateDnsVirtualNetworkLink](/powershell/module/az.privatedns/new-azprivatednsvirtualnetworklink)
+* [New-AzPrivateDnsZoneConfig](/powershell/module/az.network/new-azprivatednszoneconfig)
+* [New-AzPrivateDnsZoneGroup](/powershell/module/az.network/new-azprivatednszonegroup)
 
 ```azurepowershell-interactive
 ## Create private dns zone. ##
@@ -170,27 +171,27 @@ $config = New-AzPrivateDnsZoneConfig -Name "privatelink.attest.azure.net" -Priva
 New-AzPrivateDnsZoneGroup -ResourceGroupName $rg -PrivateEndpointName "myPrivateEndpoint" -Name "myZoneGroup" -PrivateDnsZoneConfig $config
 ```
 
-## <a name="test-connectivity-to-private-endpoint"></a>A magánhálózati végponthoz való kapcsolódás tesztelése
+## <a name="test-connectivity-to-private-endpoint"></a>Privát végponttal való kapcsolat tesztelése
 
-Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja használni az SQL Serverhez való kapcsolódáshoz a privát végponton keresztül.
+Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja használni az SQL-kiszolgálóhoz való csatlakozáshoz a privát végponton keresztül.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) 
  
-2. Válassza az **erőforráscsoportok** lehetőséget a bal oldali navigációs ablaktáblán.
+2. A **bal oldali navigációs** panelen válassza az Erőforráscsoportok lehetőséget.
 
-3. Válassza a **CreateAttestationPrivateLinkTutorial-RG** elemet.
+3. Válassza **a CreateAttestationPrivateLinkTutorial-rg lehetőséget.**
 
-4. Válassza a **myVM** lehetőséget.
+4. Válassza **a myVM lehetőséget.**
 
-5. A **myVM** áttekintés lapján válassza a **kapcsolat** , majd a **megerősített** lehetőséget.
+5. A **myVM áttekintő oldalán** válassza a **Csatlakozás,** majd **a Bastion lehetőséget.**
 
-6. Válassza a kék **használat Bastion** gombot.
+6. Kattintson a kék **Bastion használata gombra.**
 
 7. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
-8. A kapcsolat után nyissa meg a Windows PowerShellt a kiszolgálón.
+8. Csatlakozás Windows PowerShell nyissa meg a kiszolgálón a következőt: .
 
-9. Írja be a következő szöveget: `nslookup <provider-name>.attest.azure.net`. A helyére írja **\<provider-name>** be az előző lépésben létrehozott igazolási szolgáltató példányának nevét. A következőhöz hasonló üzenet jelenik meg:
+9. Írja be a következő szöveget: `nslookup <provider-name>.attest.azure.net`. Cserélje le a helyére az előző lépésekben létrehozott **\<provider-name>** igazolásszolgáltató-példány nevét. Az alábbihoz hasonló üzenet jelenik meg:
 
     ```powershell
 

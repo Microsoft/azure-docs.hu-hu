@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/05/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: b87001f9b283c774096fe669d58a9b487174625d
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 1e6f46b205790d81a3e76d2aafbcf7e13dbb5afd
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750769"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815215"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Referencia Key Vault és App Service és Azure Functions
 
@@ -28,7 +28,7 @@ Ahhoz, hogy titkos kulcsokat Key Vault, rendelkeznie kell egy létrehozott táro
    > [!NOTE] 
    > Key Vault hivatkozások jelenleg csak a rendszer által hozzárendelt felügyelt identitásokat támogatják. Felhasználó által hozzárendelt identitások nem használhatók.
 
-1. Hozzon [létre egy hozzáférési szabályzatot Key Vault](../key-vault/general/security-overview.md#privileged-access) korábban létrehozott alkalmazásidentitáshoz. Engedélyezze a "Titkos ok lekért" engedélyt a szabályzaton. Ne konfigurálja az "engedélyezett alkalmazást" vagy a beállításokat, mert ez nem kompatibilis `applicationId` a felügyelt identitásokkal.
+1. Hozzon [létre egy hozzáférési szabályzatot Key Vault](../key-vault/general/security-features.md#privileged-access) korábban létrehozott alkalmazásidentitáshoz. Engedélyezze a "Titkos ok lekért" engedélyt a szabályzaton. Ne konfigurálja az "engedélyezett alkalmazást" vagy a beállításokat, mert ez nem kompatibilis `applicationId` a felügyelt identitásokkal.
 
 ### <a name="access-network-restricted-vaults"></a>Hozzáférés a hálózattal korlátozott tárolókhoz
 

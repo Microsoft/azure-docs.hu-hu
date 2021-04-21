@@ -1,44 +1,45 @@
 ---
-title: Azure Automation runbook indítása webhookból
-description: Ez a cikk azt ismerteti, hogyan lehet webhook használatával elindítani a runbook a Azure Automation HTTP-hívásból.
+title: Runbook Azure Automation webhookból
+description: Ez a cikk bemutatja, hogyan indíthat el egy runbookot egy webhookkal a Azure Automation http-hívásból.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: c46a8753c87e981d9e3d6ecdd698bbbe6cba9894
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 338fb56c4af5c24b7b746ffd6508c2fe7d52b131
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775782"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830195"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Runbook indítása webhookból
 
-A webhookok lehetővé teszik, hogy egy külső szolgáltatás egy adott runbook indítson el Azure Automation egyetlen HTTP-kéréssel. A külső szolgáltatások közé tartoznak az Azure DevOps Services, a GitHub, a Azure Monitor-naplók és az egyéni alkalmazások. A szolgáltatás egy webhook használatával elindíthat egy runbook a teljes Azure Automation API megvalósítása nélkül. A webhookokat összehasonlíthatja más módszerekkel, hogy runbook indítson el [egy runbook a Azure Automation](./start-runbooks.md).
+A webhookok lehetővé teszik, hogy egy külső szolgáltatás egy adott runbookot indítson Azure Automation egy HTTP-kérésen keresztül. A külső szolgáltatások közé tartozik az Azure DevOps Services, a GitHub, Azure Monitor naplók és egyéni alkalmazások. Az ilyen szolgáltatások webhookkal indítják el a runbookokat anélkül, hogy a teljes Azure Automation API-t. A runbookok indításának egyéb módszereivel összehasonlíthatja a webhookokat a [Runbook](./start-runbooks.md)indítása a Azure Automation.
 
 > [!NOTE]
-> Egy webhook használata a Python-runbook elindításához nem támogatott.
+> A Python-runbookok webhookokkal való elindítani nem támogatottak.
 
-![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
+![WebhookokÁttekintés](media/automation-webhooks/webhook-overview-image.png)
 
-A TLS 1,2-hez készült webhookokkal kapcsolatos ügyfél-követelmények megismeréséhez lásd: [tls 1,2 kényszerítés Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
+A TLS 1.2 webhookokkal kapcsolatos ügyfélkövetelményeit lásd: [TLS 1.2](automation-managing-data.md#tls-12-enforcement-for-azure-automation)kényszerítési szolgáltatás Azure Automation.
 
 ## <a name="webhook-properties"></a>Webhook tulajdonságai
 
-A következő táblázat ismerteti azokat a tulajdonságokat, amelyeket egy webhookhoz kell konfigurálni.
+Az alábbi táblázat azokat a tulajdonságokat ismerteti, amelyek a webhookhoz konfigurálhatóak.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Név |A webhook neve. Megadhatja a kívánt nevet, mert az nem érhető el az ügyfél számára. A rendszer csak a runbook azonosítására szolgál Azure Automationban. Ajánlott eljárásként a webhooknak az azt használó ügyféllel kapcsolatos nevet kell adnia. |
-| URL-cím |A webhook URL-címe. Ez az az egyedi címnek, amelyet az ügyfél HTTP-BEJEGYZÉSsel hív meg, hogy elindítsa a webhookhoz csatolt runbook. A webhook létrehozásakor automatikusan létrejön. Nem adhat meg egyéni URL-címet. <br> <br> Az URL-cím olyan biztonsági jogkivonatot tartalmaz, amely lehetővé teszi, hogy egy harmadik féltől származó rendszer további hitelesítés nélkül hívja meg a runbook. Ezért az URL-címet jelszóként kell kezelni. Biztonsági okokból a webhook létrehozásakor csak a Azure Portal URL-címét tekintheti meg. A jövőbeli használatra biztonságos helyen jegyezze fel az URL-címet. |
-| Lejárat dátuma | A webhook lejárati dátuma, amely után már nem használható. A webhook létrehozása után módosíthatja a lejárati dátumot, feltéve, hogy a webhook nem járt le. |
-| Engedélyezve | Ez a beállítás azt jelzi, hogy a webhook alapértelmezés szerint engedélyezve van-e a létrehozásakor. Ha a tulajdonságot letiltva értékre állítja, akkor egyetlen ügyfél sem használhatja a webhookot. Ezt a tulajdonságot akkor állíthatja be, amikor létrehozza a webhookot vagy bármely más időt a létrehozása után. |
+| Név |A webhook neve. Bármilyen nevet meg lehet adni, mivel az nem lesz elérhető az ügyfél számára. Csak arra használható, hogy azonosítsa a runbookot a Azure Automation. Ajánlott eljárásként adjon nevet a webhooknak az azt használó ügyfélhez kapcsolódóan. |
+| URL-cím |A webhook URL-címe. Ez az egyedi cím, amit az ügyfél http POST-hívással hív meg a webhookhoz csatolt runbook elindítani. A webhook létrehozásakor automatikusan létrejön. Egyéni URL-címet nem lehet megadni. <br> <br> Az URL-cím tartalmaz egy biztonsági jogkivonatot, amely lehetővé teszi, hogy egy külső rendszer további hitelesítés nélkül hívja meg a runbookot. Ezért az URL-címet jelszóként kell kezelni. Biztonsági okokból csak a webhook létrehozásakor Azure Portal URL-címet. Jegyezze fel az URL-címet egy biztonságos helyen későbbi használatra. |
+| Lejárat dátuma | A webhook lejárati dátuma, amely után már nem használható. A webhook létrehozása után módosíthatja a lejárati dátumot, ha a webhook még nem járt le. |
+| Engedélyezve | Beállítás, amely azt jelzi, hogy a webhook alapértelmezés szerint engedélyezve van-e a létrehozásakor. Ha ezt a tulajdonságot Letiltva beállításra adja meg, egyetlen ügyfél sem használhatja a webhookot. Ezt a tulajdonságot a webhook létrehozásakor vagy a létrehozása után bármikor beállíthatja. |
 
 ## <a name="parameters-used-when-the-webhook-starts-a-runbook"></a>A webhook runbook indításakor használt paraméterek
 
-A webhookok meghatározhatják a runbook indításakor használt runbook paraméterek értékeit. A webhooknak tartalmaznia kell a kötelező runbook paraméterek értékeit, és tartalmazhat értékeket a választható paraméterek számára. A webhookra konfigurált paraméterérték a webhook létrehozása után is módosítható. Egy runbook összekapcsolt webhookok mindegyike különböző runbook paramétereket használhat. Amikor egy ügyfél egy webhook használatával indít el egy runbook, az nem bírálhatja felül a webhookban definiált paraméterek értékét.
+A webhook meghatározhatja a runbook indításakor használt runbook-paraméterek értékeit. A webhooknak tartalmaznia kell értékeket minden kötelező runbook-paraméterhez, és tartalmazhat értékeket a választható paraméterekhez. A webhookhoz konfigurált paraméterértékek a webhook létrehozása után is módosíthatók. Egy runbookhoz csatolt több webhook különböző runbook-paraméterértékeket használhat. Amikor egy ügyfél webhookkal elindít egy runbookot, az nem bírálhatja felül a webhookban meghatározott paraméterértékeket.
 
-Az ügyféltől érkező adatok fogadásához a runbook egyetlen nevű paramétert támogat `WebhookData` . Ez a paraméter egy olyan objektumot határoz meg, amely tartalmazza az ügyfél által a POST kérelemben foglalt adatkészletet.
+Az ügyféltől való adatfogadáshoz a runbook egyetlen, nevű paramétert `WebhookData` támogat. Ez a paraméter definiál egy objektumot, amely egy POST-kérésbe az ügyfél által tartalmazott adatokat tartalmazza.
 
 ![WebhookData tulajdonságai](media/automation-webhooks/webhook-data-properties.png)
 
@@ -47,102 +48,102 @@ A `WebhookData` paraméter a következő tulajdonságokkal rendelkezik:
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | `WebhookName` | A webhook neve. |
-| `RequestHeader` | A beérkező POST kérelem fejléceit tartalmazó szórótábla. |
-| `RequestBody` | A beérkező POST kérelem törzse. Ez a törzs megőrzi az adatformázást, például a karakterláncot, a JSON-t, az XML-t vagy az űrlap kódolását. A runbook a várt adatformátummal való együttműködésre kell írni. |
+| `RequestHeader` | A bejövő POST-kérés fejlécét tartalmazó kivonattábla. |
+| `RequestBody` | A bejövő POST-kérés törzse. Ez a törzs megőriz minden adatformázást, például sztringet, JSON-t, XML-t vagy űrlapkódoltat. A runbookot úgy kell megírni, hogy az a várt adatformátummal működjön. |
 
-Nincs szükség a (z) paraméter támogatásához szükséges webhook konfigurálására `WebhookData` , és a runbook nem kell elfogadnia. Ha a runbook nem határozza meg a paramétert, a rendszer figyelmen kívül hagyja az ügyféltől érkező kérések részleteit.
+A paraméter támogatásához nem szükséges konfigurálni a webhookot, és a runbooknak nem kell `WebhookData` elfogadnia. Ha a runbook nem határozza meg a paramétert, a rendszer figyelmen kívül hagyja az ügyféltől küldött kérelem részleteit.
 
 > [!NOTE]
-> Webhook meghívásakor az ügyfélnek mindig minden paraméter értékét tárolnia kell, ha a hívás sikertelen. Hálózati leállás vagy kapcsolati probléma esetén az alkalmazás nem tudja beolvasni a sikertelen webhook-hívásokat.
+> Webhook hívása esetén az ügyfélnek minden paraméterértéket tárolnia kell arra az esetre, ha a hívás meghiúsul. Ha hálózati kimaradás vagy kapcsolati probléma van, az alkalmazás nem tudja lekérni a sikertelen webhookhívásokat.
 
-Ha megad egy értéket a `WebhookData` webhook létrehozásakor, a rendszer felülbírálja, amikor a webhook elindítja a runbook az ügyfél post kérelemből származó adatokkal. Ez akkor is megtörténik, ha az alkalmazás nem tartalmaz semmilyen adatbevitelt a kérelem törzsében. 
+Ha a webhook létrehozásakor megad egy értéket, az felül lesz bírálva, amikor a webhook elindítja a runbookot az ügyfél `WebhookData` POST-kéréséből származó adatokkal. Ez akkor is előfordul, ha az alkalmazás nem tartalmaz adatokat a kérelem törzsében. 
 
-Ha olyan runbook indít el, amely a `WebhookData` webhooktól eltérő mechanizmust használ, megadhatja a `WebhookData` runbook által felismert értéket. Ennek az értéknek olyan objektumnak kell lennie, amely a paraméterrel megegyező [tulajdonságokkal](#webhook-properties) rendelkezik, `WebhookData` így a runbook ugyanúgy működhet, mint a `WebhookData` webhook által átadott tényleges objektumokkal.
+Ha egy webhooktól különböző mechanizmussal definiáló runbookot indít el, megadhatja a runbook által felismert `WebhookData` `WebhookData` értéket. Ennek az értéknek olyan [](#webhook-properties) objektumnak kell lennie, amely ugyanazokkal a tulajdonságokkal rendelkezik, mint a paraméter, hogy a runbook ugyanúgy működjön vele, mint a webhookok által átadott `WebhookData` `WebhookData` tényleges objektumokkal.
 
-Ha például a következő runbook indítja el a Azure Portalból, és szeretne átadni valamilyen minta webhook-adatait tesztelésre, akkor a felhasználói felületen át kell adnia a JSON-ban lévő adatok adatait.
+Ha például a Azure Portal-ból kezdi el a következő runbookot, és szeretne átadni néhány minta webhookadatot a teszteléshez, az adatokat JSON-ban kell átadnia a felhasználói felületen.
 
-![WebhookData paraméter a felhasználói felületen](media/automation-webhooks/WebhookData-parameter-from-UI.png)
+![WebhookData paraméter a felhasználói felületről](media/automation-webhooks/WebhookData-parameter-from-UI.png)
 
-A következő runbook példaként adja meg a következő tulajdonságokat `WebhookData` :
+A következő runbook-példához definiáljuk a következő `WebhookData` tulajdonságait:
 
-* **WebhookName**: MyWebhook
+* **WebhookName:** MyWebhook
 * **RequestBody**: `*[{'ResourceGroup': 'myResourceGroup','Name': 'vm01'},{'ResourceGroup': 'myResourceGroup','Name': 'vm02'}]*`
 
-Most átadjuk a következő JSON-objektumot a paraméter felhasználói felületén `WebhookData` . Ez a példa a szállítás visszaadásával és a sortörés karakterrel egyezik meg a webhookból átadott formátummal.
+Most át kell adni a következő JSON-objektumot a felhasználói felületen a `WebhookData` paraméterhez. Ez a példa kocsivissza karakterekkel és újsor karakterekkel megegyezik a webhookból átadott formátummal.
 
 ```json
 {"WebhookName":"mywebhook","RequestBody":"[\r\n {\r\n \"ResourceGroup\": \"vm01\",\r\n \"Name\": \"vm01\"\r\n },\r\n {\r\n \"ResourceGroup\": \"vm02\",\r\n \"Name\": \"vm02\"\r\n }\r\n]"}
 ```
 
-![A WebhookData paraméter elindítása a felhasználói felületen](media/automation-webhooks/Start-WebhookData-parameter-from-UI.png)
+![Indítsa el a WebhookData paramétert a felhasználói felületről](media/automation-webhooks/Start-WebhookData-parameter-from-UI.png)
 
 > [!NOTE]
-> Azure Automation naplózza az összes bemeneti paraméter értékét a runbook feladattal. Így az ügyfél által a webhook-kérelemben megadott összes bemenet naplózásra kerül, és elérhető bárki számára, aki hozzáfér az Automation-feladathoz. Emiatt körültekintően kell megjelennie a webhook-hívásokban lévő bizalmas adatokkal kapcsolatban.
+> Azure Automation naplózza az összes bemeneti paraméter értékét a runbook feladatával. Így az ügyfél által a webhookkérésben megadott bemenetek naplózva vannak, és bárki számára elérhetők, aki hozzáféréssel rendelkezik az automatizálási feladathoz. Ezért körültekintően kell eljárnia a bizalmas adatok webhookhívásokbe való be- és beiktázatásában.
 
-## <a name="webhook-security"></a>Webhookok biztonsága
+## <a name="webhook-security"></a>Webhook-biztonság
 
-A webhook biztonsága az URL-címének védelmére támaszkodik, amely egy olyan biztonsági jogkivonatot tartalmaz, amely lehetővé teszi a webhook meghívását. A Azure Automation nem végez hitelesítést a kérelemben, amíg a megfelelő URL-címre kerül. Ezért az ügyfelek nem használhatnak olyan webhookokat a runbookok, amelyek nagy mértékben bizalmas műveleteket hajtanak végre anélkül, hogy alternatív módszert kellene alkalmazni a kérés érvényesítésére.
+A webhookok biztonsága az URL-cím védelmére támaszkodik, amely egy biztonsági jogkivonatot tartalmaz, amely lehetővé teszi a webhook meghívását. Azure Automation nem végez hitelesítést a kérésen, amíg az a megfelelő URL-címre van érvénybe hozva. Emiatt az ügyfelek nem használhatnak webhookokat olyan runbookok esetében, amelyek rendkívül bizalmas műveleteket végeznek anélkül, hogy alternatív módon érvényesíteik a kérést.
 
 Vegye figyelembe a következő stratégiákat:
 
-* A runbook belül eldöntheti, hogy egy webhook hívja-e meg a logikát. A runbook ellenőriznie kell a `WebhookName` paraméter tulajdonságát `WebhookData` . A runbook további ellenőrzéseket hajthat végre, ha a és a tulajdonságok között megkeresi az adott információkat `RequestHeader` `RequestBody` .
+* A runbookba logikát is be lehet foglalni annak megállapításához, hogy webhookok hívják-e meg. A runbooknak ellenőriznie `WebhookName` kell a paraméter `WebhookData` tulajdonságát. A runbook további ellenőrzést végezhet, ha adott információkat keres a és tulajdonságok `RequestHeader` `RequestBody` között.
 
-* A runbook végre kell hajtania egy külső feltétel érvényesítését, amikor webhook-kérést kap. Vegyünk például egy GitHub által meghívott runbook, amikor új véglegesít egy GitHub-tárházat. A runbook csatlakozhat a GitHubhoz annak ellenőrzéséhez, hogy új véglegesítés történt a folytatás előtt.
+* Kérje meg a runbookot, hogy hajtson végre valamilyen ellenőrzést egy külső feltételen, amikor webhookkérést kap. Vehet például egy olyan runbookot, amelyet a GitHub hív meg, amikor új véglegesítés történik egy GitHub-adattárban. Előfordulhat, hogy a runbook a GitHubhoz csatlakozva ellenőrzi, hogy történt-e új véglegesítés a folytatás előtt.
 
-* Azure Automation támogatja az Azure Virtual Network szolgáltatás címkéit, különösen a [GuestAndHybridManagement](../virtual-network/service-tags-overview.md). A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/network-security-groups-overview.md#security-rules) definiálhat hálózati hozzáférés-vezérlést, vagy a virtuális hálózatán belüli webhookokat is [Azure Firewall](../firewall/service-tags.md) és indíthat el. A szolgáltatás címkéi a biztonsági szabályok létrehozásakor a megadott IP-címek helyett használhatók. Ha a szolgáltatási címke nevét **GuestAndHybridManagement**  adja meg egy szabály megfelelő forrás vagy cél mezőjében, engedélyezheti vagy megtagadhatja az Automation szolgáltatás forgalmát. Ez a szolgáltatási címke nem támogatja az IP-címtartományok egy adott régióra való korlátozásával a részletesebb szabályozás engedélyezését.
+* Azure Automation támogatja az Azure-beli virtuális hálózati szolgáltatáscímkéket, különösen a [GuestAndHybridManagement címkét.](../virtual-network/service-tags-overview.md) A szolgáltatáscímkék használatával hálózati hozzáférés-vezérlést [](../firewall/service-tags.md) határozhat meg a hálózati biztonsági csoportokhoz vagy Azure Firewall webhookokat aktiválhat a virtuális hálózaton belülről. [](../virtual-network/network-security-groups-overview.md#security-rules) A szolgáltatáscímkék adott IP-címek helyett használhatók a biztonsági szabályok létrehozásakor. Ha egy szabály megfelelő forrás- vagy célmezőjeként megadja a **GuestAndHybridManagement**  szolgáltatáscímkenevet, engedélyezheti vagy megtagadhatja az Automation szolgáltatás forgalmát. Ez a szolgáltatáscímke nem támogatja részletesebb vezérlést az IP-címtartományok egy adott régióra való korlátozásával.
 
 ## <a name="create-a-webhook"></a>Webhook létrehozása
 
-A következő eljárással hozhat létre egy új webhookot, amely egy runbook kapcsolódik a Azure Portal.
+Az alábbi eljárással hozhat létre a runbookhoz csatolt új webhookot a Azure Portal.
 
-1. A Azure Portal Runbookok lapján kattintson arra a runbook, amelyet a webhook elkezd megtekinteni a runbook részleteit. Győződjön meg arról, hogy a runbook **állapota** mező **közzé** van téve.
-2. Kattintson a **webhook** elemre az oldal tetején a webhook hozzáadása lap megnyitásához.
-3. Kattintson az **új webhook létrehozása** elemre a webhook létrehozása lap megnyitásához.
-4. Töltse ki a webhook **neve** és **lejárati dátuma** mezőket, és adja meg, hogy engedélyezni kell-e. A tulajdonságokkal kapcsolatos további információkért tekintse meg a [webhook tulajdonságai](#webhook-properties) című témakört.
-5. Kattintson a másolás ikonra, és nyomja le a CTRL + C billentyűkombinációt a webhook URL-címének másolásához. Ezt követően rögzítse egy biztonságos helyen. 
+1. A forgatókönyv Runbookok Azure Portal kattintson arra a runbookra, amelybe a webhook elindul a runbook részleteinek megtekintéséhez. Győződjön meg arról, hogy a runbook **Állapota** mezője **Közzétettre van állítva.**
+2. Kattintson a lap tetején található **Webhook** elemre a Webhook hozzáadása lap megnyitásához.
+3. Kattintson **az Új webhook létrehozása elemre** a Webhook létrehozása lap megnyitásához.
+4. Töltse ki a  **webhook** Név és Lejárat dátuma mezőit, és adja meg, hogy engedélyezni kell-e. További információ ezekről a tulajdonságokról: [Webhook](#webhook-properties) tulajdonságai.
+5. Kattintson a másolás ikonra, majd nyomja le a Ctrl+C billentyűkombinációt a webhook URL-címének másoláshoz. Ezután rögzítse egy biztonságos helyen. 
 
     > [!IMPORTANT]
-    > A webhook létrehozása után nem kérheti le újra az URL-címet. Ügyeljen rá, hogy a fentiek szerint másolja és jegyezze fel.
+    > A webhook létrehozása után nem tudja ismét lekérni az URL-címet. Győződjön meg arról, hogy a fentiek szerint másolja és rögzíti.
 
    ![Webhook URL-címe](media/automation-webhooks/copy-webhook-url.png)
 
-1. Kattintson a **Parameters (paraméterek** ) elemre a runbook paramétereinek értékének megadásához. Ha a runbook kötelező paraméterekkel rendelkezik, akkor nem hozhatja létre a webhookot, hacsak nem ad meg értékeket.
+1. Kattintson **a Paraméterek** elemre a runbook paramétereinek értékeinek megadása érdekében. Ha a runbook kötelező paraméterekkel rendelkezik, nem hozhatja létre a webhookot, hacsak nem ad meg értékeket.
 
 2. A webhook létrehozásához kattintson a **Létrehozás** elemre.
 
 ## <a name="use-a-webhook"></a>Webhook használata
 
-Ha a létrehozása után webhookot szeretne használni, az ügyfélnek egy HTTP-kérelmet kell kiadnia a `POST` webhook URL-címével. A szintaxis a következő:
+A webhookok létrehozása után az ügyfélnek ki kell adnunk egy HTTP-kérést a `POST` webhook URL-címével. A szintaxis a következő:
 
 ```http
 http://<Webhook Server>/token?=<Token Value>
 ```
 
-Az ügyfél a kérelemből a következő visszatérési kódok egyikét kapja meg `POST` .
+Az ügyfél az alábbi visszatérési kódok egyikét kapja meg a `POST` kéréstől.
 
-| Code | Szöveg | Leírás |
+| Code | Szöveg | Description |
 |:--- |:--- |:--- |
-| 202 |Elfogadva |A kérést elfogadták, és a runbook sikeresen várólistára került. |
-| 400 |Hibás kérés |A kérelmet a következő okok egyike miatt nem fogadták el: <ul> <li>A webhook lejárt.</li> <li>A webhook le van tiltva.</li> <li>Az URL-címben szereplő jogkivonat érvénytelen.</li>  </ul> |
-| 404 |Nem található |A kérelmet a következő okok egyike miatt nem fogadták el: <ul> <li>A webhook nem található.</li> <li>A runbook nem található.</li> <li>A fiók nem található.</li>  </ul> |
-| 500 |Belső kiszolgálóhiba |Az URL-cím érvénytelen, de hiba történt. Küldje el újra a kérelmet. |
+| 202 |Elfogadva |A kérelem el lett fogadva, és a runbook sikeresen várólistára lett stb. |
+| 400 |Hibás kérés |A kérést a következő okok miatt nem fogadták el: <ul> <li>A webhook lejárt.</li> <li>A webhook le van tiltva.</li> <li>Az URL-címben található jogkivonat érvénytelen.</li>  </ul> |
+| 404 |Nem található |A kérelmet a következő okok miatt nem fogadták el: <ul> <li>A webhook nem található.</li> <li>A runbook nem található.</li> <li>A fiók nem található.</li>  </ul> |
+| 500 |Belső kiszolgálóhiba |Az URL-cím érvényes volt, de hiba történt. Kérjük, adja meg újra a kérést. |
 
-Ha a kérelem sikeres, a webhook válasza JSON formátumban tartalmazza a feladatot, az alább látható módon. Egyetlen AZONOSÍTÓJÚ feladatot tartalmaz, de a JSON formátum lehetővé teszi a lehetséges jövőbeli fejlesztéseket.
+Ha a kérés sikeres, a webhook-válasz JSON formátumban tartalmazza a feladat azonosítóját az alább látható módon. Egyetlen feladatazonosítót tartalmaz, de a JSON formátum lehetővé teszi a jövőbeli lehetséges fejlesztéseket.
 
 ```json
 {"JobIds":["<JobId>"]}
 ```
 
-Az ügyfél nem tudja meghatározni, hogy mikor fejeződött be a runbook-feladatok, vagy a befejezési állapota a webhookban. Ezt az információt a feladattal együtt egy másik mechanizmussal, például a [Windows PowerShell](/powershell/module/servicemanagement/azure.service/get-azureautomationjob) vagy a [Azure Automation API](/rest/api/automation/job)használatával tekintheti meg.
+Az ügyfél nem tudja meghatározni, hogy mikor fejeződik be a runbook-feladat, vagy hogy mikor fejeződött be a webhook. Ezt az információt a feladatazonosító egy másik mechanizmussal, például a Windows PowerShell vagy a Azure Automation [](/powershell/module/servicemanagement/azure.service/get-azureautomationjob) [mechanizmussal derítheti fel.](/rest/api/automation/job)
 
-### <a name="use-a-webhook-from-an-arm-template"></a>Webhook használata ARM-sablonból
+### <a name="use-a-webhook-from-an-arm-template"></a>ARM-sablonból származó webhook használata
 
-Az Automation-webhookok [Azure Resource Manager-(ARM-) sablonokkal](/azure/azure-resource-manager/templates/overview)is meghívhatók. Az ARM-sablon egy `POST` kérést bocsát ki, és a visszatérési kódot ugyanúgy fogadja, mint bármely más ügyfél. Lásd: [webhook használata](#use-a-webhook).
+Az Automation-webhookok is meghívhatóak Azure Resource Manager [(ARM) sablonjaival.](/azure/azure-resource-manager/templates/overview) Az ARM-sablon egy kérést ad ki, és a többi ügyfélhez hasonló visszatérési kódot `POST` kap. Lásd: [Webhook használata.](#use-a-webhook)
 
    > [!NOTE]
-   > Biztonsági okokból a rendszer csak a sablon első telepítésekor adja vissza az URI-t.
+   > Biztonsági okokból a rendszer csak a sablon első üzembe helyezésekor ad vissza URI-t.
 
-Ez a sablon létrehoz egy tesztkörnyezetben, és visszaadja az általa létrehozott webhook URI-JÁT.
+Ez a mintasablon létrehoz egy tesztkörnyezetet, és visszaadja a létrehozott webhook URI-ját.
 
 ```json
 {
@@ -242,21 +243,21 @@ Ez a sablon létrehoz egy tesztkörnyezetben, és visszaadja az általa létreho
 
 ## <a name="renew-a-webhook"></a>Webhook megújítása
 
-Webhook létrehozásakor az érvényességi időtartam tíz év, amely után az automatikusan lejár. Miután egy webhook lejárt, nem aktiválhatja újra. Csak azt távolíthatja el, majd újból létrehozhatja. 
+A létrehozott webhookok érvényességi időtartama 10 év, amely után automatikusan lejár. Ha egy webhook lejárt, nem aktiválhatja újra. Csak eltávolíthatja, majd újra létrehozhatja. 
 
-Kiterjesztheti azt a webhookot, amely nem érte el a lejárati idejét. Webhook kiterjesztése:
+Kiterjeszthet egy olyan webhookot, amely még nem érte el a lejárati idejét. Webhookok kiterjesztése:
 
-1. Navigáljon a webhookot tartalmazó runbook. 
-2. Válassza a **webhookok** lehetőséget az **erőforrások** területen. 
-3. Kattintson a terjeszteni kívánt webhookra. 
-4. A webhook lapon válassza ki az új lejárati dátumot és időpontot, majd kattintson a **Mentés** gombra.
+1. Keresse meg a webhookot tartalmazó runbookot. 
+2. A Resources (Erőforrások) alatt válassza a **Webhooks (Webhookok)** **lehetőséget.** 
+3. Kattintson a kiterjeszteni kívánt webhookra. 
+4. A Webhook lapon válasszon ki egy új lejárati dátumot és időpontot, majd kattintson a **Mentés gombra.**
 
 ## <a name="sample-runbook"></a>Minta runbook
 
-A következő minta-runbook fogadja a webhook-adatkapcsolatot, és elindítja a kérés törzsében megadott virtuális gépeket. A runbook teszteléséhez az Automation-fiók **runbookok** területén kattintson a **runbook létrehozása** lehetőségre. Ha nem tudja, hogyan hozhat létre runbook, tekintse meg [a Runbook létrehozását](automation-quickstart-create-runbook.md)ismertető témakört.
+A következő minta runbook elfogadja a webhookadatokat, és elindítja a kérés törzsében megadott virtuális gépeket. A runbook teszteléshez kattintson az Automation-fiók **Runbookok** területén a **Runbook létrehozása elemre.** Ha nem tudja, hogyan hozhat létre runbookot, tekintse meg [a runbook létrehozását.](automation-quickstart-create-runbook.md)
 
 > [!NOTE]
-> A nem grafikus PowerShell-runbookok, `Add-AzAccount` valamint a `Add-AzureRMAccount` [csatlakozási-AzAccount](/powershell/module/az.accounts/connect-azaccount)aliasai. Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot.
+> Nem grafikus PowerShell-runbookok esetén, amelyek a `Add-AzAccount` `Add-AzureRMAccount` [Connect-AzAccount aliasai.](/powershell/module/az.accounts/connect-azaccount) Használhatja ezeket a parancsmagokat, [](automation-update-azure-modules.md) vagy frissítheti az Automation-fiókjában található modulokat a legújabb verziókra. Előfordulhat, hogy akkor is frissítenie kell a modulokat, ha most hozott létre egy új Automation-fiókot.
 
 ```powershell
 param
@@ -311,9 +312,9 @@ else {
 
 ## <a name="test-the-sample"></a>A minta tesztelése
 
-Az alábbi példa a Windows PowerShellt használja egy webhooktal rendelkező runbook elindításához. Bármely olyan nyelv, amely HTTP-kéréseket tesz elérhetővé, webhookot használhat. Példaként a Windows PowerShellt használjuk.
+Az alábbi példa Windows PowerShell webhookkal indít el egy runbookot. Bármely nyelv, amely képes HTTP-kérések igénylésére, használhat webhookot. Windows PowerShell itt példaként használjuk.
 
-A runbook a kérelem törzsében a JSON-ban formázott virtuális gépek listáját várja. A runbook ellenőrzi, hogy a fejlécek tartalmaznak-e egy meghatározott üzenetet annak ellenőrzéséhez, hogy a webhook-hívó érvényes-e.
+A runbook a kérelem törzsében JSON formátumban formázott virtuális gépek listáját várja. A runbook ellenőrzi, hogy a fejlécek tartalmaznak-e egy meghatározott üzenetet, amely ellenőrzi, hogy a webhook hívója érvényes-e.
 
 ```azurepowershell-interactive
 $uri = "<webHook Uri>"
@@ -328,7 +329,7 @@ $response = Invoke-WebRequest -Method Post -Uri $uri -Body $body -Headers $heade
 $jobid = (ConvertFrom-Json ($response.Content)).jobids[0]
 ```
 
-A következő példa a runbook számára elérhető kérelem törzsét mutatja a `RequestBody` tulajdonságában `WebhookData` . Ez az érték a JSON-ban van formázva, hogy kompatibilis legyen a kérelem törzsében található formátummal.
+Az alábbi példa a runbook számára a tulajdonságában elérhető kérés `RequestBody` törzsét mutatja `WebhookData` be. Ez az érték JSON formátumban van formázva, hogy kompatibilis legyen a kérés törzsében szereplő formátummal.
 
 ```json
 [
@@ -343,10 +344,10 @@ A következő példa a runbook számára elérhető kérelem törzsét mutatja a
 ]
 ```
 
-Az alábbi képen látható a Windows PowerShellből küldött kérelem és az eredményül kapott válasz. A rendszer kinyeri a feladatot a válaszból, és karakterlánccá alakítja át.
+Az alábbi képen a rendszer által küldött kérés Windows PowerShell az eredményül kapott válasz látható. A feladatazonosító a válaszból lesz kinyerve, és sztringgé lesz konvertálva.
 
 ![Webhookok gomb](media/automation-webhooks/webhook-request-response.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Runbook riasztásból való kiváltásához tekintse meg a [riasztások használata Azure Automation runbook elindításához](automation-create-alert-triggered-runbook.md)című témakört.
+* Runbook riasztásból való aktiválását lásd: Riasztás használata [runbook Azure Automation aktiválása.](automation-create-alert-triggered-runbook.md)

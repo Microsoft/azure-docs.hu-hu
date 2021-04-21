@@ -1,48 +1,46 @@
-- name: Az Azure Industrial IoT dokumentációja
+- name: Ipari Azure IoT-dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
     - name: Mi az az ipari IoT?
       href: overview-what-is-industrial-iot.md
-    - name: Mi az OPC-közzétevő?
+    - name: Mi az az OPC Publisher?
       href: overview-what-is-opc-publisher.md
-    - name: Mi az az ipari IoT platform?
-      href: overview-what-is-industrial-iot-platform.md
 - name: Oktatóanyagok
   items:
-    - name: OPC-közzétevő – önálló oktatóanyagok
+    - name: Az OPC Publisher önálló oktatóanyagai
       items:
-        - name: OPC-közzétevő önálló üzemmódjának üzembe helyezése
+        - name: OpC-közzétevő önálló módjának üzembe helyezése
           href: tutorial-publisher-deploy-opc-publisher-standalone.md
         - name: Az OPC Publisher konfigurálása
           href: tutorial-publisher-configure-opc-publisher.md
-        - name: Az OPC-közzétevő teljesítménye és memóriájának finomhangolása
+        - name: Az OPC-közzétevő teljesítménye és memóriahangolása
           href: tutorial-publisher-performance-memory-tuning-opc-publisher.md
-    - name: IIoT platform oktatóanyagok (előkészített mód)
+    - name: IIoT Platform-oktatóanyagok (vezényelt mód)
       items:
-        - name: IIoT platform üzembe helyezése
+        - name: Az IIoT platform üzembe helyezése
           href: tutorial-deploy-industrial-iot-platform.md
         - name: IIoT-összetevők konfigurálása
           href: tutorial-configure-industrial-iot-components.md
-        - name: IIoT-ADX beolvasása
+        - name: IIoT-adatok lekérte az ADX-be
           href: tutorial-industrial-iot-azure-data-explorer.md
-        - name: Az Time Series Insights használatával megjelenítheti és elemezheti az adataikat
+        - name: Adatok vizualizációja és elemzése Time Series Insights
           href: tutorial-visualize-data-time-series-insights.md
 - name: Referencia
   items:
     - name: Parancssori argumentumok
       href: reference-command-line-arguments.md
-    - name: OPC-közzétevő telemetria konfigurációs fájlformátuma
+    - name: OPC-közzétevő telemetriai konfigurációs fájlformátuma
       href: reference-opc-publisher-telemetry-format.md
 - name: Források
   items:
-    - name: OPC-közzétevő GitHub-tárháza
+    - name: OPC Publisher GitHub-adattár
       href: 'https://github.com/Azure/Industrial-IoT'
-    - name: IIoT platform GitHub-adattár
+    - name: IIoT Platform GitHub-adattár
       href: 'https://github.com/Azure/iot-edge-opc-publisher'
     - name: Támogatási és súgólehetőségek
       href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
-    - name: IoT Szószedet
+    - name: IoT-szószedet
       href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
     - name: Azure IoT-szolgáltatások
       items:

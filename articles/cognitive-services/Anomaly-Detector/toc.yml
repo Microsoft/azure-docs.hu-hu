@@ -3,7 +3,7 @@
 - name: Áttekintés
   expanded: true
   items:
-    - name: Mi az anomáliadetektor (többválékos)?
+    - name: Mi az anomáliadetektor (többvóta)?
       href: overview-multivariate.md
     - name: Mi az anomáliadetektor (egyváltozós)?
       href: overview.md
@@ -17,10 +17,12 @@
       href: ./quickstarts/client-libraries.md
 - name: Példák
   items:
-    - name: Interaktív bemutató
+    - name: Interaktív bemutató (egyedi)
       href: 'https://aka.ms/adDemo'
-    - name: Jupyter Notebook
+    - name: Jupyter Notebook (egyváltozó)
       href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook'
+    - name: Jupyter Notebook (többválékos)
+      href: 'https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb'
     - name: Azure-minták
       href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=anomaly-detector'
 - name: Útmutatók

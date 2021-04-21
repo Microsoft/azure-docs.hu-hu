@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 2c15090551ad9d84282f65925ff9c2cfbab7e14f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: dbff065fc4ee0f4618cae3fa0b012a286d4a0645
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773350"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815413"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>Rövid útmutató: Azure Key Vault kulcsok ügyféloldali kódtára a Pythonhoz
 
@@ -209,7 +209,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Key Vault áttekintése](../general/overview.md)
-- [Biztonságos hozzáférés egy kulcstartóhoz](../general/security-overview.md)
+- [Biztonságos hozzáférés egy kulcstartóhoz](../general/security-features.md)
 - [Azure Key Vault fejlesztői útmutató](../general/developers-guide.md)
-- [Key Vault biztonsági áttekintése](../general/security-overview.md)
+- [Key Vault biztonsági áttekintése](../general/security-features.md)
 - [Hitelesítés Key Vault](../general/authentication.md)

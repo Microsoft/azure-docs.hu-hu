@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ba5b375f75d2655045e62583679839c8dd2a5720
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 0c1a3362c4f1dfd3396ccd4704933d06d2611414
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752443"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814117"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból az Azure Portal használatával
 
@@ -81,8 +81,8 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a k
 Ebben a rövid útmutatóban létrehozott egy Key Vault és tárolt benne egy titkos adatokat. Ha többet szeretne megtudni a Key Vault és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 
 - Áttekintés a [Azure Key Vault](../general/overview.md)
-- Read [Secure access to a Key Vault](../general/security-overview.md)
+- Read [Secure access to a Key Vault](../general/security-features.md)
 - Lásd: Use Key Vault with App Service Web App (A [Key Vault használata App Service webalkalmazással)](../general/tutorial-net-create-vault-azure-web-app.md)
 - Lásd: Use Key Vault with application deployed to VM (Az [Key Vault használata virtuális gépen üzembe helyezett alkalmazással)](../general/tutorial-net-virtual-machine.md)
 - Lásd Azure Key Vault [fejlesztői útmutatót](../general/developers-guide.md)
-- A biztonsági [Key Vault áttekintése](../general/security-overview.md)
+- A biztonsági [Key Vault áttekintése](../general/security-features.md)

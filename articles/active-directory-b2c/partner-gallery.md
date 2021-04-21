@@ -1,7 +1,7 @@
 ---
-title: ISV-partneri katalógus a Azure AD B2Choz
+title: ISV Partner gallery for Azure AD B2C
 titleSuffix: Azure AD B2C
-description: Ismerje meg, hogyan integrálható az ISV-partnereinkkel a végfelhasználói élmény igényei szerint. A partneri hálózat kibővíti a megoldási képességeiket; MFA engedélyezése, biztonságos ügyfél-hitelesítés, szerepköralapú hozzáférés-vezérlés; csalás elleni küzdelem a személyazonosság-ellenőrzés igazolásával.
+description: Megtudhatja, hogyan integrálhatja az ISV-partnereivel, hogy a végfelhasználói élményt az igényeinek megfelelően szabja. Partnerhálózatunk kibővíti a megoldási képességeket; MFA, biztonságos ügyfél-hitelesítés, szerepköralapú hozzáférés-vezérlés engedélyezése; csalás elleni, személyazonosság-ellenőrzési igazolással.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,74 +11,83 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0629606f602b975b399855a681570ecdac9ec832
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: b555c8651c6e1608193a6ae06c39b20f633e4ea9
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256820"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813657"
 ---
-# <a name="azure-active-directory-b2c-isv-partners"></a>ISV-partnerek Azure Active Directory B2C
+# <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV-partnerek
 
-Az ISV-partneri hálózat kibővíti a megoldási képességeiket a zökkenőmentes végfelhasználói élmények kiépítésének megkönnyítésére. A Azure AD B2C lehetővé teszi az ISV-partnerekkel való integrációt a többtényezős hitelesítés (MFA) módszerei, a szerepköralapú hozzáférés-vezérlés, az identitás-ellenőrzés és a próbanyomatok engedélyezése, a biztonság növelése a bot-észlelés és a csalások elleni védelem terén, valamint a fizetési szolgáltatások irányelv 2 (PSD2) biztonságos ügyfél-hitelesítési (SCA) követelményeinek teljesítése. A részletes példákból megismerheti, hogyan integrálhatja az alkalmazásokat az ISV-partnerekkel.
+IsV-partnerhálózatunk kibővíti a megoldási képességeket, így zökkenőmentes végfelhasználói élményt építhet ki. Az Azure AD B2C lehetővé teszi az ISV-partnerekkel való integrációt a többtényezős hitelesítés (MFA) módszereinek engedélyezéséhez, a szerepköralapú hozzáférés-vezérléshez, a személyazonosság ellenőrzéséhez és ellenőrzéséhez, a robotészlelési és csalás elleni védelem javításához, valamint a Payment Services 2(PSD2) Secure Customer Authentication (SCA) követelményeinek való megfeleléshez. Az alkalmazások ISV-partnerekkel való integrálásának elsajátítása részletes mintaúton keresztül érhető el.
 
 >[!NOTE]
->A [githubon található Azure Active Directory B2C közösségi webhely](https://azure-ad-b2c.github.io/azureadb2ccommunity.io/) a Közösségtől származó egyéni szabályzatokat is biztosít.
+>A [Azure Active Directory B2C GitHubon található](https://azure-ad-b2c.github.io/azureadb2ccommunity.io/) közösségi webhely a közösségtől származó egyéni mintaházi szabályzatokat is biztosít.
 
-## <a name="identity-verification-and-proofing"></a>Személyazonosság ellenőrzése és ellenőrzés
+## <a name="identity-verification-and-proofing"></a>Személyazonosság ellenőrzése és igazolása
 
-A Microsoft partnerei a következő ISV-ket biztosítják a személyazonosság ellenőrzéséhez és ellenőrzéséhez.
+A Microsoft a következő isV-ket partneri kapcsolatban állja a személyazonosság ellenőrzéséhez és igazolásához.
 
-| ISV-partner | Leírás és integrációs útmutató |
+| ISV-partner | Leírások és integrációs bemutatók |
 |:-------------------------|:--------------|
-|![Képernyőkép egy Experian-emblémáról.](./media/partner-gallery/experian-logo.png) | A [Experian](./partner-experian.md) egy személyazonosság-ellenőrző és ellenőrző szolgáltató, amely a felhasználói attribútumok alapján kockázatértékeléseket végez a csalások megelőzése érdekében. |
-|![Képernyőkép egy IDology-emblémáról.](./media/partner-gallery/idology-logo.png) | A [IDology](./partner-idology.md) egy azonosító-ellenőrzési megoldásokkal, csalás-megelőzési megoldásokkal, megfelelőségi megoldásokkal és egyebekkel rendelkező személyazonosság-ellenőrzési és-ellenőrző szolgáltató.|
-|![Képernyőkép egy Jumio-emblémáról.](./media/partner-gallery/jumio-logo.png) | A [Jumio](./partner-jumio.md) egy azonosító-ellenőrzési szolgáltatás, amely lehetővé teszi a valós idejű automatizált azonosítók ellenőrzését, így biztosítva az ügyféladatok védelmét. |
-| ![Képernyőkép egy LexisNexis-emblémáról.](./media/partner-gallery/lexisnexis-logo.png) | A [LexisNexis](./partner-lexisnexis.md) egy profilkészítési és identitás-ellenőrzési szolgáltató, amely ellenőrzi a felhasználó azonosítását, és átfogó kockázatértékelést biztosít a felhasználó eszköze alapján. |
-| ![Képernyőkép egy Onfido-emblémáról](./media/partner-gallery/onfido-logo.png) | A [Onfido](./partner-onfido.md) egy dokumentum-azonosító és egy arc biometria-ellenőrzési megoldás, amely lehetővé teszi a vállalatok számára, hogy valós időben tudják kielégíteni *az ügyfél* és az identitás követelményeit.  |
+|![Experian embléma képernyőképe.](./media/partner-gallery/experian-logo.png) | [Az experian](./partner-experian.md) egy személyazonosság-ellenőrzési és igazolási szolgáltató, amely felhasználói attribútumok alapján végez kockázatfelmérést a csalások megelőzése érdekében. |
+|![Az IDology embléma képernyőképe.](./media/partner-gallery/idology-logo.png) | [Az IDology](./partner-idology.md) egy identitás-ellenőrzési és igazolási szolgáltató azonosító-ellenőrzési megoldásokkal, csalás elleni megelőzési megoldásokkal, megfelelőségi megoldásokkal és más megoldásokkal.|
+|![Jumio embléma képernyőképe.](./media/partner-gallery/jumio-logo.png) | [A Jumio](./partner-jumio.md) egy azonosító-ellenőrzési szolgáltatás, amely valós idejű automatizált azonosító-ellenőrzést tesz lehetővé, és védi az ügyféladatokat. |
+| ![A LexisNexis embléma képernyőképe.](./media/partner-gallery/lexisnexis-logo.png) | [A LexisNexis](./partner-lexisnexis.md) egy profilkészítési és identitás-ellenőrzési szolgáltató, amely ellenőrzi a felhasználók azonosítását, és átfogó kockázatértékelést biztosít a felhasználó eszközén. |
+| ![Képernyőkép az Onfido emblémáról](./media/partner-gallery/onfido-logo.png) | [Az Onfido](./partner-onfido.md) egy dokumentumazonosító és arc-biometrika-ellenőrzési megoldás, amely lehetővé teszi a vállalatok számára, hogy valós időben teljesítik az Ügyfél és a személyazonosság követelményeit.   |
 
-## <a name="mfa-and-passwordless-authentication"></a>MFA-és jelszó-alapú hitelesítés
+## <a name="mfa-and-passwordless-authentication"></a>MFA és jelszó nélküli hitelesítés
 
-Microsoft-partnerek a következő ISV-val az MFA-és jelszó-alapú hitelesítéshez.
+A Microsoft az alábbi isV-ket használja MFA- és jelszó nélküli hitelesítéshez.
 
-| ISV-partner | Leírás és integrációs útmutató |
+| ISV-partner | Leírások és integrációs bemutatók |
 |:-------------------------|:--------------|
-| ![Képernyőkép egy hypr-emblémáról](./media/partner-gallery/hypr-logo.png) | A [Hypr](./partner-hypr.md) egy jelszóval nem kompatibilis hitelesítésszolgáltató, amely a nyilvános kulcsú titkosítással rendelkező jelszavakat a csalások, az adathalászat és a hitelesítő adatok újrafelhasználásának megszüntetésével váltja fel. |
-| ![Képernyőkép egy itsme-emblémáról](./media/partner-gallery/itsme-logo.png) | a [itsme](./partner-itsme.md) egy elektronikus azonosítási, hitelesítési és megbízhatósági szolgáltatás (eiDAS) által kompatibilis digitális azonosító megoldás, amely lehetővé teszi a felhasználók számára, hogy a kártyák olvasói, jelszavas, kétfaktoros hitelesítés és több PIN-kód nélkül is biztonságosan bejelentkezzenek. |
-|![Képernyőfelvétel egy kulcsnélküli emblémáról.](./media/partner-gallery/keyless-logo.png) | A [kulcsnélküli](./partner-keyless.md) szolgáltatás olyan jelszó nélküli hitelesítési szolgáltató, amely egy arc biometrikus vizsgálat formájában biztosítja a hitelesítést, kiküszöbölve a csalások, az adathalászat és a hitelesítő adatok újbóli használatát.
-| ![A Nevis emblémájának képernyőképe](./media/partner-gallery/nevis-logo.png) | A [Nevis](./partner-nevis.md) lehetővé teszi a jelszó-alapú hitelesítést, és mobil-első, teljesen márkás végfelhasználói élményt nyújt a Nevis hozzáférési alkalmazással az erős ügyfél-hitelesítéshez és a PSD2 tranzakciós követelményeinek teljesítéséhez. |
-| ![Képernyőkép egy trusona-emblémáról](./media/partner-gallery/trusona-logo.png) | A [Trusona](./partner-trusona.md) -integráció segítségével biztonságosan bejelentkezhet, és engedélyezheti a jelszó nélküli hitelesítést, az MFA-t és a digitális licencek vizsgálatát. |
-| ![Képernyőkép egy twilio-emblémáról.](./media/partner-gallery/twilio-logo.png) | A [Twilio ellenőrzi](./partner-twilio.md) , hogy az alkalmazás több megoldással teszi lehetővé az MFA SMS egyszeri jelszavas (OTP), az időalapú egyszeri jelszó (TOTP) és a leküldéses értesítések használatát, valamint a PSD2 vonatkozó SCA-követelmények betartását. |
-| ![Képernyőkép egy typingDNA-emblémáról](./media/partner-gallery/typingdna-logo.png) | A [TypingDNA](./partner-typingdna.md) lehetővé teszi, hogy a felhasználó gépelési mintáját elemezze erős ügyfél-hitelesítésre. Lehetővé teszi a vállalatok számára a csendes MFA használatát, és megfelel a PSD2-re vonatkozó SCA-követelményeknek. |
-| ![Képernyőkép egy whoiam-emblémáról](./media/partner-gallery/whoiam-logo.png) | A [WhoIAM](./partner-whoiam.md) egy márkás identitáskezelésrendszer-(BRIMS-) alkalmazás, amely lehetővé teszi, hogy a szervezetek hang-, SMS-és e-mail-cím alapján ellenőrizzék a felhasználói bázist. |
+| ![Képernyőkép a hypr emblémáról](./media/partner-gallery/hypr-logo.png) | [A Hypr](./partner-hypr.md) egy jelszó nélküli hitelesítésszolgáltató, amely a jelszavakat nyilvános kulcsú titkosításra cseréli, így kiküszöbölve a csalásokat, az adathalászatot és a hitelesítő adatok újbóli használatát. |
+| ![Képernyőkép egy embléma emblémáról](./media/partner-gallery/itsme-logo.png) | [Az itsme](./partner-itsme.md) egy elektronikus azonosítási, hitelesítési és megbízhatósági szolgáltatásoknak (eiDAS) megfelelő digitális azonosító megoldás, amely lehetővé teszi a felhasználók számára, hogy biztonságosan jelentkezzenek be kártyaolvasók, jelszavak, kéttényezős hitelesítés és több PIN-kód nélkül. |
+|![Kulcs nélküli embléma képernyőképe.](./media/partner-gallery/keyless-logo.png) | [A kulcs nélküli](./partner-keyless.md) hitelesítésszolgáltató olyan jelszó nélküli hitelesítésszolgáltató, amely arc-biometrikus vizsgálat formájában biztosítja a hitelesítést, és kiküszöböli a csalást, adathalászatot és a hitelesítő adatok újbóli használatát.
+| ![Nevis embléma képernyőképe](./media/partner-gallery/nevis-logo.png) | [A Nevis](./partner-nevis.md) lehetővé teszi a jelszó nélküli hitelesítést, és mobil, teljes körű végfelhasználói élményt nyújt a Nevis Access alkalmazással az erős ügyfél-hitelesítés és a PSD2 tranzakciós követelmények teljesítéséhez. |
+| ![A trusona emblémájának képernyőképe](./media/partner-gallery/trusona-logo.png) | [A Trusona-integráció](./partner-trusona.md) segít a biztonságos bejelentkezésben, és lehetővé teszi a jelszó nélküli hitelesítést, az MFA-t és a digitális licencek vizsgálatát. |
+| ![A twilio emblémájának képernyőképe.](./media/partner-gallery/twilio-logo.png) | A [Twilio Verify](./partner-twilio.md) alkalmazás több megoldást is kínál az MFA egyszeri SMS-jelszó (OTP), az időalapú egyszeri jelszó (TOTP) és a leküldéses értesítések engedélyezéséhez, valamint a PSD2 SCA-követelményeinek való megfeleléshez. |
+| ![A gépelésiDNA embléma képernyőképe](./media/partner-gallery/typingdna-logo.png) | [A GépelésDNA](./partner-typingdna.md) lehetővé teszi az erős ügyfél-hitelesítést a felhasználó gépelési mintáját elemezve. Segít a vállalatoknak a csendes MFA engedélyezésében és a PSD2 SCA-követelményeinek való megfelelésben. |
+| ![Képernyőkép egy képembléma emblémáról](./media/partner-gallery/whoiam-logo.png) | [A WhoIAM](./partner-whoiam.md) egy védjegyes identitáskezelő rendszer (BRIMS) alkalmazás, amellyel a szervezetek hangalapú, SMS-ben és e-mailben ellenőrizhetik a felhasználói bázisukat. |
 
 ## <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés 
  
-Microsoft-partnerek a következő ISV-val a szerepköralapú hozzáférés-vezérléshez.
+A Microsoft a következő isV-ket partneri partnerként mutatja be a szerepköralapú hozzáférés-vezérléshez.
 
-| ISV-partner | Leírás és integrációs útmutató |
+| ISV-partner | Leírás és integráció – bemutatók |
 |:-------------------------|:--------------|
-| ![Képernyőkép egy n8identity-emblémáról](./media/partner-gallery/n8identity-logo.png) | A [N8Identity](./partner-n8identity.md) egy szolgáltatás-felügyeleti platform, amely megoldást nyújt a Microsoft Azureon futó ügyfél-fiókok áttelepítésére és az ügyfélszolgálati kérelmekre (CSR) való felügyeletre. |
-| ![Képernyőkép egy Saviynt-emblémáról](./media/partner-gallery/saviynt-logo.png) | A [Saviynt](./partner-Saviynt.md) Cloud-Native platform a jobb biztonságot, megfelelőséget és irányítást segíti az intelligens elemzések és az alkalmazások integrálásával az informatikai modernizáció egyszerűsítése érdekében. |
+| ![Az n8identity emblémájának képernyőképe](./media/partner-gallery/n8identity-logo.png) | [Az N8Identity](./partner-n8identity.md) egy szolgáltatásként való identitásirányítási platform, amely megoldást kínál az ügyfélfiókok migráltatására és az ügyfélszolgálati kérelmek (CSR) felügyeletére a Microsoft Azure. |
+| ![Képernyőkép a Saviynt emblémáról](./media/partner-gallery/saviynt-logo.png) | [A nagy felhőbeli](./partner-Saviynt.md) natív platform intelligens elemzésekkel és alkalmazásközi integrációval támogatja a jobb biztonságot, megfelelőséget és irányítást az it-modernizáláshoz. |
 
-## <a name="security"></a>Biztonság
+## <a name="secure-hybrid-access-to-on-premises-application"></a>Biztonságos hibrid hozzáférés a helyszíni alkalmazásokhoz
 
-Microsoft-partnerek a következő biztonsági ISV-val.
+A Microsoft az alábbi isV-ket használja a helyszíni alkalmazások biztonságos hibrid elérésének biztosítása érdekében. 
 
-| ISV-partner | Leírás és integrációs útmutató |
+| ISV-partner | Leírás és integráció – bemutatók |
 |:-------------------------|:--------------|
-| ![Képernyőkép a Arkóz labor emblémáról](./media/partner-gallery/arkose-logo.png) | A [Arkóz Labs](./partner-arkose-labs.md) egy csalások elleni megelőzési megoldás szolgáltatója, amely segítséget nyújt a szervezeteknek a robotok elleni támadásokkal, a fiókok átvételi támadásokkal és a csalárd fiókok megnyitásával |
-| ![Képernyőkép a Microsoft Dynamics 365 emblémáról](./media/partner-gallery/microsoft-dynamics365-logo.png) | A [Microsoft Dynamics 365 csalások elleni védelem](./partner-dynamics-365-fraud-protection.md) olyan megoldás, amely segít a szervezeteknek a jogosulatlan fiókok elleni védelemben az eszközök ujjlenyomatának használatával. |
-| ![Képernyőkép a ping logóról](./media/partner-gallery/ping-logo.png) | A [ping Identity](./partner-ping-identity.md) lehetővé teszi, hogy a biztonságos hibrid hozzáférést biztosítson a helyszíni örökölt alkalmazásokhoz több felhőben. |
-| ![Képernyőfelvétel a rétegek emblémáról](./media/partner-gallery/strata-logo.png) | A [rétegek](./partner-strata.md) biztonságos hibrid hozzáférést biztosítanak a helyszíni alkalmazásokhoz a konzisztens hozzáférési házirendek betartatásával, az identitások szinkronban tartásával, valamint egyszerűvé teszik a régi identitású rendszerekből származó alkalmazások átváltását a szabvány alapú hitelesítésre és a Azure ad B2C által biztosított hozzáférés-vezérlésre. |
-| ![Képernyőkép egy zscaler-emblémáról](./media/partner-gallery/zscaler-logo.png) | A [Zscaler](./partner-zscaler.md) házirend-alapú, biztonságos hozzáférést biztosít a privát alkalmazásokhoz és az eszközökhöz a VPN-t érintő többletköltségek, szóváltás vagy biztonsági kockázatok nélkül. |
+| ![A Ping embléma képernyőképe](./media/partner-gallery/ping-logo.png) | [A Ping Identity](./partner-ping-identity.md) biztonságos hibrid hozzáférést biztosít a helyszíni örökölt alkalmazásokhoz több felhőben. |
+| ![Képernyőkép egy rétegemblémáról](./media/partner-gallery/strata-logo.png) | A [rétegek](./partner-strata.md) biztonságos hibrid hozzáférést biztosítanak a helyszíni alkalmazásokhoz konzisztens hozzáférési szabályzatok betartatásával, az identitások szinkronban való tartásával, valamint az alkalmazásoknak az örökölt identitásrendszerről a Azure AD B2C által biztosított szabványalapú hitelesítésre és hozzáférés-vezérlésre való áttérésének Azure AD B2C. |
+| ![Zscaler embléma képernyőképe](./media/partner-gallery/zscaler-logo.png) | [A Zscaler](./partner-zscaler.md) szabályzatalapú, biztonságos hozzáférést biztosít a magánalkalmazások és eszközök számára a VPN költség-, probléma- és biztonsági kockázatai nélkül. |
+
+## <a name="fraud-protection"></a>Csalás elleni védelem
+
+A Microsoft a következő isV-ket partneri partnerként mutatja be a csalások észlelése és megelőzése érdekében. 
+
+| ISV-partner | Leírások és integrációs bemutatók |
+|:-------------------------|:--------------|
+| ![Képernyőkép egy Arkose Lab emblémáról](./media/partner-gallery/arkose-logo.png) | [Az Arkose Labs](./partner-arkose-labs.md) egy csalás elleni megelőzési megoldásszolgáltató, amely segít a szervezeteknek a robotok, a fiókátvételi támadások és a fiókok rosszindulatú megnyitásai elleni védelemben. |
+| ![A BioCatch emblémájának képernyőképe](./media/partner-gallery/biocatch-logo.png) | [A BioCatch](./partner-biocatch.md) egy csalás-megelőzési megoldásszolgáltató, amely elemzi a felhasználók fizikai és kognitív digitális viselkedését, hogy olyan elemzéseket hozzon létre, amelyek megkülönböztetik a megbízható ügyfeleket és a számítógépes fenyegetéseket. |
+| ![A Microsoft Dynamics 365 emblémájának képernyőképe](./media/partner-gallery/microsoft-dynamics365-logo.png) | [A Microsoft Dynamics 365 Fraud Protection](./partner-dynamics-365-fraud-protection.md) egy olyan megoldás, amely segít a szervezeteknek az eszköz ujjlenyomatával való rosszindulatú fióknyitásokkal szembeni védelemben. |
+
 
 ## <a name="additional-information"></a>További információ
 
 - [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)
+- [Az egyéni szabályzatok első lépések a Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Válasszon ki egy partnert az említett táblázatokban, és Ismerje meg, hogyan integrálhatja megoldását Azure AD B2C használatával.
+Válasszon ki egy partnert a fenti táblázatokban, hogy megtudja, hogyan integrálhatja a megoldását a Azure AD B2C.

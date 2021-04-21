@@ -10,16 +10,16 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 655ea1920fc80c8cd677281f09cfca21120e1d61
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: dc5fa0eeabc437f16ca64c34b4bb72e62c0c3b21
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726429"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815017"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból az Azure CLI használatával
 
-Ebben a rövid útmutatóban egy kulcstartót fog létrehozni a Azure Key Vault Azure CLI használatával. Az Azure Key Vault egy felhőszolgáltatás, amely biztonságos titkoskulcs-tárolóként működik. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. További információt a Key Vault áttekintésében [talál.](../general/overview.md) Az Azure CLI az Azure-erőforrások létrehozására és kezelésére szolgál, parancsok és szkriptek alkalmazásával. Miután végzett ezzel, titkos kulcsot fog tárolni.
+Ebben a rövid útmutatóban egy kulcstartót hoz létre a Azure Key Vault Azure CLI használatával. Az Azure Key Vault egy felhőszolgáltatás, amely biztonságos titkoskulcs-tárolóként működik. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. További információt a Key Vault áttekintésében [talál.](../general/overview.md) Az Azure CLI az Azure-erőforrások létrehozására és kezelésére szolgál, parancsok és szkriptek alkalmazásával. Miután végzett ezzel, titkos kulcsot fog tárolni.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -39,7 +39,7 @@ Ebben a rövid útmutatóban egy kulcstartót fog létrehozni a Azure Key Vault 
 
 Titkos kód a tárolóhoz való hozzáadásához csak néhány további lépést kell végrehajtania. Ezt a jelszót egy alkalmazás használhatja. A jelszó neve **ExamplePassword** lesz, és a **hVFkk965BuUv** értékét fogja tárolni.
 
-Az alábbi Azure CLI [az keyvault secret set](/cli/azure/keyvault/secret#az_keyvault_secret_set) paranccsal hozzon létre egy **ExamplePassword** nevű titkos kulcsot Key Vault, amely a **hVFkk965BuUv** értéket fogja tárolni:
+Az alábbi Azure CLI [az keyvault secret set](/cli/azure/keyvault/secret#az_keyvault_secret_set) paranccsal hozzon létre egy **ExamplePassword** nevű titkos kulcsot az Key Vault-ben, amely a **hVFkk965BuUv értéket fogja tárolni:**
 
 ```azurecli
 az keyvault secret set --vault-name "<your-unique-keyvault-name>" --name "ExamplePassword" --value "hVFkk965BuUv"
@@ -47,7 +47,7 @@ az keyvault secret set --vault-name "<your-unique-keyvault-name>" --name "Exampl
 
 ## <a name="retrieve-a-secret-from-key-vault"></a>Titkos adat lekérése a Key Vault
 
-Az Azure Key Vaulthoz hozzáadott jelszóra ezután az URI használatával hivatkozhat. A **"https://<-unique-keyvault-name>.vault.azure.net/secrets/ExamplePassword"** használatával lekérte az aktuális verziót.
+Az Azure Key Vaulthoz hozzáadott jelszóra ezután az URI használatával hivatkozhat. A **"https://<-unique-keyvault-name>.vault.azure.net/secrets/ExamplePassword"** használatával lekért aktuális verzió.
 
 A titkos kódban tárolt érték megtekintése egyszerű szövegként:
 
@@ -63,9 +63,9 @@ Most létrehozott egy Key Vaultot, tárolt egy titkos kulcsot, és lekérte azt.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy Key Vault és tárolt benne egy titkos adatokat. Ha többet szeretne megtudni a Key Vault és az alkalmazásokba való integrálásáról, folytassa az alábbi cikkekkel.
+Ebben a rövid útmutatóban létrehozott egy Key Vault és tárolt benne egy titkos adatokat. Ha többet szeretne megtudni a Key Vault és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 
-- Olvassa el [a Azure Key Vault](../general/overview.md)
-- Útmutató a [többsoros titkos](multiline-secrets.md) kulcsok Key Vault
-- Lásd az [Azure CLI az keyvault parancsának referenciáját](/cli/azure/keyvault)
-- Tekintse át [a Key Vault biztonsági áttekintését](../general/security-overview.md)
+- Áttekintés a [Azure Key Vault](../general/overview.md)
+- Megtudhatja, hogyan [tárolható többsoros titkos kulcsok Key Vault](multiline-secrets.md)
+- Tekintse meg az [Azure CLI az keyvault parancsának referenciáját](/cli/azure/keyvault)
+- A biztonsági [Key Vault áttekintése](../general/security-features.md)

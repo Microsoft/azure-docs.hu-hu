@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Azure Key Vault létrehozása az Azure CLI-vel
-description: Gyors útmutató, amely bemutatja, hogyan hozhat létre Azure Key Vault az Azure CLI használatával
+title: Rövid útmutató – Azure Key Vault létrehozása az Azure CLI használatával
+description: Rövid útmutató, amely bemutatja, hogyan hozhat létre Azure Key Vault az Azure CLI használatával
 services: key-vault
 author: msmbaldwin
 tags: azure-resource-manager
@@ -9,22 +9,22 @@ ms.subservice: general
 ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: f7f6f5d82c5fda7101e80ddcb8b17dc6bdef6532
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 588bee2922ee44f3f89b5d252b5b4a6991d26b82
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99070302"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815125"
 ---
-# <a name="quickstart-create-a-key-vault-using-the-azure-cli"></a>Gyors útmutató: kulcstartó létrehozása az Azure CLI használatával
+# <a name="quickstart-create-a-key-vault-using-the-azure-cli"></a>Rövid útmutató: Kulcstartó létrehozása az Azure CLI használatával
 
-A Azure Key Vault egy felhőalapú szolgáltatás, amely biztonságos tárolót biztosít a kulcsok, [titkos](../secrets/index.yml) [kódok](../keys/index.yml)és [tanúsítványok](../certificates/index.yml)számára. További információ a Key Vaultről: [About Azure Key Vault](overview.md); a Key vaultban tárolt adatokkal kapcsolatos további információkért lásd: [a kulcsok, a titkok és a tanúsítványok ismertetése](about-keys-secrets-certificates.md).
+Azure Key Vault egy felhőszolgáltatás, amely biztonságos tárolót [](../secrets/index.yml)biztosít a [kulcsok,](../keys/index.yml)titkos kulcsok és tanúsítványok [számára.](../certificates/index.yml) További információ a Key Vault: [About Azure Key Vault](overview.md); A kulcstartókban tárolható adatokkal kapcsolatos további információkért lásd: [About keys, secrets, and certificates](about-keys-secrets-certificates.md)(Tudnivalók a kulcsokról, titkos kulcsokról és tanúsítványokról).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - Ehhez a rövid útmutatóhoz az Azure CLI 2.0.4 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+ - Ehhez a rövid útmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -40,9 +40,9 @@ A Azure Key Vault egy felhőalapú szolgáltatás, amely biztonságos tárolót 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy Key Vault, és törölte. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
+Ebben a rövid útmutatóban létrehozott egy Key Vault és törölte azt. Ha többet szeretne megtudni a Key Vault és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 
-- [A Azure Key Vault áttekintése](overview.md)
-- Tekintse át a [Azure Key Vault biztonsági áttekintést](security-overview.md)
-- Tekintse meg az Azure CLI-re vonatkozó hivatkozást az kulcstartó [parancsainál](/cli/azure/keyvault)
+- Áttekintés a [Azure Key Vault](overview.md)
+- A biztonsági [Azure Key Vault áttekintése](security-features.md)
+- Tekintse meg az [Azure CLI az keyvault parancsának referenciáját](/cli/azure/keyvault)
 

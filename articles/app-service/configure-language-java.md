@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: cbf530b31797c2c72496548b3ed8f2928378ce9f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 134ac04c4f6fb5f0e38a868adc735fc816fbc875
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779488"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829511"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Java-alkalmazás konfigurálása Azure App Service
 
@@ -227,9 +227,9 @@ Másik lehetőségként konfigurálhatja az alkalmazásbeállítást az App Serv
 
 ### <a name="pre-compile-jsp-files"></a>JSP-fájlok előzetes fordítása
 
-A Tomcat-alkalmazások teljesítményének javítása érdekében lefordíthatja a JSP-fájlokat, mielőtt üzembe helyezné App Service. Használhatja az Apache Sling által biztosított [Maven beépülő](https://sling.apache.org/components/jspc-maven-plugin/plugin-info.html) modult, vagy használhatja ezt az [Ant buildfájlt.](https://tomcat.apache.org/tomcat-9.0-doc/jasper-howto.html#Web_Application_Compilation)
+A Tomcat-alkalmazások teljesítményének javítása érdekében fordítsa le a JSP-fájlokat, mielőtt üzembe helyezné App Service. Használhatja az Apache Sling által biztosított [Maven beépülő](https://sling.apache.org/components/jspc-maven-plugin/plugin-info.html) modult, vagy használhatja ezt az [Ant buildfájlt.](https://tomcat.apache.org/tomcat-9.0-doc/jasper-howto.html#Web_Application_Compilation)
 
-## <a name="secure-applications"></a>Alkalmazások biztonságossá tere
+## <a name="secure-applications"></a>Biztonságos alkalmazások
 
 A környezetben App Service Java-alkalmazások a [](../security/fundamentals/paas-applications-using-app-services.md) többi alkalmazáshoz hasonló ajánlott biztonsági eljárásokkal.
 
@@ -465,9 +465,235 @@ Ezután állapítsa meg, hogy az adatforrás elérhető legyen-e egy alkalmazás
     </resource-env-ref>
     ```
 
-#### <a name="finalize-configuration"></a>Konfiguráció véglegesít
+#### <a name="shared-server-level-resources"></a>Megosztott kiszolgálószintű erőforrások
 
-Végül a Tomcat osztályban helyezzük el az illesztőprogram JAR-jét, és újraindítjuk App Service. A */home/tomcat/lib* könyvtárban elhelyezve győződjön meg arról, hogy a JDBC-illesztőprogramfájlok elérhetők a Tomcat osztálybetöltő számára. (Ha még nem létezik, hozza létre ezt a könyvtárat.) Ezeknek a fájloknak a saját App Service való feltöltéséhez hajtsa végre a következő lépéseket:
+A Windows rendszeren App Service Tomcat-telepítések megosztott térben vannak a App Service tervben. A Tomcat-telepítés nem módosítható közvetlenül a kiszolgáló egészére kiterjedő konfigurációhoz. A Tomcat-telepítés kiszolgálószintű konfigurációjának módosításához át kell másolnia a Tomcatet egy helyi mappába, amelyben módosíthatja a Tomcat konfigurációját. 
+
+##### <a name="automate-creating-custom-tomcat-on-app-start"></a>Egyéni Tomcat létrehozásának automatizálása az alkalmazás indítóiban
+
+Egy indítási szkripttel műveleteket hajthat végre a webalkalmazás indítása előtt. A Tomcat testreszabására vonatkozó indítási szkriptnek a következő lépéseket kell végrehajtania:
+
+1. Ellenőrizze, hogy a Tomcatet már átmásolták-e és helyileg konfigurálták-e. Ha igen, az indítási szkript itt végződhet.
+2. Másolja helyileg a Tomcatet.
+3. A szükséges konfigurációs módosításokat kell eszközlni.
+4. Azt jelzi, hogy a konfiguráció sikeresen befejeződött.
+
+Az alábbi PowerShell-szkript a következő lépéseket teszi:
+
+```powershell
+    # Check for marker file indicating that config has already been done
+    if(Test-Path "$LOCAL_EXPANDED\tomcat\config_done_marker"){
+        return 0
+    }
+
+    # Delete previous Tomcat directory if it exists
+    # In case previous config could not be completed or a new config should be forcefully installed
+    if(Test-Path "$LOCAL_EXPANDED\tomcat"){
+        Remove-Item "$LOCAL_EXPANDED\tomcat" --recurse
+    }
+
+    # Copy Tomcat to local
+    # Using the environment variable $AZURE_TOMCAT90_HOME uses the 'default' version of Tomcat
+    Copy-Item -Path "$AZURE_TOMCAT90_HOME\*" -Destination "$LOCAL_EXPANDED\tomcat" -Recurse
+
+    # Perform the required customization of Tomcat
+    {... customization ...}
+
+    # Mark that the operation was a success
+    New-Item -Path "$LOCAL_EXPANDED\tomcat\config_done_marker" -ItemType File
+```
+
+##### <a name="transforms"></a>Átalakítások
+
+A Tomcat-verzió testreszabásának gyakori esete a , a vagy a `server.xml` `context.xml` `web.xml` Tomcat konfigurációs fájl módosítása. App Service módosítja ezeket a fájlokat, hogy platformszolgáltatásokat biztosítson. Ezeknek a funkcióknak a további használata érdekében fontos, hogy megőrizze ezeknek a fájloknak a tartalmát, amikor módosítja őket. Ehhez azt javasoljuk, hogy használjon [XSL-átalakítást (XSLT).](https://www.w3schools.com/xml/xsl_intro.asp) XSL-átalakítás használatával módosításokat lehet tenni az XML-fájlokon a fájl eredeti tartalmának megőrzése mellett.
+
+###### <a name="example-xslt-file"></a>Példa XSLT-fájl
+
+Ez a példa-átalakítás egy új összekötőcsomópontot ad hozzá a `server.xml` következőhöz: . Figyelje meg az Identity Transform (Identitás *átalakítása)* et, amely megőrzi a fájl eredeti tartalmát.
+
+```xml
+    <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:output method="xml" indent="yes"/>
+  
+    <!-- Identity transform: this ensures that the original contents of the file are included in the new file -->
+    <!-- Ensure that your transform files include this block -->
+    <xsl:template match="@* | node()" name="Copy">
+      <xsl:copy>
+        <xsl:apply-templates select="@* | node()"/>
+      </xsl:copy>
+    </xsl:template>
+  
+    <xsl:template match="@* | node()" mode="insertConnector">
+      <xsl:call-template name="Copy" />
+    </xsl:template>
+  
+    <xsl:template match="comment()[not(../Connector[@scheme = 'https']) and
+                                   contains(., '&lt;Connector') and
+                                   (contains(., 'scheme=&quot;https&quot;') or
+                                    contains(., &quot;scheme='https'&quot;))]">
+      <xsl:value-of select="." disable-output-escaping="yes" />
+    </xsl:template>
+  
+    <xsl:template match="Service[not(Connector[@scheme = 'https'] or
+                                     comment()[contains(., '&lt;Connector') and
+                                               (contains(., 'scheme=&quot;https&quot;') or
+                                                contains(., &quot;scheme='https'&quot;))]
+                                    )]
+                        ">
+      <xsl:copy>
+        <xsl:apply-templates select="@* | node()" mode="insertConnector" />
+      </xsl:copy>
+    </xsl:template>
+  
+    <!-- Add the new connector after the last existing Connnector if there is one -->
+    <xsl:template match="Connector[last()]" mode="insertConnector">
+      <xsl:call-template name="Copy" />
+  
+      <xsl:call-template name="AddConnector" />
+    </xsl:template>
+  
+    <!-- ... or before the first Engine if there is no existing Connector -->
+    <xsl:template match="Engine[1][not(preceding-sibling::Connector)]"
+                  mode="insertConnector">
+      <xsl:call-template name="AddConnector" />
+  
+      <xsl:call-template name="Copy" />
+    </xsl:template>
+  
+    <xsl:template name="AddConnector">
+      <!-- Add new line -->
+      <xsl:text>&#xa;</xsl:text>
+      <!-- This is the new connector -->
+      <Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true" 
+                 maxThreads="150" scheme="https" secure="true" 
+                 keystroreFile="${{user.home}}/.keystore" keystorePass="changeit"
+                 clientAuth="false" sslProtocol="TLS" />
+    </xsl:template>
+
+</xsl:stylesheet>
+```
+
+###### <a name="function-for-xsl-transform"></a>Függvény XSL-átalakításhoz
+
+A PowerShell beépített eszközökkel rendelkezik az XML-fájlok XSL-átalakításokkal való átalakításához. Az alábbi szkript egy példa függvény, amely segítségével végrehajthatja `startup.ps1` az átalakítást:
+
+```powershell
+    function TransformXML{
+        param ($xml, $xsl, $output)
+
+        if (-not $xml -or -not $xsl -or -not $output)
+        {
+            return 0
+        }
+
+        Try
+        {
+            $xslt_settings = New-Object System.Xml.Xsl.XsltSettings;
+            $XmlUrlResolver = New-Object System.Xml.XmlUrlResolver;
+            $xslt_settings.EnableScript = 1;
+
+            $xslt = New-Object System.Xml.Xsl.XslCompiledTransform;
+            $xslt.Load($xsl,$xslt_settings,$XmlUrlResolver);
+            $xslt.Transform($xml, $output);
+
+        }
+
+        Catch
+        {
+            $ErrorMessage = $_.Exception.Message
+            $FailedItem = $_.Exception.ItemName
+            Write-Host  'Error'$ErrorMessage':'$FailedItem':' $_.Exception;
+            return 0
+        }
+        return 1
+    }
+```
+
+##### <a name="app-settings"></a>Alkalmazásbeállítások
+
+A platformnak azt is tudnia kell, hogy hol van telepítve a Tomcat egyéni verziója. A telepítés helyét az alkalmazásbeállításban `CATALINA_BASE` állíthatja be.
+
+Ezt a beállítást az Azure CLI használatával módosíthatja:
+
+```powershell
+    az webapp config appsettings set -g $MyResourceGroup -n $MyUniqueApp --settings CATALINA_BASE="%LOCAL_EXPANDED%\tomcat"
+```
+
+Vagy manuálisan is módosíthatja a beállítást a Azure Portal:
+
+1. Kattintson a **Beállítások**  >  **konfigurációs alkalmazás** beállításai  >  **elemre.**
+1. Válassza **az Új alkalmazásbeállítás lehetőséget.**
+1. Használja az alábbi értékeket a beállítás létrehozásához:
+   1. **Név:**`CATALINA_BASE`
+   1. **Érték:**`"%LOCAL_EXPANDED%\tomcat"`
+
+##### <a name="example-startupps1"></a>Példa startup.ps1
+
+Az alábbi példaszkprogram átmásol egy egyéni Tomcatet egy helyi mappába, végrehajt egy XSL-átalakítást, és jelzi, hogy az átalakítás sikeres volt:
+
+```powershell
+    # Locations of xml and xsl files
+    $target_xml="$LOCAL_EXPANDED\tomcat\conf\server.xml"
+    $target_xsl="$HOME\site\server.xsl"
+
+    # Define the transform function
+    # Useful if transforming multiple files
+    function TransformXML{
+        param ($xml, $xsl, $output)
+
+        if (-not $xml -or -not $xsl -or -not $output)
+        {
+            return 0
+        }
+
+        Try
+        {
+            $xslt_settings = New-Object System.Xml.Xsl.XsltSettings;
+            $XmlUrlResolver = New-Object System.Xml.XmlUrlResolver;
+            $xslt_settings.EnableScript = 1;
+
+            $xslt = New-Object System.Xml.Xsl.XslCompiledTransform;
+            $xslt.Load($xsl,$xslt_settings,$XmlUrlResolver);
+            $xslt.Transform($xml, $output);
+        }
+
+        Catch
+        {
+            $ErrorMessage = $_.Exception.Message
+            $FailedItem = $_.Exception.ItemName
+            Write-Host  'Error'$ErrorMessage':'$FailedItem':' $_.Exception;
+            return 0
+        }
+        return 1
+    }
+
+    # Check for marker file indicating that config has already been done
+    if(Test-Path "$LOCAL_EXPANDED\tomcat\config_done_marker"){
+        return 0
+    }
+
+    # Delete previous Tomcat directory if it exists
+    # In case previous config could not be completed or a new config should be forcefully installed
+    if(Test-Path "$LOCAL_EXPANDED\tomcat"){
+        Remove-Item "$LOCAL_EXPANDED\tomcat" --recurse
+    }
+
+    # Copy Tomcat to local
+    # Using the environment variable $AZURE_TOMCAT90_HOME uses the 'default' version of Tomcat
+    Copy-Item -Path "$AZURE_TOMCAT90_HOME\*" -Destination "$LOCAL_EXPANDED\tomcat" -Recurse
+
+    # Perform the required customization of Tomcat
+    $success = TransformXML -xml $target_xml -xsl $target_xsl -output $target_xml
+
+    # Mark that the operation was a success if successful
+    if($success){
+        New-Item -Path "$LOCAL_EXPANDED\tomcat\config_done_marker" -ItemType File
+    }
+```
+
+#### <a name="finalize-configuration"></a>A konfiguráció véglegesít
+
+Végül helyezzük el az illesztőprogram JARS-eket a Tomcat osztályúton, és újraindítjuk a App Service. A */home/tomcat/lib* könyvtárban helyezze el a JDBC-illesztőprogramfájlokat a Tomcat osztálybetöltő számára. (Hozza létre ezt a könyvtárat, ha még nem létezik.) Ha fel kell töltenie ezeket a fájlokat a App Service példányra, hajtsa végre a következő lépéseket:
 
 1. A [Cloud Shell](https://shell.azure.com)telepítse a webalkalmazás-bővítményt:
 
@@ -519,7 +745,7 @@ Ezután állapítsa meg, hogy az adatforrás elérhető legyen-e egy alkalmazás
 
 1. Hozzon *context.xml* fájlt a *projekt META-INF/* könyvtárában. Ha még nem létezik, hozza létre a *META-INF/* könyvtárat.
 
-2. A *context.xml* adjon hozzá egy `Context` elemet, amely egy JNDI-címhez csatolja az adatforrást. Cserélje le a helyőrzőt az illesztő `driverClassName` osztálynevére a fenti táblázatból.
+2. A *context.xml* adjon hozzá egy elemet, amely egy JNDI-címhez csatolja az `Context` adatforrást. Cserélje le a helyőrzőt az `driverClassName` illesztő osztálynevére a fenti táblázatból.
 
     ```xml
     <Context>
@@ -639,7 +865,7 @@ Végül helyezze el az illesztőprogram JARS-eket a Tomcat osztályban, és ind�
 
     3. Csatlakozzon a helyi alagútporthoz az SFTP-ügyféllel, és töltse fel a fájlokat a */home/tomcat/lib mappába.*
 
-    Másik lehetőségként ftp-ügyféllel is feltöltheti a JDBC-illesztőt. Kövesse ezeket [az utasításokat az FTP-hitelesítő adatok lekért megadásához.](deploy-configure-credentials.md)
+    Másik lehetőségként egy FTP-ügyféllel is feltöltheti a JDBC-illesztőt. Kövesse ezeket [az utasításokat az FTP-hitelesítő adatok lekért megadásához.](deploy-configure-credentials.md)
 
 2. Ha kiszolgálószintű adatforrást hozott létre, indítsa újra az App Service Linux-alkalmazást. A Tomcat alaphelyzetbe `CATALINA_BASE` áll, `/home/tomcat` és a frissített konfigurációt használja.
 
@@ -675,16 +901,16 @@ Az [adatforrások JBoss EAP-val](https://access.redhat.com/documentation/en-us/r
     data-source add --name=postgresDS --driver-name=postgres --jndi-name=java:jboss/datasources/postgresDS --connection-url=${POSTGRES_CONNECTION_URL,env.POSTGRES_CONNECTION_URL:jdbc:postgresql://db:5432/postgres} --user-name=${POSTGRES_SERVER_ADMIN_FULL_NAME,env.POSTGRES_SERVER_ADMIN_FULL_NAME:postgres} --password=${POSTGRES_SERVER_ADMIN_PASSWORD,env.POSTGRES_SERVER_ADMIN_PASSWORD:example} --use-ccm=true --max-pool-size=5 --blocking-timeout-wait-millis=5000 --enabled=true --driver-class=org.postgresql.Driver --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter --jta=true --use-java-context=true --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker
     ```
 
-1. Hozzon létre egy indítási `startup_script.sh` szkriptet, amely a JBoss parancssori felület parancsait hívja meg. Az alábbi példa bemutatja, hogyan hívhatja meg a következőt: `jboss-cli-commands.cli` . Később be fogja App Service szkript futtatására a tároló indításakor. 
+1. Hozzon létre egy indítási `startup_script.sh` szkriptet, amely a JBoss PARANCSSORi felület parancsait hívja meg. Az alábbi példa bemutatja, hogyan hívhatja meg a következőt: `jboss-cli-commands.cli` . Később be fogja App Service szkript futtatására a tároló indításakor. 
 
     ```bash
     $JBOSS_HOME/bin/jboss-cli.sh --connect --file=/home/site/deployments/tools/jboss-cli-commands.cli
     ```
 
 1. Egy ön által választott FTP-ügyféllel töltse fel a JDBC-illesztőt `jboss-cli-commands.cli` (, `startup_script.sh` , és a modul definícióját) a következőbe: `/site/deployments/tools/` .
-2. Konfigurálja úgy a webhelyet, hogy a `startup_script.sh` tároló indításakor fusson. Az Azure Portalon lépjen a **Konfiguráció általános**  >  **beállítások**  >  **indítási parancsa elemre.** Állítsa az indítási parancs mezőjét a `/home/site/deployments/tools/startup_script.sh` következőre: . **Mentse a** módosításokat.
+2. Konfigurálja úgy a webhelyet, hogy a `startup_script.sh` tároló indításakor fusson. Az Azure Portalon lépjen a **Configuration**  >  **General Settings (Általános beállítások)**  >  **indítási parancsra.** Állítsa az indítási parancs mezőjét a `/home/site/deployments/tools/startup_script.sh` következőre: . **Mentse a** módosításokat.
 
-Annak megerősítéséhez, hogy az adatforrás hozzá lett adva a JBoss-kiszolgálóhoz, SSH-n keresztül a webalkalmazásba, és futtassa a következőt: `$JBOSS_HOME/bin/jboss-cli.sh --connect` . Miután csatlakozott a JBosshoz, futtassa az parancsát az `/subsystem=datasources:read-resource` adatforrások listájának kinyomtatása érdekében.
+Annak megerősítéséhez, hogy az adatforrás hozzá lett adva a JBoss-kiszolgálóhoz, SSH-n keresztül a webalkalmazásba, és futtassa a következőt: `$JBOSS_HOME/bin/jboss-cli.sh --connect` . Miután csatlakozott a JBosshoz, futtassa az parancs `/subsystem=datasources:read-resource` futtatásával az adatforrások listájának kinyomtatása érdekében.
 
 ::: zone-end
 
@@ -706,9 +932,9 @@ A JBoss EAP csak a prémium és izolált hardverek esetén érhető el. Azok az 
 
 Az Azure által támogatott Java fejlesztői készlet (JDK) a [Zulu,](https://www.azul.com/downloads/azure-only/zulu/) amelyet az [Azul Systems biztosít.](https://www.azul.com/) Az OpenJDK Azul Zulu Enterprise-buildek az Azure-hoz készült OpenJDK ingyenes, többplatformos, éles használatra kész disztribúciói, amelyek Azure Stack Microsoft és az Azul Systems által is szolgálnak. A Java SE-alkalmazások létrehozásához és futtatásához szükséges összes összetevőt tartalmazzák. A JDK-t a [Java JDK-telepítésből telepítheti.](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
-A főverzió-frissítéseket az új futásidejű beállítások biztosítják a Azure App Service. Az ügyfelek a Java ezen újabb verzióira frissítve konfigurálják a App Service üzemelő példányukat, és ők felelnek a tesztelésért és annak biztosításáért, hogy a fő frissítés megfeleljen az igényeiknek.
+A főverzió-frissítéseket az új futásidejű beállítások biztosítják a Azure App Service. Az ügyfelek az új Java-verziókra frissítve konfigurálják App Service üzemelő példányukat, és ők felelnek a tesztelésért és annak biztosításáért, hogy a nagyobb frissítés megfeleljen az igényeiknek.
 
-A támogatott JDK-k minden évben negyedévente automatikusan frissülnek januárban, áprilisban, júliusban és októberben. Az Azure-beli Javával kapcsolatos további információkért tekintse meg ezt [a támogatási dokumentumot.](/azure/developer/java/fundamentals/java-jdk-long-term-support)
+A támogatott JDK-k minden évben negyedévente, januárban, áprilisban, júliusban és októberben automatikusan frissülnek. Az Azure-beli Javával kapcsolatos további információkért tekintse meg ezt [a támogatási dokumentumot.](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
 ### <a name="security-updates"></a>Biztonsági frissítések
 
@@ -727,7 +953,7 @@ A fejlesztők letölthetik az Azul Zulu Enterprise JDK Production Edition kiadá
 
 ### <a name="development-support"></a>Fejlesztési támogatás
 
-Az Azure által támogatott [Azul Zulu JDK](https://www.azul.com/downloads/azure-only/zulu/) terméktámogatása a [](https://azure.microsoft.com/overview/azure-stack/) Microsofton keresztül érhető el, ha az Azure-hoz fejleszt, vagy Azure Stack egy minősített Azure-támogatás [csomaggal.](https://azure.microsoft.com/support/plans/)
+Az Azure által támogatott [Azul Zulu JDK](https://www.azul.com/downloads/azure-only/zulu/) terméktámogatása a Microsofton keresztül érhető el, ha az Azure-hoz fejleszt, [vagy](https://azure.microsoft.com/overview/azure-stack/) Azure Stack egy minősített Azure-támogatás [csomaggal.](https://azure.microsoft.com/support/plans/)
 
 ## <a name="next-steps"></a>Következő lépések
 
