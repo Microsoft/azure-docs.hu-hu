@@ -1,156 +1,156 @@
 ---
-title: Áttekintés – Azure Database for MySQL – rugalmas kiszolgáló
-description: Ismerkedjen meg az Azure Database for MySQL rugalmas kiszolgálóval, amely a Microsoft Cloud-on alapuló, a MySQL Community Edition rendszerre épülő, összehasonlítható adatbázis-szolgáltatás.
+title: Áttekintés – Azure Database for MySQL – Rugalmas kiszolgáló
+description: Ismerje meg Azure Database for MySQL rugalmas kiszolgálót, amely egy relációsadatbázis-szolgáltatás a Microsoft-felhőben a MySQL Community Edition alapján.
 author: savjani
 ms.service: mysql
 ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 46b056c22a6d1c70a729f5b9558f53c685a878f0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e3259cddc3790f92f56d7f59783cd66a2502b704
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732853"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813325"
 ---
-# <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
+# <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – Rugalmas kiszolgáló (előzetes verzió)
 
-A MySQL Community Edition Azure Database for MySQL a két üzembe helyezési módban érhető el:
+Azure Database for MySQL MySQL Community Edition által működtetett alkalmazás két üzembe helyezési módban érhető el:
 - Önálló kiszolgáló 
 - Rugalmas kiszolgáló (előzetes verzió)
 
-Ebben a cikkben áttekintjük és bemutatjuk a rugalmas kiszolgáló üzembe helyezési modelljének alapvető fogalmait. A számítási feladatokhoz megfelelő központi telepítési lehetőség eldöntéséről további információt a [megfelelő MySQL-kiszolgáló kiválasztása az Azure-ban](./../select-right-deployment-type.md)című témakörben talál.
+Ebben a cikkben áttekintjük és bemutatjuk a rugalmas kiszolgálótelepítési modell alapvető fogalmait. A számítási feladathoz megfelelő üzembe helyezési lehetőség kiválasztásával kapcsolatos információkért lásd: A megfelelő MySQL-kiszolgáló kiválasztása [az Azure-ban.](./../select-right-deployment-type.md)
 
 ## <a name="overview"></a>Áttekintés
 
-Azure Database for MySQL rugalmas kiszolgáló egy teljes körűen felügyelt adatbázis-szolgáltatás, amely részletesebb szabályozást és rugalmasságot biztosít az adatbázis-felügyeleti funkciók és a konfigurációs beállítások felett. Általánosságban elmondható, hogy a szolgáltatás nagyobb rugalmasságot és kiszolgáló-konfigurációt biztosít a felhasználói követelmények alapján. A rugalmas kiszolgáló architektúrája lehetővé teszi a felhasználók számára, hogy az egyetlen rendelkezésre állási zónában és több rendelkezésre állási zónában is magas rendelkezésre állást engedélyezzenek A rugalmas kiszolgálók jobb költség-optimalizálási ellenőrzéseket is biztosítanak, amelyek lehetővé teszik a kiszolgáló és a feltört SKU-hálózat leállítását/elindítását, ideális olyan számítási feladatokhoz, amelyeknek nincs szükségük teljes számítási kapacitás A szolgáltatás jelenleg a MySQL 5,7 és a 8,0 közösségi verzióját támogatja. A szolgáltatás jelenleg előzetes verzióban érhető el, és ma már számos [Azure-régióban](https://azure.microsoft.com/global-infrastructure/services/)elérhető.
+Azure Database for MySQL rugalmas kiszolgáló egy teljes körűen felügyelt adatbázis-szolgáltatás, amely részletesebb vezérlést és rugalmasságot biztosít az adatbázis-kezelési funkciókhoz és a konfigurációs beállításokhoz. Általánosságban elmondható, hogy a szolgáltatás a felhasználói követelmények alapján nagyobb rugalmasságot és kiszolgálókonfiguráció-testreszabást biztosít. A rugalmas kiszolgálói architektúra lehetővé teszi, hogy a felhasználók magas rendelkezésre állást válasszanak az egy rendelkezésre állási zónán belül és több rendelkezésre állási zónában. A rugalmas kiszolgálók emellett jobb költségoptimalizálási vezérlőket is biztosítanak, amelyek képesek leállítani/elindítani a kiszolgálót és a kihasználtságú skusokat, ideálisak olyan számítási feladatokhoz, amelyek nem rendelkeznek folyamatosan teljes számítási kapacitással. A szolgáltatás jelenleg a MySQL 5.7-es és 8.0-s közösségi verzióját támogatja. A szolgáltatás jelenleg előzetes verzióban érhető el, és számos [különböző Azure-régióban érhető el.](https://azure.microsoft.com/global-infrastructure/services/)
 
-A rugalmas kiszolgálók a legmegfelelőbbek a következőhöz: 
-- Hatékonyabb vezérlést és testreszabást igénylő alkalmazások fejlesztése.
-- Zóna redundáns magas rendelkezésre állása
-- Felügyelt karbantartási időszakok
+A rugalmas kiszolgálók a legmegfelelőbbek a 
+- Az alkalmazásfejlesztések jobb vezérlést és testreszabást követelnek meg.
+- Zónaredundáns magas rendelkezésre állás
+- Felügyelt karbantartási időszak
 
 ![Rugalmas kiszolgáló fogalmi diagramja](media/overview/1-flexible-server-conceptual-diagram.png) 
 
-## <a name="high-availability-within-and-across-availability-zones"></a>Magas rendelkezésre állás a rendelkezésre állási zónákon belül és azok között
+## <a name="high-availability-within-and-across-availability-zones"></a>Magas rendelkezésre állás a rendelkezésre állási zónákon belül és között
 
-A rugalmas kiszolgálói üzemi modell úgy lett kialakítva, hogy támogassa a magas rendelkezésre állást az önálló rendelkezésre állási zónában és több rendelkezésre állási zónában. Az architektúra elkülöníti a számítási és a tárolási kapacitást. Az adatbázismotor egy virtuális gépen fut, míg az adatfájlok az Azure Storage-ban találhatók. A tároló három helyileg redundáns szinkron példányt tart fenn az adatbázisfájlok számára az adattartósság biztosításához. 
+A rugalmas kiszolgálótelepítési modell úgy lett kialakítva, hogy támogassa a magas rendelkezésre állást egy rendelkezésre állási zónán belül és több rendelkezésre állási zónában. Az architektúra elkülöníti a számítást és a tárolást. Az adatbázismotor egy virtuális gépen fut, az adatfájlok pedig az Azure Storage-ban találhatók. A tároló három helyileg redundáns szinkron másolatot tart fenn az adatbázisfájlokról, így mindig biztosíthatja az adatok tartósságát. 
 
-Egyetlen rendelkezésre állási zónán belül, ha a kiszolgáló tervezett vagy nem tervezett események miatt leáll, a szolgáltatás a következő automatizált eljárással biztosítja a kiszolgálók magas rendelkezésre állását:
+Ha a kiszolgáló tervezett vagy nem tervezett események miatt leáll egy rendelkezésre állási zónán belül, a szolgáltatás a következő automatizált eljárással tartja fenn a kiszolgálók magas rendelkezésre állását:
 
-1. Új számítási virtuális gép lett kiépítve.
-2. Az adatfájlokkal rendelkező tárterület az új virtuális gépre van leképezve
-3. A MySQL-adatbázismotor online állapotba kerül az új virtuális gépen.
-4. Az ügyfélalkalmazások újra csatlakozhatnak, ha a kiszolgáló készen áll a kapcsolatok fogadására.
+1. Új számítási virtuális gép van kiépítve.
+2. Az adatfájlokat tároló tároló az új virtuális gépre van leképezve
+3. A MySQL adatbázismotor online állapotba lesz hozva az új virtuális gépen.
+4. Az ügyfélalkalmazások újracsatlakoznak, ha a kiszolgáló készen áll a kapcsolatok elfogadására.
    
-:::image type="content" source="media/overview/2-flexible-server-architecture.png" alt-text="Önálló zóna – magas rendelkezésre állás fogalmi diagramja"::: 
+:::image type="content" source="media/overview/2-flexible-server-architecture.png" alt-text="Az egyzónás magas rendelkezésre állás fogalmi diagramja"::: 
 
-Ha a zóna redundáns magas rendelkezésre állása be van állítva, a szolgáltatás kiépíti és karbantartja a gyors készenléti kiszolgálót a rendelkezésre állási zónán belül ugyanazon az Azure-régióban. A forráskiszolgálón lévő adatváltozásokat a rendszer szinkron módon replikálja a készenléti kiszolgálóra, így biztosítva a nulla adatvesztést. A zóna redundáns, magas rendelkezésre állása esetén a tervezett vagy nem tervezett feladatátvételi esemény elindítása után a készenléti kiszolgáló azonnal online állapotba kerül, és elérhető a bejövő tranzakciók feldolgozásához. A tipikus feladatátvételi idő 60-120 másodperc. Ez lehetővé teszi, hogy a szolgáltatás támogassa a magas rendelkezésre állást, és nagyobb rugalmasságot biztosítson egy adott Azure-régióban az egyes rendelkezésre állási zónák hibáinak tűréshatárával. 
+Ha zónaredundáns magas rendelkezésre állás van konfigurálva, a szolgáltatás egy készenléti kiszolgálót hoz ki és tart fenn egy rendelkezésre állási zónában ugyanabban az Azure-régióban. A forráskiszolgálón végrehajtott adatváltozásokat a rendszer szinkron módon replikálja a készenléti kiszolgálóra, így biztosítja az adatvesztést. Zónaredundáns magas rendelkezésre állás esetén a tervezett vagy nem tervezett feladatátvételi esemény aktiválása után a készenléti kiszolgáló azonnal online állapotba kerül, és elérhető a bejövő tranzakciók feldolgozásához. A feladatátvétel jellemző ideje 60–120 másodperc. Ez lehetővé teszi, hogy a szolgáltatás támogassa a magas rendelkezésre állást, és továbbfejlesztett rugalmasságot biztosítson az egy rendelkezésre állási zóna meghibásodásai esetén egy adott Azure-régióban. 
 
-További részletekért tekintse meg a [magas rendelkezésre állással kapcsolatos fogalmakat](concepts-high-availability.md) .
+További [részletekért tekintse](concepts-high-availability.md) meg a magas rendelkezésre állás fogalmait.
 
-:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="Zone redundáns magas rendelkezésre állás fogalmi diagramja"::: 
+:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="Zónaredundáns magas rendelkezésre állás fogalmi diagramja"::: 
 
-## <a name="automated-patching-with-managed-maintenance-window"></a>Automatizált javítás a felügyelt karbantartási időszakmal
+## <a name="automated-patching-with-managed-maintenance-window"></a>Automatikus javítás felügyelt karbantartási időszakkal
 
-A szolgáltatás a mögöttes hardver, az operációs rendszer és az adatbázis motorjának automatizált javítását végzi. A javítás biztonsági és szoftverfrissítéseket is tartalmaz. A MySQL motor esetében az alverziók frissítései a tervezett karbantartási kiadás részeként is szerepelnek. A felhasználók úgy konfigurálhatják a javítási ütemtervet, hogy a rendszer felügyelhető legyen, vagy definiálja az egyéni ütemtervet. A karbantartási ütemterv során a javítás érvénybe lép, és a kiszolgáló a javítási folyamat részeként újraindítást igényelhet a frissítés befejezéséhez. Az egyéni ütemterv segítségével a felhasználók előre jelezheti a javítási ciklust, és olyan karbantartási időszakot választhatnak, amelynek minimális hatása van a vállalatra. Általánosságban elmondható, hogy a szolgáltatás a folyamatos integráció és a kiadás részeként havi kiadási ütemtervet követ.
+A szolgáltatás elvégzi a mögöttes hardver, az operációs rendszer és az adatbázismotor automatikus javítását. A javítás biztonsági és szoftverfrissítéseket is tartalmaz. A MySQL-motor esetén az alverziófrissítések a tervezett karbantartási kiadás részét is tartalmazzák. A felhasználók rendszer által felügyeltként konfigurálhatja a javítási ütemezést, vagy meghatározhatja az egyéni ütemezésüket. A karbantartási ütemezés során a rendszer alkalmazza a javítást, és előfordulhat, hogy a kiszolgáló újraindítást igényel a frissítési folyamat részeként a frissítés befejezéséhez. Az egyéni ütemezéssel a felhasználók kiszámíthatóvá teheti a javítási ciklusukat, és kiválaszthatja a karbantartási időszakokat, amelyek minimális hatással vannak az üzletre. A szolgáltatás általában a havi kiadási ütemezést követi a folyamatos integráció és kiadás részeként.
 
-További részletekért tekintse meg az [ütemezett karbantartást](concepts-maintenance.md) . 
+További [részletekért lásd:](concepts-maintenance.md) Ütemezett karbantartás. 
 
 ## <a name="automatic-backups"></a>Automatikus biztonsági mentések
 
-A rugalmas kiszolgáló szolgáltatás automatikusan létrehozza a kiszolgáló biztonsági másolatait, és tárolja azokat a felhasználó által helyileg redundáns vagy földrajzilag redundáns tárolóban. A biztonsági mentések segítségével a kiszolgáló bármely időpontra visszaállítható a biztonsági mentés megőrzési ideje alatt. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Az adatmegőrzés opcionálisan 35 napig is konfigurálható. Minden biztonsági mentés AES 256 bites titkosítással van titkosítva. 
+A rugalmas kiszolgálószolgáltatás automatikusan biztonsági másolatokat készít a kiszolgálóról, és a felhasználó által konfigurált helyileg redundáns vagy georedundáns tárolóban tárolja azokat. A biztonsági másolatokkal a kiszolgáló bármely időpontra visszaállítható a biztonsági másolatok megőrzési időszakán belül. A biztonsági másolatok alapértelmezett megőrzési ideje hét nap. Az adatmegőrzés igény szerint 35 napig is konfigurálható. Minden biztonsági mentés AES 256 bites titkosítással van titkosítva. 
 
-További információért lásd a [biztonsági mentési fogalmakat](concepts-backup-restore.md) ismertető témakört.
+További [információ: Biztonsági mentéssel kapcsolatos](concepts-backup-restore.md) fogalmak.
 
 ## <a name="network-isolation"></a>Hálózatelkülönítés
 
-Két hálózati lehetőség közül választhat a Azure Database for MySQL rugalmas kiszolgálóhoz való kapcsolódáshoz. A lehetőségek a következők: **privát hozzáférés (VNet-integráció)** és **nyilvános hozzáférés (engedélyezett IP-címek)**. 
+A rugalmas kiszolgálóhoz való csatlakozáshoz két hálózati Azure Database for MySQL van. A lehetőségek a **privát hozzáférés (VNet-integráció)** és a **nyilvános hozzáférés (engedélyezett IP-címek).** 
 
-* **Privát hozzáférés (VNet-integráció)** – a rugalmas kiszolgálót üzembe helyezheti az [Azure-Virtual Network](../../virtual-network/virtual-networks-overview.md). Az Azure Virtual Network privát és biztonságos hálózati kommunikációt biztosít. A virtuális hálózatok erőforrásai privát IP-címeken keresztül kommunikálhatnak.
+* **Privát hozzáférés (VNet-integráció)** – Rugalmas kiszolgálóját üzembe helyezheti az [Azure Virtual Network.](../../virtual-network/virtual-networks-overview.md) Az Azure-beli virtuális hálózatok privát és biztonságos hálózati kommunikációt biztosítanak. A virtuális hálózatok erőforrásai magánhálózati IP-címeken keresztül kommunikálhatnak.
 
-   Ha a következő képességeket szeretné használni, válassza a VNet-integráció lehetőséget:
-   * Kapcsolódás az azonos virtuális hálózatban lévő Azure-erőforrásokhoz a rugalmas kiszolgálóhoz magánhálózati IP-címek használatával
-   * A VPN vagy a ExpressRoute használatával csatlakozhat a nem Azure-erőforrásokról a rugalmas kiszolgálóhoz
+   Válassza a VNet-integráció lehetőséget, ha a következő képességeket szeretné:
+   * Csatlakozás az azonos virtuális hálózatban lévő Azure-erőforrásokról a rugalmas kiszolgálóhoz magánhálózati IP-címek használatával
+   * VPN vagy ExpressRoute használata a nem Azure-erőforrások és a rugalmas kiszolgáló csatlakoztatása érdekében
    * Nincs nyilvános végpont
 
-* **Nyilvános hozzáférés (engedélyezett IP-címek)** – a rugalmas kiszolgálót nyilvános végponttal is üzembe helyezheti. A nyilvános végpont egy nyilvánosan feloldható DNS-címe. Az "engedélyezett IP-címek" kifejezés számos olyan IP-címet jelöl, amelyet a kiszolgáló eléréséhez engedélyt ad. Ezeket az engedélyeket **Tűzfalszabályok** nevezzük.
+* **Nyilvános hozzáférés (engedélyezett IP-címek)** – Rugalmas kiszolgálóját nyilvános végponttal helyezheti üzembe. A nyilvános végpont egy nyilvánosan feloldható DNS-cím. Az "engedélyezett IP-címek" kifejezés ip-címek egy olyan tartományát jelenti, amelyről ön engedélyt ad a kiszolgáló eléréséhez. Ezeket az engedélyeket **tűzfalszabályoknak nevezzük.**
 
-További információért lásd a [hálózatkezelési fogalmakat](concepts-networking.md) .
+További [információ:](concepts-networking.md) Hálózati fogalmak.
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Teljesítmény módosítása és skálázása másodperceken belül
 
-A rugalmas kiszolgáló szolgáltatás három SKU-szinten érhető el: feltört, általános célú és memória-optimalizálva. A feltört réteg az alacsony költséghatékonyságú fejlesztési és alacsony párhuzamosságú munkaterhelésekhez ideális megoldás, amelyeknek nincs szükségük teljes számítási kapacitásra. Az optimalizált általános célú és memória jobban alkalmazkodik a magas párhuzamosságot, méretezést és kiszámítható teljesítményt igénylő éles munkaterhelésekhez. Az első alkalmazást egy kis adatbázison hozhatja létre havonta néhány dollárért, majd zökkenőmentesen módosíthatja a méretezést a megoldás igényeinek megfelelően. A tárolási skálázás online állapotban van, és támogatja a tárterület automatikus növekedését. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak a felhasznált erőforrásokért kell fizetnie. 
+A rugalmas kiszolgálói szolgáltatás három termékváltozat-szinten érhető el: Adatlökhető, általános célú memóriaoptimal van optimalizálva. A Burstable csomag az alacsony költségű fejlesztéshez és az alacsony egyidejűségi szintű számítási feladatokhoz a legalkalmasabb, amelyekhez nem szükséges folyamatosan teljes számítási kapacitás. A általános célú és a Memóriaoptimalált jobban megfelel a magas egyidejűséget, skálázhatóságot és kiszámítható teljesítményt igénylő éles számítási feladatokhoz. Havonta néhány dollárban felépítheti első alkalmazását egy kisméretű adatbázison, majd zökkenőmentesen módosíthatja a méretet a megoldás igényeinek megfelelően. A tárolóméretezés online állapotban van, és támogatja a tároló automatikus növekedését. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak a felhasznált erőforrásokért kell fizetnie. 
 
-További információért lásd a [számítási és tárolási fogalmakat](concepts-compute-storage.md) .
+További [információ: Számítási és](concepts-compute-storage.md) tárolási fogalmak.
 
-## <a name="scale-out-your-read-workload-with-up-to-10-read-replicas"></a>Az olvasási munkaterhelés felskálázása legfeljebb 10 olvasási replikával
+## <a name="scale-out-your-read-workload-with-up-to-10-read-replicas"></a>Skálázhatja fel horizontálisan az olvasási számítási feladatot akár 10 olvasási replikával
 
-A MySQL az egyik népszerű adatbázismotor a webes és mobil alkalmazások futtatásához. Számos ügyfelünk a saját online oktatási szolgáltatásaihoz, a video streaming-szolgáltatásokhoz, a digitális fizetési megoldásokhoz, az e-kereskedelmi platformokhoz, a szerencsejáték-szolgáltatásokhoz, a hírek portálokhoz, a kormányzati és az egészségügyi webhelyekhez használható. Ezek a szolgáltatások a webes vagy mobil alkalmazások forgalmának növeléséhez és méretezéséhez szükségesek.
+A MySQL az internetes webes és mobilalkalmazások futtatására használható népszerű adatbázismotorok egyike. Számos ügyfelünk használja online oktatási szolgáltatásaihoz, videóstreamelési szolgáltatásaihoz, digitális fizetési megoldásokhoz, e-kereskedelmi platformokhoz, játékszolgáltatásokhoz, hírportálokhoz, kormányzati és egészségügyi webhelyekhez. Ezek a szolgáltatások a webes vagy mobilalkalmazások forgalmának növekedésével egyre nagyobb mértékben kiszolgálják és skálázják a szolgáltatást.
 
-Az alkalmazások oldalon az alkalmazás általában Java vagy PHP nyelven lett kifejlesztve, és át lett telepítve az [Azure-beli virtuálisgép-méretezési csoportokon](../../virtual-machine-scale-sets/overview.md)vagy az Azure app Services-on való futtatásra,   vagy az [](../../app-service/overview.md)    [Azure Kubernetes szolgáltatásban (ak)](../../aks/intro-kubernetes.md)való futtatásra. A virtuálisgép-méretezési csoport, a App Service vagy az AK az alapul szolgáló infrastruktúrának megfelelően egyszerűsíti az alkalmazások skálázását azáltal, hogy azonnal kiépíti az új virtuális gépeket, és replikálja az alkalmazás állapot nélküli összetevőit, hogy azok a kérések ellátására szolgálnak, de gyakran az adatbázis a központosított állapot-nyilvántartó összetevőként végződik.
+Az alkalmazások oldalán az alkalmazást általában Java- vagy PHP-környezetben fejlesztik, és azure-beli virtuálisgép-méretezési készleteken vagy [Azure](../../virtual-machine-scale-sets/overview.md)App Services-ben való futtatás érdekében migrálják, vagy tárolóba vannak helyezni, hogy az Azure Kubernetes Service    [](../../app-service/overview.md)    [(AKS) szolgáltatáson](../../aks/intro-kubernetes.md)fusson. A virtuálisgép-méretezési készlet, az App Service vagy az AKS mint mögöttes infrastruktúra révén az alkalmazások skálázása egyszerűbbé válik az új virtuális gépek azonnali kiépítése és az alkalmazások állapot nélküli összetevőinek replikálása a kérések ellátásához, de az adatbázis végül a központosított állapot-igénylési összetevő szűk keresztmetszete lesz.
 
-Az olvasási replika funkció lehetővé teszi az adatok replikálását egy Azure Database for MySQL rugalmas kiszolgálóról egy írásvédett kiszolgálóra. A forrás-kiszolgálóról **legfeljebb 10 replikára** lehet replikálni. A replikák aszinkron módon frissülnek a MySQL motor natív [bináris naplójának (BinLog) fájljának pozíció-alapú replikációs technológiájának](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)használatával. A terheléselosztó proxy-megoldásait, például a [ProxySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042) -t használva zökkenőmentesen kibővítheti az alkalmazás számítási feladatait a replikák olvasására az alkalmazás újraszámítási díja nélkül. 
+Az olvasási replika funkcióval egy rugalmas Azure Database for MySQL kiszolgálóról replikálhatja az adatokat egy csak olvasható kiszolgálóra. A forráskiszolgálóról legfeljebb **10** replikára replikálhat. A replikák aszinkron módon frissülnek a MySQL-motor natív bináris [naplójának (binlog) fájlpozíció-alapú replikációs technológiájával.](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) A [ProxySQL-hez](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042) hasonló terheléselosztási proxymegoldással zökkenőmentesen horizontálisan felskálolhatja az alkalmazás számítási feladatait a replikák olvasásához anélkül, hogy az alkalmazás újrafactorolási költsége lenne. 
 
-További információért olvassa el a [replika-fogalmak beolvasása](concepts-read-replicas.md) című témakört. 
+További [információ: Read Replica concepts](concepts-read-replicas.md) (A replikákkal kapcsolatos fogalmak olvasása). 
 
 
-## <a name="stopstart-server-to-optimize-cost"></a>A kiszolgáló leállítása/elindítása a Cost optimalizálásához
+## <a name="stopstart-server-to-optimize-cost"></a>Kiszolgáló leállítása/indítása a költségek optimalizálása
 
-A rugalmas kiszolgálói szolgáltatás lehetővé teszi a kiszolgáló igény szerinti leállítását és elindítását a Cost optimalizálása érdekében. A számítási szintek számlázása azonnal leáll, amikor a kiszolgáló leáll. Ezzel jelentős költségmegtakarítást érhet el a fejlesztés, a tesztelés és az időkorlátos kiszámítható éles számítási feladatok esetében. A kiszolgáló hét napig leállított állapotban marad, kivéve, ha hamarabb újraindul. 
+A rugalmas kiszolgálószolgáltatással leállíthatja és elindíthatja a kiszolgálót igény szerint a költségek optimalizálása érdekében. A számítási szint számlázása a kiszolgáló leálltát követően azonnal leáll. Ez jelentős költségmegtakarítást tesz lehetővé a fejlesztés, a tesztelés és az időkorrekta kiszámítható éles számítási feladatok esetében. A kiszolgáló hét napig leállított állapotban marad, kivéve, ha korábban újra elindítják. 
 
-További információért lásd a [kiszolgálói fogalmakat](concept-servers.md) . 
+További [információ: Kiszolgálói](concept-servers.md) fogalmak. 
 
-## <a name="enterprise-grade-security-and-privacy"></a>Nagyvállalati szintű biztonság és adatvédelem
+## <a name="enterprise-grade-security-and-privacy"></a>Vállalati szintű biztonság és adatvédelem
 
-A rugalmas kiszolgáló szolgáltatás az FIPS 140-2 ellenőrzött titkosítási modult használja a REST-alapú adatok tárolási titkosításához. Az adatokat, beleértve a biztonsági másolatokat, valamint a lekérdezések futtatása közben létrehozott ideiglenes fájlokat is titkosítja a rendszer. A szolgáltatás az Azure Storage-titkosításban található AES 256 bites titkosítást használja, a kulcsokat pedig rendszerfelügyelheti (alapértelmezett). 
+A rugalmas kiszolgálószolgáltatás a FIPS 140-2 ellenőrzött titkosítási modult használja az adatok tárolásra való titkosítására az aktuálisan használt adatokhoz. Az adatok, beleértve a biztonsági másolatokat és a lekérdezések futtatása közben létrehozott ideiglenes fájlokat titkosítva vannak. A szolgáltatás az Azure Storage-titkosításban található 256 bites AES-titkosítást használja, és a kulcsok rendszer által felügyeltek (alapértelmezés). 
 
-A szolgáltatás alapértelmezés szerint titkosítja a mozgásban lévő adatátviteli réteget. A rugalmas kiszolgálók csak a Transport Layer Security (TLS 1,2) használatával titkosított kapcsolatokat támogatnak, és a TLS 1,0 és a TLS 1,1 összes bejövő kapcsolata meg lesz tagadva. 
+A szolgáltatás alapértelmezés szerint az átviteli réteg biztonságával titkosítja az adatokat a mozgásban. A rugalmas kiszolgálók csak a Transport Layer Security (TLS 1.2) használó titkosított kapcsolatokat támogatják, és minden TLS 1.0-val és TLS 1.1-sel bejövő kapcsolat le lesz tiltva. 
 
-További információért lásd: [titkosított kapcsolatok használata rugalmas kiszolgálókhoz](https://docs.mongodb.com/manual/tutorial/configure-ssl) .
+További [információért tekintse](https://docs.mongodb.com/manual/tutorial/configure-ssl) meg, hogyan használhat titkosított kapcsolatokat rugalmas kiszolgálókkal.
 
-A rugalmas kiszolgálók lehetővé teszik a kiszolgálók teljes magánhálózati elérését az [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md) (VNet) integrációjának használatával. Az Azure virtuális hálózatban található kiszolgálók csak magánhálózati IP-címeken keresztül érhetők el és csatlakoztathatók. A VNet-integrációval a nyilvános hozzáférés megtagadva, és a kiszolgálók nem érhetők el nyilvános végpontok használatával. 
+A rugalmas kiszolgálók teljes körű privát hozzáférést szolgáltatásokat szolgáltatásokat kínálnak a kiszolgálókhoz [Azure-beli virtuális](../../virtual-network/virtual-networks-overview.md) hálózat (VNet) integrációjával. Az Azure-beli virtuális hálózat kiszolgálói csak magánhálózati IP-címeken keresztül csatlakoztathatóak és csatlakoztathatóak. VNet-integráció esetén a nyilvános hozzáférés le van tiltva, és a kiszolgálók nem érhetőek el nyilvános végpontok használatával. 
 
-További információért lásd a [hálózatkezelési fogalmakat](concepts-networking.md) .
+További [információ:](concepts-networking.md) Hálózati fogalmak.
 
 
 ## <a name="monitoring-and-alerting"></a>Figyelés és riasztás
 
-A rugalmas kiszolgáló szolgáltatás beépített teljesítmény-figyelési és riasztási funkciókkal rendelkezik. Minden Azure-metrika egyperces gyakorisággal rendelkezik, és minden metrika 30 napos előzményt biztosít. A mérőszámokra vonatkozó riasztásokat is beállíthat. A szolgáltatás elérhetővé teszi a gazdagép-kiszolgáló metrikáit az erőforrások kihasználtságának figyelésére, valamint a lassú lekérdezési naplók konfigurálására. Ezen eszközök használatával gyorsan optimalizálhatja a számítási feladatokat, és konfigurálhatja a kiszolgálót a legjobb teljesítmény érdekében. 
+A rugalmas kiszolgálószolgáltatás beépített teljesítményfigyelési és riasztási funkciókkal rendelkezik. Minden Azure-metrika egyperces gyakorisággal rendelkezik, és minden metrika 30 nap előzményt biztosít. A metrikákhoz riasztásokat konfigurálhat. A szolgáltatás elérhetővé teszi a gazdakiszolgáló metrikákat az erőforrások kihasználtságának monitorozása érdekében, és lehetővé teszi a lassú lekérdezési naplók konfigurálását. Ezekkel az eszközökkel gyorsan optimalizálhatja a számítási feladatokat, és a legjobb teljesítmény érdekében konfigurálhatja a kiszolgálót. 
 
-További információért tekintse meg a [figyelési fogalmakat](concepts-monitoring.md) .
+További [információ: Figyelési](concepts-monitoring.md) fogalmak.
 
 ## <a name="migration"></a>Áttelepítés
 
-A szolgáltatás a MySQL közösségi verzióját futtatja. Ez lehetővé teszi az alkalmazások teljes kompatibilitását, és minimális újrabontási költségeket igényel a MySQL-motoron az egykiszolgálós szolgáltatáshoz fejlesztett meglévő alkalmazások áttelepítéséhez. Az egyetlen kiszolgálóra történő áttelepítés a következő lehetőségek egyikével végezhető el:
+A szolgáltatás a MySQL közösségi verzióját futtatja. Ez teljes körű alkalmazáskompatibilitást tesz lehetővé, és minimális újrafactorolási költségeket igényel a MySQL-motoron fejlesztett meglévő alkalmazások egykiszolgálós szolgáltatásba való áttelepítéséhez. Az áttelepítés egyetlen kiszolgálóra az alábbi lehetőségek egyikével hajtható végre:
 
-- **Memóriakép és visszaállítás** – kapcsolat nélküli áttelepítések esetén, ahol a felhasználók bizonyos állásidőt, kiírást és visszaállítást biztosíthatnak olyan közösségi eszközökkel, mint a mysqldump/mydumper, a lehető leggyorsabb módon telepíthetik az áttelepítést. A részletekért lásd: az áttelepítés a dump és a Restore használatával. 
-- **Azure Database Migration Service** – az egykiszolgálós, minimális állásidővel rendelkező, zökkenőmentes és egyszerűsített áttelepítéshez [Azure Database Migration Service](../../dms/tutorial-mysql-azure-mysql-online.md) is kihasználható. 
+- **Memóriakép és** visszaállítás – Az offline migrálások esetén, amelyekben a felhasználók megengedhetnek némi állásidőt, a memóriaképet és a visszaállítást olyan közösségi eszközökkel, mint a mysqldump/mydumper, a migrálás leggyorsabb módját biztosítják. A részletekért lásd: Áttelepítés memóriakép és visszaállítás használatával. 
+- **Azure Database Migration Service** – Az egyetlen kiszolgálóra való zökkenőmentes és egyszerűsített, [](../../dms/tutorial-mysql-azure-mysql-online.md) minimális állásidővel Azure Database Migration Service áttelepítések kihasználhatóak. 
 
 ## <a name="azure-regions"></a>Azure-régiók
 
-A számítási feladatok Azure-ban való futtatásának egyik előnye, hogy globálisan elérhető. A Azure Database for MySQL rugalmas kiszolgálója jelenleg a következő Azure-régiókban érhető el:
+A számítási feladatok Azure-ban való futtatásának egyik előnye, hogy globálisan elérhető. A rugalmas kiszolgáló Azure Database for MySQL jelenleg a következő Azure-régiókban érhető el:
 
-| Region | Rendelkezésre állás | Zóna redundáns HA | 
+| Region | Rendelkezésre állás | Zónaredundáns hatékony | 
 | --- | --- | --- |
 | Nyugat-Európa | :heavy_check_mark: | :heavy_check_mark: |
 | Észak-Európa | :heavy_check_mark: | :heavy_check_mark: |
-| Az Egyesült Királyság déli régiója | :heavy_check_mark: | x | 
+| Az Egyesült Királyság déli régiója | :heavy_check_mark: | :heavy_check_mark: | 
 | USA 2. keleti régiója | :heavy_check_mark: | :heavy_check_mark: |
 | USA 2. nyugati régiója | :heavy_check_mark: | :heavy_check_mark: |
-| Az USA középső régiója | :heavy_check_mark: | x | 
+| Az USA középső régiója | :heavy_check_mark: | :x: | 
 | USA keleti régiója | :heavy_check_mark: | :heavy_check_mark: |
-| Közép-Kanada | :heavy_check_mark: | x | 
+| Közép-Kanada | :heavy_check_mark: | :x: | 
 | Délkelet-Ázsia | :heavy_check_mark: | :heavy_check_mark: |
-| Dél-Korea középső régiója | :heavy_check_mark: | x | 
-| Kelet-Japán | :heavy_check_mark: | x | 
+| Dél-Korea középső régiója | :heavy_check_mark: | :x: | 
+| Kelet-Japán | :heavy_check_mark: | :heavy_check_mark: | 
 | Kelet-Ausztrália | :heavy_check_mark: | :heavy_check_mark: |
 
-Hamarosan új régiókat fogunk hozzáadni.
+Hamarosan új régiók hozzáadásán dolgozunk.
 
 ## <a name="contacts"></a>Kapcsolattartók
-Ha bármilyen kérdése vagy javaslata van Azure Database for MySQL rugalmas kiszolgálón, küldjön e-mailt a Azure Database for MySQL csapatnak ([ @Ask Az Azure db for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)-nek). Ez az e-mail-cím nem technikai támogatási alias.
+Ha bármilyen kérdése vagy javaslata van a rugalmas Azure Database for MySQL kapcsolatban, küldjön egy e-mailt a Azure Database for MySQL csapatának[ @Ask (Azure DB for MySQL).](mailto:AskAzureDBforMySQL@service.microsoft.com) Ez az e-mail-cím nem műszaki támogatási alias.
 
 Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
 
@@ -159,13 +159,13 @@ Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
 - Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
 ## <a name="next-steps"></a>Következő lépések
-Most, hogy elolvasta Azure Database for MySQL egykiszolgálós üzembe helyezési mód bevezetését, készen áll a következőre:
+Most, hogy elolvasta az egykiszolgálós Azure Database for MySQL mód bevezetését, készen áll a következőre:
 
-- Hozza létre az első kiszolgálót. 
-  - [Azure Database for MySQL rugalmas kiszolgáló létrehozása Azure Portal használatával](quickstart-create-server-portal.md)
-  - [Azure Database for MySQL rugalmas kiszolgáló létrehozása az Azure CLI-vel](quickstart-create-server-cli.md)
-  - [Azure Database for MySQL rugalmas kiszolgáló kezelése az Azure CLI használatával](how-to-manage-server-portal.md)
+- Hozza létre az első kiszolgálóját. 
+  - [Rugalmas Azure Database for MySQL kiszolgáló létrehozása Azure Portal](quickstart-create-server-portal.md)
+  - [Rugalmas Azure Database for MySQL létrehozása az Azure CLI használatával](quickstart-create-server-cli.md)
+  - [Rugalmas Azure Database for MySQL kezelése az Azure CLI használatával](how-to-manage-server-portal.md)
 
-- Hozza létre első alkalmazását a kívánt nyelv használatával:
+- Készítse el első alkalmazását az Ön által választott nyelven:
   - [Python](connect-python.md)
   - [Php](connect-php.md)

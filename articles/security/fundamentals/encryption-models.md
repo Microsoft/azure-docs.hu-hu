@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f76b2811531b49c9312a02a581e876f9ef569a2a
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 95ab5917779a73b7221a5b431126164aef88b494
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750967"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812119"
 ---
 # <a name="data-encryption-models"></a>Adattitkosítási modellek
 
@@ -74,7 +74,7 @@ A Microsoft által felügyelt kulcsokkal való kiszolgálóoldali titkosítás a
 
 ### <a name="key-access"></a>Kulcselérés
 
-A szolgáltatás által felügyelt kulcsokkal való kiszolgálóoldali titkosítás használata során a kulcs létrehozását, tárolását és a szolgáltatáshoz való hozzáférést mind a szolgáltatás kezeli. Az alapvető Azure-erőforrásszolgáltatók általában olyan tárolóban tárolják az adattitkosítási kulcsokat, amely közel van az adatokhoz, és gyorsan elérhetők és elérhetők, míg a kulcstitkosítási kulcsok egy biztonságos belső tárolóban vannak tárolva.
+A szolgáltatás által felügyelt kulcsokkal való kiszolgálóoldali titkosítás használata során a kulcs létrehozását, tárolását és a szolgáltatáshoz való hozzáférést is a szolgáltatás kezeli. Az alapvető Azure-erőforrásszolgáltatók általában olyan tárolóban tárolják az adattitkosítási kulcsokat, amely közel van az adatokhoz, és gyorsan elérhetők és elérhetők, amíg a kulcstitkosítási kulcsok egy biztonságos belső tárolóban vannak tárolva.
 
 **Előnyök**
 
@@ -84,25 +84,25 @@ A szolgáltatás által felügyelt kulcsokkal való kiszolgálóoldali titkosít
 
 **Hátrányok**
 
-- A titkosítási kulcsok (kulcsspecifikáció, életciklus, visszavonás stb.) ügyfél által nem vezérelt ellenőrzése
+- A titkosítási kulcsok (kulcsspecifikáció, életciklus, visszavonás stb.) nem szabályozható az ügyfelek számára
 - Nem lehet elkülönítni a kulcskezelést a szolgáltatás általános felügyeleti modelljétől
 
 ## <a name="server-side-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Kiszolgálóoldali titkosítás ügyfél által felügyelt kulcsokkal a Azure Key Vault
 
-Olyan forgatókönyvek esetén, ahol a követelmény az, hogy az ügyfelek ügyfél által kezelt kulcsokkal titkosítani kell az adatokat, és szabályozni kell a titkosítási kulcsokat, az ügyfelek kiszolgálóoldali titkosítást használhatnak a Key Vault. Egyes szolgáltatások csak a legfelső szintű kulcstitkosítási kulcsot Azure Key Vault a titkosított adattitkosítási kulcsot pedig az adatokhoz közelebbi belső helyen tárolják. Ebben a forgatókönyvben az ügyfelek a saját kulcsukat Key Vault (BYOK – Bring Your Own Key), vagy újakat hozhatnak létre, és a kívánt erőforrások titkosításához használhatja őket. Bár az erőforrás-szolgáltató végzi a titkosítási és visszafejtési műveleteket, a konfigurált kulcstitkosítási kulcsot használja az összes titkosítási művelet gyökérkulcsaként.
+Olyan forgatókönyvek esetén, ahol az igény az, hogy titkosítani kell az tárolt adatokat, és szabályozni kell a titkosítási kulcsokat, az ügyfelek kiszolgálóoldali titkosítást használhatnak az ügyfél által felügyelt kulcsokkal a Key Vault. Egyes szolgáltatások csak a legfelső szintű kulcstitkosítási kulcsot Azure Key Vault a titkosított adattitkosítási kulcsot pedig az adatokhoz közelebbi belső helyen tárolják. Ebben a forgatókönyvben az ügyfelek a saját kulcsukat Key Vault (BYOK – Bring Your Own Key), vagy újakat hozhatnak létre, és a kívánt erőforrások titkosításához használhatja őket. Bár a titkosítási és visszafejtési műveleteket az erőforrás-szolgáltató végzi, az összes titkosítási művelethez a konfigurált kulcstitkosítási kulcsot használja legfelső szintű kulcsként.
 
-A kulcstitkosítási kulcsok elvesztése adatvesztést jelent. Ezért a kulcsokat nem szabad törölni. A kulcsokról minden létrehozáskor vagy elforgatáskor biztonsági érdemes biztonsági okat létrehozni. [A kulcstitkosítási](../../key-vault/general/soft-delete-overview.md) kulcsokat tároló összes tárolón engedélyezni kell a soft-delete funkciót. Kulcs törlése helyett állítsa az engedélyezve a false (hamis) értéket, vagy állítsa be a lejárati dátumot.
+A kulcstitkosítási kulcsok elvesztése adatvesztést jelent. Ezért a kulcsokat nem szabad törölni. A kulcsokról minden létrehozáskor vagy elforgatáskor biztonsági érdemes biztonsági okat létrehozni. [A kulcstitkosítási](../../key-vault/general/soft-delete-overview.md) kulcsokat tároló tárolókban engedélyezni kell a soft-delete funkciót. Kulcs törlése helyett állítsa az engedélyezve beállítást false (hamis) vagy a expiry date (lejárati dátum) beállításra.
 
 ### <a name="key-access"></a>Kulcselérés
 
-A kiszolgálóoldali titkosítási modell ügyfél által felügyelt kulcsokkal a Azure Key Vault magában foglalja, hogy a szolgáltatás szükség szerint hozzáfér a kulcsok titkosításához és visszafejtéséhez. Az rest kulcsok titkosítása hozzáférés-vezérlési szabályzaton keresztül érhető el a szolgáltatások számára. Ez a szabályzat hozzáférést biztosít a szolgáltatásidentitás számára a kulcs fogadásához. Egy társított előfizetés nevében futó Azure-szolgáltatás konfigurálható az előfizetésben egy identitással. A szolgáltatás elvégezheti a Azure Active Directory hitelesítést, és hitelesítési jogkivonatot kaphat, amely azonosítja magát az előfizetés nevében működő szolgáltatásként. Ez a jogkivonat ezután Key Vault számára egy olyan kulcs beszerzéséhez, amelyhez hozzáférést kapott.
+A kiszolgálóoldali titkosítási modell ügyfél által felügyelt kulcsokkal a Azure Key Vault magában foglalja, hogy a szolgáltatás szükség szerint hozzáfér a kulcsokhoz a titkosításhoz és visszafejtéséhez. Az rest kulcsok titkosítása hozzáférés-vezérlési szabályzaton keresztül érhető el a szolgáltatások számára. Ez a szabályzat hozzáférést biztosít a szolgáltatásidentitás számára a kulcs fogadásához. Egy társított előfizetés nevében futó Azure-szolgáltatás konfigurálható az előfizetésben egy identitással. A szolgáltatás elvégezheti a Azure Active Directory hitelesítést, és kaphat egy hitelesítési jogkivonatot, amely azonosítja magát, mint az előfizetés nevében működő szolgáltatást. Ez a jogkivonat ezután Key Vault számára, hogy beszerezhető legyen egy kulcs, amelyhez hozzáféréssel rendelkezik.
 
-A titkosítási kulcsokat használó műveletek esetén a szolgáltatásidentitás hozzáférést kaphat a következő műveletek bármelyikéhez: visszafejtés, titkosítás, unwrapKey, wrapKey, ellenőrzés, aláírás, lekért, list, frissítés, létrehozás, importálás, törlés, biztonsági mentés és visszaállítás.
+A titkosítási kulcsokat használó műveletek esetén a szolgáltatásidentitás hozzáférést kaphat a következő műveletek bármelyikéhez: visszafejtés, titkosítás, unwrapKey, wrapKey, ellenőrzés, aláírás, get, list, update, create, import, delete, backup és restore.
 
 Az adatok titkosításához vagy visszafejtéséhez használt kulcs beszerzéséhez az Resource Manager-szolgáltatáspéldány által futtatott szolgáltatásidentitásnak UnwrapKey (a visszafejtési kulcs beszerzéséhez) és WrapKey (kulcs beszúrása a Kulcstartóba új kulcs létrehozásakor) beállítással kell lennie.
 
 >[!NOTE]
->Az engedélyezésről további Key Vault a kulcstartó biztonságossá téte oldalon, a [Azure Key Vault dokumentációjában.](../../key-vault/general/security-overview.md)
+>Az engedélyezésről Key Vault key vault biztonságossá tétő oldalán talál további információt a [Azure Key Vault dokumentációjában.](../../key-vault/general/security-features.md)
 
 **Előnyök**
 
@@ -113,13 +113,13 @@ Az adatok titkosításához vagy visszafejtéséhez használt kulcs beszerzésé
 
 **Hátrányok**
 
-- Az ügyfél teljes körűen felelős a kulcselérések kezelésért
-- Az ügyfél teljes felelősséggel tartozik a kulcs életciklus-kezelésért
-- További beállítási & a konfigurációval kapcsolatos többletterheléshez
+- Az ügyfél felelős a kulcselérések kezelésért
+- Az ügyfél teljes felelősséggel rendelkezik a kulcs életciklus-kezelésért
+- További beállítások és & többletterhelés
 
-## <a name="server-side-encryption-using-customer-managed-keys-in-customer-controlled-hardware"></a>Kiszolgálóoldali titkosítás ügyfél által felügyelt kulcsokkal ügyfél által felügyelt hardveren
+## <a name="server-side-encryption-using-customer-managed-keys-in-customer-controlled-hardware"></a>Kiszolgálóoldali titkosítás ügyfél által felügyelt kulcsokkal az ügyfél által felügyelt hardverben
 
-Egyes Azure-szolgáltatások lehetővé teszik a saját gazdagépkulcs (HYOK) kulcskezelési modelljét. Ez a felügyeleti mód olyan forgatókönyvekben hasznos, ahol szükség van az adatok titkosítására és a kulcsoknak a Microsoft felügyeletén kívüli jogvédett adattárban való kezelésére. Ebben a modellben a szolgáltatásnak egy külső oldalról kell lekérnie a kulcsot. Ez hatással van a teljesítményre és a rendelkezésre állásra vonatkozó garanciákra, és a konfiguráció összetettebb. Továbbá, mivel a szolgáltatás hozzáfér az adattitkosítási kulcshoz a titkosítási és visszafejtési műveletek során, a modell általános biztonsági garanciái hasonlóak ahhoz, amikor a kulcsokat az ügyfél a Azure Key Vault.  Ennek eredményeképpen ez a modell nem megfelelő a legtöbb szervezet számára, kivéve, ha speciális kulcskezelési követelményekkel kell szembenük áll. Ezen korlátozások miatt a legtöbb Azure-szolgáltatás nem támogatja a kiszolgálóoldali titkosítást a kiszolgáló által felügyelt kulcsokkal az ügyfél által vezérelt hardverben.
+Egyes Azure-szolgáltatások lehetővé teszik a saját gazdagépkulcs (HYOK) kulcskezelési modelljét. Ez a felügyeleti mód olyan forgatókönyvekben hasznos, ahol szükség van az adatok titkosítására és a kulcsoknak egy, a Microsoft által nem vezérelt jogvédett adattárban való kezelésére. Ebben a modellben a szolgáltatásnak egy külső oldalról kell lekérnie a kulcsot. Ez hatással van a teljesítményre és a rendelkezésre állásra vonatkozó garanciákra, és a konfiguráció összetettebb. Továbbá, mivel a szolgáltatás hozzáfér az adattitkosítási kulcshoz a titkosítási és visszafejtési műveletek során, a modell általános biztonsági garanciái hasonlóak ahhoz, amikor a kulcsokat az ügyfél a Azure Key Vault.  Ennek eredményeképpen ez a modell nem megfelelő a legtöbb szervezet számára, kivéve, ha speciális kulcskezelési követelményekkel kell szembenük áll. Ezen korlátozások miatt a legtöbb Azure-szolgáltatás nem támogatja a kiszolgálóoldali titkosítást a kiszolgáló által felügyelt kulcsokkal az ügyfél által vezérelt hardverben.
 
 ### <a name="key-access"></a>Kulcselérés
 
@@ -143,7 +143,7 @@ Ha az ügyfél által felügyelt hardveren szolgáltatás által felügyelt kulc
 ## <a name="supporting-services"></a>Támogató szolgáltatások
 Az egyes titkosítási modelleket támogató Azure-szolgáltatások:
 
-| Termék, funkció vagy szolgáltatás | Server-Side kulcs Service-Managed használata   | Server-Side kulcs Customer-Managed használata | Client-Side kulcs Client-Managed használata  |
+| Termék, funkció vagy szolgáltatás | Server-Side Kulcs Service-Managed használata   | Server-Side Kulcs Customer-Managed használata | Client-Side Kulcs Client-Managed használata  |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 | **Mesterséges intelligencia és gépi tanulás**      |                    |                    |                    |
 | Azure Cognitive Search           | Igen                | Yes                | -                  |
@@ -240,7 +240,7 @@ Az egyes titkosítási modelleket támogató Azure-szolgáltatások:
 
 \* Ez a szolgáltatás nem őrz meg adatokat. Az átmeneti gyorsítótárak (ha vannak) Microsoft-kulccsal vannak titkosítva.
 
-\*\* Ez a szolgáltatás támogatja az adatok tárolását a saját Key Vault, Storage-fiókban vagy más adatmegőrzési szolgáltatásban, amely már támogatja az Server-Side Titkosítást Customer-Managed kulccsal.
+\*\* Ez a szolgáltatás támogatja az adatok tárolását a saját Key Vault- vagy Storage-fiókjában, vagy más olyan adatmegőrzési szolgáltatásban, amely már támogatja a Server-Side titkosítást Customer-Managed kulccsal.
 
 ## <a name="next-steps"></a>Következő lépések
 

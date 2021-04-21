@@ -1,28 +1,28 @@
 ---
-title: Konfigurációs beállítások – Azure Monitor Application Insights Javához
-description: A Java-Azure Monitor Application Insights konfigurálása
+title: Konfigurációs beállítások – Azure Monitor Application Insights Java-hoz
+description: A Javához Azure Monitor Application Insights konfigurálása
 ms.topic: conceptual
 ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 997a4e115f8632544b2f73aef498d40dceb0d459
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: b78aaa659598e6eb58841c5cef0c209daaced5e0
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449970"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811975"
 ---
-# <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurációs beállítások – Azure Monitor Application Insights Javához
+# <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurációs beállítások – Azure Monitor Application Insights Java-hoz
 
 > [!WARNING]
-> **Ha 3,0 előzetes verzióról frissít**
+> **Ha a 3.0-s előzetes verzióról frissít**
 >
-> Tekintse át figyelmesen az összes konfigurációs beállítást, mivel a JSON-struktúra teljes mértékben megváltozott, és a fájlneven kívül minden kisbetűt ment.
+> Alaposan tekintse át az alábbi konfigurációs lehetőségeket, mivel a JSON-struktúra teljesen megváltozott, és magát a fájlnevet is kisbetűvel módosította.
 
-## <a name="connection-string-and-role-name"></a>A kapcsolatok karakterlánca és a szerepkör neve
+## <a name="connection-string-and-role-name"></a>Kapcsolati sztring és szerepkörnév
 
-A kezdéshez szükséges leggyakoribb beállítások a kapcsolódási karakterlánc és a szerepkör neve:
+Az első lépésekhez a kapcsolati sztring és a szerepkör neve a leggyakoribb beállítás:
 
 ```json
 {
@@ -33,26 +33,26 @@ A kezdéshez szükséges leggyakoribb beállítások a kapcsolódási karakterl�
 }
 ```
 
-A kapcsolódási karakterláncot kötelező megadni, és a szerepkör neve fontos minden alkalommal, amikor különböző alkalmazásokból küld adatokat ugyanarra a Application Insights erőforrásra.
+A kapcsolati sztringre szükség van, és a szerepkör neve minden alkalommal fontos, amikor különböző alkalmazásokból küld adatokat ugyanannak a Application Insights erőforrásnak.
 
-Alább további részleteket és további konfigurációs beállításokat találhat.
+Az alábbiakban további részleteket és további konfigurációs lehetőségeket talál.
 
 ## <a name="configuration-file-path"></a>Konfigurációs fájl elérési útja
 
-Alapértelmezés szerint a Application Insights Java 3,0 elvárja, hogy a konfigurációs fájl legyen elnevezve `applicationinsights.json` , és hogy ugyanabban a könyvtárban legyen elhelyezve `applicationinsights-agent-3.0.3.jar` .
+Alapértelmezés szerint a Application Insights Java 3.0 azt várja, hogy a konfigurációs fájl neve , és ugyanabban a könyvtárban legyen, mint `applicationinsights.json` `applicationinsights-agent-3.0.3.jar` a .
 
-Megadhatja saját konfigurációs fájljának elérési útját a következők használatával
+Saját konfigurációs fájl elérési útját a következővel adhatja meg:
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE` környezeti változó, vagy
 * `applicationinsights.configuration.file` Java rendszertulajdonság
 
-Ha relatív elérési utat ad meg, a rendszer a helyen található könyvtárhoz viszonyítva megoldódik `applicationinsights-agent-3.0.3.jar` .
+Ha megad egy relatív elérési utat, az feloldódik ahhoz a könyvtárhoz viszonyítva, `applicationinsights-agent-3.0.3.jar` ahol a található.
 
 ## <a name="connection-string"></a>Kapcsolati sztring
 
-A kapcsolatok karakterláncának megadása kötelező. A Application Insights erőforrásban található a kapcsolatok karakterlánca:
+Kapcsolati sztringre van szükség. A kapcsolati sztring a saját erőforrásában Application Insights található:
 
-:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights a kapcsolatok karakterlánca":::
+:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights sztring létrehozása":::
 
 
 ```json
@@ -61,15 +61,15 @@ A kapcsolatok karakterláncának megadása kötelező. A Application Insights er
 }
 ```
 
-A kapcsolati karakterláncot a környezeti változó használatával is beállíthatja `APPLICATIONINSIGHTS_CONNECTION_STRING` (amely elsőbbséget élvez a JSON-konfigurációban megadott kapcsolati sztringnél).
+A kapcsolati sztringet a környezeti változóval is beállíthatja (amely ekkor elsőbbséget élvez a `APPLICATIONINSIGHTS_CONNECTION_STRING` json-konfigurációban megadott kapcsolati sztringtel).
 
-Ha nem állítja be a kapcsolatok karakterláncát, akkor letiltja a Java-ügynököt.
+Ha nem ad meg kapcsolati sztringet, az letiltja a Java-ügynököt.
 
 ## <a name="cloud-role-name"></a>Felhőbeli szerepkör neve
 
-A Felhőbeli szerepkör neve az alkalmazás térképén található összetevő címkézésére szolgál.
+A felhőbeli szerepkör neve az összetevő címkézésére használatos az alkalmazástérképen.
 
-Ha be szeretné állítani a Felhőbeli szerepkör nevét:
+Ha be szeretné állítani a felhőbeli szerepkör nevét:
 
 ```json
 {
@@ -79,15 +79,15 @@ Ha be szeretné állítani a Felhőbeli szerepkör nevét:
 }
 ```
 
-Ha nincs beállítva a Felhőbeli szerepkör neve, a rendszer a Application Insights erőforrás nevét fogja használni az alkalmazás térképén lévő összetevő címkézéséhez.
+Ha a felhőbeli szerepkör neve nincs beállítva, Application Insights erőforrás neve lesz használva az összetevő címkézésére az alkalmazástérképen.
 
-A Felhőbeli szerepkör nevét a környezeti változó használatával is beállíthatja `APPLICATIONINSIGHTS_ROLE_NAME` (amely elsőbbséget élvez a JSON-konfigurációban megadott Felhőbeli szerepkör nevével).
+A felhőbeli szerepkör nevét a környezeti változóval is beállíthatja (amely elsőbbséget élvez a json-konfigurációban megadott felhőbeli `APPLICATIONINSIGHTS_ROLE_NAME` szerepkör nevével).
 
-## <a name="cloud-role-instance"></a>Felhőalapú szerepkör-példány
+## <a name="cloud-role-instance"></a>Felhőbeli szerepkörpéldány
 
-A Felhőbeli szerepkör példánya alapértelmezés szerint a gép nevét adja meg.
+A felhőbeli szerepkörpéldány alapértelmezett neve a gép neve.
 
-Ha a Felhőbeli szerepkör-példányt a gép neve helyett más értékre szeretné beállítani:
+Ha a felhőbeli szerepkörpéldányt a gép neve helyett másra szeretné beállítani:
 
 ```json
 {
@@ -98,16 +98,16 @@ Ha a Felhőbeli szerepkör-példányt a gép neve helyett más értékre szeretn
 }
 ```
 
-A Felhőbeli szerepkör-példányt a környezeti változóval is beállíthatja `APPLICATIONINSIGHTS_ROLE_INSTANCE` (amely elsőbbséget élvez a JSON-konfigurációban megadott felhőalapú szerepkör-példánnyal szemben).
+A felhőbeli szerepkörpéldányt a környezeti változóval is beállíthatja (amely elsőbbséget élvez a JSON-konfigurációban megadott felhőbeli `APPLICATIONINSIGHTS_ROLE_INSTANCE` szerepkörpéldányokkal).
 
 ## <a name="sampling"></a>Mintavételezés
 
-A mintavétel hasznos lehet, ha csökkenteni kell a költségeket.
-A mintavétel függvényként van elvégezve a műveleti AZONOSÍTÓban (más néven nyomkövetési azonosító), így ugyanaz a műveleti azonosító mindig ugyanazt a mintavételi döntést fogja eredményezni. Ez biztosítja, hogy az elosztott tranzakciók részei ne legyenek kiszámítva, míg más részeinek mintavételezése nem történik meg.
+A mintavételezés akkor hasznos, ha csökkentenie kell a költségeket.
+A mintavételezés a műveletazonosító (más néven nyomkövetési azonosító) függvényeként történik, így ugyanaz a műveletazonosító mindig ugyanazt a mintavételezési döntést eredményezi. Ez biztosítja, hogy ne mintavételez egy elosztott tranzakció részeit, amíg a rendszer a többi részét ki nem mintavétele.
 
-Ha például 10%-ra állítja be a mintavételezést, akkor csak a tranzakciók 10%-át fogja látni, de ezek mindegyike a teljes végpontok közötti tranzakció részleteit tartalmazza.
+Ha például 10%-ra adja meg a mintavételezést, a tranzakcióknak csak 10%-a látható, de a 10% mindegyikének teljes körű tranzakciós adatai lesznek.
 
-Az alábbi példa bemutatja, hogyan állíthatja be a mintavételezést úgy, hogy az **összes tranzakció körülbelül 1/3** legyen, és ügyeljen arra, hogy a használati esetnek megfelelő mintavételi sebességet állítsa be:
+Az alábbi példa bemutatja, hogyan állíthatja be a mintavételezést úgy, hogy az összes tranzakció körülbelül **1/3-át** rögzítse – ügyeljen arra, hogy a saját esetének megfelelő mintavételezési sebességet állítsa be:
 
 ```json
 {
@@ -117,23 +117,23 @@ Az alábbi példa bemutatja, hogyan állíthatja be a mintavételezést úgy, ho
 }
 ```
 
-A mintavételezési százalékot a környezeti változó használatával is beállíthatja `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` (amely elsőbbséget élvez a JSON-konfigurációban megadott mintavételi százaléktal szemben).
+A mintavételezési százalékot a környezeti változóval is beállíthatja (amely elsőbbséget élvez a `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` json-konfigurációban megadott százalékos mintavételezéssel).
 
 > [!NOTE]
-> A mintavételezési százaléknál válasszon egy olyan százalékot, amely a 100/N értéknél közelebb van, ahol N egész szám. A mintavétel jelenleg nem támogatja a többi értéket.
+> A százalékos mintavételezéshez olyan százalékos arányt válasszon, amely közel van 100/N-hez, ahol az N egész szám. A mintavételezés jelenleg nem támogat más értékeket.
 
-## <a name="sampling-overrides-preview"></a>Mintavételi felülbírálások (előzetes verzió)
+## <a name="sampling-overrides-preview"></a>Mintavételezési felülbírálások (előzetes verzió)
 
-Ez a funkció előzetes verzióban érhető el, a 3.0.3-től kezdve.
+Ez a funkció előzetes verzióban érhető el, a 3.0.3-as verziótól kezdve.
 
-A mintavételi felülbírálások segítségével felülbírálhatja az [alapértelmezett mintavételi százalékot](#sampling), például:
-* A mintavételezési százalékot állítsa 0 (vagy kis értékre) a zajos állapot-ellenőrzésekhez.
-* A mintavételezési százalékot állítsa 0 (vagy kis értékre) a zajos függőségi hívásokhoz.
-* Állítsa be a mintavételezési százalékot 100-re egy fontos kérelem típusához (például `/login` ), még akkor is, ha az alapértelmezett mintavételezés valami alacsonyabbra van konfigurálva.
+A mintavételezési felülbírálások lehetővé teszik az alapértelmezett százalékos [mintavételezés felülbírálást,](#sampling)például:
+* A százalékos mintavételezést állítsa 0-ra (vagy egy kis értékre) a zajos állapotellenőrzéshez.
+* A százalékos mintavételezést állítsa 0-ra (vagy egy kis értékre) a zajos függőségi hívások esetén.
+* A mintavételezés százalékos arányát állítsa 100-ra egy fontos kérelemtípushoz (például ) annak ellenére, hogy az alapértelmezett mintavételezés `/login` alacsonyabbra van konfigurálva.
 
-További információkért tekintse meg a [mintavételi felülbírálások](./java-standalone-sampling-overrides.md) dokumentációját.
+További információért tekintse meg a mintavételezési [felülbírálások dokumentációját.](./java-standalone-sampling-overrides.md)
 
-## <a name="jmx-metrics"></a>JMX metrikák
+## <a name="jmx-metrics"></a>JMX-metrikák
 
 Ha további JMX-metrikákat szeretne gyűjteni:
 
@@ -154,17 +154,17 @@ Ha további JMX-metrikákat szeretne gyűjteni:
 }
 ```
 
-`name` a metrika neve, amely hozzá lesz rendelve ehhez a JMX metrikához (bármi lehet).
+`name` A a JMX-metrikákhoz hozzárendelt metrika neve (bármi lehet).
 
-`objectName` a gyűjteni kívánt JMX-MBean [objektumának neve](https://docs.oracle.com/javase/8/docs/api/javax/management/ObjectName.html) .
+`objectName` A a [gyűjteni](https://docs.oracle.com/javase/8/docs/api/javax/management/ObjectName.html) kívánt JMX MBean objektumneve.
 
-`attribute` az attribútum neve a JMX-MBean belül, amelyet össze kíván gyűjteni.
+`attribute` A a gyűjteni kívánt JMX MBean attribútumneve.
 
-A numerikus és a logikai JMX metrikájának értékei támogatottak. A logikai JMX metrikái a hamis értékre vannak leképezve `0` , és `1` igaz.
+A numerikus és logikai JMX metrikaértékek támogatottak. A logikai JMX-metrikák false (hamis) és "true" (igaz) `0` `1` értékhez vannak leképezve.
 
 ## <a name="custom-dimensions"></a>Egyéni dimenziók
 
-Ha egyéni dimenziókat szeretne hozzáadni az összes telemetria:
+Ha egyéni dimenziókat szeretne hozzáadni az összes telemetriai adathoz:
 
 ```json
 {
@@ -175,35 +175,35 @@ Ha egyéni dimenziókat szeretne hozzáadni az összes telemetria:
 }
 ```
 
-`${...}` a megadott környezeti változó értékének beolvasására használható az indításkor.
+`${...}` A használható a megadott környezeti változó értékének beolvassa indításkor.
 
 > [!NOTE]
-> Ha egy nevű egyéni dimenziót ad hozzá az 3.0.2 verziótól kezdődően `service.version` , az érték a `application_Version` Application Insights naplók tábla oszlopában lesz tárolva egyéni dimenzió helyett.
+> A 3.0.2-es verziótól kezdődően, ha hozzáad egy nevű egyéni dimenziót, az érték nem egyéni dimenzióként, hanem a Application Insights Logs tábla oszlopában lesz `service.version` `application_Version` tárolva.
 
-## <a name="telemetry-processors-preview"></a>Telemetria processzorok (előzetes verzió)
+## <a name="telemetry-processors-preview"></a>Telemetriai processzorok (előzetes verzió)
 
 Ez a funkció előzetes verzióban érhető el.
 
-Lehetővé teszi olyan szabályok konfigurálását, amelyek a kérelemre, a függőségre és a nyomkövetési telemetria lesznek alkalmazva, például:
+Lehetővé teszi a kérelmekre, függőségre és nyomkövetési telemetrira alkalmazott szabályok konfigurálését, például:
  * Bizalmas adatok maszkolása
  * Egyéni dimenziók feltételes hozzáadása
- * Frissítse a span nevet, amely a Azure Portal hasonló telemetria összesítésére szolgál.
- * Adott span-attribútumok eldobása a betöltési költségek szabályozásához.
+ * Frissítse a span nevet, amely hasonló telemetria összesítésére használatos a Azure Portal.
+ * Adott span attribútumok eldobása a bebedobási költségek szabályozása érdekében.
 
-További információkért tekintse meg a [telemetria-feldolgozó](./java-standalone-telemetry-processors.md) dokumentációját.
+További információért tekintse meg a [telemetriafeldolgozó dokumentációját.](./java-standalone-telemetry-processors.md)
 
 > [!NOTE]
-> Ha a betöltési költségek szabályozására a konkrét (teljes) átnyúló mennyiségeket szeretné eldobni, tekintse meg a [mintavétel felülbírálását](./java-standalone-sampling-overrides.md)ismertető témakört.
+> Ha adott (teljes) időtartamokat szeretné eldobni a bebevételi költségek szabályozására, tekintse meg a [mintavételezési felülbírálásokat.](./java-standalone-sampling-overrides.md)
 
-## <a name="auto-collected-logging"></a>Automatikusan összegyűjtött naplózás
+## <a name="auto-collected-logging"></a>Automatikusan gyűjtött naplózás
 
-A Log4j, a Logback és a Java. util. Logging automatikusan lett kialakítva, és ezekkel a naplózási keretrendszerekkel végrehajtott naplózás automatikusan begyűjtve lesz.
+A Log4j, a Logback és a java.util.logging naplózás automatikusan ki van automatizálva, és az ezen naplózási keretrendszerekkel végzett naplózás automatikusan gyűjtve lesz.
 
-A naplózás csak akkor rögzítve van, ha először megfelel a naplózási keretrendszerhez konfigurált szintnek, másrészt pedig megfelel a Application Insightshoz konfigurált szintnek is.
+A naplózás csak akkor lesz rögzíti, ha először megfelel a naplózási keretrendszerhez konfigurált szintnek, a második pedig a naplózási keretrendszerhez konfigurált szintnek Application Insights.
 
-Ha például a naplózási keretrendszer úgy van konfigurálva, hogy a `WARN` csomagból (vagy felette) naplózza a csomagot `com.example` , és Application Insights úgy van beállítva, hogy rögzítse `INFO` (és a fentiket), akkor Application Insights csak `WARN` a csomagból (és felett) rögzíti `com.example` .
+Ha például a naplózási keretrendszer úgy van konfigurálva, hogy naplózva (vagy magasabb) a csomagból, és az Application Insights úgy van konfigurálva, hogy rögzítse (és magasabb) a(Application Insights) csak a csomagból rögzíti (és magasabbra) a(Application Insights) `WARN` `com.example` `INFO` `WARN` `com.example` csomagot.
 
-Application Insightshoz konfigurált alapértelmezett szint `INFO` . Ha módosítani szeretné ezt a szintet:
+Az alapértelmezett szint a következő: `INFO` Application Insights. Ha módosítani szeretné ezt a szintet:
 
 ```json
 {
@@ -215,36 +215,36 @@ Application Insightshoz konfigurált alapértelmezett szint `INFO` . Ha módosí
 }
 ```
 
-A szintet a környezeti változóval is beállíthatja `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` (amely elsőbbséget élvez a JSON-konfigurációban megadott szinttel szemben).
+A szintet a környezeti változóval is beállíthatja (amely ekkor elsőbbséget élvez a `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` json-konfigurációban megadott szinttel).
 
-Ezek az érvényes `level` értékek, amelyeket megadhat a `applicationinsights.json` fájlban, és hogyan felelnek meg a naplózási szintnek a különböző naplózási keretrendszerek esetében:
+Ezek a fájlban megadható érvényes értékek, és hogyan felelnek meg a különböző naplózási keretrendszerek `level` `applicationinsights.json` naplózási szintjeinek:
 
 | szint             | Log4j  | Logback | JÚL     |
 |-------------------|--------|---------|---------|
 | KI               | KI    | KI     | KI     |
-| VÉGZETES             | VÉGZETES  | HIBA   | SÚLYOS  |
-| HIBA (vagy súlyos) | HIBA  | HIBA   | SÚLYOS  |
-| Figyelmeztetés (vagy figyelmeztetés) | FIGYELMEZTETI   | FIGYELMEZTETI    | FIGYELMEZTETÉS |
-| INFORMÁCIÓ              | INFORMÁCIÓ   | INFORMÁCIÓ    | INFORMÁCIÓ    |
-| CONFIG            | HIBAKERESÉS  | HIBAKERESÉS   | CONFIG  |
-| HIBAKERESÉS (vagy kiváló)   | HIBAKERESÉS  | HIBAKERESÉS   | RÉSZLETES    |
-| KIFINOMULTABBAN             | HIBAKERESÉS  | HIBAKERESÉS   | KIFINOMULTABBAN   |
-| NYOMKÖVETÉS (vagy legfinomabb) | NYOMKÖVETÉSI  | NYOMKÖVETÉSI   | LEGJOBB  |
+| Végzetes             | Végzetes  | HIBA   | Súlyos  |
+| HIBA (VAGY SÚLYOS) | HIBA  | HIBA   | Súlyos  |
+| FIGYELMEZTETÉS (VAGY FIGYELMEZTETÉS) | Figyelmeztet   | Figyelmeztet    | FIGYELMEZTETÉS |
+| Info              | Info   | Info    | Info    |
+| Config            | HIBAKERESÉS  | HIBAKERESÉS   | Config  |
+| HIBAKERESÉS (VAGY FINOM)   | HIBAKERESÉS  | HIBAKERESÉS   | Finom    |
+| Finomabb             | HIBAKERESÉS  | HIBAKERESÉS   | Finomabb   |
+| TRACE (VAGY EGYSZŰK) | Nyomkövetési  | Nyomkövetési   | Legjobb  |
 | ALL               | ALL    | ALL     | ALL     |
 
 > [!NOTE]
-> Ha egy kivételt jelző objektumot ad át a naplózó, akkor a rendszer megjeleníti a napló üzenetét (és a kivételi objektum részleteit) a tábla helyett a Azure Portal táblázatban `exceptions` `traces` .
+> Ha egy kivételobjektumot ad át a naplózónak, a naplóüzenet (és a kivételobjektum részletei) a tábla helyett a tábla alatt Azure Portal megjelenik a `exceptions` `traces` táblázatban.
 
-## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Automatikusan összegyűjtött mérőműszer-metrikák (beleértve a Spring boot indítószerkezet metrikáit)
+## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Automatikusan gyűjtött mikrometermetrikák (beleértve Spring Boot Actuator-metrikákat)
 
-Ha az alkalmazás a [mikrométert](https://micrometer.io)használja, akkor a rendszer automatikusan begyűjti a Mikrométer globális beállításjegyzékbe küldendő metrikákat.
+Ha az alkalmazás [a Micrometert](https://micrometer.io)használja, a rendszer automatikusan gyűjti a Micrometer globális regisztrációs adatbázisának küldött metrikákat.
 
-Továbbá, ha az alkalmazás a [Spring boot indítószerkezetet](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)használja, akkor a rugós rendszerindítási indítószerkezet által konfigurált mérőszámokat is automatikusan begyűjti a rendszer.
+Ha az alkalmazás az [Actuator Spring Boot,](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)akkor az Spring Boot Actuator által konfigurált metrikákat is automatikusan gyűjti a rendszer.
 
-A Mikrométer metrikáinak automatikus gyűjtésének letiltása (beleértve a Spring boot-indítószerkezet metrikáit):
+A Mikrometer-metrikák (többek között az Actuator-metrikák) Spring Boot automatikus gyűjtésének letiltása:
 
 > [!NOTE]
-> Az egyéni metrikák számlázása külön történik, és további költségek is megadhatók. Ügyeljen rá, hogy ellenőrizze a részletes [díjszabási információkat](https://azure.microsoft.com/pricing/details/monitor/). A Mikrométer és a Spring indítószerkezet metrikáinak letiltásához adja hozzá az alábbi konfigurációt a konfigurációs fájlhoz.
+> Az egyéni metrikák számlázása külön történik, és további költségeket okozhatnak. Ellenőrizze a részletes [díjszabási információkat.](https://azure.microsoft.com/pricing/details/monitor/) A Micrometer és a Spring Actuator metrikák letiltásához adja hozzá az alábbi konfigurációt a konfigurációs fájlhoz.
 
 ```json
 {
@@ -256,13 +256,13 @@ A Mikrométer metrikáinak automatikus gyűjtésének letiltása (beleértve a S
 }
 ```
 
-## <a name="auto-collected-azure-sdk-telemetry"></a>Automatikusan összegyűjtött Azure SDK-telemetria
+## <a name="auto-collected-azure-sdk-telemetry-preview"></a>Automatikusan gyűjtött Azure SDK-telemetria (előzetes verzió)
 
-Ez a funkció előzetes verzióban érhető el.
+Számos legújabb Azure SDK-kódtár telemetriát bocsát ki (lásd a [teljes listát).](./java-in-process-agent.md#azure-sdks-preview)
 
-A legújabb Azure SDK-kódtárak számos telemetria bocsátanak ki.
+A Java 3.0.3-as Application Insights kezdve engedélyezheti a telemetria rögzítését.
 
-A 3.0.3 verziótól kezdődően engedélyezheti ennek a telemetria a gyűjtését:
+Ha engedélyezni szeretné ezt a funkciót:
 
 ```json
 {
@@ -277,11 +277,11 @@ A 3.0.3 verziótól kezdődően engedélyezheti ennek a telemetria a gyűjtésé
 ```
 
 Ezt a funkciót a környezeti változó használatával is engedélyezheti `APPLICATIONINSIGHTS_PREVIEW_INSTRUMENTATION_AZURE_SDK_ENABLED`
-(ez a beállítás elsőbbséget élvez a JSON-konfigurációban megadott beállításokkal szemben.
+(ez elsőbbséget élvez a json-konfigurációban megadottakhoz képest).
 
-## <a name="suppressing-specific-auto-collected-telemetry"></a>Meghatározott automatikusan összegyűjtött telemetria letiltása
+## <a name="suppressing-specific-auto-collected-telemetry"></a>Az automatikusan gyűjtött telemetria mellőzése
 
-A 3.0.3 verziótól kezdődően a megadott automatikusan összegyűjtött telemetria ezekkel a konfigurációs beállításokkal lehet letiltani:
+A 3.0.3-as verziótól kezdve az automatikusan gyűjtött telemetria az alábbi konfigurációs beállításokkal tiltható le:
 
 ```json
 {
@@ -314,7 +314,7 @@ A 3.0.3 verziótól kezdődően a megadott automatikusan összegyűjtött teleme
 }
 ```
 
-Ezeket a rendszerállapotokat az alábbi környezeti változók használatával is elvégezheti:
+Ezeket a rendszereket az alábbi környezeti változók használatával is letilthatja:
 
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_CASSANDRA_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_JDBC_ENABLED`
@@ -325,13 +325,13 @@ Ezeket a rendszerállapotokat az alábbi környezeti változók használatával 
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_REDIS_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_SPRING_SCHEDULING_ENABLED`
 
-(ez a beállítás elsőbbséget élvez a JSON-konfigurációban megadott beállításokkal szemben.
+(ez elsőbbséget élvez a json-konfigurációban megadottakhoz képest).
 
-> Vegye figyelembe, hogy ha részletesebb szabályozásra van szüksége, például néhány Redis-hívást, de nem az összes Redis-hívást, tekintse meg a [mintavételi felülbírálások](./java-standalone-sampling-overrides.md)című témakört.
+> MEGJEGYZÉS Ha pontosabb vezérlést keres, például egyes Redis-hívások mellőzését, de nem minden Redis-hívást, tekintse meg a mintavételezési [felülbírálásokat.](./java-standalone-sampling-overrides.md)
 
 ## <a name="heartbeat"></a>Szívverés
 
-Alapértelmezés szerint a Application Insights Java 3,0 15 percenként küld szívverési metrikát. Ha a szívverés metrikáját használja a riasztások elindításához, növelheti a szívverés gyakoriságát:
+Alapértelmezés szerint a Application Insights Java 3.0 15 percenként küld szívverési metrikát. Ha a szívverési metrikát használja a riasztások kiváltása érdekében, növelheti ennek a szívverésnek a gyakoriságát:
 
 ```json
 {
@@ -342,11 +342,11 @@ Alapértelmezés szerint a Application Insights Java 3,0 15 percenként küld sz
 ```
 
 > [!NOTE]
-> Az intervallum nem növelhető 15 percnél hosszabb ideig, mert a szívverési adatok a Application Insights használatának nyomon követésére is használhatók.
+> Az időközt nem lehet 15 percnél hosszabbra növelni, mert a szívverési adatok a használati adatok nyomon követésére Application Insights is használhatók.
 
 ## <a name="http-proxy"></a>HTTP-proxy
 
-Ha az alkalmazás tűzfal mögött található, és nem tud közvetlenül kapcsolódni a Application Insightshoz (lásd: [Application Insights által használt IP-címek](./ip-addresses.md)), akkor a Application Insights Java 3,0 http-proxy használatára konfigurálhatja a következőt:
+Ha az alkalmazás tűzfal mögött található, és nem tud közvetlenül csatlakozni az Application Insights-hoz (lásd az [Application Insights](./ip-addresses.md)által használt IP-címeket), konfigurálhatja az Application Insights Java 3.0-t http-proxy használatára:
 
 ```json
 {
@@ -357,15 +357,15 @@ Ha az alkalmazás tűzfal mögött található, és nem tud közvetlenül kapcso
 }
 ```
 
-Application Insights a Java 3,0 is tiszteletben tartja a globális `-Dhttps.proxyHost` és a `-Dhttps.proxyPort` beállított értékeit.
+Application Insights Java 3.0 a globálist is tiszteletben tartja, és `-Dhttps.proxyHost` ha ezek be vannak `-Dhttps.proxyPort` állítva.
 
-## <a name="metric-interval"></a>Metrika intervalluma
+## <a name="metric-interval"></a>Metrikaintervallum
 
 Ez a funkció előzetes verzióban érhető el.
 
-Alapértelmezés szerint a metrikák 60 másodpercenként lesznek rögzítve.
+Alapértelmezés szerint a rendszer 60 másodpercenként rögzíti a metrikákat.
 
-A 3.0.3 verziótól kezdődően módosíthatja ezt az intervallumot:
+A 3.0.3-as verziótól kezdve a következő időközt módosíthatja:
 
 ```json
 {
@@ -375,37 +375,37 @@ A 3.0.3 verziótól kezdődően módosíthatja ezt az intervallumot:
 }
 ```
 
-A beállítás az összes alábbi metrikára vonatkozik:
+A beállítás az összes metrikákra vonatkozik:
 
-* Alapértelmezett teljesítményszámlálók, például CPU és memória
-* Alapértelmezett egyéni metrikák, például a szemét gyűjtésének időzítése
+* Alapértelmezett teljesítményszámlálók, például processzor és memória
+* Alapértelmezett egyéni metrikák, például szemétgyűjtés időzítése
 * Konfigurált JMX-metrikák ([lásd fent](#jmx-metrics))
-* Mikrométer metrikái ([lásd fent](#auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics))
+* Mikrométeres metrikák ([lásd fent](#auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics))
 
 
-[//]: # "Megjegyzés: a OpenTelemetry-támogatás privát előzetes verzióban érhető el, amíg a OpenTelemetry API eléri a 1,0-et"
+[//]: # "MEGJEGYZÉS Az OpenTelemetry támogatása privát előzetes verzióban érhető el, amíg az OpenTelemetry API el nem éri az 1.0-t"
 
-[//]: # "# # Támogatás a OpenTelemetry API pre-1,0 kiadásához"
+[//]: # "## OpenTelemetry API 1.0 előtti kiadások támogatása"
 
-[//]: # "A OpenTelemetry API előre 1,0-es verziójának támogatása a következőben: opt-in, mivel a OpenTelemetry API még nem stabil"
-[//]: # "így az ügynök minden verziója csak a OpenTelemetry API egy adott előre 1,0 verzióját támogatja"
-[//]: # "(ez a korlátozás nem érvényes, ha a OpenTelemetry API 1,0-es verziója megjelent)."
+[//]: # "Az OpenTelemetry API 1.0 előtti verzióinak támogatása nem támogatott, mivel az OpenTelemetry API még nem stabil"
+[//]: # "és így az ügynök minden verziója csak az OpenTelemetry API adott, 1.0 előtti verzióit támogatja"
+[//]: # "(Ez a korlátozás nem vonatkozik az OpenTelemetry API 1.0-s verziójának kiadott kiadott verzióra."
 
-[//]: # "' ' ' JSON"
+[//]: # "'''json"
 [//]: # "{"
-[//]: # "  \"előzetes verzió \" : {"
-[//]: # "    \"openTelemetryApiSupport \" : true"
+[//]: # "  \"előzetes \" verzió: {"
+[//]: # "    \"openTelemetryApiSupport: \" true"
 [//]: # "  }"
 [//]: # "}"
 [//]: # "```"
 
 ## <a name="self-diagnostics"></a>Öndiagnosztika
 
-Az "öndiagnosztika" a Application Insights Java 3,0 belső naplózására utal.
+Az "öndiagnosztika" a Java 3.0 Application Insights belső naplózását jelenti.
 
-Ez a funkció hasznos lehet a Application Insights saját maga által felmerülő problémák felderítésében és diagnosztizálásában.
+Ez a funkció hasznos lehet az alkalmazással kapcsolatos problémák Application Insights diagnosztizálásában.
 
-Alapértelmezés szerint a Application Insights Java 3,0 `INFO` a fájlra `applicationinsights.log` és a-konzolra is, a következő konfigurációnak megfelelően:
+Alapértelmezés szerint a Application Insights a Java 3.0-naplókat a fájlhoz és a konzolhoz `INFO` `applicationinsights.log` is, a következő konfigurációnak megfelelően:
 
 ```json
 {
@@ -421,22 +421,22 @@ Alapértelmezés szerint a Application Insights Java 3,0 `INFO` a fájlra `appli
 }
 ```
 
-`destination` lehet a vagy az egyike `file` `console` `file+console` .
+`destination` A a vagy `file` a egyike `console` `file+console` lehet.
 
-`level` lehet a,,,,, `OFF` `ERROR` `WARN` `INFO` `DEBUG` vagy `TRACE` .
+`level` A lehet a `OFF` , , , , vagy `ERROR` `WARN` `INFO` `DEBUG` `TRACE` egyike.
 
-`path` abszolút vagy relatív elérési út lehet. A relatív elérési utak feloldása a mappában található könyvtáron történik `applicationinsights-agent-3.0.3.jar` .
+`path` A lehet abszolút vagy relatív elérési út. A relatív elérési utak arra a könyvtárra vannak feloldva, `applicationinsights-agent-3.0.3.jar` ahol a található.
 
-`maxSizeMb` a naplófájl maximális mérete a bedobás előtt.
+`maxSizeMb` A a naplófájl legnagyobb mérete a fájl átmérete előtt.
 
-`maxHistory` a megőrzött naplófájlok száma (az aktuális naplófájlon kívül).
+`maxHistory` A (az aktuális naplófájlon kívül) megőrzített naplófájlok száma.
 
-A 3.0.2 verziótól kezdődően beállíthatja az öndiagnosztika beállítást is `level` a környezeti változó használatával `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` (amely elsőbbséget élvez a JSON-konfigurációban megadott öndiagnosztika szinttel szemben).
+A 3.0.2-es verziótól kezdődően az öndiagnosztika a környezeti változóval is beállítható (amely elsőbbséget élvez a `level` `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` JSON-konfigurációban megadott öndiagnosztikai szinttel).
 
 ## <a name="an-example"></a>Példa
 
-Ez csak egy példa arra, hogy a konfigurációs fájl hogyan néz ki több összetevővel.
-Az igényeinek megfelelően konfigurálja az adott beállításokat.
+Ez csak egy példa arra, hogyan néz ki egy konfigurációs fájl több összetevővel.
+Adja meg az igényeinek megfelelő konkrét beállításokat.
 
 ```json
 {

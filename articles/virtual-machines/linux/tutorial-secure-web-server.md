@@ -1,29 +1,22 @@
 ---
-title: 'Oktatóanyag: Linux-webkiszolgáló biztonságossá beállítása TLS-/SSL-tanúsítványokkal az Azure-ban'
+title: 'Oktatóanyag: Webkiszolgáló biztonságossá beállítása TLS-/SSL-tanúsítványokkal'
 description: Ez az oktatóanyag bemutatja, hogyan védheti meg az NGINX-webkiszolgálót futtató Linux rendszerű virtuális gépet az Azure Key Vaultban tárolt SSL-tanúsítványok és az Azure CLI használatával.
-services: virtual-machines
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
-ms.date: 04/30/2018
+ms.date: 04/20/2021
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 97eee5d852450df2341d57932052839825523933
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4b2290d29d1f6fbf8acd2e2652cd47a321fe674f
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769750"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813163"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Oktatóanyag: Webkiszolgáló biztosítása Linux rendszerű virtuális gépen az Azure-ban TLS-/SSL-tanúsítványokkal a Key Vault
-A webkiszolgálók biztonságossá Transport Layer Security egy korábban SSL (SSL) néven ismert tanúsítvány használható a webes forgalom titkosítására. Ezek a TLS-/SSL-tanúsítványok a Azure Key Vault-ban tárolhatók, és lehetővé teszik a tanúsítványok biztonságos üzembe helyezését Linux rendszerű virtuális gépeken az Azure-ban. Ezen oktatóanyag segítségével megtanulhatja a következőket:
+# <a name="tutorial-use-tlsssl-certificates-to-secure-a-web-server"></a>Oktatóanyag: TLS-/SSL-tanúsítványok használata a webkiszolgálók biztonságának biztosítása érdekében
+A webkiszolgálók biztonságossá Transport Layer Security (TLS), korábbi nevén SSL (SSL) tanúsítvány használható a webes forgalom titkosítására. Ezek a TLS-/SSL-tanúsítványok a Azure Key Vault, és lehetővé teszik a tanúsítványok biztonságos üzembe helyezését Linux rendszerű virtuális gépeken az Azure-ban. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Azure Key Vault létrehozása;
@@ -31,7 +24,7 @@ A webkiszolgálók biztonságossá Transport Layer Security egy korábban SSL (S
 > * virtuális gép létrehozása és az NGINX-webkiszolgáló telepítése;
 > * A tanúsítvány betöltése a virtuális gépbe és az NGINX konfigurálása TLS-kötéssel
 
-Ez az oktatóanyag a cli-t használja [a Azure Cloud Shell,](../../cloud-shell/overview.md)amely folyamatosan frissül a legújabb verzióra. A kód Cloud Shell válassza a Try **it (Próbálja** ki) gombra a kódblokkok tetején.
+Ez az oktatóanyag a cli-t használja [a Azure Cloud Shell,](../../cloud-shell/overview.md)amely folyamatosan frissül a legújabb verzióra. A kód Cloud Shell válassza a **Kipróbálom** lehetőséget bármely kódblokk tetején.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -49,7 +42,7 @@ Mielőtt létrehozhatna egy Key Vaultot és a tanúsítványokat, létre kell ho
 az group create --name myResourceGroupSecureWeb --location eastus
 ```
 
-Ezután hozzon létre egy Key Vaultot az [az keyvault create](/cli/azure/keyvault) paranccsal, és engedélyezze a használatát a virtuális gépek üzembe helyezésekor. Mindegyik Key Vaultnak egyedi névvel kell rendelkeznie, amely csak kisbetűkből állhat. A *\<mykeyvault>* következő példában cserélje le a helyére a saját egyedi Key Vault nevét:
+Ezután hozzon létre egy Key Vaultot az [az keyvault create](/cli/azure/keyvault) paranccsal, és engedélyezze a használatát a virtuális gépek üzembe helyezésekor. Mindegyik Key Vaultnak egyedi névvel kell rendelkeznie, amely csak kisbetűkből állhat. A következő példában cserélje le a *\<mykeyvault>* helyére a saját egyedi Key Vault nevét:
 
 ```azurecli-interactive 
 keyvault_name=<mykeyvault>

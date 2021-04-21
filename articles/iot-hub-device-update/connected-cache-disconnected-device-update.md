@@ -1,46 +1,46 @@
 ---
-title: A leválasztott eszközök frissítésének ismertetése a Microsoft csatlakoztatott gyorsítótárának használatával | Microsoft Docs
+title: A leválasztott eszközfrissítés Microsoft Csatlakoztatott gyorsítótár | Microsoft Docs
 titleSuffix: Device Update for Azure IoT Hub
-description: A leválasztott eszközök frissítésének ismertetése a Microsoft csatlakoztatott gyorsítótárának használatával
+description: A leválasztott eszközfrissítés Microsoft Csatlakoztatott gyorsítótár
 author: andyriv
 ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e2b27934f58402ecfb7dabf5560dc43e45f3f7dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e216d42ff1f279d87e657126514fcfb50960f806
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101679548"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811903"
 ---
-# <a name="understand-support-for-disconnected-device-updates"></a>A leválasztott eszközök frissítéseinek támogatása
+# <a name="understand-support-for-disconnected-device-updates"></a>A leválasztott eszközfrissítések támogatásának
 
-Transzparens átjáró esetén egy vagy több eszköz továbbíthatja az üzeneteiket egyetlen átjárón keresztül, amely az Azure IoT Hub-hoz való kapcsolódást tartja fenn. Ezekben az esetekben előfordulhat, hogy az alárendelt eszközök nem rendelkeznek internetkapcsolattal, vagy nem engedélyezett a tartalom letöltése az internetről. A Microsoft Connected cache Preview IoT Edge modulja az Azure IoT Hub ügyfelei számára biztosít egy intelligens hálózati gyorsítótárat, amely lehetővé teszi a Linux operációs rendszerű eszközök rendszerkép-alapú és Package-alapú frissítését, IoT Edge valamint az átjárók (downstream IoT-eszközök) használatát, valamint az Azure IoT Hub ügyfelei számára az eszköz frissítéséhez szükséges sávszélesség megtakarítását is.
+Transzparens átjáró esetén egy vagy több eszköz egyetlen átjáróeszközön keresztül tudja átadni az üzeneteket, amely fenntartja a kapcsolatot a Azure IoT Hub. Ezekben az esetekben előfordulhat, hogy a gyermekeszközök nem rendelkezik internetkapcsolattal, vagy nem engedélyezett a tartalom letöltése az internetről. A Microsoft Csatlakoztatott gyorsítótár Preview IoT Edge-modul biztosítja az Azure IoT Hub-ügyfelek eszközfrissítését egy intelligens hálózati gyorsítótárral, amely lehetővé teszi a Linux operációsrendszer-alapú eszközök képalapú és csomagalapú frissítését a mögöttes és IoT Edge-átjárók (lefelé irányuló IoT-eszközök) számára, és segít sávszélességet megtakarékosni az Azure IoT Hub-ügyfelek eszközfrissítése esetében.
 
-## <a name="how-does-microsoft-connected-cache-preview-for-device-update-for-azure-iot-hub-work"></a>Hogyan működik a Microsoft Connected cache előzetes verziója az Azure IoT Hub-beli eszközök frissítéséhez?
+## <a name="how-does-microsoft-connected-cache-preview-for-device-update-for-azure-iot-hub-work"></a>Hogyan működik Csatlakoztatott gyorsítótár Microsoft Azure IoT Hub eszközfrissítések előzetes verziója?
 
-A Microsoft Connected cache egy intelligens, transzparens gyorsítótár az Azure IoT Hub-tartalmak eszköz-frissítéséhez közzétett tartalmakhoz, és testreszabható a tartalmak más forrásokból, például csomagokból való gyorsítótárazására is. A Microsoft csatlakoztatott gyorsítótár egy olyan, a kézbesítési optimalizálási ügyfél által igényelt pontos tartományokra vonatkozó kérelmek által beérkező, a rendszer által használt, nem a tartalom előírása előtti, hideg gyorsítótár. Az alábbi ábra és részletes leírás azt ismerteti, hogyan működik a Microsoft Connected cache az Azure IoT Hub-infrastruktúra eszközének frissítésében.
+A Microsoft Csatlakoztatott gyorsítótár előzetes verziója egy intelligens, transzparens gyorsítótár az Azure IoT Hub-tartalmak eszközfrissítéséhez közzétett tartalmakhoz, és testreszabható úgy, hogy más forrásokból, például csomagtárakból származó tartalmakat is gyorsítótárazjon. A Microsoft Csatlakoztatott gyorsítótár egy hideg gyorsítótár, amelyet a Kézbesítésoptimalizálás-ügyfél által kért pontos fájltartományra vonatkozó ügyfélkérések melegítik, és nem számítja előre a tartalmat. Az alábbi diagram és részletes leírás azt mutatja be, hogyan működik a Microsoft Csatlakoztatott gyorsítótár az eszközfrissítésen belül a Azure IoT Hub infrastruktúrában.
 
 >[!Note]
->A folyamat meghatározásakor feltételezzük, hogy az IoT Edge átjáró rendelkezik internetkapcsolattal. Az alsóbb rétegbeli IoT Edge átjáró (beágyazott Edge) forgatókönyv esetén a "Content Delivery Network" (CDN) a szülő IoT Edge átjárón üzemeltetett MCC lehet.
+>A folyamat meghatározásakor feltételezzük, hogy a IoT Edge átjáró rendelkezik internetkapcsolattal. Az alsóbb rétegbeli IoT Edge (beágyazott peremhálózat) esetében az "Content Delivery Network" (CDN) az átjáró szülő-átjárón üzemeltetett MCC-nek IoT Edge tekinthető.
 
   :::image type="content" source="media/connected-cache-overview/disconnected-device-update.png" alt-text="Leválasztott eszköz frissítése" lightbox="media/connected-cache-overview/disconnected-device-update.png":::
 
-1. A Microsoft csatlakoztatott gyorsítótár IoT Edge-modulként van telepítve a helyszíni kiszolgálón.
-2. Az Azure IoT Hub-ügyfelekhez készült eszköz frissítése úgy van konfigurálva, hogy a Microsoft által csatlakoztatott gyorsítótárból letöltse a tartalmat a IoT Leaf-eszközökhöz tartozó GatewayHostName attribútum alapján, **vagy** parent_hostname a IoT Edge alárendelt eszközökhöz tartozó config. toml beállításban.
-3. Az Azure IoT Hub-ügyfelek esetében mindkét esetben az Azure IoT Hub-szolgáltatás frissítésére vonatkozó letöltési parancsokat fogadja, és a CDN helyett a Microsofthoz csatlakoztatott gyorsítótárra kéri a frissítés tartalmát. A Microsoft által csatlakoztatott gyorsítótár alapértelmezés szerint úgy van konfigurálva, hogy figyelje a 80-es http-portot, és a kézbesítési optimalizálási ügyfél a 80-es porton kéri a tartalom kérését, hogy a szülőt a port figyelésére kell konfigurálni.  Jelenleg csak a HTTP protokoll támogatott.
-4. A Microsoft csatlakoztatott gyorsítótár-kiszolgáló letölti a tartalmat a CDN-ből, megőrzi a helyi gyorsítótárat a lemezen, és továbbítja a tartalmat az Azure IoT Hub-ügyfélhez tartozó eszköz frissítéséhez.
+1. A Microsoft Csatlakoztatott gyorsítótár modulként IoT Edge a rendszer a virtuális gépre.
+2. Az Azure IoT Hub-ügyfelek eszközfrissítése úgy van konfigurálva, hogy tartalmat töltsön le a Microsoft Csatlakoztatott gyorsítótár-ból az IoT levéleszközök eszközkapcsolati sztringje GatewayHostName attribútumának vagy parent_hostname config.toml fájlban beállított IoT Edge gyermekeszközökhöz. 
+3. A Azure IoT Hub-ügyfelek eszközfrissítése mindkét esetben frissítési tartalomletöltési parancsokat kap az Azure IoT Hub eszközfrissítési szolgáltatástól, és a CDN helyett frissítési tartalmat kér a Microsoft Csatlakoztatott gyorsítótár számára. A Microsoft Csatlakoztatott gyorsítótár alapértelmezés szerint úgy van konfigurálva, hogy a 80-as HTTP-portot figyelje, és a Kézbesítésoptimalizálás-ügyfél a 80-as porton keresztül teszi a tartalomkérést, így a szülőt úgy kell konfigurálni, hogy ezen a porton figyeljen.  Jelenleg csak a HTTP protokoll támogatott.
+4. A Microsoft Csatlakoztatott gyorsítótár-kiszolgáló letölti a tartalmat a CDN-ről, felrakja a lemezen tárolt helyi gyorsítótárat, és kézbesíti a tartalmat az Azure IoT Hub ügyfélnek.
    
 >[!Note]
->A Package-alapú frissítések használatakor a rendszer a rendszergazda és a szükséges csomag állomásneve alapján konfigurálja a Microsoft Connected cache kiszolgálót.
+>Csomagalapú frissítések használata esetén a rendszergazda konfigurálja a Microsoft Csatlakoztatott gyorsítótár-kiszolgálót a szükséges csomag gazdanevéhez.
 
-5. Az Azure IoT Hub-ügyfelek az azonos frissítési tartalomhoz tartozó más eszközök frissítéseiről érkező további kérések mostantól a gyorsítótárból származnak, és a Microsoft csatlakoztatott gyorsítótára nem kéri a CDN-nek ugyanazt a tartalmat.
+5. Az ugyanannak a frissítési tartalomnak az Azure IoT Hub-ügyfelekre vonatkozó további eszközfrissítési kérései mostantól a gyorsítótárból, a Microsoft Csatlakoztatott gyorsítótár pedig nem fog kérelmeket kérni a CDN-nek ugyanannak a tartalomnak.
 
 ### <a name="supporting-industrial-iot-iiot-with-parentchild-hosting-scenarios"></a>Ipari IoT (IIoT) támogatása szülő/gyermek üzemeltetési forgatókönyvekkel
 
-Ha egy alsóbb rétegbeli vagy gyermek IoT Edge átjáró a Microsofthoz csatlakoztatott gyorsítótár-kiszolgálót futtatja, akkor a rendszer úgy konfigurálja, hogy a szülő IoT Edge átjáróról kérjen frissítési tartalmat, amely a Microsoft csatlakoztatott gyorsítótár-kiszolgálót üzemelteti. Ez annyi szinten szükséges, amennyi szükséges ahhoz, hogy elérje a szülő IoT Edge átjárót, amely az internet-hozzáféréssel rendelkező Microsoft csatlakoztatott gyorsítótár-kiszolgálót üzemeltet. Az internetkapcsolattal rendelkező kiszolgálóról a rendszer a CDN-ből kéri a tartalmat, amely a tartalmat visszaküldi a gyermek IoT Edge átjárónak, amely eredetileg kérte a tartalmat. A tartalom minden szinten lemezen lesz tárolva.
+Ha egy lefelé irányuló vagy gyermek IoT Edge-átjáró a Microsoft Csatlakoztatott gyorsítótár-kiszolgálót üzemeltető, akkor a rendszer úgy konfigurálja, hogy frissítési tartalmat kérjen a Microsoft Csatlakoztatott gyorsítótár-kiszolgálót üzemeltető szülő IoT Edge-átjárótól. Ez annyi szinten szükséges, amennyire csak szüksége van, mielőtt elérné az interneteléréssel IoT Edge Microsoft Csatlakoztatott gyorsítótár-kiszolgálót üzemeltető szülő átjárót. Az internethez csatlakozó kiszolgálóról a tartalom lekérése a CDN-ről kérhető le, amikor a rendszer visszaküldi a tartalmat IoT Edge gyermek-átjárónak, amely eredetileg lekérte a tartalmat. A tartalom minden szinten lemezen lesz tárolva.
 
-## <a name="access-to-the-microsoft-connected-cache-preview-for-device-update-for-azure-iot-hub"></a>Hozzáférés a Microsoft csatlakoztatott gyorsítótár előzetes verziójához az Azure-beli eszköz frissítéséhez IoT Hub
+## <a name="access-to-the-microsoft-connected-cache-preview-for-device-update-for-azure-iot-hub"></a>Hozzáférés a Microsoft Csatlakoztatott gyorsítótár eszközfrissítés előzetes verziójához a Azure IoT Hub
 
-A Microsoft Connected cache IoT Edge modul előzetes verzióként jelenik meg azon ügyfelek számára, akik az Azure IoT Hub eszköz frissítésével telepítik a megoldásokat. Az előzetes verzióhoz való hozzáférés meghívással érhető el. [Kérjen hozzáférést](https://aka.ms/MCCForDeviceUpdateForIoT) a Microsoft Connected cache előzetes verziójához az IoT Hut eszköz frissítéséhez, és adja meg a kért információkat, ha szeretné elérni a modult.
+A Microsoft Csatlakoztatott gyorsítótár IoT Edge modul előzetes verzióként érhető el az olyan ügyfelek számára, akik a Device Update for Azure IoT Hub. Az előzetes verzió meghívással érhető el. [Kérjen hozzáférést a](https://aka.ms/MCCForDeviceUpdateForIoT) Microsoft Csatlakoztatott gyorsítótár Előzetes verziójához az IoT Hub eszközfrissítéséhez, és adja meg a modulhoz való hozzáféréshez kért információkat.

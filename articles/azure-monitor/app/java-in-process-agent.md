@@ -1,60 +1,60 @@
 ---
 title: Azure Monitor Application Insights Java
-description: Alkalmazások teljesítményének figyelése bármilyen környezetben futó Java-alkalmazásokhoz programkód módosítása nélkül. Elosztott nyomkövetési és alkalmazás-hozzárendelés.
+description: Alkalmazásteljesítmény-figyelés bármilyen környezetben futó Java-alkalmazásokhoz kódmódosítás nélkül. Elosztott nyomkövetés és alkalmazástérkép.
 ms.topic: conceptual
 ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: dc6eaaec334e7373f1a673bd1513ef05b761fee6
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 3f22e165fe4a3f86ecce8b1e307b19fae0eeac81
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450021"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812047"
 ---
-# <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>A Java Code unapplication monitoring Azure monitor Application Insights
+# <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java kód nélküli alkalmazásfigyelési Azure Monitor Application Insights
 
-A Java kód nélküli alkalmazások figyelése az egyszerűségről szól – a kód módosítása nem változik, a Java-ügynök csak néhány konfigurációs módosítással engedélyezhető.
+A Java kód nélküli alkalmazásfigyelés az egyszerűségről szól – nincsenek kódváltozások, a Java-ügynök néhány konfigurációs módosítással engedélyezhető.
 
- A Java-ügynök bármilyen környezetben működik, és lehetővé teszi a Java-alkalmazások figyelését. Más szóval, függetlenül attól, hogy a Java-alkalmazásait virtuális gépeken, a helyszínen, az AK-ban, Windowson, Linuxon futtatja, a Java 3,0-ügynök fogja figyelni az alkalmazást.
+ A Java-ügynök bármilyen környezetben működik, és lehetővé teszi az összes Java-alkalmazás figyelését. Más szóval, függetlenül attól, hogy a Java-alkalmazásokat virtuális gépeken, a helyszínen, az AKS-ben, Windowson vagy Linuxon futtatja, a Neve legyen, a Java 3.0-ügynök figyelni fogja az alkalmazást.
 
-Az Application Insights Java SDK hozzáadása az alkalmazáshoz már nem szükséges, mivel az 3,0-ügynök automatikusan gyűjti a kérelmeket, a függőségeket és a naplókat.
+A Application Insights Java SDK hozzáadása az alkalmazáshoz már nem szükséges, mivel a 3.0-s ügynök automatikusan gyűjti a kéréseket, a függőségeket és a naplókat.
 
-Továbbra is küldhet egyéni telemetria az alkalmazásból. Az 3,0-ügynök nyomon követheti és korrelálhatja azt az összes automatikusan összegyűjtött telemetria együtt.
+Továbbra is küldhet egyéni telemetriát az alkalmazásból. A 3.0-s ügynök nyomon követi és korrelál az automatikusan gyűjtött telemetriával.
 
-Az 3,0-ügynök támogatja a Java 8-as és újabb verzióit.
+A 3.0-s ügynök támogatja a Java 8-at és a fentieket.
 
 ## <a name="quickstart"></a>Gyorsútmutató
 
-**1. Töltse le az ügynököt**
+**1. Az ügynök letöltése**
 
 > [!WARNING]
-> **Ha 3,0 előzetes verzióról frissít**
+> **Ha 3.0-s előzetes verzióról frissít**
 >
-> Figyelmesen tekintse át az összes [konfigurációs beállítást](./java-standalone-config.md) , mivel a JSON-struktúra teljes mértékben megváltozott, és a fájlneven kívül minden kisbetűt ment.
+> Alaposan tekintse [](./java-standalone-config.md) át az összes konfigurációs beállítást, mivel a JSON-struktúra teljesen megváltozott, és magát a fájlnevet is kisbetűvel módosította.
 
-A [applicationinsights-Agent-3.0.3. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.3/applicationinsights-agent-3.0.3.jar) letöltése
+Az [applicationinsights-agent-3.0.3.jar letöltése](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.3/applicationinsights-agent-3.0.3.jar)
 
-**2. irányítsa a JVM az ügynökre**
+**2. A JVM mutattatása az ügynökre**
 
-Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` az alkalmazás JVM argumentumai
+Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` az alkalmazás JVM-args-hez
 
-A tipikus JVM argumentumok közé tartoznak `-Xmx512m` a és a `-XX:+UseG1GC` . Tehát ha tudja, hol adja hozzá ezeket, akkor már tudja, hová adja hozzá ezt a lehetőséget.
+A JVM-args jellemzően a és a `-Xmx512m` `-XX:+UseG1GC` . Tehát ha tudja, hol kell hozzáadnia ezeket, akkor már tudja, hogy hol kell hozzáadnia.
 
-Ha további segítségre van az alkalmazás JVM argumentumok konfigurálásához, tekintse meg a [Tippek a JVM-argumentumok frissítéséhez](./java-standalone-arguments.md)című témakört.
+Az alkalmazás JVM-args konfigurálásával kapcsolatos további segítségért lásd: Tippek a [JVM-args frissítéséhez.](./java-standalone-arguments.md)
 
-**3. irányítsa az ügynököt a Application Insights erőforrásra**
+**3. Az ügynök mutatása a Application Insights erőforrásra**
 
-Ha még nem rendelkezik Application Insights erőforrással, létrehozhat egy újat az [Erőforrás-létrehozási útmutató](./create-new-resource.md)lépéseit követve.
+Ha még nem rendelkezik Application Insights erőforrással, az erőforrás-létrehozási útmutató lépéseit követve létrehozhat egy [újat.](./create-new-resource.md)
 
-Mutasson az ügynököt a Application Insights erőforrásra, vagy egy környezeti változó beállításával:
+Mutasson az ügynökre Application Insights erőforrásra egy környezeti változó beállításával:
 
 ```
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-Vagy hozzon létre egy nevű konfigurációs fájlt `applicationinsights.json` , és helyezze ugyanabba a könyvtárba `applicationinsights-agent-3.0.3.jar` , a következő tartalommal:
+Vagy hozzon létre egy nevű konfigurációs fájlt, és helyezze a könyvtárba a következő `applicationinsights.json` `applicationinsights-agent-3.0.3.jar` tartalommal:
 
 ```json
 {
@@ -62,106 +62,142 @@ Vagy hozzon létre egy nevű konfigurációs fájlt `applicationinsights.json` ,
 }
 ```
 
-A Application Insights erőforrásban található a kapcsolatok karakterlánca:
+A kapcsolati sztring a saját erőforrásában Application Insights található:
 
-:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights a kapcsolatok karakterlánca":::
+:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights sztring létrehozása":::
 
-**4. ennyi!**
+**4. Ennyi az!**
 
-Most indítsa el az alkalmazást, és nyissa meg a Application Insights erőforrást a Azure Portalban a figyelési adatai megtekintéséhez.
+Most indítsa el az alkalmazást, és a Application Insights a Azure Portal meg a monitorozási adatokat.
 
 > [!NOTE]
-> Eltarthat néhány percig, amíg a figyelési adatai megjelennek a portálon.
+> Eltarthat néhány percig, hogy a monitorozási adatok megnyissnak a portálon.
 
 
 ## <a name="configuration-options"></a>Beállítási lehetőségek
 
-A `applicationinsights.json` fájlban emellett a következőket is konfigurálhatja:
+A `applicationinsights.json` fájlban emellett a következő beállításokat is konfigurálhatja:
 
 * Felhőbeli szerepkör neve
-* Felhőalapú szerepkör-példány
+* Felhőbeli szerepkörpéldány
 * Mintavételezés
-* JMX metrikák
+* JMX-metrikák
 * Egyéni dimenziók
-* Telemetria processzorok (előzetes verzió)
-* Automatikusan összegyűjtött naplózás
-* Automatikusan összegyűjtött mérőműszer-metrikák (beleértve a Spring boot indítószerkezet metrikáit)
+* Telemetriai processzorok (előzetes verzió)
+* Automatikusan gyűjtött naplózás
+* Automatikusan gyűjtött mikrometermetrikák (beleértve Spring Boot Actuator-metrikákat)
 * Szívverés
 * HTTP-proxy
 * Öndiagnosztika
 
-További részletek: [konfigurációs beállítások](./java-standalone-config.md) .
+További [részletekért tekintse meg](./java-standalone-config.md) a konfigurációs beállításokat.
 
-## <a name="auto-collected-requests-dependencies-logs-and-metrics"></a>Automatikusan összegyűjtött kérelmek, függőségek, naplók és metrikák
+## <a name="auto-collected-requests-dependencies-logs-and-metrics"></a>Automatikusan gyűjtött kérések, függőségek, naplók és metrikák
 
 ### <a name="requests"></a>Kérelmek
 
-* JMS-fogyasztók
+* JMS-felhasználók
 * Kafka-fogyasztók
-* Nettó/webflux
-* Servlets
-* Rugó ütemezése
+* Netty/WebFlux
+* Servletek
+* Spring Scheduling
 
-### <a name="dependencies-with-distributed-trace-propagation"></a>Elosztott nyomkövetési propagálással rendelkező függőségek
+### <a name="dependencies-with-distributed-trace-propagation"></a>Függőségek elosztott nyomkövetési propagálással
 
 * Apache HttpClient és HttpAsyncClient
 * gRPC
-* Java. net. HttpURLConnection
-* JMS
+* java.net.HttpURLConnection
+* Jms
 * Kafka
-* Nettó ügyfél
+* Netty-ügyfél
 * OkHttp
 
 ### <a name="other-dependencies"></a>Egyéb függőségek
 
 * Cassandra
 * JDBC
-* MongoDB (aszinkron és szinkronizálás)
-* Redis (saláta és jedik)
+* MongoDB (async and sync)
+* Redis (Lettuce and Jedis)
 
 ### <a name="logs"></a>Naplók
 
-* Java. util. Logging
-* Log4j (beleértve a MDC tulajdonságokat)
-* SLF4J/Logback (beleértve a MDC-tulajdonságokat)
+* java.util.logging
+* Log4j (az MDC-tulajdonságokkal együtt)
+* SLF4J/Logback (az MDC-tulajdonságokkal együtt)
 
 ### <a name="metrics"></a>Mérőszámok
 
-* Mikrométer (beleértve a Spring boot indítószerkezet metrikáit)
-* JMX metrikák
+* Mikrométer (beleértve Spring Boot Actuator-metrikákat)
+* JMX-metrikák
 
-### <a name="azure-sdks"></a>Azure SDK-k
+### <a name="azure-sdks-preview"></a>Azure SDK-k (előzetes verzió)
 
-* Ez a funkció előzetes verzióban érhető el, az engedélyezéséhez szükséges [konfigurációs beállításokban](./java-standalone-config.md#auto-collected-azure-sdk-telemetry) .
+Tekintse meg [az előzetes verziójú](./java-standalone-config.md#auto-collected-azure-sdk-telemetry-preview) funkció engedélyezésére és az azure-beli SZOFTVER-hez kibocsátott telemetria rögzítésére vonatkozó konfigurációs beállításokat:
+
+* [App Configuration](https://docs.microsoft.com/java/api/overview/azure/data-appconfiguration-readme) 1.1.10+
+* [Cognitive Search](https://docs.microsoft.com/java/api/overview/azure/search-documents-readme) 11.3.0+
+* [Kommunikációs csevegés](https://docs.microsoft.com/java/api/overview/azure/communication-chat-readme) 1.0.0+
+* [Kommunikáció – gyakori](https://docs.microsoft.com/java/api/overview/azure/communication-common-readme) 1.0.0+
+* [Kommunikációs identitás](https://docs.microsoft.com/java/api/overview/azure/communication-identity-readme) 1.0.0+
+* [Kommunikációs SMS](https://docs.microsoft.com/java/api/overview/azure/communication-sms-readme) 1.0.0+
+* [Cosmos DB](https://docs.microsoft.com/java/api/overview/azure/cosmos-readme) 4.13.0+
+* [Event Grid](https://docs.microsoft.com/java/api/overview/azure/messaging-eventgrid-readme) 4.0.0+
+* [Event Hubs](https://docs.microsoft.com/java/api/overview/azure/messaging-eventhubs-readme) 5.6.0+
+* [Event Hubs – Azure Blob Storage Checkpoint Store](https://docs.microsoft.com/java/api/overview/azure/messaging-eventhubs-checkpointstore-blob-readme) 1.5.1+
+* [Form Recognizer](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme) 3.0.6+
+* [Identitás](https://docs.microsoft.com/java/api/overview/azure/identity-readme) 1.2.4+
+* [Key Vault – Tanúsítványok](https://docs.microsoft.com/java/api/overview/azure/security-keyvault-certificates-readme) 4.1.6+
+* [Key Vault –](https://docs.microsoft.com/java/api/overview/azure/security-keyvault-keys-readme) 4.2.6+ kulcsok
+* [Key Vault – Titkos kulcsok](https://docs.microsoft.com/java/api/overview/azure/security-keyvault-secrets-readme) 4.2.6+
+* [Service Bus](https://docs.microsoft.com/java/api/overview/azure/messaging-servicebus-readme) 7.1.0+
+* [Text Analytics](https://docs.microsoft.com/java/api/overview/azure/ai-textanalytics-readme) 5.0.4+
+
+[//]: # "a következőből lekért fenti nevek és hivatkozások: https://azure.github.io/azure-sdk/releases/latest/java.html"
+[//]: # "A és a verzió szinkronizálása manuálisan történik a legrégebbi verzióval szemben az azure-core 1.14.0-s verzióra épült Maven Centralban"
+[//]: # ""
+[//]: # "var table = document.querySelector('#tg-sb-content > div > table')"
+[//]: # "var str = ''"
+[//]: # "for (var i = 1, row; row = table.rows[i]; i++) {"
+[//]: # "  var name = row.cells[0].getElementsByTagName('div')[0].textContent.trim()"
+[//]: # "  var stableRow = row.cells[1]"
+[//]: # "  var versionBadge = stableRow.querySelector('.badge')"
+[//]: # "  if (!versionBadge) {"
+[//]: # "    Folytatódik"
+[//]: # "  }"
+[//]: # "  var version = versionBadge.textContent.trim()"
+[//]: # "  var link = stableRow.querySelectorAll('a')[2].href"
+[//]: # "  str += '* [' + name + '](' + link + ') ' + version"
+[//]: # "}"
+[//]: # "console.log(str)"
 
 ## <a name="send-custom-telemetry-from-your-application"></a>Egyéni telemetria küldése az alkalmazásból
 
-A 3.0-s célunk, hogy az egyéni telemetria standard API-k használatával küldje el.
+A 3.0+-s vagy azt a célt küldjük, hogy lehetővé tegye az egyéni telemetria standard API-k használatával való elküldését.
 
-Eddig támogatjuk a mikrométereket, a népszerű naplózási keretrendszereket és a Application Insights Java 2. x SDK-t.
-Application Insights Java 3,0 automatikusan rögzíti az ezen API-kon keresztül továbbított telemetria, és korrelálja azt az automatikusan összegyűjtött telemetria.
+A Micrometert, a népszerű naplózási keretrendszereket és az Application Insights Java 2.x SDK-t támogatjuk.
+Application Insights Java 3.0 automatikusan rögzíti az api-kon keresztül küldött telemetriát, és korrelál az automatikusan gyűjtött telemetriával.
 
 ### <a name="supported-custom-telemetry"></a>Támogatott egyéni telemetria
 
-Az alábbi táblázat a jelenleg támogatott egyéni telemetria-típusokat jeleníti meg, amelyeket a Java 3,0-ügynök kiegészítéseként engedélyezhet. Az összegzéshez az egyéni metrikákat a Mikrométerek támogatják, az egyéni kivételek és a nyomkövetési funkciók a naplózási keretrendszereken keresztül engedélyezhetők, és az egyéni telemetria bármilyen típusa támogatott a [Application Insights Java 2. x SDK](#send-custom-telemetry-using-the-2x-sdk)-n keresztül.
+Az alábbi táblázat a Java 3.0-ügynök kiegészítésére jelenleg támogatott egyéni telemetriatípusokat mutatja be. Összefoglalva, az egyéni metrikák mikrométerrel támogatottak, az egyéni kivételek és nyomkövetések naplózási keretrendszerekkel engedélyezhetők, az egyéni telemetria bármely típusa pedig a [Application Insights Java 2.x SDK-val](#send-custom-telemetry-using-the-2x-sdk)támogatott.
 
-|                     | Mikrométer | Log4j, logback, JUL | 2. x SDK |
+|                     | Mikrométer | Log4j, logback, JUL | 2.x SDK |
 |---------------------|------------|---------------------|---------|
-| **Egyéni események**   |            |                     |  Igen    |
-| **Egyéni metrikák**  |  Igen       |                     |  Igen    |
-| **Függőségek**    |            |                     |  Igen    |
-| **Kivételek**      |            |  Igen                |  Igen    |
-| **Lapok nézetei**      |            |                     |  Igen    |
-| **Kérelmek**        |            |                     |  Igen    |
-| **Hívásláncok**          |            |  Igen                |  Igen    |
+| **Egyéni események**   |            |                     |  Yes    |
+| **Egyéni metrikák**  |  Igen       |                     |  Yes    |
+| **Függőségek**    |            |                     |  Yes    |
+| **Kivételek**      |            |  Igen                |  Yes    |
+| **Lapnézetek**      |            |                     |  Yes    |
+| **Kérelmek**        |            |                     |  Yes    |
+| **Hívásláncok**          |            |  Igen                |  Yes    |
 
-Jelenleg nem tervezzük Application Insights 3,0-es SDK kiadását.
+Jelenleg nem tervezzük a 3.0-s Application Insights SDK kiadását.
 
-Application Insights Java 3,0 már figyeli a Application Insights Java 2. x SDK-nak eljuttatott telemetria. Ez a funkció fontos részét képezi a meglévő 2. x-felhasználók frissítési történetének, és az egyéni telemetria-támogatás fontos hiányosságot tölt be, amíg a OpenTelemetry API nem a GA.
+Application Insights Java 3.0 már figyel az Application Insights Java 2.x SDK-nak küldött telemetriára. Ez a funkció fontos része a meglévő 2.x felhasználóknak készült frissítési történetnek, és fontos hézagokat tartalmaz az egyéni telemetriatámogatásban, amíg az OpenTelemetry API nem lesz ga ga.
 
-### <a name="send-custom-metrics-using-micrometer"></a>Egyéni metrikák küldése a Mikrométer használatával
+### <a name="send-custom-metrics-using-micrometer"></a>Egyéni metrikák küldése a Micrometer használatával
 
-Adja hozzá a mikrométert az alkalmazáshoz:
+Adja hozzá a Micrometert az alkalmazáshoz:
 
 ```xml
 <dependency>
@@ -171,30 +207,30 @@ Adja hozzá a mikrométert az alkalmazáshoz:
 </dependency>
 ```
 
-A Mikrométer [globális beállításjegyzékének](https://micrometer.io/docs/concepts#_global_registry) használata mérőszám létrehozásához:
+Használja a Micrometer globális [regisztrációs adatbázisát](https://micrometer.io/docs/concepts#_global_registry) egy mérő létrehozásához:
 
 ```java
 static final Counter counter = Metrics.counter("test_counter");
 ```
 
-a metrikák rögzítéséhez használja a következőt:
+és használja ezt a metrikák rögzítéséhez:
 
 ```java
 counter.increment();
 ```
 
-### <a name="send-custom-traces-and-exceptions-using-your-favorite-logging-framework"></a>Egyéni Nyomkövetések és kivételek küldése a kedvenc naplózási keretrendszer használatával
+### <a name="send-custom-traces-and-exceptions-using-your-favorite-logging-framework"></a>Egyéni nyomkövetések és kivételek küldése kedvenc naplózási keretrendszerének használatával
 
-A Log4j, a Logback és a Java. util. Logging automatikusan lett kialakítva, és ezekkel a naplózási keretrendszerek használatával végrehajtott naplózást a nyomkövetési és kivételi telemetria automatikusan gyűjti.
+A Log4j, a Logback és a java.util.logging naplózás automatikusan ki van automatizálva, és az ezen naplózási keretrendszerekkel végzett naplózást a rendszer automatikusan nyomkövetési és kivételtelemetriának gyűjti.
 
-Alapértelmezés szerint a rendszer csak akkor gyűjti a naplózást, ha a naplózás az adatok szintjén vagy felett van elvégezve.
-A szint módosításához tekintse meg a [konfigurációs beállításokat](./java-standalone-config.md#auto-collected-logging) .
+Alapértelmezés szerint a naplózás csak akkor lesz gyűjtve, ha a naplózás az INFO vagy magasabb szinten történik.
+A szint [beállítását](./java-standalone-config.md#auto-collected-logging) a konfigurációs beállításokban láthatja.
 
-Ha egyéni dimenziókat szeretne csatolni a naplókhoz, használhatja a [Log4j 1,2 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html), a [Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)vagy a [Logback MDC](http://logback.qos.ch/manual/mdc.html), és a Application Insights Java 3,0 automatikusan rögzíti ezeket a MDC tulajdonságokat egyéni dimenzióként a nyomkövetési és kivételi telemetria.
+Ha egyéni dimenziókat szeretne csatolni a naplókhoz, a [Log4j 1.2 MDC,](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html) [a Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)vagy a [Logback MDC](http://logback.qos.ch/manual/mdc.html), és az Application Insights Java 3.0 automatikusan egyéni dimenziókként rögzíti ezeket az MDC-tulajdonságokat a nyomkövetési és kivételtelemetrián.
 
-### <a name="send-custom-telemetry-using-the-2x-sdk"></a>Egyéni telemetria küldése a 2. x SDK használatával
+### <a name="send-custom-telemetry-using-the-2x-sdk"></a>Egyéni telemetria küldése a 2.x SDK használatával
 
-Vegye fel az `applicationinsights-core-2.6.2.jar` alkalmazást az alkalmazásba (az összes 2. x verziót támogatja Application Insights Java 3,0, de érdemes a legújabbat használni, ha van ilyen választása):
+Adja `applicationinsights-core-2.6.2.jar` hozzá az alkalmazáshoz (a Java 3.0 Application Insights mind a 2.x verziót támogatja, de ha van választási lehetőség, érdemes a legújabb verziót használnia):
 
 ```xml
 <dependency>
@@ -204,13 +240,13 @@ Vegye fel az `applicationinsights-core-2.6.2.jar` alkalmazást az alkalmazásba 
 </dependency>
 ```
 
-Hozzon létre egy TelemetryClient:
+TelemetryClient létrehozása:
 
   ```java
 static final TelemetryClient telemetryClient = new TelemetryClient();
 ```
 
-és használja az egyéni telemetria küldéséhez:
+és használja ezt az egyéni telemetria elküldését:
 
 ##### <a name="events"></a>Események
 
@@ -257,12 +293,12 @@ try {
 }
 ```
 
-### <a name="add-request-custom-dimensions-using-the-2x-sdk"></a>Egyéni dimenzió kérésének hozzáadása a 2. x SDK használatával
+### <a name="add-request-custom-dimensions-using-the-2x-sdk"></a>Egyéni kérésdimenziók hozzáadása a 2.x SDK-val
 
 > [!NOTE]
-> Ez a funkció csak a 3.0.2 és újabb verziókban érhető el
+> Ez a funkció csak a 3.0.2-es és újabb
 
-Vegye fel az `applicationinsights-web-2.6.2.jar` alkalmazást az alkalmazásba (az összes 2. x verziót támogatja Application Insights Java 3,0, de érdemes a legújabbat használni, ha van ilyen választása):
+Adja `applicationinsights-web-2.6.2.jar` hozzá az alkalmazáshoz (a Java 3.0 Application Insights mind a 2.x verziót támogatja, de ha van választási lehetőség, érdemes a legújabb verziót használnia):
 
 ```xml
 <dependency>
@@ -272,7 +308,7 @@ Vegye fel az `applicationinsights-web-2.6.2.jar` alkalmazást az alkalmazásba (
 </dependency>
 ```
 
-és vegyen fel egyéni dimenziókat a kódban:
+és adjon hozzá egyéni dimenziókat a kódhoz:
 
 ```java
 import com.microsoft.applicationinsights.web.internal.ThreadContext;
@@ -281,12 +317,12 @@ RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().g
 requestTelemetry.getProperties().put("mydimension", "myvalue");
 ```
 
-### <a name="set-the-request-telemetry-user_id-using-the-2x-sdk"></a>A telemetria kérésének beállítása user_Id a 2. x SDK használatával
+### <a name="set-the-request-telemetry-user_id-using-the-2x-sdk"></a>A kérelem telemetriai adatainak user_Id 2.x SDK használatával
 
 > [!NOTE]
-> Ez a funkció csak a 3.0.2 és újabb verziókban érhető el
+> Ez a funkció csak a 3.0.2-es és újabb
 
-Vegye fel az `applicationinsights-web-2.6.2.jar` alkalmazást az alkalmazásba (az összes 2. x verziót támogatja Application Insights Java 3,0, de érdemes a legújabbat használni, ha van ilyen választása):
+Adja `applicationinsights-web-2.6.2.jar` hozzá az alkalmazáshoz (a Java 3.0 Application Insights mind a 2.x verziót támogatja, de ha van választási lehetőség, érdemes a legújabb verziót használnia):
 
 ```xml
 <dependency>
@@ -296,7 +332,7 @@ Vegye fel az `applicationinsights-web-2.6.2.jar` alkalmazást az alkalmazásba (
 </dependency>
 ```
 
-és állítsa be a `user_Id` kódot a kódban:
+és állítsa be a `user_Id` kódot:
 
 ```java
 import com.microsoft.applicationinsights.web.internal.ThreadContext;
@@ -305,12 +341,12 @@ RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().g
 requestTelemetry.getContext().getUser().setId("myuser");
 ```
 
-### <a name="override-the-request-telemetry-name-using-the-2x-sdk"></a>A kérelem telemetria nevének felülbírálása a 2. x SDK használatával
+### <a name="override-the-request-telemetry-name-using-the-2x-sdk"></a>A kérelem-telemetria nevének felülbírálása a 2.x SDK-val
 
 > [!NOTE]
-> Ez a funkció csak a 3.0.2 és újabb verziókban érhető el
+> Ez a funkció csak a 3.0.2-es és újabb
 
-Vegye fel az `applicationinsights-web-2.6.2.jar` alkalmazást az alkalmazásba (az összes 2. x verziót támogatja Application Insights Java 3,0, de érdemes a legújabbat használni, ha van ilyen választása):
+Adja `applicationinsights-web-2.6.2.jar` hozzá az alkalmazáshoz (a Java 3.0 Application Insights mind a 2.x verziót támogatja, de ha van választási lehetőség, érdemes a legújabb verziót használnia):
 
 ```xml
 <dependency>
@@ -329,12 +365,12 @@ RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().g
 requestTelemetry.setName("myname");
 ```
 
-### <a name="get-the-request-telemetry-id-and-the-operation-id-using-the-2x-sdk"></a>Kérje le a kérelem telemetria-azonosítóját és a művelet azonosítóját a 2. x SDK használatával
+### <a name="get-the-request-telemetry-id-and-the-operation-id-using-the-2x-sdk"></a>Kérje le a kérelem telemetria-azonosítóját és a műveleti azonosítót a 2.x SDK-val
 
 > [!NOTE]
-> Ez a funkció csak a 3.0.3 és újabb verziókban érhető el
+> Ez a funkció csak a 3.0.3-as és újabb
 
-Vegye fel az `applicationinsights-web-2.6.2.jar` alkalmazást az alkalmazásba (az összes 2. x verziót támogatja Application Insights Java 3,0, de érdemes a legújabbat használni, ha van ilyen választása):
+Adja `applicationinsights-web-2.6.2.jar` hozzá az alkalmazáshoz (a Java 3.0 Application Insights mind a 2.x verziót támogatja, de ha van választási lehetőség, érdemes a legújabb verziót használnia):
 
 ```xml
 <dependency>
@@ -344,7 +380,7 @@ Vegye fel az `applicationinsights-web-2.6.2.jar` alkalmazást az alkalmazásba (
 </dependency>
 ```
 
-és kérje le a telemetria-azonosítót és a műveleti azonosítót a kódban:
+és kérje le a kérelem telemetria-azonosítóját és a műveleti azonosítót a kódban:
 
 ```java
 import com.microsoft.applicationinsights.web.internal.ThreadContext;

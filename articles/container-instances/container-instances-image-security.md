@@ -4,12 +4,12 @@ description: Javaslatok a rendszerképek és titkos kulcsok biztonságossá Azur
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: acccd79ecd1c216f92f19d1cf035682414cd17ca
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 40284c6e42cf1060906c6248495d08e133bda5bb
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750139"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812659"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Biztonsági szempontok a Azure Container Instances
 
@@ -40,7 +40,7 @@ Az olyan biztonsági monitorozási és képkeresési megoldások, mint a [Twistl
 
 ### <a name="protect-credentials"></a>Hitelesítő adatok védelme
 
-A tárolók több fürtben és Azure-régióban is elterjednek. Ezért biztonságossá kell tegye a bejelentkezéshez vagy az API-hozzáféréshez szükséges hitelesítő adatokat, például jelszavakat vagy jogkivonatokat. Győződjön meg arról, hogy csak kiemelt jogosultságú felhasználók férhetnek hozzá ezekhez a tárolókhoz átvitel közben és nem átvitel közben. Leltáraz minden titkos adatokat, majd a fejlesztőknek új, tárolóplatformok számára kialakított titkosadat-kezelő eszközöket kell használniuk.  Győződjön meg arról, hogy a megoldás tartalmazza a titkosított adatbázisokat, az átvitel alatt található titkos kulcsok TLS-titkosítását és a legkevesebb jogosultsággal rendelkező [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC).](../role-based-access-control/overview.md) [Azure Key Vault](../key-vault/general/security-overview.md) egy felhőszolgáltatás, amely a tárolóalapú alkalmazások titkosítási kulcsait és titkos kulcsait (például tanúsítványokat, kapcsolati sztringeket és jelszavakat) védi. Mivel ezek az adatok bizalmasak és üzleti szempontból kritikus fontosságúak, biztonságos hozzáférés a kulcstartókhoz, hogy csak a jogosult alkalmazások és felhasználók férnek hozzájuk.
+A tárolók több fürtben és Azure-régióban is elterjednek. Ezért biztonságossá kell tegye a bejelentkezéshez vagy az API-hozzáféréshez szükséges hitelesítő adatokat, például jelszavakat vagy jogkivonatokat. Győződjön meg arról, hogy csak kiemelt jogosultságú felhasználók férhetnek hozzá ezekhez a tárolókhoz átvitel közben és nem átvitel közben. Leltáraz minden titkos adatokat, majd a fejlesztőknek új, tárolóplatformok számára kialakított titkosadat-kezelő eszközöket kell használniuk.  Győződjön meg arról, hogy a megoldás tartalmazza a titkosított adatbázisokat, az átvitel alatt található titkos kulcsok TLS-titkosítását és a legkevesebb jogosultsággal rendelkező [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC).](../role-based-access-control/overview.md) [Azure Key Vault](../key-vault/general/security-features.md) egy felhőszolgáltatás, amely a tárolóalapú alkalmazások titkosítási kulcsait és titkos kulcsait (például tanúsítványokat, kapcsolati sztringeket és jelszavakat) védi. Mivel ezek az adatok bizalmasak és üzleti szempontból kritikus fontosságúak, biztonságos hozzáférés a kulcstartókhoz, hogy csak a jogosult alkalmazások és felhasználók férnek hozzájuk.
 
 ## <a name="considerations-for-the-container-ecosystem"></a>A tároló-ökoszisztéma szempontjai
 

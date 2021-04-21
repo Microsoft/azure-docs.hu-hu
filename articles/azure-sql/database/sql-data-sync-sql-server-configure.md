@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 75de7b122bff75ea13e3b66bb0b79452142dc36c
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 77073d21f982e82e567e517b7d9eca061cb91859
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500090"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812923"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Oktatóanyag: A SQL-adatszinkronizálás és a Azure SQL Database adatbázisok közötti SQL Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,9 +49,9 @@ Az adatbázis konfigurálásával SQL-adatszinkronizálás PowerShell-példáké
 
     :::image type="content" source="./media/sql-data-sync-sql-server-configure/sync-to-other-databases.png" alt-text = "Sync to other databases, Microsoft Azure portal":::
 
-1. A Szinkronizálás **más adatbázisokkal lapon** válassza az Új **szinkronizálási csoport lehetőséget.** Megnyílik **az Új szinkronizálási csoport** lap a Szinkronizálási csoport létrehozása **gombra kattintva (1. lépés).**
+1. A Szinkronizálás **más adatbázisokkal lapon** válassza az Új **szinkronizálási csoport lehetőséget.** Megnyílik **az Új szinkronizálási csoport** lap a **Szinkronizálási csoport létrehozása lehetőség segítségével.**
 
-   :::image type="content" source="./media/sql-data-sync-sql-server-configure/new-sync-group-private-link.png" alt-text = "Set up new sync group with private link":::
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/create-sync-group.png" alt-text = "Set up new sync group with private link":::
 
    A Csoport **adatszinkronizálás lapon** módosítsa a következő beállításokat:
 
@@ -70,19 +70,23 @@ Az adatbázis konfigurálásával SQL-adatszinkronizálás PowerShell-példáké
    
 1. Az Új **szinkronizálási csoport lapon,** ha a Privát kapcsolat használata beállítást **választotta,** jóvá kell hagynia a privát végpont kapcsolatát. Az információs üzenetben található hivatkozás arra a privát végpontkapcsolati élményre mutató hivatkozást tartalmazza, ahol jóváhagyhatja a kapcsolatot. 
 
-   :::image type="content" source="./media/sql-data-sync-sql-server-configure/approve-private-link.png" alt-text = "Approve private link":::
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/approve-private-link-update.png" alt-text = "Approve private link":::
+   
+   > [!NOTE]
+   > A syng csoport privát hivatkozásai és a szinkronizálási tagok külön kell létrehozni, jóváhagyni és letiltani. 
 
 ## <a name="add-sync-members"></a>Szinkronizálási tagok hozzáadása
 
-Az új szinkronizálási csoport létrehozása és telepítése után a Szinkronizálási tagok hozzáadása **(2. lépés)** ki van emelve az Új szinkronizálási **csoport** lapon.
+Az új szinkronizálási csoport létrehozása és üzembe helyezése után nyissa meg a szinkronizálási csoportot, és nyissa meg az **Adatbázisok** lapot, ahol kiválaszthatja a szinkronizálási tagokat.
 
-A Központi **adatbázis szakaszban** adja meg annak a kiszolgálónak a meglévő hitelesítő adatait, amelyen a központi adatbázis található. Ebben a szakaszban ne *adjon* meg új hitelesítő adatokat.
-
-   :::image type="content" source="./media/sql-data-sync-sql-server-configure/steptwo.png" alt-text = "Enter existing credentials for the hub database server":::
+   :::image type="content" source="./media/sql-data-sync-sql-server-configure/add-sync-members.png" alt-text = "Select sync members":::
+   
+   > [!NOTE]
+   > Ha frissíteni vagy beszúrni a felhasználónevet és  a jelszót a központi adatbázisba, a Szinkronizálási tagok kiválasztása lapon válassza a Központi adatbázis **szakaszt.** 
 
 ### <a name="to-add-a-database-in-azure-sql-database"></a>Adatbázis hozzáadása a Azure SQL Database
 
-A **Tagadatbázis szakaszban** igény szerint hozzáadhat egy adatbázist a Azure SQL Database a szinkronizálási csoporthoz a Következő hozzáadása **Azure SQL Database.** Megnyílik **a Azure SQL Database** konfigurálása lap.
+A **Szinkronizálási tagok kiválasztása szakaszban** igény szerint hozzáadhat egy adatbázist a Azure SQL Database a szinkronizálási csoporthoz az Azure-adatbázis hozzáadása lehetőség **kiválasztásával.** Megnyílik **az Azure-adatbázis konfigurálása** oldal.
   
    :::image type="content" source="./media/sql-data-sync-sql-server-configure/step-two-configure.png" alt-text = "Add a database to the sync group":::
    
@@ -110,7 +114,7 @@ A **Tagadatbázis szakaszban** igény szerint hozzáadhat egy SQL Server-adatbá
 
    :::image type="content" source="./media/sql-data-sync-sql-server-configure/steptwo-agent.png" alt-text = "Creating a sync agent":::
 
-1. A **Szinkronizálási ügynök kiválasztása lapon** válassza ki, hogy meglévő ügynököt használ vagy létrehoz egy ügynököt.
+1. A **Szinkronizálási ügynök kiválasztása lapon** válassza ki, hogy meglévő ügynököt használ-e, vagy létrehoz egy ügynököt.
 
    Ha a Meglévő **ügynökök lehetőséget választja,** válassza ki a listából a meglévő ügynököt.
 
@@ -150,30 +154,30 @@ A **Tagadatbázis szakaszban** igény szerint hozzáadhat egy SQL Server-adatbá
 
     1. Zárja be az Ügyfélszinkronizálási ügynök alkalmazást.
 
-1. A portálOnon  konfigurálása lapján válassza az **Adatbázis kiválasztása lehetőséget.**
+1. A portálOnon **konfigurálás lapján** válassza az **Adatbázis kiválasztása lehetőséget.**
 
-1. Az Adatbázis **kiválasztása lap**  Tagnév szinkronizálása mezőjében adja meg az új szinkronizálási tag nevét. Ez a név nem azonos az adatbázis nevével. Válassza ki az adatbázist a listából. A **Szinkronizálási irányok mezőben** válassza a **Kétirányú** szinkronizálás, a **Központba** vagy a **Központból lehetőséget.**
+1. Az Adatbázis **kiválasztása lap** **Tagnév** szinkronizálása mezőjében adja meg az új szinkronizálási tag nevét. Ez a név nem azonos az adatbázis nevével. Válassza ki az adatbázist a listából. A **Szinkronizálási irányok mezőben** válassza **a Kétirányú** szinkronizálás, a **Központba** vagy a **Központból lehetőséget.**
 
     ![A helyszíni adatbázis kiválasztása](./media/sql-data-sync-sql-server-configure/datasync-preview-selectdb.png)
 
-1. Kattintson **az OK** gombra az Adatbázis kiválasztása lap **bezárul.** Ezután kattintson **az OK** gombra a Helyszíni konfigurálás lap **bezárulása** és az új szinkronizálási tag létrejöttének és üzembe helyezésének megvárása. Végül kattintson az **OK** gombra a **Szinkronizálási tagok kiválasztása lap bezárul.**
+1. Kattintson **az OK** gombra az Adatbázis kiválasztása lap **bezárulához.** Ezután kattintson az  **OK** gombra a Helyszíni konfigurálás lap bezárul, és várjon, amíg létrejön és üzembe lesz állítva az új szinkronizálási tag. Végül kattintson az **OK gombra** a **Szinkronizálási tagok kiválasztása lap bezárul.**
 
 > [!NOTE]
-> Ha csatlakozni szeretne SQL-adatszinkronizálás ügynökhöz és a helyi ügynökhöz, adja hozzá a felhasználónevét a *szerepkörhöz DataSync_Executor.* adatszinkronizálás a szerepkört a SQL Server példányon hozza létre.
+> Ha csatlakozni szeretne SQL-adatszinkronizálás és a helyi ügynökhöz, adja hozzá a felhasználónevét a *szerepkörhöz DataSync_Executor.* adatszinkronizálás létrehozza ezt a szerepkört a SQL Server példányon.
 
 ## <a name="configure-sync-group"></a>Szinkronizálási csoport konfigurálása
 
-Az új szinkronizálási csoporttagok létrehozása és telepítése után a Szinkronizálási csoport konfigurálása **(3. lépés)** ki van emelve az Új szinkronizálási **csoport** lapon.
+Az új szinkronizálási csoport tagjainak létrehozása és  üzembe helyezése után az Adatbázis-szinkronizálási csoport oldal Táblák **szakaszára** kell átmenni.
 
-![3. lépés– beállítások](./media/sql-data-sync-sql-server-configure/stepthree.png)
+![3. lépés– beállítások](./media/sql-data-sync-sql-server-configure/configure-sync-group.png)
 
-1. A Táblák **lapon válasszon** ki egy adatbázist a szinkronizálási csoport tagjainak listájából, majd válassza a Séma **frissítése lehetőséget.**
+1. A Táblák **lapon** válasszon ki egy adatbázist a szinkronizálási csoport tagjainak listájából, majd válassza a **Séma frissítése lehetőséget.** Várjon néhány perces késleltetést a frissítési sémában. Privát kapcsolat használata esetén a késés néhány perccel tovább is tarthat.
 
-1. A listából válassza ki a szinkronizálni kívánt táblákat. Alapértelmezés szerint minden oszlop ki van jelölve, ezért tiltsa le a jelölőnégyzetet a szinkronizálni nem kívánt oszlopoknál. Ne hagyja kijelölve az elsődleges kulcs oszlopát.
+1. A listából válassza ki a szinkronizálni kívánt táblákat. Alapértelmezés szerint minden oszlop ki van jelölve, ezért tiltsa le a jelölőnégyzetet a szinkronizálni nem kívánt oszlopoknál. Ne hagyja kijelölve az elsődleges kulcs oszlopot.
 
 1. Kattintson a **Mentés** gombra.
 
-1. Alapértelmezés szerint az adatbázisok nincsenek szinkronizálva az ütemezett vagy manuális futtatásig. Manuális szinkronizálás futtatásához keresse meg az adatbázist a SQL Database a Azure Portal, válassza a Szinkronizálás más adatbázisokkal **lehetőséget,** majd válassza ki a szinkronizálási csoportot. Megnyílik **adatszinkronizálás** lap. Válassza a **Szinkronizálás** elemet.
+1. Alapértelmezés szerint az adatbázisok nincsenek szinkronizálva, amíg nincsenek ütemezve vagy manuálisan futtatva. Manuális szinkronizálás futtatásához lépjen az adatbázisra a SQL Database a Azure Portal, válassza a Szinkronizálás más adatbázisokkal lehetőséget, majd válassza ki a szinkronizálási csoportot.  Megnyílik **adatszinkronizálás** lap. Válassza a **Szinkronizálás** elemet.
 
     ![Manuális szinkronizálás](./media/sql-data-sync-sql-server-configure/datasync-sync.png)
 
@@ -212,7 +216,7 @@ Minden sémamódosítást manuálisan kell elvégeznie és propagálnia.
 
 Új táblák és oszlopok hozzáadásához:
 
-Az új táblák és oszlopok nem befolyásolják az aktuális szinkronizálást, adatszinkronizálás figyelmen kívül hagyja őket, amíg fel nem veszi őket a szinkronizálási sémába. Új adatbázis-objektumok hozzáadásakor kövesse az alábbi sorrendet:
+Az új táblák és oszlopok nem befolyásolják az aktuális szinkronizálást, és adatszinkronizálás figyelmen kívül hagyja őket, amíg fel nem veszi őket a szinkronizálási sémába. Új adatbázis-objektumok hozzáadásakor kövesse az alábbi sorrendet:
 
 1. Adjon hozzá új táblákat vagy oszlopokat a központhoz és az összes szinkronizálási taghoz.
 1. Adjon hozzá új táblákat vagy oszlopokat a szinkronizálási sémához.
@@ -233,7 +237,7 @@ Miután *.bacpac* fájlként exportált egy adatbázist, és importálta a fájl
 
 Az ügyfélügynökkel kapcsolatos gyakori kérdésekért tekintse meg az [ügynökkel kapcsolatos gyakori kérdéseket.](sql-data-sync-agent-overview.md#agent-faq)
 
-**Szükséges manuálisan jóváhagyni a privát hivatkozást, mielőtt elkezdenék használni?**
+**Manuálisan kell jóváhagyni a hivatkozást, mielőtt elkezdenék használni?**
 
 Igen, manuálisan kell jóváhagynia a szolgáltatás által felügyelt privát végpontot a szinkronizálási csoport üzembe helyezése Azure Portal Privát végponti kapcsolatok lapján vagy a PowerShell használatával.
 
