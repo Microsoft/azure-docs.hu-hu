@@ -1,34 +1,34 @@
 ---
-title: 'Oktatóanyag: a bejövő vezérlő Add-On engedélyezése meglévő AK-fürthöz meglévő Azure-Application Gateway'
-description: Ezzel az Oktatóanyaggal engedélyezheti a bemenő vezérlő Add-On a meglévő AK-fürthöz meglévő Application Gateway
+title: 'Oktatóanyag: Bejövő forgalomvezérlő-Add-On engedélyezése meglévő AKS-fürtön meglévő Azure Application Gateway'
+description: Ebből az oktatóanyagból megtudhatja, hogyan engedélyezheti a Add-On-vezérlést meglévő AKS-fürtje számára egy meglévő Application Gateway
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.author: caya
-ms.openlocfilehash: bfff962f6d302f589acc437550fa25f76ec7ce35
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2fe615da256099c3135f607a7b6f8095bb93b442
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040421"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772846"
 ---
-# <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway"></a>Oktatóanyag: Application Gateway beáramlási vezérlő bővítményének engedélyezése meglévő AK-alapú fürtökhöz meglévő Application Gateway
+# <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway"></a>Oktatóanyag: Bejövő Application Gateway vezérlő bővítmény engedélyezése meglévő AKS-fürtön meglévő Application Gateway
 
-Az Azure CLI vagy a Portal használatával engedélyezheti az Application Gateway beáramlási [vezérlő (AGIC)](ingress-controller-overview.md) bővítményt egy meglévő [Azure Kubernetes Services-(ak-)](https://azure.microsoft.com/services/kubernetes-service/) fürthöz. Ebből az oktatóanyagból megtudhatja, hogyan használhatja a AGIC bővítményt a Kubernetes-alkalmazás elérhetővé tétele egy meglévő AK-fürtön egy meglévő, különálló virtuális hálózatokban telepített Application Gateway használatával. Először hozzon létre egy AK-fürtöt egy virtuális hálózatban, és egy különálló virtuális hálózat Application Gateway a meglévő erőforrások szimulálása érdekében. Ezután engedélyezheti a AGIC-bővítményt, a két virtuális hálózat együttes használatát, és üzembe helyezheti a Application Gateway a AGIC bővítmény használatával elérhetővé tenni kívánt minta alkalmazást. Ha a AGIC-bővítményt egy meglévő Application Gateway és egy meglévő AK-fürthöz engedélyezi egy virtuális hálózatban, akkor kihagyhatja az alábbi társítási lépést. A bővítmény sokkal gyorsabban üzembe helyezi a AGIC-t az AK-fürthöz, mint a [korábban a helmon keresztül](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on) , és teljes körűen felügyelt élményt is biztosít.  
+Az Azure CLI vagy a Portál használatával engedélyezheti az Application Gateway Bejövő forgalomvezérlő [(AGIC)](ingress-controller-overview.md) bővítményt egy meglévő [Azure Kubernetes Services- (AKS-) fürtön.](https://azure.microsoft.com/services/kubernetes-service/) Ebből az oktatóanyagból megtudhatja, hogyan használható az AGIC-bővítmény a Kubernetes-alkalmazás meglévő AKS-fürtön való elérhetővé helyezéséhez egy meglévő virtuális Application Gateway üzembe helyezett meglévő virtuális hálózaton keresztül. Először egy AKS-fürtöt hoz létre egy virtuális hálózatban, és egy Application Gateway egy külön virtuális hálózatban a meglévő erőforrások szimulálása érdekében. Ezután engedélyezi az AGIC-bővítményt, társviszonyt létesít a két virtuális hálózat között, és üzembe helyez egy mintaalkalmazást, amely az AGIC-bővítmény használatával a Application Gateway keresztül lesz elérhetővé téve. Ha az AGIC-bővítményt egy ugyanazon a virtuális hálózaton található meglévő Application Gateway- és meglévő AKS-fürtön engedélyezi, akkor kihagyhatja az alábbi társviszony-létesítés lépését. A bővítmény sokkal gyorsabban helyezheti üzembe az AGIC-t az AKS-fürtön, mint korábban a [Helmen](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on) keresztül, és teljes körűen felügyelt felhasználói élményt nyújt.  
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Erőforráscsoport létrehozása 
-> * Új AK-fürt létrehozása 
-> * Új Application Gateway létrehozása 
-> * A AGIC-bővítmény engedélyezése a meglévő AK-fürtön az Azure CLI-n keresztül 
-> * A AGIC-bővítmény engedélyezése a meglévő AK-fürtön a portálon keresztül 
-> * Egyenrangú a Application Gateway virtuális hálózat az AK-fürt virtuális hálózatával
-> * Minta alkalmazás üzembe helyezése az AGIC használatával a bejövő forgalomhoz az AK-fürtön
-> * Győződjön meg arról, hogy az alkalmazás elérhető Application Gateway
+> * Új AKS-fürt létrehozása 
+> * Új fiók Application Gateway 
+> * Az AGIC-bővítmény engedélyezése a meglévő AKS-fürtön az Azure CLI-ben 
+> * Az AGIC-bővítmény engedélyezése a meglévő AKS-fürtön a portálon keresztül 
+> * Társviszony Application Gateway virtuális hálózat és az AKS-fürt virtuális hálózata között
+> * Mintaalkalmazás üzembe helyezése AGIC használatával bejövő forgalomhoz az AKS-fürtön
+> * Ellenőrizze, hogy az alkalmazás elérhető-e a Application Gateway
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,29 +36,29 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az Azure-ban kapcsolódó erőforrásokat oszt ki egy erőforráscsoporthoz. Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group#az-group-create)paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *canadacentral* helyen (régió). 
+Az Azure-ban a kapcsolódó erőforrásokat egy erőforráscsoporthoz rendeli hozzá. Hozzon létre egy erőforráscsoportot [az az group create használatával.](/cli/azure/group#az_group_create) Az alábbi példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot *a canadacentral* helyen (régióban). 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location canadacentral
 ```
 
-## <a name="deploy-a-new-aks-cluster"></a>Új AK-fürt üzembe helyezése
+## <a name="deploy-a-new-aks-cluster"></a>Új AKS-fürt üzembe helyezése
 
-Most üzembe kell helyeznie egy új AK-fürtöt, hogy szimulálni kelljen egy meglévő AK-fürtöt, amelyhez engedélyezni szeretné a AGIC-bővítményt.  
+Most egy új AKS-fürtöt fog üzembe helyezni, hogy szimulálja egy meglévő AKS-fürtöt, amelynek engedélyezni szeretné az AGIC-bővítményét.  
 
-Az alábbi példában egy *myCluster* nevű új AK-fürtöt telepítünk az [Azure CNI](../aks/concepts-network.md#azure-cni-advanced-networking) és a [felügyelt identitások](../aks/use-managed-identity.md) használatával a létrehozott erőforráscsoport, a *myResourceGroup*.
+A következő példában egy *új, myCluster* nevű AKS-fürtöt fog üzembe helyezni a [létrehozott erőforráscsoportban](../aks/concepts-network.md#azure-cni-advanced-networking) Azure CNI és Managed [Identities](../aks/use-managed-identity.md) *használatával.*
 
 ```azurecli-interactive
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity 
 ```
 
-Ha további paramétereket szeretne megadni a `az aks create` parancshoz, keresse fel a hivatkozásokat [itt](/cli/azure/aks#az-aks-create). 
+A parancs további paramétereinek `az aks create` konfigurálásért látogasson el a [hivatkozásokra itt.](/cli/azure/aks#az_aks_create) 
 
-## <a name="deploy-a-new-application-gateway"></a>Új Application Gateway üzembe helyezése 
+## <a name="deploy-a-new-application-gateway"></a>Új virtuális gép Application Gateway 
 
-Most egy új Application Gateway üzembe helyezésével szimulálhatja azt a meglévő Application Gateway, amelyet a forgalom terheléselosztásához kíván használni az AK-fürtre ( *myCluster*). A Application Gateway neve *myApplicationGateway* lesz, de először létre kell hoznia egy *myPublicIp* nevű nyilvános IP-erőforrást, és egy *myVnet* nevű új virtuális hálózatot, amelynek a címe 11.0.0.0/8, valamint egy olyan alhálózat, amelynek 11.1.0.0/16 nevű alhálózata *mySubnet, és* a mySubnet használatával helyezi üzembe *Application Gateway a myPublicIp* . 
+Most üzembe fog helyezni egy új Application Gateway, hogy szimulálja, hogy egy meglévő Application Gateway szeretne használni az AKS-fürt, a *myCluster* forgalmának terheléselosztása érdekében. A név Application Gateway *myApplicationGateway* lesz, de először létre kell hoznia egy nyilvános IP-erőforrást. A neve *myPublicIp,* és egy *myVnet* nevű új virtuális hálózat 11.0.0.0/8 címtérbe, valamint egy mySubnet nevű, 11.1.0.0/16 címtérű alhálózatba, és telepítse az Application Gateway-t a *mySubnetben* a *myPublicIp használatával.*  
 
-Ha AK-alapú fürtöt használ, és Application Gateway külön virtuális hálózatban, akkor a két virtuális hálózat címterület nem fedik át egymást. Az AK-fürtök alapértelmezett 10.0.0.0/8, ezért a Application Gateway virtuális hálózati címek előtagját a 11.0.0.0/8 értékre állítja be. 
+Ha AKS-fürtöt használ, Application Gateway külön virtuális hálózatokban található virtuális hálózatokhoz, a két virtuális hálózat címterei nem lehetnek átfedésben. Az AKS-fürt által üzembe helyezett alapértelmezett címtér a 10.0.0.0/8, ezért a Application Gateway virtuális hálózat címelőtagját a 11.0.0.0/8 címre állítva állítva. 
 
 ```azurecli-interactive
 az network public-ip create -n myPublicIp -g MyResourceGroup --allocation-method Static --sku Standard
@@ -67,29 +67,29 @@ az network application-gateway create -n myApplicationGateway -l canadacentral -
 ```
 
 > [!NOTE]
-> A Application Gateway inporting Controller (AGIC) bővítmény **csak** Application Gateway v2 SKU (standard és WAF), és **nem** a Application Gateway v1 SKU-t támogatja. 
+> Application Gateway (AGIC) bővítmény csak a Application Gateway  v2 SKUs (Standard és WAF)  és a Application Gateway v1 SKUs-t támogatja. 
 
-## <a name="enable-the-agic-add-on-in-existing-aks-cluster-through-azure-cli"></a>A AGIC-bővítmény engedélyezése a meglévő AK-fürtön az Azure CLI-n keresztül 
+## <a name="enable-the-agic-add-on-in-existing-aks-cluster-through-azure-cli"></a>Az AGIC bővítmény engedélyezése meglévő AKS-fürtön az Azure CLI-ben 
 
-Ha továbbra is az Azure CLI-t szeretné használni, továbbra is engedélyezheti a AGIC-bővítményt a létrehozott AK-fürtben, és megadhatja a AGIC-bővítményt a létrehozott meglévő Application Gateway *myCluster*, *myApplicationGateway*.
+Ha továbbra is használni szeretné az Azure CLI-t, továbbra is engedélyezheti az AGIC bővítményt a létrehozott AKS-fürtben *(myCluster)* és megadhatja az AGIC bővítményt a létrehozott Application Gateway *myApplicationGateway használatára.*
 
 ```azurecli-interactive
 appgwId=$(az network application-gateway show -n myApplicationGateway -g myResourceGroup -o tsv --query "id") 
 az aks enable-addons -n myCluster -g myResourceGroup -a ingress-appgw --appgw-id $appgwId
 ```
 
-## <a name="enable-the-agic-add-on-in-existing-aks-cluster-through-portal"></a>A AGIC-bővítmény engedélyezése a meglévő AK-fürtön a portálon keresztül 
+## <a name="enable-the-agic-add-on-in-existing-aks-cluster-through-portal"></a>Az AGIC-bővítmény engedélyezése meglévő AKS-fürtön a portálon keresztül 
 
-Ha Azure Portalt szeretne használni a AGIC-bővítmény engedélyezéséhez, nyissa meg a [( https://aka.ms/azure/portal/aks/agic) ](https://aka.ms/azure/portal/aks/agic) z) (és keresse meg az AK-fürtöt a portál hivatkozásán keresztül. Innen lépjen a hálózatkezelés lapra az AK-fürtön belül. Ekkor megjelenik egy Application Gateway beáramló vezérlő szakasz, amely lehetővé teszi, hogy engedélyezze vagy tiltsa le a bejövő vezérlő bővítményét a portál felhasználói felületén. Jelölje be a "bejövő adatok vezérlésének engedélyezése" jelölőnégyzetet, majd válassza ki a létrehozott Application Gateway *myApplicationGateway* a legördülő menüből. 
+Ha az AGIC-bővítmény engedélyezéséhez Azure Portal használni, lépjen a [ https://aka.ms/azure/portal/aks/agic) ](https://aka.ms/azure/portal/aks/agic) () webhelyre, és keresse meg az AKS-fürtöt a Portal hivatkozásán keresztül. Innen válassza az AKS-fürt Hálózat lapját. Egy bejövő Application Gateway vezérlő szakaszt fog látni, amely lehetővé teszi a bejövő vezérlő bővítményének engedélyezését vagy letiltását a portál felhasználói felületén. Jelölje be a "Bejövő forgalomvezérlő engedélyezése" jelölőnégyzetet, és Application Gateway a legördülő menüben a *myApplicationGateway* elemet. 
 
-![Application Gateway bejövő adatkezelő portál](./media/tutorial-ingress-controller-add-on-existing/portal-ingress-controller-add-on.png)
+![Application Gateway bejövő forgalomvezérlő portálja](./media/tutorial-ingress-controller-add-on-existing/portal-ingress-controller-add-on.png)
 
-## <a name="peer-the-two-virtual-networks-together"></a>Egyenrangú a két virtuális hálózat együtt
+## <a name="peer-the-two-virtual-networks-together&quot;></a>Társviszony létesítása a két virtuális hálózat között
 
-Mivel üzembe helyezte az AK-fürtöt a saját virtuális hálózatában, illetve a Application Gateway egy másik virtuális hálózatban, a két virtuális hálózatot össze kell kapcsolnia ahhoz, hogy a forgalom a Application Gateway a fürtben lévő hüvelybe kerüljön. A két virtuális hálózat társításához az Azure CLI-parancsot két külön alkalommal kell futtatnia, hogy a kapcsolat kétirányú legyen. Az első parancs egy egyenrangú kapcsolatot hoz létre a Application Gateway virtuális hálózatról az AK-beli virtuális hálózatra; a második parancs egy egyenrangú kapcsolatot hoz létre a másik irányban.
+Mivel az AKS-fürtöt a saját virtuális hálózatában, az Application Gateway-t pedig egy másik virtuális hálózatban helyeztünk üzembe, társviszonyt kell létesítenünk a két virtuális hálózat között ahhoz, hogy a Application Gateway felől a fürt podjaiba áramló forgalom el tudja végezni. A két virtuális hálózat közötti társviszony létesítéséhez az Azure CLI-parancs két külön futtatására van szükség, hogy a kapcsolat kétirányú legyen. Az első parancs társviszony-kapcsolatot hoz létre az Application Gateway és az AKS virtuális hálózat között; A második parancs létrehoz egy társviszony-kapcsolatot a másik irányban.
 
 ```azurecli-interactive
-nodeResourceGroup=$(az aks show -n myCluster -g myResourceGroup -o tsv --query "nodeResourceGroup")
+nodeResourceGroup=$(az aks show -n myCluster -g myResourceGroup -o tsv --query &quot;nodeResourceGroup")
 aksVnetName=$(az network vnet list -g $nodeResourceGroup -o tsv --query "[0].name")
 
 aksVnetId=$(az network vnet show -n $aksVnetName -g $nodeResourceGroup -o tsv --query "id")
@@ -99,29 +99,29 @@ appGWVnetId=$(az network vnet show -n myVnet -g myResourceGroup -o tsv --query "
 az network vnet peering create -n AKStoAppGWVnetPeering -g $nodeResourceGroup --vnet-name $aksVnetName --remote-vnet $appGWVnetId --allow-vnet-access
 ```
 
-## <a name="deploy-a-sample-application-using-agic"></a>Minta alkalmazás üzembe helyezése a AGIC használatával 
+## <a name="deploy-a-sample-application-using-agic"></a>Mintaalkalmazás üzembe helyezése az AGIC használatával 
 
-Most üzembe kell helyeznie egy minta alkalmazást a létrehozott AK-fürtön, amely a AGIC bővítményt fogja használni a bejövő forgalomhoz, és a Application Gateway csatlakozik az AK-fürthöz. Először a parancs futtatásával hitelesítő adatokat fog kapni a telepített AK-fürthöz `az aks get-credentials` . 
+Most üzembe fog helyezni egy mintaalkalmazást a létrehozott AKS-fürtön, amely az AGIC bővítményt fogja használni a bejövő forgalomhoz, és csatlakoztatja a Application Gateway az AKS-fürthöz. Először a parancs futtatásával kap hitelesítő adatokat az üzembe helyezett AKS-fürthöz. `az aks get-credentials` 
 
 ```azurecli-interactive
 az aks get-credentials -n myCluster -g myResourceGroup
 ```
 
-Miután megadta a hitelesítő adatokat a létrehozott fürthöz, futtassa a következő parancsot egy olyan minta alkalmazás beállításához, amely a AGIC-t használja a fürtre való behatoláshoz. A AGIC frissíti a korábban beállított Application Gateway a megfelelő útválasztási szabályokkal a telepített új minta alkalmazásra.  
+Miután létrehozta a létrehozott fürt hitelesítő adatait, futtassa a következő parancsot egy olyan mintaalkalmazás beállításához, amely AGIC-t használ a fürt bejövő forgalomához. Az AGIC frissíti a Application Gateway beállított halmazt a megfelelő útválasztási szabályokkal az üzembe helyezett új mintaalkalmazáshoz.  
 
 ```azurecli-interactive
 kubectl apply -f https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/docs/examples/aspnetapp.yaml 
 ```
 
-## <a name="check-that-the-application-is-reachable"></a>Győződjön meg arról, hogy az alkalmazás elérhető
+## <a name="check-that-the-application-is-reachable"></a>Ellenőrizze, hogy az alkalmazás elérhető-e
 
-Most, hogy a Application Gateway úgy van beállítva, hogy kiszolgálja az AK-fürt forgalmát, ellenőrizze, hogy az alkalmazás elérhető-e. Először megkapja a bejövő forgalom IP-címét. 
+Most, hogy Application Gateway be van állítva az AKS-fürtre való forgalom kiszolgálására, ellenőrizzük, hogy az alkalmazás elérhető-e. Először le kell kapnia a bejövő forgalom IP-címét. 
 
 ```azurecli-interactive
 kubectl get ingress
 ```
 
-Győződjön meg arról, hogy a létrehozott minta alkalmazás működik-e, vagy látogasson el a Application Gateway IP-címére, amelyet a fenti parancs futtatásával vagy a szolgáltatással való ellenőrzéssel kapott `curl` . A frissítés megkezdése Application Gateway egy percet is igénybe vehet, így ha a Application Gateway továbbra is "frissítés" állapotban van a portálon, akkor hagyja befejezni az IP-cím elérését. 
+Ellenőrizze, hogy a létrehozott mintaalkalmazás működik-e. Ezt a fenti parancs futtatásából kapott ip-címének Application Gateway, vagy ellenőrizze a következővel: `curl` . A frissítés le Application Gateway egy percet is igénybe vehet, így ha a Application Gateway még frissítés állapotban van a portálon, akkor hagyja, hogy befejeződik, mielőtt megpróbálja elérni az IP-címet. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -134,4 +134,4 @@ az group delete --name myResourceGroup
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [További információ a AGIC-bővítmény letiltásáról](./ingress-controller-disable-addon.md)
+> [További információ az AGIC bővítmény letiltásával kapcsolatban](./ingress-controller-disable-addon.md)

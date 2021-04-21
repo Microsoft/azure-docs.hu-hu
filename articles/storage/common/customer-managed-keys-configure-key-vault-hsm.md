@@ -1,7 +1,7 @@
 ---
-title: A titkosítás konfigurálása Azure Key Vault felügyelt HSM-ben (előzetes verzió) tárolt, ügyfél által felügyelt kulcsokkal
+title: Titkosítás konfigurálása felügyelt HSM-Azure Key Vault ügyfél által kezelt kulcsokkal (előzetes verzió)
 titleSuffix: Azure Storage
-description: Megtudhatja, hogyan konfigurálhatja az Azure Storage-titkosítást Azure Key Vault felügyelt HSM-ben (előzetes verzió) tárolt, az Azure CLI használatával felügyelt kulcsokkal.
+description: Megtudhatja, hogyan konfigurálhatja az Azure Storage-titkosítást a Managed HSM előzetes Azure Key Vault tárolt, ügyfél által kezelt kulcsokkal az Azure CLI használatával.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,30 +11,30 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: ea51c1f7fcfce5b795965eab2f9c03a820a6ab03
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f9b40c934cb428a31a3feb77195518d5351818d7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059360"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785360"
 ---
-# <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>A titkosítás konfigurálása Azure Key Vault felügyelt HSM-ben (előzetes verzió) tárolt, ügyfél által felügyelt kulcsokkal
+# <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>Titkosítás konfigurálása felügyelt HSM-Azure Key Vault ügyfél által kezelt kulcsokkal (előzetes verzió)
 
-Az Azure Storage minden olyan adattárolót titkosít, amely egy Storage-fiókban található. Alapértelmezés szerint az adattitkosítás a Microsoft által kezelt kulcsokkal történik. A titkosítási kulcsok további vezérléséhez a saját kulcsait is kezelheti. Az ügyfél által felügyelt kulcsokat Azure Key Vault vagy Key Vault felügyelt hardveres biztonsági modellben (HSM) (előzetes verzió) kell tárolni. A Azure Key Vault felügyelt HSM egy FIPS 140-2 3. szintű hitelesített HSM.
+Az Azure Storage egy tárfiókban tárolt összes adatot titkosítja. Alapértelmezés szerint az adatok titkosítása Microsoft által kezelt kulcsokkal történik. A titkosítási kulcsok további szabályozása érdekében kezelheti a saját kulcsait. Az ügyfél által felügyelt kulcsokat a felügyelt Azure Key Vault (HSM) Key Vault (előzetes verzió) szolgáltatásban kell tárolni. A Azure Key Vault HSM egy FIPS 140-2 3. szint szerint ellenőrzött HSM.
 
-Ez a cikk bemutatja, hogyan konfigurálhatja a titkosítást a felügyelt HSM-ben tárolt, ügyfél által felügyelt kulcsokkal az Azure CLI használatával. Ha meg szeretné tudni, hogyan konfigurálhatja a titkosítást a Key vaultban tárolt ügyfél által felügyelt kulcsokkal, tekintse meg a [titkosítás konfigurálása a Azure Key Vaultban tárolt ügyfél által felügyelt kulcsokkal című részt](customer-managed-keys-configure-key-vault.md).
+Ez a cikk bemutatja, hogyan konfigurálhatja a titkosítást felügyelt HSM-ben tárolt, ügyfél által kezelt kulcsokkal az Azure CLI használatával. A kulcstartóban tárolt, ügyfél által kezelt kulcsokkal való titkosítás konfigurálásával kapcsolatos információkért lásd: Titkosítás konfigurálása a kulcstartóban tárolt, ügyfél által kezelt [kulcsokkal Azure Key Vault.](customer-managed-keys-configure-key-vault.md)
 
 > [!IMPORTANT]
 >
-> Azure Key Vault felügyelt HSM-ben tárolt, ügyfél által felügyelt kulcsokkal való titkosítás jelenleg **előzetes** verzióban érhető el. Tekintse meg az Azure-szolgáltatásokra vonatkozó, a bétaverzióban, az előzetes verzióban, vagy más módon még nem közzétett, általánosan elérhetővé vált jogi feltételekhez tartozó [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
+> A Managed HSM-Azure Key Vault ügyfél által kezelt kulcsokkal való titkosítás jelenleg előzetes **verzióban érhető el.** A [bétaverzióban,](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) előzetes verzióban vagy egyéb módon, általánosan elérhető Azure-funkciókra vonatkozó jogi feltételekért tekintse meg a kiegészítő használati feltételeket a Microsoft Azure előzetes verziókhoz.
 >
-> A Azure Key Vault és Azure Key Vault felügyelt HSM a konfigurációhoz ugyanazokat az API-kat és felügyeleti interfészeket támogatja.
+> Azure Key Vault és Azure Key Vault Managed HSM ugyanazon API-kat és felügyeleti felületeket támogatja a konfiguráláshoz.
 
-## <a name="assign-an-identity-to-the-storage-account"></a>Identitás kiosztása a Storage-fiókhoz
+## <a name="assign-an-identity-to-the-storage-account"></a>Identitás hozzárendelése a tárfiókhoz
 
-Először rendeljen hozzá egy rendszerhez rendelt felügyelt identitást a Storage-fiókhoz. Ezt a felügyelt identitást fogja használni a Storage-fiók engedélyeinek megadásához a felügyelt HSM eléréséhez. A rendszerhez rendelt felügyelt identitásokkal kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitásai?](../../active-directory/managed-identities-azure-resources/overview.md).
+Először rendeljen hozzá egy rendszer által hozzárendelt felügyelt identitást a tárfiókhoz. Ezzel a felügyelt identitással adhat engedélyeket a tárfióknak a felügyelt HSM eléréséhez. A rendszer által hozzárendelt felügyelt identitásokkal kapcsolatos további információkért lásd: Mik azok az [Azure-erőforrások felügyelt identitások?](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Felügyelt identitás az Azure CLI-vel való hozzárendeléséhez hívja [az az Storage Account Update](/cli/azure/storage/account#az-storage-account-update)lehetőséget. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
+Ha felügyelt identitást szeretne hozzárendelni az Azure CLI használatával, hívja az [az storage account update (az storage account update) hívást.](/cli/azure/storage/account#az_storage_account_update) Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
 
 ```azurecli
 az storage account update \
@@ -43,11 +43,11 @@ az storage account update \
     --assign-identity
 ```
 
-## <a name="assign-a-role-to-the-storage-account-for-access-to-the-managed-hsm"></a>Szerepkör társítása a Storage-fiókhoz a felügyelt HSM-hez való hozzáféréshez
+## <a name="assign-a-role-to-the-storage-account-for-access-to-the-managed-hsm"></a>Szerepkör hozzárendelése a tárfiókhoz a felügyelt HSM-hez való hozzáféréshez
 
-Ezután rendelje hozzá a **felügyelt HSM titkosítási szolgáltatás titkosítási** szerepkörét a Storage-fiók felügyelt identitásához, hogy a Storage-fiók rendelkezik a felügyelt HSM-hez szükséges engedélyekkel. A Microsoft azt javasolja, hogy a szerepkör-hozzárendelést az egyéni kulcs szintjéhez rendelje, hogy a lehető legkevesebb jogosultságot adja a felügyelt identitásnak.
+Ezután rendelje hozzá a **Managed HSM Crypto Service Encryption** szerepkört a tárfiók felügyelt identitásához, hogy a tárfiók jogosultságokkal rendelkezik a felügyelt HSM-hez. A Microsoft azt javasolja, hogy a szerepkör-hozzárendelés hatókörét az egyes kulcsok szintjére kell hatókörbe tenni, hogy a lehető legkisebb jogosultságot adja meg a felügyelt identitásnak.
 
-A Storage-fiók szerepkör-hozzárendelésének létrehozásához hívja az [az Key Vault szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az_role_assignment_create)lehetőséget. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
+A tárfiók szerepkör-hozzárendelésének létrehozásához hívja meg [az az key vault role assignment create hívást.](/cli/azure/role/assignment#az_role_assignment_create) Ne felejtse el lecserélni a zárójelben lévő helyőrzőket a saját értékeire.
   
 ```azurecli
 storage_account_principal = $(az storage account show \
@@ -63,13 +63,13 @@ az keyvault role assignment create \
     --scope /keys/<key-name>
 ```
 
-## <a name="configure-encryption-with-a-key-in-the-managed-hsm"></a>Titkosítás konfigurálása kulccsal a felügyelt HSM-ben
+## <a name="configure-encryption-with-a-key-in-the-managed-hsm"></a>Titkosítás konfigurálása kulccsal a felügyelt HSM-hez
 
-Végül konfigurálja az Azure Storage-titkosítást az ügyfél által felügyelt kulcsokkal a felügyelt HSM-ben tárolt kulcsok használatára. A támogatott típusok közé tartoznak a 2048, 3072 és 4096 méretű RSA-HSM-kulcsok. A kulcsok felügyelt HSM-ben való létrehozásával kapcsolatos információkért lásd: [HSM-kulcs létrehozása](../../key-vault/managed-hsm/key-management.md#create-an-hsm-key).
+Végül konfigurálja az Azure Storage-titkosítást az ügyfél által felügyelt kulcsokkal a felügyelt HSM-ban tárolt kulcs használatára. A támogatott kulcstípusok közé tartoznak a 2048-as, 3072-es és 4096-os RSA-HSM-kulcsok. A kulcsok felügyelt HSM-ben való létrehozásáról a [HSM-kulcs létrehozása cikkből olvashat.](../../key-vault/managed-hsm/key-management.md#create-an-hsm-key)
 
-Telepítse az Azure CLI-2.12.0 vagy újabb verzióját úgy, hogy a titkosítást a felügyelt HSM-ben ügyfél által felügyelt kulcs használatára konfigurálja. További információ: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Telepítse az Azure CLI 2.12.0-s vagy újabbát, hogy a titkosítást úgy konfigurálja, hogy az ügyfél által felügyelt kulcsot használjon egy felügyelt HSM-ben. További információ: [Az Azure CLI telepítése.](/cli/azure/install-azure-cli)
 
-Az ügyfél által felügyelt kulcs verziószámának automatikus frissítéséhez hagyja ki a kulcs verzióját, ha a Storage-fiókhoz az ügyfél által felügyelt kulcsokkal konfigurálja a titkosítást. Az alábbi példában látható módon frissítse a Storage-fiók titkosítási beállításait az az [Storage Account Update](/cli/azure/storage/account#az_storage_account_update) paranccsal. Adja meg a `--encryption-key-source parameter` és a beállítását, hogy `Microsoft.Keyvault` engedélyezze az ügyfél által felügyelt kulcsokat a fiókhoz. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
+Ha automatikusan frissítenie kell egy ügyfél által felügyelt kulcs kulcsverzióját, akkor ne használja a kulcsverziót, amikor ügyfél által kezelt kulcsokkal konfigurálja a titkosítást a tárfiókhoz. Hívja [meg az az storage account update](/cli/azure/storage/account#az_storage_account_update) parancsot a tárfiók titkosítási beállításainak frissítéséhez az alábbi példában látható módon. Adja hozzá a et, és állítsa be a következőre: , hogy engedélyezze az `--encryption-key-source parameter` `Microsoft.Keyvault` ügyfél által kezelt kulcsokat a fiókhoz. Ne felejtse el lecserélni a zárójelben lévő helyőrzőket a saját értékeire.
 
 ```azurecli
 hsmurl = $(az keyvault show \
@@ -85,7 +85,7 @@ az storage account update \
     --encryption-key-vault $hsmurl
 ```
 
-Az ügyfél által felügyelt kulcs verziójának manuális frissítéséhez adja meg a kulcs verzióját a Storage-fiók titkosításának konfigurálásakor:
+Az ügyfél által felügyelt kulcs verziójának manuális frissítéséhez adja meg a kulcsverziót a tárfiók titkosításának konfigurálásakor:
 
 ```azurecli-interactive
 az storage account update
@@ -97,9 +97,9 @@ az storage account update
     --encryption-key-vault $hsmurl
 ```
 
-Amikor manuálisan frissíti a kulcs verzióját, frissítenie kell a Storage-fiók titkosítási beállításait az új verzió használatára. Első lépésként a Key Vault URI-JÁT az [az kulcstartó show](/cli/azure/keyvault#az-keyvault-show)paranccsal hívhatja meg, és a kulcs verziószámát az az [kulcstartó Key List-Versions](/cli/azure/keyvault/key#az-keyvault-key-list-versions)paranccsal hívja meg. Ezt követően az az [Storage Account Update](/cli/azure/storage/account#az-storage-account-update) paranccsal frissítse a Storage-fiók titkosítási beállításait a kulcs új verziójának használatára az előző példában látható módon.
+Amikor manuálisan frissíti a kulcsverziót, frissítenie kell a tárfiók titkosítási beállításait az új verzió használatára. Először a key vault URI-ját kell lekérdezni [az az keyvault show](/cli/azure/keyvault#az_keyvault_show)hívásával, a kulcsverzióhoz pedig az az [keyvault key list-versions hívásával.](/cli/azure/keyvault/key#az_keyvault_key_list_versions) Ezután hívja [meg az az storage account update](/cli/azure/storage/account#az_storage_account_update) parancsot a tárfiók titkosítási beállításainak a kulcs új verziójának használatára való frissítéséhez, ahogy az előző példában is látható.
 
 ## <a name="next-steps"></a>Következő lépések
 
 - [Inaktív adatok Azure Storage-titkosítása](storage-service-encryption.md)
-- [Ügyfél által felügyelt kulcsok az Azure Storage-titkosításhoz](customer-managed-keys-overview.md)
+- [Felhasználó által kezelt kulcsok az Azure Storage-titkosításhoz](customer-managed-keys-overview.md)

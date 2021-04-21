@@ -1,5 +1,5 @@
 ---
-title: Több webhely üzemeltetése a parancssori felület használatával
+title: Több webhelyet is lehet használni a CLI használatával
 titleSuffix: Azure Application Gateway
 description: Megismerheti, hogyan hozható létre több webhelyet üzemeltető alkalmazásátjáró az Azure CLI használatával.
 services: application-gateway
@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 350962aed89d04c5508e7b2c50e8a838cd5a7174
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb924ab1f8947fefc83ed35a409628a576fad4b9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566146"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772673"
 ---
-# <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Több webhelyet üzemeltető Application Gateway létrehozása az Azure CLI használatával
+# <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Több webhelyet is tartalmazó Alkalmazásátjáró létrehozása az Azure CLI használatával
 
-Az Azure CLI használatával [konfigurálhatja több webhely üzemeltetését](multiple-site-overview.md), amikor [alkalmazásátjárót](overview.md) hoz létre. Ebben a cikkben a háttérbeli címkészletet a Virtual Machines Scale sets használatával határozhatja meg. Ezután az Ön tulajdonában lévő tartományok alapján konfigurálhat figyelőket és szabályokat a webes forgalom a készletekben lévő megfelelő kiszolgálókra irányításához. Ez a cikk azt feltételezi, hogy több tartománya van, és példákat használ a *www- \. contoso.com* és a *www- \. fabrikam.com*.
+Az Azure CLI használatával [konfigurálhatja több webhely üzemeltetését](multiple-site-overview.md), amikor [alkalmazásátjárót](overview.md) hoz létre. Ebben a cikkben háttércímkészleteket fog definiálni virtuálisgép-méretezési készletek használatával. Ezután az Ön tulajdonában lévő tartományok alapján konfigurálhat figyelőket és szabályokat a webes forgalom a készletekben lévő megfelelő kiszolgálókra irányításához. Ez a cikk feltételezi, hogy Ön több tartományt is használ, és példákat használ a *www \. contoso.com* és *a www \. fabrikam.com.*
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -29,15 +29,15 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 * Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekkel
 * CNAME rekord létrehozása a tartományban
 
-:::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="Többhelyes Application Gateway":::
+:::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="Többhelyű Application Gateway":::
 
-Ha szeretné, az eljárást [Azure PowerShell](tutorial-multiple-sites-powershell.md)használatával végezheti el.
+Ha szeretné, ezt az eljárást a következővel [Azure PowerShell.](tutorial-multiple-sites-powershell.md)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - Az oktatóanyaghoz az Azure CLI 2.0.4 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+ - Ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -77,7 +77,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-Az [az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create) paranccsal létrehozhatja az alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az alkalmazásátjáró a korábban létrehozott *myAGSubnet* alhálózathoz és *myAGPublicIPAddress* IP-címhez lesz rendelve. 
+Az [az network application-gateway create](/cli/azure/network/application-gateway#az_network_application_gateway_create) paranccsal létrehozhatja az alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az alkalmazásátjáró a korábban létrehozott *myAGSubnet* alhálózathoz és *myAGPublicIPAddress* IP-címhez lesz rendelve. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -105,7 +105,7 @@ Az alkalmazásátjáró létrehozása néhány percig is eltarthat. Az alkalmaz�
 
 ### <a name="add-the-backend-pools"></a>A háttérkészletek hozzáadása
 
-Adja hozzá azokat a háttér-készleteket, amelyek szükségesek a háttér-kiszolgálók tárolásához az [az Network Application-Gateway-címkészlet Create](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create) paranccsal.
+Adja hozzá a háttérkiszolgálókhoz szükséges háttérkészleteket [az az network application-gateway address-pool create használatával](/cli/azure/network/application-gateway/address-pool#az_network_application_gateway_address-pool_create)
 ```azurecli-interactive
 az network application-gateway address-pool create \
   --gateway-name myAppGateway \
@@ -120,11 +120,11 @@ az network application-gateway address-pool create \
 
 ### <a name="add-listeners"></a>Figyelők hozzáadása
 
-Vegyen fel olyan figyelőket, amelyek szükségesek a forgalom irányításához az [az Network Application-Gateway http-Listener Create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create)paranccsal.
+Adja hozzá a forgalom útválasztásához szükséges figyelőket [az az network application-gateway http-listener create használatával.](/cli/azure/network/application-gateway/http-listener#az_network_application_gateway_http_listener_create)
 
 >[!NOTE]
-> A Application Gateway vagy a WAF v2 SKU használatával legfeljebb 5 állomásnév állítható be a figyelőhöz, és használhat helyettesítő karaktereket is az állomásnévben. További információ: [helyettesítő karakterek nevei a figyelőben](multiple-site-overview.md#wildcard-host-names-in-listener-preview) .
->Ha több állomásnevet és helyettesítő karaktert szeretne használni egy figyelőben az Azure CLI használatával, a helyett a következőt kell használnia: `--host-names` `--host-name` . A host-names használatával legfeljebb öt állomásnév adható meg szóközzel tagolt értékként. Például: `--host-names "*.contoso.com *.fabrikam.com"`
+> A Application Gateway WAF v2 termékváltozatban figyelőnként legfeljebb 5 állomásnevet konfigurálhat, és helyettesítő karaktereket is használhat az állomásnévben. További információért tekintse meg a helyettesítő [karakteres gazdagépneveket](multiple-site-overview.md#wildcard-host-names-in-listener-preview) a listenerben.
+>Ha több állomásnevet és helyettesítő karaktert is használnia kell egy listenerben az Azure CLI használatával, a helyett a következőt kell `--host-names` használnia: `--host-name` . Az állomásnevekkel legfeljebb öt állomásnevet említhet szóközt elválasztott értékekként. Például: `--host-names "*.contoso.com *.fabrikam.com"`
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -146,9 +146,9 @@ az network application-gateway http-listener create \
 
 ### <a name="add-routing-rules"></a>Útválasztási szabályok hozzáadása
 
-A szabályok feldolgozása a felsorolt sorrendben történik. A forgalmat az első olyan szabály alapján irányítja a rendszer, amely a megadott sajátosságtól függetlenül megfelel. Ha például egy adott porton egy alapszintű figyelőt használó és egy többhelyes figyelőt használó szabály is aktív, a többhelyes figyelővel rendelkező szabályt az alapszintű figyelővel rendelkező elé kell venni, hogy a többhelyes szabály a várakozásnak megfelelően működjön. 
+A szabályok a listában szereplő sorrendben vannak feldolgozva. A forgalom az első szabály használatával van irányítva, amely a konkrétságtól függetlenül megfelel. Ha például egy adott porton egy alapszintű figyelőt használó és egy többhelyes figyelőt használó szabály is aktív, a többhelyes figyelővel rendelkező szabályt az alapszintű figyelővel rendelkező elé kell venni, hogy a többhelyes szabály a várakozásnak megfelelően működjön. 
 
-Ebben a példában két új szabályt hoz létre, és törli az Application Gateway üzembe helyezése során létrehozott alapértelmezett szabályt. A szabályt az [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) paranccsal adhatja hozzá.
+Ebben a példában két új szabályt hoz létre, és törli az Application Gateway üzembe helyezésekor létrehozott alapértelmezett szabályt. A szabályt az [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az_network_application_gateway_rule_create) paranccsal adhatja hozzá.
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -225,7 +225,7 @@ done
 
 ## <a name="create-a-cname-record-in-your-domain"></a>CNAME rekord létrehozása a tartományban
 
-Az alkalmazásátjáró nyilvános IP-címmel történő létrehozása után lekérheti a DNS-címet, és a segítségével létrehozhat egy CNAME rekordot a tartományban. Az alkalmazásátjáró DNS-címét az [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) paranccsal kérheti le. Másolja a DNSSettings *fqdn* értékét, és használja a létrehozandó CNAME rekord értékeként. 
+Az alkalmazásátjáró nyilvános IP-címmel történő létrehozása után lekérheti a DNS-címet, és a segítségével létrehozhat egy CNAME rekordot a tartományban. Az alkalmazásátjáró DNS-címét az [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) paranccsal kérheti le. Másolja a DNSSettings *fqdn* értékét, és használja a létrehozandó CNAME rekord értékeként. 
 
 ```azurecli-interactive
 az network public-ip show \
@@ -235,11 +235,11 @@ az network public-ip show \
   --output tsv
 ```
 
-A-Records használata nem ajánlott, mert a VIP az Application Gateway újraindításakor változhat.
+Az A-rekordok használata nem ajánlott, mert a VIP változhat az Alkalmazásátjáró újraindításakor.
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-Adja meg a tartománya nevét a böngésző címsorában. Például:, http: \/ /www.contoso.com.
+Adja meg a tartománya nevét a böngésző címsorában. Például: http: \/ /www.contoso.com.
 
 ![Contoso webhely tesztelése az alkalmazásátjáróban](./media/tutorial-multiple-sites-cli/application-gateway-nginxtest1.png)
 

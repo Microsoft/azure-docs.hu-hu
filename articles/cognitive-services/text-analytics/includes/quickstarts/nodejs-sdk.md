@@ -1,32 +1,32 @@
 ---
-title: 'Rövid útmutató: Text Analytics v3-as ügyféloldali kódtár Node.js | Microsoft Docs'
+title: 'Rövid útmutató: Text Analytics v3-as ügyféloldali kódtár létrehozása Node.js | Microsoft Docs'
 description: Első lépések a v3 Text Analytics ügyféloldali kódtárának Node.js.
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 04/19/2021
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: 3640a03f8ac814fec2823a761e651ab386438c5c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 72ca331546d53f85ca82f33ec6a02558d91f1c1e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327404"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765058"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[3.1-es előzetes verzió](#tab/version-3-1)
 
-[v3 referenciadokumentáció](/javascript/api/overview/azure/ai-text-analytics-readme?preserve-view=true&view=azure-node-preview)  |  [v3 kódtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics)  |  [v3-as csomag (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics)  |  [v3-minták](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
+[v3 referenciadokumentáció](/javascript/api/overview/azure/ai-text-analytics-readme?preserve-view=true&view=azure-node-preview)  |  [v3 kódtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics)  |  [v3 csomag (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics)  |  [v3-minták](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
 
 
 # <a name="version-30"></a>[3.0-s verzió](#tab/version-3)
 
-[a v3 referenciadokumentációja](/javascript/api/overview/azure/ai-text-analytics-readme)  |  [v3 kódtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics)  |  [v3-as csomag (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics)  |  [v3-minták](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
+[v3 referenciadokumentáció](/javascript/api/overview/azure/ai-text-analytics-readme)  |  [v3 kódtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics)  |  [v3 csomag (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics)  |  [v3-minták](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
 
 
 ---
@@ -34,9 +34,9 @@ ms.locfileid: "107327404"
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés [– Hozzon létre egyet ingyenesen](https://azure.microsoft.com/free/cognitive-services)
-* Az alkalmazás aktuális [Node.js. ](https://nodejs.org/)
-* Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy Text Analytics-erőforrást, Text Analytics erőforrást a Azure Portal a kulcs és a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" "  target="_blank"> végpont </a> lekért létrehozásához. Az üzembe helyezés után kattintson az **Erőforráshoz való ugrás elemre.**
-    * Szüksége lesz a létrehozott erőforrás kulcsának és végpontjának létrehozására, hogy az alkalmazást a Text Analytics API-hoz. A kulcsot és a végpontot a rövid útmutató későbbi, alábbi kódába fogja beilleszteni.
+* Az aktuális verziója [Node.js. ](https://nodejs.org/)
+* Ha már rendelkezik Azure-előfizetéssel, hozzon létre egy Text Analytics-erőforrást, Text Analytics erőforrást a Azure Portal a kulcs és a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" "  target="_blank"> végpont </a> lekért létrehozásához. Az üzembe helyezés után kattintson az **Erőforráshoz való ugrás gombra.**
+    * A létrehozott erőforrás kulcsának és végpontjának szüksége lesz az alkalmazás a Text Analytics API-hoz való csatlakoztatásához. A kulcsot és a végpontot a rövid útmutató későbbi, alábbi kódába fogja beilleszteni.
     * Az ingyenes tarifacsomag ( ) használatával kipróbálhatja a szolgáltatást, és később frissíthet fizetős szolgáltatási szintre éles `F0` környezetben.
 * Az Elemzés funkció használatához szüksége lesz egy Text Analytics standard (S) tarifacsomaggal.
 
@@ -44,7 +44,7 @@ ms.locfileid: "107327404"
 
 ### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
-Egy konzolablakban (például cmd, PowerShell vagy Bash) hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá. 
+Egy konzolablakban (például cmd, PowerShell vagy Bash) hozzon létre egy új könyvtárat az alkalmazáshoz, és keresse meg. 
 
 ```console
 mkdir myapp 
@@ -52,7 +52,7 @@ mkdir myapp
 cd myapp
 ```
 
-Futtassa `npm init` az parancsot egy node-alkalmazás fájllal való `package.json` létrehozásához. 
+Az parancs `npm init` futtatásával hozzon létre egy node-alkalmazást egy `package.json` fájllal. 
 
 ```console
 npm init
@@ -128,7 +128,7 @@ A válaszobjektum egy lista, amely az egyes dokumentumok elemzési adatait tarta
 * [Hangulatelemzés](#sentiment-analysis) 
 * [Véleménybányászat](#opinion-mining)
 * [Nyelvfelismerés](#language-detection)
-* [Nevestű entitások felismerése](#named-entity-recognition-ner)
+* [Elnevezett entitások felismerése](#named-entity-recognition-ner)
 * [Entitás-összekapcsolás](#entity-linking)
 * Személyazonosításra alkalmas adatok
 * [Kulcskifejezések kinyerése](#key-phrase-extraction)
@@ -203,7 +203,7 @@ ID: 0
 
 ### <a name="opinion-mining"></a>Véleménybányászat
 
-A véleménybányászattal végzett hangulatelemzéshez hozzon létre egy sztringtömböt, amely tartalmazza az elemezni kívánt dokumentumot. Hívja meg az ügyfél metódusát `analyzeSentiment()` a kapcsolójelölő hozzáadásával, `includeOpinionMining: true` és szerezze be a visszaadott `SentimentBatchResult` objektumot. Iteráljon végig az eredmények listáján, és nyomtassa ki az egyes dokumentumok azonosítóját, dokumentumszintű hangulatát megbízhatósági pontszámokkal. Az eredmények nem csak a fenti mondatszintű érzelmeket, hanem az aspektus- és véleményszintű érzelmeket is tartalmaznak.
+A véleménybányászattal végzett hangulatelemzéshez hozzon létre egy sztringtömböt, amely tartalmazza az elemezni kívánt dokumentumot. Kapcsolójelölő hozzáadásával hívja meg az `analyzeSentiment()` ügyfél metódusát, `includeOpinionMining: true` és szerezze be a visszaadott `SentimentBatchResult` objektumot. Iteráljon végig az eredmények listáján, és nyomtassa ki az egyes dokumentumok azonosítóját, dokumentumszintű hangulatát megbízhatósági pontszámokkal. Az eredmények nem csak mondatszintű érzelmeket tartalmaznak, mint fent, hanem az aspektus- és véleményszintű érzelmeket is.
 
 ```javascript
 async function sentimentAnalysisWithOpinionMining(client){
@@ -710,8 +710,7 @@ ID: 0
 
 # <a name="version-31-preview"></a>[3.1-es előzetes verzió](#tab/version-3-1)
 
-> [!CAUTION]
-> Az Elemzés műveletekhez standard (S) tarifacsomaggal Text Analytics erőforrást kell használnia.  
+[!INCLUDE [Analyze Batch Action pricing](../analyze-operation-pricing-caution.md)]
 
 Hozzon létre egy új függvényt `analyze_example()` néven, amely a függvényt `beginAnalyze()` hívja meg. Az eredmény egy hosszú ideig futó művelet lesz, amelynek eredményeit a rendszer lekérdezi.
 
@@ -768,7 +767,7 @@ The analyze batch actions operation results will expire on Sat Mar 13 2021 09:53
         - Entity Paul Allen of type Person
 ```
 
-Az Elemzés művelettel piI-adatokat is észlelhet, felismerheti a csatolt entitásokat és a kulcskifejezések kinyerése műveleteket. Tekintse meg az Analyze samples for JavaScript and TypeScript (Minták elemzése [JavaScripthez](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/v5/javascript) és [TypeScripthez) a](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/v5/typescript/src) GitHubon.
+Az Elemzés művelettel piI-adatok észlelésére, csatolt entitások felismerésére és kulcskifejezések kinyerésére is használhatja. Lásd: Minták elemzése [JavaScripthez](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/v5/javascript) és [TypeScripthez](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/v5/typescript/src) a GitHubon.
 
 # <a name="version-30"></a>[3.0-s verzió](#tab/version-3)
 
@@ -778,7 +777,7 @@ Ez a funkció a 3.0-s verzióban nem érhető el.
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást a `node` gyorsindítási fájlban található paranccsal.
+Futtassa az alkalmazást az `node` paranccsal a gyorsindítási fájlban.
 
 ```console
 node index.js

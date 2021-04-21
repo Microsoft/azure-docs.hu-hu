@@ -1,53 +1,53 @@
 ---
-title: 'Oktatóanyag: felügyelt identitás Key Vault kapcsolódáshoz'
-description: Felügyelt identitás beállítása Key Vault Azure Spring Cloud-alkalmazáshoz való kapcsolódásához
+title: 'Oktatóanyag: Felügyelt identitás a Key Vault'
+description: Felügyelt identitás beállítása egy Key Vault alkalmazáshoz való Azure Spring Cloud való csatlakozáshoz
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: bbfafeaf9ce24911bb4893748d456d22e02fc411
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 870a04af244d18826e1041316895f746e27870eb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104879175"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786584"
 ---
-# <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Oktatóanyag: felügyelt identitás használata a Key Vault Azure Spring Cloud-alkalmazáshoz való összekapcsolásához
+# <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Oktatóanyag: Felügyelt identitás használata Key Vault egy Azure Spring Cloud alkalmazáshoz
 
 **Ez a cikk a következőkre vonatkozik:** ✔️ Java
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre felügyelt identitást egy Azure Spring Cloud-alkalmazáshoz, és hogyan használhatja azt Azure Key Vaulthoz való hozzáféréshez.
+Ez a cikk bemutatja, hogyan hozhat létre felügyelt identitást egy Azure Spring Cloud alkalmazáshoz, és hogyan használhatja azt a Azure Key Vault.
 
-Azure Key Vault a tokenekhez, jelszavakhoz, tanúsítványokhoz, API-kulcsokhoz és egyéb titkos kódokhoz való hozzáférés biztonságos tárolásához és szigorú szabályozásához használható. Felügyelt identitást Azure Active Directory (HRE) hozhat létre, és bármely olyan szolgáltatáshoz hitelesítheti magát, amely támogatja a HRE hitelesítést, beleértve a Key Vault is, anélkül, hogy meg kellene adni a hitelesítő adatokat a kódban.
+Azure Key Vault segítségével biztonságosan tárolhatja és szorosan vezérelheti az alkalmazás jogkivonatait, jelszavait, tanúsítványait, API-kulcsait és egyéb titkos kulcsait. Létrehozhat egy felügyelt identitást a Azure Active Directory (AAD) szolgáltatásban, és a hitelesítést bármely olyan szolgáltatásban, amely támogatja az AAD-hitelesítést, beleértve az Key Vault-t is, anélkül, hogy hitelesítő adatokat jeleníten meg a kódban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Feliratkozás Azure-előfizetésre](https://azure.microsoft.com/free/)
-* [Az Azure CLI 2.0.67 vagy újabb verziójának telepítése](/cli/azure/install-azure-cli)
-* [A Maven 3,0-es vagy újabb verziójának telepítése](https://maven.apache.org/download.cgi)
+* [Regisztráció Azure-előfizetésre](https://azure.microsoft.com/free/)
+* [Az Azure CLI 2.0.67-es vagy újabb verziójának telepítése](/cli/azure/install-azure-cli)
+* [A Maven 3.0-s vagy azt feletti telepítése](https://maven.apache.org/download.cgi)
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
-Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot, amely a Key Vault és a Spring Cloud karaktert is tartalmazza az az [Group Create](/cli/azure/group#az-group-create): paranccsal.
+Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot, amely tartalmazza a Key Vault és Spring Cloud [az az group create paranccsal:](/cli/azure/group#az_group_create)
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" -l "EastUS"
 ```
 
-## <a name="set-up-your-key-vault"></a>A Key Vault beállítása
-Key Vault létrehozásához használja a parancsot az a Key [Vault Create](/cli/azure/keyvault#az-keyvault-create):
+## <a name="set-up-your-key-vault"></a>A Key Vault
+Hozzon létre egy Key Vault az [az keyvault create paranccsal:](/cli/azure/keyvault#az_keyvault_create)
 
 > [!Important]
-> Minden Key Vault egyedi névvel kell rendelkeznie. A következő példákban cserélje le <a-kulcstartó-Name> a Key Vault nevére.
+> Minden Key Vault egyedi névvel kell rendelkezik. Cserélje <your-keyvault-name> a saját Key Vault a következő példákban.
 
 ```azurecli-interactive
 az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 ```
 
-Jegyezze fel a visszaadott értéket `vaultUri` , amely a "https://<Your-kulcstartó-name>. Vault.Azure.net" formátumban jelenik meg. Ezt a következő lépésben fogjuk használni.
+Jegyezze fel a visszaadott adatokat, amelynek formátuma `vaultUri` "https://<your-keyvault-name>.vault.azure.net". Ezt a következő lépésben fogjuk használni.
 
-Most már elhelyezheti a titkos kulcsot a Key Vault a parancs az kulcstartó [Secret set](/cli/azure/keyvault/secret#az-keyvault-secret-set):
+Most már az [az keyvault secret](/cli/azure/keyvault/secret#az_keyvault_secret_set)set paranccsal Key Vault titkos helyére a titkos kulcsot:
 
 ```azurecli-interactive
 az keyvault secret set --vault-name "<your-keyvault-name>" \
@@ -55,35 +55,35 @@ az keyvault secret set --vault-name "<your-keyvault-name>" \
     --value "jdbc:sqlserver://SERVER.database.windows.net:1433;database=DATABASE;"
 ```
 
-## <a name="create-azure-spring-cloud-service-and-app"></a>Azure Spring Cloud-szolgáltatás és-alkalmazás létrehozása
-A megfelelő bővítmény telepítését követően hozzon létre egy Azure Spring Cloud-példányt az Azure CLI-paranccsal `az spring-cloud create` . 
+## <a name="create-azure-spring-cloud-service-and-app"></a>Új Azure Spring Cloud és alkalmazás létrehozása
+A megfelelő bővítmény telepítése után hozzon létre egy Azure Spring Cloud-példányt az Azure CLI-paranccsal. `az spring-cloud create` 
 
 ```azurecli-interactive
 az extension add --name spring-cloud
 az spring-cloud create -n "myspringcloud" -g "myResourceGroup"
 ```
-Az alábbi példa egy nevű alkalmazást hoz létre `springapp` egy rendszerhez rendelt felügyelt identitással, a paraméter által kért módon `--assign-identity` .
+Az alábbi példa egy nevű alkalmazást hoz létre egy rendszer által hozzárendelt felügyelt `springapp` identitással, a paraméter által `--assign-identity` kértek szerint.
 
 ```azurecli
 az spring-cloud app create -n "springapp" -s "myspringcloud" -g "myResourceGroup" --assign-endpoint true --assign-identity
 export SERVICE_IDENTITY=$(az spring-cloud app show --name "springapp" -s "myspringcloud" -g "myResourceGroup" | jq -r '.identity.principalId')
 ```
 
-Jegyezze fel a visszaadott értéket `url` , amelynek formátuma a következő lesz: `https://<your-app-name>.azuremicroservices.io` . Ezt a következő lépésben fogjuk használni.
+Jegyezze fel a visszaadott `url` `https://<your-app-name>.azuremicroservices.io` formátumot. Ezt a következő lépésben fogjuk használni.
 
 
-## <a name="grant-your-app-access-to-key-vault"></a>Az alkalmazás hozzáférésének biztosítása Key Vault
-A használatával `az keyvault set-policy` megfelelő hozzáférést biztosíthat Key Vault az alkalmazáshoz.
+## <a name="grant-your-app-access-to-key-vault"></a>Hozzáférés megadása az alkalmazásnak a Key Vault
+A `az keyvault set-policy` használatával biztosítsa a megfelelő Key Vault az alkalmazás számára.
 ```azurecli
 az keyvault set-policy --name "<your-keyvault-name>" --object-id ${SERVICE_IDENTITY} --secret-permissions set get list
 ```
 > [!NOTE]
-> A használatával `az keyvault delete-policy --name "<your-keyvault-name>" --object-id ${SERVICE_IDENTITY}` távolíthatja el az alkalmazáshoz való hozzáférést, miután a rendszerhez rendelt felügyelt identitás le van tiltva.
+> A használatával eltávolíthatja az alkalmazáshoz való hozzáférést, miután a `az keyvault delete-policy --name "<your-keyvault-name>" --object-id ${SERVICE_IDENTITY}` rendszer által hozzárendelt felügyelt identitás le van tiltva.
 
-## <a name="build-a-sample-spring-boot-app-with-spring-boot-starter"></a>Minta Spring boot-alkalmazás létrehozása Spring boot Starter-vel
-Ez az alkalmazás hozzáférhet a Azure Key Vault titkainak beszerzéséhez. Használja az alapszintű alkalmazást: [Azure Key Vault Secrets Spring boot Starter](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets).  Azure Key Vault a Spring **PropertySource**-példányként lesz hozzáadva.  A Azure Key Vaultban tárolt titkos kulcsok kényelmesen elérhetők és felhasználhatók, mint például a fájlok tulajdonságai. 
+## <a name="build-a-sample-spring-boot-app-with-spring-boot-starter"></a>Mintaalkalmazás Spring Boot a Spring Boot Starter használatával
+Ez az alkalmazás hozzáférhet a titkos kulcsok lekért Azure Key Vault. Használja a kezdőalkalmazást: [Azure Key Vault Secrets Spring Boot Starter használatával.](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets)  Azure Key Vault a Spring PropertySource egy **példányaként lesz hozzáadva.**  A tárolóban Azure Key Vault titkos kulcsok kényelmesen elérhetők és használhatók, mint bármely külső konfigurációs tulajdonság, például a fájlok tulajdonságai. 
 
-1. Start.spring.io létrehozása a Azure Key Vault Spring Starter-vel. 
+1. Hozzon létre egy mintaprojektet a start.spring.io a Spring Starter Azure Key Vault. 
     ```azurecli
     curl https://start.spring.io/starter.tgz -d dependencies=web,azure-keyvault-secrets -d baseDir=springapp -d bootVersion=2.3.1.RELEASE -d javaVersion=1.8 | tar -xzvf -
     ```
@@ -95,16 +95,16 @@ Ez az alkalmazás hozzáférhet a Azure Key Vault titkainak beszerzéséhez. Has
     vim src/main/resources/application.properties
     ```
 
-    Az Azure Spring Cloud apps felügyelt identitásának használatához adja hozzá a tulajdonságokat az alábbi tartalommal a src/Main/Resources/Application. properties tulajdonsághoz.
+    Ha felügyelt identitást szeretne használni Azure Spring Cloud alkalmazásokhoz, adja hozzá az alábbi tartalommal a következő tulajdonságokat az src/main/resources/application.properties fájlhoz.
 
     ```
     azure.keyvault.enabled=true
     azure.keyvault.uri=https://<your-keyvault-name>.vault.azure.net
     ```
     > [!Note] 
-    > A Key Vault URL-címét a `application.properties` fentiek szerint kell hozzáadnia. Ellenkező esetben előfordulhat, hogy a Key Vault URL-címe nem lesz rögzítve a futtatókörnyezetben.
+    > Hozzá kell adni a key vault URL-címét a `application.properties` fájlban a fentiek szerint. Ellenkező esetben előfordulhat, hogy a rendszer nem rögzíti a Key Vault URL-címét a futtatás során.
 
-3. Adja hozzá a következő kódot a src/Main/Java/com/example/demó/DemoApplication. Java-hoz. Lekéri a Key Vault a kapcsolatok sztringjét. 
+3. Adja hozzá a példakódot az src/main/java/com/example/demo/DemoApplication.java webhelyhez. Lekéri a kapcsolati sztringet a Key Vault. 
 
     ```Java
     package com.example.demo;
@@ -138,7 +138,7 @@ Ez az alkalmazás hozzáférhet a Azure Key Vault titkainak beszerzéséhez. Has
       }
     ```
 
-    Ha megnyit pom.xml, akkor a függőségét fogja látni `azure-keyvault-secrets-spring-boot-starter` . Adja hozzá ezt a függőséget a projekthez pom.xml. 
+    Ha megnyitja a pom.xml, látni fogja a `azure-keyvault-secrets-spring-boot-starter` függőségét. Adja hozzá ezt a függőséget a projekthez a pom.xml. 
 
     ```xml
     <dependency>
@@ -147,33 +147,33 @@ Ez az alkalmazás hozzáférhet a Azure Key Vault titkainak beszerzéséhez. Has
     </dependency>
     ```
 
-4. A minta alkalmazás becsomagolása. 
+4. Csomagolja be a mintaalkalmazást. 
 
     ```azurecli
     mvn clean package
     ```
 
-5. Most már üzembe helyezheti az alkalmazást az Azure-ban az Azure CLI paranccsal  `az spring-cloud app deploy` . 
+5. Most már üzembe helyezheti az alkalmazást az Azure-ban az Azure CLI-paranccsal. `az spring-cloud app deploy` 
 
     ```azurecli
     az spring-cloud app deploy -n "springapp" -s "myspringcloud" -g "myResourceGroup" --jar-path target/demo-0.0.1-SNAPSHOT.jar
     ```
 
-6.  Az alkalmazás teszteléséhez nyissa meg a nyilvános végpontot vagy a tesztelési végpontot.
+6.  Az alkalmazás teszteléséhez használja a nyilvános végpontot vagy a tesztvégpontot.
 
     ```azurecli
     curl https://myspringcloud-springapp.azuremicroservices.io/get
     ```
 
-    A következő üzenet jelenik meg: "sikerült a titkos connectionString érték beolvasása Key Vault https://<saját-kulcstartó-neve>. vault.azure.net/: JDBC: SQLServer://SERVER.database.windows.net: 1433; adatbázis = adatbázis;".
+    A következő üzenet jelenik meg: "Successfully got the value of secret connectionString from Key Vault https://<your-keyvault-name>.vault.azure.net/: jdbc:sqlserver://SERVER.database.windows.net:1433;database=DATABASE;".
 
-## <a name="build-sample-spring-boot-app-with-java-sdk"></a>Minta tavaszi rendszerindítási alkalmazás létrehozása Java SDK-val
+## <a name="build-sample-spring-boot-app-with-java-sdk"></a>Mintaalkalmazás Spring Boot Java SDK-val
 
-Ez a minta beállíthatók és beszerezhetik a titkokat Azure Key Vaultból. A Java-hoz készült [Azure Key Vault titkos ügyféloldali kódtár](/java/api/overview/azure/security-keyvault-secrets-readme) Azure Active Directory jogkivonat-hitelesítési támogatást biztosít az Azure SDK-ban. Olyan **TokenCredential** -implementációkat biztosít, amelyek segítségével az Azure SDK-ügyfelek az HRE-tokenek hitelesítésének támogatásához használhatók.
+Ez a minta beállít és le tud szerezni titkos Azure Key Vault. A [Azure Key Vault Secret Java-ügyféloldali kódtár](/java/api/overview/azure/security-keyvault-secrets-readme) Azure Active Directory jogkivonat-hitelesítés támogatását az Azure SDK-ban. **TokenCredential** implementációkat biztosít, amelyek segítségével Azure SDK-ügyfeleket lehet összeépíteni az AAD-jogkivonatok hitelesítésének támogatásához.
 
-A Azure Key Vault titkos ügyféloldali kódtár lehetővé teszi a tokenekhez, jelszavakhoz, API-kulcsokhoz és egyéb titkokhoz való hozzáférés biztonságos tárolását és szabályozását. A függvénytár a titkok és a hozzájuk tartozó verziók létrehozására, lekérésére, frissítésére, törlésére, törlésére, biztonsági mentésére, visszatöltésére és listázására szolgáló műveleteket biztosít.
+A Azure Key Vault Titkos kódtár lehetővé teszi a jogkivonatok, jelszavak, API-kulcsok és egyéb titkos kulcsok biztonságos tárolására és szabályozására. A kódtár a titkos kulcsok és verziók létrehozására, lekérésére, frissítésére, törlésére, végleges törlésére, biztonsági mentésére, visszaállítására és listára való műveleteit kínálja.
 
-1. Egy minta projekt klónozása. 
+1. Klónoz egy mintaprojektet. 
 
     ```azurecli
     git clone https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples.git
@@ -186,52 +186,52 @@ A Azure Key Vault titkos ügyféloldali kódtár lehetővé teszi a tokenekhez, 
     vim src/main/resources/application.properties
     ```
 
-    Az Azure Spring Cloud apps felügyelt identitásának használatához adja hozzá a tulajdonságokat a következő tartalommal a *src/Main/Resources/Application. properties* fájlhoz.
+    Ha felügyelt identitást szeretne használni Azure Spring Cloud alkalmazásokhoz, adja hozzá a következő tartalommal a tulajdonságokat az *src/main/resources/application.properties fájlhoz.*
 
     ```
     azure.keyvault.enabled=true
     azure.keyvault.uri=https://<your-keyvault-name>.vault.azure.net
     ```
 
-3. Vegyen fel [ManagedIdentityCredentialBuilder](/java/api/com.azure.identity.managedidentitycredentialbuilder) , hogy Azure Active Directory és [SecretClientBuilder](/java/api/com.azure.security.keyvault.secrets.secretclientbuilder) jogkivonatot szerezzen be, vagy beolvassa a titkokat a kódban Key Vault.
+3. Adja [meg a ManagedIdentityCredentialBuildert,](/java/api/com.azure.identity.managedidentitycredentialbuilder) hogy lekérte a Azure Active Directory és a [SecretClientBuilder](/java/api/com.azure.security.keyvault.secrets.secretclientbuilder) jogkivonatát, és titkos kódokat állítson be Key Vault kódból.
 
-    Szerezze be a példát a klónozott minta projekt [MainController. Java](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/blob/master/managed-identity-keyvault/src/main/java/com/microsoft/azure/MainController.java#L28) -ból.
+    A klónozott mintaprojekt [MainController.java-beli](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/blob/master/managed-identity-keyvault/src/main/java/com/microsoft/azure/MainController.java#L28) példáját.
 
-    `azure-identity`A és a `azure-security-keyvault-secrets` pom.xml függőségét is tartalmazza. Példa a klónozott minta projekt [pom.xml](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/blob/master/managed-identity-keyvault/pom.xml#L21) . 
+    A és `azure-identity` `azure-security-keyvault-secrets` a is függőségként szerepel a pom.xml. A példa le [pom.xml](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/blob/master/managed-identity-keyvault/pom.xml#L21) a klónozott mintaprojektből. 
 
-4. A minta alkalmazás becsomagolása. 
+4. Csomagolja be a mintaalkalmazást. 
 
     ```azurecli
     mvn clean package
     ```
 
-5. Most telepítse az alkalmazást az Azure-ba az Azure CLI paranccsal  `az spring-cloud app deploy` . 
+5. Most telepítse az alkalmazást az Azure-ban az Azure CLI-paranccsal. `az spring-cloud app deploy` 
 
     ```azurecli
     az spring-cloud app deploy -n "springapp" -s "myspringcloud" -g "myResourceGroup" --jar-path target/asc-managed-identity-keyvault-sample-0.1.0.jar
     ```
 
-6. Az alkalmazás teszteléséhez nyissa meg a nyilvános végpontot vagy a tesztelési végpontot. 
+6. Az alkalmazás teszteléséhez használja a nyilvános végpontot vagy a tesztvégpontot. 
 
-    Először szerezze be a Azure Key Vaultban beállított titok értékét. 
+    Először szerezze be a titkos secret értékét, amit a Azure Key Vault. 
     ```azurecli
     curl https://myspringcloud-springapp.azuremicroservices.io/secrets/connectionString
     ```
 
-    A következő üzenet jelenik meg: "sikerült a titkos connectionString érték beolvasása Key Vault https://<saját-kulcstartó-neve>. vault.azure.net/: JDBC: SQLServer://SERVER.database.windows.net: 1433; adatbázis = adatbázis;".
+    A következő üzenet jelenik meg: "Successfully got the value of secret connectionString from Key Vault https://<your-keyvault-name>.vault.azure.net/: jdbc:sqlserver://SERVER.database.windows.net:1433;database=DATABASE;".
 
-    Most hozzon létre egy titkos kulcsot, majd kérje le azt a Java SDK használatával. 
+    Most hozzon létre egy titkos adatokat, majd olvassa be a Java SDK-val. 
     ```azurecli
     curl -X PUT https://myspringcloud-springapp.azuremicroservices.io/secrets/test?value=success
 
     curl https://myspringcloud-springapp.azuremicroservices.io/secrets/test
     ```
 
-    A következő üzenet jelenik meg: "sikerült a titkos teszt értéke Key Vault https://<a-kulcstartó-neve>. vault.azure.net: sikeres". 
+    A következő üzenet jelenik meg: "Successfully got the value of secret test from Key Vault https://<your-keyvault-name>.vault.azure.net: success". 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [A Storage-Blobok elérése felügyelt identitással az Azure Spring Cloud-ban](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/managed-identity-storage-blob)
-* [A rendszerhez rendelt felügyelt identitás engedélyezése az Azure Spring Cloud Application szolgáltatáshoz](./spring-cloud-howto-enable-system-assigned-managed-identity.md)
-* [További információ az Azure-erőforrások felügyelt identitásáról](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
-* [Az Azure Spring Cloud hitelesítése Key Vaultekkel a GitHub-műveletekben](./spring-cloud-github-actions-key-vault.md)
+* [Storage-blob elérése felügyelt identitással a Azure Spring Cloud](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/managed-identity-storage-blob)
+* [Rendszer által hozzárendelt felügyelt identitás engedélyezése egy Azure Spring Cloud számára](./spring-cloud-howto-enable-system-assigned-managed-identity.md)
+* [További információ az Azure-erőforrások felügyelt identitási szolgáltatásról](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
+* [Hitelesítés Azure Spring Cloud Key Vault GitHub Actions](./spring-cloud-github-actions-key-vault.md)

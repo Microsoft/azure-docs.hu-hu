@@ -1,41 +1,41 @@
 ---
-title: HTTP – HTTPS-átirányítás a parancssori felület használatával
+title: HTTP–HTTPS átirányítás a CLI használatával
 titleSuffix: Azure Application Gateway
-description: Megtudhatja, hogyan hozhat létre HTTP-alapú HTTPS-átirányítást, és hogyan adhat hozzá tanúsítványokat a TLS-lezáráshoz az Azure CLI használatával.
+description: Megtudhatja, hogyan hozhat létre HTTP–HTTPS átirányítást, és hogyan adhat hozzá tanúsítványt a TLS-megszakításhoz az Azure CLI használatával.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 0d56a1c46f251307755416ef44991ac6f809f330
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e66eca305433a89496f72aac667512efd418a369
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566741"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784766"
 ---
-# <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Application Gateway létrehozása HTTP-vel HTTPS-átirányításhoz az Azure CLI használatával
+# <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Alkalmazásátjáró létrehozása HTTP–HTTPS átirányítással az Azure CLI használatával
 
-Az Azure CLI-vel létrehozhat egy, a TLS/SSL-lezáráshoz szükséges tanúsítvánnyal rendelkező [Application Gateway](overview.md) -t. Az útválasztási szabályok a HTTP-forgalom átirányítására szolgálnak az Application Gateway HTTPS-portjára. Ebben a példában létrehozunk egy virtuálisgép- [méretezési készletet](../virtual-machine-scale-sets/overview.md) is az Application Gateway két virtuálisgép-példányát tartalmazó, a backend-készlethez.
+Az Azure CLI használatával létrehozhat egy [Application Gatewayt](overview.md) egy tanúsítvánnyal a TLS/SSL megszüntetéséhez. Az útválasztási szabályok a HTTP-forgalmat az alkalmazásátjáró HTTPS-portjára irányítják át. Ebben a példában egy [](../virtual-machine-scale-sets/overview.md) virtuálisgép-méretezési készletet is létrehoz az alkalmazásátjáró háttérkészlete számára, amely két virtuálisgép-példányt tartalmaz.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 * Önaláírt tanúsítvány létrehozása
 * Hálózat beállítása
 * Alkalmazásátjáró létrehozása a tanúsítvánnyal
-* Figyelő és átirányítási szabály hozzáadása
+* Figyelési és átirányítási szabály hozzáadása
 * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - Az oktatóanyaghoz az Azure CLI 2.0.4 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+ - Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 
-Éles használatra a megbízható szolgáltató által aláírt érvényes tanúsítványt kell importálnia. Ebben az oktatóanyagban egy önaláírt tanúsítványt és egy PFX-fájlt hoz létre az openssl paranccsal.
+Éles környezetben importálni kell egy megbízható szolgáltató által aláírt érvényes tanúsítványt. Ebben az oktatóanyagban egy önaláírt tanúsítványt és egy PFX-fájlt hoz létre az openssl paranccsal.
 
 ```console
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
@@ -83,7 +83,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-Az [az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create) paranccsal létrehozhatja a *myAppGateway* nevű alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. 
+Az [az network application-gateway create](/cli/azure/network/application-gateway#az_network_application_gateway_create) paranccsal létrehozhatja a *myAppGateway* nevű alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. 
 
 Az alkalmazásátjáró a korábban létrehozott *myAGSubnet* alhálózathoz és *myAGPublicIPAddress* IP-címhez lesz rendelve. Ebben a példában társítja a létrehozott tanúsítványt és annak jelszavát az alkalmazásátjáró létrehozásakor. 
 
@@ -114,11 +114,11 @@ az network application-gateway create \
 - *appGatewayFrontendIP* – Hozzárendeli a *myAGPublicIPAddress* IP-címet az *appGatewayHttpListener* figyelőhöz.
 - *rule1* – Az *appGatewayHttpListener* elemmel társított alapértelmezett útválasztási szabály.
 
-## <a name="add-a-listener-and-redirection-rule"></a>Figyelő és átirányítási szabály hozzáadása
+## <a name="add-a-listener-and-redirection-rule"></a>Figyelési és átirányítási szabály hozzáadása
 
-### <a name="add-the-http-port"></a>A HTTP-Port hozzáadása
+### <a name="add-the-http-port"></a>A HTTP-port hozzáadása
 
-Az az [Network Application-Gateway frontend-port Create](/cli/azure/network/application-gateway/frontend-port#az-network-application-gateway-frontend-port-create) paranccsal adhatja hozzá a http-portot az Application gatewayhez.
+Az [az network application-gateway frontend-port create használatával](/cli/azure/network/application-gateway/frontend-port#az_network-application_gateway_frontend_port_create) hozzáadhatja a HTTP-portot az alkalmazásátjáróhoz.
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -128,9 +128,9 @@ az network application-gateway frontend-port create \
   --name httpPort
 ```
 
-### <a name="add-the-http-listener"></a>A HTTP-figyelő hozzáadása
+### <a name="add-the-http-listener"></a>A HTTP- figyelő hozzáadása
 
-Az [az Network Application-Gateway http-Listener Create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) paranccsal adhatja hozzá a *myListener* nevű figyelőt az Application gatewayhez.
+Az [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az_network_application_gateway_http_listener_create) használatával hozzáadhatja a *myListener* nevű listenert az alkalmazásátjáróhoz.
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -141,9 +141,9 @@ az network application-gateway http-listener create \
   --gateway-name myAppGateway
 ```
 
-### <a name="add-the-redirection-configuration"></a>Az átirányítás konfigurációjának hozzáadása
+### <a name="add-the-redirection-configuration"></a>Az átirányítási konfiguráció hozzáadása
 
-Adja hozzá a HTTP-t a HTTPS-átirányítás konfigurációját az Application gatewayhez az [az Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create)paranccsal.
+Adja hozzá a HTTP–HTTPS átirányítási konfigurációt az alkalmazásátjáróhoz [az az network application-gateway redirect-config create használatával.](/cli/azure/network/application-gateway/redirect-config#az_network_application_gateway_redirect_config_create)
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -156,9 +156,9 @@ az network application-gateway redirect-config create \
   --include-query-string true
 ```
 
-### <a name="add-the-routing-rule"></a>Útválasztási szabály hozzáadása
+### <a name="add-the-routing-rule"></a>Az útválasztási szabály hozzáadása
 
-Adja hozzá az *Rule2* nevű útválasztási szabályt az átirányítási konfigurációhoz az Application gatewayhez az [az Network Application-Gateway Rule Create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create)paranccsal.
+Adja hozzá a *rule2 nevű* útválasztási szabályt az átirányítási konfigurációval az [alkalmazásátjáróhoz az az network application-gateway rule create használatával.](/cli/azure/network/application-gateway/rule#az_network_application_gateway_rule_create)
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -172,7 +172,7 @@ az network application-gateway rule create \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport létrehozása
 
-Ebben a példában egy *myvmss* nevű virtuálisgép-méretezési készletet hoz létre, amely kiszolgálókat biztosít a backend-készlet számára az Application gatewayben. A méretezési csoportban lévő virtuális gépek a *myBackendSubnet* alhálózathoz és az *appGatewayBackendPool* készlethez vannak rendelve. A méretezési csoportot az [az vmss create](/cli/azure/vmss#az-vmss-create) paranccsal hozhatja létre.
+Ebben a példában egy *myvmss* nevű virtuálisgép-méretezési készletet hoz létre, amely kiszolgálókat biztosít a háttérkészlet számára az alkalmazásátjáróban. A méretezési csoportban lévő virtuális gépek a *myBackendSubnet* alhálózathoz és az *appGatewayBackendPool* készlethez vannak rendelve. A méretezési csoportot az [az vmss create](/cli/azure/vmss#az_vmss_create) paranccsal hozhatja létre.
 
 ```azurecli-interactive
 az vmss create \
@@ -223,4 +223,4 @@ Ha önaláírt tanúsítványt használt, a biztonsági figyelmeztetés elfogad�
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Application Gateway létrehozása belső átirányítás használatával az Azure CLI-vel](redirect-internal-site-cli.md)
+- [Application Gateway létrehozása belső átirányítással az Azure CLI használatával](redirect-internal-site-cli.md)

@@ -1,19 +1,19 @@
 ---
-title: Function-alkalmazás létrehozása GitHub-üzembe helyezéssel – Azure CLI
+title: Függvényalkalmazás létrehozása a GitHub üzemelő példányával – Azure CLI
 description: Egy függvényalkalmazás létrehozása és függvénykód üzembe helyezése egy GitHub-adattárból az Azure Functions használatával.
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 219e993ad7132c90de6db680facc9b8f815947cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8abbe30067a488055e59de86372482d99cadaae3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934389"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786260"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>GitHubról üzembe helyezett függvényalkalmazás létrehozása az Azure-ban
 
-Ez a Azure Functions minta szkript létrehoz egy Function alkalmazást a használati [terv](../consumption-plan.md)használatával, valamint a kapcsolódó erőforrásait. Ezután egy GitHub-adattárból konfigurálja a függvénykódot folyamatos üzembe helyezéshez. 
+Ez Azure Functions szkript egy függvényalkalmazást hoz [](../consumption-plan.md)létre a használat alapján csomaggal és a kapcsolódó erőforrásokkal. Ezután egy GitHub-adattárból konfigurálja a függvénykódot folyamatos üzembe helyezéshez. 
 
 A példához a következők szükségesek:
 
@@ -24,7 +24,7 @@ A példához a következők szükségesek:
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - Az oktatóanyaghoz az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van. 
+ - Az oktatóanyaghoz az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van. 
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -40,9 +40,9 @@ A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatk
 
 | Parancs | Jegyzetek |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Létrehozza a tárfiókot, amely a függvényalkalmazáshoz szükséges. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Egy Function-alkalmazást hoz létre a kiszolgáló nélküli [felhasználási tervben](../consumption-plan.md) , és társítja azt egy git vagy Mercurial adattárral. |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Létrehozza a tárfiókot, amely a függvényalkalmazáshoz szükséges. |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | Létrehoz egy függvényalkalmazást a kiszolgáló nélküli [használatra](../consumption-plan.md) szánt csomagban, és társítja egy Git- vagy Mercurial-adattárhoz. |
 
 ## <a name="next-steps"></a>Következő lépések
 

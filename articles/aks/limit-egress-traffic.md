@@ -1,270 +1,270 @@
 ---
-title: Kimenő forgalom korlátozása az Azure Kubernetes szolgáltatásban (ak)
-description: Ismerje meg, hogy mely portokra és címekre van szükség a kimenő forgalom vezérléséhez az Azure Kubernetes szolgáltatásban (ak)
+title: A bejövő forgalom korlátozása Azure Kubernetes Service (AKS)
+description: Megtudhatja, milyen portokra és címekre van szükség a bejövő forgalom vezérléséhez a Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.author: jpalma
 ms.date: 01/12/2021
 author: palma21
-ms.openlocfilehash: 9e65e2736578ce04dfa79d5a7827e190d47fb312
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 39c0877b96a3e8c6c716c1ab9ae7ba11575990a0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103573829"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765592"
 ---
-# <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>A fürtcsomópontok kimenő forgalmának szabályozása az Azure Kubernetes szolgáltatásban (ak)
+# <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>A fürtcsomópontok (AKS) Azure Kubernetes Service forgalmának szabályozása
 
-Ez a cikk azokat a szükséges adatokat tartalmazza, amelyekkel biztonságossá teheti a kimenő forgalmat az Azure Kubernetes szolgáltatásból (ak). Tartalmazza az alapszintű AK központi telepítésének a fürtre vonatkozó követelményeit, valamint a választható bővítmények és funkciók további követelményeit. [A követelmények Azure Firewall használatával történő konfigurálásának végén egy példa jelenik meg](#restrict-egress-traffic-using-azure-firewall). Ezt az információt azonban bármely kimenő korlátozási módszerre vagy berendezésre alkalmazhatja.
+Ez a cikk azokat a szükséges részleteket tartalmazza, amelyek lehetővé teszik a kimenő forgalom biztonságossá Azure Kubernetes Service (AKS) felé. Tartalmazza az alap AKS-telepítés fürtkövetelményét, valamint az opcionális bővítmények és szolgáltatások további követelményeit. [A végén egy példát mutatunk be](#restrict-egress-traffic-using-azure-firewall)arról, hogyan konfigurálhatja ezeket a követelményeket a Azure Firewall. Ezeket az információkat azonban bármely kimenő korlátozási módszerre vagy berendezésre alkalmazhatja.
 
 ## <a name="background"></a>Háttér
 
-Az AK-fürtök üzembe helyezése egy virtuális hálózaton történik. Ezt a hálózatot felügyelheti (ak által létrehozott) vagy egyéni (a felhasználó előre konfigurálta). Mindkét esetben a fürt **kimenő** függőségekkel rendelkezik az adott virtuális hálózaton kívüli szolgáltatásokon (a szolgáltatás nem rendelkezik bejövő függőségekkel).
+Az AKS-fürtök egy virtuális hálózaton vannak telepítve. Ez a hálózat kezelhető (az AKS által létrehozva) vagy egyéni (a felhasználó által előre konfigurált) módon. A fürt mindkét esetben  kimenő függőségekkel rendelkezik a virtuális hálózaton kívüli szolgáltatásoktól (a szolgáltatásnak nincsenek bejövő függőségei).
 
-A felügyeleti és működési célokra az AK-fürtök csomópontjainak bizonyos portokhoz és teljes tartománynevek (FQDN) eléréséhez kell rendelkezniük. Ezek a végpontok szükségesek ahhoz, hogy a csomópontok kommunikáljanak az API-kiszolgálóval, vagy le kell tölteniük és telepíteniük kell az alapvető Kubernetes-fürt összetevőit és a csomópontok biztonsági frissítéseit A fürtnek például a Microsoft Container Registry (MCR) alapszintű rendszertároló lemezképeit kell lekérnie.
+Felügyeleti és működési célból az AKS-fürt csomópontjainak bizonyos portokhoz és teljes tartománynevekhez (FQDN) kell hozzáférniük. Ezek a végpontok szükségesek ahhoz, hogy a csomópontok kommunikáljanak az API-kiszolgálóval, vagy hogy letöltsék és telepítik a Kubernetes-fürt alapvető összetevőit és a csomópontok biztonsági frissítéseit. A fürtnek például alaprendszertároló-rendszerképeket kell lekérte a Microsoft Container Registry (MCR).
 
-Az AK kimenő függőségei szinte teljesen meg vannak határozva teljes TARTOMÁNYNEVEk használatával, amelyek nem rendelkeznek statikus címmel. A statikus címek hiánya azt jelenti, hogy a hálózati biztonsági csoportok nem használhatók egy AK-fürtről érkező kimenő forgalom zárolására. 
+Az AKS kimenő függőségei szinte teljesen definiálva vannak FQDN-ekkel, amelyek mögött nincsenek statikus címek. A statikus címek hiánya azt jelenti, hogy a hálózati biztonsági csoportok nem használhatók az AKS-fürtből kimenő forgalom zárolásához. 
 
-Alapértelmezés szerint az AK-fürtök korlátlan kimenő (kimenő) internet-hozzáféréssel rendelkeznek. A hálózati hozzáférés ezen szintje lehetővé teszi, hogy a futtatott csomópontok és szolgáltatások igény szerint hozzáférhessenek a külső erőforrásokhoz. Ha korlátozni szeretné a kimenő forgalom forgalmát, a fürt kifogástalan karbantartási feladatainak megtartása érdekében korlátozott számú portot és címet kell elérhetővé tenni. A kimenő címek biztonságossá tételének legegyszerűbb megoldása egy olyan tűzfal-eszköz használata, amely a tartománynevek alapján képes a kimenő forgalom vezérlésére. Azure Firewall például a célként megadott teljes tartománynév alapján korlátozhatja a kimenő HTTP-és HTTPS-forgalmat. Az előnyben részesített tűzfal-és biztonsági szabályokat is konfigurálhatja, hogy engedélyezze ezeket a szükséges portokat és címeket.
+Alapértelmezés szerint az AKS-fürtök korlátlan kimenő (kimenő) internet-hozzáféréssel rendelkezik. Ez a hálózati hozzáférési szint lehetővé teszi, hogy a futtatott csomópontok és szolgáltatások szükség szerint hozzáférjenek a külső erőforrásokhoz. Ha korlátozni szeretné a bejövő forgalmat, korlátozott számú portnak és címnek kell elérhetőnek lennie a kifogástalan állapotú fürtkarbantartási feladatok fenntartásához. A kimenő címek biztonságossá tétele a legegyszerűbb megoldás, ha olyan tűzfaleszközt használ, amely tartománynevek alapján képes szabályozni a kimenő forgalmat. Azure Firewall például korlátozhatja a kimenő HTTP- és HTTPS-forgalmat a cél teljes tartománya alapján. Az előnyben részesített tűzfal- és biztonsági szabályokat úgy is konfigurálhatja, hogy engedélyezték a szükséges portokat és címeket.
 
 > [!IMPORTANT]
-> Ez a dokumentum csak azt ismerteti, hogyan lehet zárolni az AK-alhálózatot elhagyó forgalmat. Az AK-ban alapértelmezés szerint nincsenek beáramlási követelmények.  A **belső alhálózati forgalom** blokkolása hálózati biztonsági csoportokkal (NSG) és tűzfalakkal nem támogatott. A fürtön belüli forgalom szabályozásához és letiltásához használja a [**_hálózati házirendeket_**][network-policy].
+> Ez a dokumentum csak azt fedi le, hogyan zárolhatja az AKS-alhálózatot elhagyó forgalmat. Az AKS-re alapértelmezés szerint nincsenek bejövő forgalomra vonatkozó követelmények.  A **belső alhálózati forgalom blokkolása** hálózati biztonsági csoportok (NSG-k) és tűzfalak használatával nem támogatott. A fürtön belüli forgalom szabályozásához és blokkolásához használja a [**_Hálózati házirendek használhatja a következőt:_**][network-policy].
 
-## <a name="required-outbound-network-rules-and-fqdns-for-aks-clusters"></a>Szükséges kimenő hálózati szabályok és teljes tartománynevek az AK-fürtökhöz
+## <a name="required-outbound-network-rules-and-fqdns-for-aks-clusters"></a>Szükséges kimenő hálózati szabályok és FQDN-ek az AKS-fürtökhöz
 
-A következő hálózati és FQDN/alkalmazási szabályok szükségesek egy AK-fürthöz, akkor használhatja őket, ha a Azure Firewallon kívüli megoldást szeretne konfigurálni.
+Az AKS-fürtökhöz a következő hálózati és FQDN-/alkalmazásszabályok szükségesek. Ezeket akkor használhatja, ha nem az Azure Firewall.
 
-* Az IP-címek függőségei nem HTTP/S forgalomra vonatkoznak (TCP-és UDP-forgalom)
-* Az FQDN HTTP-/HTTPS-végpontok a tűzfal eszközén helyezhetők el.
-* A helyettesítő HTTP/HTTPS-végpontok olyan függőségek, amelyek számos minősítőtől függően eltérőek lehetnek az AK-fürttől.
-* Az AK egy belépésvezérlés használatával adja hozzá a teljes tartománynevet környezeti változóként a Kube-rendszer és a forgalomirányító-rendszer területen lévő összes központi telepítéshez, amely biztosítja, hogy a csomópontok és az API-kiszolgáló közötti összes rendszerkommunikáció az API-kiszolgáló teljes tartománynevét használja, nem az API-kiszolgáló IP-címét. 
-* Ha van olyan alkalmazás vagy megoldás, amelynek az API-kiszolgálóval kell kommunikálnia, **további** hálózati szabályt kell hozzáadnia, hogy engedélyezze a *TCP-kommunikációt az API-kiszolgáló IP-címének 443-es portján*.
-* Ritka esetekben, ha van karbantartási művelet, az API-kiszolgáló IP-címe változhat. Az API-kiszolgáló IP-címét megváltoztató tervezett karbantartási műveletek mindig előre lesznek továbbítva.
+* Az IP-cím függőségei nem HTTP/S forgalomra (TCP- és UDP-forgalomra egyaránt) vannak beszűkve
+* FQDN HTTP/HTTPS-végpontok elhelyezhetőek a tűzfaleszközön.
+* A helyettesítő karakteres HTTP/HTTPS-végpontok olyan függőségek, amelyek az AKS-fürtön számos minősítő alapján változhatnak.
+* Az AKS belépésvezérlővel injektálja az FQDN-t környezeti változóként a Kube-system és a gatekeeper-system környezetben üzemelő összes üzemelő példányba, ami biztosítja, hogy a csomópontok és az API-kiszolgáló közötti összes rendszerkommunikáció az API-kiszolgáló teljes tartománynévjét használja, és ne az API-kiszolgáló IP-címét. 
+* Ha olyan alkalmazással vagy megoldással rendelkezik, amely az API-kiszolgálóval szeretne beszélni, hozzá kell adni egy további hálózati szabályt, amely engedélyezi a TCP-kommunikációt az *API-kiszolgáló IP-címének 443-as portjához.* 
+* Ritka esetekben, ha karbantartási művelet történik, az API-kiszolgáló IP-címe megváltozhat. Az API-kiszolgáló IP-címét megváltoztatható tervezett karbantartási műveletekről mindig előre tájékoztatunk.
 
 
 ### <a name="azure-global-required-network-rules"></a>Az Azure globálisan szükséges hálózati szabályai
 
-A szükséges hálózati szabályok és IP-címek függőségei a következők:
+A szükséges hálózati szabályok és IP-címfüggőségek a következőek:
 
-| Cél végpont                                                             | Protokoll | Port    | Használat  |
+| Célvégpont                                                             | Protokoll | Port    | Használat  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Vagy* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Vagy* <br/> [Regionális CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Vagy* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | A csomópontok és a vezérlő síkja közötti bújtatásos biztonságos kommunikációhoz. Ez a [magánhálózati fürtök](private-clusters.md) esetében nem szükséges|
-| **`*:9000`** <br/> *Vagy* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Vagy* <br/> [Regionális CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Vagy* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | A csomópontok és a vezérlő síkja közötti bújtatásos biztonságos kommunikációhoz. Ez a [magánhálózati fürtök](private-clusters.md) esetében nem szükséges |
-| **`*:123`** vagy **`ntp.ubuntu.com:123`** (Azure Firewall hálózati szabályok használata esetén)  | UDP      | 123     | A Linux-csomópontokon a Network Time Protocol (NTP) idejének szinkronizálásához szükséges.                 |
-| **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | Ha egyéni DNS-kiszolgálókat használ, gondoskodnia kell arról, hogy a fürtcsomópontok elérhetők legyenek. |
-| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | Az API-kiszolgálót elérő hüvelyek/központi telepítések futtatása kötelező, ezek a hüvelyek/központi telepítések az API-t használják. Ez a [magánhálózati fürtök](private-clusters.md) esetében nem szükséges  |
+| **`*:1194`** <br/> *Vagy* <br/> [ServiceTag (Szolgáltatáscímke)](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Vagy* <br/> [Regionális CIDR-ek](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Vagy* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | A csomópontok és a vezérlősík közötti bújtatásos biztonságos kommunikációhoz. Ez magánfürtök [esetén nem szükséges](private-clusters.md)|
+| **`*:9000`** <br/> *Vagy* <br/> [ServiceTag (Szolgáltatáscímke)](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Vagy* <br/> [Regionális CIDR-ek](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Vagy* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | A csomópontok és a vezérlősík közötti bújtatásos biztonságos kommunikációhoz. Ez magánfürtök [esetén nem szükséges](private-clusters.md) |
+| **`*:123`** vagy **`ntp.ubuntu.com:123`** (ha hálózati Azure Firewall használ)  | UDP      | 123     | A Network Time Protocol (NTP) időszinkronizálásához szükséges Linux-csomópontokon.                 |
+| **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | Ha egyéni DNS-kiszolgálókat használ, győződjön meg arról, hogy elérhetők a fürtcsomópontok számára. |
+| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | Kötelező, ha olyan podokat/üzemelő példányokat futtat, amelyek hozzáférnek az API-kiszolgálóhoz, ezek a podok/üzemelő példányok az API IP-címét használják. Ez magánfürtök [esetén nem szükséges](private-clusters.md)  |
 
-### <a name="azure-global-required-fqdn--application-rules"></a>Azure globálisan szükséges teljes tartományneve/alkalmazási szabályok 
+### <a name="azure-global-required-fqdn--application-rules"></a>Az Azure globálisan szükséges teljes tartománykészlete/alkalmazásszabálya 
 
-A következő teljes tartománynév/alkalmazás szabályok szükségesek:
+A következő FQDN/ alkalmazásszabályok szükségesek:
 
-| Cél teljes tartományneve                 | Port            | Használat      |
+| Cél FQDN                 | Port            | Használat      |
 |----------------------------------|-----------------|----------|
-| **`*.hcp.<location>.azmk8s.io`** | **`HTTPS:443`** | A Node <-> API-kiszolgáló kommunikációja szükséges. Cserélje le *\<location\>* a helyére azt a régiót, ahol az AK-fürtöt üzembe helyezi. |
-| **`mcr.microsoft.com`**          | **`HTTPS:443`** | Lemezképek eléréséhez szükséges a Microsoft Container Registryban (MCR). Ez a beállításjegyzék tartalmazza az első féltől származó lemezképeket és diagramokat (például coreDNS stb.). Ezek a lemezképek a fürt megfelelő létrehozásához és működéséhez szükségesek, beleértve a méretezési és frissítési műveleteket is.  |
-| **`*.data.mcr.microsoft.com`**   | **`HTTPS:443`** | Az Azure Content Delivery Network (CDN) által támogatott MCR tároláshoz szükséges. |
-| **`management.azure.com`**       | **`HTTPS:443`** | Az Azure API-ra vonatkozó Kubernetes-műveletekhez szükséges. |
-| **`login.microsoftonline.com`**  | **`HTTPS:443`** | Azure Active Directory hitelesítéshez szükséges. |
-| **`packages.microsoft.com`**     | **`HTTPS:443`** | Ez a címe a Microsoft Packages adattárat használja a gyorsítótárazott *apt-get* műveletekhez.  A csomagok közé tartoznak például a Moby, a PowerShell és az Azure CLI. |
-| **`acs-mirror.azureedge.net`**   | **`HTTPS:443`** | Ez a címe a szükséges bináris fájlok (például a kubenet és az Azure CNI) letöltéséhez és telepítéséhez szükséges adattár. |
+| **`*.hcp.<location>.azmk8s.io`** | **`HTTPS:443`** | A Node < API-> kommunikációhoz szükséges. Cserélje *\<location\>* le a helyére az AKS-fürt üzembe helyezésének régióját. |
+| **`mcr.microsoft.com`**          | **`HTTPS:443`** | A rendszerképek eléréséhez szükséges a Microsoft Container Registry (MCR). Ez a beállításjegyzék belső rendszerképeket/diagramokat (például coreDNS stb.) tartalmaz. Ezek a rendszerképek szükségesek a fürt megfelelő létrehozásához és működéséhez, beleértve a méretezési és frissítési műveleteket is.  |
+| **`*.data.mcr.microsoft.com`**   | **`HTTPS:443`** | Az Azure Content Delivery Network (CDN) által háttérbeli MCR-tároláshoz szükséges. |
+| **`management.azure.com`**       | **`HTTPS:443`** | Az Azure API-n keresztüli Kubernetes-műveletekhez szükséges. |
+| **`login.microsoftonline.com`**  | **`HTTPS:443`** | A hitelesítéshez Azure Active Directory szükséges. |
+| **`packages.microsoft.com`**     | **`HTTPS:443`** | Ez a cím a gyorsítótárazott apt-get műveletekhez használt *Microsoft-csomagok adattára.*  Ilyen csomagok például a Moby, a PowerShell és az Azure CLI. |
+| **`acs-mirror.azureedge.net`**   | **`HTTPS:443`** | Ez a cím az olyan szükséges bináris fájlok letöltéséhez és telepítéséhez szükséges adattárhoz szükséges, mint a kubenet és Azure CNI. |
 
-### <a name="azure-china-21vianet-required-network-rules"></a>Az Azure China 21Vianet szükséges hálózati szabályok
+### <a name="azure-china-21vianet-required-network-rules"></a>Azure China 21Vianet szükséges hálózati szabályok
 
-A szükséges hálózati szabályok és IP-címek függőségei a következők:
+A szükséges hálózati szabályok és IP-címfüggőségek a következőek:
 
-| Cél végpont                                                             | Protokoll | Port    | Használat  |
+| Célvégpont                                                             | Protokoll | Port    | Használat  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Vagy* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.Region:1194`** <br/> *Vagy* <br/> [Regionális CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Vagy* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | A csomópontok és a vezérlő síkja közötti bújtatásos biztonságos kommunikációhoz. |
-| **`*:9000`** <br/> *Vagy* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Vagy* <br/> [Regionális CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Vagy* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | A csomópontok és a vezérlő síkja közötti bújtatásos biztonságos kommunikációhoz. |
-| **`*:22`** <br/> *Vagy* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:22`** <br/> *Vagy* <br/> [Regionális CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:22`** <br/> *Vagy* <br/> **`APIServerPublicIP:22`** `(only known after cluster creation)`  | TCP           | 22      | A csomópontok és a vezérlő síkja közötti bújtatásos biztonságos kommunikációhoz. |
-| **`*:123`** vagy **`ntp.ubuntu.com:123`** (Azure Firewall hálózati szabályok használata esetén)  | UDP      | 123     | A Linux-csomópontokon a Network Time Protocol (NTP) idejének szinkronizálásához szükséges.                 |
-| **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | Ha egyéni DNS-kiszolgálókat használ, gondoskodnia kell arról, hogy a fürtcsomópontok elérhetők legyenek. |
-| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | Az API-kiszolgálót elérő hüvelyek/központi telepítések futtatása kötelező, ezek a pod/üzemelő példányok az API-t használják.  |
+| **`*:1194`** <br/> *Vagy* <br/> [ServiceTag (Szolgáltatáscímke)](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.Region:1194`** <br/> *Vagy* <br/> [Regionális CIDR-ek](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Vagy* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | A csomópontok és a vezérlősík közötti bújtatásos biztonságos kommunikációhoz. |
+| **`*:9000`** <br/> *Vagy* <br/> [ServiceTag (Szolgáltatáscímke)](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Vagy* <br/> [Regionális CIDR-ek](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Vagy* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | A csomópontok és a vezérlősík közötti bújtatásos biztonságos kommunikációhoz. |
+| **`*:22`** <br/> *Vagy* <br/> [ServiceTag (Szolgáltatáscímke)](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:22`** <br/> *Vagy* <br/> [Regionális CIDR-ek](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:22`** <br/> *Vagy* <br/> **`APIServerPublicIP:22`** `(only known after cluster creation)`  | TCP           | 22      | A csomópontok és a vezérlősík közötti bújtatásos biztonságos kommunikációhoz. |
+| **`*:123`** vagy **`ntp.ubuntu.com:123`** (ha hálózati Azure Firewall használ)  | UDP      | 123     | A Network Time Protocol (NTP) időszinkronizálásához szükséges Linux-csomópontokon.                 |
+| **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | Ha egyéni DNS-kiszolgálókat használ, győződjön meg arról, hogy elérhetők a fürtcsomópontok számára. |
+| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | Az API-kiszolgálóhoz hozzáférő podok/üzemelő példányok futtatása esetén szükséges, hogy ezek a podok/üzemelő példányok az API IP-címét használják.  |
 
-### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Az Azure China 21Vianet szükséges teljes tartományneve/alkalmazási szabályok
+### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Azure China 21Vianet FQDN/alkalmazásszabályok
 
-A következő teljes tartománynév/alkalmazás szabályok szükségesek:
+A következő FQDN/ alkalmazásszabályok szükségesek:
 
-| Cél teljes tartományneve                               | Port            | Használat      |
+| Cél FQDN                               | Port            | Használat      |
 |------------------------------------------------|-----------------|----------|
-| **`*.hcp.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | A Node <-> API-kiszolgáló kommunikációja szükséges. Cserélje le *\<location\>* a helyére azt a régiót, ahol az AK-fürtöt üzembe helyezi. |
-| **`*.tun.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | A Node <-> API-kiszolgáló kommunikációja szükséges. Cserélje le *\<location\>* a helyére azt a régiót, ahol az AK-fürtöt üzembe helyezi. |
-| **`mcr.microsoft.com`**                        | **`HTTPS:443`** | Lemezképek eléréséhez szükséges a Microsoft Container Registryban (MCR). Ez a beállításjegyzék tartalmazza az első féltől származó lemezképeket és diagramokat (például coreDNS stb.). Ezek a lemezképek a fürt megfelelő létrehozásához és működéséhez szükségesek, beleértve a méretezési és frissítési műveleteket is. |
-| **`.data.mcr.microsoft.com`**                  | **`HTTPS:443`** | Az Azure Content Delivery Network (CDN) által támogatott MCR tároláshoz szükséges. |
-| **`management.chinacloudapi.cn`**              | **`HTTPS:443`** | Az Azure API-ra vonatkozó Kubernetes-műveletekhez szükséges. |
-| **`login.chinacloudapi.cn`**                   | **`HTTPS:443`** | Azure Active Directory hitelesítéshez szükséges. |
-| **`packages.microsoft.com`**                   | **`HTTPS:443`** | Ez a címe a Microsoft Packages adattárat használja a gyorsítótárazott *apt-get* műveletekhez.  A csomagok közé tartoznak például a Moby, a PowerShell és az Azure CLI. |
-| **`*.azk8s.cn`**                               | **`HTTPS:443`** | Ez a címe a szükséges bináris fájlok (például a kubenet és az Azure CNI) letöltéséhez és telepítéséhez szükséges adattár. |
+| **`*.hcp.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | A Node < API-> kommunikációhoz szükséges. Cserélje *\<location\>* le a helyére az AKS-fürt üzembe helyezésének régióját. |
+| **`*.tun.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | A Node < API-> kommunikációhoz szükséges. Cserélje *\<location\>* le a helyére az AKS-fürt üzembe helyezésének régióját. |
+| **`mcr.microsoft.com`**                        | **`HTTPS:443`** | A rendszerképek eléréséhez szükséges a Microsoft Container Registry (MCR). Ez a beállításjegyzék belső rendszerképeket/diagramokat (például coreDNS stb.) tartalmaz. Ezek a rendszerképek szükségesek a fürt megfelelő létrehozásához és működéséhez, beleértve a méretezési és frissítési műveleteket is. |
+| **`.data.mcr.microsoft.com`**                  | **`HTTPS:443`** | Az Azure Content Delivery Network (CDN) által Content Delivery Network MCR-tároláshoz szükséges. |
+| **`management.chinacloudapi.cn`**              | **`HTTPS:443`** | Az Azure API-n keresztüli Kubernetes-műveletekhez szükséges. |
+| **`login.chinacloudapi.cn`**                   | **`HTTPS:443`** | A hitelesítéshez Azure Active Directory szükséges. |
+| **`packages.microsoft.com`**                   | **`HTTPS:443`** | Ez a cím a gyorsítótárazott apt-get műveletekhez használt *Microsoft-csomagok adattára.*  Ilyen csomagok például a Moby, a PowerShell és az Azure CLI. |
+| **`*.azk8s.cn`**                               | **`HTTPS:443`** | Ez a cím az olyan szükséges bináris fájlok letöltéséhez és telepítéséhez szükséges adattárhoz szükséges, mint a kubenet és Azure CNI. |
 
-### <a name="azure-us-government-required-network-rules"></a>Az USA kormányzati szerveinek szükséges hálózati szabályai
+### <a name="azure-us-government-required-network-rules"></a>Az Azure US Government megkövetelt hálózati szabályokat
 
-A szükséges hálózati szabályok és IP-címek függőségei a következők:
+A szükséges hálózati szabályok és IP-címfüggőségek a következőek:
 
-| Cél végpont                                                             | Protokoll | Port    | Használat  |
+| Célvégpont                                                             | Protokoll | Port    | Használat  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Vagy* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Vagy* <br/> [Regionális CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Vagy* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | A csomópontok és a vezérlő síkja közötti bújtatásos biztonságos kommunikációhoz. |
-| **`*:9000`** <br/> *Vagy* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Vagy* <br/> [Regionális CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Vagy* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | A csomópontok és a vezérlő síkja közötti bújtatásos biztonságos kommunikációhoz. |
-| **`*:123`** vagy **`ntp.ubuntu.com:123`** (Azure Firewall hálózati szabályok használata esetén)  | UDP      | 123     | A Linux-csomópontokon a Network Time Protocol (NTP) idejének szinkronizálásához szükséges.                 |
-| **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | Ha egyéni DNS-kiszolgálókat használ, gondoskodnia kell arról, hogy a fürtcsomópontok elérhetők legyenek. |
-| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | Az API-kiszolgálót elérő hüvelyek/központi telepítések futtatása kötelező, ezek a hüvelyek/központi telepítések az API-t használják.  |
+| **`*:1194`** <br/> *Vagy* <br/> [ServiceTag (Szolgáltatáscímke)](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Vagy* <br/> [Regionális CIDR-ek](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Vagy* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | A csomópontok és a vezérlősík közötti bújtatásos biztonságos kommunikációhoz. |
+| **`*:9000`** <br/> *Vagy* <br/> [ServiceTag (Szolgáltatáscímke)](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Vagy* <br/> [Regionális CIDR-ek](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Vagy* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | A csomópontok és a vezérlősík közötti bújtatásos biztonságos kommunikációhoz. |
+| **`*:123`** vagy **`ntp.ubuntu.com:123`** (ha hálózati Azure Firewall használ)  | UDP      | 123     | A Network Time Protocol (NTP) időszinkronizálásához szükséges Linux-csomópontokon.                 |
+| **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | Ha egyéni DNS-kiszolgálókat használ, győződjön meg arról, hogy azok elérhetők a fürtcsomópontok számára. |
+| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | Az API-kiszolgálóhoz hozzáférő podok/üzemelő példányok futtatása esetén szükséges, hogy ezek a podok/üzemelő példányok az API IP-címét használják.  |
 
-### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure USA kormányának kötelező teljes tartományneve/alkalmazási szabályok 
+### <a name="azure-us-government-required-fqdn--application-rules"></a>Az Azure US Government kötelező teljes tartománykészlete/alkalmazásszabálya 
 
-A következő teljes tartománynév/alkalmazás szabályok szükségesek:
+A következő FQDN/alkalmazásszabályok szükségesek:
 
-| Cél teljes tartományneve                                        | Port            | Használat      |
+| Cél FQDN                                        | Port            | Használat      |
 |---------------------------------------------------------|-----------------|----------|
-| **`*.hcp.<location>.cx.aks.containerservice.azure.us`** | **`HTTPS:443`** | A Node <-> API-kiszolgáló kommunikációja szükséges. Cserélje le *\<location\>* a helyére azt a régiót, ahol az AK-fürtöt üzembe helyezi.|
-| **`mcr.microsoft.com`**                                 | **`HTTPS:443`** | Lemezképek eléréséhez szükséges a Microsoft Container Registryban (MCR). Ez a beállításjegyzék tartalmazza az első féltől származó lemezképeket és diagramokat (például coreDNS stb.). Ezek a lemezképek a fürt megfelelő létrehozásához és működéséhez szükségesek, beleértve a méretezési és frissítési műveleteket is. |
-| **`*.data.mcr.microsoft.com`**                          | **`HTTPS:443`** | Az Azure Content Delivery Network (CDN) által támogatott MCR tároláshoz szükséges. |
-| **`management.usgovcloudapi.net`**                      | **`HTTPS:443`** | Az Azure API-ra vonatkozó Kubernetes-műveletekhez szükséges. |
-| **`login.microsoftonline.us`**                          | **`HTTPS:443`** | Azure Active Directory hitelesítéshez szükséges. |
-| **`packages.microsoft.com`**                            | **`HTTPS:443`** | Ez a címe a Microsoft Packages adattárat használja a gyorsítótárazott *apt-get* műveletekhez.  A csomagok közé tartoznak például a Moby, a PowerShell és az Azure CLI. |
-| **`acs-mirror.azureedge.net`**                          | **`HTTPS:443`** | Ez a címe a szükséges bináris fájlok, például a kubenet és az Azure CNI telepítéséhez szükséges tárház. |
+| **`*.hcp.<location>.cx.aks.containerservice.azure.us`** | **`HTTPS:443`** | A Node < API-> kommunikációhoz szükséges. Cserélje *\<location\>* le a helyére az AKS-fürt üzembe helyezésének régióját.|
+| **`mcr.microsoft.com`**                                 | **`HTTPS:443`** | A rendszerképek eléréséhez szükséges a Microsoft Container Registry (MCR). Ez a beállításjegyzék belső rendszerképeket/diagramokat (például coreDNS stb.) tartalmaz. Ezek a rendszerképek szükségesek a fürt megfelelő létrehozásához és működéséhez, beleértve a méretezési és frissítési műveleteket is. |
+| **`*.data.mcr.microsoft.com`**                          | **`HTTPS:443`** | Az Azure Content Delivery Network (CDN) által háttérbeli MCR-tároláshoz szükséges. |
+| **`management.usgovcloudapi.net`**                      | **`HTTPS:443`** | Az Azure API-n keresztüli Kubernetes-műveletekhez szükséges. |
+| **`login.microsoftonline.us`**                          | **`HTTPS:443`** | A hitelesítéshez Azure Active Directory szükséges. |
+| **`packages.microsoft.com`**                            | **`HTTPS:443`** | Ez a cím a gyorsítótárazott apt-get műveletekhez használt *Microsoft-csomagok adattára.*  Ilyen csomagok például a Moby, a PowerShell és az Azure CLI. |
+| **`acs-mirror.azureedge.net`**                          | **`HTTPS:443`** | Ez a cím az olyan szükséges bináris fájlok telepítéséhez szükséges adattárhoz szükséges, mint a kubenet Azure CNI. |
 
-## <a name="optional-recommended-fqdn--application-rules-for-aks-clusters"></a>Opcionálisan javasolt FQDN/alkalmazási szabályok az AK-fürtökhöz
+## <a name="optional-recommended-fqdn--application-rules-for-aks-clusters"></a>AKS-fürtökhöz ajánlott FQDN/alkalmazásszabályok opcionális használata
 
-A következő teljes tartománynév/alkalmazás-szabályok nem kötelezőek, de az AK-fürtök esetében ajánlott:
+Az AKS-fürtökhöz a következő FQDN/ alkalmazásszabályok nem kötelezők, de ajánlottak:
 
-| Cél teljes tartományneve                                                               | Port          | Használat      |
+| Cél FQDN                                                               | Port          | Használat      |
 |--------------------------------------------------------------------------------|---------------|----------|
-| **`security.ubuntu.com`, `azure.archive.ubuntu.com`, `changelogs.ubuntu.com`** | **`HTTP:80`** | Ez a címe lehetővé teszi, hogy a Linux-fürtcsomópontok letöltsék a szükséges biztonsági javításokat és frissítéseket. |
+| **`security.ubuntu.com`, `azure.archive.ubuntu.com`, `changelogs.ubuntu.com`** | **`HTTP:80`** | Ez a cím lehetővé teszi, hogy a Linux-fürtcsomópontok letöltsék a szükséges biztonsági javításokat és frissítéseket. |
 
-Ha úgy dönt, hogy letiltja/nem engedélyezi ezeket a teljes tartományneveket, a csomópontok csak akkor kapják meg az operációs rendszer frissítését, amikor a [csomópont-rendszerkép frissítése](node-image-upgrade.md) vagy a [fürt frissítése](upgrade-cluster.md)történik.
+Ha úgy dönt, hogy letiltja vagy letiltja ezeket az FQDN-eket, [a](node-image-upgrade.md) csomópontok csak akkor kapják meg az operációsrendszer-frissítéseket, ha csomópont-rendszerkép-frissítést vagy fürtfrissítést [hoz létre.](upgrade-cluster.md)
 
-## <a name="gpu-enabled-aks-clusters"></a>GPU-t támogató AK-fürtök
+## <a name="gpu-enabled-aks-clusters"></a>GPU-kompatibilis AKS-fürtök
 
-### <a name="required-fqdn--application-rules"></a>Szükséges teljes tartománynév/alkalmazási szabályok
+### <a name="required-fqdn--application-rules"></a>Szükséges FQDN/alkalmazásszabályok
 
-A GPU-t használó AK-fürtök esetében a következő teljes tartománynév/alkalmazás szabályok szükségesek:
+A GPU-t engedélyező AKS-fürtökhöz a következő teljes tartomány-/alkalmazásszabályok szükségesek:
 
-| Cél teljes tartományneve                        | Port      | Használat      |
+| Cél FQDN                        | Port      | Használat      |
 |-----------------------------------------|-----------|----------|
-| **`nvidia.github.io`**                  | **`HTTPS:443`** | Ez a címe a megfelelő illesztőprogram-telepítéshez és-művelethez használható a GPU-alapú csomópontokon. |
-| **`us.download.nvidia.com`**            | **`HTTPS:443`** | Ez a címe a megfelelő illesztőprogram-telepítéshez és-művelethez használható a GPU-alapú csomópontokon. |
-| **`apt.dockerproject.org`**             | **`HTTPS:443`** | Ez a címe a megfelelő illesztőprogram-telepítéshez és-művelethez használható a GPU-alapú csomópontokon. |
+| **`nvidia.github.io`**                  | **`HTTPS:443`** | Ez a cím az illesztőprogram megfelelő telepítéséhez és a GPU-alapú csomópontokon való működéshez használatos. |
+| **`us.download.nvidia.com`**            | **`HTTPS:443`** | Ez a cím az illesztőprogram megfelelő telepítéséhez és a GPU-alapú csomópontokon való működéshez használatos. |
+| **`apt.dockerproject.org`**             | **`HTTPS:443`** | Ez a cím az illesztőprogram megfelelő telepítéséhez és a GPU-alapú csomópontokon való működéshez használatos. |
 
-## <a name="windows-server-based-node-pools"></a>Windows Server-alapú csomópont-készletek 
+## <a name="windows-server-based-node-pools"></a>Windows Server-alapú csomópontkészletek 
 
-### <a name="required-fqdn--application-rules"></a>Szükséges teljes tartománynév/alkalmazási szabályok
+### <a name="required-fqdn--application-rules"></a>Szükséges FQDN/alkalmazásszabályok
 
-A Windows Server-alapú csomópont-készletek használatához a következő FQDN-/alkalmazás-szabályok szükségesek:
+A Windows Server-alapú csomópontkészletek használata esetén a következő teljes tartomány-/alkalmazásszabályok szükségesek:
 
-| Cél teljes tartományneve                                                           | Port      | Használat      |
+| Cél FQDN                                                           | Port      | Használat      |
 |----------------------------------------------------------------------------|-----------|----------|
-| **`onegetcdn.azureedge.net, go.microsoft.com`**                            | **`HTTPS:443`** | A Windows rendszerhez kapcsolódó bináris fájlok telepítése |
-| **`*.mp.microsoft.com, www.msftconnecttest.com, ctldl.windowsupdate.com`** | **`HTTP:80`**   | A Windows rendszerhez kapcsolódó bináris fájlok telepítése |
+| **`onegetcdn.azureedge.net, go.microsoft.com`**                            | **`HTTPS:443`** | Windowshoz kapcsolódó bináris fájlok telepítése |
+| **`*.mp.microsoft.com, www.msftconnecttest.com, ctldl.windowsupdate.com`** | **`HTTP:80`**   | Windowshoz kapcsolódó bináris fájlok telepítése |
 
-## <a name="aks-addons-and-integrations"></a>AK-bővítmények és-integrációk
+## <a name="aks-addons-and-integrations"></a>AKS-bővítmények és -integrációk
 
 ### <a name="azure-monitor-for-containers"></a>Azure Monitor tárolókhoz
 
-Két lehetőség áll rendelkezésre a tárolók Azure Monitorhoz való hozzáférés biztosításához, engedélyezheti a Azure Monitor [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) , **vagy** hozzáférést biztosíthat a szükséges teljes tartománynév/alkalmazás-szabályokhoz.
+Két lehetőség van arra, hogy hozzáférést biztosítson a Azure Monitor tárolókhoz, engedélyezheti az Azure Monitor [ServiceTaget,](../virtual-network/service-tags-overview.md#available-service-tags)  vagy hozzáférést nyújthat a szükséges teljes tartománynévhez/alkalmazásszabályokhoz.
 
 #### <a name="required-network-rules"></a>Szükséges hálózati szabályok
 
-A következő teljes tartománynév/alkalmazás szabályok szükségesek:
+A következő FQDN/alkalmazásszabályok szükségesek:
 
-| Cél végpont                                                             | Protokoll | Port    | Használat  |
+| Célvégpont                                                             | Protokoll | Port    | Használat  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureMonitor:443`**  | TCP           | 443      | Ez a végpont a metrikai adatok és naplók küldésére szolgál Azure Monitor és Log Analytics. |
+| [ServiceTag (Szolgáltatáscímke)](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureMonitor:443`**  | TCP           | 443      | Ezzel a végponttal metrikaadatokat és naplókat küldhet a Azure Monitor Log Analyticsnek. |
 
-#### <a name="required-fqdn--application-rules"></a>Szükséges teljes tartománynév/alkalmazási szabályok
+#### <a name="required-fqdn--application-rules"></a>Szükséges FQDN/alkalmazásszabályok
 
-A következő teljes tartománynevek és alkalmazási szabályok szükségesek azon AK-fürtök esetében, amelyeken engedélyezve van az Azure Monitor a tárolók számára:
+A következő FQDN/alkalmazásszabályok szükségesek az olyan AKS-fürtökhöz, amelyeken engedélyezve van Azure Monitor tárolókhoz való Azure Monitor:
 
 | FQDN                                    | Port      | Használat      |
 |-----------------------------------------|-----------|----------|
-| dc.services.visualstudio.com | **`HTTPS:443`**    | Ez a végpont a metrikák és a figyelési telemetria használatos a Azure Monitor használatával. |
-| *.ods.opinsights.azure.com    | **`HTTPS:443`**    | Ezt a végpontot a Azure Monitor használja a log Analytics-adatgyűjtéshez. |
-| *.oms.opinsights.azure.com | **`HTTPS:443`** | Ezt a végpontot a omsagent használja, amely a log Analytics szolgáltatás hitelesítésére szolgál. |
-| *. monitoring.azure.com | **`HTTPS:443`** | Ez a végpont a metrikai adatok Azure Monitor történő küldésére szolgál. |
+| dc.services.visualstudio.com | **`HTTPS:443`**    | Ez a végpont metrikákhoz és telemetria monitorozáshoz használható Azure Monitor. |
+| *.ods.opinsights.azure.com    | **`HTTPS:443`**    | Ezt a végpontot a Azure Monitor log analytics-adatokhoz használja. |
+| *.oms.opinsights.azure.com | **`HTTPS:443`** | Ezt a végpontot az omsagent használja, amely a Log Analytics szolgáltatás hitelesítésére használatos. |
+| *.monitoring.azure.com | **`HTTPS:443`** | Ezzel a végponttal metrikaadatokat küldhet a Azure Monitor. |
 
 ### <a name="azure-dev-spaces"></a>Azure Dev Spaces
 
-A tűzfal vagy a biztonsági konfiguráció frissítésével engedélyezheti a hálózati forgalmat az alábbi teljes TARTOMÁNYNEVEk és az [Azure dev Spaces infrastruktúra-szolgáltatások][dev-spaces-service-tags]között.
+Frissítse a tűzfalat vagy a biztonsági konfigurációt úgy, hogy engedélyezze a hálózati forgalmat az összes alábbi teljes tartomány és [Azure Dev Spaces infrastruktúra-szolgáltatás között.][dev-spaces-service-tags]
 
 #### <a name="required-network-rules"></a>Szükséges hálózati szabályok
 
-| Cél végpont                                                             | Protokoll | Port    | Használat  |
+| Célvégpont                                                             | Protokoll | Port    | Használat  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureDevSpaces`**  | TCP           | 443      | Ez a végpont a metrikai adatok és naplók küldésére szolgál Azure Monitor és Log Analytics. |
+| [ServiceTag (Szolgáltatáscímke)](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureDevSpaces`**  | TCP           | 443      | Ezzel a végponttal metrikaadatokat és naplókat küldhet a Azure Monitor Log Analyticsbe. |
 
-#### <a name="required-fqdn--application-rules"></a>Szükséges teljes tartománynév/alkalmazási szabályok 
+#### <a name="required-fqdn--application-rules"></a>Szükséges FQDN/alkalmazásszabályok 
 
-A következő teljes tartománynév/alkalmazás szabályok szükségesek azon AK-fürtökhöz, amelyeken engedélyezve van az Azure dev Spaces:
+Az alábbi FQDN/ alkalmazásszabályok szükségesek az olyan AKS-fürtökhöz, amelyeken engedélyezve van az Azure Dev Spaces:
 
 | FQDN                                    | Port      | Használat      |
 |-----------------------------------------|-----------|----------|
-| `cloudflare.docker.com` | **`HTTPS:443`** | Ez a címe a linuxos alpesi és egyéb Azure dev Spaces-rendszerképek lekérésére szolgál |
-| `gcr.io` | **`HTTPS:443`** | Ez a címe a Helm/Tiller-képek lekérésére szolgál |
-| `storage.googleapis.com` | **`HTTPS:443`** | Ez a címe a Helm/Tiller-képek lekérésére szolgál |
+| `cloudflare.docker.com` | **`HTTPS:443`** | Ez a cím a linux alpine és más Azure Dev Spaces-rendszerképek lekért címére szolgál |
+| `gcr.io` | **`HTTPS:443`** | Ez a cím helm-/tiller-képek lekért címe |
+| `storage.googleapis.com` | **`HTTPS:443`** | Ez a cím helm-/tiller-képek lekért címe |
 
 
 ### <a name="azure-policy"></a>Azure Policy
 
-#### <a name="required-fqdn--application-rules"></a>Szükséges teljes tartománynév/alkalmazási szabályok 
+#### <a name="required-fqdn--application-rules"></a>Szükséges FQDN/alkalmazásszabályok 
 
-A következő teljes tartománynevek/alkalmazási szabályok szükségesek azon AK-fürtök esetében, amelyeken engedélyezve van a Azure Policy.
-
-| FQDN                                          | Port      | Használat      |
-|-----------------------------------------------|-----------|----------|
-| **`data.policy.core.windows.net`** | **`HTTPS:443`** | Ez a címe a Kubernetes házirendek lekérésére és a fürt megfelelőségi állapotának a házirend-szolgáltatásba való bejelentésére szolgál. |
-| **`store.policy.core.windows.net`** | **`HTTPS:443`** | Ez a címe a beépített szabályzatok forgalomirányító összetevőinek lekérésére szolgál. |
-| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Ez a címe Azure Policy helyes működéséhez használatos.  |
-| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Ez a címe a beépített szabályzatok GitHubról történő lekérésére szolgál a Azure Policy megfelelő működésének biztosítása érdekében. |
-| **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Azure Policy bővítmény, amely telemetria adatokat küld az Applications-elemzések végpontjának. |
-
-#### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Az Azure China 21Vianet szükséges teljes tartományneve/alkalmazási szabályok 
-
-A következő teljes tartománynevek/alkalmazási szabályok szükségesek azon AK-fürtök esetében, amelyeken engedélyezve van a Azure Policy.
+Az alábbi FQDN/ alkalmazásszabályok szükségesek az olyan AKS-fürtökhöz, amelyeken engedélyezve van a Azure Policy engedélyezése.
 
 | FQDN                                          | Port      | Használat      |
 |-----------------------------------------------|-----------|----------|
-| **`data.policy.azure.cn`** | **`HTTPS:443`** | Ez a címe a Kubernetes házirendek lekérésére és a fürt megfelelőségi állapotának a házirend-szolgáltatásba való bejelentésére szolgál. |
-| **`store.policy.azure.cn`** | **`HTTPS:443`** | Ez a címe a beépített szabályzatok forgalomirányító összetevőinek lekérésére szolgál. |
+| **`data.policy.core.windows.net`** | **`HTTPS:443`** | Ezzel a címmel lekértük a Kubernetes-szabályzatokat, és jelentést készítünk a fürt megfelelőségi állapotáról a szabályzatszolgáltatásnak. |
+| **`store.policy.core.windows.net`** | **`HTTPS:443`** | Ez a cím a beépített szabályzatok Gatekeeper-összetevőinek lekért címére használható. |
+| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | A rendszer ezt a címet használja a megfelelő Azure Policy.  |
+| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Ezzel a címmel lekérhetők a beépített szabályzatok a GitHubról a szabályzatok megfelelő működésének Azure Policy. |
+| **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Azure Policy bővítmény, amely telemetriai adatokat küld az Applications Insights-végpontnak. |
 
-#### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure USA kormányának kötelező teljes tartományneve/alkalmazási szabályok
+#### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Azure China 21Vianet FQDN/alkalmazásszabályok 
 
-A következő teljes tartománynevek/alkalmazási szabályok szükségesek azon AK-fürtök esetében, amelyeken engedélyezve van a Azure Policy.
+Az alábbi FQDN-/alkalmazásszabályok szükségesek az olyan AKS-fürtökhöz, amelyeken engedélyezve van Azure Policy tartomány.
 
 | FQDN                                          | Port      | Használat      |
 |-----------------------------------------------|-----------|----------|
-| **`data.policy.azure.us`** | **`HTTPS:443`** | Ez a címe a Kubernetes házirendek lekérésére és a fürt megfelelőségi állapotának a házirend-szolgáltatásba való bejelentésére szolgál. |
-| **`store.policy.azure.us`** | **`HTTPS:443`** | Ez a címe a beépített szabályzatok forgalomirányító összetevőinek lekérésére szolgál. |
+| **`data.policy.azure.cn`** | **`HTTPS:443`** | Ez a cím a Kubernetes-szabályzatok lekért és a fürt megfelelőségi állapotának a szabályzatszolgáltatásnak való jelentésére használatos. |
+| **`store.policy.azure.cn`** | **`HTTPS:443`** | Ez a cím a beépített szabályzatok Gatekeeper-összetevőinek lekért címére használható. |
 
-## <a name="restrict-egress-traffic-using-azure-firewall"></a>Kimenő forgalom korlátozása az Azure Firewall használatával
+#### <a name="azure-us-government-required-fqdn--application-rules"></a>Az Azure US Government kötelező teljes tartománykészlete/alkalmazásszabálya
 
-A Azure Firewall egy Azure Kubernetes szolgáltatás ( `AzureKubernetesService` ) FQDN címkét biztosít a konfiguráció egyszerűsítéséhez. 
+Az alábbi FQDN-/alkalmazásszabályok szükségesek az olyan AKS-fürtökhöz, amelyeken engedélyezve van Azure Policy tartomány.
+
+| FQDN                                          | Port      | Használat      |
+|-----------------------------------------------|-----------|----------|
+| **`data.policy.azure.us`** | **`HTTPS:443`** | Ez a cím a Kubernetes-szabályzatok lekért és a fürt megfelelőségi állapotának a szabályzatszolgáltatásnak való jelentésére használatos. |
+| **`store.policy.azure.us`** | **`HTTPS:443`** | Ez a cím a beépített szabályzatok Gatekeeper-összetevőinek lekért címére használható. |
+
+## <a name="restrict-egress-traffic-using-azure-firewall"></a>A bejövő forgalom korlátozása az Azure Firewall használatával
+
+Azure Firewall a konfiguráció egyszerűsítése érdekében Azure Kubernetes Service ( `AzureKubernetesService` ) FQDN-címkét. 
 
 > [!NOTE]
-> A teljes tartománynév címke tartalmazza az összes fent felsorolt teljes tartománynevet, és a rendszer automatikusan naprakészen tartja.
+> Az FQDN címke tartalmazza a fent felsorolt összes FQDN-t, és automatikusan naprakészen marad.
 >
-> Azt javasoljuk, hogy üzemi helyzetekben legalább 20 előtérbeli IP-címet használjon a Azure Firewall, hogy elkerülje az SNAT-portok kimerülésével kapcsolatos problémákat.
+> Az SNAT-portok kimerítési problémáinak elkerülése érdekében javasoljuk, hogy legalább 20 előtere IP-Azure Firewall az éles forgatókönyvekben.
 
-Az alábbi példa az üzemelő példány architektúráját mutatja be:
+Az alábbiakban az üzemelő példány architektúráját mutatjuk be:
 
 ![Zárolt topológia](media/limit-egress-traffic/aks-azure-firewall-egress.png)
 
-* A nyilvános bejövő forgalom a tűzfalon keresztüli szűrésre kényszerül
-  * Az AK-ügynökök csomópontjai elkülönített alhálózatokban vannak elkülönítve.
-  * [Azure Firewall](../firewall/overview.md) a saját alhálózatán van üzembe helyezve.
-  * A DNAT szabály az FW nyilvános IP-címet az LB frontend IP-címére fordítja le.
-* A kimenő kérelmek ügynök-csomópontokból a Azure Firewall belső IP-címekre indulnak egy [felhasználó által megadott útvonal](egress-outboundtype.md) használatával
-  * Az AK-ügynök csomópontjaitól érkező kérések követnek egy olyan UDR, amely az AK-fürt üzembe helyezésére szolgáló alhálózaton van elhelyezve.
-  * Azure Firewall egresses a virtuális hálózatról a nyilvános IP-címről
-  * A nyilvános internethez vagy más Azure-szolgáltatásokhoz való hozzáférés a tűzfal előtér-IP-címére irányuló és onnan áramlik.
-  * Ha szükséges, a hozzáférés az AK-vezérlési síkon az [API-kiszolgáló által jogosult IP-címtartományok](./api-server-authorized-ip-ranges.md)által védett, amely magában foglalja a tűzfal nyilvános ELŐTÉRBELI IP-címét.
+* A nyilvános bejövő forgalomnak tűzfalszűrőkön keresztül kell áthaladtatva
+  * Az AKS-ügynökcsomópontok egy dedikált alhálózatban vannak elkülönítve.
+  * [Azure Firewall](../firewall/overview.md) a rendszer a saját alhálózatán telepíti.
+  * A DNAT-szabály lefordítja az FW nyilvános IP-címét az LB előtere IP-címére.
+* A kimenő kérések az ügynökcsomópontoktól indulnak Azure Firewall belső [IP-cím](egress-outboundtype.md) felé egy felhasználó által megadott útvonal használatával
+  * Az AKS-ügynökcsomópontoktól származó kérések egy UDR-t követnek, amely arra az alhálózatra lett helyezve, amelybe az AKS-fürt üzembe lett helyezve.
+  * Azure Firewall a virtuális hálózatból egy nyilvános IP-előtereből kifelé
+  * A nyilvános internethez vagy más Azure-szolgáltatásokhoz való hozzáférés a tűzfal előtéri IP-címére és onnan más felé áramlik
+  * Ha szükséges, az AKS-vezérlősíkhoz való hozzáférést az [API-kiszolgáló](./api-server-authorized-ip-ranges.md)engedélyezett IP-címtartományai védik, amely tartalmazza a tűzfal nyilvános előtere IP-címét.
 * Belső forgalom
-  * Ehelyett vagy egy [nyilvános Load Balanceron](load-balancer-standard.md) kívül a belső forgalomhoz [belső Load Balancer](internal-lb.md) is használhat, amelyet a saját alhálózatán is elkülönítheti.
+  * Ehelyett vagy egy nyilvános [](load-balancer-standard.md) Load Balancer is használhat belső Load Balancer-t a belső forgalomhoz, amelyet a saját alhálózatán is elkülöníthet. [](internal-lb.md)
 
 
-Az alábbi lépések a Azure Firewall `AzureKubernetesService` FQDN-címkét használják az AK-fürt kimenő forgalmának korlátozására, és példát mutatnak arra, hogyan konfigurálható a nyilvános bejövő forgalom a tűzfalon keresztül.
+Az alábbi lépések az Azure Firewall FQDN címkét használják az AKS-fürt kimenő forgalmának korlátozására, és egy példát mutatnak be a nyilvános bejövő forgalom tűzfalon keresztüli `AzureKubernetesService` konfigurálására.
 
 
-### <a name="set-configuration-via-environment-variables"></a>Konfiguráció beállítása környezeti változók használatával
+### <a name="set-configuration-via-environment-variables"></a>Konfiguráció beállítása környezeti változókon keresztül
 
-Adja meg az erőforrás-létrehozásokban használandó környezeti változók készletét.
+Definiálja az erőforrás-létrehozáshoz használni szükséges környezeti változókat.
 
 ```bash
 PREFIX="aks-egress"
@@ -286,11 +286,11 @@ FWROUTE_NAME_INTERNET="${PREFIX}-fwinternet"
 
 ### <a name="create-a-virtual-network-with-multiple-subnets"></a>Több alhálózattal rendelkező virtuális hálózat létrehozása
 
-Hozzon létre egy virtuális hálózatot két különálló alhálózattal, egyet a fürthöz, egyet a tűzfalhoz. Opcionálisan létrehozhat egyet a belső szolgáltatás bejövő szolgáltatásaihoz is.
+Virtuális hálózat kiépítése két külön alhálózattal, egy a fürt számára, egy pedig a tűzfal számára. Ha szükséges, létrehozhat egyet a belső szolgáltatás bejövő forgalomhoz is.
 
 ![Üres hálózati topológia](media/limit-egress-traffic/empty-network.png)
 
-Hozzon létre egy erőforráscsoportot az összes erőforrás tárolásához.
+Hozzon létre egy erőforráscsoportot az összes erőforráshoz.
 
 ```azurecli
 # Create Resource Group
@@ -298,7 +298,7 @@ Hozzon létre egy erőforráscsoportot az összes erőforrás tárolásához.
 az group create --name $RG --location $LOC
 ```
 
-Hozzon létre egy virtuális hálózatot két alhálózattal az AK-fürt és a Azure Firewall üzemeltetéséhez. Mindegyiknek saját alhálózata lesz. Kezdjük az AK-hálózattal.
+Hozzon létre egy virtuális hálózatot két alhálózattal az AKS-fürt és az Azure Firewall. Mindegyiknek saját alhálózata lesz. Kezdjük az AKS-hálózattal.
 
 ```
 # Dedicated virtual network with AKS subnet
@@ -320,24 +320,24 @@ az network vnet subnet create \
     --address-prefix 10.42.2.0/24
 ```
 
-### <a name="create-and-set-up-an-azure-firewall-with-a-udr"></a>Azure Firewall létrehozása és beállítása UDR
+### <a name="create-and-set-up-an-azure-firewall-with-a-udr"></a>Hozzon létre és állítson be Azure Firewall UDR-sel
 
-Azure Firewall be kell állítani a bejövő és a kimenő szabályokat. A tűzfal fő célja, hogy lehetővé tegye a szervezetek számára a részletes bejövő és kimenő forgalmi szabályok konfigurálását az AK-fürtbe.
+Azure Firewall bejövő és kimenő szabályokat konfigurálni kell. A tűzfal fő célja, hogy lehetővé tegye a szervezetek számára az AKS-fürtbe és az AKS-fürtből ki- és becsatoló részletes bejövő és bejövő forgalomra vonatkozó szabályok konfigurálást.
 
-![Tűzfal-és UDR](media/limit-egress-traffic/firewall-udr.png)
+![Tűzfal és UDR](media/limit-egress-traffic/firewall-udr.png)
 
 
 > [!IMPORTANT]
-> Ha a fürt vagy alkalmazás nagy számú kimenő kapcsolatot hoz létre a célhelyek ugyanazon vagy kis részhalmazára irányítva, előfordulhat, hogy további tűzfal-előtérbeli IP-címekre van szüksége, hogy elkerülje a maxing a portok számára.
-> További információ az Azure Firewall több IP-címmel való létrehozásáról [  :](../firewall/quick-create-multiple-ip-template.md)
+> Ha a fürt vagy alkalmazás nagy számú kimenő kapcsolatot hoz létre a célhely egy vagy kis részhalmazára irányítva, előfordulhat, hogy több tűzfal előtér-IP-címére van szükség, hogy elkerülje a portok maximális számát az egyes előtér-IP-címeken.
+> Több IP-s Azure-tűzfal létrehozásáról itt található [ **további információ**](../firewall/quick-create-multiple-ip-template.md)
 
-Hozzon létre egy szabványos SKU nyilvános IP-erőforrást, amelyet Azure Firewall előtér-címként kíván használni.
+Hozzon létre egy standard termékváltozatú nyilvános IP-erőforrást, amely az elő Azure Firewall lesz.
 
 ```azurecli
 az network public-ip create -g $RG -n $FWPUBLICIP_NAME -l $LOC --sku "Standard"
 ```
 
-Regisztrálja az előnézeti CLI-bővítményt Azure Firewall létrehozásához.
+Regisztrálja az előzetes verziójú cli-bővítményt egy új Azure Firewall.
 ```azurecli
 # Install Azure Firewall preview CLI extension
 
@@ -347,11 +347,11 @@ az extension add --name azure-firewall
 
 az network firewall create -g $RG -n $FWNAME -l $LOC --enable-dns-proxy true
 ```
-A korábban létrehozott IP-cím most már hozzá lehet rendelni a tűzfal előtérbeli felületéhez.
+A korábban létrehozott IP-cím most már hozzárendelhető a tűzfal előterehez.
 
 > [!NOTE]
-> A nyilvános IP-cím a Azure Firewall való beállítása néhány percet igénybe vehet.
-> A hálózati szabályok teljes tartománynevének kihasználásához engedélyezve kell lennie a DNS-proxynak, ha engedélyezve van a tűzfal a 53-es portot fogja figyelni, és továbbítja a DNS-kéréseket a fent megadott DNS-kiszolgálónak. Ez lehetővé teszi, hogy a tűzfal automatikusan lefordítsa a teljes tartománynevet.
+> A nyilvános IP-cím beállítása a Azure Firewall eltarthat néhány percig.
+> Ahhoz, hogy kihasználjuk a hálózati szabályok teljes tartománynevét, engedélyezni kell a DNS-proxyt, ha engedélyezve van, a tűzfal az 53-as porton figyel, és továbbítja a DNS-kéréseket a fent megadott DNS-kiszolgálónak. Ez lehetővé teszi, hogy a tűzfal automatikusan lefordítsa az FQDN-t.
 
 ```azurecli
 # Configure Firewall IP Config
@@ -359,7 +359,7 @@ A korábban létrehozott IP-cím most már hozzá lehet rendelni a tűzfal előt
 az network firewall ip-config create -g $RG -f $FWNAME -n $FWIPCONFIG_NAME --public-ip-address $FWPUBLICIP_NAME --vnet-name $VNET_NAME
 ```
 
-Az előző parancs sikeres végrehajtása után mentse a tűzfal előtér-IP-címét később a konfigurációhoz.
+Ha az előző parancs sikeres volt, mentse a tűzfal előtere IP-címét későbbi konfigurálásra.
 
 ```bash
 # Capture Firewall IP Address for Later Use
@@ -369,13 +369,13 @@ FWPRIVATE_IP=$(az network firewall show -g $RG -n $FWNAME --query "ipConfigurati
 ```
 
 > [!NOTE]
-> Ha a [jogosult IP-címtartományok](./api-server-authorized-ip-ranges.md)biztonságos hozzáférést biztosít az AK API-kiszolgálóhoz, a tűzfal nyilvános IP-címét fel kell vennie az engedélyezett IP-tartományba.
+> Ha biztonságos hozzáférést használ az engedélyezett IP-címtartományokkal rendelkező AKS API-kiszolgálóhoz, hozzá kell adni a tűzfal nyilvános IP-címét a hitelesített IP-címtartományhoz. [](./api-server-authorized-ip-ranges.md)
 
-### <a name="create-a-udr-with-a-hop-to-azure-firewall"></a>UDR létrehozása ugrással Azure Firewall
+### <a name="create-a-udr-with-a-hop-to-azure-firewall"></a>Hozzon létre egy UDR-t egy ugrással a Azure Firewall
 
-Az Azure automatikusan irányítja a forgalmat az Azure-alhálózatok, a virtuális hálózatok és a helyszíni hálózatok között. Ha módosítani szeretné az Azure alapértelmezett útválasztását, hozzon létre egy útválasztási táblázatot.
+Az Azure automatikusan elirányja a forgalmat az Azure-alhálózatok, virtuális hálózatok és helyszíni hálózatok között. Ha módosítani szeretné az Azure alapértelmezett útválasztását, hozzon létre egy útvonaltáblát.
 
-Hozzon létre egy üres útválasztási táblázatot, amely egy adott alhálózathoz lesz társítva. Az útválasztási táblázat a következő ugrást fogja meghatározni a fent létrehozott Azure Firewall. Mindegyik alhálózattal nulla vagy egy útvonaltábla társítható.
+Hozzon létre egy üres útvonaltáblát, amely egy adott alhálózathoz lesz társítva. Az útvonaltábla a következő ugrást a fent létrehozott Azure Firewall határozza meg. Mindegyik alhálózattal nulla vagy egy útvonaltábla társítható.
 
 ```azurecli
 # Create UDR and add a route for Azure Firewall
@@ -385,13 +385,13 @@ az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-na
 az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route-table-name $FWROUTE_TABLE_NAME --address-prefix $FWPUBLIC_IP/32 --next-hop-type Internet
 ```
 
-A [virtuális hálózati útválasztási táblázat dokumentációjában](../virtual-network/virtual-networks-udr-overview.md#user-defined) tájékozódhat arról, hogyan bírálhatja felül az Azure alapértelmezett rendszerútvonalait, vagy további útvonalakat adhat hozzá az alhálózat útválasztási táblájához.
+Tekintse [meg a virtuális hálózatok útválasztási](../virtual-network/virtual-networks-udr-overview.md#user-defined) táblázatának dokumentációját arról, hogyan bírálhatja felül az Azure alapértelmezett rendszerútvonalait, vagy hogyan adhat hozzá további útvonalakat egy alhálózat útválasztási táblázatához.
 
 ### <a name="adding-firewall-rules"></a>Tűzfalszabályok hozzáadása
 
-Az alábbi három hálózati szabály használható a tűzfalon való konfiguráláshoz, előfordulhat, hogy a központi telepítés alapján kell módosítania ezeket a szabályokat. Az első szabály a 9000-es port elérését teszi lehetővé a TCP protokollon keresztül. A második szabály lehetővé teszi a 1194-es és 123-as port elérését az UDP protokollon keresztül (ha üzembe helyezi az Azure China 21Vianet, [többre](#azure-china-21vianet-required-network-rules)is szükség lehet). Mindkét szabály csak az általunk használt Azure-régió CIDR irányuló forgalmat engedélyezi, ebben az esetben az USA keleti régiójában. Végül hozzáadunk egy harmadik hálózati szabályt, amely az 123-as portot az `ntp.ubuntu.com` UDP protokollal nyitja meg (FQDN-ként adja hozzá a teljes tartománynevet hálózati szabályként a Azure Firewall egyik sajátossága, és a saját beállítások használatakor módosítania kell).
+Az alábbiakban három hálózati szabályt olvashat, amelyek konfigurálhatóak a tűzfalon. Előfordulhat, hogy ezeket a szabályokat az üzemelő példány alapján kell igazítania. Az első szabály engedélyezi a 9000-es port TCP-n keresztüli hozzáférését. A második szabály engedélyezi a hozzáférést az 1194-es és a 123-as porthoz UDP-n keresztül (ha az üzembe helyezést egy Azure China 21Vianet, többre lehet [szükség).](#azure-china-21vianet-required-network-rules) Mindkét szabály csak az általunk használt Azure-régió CIDR-be (ebben az esetben az USA keleti régiójába) tart forgalmat engedélyezi. Végül hozzáadunk egy harmadik hálózati szabályt, amely megnyitja a 123-as portot a teljes tartományn keresztül az UDP-n keresztül (a teljes tartomány tartományának hálózati szabályként való hozzáadása az Azure Firewall egyik specifikus szolgáltatása, és a saját beállításainak használata esetén alkalmazkodnia `ntp.ubuntu.com` kell).
 
-A hálózati szabályok beállítása után egy, a `AzureKubernetesService` 443-es és a 80-es porton keresztül elérhető teljes tartománynevet tartalmazó szabályt is hozzáadunk az alkalmazáshoz.
+A hálózati szabályok beállítása után egy olyan alkalmazásszabályt is hozzáadunk a használatával, amely lefedi a `AzureKubernetesService` 443-as és a 80-as TCP-porton keresztül elérhető összes szükséges teljes tartományt.
 
 ```
 # Add FW Network Rules
@@ -405,11 +405,11 @@ az network firewall network-rule create -g $RG -f $FWNAME --collection-name 'aks
 az network firewall application-rule create -g $RG -f $FWNAME --collection-name 'aksfwar' -n 'fqdn' --source-addresses '*' --protocols 'http=80' 'https=443' --fqdn-tags "AzureKubernetesService" --action allow --priority 100
 ```
 
-A Azure Firewall szolgáltatással kapcsolatos további információkért tekintse meg [Azure Firewall dokumentációját](../firewall/overview.md) .
+A [Azure Firewall szolgáltatásról](../firewall/overview.md) további információt az Azure Firewall dokumentáció Azure Firewall jában talál.
 
-### <a name="associate-the-route-table-to-aks"></a>Az útválasztási táblázat hozzárendelése AK-hoz
+### <a name="associate-the-route-table-to-aks"></a>Az útvonaltábla társítása az AKS-hez
 
-Ha a fürtöt a tűzfalhoz szeretné rendelni, a fürt alhálózatához tartozó dedikált alhálózatnak a fent létrehozott útválasztási táblára kell hivatkoznia. A társítást úgy teheti meg, hogy a fürtöt és a tűzfalat tároló virtuális hálózatra vonatkozó parancs kiadásával frissíti a fürt alhálózatának útválasztási táblázatát.
+Ahhoz, hogy a fürtöt a tűzfalhoz társítsa, a fürt alhálózatának dedikált alhálózatának hivatkozni kell a fent létrehozott útválasztási táblázatra. Társítást úgy lehet tenni, ha parancsot ad a fürtöt és a tűzfalat is tartó virtuális hálózathoz a fürt alhálózatának útválasztási táblázatának frissítéséhez.
 
 ```azurecli
 # Associate route table with next hop to Firewall to the AKS subnet
@@ -417,15 +417,15 @@ Ha a fürtöt a tűzfalhoz szeretné rendelni, a fürt alhálózatához tartozó
 az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NAME --route-table $FWROUTE_TABLE_NAME
 ```
 
-### <a name="deploy-aks-with-outbound-type-of-udr-to-the-existing-network"></a>Az AK üzembe helyezése a kimenő UDR-típussal a meglévő hálózatra
+### <a name="deploy-aks-with-outbound-type-of-udr-to-the-existing-network"></a>AKS üzembe helyezése kimenő UDR-típussal a meglévő hálózatra
 
-Most már van egy AK-fürt üzembe helyezése a meglévő virtuális hálózatban. A [kimenő típust `userDefinedRouting` ](egress-outboundtype.md)is használni fogjuk, ez a funkció biztosítja, hogy a kimenő forgalom a tűzfalon keresztül kényszerítve legyen, és más kimenő útvonalak nem lesznek elérhetők (alapértelmezés szerint a Load Balancer kimenő típust lehet használni).
+Most már üzembe helyezhető egy AKS-fürt a meglévő virtuális hálózaton. A kimenő típust [ `userDefinedRouting` ](egress-outboundtype.md)is használjuk, ez a szolgáltatás biztosítja, hogy a kimenő forgalom a tűzfalon keresztül legyen kényszerítve, és ne létezik más kimenő útvonal (alapértelmezés szerint az Load Balancer kimenő típus használható).
 
-![AK – üzembe helyezés](media/limit-egress-traffic/aks-udr-fw.png)
+![aks-deploy](media/limit-egress-traffic/aks-udr-fw.png)
 
-### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>Egyszerű szolgáltatásnév létrehozása a meglévő virtuális hálózatban való üzembe helyezéshez
+### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>Szolgáltatásnév létrehozása a meglévő virtuális hálózaton belüli üzembe építéshez való hozzáféréssel
 
-A rendszer a fürt identitását (felügyelt identitást vagy szolgáltatásnevet) használja a fürterőforrás létrehozásához. A létrehozás ideje alatt átadott egyszerű szolgáltatás a mögöttes AK-erőforrások, például a tárolási erőforrások, az IP-címek és a terheléselosztó által használt terheléselosztó létrehozásához használatos (Ehelyett [felügyelt identitást](use-managed-identity.md) is használhat). Ha nem kapta meg az alábbi megfelelő engedélyeket, nem fogja tudni kiépíteni az AK-fürtöt.
+Az AKS egy fürtidentitást (felügyelt identitást vagy szolgáltatásnévt) használ a fürterőforrások létrehozásához. A létrehozáskor átadott szolgáltatásnév az AKS által használt mögöttes AKS-erőforrások, például az AKS által használt [](use-managed-identity.md) tárolási erőforrások, IP-k és terheléselosztások létrehozására használható (ehelyett felügyelt identitást is használhat). Ha nem rendelkezik az alábbi megfelelő engedélyekkel, nem fogja tudni kiépítni az AKS-fürtöt.
 
 ```azurecli
 # Create SP and Assign Permission to Virtual Network
@@ -433,7 +433,7 @@ A rendszer a fürt identitását (felügyelt identitást vagy szolgáltatásneve
 az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
 ```
 
-Most cserélje le az `APPID` és az `PASSWORD` alábbit az egyszerű szolgáltatásnév AppID és a szolgáltatás egyszerű jelszavára, amelyet az előző parancs kimenete automatikusan generált. A VNET erőforrás-AZONOSÍTÓra hivatkozunk, hogy megadja az engedélyeket az egyszerű szolgáltatásnak, hogy az AK-ban üzembe helyezhet erőforrásokat.
+Most cserélje le az és az alábbi helyére az előző parancskimenet által automatikusan létrehozott egyszerű szolgáltatás appid és `APPID` `PASSWORD` szolgáltatásnév jelszavát. A virtuális hálózat erőforrás-azonosítójára hivatkozunk, hogy engedélyeket biztosítsunk a szolgáltatásnévnek, hogy az AKS erőforrásokat helyez üzembe benne.
 
 ```azurecli
 APPID="<SERVICE_PRINCIPAL_APPID_GOES_HERE>"
@@ -445,33 +445,33 @@ VNETID=$(az network vnet show -g $RG --name $VNET_NAME --query id -o tsv)
 az role assignment create --assignee $APPID --scope $VNETID --role "Network Contributor"
 ```
 
-[Itt](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)megtekintheti a szükséges részletes engedélyeket.
+A szükséges részletes engedélyeket itt [ellenőrizheti.](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)
 
 > [!NOTE]
-> Ha a kubenet hálózati beépülő modult használja, meg kell adnia az AK szolgáltatás egyszerű vagy felügyelt identitási engedélyeit az előre létrehozott útválasztási táblázathoz, mivel a kubenet a letöltsük-útválasztási szabályok hozzáadásához útválasztási táblázatot igényel. 
+> Ha a Kubenet hálózati beépülő modult használja, az AKS-szolgáltatásnévnek vagy a felügyelt identitásnak engedélyeket kell adnia az előre létrehozott útválasztási táblához, mivel a Kubenetnek útválasztási táblázatra van szüksége az új útválasztási szabályok hozzáadásához. 
 > ```azurecli-interactive
 > RTID=$(az network route-table show -g $RG -n $FWROUTE_TABLE_NAME --query id -o tsv)
 > az role assignment create --assignee $APPID --scope $RTID --role "Network Contributor"
 > ```
 
-### <a name="deploy-aks"></a>AK üzembe helyezése
+### <a name="deploy-aks"></a>Az AKS üzembe helyezése
 
-Végül az AK-fürt üzembe helyezhető a fürthöz dedikált meglévő alhálózaton. A rendszerbe központilag telepítendő célként megadott alhálózat a környezeti változóval van definiálva `$SUBNETID` . Nem definiálta a `$SUBNETID` változót az előző lépésekben. Az alhálózati azonosító értékének megadásához a következő parancsot használhatja:
+Végül az AKS-fürt üzembe helyezhető a fürt számára kijelölt meglévő alhálózaton. A cél alhálózatot, amelybe üzembe helyezni kell, a környezeti változóval van `$SUBNETID` definiálva. Az előző lépésekben nem `$SUBNETID` határoztunk meg változót. Az alhálózat azonosítójának beállítására a következő parancsot használhatja:
 
 ```azurecli
 SUBNETID=$(az network vnet subnet show -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NAME --query id -o tsv)
 ```
 
-A kimenő típust úgy kell megadnia, hogy az alhálózaton már létező UDR használja. Ez a konfiguráció lehetővé teszi az ak-nak, hogy kihagyja a beállítást, és az IP-kiépítés a terheléselosztó számára.
+Meg kell határoznia a kimenő típust az alhálózaton már létező UDR használatára. Ez a konfiguráció lehetővé teszi, hogy az AKS kihagyja a terheléselosztás beállítását és IP-létesítését.
 
 > [!IMPORTANT]
-> A kimenő típusokra vonatkozó UDR, beleértve a korlátozásokat, lásd: [**kimenő forgalom típusa UDR**](egress-outboundtype.md#limitations).
+> Az UDR kimenő típussal kapcsolatos további információkért, beleértve a korlátozásokat, lásd: Kimenő [**forgalom UDR-típusa.**](egress-outboundtype.md#limitations)
 
 
 > [!TIP]
-> További funkciók is hozzáadhatók a fürt üzembe helyezéséhez, például a [**privát fürthöz**](private-clusters.md). 
+> A fürttelepítéshez további funkciókat is hozzá lehet adni, például a [**privát fürtöt.**](private-clusters.md) 
 >
-> Az [**API-kiszolgáló által engedélyezett IP-tartományokhoz**](api-server-authorized-ip-ranges.md) tartozó AK funkció hozzáadható az API-kiszolgáló hozzáférésének korlátozásához csak a tűzfal nyilvános végpontja számára. A jóváhagyott IP-címtartományok funkció a diagramon nem kötelező. Ha engedélyezi a jogosult IP-címtartomány használatát az API-kiszolgáló elérésének korlátozására, a fejlesztői eszközöknek Jumpbox kell használniuk a tűzfal virtuális hálózatáról, vagy az összes fejlesztői végpontot fel kell vennie az engedélyezett IP-tartományba.
+> Az [**API-kiszolgáló**](api-server-authorized-ip-ranges.md) engedélyezett IP-címtartományok AKS szolgáltatása hozzáadható, hogy az API-kiszolgáló csak a tűzfal nyilvános végpontjára legyen korlátozva. Az engedélyezett IP-címtartományok funkció nem kötelezőként van megjegyzve a diagramon. Amikor engedélyezi az engedélyezett IP-címtartomány funkciót az API-kiszolgálók hozzáférésének korlátozására, a fejlesztői eszközöknek jumpboxot kell használniuk a tűzfal virtuális hálózatán, vagy az összes fejlesztői végpontot hozzá kell adni a hitelesített IP-címtartományhoz.
 
 ```azurecli
 az aks create -g $RG -n $AKSNAME -l $LOC \
@@ -489,9 +489,9 @@ az aks create -g $RG -n $AKSNAME -l $LOC \
 
 ### <a name="enable-developer-access-to-the-api-server"></a>Fejlesztői hozzáférés engedélyezése az API-kiszolgálóhoz
 
-Ha az előző lépésben az engedélyezett IP-tartományokat használta a fürthöz, hozzá kell adnia a fejlesztői eszközökhöz tartozó IP-címeket a jóváhagyott IP-címtartományok számára az AK-fürtök listájához, hogy onnan elérje az API-kiszolgálót. Egy másik lehetőség, hogy a tűzfal virtuális hálózatán belül egy külön alhálózaton belüli Jumpbox konfigurálja a szükséges eszközökkel.
+Ha az előző lépésben hitelesített IP-címtartományokat használt a fürthöz, akkor hozzá kell adni a fejlesztői eszköz IP-címeket a jóváhagyott IP-tartományok AKS-fürtlistához, hogy onnan el tudja férni az API-kiszolgálót. Egy másik lehetőség egy jumpbox konfigurálása a szükséges eszközkészlettel a tűzfal virtuális hálózatának egy külön alhálózatán.
 
-Adjon hozzá egy másik IP-címet a jóváhagyott tartományokhoz a következő paranccsal
+Adjon hozzá egy másik IP-címet a jóváhagyott tartományokhoz az alábbi paranccsal
 
 ```bash
 # Retrieve your IP address
@@ -502,18 +502,18 @@ az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/3
 
 ```
 
- Az `kubectl` újonnan létrehozott Kubernetes-fürthöz való kapcsolódáshoz használja az [az AK Get-hitelesítő adatok] [az-AK-Get-hitelesítőadats] parancsot. 
+ Az [az aks get-credentials][az-aks-get-credentials] paranccsal konfigurálja a parancsot az újonnan létrehozott `kubectl` Kubernetes-fürthöz való csatlakozáshoz. 
 
  ```azurecli
  az aks get-credentials -g $RG -n $AKSNAME
  ```
 
 ### <a name="deploy-a-public-service"></a>Nyilvános szolgáltatás üzembe helyezése
-Most már elindíthatja a szolgáltatásokat, és alkalmazásokat telepíthet a fürtre. Ebben a példában egy nyilvános szolgáltatást teszünk közzé, de belső [terheléselosztó](internal-lb.md)használatával is kiválaszthat egy belső szolgáltatást.
+Most már elkezdheti a szolgáltatások felfedése és alkalmazások üzembe helyezése a fürtön. Ebben a példában egy nyilvános szolgáltatást fogunk elérhetővé tenni, de belső szolgáltatást is elérhetővé tehet a belső [terheléselosztáson keresztül.](internal-lb.md)
 
-![Nyilvános szolgáltatás DNAT](media/limit-egress-traffic/aks-create-svc.png)
+![Nyilvános szolgáltatás DNAT-ja](media/limit-egress-traffic/aks-create-svc.png)
 
-Telepítse az Azure szavazó app alkalmazást úgy, hogy az alábbi YAML másolja egy nevű fájlba `example.yaml` .
+Az Azure-szavazóalkalmazás üzembe helyezéséhez másolja az alábbi yaml-fájlt egy nevű `example.yaml` fájlba.
 
 ```yaml
 # voting-storage-deployment.yaml
@@ -729,7 +729,7 @@ spec:
     app: voting-analytics
 ```
 
-A szolgáltatás üzembe helyezése a futtatásával:
+A szolgáltatás üzembe helyezése a következő futtatásával:
 
 ```bash
 kubectl apply -f example.yaml
@@ -738,20 +738,20 @@ kubectl apply -f example.yaml
 ### <a name="add-a-dnat-rule-to-azure-firewall"></a>DNAT-szabály hozzáadása a Azure Firewall
 
 > [!IMPORTANT]
-> Ha Azure Firewall használatával korlátozza a kimenő forgalom forgalmát, és egy felhasználó által megadott útvonalat (UDR) hoz létre az összes kimenő forgalom kikényszerítéséhez, akkor győződjön meg arról, hogy megfelelő DNAT-szabályt hoz létre a tűzfalban, hogy megfelelően engedélyezze a bejövő forgalmat. A Azure Firewall használata UDR megszakítja a bejövő beállításokat az aszimmetrikus útválasztás miatt. (A probléma akkor fordul elő, ha az AK-alhálózat alapértelmezett útvonala a tűzfal magánhálózati IP-címére mutat, de a következő típusú nyilvános terheléselosztó-bejövő vagy Kubernetes-szolgáltatást használja: terheléselosztó). Ebben az esetben a bejövő terheléselosztó forgalma a nyilvános IP-címén keresztül érkezik, a visszatérési útvonal azonban a tűzfal magánhálózati IP-címén halad át. Mivel a tűzfal állapot-nyilvántartó, eldobja a visszaadott csomagot, mert a tűzfal nem ismeri a létesített munkamenetet. Ha szeretné megtudni, hogyan integrálhatja a Azure Firewallt a bemenő vagy a Service Load balancerrel, tekintse meg a [Azure Firewall integrálása az Azure standard Load Balancer](../firewall/integrate-lb.md)-nal című
+> Ha a Azure Firewall használatával korlátozza a bejövő forgalmat, és létrehoz egy felhasználó által megadott útvonalat (UDR), amely az összes bejövő forgalmat kényszeríti, mindenképpen hozzon létre egy megfelelő DNAT-szabályt a tűzfalon a bejövő forgalom megfelelő engedélyezése érdekében. A Azure Firewall UDR-sel való használata megszakítja a bejövő forgalom beállítását az aszimmetrikus útválasztás miatt. (A probléma akkor merül fel, ha az AKS-alhálózat alapértelmezett útvonala a tűzfal magánhálózati IP-címére irányít, de Ön egy loadBalancer típusú nyilvános terheléselelítőt használ – bejövő vagy Kubernetes-szolgáltatást. Ebben az esetben a bejövő terheléselelosztási forgalom a nyilvános IP-címen keresztül érkezik, de a visszatérési útvonal a tűzfal magánhálózati IP-címére halad át. Mivel a tűzfal állapot-állapot szerinti, eldobja a visszatérő csomagot, mert a tűzfal nem tud egy már létrehozott munkamenetről. Ha meg szeretne ismerkedni a bejövő Azure Firewall vagy a szolgáltatás terheléselosztásával, olvassa el a Következőt: Integráció Azure Firewall [Azure standard Load Balancer.](../firewall/integrate-lb.md)
 
 
-A bejövő kapcsolat konfigurálásához egy DNAT szabályt kell írni a Azure Firewallba. A fürthöz való csatlakozás teszteléséhez egy szabály van meghatározva a tűzfal előtér nyilvános IP-címére, hogy a belső szolgáltatás által közzétett belső IP-címhez irányítson.
+A bejövő kapcsolat konfiguráláshoz egy DNAT-szabályt kell írni a Azure Firewall. A fürthöz való csatlakozás teszteléséhez meg kell határozni egy szabályt a tűzfal előtere nyilvános IP-címéhez, amely a belső szolgáltatás által elérhetővé teszi a belső IP-címre való útválasztást.
 
-A cél címe testreszabható, mert a tűzfal portja elérhető. A lefordított címnek a belső Load Balancer IP-címének kell lennie. A lefordított portnak a Kubernetes szolgáltatás számára elérhető portnak kell lennie.
+A célcím testreszabható, mivel ez az a port a tűzfalon, amelyhez hozzá kell férni. A lefordított címnek a belső terheléselosztás IP-címének kell lennie. A lefordított portnak a Kubernetes-szolgáltatás elérhetővéált portjának kell lennie.
 
-Meg kell adnia a Kubernetes szolgáltatás által létrehozott terheléselosztó számára hozzárendelt belső IP-címet. A címek lekérése a futtatásával:
+Meg kell adnia a Kubernetes-szolgáltatás által létrehozott terheléselosztáshoz rendelt belső IP-címet. A cím lekérése a következő futtatásával:
 
 ```bash
 kubectl get services
 ```
 
-A szükséges IP-cím a külső IP-oszlopban jelenik meg, a következőhöz hasonlóan.
+A szükséges IP-cím az EXTERNAL-IP oszlopban lesz felsorolva, az alábbihoz hasonlóan.
 
 ```bash
 NAME               TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
@@ -761,29 +761,29 @@ voting-app         LoadBalancer   10.41.185.82    20.39.18.6    80:32718/TCP   9
 voting-storage     ClusterIP      10.41.221.201   <none>        3306/TCP       9m
 ```
 
-A szolgáltatás IP-címének lekérése a futtatásával:
+Szerezze be a szolgáltatás IP-címét a következő futtatásával:
 ```bash
 SERVICE_IP=$(kubectl get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].ip}')
 ```
 
-Adja hozzá a NAT-szabályt a futtatásával:
+Adja hozzá a NAT-szabályt a következő futtatásával:
 ```azurecli
 az network firewall nat-rule create --collection-name exampleset --destination-addresses $FWPUBLIC_IP --destination-ports 80 --firewall-name $FWNAME --name inboundrule --protocols Any --resource-group $RG --source-addresses '*' --translated-port 80 --action Dnat --priority 100 --translated-address $SERVICE_IP
 ```
 
 ### <a name="validate-connectivity"></a>Kapcsolat ellenőrzése
 
-A kapcsolat ellenőrzéséhez navigáljon a böngészőben a Azure Firewall előtér IP-címére.
+A kapcsolat ellenőrzéséhez lépjen Azure Firewall előtere IP-címére egy böngészőben.
 
-Ekkor meg kell jelennie az AK-szavazati alkalmazásnak. Ebben a példában a tűzfal nyilvános IP-címe volt `52.253.228.132` .
+Meg kell lennie az AKS szavazóalkalmazásnak. Ebben a példában a tűzfal nyilvános IP-címe `52.253.228.132` volt.
 
 
-![A képernyőképen az a K-S szavazási alkalmazás jelenik meg, amely a macskák, a kutyák és az alaphelyzetek, valamint az összesítések gombjaival rendelkezik](media/limit-egress-traffic/aks-vote.png)
+![Képernyőkép az A K S szavazóalkalmazásról, a Macskák, a Kutyák és a Visszaállítás gombokkal és az összegekkel.](media/limit-egress-traffic/aks-vote.png)
 
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az Azure-erőforrások tisztításához törölje az AK-erőforráscsoport törlését.
+Az Azure-erőforrások törléséhez törölje az AKS-erőforráscsoportot.
 
 ```azurecli
 az group delete -g $RG
@@ -791,11 +791,11 @@ az group delete -g $RG
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta, hogy milyen portokat és címeket kell engedélyezni, ha szeretné korlátozni a kimenő forgalmat a fürt számára. Azt is láthatja, hogyan védheti meg a kimenő forgalmat Azure Firewall használatával. 
+Ebben a cikkben megtanulta, hogy milyen portokat és címeket engedélyez, ha korlátozni szeretné a fürtre vonatkozó bejövő forgalmat. Azt is láthatta, hogyan biztosíthatja a kimenő forgalom biztonságossá Azure Firewall. 
 
-Ha szükséges, általánosíthatja a fenti lépéseket, hogy továbbítsa a forgalmat az előnyben részesített kimenő megoldásra, a [kimenő típusok `userDefinedRoute` dokumentációja](egress-outboundtype.md)alapján.
+Szükség esetén általánosíthatja a fenti lépéseket, hogy a forgalmat az előnyben részesített kimenő forgalmi megoldásnak továbbkérődjön a [kimenő típus `userDefinedRoute` dokumentációja alapján.](egress-outboundtype.md)
 
-Ha szeretné korlátozni, hogy a hüvelyek hogyan kommunikálnak egymással, és East-West a forgalom korlátozásait a fürtön belül, lásd: [biztonságos forgalom a hüvelyek között hálózati házirendek használatával][network-policy]
+Ha korlátozni szeretné a podok egymás közötti kommunikációját és a fürtön belüli forgalomkorlátozásokatEast-West tekintse meg a Secure traffic between pods using network policies in AKS (A podok közötti forgalom biztonságossá használata hálózati szabályzatokkal az [AKS-ban) (][network-policy])
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
@@ -803,9 +803,9 @@ Ha szeretné korlátozni, hogy a hüvelyek hogyan kommunikálnak egymással, és
 [install-azure-cli]: /cli/azure/install-azure-cli
 [network-policy]: use-network-policies.md
 [azure-firewall]: ../firewall/overview.md
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
 [aks-upgrade]: upgrade-cluster.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md

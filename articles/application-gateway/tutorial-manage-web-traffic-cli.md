@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 07/20/2019
 ms.author: victorh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 89ba84be61469ff07eff55bb9cd114fe124b3ec2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01df6a12437808aa903046d2923c735ded5067ee
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566605"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772778"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>Webes forgalom kezelése Application Gatewayjel az Azure CLI segítségével
 
-Az alkalmazásátjáró kezeli az Ön által fenntartott kiszolgálókra irányuló webes forgalmat, és védelmet biztosít ahhoz. Az Azure CLI használatával olyan [Application Gateway](overview.md) hozható létre, amely a háttér-kiszolgálók [virtuálisgép-méretezési csoportját](../virtual-machine-scale-sets/overview.md) használja. Ebben a példában a méretezési csoport két virtuálisgép-példányt tartalmaz. A méretezési csoport az Application Gateway alapértelmezett backend-készletéhez lesz hozzáadva.
+Az alkalmazásátjáró kezeli az Ön által fenntartott kiszolgálókra irányuló webes forgalmat, és védelmet biztosít ahhoz. Az Azure CLI használatával létrehozhat egy [alkalmazásátjárót,](overview.md) amely virtuálisgép-méretezési csoportokat [használ](../virtual-machine-scale-sets/overview.md) háttérkiszolgálókhoz. Ebben a példában a méretezési készlet két virtuálisgép-példányt tartalmaz. A méretezési készlet hozzá lesz adva az Application Gateway alapértelmezett háttérkészlethez.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -25,17 +25,17 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 * Application Gateway létrehozása
 * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
 
-Ha szeretné, az eljárást [Azure PowerShell](tutorial-manage-web-traffic-powershell.md)használatával végezheti el.
+Ha szeretné, ezt az eljárást a következővel is [Azure PowerShell.](tutorial-manage-web-traffic-powershell.md)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - Az oktatóanyaghoz az Azure CLI 2.0.4 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+ - Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal.
+Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal.
 
 A következő példában létrehozunk egy *myResourceGroupAG* nevű erőforráscsoportot az *eastus* helyen.
 
@@ -71,7 +71,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
-Az [az network application-gateway create](/cli/azure/network/application-gateway) paranccsal hozza létre a *myAppGateway* alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az Application Gateway hozzá van rendelve a korábban létrehozott *myAGSubnet* és *myPublicIPAddress* . 
+Az [az network application-gateway create](/cli/azure/network/application-gateway) paranccsal hozza létre a *myAppGateway* alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az alkalmazásátjáró a *korábban létrehozott myAGSubnet* és *myPublicIPAddress* ip-címhez van rendelve. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -89,7 +89,7 @@ az network application-gateway create \
   --public-ip-address myAGPublicIPAddress
 ```
 
- Az alkalmazásátjáró létrehozása néhány percig is eltarthat. Az Application Gateway létrehozása után az alábbi új funkciók jelennek meg:
+ Az alkalmazásátjáró létrehozása néhány percig is eltarthat. Az Application Gateway létrehozása után a következő új funkciók fognak látni:
 
 - *appGatewayBackendPool* – Az Application Gatewayeknek legalább egy háttércímkészlettel kell rendelkezniük.
 - *appGatewayBackendHttpSettings* – Meghatározza, hogy a kommunikációhoz a rendszer a 80-as portot és egy HTTP-protokollt használ.
@@ -99,7 +99,7 @@ az network application-gateway create \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport létrehozása
 
-Ebben a példában egy olyan virtuálisgép-méretezési csoportot hoz létre, amely kiszolgálókat biztosít a háttérkészlet számára az alkalmazásátjáróban. A méretezési csoportban lévő virtuális gépek a *myBackendSubnet* alhálózathoz és az *appGatewayBackendPool* készlethez vannak rendelve. A méretezési csoport létrehozásához használja az [az vmss create](/cli/azure/vmss#az-vmss-create) parancsot.
+Ebben a példában egy olyan virtuálisgép-méretezési csoportot hoz létre, amely kiszolgálókat biztosít a háttérkészlet számára az alkalmazásátjáróban. A méretezési csoportban lévő virtuális gépek a *myBackendSubnet* alhálózathoz és az *appGatewayBackendPool* készlethez vannak rendelve. A méretezési csoport létrehozásához használja az [az vmss create](/cli/azure/vmss#az_vmss_create) parancsot.
 
 ```azurecli-interactive
 az vmss create \

@@ -1,21 +1,21 @@
 ---
-title: Oktatóanyag – Azure Red Hat 4. OpenShift-fürt létrehozása
+title: Oktatóanyag – 4-es Azure Red Hat OpenShift létrehozása
 description: Megtudhatja, hogyan hozhat létre Microsoft Azure Red Hat OpenShift-fürtöt az Azure CLI használatával
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: 55c1b6f6c6690f0c8f00a8a2469834781f35fb3c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dda4fc6a80bbe07977f8d2a5ffcbea895a4e1fe6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449798"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771838"
 ---
-# <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift 4 fürt létrehozása
+# <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Oktatóanyag: 4 Azure Red Hat OpenShift létrehozása
 
-Ebben az oktatóanyagban, amely három részből áll, előkészíti a környezetet egy OpenShift 4 rendszerű Azure Red Hat OpenShift-fürt létrehozásához, és létrehoz egy fürtöt. A következőket fogja megtanulni:
+Ebben az oktatóanyagban, amely a harmadik rész első része, előkészítjük a környezetet egy OpenShift 4-et futtató Azure Red Hat OpenShift-fürt létrehozására, valamint egy fürt létrehozására. A következőket fogja megtanulni:
 > [!div class="checklist"]
 > * Az előfeltételek beállítása 
 > * A szükséges virtuális hálózat és alhálózatok létrehozása
@@ -23,86 +23,86 @@ Ebben az oktatóanyagban, amely három részből áll, előkészíti a környeze
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha a CLI helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-Az Azure Red Hat OpenShift legalább 40 mag szükséges a OpenShift-fürt létrehozásához és futtatásához. Egy új Azure-előfizetéshez tartozó alapértelmezett Azure-erőforrás-kvóta nem felel meg ennek a követelménynek. Az erőforrás-korlát növeléséhez tekintse meg a [standard kvóta: a határértékek](../azure-portal/supportability/per-vm-quota-requests.md)csökkentése virtuálisgép-sorozat szerint című témakört.
+Azure Red Hat OpenShift OpenShift-fürt létrehozásához és futtatásához legalább 40 mag szükséges. Az új Azure-előfizetések alapértelmezett Azure-erőforráskvótája nem felel meg ennek a követelménynek. Az erőforráskorlát növelésének kérését lásd: [Standard kvóta: Korlátok növelése virtuálisgép-sorozatok szerint.](../azure-portal/supportability/per-vm-quota-requests.md)
 
-Az ARO-lekérési titok nem változtatja meg az ARO-hoz tartozó RH OpenShift-licenc költségeit.
+Az ARO lekért titkos gombra való váltás nem módosítja az ARO OPENShift-licencének költségét.
 
 ### <a name="verify-your-permissions"></a>Engedélyek ellenőrzése
 
-Az oktatóanyag során létre fog hozni egy erőforráscsoportot, amely a fürthöz tartozó virtuális hálózatot fogja tartalmazni. A közreműködői és a felhasználói hozzáférés rendszergazdai engedélyeivel vagy a tulajdonosi engedélyekkel közvetlenül a virtuális hálózaton, illetve az azt tartalmazó erőforráscsoporthoz vagy előfizetésben is szerepelnie kell.
+Az oktatóanyag során létre fog hozni egy erőforráscsoportot, amely a fürt virtuális hálózatát fogja tartalmazni. Közreműködői és felhasználói hozzáférés-rendszergazdai engedélyekkel, vagy tulajdonosi engedélyekkel kell rendelkeznie közvetlenül a virtuális hálózaton, vagy az azt tartalmazó erőforráscsoporton vagy előfizetésen.
 
-Emellett elegendő Azure Active Directory engedélyekkel kell rendelkeznie ahhoz, hogy az eszköz egy alkalmazást és egy szolgáltatásnevet hozzon létre a fürt nevében.
+Emellett elegendő engedélyre Azure Active Directory az eszközök számára ahhoz, hogy a fürt nevében létrehoz egy alkalmazást és egy szolgáltatásnévt.
 
 ### <a name="register-the-resource-providers"></a>Az erőforrás-szolgáltatók regisztrálása
 
-1. Ha több Azure-előfizetéssel rendelkezik, akkor a megfelelő előfizetés-azonosítót kell megadnia:
+1. Ha több Azure-előfizetéssel rendelkezik, adja meg a megfelelő előfizetés-azonosítót:
 
     ```azurecli-interactive
     az account set --subscription <SUBSCRIPTION ID>
     ```
 
-1. Az erőforrás-szolgáltató regisztrálása `Microsoft.RedHatOpenShift` :
+1. Regisztrálja az `Microsoft.RedHatOpenShift` erőforrás-szolgáltatót:
 
     ```azurecli-interactive
     az provider register -n Microsoft.RedHatOpenShift --wait
     ```
     
-1. Az erőforrás-szolgáltató regisztrálása `Microsoft.Compute` :
+1. Regisztrálja az `Microsoft.Compute` erőforrás-szolgáltatót:
 
     ```azurecli-interactive
     az provider register -n Microsoft.Compute --wait
     ```
     
-1. Az erőforrás-szolgáltató regisztrálása `Microsoft.Storage` :
+1. Regisztrálja az `Microsoft.Storage` erőforrás-szolgáltatót:
 
     ```azurecli-interactive
     az provider register -n Microsoft.Storage --wait
     ```
     
-1. Az erőforrás-szolgáltató regisztrálása `Microsoft.Authorization` :
+1. Regisztrálja az `Microsoft.Authorization` erőforrás-szolgáltatót:
 
     ```azurecli-interactive
     az provider register -n Microsoft.Authorization --wait
     ```
 
-### <a name="get-a-red-hat-pull-secret-optional"></a>Red Hat pull-titok beolvasása (nem kötelező)
+### <a name="get-a-red-hat-pull-secret-optional"></a>Red Hat lekért titkos tok (nem kötelező)
 
-A Red Hat pull Secret lehetővé teszi, hogy a fürt hozzáférjen a Red Hat Container-jegyzékekhez a további tartalommal együtt. Ez a lépés nem kötelező, de ajánlott.
+A Red Hat lekért titkos adatok lehetővé teszik, hogy a fürt további tartalmakkal együtt hozzáférjen a Red Hat tárolóregisztrálókhoz. Ez a lépés nem kötelező, de ajánlott.
 
-1. [Navigáljon a Red Hat OpenShift a cluster Manager-portálra](https://cloud.redhat.com/openshift/install/azure/aro-provisioned) , és jelentkezzen be.
+1. [Lépjen a Red Hat OpenShift-fürtkezelő portálra, és](https://cloud.redhat.com/openshift/install/azure/aro-provisioned) jelentkezzen be.
 
    Be kell jelentkeznie a Red Hat-fiókjába, vagy létre kell hoznia egy új Red Hat-fiókot az üzleti e-mail-címével, és el kell fogadnia a használati feltételeket.
 
-1. Kattintson a **lekéréses titok letöltése** elemre, és töltse le az ARO-fürthöz használni kívánt lekérési titkot.
+1. Kattintson **a Download pull secret (Titkos lekért** titkos adatok letöltése) elemre, és töltsön le egy lekért titkos gombra az ARO-fürthöz való alkalmazáshoz.
 
-    Tartsa biztonságos helyen a mentett `pull-secret.txt` fájlt. A fájl minden egyes fürt létrehozásakor használatos, ha olyan fürtöt kell létrehoznia, amely a Red hat vagy a Certified partnereknek szóló mintákat vagy operátorokat tartalmaz.
+    A mentett fájlt `pull-secret.txt` biztonságos helyen kell tartani. A fájlt a rendszer minden fürt létrehozásakor használja, ha Red Hat- vagy minősített partnerek számára mintákat vagy operátorokat tartalmazó fürtöt kell létrehoznia.
 
-    A parancs futtatásakor a (z `az aro create` ) paraméter használatával hivatkozhat a lekéréses titkos kulcsra `--pull-secret @pull-secret.txt` . Futtassa `az aro create` azt a könyvtárat, ahová a fájlt mentette `pull-secret.txt` . Ellenkező esetben cserélje le `@pull-secret.txt` a-t a kifejezésre `@/path/to/my/pull-secret.txt` .
+    A parancs `az aro create` futtatásakor a paraméterrel hivatkozhat a lekért titkos `--pull-secret @pull-secret.txt` útjára. Hajtsa `az aro create` végre a fájlt abban a könyvtárban, ahol a fájlt `pull-secret.txt` tárolta. Ellenkező esetben cserélje le a `@pull-secret.txt` helyére a `@/path/to/my/pull-secret.txt` következőt: .
 
-    Ha átmásolja a lekéréses titkot, vagy más parancsfájlokban hivatkozik rá, a lekéréses titkot érvényes JSON-karakterláncként kell formázni.
+    Ha a lekért titkos kódot másolja vagy más szkriptekbe hivatkozik, a lekért titkos kódot érvényes JSON-sztringként kell formázni.
 
-### <a name="prepare-a-custom-domain-for-your-cluster-optional"></a>Egyéni tartomány előkészítése a fürt számára (nem kötelező)
+### <a name="prepare-a-custom-domain-for-your-cluster-optional"></a>Egyéni tartomány előkészítése a fürthöz (nem kötelező)
 
-A parancs futtatásakor `az aro create` megadhat egy egyéni tartományt a fürthöz a `--domain foo.example.com` paraméter használatával.
+A parancs futtatásakor a paraméterrel megadhat egy egyéni tartományt `az aro create` a `--domain foo.example.com` fürthöz.
 
-Ha a fürthöz egyéni tartományt ad meg, vegye figyelembe a következő szempontokat:
+Ha egyéni tartományt ad meg a fürthöz, vegye figyelembe a következőket:
 
-* A fürt létrehozása után 2 DNS-rekordot kell létrehoznia a DNS-kiszolgálón a megadott értékhez `--domain` :
-    * **API** – az API-kiszolgáló IP-címére mutat
-    * **\* . apps** – a bejövő IP-címhez mutat
-    * Ezeket az értékeket a fürt létrehozása után a következő parancs végrehajtásával kérheti le: `az aro show -n -g --query '{api:apiserverProfile.ip, ingress:ingressProfiles[0].ip}'` .
+* A fürt létrehozása után 2 DNS A rekordot kell létrehoznia a DNS-kiszolgálón a `--domain` megadottakhoz:
+    * **api** – az API-kiszolgáló IP-címére mutat
+    * **\* .apps** – a bejövő forgalom IP-címére mutat
+    * Ezeket az értékeket a fürt létrehozása után a következő parancs végrehajtásával lehet lekérni: `az aro show -n -g --query '{api:apiserverProfile.ip, ingress:ingressProfiles[0].ip}'` .
 
-* A OpenShift-konzol a beépített tartomány helyett egy URL-címen lesz elérhető `https://console-openshift-console.apps.example.com` `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
+* Az OpenShift-konzol a beépített tartomány helyett egy URL-címen (például ) `https://console-openshift-console.apps.example.com` lesz `https://console-openshift-console.apps.<random>.<location>.aroapp.io` elérhető.
 
-* Alapértelmezés szerint a OpenShift önaláírt tanúsítványokat használ az egyéni tartományokon létrehozott összes útvonalhoz `*.apps.example.com` .  Ha úgy dönt, hogy a fürthöz való csatlakozás után egyéni DNS-t használ, akkor a OpenShift dokumentációjában [be kell állítania egy egyéni hitelesítésszolgáltatót a bejövő vezérlőhöz](https://docs.openshift.com/container-platform/4.6/security/certificates/replacing-default-ingress-certificate.html) , valamint az [API-kiszolgáló egyéni hitelesítésszolgáltatóját](https://docs.openshift.com/container-platform/4.6/security/certificates/api-server.html).
+* Alapértelmezés szerint az OpenShift önaírt tanúsítványokat használ az egyéni tartományokon létrehozott összes `*.apps.example.com` útvonalhoz.  Ha a fürthöz való csatlakozás után egyéni DNS-t használ, az OpenShift dokumentációjában konfigurálnia kell egy egyéni hitelesítésszolgáltatót [a](https://docs.openshift.com/container-platform/4.6/security/certificates/replacing-default-ingress-certificate.html) bejövő vezérlőhöz és egy egyéni hitelesítésszolgáltatót az [API-kiszolgálóhoz.](https://docs.openshift.com/container-platform/4.6/security/certificates/api-server.html)
 
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>Két üres alhálózatot tartalmazó virtuális hálózat létrehozása
 
-Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálózatot tartalmaz. Ha van olyan meglévő virtuális hálózata, amely megfelel az igényeinek, kihagyhatja ezt a lépést.
+A következő lépés egy virtuális hálózat létrehozása, amely két üres alhálózatot tartalmaz. Ha már van olyan virtuális hálózata, amely megfelel az igényeinek, kihagyhatja ezt a lépést.
 
-1. **Állítsa be a következő változókat abban a rendszerhéj-környezetben, amelyben végre fogja hajtani a `az` parancsokat.**
+1. **Állítsa be a következő változókat a rendszerhéj-környezetben, amelyben a `az` parancsokat fogja végrehajtani.**
 
    ```console
    LOCATION=eastus                 # the location of your cluster
@@ -112,10 +112,10 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
 
 2. **Hozzon létre egy erőforráscsoportot.**
 
-   Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely az erőforráscsoport metaadatait tárolja, valamint azt is, hogy az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrás létrehozásakor. Hozzon létre egy erőforráscsoportot az az [Group Create](/cli/azure/group#az-group-create) paranccsal.
+   Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ezen a helyen tárolja a rendszer az erőforráscsoport metaadatait, és az erőforrások is itt futnak az Azure-ban, ha nem ad meg másik régiót az erőforrás létrehozása során. Hozzon létre egy erőforráscsoportot [az az group create paranccsal.](/cli/azure/group#az_group_create)
     
    > [!NOTE] 
-   > Az Azure Red Hat OpenShift nem érhető el minden olyan régióban, ahol létre lehet hozni egy Azure-erőforráscsoportot. Tekintse meg az [elérhető régiók](https://azure.microsoft.com/en-gb/global-infrastructure/services/?products=openshift) című témakört az Azure Red Hat OpenShift támogatásával kapcsolatban.
+   > Azure Red Hat OpenShift nem érhető el minden olyan régióban, ahol azure-erőforráscsoportot lehet létrehozni. Az [Elérhető régiók](https://azure.microsoft.com/en-gb/global-infrastructure/services/?products=openshift) oldalon további információt Azure Red Hat OpenShift támogatott régiókról.
 
    ```azurecli-interactive
    az group create \
@@ -123,7 +123,7 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
      --location $LOCATION
    ```
 
-   A következő példa kimenete azt mutatja, hogy az erőforráscsoport sikeresen létrejött:
+   Az alábbi példakimeneten a sikeresen létrehozott erőforráscsoport látható:
 
    ```json
    {
@@ -139,9 +139,9 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
 
 2. **Hozzon létre egy virtuális hálózatot.**
 
-   A OpenShift 4-es verzióját futtató Azure Red Hat OpenShift-fürtökhöz két üres alhálózattal rendelkező virtuális hálózat szükséges a fő-és munkavégző csomópontokhoz. Létrehozhat egy új virtuális hálózatot, vagy használhat meglévő virtuális hálózatot is.
+   Azure Red Hat OpenShift OpenShift 4-et futtató fürtökhöz két üres alhálózattal való virtuális hálózatra van szükség a fő- és munkavégző csomópontokhoz. Ehhez létrehozhat egy új virtuális hálózatot, vagy használhat egy meglévő virtuális hálózatot.
 
-   Hozzon létre egy új virtuális hálózatot ugyanabban az erőforráscsoportban, amelyet korábban hozott létre:
+   Hozzon létre egy új virtuális hálózatot a korábban létrehozott erőforráscsoportban:
 
    ```azurecli-interactive
    az network vnet create \
@@ -150,7 +150,7 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
       --address-prefixes 10.0.0.0/22
    ```
 
-   A következő példa kimenete a virtuális hálózat sikeres létrehozását mutatja be:
+   Az alábbi példakimeneten a sikeresen létrehozott virtuális hálózat látható:
 
    ```json
    {
@@ -173,7 +173,7 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
    }
    ```
 
-3. **Adjon hozzá üres alhálózatot a főcsomópontokhoz.**
+3. **Adjon hozzá egy üres alhálózatot a fő csomópontokhoz.**
 
    ```azurecli-interactive
    az network vnet subnet create \
@@ -184,7 +184,7 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
      --service-endpoints Microsoft.ContainerRegistry
    ```
 
-4. **Adjon hozzá üres alhálózatot a munkavégző csomópontokhoz.**
+4. **Adjon hozzá egy üres alhálózatot a munkavégző csomópontokhoz.**
 
    ```azurecli-interactive
    az network vnet subnet create \
@@ -195,7 +195,7 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
      --service-endpoints Microsoft.ContainerRegistry
    ```
 
-5. **[Tiltsa le az alhálózat magánhálózati végpontjának házirendjeit](../private-link/disable-private-link-service-network-policy.md) a fő alhálózaton.** Erre azért van szükség, hogy a szolgáltatás képes legyen csatlakozni a fürthöz, és felügyelni a fürtöt.
+5. **[Tiltsa le az alhálózat privát végpontjának szabályzatát](../private-link/disable-private-link-service-network-policy.md) a fő alhálózaton.** Erre azért van szükség, hogy a szolgáltatás csatlakozni tud a fürthöz, és kezelni tudja azt.
 
    ```azurecli-interactive
    az network vnet subnet update \
@@ -207,12 +207,12 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
 
 ## <a name="create-the-cluster"></a>A fürt létrehozása
 
-Futtassa a következő parancsot egy fürt létrehozásához. Ha a következő lehetőségek egyikét választja, módosítsa a parancsot ennek megfelelően:
-* [A Red Hat pull Secret](#get-a-red-hat-pull-secret-optional) is átadható, amely lehetővé teszi, hogy a fürt hozzáférjen a Red Hat Container-jegyzékekhez a további tartalommal együtt. Adja hozzá az `--pull-secret @pull-secret.txt` argumentumot a parancshoz.
-* Igény szerint [Egyéni tartományt is használhat](#prepare-a-custom-domain-for-your-cluster-optional). Adja hozzá az `--domain foo.example.com` argumentumot a parancshoz, és cserélje le a kifejezést `foo.example.com` a saját egyéni tartományára.
+Futtassa a következő parancsot egy fürt létrehozásához. Ha az alábbi lehetőségek valamelyikét választja, ennek megfelelően módosítsa a parancsot:
+* Ha szükséges, át is használhatja a Red Hat le [pull-titkos](#get-a-red-hat-pull-secret-optional) secret paraméterét, amely lehetővé teszi, hogy a fürt hozzáférjen a Red Hat-tárolóregisztrálókhoz, valamint további tartalmakat is. Adja hozzá `--pull-secret @pull-secret.txt` a argumentumot a parancshoz.
+* Egyéni tartományt [is használhat.](#prepare-a-custom-domain-for-your-cluster-optional) Adja hozzá a argumentumot a parancshoz, és cserélje le `--domain foo.example.com` `foo.example.com` a et a saját egyéni tartományára.
 
 > [!NOTE]
-> Ha nem kötelező argumentumokat ad hozzá a parancshoz, akkor ügyeljen arra, hogy a parancs előző sorában található argumentumot záró fordított perjeltel adja meg.
+> Ha nem kötelező argumentumokat ad hozzá a parancshoz, zárja be a parancs előző sorában található argumentumot záró perjellel.
 
 ```azurecli-interactive
 az aro create \
@@ -223,15 +223,15 @@ az aro create \
   --worker-subnet worker-subnet
 ```
 
-A parancs végrehajtása után az `az aro create` általában körülbelül 35 percet vesz igénybe a fürt létrehozásakor.
+A parancs végrehajtása után a fürt létrehozása általában `az aro create` körülbelül 35 percet vesz igénybe.
 
 ## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 > [!div class="checklist"]
-> * Az előfeltételek beállítása és a szükséges virtuális hálózatok és alhálózatok létrehozása
+> * Az előfeltételek beállítása és a szükséges virtuális hálózat és alhálózatok létrehozása
 > * Fürt üzembe helyezése
 
 Folytassa a következő oktatóanyaggal:
 > [!div class="nextstepaction"]
-> [Kapcsolódás Azure Red Hat OpenShift-fürthöz](tutorial-connect-cluster.md)
+> [Csatlakozás Azure Red Hat OpenShift fürthöz](tutorial-connect-cluster.md)

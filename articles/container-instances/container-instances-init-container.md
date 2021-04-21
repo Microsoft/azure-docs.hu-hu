@@ -1,47 +1,47 @@
 ---
 title: Init-tárolók futtatása
-description: Futtassa az init-tárolókat a Azure Container Instancesban a telepítési feladatok elvégzéséhez egy tároló csoportban az alkalmazás-tárolók futtatása előtt.
+description: Futtassa az init-tárolókat a Azure Container Instances, hogy telepítési feladatokat hajtson végre egy tárolócsoportban az alkalmazástárolók futtatása előtt.
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: 5a729263ee632eb9227694ec8684eb6889c6324b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ccaf1a67d6ca3bcff422acb591b528cc72a9608
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85954281"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763936"
 ---
-# <a name="run-an-init-container-for-setup-tasks-in-a-container-group"></a>Inicializálási tároló futtatása a telepítési feladatokhoz egy tároló csoportban
+# <a name="run-an-init-container-for-setup-tasks-in-a-container-group"></a>Init-tároló futtatása a tárolócsoportban található beállítási feladatokhoz
 
-Azure Container Instances támogatja az *init-tárolókat* egy tároló csoportban. Az init-tárolók az alkalmazás tárolójának vagy tárolóinak elindítása előtt futnak a befejezésig. Az [init-tárolók Kubernetes](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)hasonlóan egy vagy több init-tárolót használ az alkalmazás-tárolók inicializálási logikájának elvégzéséhez, például fiókok beállításához, telepítési parancsfájlok futtatásához vagy adatbázisok konfigurálásához.
+Azure Container Instances támogatja az *init tárolókat* egy tárolócsoportban. Az init-tárolók az alkalmazástároló vagy -tárolók elindul előtt futnak le a befejezésig. A [Kubernetes](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)init-tárolóihoz hasonlóan használjon egy vagy több inicializálási tárolót az alkalmazástárolók inicializálási logikájának végrehajtásához, például fiókok beállításához, beállítási szkriptek futtatásához vagy adatbázisok konfigurálásához.
 
-Ez a cikk bemutatja, hogyan konfigurálhat egy Azure Resource Manager sablont egy, az init-tárolóval rendelkező tároló csoport konfigurálásához.
+Ez a cikk bemutatja, hogyan konfigurálható egy tárolócsoport Azure Resource Manager egy init tárolóval egy sablonnal.
 
 ## <a name="things-to-know"></a>Tudnivalók
 
-* **API-verzió** – az init-tárolók telepítéséhez legalább Azure Container Instances API 2019-12-01-es verziójúnak kell lennie. Üzembe helyezés `initContainers` egy [YAML-fájlban](container-instances-multi-container-yaml.md) vagy egy [Resource Manager-sablonban](container-instances-multi-container-group.md)található tulajdonság használatával.
-* **Végrehajtási sorrend** – az init-tárolók a sablonban megadott sorrendben és más tárolók előtt lesznek végrehajtva. Alapértelmezés szerint legfeljebb 59 init tárolót adhat meg. Legalább egy nem init tárolónak a csoportban kell lennie.
-* **Gazdagép-környezet** – az init-tárolók ugyanazon a hardveren futnak, mint a csoport többi tárolója.
-* **Erőforrások** – az init-tárolók erőforrásai nem adhatók meg. Az összes erőforrást, például a processzorokat és a memóriát biztosítják a tároló csoport számára. Egy init-tároló futtatása közben nem futnak más tárolók a csoportban.
-* **Támogatott tulajdonságok** – az init-tárolók használhatnak a csoport tulajdonságait, például a köteteket, a titkos kulcsokat és a felügyelt identitásokat. Azonban nem használhatnak portokat vagy IP-címet, ha a tároló csoportra vannak konfigurálva. 
-* **Újraindítási szabályzat** – minden init-tárolónak sikeresen ki kell lépnie a csoport következő tárolójának indításakor. Ha egy init-tároló nem indul el sikeresen, az újraindítási művelet a csoportra konfigurált [Újraindítási házirendtől](container-instances-restart-policy.md) függ:
+* **API-verzió** – Az init-tárolók üzembe helyezéséhez legalább Azure Container Instances API 2019-12-01-es verziójára van szükség. Üzembe helyezés `initContainers` [YAML-fájlban található tulajdonság vagy](container-instances-multi-container-yaml.md) Resource Manager [használatával.](container-instances-multi-container-group.md)
+* **Végrehajtási sorrend** – Az Init-tárolók végrehajtása a sablonban megadott sorrendben, valamint a többi tároló előtt megadva. Alapértelmezés szerint tárolócsoportonként legfeljebb 59 init tároló adható meg. Legalább egy nem init tárolónak a csoportban kell lennie.
+* **Gazdakörnyezet** – Az Init-tárolók ugyanazon a hardveren futnak, mint a csoport többi tárolója.
+* **Erőforrások** – Az init-tárolókhoz nem adhatók meg erőforrások. Ők kapják meg a tárolócsoport számára elérhető összes erőforrást, például a processzorokat és a memóriát. Amíg egy init-tároló fut, a csoportban nem fut más tároló.
+* **Támogatott tulajdonságok –** Az Init-tárolók olyan csoporttulajdonságokat használhatnak, mint a kötetek, titkos kulcsok és felügyelt identitások. Ha azonban a tárolócsoporthoz van konfigurálva, nem használhatnak portokat vagy IP-címeket. 
+* **Újraindítási szabályzat** – A csoport következő tárolója előtt minden init tárolónak sikeresen ki kell lépnie. Ha egy init-tároló nem tud sikeresen kilépni, [](container-instances-restart-policy.md) annak újraindítási művelete a csoporthoz konfigurált újraindítási szabályzattól függ:
 
-    |Csoport szabályzata  |Inicializálási szabályzat  |
+    |Szabályzat a csoportban  |Szabályzat init  |
     |---------|---------|
     |Mindig     |OnFailure (Hiba esetén)         |
     |OnFailure (Hiba esetén)     |OnFailure (Hiba esetén)         |
     |Soha     |Soha         |
-* **Díjak** – a tároló csoport az init-tároló első üzemelő példányának terheit terheli.
+* **Díjak** – A tárolócsoport költségei az init tároló első üzembe helyezéséből adnak költségeket.
 
-## <a name="resource-manager-template-example"></a>Példa Resource Manager-sablonra
+## <a name="resource-manager-template-example"></a>Resource Manager példasablonra
 
-Először másolja a következő JSON-t egy nevű új fájlba `azuredeploy.json` . A sablon egy init tárolóval és két alkalmazás-tárolóval állítja be a tároló csoportot:
+Először másolja a következő JSON-t egy nevű új `azuredeploy.json` fájlba. A sablon egy tárolócsoportot állít be egy init és két alkalmazástárolóval:
 
-* A *init1* -tároló futtatja a [BusyBox](https://hub.docker.com/_/busybox) -rendszerképet a Docker hub-ból. 60 másodpercig alvó állapotba lép, majd egy parancssori karakterláncot ír egy [emptyDir-kötetben](container-instances-volume-emptydir.md)lévő fájlba.
-* Mindkét alkalmazás-tároló futtatja a Microsoft `aci-wordcount` Container-rendszerképet:
-    * A *Hamlet* -tároló az alapértelmezett konfigurációban futtatja a WordCount alkalmazást, és megszámolja a Word-gyakoriságokat a Shakespeare Play *Hamletben*.
-    * A *Júlia* app Container beolvassa a parancssori karakterláncot a emptDir kötetről, hogy a WordCount alkalmazást a Shakespeare *Romeo és Júlia* helyett futtassa.
+* Az *init1 tároló* futtatja [a busybox](https://hub.docker.com/_/busybox) rendszerképet a Docker Hub. 60 másodpercig alvó üzemmódban van, majd egy parancssori sztringet ír egy [emptyDir kötetben található fájlba.](container-instances-volume-emptydir.md)
+* Mindkét alkalmazástároló futtatja a `aci-wordcount` Microsoft-tároló rendszerképét:
+    * A *hamlet tároló* az alapértelmezett konfigurációban futtatja a wordcount alkalmazást, és megszámlálja a szavak gyakoriságát a *Hamlet (Hamlet) játékában.*
+    * A *parancsalkalmazás* tárolója beolvassa a parancssori sztringet az emptDir kötetből, hogy a wordcount alkalmazást futtassa a Következő és a Következő *könyvtárban:*.
 
-További információt és példákat a `aci-wordcount` rendszerkép használatával kapcsolatban a [környezeti változók beállítása a Container instances](container-instances-environment-variables.md)szolgáltatásban című témakörben talál.
+A rendszerkép használatával kapcsolatos további információkért és `aci-wordcount` példákért lásd: Set environment variables in container instances (Környezeti változók [beállítása tárolópéldányban).](container-instances-environment-variables.md)
 
 ```json
 {
@@ -168,7 +168,7 @@ Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] par
 az group create --name myResourceGroup --location eastus
 ```
 
-Telepítse a sablont az az [Deployment Group Create][az-deployment-group-create] paranccsal.
+Telepítse a sablont az [az deployment group create paranccsal.][az-deployment-group-create]
 
 ```azurecli
 az deployment group create \
@@ -176,12 +176,12 @@ az deployment group create \
   --template-file azuredeploy.json
 ```
 
-Egy init-tárolóval rendelkező csoportban a központi telepítési idő az inicializálási tároló vagy tárolók befejezéséhez szükséges idő miatt megnövekszik.
+Egy init-tárolóval üzemelő csoportban az üzembe helyezési idő az init tároló vagy tárolók befejezéséhez szükséges idő miatt növekszik.
 
 
 ## <a name="view-container-logs"></a>Tárolónaplók megtekintése
 
-Az init-tároló sikeres futtatásának ellenőrzéséhez tekintse meg az alkalmazás-tárolók naplózási kimenetét az az [Container logs][az-container-logs] paranccsal. Az `--container-name` argumentum megadja azt a tárolót, amelyből a naplófájlokat le szeretné húzni. Ebben a példában lekéri a *Hamlet* és *Júlia* tároló naplóit, amelyek különböző parancs kimenetet mutatnak:
+Annak ellenőrzéséhez, hogy az init tároló sikeresen lefutott-e, tekintse meg az alkalmazástárolók naplókimenetét [az az container logs paranccsal.][az-container-logs] A `--container-name` argumentum határozza meg azt a tárolót, amelyből a naplókat le kell lekérte. Ebben a példában lekérte a hamlet és *a container* tároló *naplóit,* amelyek eltérő parancskimenetet mutatnak:
 
 ```azurecli
 az container logs \
@@ -211,14 +211,14 @@ Kimenet:
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az init-tárolók segítségével elvégezheti az alkalmazás-tárolók telepítési és inicializálási feladatait. A Task-alapú tárolók futtatásával kapcsolatos további információkért lásd: [a tárolózott feladatok futtatása újraindítási szabályzatokkal](container-instances-restart-policy.md).
+Az inicializálási tárolók segítenek az alkalmazástárolók beállítási és inicializálási feladatainak elvégzésében. További információ a feladatalapú tárolók futtatásáról: Tárolóalapú feladatok futtatása [újraindítási szabályzatokkal.](container-instances-restart-policy.md)
 
-A Azure Container Instances további lehetőségeket biztosít az alkalmazás-tárolók viselkedésének módosítására. Példák:
+Azure Container Instances más lehetőségeket is kínál az alkalmazástárolók viselkedésének módosítására. Példák:
 
-* [Környezeti változók beállítása a Container instances szolgáltatásban](container-instances-environment-variables.md)
-* [A parancssor beállítása tároló-példányban az alapértelmezett parancssori művelet felülbírálásához](container-instances-start-command.md)
+* [Környezeti változók beállítása tárolópéldányban](container-instances-environment-variables.md)
+* [Állítsa be a parancssort egy tárolópéldányban az alapértelmezett parancssori művelet felülbírálása érdekében](container-instances-start-command.md)
 
 
-[az-group-create]: /cli/azure/group#az-group-create
-[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
-[az-container-logs]: /cli/azure/container#az-container-logs
+[az-group-create]: /cli/azure/group#az_group_create
+[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
+[az-container-logs]: /cli/azure/container#az_container_logs

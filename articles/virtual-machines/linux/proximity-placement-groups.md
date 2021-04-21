@@ -1,6 +1,6 @@
 ---
-title: Proximity elhelyezési csoport létrehozása az Azure CLI használatával
-description: Ismerje meg az Azure-beli virtuális gépek közelségi elhelyezési csoportjainak létrehozását és használatát.
+title: Közelségi elhelyezési csoport létrehozása az Azure CLI használatával
+description: Ismerje meg, hogyan lehet közelségi elhelyezési csoportokat létrehozni és használni az Azure-beli virtuális gépekhez.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: proximity-placement-groups
@@ -8,22 +8,22 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 3/8/2021
 ms.author: cynthn
-ms.openlocfilehash: a347c9284608340811f9c2388df26129baeb8837
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4f91afa86a0d99b4ce42e96295bf2ae1f9fcd9f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505647"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771442"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Virtuális gépek telepítése közelségi elhelyezési csoportokba az Azure CLI használatával
 
-Ha a lehető legközelebb szeretné lekérni a virtuális gépeket, a lehető legkevesebb késést kell megvalósítania, egy [közelségi elhelyezési csoporton](../co-location.md#proximity-placement-groups)belül kell telepítenie.
+Ahhoz, hogy a virtuális gépeket a lehető legnagyobb késéssel érjük el, egy közelségi elhelyezési csoportban kell üzembe [helyezni őket.](../co-location.md#proximity-placement-groups)
 
-A közelségi elhelyezési csoport olyan logikai csoport, amely biztosítja, hogy az Azure számítási erőforrásai fizikailag közel legyenek egymáshoz. A közelségi csoportok olyan munkaterhelések esetén hasznosak, ahol az alacsony késés követelmény.
+A közelségi elhelyezési csoport olyan logikai csoportosítás, amely az Azure-beli számítási erőforrások egymás fizikai közelében helyezkedik el. A közelségi elhelyezési csoportok olyan számítási feladatokhoz hasznosak, ahol a kis késés követelmény.
 
 
-## <a name="create-the-proximity-placement-group"></a>A közelségi elhelyezési csoport létrehozása
-Hozzon létre egy közelségi elhelyezési csoportot a használatával [`az ppg create`](/cli/azure/ppg#az-ppg-create) . 
+## <a name="create-the-proximity-placement-group"></a>Közelségi elhelyezési csoport létrehozása
+Hozzon létre egy közelségi elhelyezési csoportot a [`az ppg create`](/cli/azure/ppg#az_ppg_create) használatával. 
 
 ```azurecli-interactive
 az group create --name myPPGGroup --location westus
@@ -34,9 +34,9 @@ az ppg create \
    -t standard 
 ```
 
-## <a name="list-proximity-placement-groups"></a>Proximity elhelyezési csoportok listázása
+## <a name="list-proximity-placement-groups"></a>Közelségi elhelyezési csoportok listából
 
-Az [az PPG List](/cli/azure/ppg#az-ppg-list)paranccsal listázhatja az összes közelségi elhelyezési csoportot.
+Az összes közelségi elhelyezési csoportot listába sorolhatja [az az ppg list használatával.](/cli/azure/ppg#az_ppg_list)
 
 ```azurecli-interactive
 az ppg list -o table
@@ -44,7 +44,7 @@ az ppg list -o table
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet a közelségi elhelyezési csoporton belül az [új az VM](/cli/azure/vm#az-vm-create)használatával.
+Hozzon létre egy virtuális gépet a közelségi elhelyezési csoportban az [új az vm használatával.](/cli/azure/vm#az_vm_create)
 
 ```azurecli-interactive
 az vm create \
@@ -57,19 +57,19 @@ az vm create \
    -l westus
 ```
 
-A virtuális gépet az [az PPG show](/cli/azure/ppg#az-ppg-show)paranccsal tekintheti meg a közelségi csoportban.
+A virtuális gépet a közelségi elhelyezési csoportban az az ppg show használatával [láthatja.](/cli/azure/ppg#az_ppg_show)
 
 ```azurecli-interactive
 az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
 ```
 
 ## <a name="availability-sets"></a>Rendelkezésre állási csoportok
-A közelségi elhelyezési csoportban is létrehozhat egy rendelkezésre állási csoportot. Használja ugyanazt a `--ppg` paramétert az [az VM rendelkezésre állása-set Create](/cli/azure/vm/availability-set#az-vm-availability-set-create) paranccsal, és hozzon létre egy rendelkezésre állási csoportot, és a rendelkezésre állási csoportban lévő összes virtuális gép is ugyanabban a közelségi elhelyezési csoportban lesz létrehozva.
+Rendelkezésre állási csoportot a közelségi elhelyezési csoportban is létrehozhat. Használja ugyanazt a paramétert az `--ppg` [az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create) paraméterrel egy rendelkezésre állási csoport létrehozásához, és a rendelkezésre állási csoportban található összes virtuális gép ugyanabban a közelségi elhelyezési csoportban lesz létrehozva.
 
 ## <a name="scale-sets"></a>Méretezési csoportok
 
-Létrehozhat egy méretezési csoportot is a közelségi elhelyezési csoportban. Használja ugyanazt a `--ppg` paramétert az az [vmss Create](/cli/azure/vmss#az_vmss_create) paranccsal egy méretezési csoport létrehozásához, és az összes példány ugyanabban a közelségi elhelyezési csoportban lesz létrehozva.
+Méretezési csoportot a közelségi elhelyezési csoportban is létrehozhat. Használja ugyanazt `--ppg` a paramétert [az az vmss create](/cli/azure/vmss#az_vmss_create) paraméterrel egy méretezési csoport létrehozásához, és az összes példány ugyanabban a közelségi elhelyezési csoportban jön létre.
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ az [Azure CLI](/cli/azure/ppg) -parancsokról a Proximity elhelyezési csoportokhoz.
+További információ a közelségi elhelyezési [csoportokhoz](/cli/azure/ppg) elérhető Azure CLI-parancsokról.

@@ -1,6 +1,6 @@
 ---
-title: A virtuális gépek és a méretezési csoportok automatikus bővítményének frissítése az Azure-ban
-description: Megtudhatja, hogyan engedélyezheti az automatikus bővítmény frissítését a virtuális gépek és a virtuálisgép-méretezési csoportok számára az Azure-ban.
+title: Automatikus bővítményfrissítés virtuális gépekhez és méretezési készletekhez az Azure-ban
+description: Megtudhatja, hogyan engedélyezheti az automatikus bővítményfrissítést a virtuális gépek és virtuálisgép-méretezési készletek számára az Azure-ban.
 author: mayanknayar
 ms.service: virtual-machines
 ms.subservice: automatic-extension-upgrade
@@ -8,145 +8,145 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: manayar
-ms.openlocfilehash: fa4fa1c43ab9d31b879bdec8e724e896bd16e14c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bf9e802e2485e84211044ce650c7748e789e752e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102123900"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762604"
 ---
-# <a name="preview-automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>Előzetes verzió: az Azure-beli virtuális gépek és méretezési csoportok automatikus bővítményének frissítése
+# <a name="preview-automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>Előzetes verzió: Automatikus bővítményfrissítés virtuális gépekhez és méretezési készletekhez az Azure-ban
 
-Az automatikus bővítmény frissítése az Azure-beli virtuális gépek és az Azure Virtual Machine Scale Sets előzetes verziójában érhető el. Ha engedélyezve van az automatikus bővítmény frissítése a virtuális gépen vagy a méretezési csoporton, a bővítmény automatikusan frissül, amikor a bővítmény közzétevője új verziót szabadít fel az adott bővítmény számára.
+Az automatikus bővítményfrissítés előzetes verzióban érhető el az Azure-beli virtuális gépekhez és az Azure Virtual Machine Scale Sets. Ha egy virtuális gépen vagy méretezési csoporton engedélyezve van az automatikus bővítményfrissítés, a bővítmény automatikusan frissül, amikor a bővítmény közzétevője új verziót ad ki a bővítményhez.
 
- Az automatikus bővítmény frissítése a következő funkciókkal rendelkezik:
-- Azure-beli virtuális gépek és Azure-Virtual Machine Scale Sets esetén támogatott. A Service Fabric Virtual Machine Scale Sets jelenleg nem támogatottak.
-- A frissítések a rendelkezésre állási első üzembe helyezési modellben lesznek alkalmazva (lásd alább).
-- Virtuálisgép-méretezési csoport esetén a méretezési csoport virtuális gépei nem több mint 20%-a lesz frissítve egyetlen kötegben. A köteg minimális mérete egy virtuális gép.
-- Minden virtuálisgép-mérettel működik, valamint Windows-és Linux-bővítmények esetén is.
-- Bármikor letilthatja az automatikus frissítést.
-- Az automatikus bővítmények frissítése bármilyen méretű Virtual Machine Scale Sets engedélyezhető.
-- Minden támogatott bővítmény regisztrálása külön történik, és kiválaszthatja, hogy mely bővítmények legyenek automatikusan frissítve.
-- Minden nyilvános felhőalapú régióban támogatott.
+ Az automatikus bővítményfrissítés a következő funkciókat tartalmazza:
+- Az Azure-beli virtuális gépek és az Azure Virtual Machine Scale Sets. Service Fabric Virtual Machine Scale Sets jelenleg nem támogatottak.
+- A frissítéseket a rendszer egy rendelkezésre állási szintű üzembe helyezési modellben alkalmazza (az alábbiakban részletesen).
+- Virtuálisgép-méretezési készlet esetén a méretezési készlet virtuális gépének nem több mint 20%-a lesz frissítve egyetlen kötegben. A köteg minimális mérete egy virtuális gép.
+- Minden virtuálisgép-mérethez, valamint Windows- és Linux-bővítményekhez is használható.
+- Az automatikus frissítéseket bármikor kikapcsolhatja.
+- Az automatikus bővítményfrissítés bármilyen méretű Virtual Machine Scale Sets engedélyezhető.
+- Az egyes támogatott bővítmények egyenként vannak regisztrálva, és kiválaszthatja, hogy mely bővítményeket frissítse automatikusan.
+- Az összes nyilvános felhőrégióban támogatott.
 
 
 > [!IMPORTANT]
-> Az automatikus bővítmény frissítése jelenleg nyilvános előzetes verzióban érhető el. Az alábbiakban ismertetett nyilvános előzetes funkciók használatához egy opt-in eljárás szükséges.
-> Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> Az automatikus bővítményfrissítés jelenleg nyilvános előzetes verzióban érhető el. Az alább ismertetett nyilvános előzetes verziójú funkciók használatához egy lemondási eljárásra van szükség.
+> Ez az előzetes verzió szolgáltatói szerződés nélkül érhető el, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-## <a name="how-does-automatic-extension-upgrade-work"></a>Hogyan működik az automatikus bővítmény frissítése?
-A bővítmény frissítési folyamata lecseréli a meglévő bővítmény verzióját egy virtuális gépre, amely a bővítmény közzétevője által közzétett, azonos kiterjesztésű új verzióval rendelkezik. A virtuális gép állapotát az új bővítmény telepítése után figyeli a rendszer. Ha a virtuális gép nem kifogástalan állapotban van a frissítés befejezését követően 5 percen belül, a bővítmény verziója visszaáll az előző verzióra.
+## <a name="how-does-automatic-extension-upgrade-work"></a>Hogyan működik az automatikus bővítményfrissítés?
+A bővítményfrissítési folyamat lecseréli a virtuális gép meglévő bővítményverzióját ugyanannak a bővítménynek egy új verziójára, amikor a bővítmény közzétevője közzéteszi. A virtuális gép állapota az új bővítmény telepítése után monitorozásra kerül. Ha a virtuális gép a frissítés befejezését követő 5 percen belül nem kifogástalan állapotban van, a bővítmény verziója vissza lesz gördülve az előző verzióra.
 
-A rendszer automatikusan újrapróbálkozik egy sikertelen bővítmény frissítésével. Az újrapróbálkozást a rendszer minden egyes nap automatikusan megkísérli a felhasználói beavatkozás nélkül.
+A rendszer automatikusan újraküldi a sikertelen bővítményfrissítéseket. A rendszer néhány naponta automatikusan, felhasználói beavatkozás nélkül kísérel meg újrapróbálkozásokat.
 
-### <a name="availability-first-updates"></a>Rendelkezésre állás – első frissítések
-A platformmal összehangolt frissítések rendelkezésre állása – első modellje biztosítja, hogy az Azure-beli rendelkezésre állási konfigurációk több rendelkezésre állási szinten legyenek figyelembe véve.
+### <a name="availability-first-updates"></a>Rendelkezésre állásra vonatkozó első frissítések
+A platform által vezényelt frissítések rendelkezésre állásra vonatkozó első modellje biztosítja, hogy az Azure rendelkezésre állási konfigurációi több rendelkezésre állási szinten is teljesüljenek.
 
-A frissítés alatt álló virtuális gépek egy csoportja esetében az Azure platform a frissítéseket fogja összehangolni:
+A frissítés alatt lévő virtuális gépek egy csoportja számára az Azure platform fogja összehangolni a frissítéseket:
 
 **Régiók között:**
-- Egy frissítés globálisan zajlik az Azure-ban az Azure-alapú üzembe helyezési hibák megelőzése érdekében.
-- A "Phase" egy vagy több régióval rendelkezhet, és a frissítés csak akkor halad át a fázisokban, ha a jogosult virtuális gépek az előző fázisban sikeresen frissültek.
-- A Geo-párosítású régiók nem frissülnek egyidejűleg, és nem lehetnek ugyanabban a regionális fázisban.
-- A frissítés sikerességét a virtuális gépek frissítés utáni állapotának nyomon követésével mérjük. A virtuális gép állapotának nyomon követése a virtuális gép platformjának állapotára vonatkozó mutatókon keresztül történik. Virtual Machine Scale Sets esetében a virtuálisgép-állapot nyomon követése az Application Health-vizsgálatok vagy az alkalmazás-állapot bővítmény használatával történik, ha a méretezési csoportra alkalmazva van.
+- A frissítések globálisan, szakaszos módon haladnak át az Azure-ban, hogy megakadályozzák az Azure-beli üzembe helyezési hibákat.
+- Egy "fázis" egy vagy több régióval is lehet, és a frissítés csak akkor lép át a fázisok között, ha az előző fázisban lévő jogosult virtuális gépek sikeresen frissülnek.
+- A földrajzilag párosított régiók nem frissülnek egyidejűleg, és nem lehet ugyanabban a regionális fázisban.
+- A frissítés sikerességének méréséhez nyomon kell követni a virtuális gép állapotát a frissítés után. A virtuális gép állapotát a virtuális gép platform-állapotjelzői követik nyomon. A Virtual Machine Scale Sets a virtuális gép állapotát az alkalmazás állapot-mintavételei vagy az Application Health bővítmény követi nyomon, ha a méretezési készletre van alkalmazva.
 
-**Régión belül:**
-- A különböző Availability Zonesban lévő virtuális gépek egyidejű frissítése nem történik meg.
-- A rendelkezésre állási csoportba nem tartozó egyetlen virtuális gép a legjobb erőfeszítést eredményez, hogy elkerülje az előfizetésben lévő összes virtuális gép egyidejű frissítését.  
+**Egy régión belül:**
+- A különböző Availability Zones virtuális gépek nem frissülnek egyidejűleg.
+- A rendelkezésre állási készlet részét nem képezi egyetlen virtuális gép kötegbe van állítva, hogy elkerülje az előfizetésben futó összes virtuális gép egyidejű frissítését.  
 
-**A "Set" értéken belül:**
-- A Common rendelkezésre állási csoportba vagy méretezési csoportba tartozó összes virtuális gép egyidejű frissítése nem történik meg.  
-- A Common rendelkezésre állási csoportba tartozó virtuális gépek a frissítési tartomány határain belül frissülnek, a több frissítési tartományba tartozó virtuális gépek pedig nem frissülnek egyszerre.  
-- A közös virtuálisgép-méretezési csoportba tartozó virtuális gépek kötegekben vannak csoportosítva, és frissülnek a frissítési tartomány határain belül.
+**Egy "készleten" belül:**
+- Egy közös rendelkezésre állási vagy méretezési készletben nem minden virtuális gép frissül egyidejűleg.  
+- Az egy közös rendelkezésre állási csoportban lévő virtuális gépek a frissítési tartományhatáron belül frissülnek, a több frissítési tartományban lévő virtuális gépek pedig nem frissülnek egyidejűleg.  
+- Az egy közös virtuálisgép-méretezési csoportban lévő virtuális gépek kötegekbe vannak csoportosítva, és a frissítési tartományhatáron belül frissülnek.
 
-### <a name="upgrade-process-for-virtual-machine-scale-sets"></a>Virtual Machine Scale Sets frissítési folyamata
-1. A frissítési folyamat megkezdése előtt a Orchestrator biztosítja, hogy a teljes méretezési csoporton belül a virtuális gépek legfeljebb 20%-a sérült (bármilyen okból).
+### <a name="upgrade-process-for-virtual-machine-scale-sets"></a>Frissítési folyamat a Virtual Machine Scale Sets
+1. A frissítési folyamat megkezdése előtt a vezénylési rendszer biztosítja, hogy a teljes méretezési készletben a virtuális gépeknek csak 20%-a legyen nem megfelelő (bármilyen okból).
 
-2. A frissítési Orchestrator azonosítja a frissítendő virtuálisgép-példányok kötegét. Egy frissítési köteg legfeljebb 20%-kal rendelkezhet a virtuális gépek teljes számától, és egy virtuális gép minimális batch-mérete is megadható.
+2. A frissítési vezénylés azonosítja a frissíthető virtuálisgép-példányok kötegét. A frissítési kötegek a teljes virtuálisgép-szám legfeljebb 20%-át kaphatják meg, egy virtuális gép minimális kötegméretének megfelelően.
 
-3. A konfigurált alkalmazás-állapottal vagy alkalmazás-állapottal rendelkező méretezési csoportok esetében a frissítés a következő köteg frissítése előtt legfeljebb 5 percet vár (vagy a definiált állapot mintavételi konfigurációja), hogy a virtuális gép Kifogástalan állapotba kerüljön. Ha egy virtuális gép a frissítés után nem állítja helyre az állapotát, akkor a rendszer alapértelmezés szerint újratelepíti az előző bővítmény verzióját a virtuális gépen.
+3. A konfigurált alkalmazás-állapot-mintavételekkel vagy Application Health bővítővel konfigurált méretezési készletek esetén a frissítés legfeljebb 5 percet (vagy a megadott állapot-mintavételi konfigurációt) vár a virtuális gép kifogástalan állapotára a következő köteg frissítése előtt. Ha egy virtuális gép állapota a frissítés után nem áll helyre, akkor a rendszer alapértelmezés szerint újratelepíti a virtuális gép előző bővítményverzióját.
 
-4. A frissítési Orchestrator azt a virtuális gépek százalékos arányát is nyomon követi, amelyek a frissítés után nem Kifogástalan állapotba válnak. A frissítés leáll, ha a frissített példányok több mint 20%-a nem Kifogástalan állapotba kerül a frissítési folyamat során.
+4. A frissítési vezénylés a frissítés után nem megfelelővé vált virtuális gépek százalékos arányát is nyomon követi. A frissítés leáll, ha a frissített példányok több mint 20%-a nem megfelelő a frissítési folyamat során.
 
-A fenti folyamat addig folytatódik, amíg a méretezési csoport összes példánya frissítve nem lett.
+A fenti folyamat addig folytatódik, amíg a méretezési készletben az összes példány frissítése meg nem történt.
 
-A méretezési csoport frissítési Orchestrator az összes köteg frissítése előtt ellenőrzi a teljes méretezési csoport állapotát. A kötegek frissítésekor előfordulhat, hogy a méretezési csoport virtuális gépei állapotát befolyásoló egyidejű tervezett vagy nem tervezett karbantartási tevékenységek lehetnek. Ilyen esetekben, ha a méretezési csoport példányainak több mint 20%-a nem megfelelő állapotba kerül, a méretezési csoport frissítése az aktuális köteg végén leáll.
+A méretezési készlet frissítési vezénylője minden köteg frissítése előtt ellenőrzi a méretezési készlet általános állapotát. A kötegek frissítése közben más tervezett vagy nem tervezett karbantartási tevékenységek is lehetnek, amelyek hatással lehetnek a méretezési készlet virtuális gépei állapotára. Ilyen esetekben, ha a méretezési készlet példányainak több mint 20%-a nem megfelelő, akkor a méretezési készlet frissítése az aktuális köteg végén leáll.
 
 ## <a name="supported-extensions"></a>Támogatott bővítmények
-Az automatikus bővítmény frissítésének előnézete a következő bővítményeket támogatja (és rendszeresen bővülnek):
+Az automatikus bővítményfrissítés előzetes verziója a következő bővítményeket támogatja (és rendszeresen bővül újabbak is):
 - Dependency Agent – [Windows](./extensions/agent-dependency-windows.md) és [Linux](./extensions/agent-dependency-linux.md)
-- [Application Health bővítmény](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md) – Windows és Linux
+- [Alkalmazás állapotának bővítménye](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md) – Windows és Linux
 
 
-## <a name="enabling-preview-access"></a>Az előnézeti hozzáférés engedélyezése
-Az előzetes verzió működésének engedélyezéséhez egyszeri bejelentkezésre van szükség az **AutomaticExtensionUpgradePreview** szolgáltatáshoz, az alábbiakban részletezett módon.
+## <a name="enabling-preview-access"></a>Előzetes verziójú hozzáférés engedélyezése
+Az előzetes verziójú funkció engedélyezéséhez előfizetésenként egyszer kell engedélyezni az **AutomaticExtensionUpgradePreview** funkciót az alább részletezett módon.
 
 ### <a name="rest-api"></a>REST API
-Az alábbi példa azt ismerteti, hogyan engedélyezhető az előfizetés előnézete:
+Az alábbi példa bemutatja, hogyan engedélyezheti az előzetes verziójú előfizetését:
 
 ```
 POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticExtensionUpgradePreview/register?api-version=2015-12-01`
 ```
 
-A szolgáltatás regisztrálása akár 15 percet is igénybe vehet. A regisztráció állapotának ellenõrzése:
+A szolgáltatásregisztráció akár 15 percet is igénybe vehet. A regisztráció állapotának ellenőrzése:
 
 ```
 GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticExtensionUpgradePreview?api-version=2015-12-01`
 ```
 
-Miután regisztrálta a szolgáltatást az előfizetéséhez, fejezze be a beléptetési folyamatot a számítási erőforrás-szolgáltatóra történő váltás propagálásával.
+Miután regisztrálta a funkciót az előfizetésében, a módosításnak a Compute erőforrás-szolgáltatóba való propagálással kell befejeznie a feliratkozási folyamatot.
 
 ```
 POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2020-06-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Az előfizetés előnézetének engedélyezéséhez használja a [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) parancsmagot.
+A [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) parancsmag használatával engedélyezheti az előzetes verzió használatát az előfizetéséhez.
 
 ```azurepowershell-interactive
 Register-AzProviderFeature -FeatureName AutomaticExtensionUpgradePreview -ProviderNamespace Microsoft.Compute
 ```
 
-A szolgáltatás regisztrálása akár 15 percet is igénybe vehet. A regisztráció állapotának ellenõrzése:
+A szolgáltatásregisztráció akár 15 percet is igénybe vehet. A regisztráció állapotának ellenőrzése:
 
 ```azurepowershell-interactive
 Get-AzProviderFeature -FeatureName AutomaticExtensionUpgradePreview -ProviderNamespace Microsoft.Compute
 ```
 
-Miután regisztrálta a szolgáltatást az előfizetéséhez, fejezze be a beléptetési folyamatot a számítási erőforrás-szolgáltatóra történő váltás propagálásával.
+Miután regisztrálta a funkciót az előfizetésében, a módosításnak a Compute erőforrás-szolgáltatóba való propagálással kell befejeznie a feliratkozási folyamatot.
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
-Az az [Feature Register](/cli/azure/feature#az-feature-register) paranccsal engedélyezheti az előfizetésének előnézetét.
+Az [az feature register használatával](/cli/azure/feature#az_feature_register) engedélyezheti az előzetes verzió használatát az előfizetéséhez.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name AutomaticExtensionUpgradePreview
 ```
 
-A szolgáltatás regisztrálása akár 15 percet is igénybe vehet. A regisztráció állapotának ellenõrzése:
+A szolgáltatásregisztráció akár 15 percet is igénybe vehet. A regisztráció állapotának ellenőrzése:
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.Compute --name AutomaticExtensionUpgradePreview
 ```
 
-Miután regisztrálta a szolgáltatást az előfizetéséhez, fejezze be a beléptetési folyamatot a számítási erőforrás-szolgáltatóra történő váltás propagálásával.
+Miután regisztrálta a funkciót az előfizetésében, a módosításnak a Compute erőforrás-szolgáltatóba való propagálással kell befejeznie a feliratkozási folyamatot.
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute
 ```
 
 
-## <a name="enabling-automatic-extension-upgrade"></a>Az automatikus bővítmény frissítésének engedélyezése
-Ha engedélyezni szeretné az automatikus bővítmény frissítését egy bővítmény számára, győződjön meg arról, hogy a *enableAutomaticUpgrade* tulajdonság értéke *true (igaz* ), és minden egyes bővítmény-definícióhoz hozzá van adva.
+## <a name="enabling-automatic-extension-upgrade"></a>Az automatikus bővítményfrissítés engedélyezése
+Ha engedélyezni szeretné egy bővítmény automatikus bővítményfrissítését, győződjön meg arról, hogy az *enableAutomaticUpgrade* tulajdonság *true* (igaz) értékre van állítva, és minden bővítménydefinícióhoz külön-külön hozzá kell adni.
 
 
-### <a name="rest-api-for-virtual-machines"></a>Virtual Machines REST API
-Ha engedélyezni szeretné az automatikus bővítmény frissítését egy bővítményhez (ebben a példában a Dependency Agent bővítményt) egy Azure-beli virtuális gépen, használja a következőt:
+### <a name="rest-api-for-virtual-machines"></a>REST API a Virtual Machines
+Ha engedélyezni szeretné egy bővítmény (ebben a példában az Dependency Agent bővítmény) automatikus frissítését egy Azure-beli virtuális gépen, használja a következőt:
 
 ```
 PUT on `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachines/<vmName>/extensions/<extensionName>?api-version=2019-12-01`
@@ -167,8 +167,8 @@ PUT on `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/provi
 }
 ```
 
-### <a name="rest-api-for-virtual-machine-scale-sets"></a>Virtual Machine Scale Sets REST API
-A következő paranccsal adhatja hozzá a bővítményt a méretezési csoport modelljéhez:
+### <a name="rest-api-for-virtual-machine-scale-sets"></a>REST API a Virtual Machine Scale Sets
+A bővítményt a következőkkel használhatja a méretezésihalmaz-modellhez:
 
 ```
 PUT on `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachineScaleSets/<vmssName>?api-version=2019-12-01`
@@ -198,8 +198,8 @@ PUT on `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/provi
 }
 ```
 
-### <a name="azure-powershell-for-virtual-machines"></a>Virtual Machines Azure PowerShell
-Használja a [set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) parancsmagot:
+### <a name="azure-powershell-for-virtual-machines"></a>Azure PowerShell a Virtual Machines
+Használja a [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) parancsmagot:
 
 ```azurepowershell-interactive
 Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
@@ -213,8 +213,8 @@ Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
 ```
 
 
-### <a name="azure-powershell-for-virtual-machine-scale-sets"></a>Virtual Machine Scale Sets Azure PowerShell
-A bővítmény a méretezési csoport modelljéhez való hozzáadásához használja az [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) parancsmagot:
+### <a name="azure-powershell-for-virtual-machine-scale-sets"></a>Azure PowerShell a Virtual Machine Scale Sets
+Az [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) parancsmag használatával adja hozzá a bővítményt a méretezésihalmaz-modellhez:
 
 ```azurepowershell-interactive
 Add-AzVmssExtension -VirtualMachineScaleSet $vmss
@@ -225,11 +225,11 @@ Add-AzVmssExtension -VirtualMachineScaleSet $vmss
     -EnableAutomaticUpgrade $true
 ```
 
-A bővítmény hozzáadása után frissítse a méretezési csoport [Update-AzVmss](/powershell/module/az.compute/update-azvmss) használatával.
+A bővítmény hozzáadása után frissítse a méretezési készletet az [Update-AzVmss](/powershell/module/az.compute/update-azvmss) használatával.
 
 
 ### <a name="azure-cli-for-virtual-machines"></a>Azure CLI a virtuális gépekhez
-Használja az az [VM Extension set](/cli/azure/vm/extension#az_vm_extension_set) parancsmagot:
+Használja az [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) parancsmagot:
 
 ```azurecli-interactive
 az vm extension set \
@@ -241,8 +241,8 @@ az vm extension set \
     --enable-auto-upgrade true
 ```
 
-### <a name="azure-cli-for-virtual-machine-scale-sets"></a>Azure CLI a Virtual Machine Scale Setshoz
-A bővítmény a méretezési csoport modelljéhez való hozzáadásához használja az az [vmss Extension](/cli/azure/vmss/extension#az_vmss_extension_set) parancsmagot:
+### <a name="azure-cli-for-virtual-machine-scale-sets"></a>Azure CLI a Virtual Machine Scale Sets
+Az [az vmss extension set parancsmag](/cli/azure/vmss/extension#az_vmss_extension_set) használatával adja hozzá a bővítményt a méretezésihalmaz-modellhez:
 
 ```azurecli-interactive
 az vmss extension set \
@@ -254,15 +254,15 @@ az vmss extension set \
     --enable-auto-upgrade true
 ```
 
-## <a name="extension-upgrades-with-multiple-extensions"></a>Bővítmények frissítése több bővítménnyel
+## <a name="extension-upgrades-with-multiple-extensions"></a>Bővítményfrissítések több bővítvekkel
 
-Egy virtuális gép vagy virtuálisgép-méretezési csoport több bővítménnyel is rendelkezhet, amelyeken engedélyezve van az automatikus bővítmény frissítése. Ugyanez a virtuális gép vagy méretezési csoport más bővítményekkel is rendelkezhet, ha engedélyezve van az automatikus bővítmény frissítése.  
+Egy virtuális géphez vagy virtuálisgép-méretezési csoporthoz több bővítmény is lehet, amelyeken engedélyezve van az automatikus bővítményfrissítés. Ugyanannak a virtuális gépnek vagy méretezési csoportnak más bővítményei is lehetek anélkül, hogy engedélyezve lenne az automatikus bővítményfrissítés.  
 
-Ha egy virtuális gép több bővítményt is frissít, akkor előfordulhat, hogy a frissítések kötegbe vannak csoportosítva, de az egyes bővítmények frissítése külön történik a virtuális gépen. Az egyik bővítmény hibája nem befolyásolja az esetlegesen frissíthető többi bővítményt (ka) t. Ha például két bővítmény van ütemezve egy frissítésre, és az első bővítmény frissítése meghiúsul, a második Kiterjesztés továbbra is frissül.
+Ha egy virtuális géphez több bővítményfrissítés is elérhető, a frissítések kötegbe tehetőek, de minden bővítményfrissítés külön-külön lesz alkalmazva egy virtuális gépen. Az egyik bővítmény hibája nem befolyásolja az esetleg frissítő többi bővítményt. Ha például két bővítmény frissítésre van ütemezve, és az első bővítmény frissítése sikertelen, a második bővítmény továbbra is frissítve lesz.
 
-Az automatikus bővítmények frissítése akkor is alkalmazható, ha egy virtuális gép vagy virtuálisgép-méretezési csoport több bővítményt is konfigurál a [bővítmény-előkészítéssel](../virtual-machine-scale-sets/virtual-machine-scale-sets-extension-sequencing.md). A bővítmények sorrendbe állítása a virtuális gép első üzembe helyezése esetén érvényes, és a bővítmények jövőbeli frissítései egymástól függetlenül lesznek alkalmazva.
+Az automatikus bővítményfrissítések akkor is alkalmazhatók, ha egy virtuális gép vagy virtuálisgép-méretezési készlet több bővítményt konfigurált [bővítmény-alkalmazással.](../virtual-machine-scale-sets/virtual-machine-scale-sets-extension-sequencing.md) A bővítmény-szekvenálás a virtuális gép első üzembe helyezésére vonatkozik, és a bővítmények jövőbeli frissítései egymástól függetlenül vannak alkalmazva.
 
 
 ## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
-> [Tudnivalók az alkalmazás állapotának kiterjesztéséről](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md)
+> [Tudnivalók az Application Health bővítményről](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md)

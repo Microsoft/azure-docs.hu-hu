@@ -1,17 +1,17 @@
 ---
-title: Function-alkalmazás létrehozása csatlakoztatott tárolóval – Azure CLI
+title: Függvényalkalmazás létrehozása csatlakoztatott tárolóval – Azure CLI
 description: Azure CLI-példaszkript – Egy Azure Storage-hoz kapcsolódó Azure-függvény létrehozása
 ms.topic: sample
 ms.date: 04/20/2017
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 13120ad4478febf9281ff423a3a7a8f8f3b25845
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 539c3a7dd95045b2e569dbb339be0e5a0c845902
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934407"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786282"
 ---
-# <a name="create-a-function-app-with-a-named-storage-account-connection"></a>Function-alkalmazás létrehozása névvel ellátott Storage-fiókkal létesített kapcsolatban 
+# <a name="create-a-function-app-with-a-named-storage-account-connection"></a>Függvényalkalmazás létrehozása tárfiók-kapcsolattal 
 
 Ez az Azure Functions-példaszkript létrehoz egy függvényalkalmazást, amelyet hozzákapcsol egy Azure Storage-fiókhoz. A létrehozott alkalmazásbeállítás, amely a kapcsolatot tartalmazza, egy [tárolási eseményindítóval vagy kötéssel](../functions-bindings-storage-blob.md) együtt használható. 
 
@@ -19,7 +19,7 @@ Ez az Azure Functions-példaszkript létrehoz egy függvényalkalmazást, amelye
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - Az oktatóanyaghoz az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+ - Az oktatóanyaghoz az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -35,11 +35,11 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Jegyzetek |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot egy helyen. |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Tárfiók létrehozása. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Egy Function-alkalmazást hoz létre a kiszolgáló nélküli [felhasználási tervben](../consumption-plan.md). |
-| [az Storage Account show-kapcsolat-string](/cli/azure/storage/account#az-storage-account-show-connection-string) | Lekéri a fiók kapcsolati sztringjét. |
-| [az functionapp config appSettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | A függvény alkalmazásban beállíthatja a kapcsolatok karakterláncát. |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot egy helyen. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Tárfiók létrehozása. |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | Létrehoz egy függvényalkalmazást a kiszolgáló nélküli [használatra szánt csomagban.](../consumption-plan.md) |
+| [az storage account show-connection-string](/cli/azure/storage/account#az_storage_account_show_connection_string) | Lekéri a fiók kapcsolati sztringjét. |
+| [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) | Beállítja a kapcsolati sztringet alkalmazásbeállításként a függvényalkalmazásban. |
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,14 +1,14 @@
 ---
-title: Újraindítási szabályzat a futtatási egyszeri feladatokhoz
-description: Megtudhatja, hogyan használhatja a Azure Container Instances a befejezésre futó feladatok végrehajtásához, például a létrehozási, tesztelési vagy képrenderelési feladatokban.
+title: Újraindítási szabályzat egyszer futtatott feladatokhoz
+description: Megtudhatja, hogyan használhatja a Azure Container Instances olyan tevékenységek végrehajtásához, amelyek befejezésig futnak, például buildelési, tesztelési vagy képremegjelenítési feladatokban.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 49280549fa834b82574f81494f1cf44817d8be5d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3bce208e3663ecfcebe520be92de3ac4443c0c8f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203827"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771154"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Tárolóalapú feladatok futtatása újraindítási szabályzatokkal
 
@@ -16,11 +16,11 @@ A tárolók Azure Container Instances szolgáltatásban való üzembe helyezés�
 
 A konfigurálható újraindítási szabályzat segítségével megadhatja, hogy a tárolók leálljanak, amikor a folyamataik befejeződtek. Mivel a tárolópéldányok számlázása másodpercalapú, csak azokért a számítási erőforrásokért kell díjat fizetnie, amelyek használatban voltak, amikor a feladatot végrehajtó tároló futott.
 
-A cikkben bemutatott példák az Azure CLI-t használják. Az Azure CLI verziójának 2.0.21 [vagy újabb verziójára van szükség][azure-cli-install], vagy a CLI-t kell használnia a [Azure Cloud Shell](../cloud-shell/overview.md).
+A cikkben bemutatott példák az Azure CLI-t használják. Az Azure CLI 2.0.21-es vagy újabb verziójának helyileg telepítve kell [lennie,][azure-cli-install]vagy a cli-t kell használnia a [Azure Cloud Shell.](../cloud-shell/overview.md)
 
-## <a name="container-restart-policy"></a>Tároló újraindítási szabályzata
+## <a name="container-restart-policy"></a>Tároló-újraindítási szabályzat
 
-Amikor Azure Container Instancesban hoz létre egy [tároló csoportot](container-instances-container-groups.md) , megadhatja a három újraindítási házirend-beállítás egyikét.
+Amikor [tárolócsoportot](container-instances-container-groups.md) hoz létre a Azure Container Instances, három újraindítási szabályzatbeállítás közül egyet is megadhat.
 
 | Újraindítási szabályzat   | Leírás |
 | ---------------- | :---------- |
@@ -30,9 +30,9 @@ Amikor Azure Container Instancesban hoz létre egy [tároló csoportot](containe
 
 [!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
-## <a name="specify-a-restart-policy"></a>Újraindítási szabályzat meghatározása
+## <a name="specify-a-restart-policy"></a>Újraindítási szabályzat megadása
 
-Az újraindítási szabályzatok megadásának módja attól függ, hogyan hozza létre a tároló példányait, például az Azure CLI-vel, Azure PowerShell-parancsmagokkal vagy a Azure Portal. Az Azure CLI-ben határozza meg a `--restart-policy` paramétert az [az Container Create][az-container-create]parancs meghívásakor.
+Az újraindítási szabályzat megadásának módja attól függ, hogyan hozza létre a tárolópéldányokat, például az Azure CLI-ben, Azure PowerShell parancsmagokkal vagy a Azure Portal. Az Azure CLI-ban adja meg a `--restart-policy` paramétert az [az container create hívatásakor.][az-container-create]
 
 ```azurecli-interactive
 az container create \
@@ -42,11 +42,11 @@ az container create \
     --restart-policy OnFailure
 ```
 
-## <a name="run-to-completion-example"></a>Futtatás a befejezésig példa
+## <a name="run-to-completion-example"></a>Futtatás befejezésig példa
 
-Ha szeretné megtekinteni az újraindítási szabályzatot, hozzon létre egy Container-példányt a Microsoft [ACI-WordCount][aci-wordcount-image] rendszerképből, és határozza meg az `OnFailure` Újraindítási szabályzatot. Ez a példában szereplő tároló egy Python-szkriptet futtat, amely alapértelmezés szerint a Shakespeare [Hamlet](http://shakespeare.mit.edu/hamlet/full.html)szövegét elemzi, a 10 leggyakoribb szót írja a stdout értékre, majd kilép.
+Az újraindítási szabályzatot úgy láthatja, ha létrehoz egy tárolópéldányt a Microsoft [aci-wordcount rendszerképből,][aci-wordcount-image] és megadja az `OnFailure` újraindítási szabályzatot. Ez a példatároló egy Python-szkriptet futtat, amely alapértelmezés szerint elemzi a [Hamlet](http://shakespeare.mit.edu/hamlet/full.html)szövegét, kiírja a 10 leggyakoribb szót az STDOUT-be, majd kilép.
 
-Futtassa a példában szereplő tárolót a következő az [Container Create][az-container-create] paranccsal:
+Futtassa a példatárolót a következő [az container create paranccsal:][az-container-create]
 
 ```azurecli-interactive
 az container create \
@@ -56,7 +56,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Az Azure Container Instances elindítja a tárolót, majd leállítja, amikor az alkalmazás (vagy ebben az esetben a szkript) kilép. Amikor Azure Container Instances leállít egy olyan tárolót, amelynek újraindítási szabályzata `Never` vagy `OnFailure` , a tároló állapota leállítva értékre van állítva. A tároló állapotát az [az Container show][az-container-show] paranccsal tekintheti meg:
+Az Azure Container Instances elindítja a tárolót, majd leállítja, amikor az alkalmazás (vagy ebben az esetben a szkript) kilép. Amikor Azure Container Instances le egy tárolót, amelynek újraindítási szabályzata vagy , a tároló állapota `Never` `OnFailure` **Leállítva állapotú.** A tároló állapotát az az container show paranccsal [ellenőrizheti:][az-container-show]
 
 ```azurecli-interactive
 az container show \
@@ -71,7 +71,7 @@ Példa a kimenetre:
 "Terminated"
 ```
 
-Amint a példatároló *Terminated* (Leállított) állapotra vált, a feladat kimenetét a tárolónaplókban ellenőrizheti. Futtassa az az [Container logs][az-container-logs] parancsot a szkript kimenetének megtekintéséhez:
+Amint a példatároló *Terminated* (Leállított) állapotra vált, a feladat kimenetét a tárolónaplókban ellenőrizheti. Futtassa [az az container logs][az-container-logs] parancsot a szkript kimenetének megtekintéséhez:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer
@@ -92,19 +92,19 @@ Kimenet:
  ('HAMLET', 386)]
 ```
 
-Ez a példa azt a kimenetet mutatja, amelyet a parancsfájl az STDOUT-nak küld. A tárolóban lévő feladatok azonban Ehelyett a kimenetet állandó tárterületre írhatja a későbbi lekéréshez. Egy [Azure-fájlmegosztás](./container-instances-volume-azure-files.md)esetében például.
+Ez a példa az STDOUT-nak küldött kimenetet mutatja be. Előfordulhat azonban, hogy a tárolóba írt feladatok a kimenetüket állandó tárolóba írják a későbbi lekéréshez. Például egy [Azure-fájlmegosztásra.](./container-instances-volume-azure-files.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-A feladat-alapú forgatókönyvek, például a Batch több tárolóval rendelkező nagyméretű adathalmazok feldolgozásával kihasználhatják az egyéni [környezeti változókat](container-instances-environment-variables.md) vagy a [parancssori vonalakat](container-instances-start-command.md) futásidőben.
+A feladatalapú forgatókönyvek, például egy nagy méretű adatkészlet több tárolóval történő [](container-instances-environment-variables.md) kötegelt feldolgozása [](container-instances-start-command.md) futásidőben is kihasználhatja az egyéni környezeti változók vagy parancssorok előnyeit.
 
-Az [Azure-fájlmegosztás Azure Container Instancessal való csatlakoztatásával](./container-instances-volume-azure-files.md)kapcsolatos részletekért tekintse meg a (z) című témakört.
+A teljes futtatásig futó tárolók kimenetének megőrzésével kapcsolatos részletekért lásd: Azure-fájlmegosztás csatlakoztatása a [Azure Container Instances.](./container-instances-volume-azure-files.md)
 
 <!-- LINKS - External -->
 [aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-logs]: /cli/azure/container#az-container-logs
-[az-container-show]: /cli/azure/container#az-container-show
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-logs]: /cli/azure/container#az_container_logs
+[az-container-show]: /cli/azure/container#az_container_show
 [azure-cli-install]: /cli/azure/install-azure-cli
