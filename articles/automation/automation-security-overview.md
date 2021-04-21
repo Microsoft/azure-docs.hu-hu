@@ -6,16 +6,17 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 09aab71513b1152924de4eae91a718bad23d1012
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 546407ce7286cebc04d3c86422f6242051d1dbf3
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518001"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830429"
 ---
 # <a name="azure-automation-account-authentication-overview"></a>Azure Automation fiókhitelesítés áttekintése
 
-Az Azure Automation lehetővé teszi a feladatok automatizálását az Azure erőforrásain, továbbá olyan felhőszolgáltatókkal, mint az Amazon webszolgáltatások (AWS). Runbookok használatával automatizálhatja a feladatokat, vagy egy hibrid runbook-feldolgozót, ha üzleti vagy üzemeltetési folyamatokkal dolgozik az Azure-ban kívül. Ezen környezetek bármelyikében való munkavégzéshez engedélyre van szükség az erőforrások biztonságos eléréséhez a minimálisan szükséges jogosultságokkal.
+Az Azure Automation lehetővé teszi a feladatok automatizálását az Azure erőforrásain, továbbá olyan felhőszolgáltatókkal, mint az Amazon webszolgáltatások (AWS). Runbookok használatával automatizálhatja a feladatokat, vagy egy hibrid runbook-feldolgozót, ha üzleti vagy üzemeltetési folyamatokkal dolgozik az Azure-ban kívül. Ezen környezetek bármelyikében való munkavégzéshez engedélyre van szükség az erőforrások biztonságos eléréséhez a minimális jogosultságokkal.
 
 Ez a cikk a Azure Automation által támogatott hitelesítési forgatókönyveket mutatja be, és bemutatja, hogyan kell az első lépésekhez a felügyelni szükséges környezet vagy környezetek alapján.
 
@@ -41,7 +42,7 @@ A felügyelt identitások használatának néhány előnye:
 
 - A felügyelt identitások további költségek nélkül használhatók.
 
-- Nem kell megújítani az Automation-run As-fiók által használt tanúsítványt.
+- Nem kell megújítani az Automation-fiók által használt tanúsítványt.
 
 - A Runbook kódban nem kell megadnia a runbook kapcsolati objektumát. Az Erőforrásokhoz az Automation-fiók felügyelt identitásával férhet hozzá egy runbookból anélkül, hogy tanúsítványokat, kapcsolatokat, run as-fiókokat stb. hoz létre.
 
@@ -63,31 +64,31 @@ A szolgáltatásban a Azure Automation biztosítják a hitelesítést Azure Reso
 * Azure-beli futtatás fiókja: Lehetővé teszi az Azure-erőforrások kezelését az Azure Azure Resource Manager üzembe helyezési és felügyeleti szolgáltatása alapján.
 * Klasszikus Azure-beli futó fiók: Lehetővé teszi a klasszikus Azure-erőforrások kezelését a klasszikus üzembe helyezési modell alapján.
 
-Az üzembe helyezési modellel és a Azure Resource Manager modellel kapcsolatos további információkért lásd: Resource Manager és a klasszikus üzembe [helyezés.](../azure-resource-manager/management/deployment-models.md)
+További információ a Azure Resource Manager és a klasszikus üzembe helyezési modellekről: Resource Manager [és klasszikus üzembe helyezés.](../azure-resource-manager/management/deployment-models.md)
 
 >[!NOTE]
->Azure-felhőszolgáltató (CSP)-előfizetések csak a Azure Resource Manager támogatják. A nem Azure Resource Manager szolgáltatások nem érhetők el a programban. CSP-előfizetés használata esetén a klasszikus Azure-beli futtatás fiókja nem jön létre, hanem az Azure-beli futtatás fiókja. A CSP-előfizetésekkel kapcsolatos további információkért lásd: [Elérhető szolgáltatások CSP-előfizetések esetén.](/azure/cloud-solution-provider/overview/azure-csp-available-services)
+>Azure-felhőszolgáltató (CSP) előfizetések csak a Azure Resource Manager támogatják. A nem Azure Resource Manager szolgáltatások nem érhetők el a programban. CSP-előfizetés használata esetén a klasszikus Azure-beli futtatás fiókja nem jön létre, az Azure-beli futtatás fiókja viszont létrejön. A CSP-előfizetésekkel kapcsolatos további információkért lásd: [Elérhető szolgáltatások CSP-előfizetések esetén.](/azure/cloud-solution-provider/overview/azure-csp-available-services)
 
-Automation-fiók létrehozásakor a rendszer alapértelmezés szerint egyidejűleg hozza létre a fiókot. Ha úgy döntött, hogy nem hozza létre az Automation-fiókkal együtt, később külön is létrehozható. A klasszikus Azure-beli futtatás fiókja nem kötelező, és külön jön létre, ha klasszikus erőforrásokat kell kezelnie.
+Automation-fiók létrehozásakor a rendszer alapértelmezés szerint egyidejűleg hozza létre a fiókot. Ha úgy döntött, hogy nem hozza létre az Automation-fiókkal együtt, később külön is létrehozható. A klasszikus Azure-beli run as-fiók nem kötelező, és külön jön létre, ha klasszikus erőforrásokat kell kezelnie.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RWwtF3]
 
 ### <a name="run-as-account"></a>Futtató fiók
 
-A létrehozott futó fiók a következő feladatokat végzi el:
+A létrehozott fiók a következő feladatokat végzi el:
 
-* Létrehoz egy Önaírt tanúsítvánnyal bíró Azure AD-alkalmazást, létrehoz egy egyszerű szolgáltatásfiókot az alkalmazáshoz az Azure AD-ban, és hozzárendeli a Közreműködő szerepkört az aktuális előfizetésében lévő fiókhoz. [](../role-based-access-control/built-in-roles.md#contributor) A tanúsítványbeállítást módosíthatja Olvasó [vagy](../role-based-access-control/built-in-roles.md#reader) bármely más szerepkör beállításra. További információk: [Szerepköralapú hozzáférés-vezérlés az Azure Automationben](automation-role-based-access-control.md).
+* Létrehoz egy önaírt tanúsítvánnyal bíró Azure AD-alkalmazást, létrehoz egy szolgáltatásnév-fiókot [](../role-based-access-control/built-in-roles.md#contributor) az alkalmazáshoz az Azure AD-ban, és hozzárendeli a Közreműködő szerepkört az aktuális előfizetésében lévő fiókhoz. A tanúsítványbeállítást olvasóra vagy [bármely](../role-based-access-control/built-in-roles.md#reader) más szerepkörre módosíthatja. További információk: [Szerepköralapú hozzáférés-vezérlés az Azure Automationben](automation-role-based-access-control.md).
 
 * Létrehoz egy nevű Automation-tanúsítványeszközt `AzureRunAsCertificate` a megadott Automation-fiókban. A tanúsítványeszköz tartalmazza az Azure AD-alkalmazás által használt titkos tanúsítványkulcsot.
 
-* Létrehoz egy nevű Automation-kapcsolati eszközt `AzureRunAsConnection` a megadott Automation-fiókban. A kapcsolati eszköz tartalmazza az alkalmazásazonosítót, a bérlőazonosítót, az előfizetés azonosítóját és a tanúsítvány ujjlenyomatát.
+* Létrehoz egy nevű Automation-kapcsolati `AzureRunAsConnection` adateszközt a megadott Automation-fiókban. A kapcsolati eszköz tartalmazza az alkalmazásazonosítót, a bérlőazonosítót, az előfizetés azonosítóját és a tanúsítvány ujjlenyomatát.
 
-### <a name="azure-classic-run-as-account"></a>Klasszikus Azure-beli futtatás fiókja
+### <a name="azure-classic-run-as-account"></a>Klasszikus Azure-beli run as-fiók
 
-Klasszikus Azure-beli futó fiók létrehozásakor a következő feladatokat végzi el:
+Klasszikus Azure-beli futtatás fiók létrehozásakor az a következő feladatokat végzi el:
 
 > [!NOTE]
-> Az ilyen típusú run as-fiók létrehozásához vagy megújításához az előfizetés társad rendszergazdájának kell lennie.
+> Az ilyen típusú run as fiók létrehozásához vagy megújításához társ-rendszergazdának kell lennie az előfizetésben.
 
 * Felügyeleti tanúsítványt hoz létre az előfizetésben.
 
@@ -104,7 +105,7 @@ A futtatott fiók egyszerű szolgáltatása alapértelmezés szerint nem rendelk
 Ez a szakasz a normál és a klasszikus futtatású fiókokhoz is meghatározza az engedélyeket.
 
 * A run as fiók létrehozásához vagy frissítéséhez a alkalmazás-rendszergazda egy Azure Active Directory és egy tulajdonos az előfizetésben az összes feladatot el tudja elvégezni.
-* A klasszikus futtatású fiókok konfigurálásához vagy megújításához társadi rendszergazdai szerepkörre van szükség az előfizetés szintjén. A klasszikus előfizetési engedélyekkel kapcsolatos további információkért lásd: [Klasszikus Azure-előfizetés-adminisztrátorok.](../role-based-access-control/classic-administrators.md#add-a-co-administrator)
+* A klasszikus futtatású fiókok konfigurálásához vagy megújításához társadi rendszergazdai szerepkört kell beállítania az előfizetés szintjén. A klasszikus előfizetési engedélyekkel kapcsolatos további információkért lásd: [Klasszikus Azure-előfizetés-adminisztrátorok.](../role-based-access-control/classic-administrators.md#add-a-co-administrator)
 
 Abban az esetben, ha a feladatok el vannak különvetve, az alábbi táblázatban a feladatok, az egyenértékű parancsmagok és a szükséges engedélyek listája látható:
 
@@ -112,14 +113,14 @@ Abban az esetben, ha a feladatok el vannak különvetve, az alábbi táblázatba
 |---|---------|---------|---|
 |Azure AD-alkalmazás létrehozása|[New-AzADApplication](/powershell/module/az.resources/new-azadapplication)     | <sup>1. alkalmazásfejlesztői szerepkör</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Az Azure AD > és > kezdőlapja |
 |Adjon hozzá egy hitelesítő adatokat az alkalmazáshoz.|[New-AzADAppCredential](/powershell/module/az.resources/new-azadappcredential)     | Alkalmazás-rendszergazda vagy globális rendszergazda<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Az Azure AD > és > kezdőlapja|
-|Azure AD-szolgáltatásnév létrehozása és lekért létrehozása|[New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal)</br>[Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal)     | Alkalmazás-rendszergazda vagy globális rendszergazda<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Az Azure AD > és > kezdőlapja|
+|Azure AD-szolgáltatásnév létrehozása és lekérte|[New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal)</br>[Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal)     | Alkalmazás-rendszergazda vagy globális rendszergazda<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Az Azure AD > és > kezdőlapja|
 |Azure-szerepkör hozzárendelése vagy lekérte a megadott rendszerbiztonsági taghoz|[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)</br>[Get-AzRoleAssignment](/powershell/module/Az.Resources/Get-AzRoleAssignment)      | Felhasználói hozzáférés rendszergazdája vagy tulajdonosa, vagy a következő engedélyekkel rendelkezik:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [Előfizetés](../role-based-access-control/role-assignments-portal.md)</br>Otthoni > előfizetések > \<subscription name\> – Access Control (IAM)|
 |Automation-tanúsítvány létrehozása vagy eltávolítása|[New-AzAutomationCertificate](/powershell/module/Az.Automation/New-AzAutomationCertificate)</br>[Remove-AzAutomationCertificate](/powershell/module/az.automation/remove-azautomationcertificate)     | Közreműködő az erőforráscsoportban         |Automation-fiók erőforráscsoportja|
 |Automation-kapcsolat létrehozása vagy eltávolítása|[New-AzAutomationConnection](/powershell/module/az.automation/new-azautomationconnection)</br>[Remove-AzAutomationConnection](/powershell/module/az.automation/remove-azautomationconnection)|Közreműködő az erőforráscsoportban |Automation-fiók erőforráscsoportja|
 
-<sup>1</sup> Az Azure AD-bérlő nem rendszergazda felhasználói regisztrálhat [AD-alkalmazásokat,](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app) ha az  Azure AD-bérlő Felhasználók **regisztrálhat** alkalmazásokat beállításának Beállítása **Igen.** Ha az alkalmazásregisztráció beállítása **Nem,** akkor a műveletet végző felhasználónak a táblázatban meghatározottak szerint kell lennie.
+<sup>1</sup> Az Azure AD-bérlő nem rendszergazda felhasználói akkor regisztrálnak [AD-alkalmazásokat,](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app) ha  az Azure AD-bérlő Felhasználók regisztrálhat alkalmazásokat beállításának Beállítása **Igen.**  Ha az alkalmazásregisztráció beállítása **Nem,** akkor a műveletet végző felhasználónak az ebben a táblázatban meghatározottak szerint kell lennie.
 
-Ha nem tagja az előfizetés Active Directory-példányának, mielőtt hozzáadják az előfizetés globális rendszergazdai szerepköréhez, vendégként lesz hozzáadva. Ebben az esetben figyelmeztetés jelenik meg `You do not have permissions to create…` az **Automation-fiók hozzáadása oldalon.**
+Ha nem tagja az előfizetés Active Directory-példányának, mielőtt hozzáadják az előfizetés globális rendszergazdai szerepköréhez, akkor vendégként lesz hozzáadva. Ebben az esetben figyelmeztetés jelenik meg `You do not have permissions to create…` az **Automation-fiók hozzáadása oldalon.**
 
 A hibaüzenetet előállító helyzet megoldásának ellenőrzése:
 
@@ -130,19 +131,19 @@ A hibaüzenetet előállító helyzet megoldásának ellenőrzése:
 
 ## <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
 
-A szerepköralapú hozzáférés-vezérlés Azure Resource Manager az engedélyezett műveleteket egy Azure AD-felhasználói fióknak és egy run as-fióknak, valamint a szolgáltatásnév hitelesítésének érdekében. Az Automation-engedélyek kezelésére használt modell fejlesztésére vonatkozó további információkért olvassa el [Az Azure Automation szerepköralapú hozzáférés-vezérlése](automation-role-based-access-control.md) című cikket.
+A szerepköralapú hozzáférés-vezérlés a Azure Resource Manager elérhető, hogy engedélyezett műveleteket adjon egy Azure AD-felhasználói fióknak és egy run As-fióknak, és hitelesítse a szolgáltatásnévt. Az Automation-engedélyek kezelésére használt modell fejlesztésére vonatkozó további információkért olvassa el [Az Azure Automation szerepköralapú hozzáférés-vezérlése](automation-role-based-access-control.md) című cikket.
 
-Ha szigorú biztonsági vezérlőkkel rendelkezik az erőforráscsoportokban való engedély-hozzárendeléshez,  a futtatás fióktagságot hozzá kell rendelnie a Közreműködő szerepkörhöz az erőforráscsoportban.
+Ha szigorú biztonsági vezérlőkkel rendelkezik az erőforráscsoportokban az engedélyek hozzárendelésére,  hozzá kell rendelnie a run as account tagságot a Közreműködő szerepkörhöz az erőforráscsoportban.
 
 ## <a name="runbook-authentication-with-hybrid-runbook-worker"></a>Runbook-hitelesítés hibrid runbook-feldolgozóval
 
-Az adatközpontban hibrid runbook-feldolgozón vagy más felhőalapú környezetekben, például az AWS-beli számítástechnikai szolgáltatásokon futó runbookok nem tudják ugyanazt a módszert használni, mint az Azure-erőforrásokban hitelesítő runbookok. Ennek oka az, hogy azok az erőforrások az Azure-on kívül futnak, és emiatt az Automation szolgáltatásban meghatározott saját biztonsági hitelesítő adataikra van szükség a helyileg elérhető erőforrásokhoz történő hitelesítéshez. További információ a Runbook-hitelesítésről Runbook-feldolgozók [használatával: Runbookok futtatása hibrid runbook-feldolgozón.](automation-hrw-run-runbooks.md)
+Az adatközpontban hibrid runbook-feldolgozón vagy más felhőalapú környezetekben, például az AWS-beli számítási szolgáltatásokon futó runbookok nem tudják ugyanazt a módszert használni, mint az Azure-erőforrásokon hitelesítő runbookok. Ennek oka az, hogy azok az erőforrások az Azure-on kívül futnak, és emiatt az Automation szolgáltatásban meghatározott saját biztonsági hitelesítő adataikra van szükség a helyileg elérhető erőforrásokhoz történő hitelesítéshez. További információ a Runbook-hitelesítésről runbook-feldolgozók használatával: [Runbookok futtatása hibrid runbook-feldolgozón.](automation-hrw-run-runbooks.md)
 
-Az Azure-beli virtuális gépeken hibrid runbook-dolgozókat felhasználó runbookok esetében a [Runbook-hitelesítést](automation-hrw-run-runbooks.md#runbook-auth-managed-identities) felügyelt identitásokkal használhatja a run as fiókok helyett az Azure-erőforrásokon való hitelesítéshez.
+Az Azure-beli virtuális gépeken hibrid runbook-dolgozókat felhasználó [runbookok](automation-hrw-run-runbooks.md#runbook-auth-managed-identities) esetében a Runbook-hitelesítést felügyelt identitásokkal használhatja a run as-fiókok helyett az Azure-erőforrásokon való hitelesítéshez.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Automation-fiók létrehozása a Azure Portal: Önálló fiók [Azure Automation létrehozása.](automation-create-standalone-account.md)
-* Ha inkább sablon használatával szeretné létrehozni a fiókját, tekintse meg az [Automation-fiók létrehozása sablon Azure Resource Manager használatával Azure Resource Manager.](quickstart-create-automation-account-template.md)
+* Automation-fiók létrehozásához a Azure Portal lásd: Önálló fiók [Azure Automation létrehozása.](automation-create-standalone-account.md)
+* Ha sablon használatával szeretné létrehozni a fiókját, tekintse meg az [Automation-fiók sablonnal való Azure Resource Manager lásd:](quickstart-create-automation-account-template.md).
 * A forgatókönyvekkel való Amazon Web Services [lásd: Runbookok hitelesítése a Amazon Web Services.](automation-config-aws-account.md)
 * Az Azure-erőforrások felügyelt identitásai szolgáltatást támogató Azure-szolgáltatások listájáért lásd [az Azure-erőforrások felügyelt identitásait támogató szolgáltatásokkal](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities) foglalkozó részt.

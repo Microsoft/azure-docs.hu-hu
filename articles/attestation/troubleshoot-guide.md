@@ -1,24 +1,25 @@
 ---
 title: Azure Attestation – Hibaelhárítási útmutató
-description: Útmutató a gyakorian előforduló problémákhoz
+description: A gyakorian megfigyelt problémákhoz vezető hibabeeső útmutató
 services: attestation
 author: msmbaldwin
 ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5eefcb55bb5447d557f097af872847576aa86eed
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9d3e34bee3d0f1420b379638389e6fad0a2fed60
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107519306"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831563"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure igazolás hibaelhárítási útmutatója
 
-A hibakezelés a Azure Attestation microsoftos irányelvek [REST API van megvalósítva.](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#7102-error-condition-responses) A Azure Attestation API-k által visszaadott hibaválasz HTTP-állapotkódot és név/érték párokat tartalmaz a "code" és "message" névvel. A "kód" értéke olvasható, és a hiba típusát jelzi. Az "üzenet" értéke segítséget nyújt a felhasználónak, és tartalmazza a hiba részleteit.
+A hibakezelés a Azure Attestation microsoftos irányelvek [REST API van megvalósítva.](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#7102-error-condition-responses) Az API-k által Azure Attestation válasz HTTP-állapotkódot és név/érték párokat tartalmaz a "code" és "message" névvel. A "kód" értéke olvasható, és a hiba típusát jelzi. Az "üzenet" érték segít a felhasználónak, és tartalmazza a hiba részleteit.
 
-Ha a probléma nem található ebben a cikkben, elküldhet egy Azure-támogatás kérelmet a következő [Azure-támogatás oldalon:](https://azure.microsoft.com/support/options/).
+Ha a probléma nem található ebben a cikkben, elküldhet egy kérést Azure-támogatás a következő Azure-támogatás [oldalon:](https://azure.microsoft.com/support/options/).
 
 Az alábbiakban néhány példát talál a Azure Attestation:
 
@@ -30,7 +31,7 @@ Az alábbiakban néhány példát talál a Azure Attestation:
 **Hibakód** Jogosulatlan
 
 **Példaforgatókönyvek**
-  - Az igazolási szabályzatok nem kezelhetők, mert a felhasználó nincs hozzárendelve a megfelelő szerepkörökkel
+  - Nem lehet kezelni az igazolási szabályzatokat, mert a felhasználó nincs hozzárendelve a megfelelő szerepkörökkel
   - Nem lehet kezelni az igazolási szabályzat aláíróit, mert a felhasználó nincs hozzárendelve a megfelelő szerepkörökkel
 
 Olvasó szerepkörrel felfelhasználó, aki egy igazolási szabályzatot próbál szerkeszteni a PowerShellben 
@@ -51,7 +52,7 @@ A szabályzatok kezeléséhez egy Azure AD-felhasználónak a következő enged�
 - Microsoft.Attestation/attestationProviders/attestation/write
 - Microsoft.Attestation/attestationProviders/attestation/delete
 
-  Ezen műveletek végrehajtásához az Azure AD-felhasználónak "Igazolási közreműködő" szerepkörben kell lennie az igazolásszolgáltatón. Ezek az engedélyek olyan szerepkörökkel is öröklhetőek, mint a "Tulajdonos" (helyettesítő karakteres engedélyek), a "Közreműködő" (helyettesítő karakterek engedélyei) az előfizetésen/erőforráscsoporton.  
+  Ezeknek a műveleteknek a végrehajtásához az Azure AD-felhasználónak "Igazolási közreműködő" szerepkörben kell lennie az igazolási szolgáltatón. Ezek az engedélyek olyan szerepkörökkel is öröklhetőek, mint a "Tulajdonos" (helyettesítő karakterek engedélyei), a "Közreműködő" (helyettesítő karakterek engedélyei) az előfizetésen/erőforráscsoporton.  
 
 A szabályzatok olvasásához egy Azure AD-felhasználónak a következő engedélyre van szüksége a "Műveletek" művelethez:
 - Microsoft.Attestation/attestationProviders/attestation/read
@@ -99,9 +100,9 @@ Példák [az igazolási szabályzatra](./policy-examples.md)
 **Hibakód** InvalidParameter (Érvénytelen paraméter)
 
 **Példaforgatókönyvek** Az SGX-igazolás érvénytelen bemenet miatt nem sikerült. Íme néhány példa a hibaüzenetek használatára:
-- A megadott ajánlat érvénytelen volt egy, az árajánlatot felhozó üzenetben található hiba miatt 
+- A megadott ajánlat érvénytelen volt egy, az árajánlatot ékeső hiba miatt 
 - A megadott ajánlat érvénytelen volt, mert az az eszköz, amelyen az ajánlat létre lett hozva, nem felel meg az Azure alapkonfiguráció követelményeinek
-- A megadott ajánlat érvénytelen volt, mert a PCK Cache Szolgáltatás által biztosított TCBInfo vagy QEID érvénytelen volt
+- A megadott idézőjel érvénytelen volt, mert a PCK Cache Szolgáltatás által biztosított TCBInfo vagy QEID érvénytelen volt
 
 **Hibaelhárítási lépések**
 
@@ -113,7 +114,7 @@ Tekintse meg [az](/samples/browse/?expanded=azure&terms=attestation) Open Enclav
 
 **Hibakód** InvalidParameter (Érvénytelen paraméter)
 
-**Példaforgatókönyvek** Konfigurálja az aláírt házirendet vagy a házirend-aláíró hozzáadását/törlését, amely érvénytelen tanúsítványlánccal van aláírva (például ha a főtanúsítvány Alapszintű korlátozások bővítménye nem a Tulajdonos típusa = HITELESÍTÉSSZOLGÁLTATÓ) van beállítva.
+**Példaforgatókönyvek** Konfigurálja az aláírt házirendet, vagy adja hozzá/törölje a házirend-aláírót, amely érvénytelen tanúsítványlánccal van aláírva (például ha a főtanúsítvány Alapszintű korlátozások bővítménye nem a Tulajdonos típusa = CA beállításra van beállítva)
 
 ```
 Native operation failed with 65529: C:\source\src\AttestationServices\Instance\SgxPal\sgxcert.cpp(1074)\(null)!00007FFA285CDAED: (caller: 00007FFA285C36E8) Exception(0) 83FFFFF9 The requested item is not found    Msg:[Unable to find issuer certificate CN=attestationsigningcert]
@@ -126,13 +127,13 @@ At line:1 char:1
 
 ```
 
-**Hibaelhárítási lépések** A főtanúsítványt egy hitelesítésszolgáltató által kiállítottként kell megjelölve (az X.509 alapszintű megkötései), különben nem tekinthető érvényes tanúsítványnak. 
+**Hibaelhárítási lépések** A főtanúsítványt hitelesítésszolgáltató által kiállítottként kell megjelölve (az X.509 alapszintű megkötései), különben nem tekinthető érvényes tanúsítványnak. 
 
 Győződjön meg arról, hogy a főtanúsítvány Alapszintű korlátozások bővítménye úgy van beállítva, hogy a Tulajdonos típusa = CA legyen
 
 Ha nem, akkor a tanúsítványlánc érvénytelennek minősül.
 
-Lásd: [szabályzat-aláíró és](./policy-signer-examples.md) [-szabályzatpépéék](./policy-examples.md) 
+Lásd [a szabályzat-aláírókra és](./policy-signer-examples.md) [szabályzatpépéékra vonatkozó példákat](./policy-examples.md) 
 
 ### <a name="24-adddelete-policy-signer-failure"></a>2.4. Szabályzat-aláíró hozzáadása/törlése – hiba
 

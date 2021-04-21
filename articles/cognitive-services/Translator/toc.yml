@@ -146,22 +146,24 @@
           href: document-translation/create-sas-tokens.md
     - name: Referencia
       items:
-        - name: Dokumentumformátumok lekérte
-          href: document-translation/reference/get-document-formats.md
-        - name: Szószedetformátumok lekérte
-          href: document-translation/reference/get-glossary-formats.md
-        - name: Dokumentumtárolási forrás lekért
-          href: document-translation/reference/get-document-storage-source.md
-        - name: Kötegelt kérelem elküldése
-          href: document-translation/reference/submit-batch-request.md
-        - name: Műveleti dokumentumok állapotának lekért állapota
-          href: document-translation/reference/get-operation-documents-status.md
+        - name: Támogatott dokumentumformátumok lekért száma
+          href: document-translation/reference/get-supported-document-formats.md
+        - name: Támogatott szószedetformátumok lekért száma
+          href: document-translation/reference/get-supported-glossary-formats.md
+        - name: Támogatott tárolóforrások lekért száma
+          href: document-translation/reference/get-supported-storage-sources.md
+        - name: Fordítás kezdése
+          href: document-translation/reference/start-translation.md
         - name: Dokumentumok állapotának lekért állapota
+          href: document-translation/reference/get-documents-status.md
+        - name: Dokumentum állapotának lekért állapota
           href: document-translation/reference/get-document-status.md
-        - name: Műveletek lekérte
-          href: document-translation/reference/get-operations.md
-        - name: Művelet megszakítása
-          href: document-translation/reference/cancel-operation.md
+        - name: Fordítási állapot lekért állapota
+          href: document-translation/reference/get-translations-status.md
+        - name: Fordítási állapot lekért állapota
+          href: document-translation/reference/get-translation-status.md
+        - name: Fordítás megszakítása
+          href: document-translation/reference/cancel-translation.md
 - name: Útmutatók
   items:
     - name: Alkalmasság vállalati használatra

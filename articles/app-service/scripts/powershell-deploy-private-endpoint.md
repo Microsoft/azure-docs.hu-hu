@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell: privát végpont üzembe helyezése a webalkalmazáshoz a PowerShell-lel'
-description: Ismerje meg, hogyan helyezhet üzembe privát végpontot a PowerShell használatával a webalkalmazáshoz
+title: 'PowerShell: Privát végpont üzembe helyezése webalkalmazáshoz a PowerShell használatával'
+description: Megtudhatja, hogyan helyezhet üzembe privát végpontot a webalkalmazáshoz a PowerShell használatával
 author: ericgre
 ms.assetid: e1cc08d5-91cf-49d7-8d0a-c0e7bd2046ac
 ms.topic: sample
@@ -8,16 +8,17 @@ ms.date: 07/07/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 97ded67b9f9daa2652b2740a21a4b7d6a0ac2bdd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: bc4fb20521c1d5d1f61fb411f9e6688e422d7ae6
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87068257"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832985"
 ---
-# <a name="create-an-app-service-app-and-deploy-private-endpoint-using-powershell"></a>App Service alkalmazás létrehozása és privát végpont üzembe helyezése a PowerShell használatával
+# <a name="create-an-app-service-app-and-deploy-private-endpoint-using-powershell"></a>Alkalmazás létrehozása App Service és privát végpont üzembe helyezése a PowerShell használatával
 
-Ez a példa egy alkalmazást hoz létre App Service a kapcsolódó erőforrásokkal együtt, majd üzembe helyez egy privát végpontot.
+Ez a példaszkprogram létrehoz egy alkalmazást App Service a kapcsolódó erőforrásokkal, majd üzembe helyez egy privát végpontot.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -111,18 +112,18 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [Új – AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Létrehoz egy App Service-csomagot. |
-| [Új – AzWebApp](/powershell/module/az.websites/new-azwebapp) | Webalkalmazást hoz létre. |
-| [Új – AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Létrehoz egy virtuális hálózati alhálózat konfigurációját. |
-| [Új – AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Virtuális hálózatot hoz létre. |
-| [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/new-azprivatelinkserviceconnection) | Létrehoz egy magánhálózati kapcsolati szolgáltatás kapcsolati konfigurációját. |
+| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Létrehoz egy App Service-csomagot. |
+| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Webalkalmazást hoz létre. |
+| [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Létrehoz egy virtuális hálózat alhálózati konfigurációját. |
+| [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Virtuális hálózatot hoz létre. |
+| [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/new-azprivatelinkserviceconnection) | Létrehoz egy privát kapcsolati szolgáltatás kapcsolatkonfigurációt. |
 | [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) | Létrehoz egy privát végpontot. |
-| [Új – AzPrivateDnsZone](/powershell/module/az.privatedns/new-azprivatednszone) | Létrehoz egy új privát DNS-zónát. |
-| [Új – AzPrivateDnsVirtualNetworkLink](/powershell/module/az.privatedns/new-azprivatednsvirtualnetworklink) | Létrehoz egy új magánhálózati DNS virtuális hálózati kapcsolatot. |
-| [Új – AzPrivateDnsZoneConfig](/powershell/module/az.network/new-azprivatednszoneconfig) | Létrehozza a saját DNS-zóna csoportjának DNS-zóna konfigurációját. |
-| [Új – AzPrivateDnsZoneGroup](/powershell/module/az.network/new-azprivatednszonegroup) | Létrehoz egy magánhálózati DNS-zónát a megadott privát végponton. |
+| [New-AzPrivateDnsZone](/powershell/module/az.privatedns/new-azprivatednszone) | Létrehoz egy új privát DNS-zónát. |
+| [New-AzPrivateDnsVirtualNetworkLink](/powershell/module/az.privatedns/new-azprivatednsvirtualnetworklink) | Létrehoz egy új privát DNS virtuális hálózati kapcsolatot. |
+| [New-AzPrivateDnsZoneConfig](/powershell/module/az.network/new-azprivatednszoneconfig) | Létrehozza a privát DNS-zónacsoport DNS-zónakonfigurációját. |
+| [New-AzPrivateDnsZoneGroup](/powershell/module/az.network/new-azprivatednszonegroup) | Létrehoz egy privát DNS-zónacsoportot a megadott privát végponton. |
 
 ## <a name="next-steps"></a>Következő lépések
 
 - Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
-- A Azure App Service Web Apps további Azure PowerShell mintákat talál a [Azure PowerShell mintákban](../samples-powershell.md).
+- További Azure PowerShell példákat Azure App Service Web Apps a mintaminták között [Azure PowerShell talál.](../samples-powershell.md)

@@ -6,22 +6,23 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - devx-track-azurecli
+- devx-track-azurepowershell
 adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-python-uiex
-ms.openlocfilehash: f5c51630d111bd68e311a93100abb8266e2a8e27
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b006f006c9fb45c9a7d80e815f95bec812e5ec3f
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787430"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831833"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Rövid útmutató: Python-függvény létrehozása az Azure-ban a parancssorból
 
 [!INCLUDE [functions-language-selector-quickstart-cli](../../includes/functions-language-selector-quickstart-cli.md)]
 
-Ebben a cikkben parancssori eszközökkel hoz létre egy Python-függvényt, amely HTTP-kérésekre válaszol. A kód helyi tesztelése után üzembe kell helyeznie a Azure Functions.
+Ebben a cikkben parancssori eszközökkel hoz létre egy Python-függvényt, amely HTTP-kérésekre válaszol. A kód helyi tesztelése után üzembe helyezheti azt a virtuális gép kiszolgáló Azure Functions.
 
 A rövid útmutató elvégzése néhány dollár vagy annál kisebb költséggel jár az Azure-fiókban.
 
@@ -168,7 +169,7 @@ Minden kötéshez szükség van egy irányra, egy típusra és egy egyedi névre
 Mielőtt üzembe helyezheti a függvénykódot az Azure-ban, három erőforrást kell létrehoznia:
 
 - Egy erőforráscsoport, amely a kapcsolódó erőforrások logikai tárolója.
-- Egy Storage-fiók, amely fenntartja a projektek állapotát és egyéb adatait.
+- Egy Tárfiók, amely a projektek állapotát és egyéb adatait tartja fenn.
 - Egy függvényalkalmazást, amely biztosítja a függvénykód futtatásának környezetét. A függvényalkalmazás a helyi függvényprojekthez van leképezve, és lehetővé teszi a függvények logikai egységként való csoportosítását az erőforrások egyszerűbb kezelése, üzembe helyezése és megosztása érdekében.
 
 Ezeket az elemeket az alábbi parancsokkal hozhatja létre. Az Azure CLI és a PowerShell is támogatott.
@@ -187,7 +188,7 @@ Ezeket az elemeket az alábbi parancsokkal hozhatja létre. Az Azure CLI és a P
     Connect-AzAccount
     ```
 
-    A [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmag bejelentkeztet az Azure-fiókjába.
+    A [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmag bejelentkezik az Azure-fiókjába.
 
     ---
 
@@ -207,14 +208,14 @@ Ezeket az elemeket az alábbi parancsokkal hozhatja létre. Az Azure CLI és a P
     New-AzResourceGroup -Name AzureFunctionsQuickstart-rg -Location westeurope
     ```
 
-    A [New-AzResourceGroup parancs](/powershell/module/az.resources/new-azresourcegroup) létrehoz egy erőforráscsoportot. Az erőforráscsoportot és az erőforrásokat általában egy közeli régióban hozza létre a [Get-AzLocation](/powershell/module/az.resources/get-azlocation) parancsmag által visszaadott elérhető régió használatával.
+    A [New-AzResourceGroup parancs](/powershell/module/az.resources/new-azresourcegroup) létrehoz egy erőforráscsoportot. Erőforráscsoportját és erőforrásait általában egy közeli régióban hozza létre a [Get-AzLocation](/powershell/module/az.resources/get-azlocation) parancsmag által visszaadott elérhető régió használatával.
 
     ---
 
     > [!NOTE]
     > Linux- és Windows-alkalmazások nem használhatók ugyanabban az erőforráscsoportban. Ha rendelkezik egy nevű meglévő erőforráscsoporttal egy Windows-függvényalkalmazással vagy `AzureFunctionsQuickstart-rg` -webalkalmazással, másik erőforráscsoportot kell használnia.
 
-1. Hozzon létre egy általános célú tárfiókot az erőforráscsoportban és régióban:
+1. Hozzon létre egy általános célú tárfiókot az erőforráscsoportban és a régióban:
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -234,11 +235,11 @@ Ezeket az elemeket az alábbi parancsokkal hozhatja létre. Az Azure CLI és a P
 
     ---
 
-    Az előző példában cserélje le a helyére az Ön számára megfelelő, az `<STORAGE_NAME>` Azure Storage-ban egyedi nevet. A neveknek három–24 karakter hosszúságú számokat és csak kisbetűket tartalmazhatnak. `Standard_LRS`A egy általános célú fiókot ad meg, amelyet [a Functions támogat.](storage-considerations.md#storage-account-requirements)
+    Az előző példában cserélje le a helyére az Önnek megfelelő, az `<STORAGE_NAME>` Azure Storage-ban egyedi nevet. A neveknek három–24 karakter hosszúságú számokat és csak kisbetűket tartalmazhatnak. `Standard_LRS`A egy általános célú fiókot ad meg, amelyet [a Functions támogat.](storage-considerations.md#storage-account-requirements)
     
     Ebben a rövid útmutatóban a tárfiók csak néhány centet (USD) jelent.
 
-1. A függvényalkalmazás létrehozása az Azure-ban:
+1. Hozza létre a függvényalkalmazást az Azure-ban:
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
         

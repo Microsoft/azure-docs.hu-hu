@@ -10,13 +10,13 @@ ms.workload: identity
 ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.custom: azureday1, devx-track-azurecli
-ms.openlocfilehash: 7d84b3f8e654940a8f2c36075b92d630505e88b9
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.custom: azureday1, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: a37b189ae98332b2d6c557b6bdfad98266002e9e
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482317"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833903"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>Oktatóanyag: Az Azure Storage elérése webalkalmazásból
 
@@ -44,7 +44,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="enable-managed-identity-on-an-app"></a>Felügyelt identitás engedélyezése egy alkalmazásban
 
-Ha a webalkalmazást a Visual Studio hozza létre és teszi közzé, a felügyelt identitás engedélyezve lett az alkalmazásban. Az App Service-beli bal oldali panelen válassza az **Identitás,** majd a **Rendszer által hozzárendelt lehetőséget.** Ellenőrizze, hogy **az Állapot** be van-e **állítva.** Ha nem, válassza a **Mentés,** majd az **Igen** lehetőséget a rendszer által hozzárendelt felügyelt identitás engedélyezéséhez. Ha a felügyelt identitás engedélyezve van, az állapot **Be** lesz kapcsolva, és az objektumazonosító elérhető.
+Ha a webalkalmazást a Visual Studio hozza létre és teszi közzé, a felügyelt identitás engedélyezve lett az alkalmazásban. Az App Service-beli bal **oldali panelen** válassza az Identitás, majd a **Rendszer által hozzárendelt lehetőséget.** Ellenőrizze, hogy **az Állapot** be van-e **állítva.** Ha nem, válassza a **Mentés,** majd az **Igen** lehetőséget a rendszer által hozzárendelt felügyelt identitás engedélyezéséhez. Ha a felügyelt identitás engedélyezve van, az állapot **Be** lesz kapcsolva, és az objektumazonosító elérhető.
 
 :::image type="content" alt-text="Képernyőkép a Rendszer által hozzárendelt identitás lehetőségről." source="./media/scenario-secure-app-access-storage/create-system-assigned-identity.png":::
 
@@ -94,7 +94,7 @@ Az azure storage Blob Storage tároló létrehozásához kövesse az alábbi lé
 
 1. Az új tárfiókot a Azure Portal.
 
-1. A tárfiók bal oldali menüjében görgessen a Blob service **szakaszhoz,** majd válassza a **Tárolók lehetőséget.**
+1. A tárfiók bal oldali menüjében  görgessen a Blob service szakaszhoz, majd válassza a **Tárolók lehetőséget.**
 
 1. Válassza a **+ Tároló** gombot.
 
@@ -106,7 +106,7 @@ Az azure storage Blob Storage tároló létrehozásához kövesse az alábbi lé
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Egy általános célú v2-tárfiók és egy Blob Storage létrehozásához futtassa a következő szkriptet. Adja meg a webalkalmazást tartalmazó erőforráscsoport nevét. Adja meg a tárfiók nevét. A választott névnek az Azure-on belül egyedinek kell lennie. A névnek 3–24 karakter hosszúságúnak kell lennie, és csak számokat és kisbetűket tartalmazhat.
+Futtassa a következő szkriptet egy általános célú v2-tárfiók létrehozásához Blob Storage tároló létrehozásához. Adja meg a webalkalmazást tartalmazó erőforráscsoport nevét. Adja meg a tárfiók nevét. A választott névnek az Azure-on belül egyedinek kell lennie. A névnek 3–24 karakter hosszúságúnak kell lennie, és csak számokat és kisbetűket tartalmazhat.
 
 Adja meg a tárfiók helyét. Az előfizetéséhez érvényes helyek listájának a futtatásával ```Get-AzLocation | select Location``` megjelenik. A tároló neve csak kisbetűket tartalmazhat, betűvel vagy számmal kell kezdődnie, és csak betűket, számokat és kötőjelet (-) tartalmazhat.
 
@@ -168,11 +168,11 @@ az storage container create \
 
 ## <a name="grant-access-to-the-storage-account"></a>Hozzáférés megadása a tárfiókhoz
 
-Blobok létrehozása, olvasása vagy törlése előtt hozzáférést kell adnunk a webalkalmazásnak a tárfiókhoz. Az előző lépésben felügyelt identitással konfigurálta a App Service futtató webalkalmazást. Az Azure RBAC használatával hozzáférést adhat a felügyelt identitásnak egy másik erőforráshoz, akárcsak bármely más rendszerbiztonsági tag. A Storage-blobadatok közreműködője szerepkör (amelyet a rendszer által hozzárendelt felügyelt identitás képvisel) olvasási, írási és törlési hozzáférést biztosít a webalkalmazásnak a blobtárolóhoz és az adatokhoz.
+Blobok létrehozása, olvasása vagy törlése előtt hozzáférést kell adnunk a webalkalmazásnak a tárfiókhoz. Az előző lépésben felügyelt identitással konfigurálta a App Service futó webalkalmazást. Az Azure RBAC használatával hozzáférést adhat a felügyelt identitásnak egy másik erőforráshoz, akárcsak bármely más rendszerbiztonsági tag. A Storage-blobadatok közreműködője szerepkör (amelyet a rendszer által hozzárendelt felügyelt identitás képvisel) olvasási, írási és törlési hozzáférést biztosít a webalkalmazásnak a blobtárolóhoz és az adatokhoz.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A [Azure Portal](https://portal.azure.com)be a tárfiókba, és adjon hozzáférést a webalkalmazásnak. A bal oldali panelen válassza a Hozzáférés-vezérlés **(IAM),** majd a **Szerepkör-hozzárendelések lehetőséget.** Megjelenik a tárfiókhoz hozzáférő felhasználók listája. Most hozzá szeretne adni egy szerepkör-hozzárendelést egy robothoz, az App Service-hez, amely hozzáfér a tárfiókhoz. Válassza **a**  >  **Szerepkör-hozzárendelés hozzáadása lehetőséget.**
+A [Azure Portal](https://portal.azure.com)be a tárfiókba, és adjon hozzáférést a webalkalmazásnak. A bal oldali panelen válassza a Hozzáférés-vezérlés **(IAM),** majd a **Szerepkör-hozzárendelések lehetőséget.** Megjelenik a tárfiókhoz hozzáférő felhasználók listája. Most hozzá szeretne adni egy szerepkör-hozzárendelést egy robothoz, az App Service-hez, amely hozzá szeretne férni a tárfiókhoz. Válassza **a**  >  **Szerepkör-hozzárendelés hozzáadása lehetőséget.**
 
 A **Szerepkör mezőben** válassza a **Storage-blobadatok** közreműködője lehetőséget, hogy hozzáférést biztosítson a webalkalmazásnak a tárolóblobok olvasására. A **Hozzáférés hozzárendelése hez mezőben** válassza a **App Service** lehetőséget. Az **Előfizetés mezőben** válassza ki az előfizetését. Ezután válassza ki azt az App Service-t, amely számára hozzáférést kíván biztosítani. Kattintson a **Mentés** gombra.
 
@@ -298,7 +298,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 >
-> * Hozzon létre egy rendszer által hozzárendelt felügyelt identitást.
+> * Rendszer által hozzárendelt felügyelt identitás létrehozása.
 > * Hozzon létre egy tárfiókot és Blob Storage tárolót.
 > * Tárterület elérése webalkalmazásból felügyelt identitások használatával.
 

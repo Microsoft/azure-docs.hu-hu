@@ -1,18 +1,19 @@
 ---
 title: Python-függvény létrehozása a parancssorból a Azure Functions
-description: Megtudhatja, hogyan hozhat létre Python-függvényt a parancssorból, és hogyan tehet közzé egy helyi projektet kiszolgáló nélküli üzemeltetésre a Azure Functions.
+description: Megtudhatja, hogyan hozhat létre Python-függvényt a parancssorból, és hogyan tehet közzé egy helyi projektet a kiszolgáló nélküli üzemeltetéshez a Azure Functions.
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom:
-- devx-track-python
+- devx-track-powershell
 - devx-track-azurecli
+- devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 626cff867a336880689373c289087e2332a816ee
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e144304ae1b36ca02d4b8796e7994e87b09505d9
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787448"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831095"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Rövid útmutató: Python-függvény létrehozása az Azure-ban a parancssorból
 
@@ -26,35 +27,35 @@ ms.locfileid: "107787448"
 
 Ebben a cikkben parancssori eszközökkel hoz létre egy Python-függvényt, amely HTTP-kérésekre válaszol. A kód helyi tesztelése után üzembe helyezheti a <abbr title="Egy futásidejű számítási környezet, amelyben a kiszolgáló összes adata átlátható az alkalmazásfejlesztők számára, ami leegyszerűsíti a kód üzembe helyezésének és kezelésének folyamatát.">kiszolgáló nélküli</abbr> környezete <abbr title="Egy Azure-szolgáltatás, amely alacsony költségű, kiszolgáló nélküli számítási környezetet biztosít az alkalmazások számára.">Azure Functions</abbr>.
 
-Ennek a rövid útmutatónak az elvégzése néhány dollár vagy annál kisebb költséggel jár az Azure-fiókjában.
+A rövid útmutató elvégzése néhány dollár vagy annál kisebb költséggel jár az Azure-fiókban.
 
-A cikk [kódalapú Visual Studio is](create-first-function-vs-code-python.md) elérhető.
+A cikk Visual Studio [kódalapú](create-first-function-vs-code-python.md) verziója is elérhető.
 
 ## <a name="1-configure-your-environment"></a>1. A környezet konfigurálása
 
-Mielőtt hozzákezd, a következőkre lesz majd elég:
+Mielőtt hozzákezd, a következőkre lesz majd kíváncsi:
 
-+ Egy Azure <abbr title="Az Azure-használat számlázási adatait fenntartó profil.">account</abbr> aktív <abbr title="Az alapvető szervezeti struktúra, amelyben az Azure-ban kezelheti az erőforrásokat, általában egy szervezeten belüli személyhez vagy részleghez társítva.">előfizetést</abbr>. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
++ Egy Azure <abbr title="Az Azure-használat számlázási adatait fenntartó profil.">account</abbr> aktív <abbr title="Az alapvető szervezeti struktúra, amelyben az Azure-ban kezelheti az erőforrásokat, általában egy szervezeten belüli egyéni vagy részleghez társítva.">előfizetést</abbr>. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
 + A [Azure Functions Core Tools](functions-run-local.md#v2) 3.x verzió. 
   
-+ Vagy a <abbr title="Platformfüggetlen parancssori eszközök a helyi fejlesztői számítógépről származó Azure-erőforrások kezeléséhez, a virtuális gép használatának Azure Portal.">Azure CLI</abbr> vagy <abbr title="Egy PowerShell-modul, amely parancsokat biztosít az Azure-erőforrások helyi fejlesztői számítógépről való felhasználásával kapcsolatban, a virtuális gép használatának Azure Portal.">Azure PowerShell</abbr> Azure-erőforrások létrehozásához:
++ Vagy a <abbr title="Platformfüggetlen parancssori eszközök a helyi fejlesztői számítógépről származó Azure-erőforrásokkal való munkavégzéshez, a virtuális gép használatának Azure Portal.">Azure CLI</abbr> vagy <abbr title="Egy PowerShell-modul, amely parancsokat biztosít az Azure-erőforrásokkal való munkavégzéshez a helyi fejlesztői számítógépről a virtuális gép Azure Portal.">Azure PowerShell</abbr> Azure-erőforrások létrehozásához:
 
     + [Az Azure CLI](/cli/azure/install-azure-cli) 2.4-es vagy újabb verziója.
 
-    + [Azure PowerShell](/powershell/azure/install-az-ps) 5.0-s vagy újabb verziót.
+    + [Azure PowerShell](/powershell/azure/install-az-ps) 5.0-s vagy újabb verzió.
 
 + [Python 3.8 (64 bites)](https://www.python.org/downloads/release/python-382/), [Python 3.7 (64 bites)](https://www.python.org/downloads/release/python-375/), [Python 3.6 (64 bites)](https://www.python.org/downloads/release/python-368/), amelyek mindegyikét a Azure Functions.
 
 ### <a name="11-prerequisite-check"></a>1.1 Előfeltétel-ellenőrzés
 
-Ellenőrizze az előfeltételeket, amelyek attól függnek, hogy az Azure CLI-t vagy Azure PowerShell azure-erőforrások létrehozására használja:
+Ellenőrizze az előfeltételeket, amelyek attól függnek, hogy az Azure CLI-t vagy a Azure PowerShell azure-erőforrások létrehozásához használja:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-+ Egy terminálban vagy parancsablakban futtassa a `func --version` parancsot annak ellenőrzéshez, hogy a <abbr title="Parancssori eszközök a helyi Azure Functions való eszközökhöz.">Azure Functions Core Tools</abbr> A a 3.x verziójú.
++ Egy terminálban vagy parancsablakban futtassa a parancsot `func --version` annak ellenőrzéshez, hogy a <abbr title="Parancssori eszközök a helyi számítógépen Azure Functions való munkavégzéshez.">Azure Functions Core Tools</abbr> A a 3.x verziójú.
 
-+ Az `az --version` futtatásával ellenőrizze, hogy az Azure CLI 2.4-es vagy újabb verziója van-e.
++ A `az --version` futtatásával ellenőrizze, hogy az Azure CLI 2.4-es vagy újabb verziója van-e.
 
 + Az `az login` futtatásával jelentkezzen be az Azure-ba, és ellenőrizze az aktív előfizetést.
 
@@ -62,7 +63,7 @@ Ellenőrizze az előfeltételeket, amelyek attól függnek, hogy az Azure CLI-t 
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-+ Egy terminálban vagy parancsablakban futtassa a `func --version` parancsot annak ellenőrzéshez, hogy a <abbr title="Parancssori eszközök a helyi Azure Functions való eszközökhöz.">Azure Functions Core Tools</abbr> A a 3.x verziójú.
++ Egy terminálban vagy parancsablakban futtassa a parancsot `func --version` annak ellenőrzéshez, hogy a <abbr title="Parancssori eszközök a helyi számítógépen Azure Functions való munkavégzéshez.">Azure Functions Core Tools</abbr> A a 3.x verziójú.
 
 + Futtassa `(Get-Module -ListAvailable Az).Version` és ellenőrizze az 5.0-s vagy újabb verziót. 
 
@@ -366,25 +367,25 @@ Functions in msdocs-azurefunctions-qs:
 
 ## <a name="7-invoke-the-function-on-azure"></a>7. A függvény meghívása az Azure-ban
 
-Mivel a függvény HTTP-eseményindítót használ, a meghíváshoz egy HTTP-kérést kell a böngészőben vagy egy hasonló eszközzel meg kell hívnia az URL-címére <abbr title="Parancssori eszköz URL-címre vonatkozó HTTP-kérések létrehozásához; lásd: https://curl.se/">curl</abbr>. 
+Mivel a függvény HTTP-eseményindítót használ, egy HTTP-kérés böngészőben vagy egy hasonló eszközzel való meghívásával hívhatja meg az URL-címére <abbr title="Parancssori eszköz URL-címre vonatkozó HTTP-kérések létrehozásához; lásd: https://curl.se/">curl</abbr>. 
 
 # <a name="browser"></a>[Böngésző](#tab/browser)
 
-Másolja a parancs kimenetében látható teljes **meghívási URL-címet** egy böngésző címsorába, és fűzheti hozzá a lekérdezési paramétert `publish` a **name=Functions&.** A böngészőnek hasonló kimenetet kell megjelenítenie, mint amikor helyileg futtatta a függvényt.
+Másolja a parancs kimenetében látható teljes **meghívási URL-címet** egy böngésző címsorába, és fűzi hozzá `publish` a **name=Functions&paramétert.** A böngészőnek hasonló kimenetet kell megjelenítenie, mint amikor helyileg futtatta a függvényt.
 
 ![A függvény kimenete egy böngészőben fut az Azure-ban](../../includes/media/functions-run-remote-azure-cli/function-test-cloud-browser.png)
 
 # <a name="curl"></a>[curl](#tab/curl)
 
-Futtassa [`curl`](https://curl.haxx.se/) a **függvényt a meghívási** URL-címével, és fűzi hozzá a **paramétert&name=Functions paraméterhez.** A parancs kimenetének a "Hello Functions" szövegnek kell lennie.
+Futtassa [`curl`](https://curl.haxx.se/) a **következőt: Invoke URL (URL-cím** meghívása) , és fűzi hozzá&**name=Functions paramétert.** A parancs kimenetének a "Hello Functions" szövegnek kell lennie.
 
 ![A függvény kimenete a curl használatával fut az Azure-ban](../../includes/media/functions-run-remote-azure-cli/function-test-cloud-curl.png)
 
 ---
 
-### <a name="71-view-real-time-streaming-logs"></a>7.1 Valós idejű streamelési naplók megtekintése
+### <a name="71-view-real-time-streaming-logs"></a>7.1 Valós idejű streamnaplók megtekintése
 
-Futtassa a következő parancsot a [](functions-run-local.md#enable-streaming-logs) streamnaplók közel valós idejű megtekintéséhez Application Insights a Azure Portal:
+Futtassa a következő parancsot, [](functions-run-local.md#enable-streaming-logs) hogy megtekintsen közel valós idejű streamnaplókat Application Insights a Azure Portal:
 
 ```console
 func azure functionapp logstream <APP_NAME> --browser
@@ -392,15 +393,15 @@ func azure functionapp logstream <APP_NAME> --browser
 
 Cserélje `<APP_NAME>` le a helyére a függvényalkalmazás nevét.
 
-Egy külön terminálablakban vagy a böngészőben hívja meg újra a távoli függvényt. A terminálon megjelenik a függvény Azure-beli végrehajtásának részletes naplója. 
+Egy külön terminálablakban vagy a böngészőben hívja meg újra a távoli függvényt. A terminálon megjelenik a függvény Azure-ban történő végrehajtásának részletes naplója. 
 
 <br/>
 
 ---
 
-## <a name="8-clean-up-resources"></a>8. Erőforrások megtisztítása
+## <a name="8-clean-up-resources"></a>8. Erőforrások tisztítása
 
-Ha folytatja a következő [lépéssel,](#next-steps) és hozzáad egy <abbr title="Azt jelenti, hogy egy függvényt társít egy tárolási üzenetsorhoz, hogy üzeneteket hoz létre az üzenetsorban. ">Azure Storage-üzenetsor kimeneti kötése</abbr>, tartsa a helyén az összes erőforrást, mivel a már végzett munka alapján fog felépíteni.
+Ha folytatja a következő [lépéssel,](#next-steps) és hozzáad egy <abbr title="A azt jelenti, hogy egy függvényt társít egy tárolási üzenetsorhoz, hogy üzeneteket hoz létre az üzenetsorban. ">Azure Storage-üzenetsor kimeneti kötése</abbr>, tartsa a helyén az összes erőforrást, mivel a már végzett munka alapján fog felépíteni.
 
 Ellenkező esetben a következő paranccsal törölheti az erőforráscsoportot és annak összes tartalmazott erőforrását, hogy elkerülje a további költségeket.
 

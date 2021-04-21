@@ -4,35 +4,35 @@ description: Megtudhatja, hogyan konfigurálhatja a függvényalkalmazás beáll
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: ed87a5a744defb15d4a898aeabdce5267b7431fe
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: cc996988-fb4f-47, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 6775fdf8d5174600344f3c7177a3130ef63e8f76
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775654"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832679"
 ---
 # <a name="manage-your-function-app"></a>A függvényalkalmazás kezelése 
 
 Ebben Azure Functions függvényalkalmazás biztosítja az egyes függvények végrehajtási környezetét. A függvényalkalmazások viselkedése az adott függvényalkalmazás által üzemeltetett összes függvényre vonatkozik. A függvényalkalmazás összes függvényének azonos nyelvűnek kell [lennie.](supported-languages.md) 
 
-A függvényalkalmazás egyes függvényeket együtt helyez üzembe, és együtt skálázhatóak. Az ugyanabban a függvényalkalmazásban működő összes függvény példányonként osztozik az erőforrásokon, ahogy a függvényalkalmazás skáláz. 
+A függvényalkalmazás egyes függvényeket együtt helyez üzembe, és együtt méretez. Ugyanabban a függvényalkalmazásban minden függvény osztozik az erőforrásokon példányonként, ahogy a függvényalkalmazás skáláz. 
 
-A kapcsolati sztringeket, a környezeti változókat és az egyéb alkalmazásbeállításokat minden függvényalkalmazáshoz külön kell meghatározni. A függvényalkalmazások között meg kell osztani minden adatot külsőleg kell tárolni egy megőrzött tárolóban.
+A kapcsolati sztringeket, a környezeti változókat és az egyéb alkalmazásbeállításokat minden függvényalkalmazáshoz külön kell meghatározni. A függvényalkalmazások között megosztani szükséges adatokat külsőleg, megőrzött tárolóban kell tárolni.
 
 ## <a name="get-started-in-the-azure-portal"></a>Első lépések az Azure Portalon
 
-1. Először is a [] portálra Azure Portal jelentkezzen be az Azure-fiókjába. A portál tetején található keresősávba írja be a függvényalkalmazás nevét, és válassza ki a listából. 
+1. Először is a portálra [Azure Portal,] és jelentkezzen be Azure-fiókjába. A portál tetején található keresősávba írja be a függvényalkalmazás nevét, és válassza ki a listából. 
 
 2. A **bal oldali** panel Beállítások panelen válassza a Konfiguráció **lehetőséget.**
 
     :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Függvényalkalmazás áttekintése a Azure Portal":::
 
-Az áttekintő oldalon mindent áttekinthet, amire szüksége van a **[](#settings)** függvényalkalmazás kezeléséhez, különös tekintettel az Alkalmazásbeállításokra és **[a Platformfunkciókra.](#platform-features)**
+Az áttekintő oldalon mindent áttekinthet, amire szüksége van a **[](#settings)** függvényalkalmazás kezeléséhez, különös tekintettel az alkalmazásbeállításokra és a **[platformfunkciókra.](#platform-features)**
 
 ## <a name="work-with-application-settings"></a><a name="settings"></a>Alkalmazásbeállítások használata
 
-Az alkalmazásbeállítások az [](functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings) azure-beli Azure Portal [az Azure CLI](functions-how-to-use-azure-function-app-settings.md?tabs=azurecli#settings) és a [Azure PowerShell.](functions-how-to-use-azure-function-app-settings.md?tabs=powershell#settings) Az alkalmazásbeállításokat az Visual Studio [Code-ból](functions-develop-vs-code.md#application-settings-in-azure) és a [Visual Studio.](functions-develop-vs.md#function-app-settings) 
+Az alkalmazásbeállításokat a [](functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings) virtuális Azure Portal az [Azure CLI](functions-how-to-use-azure-function-app-settings.md?tabs=azurecli#settings) és [a](functions-how-to-use-azure-function-app-settings.md?tabs=powershell#settings)Azure PowerShell. Az alkalmazásbeállításokat az Visual Studio [Code-ból](functions-develop-vs-code.md#application-settings-in-azure) és a [Visual Studio.](functions-develop-vs.md#function-app-settings) 
 
 Ezek a beállítások titkosítva vannak tárolva. További információ: Alkalmazásbeállítások [biztonsága.](security-concepts.md#application-settings)
 
@@ -143,13 +143,13 @@ Ez a migrálás Linux rendszeren nem támogatott.
 
 A használat alapján csomagról Prémium szintű csomagra való áttelepítéshez használja a következő eljárást Windows rendszeren:
 
-1. Futtassa a következő parancsot egy új App Service (Elastic Premium) létrehozásához ugyanabban a régióban és erőforráscsoportban, mint a meglévő függvényalkalmazás.  
+1. Az alábbi parancs futtatásával hozzon létre egy új App Service (Elastic Premium) ugyanabban a régióban és erőforráscsoportban, mint a meglévő függvényalkalmazás.  
 
     ```azurecli-interactive
     az functionapp plan create --name <NEW_PREMIUM_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP> --location <REGION> --sku EP1
     ```
 
-1. Futtassa a következő parancsot a meglévő függvényalkalmazás új Prémium szintű csomagba való áttelepítéséhez
+1. Futtassa a következő parancsot a meglévő függvényalkalmazás új prémium szintű csomagba való áttelepítéséhez
 
     ```azurecli-interactive
     az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_PREMIUM_PLAN>
@@ -161,9 +161,9 @@ A használat alapján csomagról Prémium szintű csomagra való áttelepítésh
     az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='Y'].{PlanName:name,Sites:numberOfSites}" -o table
     ```
 
-    Biztonságosan törölheti a tervet nulla hely esetén, amelyről migrált.
+    Biztonságosan törölheti a tervet nulla helyen, amelyről áttelepített.
 
-1. Futtassa a következő parancsot a migrált használat alapján csomag törléséhez.
+1. Futtassa a következő parancsot a migrált használatú csomag törléséhez.
 
     ```azurecli-interactive
     az functionapp plan delete --name <CONSUMPTION_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP>
@@ -171,21 +171,21 @@ A használat alapján csomagról Prémium szintű csomagra való áttelepítésh
 
 ### <a name="premium-to-consumption"></a>Prémiumról használatra
 
-A prémium szintű csomagról a Használat alapú csomagra való áttelepítéshez használja a következő eljárást Windows rendszeren:
+Az alábbi eljárást használhatja prémium szintű csomagról használat alapú csomagra Windows rendszeren:
 
-1. A következő parancs futtatásával hozzon létre egy új függvényalkalmazást (használat) ugyanabban a régióban és erőforráscsoportban, mint a meglévő függvényalkalmazás. Ez a parancs egy új használatra szánt tervet is létrehoz, amelyben a függvényalkalmazás fut.
+1. Az alábbi parancs futtatásával hozzon létre egy új függvényalkalmazást (használatban) ugyanabban a régióban és erőforráscsoportban, mint a meglévő függvényalkalmazás. Ez a parancs egy új használatra szánt tervet is létrehoz, amelyben a függvényalkalmazás fut.
 
     ```azurecli-interactive
     az functionapp create --resource-group <MY_RESOURCE_GROUP> --name <NEW_CONSUMPTION_APP_NAME> --consumption-plan-location <REGION> --runtime dotnet --functions-version 3 --storage-account <STORAGE_NAME>
     ```
 
-1. Futtassa a következő parancsot a meglévő függvényalkalmazás új használatban lévő csomagba való áttelepítéséhez.
+1. Futtassa a következő parancsot a meglévő függvényalkalmazás az új használatban lévő csomagba való áttelepítéséhez.
 
     ```azurecli-interactive
     az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_CONSUMPTION_PLAN>
     ```
 
-1. Törölje az 1. lépésben létrehozott függvényalkalmazást, mivel csak a meglévő függvényalkalmazás futtatásához létrehozott csomagra van szüksége.
+1. Törölje az 1. lépésben létrehozott függvényalkalmazást, mivel csak a meglévő függvényalkalmazás futtatásához létrehozott csomagra van szükség.
 
     ```azurecli-interactive
     az functionapp delete --name <NEW_CONSUMPTION_APP_NAME> --resource-group <MY_RESOURCE_GROUP>
@@ -197,7 +197,7 @@ A prémium szintű csomagról a Használat alapú csomagra való áttelepítésh
     az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='EP'].{PlanName:name,Sites:numberOfSites}" -o table
     ```
 
-1. Futtassa a következő parancsot a migrált prémium szintű csomag törléséhez.
+1. Futtassa a következő parancsot a migrált Prémium csomag törléséhez.
 
     ```azurecli-interactive
     az functionapp plan delete --name <PREMIUM_PLAN> --resource-group <MY_RESOURCE_GROUP>
@@ -205,10 +205,10 @@ A prémium szintű csomagról a Használat alapú csomagra való áttelepítésh
 
 ## <a name="platform-features"></a>Platform funkciói
 
-A függvényalkalmazások a következő platformon futnak és Azure App Service karbantartva. Így a függvényalkalmazások az Azure alapvető webes üzemeltetési platform legtöbb funkcióját elérhetik. A bal oldali panelen használhatja a App Service platform számos funkcióját, amelyek a függvényalkalmazásokban használhatók. 
+A függvényalkalmazások a következő platformon futnak és Azure App Service karbantartva. Így a függvényalkalmazások hozzáférhetnek az Azure alapvető webes üzemeltetési platform legtöbb funkciójéhez. A bal oldali panelen használhatja a függvényalkalmazásokban App Service platform számos funkcióját. 
 
 > [!NOTE]
-> Nem minden App Service érhető el, ha egy függvényalkalmazás a használat alapján futtatott üzemeltetési csomagon fut.
+> Nem minden App Service funkció érhető el, ha egy függvényalkalmazás a használat alapján futtatott üzemeltetési csomagon fut.
 
 A cikk további részében az alábbi App Service funkciókkal Azure Portal, amelyek hasznosak a Functions számára:
 
@@ -219,46 +219,46 @@ A cikk további részében az alábbi App Service funkciókkal Azure Portal, ame
 + [CORS](#cors)
 + [Hitelesítés](#auth)
 
-A beállításokkal kapcsolatos további App Service lásd: Configure Azure App Service Settings (Az Azure App Service [konfigurálása).](../app-service/configure-common.md)
+További információ a beállításokkal való App Service: [Configure Azure App Service Settings](../app-service/configure-common.md)..
 
 ### <a name="app-service-editor"></a><a name="editor"></a>App Service szerkesztő
 
 ![A App Service szerkesztő](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 
-A App Service szerkesztő egy speciális portálon elérhető szerkesztő, amely a JSON-konfigurációs fájlok és a kódfájlok módosítására is használható. Ha ezt a lehetőséget választja, egy különálló böngészőlapot indít el egy alapszintű szerkesztővel. Ez lehetővé teszi a Git-adattárak integrálását, a kód futtatását és hibakeresését, valamint a függvényalkalmazás beállításainak módosítását. Ez a szerkesztő továbbfejlesztett fejlesztési környezetet biztosít a függvények számára a beépített függvényszerkesztővel összehasonlítva.  
+A App Service szerkesztő egy speciális portálon található szerkesztő, amely a JSON-konfigurációs fájlok és kódfájlok módosítására is használható. Ha ezt a lehetőséget választja, egy különálló böngészőlapot indít el egy alapszintű szerkesztővel. Ez lehetővé teszi a Git-adattárak integrálását, a kód futtatását és hibakeresését, valamint a függvényalkalmazás beállításainak módosítását. Ez a szerkesztő továbbfejlesztett fejlesztési környezetet biztosít a függvények számára a beépített függvényszerkesztővel összehasonlítva.  
 
-Javasoljuk, hogy fontolja meg a függvények helyi számítógépen való fejlesztését. A helyi fejlesztés és az Azure-ban való közzététel során a projektfájlok csak olvashatók a portálon. További információ: Kód és tesztelés Azure Functions [helyi számítógépen.](functions-develop-local.md)
+Javasoljuk, hogy fontolja meg a függvények helyi számítógépen való fejlesztését. A helyi fejlesztés és az Azure-ban való közzététel során a projektfájlok csak olvashatók a portálon. További információ: Kód és tesztelés Azure Functions [helyileg.](functions-develop-local.md)
 
 ### <a name="console"></a><a name="console"></a>Console
 
 ![Függvényalkalmazás konzolja](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
 
-A portálon belüli konzol ideális fejlesztői eszköz, ha a parancssorból szeretné használni a függvényalkalmazást. A gyakori parancsok közé tartozik a könyvtár és a fájl létrehozása, a navigáció, valamint a kötegelt fájlok és szkriptek végrehajtása. 
+A portálon belüli konzol ideális fejlesztői eszköz, ha inkább a parancssorból szeretné használni a függvényalkalmazást. A gyakori parancsok közé tartozik a könyvtár- és fájl-létrehozás, a navigáció, valamint a kötegelt fájlok és parancsfájlok végrehajtása. 
 
-Helyi fejlesztés esetén javasoljuk a Azure Functions Core Tools [és](functions-run-local.md) az Azure [CLI használatát.]
+Helyi fejlesztés esetén javasoljuk, hogy használja a Azure Functions Core Tools [és](functions-run-local.md) az [Azure CLI-t.]
 
 ### <a name="advanced-tools-kudu"></a><a name="kudu"></a>Speciális eszközök (Kudu)
 
 ![A Kudu konfigurálása](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
-A speciális eszközök a App Service (más néven Kudu) hozzáférést biztosítanak a függvényalkalmazás speciális felügyeleti funkcióihoz. A Kuduban kezelheti a rendszeradatokat, az alkalmazásbeállításokat, a környezeti változókat, a webhelybővítményeket, a HTTP-fejléceket és a kiszolgálóváltozókat. A Kudu a **függvényalkalmazás** SCM-végpontjának tallózásával is elindíthatja, például: `https://<myfunctionapp>.scm.azurewebsites.net/` 
+Az alkalmazás speciális App Service (más néven Kudu) hozzáférést biztosítanak a függvényalkalmazás speciális felügyeleti funkcióihoz. A Kudu segítségével kezelheti a rendszeradatokat, az alkalmazásbeállításokat, a környezeti változókat, a webhelybővítményeket, a HTTP-fejléceket és a kiszolgálóváltozókat. A Kudu a **függvényalkalmazás** SCM-végpontjának tallózásával is elindíthatja, például: `https://<myfunctionapp>.scm.azurewebsites.net/` 
 
 
 ### <a name="deployment-center"></a><a name="deployment"></a>Üzembe helyezési központ
 
-Ha a függvénykódok fejlesztéséhez és karbantartásához forrásvezérlési megoldást használ, a Deployment Center lehetővé teszi a forrásvezérlésből való buildet és üzembe helyezést. A projekt létrehozása és üzembe helyezése az Azure-ban történik a frissítések során. További információ: Telepítési technológiák a [Azure Functions.](functions-deployment-technologies.md)
+Ha a függvénykódok fejlesztéséhez és karbantartásához egy forrásvezérlő megoldást használ, a Deployment Center lehetővé teszi a forrásvezérlésből való buildet és üzembe helyezést. A projekt létrehozása és üzembe helyezése az Azure-ban történik a frissítések során. További információ: [Telepítési technológiák a Azure Functions.](functions-deployment-technologies.md)
 
 ### <a name="cross-origin-resource-sharing"></a><a name="cors"></a>Eltérő eredetű erőforrások megosztása
 
-Az ügyfélen a rosszindulatú kódvégrehajtás megakadályozása érdekében a modern böngészők blokkolják a webalkalmazások kérését egy külön tartományban futó erőforrásokra. [Az eredetközi erőforrás-megosztás (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS) lehetővé teszi, hogy egy fejléc deklarálja, mely eredetek hívhatnak végpontokat `Access-Control-Allow-Origin` a függvényalkalmazásban.
+Az ügyfélen a rosszindulatú kódvégrehajtás megakadályozása érdekében a modern böngészők blokkolják a webalkalmazások kérését egy külön tartományban futó erőforrásokra. [Az eredetközi erőforrás-megosztás (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS) lehetővé teszi, hogy a fejlécek deklarálják, mely eredetek hívhatnak `Access-Control-Allow-Origin` végpontokat a függvényalkalmazásban.
 
 #### <a name="portal"></a>Portál
 
-Amikor konfigurálja **az Engedélyezett eredetek** listáját a függvényalkalmazáshoz, a rendszer automatikusan hozzáadja a fejlécet a függvényalkalmazás HTTP-végpontjaitól `Access-Control-Allow-Origin` kapott válaszokhoz. 
+Amikor konfigurálja **az Engedélyezett eredetek** listát a függvényalkalmazáshoz, a fejléc automatikusan hozzáadódik a függvényalkalmazás HTTP-végpontjaitól kapott `Access-Control-Allow-Origin` válaszokhoz. 
 
-![Függvényalkalmazás CORS-listájának konfigurálása](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
+![A függvényalkalmazás CORS-listájának konfigurálása](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
 
-A helyettesítő karakter () használata esetén a rendszer az `*` összes többi tartományt figyelmen kívül hagyja. 
+A helyettesítő karakter ( ) használata esetén a rendszer az `*` összes többi tartományt figyelmen kívül hagyja. 
 
 Az [`az functionapp cors add`](/cli/azure/functionapp/cors#az_functionapp_cors_add) paranccsal adjon hozzá egy tartományt az engedélyezett forráslistához. Az alábbi példa hozzáadja a contoso.com tartományt:
 
@@ -274,7 +274,7 @@ Az [`az functionapp cors show`](/cli/azure/functionapp/cors#az_functionapp_cors_
 
 ![Függvényalkalmazás hitelesítésének konfigurálása](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 
-Ha a függvények HTTP-eseményindítót használnak, a hívások hitelesítését is megkövetelheti. App Service támogatja Azure Active Directory közösségi szolgáltatókkal, például a Facebookkal, a Microsofttal és a Twittersel való hitelesítést és bejelentkezést. Az egyes hitelesítésszolgáltatók konfigurálásával kapcsolatos részletekért lásd a Azure App Service [áttekintését.](../app-service/overview-authentication-authorization.md) 
+Ha a függvények HTTP-eseményindítót használnak, a hívások hitelesítését megkövetelheti. App Service támogatja Azure Active Directory közösségi szolgáltatókkal, például a Facebookkal, a Microsofttal és a Twittersel való hitelesítést és bejelentkezést. Az egyes hitelesítésszolgáltatók konfigurálásával kapcsolatos részletekért lásd a Azure App Service [áttekintését.](../app-service/overview-authentication-authorization.md) 
 
 
 ## <a name="next-steps"></a>Következő lépések

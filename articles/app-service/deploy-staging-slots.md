@@ -4,13 +4,13 @@ description: Megtudhatja, hogyan helyezhet üzembe alkalmazásokat nem éles kö
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
-ms.custom: fasttrack-edit
-ms.openlocfilehash: b93fb61cc58360ddfcf15d2af2c936203d869500
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: fasttrack-edit, devx-track-azurepowershell
+ms.openlocfilehash: 8a26332250f5c53116d940a2b625eb8d7991c187
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771532"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833107"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Átmeneti környezetek beállítása az Azure App Service-ben
 <a name="Overview"></a>
@@ -19,8 +19,8 @@ Amikor a webalkalmazást, a webalkalmazást Linux rendszeren, a mobil-háttéral
 
 Az alkalmazás nem éles üzembe helyezési tárolóhelyen való üzembe helyezése a következő előnyökkel jár:
 
-* Az alkalmazás módosításait ellenőrizheti egy előkészítési üzembe helyezési ponton, mielőtt felcseréli azt az üzemelő pontra.
-* Ha először üzembe helyez egy alkalmazást egy üzembehelyezésre egy üzembehelyezésre, majd felcseréli az éles környezetbe, a tárolóhely összes példánya be van melegítve az éles környezetbe való felcserélés előtt. Ez megszünteti az állásidőt az alkalmazás üzembe helyezésekor. A forgalom átirányítása zökkenőmentes, és a felcserélési műveletek miatt a rendszer nem eldobja a kéréseket. Ezt a teljes munkafolyamatot automatizálhatja az automatikus felcserélés [konfigurálásával,](#Auto-Swap) ha nincs szükség a felcserélés előtti érvényesítésre.
+* Az alkalmazás módosításait ellenőrizheti egy előkészítési üzembe helyezési ponton, mielőtt felcseréli az üzemelő pontra.
+* Ha először üzembe helyez egy alkalmazást egy üzembehelyezésre egy üzembehelyezésre, majd felcseréli azt az éles környezetbe, akkor a tárolóhely összes példánya be van melegítve, mielőtt éles környezetbe vált. Ez megszünteti az állásidőt az alkalmazás üzembe helyezésekor. A forgalom átirányítása zökkenőmentes, és a felcserélési műveletek miatt a rendszer nem eldobja a kéréseket. Ezt a teljes munkafolyamatot automatizálhatja az automatikus felcserélés [konfigurálásával,](#Auto-Swap) ha nincs szükség a felcserélés előtti érvényesítésre.
 * A felcserélés után a korábban szakaszos alkalmazással létrehozott ponton már az előző éles alkalmazás is található. Ha az éles tárolóhelyre felcserélt módosítások nem a vártnak megfelelőek, akkor azonnal végrehajthatja ugyanezt a felcserélést, hogy "az utolsó ismert jó webhelyet" vissza tudja kapni.
 
 Minden App Service csomagszint különböző számú üzembe helyezési tárolóhelyet támogat. Az üzembehely helyezési tárolóhelyek használata díjmentes. Az alkalmazásszint által támogatott tárolóhelyek számát a következő App Service [találja:](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits). 
@@ -30,7 +30,7 @@ Az alkalmazás másik szintre való méretezéséhez győződjön meg arról, ho
 <a name="Add"></a>
 
 ## <a name="add-a-slot"></a>Pont felvétele
-Az alkalmazásnak **Standard,** **Prémium** vagy  Izolált szinten kell futnia ahhoz, hogy több üzembehelyet engedélyezhet.
+Az alkalmazásnak Standard, **Prémium** vagy  Izolált szinten kell futnia ahhoz, hogy több üzembehelyet engedélyezhet. 
 
 
 1. a [Azure Portal](https://portal.azure.com/), keresse meg és válassza ki **App Services,** majd válassza ki az alkalmazást. 
@@ -58,11 +58,11 @@ Az alkalmazásnak **Standard,** **Prémium** vagy  Izolált szinten kell futnia 
    
     ![Üzembe helyezési hely címe](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    Az előkészítési pont felügyeleti lapja a többi alkalmazáshoz App Service is. Módosíthatja a tárolóhely konfigurációját. Emlékeztetőként, hogy az üzembe helyezési pont megtekintésekor az alkalmazás neve , az alkalmazás típusa pedig **\<app-name>/\<slot-name>** **App Service pont.** A tárolóhelyet külön alkalmazásként is láthatja az erőforráscsoportban, ugyanazokkal a megjelölésekkel.
+    Az előkészítési pont felügyeleti lapja a többi alkalmazáshoz App Service is. Módosíthatja a tárolóhely konfigurációját. Emlékeztetőként, hogy az üzembe helyezési pont megtekintésekor az alkalmazás neve , az alkalmazás típusa pedig **\<app-name>/\<slot-name>** **App Service (pont).** A tárolóhelyet külön alkalmazásként is láthatja az erőforráscsoportban, ugyanazokkal a megjelölésekkel.
 
 6. Válassza ki az alkalmazás URL-címét a tárolóhely erőforráslapján. Az üzembe helyezési hely saját gazdagépnévvel rendelkezik, és egyben élő alkalmazás is. Az üzembe helyezési ponthoz való nyilvános hozzáférés korlátozását lásd: [IP Azure App Service korlátozásai.](app-service-ip-restrictions.md)
 
-Az új üzembe helyezési hely még akkor sem rendelkezik tartalommal, ha a beállításokat egy másik tárolóhelyről klónozza. Például közzéteheti [ezt a helyet a Git használatával.](./deploy-local-git.md) Az üzembe helyezést egy másik adattárágból vagy egy másik adattárból is üzembe helyezheti a tárolóhelyen.
+Az új üzembe helyezési hely még akkor sem rendelkezik tartalommal, ha a beállításokat egy másik tárolóhelyről klónozza. Például közzéteheti [ezt a helyet a Git használatával.](./deploy-local-git.md) Az üzembe helyezést egy másik adattárágból vagy egy másik adattárból helyezheti üzembe a tárolóhelyen.
 
 <a name="AboutConfiguration"></a>
 
@@ -91,7 +91,7 @@ Amikor felcserél két tárolóhelyet (általában egy előkészítési pontról
 
 1. Ha a forráshelyen található összes példány megfelelően be van melegítve, cserélje fel a két tárolóhelyet a két tárolóhely útválasztási szabályainak átváltása által. A lépés után a célhelyen (például az éles környezetben) a korábban a forráshelyen bemelegített alkalmazás található.
 
-1. Most, hogy a forráshelyen korábban a felcserélés előtti alkalmazás a célhelyen volt, hajtsa végre ugyanezt a műveletet az összes beállítás alkalmazásával és a példányok újraindításával.
+1. Most, hogy a forráshelyen korábban a felcserélés előtti alkalmazás található a célhelyen, hajtsa végre ugyanezt a műveletet az összes beállítás alkalmazásával és a példányok újraindításával.
 
 A felcserélési művelet bármely pontján a felcserélett alkalmazások inicializálása a forrásponton történik. A célhely online állapotban marad, amíg a forráshely elő van készítve és be van melegítve, függetlenül attól, hogy a csere hol lesz sikeres vagy sikertelen. Ha felcserél egy előkészítési helyet az éles pontra, győződjön meg arról, hogy az éles pont mindig a célhely. Így a felcserélési művelet nincs hatással az éles alkalmazásra.
 
@@ -106,14 +106,14 @@ Ha úgy konfigurál egy alkalmazásbeállítást vagy kapcsolati sztringet,  hog
 <a name="Swap"></a>
 
 ## <a name="swap-two-slots"></a>Két tárolóhely felcserélve 
-Az üzembe helyezési helyeket felcserélheti az alkalmazás Üzembehelyi üzembe helyezési tárolóhelyek **oldalán** és az **Áttekintés oldalon.** A felcserélés technikai részleteiért lásd: Mi történik a [felcserélés során?](#AboutConfiguration)
+Az üzembe helyezési helyeket felcserélheti az alkalmazás Üzembe helyezési üzembehelyihelyek **oldalán** és az **Áttekintés oldalon.** A felcserélés technikai részleteiért lásd: Mi történik a [felcserélés során?](#AboutConfiguration)
 
 > [!IMPORTANT]
 > Mielőtt üzembe helyezési pontról éles üzembe helyezésre cserél egy alkalmazást, győződjön meg arról, hogy az üzemelés a célhely, és hogy a forráshely összes beállítása pontosan úgy van konfigurálva, ahogyan éles környezetben szeretné.
 > 
 > 
 
-Üzembehely helyezési tárolóhelyek felcserélve:
+Az üzembehelyhelyző tárolóhelyek felcserélve:
 
 1. Váltsa az alkalmazás Üzembe helyezési **tárolóhelyek oldalát,** és válassza a **Felcserélés lehetőséget.**
    
@@ -137,13 +137,13 @@ Ha bármilyen problémája van, tekintse meg a [felcserélések hibaelhárítás
 
 Mielőtt éles környezetbe vált célként, ellenőrizze, hogy az alkalmazás a felcserélhető beállításokkal fut-e. A felcserélés befejezése előtt a forráshely is be van melegítve, ami kritikus fontosságú alkalmazások esetén kívánatos.
 
-Ha előnézettel végez felcserélést, a App Service végrehajtja ugyanazt a felcserélési [műveletet,](#AboutConfiguration) de az első lépés után szünetel. Ezután ellenőrizheti az eredményt az előkészítési ponton, mielőtt befejezi a felcserélést. 
+Ha előnézettel végez felcserélést, a App Service végrehajtja ugyanazt a felcserélési [műveletet,](#AboutConfiguration) de az első lépés után szünetel. Ezután ellenőrizheti az eredményt az előkészítési ponton a felcserélés befejezése előtt. 
 
-Ha megszakítja a felcserélést, App Service újraalkalmali a konfigurációs elemeket a forráshelyen.
+Ha megszakítja a felcserélést, App Service újraalkotja a konfigurációs elemeket a forráshelyen.
 
 Az előnézettel való felcseréléshez:
 
-1. Kövesse az üzembehely [helyezési üzembehelyhely-felcserélés lépéseit,](#Swap) de válassza **a Felcserélés előnézettel lehetőséget.**
+1. Kövesse az üzembehely [helyezési üzembehelyhely-felcserélés lépéseit,](#Swap) de válassza **a Felcserélés végrehajtása előnézettel lehetőséget.**
 
     ![Felcserélés előnézettel](./media/web-sites-staged-publishing/SwapWithPreview.png)
 
@@ -151,13 +151,13 @@ Az előnézettel való felcseréléshez:
 
 2. Ha készen áll a felcserélésre, válassza a **Felcserélés kezdete lehetőséget.**
 
-    Amikor az 1. fázis befejeződik, a párbeszédpanel értesítést kap. Tekintse meg a felcserélés előnézetét a forráshelyen a következő gombra: `https://<app_name>-<source-slot-name>.azurewebsites.net` . 
+    Amikor az 1. fázis befejeződik, a párbeszédpanelen értesítést kap. Tekintse meg a felcserélés előnézetét a forráshelyen a következő gombra: `https://<app_name>-<source-slot-name>.azurewebsites.net` . 
 
 3. Ha készen áll a függőben lévő felcserélés befejezésére, válassza a **Felcserélés** befejezése **felcserélés** közben műveletet, majd válassza **a Felcserélés befejezése lehetőséget.**
 
     A függőben lévő felcserélés megszakításhoz válassza inkább a **Felcserélés megszakítása** lehetőséget.
 
-4. Ha elkészült, zárja be a párbeszédpanelt a Bezárás lehetőség **kiválasztásával.**
+4. Ha elkészült, zárja be a párbeszédpanelt a Bezárás lehetőség **választásával.**
 
 Ha bármilyen problémája van, tekintse meg a [Felcserélések hibaelhárítása témakört.](#troubleshoot-swaps)
 
@@ -197,7 +197,7 @@ Ha bármilyen problémája van, tekintse meg a [felcserélések hibaelhárítás
 
 ## <a name="specify-custom-warm-up"></a>Egyéni bemelegítés megadása
 
-Egyes alkalmazásokhoz egyéni bemelegítő műveletekre lehet szükség a felcserélés előtt. A `applicationInitialization` konfigurációs elem web.config egyéni inicializálási műveletek megadását teszi lehetővé. A [felcserélési](#AboutConfiguration) művelet megvárja, amíg az egyéni bemelegítés befejeződik, mielőtt felcserél a célhelyre. Példa egy web.config töredékre.
+Egyes alkalmazásokhoz egyéni bemelegítő műveletekre lehet szükség a felcserélés előtt. A `applicationInitialization` konfigurációs elem web.config egyéni inicializálási műveletek megadását teszi lehetővé. A [felcserélési](#AboutConfiguration) művelet megvárja, amíg az egyéni bemelegítés befejeződik, mielőtt felcserél a célhelyre. Itt egy minta web.config töredék.
 
 ```xml
 <system.webServer>
@@ -208,7 +208,7 @@ Egyes alkalmazásokhoz egyéni bemelegítő műveletekre lehet szükség a felcs
 </system.webServer>
 ```
 
-Az elem testreszabásával kapcsolatos további információkért lásd: Az üzembehelyezési üzembehelyezés leggyakoribb cserehibái és azok `applicationInitialization` [elhárítása.](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/)
+Az elem testreszabásával kapcsolatos további információkért tekintse meg az üzembehelyezési üzembehelyezés leggyakoribb felcserélési meghibásodásai és a `applicationInitialization` [javításuk mikéntjére vonatkozó információkat.](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/)
 
 A bemelegítés viselkedését az alábbi alkalmazásbeállítások egyikével vagy mindkettővel [is testre szabhatja:](configure-common.md)
 
@@ -277,7 +277,7 @@ Alapértelmezés szerint az új tárolóhelyek útválasztási szabálya `0%` , 
 
 Keresse meg és válassza ki az alkalmazást. Válassza az **Üzembehelyhelyi üzembe helyezési**  >  *\<slot to delete>*  >  **tárolóhelyek áttekintése lehetőséget.** Az alkalmazástípus egy **App Service (pont)** jelenik meg, amely emlékezteti, hogy egy üzembe helyezési pont van megtekintve. A **parancssávon** válassza a Törlés lehetőséget.  
 
-![Üzembe helyezési tárolóhely törlése](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
+![Üzembe helyezési hely törlése](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
 <!-- ======== AZURE POWERSHELL CMDLETS =========== -->
 
@@ -304,7 +304,7 @@ New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot
 ```
 
 ---
-### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>A felcserélés kezdeményezése előnézettel (többfázisú felcserélés), és a célhely konfigurációjának alkalmazása a forráshelyre
+### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>Kezdeményezzen felcserélést előnézettel (többfázisú felcserélés), és alkalmazza a célhely konfigurációját a forráspontra
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
@@ -395,7 +395,7 @@ Ez Resource Manager sablon idempotent, ami azt jelenti, hogy többször is végr
 
 ## <a name="automate-with-the-cli"></a>Automatizálás a CLI-val
 
-Az [üzembehely helyezési](https://github.com/Azure/azure-cli) tárolóhelyek Azure CLI-parancsaiért lásd: [az webapp deployment slot](/cli/azure/webapp/deployment/slot).
+Az [üzembehely helyezési tárolóhelyekre](https://github.com/Azure/azure-cli) vonatkozó Azure CLI-parancsokért lásd: [az webapp deployment slot](/cli/azure/webapp/deployment/slot).
 
 ## <a name="troubleshoot-swaps"></a>Felcserélések hibaelhárítása
 
@@ -407,7 +407,7 @@ Ha hiba történik [a](#AboutConfiguration)felcserélés során, a rendszer beje
 
 - A helyi gyorsítótár inicializálása sikertelen lehet, ha az alkalmazás tartalma meghaladja a helyi gyorsítótárhoz megadott helyi lemezkvótát. További információ: A helyi [gyorsítótár áttekintése.](overview-local-cache.md)
 
-- Az [egyéni bemelegítés során](#Warm-up)a HTTP-kérések belsőleg (a külső URL-cím használata nélkül) vannak meghozva. A következő url-átírási szabályainak meghiúsulása *meghiúsulhat aWeb.config.* A tartománynevek átirányításához vagy a HTTPS kényszerítéséhez szükséges szabályok például megakadályozhatják, hogy a bemelegítési kérések elérjék az alkalmazás kódját. A probléma megoldásához módosítsa az újraírási szabályokat az alábbi két feltétel hozzáadásával:
+- Az [egyéni bemelegítés során](#Warm-up)a HTTP-kérések belsőleg (a külső URL-cím használata nélkül) vannak meghozva. Meghiúsulhat bizonyos URL-átírási szabályokkal a *Web.config.* Például a tartománynevek átirányításához vagy a HTTPS kényszerítéséhez szükséges szabályok megakadályozhatják, hogy a bemelegítési kérések elérjék az alkalmazás kódját. A probléma megoldásához módosítsa az átírási szabályokat az alábbi két feltétel hozzáadásával:
 
     ```xml
     <conditions>
@@ -425,7 +425,7 @@ Ha hiba történik [a](#AboutConfiguration)felcserélés során, a rendszer beje
     </conditions>
     ```
 
-- A felcserélések után az alkalmazás váratlan újraindulásokat tapasztalhat. Ennek az az oka, hogy a felcserélés után az állomásnév-kötés konfigurációja nem lesz szinkronizálva, ami önmagában nem okoz újraindítást. Bizonyos mögöttes tárolási események (például a tárkötet feladatátvétele) észlelheti ezeket az eltéréseket, és kényszerítheti az összes munkavégző folyamat újraindítását. Az ilyen típusú újraindítások minimalizálásához állítsa be az [ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` alkalmazásbeállítást](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) az *összes tárolóhelyen.* Ez az alkalmazásbeállítás azonban nem *működik* Windows Communication Foundation (WCF) alkalmazásokkal.
+- A felcserélések után az alkalmazás váratlan újraindulásokat tapasztalhat. Ennek az az oka, hogy a felcserélés után az állomásnév-kötés konfigurációja nem lesz szinkronizálva, ami önmagában nem okoz újraindítást. Bizonyos mögöttes tárolási események (például a tárkötet feladatátvétele) észlelheti ezeket az eltéréseket, és kényszerítheti az összes munkavégző folyamat újraindítását. Az ilyen típusú újraindítások minimalizálásához állítsa be az [ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` alkalmazásbeállítást](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) az *összes tárolóhelyen.* Ez az alkalmazásbeállítás azonban nem *működik* a Windows Communication Foundation (WCF) alkalmazásokkal.
 
 ## <a name="next-steps"></a>Következő lépések
 [Nem éles környezetben található tárolóhelyekhez való hozzáférés blokkolása](app-service-ip-restrictions.md)

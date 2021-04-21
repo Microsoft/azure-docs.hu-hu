@@ -1,74 +1,75 @@
 ---
 title: Az Update Management engedélyezése Azure Resource Manager-sablonnal
-description: Ez a cikk azt ismerteti, hogyan használható Azure Resource Manager-sablon a Update Management engedélyezéséhez.
+description: Ez a cikk azt mutatja be, hogyan használható Azure Resource Manager sablon a Update Management.
 services: automation
 ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 95ef52acedc9171ba86110a665d08ea97c59bfbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 687c3d49f98fe6832d23dc1529a9761d862e0666
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575827"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830879"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Az Update Management engedélyezése Azure Resource Manager-sablonnal
 
-Az erőforráscsoport Azure Automation Update Management funkciójának engedélyezéséhez használhat egy [Azure Resource Manager sablont](../../azure-resource-manager/templates/template-syntax.md) . Ez a cikk egy minta sablont tartalmaz, amely automatizálja a következőket:
+A [szolgáltatássablonok Azure Resource Manager az](../../azure-resource-manager/templates/template-syntax.md) erőforráscsoportban Azure Automation Update Management funkció engedélyezéséhez. Ez a cikk egy mintasablont tartalmaz, amely a következőket automatizálja:
 
-* Automatizálja Azure Monitor Log Analytics munkaterület létrehozását.
-* Automatizálja Azure Automation fiók létrehozását.
-* Az Automation-fiók csatolása a Log Analytics munkaterülethez.
-* A fiókhoz hozzáadja a minta Automation-runbookok.
+* Automatizálja egy Azure Monitor Log Analytics-munkaterületen.
+* Automatizálja a Azure Automation létrehozását.
+* Az Automation-fiókot a Log Analytics-munkaterülethez kapcsolódik.
+* Automation-minta runbookokat ad hozzá a fiókhoz.
 * Engedélyezi a Update Management funkciót.
 
-A sablon nem automatizálja az Update Management egy vagy több Azure-beli vagy nem Azure-beli virtuális gépen.
+A sablon nem automatizálja a Update Management azure-beli vagy nem Azure-beli virtuális gépeken való engedélyezését.
 
-Ha már rendelkezik egy Log Analytics munkaterülettel és Automation-fiókkal, amely az előfizetés támogatott régiójában van telepítve, akkor nincsenek összekapcsolva. A sablon használatával sikeresen létrehozta a hivatkozást, és üzembe helyezi Update Management.
+Ha már rendelkezik telepített Log Analytics-munkaterülettel és Automation-fiókkal az előfizetés egy támogatott régiójában, a rendszer nem csatolja őket. A sablon használata sikeresen létrehozza a hivatkozást, és üzembe Update Management.
 
 >[!NOTE]
->ARM-sablon használata esetén nem támogatott az Automation futtató fiók létrehozása. Ha manuálisan szeretne létrehozni egy futtató fiókot a portálon vagy a PowerShell-lel, tekintse meg a [futtató fiók létrehozása](../create-run-as-account.md)című témakört.
+>ARM-sablon használata esetén az Automation-run As-fiók létrehozása nem támogatott. Ha manuálisan, a portálról vagy a PowerShell-héjból is létre kell hoznia egy futó fiókot, tekintse meg a következőt: Create Run As account (Futtatás [fiók létrehozása).](../create-run-as-account.md)
 
-A lépések elvégzése után be kell állítania az Automation-fiókhoz tartozó [diagnosztikai beállításokat](../automation-manage-send-joblogs-log-analytics.md) , hogy a runbook-feladatok állapotát és a feladatok adatfolyamait a csatolt log Analytics munkaterületre küldje.
+A lépések befejezése után konfigurálnia kell az Automation-fiók diagnosztikai beállításait, hogy runbook-feladat állapotát és feladatstreameit a csatolt Log Analytics-munkaterületre küldjék. [](../automation-manage-send-joblogs-log-analytics.md)
 
 ## <a name="api-versions"></a>API-verziók
 
-A következő táblázat felsorolja az ebben a példában használt erőforrások API-verzióját.
+Az alábbi táblázat a példában használt erőforrások API-verzióját sorolja fel.
 
 | Erőforrás | Erőforrás típusa | API-verzió |
 |:---|:---|:---|
-| [Munkaterület](/azure/templates/microsoft.operationalinsights/workspaces) | munkaterületek | 2020-03-01 – előzetes verzió |
-| [Automation-fiók](/azure/templates/microsoft.automation/automationaccounts) | automatizálás | 2020-01-13 – előzetes verzió |
-| [Munkaterület-társított szolgáltatások](/azure/templates/microsoft.operationalinsights/workspaces/linkedservices) | munkaterületek | 2020-03-01 – előzetes verzió |
-| [Megoldások](/azure/templates/microsoft.operationsmanagement/solutions) | megoldások | 2015-11-01 – előzetes verzió |
+| [Munkaterület](/azure/templates/microsoft.operationalinsights/workspaces) | munkaterületek | 2020. 03. 01. előzetes verzió |
+| [Automation-fiók](/azure/templates/microsoft.automation/automationaccounts) | automatizálás | 2020. 01. 13. előzetes verzió |
+| [Munkaterülethez kapcsolódó szolgáltatások](/azure/templates/microsoft.operationalinsights/workspaces/linkedservices) | munkaterületek | 2020. 03. 01. előzetes verzió |
+| [Megoldások](/azure/templates/microsoft.operationsmanagement/solutions) | megoldások | 2015. 11. 01. előzetes verzió |
 
 ## <a name="before-using-the-template"></a>A sablon használata előtt
 
-A JSON-sablon úgy van konfigurálva, hogy a következőre Kérdezzen:
+A JSON-sablon úgy van konfigurálva, hogy a következő kéréseket kéri:
 
 * A munkaterület neve.
-* Az a régió, amelyben létre kívánja hozni a munkaterületet.
+* A régió, ahol a munkaterületet létre kell hozni.
 * Az Automation-fiók neve.
-* Az a régió, amelybe az Automation-fiókot létre kell hozni.
+* Az a régió, ahol létre kell hoznia az Automation-fiókot.
 
-A sablonban a következő paraméterek a Log Analytics munkaterület alapértelmezett értékével vannak beállítva:
+A sablonban a következő paraméterek vannak beállítva a Log Analytics-munkaterület alapértelmezett értékével:
 
-* az *SKU* alapértelmezett értéke az április 2018 díjszabási modellben megjelent GB-os díjszabási szinten.
-* a *dataRetention* alapértelmezett értéke 30 nap.
+* *A termékváltozat* alapértelmezés szerint a 2018. áprilisi díjszabási modellben kiadott, GB-bankénti tarifacsomagot használja.
+* *dataRetention (adatretention)* – alapértelmezés szerint 30 nap.
 
 >[!WARNING]
->Ha egy Log Analytics munkaterületet szeretne létrehozni vagy konfigurálni egy olyan előfizetésben, amely az áprilisi 2018 díjszabási modellre van kiválasztva, akkor az egyetlen érvényes Log Analytics díjszabási csomag *PerGB2018*.
+>Ha olyan előfizetésben szeretne Log Analytics-munkaterületet létrehozni vagy konfigurálni, amely a 2018. áprilisi díjszabási modellt választotta, az egyetlen érvényes Log Analytics-tarifacsomag a *PerGB2018.*
 >
 
-A JSON-sablon olyan alapértelmezett értéket határoz meg a többi paraméter számára, amely valószínűleg a környezetben megszokott konfigurációként lesz használva. A sablont egy Azure Storage-fiókban is tárolhatja a szervezet megosztott hozzáféréséhez. További információ a sablonok használatáról: [erőforrások üzembe helyezése ARM-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/templates/deploy-cli.md).
+A JSON-sablon megad egy alapértelmezett értéket a többi paraméterhez, amelyek valószínűleg szabványos konfigurációként lesznek használva a környezetben. A sablont egy Azure-tárfiókban tárolhatja a szervezeten belül megosztott hozzáféréshez. A sablonok használatával kapcsolatos további információkért lásd: Erőforrások üzembe helyezése [ARM-sablonokkal és az Azure CLI használatával.](../../azure-resource-manager/templates/deploy-cli.md)
 
-Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a következő konfigurációs adatokat. Az új Automation-fiókhoz kapcsolódó Log Analytics munkaterületek létrehozásakor, konfigurálásakor és használatakor elkerülheti a hibák elhárítását.
+Ha még csak most Azure Automation és Azure Monitor, fontos, hogy tisztában van az alábbi konfigurációs részletekkel. Segíthetnek elkerülni a hibákat, amikor az új Automation-fiókhoz kapcsolt Log Analytics-munkaterületet próbál létrehozni, konfigurálni és használni.
 
-* [További részletekért](../../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace) tekintse át a munkaterület-konfigurációs beállításokat, például a hozzáférés-vezérlési módot, a díjszabási szintet, a megőrzést és a kapacitás foglalási szintjét.
+* További [részletek áttekintésével](../../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace) teljes mértékben megértheti a munkaterület konfigurációs beállításait, például a hozzáférés-vezérlési módot, a tarifacsomagot, a megőrzést és a kapacitás foglalási szintjét.
 
-* Tekintse át a [munkaterület-leképezéseket](../how-to/region-mappings.md) a támogatott régiók beágyazott vagy egy paraméterérték megadásához. Egy Log Analytics munkaterület és egy Automation-fiók összekapcsolása csak bizonyos régiókban támogatott az előfizetésben.
+* Tekintse [át a munkaterület-leképezéseket](../how-to/region-mappings.md) a támogatott régiók beágyazott vagy paraméterfájlban való megadásához. Log Analytics-munkaterület és Automation-fiók előfizetésben való összekapcsolása csak bizonyos régiók esetében támogatott.
 
-* Ha még nem Azure Monitor naplókat, és már nem telepített munkaterületet, tekintse át a [munkaterület kialakítására vonatkozó útmutatást](../../azure-monitor/logs/design-logs-deployment.md). Segít megismerni a hozzáférés-vezérlést, és megismerheti a szervezete számára ajánlott kialakítási stratégiákat.
+* Ha még nem Azure Monitor, és még nem helyezett üzembe munkaterületet, tekintse át a munkaterület tervezési [útmutatóját.](../../azure-monitor/logs/design-logs-deployment.md) Segítségével megismerheti a hozzáférés-vezérlést, és megismerheti a szervezet számára ajánlott tervezési megvalósítási stratégiákat.
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
@@ -299,11 +300,11 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
     }
     ```
 
-2. Szerkessze a sablont, hogy megfeleljen a követelményeinek. Hozzon létre egy [Resource Manager-paramétereket tartalmazó fájlt](../../azure-resource-manager/templates/parameter-files.md) ahelyett, hogy a paramétereket beágyazott értékként adja át.
+2. Szerkessze a sablont az igényeinek megfelelően. Fontolja meg egy [Resource Manager paraméterfájl létrehozását](../../azure-resource-manager/templates/parameter-files.md) ahelyett, hogy beágyazott értékként ad át paramétereket.
 
-3. Mentse ezt a fájlt egy helyi mappába **deployUMSolutiontemplate.jsként**.
+3. Mentse ezt a fájlt egy helyi mappába adeployUMSolutiontemplate.js **fájlként.**
 
-4. Készen áll a sablon üzembe helyezésére. Használhatja a PowerShellt vagy az Azure CLI-t is. Ha a rendszer a munkaterület és az Automation-fiók nevének megadását kéri, adjon meg egy olyan nevet, amely globálisan egyedi az összes Azure-előfizetésen belül.
+4. Készen áll a sablon üzembe helyezésére. Használhatja a PowerShellt vagy az Azure CLI-t. Amikor a rendszer kéri a munkaterület és az Automation-fiók nevét, adjon meg egy globálisan egyedi nevet az összes Azure-előfizetésben.
 
     **PowerShell**
 
@@ -317,36 +318,36 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
     az deployment group create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deployUMSolutiontemplate.json
     ```
 
-    Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, a következőhöz hasonló üzenet jelenik meg, amely tartalmazza az eredményt:
+    Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, az alábbihoz hasonló üzenet jelenik meg, amely tartalmazza az eredményt:
 
-    ![Példa az üzembe helyezés befejezésekor bekövetkezett eredményre](media/enable-from-template/template-output.png)
+    ![Példa az üzembe helyezés befejezését eredményező eredményre](media/enable-from-template/template-output.png)
 
-## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
+## <a name="review-deployed-resources"></a>Az üzembe helyezett erőforrások áttekintése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. A Azure Portal nyissa meg a létrehozott Automation-fiókot.
 
-3. A bal oldali panelen válassza a **runbookok** lehetőséget. A **runbookok** lapon a lista három oktatóanyag-runbookok hozott létre az Automation-fiókkal.
+3. A bal oldali panelen válassza a **Runbookok lehetőséget.** A **Runbookok lapon három,** az Automation-fiókkal létrehozott oktatóanyag-runbook látható.
 
-    ![Az Automation-fiókkal létrehozott runbookok oktatóanyag](../media/quickstart-create-automation-account-template/automation-sample-runbooks.png)
+    ![Automation-fiókkal létrehozott oktatóanyag-runbookok](../media/quickstart-create-automation-account-template/automation-sample-runbooks.png)
 
-4. A bal oldali panelen válassza a **csatolt munkaterület** lehetőséget. A **csatolt munkaterület** lapon megjelenik az Automation-fiókhoz korábban megadott log Analytics munkaterület.
+4. A bal oldali panelen válassza a Csatolt **munkaterület lehetőséget.** A Csatolt **munkaterület lapon** megjelenik a korábban megadott Log Analytics-munkaterület, amely az Automation-fiókhoz van csatolva.
 
-    ![Az Log Analytics munkaterülethez csatolt Automation-fiók](../media/quickstart-create-automation-account-template/automation-account-linked-workspace.png)
+    ![A Log Analytics-munkaterülethez csatolt Automation-fiók](../media/quickstart-create-automation-account-template/automation-account-linked-workspace.png)
 
-5. A bal oldali panelen válassza a **frissítés kezelése** lehetőséget. Az **Update Management (frissítés felügyelete** ) lapon az értékelés oldalt az éppen engedélyezve állapotot eredményező információk nélkül jeleníti meg, és a gépek nincsenek felügyeletre konfigurálva.
+5. A bal oldali panelen válassza a **Frissítéskezelés lehetőséget.** A **Frissítéskezelés oldalon** az értékelési oldal az éppen engedélyezett információk nélkül jelenik meg, és a gépek nincsenek konfigurálva a felügyeletre.
 
-    ![Update Management funkció-értékelési nézet](./media/enable-from-template/update-management-assessment-view.png)
+    ![Update Management funkcióértékelési nézet használata](./media/enable-from-template/update-management-assessment-view.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége rájuk, törölje a **frissítési** megoldást a log Analytics munkaterületen, válassza le az Automation-fiókot a munkaterületről, majd törölje az Automation-fiókot és-munkaterületet.
+Ha már nincs rájuk szüksége, törölje a Frissítések megoldást a Log Analytics-munkaterületről, válassza le az Automation-fiókot a munkaterületről, majd törölje az Automation-fiókot és -munkaterületet. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A Update Management virtuális gépekhez való használatához lásd: [a virtuális gépek frissítéseinek és javításának kezelése](manage-updates-for-vm.md).
+* A virtuális Update Management frissítésekkel való kezeléséhez lásd: Virtuális gépek frissítésének [és javításának kezelése.](manage-updates-for-vm.md)
 
-* Ha már nem szeretné Update Management használni, és el szeretné távolítani, tekintse meg az [Update Management funkció eltávolítása](remove-feature.md)című témakör utasításait.
+* Ha már nem szeretné használni a Update Management, és el szeretné távolítani, tekintse meg az Eltávolítás Update Management [funkció utasításait.](remove-feature.md)
 
-* A virtuális gépek Update Managementból való törléséről lásd: [virtuális gépek eltávolítása Update Managementról](remove-vms.md).
+* Ha törölni szeretné a virtuális gépeket a Update Management, tekintse meg a Virtuális gépek eltávolítása [a Update Management.](remove-vms.md)

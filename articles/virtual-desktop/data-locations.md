@@ -1,40 +1,40 @@
 ---
-title: Adatterületek a Windows rendszerű virtuális asztali környezethez – Azure
-description: Röviden áttekintheti, hogy a Windows rendszerű virtuális asztali adatok és metaadatok mely helyein vannak tárolva.
+title: Adathelyek a Windows Virtual Desktop – Azure
+description: Rövid áttekintés arról, hogy Windows Virtual Desktop adatok és metaadatok mely helyeken vannak tárolva.
 author: Heidilohr
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 02/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a4c63cc686b08d179e20e6f3e3a7aa1efa69a5f8
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: eeba3cb579c6ef9158379403a3206f99a2cfb060
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447080"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830627"
 ---
-# <a name="data-and-metadata-locations-for-windows-virtual-desktop"></a>A Windows rendszerű virtuális asztali adatok és metaadatok helyei
+# <a name="data-and-metadata-locations-for-windows-virtual-desktop"></a>Adatok és metaadatok helye Windows Virtual Desktop
 
 >[!IMPORTANT]
->Ez a tartalom a Windows rendszerű virtuális asztali Azure Resource Manager Windows virtuális asztali objektumokkal vonatkozik. Ha a Windowsos virtuális asztalt (klasszikus) Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/data-locations-2019.md).
+>Ez a tartalom a Windows Virtual Desktop és Azure Resource Manager Windows Virtual Desktop vonatkozik. Ha a klasszikus (Windows Virtual Desktop klasszikus) Azure Resource Manager használ, tekintse meg [ezt a cikket.](./virtual-desktop-fall-2019/data-locations-2019.md)
 
-A Windows virtuális asztal jelenleg minden földrajzi helyen elérhető. A rendszergazdák kiválaszthatják, hogy a virtuális gépek és a társított szolgáltatások, például a fájlkiszolgálók létrehozásakor hol tárolhatják a felhasználói adataikat. Tudjon meg többet az Azure földrajzi helyekről az [Azure Datacenter térképen](https://azuredatacentermap.azurewebsites.net/).
+Windows Virtual Desktop jelenleg minden földrajzi helyhez elérhető. A rendszergazdák kiválaszthatják a felhasználói adatok tárolására használt helyet a gazdagépkészlet virtuális gépei és a társított szolgáltatások, például fájlkiszolgálók létrehozásakor. Az Azure-beli földrajzi helyekkel kapcsolatos további információkért olvassa el az [Azure adatközpont-térképét.](https://azuredatacentermap.azurewebsites.net/)
 
 >[!NOTE]
->A Microsoft nem szabályozza és nem korlátozza azokat a régiókat, amelyeken Ön vagy felhasználói hozzáférhetnek a felhasználóhoz és az alkalmazásra vonatkozó adataihoz.
+>A Microsoft nem korlátozza vagy korlátozza a régiókat, ahol Ön vagy a felhasználók hozzáférhetnek a felhasználóhoz és az alkalmazásspecifikus adatokhoz.
 
 >[!IMPORTANT]
->A Windows rendszerű virtuális asztali szolgáltatás a globális metaadat-információkat, például a bérlői neveket, az alkalmazáskészletek nevét, az alkalmazás-csoportok nevét és az egyszerű felhasználóneveket tárolja egy adatközpontban Amikor egy ügyfél létrehoz egy szolgáltatási objektumot, meg kell adnia a szolgáltatás objektumának helyét. A megadott hely határozza meg, hogy az objektum metaadatai hol lesznek tárolva. Az ügyfél kiválaszt egy Azure-régiót, és a metaadatokat a kapcsolódó földrajz fogja tárolni. Az összes Azure-régió és kapcsolódó földrajzi terület listáját itt tekintheti meg: [Azure földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/)területek.
+>Windows Virtual Desktop globális metaadatokat tárol, például a munkaterületek nevét, a gazdagépkészletek nevét, az alkalmazáscsoport-neveket és az egyszerű felhasználóneveket egy adatközpontban. Amikor egy ügyfél létrehoz egy szolgáltatásobjektumot, meg kell adnia a szolgáltatásobjektum helyét. A beírtak helye határozza meg, hogy a rendszer hol tárolja az objektum metaadatait. Az ügyfél egy Azure-régiót választ, a metaadatok pedig a kapcsolódó földrajzi helyen lesznek tárolva. Az összes Azure-régiót és a kapcsolódó földrajzi helyeket az Azure földrajzi [helyeket felsoroló listájában láthatja.](https://azure.microsoft.com/global-infrastructure/geographies/)
 
-Jelenleg támogatjuk a metaadatok tárolását a következő földrajzi területeken:
+A metaadatok tárolása jelenleg a következő földrajzi helyen támogatott:
 
 - Egyesült Államok (USA) (általánosan elérhető)
 - Európa (EU) (nyilvános előzetes verzió) 
 
 >[!NOTE]
-> Amikor kiválaszt egy régiót a Windows rendszerű virtuális asztali szolgáltatás objektumainak létrehozásához a alkalmazásban, az Egyesült Államokban és az EU földrajzi területein is megjelennek a régiók. Tekintse meg az [Azure globális infrastruktúra-térképét](https://azure.microsoft.com/global-infrastructure/geographies/#geographies), hogy megtudja, melyik régió működne a legjobban az üzembe helyezéshez.
+> Amikor kiválaszt egy régiót, ahol szolgáltatásobjektumokat Windows Virtual Desktop, az Egyesült Államok és az EU földrajzi régiói alatt is megjelennek a régiók. Annak érdekében, hogy biztosan tudja, melyik régió lenne a legmegfelelőbb az üzembe helyezéshez, nézze meg az Azure globális [infrastruktúra-térképét.](https://azure.microsoft.com/global-infrastructure/geographies/#geographies)
 
-A tárolt metaadatok a nyugalmi állapotban vannak titkosítva, és a Geo-redundáns tükrözések a földrajzon belül maradnak. Az összes vásárlói adat, például az Alkalmazásbeállítások és a felhasználói adat, az ügyfél által választott helyen található, és nem a szolgáltatás kezeli. A szolgáltatás növekedésével több földrajzi terület is elérhetővé válik.
+A tárolt metaadatok titkosítva vannak, és a georedundáns tükrözés a földrajzi helyen belül van fenntartva. Minden ügyféladat, például az alkalmazásbeállítások és a felhasználói adatok az ügyfél által választott helyen található, és nem a szolgáltatás kezeli. A szolgáltatás növekedésével egyre több földrajzi hely lesz elérhető.
 
-A szolgáltatás metaadatainak replikálását az Azure-ban, a katasztrófa utáni helyreállítás érdekében replikálja a rendszer.
+A szolgáltatás metaadatait vészhelyreállítási célokból az Azure földrajzi helyen replikálja a rendszer.

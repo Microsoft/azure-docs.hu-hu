@@ -4,13 +4,13 @@ description: Megtudhatja, hogy milyen típusú üzembe helyezési hitelesítő A
 ms.topic: article
 ms.date: 02/11/2021
 ms.reviewer: byvinyal
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: b77a26f61e1168846156de990806bbed2f7c41e3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 008bfa58c117fc1b43227ba73902d921cec25795
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789536"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830574"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Központi telepítési hitelesítő adatok konfigurálása Azure App Service
 Az alkalmazások helyi számítógépről történő [](./overview.md) központi telepítésének biztonságossá Azure App Service a helyi [Git-telepítéshez](deploy-local-git.md) és az FTP/S telepítéshez kétféle hitelesítő [adattípust támogat.](deploy-ftp.md) Ezek a hitelesítő adatok nem azonosak az Azure-előfizetés hitelesítő adataival.
@@ -18,13 +18,13 @@ Az alkalmazások helyi számítógépről történő [](./overview.md) központi
 [!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
 
 > [!NOTE]
-> A **fejlesztői központ (klasszikus)** Azure Portal, amely a régi üzembe helyezési folyamat, 2021 márciusában elavult lesz. Ez a módosítás nincs hatással az alkalmazás meglévő telepítési beállításaira, és az alkalmazástelepítést a Központi telepítési központ lapon **folytathatja.**
+> A **fejlesztői központ (klasszikus)** Azure Portal, amely a régi üzembe helyezési folyamat, 2021 márciusában elavult lesz. Ez a módosítás nem érinti az alkalmazás meglévő telepítési beállításait, és az alkalmazástelepítést a Központi telepítési központ **lapon folytathatja.**
 
 ## <a name="configure-user-scope-credentials"></a><a name="userscope"></a>Felhasználói hatókör hitelesítő adatainak konfigurálása
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Futtassa [az az webapp deployment user set](/cli/azure/webapp/deployment/user#az_webapp_deployment_user_set) parancsot. Cserélje le \<username> a és \<password> a helyére az üzembe helyezési felhasználó felhasználónevét és jelszavát. 
+Futtassa [az az webapp deployment user set](/cli/azure/webapp/deployment/user#az_webapp_deployment_user_set) parancsot. Cserélje le \<username> \<password> a és a helyére az üzembe helyezési felhasználó felhasználónevét és jelszavát. 
 
 - A felhasználónévnek egyedinek kell lennie az Azure-ban, és a helyi Git-leküldések számára nem tartalmazhatja a "@" szimbólumot. 
 - A jelszónak legalább nyolc karakter hosszúságúnak kell lennie, és a következő három elemből kettőnek kell lennie: betűk, számok és szimbólumok. 
@@ -37,25 +37,25 @@ A JSON-kimenetben a jelszó a `null` következő: .
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-A felhasználói hatókör hitelesítő adatait nem konfigurálhatja a Azure PowerShell. Használjon másik módszert, vagy fontolja meg az [alkalmazáshatókörű hitelesítő adatok használatát.](#appscope) 
+A felhasználói hatókör hitelesítő adatai nem konfigurálhatóak Azure PowerShell. Használjon másik módszert, vagy fontolja meg [az alkalmazáshatókörű hitelesítő adatok használatát.](#appscope) 
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 A felhasználói hatókör hitelesítő adatait bármely alkalmazás erőforráslapján [konfigurálhatja.](../azure-resource-manager/management/manage-resources-portal.md#manage-resources) Függetlenül attól, hogy melyik alkalmazásban konfigurálja ezeket a hitelesítő adatokat, az Azure-fiókban az összes előfizetésre vonatkozik. 
 
-A [Azure Portal](https://portal.azure.com)legalább egy alkalmazással kell rendelkeznie, mielőtt hozzáférhet az üzembe helyezési hitelesítő adatok oldalhoz. A felhasználói hatókör hitelesítő adatainak konfigurálása:
+A [Azure Portal](https://portal.azure.com)az üzembe helyezési hitelesítő adatok oldalának eléréséhez legalább egy alkalmazással kell rendelkeznie. A felhasználói hatókör hitelesítő adatainak konfigurálása:
 
-1. Az alkalmazás bal oldali menüjében válassza az Üzembehely > FTPS hitelesítő adatai vagy a  >   **Helyi Git/FTPS hitelesítő adatok lehetőséget.**
+1. Az alkalmazás bal oldali menüjében válassza az Üzembehely > FTPS hitelesítő adatok vagy a Helyi  >   **Git/FTPS hitelesítő adatok lehetőséget.**
 
     ![Bemutatja, hogyan választhatja ki az FTP-irányítópultot az Azure-beli üzembe helyezési App Services.](./media/app-service-deployment-credentials/access-no-git.png)
 
-2. Görgessen le a **Felhasználói hatókör beállításhoz,** konfigurálja a **Felhasználónevet** és **a Jelszót,** majd válassza a **Mentés lehetőséget.**
+2. Görgessen le **a Felhasználói hatókör beállításhoz,** konfigurálja a **Felhasználónevet** és **a Jelszót,** majd válassza a **Mentés lehetőséget.**
 
-Miután beállította az üzembe helyezési hitelesítő adatokat, az alkalmazás Áttekintés oldalán megtalálja a *Git* üzembe **helyezési felhasználónevét.**
+Miután beállította az üzembe helyezési hitelesítő adatokat, a *Git* üzembe helyezési felhasználónevét az alkalmazás Áttekintés **oldalán találja.**
 
 ![Bemutatja, hogyan találhatja meg a Git üzemelő példány felhasználónevét az alkalmazás Áttekintés lapján.](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
 
-Ha a Git üzembe helyezése be van állítva, a lapon megjelenik egy **Git-/üzembe helyezési felhasználónév**; Ellenkező esetben egy **FTP-/üzembe helyezési felhasználónév.**
+Ha a Git üzembe helyezése konfigurálva van, a lapon megjelenik egy **Git-/üzembe helyezési felhasználónév**; Ellenkező esetben egy **FTP-/üzembe helyezési felhasználónevet .**
 
 > [!NOTE]
 > Az Azure nem mutatja a felhasználói hatókör üzembe helyezési jelszavát. Ha elfelejtette a jelszót, az ebben a szakaszban található lépéseket követve alaphelyzetbe állíthatja a hitelesítő adatait.
@@ -70,7 +70,7 @@ Az FTP-/FTPS-végpontok felhasználói hatókörű hitelesítő adatokkal tört�
 
 Mivel a felhasználói hatókör hitelesítő adatai a felhasználóhoz vannak kapcsolva, és nem egy adott erőforráshoz, a felhasználónévnek ebben a formátumban kell lennie ahhoz, hogy a bejelentkezési műveletet a megfelelő alkalmazásvégpontra irányítsa.
 
-## <a name="get-application-scope-credentials"></a><a name="appscope"></a>Alkalmazáshatókör hitelesítő adatainak lekért adatai
+## <a name="get-application-scope-credentials"></a><a name="appscope"></a>Alkalmazáshatókör hitelesítő adatainak lekérte
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
@@ -80,7 +80,7 @@ Az az [webapp deployment list-publishing-profiles](/cli/azure/webapp/deployment#
 az webapp deployment list-publishing-profiles --resource-group <group-name> --name <app-name>
 ```
 
-Helyi Git üzemelő példány esetén az [az webapp deployment list-publishing-credentials](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_credentials) paranccsal is lekérhetők az alkalmazás távoli [Git](deploy-local-git.md)URI-ját úgy, hogy az alkalmazás hatóköre már be van ágyazva. Például:
+Helyi [Git üzemelő példány](deploy-local-git.md)esetén az az [webapp deployment list-publishing-credentials](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_credentials) paranccsal is lekérhetők az alkalmazás távoli Git URI-ját, amelybe már be vannak ágyazva az alkalmazáshatókörű hitelesítő adatok. Például:
 
 ```azurecli-interactive
 az webapp deployment list-publishing-credentials --resource-group <group-name> --name <app-name> --query scmUri
@@ -88,7 +88,7 @@ az webapp deployment list-publishing-credentials --resource-group <group-name> -
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-Szerezze be az alkalmazáshatókörű hitelesítő adatokat a [Get-AzWebAppPublishingProfile paranccsal.](/powershell/module/az.websites/get-azwebapppublishingprofile) Például:
+Szerezze be az alkalmazáshatókör hitelesítő adatait a [Get-AzWebAppPublishingProfile paranccsal.](/powershell/module/az.websites/get-azwebapppublishingprofile) Például:
 
 ```azurepowershell-interactive
 Get-AzWebAppPublishingProfile -ResourceGroupName <group-name> -Name <app-name>
@@ -96,11 +96,11 @@ Get-AzWebAppPublishingProfile -ResourceGroupName <group-name> -Name <app-name>
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-1. Az alkalmazás bal oldali menüjében válassza az **Üzembe** helyezési központ FTPS hitelesítő adatai vagy  >   a **Helyi Git/FTPS hitelesítő adatok lehetőséget.**
+1. Az alkalmazás bal oldali menüjében válassza az Üzembe **helyezési** központ FTPS hitelesítő adatai vagy  >   a **Helyi Git/FTPS hitelesítő adatok lehetőséget.**
 
     ![Bemutatja, hogyan választhatja ki az FTP-irányítópultot az Azure-beli üzembe helyezési App Services.](./media/app-service-deployment-credentials/access-no-git.png)
 
-2. Az Alkalmazás **hatóköre szakaszban** válassza a **Másolás hivatkozást** a felhasználónév vagy jelszó másolásához.
+2. Az Alkalmazás **hatóköre** szakaszban  válassza a Másolás hivatkozást a felhasználónév vagy jelszó másolásához.
 
 -----
 
@@ -124,17 +124,17 @@ Invoke-AzResourceAction -ResourceGroupName <group-name> -ResourceType Microsoft.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-1. Az alkalmazás bal oldali menüjében válassza az Üzembe **helyezési** központ FTPS hitelesítő adatai vagy  >   a **Helyi Git/FTPS hitelesítő adatok lehetőséget.**
+1. Az alkalmazás bal oldali menüjében válassza az **Üzembe** helyezési központ FTPS hitelesítő adatai vagy  >   a **Helyi Git/FTPS hitelesítő adatok lehetőséget.**
 
     ![Bemutatja, hogyan választhatja ki az FTP-irányítópultot az Azure-beli üzembe helyezési App Services.](./media/app-service-deployment-credentials/access-no-git.png)
 
-2. Az Alkalmazás **hatóköre szakaszban** válassza az Alaphelyzetbe **állítás lehetőséget.**
+2. Az Alkalmazás **hatóköre szakaszban** válassza a Alaphelyzetbe **állítás lehetőséget.**
 
 -----
 
 ## <a name="disable-basic-authentication"></a>Alapszintű hitelesítés letiltása
 
-Egyes szervezeteknek meg kell felelnie a biztonsági követelményeknek, és inkább le szeretné tiltani az FTP-n vagy a WebDeployn keresztüli hozzáférést. Így a szervezet tagjai csak a App Services (Azure AD) által vezérelt API-kon keresztül férhetnek hozzá Azure Active Directory erőforrásokhoz.
+Egyes szervezeteknek meg kell felelnie a biztonsági követelményeknek, és inkább letiltanák az FTP-n vagy a WebDeployn keresztüli hozzáférést. Így a szervezet tagjai csak olyan API-kon keresztül App Services férhetnek hozzá az Azure Active Directory (Azure AD) által vezérelt API-kon keresztül.
 
 ### <a name="ftp"></a>FTP
 
@@ -144,11 +144,11 @@ A hely FTP-hozzáférésének letiltásához futtassa a következő CLI-parancso
 az resource update --resource-group <resource-group> --name ftp --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
-Az FTP-hozzáférés letiltásának megerősítéséhez megpróbálhat hitelesítést végezni egy FTP-ügyfél, például a FileZilla használatával. A közzétételi hitelesítő adatok lekéréséhez kattintson a webhely áttekintési paneljére, és kattintson a Közzétételi profil letöltése elemre. A hitelesítéshez használja a fájl FTP-állomásnevét, felhasználónevét és jelszavát, és 401-es hibaüzenetet kap, amely jelzi, hogy Ön nem jogosult erre.
+Annak megerősítéséhez, hogy az FTP-hozzáférés le van tiltva, megpróbálhat hitelesítést végezni egy FTP-ügyfél, például a FileZilla használatával. A közzétételi hitelesítő adatok lekéréséhez kattintson a webhely áttekintési paneljére, és kattintson a Közzétételi profil letöltése elemre. A hitelesítéshez használja a fájl FTP-gazdanevét, felhasználónevét és jelszavát, és 401-es hibaüzenetet kap, amely szerint Ön nem jogosult.
 
 ### <a name="webdeploy-and-scm"></a>WebDeploy és SCM
 
-A WebDeploy-porthoz és az SCM-webhelyhez való alapszintű hitelesítési hozzáférés letiltásához futtassa a következő CLI-parancsot. Cserélje le a helyőrzőket az erőforráscsoportra és a hely nevére. 
+A WebDeploy-porthoz és az SCM-helyhez való alapszintű hitelesítési hozzáférés letiltásához futtassa a következő CLI-parancsot. Cserélje le a helyőrzőket az erőforráscsoportra és a hely nevére. 
 
 ```azurecli-interactive
 az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
@@ -160,7 +160,7 @@ Annak megerősítéséhez, hogy a közzétételi profil hitelesítő adatai le v
 
 Az előző szakaszban található API az Azure szerepköralapú hozzáférés-vezérlését (Azure [](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role) RBAC) használja, ami azt jelenti, hogy létrehozhat egy egyéni szerepkört, és alacsonyabb jogosultságú felhasználókat rendelhet hozzá a szerepkörhöz, így azok nem tudják engedélyezni az alapszintű hitelesítést egyetlen helyen sem. Az egyéni szerepkör konfiguráláshoz kövesse [az alábbi utasításokat.](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role)
 
-A hitelesítő adatok [Azure Monitor](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) naplókat a sikeres hitelesítési kérések naplózásához, és Azure Policy használatával kényszerítheti ezt [a](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) konfigurációt az előfizetésben található összes helyen.
+Használhatja a [Azure Monitor](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) is a sikeres hitelesítési kérések naplózására, és Azure Policy a konfiguráció kényszerítését az előfizetésben található összes webhelyre. [](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy)
 
 ## <a name="next-steps"></a>Következő lépések
 

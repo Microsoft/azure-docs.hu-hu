@@ -1,71 +1,71 @@
 ---
-title: Az Azure arc használatára képes kiszolgálók áttekintése
-description: Ismerje meg, hogyan használhatja az Azure arc-kompatibilis kiszolgálókat az Azure-on kívül üzemeltetett kiszolgálók (például Azure-erőforrások) kezelésére.
-keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása, frissítés kezelése, változások követése, leltár, runbookok, Python, grafikus, hibrid
-ms.date: 02/18/2021
+title: Azure Arc engedélyezett kiszolgálók áttekintése
+description: Megtudhatja, hogyan kezelheti az Azure Azure Arc n kívül üzemeltetett kiszolgálókat egy Azure-erőforráshoz hasonló, engedélyezett kiszolgálókkal.
+keywords: azure automation, DSC, powershell, célállapot-konfiguráció, frissítéskezelés, változáskövetés, leltár, runbookok, python, grafikus, hibrid
+ms.date: 04/21/2021
 ms.topic: overview
-ms.openlocfilehash: 863cab073018c5a592cba6e94451a9af038ebd52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 324f6cc29bd9e4eca1a20413032c213c2618a11e
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023333"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831995"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Mi azok az Azure Arc-kompatibilis kiszolgálók?
 
-Az Azure arc-kompatibilis kiszolgálók lehetővé teszik az Azure-on *kívül* üzemeltetett Windows-és Linux-alapú fizikai kiszolgálók és virtuális gépek felügyeletét a vállalati hálózaton vagy más felhőalapú szolgáltatón. Ez a kezelési megoldás úgy lett kialakítva, hogy konzisztens legyen a natív Azure-beli virtuális gépek kezelésével. Ha egy hibrid gép csatlakozik az Azure-hoz, az egy csatlakoztatott gép lesz, és erőforrásként van kezelve az Azure-ban. Minden csatlakoztatott számítógép rendelkezik erőforrás-AZONOSÍTÓval, amely egy erőforráscsoport részét képezi, és a szabványos Azure-konstrukciók, például a Azure Policy és a címkék alkalmazásának előnyei. Az ügyfél helyszíni infrastruktúráját kezelő szolgáltatók a hibrid gépeket ugyanúgy kezelhetik, mint a natív Azure-erőforrásokkal, több ügyfél-környezetben, az [Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) és az Azure arc használatával.
+Azure Arc-kompatibilis kiszolgálók lehetővé teszik a Windows és Linux rendszerű  fizikai kiszolgálók és az Azure-on kívül, a vállalati hálózaton vagy más felhőszolgáltatón üzemeltetett virtuális gépek kezelését. Ez a felügyeleti élmény úgy lett kialakítva, hogy összhangban legyen a natív Azure-beli virtuális gépek kezelésével. Amikor egy hibrid gép csatlakozik az Azure-hoz, csatlakoztatott gép lesz, és erőforrásként lesz kezelve az Azure-ban. Minden csatlakoztatott gép rendelkezik egy erőforrás-azonosítóval, amely egy erőforráscsoportba tartozik, és ki van használva a szabványos Azure-szerkezetek, például a Azure Policy címkék alkalmazása. Az ügyfelek helyszíni infrastruktúráját felügyelő szolgáltatók a maihoz hasonló natív Azure-erőforrásokkal is kezelhetik a [](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) hibrid gépeiket több ügyfélkörnyezetben, Azure Lighthouse és Azure Arc.
 
-Ahhoz, hogy ezt a szolgáltatást az Azure-on kívül üzemeltetett hibrid gépekkel is el lehessen juttatni, az Azure-hoz csatlakoztatott számítógép-ügynököt minden olyan gépre telepíteni kell, amelyet az Azure-hoz való csatlakozásra tervez. Ez az ügynök nem nyújt semmilyen egyéb funkciót, és nem helyettesíti az Azure [log Analytics Agent ügynököt](../../azure-monitor/agents/log-analytics-agent.md). A Windows és Linux rendszerhez készült Log Analytics-ügynökre akkor van szükség, ha proaktívan szeretné figyelni a gépen futó operációs rendszert és munkaterheléseket, felügyelheti azt automatizálási runbookok vagy olyan megoldások használatával, mint például a Update Management, vagy más Azure-szolgáltatásokat is használhat, mint például a [Azure Security Center](../../security-center/security-center-introduction.md).
+Ahhoz, hogy ezt a élményt az Azure-on kívül üzemeltetett hibrid gépekkel is biztosítsa, a Azure Connected Machine-ügynököt minden olyan gépre telepítenie kell, amelyről csatlakozni tervez az Azure-hoz. Ez az ügynök semmilyen más funkciót nem nyújt, és nem helyettesíti az Azure [Log Analytics-ügynököt.](../../azure-monitor/agents/log-analytics-agent.md) A Windowshoz és Linuxhoz használható Log Analytics-ügynökre akkor van szükség, ha proaktívan szeretné figyelni a gépen futó operációs rendszert és számítási feladatokat, Automation-runbookokkal vagy megoldásokkal (például Update Management) kezelni, vagy más Azure-szolgáltatásokat, például a [Azure Security Center.](../../security-center/security-center-introduction.md)
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
-Ha a gépet az Azure arc-kompatibilis kiszolgálókhoz kapcsolja, lehetővé teszi a következő konfigurálási és figyelési feladatok végrehajtását:
+Ha a gépet egy engedélyezett Azure Arc csatlakoztatja, az lehetővé teszi a következő konfigurációkezelési és figyelési feladatok elvégzését:
 
-- Az Azure Virtual Machines szolgáltatáshoz tartozó szabályzat-hozzárendeléssel megegyező módon rendeljen hozzá [Azure Policy vendég konfigurációkat](../../governance/policy/concepts/guest-configuration.md) . Napjainkban a legtöbb vendég konfigurációs házirend nem alkalmaz konfigurációkat, csak a számítógépen lévő beállításokat naplózzák. Az arc-kompatibilis kiszolgálókkal Azure Policy vendég konfigurációs szabályzatok használatának költségét az Azure Policy [díjszabási útmutatójában](https://azure.microsoft.com/pricing/details/azure-policy/)találja.
+- Rendeljen [Azure Policy vendégkonfigurációkat](../../governance/policy/concepts/guest-configuration.md) ugyanazokkal a felhasználói élményekkel, mint az Azure-beli virtuális gépek szabályzat-hozzárendelése. Napjainkban a legtöbb vendégkonfigurációs szabályzat nem alkalmaz konfigurációkat, csak a gépen belüli beállításokat naplóz. A vendégkonfigurációs szabályzatok Arc-kompatibilis Azure Policy való használatának költségeiről a Azure Policy [útmutatóban található.](https://azure.microsoft.com/pricing/details/azure-policy/)
 
-- A telepített szoftverekkel, a Microsoft-szolgáltatásokkal, a Windows-beállításjegyzékkel és-fájlokkal, valamint a felügyelt kiszolgálókon futó Linux-démonokkal kapcsolatos konfigurációs változásokat a Azure Automation [change Tracking és a leltár](../../automation/change-tracking/overview.md) és a [Azure Security Center fájl integritásának figyelése](../../security-center/security-center-file-integrity-monitoring.md)használatával végezheti el a kiszolgálókon az [Azure Defender](../../security-center/defender-for-servers-introduction.md)
+- Jelentés a telepített szoftverek, a Microsoft-szolgáltatások, a Windows beállításjegyzék és fájlok, valamint a figyelt kiszolgálók linuxos [](../../security-center/security-center-file-integrity-monitoring.md)démonai konfigurációjának változásairól az Azure Automation [változáskövetés és leltározás](../../automation/change-tracking/overview.md) és Azure Security Center fájlintegritás monitorozását használó kiszolgálókon az Azure Defender kiszolgálókkal engedélyezett kiszolgálók [esetén.](../../security-center/defender-for-servers-introduction.md)
 
-- Figyelheti a csatlakoztatott számítógép vendég operációs rendszerének teljesítményét, és felderítheti az alkalmazás-összetevőket, hogy a folyamatait és függőségeit a [Azure monitor for VMS](../../azure-monitor/vm/vminsights-overview.md)használatával kommunikáló más erőforrásokkal figyelje.
+- Figyelje a csatlakoztatott gép vendég operációs rendszerének teljesítményét, és fedezze fel az alkalmazás-összetevőket a folyamatuk és függőségeik figyeléséhez az alkalmazás által a VM-elemzésekkel [kommunikált más erőforrásokkal.](../../azure-monitor/vm/vminsights-overview.md)
 
-- Egyszerűsítse az üzembe helyezést más Azure-szolgáltatásokkal, például az Azure Automation [állapot-konfigurációval](../../automation/automation-dsc-overview.md) és Azure monitor log Analytics munkaterülettel a nem Azure-beli Windows-vagy Linux-alapú Azure virtuálisgép- [bővítmények](manage-vm-extensions.md) használatával. Ez magában foglalja az üzembe helyezés utáni konfiguráció vagy a Szoftvertelepítés egyéni parancsfájl-bővítmény használatával végzett telepítését is.
+- Leegyszerűsítheti az üzembe helyezést más Azure-szolgáltatások, például a Azure Automation [State Configuration](../../automation/automation-dsc-overview.md) és Azure Monitor Log Analytics-munkaterület használatával, a nem Azure-beli Windows vagy Linux rendszerű gépek támogatott [Azure-beli](manage-vm-extensions.md) virtuálisgép-bővítményei segítségével. Ez magában foglalja az üzembe helyezés utáni konfigurációt vagy az egyéni szkriptbővítmény használatával való szoftvertelepítést.
 
-- [Update Management](../../automation/update-management/overview.md) használata Azure Automation a Windows-és Linux-kiszolgálók operációsrendszer-frissítéseinek kezeléséhez
+- A [Update Management](../../automation/update-management/overview.md) a Azure Automation windowsos és Linux-kiszolgálók operációsrendszer-frissítésének kezeléséhez
 
     > [!NOTE]
-    > Jelenleg a Update Management engedélyezése közvetlenül egy ív-kompatibilis kiszolgálóról nem támogatott. A követelmények megismeréséhez és a kiszolgáló engedélyezéséhez lásd: [Update Management engedélyezése az Automation-fiókból](../../automation/update-management/enable-from-automation-account.md) .
+    > Jelenleg nem támogatott a Update Management arc-kompatibilis kiszolgálóról való közvetlen engedélyezése. A [követelményeket Update Management](../../automation/update-management/enable-from-automation-account.md) és a kiszolgáló számára való engedélyezését lásd: Enable Update Management from your Automation account (Naplózás engedélyezése az Automation-fiókból).
 
-- Vegye fel a nem Azure-kiszolgálókat a fenyegetések észlelésére, és proaktívan figyelje az esetleges biztonsági fenyegetéseket a [Azure Security Center](../../security-center/security-center-introduction.md)használatával.
+- A fenyegetések észleléséhez és a potenciális biztonsági fenyegetések proaktív figyeléséhez használja a nem Azure-beli kiszolgálókat a [Azure Security Center.](../../security-center/security-center-introduction.md)
 
-A hibrid gépről Log Analytics munkaterületen gyűjtött és tárolt adatok naplózása mostantól a géppel kapcsolatos tulajdonságokat is tartalmaz, például egy erőforrás-azonosítót. Ezt az [erőforrás-környezet](../../azure-monitor/logs/design-logs-deployment.md#access-mode) naplózási hozzáférésének támogatásához használhatja.
+A hibrid gépről egy Log Analytics-munkaterületen gyűjtött és tárolt naplóadatok mostantól a gépre jellemző tulajdonságokat, például egy erőforrás-azonosítót tartalmaznak. Ez az erőforrás-környezet [naplóelérésének](../../azure-monitor/logs/design-logs-deployment.md#access-mode) támogatására használható.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-Az Azure arc-kompatibilis kiszolgálókkal rendelkező támogatott régiók végleges listáját az Azure- [termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc) oldalon tekintheti meg.
+Az engedélyezett kiszolgálókkal rendelkező támogatott régiók Azure Arc tekintse meg az Azure-termékek régiók szerint [oldalt.](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)
 
-A legtöbb esetben a telepítési parancsfájl létrehozásakor kiválasztott helyen kell lennie az Azure-régiónak, amelynek földrajzilag legközelebb kell lennie a számítógép helyéhez. Az inaktív adatok tárolása az Ön által megadott régiót tartalmazó Azure-földrajzon belül történik, amely az Ön által választott régióra is hatással lehet, ha rendelkezik az adatok tartózkodási feltételeivel. Ha az Azure-régió, amellyel a gépet csatlakoztatja, a rendszer áramszünetet érint, a csatlakoztatott gép nem lesz hatással, de előfordulhat, hogy az Azure-t használó felügyeleti műveletek nem lesznek végrehajtva. Ha van regionális leállás, és ha több hellyel is rendelkezik, amelyek támogatják a földrajzilag redundáns szolgáltatást, akkor a legjobb, ha az egyes helyekhez tartozó gépeket egy másik Azure-régióhoz kapcsolja.
+A legtöbb esetben a telepítési szkript létrehozásakor kiválasztott helynek a számítógép helyéhez földrajzilag legközelebbi Azure-régiónak kell lennie. Az adatok az Ön által megadott régiót tartalmazó Azure-beli földrajzi helyen vannak tárolva, ami hatással lehet a választott régióra, ha adateltározási követelményekkel rendelkezik. Ha a géphez csatlakozó Azure-régiót egy szolgáltatáskimaradás érinti, a csatlakoztatott gépre ez nem lesz hatással, de előfordulhat, hogy az Azure-t használó felügyeleti műveleteket nem lehet befejezni. Ha regionális kimaradás van, és több olyan helyről rendelkezik, amelyek támogatják a földrajzilag redundáns szolgáltatást, akkor a legjobb, ha az egyes helyeken található gépeket egy másik Azure-régióhoz csatlakoztatja.
 
-A rendszer a csatlakoztatott géppel kapcsolatos következő metaadatokat gyűjti és tárolja abban a régióban, ahol az Azure arc machine-erőforrás konfigurálva van:
+A csatlakoztatott gép alábbi metaadat-információit a rendszer abban a régióban gyűjti és tárolja, Azure Arc gép erőforrása konfigurálva van:
 
 - Operációs rendszer neve és verziója
 - Számítógép neve
-- Számítógép teljesen minősített tartományneve (FQDN)
-- Csatlakoztatott gépi ügynök verziója
+- Számítógép teljes tartományneve (FQDN)
+- Csatlakoztatott gép ügynökének verziója
 
-Ha például a gép regisztrálva van az Azure arc-ban az USA keleti régiójában, a rendszer ezeket az adatterületet az Egyesült Államok régiójában tárolja.
+Ha például a gép regisztrálva van az USA Azure Arc régióban található régióban, akkor az adatok az USA régiójában tárolódnak.
 
 ### <a name="supported-environments"></a>Támogatott környezetek
 
-Az ív használatára képes kiszolgálók támogatják az Azure-on *kívül* üzemeltetett fizikai kiszolgálók és virtuális gépek kezelését. A virtuális gépeket üzemeltető hibrid felhőalapú környezetek részletes ismertetését lásd: a [csatlakoztatott gép ügynökének előfeltételei](agent-overview.md#supported-environments).
+Az Arc-kompatibilis kiszolgálók támogatják az Azure-ban üzemeltetett fizikai kiszolgálók és *virtuális* gépek kezelését. A virtuális gépeket üzemeltető hibrid felhőkörnyezetek konkrét részleteiért lásd: Connected Machine agent prerequisites (A csatlakoztatott gép [ügynökének előfeltételei).](agent-overview.md#supported-environments)
 
 > [!NOTE]
-> Az ív használatára képes kiszolgálók nem lettek kialakítva és nem támogatottak az Azure-ban futó virtuális gépek kezelésének engedélyezéséhez.
+> Az Arc-kompatibilis kiszolgálók nem az Azure-ban futó virtuális gépek felügyeletének engedélyezéséhez vannak kialakítva vagy támogatva.
 
 ### <a name="agent-status"></a>Ügynök állapota
 
-A csatlakoztatott gépi ügynök egy normál szívverésű üzenetet küld a szolgáltatásnak 5 percenként. Ha a szolgáltatás nem tudja fogadni ezeket a szívverési üzeneteket a gépről, a gép offline állapotba kerül, és a rendszer 15 – 30 percen belül automatikusan **megszakítja a kapcsolatot** a portálon. Amikor egy későbbi szívverési üzenetet kap a csatlakoztatott számítógép ügynökéről, az állapota automatikusan **csatlakoztatva** lesz.
+A Csatlakoztatott gép ügynök 5 percenként rendszeres szívverési üzenetet küld a szolgáltatásnak. Ha a szolgáltatás nem kap szívverési üzeneteket egy gépről, a rendszer  offline állapotúnak minősül, és az állapot 15–30 percen belül automatikusan Leválasztva állapotra vált a portálon. Amikor a Csatlakoztatott gép ügynöktől egy későbbi szívverési üzenetet kap, az állapota automatikusan Csatlakoztatva **állapotra változik.**
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az arc-kompatibilis kiszolgálók több hibrid gépen való kiértékelése vagy engedélyezése előtt tekintse át a [csatlakoztatott gép ügynökének áttekintése című témakört](agent-overview.md) a követelmények megismeréséhez, az ügynök műszaki részleteihez és a telepítési módszerekhez.
+Mielőtt kiértékelné vagy engedélyezné az Arc-kompatibilis kiszolgálókat több hibrid gépen, tekintse át a Csatlakoztatottgép-ügynök áttekintése témakört a követelmények, az ügynök technikai részletei és az üzembe helyezési módszerek áttekintéséhez. [](agent-overview.md)

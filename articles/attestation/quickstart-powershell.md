@@ -1,5 +1,5 @@
 ---
-title: A Azure Attestation beállítása Azure PowerShell
+title: Az Azure Attestation beállítása Azure PowerShell
 description: Igazolásszolgáltató beállítása és konfigurálása a Azure PowerShell.
 services: attestation
 author: msmbaldwin
@@ -7,23 +7,24 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 628bb9886264574bf33ac927cf5480f91144c39c
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: eca74ffe7b62cc5071d8ebaeefab52e5e59409d4
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534000"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832229"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Rövid útmutató: Azure Attestation beállítása Azure PowerShell
 
-Az alábbi lépésekkel hozhat létre és konfigurálhatja az igazolásszolgáltatót a Azure PowerShell. A [Azure PowerShell](/powershell/azure/) telepítésének és futtatásának mikéntjéhez lásd a Azure PowerShell.
+Az alábbi lépésekkel hozhat létre és konfigurálhatja az igazolási szolgáltatót a Azure PowerShell. A [Azure PowerShell](/powershell/azure/) telepítésének és futtatásának mikéntjéhez lásd a Azure PowerShell.
 
 Vegye figyelembe, hogy a PowerShell-galéria elavult Transport Layer Security (TLS) 1.0-s és 1.1-es verziói. A TLS 1.2-es vagy újabb verziója ajánlott. Ezért a következő hibákat kaphatja:
 
 - FIGYELMEZTETÉS: Nem sikerült feloldani a következő csomagforrást: https://www.powershellgallery.com/api/v2 '
-- PackageManagement\Install-Package: Nem található egyezés a megadott keresési feltételekhez és a modul nevéhez 
+- PackageManagement\Install-Package: Nem található egyezés a megadott keresési feltételhez és a modul nevéhez 
 
-Ha továbbra is használni PowerShell-galéria, futtassa a következő parancsot a Install-Module parancsai előtt
+A kapcsolat további PowerShell-galéria futtassa a következő parancsot a Install-Module parancsai előtt
 
 ```powershell
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
@@ -31,13 +32,13 @@ Ha továbbra is használni PowerShell-galéria, futtassa a következő parancsot
 
 ## <a name="install-azattestation-powershell-module"></a>Az Az.Attestation PowerShell-modul telepítése
 
-Az új Azure PowerShell gépre telepítse az Az.Attestation PowerShell-modult, amely parancsmagokat tartalmaz a Azure Attestation.  
+Telepítse az Az.Attestation PowerShell-modult, amely Azure PowerShell-parancsmagokat Azure Attestation.  
 
 ### <a name="initial-installation"></a>Kezdeti telepítés
 
-Bontsa le az összes meglévő PowerShell-ablakot.
+Az összes meglévő PowerShell-ablak megszüntetése.
 
-Az "aktuális felhasználó" számára való telepítéshez indítson el egy nem emelt szintű PowerShell-ablakot, és futtassa a következőt:
+Az "aktuális felhasználó" telepítéséhez indítson el egy nem emelt szintű PowerShell-ablakot, és futtassa a következőt:
 
 ```powershell
 Install-Module -Name Az.Attestation -AllowClobber -Scope CurrentUser
@@ -53,7 +54,7 @@ Zárja be az emelt szintű PowerShell-konzolt.
 
 ### <a name="update-the-installation"></a>A telepítés frissítése
 
-Bontsa le az összes meglévő PowerShell-ablakot.
+Az összes meglévő PowerShell-ablak megszüntetése.
 
 Az "aktuális felhasználó" frissítéséhez indítson el egy nem emelt szintű PowerShell-ablakot, és futtassa a következőt:
 
@@ -141,7 +142,7 @@ New-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationReso
 
 A PolicySignersCertificateFile minta esetében tekintse meg a [szabályzat-aláíró tanúsítványra vonatkozó példákat.](policy-signer-examples.md)
 
-Get-AzAttestation lekéri az igazolási szolgáltató olyan tulajdonságait, mint az állapot és az AttestURI. Jegyezze fel az AttestURI-t, mert később szüksége lesz rá.
+Get-AzAttestation lekéri az igazolási szolgáltató tulajdonságait, például az állapotot és az AttestURI-t. Jegyezze fel az AttestURI-t, mert később szüksége lesz rá.
 
 ```azurepowershell
 Get-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationResourceGroup  

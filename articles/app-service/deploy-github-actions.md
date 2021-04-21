@@ -7,61 +7,61 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 1ed2b007ae00516a030e67b7f6abacbd00a8d403
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: aa4475ccedfb19ece540337f493bcc5ed64af035
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772882"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832463"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Üzembe helyezés az App Service-ben a GitHub Actions segítségével
 
-Első lépések [a](https://docs.github.com/en/actions/learn-github-actions) GitHub Actions a munkafolyamat automatizálásához és a GitHubról Azure App Service [üzembe](overview.md) helyezéséhez. 
+Első lépések a [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions) a munkafolyamat automatizálásához és a GitHubról Azure App Service [üzembe](overview.md) helyezéséhez. 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
 - Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Egy GitHub-fiók. Ha még nincs ilyen szolgáltatása, regisztráljon [ingyenesen.](https://github.com/join)  
+- Egy GitHub-fiók. Ha még nem tudja, regisztráljon [ingyenesen.](https://github.com/join)  
 - Egy működő Azure App Service alkalmazás. 
     - .NET: [ASP.NET Core-webalkalmazás létrehozása az Azure-ban](quickstart-dotnetcore.md)
     - ASP.NET: [ASP.NET Framework-webalkalmazás létrehozása az Azure-ban](quickstart-dotnet-framework.md)
-    - JavaScript: [Node.js webalkalmazás létrehozása a Azure App Service](quickstart-nodejs.md)  
+    - JavaScript: [Hozzon létre egy Node.js-webalkalmazást a Azure App Service](quickstart-nodejs.md)  
     - Java: [Java-alkalmazás létrehozása a Azure App Service](quickstart-java.md)
     - Python: [Python-alkalmazás létrehozása a Azure App Service](quickstart-python.md)
 
 ## <a name="workflow-file-overview"></a>Munkafolyamat-fájl áttekintése
 
-A munkafolyamatokat az adattár elérési útján található YAML- (.yml-) fájl `/.github/workflows/` határozza meg. Ez a definíció a munkafolyamatot felhozó különböző lépéseket és paramétereket tartalmazza.
+A munkafolyamatot egy YAML- (.yml-) fájl definiálja az `/.github/workflows/` adattár elérési útján. Ez a definíció tartalmazza a munkafolyamatot felhozó különböző lépéseket és paramétereket.
 
 A fájl három szakaszból áll:
 
 |Section  |Feladatok  |
 |---------|---------|
-|**Hitelesítés** | 1. Szolgáltatásnév vagy közzétételi profil definiálása. <br /> 2. Hozzon létre egy titkos GitHub-et. |
+|**Hitelesítés** | 1. Szolgáltatásnév vagy közzétételi profil definiálása. <br /> 2. GitHub-titkos kód létrehozása. |
 |**Létrehozás** | 1. A környezet beállítása. <br /> 2. A webalkalmazás összeállítása. |
 |**Telepítés** | 1. A webalkalmazás üzembe helyezése. |
 
-## <a name="use-the-deployment-center"></a>Az Üzembe helyezési központ használata
+## <a name="use-the-deployment-center"></a>Az üzembe helyezési központ használata
 
-Az üzembe helyezési központ használatával GitHub Actions gyorsan App Service használatba. Ez automatikusan létrehoz egy munkafolyamatfájlt az alkalmazáskészlet alapján, és véglegesít egy github-adattárban a megfelelő könyvtárban.
+Az üzembe helyezési központ GitHub Actions gyorsan App Service használatba. Ez automatikusan létrehoz egy munkafolyamat-fájlt az alkalmazás vermének alapján, és véglegesít egy GitHub-adattárban a megfelelő könyvtárban.
 
 1. Lépjen a webalkalmazáshoz a Azure Portal
 1. A bal oldalon kattintson az Üzembe **helyezési központ elemre.**
 1. A **Folyamatos üzembe helyezés (CI/CD) alatt** válassza a **GitHub lehetőséget**
 1. Ezután válassza a **GitHub Actions**
 1. A legördülő menük használatával válassza ki a GitHub-adattárat, ágat és alkalmazáskészletet
-    - Ha a kiválasztott ág védett, továbbra is hozzáadhatja a munkafolyamat-fájlt. A folytatás előtt mindenképpen tekintse át az ágvédelemeket.
-1. Az utolsó képernyőn áttekintheti a kiválasztott beállításokat, és megtekintheti az adattárba véglegesítő munkafolyamatfájl előnézetét. Ha a beállítások helyesek, kattintson a Befejezés **gombra.**
+    - Ha a kiválasztott ág védett, továbbra is hozzáadhatja a munkafolyamat-fájlt. A folytatás előtt mindenképpen tekintse át az ágvédelmet.
+1. Az utolsó képernyőn áttekintheti a kijelöléseket, és megtekintheti az adattárba véglegesítő munkafolyamat-fájl előnézetét. Ha a beállítások helyesek, kattintson a Befejezés **gombra.**
 
-Ez véglegeszi a munkafolyamat-fájlt az adattárban. Az alkalmazás építési és üzembe helyezési munkafolyamata azonnal elindul.
+Ezzel véglegeszi a munkafolyamat-fájlt az adattárban. Az alkalmazás építési és üzembe helyezési munkafolyamata azonnal elindul.
 
 ## <a name="set-up-a-workflow-manually"></a>Munkafolyamat manuális beállítása
 
-A munkafolyamatokat az Üzembe helyezési központ használata nélkül is üzembe helyezheti. Ahhoz, hogy ezt meg tudja tenni, először létre kell hoznia az üzembe helyezési hitelesítő adatokat. 
+A munkafolyamatokat az üzembe helyezési központ használata nélkül is üzembe helyezheti. Ahhoz, hogy ezt meg tudja tenni, először létre kell hoznia az üzembe helyezési hitelesítő adatokat. 
 
 ## <a name="generate-deployment-credentials"></a>Üzembe helyezési hitelesítő adatok létrehozása
 
-Az Azure-fiókkal való App Services ajánlott GitHub Actions közzétételi profillal. Szolgáltatásnévvel is hitelesíthet, de a folyamathoz további lépésekre van szükség. 
+Az Azure-fiókkal való App Services ajánlott GitHub Actions egy közzétételi profillal. Szolgáltatásnévvel is hitelesíthet, de a folyamathoz további lépésekre van szükség. 
 
 Az Azure-ral való hitelesítéshez mentse a közzétételi profil hitelesítő adatait vagy szolgáltatásnévét [GitHub-titkos](https://docs.github.com/en/actions/reference/encrypted-secrets) kódként. A titkos elérést a munkafolyamaton belül fogja elérni. 
 
@@ -69,18 +69,18 @@ Az Azure-ral való hitelesítéshez mentse a közzétételi profil hitelesítő 
 
 A közzétételi profil egy alkalmazásszintű hitelesítő adat. Állítsa be a közzétételi profilt GitHub titkos kódként. 
 
-1. Az app service-t a Azure Portal. 
+1. A Azure Portal. 
 
 1. Az Áttekintés **lapon** válassza a **Közzétételi profil lekérte lehetőséget.**
 
 1. Mentse a letöltött fájlt. A github titkos kód létrehozásához a fájl tartalmát fogja használni.
 
 > [!NOTE]
-> 2020 októberében a Linux-webalkalmazások esetében a közzétételi profil letöltése előtt az alkalmazásbeállításra `WEBSITE_WEBDEPLOY_USE_SCM` `true` **lesz szükség.** Ez a követelmény a jövőben el lesz távolítva.
+> 2020 októberében a Linux-webalkalmazások esetében a közzétételi profil letöltése előtt az alkalmazásbeállítást a `WEBSITE_WEBDEPLOY_USE_SCM` `true` **következőre kell beállítani:**. Ez a követelmény a jövőben el lesz távolítva.
 
 # <a name="service-principal"></a>[Szolgáltatásnév](#tab/userlevel)
 
-Szolgáltatásnév az [](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) [az ad sp create-for-rbac paranccsal](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) hozható létre az [Azure CLI-n.](/cli/azure/) Futtassa ezt a [Azure Cloud Shell](https://shell.azure.com/) a Azure Portal vagy a Próbálja **ki gombot** választva.
+Szolgáltatásnév az [](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) [az ad sp create-for-rbac paranccsal](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) hozható létre az [Azure CLI-n.](/cli/azure/) Futtassa ezt a [Azure Cloud Shell](https://shell.azure.com/) a Azure Portal vagy a **Kipróbálom gombra kattintva.**
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -101,7 +101,7 @@ A fenti példában cserélje le a helyőrzőket az előfizetés azonosítójára
 ```
 
 > [!IMPORTANT]
-> Mindig jó eljárás a minimális hozzáférés megadása. Az előző példában a hatókör nem a teljes erőforráscsoportra, App Service alkalmazásra van korlátozva.
+> Mindig jó gyakorlat a minimális hozzáférés megadása. Az előző példában a hatókör nem a teljes erőforráscsoportra, App Service alkalmazásra van korlátozva.
 
 ---
 
@@ -110,11 +110,11 @@ A fenti példában cserélje le a helyőrzőket az előfizetés azonosítójára
 
 # <a name="publish-profile"></a>[Profil közzététele](#tab/applevel)
 
-A [GitHubon](https://github.com/)keresse meg az adattárat, és válassza a Settings > Secrets > Add a new secret (Új titkos kód **hozzáadása) lehetőséget.**
+A [GitHubon](https://github.com/)keresse meg az adattárat, és válassza a Beállítások > **Titkos > Új titkos kód hozzáadása lehetőséget.**
 
-Alkalmazásszintű [hitelesítő adatok](#generate-deployment-credentials)használata érdekében illessze be a letöltött közzétételi profilfájl tartalmát a titkos adatokat tároló érték mezőbe. A titkos nak nevezze el `AZURE_WEBAPP_PUBLISH_PROFILE` a következőt: .
+Ha [alkalmazásszintű hitelesítő adatokat használ,](#generate-deployment-credentials)illessze be a letöltött közzétételi profilfájl tartalmát a titkos fájl érték mezőjébe. A titkos nak nevezze el `AZURE_WEBAPP_PUBLISH_PROFILE` a következőt: .
 
-A GitHub-munkafolyamat konfigurálásakor a et kell `AZURE_WEBAPP_PUBLISH_PROFILE` használnia az Azure-webalkalmazás üzembe helyezése műveletben. Például:
+A GitHub-munkafolyamat konfigurálásakor használja a et `AZURE_WEBAPP_PUBLISH_PROFILE` az Azure-webalkalmazás üzembe helyezése műveletben. Például:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -124,11 +124,11 @@ A GitHub-munkafolyamat konfigurálásakor a et kell `AZURE_WEBAPP_PUBLISH_PROFIL
 
 # <a name="service-principal"></a>[Szolgáltatásnév](#tab/userlevel)
 
-A [GitHubon](https://github.com/)keresse meg az adattárat, és válassza a Settings > Secrets > Add a new secret (Új titkos kód **hozzáadása) lehetőséget.**
+A [GitHubon](https://github.com/)keresse meg az adattárat, és válassza a Beállítások > **Titkos > Új titkos kód hozzáadása lehetőséget.**
 
-Felhasználói szintű hitelesítő adatok használata esetén illessze be az Azure [CLI-parancs](#generate-deployment-credentials)teljes JSON-kimenetét a titkos adat értékmezőjére. Adja a titkos nak a `AZURE_CREDENTIALS` nevet.
+Ha felhasználói [szintű hitelesítő adatokat használ,](#generate-deployment-credentials)illessze be az Azure CLI-parancs teljes JSON-kimenetét a titkos adat érték mezőjébe. Adja a titkos nak a `AZURE_CREDENTIALS` nevet.
 
-Amikor később konfigurálja a munkafolyamat-fájlt, a titkos adatokat kell használnia az `creds` Azure Login művelet bemenetéhez. Például:
+Amikor később konfigurálja a munkafolyamat-fájlt, a titkos adatokat használja az `creds` Azure Login művelet bemenetéhez. Például:
 
 ```yaml
 - uses: azure/login@v1
@@ -209,9 +209,9 @@ jobs:
 
 ## <a name="build-the-web-app"></a>A webalkalmazás összeállítása
 
-A webalkalmazások építési és üzembe helyezési folyamata Azure App Service nyelvtől függően változik. 
+A webalkalmazások építésének és üzembe helyezésének folyamata Azure App Service nyelvtől függően változik. 
 
-Az alábbi példák a webalkalmazást felépítő munkafolyamat különböző támogatott nyelveken található részét mutatják be.
+Az alábbi példák a webalkalmazást felépítési munkafolyamat különböző támogatott nyelveken való részét mutatják be.
 
 A webalkalmazás gyökérkönyvtárát minden nyelvhez beállíthatja a `working-directory` használatával. 
 
@@ -228,14 +228,14 @@ A környezeti változó `AZURE_WEBAPP_PACKAGE_PATH` beállítja a webalkalmazás
 ```
 **ASP.NET**
 
-Visszaállíthatja a NuGet-függőségeket, és futtathatja az msbuild-et a `run` sel. 
+Visszaállíthatja a NuGet-függőségeket, és futtathatja az msbuildet a `run` sel. 
 
 ```yaml
 - name: NuGet to restore dependencies as well as project-specific tools that are specified in the project file
   run: nuget restore
 
 - name: Add msbuild to PATH
-  uses: microsoft/setup-msbuild@v1.0.0
+  uses: microsoft/setup-msbuild@v1.0.2
 
 - name: Run msbuild
   run: msbuild .\SampleWebApplication.sln
@@ -250,7 +250,7 @@ Visszaállíthatja a NuGet-függőségeket, és futtathatja az msbuild-et a `run
 
 **JavaScript**
 
-A Node.js az npm-könyvtárat a következőben állíthatja be `working-directory` vagy módosíthatja: `pushd` . 
+A Node.js az npm-könyvtárhoz a következőn állíthat be vagy `working-directory` módosíthat: `pushd` . 
 
 ```yaml
 - name: npm install, build, and test
@@ -273,13 +273,13 @@ A Node.js az npm-könyvtárat a következőben állíthatja be `working-director
 
 ## <a name="deploy-to-app-service"></a>Üzembe helyezés az App Service-ben
 
-A kód üzembe helyezéséhez egy App Service alkalmazásba, használja a `azure/webapps-deploy@v2` műveletet. Ennek a műveletnek négy paramétere van:
+Ha a kódot egy App Service alkalmazásba, használja a `azure/webapps-deploy@v2` műveletet. Ennek a műveletnek négy paramétere van:
 
 | **Paraméter**  | **Magyarázat**  |
 |---------|---------|
 | **alkalmazás neve** | (Kötelező) A App Service neve | 
 | **közzétételi profil** | (Nem kötelező) Profilfájl tartalmának közzététele a Web Deploy titkos kulcsok segítségével |
-| **Csomag** | (Nem kötelező) Csomag vagy mappa elérési útja. Az elérési út tartalmazhat *.zip, *.war, *.jar vagy egy üzembe helyezni kívánt mappát |
+| **Csomag** | (Nem kötelező) Csomag vagy mappa elérési útja. Az elérési út tartalmazhatja a *.zip, *.war, *.jar vagy egy üzembe helyezni kívánt mappát |
 | **slot-name (tárolóhely neve)** | (Nem kötelező) Adjon meg egy meglévő, az éles tárolóhelyen kívül található [tárolóhelyet](deploy-staging-slots.md) |
 
 
@@ -359,7 +359,7 @@ jobs:
       run: nuget restore
   
     - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.0
+      uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Run MSBuild
       run: msbuild .\SampleWebApplication.sln
@@ -417,7 +417,7 @@ A helyett `war` egy üzembe helyezéséhez módosítsa az `jar` `package` érté
 
 ### <a name="javascript"></a>JavaScript 
 
-Alkalmazás-Node.js és üzembe helyezése az Azure-ban az alkalmazás közzétételi profiljával. A `publish-profile` bemenet a korábban létrehozott titkos `AZURE_WEBAPP_PUBLISH_PROFILE` referenciára hivatkozik.
+Egy alkalmazás Node.js üzembe az Azure-ban az alkalmazás közzétételi profiljával. A `publish-profile` bemenet a korábban létrehozott titkos `AZURE_WEBAPP_PUBLISH_PROFILE` referenciára hivatkozik.
 
 ```yaml
 # File: .github/workflows/workflow.yml
@@ -497,7 +497,7 @@ jobs:
 
 ### <a name="net-core"></a>.NET Core 
 
-.NET Core-alkalmazás összeállítása és üzembe helyezése az Azure-ban egy Azure-szolgáltatásnév használatával. Figyelje `creds` meg, hogy a bemenet a `AZURE_CREDENTIALS` korábban létrehozott titkos referenciára hivatkozik.
+.NET Core-alkalmazás összeállítása és üzembe helyezése az Azure-ban egy Azure-szolgáltatásnévvel. Figyelje `creds` meg, hogy a bemenet a `AZURE_CREDENTIALS` korábban létrehozott titkos referenciára hivatkozik.
 
 
 ```yaml
@@ -549,7 +549,7 @@ jobs:
 
 ### <a name="aspnet"></a>ASP.NET
 
-Egy azure-beli ASP.NET MVC-alkalmazás összeállítása és üzembe helyezése az Azure-ban. Figyelje `creds` meg, hogy a bemenet a `AZURE_CREDENTIALS` korábban létrehozott titkos referenciára hivatkozik.
+MVC-alkalmazás ASP.NET üzembe helyezése az Azure-ban egy Azure-szolgáltatásnévvel. Figyelje `creds` meg, hogy a bemenet a `AZURE_CREDENTIALS` korábban létrehozott titkos referenciára hivatkozik.
 
 ```yaml
 name: Deploy ASP.NET MVC App deploy to Azure Web App
@@ -581,7 +581,7 @@ jobs:
       run: nuget restore
   
     - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.0
+      uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Run MSBuild
       run: msbuild .\SampleWebApplication.sln
@@ -600,7 +600,7 @@ jobs:
 
 ### <a name="java"></a>Java 
 
-Java Spring-alkalmazás összeállítása és üzembe helyezése az Azure-ban egy Azure-szolgáltatásnév használatával. Figyelje `creds` meg, hogy a bemenet a `AZURE_CREDENTIALS` korábban létrehozott titkos referenciára hivatkozik.
+Java Spring-alkalmazás összeállítása és üzembe helyezése az Azure-ban egy Azure-szolgáltatásnévvel. Figyelje `creds` meg, hogy a bemenet a `AZURE_CREDENTIALS` korábban létrehozott titkos referenciára hivatkozik.
 
 ```yaml
 name: Java CI with Maven
@@ -638,7 +638,7 @@ jobs:
 
 ### <a name="javascript"></a>JavaScript 
 
-Egy azure-beli szolgáltatásnévvel Node.js létre és helyezhet üzembe egy új alkalmazásokat az Azure-ban. Figyelje `creds` meg, hogy a bemenet a `AZURE_CREDENTIALS` korábban létrehozott titkos referenciára hivatkozik.
+Azure-beli szolgáltatásnévvel Node.js és helyezhet üzembe egy új alkalmazásokat az Azure-ban. Figyelje `creds` meg, hogy a bemenet a `AZURE_CREDENTIALS` korábban létrehozott titkos referenciára hivatkozik.
 
 ```yaml
 name: JavaScript CI
@@ -744,7 +744,7 @@ A GitHubon található különböző adattárakba csoportosított műveleteket t
 
 - [Azure WebApp tárolókhoz](https://github.com/Azure/webapps-container-deploy)
 
-- [Docker– bejelentkezés/kijelentkezés](https://github.com/Azure/docker-login)
+- [Docker – bejelentkezés/kijelentkezés](https://github.com/Azure/docker-login)
 
 - [Munkafolyamatokat kiváltó események](https://docs.github.com/en/actions/reference/events-that-trigger-workflows)
 

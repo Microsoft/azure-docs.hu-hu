@@ -1,84 +1,85 @@
 ---
-title: Azure Automation futtató fiók kezelése
-description: Ez a cikk azt ismerteti, hogyan kezelheti a futtató fiókot a PowerShell vagy a Azure Portal használatával.
+title: Fiók Azure Automation kezelése
+description: Ez a cikk bemutatja, hogyan kezelheti a futó fiókot a PowerShell vagy a Azure Portal.
 services: automation
 ms.subservice: ''
 ms.date: 01/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: f170fc948f136f4f46634e7ae2645ed2eb357afa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e440a27c8f7778c800148feb5bec76ca5a48f4f5
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101096458"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833921"
 ---
-# <a name="manage-an-azure-automation-run-as-account"></a>Azure Automation futtató fiók kezelése
+# <a name="manage-an-azure-automation-run-as-account"></a>Fiók Azure Automation kezelése
 
-A Azure Automation futtató fiókok hitelesítést biztosítanak a Azure Resource Manager vagy a klasszikus Azure üzemi modell erőforrásainak automatizálási runbookok és egyéb Automation-funkciók használatával történő kezeléséhez. Ez a cikk útmutatást nyújt egy futtató vagy klasszikus futtató fiók kezeléséhez.
+A felhőben futó Azure Automation biztosítják a hitelesítést a Azure Resource Manager vagy a klasszikus Azure-beli üzembe helyezési modell erőforrásainak kezeléséhez Automation-runbookok és egyéb Automation-funkciók használatával. Ez a cikk útmutatást nyújt a futó vagy klasszikus futtatású fiókok kezeléséhez.
 
-Ha többet szeretne megtudni Azure Automation fiók hitelesítéséről és a folyamat-automatizálási forgatókönyvekkel kapcsolatos útmutatásról, tekintse meg az [Automation-fiók hitelesítésének áttekintése](automation-security-overview.md)című cikket.
+A fiókhitelesítéssel és Azure Automation folyamatautomatizálási forgatókönyvekkel kapcsolatos útmutatásért lásd: [Automation-fiókhitelesítés áttekintése.](automation-security-overview.md)
 
-## <a name="renew-a-self-signed-certificate"></a><a name="cert-renewal"></a>Önaláírt tanúsítvány megújítása
+## <a name="renew-a-self-signed-certificate"></a><a name="cert-renewal"></a>Önaírt tanúsítvány megújítása
 
-A futtató fiókhoz létrehozott önaláírt tanúsítvány a létrehozás dátumától számítva egy évig lejár. A futtató fiók lejárata előtt egy bizonyos ponton meg kell újítania a tanúsítványt. Bármikor megújíthatja, mielőtt lejár.
+A fiókhoz létrehozott önaírt tanúsítvány a létrehozás dátumának egy évét járja le. A futó fiók lejárata előtt meg kell újítania a tanúsítványt. A lejárata előtt bármikor megújíthatja.
 
-Az önaláírt tanúsítvány megújításakor a rendszer megőrzi a jelenlegi érvényes tanúsítványt, hogy biztosítsa, hogy a várólistára helyezett vagy aktívan futó runbookok és a futtató fiókkal végzett hitelesítés ne legyen negatív hatással. A tanúsítvány a lejárati dátumáig érvényes marad.
-
->[!NOTE]
->Ha úgy véli, hogy a futtató fiók biztonsága sérül, törölheti és újból létrehozhatja az önaláírt tanúsítványt.
+Amikor megújítja az önaírt tanúsítványt, a rendszer megőrzi az aktuális érvényes tanúsítványt, hogy a rendszer ne befolyásolja hátrányosan a várólistán lévő vagy aktívan futó és a futtató fiókkal hitelesítést futtató runbookokat. A tanúsítvány a lejárati dátumáig érvényes marad.
 
 >[!NOTE]
->Ha úgy állította be a futtató fiókot, hogy a vállalati hitelesítésszolgáltató által kiadott tanúsítványt használja, és az önaláírt tanúsítvány megújítására vonatkozó beállítást használja, a vállalati tanúsítvány egy önaláírt tanúsítvány helyett szerepel.
+>Ha úgy gondolja, hogy a fiók biztonsága sérült, törölheti és újra létrehozhatja az önaírt tanúsítványt.
 
-Az önaláírt tanúsítvány megújításához kövesse az alábbi lépéseket.
+>[!NOTE]
+>Ha úgy konfigurálta a run as fiókot, hogy a vállalati hitelesítésszolgáltató által kiadott tanúsítványt használja, és az önaírt tanúsítvány megújítására használható beállítást használja, a vállalati tanúsítványt egy önaírt tanúsítvány váltja fel.
+
+A következő lépésekkel újítsa meg az önaírt tanúsítványt.
 
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com).
 
-1. Nyissa meg az Automation-fiókját, és válassza a fiók beállításai szakaszban a **futtató fiókok** elemet.
+1. A fiókbeállítások szakaszban válassza a Futtatás mint **fiókok** lehetőséget az Automation-fiókjában.
 
-    :::image type="content" source="media/manage-runas-account/automation-account-properties-pane.png" alt-text="Az Automation-fiók tulajdonságai panel.":::
+    :::image type="content" source="media/manage-runas-account/automation-account-properties-pane.png" alt-text="Automation-fiók tulajdonságok panele.":::
 
-1. A **futtató fiókok** tulajdonságai lapon válassza ki a **futtató fiók** vagy a **klasszikus futtató fiók** lehetőséget attól függően, hogy melyik fiókhoz kell megújítani a tanúsítványt.
+1. A Run **As Accounts** (Futtatott fiókok) tulajdonságlapon válassza a Run **As Account** (Futtatás mint fiók) vagy a Classic Run As Account (Klasszikus run **As Account)** lehetőséget attól függően, hogy melyik fiókhoz kell megújítani a tanúsítványt.
 
-1. A kiválasztott fiók **Tulajdonságok** lapján válassza a **tanúsítvány megújítása** lehetőséget.
+1. A kiválasztott **fiók Tulajdonságok** lapján válassza a Tanúsítvány **megújítása lehetőséget.**
 
-    :::image type="content" source="media/manage-runas-account/automation-account-renew-runas-certificate.png" alt-text="A futtató fiók tanúsítványának megújítása.":::
+    :::image type="content" source="media/manage-runas-account/automation-account-renew-runas-certificate.png" alt-text="A futó fiók tanúsítványának megújítása.":::
 
 1. A tanúsítvány megújítása során a menü **Értesítések** részén nyomon követheti a folyamat állapotát.
 
-## <a name="grant-run-as-account-permissions-in-other-subscriptions"></a>Futtató fiók engedélyeinek megadása más előfizetésekben
+## <a name="grant-run-as-account-permissions-in-other-subscriptions"></a>Run As account permissions in other subscriptions (Run As-fiókengedélyek megadása más előfizetésben)
 
-Azure Automation támogatja egyetlen Automation-fiók használatát egyetlen előfizetésből, és a runbookok a különböző előfizetések Azure Resource Manager erőforrásaira vonatkozóan hajtja végre. Ez a konfiguráció nem támogatja a klasszikus Azure-telepítési modellt.
+Azure Automation támogatja egyetlen Automation-fiók egyetlen előfizetésből történő futtatását, valamint a runbookok futtatását Azure Resource Manager erőforrásokon több előfizetésben. Ez a konfiguráció nem támogatja a klasszikus Azure-beli üzembe helyezési modellt.
 
-A futtató fiók szolgáltatásnevet a másik előfizetésben lévő [közreműködő](../role-based-access-control/built-in-roles.md#contributor) szerepkörhöz, vagy szigorúbb engedélyekhez rendeli hozzá. További információ: [szerepköralapú hozzáférés-vezérlés](automation-role-based-access-control.md) Azure Automationban. Ha a futtató fiókot a másik előfizetésben lévő szerepkörhöz szeretné rendelni, akkor a feladatot végrehajtó felhasználói fióknak a **tulajdonos** szerepkör tagjának kell lennie az előfizetésben.
+A másik előfizetésben a [](../role-based-access-control/built-in-roles.md#contributor) közreműködői szerepkört vagy szigorúbb engedélyeket kell hozzárendelni a run as account service principal (Futtatás fiók szolgáltatásnév) szerepkörhöz. További információ: [Szerepköralapú hozzáférés-vezérlés a](automation-role-based-access-control.md) Azure Automation. A másik előfizetésben a szerepkörhöz való hozzárendeléshez a feladatot végző felhasználói fióknak  az előfizetés Tulajdonos szerepkörének tagjának kell lennie.
 
 > [!NOTE]
-> Ez a konfiguráció csak egy szervezet több előfizetését támogatja egy közös Azure AD-bérlő használatával.
+> Ez a konfiguráció csak egy közös Azure AD-bérlőt használó szervezet több előfizetését támogatja.
 
-A futtató fiók engedélyeinek megadása előtt fel kell jegyeznie a hozzárendelni kívánt szolgáltatásnév megjelenítendő nevét.
+Mielőtt engedélyeket ad a futó fióknak, először fel kell vennie a hozzárendelendő szolgáltatásnév megjelenítendő nevét.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Az Automation-fiókban válassza a **futtató fiókok** lehetőséget a **Fiókbeállítások** területen.
-1. Válassza az Azure-beli **futtató fiók** lehetőséget.
-1. Másolja vagy jegyezze fel a **megjelenítendő név** értékét az Azure-beli **futtató fiók** lapon.
+1. Az Automation-fiókjában válassza a **Fiókbeállítások** alatt a **Fiókfiókok lehetőséget.**
+1. Válassza **az Azure-beli fiók lehetőséget.**
+1. Másolja vagy jegyezze fel a **Megjelenítendő név értékét** az **Azure-beli futtatás fiókja oldalon.**
 
-A szerepkör-hozzárendelések hozzáadásának részletes lépéseiért tekintse meg az alábbi cikkeket a használni kívánt módszertől függően.
+A szerepkör-hozzárendelések hozzáadásának részletes lépéseit a használni kívánt módszertől függően az alábbi cikkekben talál.
 
-* [Azure-szerepkörök kiosztása a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
-* [Azure-szerepkörök kiosztása Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md)
-* [Azure-szerepkörök kiosztása az Azure CLI használatával](../role-based-access-control/role-assignments-cli.md)
-* [Azure-szerepkörök kiosztása a REST API használatával](..//role-based-access-control/role-assignments-rest.md)
+* [Azure-szerepkörök hozzárendelése a Azure Portal](../role-based-access-control/role-assignments-portal.md)
+* [Azure-szerepkörök hozzárendelése Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
+* [Azure-szerepkörök hozzárendelése az Azure CLI használatával](../role-based-access-control/role-assignments-cli.md)
+* [Azure-szerepkörök hozzárendelése a REST API](..//role-based-access-control/role-assignments-rest.md)
 
-Miután hozzárendelte a futtató fiókot a szerepkörhöz, a runbook adja meg az `Set-AzContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"` előfizetési környezet használatára vonatkozó beállítását. További információ: [set-AzContext](/powershell/module/az.accounts/set-azcontext).
+Miután hozzárendeli a szerepkörhöz a runbookban a fiókot, adja meg, hogy milyen előfizetési környezetet `Set-AzContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"` szeretne használni. További információ: [Set-AzContext.](/powershell/module/az.accounts/set-azcontext)
 
-## <a name="limit-run-as-account-permissions"></a>Futtató fiók engedélyeinek korlátozása
+## <a name="limit-run-as-account-permissions"></a>A futó fiók engedélyeinek korlátozása
 
-Az Azure-beli erőforrásokhoz való automatizálás célzásának szabályozásához futtathatja a [Update-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug8) szkriptet. Ez a parancsfájl módosítja a meglévő futtató fiók egyszerű szolgáltatását egy egyéni szerepkör-definíció létrehozásához és használatához. A szerepkör a [Key Vault](../key-vault/index.yml)kivételével minden erőforráshoz rendelkezik engedéllyel.
+Az Automation Azure-beli erőforrásokra való célzásának [](https://aka.ms/AA5hug8) szabályozásához futtassa aUpdate-AutomationRunAsAccountRoleAssignments.ps1szkriptet. Ez a szkript módosítja a meglévő run as-account szolgáltatásnév egyéni szerepkör-definíció létrehozása és használata érdekében. A szerepkör az kivételével minden erőforráshoz [rendelkezik Key Vault.](../key-vault/index.yml)
 
 >[!IMPORTANT]
->A **Update-AutomationRunAsAccountRoleAssignments.ps1** -parancsfájl futtatása után a Runbookok a futtató fiókokkal való Key Vault a továbbiakban nem működik. A szkript futtatása előtt tekintse át a runbookok a fiókjában, hogy meghívja a Azure Key Vault. A Key Vault Azure Automation runbookok való elérésének engedélyezéséhez hozzá kell [adnia a futtató fiókot Key Vault engedélyeihez](#add-permissions-to-key-vault).
+>AUpdate-AutomationRunAsAccountRoleAssignments.ps1 **futtatása** után azok a runbookok, amelyek a Key Vault keresztül férnek hozzá a fiókokhoz, többé nem működnek. A szkript futtatása előtt tekintse át a fiókjában futó runbookokat, és ellenőrizze, hogy vannak-e Azure Key Vault. A runbookok Key Vault hozzáférésének Azure Automation a runbookok futtatásához, hozzá kell adni a Key Vault-fiók [engedélyét.](#add-permissions-to-key-vault)
 
-Ha továbbra is meg kell határoznia, hogy mit tehet a futtató szolgáltatás, az `NotActions` Egyéni szerepkör-definíció eleméhez más erőforrástípusok is hozzáadhatók. Az alábbi példa korlátozza a hozzáférését a következőhöz: `Microsoft.Compute/*` . Ha ezt az erőforrástípust hozzáadja `NotActions` a szerepkör-definícióhoz, a szerepkör nem fog tudni hozzáférni a számítási erőforrásokhoz. További információ a szerepkör-definíciókkal kapcsolatban: [Az Azure-erőforrások szerepkör-definícióinak megismerése](../role-based-access-control/role-definitions.md).
+Ha tovább kell korlátoznia, hogy mire képes a futó szolgáltatásnév, más erőforrástípusokat is hozzáadhat az egyéni `NotActions` szerepkör-definíció elemhez. Az alábbi példa a hozzáférését `Microsoft.Compute/*` korlátozza. Ha ezt az erőforrástípust hozzáadja a szerepkör-definícióhoz, a szerepkör nem fog tudni hozzáférni egyetlen `NotActions` számítási erőforráshoz sem. További információ a szerepkör-definíciókról: [Az Azure-erőforrások szerepkör-definíciói.](../role-based-access-control/role-definitions.md)
 
 ```powershell
 $roleDefinition = Get-AzRoleDefinition -Name 'Automation RunAs Contributor'
@@ -86,50 +87,50 @@ $roleDefinition.NotActions.Add("Microsoft.Compute/*")
 $roleDefinition | Set-AzRoleDefinition
 ```
 
-Megadhatja, hogy a futtató fiók által használt egyszerű szolgáltatásnév a **közreműködő** szerepkörhöz vagy egy egyénihez van-e rendelve.
+Meghatározhatja, hogy a fiók által használt szolgáltatásnév a Közreműködő szerepkörhöz vagy egy egyéni szerepkörhöz van-e rendelve. 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Nyissa meg az Automation-fiókját, és válassza a fiók beállításai szakaszban a **futtató fiókok** elemet.
-1. Válassza az Azure-beli **futtató fiók** lehetőséget.
-1. Válassza ki a **szerepkört** a használatban lévő szerepkör-definíció megkereséséhez.
+1. A fiókbeállítások szakaszban válassza a Futtatás mint **fiókok** lehetőséget az Automation-fiókjában.
+1. Válassza **az Azure-beli fiók lehetőséget.**
+1. Válassza **a Szerepkör** lehetőséget a használt szerepkör-definíció megtalálásához.
 
-:::image type="content" source="media/manage-runas-account/verify-role.png" alt-text="Ellenőrizze a futtató fiók szerepkört." lightbox="media/manage-runas-account/verify-role-expanded.png":::
+:::image type="content" source="media/manage-runas-account/verify-role.png" alt-text="Ellenőrizze a run as account (Futtatás fiók) szerepkört." lightbox="media/manage-runas-account/verify-role-expanded.png":::
 
-A futtató fiókok által használt szerepkör-definíciót több előfizetés vagy Automation-fiók esetében is meghatározhatja. Ezt a PowerShell-galéria [Check-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug5) parancsfájljának használatával teheti meg.
+Meghatározhatja azt a szerepkör-definíciót is, amelyet a több előfizetéshez vagy Automation-fiókhoz használt run as fiókok használnak. Ehhez használja aCheck-AutomationRunAsAccountRoleAssignments.ps1[ szkriptet ](https://aka.ms/AA5hug5) a PowerShell-galéria.
 
-### <a name="add-permissions-to-key-vault"></a>Engedélyek hozzáadása a Key Vaulthoz
+### <a name="add-permissions-to-key-vault"></a>Engedélyek hozzáadása a Key Vault
 
-Engedélyezheti Azure Automation annak ellenőrzését, hogy a Key Vault és a futtató fiók egyszerű szolgáltatása egyéni szerepkör-definíciót használ-e. A következőket kell tennie:
+Engedélyezheti a Azure Automation, hogy Key Vault és a Key Vault szolgáltatásnév egyéni szerepkör-definíciót használ-e. A következőt kell:
 
-* Engedélyek megadása Key Vault számára.
-* Adja meg a hozzáférési házirendet.
+* Adjon engedélyeket a Key Vault.
+* Állítsa be a hozzáférési szabályzatot.
 
-A PowerShell-galéria [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) parancsfájllal engedélyezheti a futtató fiók engedélyeit Key Vault. A Key Vault engedélyeinek beállításával kapcsolatos további részletekért tekintse meg [a Key Vault hozzáférési szabályzatának hozzárendelését](../key-vault/general/assign-access-policy-powershell.md) ismertető témakört.
+Az alkalmazás [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) szkripttel PowerShell-galéria adhat a Key Vault. A [hozzáférés-Key Vault](../key-vault/general/assign-access-policy-powershell.md) beállításával kapcsolatos további részletekért lásd: Key Vault hozzáférési szabályzat Key Vault hozzárendelése.
 
-## <a name="resolve-misconfiguration-issues-for-run-as-accounts"></a>A futtató fiókok konfigurációs problémáinak elhárítása
+## <a name="resolve-misconfiguration-issues-for-run-as-accounts"></a>A futó fiókok hibás konfigurációval kapcsolatos problémáinak megoldása
 
-Előfordulhat, hogy a futtató vagy klasszikus futtató fiókhoz szükséges konfigurációs elemeket törölték vagy helytelenül hozták létre a kezdeti beállítás során. A helytelen konfiguráció lehetséges példányai a következők:
+Előfordulhat, hogy a kezdeti beállítás során a run as vagy a classic run as fiókhoz szükséges egyes konfigurációs elemek törölve vagy nem megfelelően hoztak létre. A hibás konfiguráció lehetséges példányai a következők:
 
 * Tanúsítványobjektum
 * Kapcsolatobjektum
-* A futtató fiók el lett távolítva a közreműködő szerepkörből
+* A közreműködői szerepkörből eltávolított futó fiók
 * Egyszerű szolgáltatás vagy alkalmazás az Azure AD-ben
 
-Az ilyen hibás konfigurációs példányok esetében az Automation-fiók észleli a módosításokat, és *hiányos* állapotot jelenít meg a fiók futtató fiókok tulajdonságok paneljén.
+Az ilyen hibás konfigurációt tartalmazó példányok esetében az Automation-fiók  észleli a módosításokat, és Hiányos állapotot jelenít meg a fiókHoz a Futtatott fiókok tulajdonságpanelen.
 
-:::image type="content" source="media/manage-runas-account/automation-account-runas-config-incomplete.png" alt-text="Hiányos a futtató fiók konfigurációja.":::
+:::image type="content" source="media/manage-runas-account/automation-account-runas-config-incomplete.png" alt-text="Hiányos futtatási fiókkonfiguráció.":::
 
-Ha kiválasztja a futtató fiókot, a fiók tulajdonságai ablaktábla a következő hibaüzenetet jeleníti meg:
+Amikor kiválasztja a fiókot, a fióktulajdonságok panelen a következő hibaüzenet jelenik meg:
 
 ```text
 The Run As account is incomplete. Either one of these was deleted or not created - Azure Active Directory Application, Service Principal, Role, Automation Certificate asset, Automation Connect asset - or the Thumbprint is not identical between Certificate and Connection. Please delete and then re-create the Run As Account.
 ```
 
-Ezeket a futtató fiókok hibáit gyorsan megoldhatja a futtató fiók [törlésével](delete-run-as-account.md) és [újbóli létrehozásával](create-run-as-account.md) .
+Ezeket a fiókkal kapcsolatos problémákat gyorsan [](create-run-as-account.md) megoldhatja [a](delete-run-as-account.md) fiók törlésével és újra létrehozásával.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Alkalmazás-objektumok és egyszerű szolgáltatások objektumai](../active-directory/develop/app-objects-and-service-principals.md).
-* [Az Azure Cloud Services tanúsítványok áttekintése](../cloud-services/cloud-services-certs-create.md).
-* Futtató fiók létrehozásához vagy újbóli létrehozásához tekintse meg [a futtató fiók létrehozása](create-run-as-account.md)című témakört.
-* Ha már nincs szüksége futtató fiók használatára, tekintse meg [a futtató fiók törlése](delete-run-as-account.md)című témakört.
+* [Alkalmazásobjektumok és szolgáltatásnév-objektumok.](../active-directory/develop/app-objects-and-service-principals.md)
+* [Tanúsítványok áttekintése a Azure Cloud Services.](../cloud-services/cloud-services-certs-create.md)
+* A futtatásként használt fiók létrehozásához vagy újra létrehozásához tekintse meg [a következőt: Run As account (Futtatás fiók létrehozása).](create-run-as-account.md)
+* Ha már nincs szüksége egy futtatott fiókra, tekintse meg a következőt: [Run As account (Futtatás fiók törlése).](delete-run-as-account.md)
