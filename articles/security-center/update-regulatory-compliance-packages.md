@@ -1,29 +1,25 @@
 ---
 title: A jogszabályi megfelelési irányítópult használata a Azure Security Center
 description: Megtudhatja, hogyan adhat hozzá és távolíthat el szabályozási szabványokat a megfelelőségi irányítópulton a Security Center
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: c42d02e4-201d-4a95-8527-253af903a5c6
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/04/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: dab6b504fe026324251b7284fc3abdb52bb9911a
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 4ba65517b698896c57ca2254394efcadd6efbb1d
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107738953"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835037"
 ---
 # <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>A szabványok halmazának testreszabása a jogszabályi megfelelési irányítópulton
 
 Azure Security Center az erőforrások konfigurációját az iparági szabványok, szabályozások és teljesítménytesztek követelményeivel. A **jogszabályi megfelelőségi irányítópult** a megfelelőségi követelményeknek való megfelelés alapján nyújt betekintést a megfelelőségi követelményeknek.
 
+> [!TIP]
+> A jogszabályi Security Center irányítópultjáról a gyakori kérdések között [olvashat bővebben.](security-center-compliance-dashboard.md#faq---regulatory-compliance-dashboard)
 
 ## <a name="how-are-regulatory-compliance-standards-represented-in-security-center"></a>Hogyan mutatja a jogszabályi megfelelőségi szabványokat a Security Center?
 
@@ -38,15 +34,17 @@ A Microsoft maga követi nyomon a szabályozási szabványokat, és bizonyos cso
 
 ## <a name="what-regulatory-compliance-standards-are-available-in-security-center"></a>Milyen szabályozási megfelelőségi szabványok érhetők el a Security Center?
 
-Alapértelmezés szerint minden előfizetéshez hozzá van rendelve az **Azure biztonsági teljesítményteszt.** Ez a Microsoft által írt, azure-specifikus irányelvek a közös megfelelőségi keretrendszeren alapuló biztonsági és megfelelőségi ajánlott eljárásokhoz. [További tudnivalók az Azure-biztonsági teljesítménytesztről](https://docs.microsoft.com/security/benchmark/azure/introduction).
+Alapértelmezés szerint minden előfizetéshez hozzá van rendelve az **Azure biztonsági teljesítményteszt.** Ez a Microsoft által írt, azure-specifikus irányelvek a biztonsági és megfelelőségi ajánlott eljárásokhoz a közös megfelelőségi keretrendszerek alapján. [További tudnivalók az Azure-biztonsági teljesítménytesztről](https://docs.microsoft.com/security/benchmark/azure/introduction).
 
-A következő szabványokat is hozzáadhatja:
+Emellett a következő szabványokat is hozzáadhatja:
 
-- NIST SP 800-53 R4
+- NIST SP 800-53
 - SWIFT CSP CSCF-v2020
-- Uk Official és uk NHS
+- UK Official és uk NHS
 - Canada Federal PBMM
-- Azure CIS 1.1.0
+- Azure CIS 1.3.0
+- CMMC 3. szint
+- Új-Zélandi ISM korlátozott
 
 Amint elérhetővé válnak, a szabványokat a szolgáltatás hozzáadja az irányítópulthoz.
 
@@ -71,26 +69,28 @@ Az alábbi lépések azt ismertetik, hogyan adhat hozzá egy csomagot, amely az 
 
 1. A Jogszabályi **megfelelőségi szabványok hozzáadása lapon** bármely elérhető szabványt megkeresheti, beleértve a következőket:
 
-    - **NIST SP 800-53 R4**
-    - **NIST SP 800 171 R2**
+    - **NIST SP 800-53**
+    - **NIST SP 800 171**
     - **SWIFT CSP CSCF v2020**
-    - **UKO és az Egyesült Királyság Nemzeti NemzetiHS-e**
+    - **UKO és egyesült királysági NHS**
     - **Canada Federal PBMM**
     - **HIPAA HITRUST**
-    - **Azure CIS 1.1.0**
+    - **Azure CIS 1.3.0**
+    - **CMMC 3. szint**
+    - **Új-Zéland isM korlátozott**
     
     ![Szabályozási szabványok hozzáadása Azure Security Center megfelelőségi irányítópultjához](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
 
-1. Válassza **a Hozzáadás** lehetőséget, és adja meg az adott kezdeményezéshez szükséges összes adatot, például a hatókört, a paramétereket és a szervizelést.
+1. Válassza **a Hozzáadás** lehetőséget, és adja meg az adott kezdeményezéshez szükséges összes részletet, például a hatókört, a paramétereket és a szervizelést.
 
-1. A Security Center oldalsávján válassza  ismét a Jogszabályi megfelelőség lehetőséget, hogy visszatérjön a jogszabályi megfelelési irányítópultra.
+1. A Security Center oldalsávján válassza  ismét a Jogszabályi megfelelőség lehetőséget, hogy visszatérjön a jogszabályi megfelelés irányítópultjára.
 
-    Az új szabvány megjelenik az iparági szabályozási & listájában. 
+    Az új szabvány megjelenik az iparági szabványok & listájában. 
 
     > [!NOTE]
-    > Az újonnan hozzáadott szabvány megjelenése a megfelelőségi irányítópulton több órát is igénybe vehet.
+    > Az újonnan hozzáadott szabvány megjelenése a megfelelőségi irányítópulton néhány órát is igénybe vehet.
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Jogszabályi megfelelési irányítópult" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Jogszabályi megfelelés irányítópultja" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
 ## <a name="remove-a-standard-from-your-dashboard"></a>Szabvány eltávolítása az irányítópultról
 

@@ -10,43 +10,43 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 6859a2f8571c11e6ef93a5e5b1635cdbe39ad001
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: c28bc47945882e6b7bbd39d1ba8524a1f7491ceb
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107737664"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835206"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Jegyzetfüzetek létrehozása, fejlesztése és Synapse Studio a Azure Synapse Analytics
 
-A Synapse Studio jegyzetfüzet egy webes felület, amely élő kódot, vizualizációkat és narratív szöveget tartalmazó fájlok létrehozására használható. A jegyzetfüzetekkel remek ötleteket lehet érvényesíteni, és gyors kísérletekkel elemzéseket lehet kihozni az adatokból. A jegyzetfüzeteket széles körben használják az adatok előkészítéséhez, az adatvizualizációhoz, a gépi tanuláshoz és más big data-forgatókönyvekhez.
+A Synapse Studio jegyzetfüzet egy webes felület, amely élő kódot, vizualizációkat és narratív szöveget tartalmazó fájlokat hoz létre. A jegyzetfüzetekkel remek ötleteket lehet érvényesíteni, és gyors kísérletekkel elemzéseket lehet kihozni az adatokból. A jegyzetfüzeteket széles körben használják adat-előkészítéshez, adatvizualizációhoz, gépi tanuláshoz és más big data-forgatókönyvekhez is.
 
-A Azure Synapse Studio-jegyzetfüzetekkel a következőt használhatja:
+A Azure Synapse Studio-jegyzetfüzetekkel a következőre van lehetőség:
 
-* Az első lépésekhez nincs szükség beállításra.
+* Első lépések beállítás nélkül.
 * A beépített vállalati biztonsági funkciókkal biztonságban tarthatja az adatokat.
-* Elemezheti az adatokat nyers formátumokban (CSV, txt, JSON stb.), feldolgozott fájlformátumokban (parquet, Delta Lake, ORC stb.) és SQL táblázatos adatfájlokban a Spark és az SQL használatával.
-* A továbbfejlesztett szerzői képességek és a beépített adatvizualizáció segítségével hatékonyan dolgozhat.
+* Elemezheti az adatokat nyers formátumokban (CSV, txt, JSON stb.), feldolgozott fájlformátumokban (parquet, Delta Lake, ORC stb.), valamint SQL táblázatos adatfájlokban a Spark és az SQL használatával.
+* Hatékony munkavégzés fejlett szerzői képességekkel és beépített adatvizualizációval.
 
-Ez a cikk a notebookok használatát ismerteti a Azure Synapse Studióban.
+Ez a cikk a jegyzetfüzetek használatát ismerteti a Azure Synapse Studióban.
 
 ## <a name="preview-of-the-new-notebook-experience"></a>Az új jegyzetfüzet-felhasználói élmény előzetes verziója
-A Synapse csapata a notebookok új összetevőjét Synapse Studio, hogy egységes jegyzetfüzet-élményt nyújtson a Microsoft ügyfeleinek, és maximalizálja a felderíthetőséget, a hatékonyságot, a megosztást és az együttműködést. Az új jegyzetfüzet-felhasználói élmény készen áll az előzetes verzióra. A **bekapcsoláshoz jelölje** be az Előzetes verziójú funkciók gombot a jegyzetfüzet eszköztárán. Az alábbi táblázat a meglévő jegyzetfüzetek (más néven "klasszikus jegyzetfüzet") és az új előzetes verzió közötti funkció-összehasonlítást rögzíti.  
+A Synapse csapata az új jegyzetfüzet-összetevőt a Synapse Studio, hogy egységes notebookélményt biztosítson a Microsoft-ügyfelek számára, és maximalizálja a felderíthetőséget, a hatékonyságot, a megosztást és az együttműködést. Az új jegyzetfüzet-felhasználói élmény előzetes verzióként érhető el. A **bekapcsoláshoz jelölje** be az Előzetes verziójú funkciók gombot a jegyzetfüzet eszköztárán. Az alábbi táblázat a meglévő jegyzetfüzetek (más néven "klasszikus jegyzetfüzet") és az új előzetes verziójú jegyzetfüzetek funkció-összehasonlítását rögzíti.  
 
-|Szolgáltatás|Klasszikus jegyzetfüzet|Előzetes verziójú jegyzetfüzet|
+|Szolgáltatás|Klasszikus jegyzetfüzet|Jegyzetfüzet előnézete|
 |--|--|--|
-|%run| Nem támogatott | &#9745;|
+|%run (%run)| Nem támogatott | &#9745;|
 |%history| Nem támogatott |&#9745;
 |%load (%load)| Nem támogatott |&#9745;|
-|<a0/3/2| Nem támogatott |&#9745;|
+|(html)| Nem támogatott |&#9745;|
 |Cella áthelyezése húzással| Nem támogatott |&#9745;|
 |Szövegcella formázása eszköztárgombokkal|&#9745;| Nem elérhető |
-|Cella visszavonása művelet| &#9745;| Nem elérhető |
+|Cellaművelet visszavonása| &#9745;| Nem elérhető |
 
 
 ## <a name="create-a-notebook"></a>Jegyzetfüzet létrehozása
 
-Jegyzetfüzetet kétféleképpen hozhat létre. Létrehozhat egy új jegyzetfüzetet, vagy importálhat egy meglévő jegyzetfüzetet egy Azure Synapse munkaterületre a **Object Explorer.** Azure Synapse Studio-jegyzetfüzetek felismerik az IPYNB Jupyter Notebook szabványos fájlokat.
+Jegyzetfüzetet kétféleképpen hozhat létre. Létrehozhat egy új jegyzetfüzetet, vagy importálhat egy meglévő jegyzetfüzetet egy Azure Synapse munkaterületre a **Object Explorer.** Azure Synapse Studio-jegyzetfüzetek felismerik a standard Jupyter Notebook IPYNB-fájlokat.
 
 ![importálási jegyzetfüzet létrehozása](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook-2.png)
 
@@ -60,7 +60,7 @@ A jegyzetfüzetek cellákból állnak, amelyek különálló kód- vagy szövegb
 
 # <a name="classical-notebook"></a>[Klasszikus jegyzetfüzet](#tab/classical)
 
-1. Bontsa ki a bal felső **+ Cella** gombot, és válassza a **Kódcella** hozzáadása vagy **a Szövegcella hozzáadása lehetőséget.**
+1. Bontsa ki a bal felső **+ Cella** gombot, és válassza a **Kódcella** hozzáadása vagy a **Szövegcella hozzáadása lehetőséget.**
 
     ![add-cell-with-cell-button](./media/apache-spark-development-using-notebooks/synapse-add-cell-1.png)
 
@@ -71,7 +71,7 @@ A jegyzetfüzetek cellákból állnak, amelyek különálló kód- vagy szövegb
 3. A [Parancs módban használjon Billentyűparancsokat.](#shortcut-keys-under-command-mode) Nyomja **le az A** billentyűt egy cella beszúrása az aktuális cella fölé. Nyomja **le a B** billentyűt egy cella beszúrása az aktuális cella alá.
 
 
-# <a name="preview-notebook"></a>[Előzetes verziójú jegyzetfüzet](#tab/preview)
+# <a name="preview-notebook"></a>[Jegyzetfüzet előnézete](#tab/preview)
 
 1. Bontsa ki a bal felső **+ Cella** gombot, és válassza ki a **kódcellát** vagy a **Markdown-cellát.**
     ![add-azure-notebook-cell-with-cell-button](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-1.png)
@@ -79,7 +79,7 @@ A jegyzetfüzetek cellákból állnak, amelyek különálló kód- vagy szövegb
 
     ![add-azure-notebook-cell-between-space](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-2.png)
 
-3. Parancs módban használja az [aznb-billentyűparancsokat.](#shortcut-keys-under-command-mode) Nyomja **le az A** billentyűt egy cella beszúrása az aktuális cella fölé. Nyomja **le a B** billentyűt egy cella beszúrása az aktuális cella alá.
+3. A parancs módban használja az [aznb billentyűparancsokat.](#shortcut-keys-under-command-mode) Nyomja **le az A** billentyűt egy cella beszúrása az aktuális cella fölé. Nyomja **le a B** billentyűt egy cella beszúrása az aktuális cella alá.
 
 ---
 
@@ -92,28 +92,28 @@ Azure Synapse Studio-jegyzetfüzetek négy különböző nyelvet Apache Spark t�
 * SparkSQL
 * .NET for Apache Spark (C#)
 
-Az új hozzáadott cellák elsődleges nyelvét a felső parancssáv legördülő listájából állíthatja be.
+Az új cellák elsődleges nyelvét a felső parancssáv legördülő listájából állíthatja be.
 
    ![default-synapse-language](./media/apache-spark-development-using-notebooks/synapse-default-language.png)
 
 ### <a name="use-multiple-languages"></a>Több nyelv használata
 
-Egy jegyzetfüzetben több nyelvet is használhat, ha a megfelelő nyelvi varázsparancsot adja meg egy cella elején. Az alábbi táblázat a cellanyelvek közötti váltáshoz használt magic parancsokat sorolja fel.
+Egy jegyzetfüzetben több nyelvet is használhat, ha megadja a megfelelő nyelvi varázsparancsot egy cella elején. Az alábbi táblázat a cellanyelvek közötti váltáshoz használt magic parancsokat sorolja fel.
 
 |Magic parancs |Nyelv | Description |  
 |---|------|-----|
-|<a0/3/300;pyspark| Python | **Python-lekérdezés végrehajtása** Spark-környezetben.  |
-|<a0//3/-| Scala | Hajtson végre **egy Scala-lekérdezést** a Spark-környezetben.  |  
+|(pyspark)| Python | **Python-lekérdezés végrehajtása** Spark-környezetben.  |
+|<a0//3/-| Scala | Hajtson végre **egy Scala-lekérdezést** a Spark-környezeten.  |  
 |©sql| SparkSQL | **SparkSQL-lekérdezés végrehajtása** a Spark-környezeten.  |
-|<a0/3/*csharp<a1/ | .NET a Spark C-hez # | **.NET-lekérdezés végrehajtása Spark C#-lekérdezéshez** a Spark-környezetben. |
+|<a0/*csharp<a1//3 | .NET a Spark C-hez # | Spark **C#-lekérdezés végrehajtása** Spark-környezetben. |
 
-Az alábbi képen egy példa látható arra, hogyan írhat PySpark-lekérdezést a **spark(pyspark** magic) paranccsal vagy egy SparkSQL-lekérdezéssel a **Spark(Scala)** **jegyzetfüzetben** található .sql magic paranccsal. Figyelje meg, hogy a notebook elsődleges nyelve pySpark.
+Az alábbi képen egy példa látható arra, hogyan írhat PySpark-lekérdezést **a spark(pyspark** magic) paranccsal vagy egy SparkSQL-lekérdezéssel a **Spark(Scala)** **jegyzetfüzetben** található .sql magic paranccsal. Figyelje meg, hogy a jegyzetfüzet elsődleges nyelve pySpark.
 
    ![Synapse Spark magic parancsok](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
 ### <a name="use-temp-tables-to-reference-data-across-languages&quot;></a>Ideiglenes táblák használata adatok különböző nyelveken való hivatkozására
 
-Nem hivatkozhat adatokra vagy változókra közvetlenül különböző nyelveken egy Synapse Studio jegyzetfüzetben. A Sparkban az ideiglenes táblára több nyelven lehet hivatkozni. Az alábbi példa egy DataFrame beolvassát és egy Spark ideiglenes táblát használ `Scala` `PySpark` `SparkSQL` áthidaló megoldásként.
+Nem hivatkozhat adatokra vagy változókra közvetlenül különböző nyelveken egy Synapse Studio jegyzetfüzetben. A Sparkban az ideiglenes táblára több nyelven lehet hivatkozni. Az alábbi példa bemutatja, hogyan olvashatja be a DataFrame-et a-ban, és hogyan adhatja meg áthidaló megoldásként a Spark ideiglenes `Scala` `PySpark` `SparkSQL` tábláját.
 
 1. Az 1. cellában olvasson be egy DataFrame-et egy SQL-készlet összekötőből a Scala használatával, és hozzon létre egy ideiglenes táblát.
 
@@ -139,9 +139,9 @@ Nem hivatkozhat adatokra vagy változókra közvetlenül különböző nyelveken
 
 ### <a name="ide-style-intellisense"></a>IDE-stílusú IntelliSense
 
-Azure Synapse Studio-jegyzetfüzetek integrálva vannak a Monaco szerkesztővel, hogy IDE-stílusú IntelliSense-t vigyenek a cellaszerkesztőbe. A szintaxiskiemelő, a hibajelölő és az automatikus kódkiegegítések segítenek a kód írásában és a problémák gyorsabb azonosításában.
+Azure Synapse Studio-jegyzetfüzetek integrálva vannak a Monaco szerkesztővel, hogy IDE-stílusú IntelliSense-t hozzanak a cellaszerkesztőbe. A szintaxiskiemelő, a hibajelölő és az automatikus kódkiegegítések segítenek a kód írásában és a problémák gyorsabb azonosításában.
 
-Az IntelliSense funkciói különböző szintű érettségi szinten vannak a különböző nyelveken. A támogatott lehetőségeket az alábbi táblázatban láthatja.
+Az IntelliSense funkciói különböző szintű érettségi szinten vannak a különböző nyelvek esetében. A támogatott lehetőségeket az alábbi táblázatban láthatja.
 
 |Nyelvek| Szintaxiskiemelő | Szintaktikai hibajelölő  | Szintaxiskód-kiegészítés | Változókód-kiegészítés| Rendszerfunkció kód befejezése| Felhasználói függvény kód befejezése| Intelligens behúzás | Kódátcsatolás|
 |--|--|--|--|--|--|--|--|--|
@@ -154,9 +154,9 @@ Az IntelliSense funkciói különböző szintű érettségi szinten vannak a kü
 
 ### <a name="code-snippets"></a>Kódtöredékek
 
-A Azure Synapse Studio-jegyzetfüzetek olyan kódrészleteket biztosítanak, amelyek megkönnyítik a gyakori kódminták begéplét, például a Spark-munkamenet konfigurálását, az adatok Spark DataFrame-ként való beolvasását vagy a matplotlib-diagramok rajzolását stb.
+A Azure Synapse Studio-jegyzetfüzetek olyan kódrészleteket biztosítanak, amelyek megkönnyítik a gyakori kódminták (például a Spark-munkamenet konfigurálása, az adatok Spark DataFrame-ként való olvasása vagy a matplotlib-diagramok rajzolása stb.) beolvasását.
 
-A kódrészletek az [IntelliSense-ban](#ide-style-intellisense) más javaslatokkal együtt jelennek meg. A kódrészletek tartalma igazodik a kódcella nyelvhez. Az elérhető kódrészletek a **Kódrészlet** beírásával jelennek meg, vagy bármely kulcsszó megjelenik a kódrészlet címében a kódcellaszerkesztőben. Ha például begépelte **az read** (olvasás) szöveget, láthatja a különböző adatforrások adatait beolvasó kódrészletek listáját.
+A kódrészletek az [IntelliSense-ban](#ide-style-intellisense) más javaslatokkal együtt jelennek meg. A kódrészletek tartalma igazodik a kódcella nyelvhez. Az elérhető kódrészletek a **Kódrészlet** beírásával jelennek meg, vagy bármely kulcsszó megjelenik a kódrészlet címében a kódcellaszerkesztőben. Ha például begépeli **az read** (olvasás) szöveget, láthatja a különböző adatforrások adatainak beolvassához szükséges kódrészletek listáját.
 
 ![Synapse-kódrészletek](./media/apache-spark-development-using-notebooks/synapse-code-snippets.gif#lightbox)
 
@@ -166,11 +166,11 @@ A kódrészletek az [IntelliSense-ban](#ide-style-intellisense) más javaslatokk
 
 # <a name="classical-notebook"></a>[Klasszikus jegyzetfüzet](#tab/classical)
 
-A szövegcellák eszköztárában található formázási gombokkal gyakori Markdown-műveleteket is lehet tenni. Tartalmazza a félkövér formázást, a szöveg dőlt formázását, kódrészletek beszúrása, rendezetlen lista beszúrása, rendezett lista beszúrása és kép beszúrása AZ URL-címből.
+A szövegcellák eszköztár formázási gombjaival gyakori Markdown-műveleteket is végre lehet majd tudni. Ez magában foglalja a félkövér szöveget, dőlt formázást, kódrészletek beszúrása, rendezetlen lista beszúrása, rendezett lista beszúrása és kép beszúrása URL-címből.
 
   ![Synapse szöveges cella eszköztára](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
 
-# <a name="preview-notebook"></a>[Jegyzetfüzet előnézete](#tab/preview)
+# <a name="preview-notebook"></a>[Előzetes verziójú jegyzetfüzet](#tab/preview)
 
 A Formázás gomb eszköztára még nem érhető el az előnézeti jegyzetfüzethez. 
 
@@ -180,12 +180,12 @@ A Formázás gomb eszköztára még nem érhető el az előnézeti jegyzetfüzet
 
 # <a name="classical-notebook"></a>[Klasszikus jegyzetfüzet](#tab/classical)
 
-A legutóbbi **cellaművelet** visszavonásához kattintson a visszavonás gombra, vagy nyomja le a **Ctrl+Z** billentyűkombinációt. Mostantól visszavonhatja a legutóbbi 20 cella-előzményműveletet. 
+A legutóbbi **cellaművelet** visszavonásához kattintson a visszavonás gombra, vagy nyomja le a **Ctrl+Z** billentyűkombinációt. Mostantól visszavonhatja a legutóbbi 20 cellaműveletet. 
 
    ![Synapse-cellák visszavonása](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
-# <a name="preview-notebook"></a>[Jegyzetfüzet előnézete](#tab/preview)
+# <a name="preview-notebook"></a>[Előzetes verziójú jegyzetfüzet](#tab/preview)
 
-A Cella visszavonása művelet még nem érhető el az előzetes verziójú jegyzetfüzethez. 
+A Cella visszavonása művelet még nem érhető el az előnézeti jegyzetfüzetben. 
 
 ---
 
@@ -193,13 +193,13 @@ A Cella visszavonása művelet még nem érhető el az előzetes verziójú jegy
 
 # <a name="classical-notebook"></a>[Klasszikus jegyzetfüzet](#tab/classical)
 
-Kattintson a három pontra (...) a jobb oldalon lévő többi cellaművelet menüjének eléréséhez. Ezután válassza **a Cella áthelyezése felfelé** vagy **a Cella** áthelyezése lefelé lehetőséget az aktuális cella áthelyezéshez. 
+Kattintson a három pontra (...) a jobb oldalon található többi cellaművelet menüjének eléréséhez. Ezután válassza **a Cella áthelyezése felfelé** vagy **a Cella** áthelyezése lefelé lehetőséget az aktuális cella áthelyezéshez. 
 
-Parancs módban [billentyűparancsokat is használhat.](#shortcut-keys-under-command-mode) Nyomja **le a Ctrl+Alt+↓** billentyűkombinációt az aktuális cella felfelé mozgatásával. Nyomja **le a Ctrl+Alt+↓** billentyűkombinációt az aktuális cella lefelé mozgatásával.
+A parancs módban [billentyűparancsokat is használhat.](#shortcut-keys-under-command-mode) Az **aktuális cella felfelé mozgatása a Ctrl+Alt+↓** billentyűkombinációval. Nyomja **le a Ctrl+Alt+↓** billentyűkombinációt az aktuális cella lejjebb mozgatásával.
 
    ![cella áthelyezése](./media/apache-spark-development-using-notebooks/synapse-move-cells.png)
 
-# <a name="preview-notebook"></a>[Előzetes verziójú jegyzetfüzet](#tab/preview)
+# <a name="preview-notebook"></a>[Jegyzetfüzet előnézete](#tab/preview)
 
 Kattintson egy cella bal oldalára, és húzza a kívánt helyre. 
     ![Cellák áthelyezése a Synapse-be](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-drag-drop-cell.gif)
@@ -210,17 +210,17 @@ Kattintson egy cella bal oldalára, és húzza a kívánt helyre.
 
 # <a name="classical-notebook"></a>[Klasszikus jegyzetfüzet](#tab/classical)
 
-Cella törléséhez kattintson a három pontra (...) a jobb oldalon található másik cellaműveletek menüjének eléréséhez, majd válassza a **Cella törlése lehetőséget.** 
+Cella törléséhez kattintson a három pontra (...) a jobb távoli cellaműveletek másik menüjének eléréséhez, majd válassza a **Cella törlése lehetőséget.** 
 
-Parancs módban [billentyűparancsokat is használhat.](#shortcut-keys-under-command-mode) Nyomja le **a D,D** billentyűt az aktuális cella törléséhez.
+A parancs módban [billentyűparancsokat is használhat.](#shortcut-keys-under-command-mode) Az aktuális cella törléséhez nyomja le a **D,D** billentyűt.
   
    ![cella törlése](./media/apache-spark-development-using-notebooks/synapse-delete-cell.png)
 
-# <a name="preview-notebook"></a>[Előzetes verziójú jegyzetfüzet](#tab/preview)
+# <a name="preview-notebook"></a>[Jegyzetfüzet előnézete](#tab/preview)
 
-Cella törléséhez kattintson a cella jobb oldali törlés gombjára. 
+Egy cella törléséhez kattintson a cella jobb oldali törlés gombjára. 
 
-A parancs módban [billentyűparancsokat is használhat.](#shortcut-keys-under-command-mode) Az aktuális cella törléséhez nyomja le a **Shift+D** billentyűkombinációt. 
+Parancs módban [billentyűparancsokat is használhat.](#shortcut-keys-under-command-mode) Nyomja **le a Shift+D** billentyűkombinációt az aktuális cella törléséhez. 
 
    ![azure-notebook-delete-a-cell](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-delete-cell.png)
 
@@ -234,7 +234,7 @@ Az aktuális cella alján található nyíl gombra kattintva csukja össze. A ki
 
    ![cellabemenet összecsukása](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-input.gif)
 
-# <a name="preview-notebook"></a>[Jegyzetfüzet előnézete](#tab/preview)
+# <a name="preview-notebook"></a>[Előzetes verziójú jegyzetfüzet](#tab/preview)
 
 Válassza a **További parancsok** három pont (...) lehetőséget  a cella eszköztárán, és a bemenettel csukja össze az aktuális cella bemenetét. A kibontásához jelölje ki a **rejtett bemenetet,** amíg a cella össze van csukva.
 
@@ -246,13 +246,13 @@ Válassza a **További parancsok** három pont (...) lehetőséget  a cella eszk
 
 # <a name="classical-notebook"></a>[Klasszikus jegyzetfüzet](#tab/classical)
 
-Kattintson **az aktuális cella kimenetének** bal felső sarkában található Kimenet összecsukása gombra az összecsukáshoz. A kibontásához válassza a **Cellakimenet** megjelenítése, amíg a cella kimenete össze van csukva.
+Kattintson a **kimenet összecsukása** gombra az aktuális cella kimenetének bal felső sarkában az összecsukáshoz. A kibontásához jelölje ki a **Cellakimenet** megjelenítése a cellakimenet összecsukása közben lehetőséget.
 
-   ![cellakimenet összecsukása](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
+   ![cella-kimenet összecsukása](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
 
-# <a name="preview-notebook"></a>[Jegyzetfüzet előnézete](#tab/preview)
+# <a name="preview-notebook"></a>[Előzetes verziójú jegyzetfüzet](#tab/preview)
 
-Válassza a **További parancsok** három pont (...) lehetőséget  a cella eszköztárán, és a kimenettel csukja össze az aktuális cella kimenetét. A kibontásához válassza ugyanazt a gombot, amíg a cella kimenete el van rejtve.
+A cella **eszköztárán** válassza a További parancsok három  pont (...) lehetőséget, majd a kimenetet az aktuális cella kimenetének összecsukása érdekében. A kibontásához válassza ugyanazt a gombot, amíg a cella kimenete rejtett.
 
    ![azure-notebook-collapse-cell-output](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-output.gif)
 
@@ -267,7 +267,7 @@ A jegyzetfüzet kódcellái egyenként vagy egyszerre is futtathatók. Az egyes 
 
 A kódot többféleképpen is futtathat egy cellában.
 
-1. Vigye a kurzort a futtatni kívánt cellára, és kattintson a **Cella futtatása gombra,** vagy nyomja le a **Ctrl+Enter billentyűkombinációt.**
+1. Vigye a kurzort a futtatni kívánt cellára, és kattintson a Cella futtatása **gombra,** vagy nyomja le **a Ctrl+Enter billentyűkombinációt.**
 
    ![run-cell-1](./media/apache-spark-development-using-notebooks/synapse-run-cell.png)
   
@@ -285,11 +285,11 @@ Kattintson az **Összes futtatása gombra** az aktuális jegyzetfüzet összes c
 
 # <a name="classical-notebook"></a>[Klasszikus jegyzetfüzet](#tab/classical)
 
-A jobb oldalon található másik cellaműveletek menüjének eléréséhez kattintson a három pontra (**...**). Ezután válassza **a Fenti Cellák futtatása lehetőséget** az aktuális fölötti összes cella egymás után való futtatásához. Válassza **az alábbi Cellák futtatása lehetőséget** az aktuális alatti cellák egymás után való futtatásához.
+A jobb oldalon található másik cellaműveletek menüjének eléréséhez válassza a három pont **(... )** lehetőséget. Ezután válassza **a Fenti Cellák futtatása lehetőséget** az aktuális fölötti összes cella egymás után való futtatásához. Válassza **az alábbi Cellák futtatása lehetőséget** az aktuális alatti cellák egymás után való futtatásához.
 
    ![run-cells-above-or-below](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
-# <a name="preview-notebook"></a>[Előzetes verziójú jegyzetfüzet](#tab/preview)
+# <a name="preview-notebook"></a>[Jegyzetfüzet előnézete](#tab/preview)
 
 Bontsa ki  az Összes futtatása  gomb legördülő listáját, majd válassza a Fenti Cellák futtatása lehetőséget az aktuális fölötti cellák egymás után való futtatásához. Válassza **az alábbi Cellák futtatása lehetőséget** az aktuális alatti cellák egymás után való futtatásához.
 
@@ -303,7 +303,7 @@ Bontsa ki  az Összes futtatása  gomb legördülő listáját, majd válassza a
 Az Összes **visszavonása gombra** kattintva megszakíthatja az üzenetsorban várakozó cellákat vagy cellákat. 
    ![összes cella lemondása](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
 
-# <a name="preview-notebook"></a>[Jegyzetfüzet előnézete](#tab/preview)
+# <a name="preview-notebook"></a>[Előzetes verziójú jegyzetfüzet](#tab/preview)
 
 Az Összes **visszavonása gombra** kattintva megszakíthatja az üzenetsorban várakozó cellákat vagy cellákat. 
    ![azure-notebook-cancel-all-cells](./media/apache-spark-development-using-notebooks/synapse-aznb-cancel-all.png) 
@@ -318,29 +318,45 @@ Az Összes **visszavonása gombra** kattintva megszakíthatja az üzenetsorban v
 
 Nem támogatott.
 
-# <a name="preview-notebook"></a>[Jegyzetfüzet előnézete](#tab/preview)
+# <a name="preview-notebook"></a>[Előzetes verziójú jegyzetfüzet](#tab/preview)
 
-A magic ```%run <notebook path>``` paranccsal hivatkozhat egy másik jegyzetfüzetre az aktuális jegyzetfüzet környezetében. A referencia-jegyzetfüzetben meghatározott összes változó elérhető az aktuális jegyzetfüzetben. ```%run``` A magic parancs támogatja a beágyazott hívásokat, de nem támogatja a rekurzív hívásokat. Kivételt fog kapni, ha az utasítás mélysége nagyobb ötnél. ```%run``` A parancs jelenleg csak a jegyzetfüzet elérési útjának paraméterként való átutasítását támogatja. 
+A magic ```%run <notebook path>``` paranccsal hivatkozhat egy másik jegyzetfüzetre az aktuális jegyzetfüzet környezetében. A referencia-jegyzetfüzetben meghatározott összes változó elérhető az aktuális jegyzetfüzetben. ```%run``` A magic parancs támogatja a beágyazott hívásokat, de a rekurzív hívásokat nem. Kivételt fog kapni, ha az utasítás mélysége nagyobb ötnél. ```%run``` A parancs jelenleg csak a jegyzetfüzet elérési útjának paraméterként való áthaladását támogatja. 
 
 Példa: ``` %run /path/notebookA ```.
 
 > [!NOTE]
-> A Jegyzetfüzet-hivatkozás nem támogatott a Synapse-folyamatban.
+> A jegyzetfüzet-referenciák nem támogatottak a Synapse-folyamatban.
 >
 >
 
 ---
 
+### <a name="variable-explorer"></a>Változókezelő
+
+# <a name="classical-notebook"></a>[Klasszikus jegyzetfüzet](#tab/classical)
+
+Nem támogatott.
+
+# <a name="preview-notebook"></a>[Jegyzetfüzet előnézete](#tab/preview)
+
+A Synapse Notebook beépített változókezelőt biztosít, amely a PySpark- (Python-) cellák aktuális Spark-munkamenetében lévő változók nevének, típusának, hosszának és értékének listáját tartalmazza. A kódcellákban definiált változók automatikusan megjelennek. Az egyes oszlopfejlécekre kattintva rendezheti a tábla változóit.
+
+A notebook **parancssávjában található Változók** gombra kattintva megnyithatja vagy elrejtheti a változókezelőt.
+
+![azure-notebook-variable-explorer](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-variable-explorer.png)
+
+
+---
 
 ### <a name="cell-status-indicator"></a>Cella állapotjelzője
 
-A cella végrehajtási állapota lépésről lépésre látható a cella alatt, így látható az aktuális folyamat. A cella futtatásának befejezése után megjelenik egy végrehajtási összegzés, amely a teljes időtartamot és a záró időt mutatja, és ott lesz megőrizve későbbi használatra.
+A cella végrehajtási állapota lépésről lépésre látható a cella alatt, így látható az aktuális folyamat. Ha a cella futtatása befejeződött, megjelenik egy végrehajtási összegzés, amely a teljes időtartamot és a záró időt mutatja, és későbbi használatra ott lesz megőrizve.
 
-![cellaállapot](./media/apache-spark-development-using-notebooks/synapse-cell-status.png)
+![cella állapota](./media/apache-spark-development-using-notebooks/synapse-cell-status.png)
 
 ### <a name="spark-progress-indicator"></a>Spark-folyamatjelző
 
-Azure Synapse Studio-jegyzetfüzet tisztán Spark-alapú. A kódcellák végrehajtása távolról, a Apache Spark a kiszolgáló nélküli kiszolgálón. A Spark-feladat folyamatjelzője egy valós idejű folyamatjelzővel jelenik meg, amely segít megérteni a feladat végrehajtásának állapotát.
+Azure Synapse Studio-jegyzetfüzet tisztán Spark-alapú. A kódcellák végrehajtása távolról, a Apache Spark a készleten. A Spark-feladat folyamatjelzője egy valós idejű folyamatjelzővel jelenik meg, amely segít megérteni a feladat végrehajtási állapotát.
 Az egyes feladatok vagy fázisok tevékenységszáma segít azonosítani a Spark-feladat párhuzamos szintjét. Egy adott feladat (vagy fázis) Spark felhasználói felületének mélyebb részletezéséhez kattintson a feladat (vagy fázis) nevére mutató hivatkozásra.
 
 
@@ -348,7 +364,7 @@ Az egyes feladatok vagy fázisok tevékenységszáma segít azonosítani a Spark
 
 ### <a name="spark-session-config"></a>Spark-munkamenet konfigurációja
 
-Az aktuális Spark-munkamenetnek a Munkamenet konfigurálása részen adhatja meg az időtúllépés időtartamát, számát és **méretét.** Indítsa újra a Spark-munkamenetet, hogy a konfigurációs módosítások érvénybe lépnek. Az összes gyorsítótárazott notebookváltozó törlődik.
+Az időtúllépés időtartamát, számát és a jelenlegi Spark-munkamenetnek a munkamenet konfigurálásában adható végrehajtók méretét **adhatja meg.** A Spark-munkamenet újraindítása a konfigurációs módosítások érvénybe lép. Az összes gyorsítótárazott notebookváltozó törlődik.
 
 [![munkamenet-kezelés](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png#lightbox)
 
@@ -376,7 +392,7 @@ A spark-munkamenet beállításait egy **magic paranccsal is megadhatja .configu
 
 ## <a name="bring-data-to-a-notebook"></a>Adatok behozása jegyzetfüzetbe
 
-Az alábbi kódmintákban Azure Blob Storage, az Azure Data Lake Store Gen2-ről és az SQL-készletből is betölthet adatokat.
+Az adatokat betöltheti a Azure Blob Storage, az Azure Data Lake Store Gen 2-ről és az SQL-készletből az alábbi kódmintákban látható módon.
 
 ### <a name="read-a-csv-from-azure-data-lake-store-gen2-as-a-spark-dataframe"></a>CSV-fájl olvasása az Azure Data Lake Store Gen2-ről Spark DataFrame-ként
 
@@ -423,15 +439,15 @@ df = spark.read.option("header", "true") \
 
 ### <a name="read-data-from-the-primary-storage-account"></a>Adatok olvasása az elsődleges tárfiókból
 
-Az elsődleges tárfiókban közvetlenül hozzáférhet az adatokhoz. A titkos kulcsokat nem kell megszabadni. A Adatkezelő kattintson a jobb gombbal egy fájlra, és válassza az **Új** jegyzetfüzet lehetőséget egy új jegyzetfüzet automatikus generált adatkivonattal való megnyitásához.
+Az elsődleges tárfiókban közvetlenül is elérheti az adatokat. A titkos kulcsokat nem kell megszabadni. A Adatkezelő kattintson a jobb gombbal egy fájlra, és válassza az **Új jegyzetfüzet** lehetőséget egy automatikusan létrehozott adatnyerővel és új jegyzetfüzettel.
 
-![adatokból cellákba](./media/apache-spark-development-using-notebooks/synapse-data-to-cell.png)
+![adat–cella](./media/apache-spark-development-using-notebooks/synapse-data-to-cell.png)
 
 ## <a name="save-notebooks"></a>Jegyzetfüzetek mentése
 
 A munkaterületen egyetlen jegyzetfüzetet vagy az összes jegyzetfüzetet mentheti.
 
-1. Ha egyetlen jegyzetfüzeten szeretne módosításokat menteni, kattintson a Notebook parancssáv **Közzététel** gombjára.
+1. Az egyes jegyzetfüzetek módosításainak mentéséhez válassza a **Jegyzetfüzet** parancssáv közzététel gombját.
 
    ![publish-notebook](./media/apache-spark-development-using-notebooks/synapse-publish-notebook.png)
 
@@ -455,15 +471,15 @@ A jól ismert Jupyter Magic-parancsokat használhatja Azure Synapse Studio-jegyz
 
 Elérhető sori varázsok: [%lsmagic,](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic) [%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
 
-Elérhető cellacsomólyák: [](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile) [](#use-multiple-languages) [](#use-multiple-languages) [](#use-multiple-languages) [](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)[](#spark-session-config-magic-command) [](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture) [](#use-multiple-languages)<a0/*,* ,*,* *.* [](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)
+Rendelkezésre álló cellatágak: [©time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [©timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit) [](#use-multiple-languages), [](#use-multiple-languages) [](#use-multiple-languages) [<a0/201/2012](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture)_*,* és <a3/2017/2012<a3/201/455/855/8888/8 [](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile) [](#use-multiple-languages)[](#spark-session-config-magic-command)
 
 
 
-# <a name="preview-notebook"></a>[Előzetes verziójú jegyzetfüzet](#tab/preview)
+# <a name="preview-notebook"></a>[Jegyzetfüzet előnézete](#tab/preview)
 
 Elérhető sori varázsok: [%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%history](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history), [%run](#notebook-reference), [%load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
 
-Rendelkezésre álló cellaredodálok: [](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture) [](#use-multiple-languages) [](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile) [](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit) [](#spark-session-config-magic-command) [<a0/*,*](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)és <a3/2007555555555555 . [](#use-multiple-languages) [](#use-multiple-languages) [](#use-multiple-languages) [](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-html)
+Elérhető cellatágak: [](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit) [](#use-multiple-languages) [](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile) [](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture) [<a0/201/2012](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)_** [](#use-multiple-languages)és _csharp _csharp , [](#use-multiple-languages) [](#spark-session-config-magic-command) [<a3/2007/2012_7555_](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-html) [](#use-multiple-languages)
 
 --- 
 
@@ -471,7 +487,7 @@ Rendelkezésre álló cellaredodálok: [](https://ipython.readthedocs.io/en/stab
 
 ### <a name="add-a-notebook-to-a-pipeline"></a>Jegyzetfüzet hozzáadása folyamathoz
 
-A jobb **felső sarokban** található Hozzáadás folyamathoz gombra kattintva adjon hozzá egy jegyzetfüzetet egy meglévő folyamathoz, vagy hozzon létre egy új folyamatot.
+A jobb **felső sarokban található Hozzáadás** folyamathoz gombra kattintva hozzáadhat egy jegyzetfüzetet egy meglévő folyamathoz, vagy létrehozhat egy új folyamatot.
 
 ![Jegyzetfüzet hozzáadása folyamathoz](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
 
@@ -496,7 +512,7 @@ Azure Data Factory a cellaparamétereket, és ezt a cellát alapértelmezettkén
 
 ### <a name="assign-parameters-values-from-a-pipeline"></a>Paraméterértékek hozzárendelése egy folyamatból
 
-Miután létrehozott egy paraméterekkel egy jegyzetfüzetet, végrehajthatja azt egy folyamatból a Jegyzetfüzet Azure Synapse tevékenységgel. Miután hozzáadta a tevékenységet a folyamatvászonhoz, beállíthatja  a paraméterek értékeit a Beállítások lap Alapparaméterek **szakaszában.** 
+Miután létrehozott egy paraméterekkel egy jegyzetfüzetet, végrehajthatja azt egy folyamatból az Azure Synapse Notebook tevékenységgel. Miután hozzáadta a tevékenységet a folyamatvászonhoz, a  Beállítások lap Alapparaméterek szakaszában állíthatja be a paraméterek **értékeit.** 
 
 ![Paraméter hozzárendelése](./media/apache-spark-development-using-notebooks/assign-parameter.png)
 
@@ -506,9 +522,9 @@ Paraméterértékek hozzárendelésekor használhatja a folyamatkifejezés [nyel
 
 ## <a name="shortcut-keys"></a>Billentyűparancsok
 
-A Jupyter Notebookshoz hasonlóan a Azure Synapse Studio-jegyzetfüzetek is rendelkezik modális felhasználói felülettel. A billentyűzet különböző dolgokat tesz attól függően, hogy melyik módban van a notebookcella. Synapse Studio notebookok az alábbi két módot támogatják egy adott kódcellához: parancs mód és szerkesztési mód.
+A Jupyter-notebookokhoz hasonlóan a Azure Synapse Studio-notebookok is modális felhasználói felülettel rendelkezik. A billentyűzet különböző dolgokat tesz attól függően, hogy melyik módban van a notebookcella. Synapse Studio notebookok a következő két módot támogatják egy adott kódcellához: parancsmód és szerkesztési mód.
 
-1. A cella parancsmódban van, ha nincs begépelni való szövegkurzor. Ha egy cella Parancs módban van, a jegyzetfüzetet egészként szerkesztheti, de nem írhatja be az egyes cellákba. A parancsmódot úgy adhatja meg, hogy lenyomja vagy az egérrel kijelöli a cellát `ESC` a szerkesztőterületen kívül.
+1. A cella parancsmódban van, ha nincs begépelni való szövegkurzor. Ha egy cella Parancs módban van, a jegyzetfüzetet teljes egészében szerkesztheti, de nem írhatja be egyes cellákba. A parancsmódot úgy adhatja meg, hogy lenyomja vagy az egérrel kijelöli a cellát `ESC` a szerkesztőterületen kívül.
 
    ![parancsmód](./media/apache-spark-development-using-notebooks/synapse-command-mode-2.png)
 
@@ -522,7 +538,7 @@ A Jupyter Notebookshoz hasonlóan a Azure Synapse Studio-jegyzetfüzetek is rend
 
 Az alábbi billentyűleütés-billentyűparancsokkal könnyebben navigálhat és futtathat kódot Azure Synapse jegyzetfüzetben.
 
-| Művelet |Synapse Studio notebook parancsikonjai  |
+| Művelet |Synapse Studio jegyzetfüzet parancsikonjai  |
 |--|--|
 |Futtassa az aktuális cellát, és válassza az alábbi lehetőséget | Shift+Enter |
 |Futtassa az aktuális cellát, és szúrja be az alábbit | Alt+Enter |
@@ -530,16 +546,16 @@ Az alábbi billentyűleütés-billentyűparancsokkal könnyebben navigálhat és
 |Válassza ki az alábbi cellát| Le |
 |Cella beszúrása fölé| A |
 |Cella beszúrása alá| B |
-|A fenti kijelölt cellák kiterjesztése| Shift+Fel |
+|A fenti kijelölt cellák kiterjesztése| Shift+Up |
 |A kijelölt cellák kiterjesztése alább| Shift+Down|
 |Cella áthelyezése felfelé| Ctrl+Alt+↓ |
 |Cella lejjebb mozgatva| Ctrl+Alt+↓ |
 |Kijelölt cellák törlése| D, D |
 |Váltás szerkesztési módra| Enter |
 
-# <a name="preview-notebook"></a>[Jegyzetfüzet előnézete](#tab/preview)
+# <a name="preview-notebook"></a>[Előzetes verziójú jegyzetfüzet](#tab/preview)
 
-| Művelet |Synapse Studio jegyzetfüzet parancsikonjai  |
+| Művelet |Synapse Studio notebook parancsikonjai  |
 |--|--|
 |Futtassa az aktuális cellát, és válassza az alábbi lehetőséget | Shift+Enter |
 |Futtassa az aktuális cellát, és szúrja be az alábbit | Alt+Enter |
@@ -547,7 +563,7 @@ Az alábbi billentyűleütés-billentyűparancsokkal könnyebben navigálhat és
 |Válassza ki a fenti cellát| Fel |
 |Válassza ki az alábbi cellát| Le |
 |Előző cella kijelölése| K |
-|A következő cella kiválasztása| J |
+|Válassza ki a következő cellát| J |
 |Cella beszúrása fölé| A |
 |Cella beszúrása alá| B |
 |Kijelölt cellák törlése| Shift+D |
@@ -563,13 +579,13 @@ Az alábbi billentyűleütés-billentyűparancsokkal könnyebben navigálhat és
 | Művelet |Synapse Studio jegyzetfüzet parancsikonjai  |
 |--|--|
 |A kurzor mozgatásával felfelé | Fel |
-|A kurzor lefelé mozgatva|Le|
+|A kurzor lejjebb mozgatásával|Le|
 |Visszavonás|Ctrl + Z|
 |Ismétlés|Ctrl + Y|
-|Megjegyzés/Megjegyzés megjegyzésként való megjegyzésként való megszűkülése|Ctrl + /|
-|Szó törlése korábban|Ctrl + Backspace|
+|Megjegyzés/Megjegyzés megjegyzésként való megjegyzése|Ctrl + /|
+|Szó törlése előtte|Ctrl + Backspace|
 |Szó törlése utána|Ctrl + Törlés|
-|Ugrás a cellába indítás|Ctrl + Kezdőlap|
+|Ugrás a cella kezdési cellájára|Ctrl + Kezdőlap|
 |Ugrás a cella végére |Ctrl + End|
 |Ugrás egy szóval balra|Ctrl + Bal|
 |Ugrás egy szóra jobbra|Ctrl + Jobb|

@@ -1,64 +1,65 @@
 ---
-title: Az Azure-ban Update Management üzembe helyezés előtti parancsfájlok és parancsfájl-közzétételi parancsfájlok kezelése
-description: Ez a cikk azt ismerteti, hogyan konfigurálhatja és kezelheti az előzetes parancsfájlokat és a parancsfájlokat a frissítések telepítéséhez.
+title: Szkript előtti és utólagos szkriptek kezelése az Azure-Update Management üzembe helyezéséhez
+description: Ez a cikk bemutatja, hogyan konfigurálhatja és kezelheti a frissítéstelepítések elő- és utószk szkripteket.
 services: automation
 ms.subservice: update-management
 ms.date: 03/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 676e5f03c8d0085a4d041662a80c63d385071919
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 51067095b7ebb33da61908b1424752b481668f5f
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166717"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830807"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Előzetes és utólagos szkriptek kezelése
 
-A szkriptek előtti és utáni parancsfájlokat a rendszer a frissítés központi telepítésének megkezdése előtt (a feladat előtt) és után (feladat után) runbookok az Azure Automation-fiókban. A parancsfájl előtti és a parancsfájl utáni Futtatás az Azure-környezetben nem helyileg történik. Az előzetes parancsfájlok a frissítés központi telepítésének elején futnak. A parancsfájlok futtatása a telepítés végén, illetve a konfigurált újraindítások után történik.
+Az előzetes és utólagos szkriptek olyan runbookok, amelyek a Azure Automation-fiókban a frissítéstelepítés előtt és után (feladat utáni) futtathatók. Az előszk szkriptek és az utólagos szkriptek az Azure-környezetben futnak, nem helyben. Az előszk szkriptek a frissítéstelepítés elején futnak. A parancsfájlok a telepítés végén, illetve a konfigurált újraindítások után futnak.
 
-## <a name="pre-script-and-post-script-requirements"></a>Parancsfájl előtti és parancsfájl utáni követelmények
+## <a name="pre-script-and-post-script-requirements"></a>Szkript előtti és utáni követelmények
 
-Ahhoz, hogy egy runbook előre megírt vagy post-parancsfájlként lehessen használni, importálnia kell az Automation-fiókjába, és [közzé kell tennie a runbook](../manage-runbooks.md#publish-a-runbook).
+Ahhoz, hogy egy runbook szkript előtti vagy utáni szkriptként legyen használva, importálni kell az Automation-fiókjába, és közzé kell tenni a [runbookot.](../manage-runbooks.md#publish-a-runbook)
 
-Jelenleg csak a PowerShell és a Python 2 runbookok használhatók előzetes/post parancsfájlként. Más runbook típusok, mint például a Python 3, a grafikus, a PowerShell-munkafolyamat, a grafikus PowerShell-munkafolyamat jelenleg nem támogatott a Pre/post parancsfájlként.
+Jelenleg csak a PowerShell- és Python 2-runbookok támogatottak előkészítő/utólagos szkriptként. Más runbooktípusok, például a Python 3, a Grafikus, a PowerShell-munkafolyamat és a Grafikus PowerShell-munkafolyamat jelenleg nem támogatottak előkészítő/utólagos parancsfájlként.
 
-## <a name="pre-script-and-post-script-parameters"></a>Parancsfájl előtti és parancsfájl utáni paraméterek
+## <a name="pre-script-and-post-script-parameters"></a>Szkript előtti és utáni paraméterek
 
-A parancsfájlok előtti és utáni parancsfájlok konfigurálásakor a paramétereket ugyanúgy adhatja át, mint a runbook ütemezését. A paraméterek meghatározása a frissítés központi telepítésének időpontjában történik. A parancsfájlok előtti és utáni parancsfájlok a következő típusokat támogatják:
+Az előszk szkriptek és az utólagos szkriptek konfigurálásakor a runbook ütemezéséhez hasonló paramétereket is átadhat. A paraméterek a frissítéstelepítés létrehozásakor vannak meghatározva. Az előszk szkriptek és az utólagos szkriptek a következő típusokat támogatják:
 
-* char
-* byte
-* int
-* hosszú
-* decimális
-* egyetlen
-* duplán
-* DateTime
-* karakterlánc
+* [char]
+* [bájt]
+* [int]
+* [long]
+* [decimális]
+* [single]
+* [double]
+* [DateTime] ([Dátum/idő])
+* [sztring]
 
-A parancsfájl előtti és a parancsfájl utáni runbook paraméterek nem támogatják a logikai, az objektum vagy a tömb típusát. Ezek az értékek miatt a runbookok sikertelen lesz. 
+A szkript előtti és utáni runbook-paraméterek nem támogatják a logikai, objektum- vagy tömbtípusokat. Ezek az értékek a runbookok meghiúsulását okják. 
 
-Ha más típusú objektumra van szüksége, a runbook saját logikával elvégezheti egy másik típusra.
+Ha egy másik objektumtípusra van szüksége, a forgatókönyvben saját logikáját használhatja egy másik típusra.
 
-A standard runbook paraméterek mellett a `SoftwareUpdateConfigurationRunContext` paraméter (JSON-karakterlánc típus) is meg van megadva. Ha a paramétert az előkészítő parancsfájlban vagy a parancsfájlt követő runbook adja meg, a rendszer automatikusan továbbítja azt a frissítés központi telepítésében. A paraméter a frissítés központi telepítésére vonatkozó információkat tartalmaz, amely a [SOFTWAREUPDATECONFIGURATIONS API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration)által visszaadott információk részhalmaza. Az alábbi szakaszban megadhatja a társított tulajdonságokat.
+A normál runbook-paraméterek mellett a paraméter `SoftwareUpdateConfigurationRunContext` (típus: JSON-sztring) is meg van adva. Ha a paramétert a szkript előtti vagy a szkript utáni runbookban definiálja, azt a frissítéstelepítés automatikusan továbbadja. A paraméter a frissítéstelepítéssel kapcsolatos információkat tartalmaz, amely a [SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration)által visszaadott információk részkészlete. Az alábbi szakaszok határozzák meg a társított tulajdonságokat.
 
-### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext tulajdonságai
+### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext tulajdonságok
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
-|SoftwareUpdateConfigurationName     | A szoftverfrissítés konfigurációjának neve.        |
-|SoftwareUpdateConfigurationRunId     | A Futtatás egyedi azonosítója.        |
-|SoftwareUpdateConfigurationSettings     | A szoftverfrissítés konfigurációjával kapcsolatos tulajdonságok gyűjteménye.         |
-|SoftwareUpdateConfigurationSettings. operatingSystem     | A frissítés központi telepítésére irányuló operációs rendszerek.         |
-|SoftwareUpdateConfigurationSettings. időtartam     | A frissítés központi telepítésének maximális időtartama ( `PT[n]H[n]M[n]S` ISO8601), más néven a karbantartási időszak.          |
-|SoftwareUpdateConfigurationSettings. Windows     | Windows rendszerű számítógépekhez kapcsolódó tulajdonságok gyűjteménye.         |
-|SoftwareUpdateConfigurationSettings. Windows. excludedKbNumbers     | A frissítés központi telepítésből kizárt Tudásbázis listája.        |
-|SoftwareUpdateConfigurationSettings. Windows. includedUpdateClassifications     | A frissítés telepítéséhez kiválasztott besorolások.        |
-|SoftwareUpdateConfigurationSettings. Windows. rebootSetting     | Újraindítási beállítások a frissítés központi telepítéséhez.        |
-|azureVirtualMachines     | Az Azure-beli virtuális gépek ResourceId: listája a frissítés központi telepítésében.        |
-|nonAzureComputerNames|A nem Azure-beli számítógépek teljes tartománynevének listája a frissítés központi telepítésében.|
+|SoftwareUpdateConfigurationName     | A szoftverfrissítési konfiguráció neve.        |
+|SoftwareUpdateConfigurationRunId     | A futtatás egyedi azonosítója.        |
+|SoftwareUpdateConfigurationSettings     | A szoftverfrissítési konfigurációhoz kapcsolódó tulajdonságok gyűjteménye.         |
+|SoftwareUpdateConfigurationSettings.operatingSystem     | A frissítéstelepítéshez megcélzott operációs rendszerek.         |
+|SoftwareUpdateConfigurationSettings.duration     | A frissítéstelepítés maximális időtartama az `PT[n]H[n]M[n]S` ISO8601 szerint fut; ezt karbantartási időszaknak is nevezik.          |
+|SoftwareUpdateConfigurationSettings.Windows     | Windows rendszerű számítógépekhez kapcsolódó tulajdonságok gyűjteménye.         |
+|SoftwareUpdateConfigurationSettings.Windows.excludedKbNumbers     | A frissítéstelepítésből kizárt kB-k listája.        |
+|SoftwareUpdateConfigurationSettings.Windows.includedUpdateClassifications     | A frissítéstelepítéshez kiválasztott frissítési besorolások.        |
+|SoftwareUpdateConfigurationSettings.Windows.rebootSetting     | A frissítéstelepítés újraindítási beállításai.        |
+|azureVirtualMachines     | A frissítéstelepítésben található Azure-beli virtuális gépek erőforrás-azonosítóinak listája.        |
+|nonAzureComputerNames (nemAzureComputerNames)|A frissítéstelepítésben található nem Azure-beli számítógépek teljes tartományának listája.|
 
-Az alábbi példa egy, a **SoftwareUpdateConfigurationRunContext** paraméternek átadott JSON-karakterlánc:
+Az alábbi példa egy JSON-sztring, amely a **SoftwareUpdateConfigurationRunContext** paraméternek van átadva:
 
 ```json
 "SoftwareUpdateConfigurationRunContext": {
@@ -88,38 +89,38 @@ Az alábbi példa egy, a **SoftwareUpdateConfigurationRunContext** paraméternek
   }
 ```
 
-Az összes tulajdonsággal rendelkező teljes példa a következő helyen található: a [szoftverfrissítés konfigurációjának beolvasása név alapján](/rest/api/automation/softwareupdateconfigurations/getbyname#examples).
+Az összes tulajdonságra vonatkozó teljes példa a következő: [Szoftverfrissítési konfiguráció lekért neve alapján.](/rest/api/automation/softwareupdateconfigurations/getbyname#examples)
 
 > [!NOTE]
-> Az `SoftwareUpdateConfigurationRunContext` objektum tartalmazhat duplikált bejegyzéseket a gépekhez. Ennek hatására előfordulhat, hogy az előparancsfájlok és a szkriptek többször is futhatnak ugyanazon a gépen. Ennek a viselkedésnek a megkerülő megoldásához `Sort-Object -Unique` a használatával válassza ki a csak egyedi virtuális gépek nevét.
+> A `SoftwareUpdateConfigurationRunContext` objektum ismétlődő bejegyzéseket tartalmazhat a gépekhez. Ez azt okozhatja, hogy az előszk szkriptek és az utólagos szkriptek többször is futnak ugyanazon a gépen. Ennek a viselkedésnek a kivédheti a használatát, `Sort-Object -Unique` ha csak egyedi virtuálisgép-neveket választ ki.
 
-## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>Egy üzembe helyezés előtti vagy utáni parancsfájl használata
+## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>Szkript előtti vagy utólagos szkript használata egy üzemelő példányban
 
-Ha egy frissítés előtti vagy utáni parancsfájlt szeretne használni egy frissítési telepítésben, először hozzon létre egy frissítés központi telepítését. Válassza a **Pre-Scripts + post-Scripts** elemet. Ez a művelet megnyitja a **Select pre-Scripts + post-Scripts** oldalt.
+Ha szkript előtti vagy utólagos szkriptet használ egy frissítéstelepítésben, először hozzon létre egy frissítéstelepítést. Válassza **a Pre-scripts + Post-Scripts lehetőséget.** Ez a művelet megnyitja a **Select Pre-scripts + Post-scripts** lapot.
 
-![Parancsfájlok kiválasztása](./media/pre-post-scripts/select-scripts.png)
+![Szkriptek kiválasztása](./media/pre-post-scripts/select-scripts.png)
 
-Válassza ki a használni kívánt parancsfájlt. Ebben a példában a **UpdateManagement-TurnOnVms** runbook használjuk. Amikor kiválasztja a runbook, megnyílik a **parancsfájl konfigurálása** oldal. Válassza az **előzetes parancsfájl** lehetőséget, majd kattintson **az OK gombra**.
+Válassza ki a használni kívánt szkriptet. Ebben a példában az **UpdateManagement-TurnOnVms** runbookot használjuk. Amikor kiválasztja a runbookot, megnyílik **a Parancsfájl konfigurálása** lap. Válassza **a Pre-Script (Szkript előtti)** lehetőséget, majd az **OK gombot.**
 
-Ismételje meg ezt a folyamatot a **UpdateManagement-TurnOffVms** szkriptnél. Ha azonban a **parancsfájl típusát** választja, válassza a **post-script** elemet.
+Ismételje meg ezt a folyamatot az **UpdateManagement-TurnOffVms szkripttel** is. Ha azonban a Parancsfájl típust **választja,** válassza a **Szkript utáni lehetőséget.**
 
-A **kijelölt elemek** szakasz most már a kijelölt parancsfájlokat is megjeleníti. Az egyik egy előzetes parancsfájl, a másik pedig egy parancsfájl utáni:
+A **Kijelölt elemek szakaszban** most már mindkét szkript ki van jelölve. Az egyik egy szkript előtti, a másik pedig egy utólagos:
 
 ![Kijelölt elemek](./media/pre-post-scripts/selected-items.png)
 
-Fejezze be a frissítés központi telepítésének konfigurálását.
+Fejezze be a frissítéstelepítés konfigurálását.
 
-A frissítés telepítésének befejezésekor az eredmények megtekintéséhez lépjen a **frissítés központi telepítések** lehetőségre. Amint láthatja, a rendszer a parancsfájl előtti és utáni parancsfájl állapotát is megadja:
+Ha a frissítéstelepítés befejeződött, az  eredmények megtekintéséhez a Frissítéstelepítések használhatja. Amint látható, az állapot a szkript előtti és utáni szkripthez van megsziva:
 
 ![Eredmények frissítése](./media/pre-post-scripts/update-results.png)
 
-A frissítés központi telepítésének kiválasztásával további részleteket láthat a parancsfájlok előtti és utáni parancsfájlokban. A parancsfájl forrására mutató hivatkozás van megadva a Futtatás időpontjában.
+A frissítéstelepítés futtatásának kiválasztásával további részleteket talál az előszk szkriptek és az utólagos szkriptek számára. A parancsprogram forrásának a futtatáskor megadott hivatkozása.
 
-![A telepítés futtatásának eredményei](./media/pre-post-scripts/deployment-run.png)
+![Üzembe helyezési futtatás eredményei](./media/pre-post-scripts/deployment-run.png)
 
-## <a name="stop-a-deployment"></a>Központi telepítés leállítása
+## <a name="stop-a-deployment"></a>Üzembe helyezés leállítása
 
-Ha egy előzetes parancsfájl alapján szeretné leállítani a központi telepítést, kivételt kell [eldobnia](../automation-runbook-execution.md#throw) . Ha nem, a telepítés és a parancsfájl utáni Futtatás továbbra is futni fog. A következő kódrészlet bemutatja, hogyan lehet kivételt kidobni a PowerShell használatával.
+Ha egy szkript előtti szkript alapján szeretné leállítani az üzembe helyezést, [kivételt kell kiállítania.](../automation-runbook-execution.md#throw) Ha nem, az üzembe helyezés és a szkript utáni futtatás továbbra is futni fog. Az alábbi kódrészlet bemutatja, hogyan lehet kivételt visszadobni a PowerShell használatával.
 
 ```powershell
 #In this case, we want to terminate the patch job if any run fails.
@@ -134,35 +135,35 @@ foreach($summary in $finalStatus)
 }
 ```
 
-A Python 2 esetében a kivételek kezelése egy [Try](https://www.python-course.eu/exception_handling.php) blokkban történik.
+A Python 2-ben a kivételkezelés egy [try blokkban van kezelve.](https://www.python-course.eu/exception_handling.php)
 
-## <a name="interact-with-machines"></a>Számítógépekkel való kommunikáció
+## <a name="interact-with-machines"></a>Interakció a gépekkel
 
-A parancsfájlok és a parancsfájlok utáni Futtatás runbookok az Automation-fiókban, és nem közvetlenül a telepítésben lévő gépeken. A feladatok előtti és utáni feladatok is az Azure-környezetben futnak, és nem férnek hozzá a nem Azure-beli gépekhez. A következő részben bemutatjuk, hogyan használhatja közvetlenül a gépeket, akár Azure-beli, akár nem Azure-beli virtuális gépekről van szó.
+Az előszk szkriptek és az utólagos szkriptek runbookokként futnak az Automation-fiókban, nem pedig közvetlenül az üzemelő példányban futó gépeken. Az előfeladatok és az utólagos feladatok szintén az Azure-környezetben futnak, és nem férnek hozzá a nem Azure-beli gépekhez. A következő szakaszok azt mutatják be, hogyan kommunikálhat közvetlenül a gépekkel, akár Azure-beli, akár nem Azure-beli virtuális gépekről van szó.
 
-### <a name="interact-with-azure-machines"></a>Együttműködés az Azure-gépekkel
+### <a name="interact-with-azure-machines"></a>Interakció az Azure-beli gépekkel
 
-A feladatok előtti és utáni feladatokat futtató runbookok, és a telepítés során nem futnak natív módon az Azure-beli virtuális gépeken. Az Azure-beli virtuális gépekkel való kommunikációhoz a következő elemek szükségesek:
+Az előfeladatok és az utólagos feladatok runbookokként futnak, és nem futnak natív módon az üzemelő példányban az Azure-beli virtuális gépeken. Az Azure-beli virtuális gépekkel való kommunikációhoz a következő elemekre van hatással:
 
-* Futtató fiók
+* Egy run as account
 * Egy futtatni kívánt runbook
 
-Az Azure-gépekkel való kommunikációhoz használja a [Meghívási-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) parancsmagot az Azure-beli virtuális gépekkel való kommunikációhoz. Ennek módjáról a következő témakörben talál példát: runbook példa [Update Management – parancsfájl futtatása a Run paranccsal](https://github.com/azureautomation/update-management-run-script-with-run-command).
+Az Azure-beli gépekkel való interakcióhoz használja az [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) parancsmagot az Azure-beli virtuális gépekkel való kommunikációhoz. Ennek egy példájért tekintse meg a Runbook-példát a Update Management [szkript futtatása paranccsal.](https://github.com/azureautomation/update-management-run-script-with-run-command)
 
-### <a name="interact-with-non-azure-machines"></a>Interakció a nem Azure-beli gépekkel
+### <a name="interact-with-non-azure-machines"></a>Nem Azure-beli gépek interakciói
 
-A feladatok előtti és utáni feladatok az Azure-környezetben futnak, és nem férnek hozzá a nem Azure-beli gépekhez. A nem Azure-beli gépekkel való kommunikációhoz a következő elemek szükségesek:
+Az előfeladatok és az utólagos feladatok Azure-környezetben futnak, és nem férnek hozzá a nem Azure-beli gépekhez. A nem Azure-beli gépekkel való interakcióhoz a következő elemekre van hatással:
 
-* Futtató fiók
-* A gépre telepített hibrid Runbook Worker
-* Helyileg futtatni kívánt runbook
+* Egy run as account
+* A gépen telepített hibrid runbook-feldolgozó
+* Egy helyileg futtatni kívánt runbook
 * Egy szülő runbook
 
-A nem Azure-beli gépekkel való kommunikációhoz egy szülő runbook fut az Azure-környezetben. Ez a runbook a [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) parancsmaggal hívja meg a gyermek runbook. Meg kell adnia a `RunOn` paramétert, és meg kell adnia annak a hibrid Runbook-feldolgozónak a nevét, amelyen futtatni szeretné a parancsfájlt. Tekintse meg a runbook példát [Update Management-szkript helyi futtatását](https://github.com/azureautomation/update-management-run-script-locally).
+A nem Azure-beli gépekkel való interakcióhoz egy szülő runbookot futtat az Azure-környezetben. Ez a runbook egy gyermekrunbookot hív meg a [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) parancsmaggal. Meg kell adnia a paramétert, és meg kell adnia a hibrid runbook-feldolgozó nevét a szkript `RunOn` futtatásához. Tekintse meg a forgatókönyv példáját [Update Management – szkript helyi futtatása.](https://github.com/azureautomation/update-management-run-script-locally)
 
-## <a name="abort-patch-deployment"></a>Javítás telepítésének megszakítása
+## <a name="abort-patch-deployment"></a>Javítás üzembe helyezésének megszakítása
 
-Ha az előkészítő parancsfájl hibát ad vissza, érdemes lehet megszakítani az üzemelő példányt. Ehhez [meg kell adnia](/powershell/module/microsoft.powershell.core/about/about_throw) egy hibát a parancsfájlban bármely olyan logikánál, amely hibát jelentene.
+Ha az előkészítő szkript hibát ad vissza, érdemes megszakítani az üzembe helyezést. Ahhoz, hogy ezt meg tudja tenni, hibát [kell](/powershell/module/microsoft.powershell.core/about/about_throw) adnunk a szkriptben minden olyan logika esetén, amely hibát jelentene.
 
 ```powershell
 if (<My custom error logic>)
@@ -172,7 +173,7 @@ if (<My custom error logic>)
 }
 ```
 
-A Python 2 esetében, ha egy bizonyos feltétel bekövetkezésekor hibát szeretne kimutatni, használjon egy [Raise](https://docs.python.org/2.7/reference/simple_stmts.html#the-raise-statement) utasítást.
+Ha a Python 2-ben hibát szeretne dobni egy bizonyos feltétel bekövetkeztekor, használjon [egy raise utasítást.](https://docs.python.org/2.7/reference/simple_stmts.html#the-raise-statement)
 
 ```python
 If (<My custom error logic>)
@@ -181,22 +182,22 @@ If (<My custom error logic>)
 
 ## <a name="samples"></a>Példák
 
-A szkriptek előtti és utáni parancsfájlok mintái megtalálhatók a [Azure Automation GitHub-szervezetben](https://github.com/azureautomation) és a [PowerShell-galériaban](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22), vagy importálhatja őket a Azure Portal használatával. Ehhez az Automation-fiók **folyamat automatizálása** területén válassza a **runbookok**-katalógus elemet. **Update Management** használata a szűrőhöz.
+Az előzetes és utólagos szkriptek mintái a [Azure Automation GitHub-szervezetben](https://github.com/azureautomation) és a [PowerShell-galéria-ban](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22)találhatók, vagy importálhatja őket a Azure Portal. Ennek érdekében az Automation-fiók Folyamatautomatizálás **területén** válassza a **Runbook-katalógus lehetőséget.** A **Update Management** a szűrőt.
 
-![Katalógusok listája](./media/pre-post-scripts/runbook-gallery.png)
+![Katalóguslista](./media/pre-post-scripts/runbook-gallery.png)
 
-A parancsfájl neve alapján is megkeresheti őket, ahogy az a következő listában látható:
+Vagy megkeresheti őket a szkript neve alapján, az alábbi listában látható módon:
 
-* Update Management – virtuális gépek bekapcsolása
-* Update Management – virtuális gépek kikapcsolása
-* Update Management parancsfájl helyi futtatása
-* Update Management – sablon a Pre/post parancsfájlokhoz
-* Update Management parancsfájl futtatása a Run paranccsal
+* Update Management – Virtuális gépek bekapcsolás
+* Update Management – Virtuális gépek kikapcsolása
+* Update Management – Szkript helyi futtatása
+* Update Management – Sablon előkészítő és utólagos szkriptek számára
+* Update Management – Szkript futtatása parancsfuttatás
 
 > [!IMPORTANT]
-> A runbookok importálása után közzé kell tenni azokat a használatuk előtt. Ehhez keresse meg a runbook az Automation-fiókban, válassza a **Szerkesztés** lehetőséget, majd válassza a **Közzététel** lehetőséget.
+> A runbookok importálása után közzé kell tenni őket a használatuk előtt. Ennek ához keresse meg a runbookot az Automation-fiókjában, válassza a **Szerkesztés,** majd a Közzététel **lehetőséget.**
 
-A mintákat a következő példában definiált alapszintű sablon alapján kell megadni. Ez a sablon a saját runbook létrehozására használható a parancsfájlok előtti és a parancsfájlok utáni használatra. Az Azure-ban való hitelesítéshez és a paraméter kezelésére szolgáló szükséges logika `SoftwareUpdateConfigurationRunContext` beletartozik.
+A minták mind az alábbi példában meghatározott alapszintű sablonon alapulnak. Ezzel a sablonnal létrehozhat egy saját runbookot, amely előre és utólagos szkriptekkel használható. Az Azure-ral való hitelesítéshez és a paraméter kezelésével kapcsolatos `SoftwareUpdateConfigurationRunContext` logikát is tartalmazza.
 
 ```powershell
 <#
@@ -250,8 +251,8 @@ $variable = Get-AutomationVariable -Name $runId
 ```
 
 > [!NOTE]
-> A nem grafikus PowerShell-runbookok, `Add-AzAccount` valamint a `Add-AzureRMAccount` [csatlakozási-AzAccount](/powershell/module/az.accounts/connect-azaccount)aliasai. Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](../automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot.
+> Nem grafikus PowerShell-runbookok esetén, amelyek a `Add-AzAccount` `Add-AzureRMAccount` [Connect-AzAccount aliasai.](/powershell/module/az.accounts/connect-azaccount) Használhatja ezeket a parancsmagokat, [](../automation-update-azure-modules.md) vagy frissítheti az Automation-fiókjában található modulokat a legújabb verziókra. Előfordulhat, hogy frissítenie kell a modulokat, még akkor is, ha most hozott létre új Automation-fiókot.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Update Management részletes ismertetését lásd: [a virtuális gépek frissítéseinek és javításának kezelése](manage-updates-for-vm.md).
+A frissítések kezelésével kapcsolatos részletekért lásd: Virtuális gépek frissítésének és [javításának kezelése.](manage-updates-for-vm.md)

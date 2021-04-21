@@ -6,22 +6,23 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
+- devx-track-azurepowershell
 adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-java-uiex
-ms.openlocfilehash: 1a1571e83e33ee0aec40df4cf68b3d01b6ef5f04
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 69c4129feacf36b6b98cdcd7c2f4f5f36d7839b2
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787502"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831923"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Rövid útmutató: Java-függvény létrehozása az Azure-ban a parancssorból
 
 [!INCLUDE [functions-language-selector-quickstart-cli](../../includes/functions-language-selector-quickstart-cli.md)]
 
-Ebben a cikkben parancssori eszközökkel hoz létre egy Java-függvényt, amely HTTP-kérésekre válaszol. A kód helyi tesztelése után üzembe kell helyeznie a Azure Functions.
+Ebben a cikkben parancssori eszközökkel hoz létre egy Java-függvényt, amely HTTP-kérésekre válaszol. A kód helyi tesztelése után üzembe helyezheti azt a virtuális gép kiszolgáló Azure Functions.
 
 A rövid útmutató elvégzése néhány dollár vagy annál kisebb költséggel jár az Azure-fiókban.
 
@@ -107,7 +108,7 @@ A Azure Functions a függvényprojekt egy tároló egy vagy több különálló 
 Ha szeretné, ugorjon a Függvény helyi [futtatása](#run-the-function-locally) részhez, és később vizsgálja meg a fájl tartalmát.
 
 #### <a name="functionjava"></a>Function.java
-*A Function.java* tartalmaz egy metódust, amely a változóban fogadja a kérésadatokat egy `run` `request` [HttpRequestMessage,](/java/api/com.microsoft.azure.functions.httprequestmessage) amely az eseményindító viselkedését meghatározó [HttpTrigger-jegyzetet](/java/api/com.microsoft.azure.functions.annotation.httptrigger) tartalmazza. 
+*A Function.java* olyan metódust tartalmaz, amely kérésadatokat fogad a változóban egy `run` `request` [HttpRequestMessage,](/java/api/com.microsoft.azure.functions.httprequestmessage) amely az eseményindító viselkedését meghatározó [HttpTrigger-jegyzetet](/java/api/com.microsoft.azure.functions.annotation.httptrigger) tartalmazza. 
 
 :::code language="java" source="~/azure-functions-samples-java/src/main/java/com/functions/Function.java":::
 
@@ -123,7 +124,7 @@ Ezeket a beállításokat módosíthatja, hogy szabályozni tudja az erőforrás
 
 #### <a name="functiontestjava"></a>FunctionTest.java
 
-Az archetípus egy egységtesztet is létrehoz a függvényhez. Ha úgy módosítja a függvényt, hogy kötéseket adjon hozzá, vagy új függvényeket adjon a projekthez, módosítania kell a *FunctionTest.java* fájlban található teszteket is.
+Az archetípus egy egységtesztet is létrehoz a függvényhez. Ha úgy módosítja a függvényt, hogy kötéseket adjon hozzá, vagy új függvényeket ad hozzá a projekthez, módosítania kell a *FunctionTest.java* fájlban található teszteket is.
 
 ## <a name="run-the-function-locally"></a>A függvény helyi futtatása
 
@@ -191,7 +192,7 @@ A függvényalkalmazások és a kapcsolódó erőforrások a függvényprojekt e
     
     + Erőforráscsoport. Neve _java-functions-group._
     + Tárfiók. A Functions által megkövetelt. A nevet a rendszer véletlenszerűen generálja a Storage-fiók nevére vonatkozó követelmények alapján.
-    + Üzemeltetési csomag. Kiszolgáló nélküli üzemeltetés a függvényalkalmazás számára a _westus_ régióban. A név _java-functions-app-service-plan._
+    + Üzemeltetési csomag. A függvényalkalmazás kiszolgáló nélküli üzemeltetése a _westus_ régióban. A név _java-functions-app-service-plan._
     + Függvényalkalmazás. A függvényalkalmazás a függvények üzembe helyezési és végrehajtási egysége. A rendszer véletlenszerűen generálja a nevet az _artifactId_ alapján, és egy véletlenszerűen generált számmal egészül ki.
     
     Az üzembe helyezés csomagba tömöríti a projektfájlokat, és üzembe helyezheti őket az új függvényalkalmazásban [a zip-telepítés használatával.](functions-deployment-technologies.md#zip-deploy) A kód az Azure-beli üzembe helyezési csomagból fut.
