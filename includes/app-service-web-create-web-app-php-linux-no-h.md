@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: ae371082dbb1ece4a62df37743e4d2a4a62998d3
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 4f843c5d35bee5311168073e42b620686b1d9adf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107511485"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779448"
 ---
 <!-- Please keep this file set to PHP 7.2, as that's the highest PHP version Laravel supports (as shown in the PHP+MySQL tutorial) -->
 
 Hozzon létre [egy webalkalmazást](../articles/app-service/overview.md#app-service-on-linux) a `myAppServicePlan` App Service tervben. 
 
-A Cloud Shell az parancsot [`az webapp create`](/cli/azure/webapp#az-webapp-create) használhatja. A következő példában cserélje ki az `<app-name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `PHP|7.2` lett. Az összes támogatott futásidőt a futtatásával [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes) láthatja. 
+A Cloud Shell az parancsot [`az webapp create`](/cli/azure/webapp#az_webapp_create) használhatja. A következő példában cserélje ki az `<app-name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `PHP|7.2` lett. Az összes támogatott futásidőt a futtatásával [`az webapp list-runtimes --linux`](/cli/azure/webapp#az_webapp_list_runtimes) láthatja. 
 
 ```azurecli-interactive
 # Bash
@@ -46,7 +46,7 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;app-name&gt;.s
 }
 </pre>
 
-Létrehozott egy ™ új webalkalmazást, engedélyezett Git-telepítéssel.
+Ezzel létrehozott egy üres, új webalkalmazást, engedélyezett Git üzemelő példánnyal.
 
 > [!NOTE]
 > A távoli Git URL-címe a `deploymentLocalGitUrl` tulajdonságban látható, a következő formátumban: `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git`. Mentse ezt az URL-t, mert később még szüksége lesz rá.

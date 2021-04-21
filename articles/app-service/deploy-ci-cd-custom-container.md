@@ -9,16 +9,16 @@ ms.date: 03/12/2021
 ms.author: msangapu
 ms.custom: seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: f02aa9fc1bd31bdde6214ab906136a2cac8f1772
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 6519f3fe7335ed41f4d5ef67771aaa738a33e4a8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478309"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782602"
 ---
 # <a name="continuous-deployment-with-custom-containers-in-azure-app-service"></a>Folyamatos üzembe helyezés egyéni tárolók Azure App Service
 
-Ebben az oktatóanyagban Azure Container Registry felügyelt adattárakból vagy tárolókból származó egyéni [tároló rendszerképének folyamatos](https://azure.microsoft.com/services/container-registry/) üzembe [helyezését](https://hub.docker.com)Docker Hub.
+Ebben az oktatóanyagban Azure Container Registry felügyelt adattárakból vagy adattárakból származó egyéni tároló [rendszerképének folyamatos](https://azure.microsoft.com/services/container-registry/) üzembe helyezését [konfigurálja Docker Hub.](https://hub.docker.com)
 
 ## <a name="1-go-to-deployment-center"></a>1. Ugrás az Üzembe helyezési központra
 
@@ -31,15 +31,15 @@ A bal oldali menüben kattintson a **Központi telepítési központ beállítá
 
 **Az** üzembe helyezési forrás kiválasztása a forgatókönyvtől függ:
 - **A Container Registry** beállítja a CI/CD-t a tároló-beállításjegyzék és a App Service.
-- A **GitHub Actions** akkor érhető el, ha a GitHubon tartja karban a tároló rendszerképének forráskódját. A GitHub-adattárban való új véglegesítések aktiválják, hogy az üzembe helyezési művelet közvetlenül a tároló-beállításjegyzékben fusson, majd frissítse az App Service-alkalmazást az új `docker build` `docker push` rendszerkép futtatásához. További információ: [How CI/CD works with GitHub Actions](#how-cicd-works-with-github-actions).
+- A **GitHub Actions** akkor van, ha a GitHubon tartja karban a tároló rendszerképének forráskódját. A GitHub-adattárban való új véglegesítések aktiválják, hogy az üzembe helyezési művelet közvetlenül a tároló-beállításjegyzékben fusson, majd frissítse a App Service-alkalmazást az új `docker build` `docker push` rendszerkép futtatásához. További információ: [How CI/CD works with GitHub Actions](#how-cicd-works-with-github-actions).
 - A CI/CD **Azure Pipelines** használatával történő beállításával kapcsolatban lásd: [Azure-webalkalmazás-tároló üzembe helyezése az Azure Pipelinesból.](/azure/devops/pipelines/targets/webapp-on-container-linux)
 
 > [!NOTE]
 > Docker Compose-alkalmazáshoz válassza a **Container Registry.**
 
-Ha a hitelesítést GitHub Actions, kattintson **az Engedélyezés** **gombra,** és kövesse az engedélyezési utasításokat. Ha korábban már engedélyezte a GitHubot, egy másik felhasználó adattárában is üzembe helyezheti az alkalmazást a **Fiók módosítása gombra kattintva.**
+Ha a hitelesítést GitHub Actions, kattintson **az Engedélyezés** **gombra,** és kövesse az engedélyezési utasításokat. Ha korábban már engedélyezte a GitHubot, a Fiók módosítása gombra kattintva telepíthet egy másik felhasználó **adattárát.**
 
-Miután engedélyezte Azure-fiókját a  GitHubbal, válassza ki azt a **szervezetet,** adattárat és **ágat,** amelyből az üzembe helyezést el kell helyezni.
+Miután engedélyezte azure-fiókját a  GitHubbal, válassza ki az **Organization**(Szervezet) , **Repository**(Adattár) és **Branch (Ág)** szolgáltatásokat az üzembe helyezéshez.
 ::: zone-end  
 
 ::: zone pivot="container-windows"
@@ -48,16 +48,16 @@ Miután engedélyezte Azure-fiókját a  GitHubbal, válassza ki azt a **szervez
 ::: zone pivot="container-linux"
 ## <a name="3-configure-registry-settings"></a>3. Beállításjegyzék-beállítások konfigurálása
 
-Többtárolós (Docker Compose-) alkalmazás üzembe helyezéséhez **válassza** a **Docker Compose** lehetőséget a **Tárolótípus mezőben.**
+Többtárolós (Docker Compose-) alkalmazás  üzembe helyezéséhez válassza a **Docker Compose** lehetőséget a **Tárolótípus mezőben.**
 
-Ha nem látja a **Tároló** típusa legördülő menüt, görgessen vissza a **Forráshoz,** és válassza a **Container Registry.** 
+Ha nem látja a  Tároló típusa legördülő menüt, görgessen vissza a **Forráshoz,** és válassza a **Container Registry.** 
 ::: zone-end
 
-A **Beállításjegyzék-forrás mezőben** **válassza ki,** hol található a tároló-beállításjegyzék. Ha nem ez a Azure Container Registry és **Docker Hub,** válassza a **Privát beállításjegyzék lehetőséget.**
+A **Beállításjegyzék-forrás mezőben** **válassza ki,** hol található a tároló-beállításjegyzék. Ha a beállítás nem egy Azure Container Registry sem **Docker Hub,** válassza Docker Hub **Privát beállításjegyzék lehetőséget.**
 
 ::: zone pivot="container-linux"
 > [!NOTE]
-> Ha a többtárolós (Docker Compose)-alkalmazás több privát rendszerképet használ, győződjön meg arról, hogy a privát rendszerképek ugyanabban a privát regisztrációs adatbázisban vannak, és ugyanazokkal a felhasználói hitelesítő adatokkal érhetők el. Ha a többtárolós alkalmazás csak nyilvános rendszerképeket **használ,** válassza a **Docker Hub** lehetőséget, még akkor is, ha egyes lemezképek nincsenek a Docker Hub.
+> Ha a többtárolós (Docker Compose) alkalmazás több privát rendszerképet használ, győződjön meg arról, hogy a privát rendszerképek ugyanabban a privát beállításjegyzékben vannak, és ugyanazokkal a felhasználói hitelesítő adatokkal érhetők el. Ha a többtárolós alkalmazás csak nyilvános rendszerképeket **használ,** válassza a **Docker Hub,** akkor is, ha egyes lemezképek nincsenek a Docker Hub.
 ::: zone-end  
 
 Kövesse a következő lépéseket a választott lap kiválasztásával.
@@ -75,10 +75,10 @@ A **Beállításjegyzék** legördülő menüben az alkalmazással azonos előfi
 ::: zone pivot="container-linux"
 Kövesse a következő lépést a tároló **típusától függően:**
 - A **Docker Compose esetén** válassza ki **a** privát rendszerképek beállításjegyzékét. **Kattintson** **a Choose file** (Fájl kiválasztása)  elemre a [Docker Compose-fájl feltöltésére,](https://docs.docker.com/compose/compose-file/)vagy egyszerűen illessze be a Docker Compose-fájl tartalmát a **Config fájlba.**
-- Egyetlen **tárolóhoz válassza** **ki az** üzembe helyezni kívánt **rendszerképet** **és** címkét. Ha szeretné, írja **be az** indítási parancsot az **Indítási fájl mezőbe.** 
+- A **Single Container (Egytárolós)** **mezőben válassza ki** az üzembe helyezni kívánt **rendszerképet** és címkét.  Ha szeretné, írja **be az** indítási parancsot az **Indítási fájl mezőbe.** 
 ::: zone-end
 
-App Service indítási fájlban található  sztringet a parancs véghez [ `docker run` fűzi (szegmensként) `[COMMAND] [ARG...]` ](https://docs.docker.com/engine/reference/run/) a tároló indításakor.
+App Service az indítási fájlban  található sztringet a parancs végére [ `docker run` (szegmensként) `[COMMAND] [ARG...]` ](https://docs.docker.com/engine/reference/run/) fűzi hozzá a tároló indításakor.
 
 # <a name="docker-hub"></a>[Docker Hub](#tab/dockerhub)
 
@@ -176,7 +176,7 @@ Az alkalmazás-GitHub Actions a következő módokon szabhatja testre:
 
 Ez a választható konfiguráció lecseréli az alapértelmezett hitelesítést a létrehozott munkafolyamat-fájlban található közzétételi profilokra.
 
-**Hozzon** létre egy egyszerű szolgáltatást [az az ad sp create-for-rbac paranccsal](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) az [Azure CLI-n.](/cli/azure/) A következő példában cserélje le a *\<subscription-id>* , *\<group-name>* és értékeket a saját *\<app-name>* értékeire. **Mentse** a teljes JSON-kimenetet a következő lépéshez, beleértve a legfelső szintű kimenetet `{}` is.
+**Hozzon** létre egy egyszerű szolgáltatást [az az ad sp create-for-rbac paranccsal](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) az [Azure CLI-n.](/cli/azure/) A következő példában cserélje le a *\<subscription-id>* , *\<group-name>* és értékeket a saját *\<app-name>* értékeire. **Mentse** a teljes JSON-kimenetet a következő lépéshez, beleértve a legfelső szintű kimenetet `{}` is.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myAppDeployAuth" --role contributor \
@@ -213,7 +213,7 @@ Az Üzembe helyezési központ által létrehozott munkafolyamat-fájlban **mód
 
 ## <a name="automate-with-cli"></a>Automatizálás a CLI-val
 
-A tároló-beállításjegyzék és a Docker-rendszerkép konfigurálához **futtassa** [az az webapp config container set et.](/cli/azure/webapp/config/container#az-webapp-config-container-set)
+A tároló-beállításjegyzék és a Docker-rendszerkép konfigurálához **futtassa** [az az webapp config container set et.](/cli/azure/webapp/config/container#az_webapp_config_container_set)
 
 # <a name="azure-container-registry"></a>[Azure Container Registry](#tab/acr)
 
@@ -240,14 +240,14 @@ az webapp config container set --name <app-name> --resource-group <group-name> -
 -----
 
 ::: zone pivot="container-linux"
-Többtárolós (Docker Compose)-alkalmazás konfiguráláshoz helyileg készítse  elő **a** Docker Compose-fájlt, majd futtassa az [az webapp config container set](/cli/azure/webapp/config/container#az-webapp-config-container-set) `--multicontainer-config-file` paramétert. Ha a Docker Compose-fájl privát rendszerképeket tartalmaz, adjon **hozzá** `--docker-registry-server-*` paramétereket az előző példában látható módon.
+Többtárolós (Docker Compose-) alkalmazás konfigurálása **esetén** helyileg  készítse elő a Docker Compose-fájlt, majd futtassa az [az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set) az `--multicontainer-config-file` paraméterrel. Ha a Docker Compose-fájl privát rendszerképeket tartalmaz, adjon **hozzá** `--docker-registry-server-*` paramétereket az előző példában látható módon.
 
 ```azurecli-interactive
 az webapp config container set --resource-group <group-name> --name <app-name> --multicontainer-config-file <docker-compose-file>
 ```
 ::: zone-end
 
-A CI/CD a tároló-beállításjegyzékből az alkalmazásba való konfigurálához **futtassa** [az az webapp deployment container config](/cli/azure/webapp/deployment/container#az-webapp-deployment-container-config) az `--enable-cd` paraméterrel. A parancs kimenete a webhook URL-címe, de a webhookot manuálisan kell létrehoznia a beállításjegyzékben egy külön lépésben. Az alábbi példa engedélyezi a CI/CD-t az alkalmazáson, majd a kimenetben található webhook URL-címével létrehozza a webhookot a Azure Container Registry.
+A CI/CD a tároló-beállításjegyzékből az alkalmazásba való konfigurálához **futtassa** [az az webapp deployment container config](/cli/azure/webapp/deployment/container#az_webapp_deployment-container-config) az `--enable-cd` paraméterrel. A parancs kimenete a webhook URL-címe, de a webhookot manuálisan kell létrehoznia a beállításjegyzékben egy külön lépésben. Az alábbi példa engedélyezi a CI/CD-t az alkalmazáson, majd a kimenetben található webhook URL-címével létrehozza a webhookot a Azure Container Registry.
 
 ```azurecli-interactive
 ci_cd_url=$(az webapp deployment container config --name <app-name> --resource-group <group-name> --enable-cd true --query CI_CD_URL --output tsv)

@@ -1,47 +1,47 @@
 ---
-title: Az Azure Kubernetes Service-ben (ak) lévő Azure-lemezek tároló-illesztőprogramjainak használata
-description: Megtudhatja, hogyan használhatja az Azure-lemezek Container Storage Interface-(CSI-) illesztőprogramjait az Azure Kubernetes Service (ak) fürtben.
+title: A Container Storage Interface (CSI) illesztőprogramjainak használata az Azure Disks on Azure Kubernetes Service (AKS) esetében
+description: Megtudhatja, hogyan használhatja a Container Storage Interface (CSI) illesztőprogramokat az Azure-lemezekhez egy Azure Kubernetes Service -fürtben.
 services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 5f9e28ac568f70801b2bd955c201712cfcb80084
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: c3421b767f465a4a705bdeb4882fd261c5cf914f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105963327"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776230"
 ---
-# <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Az Azure Disk Container Storage Interface (CSI) illesztőprogramjainak használata az Azure Kubernetes szolgáltatásban (ak) (előzetes verzió)
-Az Azure Disk Container Storage Interface (CSI) illesztőprogramja az Azure Kubernetes szolgáltatás (ak) által az Azure-lemezek életciklusának kezeléséhez használt [CSI-specifikációnak](https://github.com/container-storage-interface/spec/blob/master/spec.md)megfelelő illesztőprogram.
+# <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Az Azure Disk Container Storage Interface (CSI) illesztőprogramjainak használata Azure Kubernetes Service (előzetes verzió)
+Az Azure Disk Container Storage Interface (CSI) [](https://github.com/container-storage-interface/spec/blob/master/spec.md)illesztőprogram egy CSI-specifikációnak megfelelő illesztőprogram, amelyet az Azure Kubernetes Service (AKS) az Azure-lemezek életciklusának kezeléséhez használ.
 
-A CSI egy olyan szabvány, amely tetszőleges blokk-és file Storage-rendszereket helyez el a Kubernetes-alapú tároló-munkaterhelések számára. A CSI használatával a következő lépésekkel írhat, helyezhet üzembe és navigálhat olyan beépülő modulokat, amelyek lehetővé teszik a Kubernetes meglévő tárolási rendszereinek új vagy fejlesztését anélkül, hogy meg kellene érintenie az alapvető Kubernetes-kódot, és várnia kell a kiadási ciklusokra.
+A CSI egy olyan szabvány, amely tetszőleges blokk- és fájltároló rendszereket tár fel a Kubernetes tárolóba ezett számítási feladatai számára. A CSI alkalmazásával és használatával az AKS képes beépülő modulokat írni, üzembe helyezni és iterálni a Kubernetesben található új tárolórendszerek felfedése vagy javítása érdekében anélkül, hogy hozzá kellene érnie az alapvető Kubernetes-kódot, és meg kellene várnia a kiadási ciklusokat.
 
-Ha a CSI-illesztőprogram támogatásával szeretne létrehozni egy AK-fürtöt, tekintse [meg a CSI-illesztőprogramok engedélyezése az Azure-lemezekhez és a Azure Files az AK](csi-storage-drivers.md)
+CSI-illesztőprogramot támogató AKS-fürt létrehozásához lásd: [Enable CSI drivers for Azure disks and Azure Files on AKS (CSI-illesztőprogramok engedélyezése Azure-lemezekhez és Azure Files AKS-hez).](csi-storage-drivers.md)
 
 >[!NOTE]
-> A *fában lévő illesztőprogramok* az alapszintű Kubernetes-kód részét képező, az új CSI-illesztőprogramok, amelyek beépülő modulok.
+> *A fastruktúrában található illesztőprogramok* az alapvető Kubernetes-kód részét képezi, és az új CSI-illesztőprogramok, azaz a beépülő modulok.
 
-## <a name="use-csi-persistent-volumes-with-azure-disks"></a>A CSI állandó köteteinek használata az Azure-lemezekkel
+## <a name="use-csi-persistent-volumes-with-azure-disks"></a>ÁLLANDÓ CSI-kötetek használata Azure-lemezekkel
 
-Az [állandó kötet](concepts-storage.md#persistent-volumes) (PV) a Kubernetes hüvelyekkel való használatra kiépített tárterületet jelöli. A PV-t egy vagy több hüvely is használhatja, és dinamikusan vagy statikusan kiépíthető. Ebből a cikkből megtudhatja, hogyan hozhat létre dinamikusan PVs az Azure-lemezekkel, ha egyetlen Pod-t használ egy AK-fürtben. Statikus kiépítés esetén lásd: [kötetek manuális létrehozása és használata az Azure Disks](azure-disk-volume.md)szolgáltatással.
+Az [állandó kötet](concepts-storage.md#persistent-volumes) (PV) a Kubernetes-podokkal való használatra kiépített tárolóegység. A PV-t egy vagy több pod is használhatja, és dinamikusan vagy statikusan kiépíthet. Ez a cikk bemutatja, hogyan hozhat létre dinamikusan PV-ket Azure-lemezekkel egy AKS-fürt egyetlen podja számára. A statikus kiépítéssel kapcsolatos további információért lásd: Kötet manuális létrehozása és [használata Azure-lemezekkel.](azure-disk-volume.md)
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-A Kubernetes-kötetekkel kapcsolatos további információkért lásd: az [AK-beli alkalmazások tárolási beállításai][concepts-storage].
+További információ a Kubernetes-kötetekkel kapcsolatban: Tárolási lehetőségek alkalmazásokhoz az [AKS-ban.][concepts-storage]
 
-## <a name="dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes"></a>Azure Disk PVs dinamikus létrehozása a beépített tárolási osztályok használatával
+## <a name="dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes"></a>Azure-beli lemezes virtuális merevlemezek dinamikus létrehozása a beépített tárolóosztályok használatával
 
-A tárolási osztály segítségével határozható meg, hogy egy adott tárolási egység hogyan legyen dinamikusan létrehozva állandó kötettel. További információ a Kubernetes tárolásával kapcsolatban: [Kubernetes Storage classs][kubernetes-storage-classes]. Ha a Storage CSI-illesztőprogramokat használja az AK-on, két további beépített eszköz van, `StorageClasses` amelyek az Azure Disk CSI-tároló illesztőprogramjait használják. A további CSI-tárolási osztályok a fürttel együtt a fában alapértelmezett tárolási osztályok mellett jönnek létre.
+A tárolóosztályok meghatározzák, hogyan jön létre dinamikusan egy tárolóegység egy állandó köteten. A Kubernetes-tárolóosztályokkal kapcsolatos további információkért lásd: [Kubernetes-tárolóosztályok.][kubernetes-storage-classes] Ha tárolási CSI-illesztőprogramokat használ az AKS-ben, két további beépített eszköz használja az `StorageClasses` Azure Disk CSI-tárolóillesztőket. A további CSI-tárolóosztályok a fürthöz a fán belül alapértelmezett tárolási osztályokkal együtt vannak létrehozva.
 
-- `managed-csi`: Az Azure standard SSD helyileg redundáns tárolást (LRS) használja egy felügyelt lemez létrehozásához.
-- `managed-csi-premium`: Az Azure Premium LRS használatával felügyelt lemezt hozhat létre.
+- `managed-csi`: Az Azure standard SSD helyileg redundáns tárolást (LRS) használ egy felügyelt lemez létrehozásához.
+- `managed-csi-premium`: Az Azure Premium LRS használatával hoz létre felügyelt lemezt.
 
-A visszaigénylési házirend mindkét tárolási osztályban biztosítja, hogy az alapul szolgáló Azure-lemez törölve legyen a megfelelő PV törlésekor. A tárolási osztályok azt is megadhatják, hogy a PVs kibontható legyen. Csak az állandó mennyiségi jogcímet (PVC) kell szerkesztenie az új mérettel.
+A visszaigénylési szabályzat mindkét tárolási osztályban biztosítja, hogy a mögöttes Azure-lemez törlődik a megfelelő PV törlésekor. A tárolóosztályok a PV-ket is kibonthatóként konfigurálják. Csak szerkesztenie kell az állandó kötetigénylést (PVC) az új mérettel.
 
-A tárolási osztályok kihasználása érdekében hozzon létre egy [PVC](concepts-storage.md#persistent-volume-claims) -t és egy megfelelő Pod-t, amely hivatkozik és használja azokat. A virtuális gépek a tárolók alapján automatikusan kiépítik a tárterületet. A PVC az előre létrehozott tárolási osztályok egyikét vagy egy felhasználó által definiált tárolási osztályt használhat egy Azure által felügyelt lemez létrehozásához a kívánt SKU-hoz és mérethez. Ha létrehoz egy Pod-definíciót, a rendszer a PVC-t úgy adja meg, hogy kérje a kívánt tárterületet.
+Ezeknek a tárolóosztályoknak a kihasználás érdekében hozzon létre egy [OLYAN POD-t](concepts-storage.md#persistent-volume-claims) és megfelelő podot, amely hivatkozik rájuk, és használja őket. A RENDSZER EGY ADOTT TÁROLÓosztály alapján automatikusan kiépíti a tárolót. A PVC az előre létrehozott tárolóosztályok vagy egy felhasználó által definiált tárolási osztály használatával létrehozhat egy Azure által felügyelt lemezt a kívánt termékváltozathoz és mérethez. Amikor poddefiníciót hoz létre, a rendszer a KÍVÁNT tároló lekérésére adja meg a PVC-t.
 
-Hozzon létre egy példát a pod és a megfelelő PVC-re a [kubectl Apply][kubectl-apply] paranccsal:
+Hozzon létre egy példában használt podot és a megfelelő PVC-t a [kubectl apply paranccsal:][kubectl-apply]
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/pvc-azuredisk-csi.yaml
@@ -51,13 +51,13 @@ persistentvolumeclaim/pvc-azuredisk created
 pod/nginx-azuredisk created
 ```
 
-Ha a pod futó állapotban van, hozzon létre egy nevű új fájlt `test.txt` .
+Miután a pod fut, hozzon létre egy nevű új `test.txt` fájlt.
 
 ```bash
 $ kubectl exec nginx-azuredisk -- touch /mnt/azuredisk/test.txt
 ```
 
-Mostantól ellenőrizheti, hogy a lemez megfelelően van-e csatlakoztatva a következő parancs futtatásával, és ellenőrzi, hogy megjelenik-e a `test.txt` fájl a kimenetben:
+Most már ellenőrizheti, hogy a lemez megfelelően van-e csatlakoztatva, ha futtatja a következő parancsot, és ellenőrzi, hogy látja-e a fájlt a `test.txt` kimenetben:
 
 ```console
 $ kubectl exec nginx-azuredisk -- ls /mnt/azuredisk
@@ -67,16 +67,16 @@ outfile
 test.txt
 ```
 
-## <a name="create-a-custom-storage-class"></a>Egyéni tárolási osztály létrehozása
+## <a name="create-a-custom-storage-class"></a>Egyéni tárolóosztály létrehozása
 
-Az alapértelmezett tárolási osztályok a leggyakoribb forgatókönyvek, de nem az összes. Bizonyos esetekben előfordulhat, hogy saját tárolási osztályt szeretne használni a saját paraméterekkel. Például van egy olyan forgatókönyv, amelyben érdemes lehet módosítani az `volumeBindingMode` osztályt.
+Az alapértelmezett tárolási osztályok megfelelnek a leggyakoribb forgatókönyveknek, de nem az összesnek. Bizonyos esetekben érdemes lehet saját tárolóosztályt testre szabni a saját paramétereivel. Van például egy forgatókönyvünk, amelyben érdemes lehet módosítani az `volumeBindingMode` osztályt.
 
-Olyan `volumeBindingMode: Immediate` osztályt is használhat, amely garantálja, hogy a rendszer azonnal megtörténjen a PVC létrehozása után. Azokban az esetekben, amikor a csomópont-készletek topológia korlátozottak, például a rendelkezésre állási zónák használata, a PVs kötve vagy kiépítve lenne a pod ütemezési követelményeinek ismerete nélkül (ebben az esetben egy adott zónában kell lennie).
+Olyan osztályt is használhat, amely garantálja, hogy az azonnal megtörténik `volumeBindingMode: Immediate` az EGYSZERes létrehozás után. Ha a csomópontkészletek topológiája korlátozott, például rendelkezésre állási zónák használata esetén a PV-k a pod ütemezési követelményeinek ismerete nélkül lesznek kötve vagy kiépítve (ebben az esetben egy adott zónában vannak).
 
-Ennek a forgatókönyvnek a megoldásához használhatja a `volumeBindingMode: WaitForFirstConsumer` -t, amely késlelteti a PV kötését és kiépítési folyamatát, amíg a PVC-t használó Pod-t nem kell létrehozni. Így a PV a pod ütemezési korlátai által meghatározott rendelkezésre állási zónában (vagy más topológiában) lesz kiépítve. Az alapértelmezett tárolási osztályok az `volumeBindingMode: WaitForFirstConsumer` osztályt használják.
+Ennek a forgatókönyvnek a megoldásában használhatja a et, amely késlelteti a PV kötését és létesítét, amíg létre nem jön egy POD, amely a `volumeBindingMode: WaitForFirstConsumer` PV-t használja. Így a PV megfelel és a pod ütemezési megkötései által meghatározott rendelkezésre állási zónában (vagy más topológiában) lesz kiépítve. Az alapértelmezett tárolási osztályok a `volumeBindingMode: WaitForFirstConsumer` osztályt használják.
 
-Hozzon létre egy nevű fájlt `sc-azuredisk-csi-waitforfirstconsumer.yaml` , és illessze be a következő jegyzékfájlt.
-A tárolási osztály megegyezik a `managed-csi` tárolási osztállyal, de egy másik `volumeBindingMode` osztállyal.
+Hozzon létre egy nevű `sc-azuredisk-csi-waitforfirstconsumer.yaml` fájlt, és illessze be a következő jegyzékfájlt.
+A tárolási osztály megegyezik a tárolási `managed-csi` osztálysal, de más `volumeBindingMode` osztálysal.
 
 ```yaml
 kind: StorageClass
@@ -91,7 +91,7 @@ reclaimPolicy: Delete
 volumeBindingMode: WaitForFirstConsumer
 ```
 
-Hozza létre a tárolási osztályt a [kubectl Apply][kubectl-apply] paranccsal, és adja meg a `sc-azuredisk-csi-waitforfirstconsumer.yaml` fájlt:
+Hozza létre a storage osztályt a [kubectl apply paranccsal,][kubectl-apply] és adja meg a `sc-azuredisk-csi-waitforfirstconsumer.yaml` fájlt:
 
 ```console
 $ kubectl apply -f sc-azuredisk-csi-waitforfirstconsumer.yaml
@@ -99,15 +99,15 @@ $ kubectl apply -f sc-azuredisk-csi-waitforfirstconsumer.yaml
 storageclass.storage.k8s.io/azuredisk-csi-waitforfirstconsumer created
 ```
 
-## <a name="volume-snapshots"></a>Mennyiségi Pillanatképek
+## <a name="volume-snapshots"></a>Kötet-pillanatképek
 
-Az Azure Disk CSI-illesztőprogram támogatja [az állandó kötetek pillanatképének](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html)létrehozását. Ennek a funkciónak a részeként az illesztőprogram a paraméterben megadott értéktől függően *teljes* vagy [ *növekményes* pillanatképeket](../virtual-machines/disks-incremental-snapshots.md) is végrehajthat `incremental` (alapértelmezés szerint igaz).
+Az Azure Disk CSI illesztőprogram támogatja a tartós kötetek [pillanatképének létrehozását.](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html) Ennek a képességnek a részeként az  illesztő teljes vagy növekményes pillanatképeket készíthet a paraméterben beállított értéktől függően (ez alapértelmezés szerint [  ](../virtual-machines/disks-incremental-snapshots.md) `incremental` igaz).
 
-Az összes paraméterrel kapcsolatos részletekért lásd a [mennyiségi Pillanatképek osztályának paramétereit](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/driver-parameters.md#volumesnapshotclass).
+Az összes paraméter részleteiért tekintse meg a [kötet pillanatfelvétel-osztályának paramétereit.](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/driver-parameters.md#volumesnapshotclass)
 
 ### <a name="create-a-volume-snapshot"></a>Kötet pillanatképének létrehozása
 
-Erre a képességre például hozzon létre egy [mennyiségi pillanatkép-osztályt](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/storageclass-azuredisk-snapshot.yaml) a [kubectl Apply][kubectl-apply] paranccsal:
+Erre a képességre példaként hozzon létre egy kötet-pillanatképosztályt [a](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/storageclass-azuredisk-snapshot.yaml) [kubectl apply paranccsal:][kubectl-apply]
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/snapshot/storageclass-azuredisk-snapshot.yaml
@@ -115,7 +115,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-c
 volumesnapshotclass.snapshot.storage.k8s.io/csi-azuredisk-vsc created
 ```
 
-Most hozzon létre egy [kötet-pillanatképet](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/azuredisk-volume-snapshot.yaml) az [oktatóanyag elején dinamikusan létrehozott](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes)PVC-ből `pvc-azuredisk` .
+Most hozzunk létre egy kötet-pillanatképet [a](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/azuredisk-volume-snapshot.yaml) TUTORIAL-ból, amit dinamikusan hoztunk létre az oktatóanyag [elején,](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes) `pvc-azuredisk` .
 
 
 ```bash
@@ -124,7 +124,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-c
 volumesnapshot.snapshot.storage.k8s.io/azuredisk-volume-snapshot created
 ```
 
-Győződjön meg arról, hogy a pillanatkép helyesen lett létrehozva:
+Ellenőrizze, hogy a pillanatkép megfelelően lett-e létrehozva:
 
 ```bash
 $ kubectl describe volumesnapshot azuredisk-volume-snapshot
@@ -155,9 +155,9 @@ Status:
 Events:                                <none>
 ```
 
-### <a name="create-a-new-pvc-based-on-a-volume-snapshot"></a>Új PVC létrehozása kötet-pillanatkép alapján
+### <a name="create-a-new-pvc-based-on-a-volume-snapshot"></a>Új SNAPSHOT létrehozása kötet-pillanatkép alapján
 
-Kötet-pillanatkép alapján létrehozhat egy új PVC-t. Használja az előző lépésben létrehozott pillanatképet, és hozzon létre egy [új PVC](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/pvc-azuredisk-snapshot-restored.yaml) -t és egy [új Pod](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/nginx-pod-restored-snapshot.yaml) -ot.
+Kötet-pillanatkép alapján létrehozhat egy új SNAPSHOT-t. Használja az előző lépésben létrehozott pillanatképet, és hozzon létre egy új [PILLANATKÉPet](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/pvc-azuredisk-snapshot-restored.yaml) és egy új [podot](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/nginx-pod-restored-snapshot.yaml) a felhasználáshoz.
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/snapshot/pvc-azuredisk-snapshot-restored.yaml
@@ -168,7 +168,7 @@ persistentvolumeclaim/pvc-azuredisk-snapshot-restored created
 pod/nginx-restored created
 ```
 
-Végül győződjön meg róla, hogy ugyanaz a PVC, amelyet a tartalom ellenőrzése előtt hozott létre.
+Végül a tartalom ellenőrzésével győződjön meg arról, hogy ez a korábban létrehozott UGYANAZ a PVC.
 
 ```console
 $ kubectl exec nginx-restored -- ls /mnt/azuredisk
@@ -178,13 +178,13 @@ outfile
 test.txt
 ```
 
-A várt módon továbbra is láthatjuk a korábban létrehozott `test.txt` fájlt.
+Ahogy vártuk, továbbra is látható a korábban létrehozott `test.txt` fájl.
 
 ## <a name="clone-volumes"></a>Kötetek klónozása
 
-A klónozott kötetek egy meglévő Kubernetes-kötet duplikálása vannak meghatározva. További információ a Kubernetes található kötetek klónozásáról: a kötetek [klónozásának](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#volume-cloning)fogalmi dokumentációja.
+A klónozott kötet egy meglévő Kubernetes-kötet duplikált köteteként van definiálva. A kötetek Kubernetesben való klónozásának további információiért tekintse meg a kötetek klónozásának fogalmi [dokumentációját.](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#volume-cloning)
 
-Az Azure-lemezek CSI-illesztőprogramja támogatja a kötetek klónozását. A bemutatóhoz hozzon létre egy [klónozott kötetet](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/cloning/nginx-pod-restored-cloning.yaml) a [korábban létrehozott](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes) `azuredisk-pvc` és [egy új Pod használatával](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/cloning/nginx-pod-restored-cloning.yaml).
+Az Azure-lemezek CSI-illesztőprogramja támogatja a kötet klónozását. A szemléltetéshez hozzon létre [](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes) egy [klónozott kötetet](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/cloning/nginx-pod-restored-cloning.yaml) a korábban létrehozottból, és egy `azuredisk-pvc` új podot, amely [felhasználja azt.](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/cloning/nginx-pod-restored-cloning.yaml)
 
 
 ```console
@@ -196,7 +196,7 @@ persistentvolumeclaim/pvc-azuredisk-cloning created
 pod/nginx-restored-cloning created
 ```
 
-Most már megvizsgálhatja a klónozott kötet tartalmát a következő parancs futtatásával, és megerősíti, hogy a létrehozott fájl továbbra is látható `test.txt` .
+Most a következő parancs futtatásával ellenőrizhetjük a klónozott kötet tartalmát, és ellenőrizhetjük, hogy továbbra is látható-e a `test.txt` létrehozott fájl.
 
 ```console
 $ kubectl exec nginx-restored-cloning -- ls /mnt/azuredisk
@@ -208,12 +208,12 @@ test.txt
 
 ## <a name="resize-a-persistent-volume"></a>Állandó kötet átméretezése
 
-Ehelyett nagyobb kötetet igényelhet egy PVC számára. Szerkessze a PVC objektumot, és válasszon nagyobb méretet. Ez a módosítás elindítja az alapul szolgáló kötet kiterjesztését, amely a PV-t támogatja.
+Ehelyett nagyobb kötetet is kérhet a PVC-hez. Szerkessze a PVC objektumot, és adjon meg egy nagyobb méretet. Ez a változás elindítja a PV alapjátul szolgáló mögöttes kötet bővítését.
 
 > [!NOTE]
-> Egy új PV soha nem jön létre, hogy kielégítse a jogcímet. Ehelyett a rendszer átméretezi egy meglévő kötetet.
+> A rendszer soha nem hoz létre új PV-t a jogcím kielégítéséhez. Ehelyett átméretez egy meglévő kötetet.
 
-Az AK-ban a beépített `managed-csi` tárolási osztály már lehetővé teszi a bővítést, ezért használja a [korábban létrehozott PVC-t ezzel a tárolási osztállyal](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes). A PVC 10 GI állandó kötetet kért. A futtatásával a következőket ellenőrizheti:
+Az AKS-ben a beépített tárolóosztály már lehetővé teszi a bővítést, ezért használja a korábban ezzel a tárolóosztálysal létrehozott `managed-csi` [PVC-t.](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes) A PVC egy 10 Gi állandó kötetet kért. Ezt a következő futtatásával ellenőrizhetjük:
 
 ```console 
 $ kubectl exec -it nginx-azuredisk -- df -h /mnt/azuredisk
@@ -223,9 +223,9 @@ Filesystem      Size  Used Avail Use% Mounted on
 ```
 
 > [!IMPORTANT]
-> Az Azure Disk CSI-illesztőprogram jelenleg csak a hüvelyek által társított (és a kötet nem egy adott csomóponthoz csatlakoztatott) átméretezését támogatja.
+> Az Azure Disk CSI illesztőprogram jelenleg csak podok nélkül támogatja a PVC-k átméretezését (és a kötet nincs csatlakoztatva egy adott csomóponthoz).
 
-Ezért töröljük a korábban létrehozott Pod-t:
+Ezért töröljük a korábban létrehozott podot:
 
 ```console
 $ kubectl delete -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/nginx-pod-azuredisk.yaml
@@ -233,7 +233,7 @@ $ kubectl delete -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-
 pod "nginx-azuredisk" deleted
 ```
 
-Bontsa ki a PVC-t a `spec.resources.requests.storage` mező növelésével:
+Bontsuk ki a PVC-t a mező `spec.resources.requests.storage` növelésével:
 
 ```console
 $ kubectl patch pvc pvc-azuredisk --type merge --patch '{"spec": {"resources": {"requests": {"storage": "15Gi"}}}}'
@@ -241,7 +241,7 @@ $ kubectl patch pvc pvc-azuredisk --type merge --patch '{"spec": {"resources": {
 persistentvolumeclaim/pvc-azuredisk patched
 ```
 
-Erősítse meg, hogy a kötet már nagyobb:
+Győződjön meg arról, hogy a kötet most nagyobb:
 
 ```console
 $ kubectl get pv
@@ -252,9 +252,9 @@ pvc-391ea1a6-0191-4022-b915-c8dc4216174a   15Gi       RWO            Delete     
 ```
 
 > [!NOTE]
-> A PVC nem tükrözi az új méretet, amíg hozzá nem kapcsolódik a pod.
+> Az ÚJ MÉRET mindaddig nem tükrözi az új méretet, amíg nincs hozzá ismét társítva pod.
 
-Hozzunk létre egy új Pod-t:
+Hozzunk létre egy új podot:
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/nginx-pod-azuredisk.yaml
@@ -262,7 +262,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-c
 pod/nginx-azuredisk created
 ```
 
-Végezetül pedig erősítse meg a PVC méretét és a pod-on belül:
+Végül erősítse meg a ÉS a POD méretét:
 ```console
 $ kubectl get pvc pvc-azuredisk
 NAME            STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
@@ -275,12 +275,12 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 ## <a name="shared-disk"></a>Megosztott lemez
 
-Az Azure [Shared](../virtual-machines/disks-shared.md) Disks egy Azure Managed Disks szolgáltatás, amely lehetővé teszi az Azure-lemezek egyidejű csatlakoztatását az ügynökök csomópontjaihoz. A felügyelt lemezek több ügynök-csomóponthoz való csatolásával például új vagy meglévő fürtözött alkalmazásokat telepíthet az Azure-ba.
+[Az Azure-beli](../virtual-machines/disks-shared.md) megosztott lemezek az Azure felügyelt lemezei szolgáltatás, amely lehetővé teszi egy Azure-lemez egyidejű csatolását az ügynökcsomópontokhoz. Ha egy felügyelt lemezt több ügynökcsomóponthoz csatol, lehetővé teszi például új fürtözött alkalmazások üzembe helyezését vagy meglévő fürtözött alkalmazások áttelepítését az Azure-ba.
 
 > [!IMPORTANT] 
-> Jelenleg csak a nyers blokk eszköz ( `volumeMode: Block` ) támogatott az Azure Disk CSI-illesztőprogramban. Az alkalmazásoknak kezelniük kell az írások, olvasások, zárolások, gyorsítótárak, csatlakoztatások és kerítések koordinálását és felügyeletét a megosztott lemezen, amely nyers blokk-eszközként van kitéve.
+> Jelenleg az Azure Disk CSI-illesztőprogram csak a nyers blokkeszközt ( `volumeMode: Block` ) támogatja. Az alkalmazásoknak kezelni kell az írások, olvasások, zárolások, gyorsítótárak, csatlakoztatások és elkerítések koordinációját és vezérlését a nyers blokkeszközként elérhető megosztott lemezen.
 
-Hozzon létre egy nevű fájlt a `shared-disk.yaml` következő parancs másolásával, amely a megosztott lemez tárolási osztályát és a PVC-t tartalmazza:
+Hozzunk létre egy nevű fájlt a következő parancs másolása által, amely a megosztott lemezes tárolási osztályt és `shared-disk.yaml` a COPY osztályt tartalmazza:
 
 ```yaml
 apiVersion: storage.k8s.io/v1
@@ -308,7 +308,7 @@ spec:
   storageClassName: managed-csi-shared
 ```
 
-Hozza létre a tárolási osztályt a [kubectl Apply][kubectl-apply] paranccsal, és adja meg a `shared-disk.yaml` fájlt:
+Hozza létre a storage osztályt a [kubectl apply paranccsal,][kubectl-apply] és adja meg a `shared-disk.yaml` fájlt:
 
 ```console
 $ kubectl apply -f shared-disk.yaml
@@ -317,7 +317,7 @@ storageclass.storage.k8s.io/managed-csi-shared created
 persistentvolumeclaim/pvc-azuredisk-shared created
 ``` 
 
-Most hozzon létre egy nevű fájlt `deployment-shared.yml` a következő parancs másolásával:
+Most hozzunk létre egy nevű fájlt a `deployment-shared.yml` következő parancs másolása segítségével:
 
 ```yaml
 apiVersion: apps/v1
@@ -349,7 +349,7 @@ spec:
             claimName: pvc-azuredisk-shared
 ```
 
-Hozza létre az üzemelő példányt a [kubectl Apply][kubectl-apply] paranccsal, és adja meg a `deployment-shared.yml` fájlt:
+Hozza létre az üzemelő példányt a [kubectl apply paranccsal,][kubectl-apply] és adja meg a `deployment-shared.yml` fájlt:
 
 ```console
 $ kubectl apply -f deployment-shared.yml
@@ -357,7 +357,7 @@ $ kubectl apply -f deployment-shared.yml
 deployment/deployment-azuredisk created
 ```
 
-Végül nézzük meg az eszközt a pod-on belül:
+Végül ellenőrizzük a blokkeszközt a podon belül:
 
 ```console
 # kubectl exec -it deployment-sharedisk-7454978bc6-xh7jp sh
@@ -368,9 +368,9 @@ Végül nézzük meg az eszközt a pod-on belül:
 
 ## <a name="windows-containers"></a>Windows-tárolók
 
-Az Azure Disk CSI-illesztőprogram a Windows-csomópontokat és-tárolókat is támogatja. Ha Windows-tárolókat szeretne használni, kövesse a [Windows-tárolók oktatóanyagot](windows-container-cli.md) a Windows-csomópontok hozzáadásához.
+Az Azure Disk CSI illesztőprogram a Windows-csomópontokat és -tárolókat is támogatja. Ha Windows-tárolókat szeretne használni, [](windows-container-cli.md) kövesse a Windows-tárolók oktatóanyagát egy Windows-csomópontkészlet hozzáadásához.
 
-A Windows-csomópontok készletének használata után már használhatja a beépített tárolási osztályokat, például a következőt: `managed-csi` . A következő parancs az kubectl Apply paranccsal történő telepítésével olyan [Windows-alapú állapot-nyilvántartó készletet](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) helyezhet üzembe, amely időbélyegeket ment a fájlba `data.txt` : [][kubectl-apply]
+Ha már rendelkezik Windows-csomópontkészletekkel, már használhatja a beépített tárolóosztályokat, például a `managed-csi` osztályt. Üzembe helyezhet egy [Windows-alapú](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) állapotalapú készletet, amely időbélyegeket ment a fájlba a következő parancs `data.txt` [kubectl apply paranccsal][kubectl-apply] történő üzembe helyezésével:
 
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/windows/statefulset.yaml
@@ -378,7 +378,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-c
 statefulset.apps/busybox-azuredisk created
 ```
 
-A kötet tartalmát mostantól a (z) parancs futtatásával is ellenőrizheti:
+Most már ellenőrizheti a kötet tartalmát a következő futtatásával:
 
 ```console
 $ kubectl exec -it busybox-azuredisk-0 -- cat c:\\mnt\\azuredisk\\data.txt # on Linux/MacOS Bash
@@ -392,8 +392,8 @@ $ kubectl exec -it busybox-azuredisk-0 -- cat c:\mnt\azuredisk\data.txt # on Win
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A Azure Fileshez készült CSI-illesztőprogramok használatáról további információt a [Azure Files használata a CSI-illesztőprogramokkal](azure-files-csi.md)című témakörben talál.
-- További információ a Storage ajánlott eljárásairól: [ajánlott eljárások a tároláshoz és a biztonsági mentésekhez az Azure Kubernetes szolgáltatásban][operator-best-practices-storage].
+- A CSI-illesztőprogramok a csi-Azure Files: Use Azure Files with CSI drivers (Az Azure Files [használata CSI-illesztőprogramokkal).](azure-files-csi.md)
+- További információ a tárolással kapcsolatos ajánlott eljárásokról: Ajánlott tárolási és biztonsági mentési eljárások a [Azure Kubernetes Service.][operator-best-practices-storage]
 
 
 <!-- LINKS - external -->
@@ -408,18 +408,18 @@ $ kubectl exec -it busybox-azuredisk-0 -- cat c:\mnt\azuredisk\data.txt # on Win
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
 [premium-storage]: ../virtual-machines/disks-types.md
-[az-disk-list]: /cli/azure/disk#az-disk-list
-[az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
-[az-disk-create]: /cli/azure/disk#az-disk-create
-[az-disk-show]: /cli/azure/disk#az-disk-show
+[az-disk-list]: /cli/azure/disk#az_disk_list
+[az-snapshot-create]: /cli/azure/snapshot#az_snapshot_create
+[az-disk-create]: /cli/azure/disk#az_disk_create
+[az-disk-show]: /cli/azure/disk#az_disk_show
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register

@@ -1,6 +1,6 @@
 ---
-title: Útválasztási beállítások konfigurálása egy virtuális géphez – Azure CLI
-description: Megtudhatja, hogyan hozhat létre egy nyilvános IP-címmel rendelkező virtuális gépet az útválasztási beállítások megválasztásával az Azure parancssori felület (CLI) használatával.
+title: Útválasztási beállítások konfigurálása virtuális géphez – Azure CLI
+description: Megtudhatja, hogyan hozhat létre virtuális gépet nyilvános IP-címmel, útválasztási beállításokkal az Azure parancssori felület (CLI) használatával.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,29 +13,29 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2021
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ad8f2d150c3cf17c4b24c6dc92188be9017dcfa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9155c3114d5a5a1b8729351dc189bc1e5c22369
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666009"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764476"
 ---
-# <a name="configure-routing-preference-for-a-vm-using-azure-cli"></a>Útválasztási beállítások konfigurálása virtuális géphez az Azure CLI használatával
+# <a name="configure-routing-preference-for-a-vm-using-azure-cli"></a>Virtuális gép útválasztási beállításainak konfigurálása az Azure CLI használatával
 
-Ez a cikk bemutatja, hogyan konfigurálhatja a virtuális gépek útválasztási beállításait. A virtuális gépről érkező internetes forgalom az INTERNETSZOLGÁLTATÓ hálózatán keresztül lesz átirányítva, ha az **Internet** lehetőséget választja útválasztási preferenciaként. Az alapértelmezett útválasztás a Microsoft globális hálózatán keresztül történik.
+Ez a cikk bemutatja, hogyan konfigurálhatja egy virtuális gép útválasztási beállításait. Ha útválasztási beállításként az Internet lehetőséget választja, a  virtuális gépről származó internetes forgalmat a rendszer az internetszolgáltatói hálózaton keresztül irányítja. Az alapértelmezett útválasztás a Microsoft globális hálózatán keresztül érhető el.
 
-Ez a cikk bemutatja, hogyan hozhat létre egy nyilvános IP-címmel rendelkező virtuális gépet, amely az Azure CLI használatával továbbítja a forgalmat a nyilvános interneten keresztül.
+Ez a cikk bemutatja, hogyan hozhat létre olyan nyilvános IP-címmel virtuális gépet, amely a nyilvános interneten keresztüli forgalomirányításra van beállítva az Azure CLI használatával.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
-1. Ha a Cloud Shell használja, ugorjon a 2. lépésre. Nyisson meg egy parancssori munkamenetet, és jelentkezzen be az Azure-ba `az login` .
-2. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. Az alábbi példa egy erőforráscsoportot hoz létre az USA keleti régiója Azure-régióban:
+1. Ha a Cloud Shell, ugorjon a 2. lépésre. Nyisson meg egy parancs-munkamenetet, és jelentkezzen be az Azure-ba a `az login` paranccsal.
+2. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az alábbi példa létrehoz egy erőforráscsoportot az USA keleti Azure-régiójában:
 
     ```azurecli
     az group create --name myResourceGroup --location eastus
     ```
 
 ## <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
-A virtuális gépek internetről való eléréséhez létre kell hoznia egy nyilvános IP-címet. Hozzon létre egy nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip) paranccsal. A következő példa létrehoz egy nyilvános IP-címet az útválasztási preferencia típusú *internetről* az *USA keleti* régiójában:
+A virtuális gépek internetről való eléréséhez létre kell hoznia egy nyilvános IP-címet. Hozzon létre egy nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip) paranccsal. Az alábbi példa egy Internet útválasztási beállítástípus nyilvános IP-címét hozza létre *az* *USA keleti régiójában:*
 
 ```azurecli
 az network public-ip create \
@@ -50,11 +50,11 @@ az network public-ip create \
 
 ## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása
 
-A virtuális gép üzembe helyezése előtt létre kell hoznia a támogató hálózati erőforrásokat – a hálózati biztonsági csoportot, a virtuális hálózatot és a virtuális hálózati ADAPTERt.
+Virtuális gép üzembe helyezése előtt létre kell hoznia támogató hálózati erőforrásokat – hálózati biztonsági csoportot, virtuális hálózatot és virtuális hálózati adaptert.
 
 ### <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
-Hozzon létre egy hálózati biztonsági csoportot a VNet bejövő és kimenő kommunikációját szabályozó szabályokhoz az [az Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create)
+Az [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) segítségével hozzon létre egy hálózati biztonsági csoportot a virtuális hálózat bejövő és kimenő kommunikációra vonatkozó szabályaihoz
 
 ```azurecli
 az network nsg create \
@@ -65,7 +65,7 @@ az network nsg create \
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) paranccsal. Az alábbi példa egy *myVNET* nevű virtuális hálózatot hoz létre az alhálózatok *mySubNet*:
+Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) paranccsal. Az alábbi példa egy *mySubNet* alhálózatokkal létrehozott *myVNET* nevű virtuális hálózatot hoz létre:
 
 ```azurecli
 # Create a virtual network
@@ -85,7 +85,7 @@ az network vnet subnet create \
 
 ### <a name="create-a-nic"></a>Hálózati adapter létrehozása
 
-Hozzon létre egy virtuális hálózati adaptert a virtuális GÉPHEZ az [az Network NIC Create](/cli/azure/network/nic#az-network-nic-create)paranccsal. A következő példa egy virtuális hálózati adaptert hoz létre, amelyet a virtuális GÉPHEZ fog csatolni.
+Hozzon létre egy virtuális hálózati adaptert a virtuális géphez [az az network nic create segítségével.](/cli/azure/network/nic#az_network_nic_create) Az alábbi példa egy virtuális hálózati adaptert hoz létre, amely a virtuális géphez lesz csatolva.
 
 ```azurecli-interactive
 # Create a NIC
@@ -101,7 +101,7 @@ az network nic create \
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az-vm-create) paranccsal. A következő példa egy Windows Server 2019 rendszerű virtuális GÉPET és a szükséges virtuális hálózati összetevőket hozza létre, ha azok még nem léteznek.
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Az alábbi példa egy Windows Server 2019 rendszerű virtuális gépet és a szükséges virtuális hálózati összetevőket hozza létre, ha még nem léteznek.
 
 ```azurecli
 az vm create \
@@ -115,7 +115,7 @@ az vm create \
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az-group-delete) paranccsal törölheti az erőforráscsoportot és az összes benne található erőforrást:
+Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az_group_delete) paranccsal törölheti az erőforráscsoportot és az összes benne található erőforrást:
 
 ```azurecli
 az group delete --name myResourceGroup --yes
@@ -123,6 +123,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ az [útválasztási beállításokról a nyilvános IP-címekben](routing-preference-overview.md).
-- További információ az Azure [-beli nyilvános IP-címekről](./public-ip-addresses.md#public-ip-addresses) .
-- További információ a [nyilvános IP-címek beállításairól](virtual-network-public-ip-address.md#create-a-public-ip-address).
+- További információ a nyilvános [IP-címek útválasztási beállítási beállításról.](routing-preference-overview.md)
+- További információ az [Azure-beli nyilvános](./public-ip-addresses.md#public-ip-addresses) IP-címekről.
+- További információ a [nyilvános IP-címek beállításairól.](virtual-network-public-ip-address.md#create-a-public-ip-address)

@@ -1,15 +1,15 @@
 ---
-title: Azure CLI – virtuális gép létrehozása és ellenőrzése tesztkörnyezetben
+title: Azure CLI – Virtuális gép létrehozása és ellenőrzése tesztkörnyezetben
 description: Ez az Azure CLI-példaszkript létrehoz egy virtuális gépet egy tesztkörnyezetben, majd ellenőrzi, hogy elérhető-e.
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
-ms.openlocfilehash: c7625f62d7897d61903f864b216ccf9aa13648ea
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 779ddee7da4248ce11b906c2a4736fe7851603cf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198421"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786746"
 ---
 # <a name="use-azure-cli-to-create-and-verify-availability-of-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Virtuális gép létrehozása és elérhetőségének ellenőrzése Azure DevTest Labs tesztkörnyezetben az Azure CLI használatával
 
@@ -37,9 +37,9 @@ Ez a szkript a következő parancsokat használja:
 
 | Parancs | Jegyzetek |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create) | Létrehoz egy virtuális gépet (VM) egy tesztkörnyezetben. |
-| [az lab vm show](/cli/azure/lab/vm#az-lab-vm-show) | Megjeleníti a tesztkörnyezetben lévő virtuális gép állapotát. |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az lab vm create](/cli/azure/lab/vm#az_lab_vm_create) | Létrehoz egy virtuális gépet (VM) egy tesztkörnyezetben. |
+| [az lab vm show](/cli/azure/lab/vm#az_lab_vm_show) | Megjeleníti a tesztkörnyezetben lévő virtuális gép állapotát. |
 
 ## <a name="next-steps"></a>Következő lépések
 

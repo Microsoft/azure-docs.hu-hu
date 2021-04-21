@@ -1,6 +1,6 @@
 ---
-title: Azure-beli szerepkör-hozzárendelések listázása az Azure CLI-vel – Azure RBAC
-description: Megtudhatja, hogyan határozhatja meg, hogy a felhasználók, csoportok, egyszerű szolgáltatások és felügyelt identitások milyen erőforrásokhoz férnek hozzá az Azure CLI és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
+title: Azure-beli szerepkör-hozzárendelések felsorolása az Azure CLI használatával – Azure RBAC
+description: Megtudhatja, hogyan állapíthatja meg, hogy a felhasználók, csoportok, szolgáltatásnévk vagy felügyelt identitások mely erőforrásokhoz férhetnek hozzá az Azure CLI és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,35 +14,35 @@ ms.workload: identity
 ms.date: 10/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: cc64e314a8acb035736df0521987cb78a7297326
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d30571b68ba7e38e9960d1e434cf7844f6be852
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100556916"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780100"
 ---
-# <a name="list-azure-role-assignments-using-azure-cli"></a>Azure-beli szerepkör-hozzárendelések listázása az Azure CLI használatával
+# <a name="list-azure-role-assignments-using-azure-cli"></a>Azure-beli szerepkör-hozzárendelések felsorolása az Azure CLI használatával
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] Ez a cikk bemutatja, hogyan listázhatja ki a szerepkör-hozzárendeléseket az Azure CLI használatával.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] Ez a cikk a szerepkör-hozzárendelések felsorolását ismerteti az Azure CLI használatával.
 
 > [!NOTE]
-> Ha a szervezete egy Azure-beli [delegált erőforrás-kezelést](../lighthouse/concepts/azure-delegated-resource-management.md)használó szolgáltatónál kiszervezett felügyeleti funkciókat használ, az adott szolgáltató által meghatalmazott szerepkör-hozzárendelések nem jelennek meg.
+> Ha a szervezet kiszervezett felügyeleti funkciókkal [](../lighthouse/concepts/azure-delegated-resource-management.md)rendelkezik az Azure-beli delegált erőforrás-kezeléseket használó szolgáltatónál, az adott szolgáltató által engedélyezett szerepkör-hozzárendelések itt nem jelennek meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Bash Azure Cloud Shell](../cloud-shell/overview.md) vagy [Azure CLI](/cli/azure) -ben
+- [Bash az Azure Cloud Shell](../cloud-shell/overview.md) [vagy az Azure CLI-ban](/cli/azure)
 
 ## <a name="list-role-assignments-for-a-user"></a>Felhasználó szerepkör-hozzárendeléseinek felsorolása
 
-Egy adott felhasználó szerepkör-hozzárendeléseinek listázásához használja az [az role hozzárendelés List](/cli/azure/role/assignment#az-role-assignment-list):
+Egy adott felhasználó szerepkör-hozzárendelésének listához használja [az az role assignment list et:](/cli/azure/role/assignment#az_role_assignment_list)
 
 ```azurecli
 az role assignment list --assignee {assignee}
 ```
 
-Alapértelmezés szerint csak a jelenlegi előfizetéshez tartozó szerepkör-hozzárendelések jelennek meg. A jelenlegi előfizetéshez és az alatta lévő szerepkör-hozzárendelések megtekintéséhez adja hozzá a (z `--all` ) paramétert. Az örökölt szerepkör-hozzárendelések megtekintéséhez adja hozzá a `--include-inherited` paramétert.
+Alapértelmezés szerint csak az aktuális előfizetés szerepkör-hozzárendelései jelennek meg. Az aktuális előfizetés és az alatta lévő szerepkör-hozzárendelések megtekintéséhez adja hozzá a `--all` paramétert. Az örökölt szerepkör-hozzárendelések megtekintéséhez adja hozzá a `--include-inherited` paramétert.
 
-Az alábbi példa felsorolja azokat a szerepkör-hozzárendeléseket, amelyek közvetlenül a *patlong \@ contoso.com* -felhasználóhoz vannak rendelve:
+Az alábbi példa felsorolja a közvetlenül a patlong-felhasználóhoz rendelt *\@ contoso.com* hozzárendeléseket:
 
 ```azurecli
 az role assignment list --all --assignee patlong@contoso.com --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'
@@ -65,13 +65,13 @@ az role assignment list --all --assignee patlong@contoso.com --output json --que
 
 ## <a name="list-role-assignments-for-a-resource-group"></a>Erőforráscsoport szerepkör-hozzárendeléseinek felsorolása
 
-Az erőforráscsoport-hatókörben létező szerepkör-hozzárendelések listázásához használja az [az role-hozzárendelési lista](/cli/azure/role/assignment#az-role-assignment-list):
+Az erőforráscsoport hatókörében meglévő szerepkör-hozzárendelések listához használja [az az role assignment list et:](/cli/azure/role/assignment#az_role_assignment_list)
 
 ```azurecli
 az role assignment list --resource-group {resourceGroup}
 ```
 
-A következő példa a *Pharma-Sales* erőforráscsoport szerepkör-hozzárendeléseit sorolja fel:
+Az alábbi példa a gyógyszer-értékesítési erőforráscsoport *szerepkör-hozzárendelését* sorolja fel:
 
 ```azurecli
 az role assignment list --resource-group pharma-sales --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'
@@ -97,7 +97,7 @@ az role assignment list --resource-group pharma-sales --output json --query '[].
 
 ## <a name="list-role-assignments-for-a-subscription"></a>Előfizetés szerepkör-hozzárendeléseinek felsorolása
 
-Az előfizetési hatókör összes szerepkör-hozzárendelésének listázásához használja [az az role-hozzárendelési lista](/cli/azure/role/assignment#az-role-assignment-list)lehetőséget. Az előfizetés-azonosító lekéréséhez a Azure Portal az **előfizetések** panelén található, vagy használhatja az [az Account List](/cli/azure/account#az-account-list)lehetőséget.
+Az előfizetési hatókörben található összes szerepkör-hozzárendelés listához használja [az az role assignment list (szerepkör-hozzárendelési lista) lehetőséget.](/cli/azure/role/assignment#az_role_assignment_list) Az előfizetés azonosítóját a fiók Előfizetések panelén Azure Portal az account list használatával [kaphatja meg.](/cli/azure/account#az_account_list) 
 
 ```azurecli
 az role assignment list --subscription {subscriptionNameOrId}
@@ -132,9 +132,9 @@ az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --ou
 ]
 ```
 
-## <a name="list-role-assignments-for-a-management-group"></a>Felügyeleti csoport szerepkör-hozzárendeléseinek listázása
+## <a name="list-role-assignments-for-a-management-group"></a>Felügyeleti csoport szerepkör-hozzárendelésének felsorolása
 
-A felügyeleti csoport hatókörében lévő összes szerepkör-hozzárendelés felsorolásához használja [az az role-hozzárendelési lista](/cli/azure/role/assignment#az-role-assignment-list)lehetőséget. A felügyeleti csoport AZONOSÍTÓjának lekéréséhez a Azure Portal **felügyeleti csoportok** paneljén található, vagy használhatja az [az Account Management-Group listát](/cli/azure/account/management-group#az-account-management-group-list).
+A felügyeleti csoport hatókörében található összes szerepkör-hozzárendelés listához használja [az az role assignment list et.](/cli/azure/role/assignment#az_role_assignment_list) A felügyeleti csoport azonosítóját a felügyeleti  csoport panelének Felügyeleti csoportok panelén találja Azure Portal [az az account management-group list használhatja.](/cli/azure/account/management-group#az_account_management_group_list)
 
 ```azurecli
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/{groupId}
@@ -161,25 +161,25 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 ]
 ```
 
-## <a name="list-role-assignments-for-a-managed-identity"></a>Felügyelt identitás szerepkör-hozzárendeléseinek listázása
+## <a name="list-role-assignments-for-a-managed-identity"></a>Felügyelt identitás szerepkör-hozzárendelésének felsorolása
 
-1. A rendszer által hozzárendelt vagy felhasználó által hozzárendelt felügyelt identitás rendszerbiztonsági AZONOSÍTÓjának beolvasása.
+1. Szerezze be a rendszer által hozzárendelt vagy felhasználó által hozzárendelt felügyelt identitás egyszerű azonosítóját.
 
-    A felhasználó által hozzárendelt felügyelt identitás résztvevő-AZONOSÍTÓjának lekéréséhez az [az ad SP List](/cli/azure/ad/sp#az-ad-sp-list) vagy [az Identity List](/cli/azure/identity#az-identity-list)lehetőséget használhatja.
+    A felhasználó által hozzárendelt felügyelt identitás egyszerű azonosítójának leához használhatja az [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list) vagy az az identity list [használhatja a következőt:](/cli/azure/identity#az_identity_list).
 
     ```azurecli
     az ad sp list --display-name "{name}" --query [].objectId --output tsv
     ```
 
-    A rendszer által hozzárendelt felügyelt identitás rendszerbiztonsági AZONOSÍTÓjának lekéréséhez használhatja az [az ad SP listát](/cli/azure/ad/sp#az-ad-sp-list).
+    A rendszer által hozzárendelt felügyelt identitás főazonosítójának lekért azonosítóját az az ad sp list használatával [kaphatja meg.](/cli/azure/ad/sp#az_ad_sp_list)
 
     ```azurecli
     az ad sp list --display-name "{vmname}" --query [].objectId --output tsv
     ```
 
-1. A szerepkör-hozzárendelések listázásához használja az [az role-hozzárendelési lista](/cli/azure/role/assignment#az-role-assignment-list)lehetőséget.
+1. A szerepkör-hozzárendelések listához használja [az az role assignment list et.](/cli/azure/role/assignment#az_role_assignment_list)
 
-    Alapértelmezés szerint csak a jelenlegi előfizetéshez tartozó szerepkör-hozzárendelések jelennek meg. A jelenlegi előfizetéshez és az alatta lévő szerepkör-hozzárendelések megtekintéséhez adja hozzá a (z `--all` ) paramétert. Az örökölt szerepkör-hozzárendelések megtekintéséhez adja hozzá a `--include-inherited` paramétert.
+    Alapértelmezés szerint csak az aktuális előfizetés szerepkör-hozzárendelései jelennek meg. Az aktuális előfizetés és az alatta lévő szerepkör-hozzárendelések megtekintéséhez adja hozzá a `--all` paramétert. Az örökölt szerepkör-hozzárendelések megtekintéséhez adja hozzá a `--include-inherited` paramétert.
 
     ```azurecli
     az role assignment list --assignee {objectId}
@@ -187,4 +187,4 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Azure-szerepkörök kiosztása az Azure CLI-vel](role-assignments-cli.md)
+- [Azure-szerepkörök hozzárendelése az Azure CLI használatával](role-assignments-cli.md)

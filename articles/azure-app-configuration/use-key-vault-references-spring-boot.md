@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag az Azure-alkalmazások konfigurációjának használatára Key Vault a Java Spring boot-alkalmazásban | Microsoft Docs
-description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure app Configuration Key Vault hivatkozásait egy Java Spring boot-alkalmazásból
+title: Oktatóanyag a Azure App Configuration Key Vault java-alkalmazásokban való Spring Boot való | Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan használhatja Azure App Configuration Java Key Vault java-Spring Boot referenciáit
 services: azure-app-configuration
 documentationcenter: ''
 author: AlexandraKemperMS
@@ -13,93 +13,93 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: alkemper
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 04d9c7a343570349851a206fd69fdda822f790a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c5534ab836968bc4e72a54db1ddb9667d366558
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99981476"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768848"
 ---
-# <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Oktatóanyag: Key Vault-referenciák használata Java Spring-alkalmazásokban
+# <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Oktatóanyag: Key Vault referenciák használata Java Spring-alkalmazásokban
 
-Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure app Configuration szolgáltatást a Azure Key Vaultekkel együtt. Az alkalmazások konfigurálása és Key Vault a legtöbb alkalmazás-telepítésben egymás mellett használt kiegészítő szolgáltatások.
+Ez az oktatóanyag bemutatja, hogyan használhatja a Azure App Configuration szolgáltatást a Azure Key Vault. App Configuration és Key Vault a legtöbb alkalmazástelepítésben egymás mellett használt kiegészítő szolgáltatások.
 
-Az alkalmazás konfigurálása a szolgáltatások közös használatát segíti a Key Vaultban tárolt értékeket hivatkozó kulcsok létrehozásával. Ha az alkalmazás konfigurációja ilyen kulcsokat hoz létre, akkor az értékek helyett a Key Vault értékek URI-azonosítóit tárolja.
+App Configuration segítségével együtt használhatja a szolgáltatásokat a szolgáltatásokban tárolt értékekre hivatkozó kulcsok létrehozásával Key Vault. Amikor App Configuration ilyen kulcsokat hoz létre, a saját értékek helyett Key Vault URI-ját tárolja.
 
-Az alkalmazás az alkalmazás konfigurációs ügyfelének használatával kéri le Key Vault hivatkozásokat, ugyanúgy, mint az alkalmazás konfigurációjában tárolt egyéb kulcsok esetében. Ebben az esetben az alkalmazás konfigurációjában tárolt értékek URI-k, amelyek a Key Vault értékeire hivatkoznak. Nem Key Vault értékeket vagy hitelesítő adatokat. Mivel az ügyfél Key Vault hivatkozásként ismeri fel a kulcsokat, az Key Vault használatával kéri le az értékeket.
+Az alkalmazás a App Configuration ügyfélszolgáltató használatával lekéri a Key Vault-hivatkozásokat, csakúgy, mint a App Configuration. Ebben az esetben a tárolóban tárolt App Configuration olyan URI-k, amelyek a Key Vault. Nem értékeket Key Vault hitelesítő adatokat. Mivel az ügyfélszolgáltató hivatkozásként ismeri fel Key Vault kulcsokat, a Key Vault lekéri az értékeket.
 
-Az alkalmazás felelős azért, hogy megfelelően hitelesítse az alkalmazások konfigurációját és a Key Vault. A két szolgáltatás nem kommunikál közvetlenül.
+Az alkalmazás felelős a megfelelő hitelesítésért a App Configuration és Key Vault. A két szolgáltatás nem kommunikál közvetlenül.
 
-Ez az oktatóanyag bemutatja, hogyan implementálhatja Key Vault hivatkozásait a kódban. A szolgáltatás a gyors útmutatókban bemutatott webalkalmazásra épül. Mielőtt továbblépne, először [hozzon létre egy Java Spring-alkalmazást az alkalmazás konfigurálásával](./quickstart-java-spring-app.md) .
+Ez az oktatóanyag bemutatja, hogyan implementálja Key Vault referenciáit a kódban. A rövid útmutatókban bemutatott webalkalmazásra épül. A folytatás előtt először a [Create a Java Spring app with App Configuration (Java Spring-alkalmazás](./quickstart-java-spring-app.md) létrehozása a App Configuration lépésekkel.
 
-Az oktatóanyag lépéseihez bármilyen Kódszerkesztő használható. A [Visual Studio Code](https://code.visualstudio.com/) például egy platformfüggetlen Kódszerkesztő, amely a Windows, MacOS és Linux operációs rendszerekhez érhető el.
+Az oktatóanyagban található lépéseket bármilyen kódszerkesztővel el is használhatja. A [Visual Studio Code](https://code.visualstudio.com/) például egy platformfüggetlen kódszerkesztő, amely Windows, macOS és Linux operációs rendszerekhez érhető el.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Hozzon létre egy olyan alkalmazás-konfigurációs kulcsot, amely Key Vaultban tárolt értékre hivatkozik.
-> * A kulcs értékének elérése egy Java Spring-alkalmazásból.
+> * Hozzon létre egy App Configuration kulcsot, amely a tárolóban tárolt Key Vault.
+> * Hozzáférés a kulcs értékhez egy Java Spring-alkalmazásból.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* A 8-as verzióval támogatott [Java Development Kit (JDK)](/java/azure/jdk) .
-* Az [Apache Maven](https://maven.apache.org/download.cgi) 3,0-es vagy újabb verziója.
+* Azure-előfizetés [– hozzon létre egyet ingyenesen](https://azure.microsoft.com/free/)
+* Egy támogatott [Java fejlesztői készlet (JDK)](/java/azure/jdk) 8-as verzióval.
+* [Az Apache Maven](https://maven.apache.org/download.cgi) 3.0-s vagy újabb verziója.
 
 ## <a name="create-a-vault"></a>Tároló létrehozása
 
-1. Válassza az **erőforrás létrehozása** lehetőséget a Azure Portal bal felső sarkában:
+1. Válassza **az Erőforrás létrehozása** lehetőséget a bal felső sarokban a Azure Portal:
 
-    ![A képernyőképen az erőforrás létrehozása lehetőség látható a Azure Portal.](./media/quickstarts/search-services.png)
+    ![Képernyőkép az Erőforrás létrehozása lehetőségről a Azure Portal.](./media/quickstarts/search-services.png)
 1. A keresőmezőbe írja be a **Key Vault** nevet.
-1. Az eredmények listából válassza a bal oldali **kulcstartók** lehetőséget.
-1. A **kulcstartók** területen válassza a **Hozzáadás** lehetőséget.
-1. A **Key Vault létrehozása** jobb oldalán adja meg a következő információkat:
-    * Válassza ki az **előfizetést az előfizetés** kiválasztásához.
-    * Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, és adjon meg egy erőforráscsoport-nevet.
-    * A **Key Vault neve mezőben** egyedi nevet kell megadni. Ebben az oktatóanyagban írja be a **contoso-vault2**.
-    * A **régió** legördülő listából válassza ki a kívánt helyet.
-1. Hagyja meg a többi **create Key Vault** -beállítást az alapértelmezett értékekkel.
+1. Az eredmények listájában válassza a **bal oldalon található Kulcstartók** lehetőséget.
+1. A **Key Vaultsban válassza** a Hozzáadás **lehetőséget.**
+1. A Kulcstartó létrehozása jobb **oldalon** adja meg a következő információkat:
+    * Válassza **az Előfizetés** lehetőséget az előfizetés kiválasztásához.
+    * Az **Erőforráscsoport mezőben** válassza az **Új létrehozása lehetőséget,** és adjon meg egy erőforráscsoport-nevet.
+    * A **Kulcstartó neve alatt** meg kell adni egy egyedi nevet. Ebben az oktatóanyagban adja meg a **Contoso-vault2 adhatja meg** a következőt: .
+    * A Régió **legördülő** listában válasszon egy helyet.
+1. Hagyja meg a **többi Kulcstartó létrehozása beállítást** az alapértelmezett értékekkel.
 1. Válassza a **Létrehozás** lehetőséget.
 
-Ezen a ponton az Azure-fiókja az egyetlen jogosult az új tároló elérésére.
+Ezen a ponton az Ön Azure-fiókja az egyetlen, aki jogosult hozzáférni ehhez az új tárolóhoz.
 
-![A képernyőfelvételen a kulcstartó látható.](./media/quickstarts/vault-properties.png)
+![Képernyőkép a kulcstartóról.](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Titkos kulcs hozzáadása a Key Vaulthoz
 
-Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést kell elvégeznie. Ebben az esetben adjon hozzá egy üzenetet, amely segítségével tesztelheti Key Vault lekérését. Az üzenet neve **üzenet**, és a "Hello from Key Vault" értéket tárolja.
+Ha titkos gombra van szüksége a tárolóhoz való hozzáadáshoz, néhány további lépést is végre kell tartania. Ebben az esetben adjon hozzá egy üzenetet, amely a lekérés tesztelésére Key Vault használható. Az üzenet neve **Message**,, és a "Hello from Key Vault" értéket tárolja benne.
 
-1. A Key Vault tulajdonságok oldalain válassza a **titkok** elemet.
-1. Válassza a **készítés/importálás** lehetőséget.
-1. A **titkos kulcs létrehozása** panelen adja meg a következő értékeket:
-    * **Feltöltési beállítások**: adja meg a **manuális** értéket.
-    * **Név**: írja be az **üzenetet**.
-    * **Érték**: adja meg **a Hello értéket Key Vault**.
-1. Hagyja a másik **titkos** tulajdonságot az alapértelmezett értékekkel.
+1. A tulajdonságok Key Vault oldalán válassza a Titkos **kulcsok lehetőséget.**
+1. Válassza **a Generate/Import (Generálás/Importálás) lehetőséget.**
+1. A Titkos **adat létrehozása panelen** adja meg a következő értékeket:
+    * **Feltöltési beállítások:** Adja meg a **Manuális lehetőséget.**
+    * **Név:** Írja be a **következő üzenetet:**.
+    * **Érték:** Írja be a **Hello Key Vault.**
+1. A többi **Titkos adat létrehozása tulajdonságot** hagyja meg az alapértelmezett értékekkel.
 1. Válassza a **Létrehozás** lehetőséget.
 
-## <a name="add-a-key-vault-reference-to-app-configuration"></a>Key Vault-hivatkozás hozzáadása az alkalmazás konfigurációjához
+## <a name="add-a-key-vault-reference-to-app-configuration"></a>Hivatkozás Key Vault a App Configuration
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **minden erőforrás** lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza **a Minden erőforrás** lehetőséget, majd App Configuration a rövid útmutatóban létrehozott tárolópéldányt.
 
-1. Válassza a **Configuration Explorer** lehetőséget.
+1. Válassza **a Configuration Explorer lehetőséget.**
 
-1. Válassza a **+**  >  **Key Vault-hivatkozás** létrehozása lehetőséget, majd adja meg a következő értékeket:
-    * **Kulcs**: **/Application/config.keyvaultmessage** kiválasztása
-    * **Címke**: hagyja üresen ezt az értéket.
-    * **Előfizetés**, **erőforráscsoport** és **Key Vault**: adja meg az előző szakaszban létrehozott kulcstartó értékeinek megfelelő értékeket.
-    * **Titkos** kód: válassza ki az előző szakaszban létrehozott **üzenet** titkos nevét.
+1. Válassza **a +**  >  **Kulcstartó-referencia létrehozása lehetőséget,** majd adja meg a következő értékeket:
+    * **Kulcs:** Válassza **az /application/config.keyvaultmessage lehetőséget**
+    * **Címke:** Ezt az értéket hagyja üresen.
+    * **Előfizetés,** **Erőforráscsoport** és **Kulcstartó:** Adja meg az előző szakaszban létrehozott kulcstartóban található értékeknek megfelelő értékeket.
+    * **Titkos:** Válassza ki az előző szakaszban létrehozott **Message** (Üzenet) nevű titkos secret (Titkos üzenet) lehetőséget.
 
-## <a name="connect-to-key-vault"></a>Kapcsolódás Key Vaulthoz
+## <a name="connect-to-key-vault"></a>Csatlakozás Key Vault
 
-1. Ebben az oktatóanyagban egy egyszerű szolgáltatásnevet használ a Key Vault való hitelesítéshez. Az egyszerű szolgáltatás létrehozásához használja az Azure CLI az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) parancsot:
+1. Ebben az oktatóanyagban szolgáltatásnévvel fog hitelesítést használni a Key Vault. A szolgáltatásnév létrehozásához használja az Azure CLI [az ad sp create-for-rbac parancsot:](/cli/azure/ad/sp#az_ad_sp_create_for_rbac)
 
     ```azurecli
     az ad sp create-for-rbac -n "http://mySP" --sdk-auth
     ```
 
-    A művelet a kulcs/érték párok sorozatát adja vissza:
+    Ez a művelet kulcs/érték párok sorozatát adja vissza:
 
     ```json
     {
@@ -115,20 +115,20 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
     }
     ```
 
-1. A következő parancs futtatásával engedélyezheti, hogy az egyszerű szolgáltatásnév hozzáférjen a kulcstartóhoz:
+1. Futtassa a következő parancsot, hogy a szolgáltatásnév hozzáfér a kulcstartóhoz:
 
     ```azurecli
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get
     ```
 
-1. Futtassa az alábbi parancsot az Object-ID beszerzéséhez, majd adja hozzá az alkalmazás konfigurációjához.
+1. Futtassa a következő parancsot az objektumazonosító lekért futtatásához, majd adja hozzá App Configuration.
 
     ```azurecli
     az ad sp show --id <clientId-of-your-service-principal>
     az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
-1. Hozza létre a környezeti változókat **AZURE_CLIENT_ID**, **AZURE_CLIENT_SECRET** és **AZURE_TENANT_ID**. Használja az előző lépésekben megjelenő szolgáltatásnév értékeit. A parancssorban futtassa a következő parancsokat, és indítsa újra a parancssort, hogy a módosítás érvénybe lépjen:
+1. Hozza létre a környezeti változókat **AZURE_CLIENT_ID**, **AZURE_CLIENT_SECRET** és **AZURE_TENANT_ID.** Használja a szolgáltatásnév előző lépésekben megjelenő értékeit. A parancssorban futtassa a következő parancsokat, és indítsa újra a parancssort, hogy a módosítás érvénybe léptetőd érvénybe lép:
 
     ```cmd
     setx AZURE_CLIENT_ID "clientId"
@@ -136,7 +136,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
     setx AZURE_TENANT_ID "tenantId"
     ```
 
-    Ha a Windows PowerShellt használja, futtassa a következő parancsot:
+    Ha a parancsot Windows PowerShell, futtassa a következő parancsot:
 
     ```azurepowershell
     $Env:AZURE_CLIENT_ID = "clientId"
@@ -144,7 +144,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
     $Env:AZURE_TENANT_ID = "tenantId"
     ```
 
-    Ha macOS vagy Linux rendszert használ, futtassa a következő parancsot:
+    MacOS vagy Linux rendszeren futtassa a következő parancsot:
 
     ```cmd
     export AZURE_CLIENT_ID ='clientId'
@@ -154,20 +154,20 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
 
 
 > [!NOTE]
-> Ezek a Key Vault hitelesítő adatok csak az alkalmazáson belül használatosak.  Az alkalmazás közvetlenül a Key Vault használatával hitelesíti ezeket a hitelesítő adatokat az alkalmazás konfigurációs szolgáltatásának bevonása nélkül.  A Key Vault a kulcsok megosztása vagy kihelyezése nélkül biztosítja az alkalmazás és az alkalmazás konfigurációs szolgáltatásának hitelesítését.
+> Ezek Key Vault hitelesítő adatokat csak az alkalmazáson belül használja.  Az alkalmazás ezekkel a hitelesítő Key Vault hitelesítéssel közvetlenül, a App Configuration nélkül.  A Key Vault hitelesítést biztosít az alkalmazáshoz és a App Configuration szolgáltatáshoz is, kulcsok megosztása vagy felfedése nélkül.
 
-## <a name="update-your-code-to-use-a-key-vault-reference"></a>A kód frissítése Key Vault-hivatkozás használatára
+## <a name="update-your-code-to-use-a-key-vault-reference"></a>Kód frissítése új referencia Key Vault használatára
 
-1. Hozzon létre egy **APP_CONFIGURATION_ENDPOINT** nevű környezeti változót. Állítsa be az értékét az alkalmazás konfigurációs tárolójának végpontján. A végpontot a Azure Portal **hozzáférési kulcsok** paneljén találja. A módosítás érvénybe léptetéséhez indítsa újra a parancssort. 
+1. Hozzon létre egy nevű környezeti **APP_CONFIGURATION_ENDPOINT.** Állítsa be az értékét a saját App Configuration végpontjára. A végpontot a hozzáférési kulcsok **panelen** találja a Azure Portal. Indítsa újra a parancssort, hogy a módosítás érvénybe lép. 
 
 
-1. Nyissa meg a *bootstrap. properties* mappát az *erőforrások* mappában. Frissítse ezt a fájlt a **APP_CONFIGURATION_ENDPOINT** érték használatára. Távolítsa el a fájlban lévő kapcsolódási sztringre mutató hivatkozásokat. 
+1. Nyissa *meg a bootstrap.properties* fájlt a *resources mappában.* Frissítse ezt a fájlt a APP_CONFIGURATION_ENDPOINT **használatára.** Távolítsa el a fájlban található kapcsolati sztringre mutató hivatkozásokat. 
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
     ```
 
-1. Nyissa meg a *MessageProperties. Java* programot. Adjon hozzá egy új, *keyVaultMessage* nevű változót:
+1. Nyissa *meg a MessageProperties.java-t.* Adjon hozzá egy *új, keyVaultMessage nevű változót:*
 
     ```java
     private String keyVaultMessage;
@@ -181,7 +181,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
     }
     ```
 
-1. Nyissa meg a *HelloController. Java* programot. Frissítse a *getMessage* metódust, hogy tartalmazza a Key Vaultból beolvasott üzenetet.
+1. Nyissa meg *a HelloController.java fájlját.* Frissítse a *getMessage* metódust, hogy tartalmazza a lekérdezésből lekért Key Vault.
 
     ```java
     @GetMapping
@@ -190,7 +190,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
     }
     ```
 
-1. Hozzon létre egy új, *AzureCredentials. Java* nevű fájlt, és adja hozzá az alábbi kódot.
+1. Hozzon létre egy *új fájlt AzureCredentials.java* néven, és adja hozzá az alábbi kódot.
 
     ```java
     package com.example.demo;
@@ -219,7 +219,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
     }
     ```
 
-1. Hozzon létre egy új, *AppConfiguration. Java* nevű fájlt. És adja hozzá az alábbi kódot.
+1. Hozzon létre egy új fájlt *AppConfiguration.java néven.* Adja hozzá az alábbi kódot.
 
     ```java
     package com.example.demo;
@@ -237,27 +237,27 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
     }
     ```
 
-1. Hozzon létre egy új fájlt a sources META-INF könyvtárban, a *Spring. Factorys* néven, és adja hozzá az alábbi kódot.
+1. Hozzon létre egy *spring.factories* nevű új fájlt az erőforrások META-INF könyvtárában, és adja hozzá az alábbi kódot.
 
     ```factories
     org.springframework.cloud.bootstrap.BootstrapConfiguration=\
     com.example.demo.AppConfiguration
     ```
 
-1. Készítse elő a Spring boot-alkalmazást a Maven használatával, és futtassa, például:
+1. Készítse el Spring Boot alkalmazást a Maven segítségével, és futtassa, például:
 
     ```shell
     mvn clean package
     mvn spring-boot:run
     ```
 
-1. Az alkalmazás futása után a *curl* használatával tesztelheti az alkalmazást, például:
+1. Az alkalmazás futása után a *curl* használatával tesztelje az alkalmazást, például:
 
       ```shell
       curl -X GET http://localhost:8080/
       ```
 
-    Megjelenik az alkalmazás konfigurációs tárolójában megadott üzenet. Megjelenik a Key Vaultban megadott üzenet is.
+    Megjelenik a tárolóban megadott App Configuration üzenet. A megadott üzenet is megjelenik a Key Vault.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -265,7 +265,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban létrehozott egy alkalmazás-konfigurációs kulcsot, amely a Key Vaultban tárolt értékre hivatkozik. Ha szeretné megtudni, hogyan használhatja a Feature Flags szolgáltatást a Java Spring-alkalmazásban, folytassa a következő oktatóanyaggal.
+Ebben az oktatóanyagban létrehozott egy App Configuration kulcsot, amely egy, a Key Vault. Ha meg szeretne ismerkedni a funkciójelölők használatával a Java Spring-alkalmazásban, folytassa a következő oktatóanyagokkal.
 
 > [!div class="nextstepaction"]
-> [Felügyelt identitások integrációja](./quickstart-feature-flag-spring-boot.md)
+> [Felügyelt identitás integrációja](./quickstart-feature-flag-spring-boot.md)

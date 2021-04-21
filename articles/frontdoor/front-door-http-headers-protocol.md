@@ -1,6 +1,6 @@
 ---
-title: A HTTP-fejlécek protokoll-támogatása az Azure bejárati ajtóban | Microsoft Docs
-description: Ez a cikk a bejárati ajtó által támogatott HTTP-fejlécek protokollait ismerteti.
+title: Http-fejlécek protokolltámogatása a Azure Front Door | Microsoft Docs
+description: Ez a cikk a támogatott HTTP Front Door protokollokat ismerteti.
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -11,60 +11,60 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2020
 ms.author: duau
-ms.openlocfilehash: 5989f91233448c04d50ba1c69a06851b91426a03
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 2ad97656b822bc5ffc957469842436ec84d9e812
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167804"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785756"
 ---
-# <a name="protocol-support-for-http-headers-in-azure-front-door"></a>A HTTP-fejlécek protokoll-támogatása az Azure-beli bejárati ajtón
-Ez a cikk azt a protokollt ismerteti, amelyet a bevezető ajtó támogat a hívási útvonal részeivel (lásd a képet). A következő szakaszokban további információkat talál a bejárati ajtó által támogatott HTTP-fejlécekről.
+# <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Http-fejlécek protokolltámogatása a Azure Front Door
+Ez a cikk a hívási útvonal Front Door protokollt ismerteti (lásd a képet). A következő szakaszok további információkat tartalmaznak a támogatott HTTP-fejlécekkel Front Door.
 
-:::image type="content" source="./media/front-door-http-headers-protocol/front-door-protocol-summary.png" alt-text="Azure bejárati ajtó HTTP-fejlécek protokollja":::
+:::image type="content" source="./media/front-door-http-headers-protocol/front-door-protocol-summary.png" alt-text="Azure Front Door HTTP-fejlécek protokollja":::
 
 >[!IMPORTANT]
->A bejárati ajtó nem tanúsít olyan HTTP-fejléceket, amelyek nincsenek dokumentálva.
+>Front Door nem minősíti az itt nem dokumentált HTTP-fejléceket.
 
-## <a name="client-to-front-door"></a>Ügyfélről a bejárat felé
-A bejárati ajtó fogadja a legtöbb fejlécet a bejövő kérelem módosítása nélkül. Egyes fenntartott fejlécek el lesznek távolítva a bejövő kérelemből, ha el vannak küldve, beleértve az X-FD-* előtaggal rendelkező fejléceket is.
+## <a name="client-to-front-door"></a>Az ügyfél számára Front Door
+Front Door a legtöbb fejlécet elfogadja a bejövő kéréshez azok módosítása nélkül. A rendszer eltávolít néhány fenntartott fejlécet a bejövő kérésből, beleértve az X-FD-* előtagú fejléceket is.
 
-## <a name="front-door-to-backend"></a>A háttérbe való bejárati
+## <a name="front-door-to-backend"></a>Front Door a háttérhez
 
-A bejárati ajtó a bejövő kérelmek fejléceit tartalmazza, kivéve, ha a korlátozások miatt el vannak távolítva. A bejárati ajtó a következő fejléceket is hozzáadja:
-
-| Fejléc  | Példa és leírás |
-| ------------- | ------------- |
-| Keresztül |  *A: 1,1 Azure-on keresztül* </br> A bejárati ajtó hozzáadja az ügyfél HTTP-verzióját, majd az *Azure* -t a on keresztül fejléc értékeként. Ez a fejléc azt jelzi, hogy az ügyfél HTTP-verziója, és a bejárati ajtó egy köztes címzett volt az ügyfél és a háttér közötti kérelemhez.  |
-| X – Azure – Ügyfélip | *X-Azure-Ügyfélip: 127.0.0.1* </br> A feldolgozott kérelemhez társított ügyfél IP-címét jelöli. Egy proxytól érkező kérés például hozzáadhatja az X által továbbított-for fejlécet, hogy jelezze az eredeti hívó IP-címét. |
-| X – Azure – SocketIP |  *X-Azure-SocketIP: 127.0.0.1* </br> Azt a szoftvercsatorna IP-címet jelöli, amely a jelenlegi kérelemből származó TCP-kapcsolathoz tartozik. Előfordulhat, hogy a kérelem ügyfél-IP-címe nem egyenlő a szoftvercsatorna IP-címével, mert azt egy felhasználó önkényesen felülírhatja.|
-| X – Azure-ref | *X-Azure-ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Egy egyedi hivatkozási sztring, amely a bejárati ajtó által kiszolgált kéréseket azonosítja. A rendszer a hozzáférési naplók keresésére, valamint a hibaelhárítás szempontjából kritikus fontosságú megoldására szolgál.|
-| X – Azure – RequestChain | *X-Azure-RequestChain: ugrások = 1* </br> Az a fejléc, amelyet a bejárati ajtó használ a kérési hurkok észlelésére, és a felhasználóknak nem kell függőséget végezniük. |
-| X – Azure – FDID | *X-Azure-FDID: 55ce4ed1-4b06-4bf1-b40e-4638452104da* <br/> Egy, a kérést azonosító hivatkozási sztring egy adott előtérben lévő erőforrásból származik. Az érték a Azure Portalban látható, vagy a felügyeleti API használatával kérhető le. Ezt a fejlécet az IP ACL-ekkel együtt használva zárolhatja a végpontot úgy, hogy csak egy adott bejárati erőforrástól érkező kéréseket fogadjon. [További részletekért](front-door-faq.yml#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-) tekintse meg a gyakori kérdéseket |
-| X – továbbított – a következőhöz: | *X – továbbított – a következőhöz: 127.0.0.1* </br> Az X-továbbított-for (XFF) HTTP-fejléc mező gyakran azonosítja a webkiszolgálóhoz a HTTP-proxyn vagy a Load balanceren keresztül csatlakozó ügyfél származó IP-címét. Ha van meglévő XFF-fejléc, akkor a bejárati ajtó hozzáfűzi az ügyfél szoftvercsatorna IP-címét, vagy hozzáadja a XFF-fejlécet az ügyfél szoftvercsatorna IP-címéhez. |
-| X-továbbított-gazdagép | *X-továbbított-gazdagép: contoso.azurefd.net* </br> Az X-Forwarded-Host HTTP-fejléc mező az ügyfél által a gazdagép HTTP-kérelmének fejlécében kért eredeti gazdagép azonosítására szolgáló közös módszer. Ennek az az oka, hogy az előtérben lévő gazdagép neve eltérhet a kérést kezelő háttér-kiszolgálótól. |
-| X – továbbított – proto | *X – továbbított – proto: http* </br> Az X-Forwarded-proto HTTP-fejléc mező gyakran használatos egy HTTP-kérelem kezdeményező protokolljának azonosítására. A konfiguráción alapuló bejárati ajtó HTTPS használatával kommunikálhat a háttérrel. Ez akkor is igaz, ha a fordított proxyra irányuló kérelem HTTP. |
-| X-FD-HealthProbe | Az X-FD-HealthProbe HTTP-fejléc mező a bejárati állapot azonosítására szolgál. Ha ez a fejléc 1 értékre van beállítva, a kérelem állapota az állapot. Akkor használhatja, ha szigorú hozzáférést szeretne elérni az adott bejárati ajtóról az X-Forwarded-Host fejléc mezővel. |
-| X – Azure – FDID | *X-Azure-FDID fejléc: 437c82cd-360A-4a54-94c3-5ff707647783* </br> Ez a mező olyan frontdoorID tartalmaz, amelyek segítségével azonosítható, hogy a bejövő kérelem melyik bejárati ajtótól származik. Ezt a mezőt a bejárati ajtó szolgáltatás tölti fel. | 
-
-## <a name="front-door-to-client"></a>Első ajtó az ügyfélnek
-
-A háttérbeli bejáratra küldött fejlécek is át lesznek adva az ügyfélnek. A következőkben a bejárati ajtóról az ügyfeleknek továbbított fejlécek találhatók.
+Front Door fejléceket tartalmaz a bejövő kéréshez, kivéve, ha korlátozások miatt eltávolítja őket. Front Door a következő fejléceket is hozzáadja:
 
 | Fejléc  | Példa és leírás |
 | ------------- | ------------- |
-| X – Azure-ref |  *X-Azure-ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Ez egy egyedi hivatkozási karakterlánc, amely a bejárati ajtó által kiszolgált kéréseket azonosítja, ami kritikus fontosságú a hibaelhárításhoz, mivel a hozzáférési naplók keresésére szolgál.|
-| X-cache | *X gyorsítótár: TCP_HIT* </br> Ez a fejléc leírja a kérelem gyorsítótárbeli állapotát, amely lehetővé teszi annak azonosítását, hogy a válasz tartalma a bejárati ajtó gyorsítótárából legyen kézbesítve. |
+| Via |  *Keresztül: 1.1 Azure* </br> Front Door hozzáadja az ügyfél HTTP-verzióját, majd az *Azure-t* az Via fejléc értékeként. Ez a fejléc jelzi az ügyfél HTTP-verzióját, Front Door az ügyfél és a háttéralkalmazás közötti kérés köztes címzettje volt.  |
+| X-Azure-ClientIP | *X-Azure-ClientIP: 127.0.0.1* </br> A feldolgozott kéréshez társított ügyfél IP-címét jelöli. Egy proxyról érkező kérés például hozzáadhatja az X-Forwarded-For fejlécet az eredeti hívó IP-címének jelzéséhez. |
+| X-Azure-SocketIP |  *X-Azure-SocketIP: 127.0.0.1* </br> Annak a TCP-kapcsolatnak a szoftvercsatorna IP-címét jelöli, amelyről az aktuális kérés származik. Előfordulhat, hogy egy kérés ügyfél IP-címe nem egyenlő a szoftvercsatorna IP-címével, mert a felhasználó tetszőlegesen felülírhatja az ügyfél IP-címét.|
+| X-Azure-Ref | *X-Azure-Ref: 0zxV+XAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYWYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Egyedi hivatkozási sztring, amely azonosítja a kérést, amelyet a Front Door. A hozzáférési naplók keresését és a hibaelhárítás szempontjából kritikus fontosságú adatokat használja.|
+| X-Azure-RequestChain | *X-Azure-RequestChain: hops=1* </br> Egy fejléc, Front Door észleli a kéréshurkokat, és a felhasználók nem függnek a kéréstől. |
+| X-Azure-FDID | *X-Azure-FDID: 55ce4ed1-4b06-4bf1-b40e-4638452104da* <br/> A kérést azonosító hivatkozási sztring egy adott Front Door érkezett. Az érték látható a Azure Portal felügyeleti API-val lekérhető. Ezt a fejlécet IP ACL-ekkel együtt használva zárolhatja a végpontot, hogy csak egy adott erőforrástól Front Door kéréseket. További részletekért tekintse meg [a gyakori kérdéseket](front-door-faq.yml#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-) |
+| X-Forwarded-for | *X-Forwarded-for: 127.0.0.1* </br> Az X-Forwarded-for (XFF) HTTP-fejlécmező gyakran azonosítja a webkiszolgálóhoz HTTP-proxyn vagy terheléselosztáson keresztül csatlakozó ügyfél eredeti IP-címét. Ha van meglévő XFF-fejléc, a Front Door hozzáfűzi hozzá az ügyfél szoftvercsatornája IP-címét, vagy hozzáadja az XFF-fejlécet az ügyfél szoftvercsatorna IP-címével. |
+| X-Forwarded-Host | *X-Forwarded-Host (X-továbbított gazdagép): contoso.azurefd.net* </br> Az X-Forwarded-Host HTTP-fejlécmező egy gyakori metódus, amely azonosítja az ügyfél által kért eredeti gazdagépet a Gazdagép HTTP-kérés fejlécében. Ennek az az oka, hogy a Front Door gazdaneve eltérhet a kérést kezelő háttérkiszolgáló esetében. |
+| X-Forwarded-Proto | *X-Forwarded-Proto: http* </br> Az X-Forwarded-Proto HTTP-fejlécmezőt gyakran használják a HTTP-kérések eredeti protokollja azonosítására. Front Door konfiguráción alapuló kapcsolatok HTTPS használatával kommunikálhatnak a háttérvel. Ez akkor is igaz, ha a fordított proxynak adott kérés HTTP. |
+| X-FD-HealthProbe | Az X-FD-HealthProbe HTTP-fejlécmező az állapot-mintavétel azonosítására használható a Front Door. Ha ez a fejléc 1-re van állítva, a kérés állapot-mintavétel. Akkor használhatja a parancsot, ha szigorú hozzáférést szeretne Front Door X-Forwarded-Host fejlécmezővel. |
+| X-Azure-FDID | *X-Azure-FDID fejléc: 437c82cd-360a-4a54-94c3-5ff707647783* </br> Ez a mező tartalmazza a frontdoorID azonosítót, amellyel azonosítható, Front Door a bejövő kérés melyik részből érkezik. Ezt a mezőt a Front Door tölti ki. | 
 
-Az alábbi opcionális válasz fejlécek engedélyezéséhez az "X-Azure-DebugInfo: 1" kérelem fejlécét kell elküldeni.
+## <a name="front-door-to-client"></a>Front Door ügyfélhez
+
+A háttérből a Front Door küldött fejlécek is át vannak küldve az ügyfélnek. A következő fejlécek a Front Door küldve.
 
 | Fejléc  | Példa és leírás |
 | ------------- | ------------- |
-| X – Azure – OriginStatusCode |  *X-Azure-OriginStatusCode: 503* </br> Ez a fejléc tartalmazza a háttér által visszaadott HTTP-állapotkódot. Ezen fejléc használatával azonosíthatja a háttérben futó alkalmazás által visszaadott HTTP-állapotkódot a háttérbeli naplók nélkül. Ez az állapotkód eltérő lehet az ügyfélnek a bejárati ajtó által küldött válaszban szereplő HTTP-állapotkódtől. Ez a fejléc lehetővé teszi annak meghatározását, hogy a háttérrendszer működik-e, vagy hogy a probléma a bejárati ajtó szolgáltatással működik-e. |
-| X – Azure – InternalError | Ez a fejléc tartalmazza azt a hibakódot, amely bevezeti az ajtót a kérelem feldolgozásakor. Ez a hiba azt jelzi, hogy a probléma belső a bejárati ajtó szolgáltatás/infrastruktúra számára. Probléma jelentése a támogatáshoz.  |
-| X – Azure – ExternalError | *X-Azure-ExternalError: 0x830c1011, a hitelesítésszolgáltató ismeretlen.* </br> Ez a fejléc azt a hibakódot jeleníti meg, amelyet a bejárati ajtó-kiszolgálók a háttér-kiszolgálóval való kapcsolat létesítése során hoznak létre a kérelem feldolgozásához. Ez a fejléc segítséget nyújt a bejárati ajtó és a háttérbeli alkalmazás közötti kapcsolat hibáinak azonosításához. Ez a fejléc részletes hibaüzenetet tartalmaz, amely segítséget nyújt a háttérbeli kapcsolati problémák azonosításában (például DNS-feloldás, érvénytelen tanúsítvány stb.). |
+| X-Azure-Ref |  *X-Azure-Ref: 0zxV+XAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYWYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Ez egy egyedi hivatkozási sztring, amely azonosítja a Front Door által kiszolgált kérést, ami kritikus fontosságú a hibaelhárításhoz, mivel a hozzáférési naplókban való kereséshez használatos.|
+| X-Cache | *X-Cache: TCP_HIT* </br> Ez a fejléc ismerteti a kérés gyorsítótárának állapotát, amely lehetővé teszi annak azonosítását, hogy a válasz tartalma a kérés gyorsítótára által kiszolgált Front Door. |
+
+A következő választható válaszfejlécek engedélyezéséhez el kell küldenie az "X-Azure-DebugInfo: 1" kérelemfejlécet.
+
+| Fejléc  | Példa és leírás |
+| ------------- | ------------- |
+| X-Azure-OriginStatusCode |  *X-Azure-OriginStatusCode: 503* </br> Ez a fejléc tartalmazza a háttér által visszaadott HTTP-állapotkódot. Ezzel a fejléccel azonosíthatja a háttéralkalmazás által visszaadott HTTP-állapotkódot anélkül, hogy végigfut a háttérnaplókon. Ez az állapotkód különbözhet a http-állapotkódtól a válaszban, amelyet az ügyfélnek a Front Door. Ez a fejléc lehetővé teszi annak megállapítását, hogy a háttérkiszolgáló helytelenül viselkedik-e, vagy a probléma a Front Door szolgáltatással. |
+| X-Azure-InternalError | Ez a fejléc tartalmazza a kérelem feldolgozásakor Front Door hibakódot. Ez a hiba azt jelzi, hogy a probléma a Front Door szolgáltatáson/infrastruktúrán belül van. Jelentse a problémát a támogatásnak.  |
+| X-Azure-ExternalError | *X-Azure-ExternalError: 0x830c1011, A hitelesítésszolgáltató ismeretlen.* </br> Ez a fejléc azt a hibakódot Front Door, amely a kérések feldolgozása érdekében a háttérkiszolgálóval való kapcsolat létesítését jelenti. Ez a fejléc segít azonosítani a problémákat a Front Door és a háttéralkalmazás közötti kapcsolatban. Ez a fejléc egy részletes hibaüzenetet tartalmaz, amely segít azonosítani a háttérhez való kapcsolódási problémákat (például DNS-feloldás, érvénytelen tanúsítvány stb.). |
 
 ## <a name="next-steps"></a>Következő lépések
 
 - [Bejárati ajtó létrehozása](quickstart-create-front-door.md)
-- [Az előtérben működik](front-door-routing-architecture.md)
+- [Az Front Door működése](front-door-routing-architecture.md)

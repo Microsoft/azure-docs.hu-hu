@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: A QnA Maker dokumentációja
   description: A QnA Maker egy olyan felhőalapú API-szolgáltatás, amely egy beszélgetés típusú, kérdésekből és válaszokból álló réteget hoz létre az adatok alapján. A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók. A QnA Maker szolgáltatás egyezteti a felhasználók természetes nyelvi kérdéseit a Tudásbázisban szereplő kérdésekkel és válaszokkal, majd a lehető legjobban megfelelő választ adja vissza.
-  ms.openlocfilehash: d993dfcc4d486190e2501940465598b53808b965
-  ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+  ms.openlocfilehash: 05ea6890e9b02c82bfca563108c92ed00e0f759b
+  ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/10/2021
-  ms.locfileid: "102613884"
+  ms.lasthandoff: 04/20/2021
+  ms.locfileid: "107766878"
 landingContent:
 - title: A QnA Maker bemutatása
   linkLists:
@@ -60,7 +60,7 @@ landingContent:
     links:
     - text: 'Gyorsútmutató: Postman vagy cURL használatával'
       url: quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-    - text: 'Gyors útmutató: az SDK és a REST API használata'
+    - text: 'Rövid útmutató: Az SDK és a REST API'
       url: quickstarts/quickstart-sdk.md
   - linkListType: how-to-guide
     links:
@@ -109,7 +109,7 @@ landingContent:
     - text: Azure PowerShell
       url: /powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure parancssori felület (CLI)
-      url: /cli/azure/cognitiveservices#az-cognitiveservices-list
+      url: /cli/azure/cognitiveservices#az_cognitiveservices_list
 - title: Súgó és visszajelzés
   linkLists:
   - linkListType: reference

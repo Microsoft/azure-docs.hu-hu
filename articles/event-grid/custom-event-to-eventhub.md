@@ -1,17 +1,17 @@
 ---
-title: 'Gyors útmutató: egyéni események küldése Event Hubs-Event Gridra, Azure CLI-re'
-description: 'Rövid útmutató: a Azure Event Grid és az Azure CLI használatával tehet közzé egy témakört, és feliratkozhat erre az eseményre. A rendszer Event Hubot használ végpontként.'
+title: 'Rövid útmutató: Egyéni események küldése a Event Hubs – Event Grid, Azure CLI'
+description: 'Rövid útmutató: A Azure Event Grid és az Azure CLI használatával közzétehet egy témakört, és feliratkozhat az eseményre. A rendszer Event Hubot használ végpontként.'
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7c236025f31e10c00b324e5ff3374bd6504b2b7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1989c94cc7b260cfc36a3129d2743350ca430bf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91324110"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780490"
 ---
-# <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Gyors útmutató: egyéni események irányítása az Azure Event Hubs az Azure CLI-vel és Event Grid
+# <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Rövid útmutató: Egyéni események útválasztása Azure Event Hubs Azure CLI és a Event Grid
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Az Azure Event Hubs az egyik támogatott eseménykezelő. Ebben a cikkben létrehozunk egy egyéni témakört az Azure CLI-vel, feliratkozunk az adott témakörre, majd elindítjuk az eseményt az eredmény megtekintéséhez. Az eseményeket az eseményközpontba küldi.
 
@@ -21,7 +21,7 @@ Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Az Azure 
 
 Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni. Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. 
 
 A következő példában létrehozunk egy *gridResourceGroup* nevű erőforráscsoportot a *westus2* helyen.
 
@@ -54,7 +54,7 @@ az eventhubs eventhub create --name $hubname --namespace-name $namespace --resou
 
 ## <a name="subscribe-to-a-custom-topic"></a>Feliratkozás egyéni témakörre
 
-Előfizet egy Event Grid-témakörre, hogy elmondja Event Grid mely eseményeket szeretné nyomon követni. A következő példa előfizet a létrehozott egyéni témakörre, és átadja a végponthoz tartozó Event hub erőforrás-AZONOSÍTÓját. A végpont formátuma a következő:
+Ha előfizet egy Event Grid-témakörre, Event Grid mely eseményeket szeretné nyomon követni. Az alábbi példa feliratkozik a létrehozott egyéni témakörre, és átadja az eseményközpont erőforrás-azonosítóját a végpontnak. A végpont formátuma a következő:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.EventHub/namespaces/<namespace-name>/eventhubs/<hub-name>`
 

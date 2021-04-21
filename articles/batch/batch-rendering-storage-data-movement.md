@@ -1,99 +1,99 @@
 ---
-title: Tárolás és adatáthelyezés a rendereléshez
-description: Tudnivalók a különböző tárolási és adatáthelyezési lehetőségekről az eszközök és a kimeneti fájlok számítási feladatainak megjelenítéséhez.
+title: Tárolás és adatáthelyelés rendereléshez
+description: Ismerje meg a különböző tárolási és adatátviteli lehetőségeket az adateszközök és a kimeneti fájlok számítási feladatainak renderelése során.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 55ec04df2a107dabfc72298bc8849c13f3a926e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a18ee6961cb601b0fa9db7213eb6115afa20096
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86147296"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765196"
 ---
-# <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Tárolási és adatáthelyezési lehetőségek az eszköz és a kimeneti fájlok megjelenítéséhez
+# <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Tárolási és adatátviteli lehetőségek az adateszközök és a kimeneti fájlok renderelése esetén
 
-Több lehetőség is rendelkezésre áll, hogy a jelenet és az objektum fájljai elérhetők legyenek a készletben lévő virtuális gépeken a renderelési alkalmazások számára:
+A készlet virtuális gépei renderelő alkalmazásai számára többféle lehetőség is van a jelenet és az adatfájl elérhetővé tenni:
 
-* [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md):
-  * A jelenet és az adategység fájljai a blob Storage-ba kerülnek a helyi fájlrendszerből. Ha az alkalmazást egy feladat futtatja, akkor a szükséges fájlokat a rendszer a blob Storage-ból másolja a virtuális gépre, hogy a renderelési alkalmazás hozzáférhessen. A kimeneti fájlokat a renderelési alkalmazás a virtuálisgép-lemezre írja, majd átmásolja a blob Storage-ba.  Ha szükséges, a kimeneti fájlok letölthetők a blob Storage-ból egy helyi fájlrendszerbe.
-  * Az Azure Blob Storage egy egyszerű és költséghatékony megoldás kisebb projektekhez.  Mivel minden adategység-fájlra szükség van az egyes készleteken lévő virtuális gépeken, az adatfájlok számának és méretének növelése után ügyelni kell arra, hogy a fájlok átvitele a lehető leghatékonyabb legyen.  
-* Azure Storage fájlrendszer a [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)használatával:
-  * Linux rendszerű virtuális gépek esetén a Storage-fiókok elérhetők, és fájlrendszerként használhatók a blobfuse virtuális fájlrendszer illesztőprogramjának használatakor.
-  * Ennek a lehetőségnek az az előnye, hogy rendkívül költséghatékony, mivel a fájlrendszerhez nem szükséges virtuális gépek, a virtuális gépek blobfuse gyorsítótárazása pedig elkerüli a több feladathoz és feladatokhoz tartozó fájlok ismételt letöltését.  Az adatáthelyezés is egyszerű, mivel a fájlok egyszerűen blobok és standard API-k és eszközök, mint például a azcopy, használhatók fájlok másolására egy helyszíni fájlrendszer és az Azure Storage között.
+* [Azure Blob Storage:](../storage/blobs/storage-blobs-introduction.md)
+  * A jelenet- és objektumfájlok egy helyi fájlrendszerből vannak feltöltve a blobtárolóba. Ha az alkalmazást egy feladat futtatja, akkor a szükséges fájlokat a rendszer átmásolja a blobtárolóból a virtuális gépre, hogy a renderelő alkalmazás el tudja őket férni. A kimeneti fájlokat a renderelő alkalmazás írja a virtuálisgép-lemezre, majd átmásolja a blobtárolóba.  Szükség esetén a kimeneti fájlok letölthetők a blobtárolóból egy helyi fájlrendszerbe.
+  * Az Azure Blob Storage egyszerű és költséghatékony megoldás kisebb projektekhez.  Mivel az összes eszközfájlra szükség van az egyes készletben lévő virtuális gépeken, az adatfájlszám és -méret növekedése után ügyelni kell arra, hogy a fájlátvitelek a lehető leghatékonyabbak legyenek.  
+* Azure Storage fájlrendszerként a [blobfuse használatával:](../storage/blobs/storage-how-to-mount-container-linux.md)
+  * Linux rendszerű virtuális gépeken a blobfuse virtuális fájlrendszer-illesztőprogram használata során a tárfiók elérhetővé és használható fájlrendszerként.
+  * Ennek a lehetőségnek az az előnye, hogy nagyon költséghatékony, mivel nincs szükség virtuális gépre a fájlrendszerhez, valamint a virtuális gépek blobfuse gyorsítótárazása elkerüli ugyanazon fájlok többszöri letöltését több feladathoz és tevékenységhez.  Az adatáthelyzés is egyszerű, mivel a fájlok egyszerűen blobok, és szabványos API-k és eszközök, például az azcopy használhatók fájlok másolására a helyszíni fájlrendszer és az Azure Storage között.
 * Fájlrendszer vagy fájlmegosztás:
-  * A virtuálisgép-operációs rendszertől és a teljesítmény/méretezési követelményektől függően a lehetőségek közé tartoznak a [Azure Files](../storage/files/storage-files-introduction.md), a csatlakoztatott lemezekkel rendelkező virtuális gépek használata az NFS-hez, több virtuális gép használata csatlakoztatott lemezekkel, például GlusterFS vagy harmadik féltől származó ajánlat használata.
-  * A [avere Systems](https://www.averesystems.com/) már a Microsoft része, és a közeljövőben olyan megoldásokat kínál, amelyek ideálisak a nagyméretű, nagy teljesítményű rendereléshez.  A avere megoldás lehetővé teszi egy olyan Azure-alapú NFS-vagy SMB-gyorsítótár létrehozását, amely blob Storage vagy helyszíni NAS-eszközökkel együtt működik.
-  * A fájlrendszerrel a fájlok közvetlenül a fájlrendszerbe írhatók vagy írhatók, illetve másolhatók a fájlrendszer és a készletbeli virtuális gépek között.
-  * A megosztott fájlrendszer lehetővé teszi, hogy nagy számú, a projektek és a feladatok között megosztott objektum legyen használatban, és a renderelési feladatok csak a szükséges értéket használják.
+  * A virtuális gép operációs rendszerétől és teljesítmény-/méretezési követelményeitől függően a lehetőségek közé tartozik az [Azure Files](../storage/files/storage-files-introduction.md), a csatlakoztatott lemezekkel rendelkező virtuális gépek használata NFS-hez, több virtuális gép használata csatlakoztatott lemezekkel egy elosztott fájlrendszerhez, például aSterFS-hez vagy egy külső ajánlathoz.
+  * [Az Avere Systems](https://www.averesystems.com/) most már a Microsoft része, és a közeljövőben olyan megoldásokkal is fogni, amelyek ideálisak a nagy méretű, nagy teljesítményű rendereléshez.  Az Avere-megoldás lehetővé teszi egy Azure-alapú NFS- vagy SMB-gyorsítótár létrejöttét, amely együttműködik a blobtárolóval vagy a helyszíni NAS-eszközökkel.
+  * Fájlrendszerrel a fájlok közvetlenül a fájlrendszerbe olvashatók vagy írhatók, vagy másolhatók a fájlrendszer és a készlet virtuális gépei között.
+  * A megosztott fájlrendszer lehetővé teszi a projektek és feladatok közötti nagy számú adateszköz kihasználását, és a renderelési tevékenységek csak a szükséges elemekhez férnek hozzá.
 
 ## <a name="using-azure-blob-storage"></a>Az Azure Blob Storage használata
 
-Egy blob Storage-fiókot vagy egy általános célú v2 Storage-fiókot kell használni.  Ez a két tárolási fióktípus az általános célú v1-es Storage-fiókhoz képest jóval magasabb határértékekkel konfigurálható a [blogbejegyzésben](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)részletezett módon.  Ha be van állítva, a magasabb szintű korlátok sokkal jobb teljesítményt és méretezhetőséget tesznek lehetővé, különösen akkor, ha a Storage-fiókhoz sok készletet használó virtuális gép fér hozzá.
+Blob Storage-fiókot vagy általános célú v2-tárfiókot kell használni.  Ez a két tárfióktípus az általános célú v1-tárfiókhoz képest jelentősen magasabb korlátokkal konfigurálható, amint az ebben a [blogbejegyzésben is le van állítva.](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)  Ha konfigurálva van, a magasabb korlátok sokkal jobb teljesítményt és méretezhetőséget eredményeznek, különösen akkor, ha sok készletbeli virtuális gép fér hozzá a tárfiókhoz.
 
-### <a name="copying-files-between-client-and-blob-storage"></a>Fájlok másolása az ügyfél és a blob Storage között
+### <a name="copying-files-between-client-and-blob-storage"></a>Fájlok másolása az ügyfél és a blobtároló között
 
-Ha fájlokat szeretne másolni az Azure Storage-ba és az-ból, különféle mechanizmusok használhatók, beleértve a Storage blob API-t, az [Azure Storage adatátviteli könyvtárát](https://github.com/Azure/azure-storage-net-data-movement), a Windows vagy [Linux](../storage/common/storage-use-azcopy-v10.md) [rendszerhez](../storage/common/storage-use-azcopy-v10.md) készült azcopy parancssori eszközt, [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)és [Azure batch Explorer](https://azure.github.io/BatchExplorer/).
+Az Azure Storage-ba és onnan másba történő fájlmásoláshoz különböző mechanizmusok használhatók, beleértve a Storage Blob API-t, az [Azure Storage](https://github.com/Azure/azure-storage-net-data-movement)adatátviteli kódtárat, az azcopy parancssori eszközt [Windows](../storage/common/storage-use-azcopy-v10.md) vagy [Linux](../storage/common/storage-use-azcopy-v10.md)rendszeren, [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/), és [Azure Batch Explorer.](https://azure.github.io/BatchExplorer/)
 
-Például a azcopy használatával a mappában lévő összes eszköz átvihető a következőképpen:
+Az azcopy használatával például egy mappában lévő összes eszköz a következőképpen továbbítható:
 
 
 `azcopy /source:. /dest:https://account.blob.core.windows.net/rendering/project /destsas:"?st=2018-03-30T16%3A26%3A00Z&se=2020-03-31T16%3A26%3A00Z&sp=rwdl&sv=2017-04-17&sr=c&sig=sig" /Y`
 
-A csak a módosított fájlok másolásához a/XO paramétert lehet használni:
+Ha csak a módosított fájlokat másolja, a /XO paraméter használható:
 
 `azcopy /source:. /dest:https://account.blob.core.windows.net/rendering/project /destsas:"?st=2018-03-30T16%3A26%3A00Z&se=2020-03-31T16%3A26%3A00Z&sp=rwdl&sv=2017-04-17&sr=c&sig=sig" /XO /Y`
 
-### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Bemeneti adategység fájljainak másolása blob Storage-ból batch-készletbe tartozó virtuális gépekre
+### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Bemeneti objektumfájlok másolása blobtárolóból Batch-készlet virtuális gépeibe
 
-A fájlok másolását a feladatok eszközeinek mérete által meghatározott legjobb megközelítéssel különböző módszerekkel végezheti el.
-A legegyszerűbb módszer az összes objektum összes fájljának másolása a készlet virtuális gépekre az egyes feladatokhoz:
+A fájlok másolásának több módja is van, a legjobb módszer a feladateszközök mérete alapján.
+A legegyszerűbb módszer, ha minden feladathoz átmásolja az összes eszközfájlt a készlet virtuális gépeibe:
 
-* Ha vannak olyan fájlok, amelyek egy adott feladat számára egyediek, de a feladatok összes feladatához szükségesek, a feladat- [előkészítési feladat](/rest/api/batchservice/job/add#jobpreparationtask) megadható az összes fájl másolásához.  A feladat-előkészítési feladat akkor fut le, amikor az első feladatot egy virtuális gépen hajtja végre, de a későbbi feladatokhoz nem futtatja újra.
-* A feladat befejezését követően meg kell adni egy [feladat kiadási feladatát](/rest/api/batchservice/job/add#jobreleasetask) a feladat-visszavonási fájlok eltávolításához. Ezzel a művelettel elkerülhető, hogy a virtuális gép lemeze kitöltse az összes feladatkártya-fájlt.
-* Ha több feladat is ugyanazokat az eszközöket használja, és az egyes feladatokhoz csak növekményes változások tartoznak, akkor a rendszer az összes adategységet is másolja, még akkor is, ha csak egy részhalmaz lett frissítve.  Ez nem hatékony, ha sok nagy méretű objektum fájlja van.
+* Ha egy feladat egyedi fájlokat tartalmaz, de egy feladat összes [](/rest/api/batchservice/job/add#jobpreparationtask) tevékenységéhez szükségesek, akkor meg lehet adni egy feladat-előkészítési tevékenységet az összes fájl másolásához.  A feladat-előkészítési tevékenység egyszer fut le, amikor az első feladatfeladatot egy virtuális gépen futtatja, de a későbbi feladatfeladatok esetében nem futtatja újra.
+* A [feladat befejezése után](/rest/api/batchservice/job/add#jobreleasetask) meg kell adni egy feladat-kiadási tevékenységet, amely eltávolítja a feladatonkénti fájlokat; Így elkerülhető, hogy a virtuálisgép-lemezen az összes feladateszközfájl kitöltsen.
+* Ha több feladat használja ugyanazt az adatcsoportot, és az egyes feladatokhoz csak növekményes módosításokat végez az adateszközöken, akkor a rendszer továbbra is átmásolja az összes adateszközfájlt, még akkor is, ha csak egy részkészlet frissült.  Ez nem lenne hatékony, ha sok nagy méretű adateszközfájl lenne.
 
-Ha az adatfájlok újra felhasználhatók a feladatok között, és a feladatok között csak növekményes változások vannak, akkor a hatékonyabb, de valamivel nagyobb mértékben többek között az, hogy az eszközöket a virtuális gép megosztott mappájába tárolja, és szinkronizálja a módosított fájlokat.
+Ha az eszközfájlokat a feladatok között újra felhasználják, és csak növekményes módosításokat alkalmaznak a feladatok között, akkor hatékonyabb, de valamivel nagyobb mértékben érintett megközelítés az eszközök tárolása a virtuális gép megosztott mappájában, és a módosított fájlok szinkronizálása.
 
-* A feladat-előkészítési feladat a azcopy és a/XO paraméter használatával hajtja végre a másolást a AZ_BATCH_NODE_SHARED_DIR környezeti változó által meghatározott virtuálisgép-megosztott mappába.  Ez a beállítás csak a módosított fájlokat másolja át az egyes virtuális gépekre.
-* Úgy kell megadnia az összes eszköz méretét, hogy azok megfeleljenek a készletben lévő virtuális gépek ideiglenes meghajtójára.
+* A feladat-előkészítési tevékenység az azcopy és a /XO paraméter használatával végzi el a másolást a környezeti változó által AZ_BATCH_NODE_SHARED_DIR virtuális gép megosztott mappájába.  Ez csak a módosított fájlokat másolja az egyes virtuális gépekre.
+* Átgondolni kell az összes eszköz méretét, hogy azok elférnek-e a készlet virtuális gépének ideiglenes meghajtón.
 
-A Azure Batch beépített támogatást nyújt a fájlok másolásához a Storage-fiók és a Batch-készlet virtuális gépei között.  A Task [Resource Files](/rest/api/batchservice/job/add#resourcefile) fájlokat másol a tárolóból a készletbe tartozó virtuális gépekre, és megadható a feladat-előkészítési feladathoz.  Sajnos, ha több száz fájl van, lehetséges, hogy a korlátot és a sikertelen feladatokat kell megadnia.  Ha nagy számú eszköz van, ajánlott a azcopy parancssort használni a feladat-előkészítési feladatban, amely helyettesítő karaktereket is használhat, és nincs korlátja.
+Azure Batch támogatja a fájlok tárfiók és Batch-készlet virtuális gépek közötti másolását.  A [tevékenységerőforrás-fájlok fájlokat](/rest/api/batchservice/job/add#resourcefile) másolnak a tárolóból a készletbe virtuális gépekbe, és meg lehet adni a feladat-előkészítési tevékenységhez.  Sajnos több száz fájl esetén lehetséges a korlát túllépni a korlátot, és a feladatok meghiúsulnak.  Ha nagy számú adateszköz van, javasoljuk, hogy használja az azcopy parancssort a feladat-előkészítési feladatban, amely helyettesítő karaktereket használhat, és nincs korlátja.
 
-### <a name="copying-output-files-to-blob-storage-from-batch-pool-vms"></a>Kimeneti fájlok másolása blob Storage-tárolóba a Batch-készletből származó virtuális gépekről
+### <a name="copying-output-files-to-blob-storage-from-batch-pool-vms"></a>Kimeneti fájlok másolása blobtárolóba a Batch-készlet virtuális gépeiből
 
-A [kimeneti fájlok](/rest/api/batchservice/task/add#outputfile) a készletben lévő virtuális gépekről a tárolóba másolhatnak fájlokat.  A feladat befejezése után egy vagy több fájl átmásolható a virtuális gépről a megadott Storage-fiókba.  A megjelenített kimenetet át kell másolni, de érdemes lehet a naplófájlokat is tárolni.
+[A kimeneti fájlok](/rest/api/batchservice/task/add#outputfile) egy készlet virtuális gépről a tárolóba másolhatnak fájlokat.  A feladat befejezése után egy vagy több fájl átmásolható a virtuális gépről egy adott tárfiókba.  A renderelt kimenetet másolni kell, de érdemes lehet naplófájlokat is tárolni.
 
-## <a name="using-a-blobfuse-virtual-file-system-for-linux-vm-pools"></a>Blobfuse virtuális fájlrendszer használata Linux rendszerű virtuális gépek készletei számára
+## <a name="using-a-blobfuse-virtual-file-system-for-linux-vm-pools"></a>Blobfuse virtuális fájlrendszer használata Linux rendszerű virtuálisgép-készletekhez
 
-A Blobfuse egy virtuális fájlrendszer-illesztőprogram az Azure Blob Storagehoz, amely lehetővé teszi a blobként tárolt fájlok elérését egy Storage-fiókban a Linux fájlrendszer használatával.
+A Blobfuse a Azure Blob Storage virtuális fájlrendszer-illesztőprogramja, amely lehetővé teszi a Storage-fiókban blobként tárolt fájlok linuxos fájlrendszeren keresztüli hozzáférését.
 
-A készlet csomópontjai elindításkor csatlakoztathatók a fájlrendszerhez, vagy a csatlakoztatás egy feladat-előkészítési tevékenység részeként történik – egy feladat, amely csak akkor fut le, ha egy adott feladat első feladata egy csomóponton fut.  A Blobfuse konfigurálható úgy, hogy egy Ramdisk-t és a virtuális gépek helyi SSD-t is kihasználja a fájlok gyorsítótárazásához, ami jelentősen növeli a teljesítményt, ha egy csomóponton több feladat is hozzáfér egy adott fájlhoz.
+A készletcsomópontok csatlakoztatják a fájlrendszert, amikor elindítják, vagy a csatlakoztatás egy feladat-előkészítési tevékenység részeként történhet – olyan tevékenység, amely csak akkor fut, amikor a feladat első tevékenysége fut egy csomóponton.  A Blobfuse konfigurálható úgy, hogy a ramdisk és a virtuális gépek helyi SSD-ját is használja a fájlok gyorsítótárazása érdekében, ami jelentősen növeli a teljesítményt, ha egy csomóponton több tevékenység is hozzáfér ugyanazokhoz a fájlokhoz.
 
-A [sablonok](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/vray/render-linux-with-blobfuse-mount) az önálló V-Ray renderelés blobfuse-fájlrendszerrel való futtatására használhatók, és a más alkalmazásokhoz tartozó sablonok alapjául szolgálnak.
+[A mintasablonok önálló](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/vray/render-linux-with-blobfuse-mount) V-Ray-renderelések blobfuse fájlrendszerrel való futtatásához érhetők el, és más alkalmazások sablonjainak alapjául is használhatók.
 
 ### <a name="accessing-files"></a>Fájlok elérése
 
-A feladatok feladatai a csatlakoztatott fájlrendszer használatával határozzák meg a bemeneti fájlok és a kimeneti fájlok elérési útját.
+A feladatfeladatok elérési utakat határoznak meg a bemeneti és kimeneti fájlok számára a csatlakoztatott fájlrendszer használatával.
 
-### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Bemeneti adategység fájljainak másolása blob Storage-ból batch-készletbe tartozó virtuális gépekre
+### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Bemeneti objektumfájlok másolása blobtárolóból Batch-készlet virtuális gépeibe
 
-Mivel a fájlok egyszerűen Blobok az Azure Storage-ban, a standard blob API-kat, eszközöket és felületeket a rendszer a helyi fájlrendszer és a blob Storage közötti fájlok másolására használhatja. például: azcopy, Storage Explorer, Batch Explorer stb.
+Mivel a fájlok egyszerűen blobok az Azure Storage-ban, a standard blob API-k, eszközök és felhasználói felületek használatával fájlok másolhatóak a helyszíni fájlrendszer és a blobtároló között; például az azcopy, Storage Explorer, Batch Explorer stb.
 
-## <a name="using-azure-files-with-windows-vms"></a>Azure Files használata Windows rendszerű virtuális gépekkel
+## <a name="using-azure-files-with-windows-vms"></a>Az Azure Files használata Windows rendszerű virtuális gépekkel
 
-A [Azure Files](../storage/files/storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az SMB protokollon keresztül érhető el.  Azure Files az Azure Blob Storage-on alapul; [költséghatékony](https://azure.microsoft.com/pricing/details/storage/files/) , és konfigurálható adatreplikálással egy másik régióba, így globálisan redundáns.  A [méretezési célokat](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets) felül kell vizsgálni annak megállapításához, hogy Azure filest kell-e használni az előrejelzési készlet mérete és az adategységek száma miatt.
+[Azure Files](../storage/files/storage-files-introduction.md) teljes körűen felügyelt felhőbeli fájlmegosztásokat kínál, amelyek az SMB protokollon keresztül érhetők el.  Azure Files Azure Blob Storage-on alapul; költséghatékony, [](https://azure.microsoft.com/pricing/details/storage/files/) és konfigurálható adatreplikációval egy másik, globálisan redundáns régióba.  [A méretezési](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets) célokat át kell vizsgálni annak meghatározásához, hogy Azure Files-e az előrejelzési készlet mérete és az eszközfájlok száma alapján.
 
-Az Azure-fájlmegosztás csatlakoztatására vonatkozó [dokumentációt](../storage/files/storage-how-to-use-files-windows.md) tartalmaz.
+Az [Azure-fájlmegosztások](../storage/files/storage-how-to-use-files-windows.md) csatlakoztatását egy dokumentáció tartalmazza.
 
-### <a name="mounting-an-azure-files-share"></a>Azure Files-megosztás csatlakoztatása
+### <a name="mounting-an-azure-files-share"></a>Egy Azure Files csatlakoztatása
 
-A Batch szolgáltatásban való használathoz a csatlakoztatási műveletet minden alkalommal el kell végrehajtani, amikor egy feladat fut, mivel nem lehet megtartani a kapcsolatot a feladatok között.  Ennek a legegyszerűbb módja, ha a cmdkey használatával tartja meg a hitelesítő adatokat a készlet konfigurációjának indítási tevékenységével, majd minden feladat előtt csatlakoztatja a megosztást.
+A Batchben való használathoz csatlakoztatási műveletet kell végrehajtani minden alkalommal, amikor egy tevékenység fut a futtatás során, mivel a tevékenységek közötti kapcsolat nem lehetséges.  Ennek legegyszerűbb módja, ha a cmdkey használatával a hitelesítő adatokat a készlet konfigurációjában található indítási feladattal megőrzésére használja, majd az egyes feladatok előtt csatlakoztatja a megosztást.
 
-Példa a cmdkey használatára egy készlet sablonban (a JSON-fájlokban való használathoz) – vegye figyelembe, hogy amikor a cmdkey hívást a net use hívásból választja el, az indítási tevékenység felhasználói környezetének meg kell egyeznie a feladatok futtatásához használttal:
+Példa a cmdkey használatára egy készletsablonban (A JSON-fájlban való használatra escape-karakterrel van elválasztva) – vegye figyelembe, hogy amikor a cmdkey hívást a net use hívástól választja el, az indítási tevékenység felhasználói környezetének meg kell egynie a feladatok futtatásához használttal:
 
 ```
 "startTask": {
@@ -107,7 +107,7 @@ Példa a cmdkey használatára egy készlet sablonban (a JSON-fájlokban való h
 }
 ```
 
-Példa a feladat feladatának parancssorára:
+Példa feladatfeladat parancssorára:
 ```
 "commandLine":"net use S:
   \\\\storageaccountname.file.core.windows.net\\rendering &
@@ -120,17 +120,17 @@ Példa a feladat feladatának parancssorára:
 
 ### <a name="accessing-files"></a>Fájlok elérése
 
-A feladatok feladatai a csatlakoztatott fájlrendszer használatával a bemeneti fájlok és a kimeneti fájlok elérési útját adják meg, vagy egy csatlakoztatott meghajtót vagy egy UNC elérési utat.
+A feladatfeladatok csatlakoztatott meghajtó vagy UNC elérési út használatával határozzák meg a bemeneti és kimeneti fájlok elérési útját a csatlakoztatott fájlrendszer használatával.
 
-### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Bemeneti adategység fájljainak másolása blob Storage-ból batch-készletbe tartozó virtuális gépekre
+### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Bemeneti objektumfájlok másolása blobtárolóból Batch-készlet virtuális gépeibe
 
-A Azure Files az Azure Storage-támogatással rendelkező főbb API-k és eszközök támogatják. például: azcopy, Azure CLI, Storage Explorer, Azure PowerShell, Batch Explorer stb.
+Azure Files összes olyan fő API és eszköz támogatja, amelyek támogatják az Azure Storage-et; például azcopy, Azure CLI, Storage Explorer, Azure PowerShell, Batch Explorer stb.
 
-[Azure file Sync](../storage/files/storage-sync-files-planning.md) elérhető a fájlok automatikus szinkronizálása egy helyszíni fájlrendszer és egy Azure-fájlmegosztás között.
+[Azure File Sync](../storage/file-sync/file-sync-planning.md) a fájloknak a helyszíni fájlrendszer és az Azure-fájlmegosztás közötti automatikus szinkronizálása.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A tárolási lehetőségekről további információt a részletes dokumentációban talál:
+A tárolási lehetőségekkel kapcsolatos további információkért tekintse meg a részletes dokumentációt:
 
 * [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)
 * [Blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)

@@ -1,87 +1,87 @@
 ---
 title: Gyakori üzembehelyezési hibák elhárítása
-description: Ismerteti, Hogyan oldhatók fel a gyakori hibák, amikor erőforrásokat helyez üzembe az Azure-ban Azure Resource Manager használatával.
+description: Ismerteti, hogyan háríthatja el azokat a gyakori hibákat, amikor erőforrásokat helyez üzembe az Azure-ban a Azure Resource Manager.
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 01/20/2021
-ms.openlocfilehash: 40e6317a1d879704ef00e928a971ae08fc9e0f72
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 07c197f1b54522b96a3bfa2d6a5ce7b368be3b35
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564347"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789176"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Gyakori Azure-beli üzembe helyezési hibák elhárítása az Azure Resource Managerrel
 
-Ez a cikk néhány gyakori Azure-telepítési hibát ismertet, és információt nyújt a hibák megoldásához. Ha nem találja az üzembehelyezési hiba hibakódját, tekintse meg [a hibakód megkeresését](#find-error-code) segítő témakört.
+Ez a cikk néhány gyakori Azure-beli üzembe helyezési hibát ismertet, és a hibák megoldásához nyújt információt. Ha nem találja az üzembehelyezési hiba hibakódját, tekintse meg [a hibakód megkeresését](#find-error-code) segítő témakört.
 
-Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz információt, tudassa velünk. A lap alján elhagyhatja a visszajelzést. A visszajelzéseket a GitHub-problémák követik nyomon.
+Ha hibakóddal kapcsolatos információkat keres, és ez a cikk nem tartalmazza ezt az információt, tudajuk meg velünk. A lap alján visszajelzést küldhet. A visszajelzéseket a GitHub Issues követi nyomon.
 
 ## <a name="error-codes"></a>Hibakódok
 
 | Hibakód | Kockázatcsökkentés | További információ |
 | ---------- | ---------- | ---------------- |
-| AccountNameInvalid | Kövesse a Storage-fiókok elnevezési korlátozásait. | [A Storage-fiók nevének feloldása](error-storage-account-name.md) |
-| AccountPropertyCannotBeSet | Keresse meg a rendelkezésre álló Storage-fiók tulajdonságait. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | A fürt vagy a régió nem rendelkezik elérhető erőforrásokkal, vagy nem támogatja a kért virtuálisgép-méretet. Ismételje meg a kérést később, vagy igényeljen egy másik virtuálisgép-méretet. | A Linux, a [kiépítési és a foglalási problémák](/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-windows) kiosztása [és lefoglalása](/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-linux)a Windows rendszerhez és a foglalási [hibák elhárítása](/troubleshoot/azure/virtual-machines/allocation-failure)|
-| AnotherOperationInProgress | Várjon, amíg az egyidejű művelet befejeződik. | |
-| AuthorizationFailed | A fiók vagy az egyszerű szolgáltatásnév nem rendelkezik megfelelő hozzáféréssel az üzemelő példány befejezéséhez. Győződjön meg arról, hogy a fiókja a szerepkörhöz tartozik, valamint a központi telepítési hatókörhöz való hozzáférése.<br><br>Ez a hiba akkor jelenhet meg, ha egy szükséges erőforrás-szolgáltató nincs regisztrálva. | [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)<br><br>[Regisztráció feloldása](error-register-resource-provider.md) |
-| BadRequest | Olyan központi telepítési értékeket küldtünk, amelyek nem egyeznek a Resource Manager által várttal. A hibaelhárítással kapcsolatos segítségért olvassa el a belső állapotjelző üzenetet. | A [sablon referenciája](/azure/templates/) és a [támogatott helyszínek](resource-location.md) |
-| Ütközés | Olyan műveletet kér, amely nem engedélyezett az erőforrás jelenlegi állapotában. Például a lemezek átméretezése csak a virtuális gép létrehozásakor vagy a virtuális gép kiosztása esetén engedélyezett. | |
-| DeploymentActiveAndUneditable | Várjon, amíg a rendszer végrehajtja az adott erőforráscsoport egyidejű üzembe helyezését. | |
-| DeploymentFailedCleanUp | Ha a üzembe helyezése teljes módban történik, a sablonban nem szereplő erőforrások törlődnek. Ez a hibaüzenet akkor jelenik meg, ha nem rendelkezik megfelelő engedélyekkel a sablonban nem szereplő összes erőforrás törléséhez. A hiba elkerüléséhez módosítsa a központi telepítési módot növekményes értékre. | [Az Azure Resource Manager üzembe helyezési módjai](deployment-modes.md) |
-| DeploymentNameInvalidCharacters | A központi telepítés neve csak betűt, számot, "-", "." vagy "_" karaktert tartalmazhat. | |
-| DeploymentNameLengthLimitExceeded | A központi telepítési nevek legfeljebb 64 karakterből állhatnak.  | |
-| DeploymentFailed | A DeploymentFailed hiba általános hiba, amely nem adja meg a hiba megoldásához szükséges adatokat. Tekintse meg a hiba részletes adatait, amely további információkat tartalmaz. | [Hibakód keresése](#find-error-code) |
-| DeploymentQuotaExceeded | Ha eléri a 800-es üzemelő példányok számát egy erőforráscsoport esetében, törölje a már nem szükséges előzményekből származó központi telepítéseket. | [Hiba elhárítása, ha a központi telepítés száma meghaladja a 800](deployment-quota-exceeded.md) |
-| DeploymentJobSizeExceeded | Egyszerűsítse a sablont a méret csökkentése érdekében. | [Sablon méretével kapcsolatos hibák elhárítása](error-job-size-exceeded.md) |
-| DnsRecordInUse | A DNS-rekord nevének egyedinek kell lennie. Adjon meg másik nevet. | |
-| ImageNotFound | A VM-rendszerkép beállításainak megtekintése. |  |
-| InUseSubnetCannotBeDeleted | Ez a hiba akkor fordulhat elő, ha egy erőforrást próbál frissíteni, és az erőforrás törlésével és létrehozásával dolgozza fel a kérést. Győződjön meg arról, hogy az összes változatlan értéket meg kell adni. | [Erőforrás frissítése](/azure/architecture/guide/azure-resource-manager/advanced-templates/update-resource) |
-| InvalidAuthenticationTokenTenant | Szerezze be a megfelelő bérlő hozzáférési jogkivonatát. Csak azon bérlőtől kérheti le a jogkivonatot, amelyhez a fiók tartozik. | |
-| InvalidContentLink | Valószínűleg megpróbált olyan beágyazott sablonhoz kapcsolni, amely nem érhető el. Ellenőrizze a beágyazott sablonhoz megadott URI-t. Ha a sablon létezik egy Storage-fiókban, győződjön meg arról, hogy az URI elérhető. Lehetséges, hogy egy SAS-tokent kell átadnia. Jelenleg nem lehet olyan sablonhoz kapcsolódni, amely egy [Azure Storage-tűzfal](../../storage/common/storage-network-security.md)mögötti Storage-fiókban található. Vegye fontolóra a sablon áthelyezését egy másik adattárba, például a GitHubra. | [Hivatkozott sablonok](linked-templates.md) |
-| InvalidDeploymentLocation | Az előfizetés szintjén történő üzembe helyezéskor egy másik helyet adott meg a korábban használt központi telepítési névnek. | [Előfizetés szintű központi telepítések](deploy-to-subscription.md) |
-| InvalidParameter | Az adott erőforráshoz megadott értékek egyike nem felel meg a várt értéknek. Ez a hiba számos különböző körülménytől járhat. Előfordulhat például, hogy a jelszó nem elegendő, vagy a blob neve helytelen. A hibaüzenetnek jeleznie kell, hogy melyik értéket kell kijavítani. | |
-| InvalidRequestContent | A központi telepítési értékekben szerepelnek a nem felismerhető értékek, vagy hiányoznak a szükséges értékek. Erősítse meg az erőforrástípus értékeit. | [Sablonreferencia](/azure/templates/) |
-| InvalidRequestFormat | A központi telepítés futtatásakor engedélyezze a hibakeresési naplózást, és ellenőrizze a kérelem tartalmát. | [Hibakeresési naplózás](#enable-debug-logging) |
-| InvalidResourceNamespace | Tekintse meg a **Type (típus** ) tulajdonságban megadott erőforrás-névteret. | [Sablonreferencia](/azure/templates/) |
-| InvalidResourceReference | Az erőforrás vagy még nem létezik, vagy helytelenül hivatkozik rá. Győződjön meg róla, hogy hozzá kell adnia egy függőséget. Ellenőrizze, hogy a **hivatkozási** függvény használata tartalmazza-e a forgatókönyv szükséges paramétereit. | [Függőségek feloldása](error-not-found.md) |
-| InvalidResourceType | Tekintse meg a **Type (típus** ) tulajdonságban megadott erőforrástípust. | [Sablonreferencia](/azure/templates/) |
-| InvalidSubscriptionRegistrationState | Regisztrálja az előfizetését az erőforrás-szolgáltatónál. | [Regisztráció feloldása](error-register-resource-provider.md) |
-| InvalidTemplate | A hibákért keresse meg a sablon szintaxisát. | [Érvénytelen sablon feloldása](error-invalid-template.md) |
-| InvalidTemplateCircularDependency | Felesleges függőségek eltávolítása. | [Körkörös függőségek feloldása](error-invalid-template.md#circular-dependency) |
-| JobSizeExceeded | Egyszerűsítse a sablont a méret csökkentése érdekében. | [Sablon méretével kapcsolatos hibák elhárítása](error-job-size-exceeded.md) |
-| LinkedAuthorizationFailed | Ellenőrizze, hogy a fiókja ugyanahhoz a bérlőhöz tartozik-e, mint a központilag telepíteni kívánt erőforráscsoport. | |
-| LinkedInvalidPropertyId | Egy erőforrás erőforrás-azonosítója nem oldja meg megfelelően a megoldást. Győződjön meg arról, hogy az erőforrás-AZONOSÍTÓhoz szükséges összes értéket megadja, beleértve az előfizetés-azonosítót, az erőforráscsoport nevét, az erőforrás típusát, a szülő erőforrás nevét (ha szükséges) és az erőforrás nevét. | |
-| LocationRequired | Adja meg az erőforrás helyét. | [Hely beállítása](resource-location.md) |
-| MismatchingResourceSegments | Győződjön meg arról, hogy a beágyazott erőforrás megfelelő számú szegmenst tartalmaz a név és a típus mezőben. | [Erőforrás-szegmensek feloldása](error-invalid-template.md#incorrect-segment-lengths)
-| MissingRegistrationForLocation | Az erőforrás-szolgáltató regisztrációs állapotának és a támogatott helyeinek az ellenőrzését. | [Regisztráció feloldása](error-register-resource-provider.md) |
-| MissingSubscriptionRegistration | Regisztrálja az előfizetését az erőforrás-szolgáltatónál. | [Regisztráció feloldása](error-register-resource-provider.md) |
-| NoRegisteredProviderFound | Az erőforrás-szolgáltató regisztrációs állapotának keresése. | [Regisztráció feloldása](error-register-resource-provider.md) |
-| NotFound | Előfordulhat, hogy egy szülő erőforrással párhuzamosan kell telepítenie egy függő erőforrást. Ellenőrizze, hogy hozzá kell-e adnia egy függőséget. | [Függőségek feloldása](error-not-found.md) |
-| OperationNotAllowed | Az üzemelő példány olyan műveletet próbál végrehajtani, amely meghaladja az előfizetés, az erőforráscsoport vagy a régió kvótáját. Ha lehetséges, módosítsa úgy a központi telepítést, hogy a kvótán belül maradjon. Ellenkező esetben érdemes lehet módosítani a kvótákat. | [Kvóták feloldása](error-resource-quota.md) |
-| ParentResourceNotFound | A gyermek erőforrások létrehozása előtt győződjön meg arról, hogy a szülő erőforrás létezik. | [Szülő erőforrás feloldása](error-parent-resource.md) |
-| PasswordTooLong | Előfordulhat, hogy túl sok karakterből álló jelszót jelölt ki, vagy a jelszó értékét egy biztonságos karakterláncra konvertálta, mielőtt paraméterként átadná. Ha a sablon tartalmaz egy **biztonságos karakterlánc** -paramétert, akkor nem szükséges az érték konvertálása biztonságos karakterlánccá. Adja meg a jelszó értékét szövegként. |  |
-| PrivateIPAddressInReservedRange | A megadott IP-cím tartalmazza az Azure által igényelt címtartományt. Módosítsa az IP-címet a fenntartott tartomány elkerüléséhez. | [IP-címek](../../virtual-network/public-ip-addresses.md) |
-| PrivateIPAddressNotInSubnet | A megadott IP-cím az alhálózat tartományán kívül esik. Módosítsa az IP-címet az alhálózati tartományba eső értékre. | [IP-címek](../../virtual-network/public-ip-addresses.md) |
-| PropertyChangeNotAllowed | Egyes tulajdonságok nem módosíthatók központilag telepített erőforrásokon. Egy erőforrás frissítésekor korlátozza az engedélyezett tulajdonságok módosításait. | [Erőforrás frissítése](/azure/architecture/guide/azure-resource-manager/advanced-templates/update-resource) |
-| RequestDisallowedByPolicy | Az előfizetés tartalmaz egy erőforrás-szabályzatot, amely megakadályozza az üzembe helyezés során végrehajtani kívánt műveleteket. Keresse meg a műveletet blokkoló házirendet. Ha lehetséges, módosítsa az üzemelő példányt, hogy megfeleljen a szabályzat korlátainak. | [Szabályzatok feloldása](error-policy-requestdisallowedbypolicy.md) |
-| ReservedResourceName | Adja meg a fenntartott nevet nem tartalmazó erőforrás nevét. | [Fenntartott erőforrások nevei](error-reserved-resource-name.md) |
+| AccountNameInvalid | Kövesse a tárfiókok elnevezési korlátozásait. | [Tárfiók nevének feloldása](error-storage-account-name.md) |
+| AccountPropertyCannotBeSet | Ellenőrizze a tárfiók elérhető tulajdonságait. | [storageAccounts (tárfiókok)](/azure/templates/microsoft.storage/storageaccounts) |
+| AllocationFailed (Foglalási költségek) | A fürt vagy régió nem rendelkezik elérhető erőforrásokkal, vagy nem támogatja a kért virtuálisgép-méretet. Próbálja újra a kérést később, vagy kérjen egy másik virtuálisgép-méretet. | [Kiépítési és foglalási problémák Linux](/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-linux)rendszeren, Kiépítési és foglalási [problémák Windows](/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-windows) rendszeren és Foglalási [hibák elhárítása](/troubleshoot/azure/virtual-machines/allocation-failure)|
+| AnotherOperationInProgress (AnotherOperationInProgress) | Várjon, amíg az egyidejű művelet befejeződik. | |
+| AuthorizationFailed (Hitelesítésifailed) | A fiók vagy a szolgáltatásnév nem rendelkezik elegendő hozzáféréssel az üzembe helyezés befejezéséhez. Ellenőrizze, hogy a fiók milyen szerepkörhöz tartozik, és hogy milyen hozzáféréssel rendelkezik az üzembe helyezési hatókörhöz.<br><br>Ez a hiba akkor jelenhet meg, ha nincs regisztrálva egy szükséges erőforrás-szolgáltató. | [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)<br><br>[Regisztráció feloldása](error-register-resource-provider.md) |
+| BadRequest (Rossz kérdés) | Olyan üzembe helyezési értékeket küldött, amelyek nem egyeznek a Resource Manager. A hibaelhárítással kapcsolatos segítségért tekintse meg a belső állapotüzenetet. | [Sablonreferenciák](/azure/templates/) és [támogatott helyek](resource-location.md) |
+| Ütközés | Olyan műveletet kér, amely nem engedélyezett az erőforrás aktuális állapotában. A lemezek átméretezése például csak akkor engedélyezett, ha virtuális gépet hoz létre, vagy amikor felszabadítják a virtuális gépet. | |
+| DeploymentActiveAndUneditable | Várjon, amíg az ebben az erőforráscsoportban való egyidejű üzembe helyezés befejeződik. | |
+| DeploymentFailedCleanUp | Amikor teljes módban telepíti az üzembe helyezést, a rendszer törli a sablonban nem álló erőforrásokat. Ez a hiba akkor jelenik meg, ha nem rendelkezik megfelelő engedélyekkel a sablonon nem rendelkező összes erőforrás törléséhez. A hiba elkerülése érdekében módosítsa növekményesre az üzembe helyezési módot. | [Az Azure Resource Manager üzembe helyezési módjai](deployment-modes.md) |
+| DeploymentNameInvalidCharacters | Az üzemelő példány neve csak betűket, számjegyeket, "-", "." vagy "_" betűt tartalmazhat. | |
+| DeploymentNameLengthLimitExceeded | Az üzembe helyezési nevek legfeljebb 64 karakterből állhatnak.  | |
+| DeploymentFailed (Üzemelő példány le van oltva) | A DeploymentFailed hiba egy általános hiba, amely nem tartalmazza a hiba megoldásához szükséges részleteket. A hiba részletei között keresse meg a hibakódot, amely további információkat tartalmaz. | [Hibakód megkeresve](#find-error-code) |
+| DeploymentQuotaExceeded | Ha eléri az erőforráscsoportonkénti 800 üzemelő példány korlátját, törölje az üzemelő példányokat a már nem szükséges előzményekből. | [A 800-asnál nagyobb üzembe helyezési számnál nagyobb hiba elhárítása](deployment-quota-exceeded.md) |
+| DeploymentJobSizeExceeded | A méret csökkentése érdekében egyszerűsítse a sablont. | [Sablonmérettel kapcsolatos hibák elhárítása](error-job-size-exceeded.md) |
+| DnsRecordInUse | A DNS-rekord nevének egyedinek kell lennie. Adjon meg egy másik nevet. | |
+| ImageNotFound | Ellenőrizze a virtuálisgép-rendszerkép beállításait. |  |
+| InUseSubnetCannotBeDeleted | Ez a hiba akkor jelenhet meg, amikor frissíteni próbál egy erőforrást, és a kérés feldolgozása az erőforrás törlésével és létrehozásával történik. Ügyeljen arra, hogy az összes változatlan értéket adja meg. | [Erőforrás frissítése](/azure/architecture/guide/azure-resource-manager/advanced-templates/update-resource) |
+| InvalidAuthenticationTokenTenant | Szerezze be a megfelelő bérlő hozzáférési jogkivonatát. A jogkivonatot csak attól a bérlőtől kaphatja meg, amelyhez a fiókja tartozik. | |
+| InvalidContentLink | Valószínűleg olyan beágyazott sablonra próbált hivatkozni, amely nem érhető el. Ellenőrizze a beágyazott sablonhoz megadott URI-t. Ha a sablon létezik egy tárfiókban, győződjön meg arról, hogy az URI elérhető. Előfordulhat, hogy sas-jogkivonatot kell átadnia. Jelenleg nem lehet olyan sablonhoz hivatkozni, amely egy Azure Storage-tűzfal mögötti [tárfiókban található.](../../storage/common/storage-network-security.md) Fontolja meg a sablon áthelyezését egy másik adattárba, például a GitHubba. | [Hivatkozott sablonok](linked-templates.md) |
+| InvalidDeploymentLocation | Az előfizetés szintjén való üzembe helyezéskor egy másik helyet adott meg egy korábban használt üzemelő példány nevéhez. | [Előfizetési szintű üzemelő példányok](deploy-to-subscription.md) |
+| InvalidParameter (Érvénytelen paraméter) | Az erőforráshoz megadott értékek egyike nem egyezik a várt értékkel. Ez a hiba számos különböző feltétel eredménye lehet. Előfordulhat például, hogy egy jelszó nem elegendő, vagy a blob neve helytelen. A hibaüzenetnek jeleznie kell, hogy melyik értéket kell kijavítani. | |
+| InvalidRequestContent | Az üzembe helyezési értékek lehetnek nem felismert értékek, vagy hiányoznak a szükséges értékek. Erősítse meg az erőforrástípus értékeit. | [Sablonreferencia](/azure/templates/) |
+| InvalidRequestFormat | Engedélyezze a hibakeresési naplózást az üzembe helyezés futtatásakor, és ellenőrizze a kérés tartalmát. | [Naplózás hibakeresése](#enable-debug-logging) |
+| InvalidResourceNamespace | Ellenőrizze a type tulajdonságban megadott **erőforrásnévteret.** | [Sablonreferencia](/azure/templates/) |
+| InvalidResourceReference (Érvénytelen forrásreferencia) | Az erőforrás még nem létezik, vagy helytelenül hivatkozik rá. Ellenőrizze, hogy hozzá kell-e adni egy függőséget. Ellenőrizze, hogy a  referencia-függvény használata tartalmazza-e a forgatókönyvhöz szükséges paramétereket. | [Függőségek feloldása](error-not-found.md) |
+| InvalidResourceType (Érvénytelen erőforrástípus) | Ellenőrizze a típus tulajdonságban megadott **erőforrástípust.** | [Sablonreferencia](/azure/templates/) |
+| InvalidSubscriptionRegistrationState | Regisztrálja előfizetését az erőforrás-szolgáltatónál. | [Regisztráció feloldása](error-register-resource-provider.md) |
+| InvalidTemplate | Ellenőrizze, hogy vannak-e hibák a sablon szintaxisában. | [Érvénytelen sablon feloldása](error-invalid-template.md) |
+| InvalidTemplateCircularDependency | Távolítsa el a szükségtelen függőségeket. | [Körkörös függőségek feloldása](error-invalid-template.md#circular-dependency) |
+| JobSizeExceeded | A méret csökkentése érdekében egyszerűsítse a sablont. | [Sablonmérettel kapcsolatos hibák elhárítása](error-job-size-exceeded.md) |
+| LinkedAuthorizationFailed | Ellenőrizze, hogy a fiókja ugyanannak a bérlőnek a tagja-e, mint az az erőforráscsoport, amelyhez az üzembe helyezést telepíti. | |
+| LinkedInvalidPropertyId | Az erőforrás erőforrás-azonosítója nem feloldható megfelelően. Ellenőrizze, hogy az erőforrás-azonosítóhoz minden szükséges értéket megadott-e, beleértve az előfizetés-azonosítót, az erőforráscsoport nevét, az erőforrástípust, a szülő-erőforrás nevét (ha szükséges) és az erőforrás nevét. | |
+| LocationRequired (Hely) | Adja meg az erőforrás helyét. | [Hely beállítása](resource-location.md) |
+| MismatchingResourceSegments | Győződjön meg arról, hogy a beágyazott erőforrás neve és típusa megfelelő számú szegmenst ad meg. | [Erőforrásszegmensek feloldása](error-invalid-template.md#incorrect-segment-lengths)
+| MissingRegistrationForLocation | Ellenőrizze az erőforrás-szolgáltató regisztrációs állapotát és a támogatott helyeket. | [Regisztráció feloldása](error-register-resource-provider.md) |
+| MissingSubscriptionRegistration | Regisztrálja előfizetését az erőforrás-szolgáltatónál. | [Regisztráció feloldása](error-register-resource-provider.md) |
+| NoRegisteredProviderFound | Ellenőrizze az erőforrás-szolgáltató regisztrációs állapotát. | [Regisztráció feloldása](error-register-resource-provider.md) |
+| NotFound | Előfordulhat, hogy egy függő erőforrást próbál meg egy szülőerőforrással párhuzamosan üzembe helyezni. Ellenőrizze, hogy hozzá kell-e adni függőséget. | [Függőségek feloldása](error-not-found.md) |
+| OperationNotAllowed (Nem engedélyezett) | Az üzembe helyezés olyan műveletet kísérel meg, amely túllépi az előfizetés, az erőforráscsoport vagy a régió kvótáját. Ha lehetséges, módosítsa az üzemelő példányát, hogy a kvótákon belül maradjon. Ellenkező esetben fontolja meg a kvóták változásának kérelmezését. | [Kvóták feloldása](error-resource-quota.md) |
+| ParentResourceNotFound | A gyermekerőforrások létrehozása előtt ellenőrizze, hogy létezik-e szülőerőforrás. | [Szülőerőforrás feloldása](error-parent-resource.md) |
+| PasswordTooLong | Előfordulhat, hogy túl sok karakterből áll jelszót választott ki, vagy a jelszó értékét biztonságos sztringgé konvertálta, mielőtt paraméterként adta volna át. Ha a sablon biztonságos **sztringparamétert** tartalmaz, nem kell konvertálni az értéket biztonságos sztringgé. Adja meg a jelszó értékét szövegként. |  |
+| PrivateIPAddressInReservedRange | A megadott IP-cím tartalmaz egy, az Azure által megkövetelt címtartományt. Módosítsa az IP-címet a fenntartott tartomány elkerüléséhez. | [IP-címek](../../virtual-network/public-ip-addresses.md) |
+| PrivateIPAddressNotInSubnet | A megadott IP-cím az alhálózati tartományon kívül esik. Módosítsa az IP-címet úgy, hogy az alhálózat tartományán belülre essen. | [IP-címek](../../virtual-network/public-ip-addresses.md) |
+| PropertyChangeNotAllowed (Tulajdonság nem engedélyezett) | Egyes tulajdonságok nem módosíthatók az üzembe helyezett erőforrásokon. Erőforrás frissítésekkor korlátozza a módosításokat az engedélyezett tulajdonságokra. | [Erőforrás frissítése](/azure/architecture/guide/azure-resource-manager/advanced-templates/update-resource) |
+| RequestDisallowedByPolicy | Az előfizetés tartalmaz egy erőforrás-szabályzatot, amely megakadályozza az üzembe helyezés során végrehajtani próbált műveletet. Keresse meg a műveletet letiltó szabályzatot. Ha lehetséges, módosítsa az üzemelő példányát úgy, hogy megfeleljen a szabályzat korlátainak. | [Szabályzatok feloldása](error-policy-requestdisallowedbypolicy.md) |
+| ReservedResourceName | Adjon meg egy erőforrásnevet, amely nem tartalmaz fenntartott nevet. | [Fenntartott erőforrások nevei](error-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | Várjon, amíg a törlés befejeződik. | |
-| ResourceGroupNotFound | A központi telepítéshez tartozó cél erőforráscsoport nevének megadásához. A célként megadott erőforráscsoport már léteznie kell az előfizetésben. Az előfizetési környezet ellenõrzése. | [Azure CLI](/cli/azure/account?#az-account-set) [PowerShell](/powershell/module/Az.Accounts/Set-AzContext) |
-| ResourceNotFound | Az üzemelő példány olyan erőforrásra hivatkozik, amely nem oldható fel. Ellenőrizze, hogy a **hivatkozási** függvény használata tartalmazza-e a forgatókönyvhöz szükséges paramétereket. | [Hivatkozások feloldása](error-not-found.md) |
-| ResourceQuotaExceeded | A központi telepítés olyan erőforrásokat próbál létrehozni, amelyek túllépik az előfizetés, az erőforráscsoport vagy a régió kvótáját. Ha lehetséges, módosítsa az infrastruktúrát, hogy a kvótán belül maradjon. Ellenkező esetben érdemes lehet módosítani a kvótákat. | [Kvóták feloldása](error-resource-quota.md) |
-| SkuNotAvailable | Válassza ki a kiválasztott helyhez elérhető SKU-t (például a virtuális gép méretét). | [SKU feloldása](error-sku-not-available.md) |
-| StorageAccountAlreadyExists | Adjon meg egy egyedi nevet a tárfióknak. | [A Storage-fiók nevének feloldása](error-storage-account-name.md)  |
-| StorageAccountAlreadyTaken | Adjon meg egy egyedi nevet a tárfióknak. | [A Storage-fiók nevének feloldása](error-storage-account-name.md) |
-| StorageAccountNotFound | Tekintse meg az előfizetést, az erőforráscsoportot és a használni kívánt Storage-fiók nevét. | |
-| SubnetsNotInSameVnet | A virtuális gépeknek csak egy virtuális hálózata lehet. Több hálózati adapter telepítésekor győződjön meg arról, hogy ugyanahhoz a virtuális hálózathoz tartoznak. | [Több hálózati adapter](../../virtual-machines/windows/multiple-nics.md) |
-| SubscriptionNotFound | Nem érhető el a központi telepítéshez megadott előfizetés. Lehet, hogy az előfizetés-azonosító helytelen, a sablont telepítő felhasználó nem rendelkezik megfelelő engedélyekkel az előfizetéshez való üzembe helyezéshez, vagy az előfizetés-azonosító formátuma helytelen. Ha beágyazott központi telepítéseket használ a [hatókörök közötti központi](./deploy-to-resource-group.md)telepítéshez, adja meg az előfizetés GUID azonosítóját. | |
-| SubscriptionNotRegistered | Erőforrás telepítésekor az erőforrás-szolgáltatót regisztrálni kell az előfizetéséhez. Ha Azure Resource Manager sablont használ a központi telepítéshez, a rendszer automatikusan regisztrálja az erőforrás-szolgáltatót az előfizetésben. Előfordulhat, hogy az automatikus regisztráció nem fejeződött be időben. Az időszakos hiba elkerüléséhez regisztrálja az erőforrás-szolgáltatót az üzembe helyezés előtt. | [Regisztráció feloldása](error-register-resource-provider.md) |
-| TemplateResourceCircularDependency | Felesleges függőségek eltávolítása. | [Körkörös függőségek feloldása](error-invalid-template.md#circular-dependency) |
-| TooManyTargetResourceGroups | Az erőforráscsoportok számának csökkentése egyetlen központi telepítéshez. | [Több hatókörű központi telepítés](./deploy-to-resource-group.md) |
+| ResourceGroupNotFound | Ellenőrizze az üzemelő példány célerőforrás-csoportjának nevét. A cél erőforráscsoportnak már léteznie kell az előfizetésében. Ellenőrizze az előfizetési környezetet. | [Azure CLI](/cli/azure/account?#az_account_set) [PowerShell](/powershell/module/Az.Accounts/Set-AzContext) |
+| ResourceNotFound | Az üzemelő példány olyan erőforrásra hivatkozik, amely nem oldható fel. Ellenőrizze, hogy a **referencia-függvény** használata tartalmazza-e a forgatókönyvhöz szükséges paramétereket. | [Hivatkozások feloldása](error-not-found.md) |
+| ResourceQuotaExceeded | Az üzemelő példány olyan erőforrásokat próbál létrehozni, amelyek túllépik az előfizetés, az erőforráscsoport vagy a régió kvótáját. Ha lehetséges, módosítsa az infrastruktúrát, hogy a kvótákon belül maradjon. Ellenkező esetben fontolja meg a kvóták változásának kérelmezését. | [Kvóták feloldása](error-resource-quota.md) |
+| SkuNotAvailable | Válassza ki a kiválasztott helyhez elérhető termékváltozatot (például virtuálisgép-méretet). | [Termékváltozat feloldása](error-sku-not-available.md) |
+| StorageAccountAlreadyExists | Adjon meg egy egyedi nevet a tárfióknak. | [Tárfiók nevének feloldása](error-storage-account-name.md)  |
+| StorageAccountAlreadyTaken (TárfiókalreadyTaken) | Adjon meg egy egyedi nevet a tárfióknak. | [Tárfiók nevének feloldása](error-storage-account-name.md) |
+| StorageAccountNotFound | Ellenőrizze a használni próbált tárfiók előfizetését, erőforráscsoportját és nevét. | |
+| AlhálózatokNotInSameVnet | Egy virtuális gép csak egy virtuális hálózattal lehet. Több hálózati adapter üzembe helyezésekor győződjön meg arról, hogy ugyanannak a virtuális hálózatnak a tagja. | [Több NIC](../../virtual-machines/windows/multiple-nics.md) |
+| SubscriptionNotFound | Az üzembe helyezéshez megadott előfizetés nem érhető el. Lehet, hogy az előfizetés azonosítója helytelen, a sablont üzembe helyező felhasználó nem rendelkezik megfelelő engedélyekkel az előfizetésben való üzembe helyezéshez, vagy az előfizetés azonosítója nem megfelelő formátumú. Ha beágyazott üzemelő példányokat használ a hatókörök közötti [üzembe helyezéshez,](./deploy-to-resource-group.md)adja meg az előfizetés GUID-azonosítóját. | |
+| SubscriptionNotRegistered (Nem regisztrált előfizetés) | Erőforrás üzembe helyezésekor az erőforrás-szolgáltatónak regisztrálva kell lennie az előfizetésben. Ha üzembe helyezéshez Azure Resource Manager sablont használ, az erőforrás-szolgáltató automatikusan regisztrálva lesz az előfizetésben. Az automatikus regisztráció néha nem fejeződik be időben. Az időszakos hiba elkerülése érdekében az üzembe helyezés előtt regisztrálja az erőforrás-szolgáltatót. | [Regisztráció feloldása](error-register-resource-provider.md) |
+| TemplateResourceCircularDependency | Távolítsa el a szükségtelen függőségeket. | [Körkörös függőségek feloldása](error-invalid-template.md#circular-dependency) |
+| TooManyTargetResourceGroups | Egyetlen üzemelő példány erőforráscsoportszámának csökkentése. | [Hatókörök közötti üzembe helyezés](./deploy-to-resource-group.md) |
 
-## <a name="find-error-code"></a>Hibakód keresése
+## <a name="find-error-code"></a>Hibakód megkerese
 
 Kétféle hibáról kaphat értesítést:
 
@@ -96,11 +96,11 @@ Mindkét típusú hiba az üzembe helyezés hibaelhárításához használható 
 
 Amikor a portálon keresztül végzi el az üzembe helyezést, az értékek megadása után jelenik meg az érvényesítési hiba.
 
-![portál-érvényesítési hiba megjelenítése](./media/common-deployment-errors/validation-error.png)
+![portálérvényesítési hiba megjelenítése](./media/common-deployment-errors/validation-error.png)
 
-További információért válassza ki az üzenetet. Az alábbi képen egy **InvalidTemplateDeployment** -hibaüzenet és egy olyan üzenet jelenik meg, amely a házirend letiltott telepítését jelzi.
+További információért válassza ki az üzenetet. Az alábbi képen egy **InvalidTemplateDeployment** hiba és egy üzenet látható, amely azt jelzi, hogy a szabályzat blokkolta az üzembe helyezést.
 
-![érvényesítés részleteinek megjelenítése](./media/common-deployment-errors/validation-details.png)
+![érvényesítési adatok megjelenítése](./media/common-deployment-errors/validation-details.png)
 
 ### <a name="deployment-errors"></a>Telepítési hibák
 
@@ -122,9 +122,9 @@ A portálon válassza ki az értesítést.
 
 ![értesítési hiba](./media/common-deployment-errors/notification.png)
 
-További részleteket az üzemelő példányról talál. Válassza ki a beállítást, hogy többet tudjon meg a hibáról.
+További részleteket láthat az üzembe helyezésről. Válassza ki a beállítást, hogy többet tudjon meg a hibáról.
 
-![sikertelen telepítés](./media/common-deployment-errors/deployment-failed.png)
+![sikertelen üzembe helyezés](./media/common-deployment-errors/deployment-failed.png)
 
 Megjelenik a hibaüzenet és a hibakódok. Figyelje meg, hogy két hibakód látható. Az első hibakód (**DeploymentFailed**) egy általános hiba, amely nem adja meg a hiba megoldásához szükséges részleteket. A második hibakód (**StorageAccountNotFound**) megadja a szükséges részleteket.
 
@@ -132,11 +132,11 @@ Megjelenik a hibaüzenet és a hibakódok. Figyelje meg, hogy két hibakód lát
 
 ## <a name="enable-debug-logging"></a>Hibakeresési naplózás engedélyezése
 
-Időnként további információra van szüksége a kérésről és a válaszról, hogy megtudja, mi volt a baj. Az üzembe helyezés során kérheti, hogy a rendszer az üzembe helyezés során további információkat naplózza.
+Néha több információra van szüksége a kérésről és a válaszról, hogy megtudja, mi volt a hiba. Az üzembe helyezés során kérheti, hogy a rendszer további adatokat naplóz a telepítés során.
 
 ### <a name="powershell"></a>PowerShell
 
-A PowerShellben állítsa a **DeploymentDebugLogLevel** paramétert az all, a ResponseContent vagy a RequestContent értékre.
+A PowerShellben állítsa a **DeploymentDebugLogLevel** paramétert Az összes, a ResponseContent vagy a RequestContent paraméterre.
 
 ```powershell
 New-AzResourceGroupDeployment `
@@ -155,7 +155,7 @@ Vizsgálja meg a kérelem tartalmát a következő parancsmaggal:
 | ConvertTo-Json
 ```
 
-Vagy a válasz tartalma:
+Vagy a válasz tartalma a következővel:
 
 ```powershell
 (Get-AzResourceGroupDeploymentOperation `
@@ -164,13 +164,13 @@ Vagy a válasz tartalma:
 | ConvertTo-Json
 ```
 
-Ez az információ segít megállapítani, hogy a sablon egyik értéke helytelenül van-e beállítva.
+Ezek az információk segíthetnek megállapítani, hogy a sablonban helytelenül van-e beállítva egy érték.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az Azure CLI jelenleg nem támogatja a hibakeresési naplózás bekapcsolását, de a hibakeresési naplózást is beolvashatja.
+Az Azure CLI jelenleg nem támogatja a hibakeresési naplózás bekapcsolát, de lekérheti a hibakeresési naplózást.
 
-Vizsgálja meg a telepítési műveleteket a következő paranccsal:
+Vizsgálja meg az üzembe helyezési műveleteket a következő paranccsal:
 
 ```azurecli
 az deployment operation group list \
@@ -220,7 +220,7 @@ Beágyazott sablon hibakeresési információinak naplózásához használja a *
 
 ## <a name="create-a-troubleshooting-template"></a>Hibaelhárítási sablon létrehozása
 
-Bizonyos esetekben a sablon egy részének teszteléséhez a legegyszerűbb módszer a sablonok hibakeresése. Létrehozhat egy egyszerűsített sablont, amely lehetővé teszi, hogy a hibát okozó részre koncentráljon. Tegyük fel például, hogy hibaüzenetet kap, amikor egy erőforrásra hivatkozik. Ahelyett, hogy egy teljes sablont kellene használnia, hozzon létre egy sablont, amely visszaadja a problémát okozó részt. Segít eldönteni, hogy a megfelelő paramétereket használja-e, és a sablon megfelelően működik-e, és beolvassa a várt erőforrást.
+Bizonyos esetekben a sablon hibáinak elhárításának legegyszerűbb módja annak egyes részeinek tesztelése. Létrehozhat egy egyszerűsített sablont, amely lehetővé teszi, hogy arra a részre koncentráljon, amely szerinte a hibát okozza. Tegyük fel például, hogy hibaüzenetet kap egy erőforrásra való hivatkozáskor. A teljes sablon kezelése helyett hozzon létre egy sablont, amely visszaadja azt a részt, amely a problémát okozhatja. Segítségével meghatározhatja, hogy a megfelelő paramétereket adhatja-e meg, megfelelően használja a sablonfunkciókat, és le tudja-e kérni a várt erőforrást.
 
 ```json
 {
@@ -245,10 +245,10 @@ Bizonyos esetekben a sablon egy részének teszteléséhez a legegyszerűbb mód
 }
 ```
 
-Vagy tegyük fel, hogy olyan központi telepítési hibákat észlel, amelyeket úgy gondol, hogy a nem megfelelően beállított függőségekhez kapcsolódik. A sablon teszteléséhez bontsa ki az egyszerűsített sablonokat. Először hozzon létre egy sablont, amely csak egyetlen erőforrást telepít (például egy SQL Server). Ha biztos benne, hogy megfelelően definiálta az erőforrást, adjon hozzá egy erőforrást, amely attól függ (például egy SQL Database). Ha a két erőforrás megfelelően van definiálva, vegyen fel más függő erőforrásokat (például naplózási házirendeket). Az egyes tesztelési környezetek között törölje az erőforráscsoportot, hogy ellenőrizze a függőségek megfelelő tesztelését.
+Vagy tegyük fel, hogy olyan üzembe helyezési hibákat kap, amelyek úgy vélik, hogy helytelenül beállított függőségekkel kapcsolatosak. Tesztelje a sablont egyszerűsített sablonokra való feltörése segítségével. Először hozzon létre egy sablont, amely csak egyetlen erőforrást helyez üzembe (például egy SQL Server). Ha biztos abban, hogy az erőforrás megfelelően van definiálva, adjon hozzá egy erőforrást, amely attól függ (például egy SQL Database). Ha helyesen definiálta ezt a két erőforrást, adjon hozzá további függő erőforrásokat (például naplózási szabályzatokat). Az egyes teszttelepítések között törölje az erőforráscsoportot, hogy biztosan megfelelően tesztelje a függőségeket.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A hibaelhárítással kapcsolatos oktatóanyagért lásd [: oktatóanyag: Resource Manager-sablonok központi telepítésének hibaelhárítása](template-tutorial-troubleshoot.md)
-* További információ a naplózási műveletekről: [műveletek naplózása a Resource Managerrel](../management/view-activity-logs.md).
-* Az üzembe helyezés során felmerülő hibák meghatározásával kapcsolatos további tudnivalókért lásd: [telepítési műveletek megtekintése](deployment-history.md).
+* A hibaelhárítási oktatóanyag lépéseiért lásd: [Oktatóanyag: A Resource Manager üzembe helyezésének hibaelhárítása](template-tutorial-troubleshoot.md)
+* További információ a naplózási műveletekről: [Naplózási műveletek a Resource Manager.](../management/view-activity-logs.md)
+* Az üzembe helyezés során előforduló hibákat megállapító műveletekkel kapcsolatos információkért lásd: [Telepítési műveletek megtekintése.](deployment-history.md)

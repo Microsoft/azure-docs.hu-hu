@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 04/06/2021
 ms.author: mlearned
 ms.custom: include file
-ms.openlocfilehash: 15e91e6f275c3a6ebe44690441404a38e8f61394
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: da22991b9a1c4b69d3a3d6eb6f76b0925a6ad3d4
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107732641"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107799935"
 ---
 | Erőforrás                                                                                                           | Korlát                                                                                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Fürtök maximális száma előfizetésenként                                                                                  | 1000                                                                                                                                                                                                        |
-| Fürtönkénti csomópontok maximális száma virtuálisgép-rendelkezésre állási csoportokkal és alapszintű Load Balancer termékváltozattal                       | 100                                                                                                                                                                                                         |
-| Fürtönkénti csomópontok maximális száma Virtual Machine Scale Sets [termékváltozattal standard Load Balancer termékváltozattal][standard-load-balancer] | 1000 (az összes [csomópontkészletben)][node-pool]                                            |
+| Fürtök maximális száma előfizetésenként                                                                                  | 5000                                                                                                                                                                                                        |
+| Csomópontok maximális száma fürtönként virtuálisgép-rendelkezésre állási csoportokkal és alapszintű Load Balancer termékváltozattal                       | 100                                                                                                                                                                                                         |
+| Csomópontok maximális száma fürtönként Virtual Machine Scale Sets és [standard Load Balancer termékváltozattal][standard-load-balancer] | 1000 (az összes [csomópontkészletben)][node-pool]                                            |
 | Csomópontkészletek maximális száma fürtönként                                                                                     | 100                                                                                  |
-| Podok maximális száma csomópontonként: [Alapszintű hálózat a][basic-networking] Kubenetben                                           | Maximum: 250 <br /> Azure CLI alapértelmezett: 110 <br /> Azure Resource Manager sablon alapértelmezett beállítása: 110 <br /> Azure Portal alapértelmezett beállítás: 30          |
-| Podok maximális száma csomópontonként: [Speciális hálózat Azure Container Networking Interface][advanced-networking]        | Maximum: 250 <br /> Alapértelmezett: 30                                                      |
-| Előzetes verziójú AKS-bővítmény megnyitása a Service Meshben (OSM)                                                                          | Kubernetes-fürt verziója: 1.19+<sup>1</sup><br />OSM-vezérlők fürtönként: 1<sup>1</sup><br />Podok OSM-vezérlőnként: 500<sup>1</sup><br />Az OSM által felügyelt Kubernetes-szolgáltatásfiókok: 50<sup>1</sup> |
+| Podok maximális száma csomópontonként: [Alapszintű hálózat a][basic-networking] Kubenetben                                           | Maximum: 250 <br /> Az Azure CLI alapértelmezett beállítása: 110 <br /> Azure Resource Manager alapértelmezett beállítás: 110 <br /> Azure Portal alapértelmezett beállítás: 30          |
+| Podok maximális száma csomópontonként: [Speciális hálózat Azure Container Networking Interface][advanced-networking]        | Maximum: 250 <br /> Alapértelmezett érték: 30                                                      |
+| A Service Mesh (OSM) AKS-bővítmény előzetes verziója                                                                          | Kubernetes-fürt verziója: 1.19+<sup>1</sup><br />OSM-vezérlők fürtönként: 1<sup>1</sup><br />Podok OSM-vezérlőnként: 500<sup>1</sup><br />Az OSM által felügyelt Kubernetes-szolgáltatásfiókok: 50<sup>1</sup> |
 
-<sup>1</sup> Az OSM AKS-bővítménye előzetes verziójú állapotban van, és további fejlesztéseken megy keresztül az általánosan elérhető (GA) verzió előtt. Az előzetes verzió fázisában javasoljuk, hogy ne lépje túl a megjelenő korlátokat.<br />
+<sup>1</sup> Az AKS-hez elérhető OSM-bővítmény előzetes verziójú állapotban van, és további fejlesztéseken megy keresztül az általánosan elérhető (GA) előtt. Az előzetes verzió fázisában javasoljuk, hogy ne lépje túl a megjelenő korlátokat.<br />
 
 <!-- LINKS - Internal -->
 

@@ -1,85 +1,85 @@
 ---
-title: A Azure Functions tárolási szempontjai
-description: Ismerje meg a Azure Functions tárolási követelményeit és a tárolt adat titkosítását.
+title: Tárolási szempontok a Azure Functions
+description: Ismerje meg az adatok tárolási követelményeit Azure Functions és a tárolt adatok titkosítását.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: c4ffb622482585e35337caf8e43b69e0f3b0385c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5faa85a4fac9fc0b8639f33c475283f4f043c627
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100517263"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779254"
 ---
-# <a name="storage-considerations-for-azure-functions"></a>A Azure Functions tárolási szempontjai
+# <a name="storage-considerations-for-azure-functions"></a>Tárolási szempontok a Azure Functions
 
-A Azure Functions egy Azure Storage-fiókot igényel a Function App-példány létrehozásakor. A Function app a következő tárolási szolgáltatásokat használhatja:
+Azure Functions azure storage-fiókra van szükség a függvényalkalmazás-példány létrehozásakor. A függvényalkalmazás a következő tárolási szolgáltatásokat hatja igénybe:
 
 
-|Tárolási szolgáltatás  | Függvények használata  |
+|Storage szolgáltatás  | Függvények használata  |
 |---------|---------|
-| [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | Kötések állapotának és funkcióbillentyűk megtartása.  <br/>[A Durable Functionsban a feladatok hubok](durable/durable-functions-task-hubs.md)is használják. |
-| [Azure Files](../storage/files/storage-files-introduction.md)  | A Function app-kód tárolásához és futtatásához használt fájlmegosztás a használati [tervben](consumption-plan.md) és a [prémium csomagban](functions-premium-plan.md). |
-| [Azure üzenetsor-tároló](../storage/queues/storage-queues-introduction.md)     | [A feladatok hubok használják Durable Functionsban](durable/durable-functions-task-hubs.md).   |
-| [Azure Table storage](../storage/tables/table-storage-overview.md)  |  [A feladatok hubok használják Durable Functionsban](durable/durable-functions-task-hubs.md).       |
+| [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | Kötési állapot és függvénykulcsok karbantartása.  <br/>A [feladatközpontok is használják a Durable Functions.](durable/durable-functions-task-hubs.md) |
+| [Azure Files](../storage/files/storage-files-introduction.md)  | A függvényalkalmazás kódját egy használaton belüli és [prémium](consumption-plan.md) szintű csomagban tárolja és [futtatja.](functions-premium-plan.md) |
+| [Azure Queue Storage](../storage/queues/storage-queues-introduction.md)     | A [tevékenységközpontok használják](durable/durable-functions-task-hubs.md)a Durable Functions.   |
+| [Azure Table storage](../storage/tables/table-storage-overview.md)  |  A [tevékenységközpontok használják](durable/durable-functions-task-hubs.md)a Durable Functions.       |
 
 > [!IMPORTANT]
-> A fogyasztási/prémium szintű üzemeltetési csomag használatakor a rendszer a fő Storage-fiókban tárolja a függvény kódját és a kötési konfigurációs fájlokat az Azure file Storage-ban. Ha törli ezt a fő tárfiókot, ez a tartalom is törlődik, és nem állítható helyre.
+> A használat/prémium szintű üzemeltetési csomag használata esetén a függvénykód és a kötéskonfigurációs fájlok az Azure File Storage-ban vannak tárolva a fő tárfiókban. Ha törli ezt a fő tárfiókot, ez a tartalom is törlődik, és nem állítható helyre.
 
 ## <a name="storage-account-requirements"></a>Storage-fiókra vonatkozó követelmények
 
-A Function app létrehozásakor létre kell hoznia vagy hivatkoznia kell egy általános célú Azure Storage-fiókra, amely támogatja a blob, a üzenetsor és a Table Storage használatát. Ennek az az oka, hogy a függvények az Azure Storage-on alapulnak olyan műveletekre, mint például az eseményindítók és a naplózási függvények végrehajtásának kezelése. Egyes Storage-fiókok nem támogatják a várólistákat és a táblákat. Ezek a fiókok csak blob Storage-fiókokat és Azure-Premium Storage tartalmaznak.
+Függvényalkalmazás létrehozásakor létre kell hoznia egy általános célú Azure Storage-fiókot, vagy hivatkozni kell rá, amely támogatja a Blob, Queue és Table Storage tárolókat. Ennek az az oka, hogy a Functions az Azure Storage-ban kezeli az olyan műveleteket, mint az eseményindítók kezelése és a függvények végrehajtásának naplózása. Egyes tárfiókok nem támogatják az üzenetsorokat és táblákat. Ezek közé a fiókok közé tartoznak a csak blobok számára elérhető tárfiókok és az Azure Premium Storage.
 
 További információ a tárfiókok típusairól: [Az Azure Storage szolgáltatásainak bemutatása](../storage/common/storage-introduction.md#core-storage-services). 
 
-Habár meglévő Storage-fiókot is használhat a Function alkalmazással, meg kell győződnie arról, hogy megfelel a követelményeknek. Azok a Storage-fiókok, amelyek az alkalmazás-létrehozási folyamat részeként jöttek létre a Azure Portalban, garantáltan megfelelnek a Storage-fiókra vonatkozó követelményeknek. A portálon a rendszer kiszűri a nem támogatott fiókokat, amikor egy meglévő Storage-fiókot választ ki egy Function-alkalmazás létrehozásakor. Ebben a folyamatban csak olyan meglévő Storage-fiókokat választhat, amelyek ugyanabban a régióban találhatók, mint a létrehozandó Function alkalmazás. További információ: Storage- [fiók helye](#storage-account-location).
+Bár használhat egy meglévő tárfiókot a függvényalkalmazással, meg kell győződnie arról, hogy az megfelel ezeknek a követelményeknek. A függvényalkalmazás létrehozási folyamatának részeként létrehozott tárfiókok garantáltan megfelelnek Azure Portal tárfiókra vonatkozó követelményeknek. A portálon a rendszer kiszűri a nem támogatott fiókokat, amikor kiválaszt egy meglévő tárfiókot a függvényalkalmazás létrehozása során. Ebben a folyamatban csak olyan meglévő tárfiókokat választhat ki, amelyek ugyanabban a régióban vannak, mint a létrehozott függvényalkalmazás. További információ: [Tárfiók helye.](#storage-account-location)
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
-## <a name="storage-account-guidance"></a>A Storage-fiók útmutatója
+## <a name="storage-account-guidance"></a>Útmutató a tárfiókhoz
 
-Minden Function alkalmazás működéséhez szükség van egy Storage-fiókra. Ha a fiók törlődik, a Function alkalmazás nem fog futni. A tárolással kapcsolatos problémák elhárításával kapcsolatban lásd: [a tárolással kapcsolatos problémák elhárítása](functions-recover-storage-account.md). A következő további szempontok vonatkoznak a Function apps által használt Storage-fiókra.
+Minden függvényalkalmazás működéséhez tárfiók szükséges. Ha törli a fiókot, a függvényalkalmazás nem fog futni. A tárolással kapcsolatos hibák elhárításához [lásd: Tárolással kapcsolatos problémák elhárítása.](functions-recover-storage-account.md) A függvényalkalmazások által használt Storage-fiókra az alábbi további szempontok vonatkoznak.
 
 ### <a name="storage-account-location"></a>Tárfiók helye
 
-A legjobb teljesítmény érdekében a Function alkalmazásnak egy azonos régióban lévő Storage-fiókot kell használnia, amely csökkenti a késést. A Azure Portal érvényesíti ezt az ajánlott gyakorlatot. Ha valamilyen okból kifolyólag egy Storage-fiókot kell használnia a Function alkalmazástól eltérő régióban, a Function alkalmazást a portálon kívül kell létrehoznia. 
+A legjobb teljesítmény érdekében a függvényalkalmazásnak ugyanabban a régióban kell használnia egy tárfiókot, ami csökkenti a késést. A Azure Portal betartatja ezt az ajánlott gyakorlatot. Ha valamilyen okból a függvényalkalmazástól eltérő régióban kell használnia egy tárfiókot, a függvényalkalmazást a portálon kívül kell létrehoznia. 
 
-### <a name="storage-account-connection-setting"></a>Storage-fiók kapcsolatainak beállítása
+### <a name="storage-account-connection-setting"></a>Tárfiók kapcsolati beállítása
 
-A Storage-fiók kapcsolatai a [AzureWebJobsStorage alkalmazás-beállításban](./functions-app-settings.md#azurewebjobsstorage)maradnak. 
+A tárfiók kapcsolata az [AzureWebJobsStorage alkalmazásbeállításban tartható fenn.](./functions-app-settings.md#azurewebjobsstorage) 
 
-A Storage-fiók kapcsolódási karakterláncát frissíteni kell a tárolási kulcsok újragenerálása során. [További információ a Storage Key managementről](../storage/common/storage-account-create.md).
+A tárfiók kapcsolati sztringet frissíteni kell, amikor újra létrehozza a tárkulcsokat. [A tárkulcsok kezelésével kapcsolatban itt olvashat bővebben.](../storage/common/storage-account-create.md)
 
-### <a name="shared-storage-accounts"></a>Megosztott Storage-fiókok
+### <a name="shared-storage-accounts"></a>Megosztott tárfiókok
 
-Több Function-alkalmazás is lehetséges, hogy problémák nélkül megoszthatja ugyanazt a Storage-fiókot. A Visual Studióban például több alkalmazás is fejleszthető az Azure Storage Emulator használatával. Ebben az esetben az emulátor egyetlen Storage-fiókhoz hasonlóan működik. A Function alkalmazás által használt Storage-fiók is használható az alkalmazásadatok tárolására. Azonban ez a megközelítés nem mindig jó ötlet az éles környezetben.
+Több függvényalkalmazás is probléma nélkül megoszthatja ugyanazt a tárfiókot. Ebben a példában Visual Studio Azure Storage Emulator használatával több alkalmazást is fejleszthet. Ebben az esetben az emulátor egyetlen tárfiókként működik. A függvényalkalmazás által használt tárfiók az alkalmazásadatok tárolására is használható. Ez a megközelítés azonban éles környezetben nem mindig jó ötlet.
 
 ### <a name="optimize-storage-performance"></a>A tárolási teljesítmény optimalizálása
 
 [!INCLUDE [functions-shared-storage](../../includes/functions-shared-storage.md)]
 
-## <a name="storage-data-encryption"></a>Storage-adattitkosítás
+## <a name="storage-data-encryption"></a>Tárolási adatok titkosítása
 
 [!INCLUDE [functions-storage-encryption](../../includes/functions-storage-encryption.md)]
 
-### <a name="in-region-data-residency"></a>Régión belüli adattárolás
+### <a name="in-region-data-residency"></a>Régión belül található adatok helye
 
-Ha az összes ügyfél-adatnak egyetlen régióban kell maradnia, a Function alkalmazáshoz társított Storage-fióknak a [régión belüli redundanciával](../storage/common/storage-redundancy.md)kell rendelkeznie. A régión belüli redundáns Storage-fiókot az [Azure Durable functions](./durable/durable-functions-perf-and-scale.md#storage-account-selection)is használni kell.
+Ha minden ügyféladatnak egyetlen régióban kell maradnia, a függvényalkalmazáshoz társított tárfióknak régión belüli redundanciával kell [lennie.](../storage/common/storage-redundancy.md) A régión belül redundáns tárfiókot is használni kell az [Azure Durable Functions.](./durable/durable-functions-perf-and-scale.md#storage-account-selection)
 
-A platform által felügyelt ügyféladatokat csak a régión belül tárolják, ha belsőleg elosztott terhelésű App Service Environment (bevezetéses) környezetben üzemeltetik azokat. További információ: a [beépítési zóna redundancia](../app-service/environment/zone-redundancy.md#in-region-data-residency).
+A platform által felügyelt egyéb ügyféladatok csak akkor vannak a régióban tárolva, ha belsőleg elosztott terhelésű környezetben (ASE App Service Environment tárolják. További információ: [ASE-zónaredundania.](../app-service/environment/zone-redundancy.md#in-region-data-residency)
 
-## <a name="mount-file-shares"></a>Csatlakoztatási fájlmegosztás
+## <a name="mount-file-shares"></a>Fájlmegosztások csatlakoztatása
 
-_Ez a funkció jelenleg csak Linux rendszeren érhető el._ 
+_Ez a funkció csak Linuxon való futtatáskor érhető el._ 
 
-Meglévő Azure Files-megosztásokat csatlakoztathat a Linux Function-alkalmazásaihoz. Ha egy megosztást csatlakoztat a linuxos Function-alkalmazáshoz, használhatja a meglévő gépi tanulási modelleket és a függvények más adatait. A [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) parancs használatával meglévő megosztásokat csatlakoztathat a Linux-függvény alkalmazásához. 
+Csatlakoztathat meglévő Azure Files megosztásokat a Linux-függvényalkalmazáshoz. Ha egy megosztást a Linux-függvényalkalmazáshoz rögzít, kihasználhatja a meglévő gépi tanulási modelleket vagy a függvények egyéb adatait. A paranccsal [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_add) csatlakoztathat egy meglévő megosztást a Linux-függvényalkalmazáshoz. 
 
-Ebben a parancsban a `share-name` létező Azure Files megosztás neve, és `custom-id` bármely olyan karakterlánc lehet, amely egyedileg definiálja a megosztást a Function alkalmazáshoz való csatlakoztatáskor. Emellett az az `mount-path` elérési út, amelyből a megosztás elérhető a Function alkalmazásban. `mount-path` formátumúnak kell lennie `/dir-name` , és nem kezdődhet a-vel `/home` .
+Ebben a parancsban a a meglévő Azure Files-megosztás neve, és bármilyen sztring lehet, amely egyedileg meghatározza a megosztást a `share-name` `custom-id` függvényalkalmazáshoz csatlakoztatva. Emellett `mount-path` az az elérési út is, amelyről a megosztás elérhető a függvényalkalmazásban. `mount-path` formátumban kell `/dir-name` lennie, és nem kezdődhet a következővel: `/home` .
 
-Teljes példaként tekintse meg a Python- [függvény létrehozása és a Azure Files megosztás csatlakoztatása](scripts/functions-cli-mount-files-storage-linux.md)című témakörben található parancsfájlokat. 
+A teljes példát a Python-függvényalkalmazás létrehozása és egy Azure Files szkriptek között [láthatja.](scripts/functions-cli-mount-files-storage-linux.md) 
 
-Jelenleg csak a a `storage-type` `AzureFiles` támogatott. Csak öt megosztást lehet csatlakoztatni egy adott Function alkalmazáshoz. A fájlmegosztás csatlakoztatása növelheti a hideg kezdési időt legalább 200 300ms, vagy akár több is, ha a Storage-fiók egy másik régióban található.
+Jelenleg csak a `storage-type` `AzureFiles` támogatott. Egy adott függvényalkalmazáshoz csak öt megosztást csatlakoztathat. A fájlmegosztás csatlakoztatása akár 200–300 ezredm-sel is megnövelheti a hideg kezdési időt, vagy még több időt, ha a tárfiók másik régióban van.
 
-A csatlakoztatott megosztás a megadott függvény kódjában érhető el `mount-path` . Ha például a (z `mount-path` ) `/path/to/mount` , a cél könyvtárat a fájlrendszer API-jai segítségével érheti el, ahogy az a következő Python-példában látható:
+A csatlakoztatott megosztás a függvénykód számára a megadott időpontban `mount-path` érhető el. Ha például a , fájlrendszer API-k segítségével férhet hozzá a célkönyvtárhoz, ahogyan az a `mount-path` `/path/to/mount` következő Python-példában is található:
 
 ```python
 import os
@@ -90,7 +90,7 @@ files_in_share = os.listdir("/path/to/mount")
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a Azure Functions üzemeltetési lehetőségeiről.
+További információ a Azure Functions lehetőségekről.
 
 > [!div class="nextstepaction"]
 > [Az Azure Functions méretezése és üzemeltetése](functions-scale.md)

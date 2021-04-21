@@ -1,24 +1,24 @@
 ---
-title: Oktatóanyag – rendszerkép létrehozása kód véglegesítve
-description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egy Azure Container Registry feladatot úgy, hogy automatikusan aktiválja a tároló rendszerképét a felhőben, amikor a forráskódot egy git-tárházba véglegesíti.
+title: Oktatóanyag – Rendszerkép összeállítása kód véglegesítése után
+description: Ez az oktatóanyag bemutatja, hogyan konfigurálhat egy Azure Container Registry-feladatot úgy, hogy automatikusan aktiválja a tároló rendszerkép-buildeket a felhőben, amikor forráskódot véglegesít egy Git-adattárban.
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 9c642a6c52a2d992c617993964bedd3ee04a7076
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: b4806ed30319ff058df6dfae0340a73ad4cb6132
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060329"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780766"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Oktatóanyag: Tárolólemezképek összeállításának automatizálása a felhőben forráskód véglegesítésekor
 
-Egy [gyors feladaton](container-registry-tutorial-quick-task.md)kívül az ACR-feladatok támogatják az automatizált Docker-tárolók rendszerképét a felhőben, amikor a forráskódot egy git-tárházba véglegesíti. Az ACR-feladatokhoz támogatott git-környezetek a következők lehetnek: nyilvános vagy privát GitHub vagy Azure Repos.
+A gyors [feladat](container-registry-tutorial-quick-task.md)mellett a ACR-feladatok támogatja a Docker-tárolórendszerkép automatikus összeállítását a felhőben, amikor forráskódot véglegesít egy Git-adattárban. A támogatott Git-környezetek ACR-feladatok nyilvános vagy privát GitHub- vagy Azure-adattárak.
 
 > [!NOTE]
-> Az ACR-feladatok jelenleg nem támogatják a commit vagy a pull kérelem eseményindítóit a GitHub Enterprise reposban.
+> Jelenleg a ACR-feladatok nem támogatja a véglegesítési vagy lekéréses kérelmek eseményindítóit a GitHub Enterprise-adattárakban.
 
-Ebben az oktatóanyagban az ACR-feladat létrehozza és leküldi a Docker megadott egyetlen tároló-rendszerképet, amikor egy git-tárházba véglegesíti a forráskódot. Ha olyan [többlépéses feladatot](container-registry-tasks-multi-step.md) szeretne létrehozni, amely egy YAML-fájlt használ a kód végrehajtásához szükséges több tároló létrehozásához, leküldéséhez és opcionális teszteléséhez, tekintse meg [az oktatóanyag: többlépéses tároló-munkafolyamat futtatása a felhőben a forráskód](container-registry-tutorial-multistep-task.md)beléptetése során című témakört. Az ACR-feladatok áttekintését lásd: az [operációs rendszer és a keretrendszer javításának automatizálása az ACR-feladatokkal](container-registry-tasks-overview.md)
+Ebben az oktatóanyagban az ACR-feladat egyetlen, a Docker-fájlban megadott tárolólemezképet hoz létre és fog leküldeni, amikor forráskódot véglegesít egy Git-adattárban. Többlépéses feladat létrehozásához, amely [YAML-fájllal](container-registry-tasks-multi-step.md) definiálja több tároló létrehozási, leküldési és opcionális tesztelési lépéseit kód véglegesítéskor, [lásd: Oktatóanyag:](container-registry-tutorial-multistep-task.md)Többlépéses tároló-munkafolyamat futtatása a felhőben forráskód véglegesítéskor. A frissítés áttekintéséhez ACR-feladatok az Operációs rendszer és keretrendszer javításának [automatizálása](container-registry-tasks-overview.md) a ACR-feladatok
 
 Ebben az oktatóanyagban:
 
@@ -37,7 +37,7 @@ Ez az oktatóanyag feltételezi, hogy elvégezte az [előző oktatóanyag](conta
 
 Most, miután végrehajtotta az ahhoz szükséges lépéseket, hogy az ACR Tasks olvashassa a véglegesítési állapotokat, és webhookokat hozhasson létre egy adattárban, létrehozhat egy feladatot, amely egy tárolórendszerkép összeállítását váltja ki az adattárban való véglegesítés esetén.
 
-Először lássa el ezeket a rendszerhéj-környezeti változókat a környezetnek megfelelő értékekkel. Ez a lépés nem feltétlenül szükséges, de némileg könnyebbé teszi az oktatóanyagban lévő többsoros Azure CLI-parancsok végrehajtását. Ha nem tölti fel ezeket a környezeti változókat, manuálisan kell lecserélnie az egyes értékeket, bárhol is megjelenjenek a példában szereplő parancsokban.
+Először lássa el ezeket a rendszerhéj-környezeti változókat a környezetnek megfelelő értékekkel. Ez a lépés nem feltétlenül szükséges, de némileg könnyebbé teszi az oktatóanyagban lévő többsoros Azure CLI-parancsok végrehajtását. Ha nem tölti fel ezeket a környezeti változókat, minden értéket manuálisan kell lecserélnie, amikor az megjelenik a példaparancsok között.
 
 ```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -45,7 +45,7 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
-Most hozza létre a feladatot a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával:
+Most hozza létre a feladatot a következő [az acr task create parancs végrehajtásával:][az-acr-task-create]
 
 ```azurecli
 az acr task create \
@@ -58,7 +58,7 @@ az acr task create \
 ```
 
 
-Ez a feladat azt adja meg, hogy a rendszer minden alkalommal véglegesíti az adott adattár *fő* ágát `--context` , az ACR-feladatok pedig az adott ág kódjából fogják felépíteni a tároló rendszerképét. A `--file` rendszer a tárház gyökerében megadott Docker használja a rendszerkép létrehozásához. Az `--image` argumentum a `{{.Run.ID}}` egy parametrikus értékét adja meg a rendszerkép címkéjének a verzióra vonatkozó részéhez, ezzel biztosítva, hogy az összeállított rendszerkép egy adott összeállításhoz tartozzon és egyedi címkével legyen jelölve.
+Ez a feladat meghatározza, hogy a  által megadott adattár fő ágában minden alkalommal kódot kell ACR-feladatok a tároló rendszerképét az ágban található `--context` kódból fogja összeépíteni. A rendszerkép felépítéséhez az adattár gyökérkönyvtárában megadott Docker-fájl `--file` használható. Az `--image` argumentum a `{{.Run.ID}}` egy parametrikus értékét adja meg a rendszerkép címkéjének a verzióra vonatkozó részéhez, ezzel biztosítva, hogy az összeállított rendszerkép egy adott összeállításhoz tartozzon és egyedi címkével legyen jelölve.
 
 A sikeres [az acr task create][az-acr-task-create] parancs kimenete az alábbihoz hasonló:
 
@@ -127,7 +127,7 @@ Most már rendelkezik az összeállítást definiáló feladattal. Az összeáll
 az acr task run --registry $ACR_NAME --name taskhelloworld
 ```
 
-Alapértelmezés szerint az `az acr task run` a naplókimenetet a konzolra streameli a parancs végrehajtásakor. A kimenet a legfontosabb lépések megjelenítéséhez van tömörítve.
+Alapértelmezés szerint az `az acr task run` a naplókimenetet a konzolra streameli a parancs végrehajtásakor. A kimenet a fő lépések megjelenítése érdekében tömörítve van.
 
 ```output
 2020/11/19 22:51:00 Using acb_vol_9ee1f28c-4fd4-43c8-a651-f0ed027bbf0e as the home volume
@@ -252,10 +252,7 @@ Ez az oktatóanyag azt mutatta be, hogyan használhatók a feladatok a tárolór
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
 [az-acr-task]: /cli/azure/acr/task
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
-[az-acr-task-list-runs]: /cli/azure/acr/task#az-acr-task-list-runs
-[az-login]: /cli/azure/reference-index#az-login
-
-
-
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
+[az-acr-task-list-runs]: /cli/azure/acr/task#az_acr_task_list_runs
+[az-login]: /cli/azure/reference-index#az_login

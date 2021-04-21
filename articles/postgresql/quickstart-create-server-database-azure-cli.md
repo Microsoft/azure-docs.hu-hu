@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: kiszolgáló létrehozása – Azure CLI-Azure Database for PostgreSQL – egyetlen kiszolgáló'
-description: Ebben a rövid útmutatóban egy Azure Database for PostgreSQL-kiszolgálót fog létrehozni az Azure CLI használatával.
+title: 'Rövid útmutató: Kiszolgáló létrehozása – Azure CLI – Azure Database for PostgreSQL – egyetlen kiszolgáló'
+description: Ebben a rövid útmutatóban létre fog hozni egy Azure Database for PostgreSQL-kiszolgálót az Azure CLI használatával.
 author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
@@ -8,67 +8,67 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 1d7b6cd6d61be6df66d215613222c12a0f2c9c5e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a595d677cf0964083526cb7e2c73471148be0fd4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606711"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778422"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>Gyors útmutató: Azure Database for PostgreSQL-kiszolgáló létrehozása az Azure CLI használatával
+# <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>Rövid útmutató: Azure Database for PostgreSQL létrehozása az Azure CLI használatával
 
-Ez a rövid útmutató bemutatja, hogyan használhatja az [Azure CLI](/cli/azure/get-started-with-azure-cli) -parancsokat a [Azure Cloud Shellban](https://shell.azure.com) egy Azure Database for PostgreSQL-kiszolgáló öt perc alatt történő létrehozásához. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ez a rövid útmutató bemutatja, [](https://shell.azure.com) hogyan hozhat létre Azure Cloud Shell Azure [CLI-parancsokkal](/cli/azure/get-started-with-azure-cli) Azure Database for PostgreSQL kiszolgálót öt perc alatt. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a cikkhez az Azure CLI 2.0-s vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
     > [!TIP]
-    >  Érdemes lehet az egyszerűbb az [postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI-parancs használata, amely jelenleg előzetes verzióban érhető el. Próbálja [ki a rövid](./quickstart-create-server-up-azure-cli.md)útmutatót.
+    >  Érdemes lehet az [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI egyszerűbb, jelenleg előzetes verzióban elérhető parancsát használni. Próbálja ki a [rövid útmutatót.](./quickstart-create-server-up-azure-cli.md)
 
-- Válassza ki az adott előfizetés-azonosítót a fiókja alatt az az  [Account set](/cli/azure/account) parancs használatával.
+- Az az account set paranccsal válassza ki a fiókjában az [adott előfizetés-azonosítót.](/cli/azure/account)
 
-    - Jegyezze fel az **ID** értéket az az **login** kimenetből, hogy az a parancs **előfizetés** argumentumának értékeként használja. 
+    - Jegyezze fel  az az **login** output parancs id értékét,  amely az subscription argumentum értékeként lesz használva a parancsban. 
 
         ```azurecli
         az account set --subscription <subscription id>
         ```
 
-    - Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetés beszerzéséhez használja [az az Account List](/cli/azure/account#az-account-list)lehetőséget.
+    - Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetés lekért listájához használja [az az account list lehetőséget.](/cli/azure/account#az_account_list)
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
 
-Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) az az [Group Create](/cli/azure/group#az-group-create) paranccsal, majd hozza létre a PostgreSQL-kiszolgálót az erőforráscsoport belsejében. Egyedi nevet adjon meg. A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myresourcegroup` helyen.
+Hozzon létre [egy Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) [az az group create paranccsal,](/cli/azure/group#az_group_create) majd hozza létre a PostgreSQL-kiszolgálót ebben az erőforráscsoportban. Egyedi nevet adjon meg. A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myresourcegroup` helyen.
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
 
-Hozzon létre egy [Azure Database for PostgreSQL-kiszolgálót](overview.md) az az [postgres Server Create](/cli/azure/postgres/server) paranccsal. Egy kiszolgáló több adatbázist tartalmazhat.
+Hozzon [létre Azure Database for PostgreSQL az](overview.md) az [postgres server create paranccsal.](/cli/azure/postgres/server) Egy kiszolgáló több adatbázist tartalmazhat.
 
 ```azurecli-interactive
 az postgres server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 
 ```
-Az előző argumentumok részletei: 
+Az előző argumentumok részletei a következőek: 
 
 **Beállítás** | **Mintaérték** | **Leírás**
 ---|---|---
-name | mydemoserver | A Azure Database for PostgreSQL-kiszolgálót azonosító egyedi név. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. Az értéknek 3 – 63 karaktert kell tartalmaznia. További információ: [Azure Database for PostgreSQL elnevezési szabályok](../azure-resource-manager/management/resource-name-rules.md#microsoftdbforpostgresql).
+name | mydemoserver | A kiszolgálót azonosító Azure Database for PostgreSQL egyedi név. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. 3–63 karakter hosszúságú lehet. További információ: Azure Database for PostgreSQL [szabályok.](../azure-resource-manager/management/resource-name-rules.md#microsoftdbforpostgresql)
 resource-group | myResourceGroup | Az Azure-erőforráscsoport neve.
 location | westus | A kiszolgáló Azure-beli helye.
-admin-user | myadmin | A rendszergazdai bejelentkezéshez használt Felhasználónév. Nem lehet **azure_superuser**, **Admin**, **Administrator**, **root**, **Guest** vagy **Public**.
-admin-password | *secure password* | A rendszergazda felhasználó jelszava. A következő kategóriák közül legalább a 8 – 128 karaktert kell tartalmaznia: angol nagybetűs karakterek, angol kisbetűk, számok és nem alfanumerikus karakterek.
-sku-name|GP_Gen5_2| A díjszabási csomag és a számítási konfiguráció neve. Kövesse a {díjszabási csomag} {_számítási generáció}_{virtuális mag} konvenciót a gyorsírásban. További információ: [Azure Database for PostgreSQL díjszabása](https://azure.microsoft.com/pricing/details/postgresql/server/).
+admin-user | myadmin | A rendszergazdai bejelentkezéshez tartozó felhasználónév. Nem lehet az , **azure_superuser** **,** **rendszergazda,** **gyökér,** **vendég** vagy **nyilvános**.
+admin-password | *secure password* | A rendszergazda felhasználó jelszava. A következő kategóriák közül legalább háromból 8–128 karakterből kell állhat: angol nagybetűs karakterek, angol kisbetűs karakterek, számok és nem alfanumerikus karakterek.
+sku-name|GP_Gen5_2| A tarifacsomag és a számítási konfiguráció neve. Kövesse röviden a {tarifacsomag}_{számítási generáció}_{virtuális magok} konvenciót. További információ: díjszabás [Azure Database for PostgreSQL.](https://azure.microsoft.com/pricing/details/postgresql/server/)
 
 >[!IMPORTANT] 
->- Az alapértelmezett PostgreSQL-verzió a kiszolgálón 9,6. Az összes támogatott verzió megtekintéséhez lásd: [támogatott PostgreSQL főverziók](./concepts-supported-versions.md).
->- Az **az postgres Server Create** parancs összes argumentumának megtekintéséhez tekintse meg [ezt a hivatkozási dokumentumot](/cli/azure/postgres/server#az-postgres-server-create).
->- Az SSL alapértelmezés szerint engedélyezve van a kiszolgálón. További információ az SSL-ről: az [SSL-kapcsolat konfigurálása](./concepts-ssl-connection-security.md).
+>- A kiszolgálón az alapértelmezett PostgreSQL-verzió a 9.6-os. Az összes támogatott verzióért lásd: [Támogatott PostgreSQL-főverziók.](./concepts-supported-versions.md)
+>- Az **az postgres server create** parancs összes argumentumának megtekintéséhez tekintse meg ezt a [referenciadokumentumot.](/cli/azure/postgres/server#az_postgres_server_create)
+>- Az SSL alapértelmezés szerint engedélyezve van a kiszolgálón. További információ az SSL-ről: [SSL-kapcsolat konfigurálása.](./concepts-ssl-connection-security.md)
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály konfigurálása 
-Alapértelmezés szerint a létrehozott kiszolgáló nem érhető el nyilvánosan, és tűzfal-szabályokkal van védve. A tűzfalszabályok konfigurálása a kiszolgálón az az [postgres Server Firewall-Rule Create](/cli/azure/postgres/server/firewall-rule) paranccsal biztosítható, hogy a helyi környezet hozzáférhessen a kiszolgálóhoz való kapcsolódáshoz. 
+Alapértelmezés szerint a létrehozott kiszolgáló nem érhető el nyilvánosan, és tűzfalszabályokkal van védve. A kiszolgálón a tűzfalszabályokat az [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) paranccsal konfigurálhatja, amely hozzáférést biztosít a helyi környezetnek a kiszolgálóhoz való csatlakozáshoz. 
 
-A következő példában egy olyan `AllowMyIP` nevű tűzfalszabályt hozunk létre, amely a 192.168.0.1 IP-címről engedélyezi a kapcsolódást. Cserélje le azt az IP-címet vagy IP-címtartományt, amely megfelel a helyének, ahová csatlakozni fog. Ha nem ismeri az IP-címét, lépjen a [whatismyipaddress.com](https://whatismyipaddress.com/) elemre a letöltéshez.
+A következő példában egy olyan `AllowMyIP` nevű tűzfalszabályt hozunk létre, amely a 192.168.0.1 IP-címről engedélyezi a kapcsolódást. Cserélje le azt az IP-címet vagy IP-címtartományt, amely annak felel meg, ahonnan csatlakozni fog. Ha nem ismeri az IP-címét, a WhatIsMyIPAddress.com [meg.](https://whatismyipaddress.com/)
 
 
 ```azurecli-interactive
@@ -76,17 +76,17 @@ az postgres server firewall-rule create --resource-group myresourcegroup --serve
 ```
 
 > [!NOTE]
-> A kapcsolódási problémák elkerülése érdekében győződjön meg arról, hogy a hálózati tűzfal engedélyezi a 5432-es portot. Azure Database for PostgreSQL-kiszolgálók ezt a portot használják. 
+> A csatlakozási problémák elkerülése érdekében győződjön meg arról, hogy a hálózat tűzfala engedélyezi az 5432-es portot. Azure Database for PostgreSQL kiszolgálók használják ezt a portot. 
 
 ## <a name="get-the-connection-information"></a>Kapcsolatadatok lekérése
 
-A kiszolgálóhoz való kapcsolódáshoz adja meg a gazdagép adatait és a hozzáférési hitelesítő adatokat.
+A kiszolgálóhoz való csatlakozáshoz adja meg a gazdagép adatait és a hozzáférési hitelesítő adatokat.
 
 ```azurecli-interactive
 az postgres server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-Az eredmény JSON formátumban van. Jegyezze fel a **administratorLogin** és a **fullyQualifiedDomainName** értékeket.
+Az eredmény JSON formátumban van. Jegyezze fel az **administratorLogin és** **a fullyQualifiedDomainName értékeket.**
 
 ```json
 {
@@ -117,15 +117,15 @@ Az eredmény JSON formátumban van. Jegyezze fel a **administratorLogin** és a 
 }
 ```
 
-## <a name="connect-to-the-azure-database-for-postgresql-server-by-using-psql"></a>Kapcsolódás a Azure Database for PostgreSQL kiszolgálóhoz a psql használatával
-A [psql](https://www.postgresql.org/docs/current/static/app-psql.html) -ügyfél népszerű választás a PostgreSQL-kiszolgálókhoz való csatlakozáshoz. A psql [Azure Cloud Shell](../cloud-shell/overview.md)használatával csatlakozhat a kiszolgálóhoz. A psql-t helyi környezetben is használhatja. Egy új PostgreSQL-kiszolgálóval automatikusan létrejön egy üres adatbázis, a **postgres**. Ezt az adatbázist használhatja a psql-hez való kapcsolódáshoz, ahogy az a következő kódban is látható. 
+## <a name="connect-to-the-azure-database-for-postgresql-server-by-using-psql"></a>Csatlakozás a Azure Database for PostgreSQL kiszolgálóhoz a psql használatával
+A [psql-ügyfél](https://www.postgresql.org/docs/current/static/app-psql.html) népszerű választás a PostgreSQL-kiszolgálókhoz való csatlakozáshoz. A kiszolgálóhoz a psql és a [Azure Cloud Shell.](../cloud-shell/overview.md) A psql-t helyi környezetben is használhatja. A rendszer automatikusan létrehoz egy **üres adatbázist (postgres)** egy új PostgreSQL-kiszolgálóval. Ezzel az adatbázissal csatlakozhat a psql-hez az alábbi kódban látható módon. 
 
    ```bash
  psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
    ```
 
 > [!TIP]
-> Ha inkább URL-elérési utat szeretne használni a postgres-hez való kapcsolódáshoz, az URL-cím kódolja a @ Sign nevet a következővel: `%40` . A psql-hez tartozó kapcsolatok karakterlánca például a következő lesz:
+> Ha inkább URL-útvonalat szeretne használni a Postgreshez való csatlakozáshoz, kódolja a @ jelet a felhasználónévben a `%40` következővel: . A psql kapcsolati sztring például a következő lenne:
 >
 > ```
 > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
@@ -133,13 +133,13 @@ A [psql](https://www.postgresql.org/docs/current/static/app-psql.html) -ügyfél
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha nincs szüksége ezekre az erőforrásokra egy másik rövid útmutatóhoz vagy oktatóanyaghoz, akkor a következő parancs futtatásával törölheti őket. 
+Ha ezekre az erőforrásokra már nincs szüksége egy másik rövid útmutatóhoz vagy oktatóanyaghoz, a következő parancs futtatásával törölheti őket. 
 
 ```azurecli-interactive
 az group delete --name myresourcegroup
 ```
 
-Ha csak az újonnan létrehozott kiszolgálót szeretné törölni, futtathatja az az [postgres Server delete](/cli/azure/postgres/server) parancsot.
+Ha csak az újonnan létrehozott kiszolgálót szeretné törölni, futtassa az [az postgres server delete](/cli/azure/postgres/server) parancsot.
 
 ```azurecli-interactive
 az postgres server delete --resource-group myresourcegroup --name mydemoserver
@@ -147,4 +147,4 @@ az postgres server delete --resource-group myresourcegroup --name mydemoserver
 
 ## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
-> [Adatbázis migrálása exportálás és importálás használatával](./howto-migrate-using-export-and-import.md)
+> [Adatbázis áttelepítése exportálással és importálással](./howto-migrate-using-export-and-import.md)

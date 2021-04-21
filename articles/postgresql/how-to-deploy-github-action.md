@@ -1,49 +1,49 @@
 ---
-title: 'Gyors útmutató: Kapcsolódás az Azure PostgreSQL-hez a GitHub-műveletekkel'
-description: Az Azure PostgreSQL használata GitHub-műveletek munkafolyamatból
+title: 'Rövid útmutató: Csatlakozás az Azure PostgreSQL-hez GitHub Actions'
+description: Az Azure PostgreSQL használata GitHub Actions munkafolyamatból
 author: mksuni
 ms.service: postgresql
 ms.topic: quickstart
 ms.author: sumuth
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 2e546801f95d9d884bdfb3f09a18b3fa6e2d78a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7fc59c0d9036a2e83c742f51fc17750d40e057fe
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97365115"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791426"
 ---
-# <a name="quickstart-use-github-actions-to-connect-to-azure-postgresql"></a>Rövid útmutató: a GitHub-műveletek használata az Azure PostgreSQL-hez való kapcsolódáshoz
+# <a name="quickstart-use-github-actions-to-connect-to-azure-postgresql"></a>Rövid útmutató: GitHub Actions Azure PostgreSQL-hez való csatlakozáshoz
 
-<Token>**a következőkre vonatkozik:** :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL – egyetlen kiszolgáló :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL – rugalmas kiszolgáló</Token>
+<Token>**A KÖVETKEZŐKRE VONATKOZIK:** :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL – :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Egykiszolgálós Azure Database for PostgreSQL – Rugalmas kiszolgáló</Token>
 
-Ismerkedjen meg a [GitHub-műveletekkel](https://docs.github.com/en/actions) egy munkafolyamattal, amely az adatbázis-frissítések [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/)való üzembe helyezésére használható.
+A GitHub Actions [használatának](https://docs.github.com/en/actions) első lépésekéhez egy munkafolyamattal telepítse az adatbázis-frissítéseket a [Azure Database for PostgreSQL.](https://azure.microsoft.com/services/postgresql/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A következőkre lesz szükség:
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Egy GitHub-adattár a mintaadatok ( `data.sql` ) szolgáltatással. Ha nem rendelkezik GitHub-fiókkal, [regisztráljon ingyenesen](https://github.com/join).
-- Egy Azure Database for PostgreSQL-kiszolgáló.
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- GitHub-adattár mintaadatokkal ( `data.sql` ). Ha még nincs GitHub-fiókja, [regisztráljon ingyenesen.](https://github.com/join)
+- Egy Azure Database for PostgreSQL kiszolgáló.
     - [Rövid útmutató: Azure Database for PostgreSQL-kiszolgáló létrehozása az Azure Portalon](quickstart-create-server-database-portal.md)
 
-## <a name="workflow-file-overview"></a>A munkafolyamat-fájl áttekintése
+## <a name="workflow-file-overview"></a>Munkafolyamat-fájl áttekintése
 
-A GitHub-műveletek munkafolyamatát egy YAML-fájl (. YML) határozza meg a `/.github/workflows/` tárház elérési útjában. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza.
+A GitHub Actions munkafolyamatot egy YAML- (.yml-) fájl definiálja az `/.github/workflows/` adattár elérési útján. Ez a definíció a munkafolyamatot felhozó különböző lépéseket és paramétereket tartalmazza.
 
-A fájl két részből áll:
+A fájl két szakaszból áll:
 
 |Section  |Feladatok  |
 |---------|---------|
-|**Hitelesítés** | 1. Adjon meg egy szolgáltatásnevet. <br /> 2. hozzon létre egy GitHub-titkot. |
-|**Telepítés** | 1. Telepítse az adatbázist. |
+|**Hitelesítés** | 1. Szolgáltatásnév meghatározása. <br /> 2. Hozzon létre egy titkos GitHub-et. |
+|**Telepítés** | 1. Az adatbázis üzembe helyezése. |
 
-## <a name="generate-deployment-credentials"></a>Központi telepítési hitelesítő adatok előállítása
+## <a name="generate-deployment-credentials"></a>Üzembe helyezési hitelesítő adatok létrehozása
 
-Az [Azure CLI](/cli/azure/)-ben létrehozhat egy [egyszerű szolgáltatást](../active-directory/develop/app-objects-and-service-principals.md) az az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac&preserve-view=true) parancs használatával. Futtassa ezt a parancsot [Azure Cloud Shell](https://shell.azure.com/) a Azure Portalban, vagy kattintson a **TRY IT (kipróbálás** ) gombra.
+Szolgáltatásnév az [](../active-directory/develop/app-objects-and-service-principals.md) [az ad sp create-for-rbac paranccsal](/cli/azure/ad/sp#az_ad_sp_create_for_rbac&preserve-view=true) hozható létre az [Azure CLI-n.](/cli/azure/) Futtassa ezt a [Azure Cloud Shell](https://shell.azure.com/) a Azure Portal vagy a Próbálja **ki gombot** választva.
 
-Cserélje le a helyőrzőket `server-name` Az Azure-ban üzemeltetett PostgreSQL-kiszolgáló nevére. Cserélje le a és a értékét `subscription-id` `resource-group` a PostgreSQL-kiszolgálóhoz csatlakoztatott előfizetés-azonosítóval és erőforráscsoporthoz.
+Cserélje le a helyőrzőket `server-name` az Azure-ban üzemeltetett PostgreSQL-kiszolgáló nevére. Cserélje le a `subscription-id` és a helyére a PostgreSQL-kiszolgálóhoz csatlakoztatott előfizetés-azonosítót `resource-group` és erőforráscsoportot.
 
 ```azurecli-interactive
    az ad sp create-for-rbac --name {server-name} --role contributor \
@@ -51,7 +51,7 @@ Cserélje le a helyőrzőket `server-name` Az Azure-ban üzemeltetett PostgreSQL
                             --sdk-auth
 ```
 
-A kimenet egy JSON-objektum, amely a szerepkör-hozzárendelés hitelesítő adatait tartalmazza, amelyek az alábbihoz hasonló módon biztosítanak hozzáférést az adatbázishoz. Másolja ezt a kimeneti JSON-objektumot később.
+A kimenet egy JSON-objektum a szerepkör-hozzárendelési hitelesítő adatokkal, amelyek az alábbihoz hasonló hozzáférést biztosítanak az adatbázishoz. Másolja ezt a kimeneti JSON-objektumot későbbire.
 
 ```output
   {
@@ -64,31 +64,31 @@ A kimenet egy JSON-objektum, amely a szerepkör-hozzárendelés hitelesítő ada
 ```
 
 > [!IMPORTANT]
-> Mindig jó gyakorlat a minimális hozzáférés megadására. Az előző példában szereplő hatókör az adott kiszolgálóra korlátozódik, nem a teljes erőforráscsoporthoz.
+> Mindig jó gyakorlat a minimális hozzáférés megadása. Az előző példában a hatókör az adott kiszolgálóra korlátozódik, nem a teljes erőforráscsoportra.
 
-## <a name="copy-the-postgresql-connection-string"></a>A PostgreSQL-kapcsolatok karakterláncának másolása
+## <a name="copy-the-postgresql-connection-string"></a>A PostgreSQL kapcsolati sztring másolása
 
-A Azure Portal lépjen a Azure Database for PostgreSQL-kiszolgálóhoz, és nyissa meg a **Beállítások**  >  **kapcsolódási karakterláncokat**. Másolja az **ADO.NET** kapcsolati sztringet. Cserélje le a és a helyőrző értékét `your_database` `your_password` . A kapcsolódási karakterlánc ehhez hasonlóan fog kinézni.
+A Azure Portal nyissa meg a saját Azure Database for PostgreSQL, és nyissa meg **a Settings** Connection strings (Beállítások  >  **kapcsolati sztringek) et.** Másolja az **ADO.NET** kapcsolati sztringet. Cserélje le a és a `your_database` helyőrzőértékét. `your_password` A kapcsolati sztring ehhez hasonlóan fog kinézni.
 
 > [!IMPORTANT]
-> - Egyetlen kiszolgáló használata esetén ```user=adminusername@servername```  . Vegye figyelembe ```@servername``` , hogy a szükséges.
-> - Rugalmas kiszolgáló esetén használja a következőt: ```user= adminusername```  ```@servername``` .
+> - Egyetlen kiszolgálóhoz használja a ```user=adminusername@servername```  et. Vegye figyelembe, ```@servername``` hogy a kötelező.
+> - Rugalmas kiszolgálóhoz használja a ```user= adminusername``` et a  ```@servername``` nélkül.
 
 ```output
 psql host={servername.postgres.database.azure.com} port=5432 dbname={your_database} user={adminusername} password={your_database_password} sslmode=require
 ```
 
-A kapcsolatok karakterláncát GitHub-titokként fogja használni.
+A kapcsolati sztringet GitHub-titkos kódként fogja használni.
 
-## <a name="configure-the-github-secrets"></a>A GitHub-titkok konfigurálása
+## <a name="configure-the-github-secrets"></a>A GitHub titkos kód konfigurálása
 
-1. A [githubon](https://github.com/)tallózzon a tárházban.
+1. A [GitHubon](https://github.com/)keresse meg az adattárat.
 
-1. Válassza a **beállítások > titkok > új titok** lehetőséget.
+1. Válassza **a Beállítások > Titkos kulcsok és > lehetőséget.**
 
-1. Illessze be a teljes JSON-kimenetet az Azure CLI-parancsból a titok érték mezőjébe. Adja meg a titkot a nevet `AZURE_CREDENTIALS` .
+1. Illessze be az Azure CLI-parancs teljes JSON-kimenetét a titkos gombra. Adja a titkos nak a `AZURE_CREDENTIALS` nevet.
 
-    Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Például:
+    Amikor később konfigurálja a munkafolyamat-fájlt, a titkos adatokat kell használnia az `creds` Azure Login művelet bemenetéhez. Például:
 
     ```yaml
     - uses: azure/login@v1
@@ -96,18 +96,18 @@ A kapcsolatok karakterláncát GitHub-titokként fogja használni.
         creds: ${{ secrets.AZURE_CREDENTIALS }}
    ```
 
-1. Válassza újra az **új titkos kulcsot** .
+1. Válassza **ismét a New secret (Új titkos stb.)** lehetőséget.
 
-1. Illessze be a kapcsolatok karakterlánc értékét a titkos kulcs érték mezőjébe. Adja meg a titkot a nevet `AZURE_POSTGRESQL_CONNECTION_STRING` .
+1. Illessze be a kapcsolati sztring értékét a titkos gombra. Adja a titkos nak a `AZURE_POSTGRESQL_CONNECTION_STRING` nevet.
 
 
-## <a name="add-your-workflow"></a>Munkafolyamat hozzáadása
+## <a name="add-your-workflow"></a>A munkafolyamat hozzáadása
 
-1. Nyissa meg a GitHub-tárház **műveleteit** .
+1. Az **Actions** for your GitHub repository (Műveletek a GitHub-adattárhoz) oldalon.
 
-2. Válassza **a saját munkafolyamat beállítása** lehetőséget.
+2. Válassza **a Munkafolyamat saját beállítása lehetőséget.**
 
-2. Töröljön mindent a `on:` munkafolyamat-fájl szakasza után. Előfordulhat például, hogy a hátralévő munkafolyamat így néz ki.
+2. Töröljön mindent a `on:` munkafolyamat-fájl szakasza után. A fennmaradó munkafolyamat például az alábbihoz hasonló lehet.
 
     ```yaml
     name: CI
@@ -119,7 +119,7 @@ A kapcsolatok karakterláncát GitHub-titokként fogja használni.
         branches: [ master ]
     ```
 
-1. Nevezze át a munkafolyamatot `PostgreSQL for GitHub Actions` , és adja hozzá a pénztári és bejelentkezési műveleteket. Ezek a műveletek kiveszik a helykódot, és a korábban létrehozott GitHub-titok használatával hitelesítik magukat az Azure-ban `AZURE_CREDENTIALS` .
+1. Nevezze át a munkafolyamatot, és adja hozzá a `PostgreSQL for GitHub Actions` kijelentkezés és a bejelentkezési műveleteket. Ezek a műveletek le fogják ellenőrizni a webhely kódját, és a korábban létrehozott GitHub-titkos kóddal hitelesítik magukat az `AZURE_CREDENTIALS` Azure-ban.
 
     ```yaml
     name: PostgreSQL for GitHub Actions
@@ -140,7 +140,7 @@ A kapcsolatok karakterláncát GitHub-titokként fogja használni.
             creds: ${{ secrets.AZURE_CREDENTIALS }}
     ```
 
-2. A PostgreSQL-példányhoz való kapcsolódáshoz használja az Azure PostgreSQL üzembe helyezési műveletét. Cserélje le a `POSTGRESQL_SERVER_NAME` nevet a kiszolgáló nevére. A tárház legfelső szintjén található PostgreSQL-adatfájllal kell rendelkeznie `data.sql` .
+2. A PostgreSQL-példányhoz való csatlakozáshoz használja az Azure PostgreSQL Üzembe helyezés műveletét. Cserélje `POSTGRESQL_SERVER_NAME` le a helyére a kiszolgáló nevét. Az adattár gyökérszintén egy nevű PostgreSQL-adatfájlnak `data.sql` kell lennie.
 
     ```yaml
      - uses: azure/postgresql@v1
@@ -150,7 +150,7 @@ A kapcsolatok karakterláncát GitHub-titokként fogja használni.
         sql-file: './data.sql'
     ```
 
-3. Fejezze be a munkafolyamatot az Azure kijelentkezéséhez szükséges művelet hozzáadásával. Itt látható a befejezett munkafolyamat. Ekkor megjelenik a fájl a `.github/workflows` tárház mappájában.
+3. A munkafolyamat befejezéséhez egy műveletet kell hozzáadnia az Azure-kijelentkezéshez. Itt a befejezett munkafolyamat. A fájl az adattár `.github/workflows` mappájában fog megjelenni.
 
     ```yaml
    name: PostgreSQL for GitHub Actions
@@ -185,20 +185,20 @@ A kapcsolatok karakterláncát GitHub-titokként fogja használni.
 
 ## <a name="review-your-deployment"></a>Az üzemelő példány áttekintése
 
-1. Nyissa meg a GitHub-tárház **műveleteit** .
+1. Az **Actions** for your GitHub repository (Műveletek a GitHub-adattárhoz) oldalon.
 
-1. Az első eredmény megnyitásával tekintheti meg a munkafolyamat futtatásának részletes naplóit.
+1. Nyissa meg az első eredményt a munkafolyamat futtatásának részletes naplói megtekintéséhez.
 
-    :::image type="content" source="media/how-to-deploy-github-action/gitbub-action-postgres-success.png" alt-text="A GitHub-műveletek futtatásának naplója":::
+    :::image type="content" source="media/how-to-deploy-github-action/gitbub-action-postgres-success.png" alt-text="Futtatott GitHub-műveletek naplója":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha az Azure PostgreSQL-adatbázisra és-tárházra már nincs szükség, távolítsa el az üzembe helyezett erőforrásokat az erőforráscsoport és a GitHub-tárház törlésével.
+Ha az Azure PostgreSQL-adatbázisra és -adattárra már nincs szükség, törölje az üzembe helyezett erőforrásokat az erőforráscsoport és a GitHub-adattár törlésével.
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg az Azure-t és a GitHub-integrációt](/azure/developer/github/)
+> [Tudnivalók az Azure és a GitHub integrációjáról](/azure/developer/github/)
 <br/>
 > [!div class="nextstepaction"]
-> [Útmutató a kiszolgálóhoz való kapcsolódáshoz](how-to-connect-query-guide.md)
+> [Útmutató a kiszolgálóhoz való csatlakozáshoz](how-to-connect-query-guide.md)

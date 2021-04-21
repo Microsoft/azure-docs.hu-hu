@@ -1,0 +1,53 @@
+### YamlMime:Landing
+title: Azure File Sync dokumentációja
+summary: Azure File Sync lehetővé teszi a szervezet fájlmegosztásának központozását a Azure Files- és fájlkiszolgálókban, miközben biztosítja a Windows-fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását.
+metadata:
+  title: Azure File Sync dokumentációja
+  description: A felhőben és a helyszínen is csatlakoztathat fájlmegosztásokat Windows, Linux vagy macOS rendszeren. A gyorsabb helyi hozzáférés érdekében az Azure File Sync használatával Windows-kiszolgálókon gyorsítótárazhatja az Azure-fájlmegosztásokat.
+  services: storage
+  ms.service: storage
+  ms.subservice: files
+  ms.topic: landing-page
+  ms.collection: collection
+  author: roygara
+  ms.author: rogarana
+  ms.date: 04/19/2021
+  ms.openlocfilehash: 1a384985bbd58285ec1a556f2840f27994c4c40b
+  ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+  ms.translationtype: MT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 04/20/2021
+  ms.locfileid: "107798950"
+landingContent:
+- title: Az Azure Files Sync
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure File Sync tervezési útmutató
+      url: file-sync-planning.md
+    - text: Mi az az Azure File Sync?
+      url: file-sync-introduction.md
+    - text: Felhőbeli rétegezés áttekintése
+      url: file-sync-cloud-tiering-overview.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Fájlmegosztás létrehozása/használata – Windows
+      url: ../files/storage-files-quick-create-use-windows.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json
+    - text: Kiszolgáló kezelése az Azure File Sync használatával
+      url: file-sync-server-registration.md
+  - linkListType: tutorial
+    links:
+    - text: Windows-fájlkiszolgálók kiterjesztése az Azure File Sync használatával
+      url: file-sync-extend-servers.md
+- title: Hibaelhárítás
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure Files – Windows-hibaelhárítás
+      url: ../files/storage-troubleshoot-windows-file-connection-problems.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json
+    - text: Azure Files – Teljesítménnyel kapcsolatos hibaelhárítás
+      url: ../files/storage-troubleshooting-files-performance.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json
+    - text: Azure File Sync-hibaelhárítás
+      url: file-sync-troubleshoot.md

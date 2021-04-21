@@ -1,7 +1,7 @@
 ---
 title: Arcfelismerés – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: A Computer Vision API Arcfelismerés szolgáltatásával kapcsolatos fogalmak megismerése.
+description: Megismeri a Computer Vision API arcészlelési funkciójának fogalmait.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3aa8f9057c3c9e3a141824a9d23e9be8d0bbe4b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bfb352c68b910a114e13041da4e8e86529e52040
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96532635"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778840"
 ---
 # <a name="face-detection-with-computer-vision"></a>Arcfelismerés Computer Vision
 
-A Computer Vision képes észlelni az emberi arcokat egy képen belül, és az összes észlelt arc esetében az életkor, a nemre és a téglalapot is létrehozza. 
+Computer Vision felismeri az emberi arcokat a képen, és elő tudja hozni az egyes észlelt arcok korát, nemét és téglalapját. 
 
 > [!NOTE]
-> Ezt a funkciót az Azure [Face](../face/index.yml) szolgáltatás is felkínálja. További részletekért tekintse meg ezt az alternatívát, többek között az arcfelismerés és az észlelést. 
+> Ezt a funkciót az Azure Face szolgáltatás [is](../face/index.yml) felkínálja. Ez az alternatíva részletesebb arcelemzést is kínál, beleértve az arcfelismerést és a testek észlelését. 
 
-## <a name="face-detection-examples"></a>Arcfelismerés – példák
+## <a name="face-detection-examples"></a>Arcfelismerési példák
 
-Az alábbi példa azt mutatja be, Computer Vision által visszaadott JSON-választ egy emberi arcot tartalmazó képhez.
+Az alábbi példa egy egyetlen emberi arcot Computer Vision képre adott válaszát mutatja be.
 
 ![Tetőn álló nő arcának vizuális elemzése](./Images/woman_roof_face.png)
 
@@ -54,9 +54,9 @@ Az alábbi példa azt mutatja be, Computer Vision által visszaadott JSON-válas
 }
 ```
 
-A következő példa azt mutatja be, hogyan tért vissza a JSON-válasz egy több emberi arcot tartalmazó képhez.
+A következő példa egy több emberi arcot tartalmazó képhez visszaadott JSON-választ mutatja be.
 
-![Kép elemzése a családi fényképpel](./Images/family_photo_face.png)
+![Család fényképes arcának látáselemzése](./Images/family_photo_face.png)
 
 ```json
 {
@@ -113,6 +113,6 @@ A következő példa azt mutatja be, hogyan tért vissza a JSON-válasz egy töb
 
 ## <a name="use-the-api"></a>Az API használata
 
-Az Arcfelismerés funkció a [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API részét képezi. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja. Belefoglalás `Faces` a **visualFeatures** lekérdezési paraméterbe. Ezután, amikor megkapja a teljes JSON-választ, egyszerűen elemezze a szakasz tartalmának karakterláncát `"faces"` .
+Az arcfelismerési funkció a Analyze Image [API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) része. Ezt az API-t egy natív SDK-n vagy REST-hívásokon keresztül hívhatja meg. Foglalja `Faces` bele a **visualFeatures lekérdezési** paraméterbe. Ezután, amikor a teljes JSON-választ kap, egyszerűen elemezze a szakasz tartalmának `"faces"` sztringet.
 
-* [Rövid útmutató: Computer Vision REST API vagy ügyféloldali kódtárak](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Rövid útmutató: Computer Vision REST API ügyfélkódtárak létrehozása](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)

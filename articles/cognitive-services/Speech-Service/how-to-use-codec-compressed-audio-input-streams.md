@@ -12,16 +12,16 @@ ms.date: 03/30/2020
 ms.author: amishu
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-twenty-two
-ms.openlocfilehash: f02a9a3b493ed0f3068e6e0ccd2daa40850a4fb6
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: db902019b4fb1237c8403c719862d8fca4ba4f28
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726177"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772522"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Kodekkel tömörített hangbemenet használata a Speech SDK-val
 
-A Speech service SDK lehetővé teszi tömörített hangformátumok közvetlen elküldését a Speech service-nek a vagy a használatával (egyik megközelítés sem streamel közvetlenül a háttérbe, a nyers PCM továbbra is a szolgáltatásnak `PullStream` `PushStream` lesz elküldve).
+A Speech service SDK képes tömörített hangformátumok elfogadására. Leválasztja a hangot, mielőtt nyers PCM-ként továbbítja azt a Speech service-nek.
 
 Platform | Nyelvek | Támogatott GStreamer-verzió
 | :--- | ---: | :---:
@@ -36,7 +36,7 @@ Android  | Java | [1.18.3](https://gstreamer.freedesktop.org/data/pkg/android/1.
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
-## <a name="gstreamer-required-to-handle-compressed-audio"></a>A tömörített hang kezeléséhez szükséges GStreamer
+## <a name="gstreamer-required-to-handle-compressed-audio"></a>A GStreamer a tömörített hang kezeléséhez szükséges
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/csharp/prerequisites.md)]
