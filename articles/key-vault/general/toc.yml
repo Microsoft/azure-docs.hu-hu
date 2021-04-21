@@ -48,7 +48,7 @@
     - name: Biztonság
       items:
         - name: Biztonsági funkciók
-          href: security-overview.md
+          href: security-features.md
         - name: Key Vault – hitelesítési alapok
           href: authentication-fundamentals.md
         - name: Biztonsági világok és földrajzi területek

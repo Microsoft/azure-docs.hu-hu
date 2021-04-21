@@ -1,6 +1,6 @@
 ---
-title: Sérült Azure-beli automanage-fiók javítása
-description: Ha nemrég olyan előfizetést helyezett át, amely egy automatikusan felügyelt fiókot tartalmaz egy új bérlőhöz, újra kell konfigurálnia. Ebből a cikkből megtudhatja, hogyan.
+title: Hibás fiók Azure Automanage javítása
+description: Ha a közelmúltban áthelyezett egy automatikus rendszergazdai fiókot tartalmazó előfizetést egy új bérlőbe, újra kell konfigurálnia azt. Ebből a cikkből megtudhatja, hogyan.
 author: asinn826
 ms.service: virtual-machines
 ms.subservice: automanage
@@ -8,24 +8,25 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: alsin
-ms.openlocfilehash: 4694fa679c7bbff309a0452219ff39bacf2488c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e6bf5404a33e0b4e57c2ff8d82d8791eda3d0f06
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96183702"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834191"
 ---
-# <a name="repair-an-automanage-account"></a>Automanage-fiók javítása
-Az [Azure automatikus felügyelet fiókja](./automanage-virtual-machines.md#automanage-account) az a biztonsági környezet vagy identitás, amely alatt az automatizált műveletek történnek. Ha nemrég olyan előfizetést helyezett át, amely egy automatikusan felügyelt fiókot tartalmaz egy új bérlőhöz, újra kell konfigurálnia a fiókot. Az újrakonfiguráláshoz alaphelyzetbe kell állítania az identitás típusát, és hozzá kell rendelnie a fiókhoz a megfelelő szerepköröket.
+# <a name="repair-an-automanage-account"></a>Automatikus fiókművelet javítása
+Az [Azure Automanage-fiók](./automanage-virtual-machines.md#automanage-account) az a biztonsági környezet vagy identitás, amelyben az automatizált műveletek le vannak végezve. Ha a közelmúltban áthelyezett egy automatikus rendszergazdai fiókot tartalmazó előfizetést egy új bérlőbe, újra kell konfigurálnia a fiókot. Az újrakonfiguráláshoz alaphelyzetbe kell állítania az identitás típusát, és hozzá kell rendelnie a megfelelő szerepköröket a fiókhoz.
 
-## <a name="step-1-reset-the-automanage-account-identity-type"></a>1. lépés: az automanage Account Identity típusának alaphelyzetbe állítása
-Az alábbi Azure Resource Manager (ARM) sablon használatával állítsa alaphelyzetbe az automanage Account Identity típust. Mentse a fájlt helyileg armdeploy.jsvagy hasonló néven. Figyelje meg, hogy a fiók neve és helye nem az ARM-sablonban szükséges paraméterek.
+## <a name="step-1-reset-the-automanage-account-identity-type"></a>1. lépés: A fiókidentitás típusának alaphelyzetbe állítása
+Állítsa alaphelyzetbe a fiók identitástípusát az alábbi Azure Resource Manager (ARM) sablon használatával. Mentse helyileg a fájlt armdeploy.jsnéven vagy hasonló néven. Jegyezze fel a fiók nevét és helyét, mert ezek kötelező paraméterek az ARM-sablonban.
 
-1. Hozzon létre egy Resource Manager-telepítést a következő sablonnal. Használja az `identityType = None` parancsot.
-    * A telepítés az Azure CLI-ben a használatával hozható létre `az deployment sub create` . További információ: [az Deployment sub](/cli/azure/deployment/sub).
-    * A telepítést a PowerShellben hozhatja létre a `New-AzDeployment` modul használatával. További információ: [New-AzDeployment](/powershell/module/az.resources/new-azdeployment).
+1. Hozzon létre Resource Manager üzembe helyezést az alábbi sablonnal. Használja az `identityType = None` parancsot.
+    * Az üzemelő példány az Azure CLI-ban a használatával hozható `az deployment sub create` létre. További információ: [az deployment sub.](/cli/azure/deployment/sub)
+    * Az üzembe helyezést a PowerShellben a modul használatával `New-AzDeployment` hozhatja létre. További információ: [New-AzDeployment.](/powershell/module/az.resources/new-azdeployment)
 
-1. Futtassa újra ugyanezt az ARM-sablont a rel `identityType = SystemAssigned` .
+1. Futtassa újra ugyanazt az ARM-sablont a `identityType = SystemAssigned` következővel: .
 
 ```json
 {
@@ -58,25 +59,25 @@ Az alábbi Azure Resource Manager (ARM) sablon használatával állítsa alaphel
 
 ```
 
-## <a name="step-2-assign-appropriate-roles-for-the-automanage-account"></a>2. lépés: a megfelelő szerepkörök kiosztása az automanage-fiókhoz
-Az automanage fiókhoz a közreműködő és az erőforrás-házirend közreműködő szerepköre szükséges azon virtuális gépeket tartalmazó előfizetésben, amelyek a felügyelet alatt állnak. Ezeket a szerepköröket a Azure Portal, ARM-sablonok vagy az Azure CLI használatával rendelheti hozzá.
+## <a name="step-2-assign-appropriate-roles-for-the-automanage-account"></a>2. lépés: A megfelelő szerepkörök hozzárendelése az automatikus fiókhoz
+Az automatikus felügyelethez a Közreműködő és az Erőforrás-szabályzat közreműködője szerepkör szükséges az automatikus kezelés alatt áll virtuális gépeket tartalmazó előfizetésben. Ezeket a szerepköröket hozzárendelheti a Azure Portal, ARM-sablonok vagy az Azure CLI használatával.
 
-Ha ARM-sablont vagy az Azure CLI-t használja, szüksége lesz az automanage-fiókjának résztvevő-AZONOSÍTÓra (más néven objektumazonosító). (Ha a Azure Portal használja, nincs szükség az AZONOSÍTÓra.) Ezt az azonosítót a következő módszerekkel érheti el:
+Ha ARM-sablont vagy az Azure CLI-t használja, szüksége lesz az Automanage-fiók egyszerű azonosítójára (más néven objektumazonosítójára). (Az azonosítóra nincs szükség, ha a Azure Portal.) Ezt az azonosítót az alábbi módszerekkel találhatja meg:
 
-- [Azure CLI](/cli/azure/ad/sp): használja az parancsot `az ad sp list --display-name <name of your Automanage Account>` .
+- [Azure CLI:](/cli/azure/ad/sp)Használja a `az ad sp list --display-name <name of your Automanage Account>` parancsot.
 
-- Azure Portal: Nyissa meg a **Azure Active Directory** , és keresse meg a fiókját név szerint. A **vállalati alkalmazások** területen válassza ki a fiók autokezelése nevet, ha megjelenik.
+- Azure Portal: Keresse **Azure Active Directory,** és keresse meg az automatikus fióknevet. A **Vállalati alkalmazások alatt** válassza ki a fiók nevének automatikus felügyeletét, amikor megjelenik.
 
 ### <a name="azure-portal"></a>Azure Portal
-1. Az **előfizetések** alatt keresse meg az előfizetést, amely az Ön által felügyelt virtuális gépeket tartalmazza.
-1. Nyissa meg a **hozzáférés-vezérlés (iam)** lehetőséget.
-1. Válassza a **szerepkör-hozzárendelések hozzáadása** lehetőséget.
-1. Válassza ki a **közreműködő** szerepkört, és adja meg az automanage-fiók nevét.
+1. Az **Előfizetések alatt** menjen az automatikusan felügyelet alatt található virtuális gépeket tartalmazó előfizetéshez.
+1. Ugrás a **Hozzáférés-vezérlés (IAM) pontra.**
+1. Válassza **a Szerepkör-hozzárendelések hozzáadása lehetőséget.**
+1. Válassza ki **a Közreműködő szerepkört,** és adja meg az automatikus fiók nevét.
 1. Kattintson a **Mentés** gombra.
-1. Ismételje meg a 3 – 5. lépést, ezúttal az **erőforrás-házirend közreműködői** szerepkörével.
+1. Ismételje meg a 3–5. lépést, ezúttal az Erőforrás-szabályzat **közreműködője szerepkört.**
 
 ### <a name="arm-template"></a>ARM-sablon
-Futtassa a következő ARM-sablont. Szüksége lesz az automanage-fiókjának elsődleges AZONOSÍTÓJÁRA. A beszerzésének lépései a szakasz elején találhatók. Ha a rendszer kéri, adja meg az azonosítót.
+Futtassa az alábbi ARM-sablont. Szüksége lesz az automanage-fiók egyszerű azonosítójára. A lekért lépések ennek a szakasznak a elején vannak. Amikor a rendszer kéri, adja meg az azonosítót.
 
 ```json
 {
@@ -127,4 +128,4 @@ az role assignment create --assignee-object-id <your Automanage Account Object I
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-[További információ az Azure automanage szolgáltatásról](./automanage-virtual-machines.md)
+[További információ a Azure Automanage](./automanage-virtual-machines.md)

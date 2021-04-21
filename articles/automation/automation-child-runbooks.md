@@ -1,94 +1,95 @@
 ---
-title: Moduláris runbookok létrehozása Azure Automation
-description: Ez a cikk azt ismerteti, hogyan hozható létre olyan runbook, amelyet más runbook hívnak.
+title: Moduláris runbookok létrehozása a Azure Automation
+description: Ez a cikk bemutatja, hogyan hozhat létre egy másik runbook által hívott runbookot.
 services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 338de996b06769b9d2891c7208b9050cc3acc7ed
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 101ff9affe43dcc97de6cf5a535c82559aafeced
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167294"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834911"
 ---
 # <a name="create-modular-runbooks"></a>Moduláris runbookok létrehozása
 
-Ajánlott eljárás a Azure Automation az újrafelhasználható, moduláris runbookok és más runbookok által hívott diszkrét függvények írására. A szülő runbook gyakran egy vagy több alárendelt runbookok hív meg a szükséges funkciók elvégzéséhez. 
+Ajánlott eljárás az Azure Automation újrahasználható, moduláris runbookok írása olyan különálló függvényekkel, amelyet más runbookok hívnak meg. A szülő runbookok gyakran egy vagy több gyermek runbookot hívnak meg a szükséges funkciók végrehajtásához. 
 
-A gyermek runbook kétféleképpen hívható meg, és eltérő különbségek vannak, amelyeket érdemes megállapítani, hogy melyik a legmegfelelőbb a forgatókönyvekhez. Az alábbi táblázat összefoglalja, hogy az egyik runbook hogyan hívható meg egymástól.
+A gyermek runbookok hívásának két módja van, és különböző különbségeket kell megértenie, hogy megállapítsa, melyik a legmegfelelőbb az adott forgatókönyvhöz. Az alábbi táblázat összefoglalja az egyik runbook másik forgatókönyvből való hívásának két módja közötti különbségeket.
 
 |  | Beágyazott | Parancsmag |
 |:--- |:--- |:--- |
 | **Feladat** |A gyermekrunbookok a szülővel azonos feladatban futnak. |A rendszer külön feladatot hoz létre a gyermekrunbookhoz. |
-| **Végrehajtási** |A folytatás előtt a szülőrunbook megvárja, hogy a gyermekrunbook befejeződjön. |A szülő runbook közvetlenül a gyermek runbook elindítása után folytatódik, *vagy* a szülő runbook megvárja, amíg befejeződik a gyermek feladata. |
-| **Kimenet** |A szülőrunbook közvetlenül lekérheti a gyermekrunbook kimenetét. |A szülő runbook le kell kérnie a gyermek runbook-feladatokból származó kimenetet *, vagy* a szülő runbook közvetlenül a gyermek runbook származó kimenetet kaphat. |
-| **Paraméterek** |A gyermekrunbook paramétereinek értékeit külön kell meghatározni, és bármilyen adattípus használható. |A gyermek runbook paramétereinek értékeit egyetlen szórótábla kell egyesíteni. Ez a szórótábla csak olyan egyszerű, tömb és objektum típusú adattípusokat tartalmazhat, amelyek JSON-szerializálást használnak. |
-| **Automation-fiók** |A szülő runbook csak azonos Automation-fiókban használhatja a gyermek runbook. |A szülő runbookok bármely Automation-fiókból, ugyanabból az Azure-előfizetésből, illetve egy másik előfizetésből származó gyermek runbook is használhat, amelyhez kapcsolódik. |
-| **Közzététel** |A gyermekrunbookot a szülőrunbook közzététele előtt kell közzétenni. |A gyermek runbook a szülő runbook elindítása előtt bármikor közzé lesz téve. |
+| **Futtatási** |A folytatás előtt a szülőrunbook megvárja, hogy a gyermekrunbook befejeződjön. |A szülő runbook azonnal folytatódik, miután a gyermek runbook elindult, vagy a szülő runbook megvárja, amíg a gyermek feladat befejeződik.  |
+| **Kimenet** |A szülőrunbook közvetlenül lekérheti a gyermekrunbook kimenetét. |A szülő runbooknak le kell kapnia a gyermek runbook-feladat *kimenetét,* vagy a szülő runbook közvetlenül lekérheti a gyermek runbook kimenetét. |
+| **Paraméterek** |A gyermekrunbook paramétereinek értékeit külön kell meghatározni, és bármilyen adattípus használható. |A gyermek runbook paramétereinek értékeit egyetlen kivonattáblában kell kombinálni. Ez a kivonattábla csak egyszerű, tömb- és objektum-adattípusokat tartalmazhat, amelyek JSON-szerializálást használnak. |
+| **Automation-fiók** |A szülő runbook csak ugyanabban az Automation-fiókban használhatja a gyermek runbookot. |A szülő runbookok bármely Automation-fiókból, ugyanattól az Azure-előfizetéstől, vagy akár egy másik előfizetéstől származó gyermek runbookot is használhatnak, amelyhez kapcsolattal rendelkezik. |
+| **Közzététel** |A gyermekrunbookot a szülőrunbook közzététele előtt kell közzétenni. |A gyermek runbook a szülő runbook elindulás előtt bármikor közzé lesztéve. |
 
-## <a name="invoke-a-child-runbook-using-inline-execution"></a>Gyermek runbook meghívása beágyazott végrehajtás használatával
+## <a name="invoke-a-child-runbook-using-inline-execution"></a>Gyermek runbook meghívása beágyazott végrehajtással
 
-Ha egy runbook egy másik runbook szeretne meghívni, használja a runbook nevét, és adja meg a paramétereinek értékeit, ugyanúgy, mint egy tevékenységet vagy egy parancsmagot. Az azonos Automation-fiók összes runbookok elérhetővé válik minden más számára, hogy ily módon lehessen használni. A szülő runbook megvárja a gyermek runbook befejeződését, mielőtt továbblép a következő sorra, és minden kimenet közvetlenül a szülőhöz tér vissza.
+Ha egy runbookot beágyazottan szeretne meghívni egy másik runbookból, használja a runbook nevét, és adjon meg értékeket a paraméterekhez, ahogy egy tevékenységet vagy egy parancsmagot is használna. Az ugyanabban az Automation-fiókban található összes runbook így használható az összes többi számára. A szülő runbook megvárja, amíg a gyermek runbook befejeződik, mielőtt továbblép a következő sorra, és minden kimenet közvetlenül a szülőnek ad vissza.
 
-A beágyazottan indított runbook ugyanazt a feladatot futtatja, mint a szülőrunbook. A gyermek runbook feladatainak előzményei nem szerepelnek a feladatokban. A gyermek runbook származó kivételek és stream-kimenetek a szülőhöz vannak társítva. Ez a viselkedés kevesebb feladatot eredményez, és megkönnyíti a nyomon követést és a hibakeresést.
+A beágyazottan indított runbook ugyanazt a feladatot futtatja, mint a szülőrunbook. A gyermek runbook feladatelőzményében nincs jelzés. A gyermek runbook kivételei és streamkimenetei a szülőhöz vannak társítva. Ez a viselkedés kevesebb feladathoz vezet, és megkönnyíti a nyomon követését és a hibaelhárítást.
 
-Runbook közzétételekor az általa megjelenő összes gyermek runbookok már közzé kell tenni. Ennek az az oka, hogy Azure Automation összeállítja az összes gyermek runbookok való társítást, amikor lefordít egy runbook. Ha a gyermek runbookok még nem tették közzé, úgy tűnik, hogy a fölérendelt runbook megfelelően közzé van téve, de kivételt hoz létre a indításakor. Ha ez történik, újra közzéteheti a szülő runbook, hogy megfelelően hivatkozzon a gyermek runbookok. A fölérendelt runbook nem kell újból közzétennie, ha a gyermek runbook módosul, mert a társítás már létrejött.
+Runbook közzétételekor már közzé kell tenni minden olyan gyermek runbookot, amely az adott runbookot hívja meg. Ennek az az oka Azure Automation hogy a rendszer a runbookok lefordított gyermek runbookokkal való társítását építi ki. Ha a gyermek runbookok még nem voltak közzétéve, a szülő runbook megfelelően közzéteszi a megjelenik, de kivételt hoz létre az gombra való eltöltéskor. Ebben az esetben újból közzé lehet tennie a szülő runbookot, hogy megfelelően hivatkozni tud a gyermek runbookra. Nem kell újból közzétennünk a szülő runbookot, ha bármely gyermek runbookot megváltoztatnak, mert a társítás már létrejött.
 
-A inline nevű alárendelt runbook paramétereinek bármilyen adattípusa lehet, beleértve az összetett objektumokat is. Nincs JSON- [szerializálás](start-runbooks.md#work-with-runbook-parameters), mert a Azure Portal vagy a [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) parancsmaggal indítja el a runbook.
+A beágyazott nevű gyermek runbook paraméterei bármilyen adattípushoz használhatók, beleértve az összetett objektumokat is. Nincs [JSON-szerializálás,](start-runbooks.md#work-with-runbook-parameters)mivel a runbookot a Azure Portal [start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) parancsmaggal indítja el.
 
 ### <a name="runbook-types"></a>Runbook-típusok
 
-Mely runbook-típusok hívhatják egymást?
+Milyen runbooktípusok hívják meg egymást?
 
-* Egy [PowerShell-runbook](automation-runbook-types.md#powershell-runbooks) és egy [grafikus runbook](automation-runbook-types.md#graphical-runbooks) is meghívhat egymásba, mivel mindkettő PowerShell-alapú.
-* A [PowerShell-munkafolyamatok runbook](automation-runbook-types.md#powershell-workflow-runbooks) és a grafikus PowerShell-munkafolyamat runbook meghívhatják egymást, mivel mindkettő PowerShell-munkafolyamat-alapú.
-* A PowerShell-típusok és a PowerShell-munkafolyamatok típusai nem hívhatják egymást, és a-t kell használniuk `Start-AzAutomationRunbook` .
+* A [PowerShell-runbookok](automation-runbook-types.md#powershell-runbooks) és grafikus [runbookok](automation-runbook-types.md#graphical-runbooks) egymásba is hívhatja egymást, mivel mindkettő PowerShell-alapú.
+* A [PowerShell-alapú munkafolyamat-runbookok](automation-runbook-types.md#powershell-workflow-runbooks) és a grafikus PowerShell-alapú munkafolyamat-runbookok egymásba is hívhatja egymást, mivel mindkettő PowerShell-alapú.
+* A PowerShell-típusok és a PowerShell-munkafolyamattípusok nem hívják meg egymást beágyazottan, és a következőt kell használniuk: `Start-AzAutomationRunbook` .
 
-Mikor teszi közzé a sorrendet?
+Mikor számít a közzétételi sorrend?
 
-A runbookok közzétételi sorrendje csak a PowerShell-munkafolyamatok és a grafikus PowerShell-munkafolyamat runbookok esetében számít.
+A runbookok közzétételi sorrendje csak a PowerShell-munkafolyamatok és a grafikus PowerShell-munkafolyamat-runbookok esetén számít.
 
-Ha a runbook a beágyazott végrehajtás használatával meghívja a grafikus vagy a PowerShell-munkafolyamatok alárendelt runbook, a a runbook nevét használja. A névnek a következővel kell kezdődnie, hogy `.\\` Megadja, hogy a parancsfájl a helyi könyvtárban található.
+Amikor a runbook beágyazott végrehajtással hív meg egy grafikus vagy PowerShell-munkafolyamat gyermek runbookját, a runbook nevét használja. A névnek kezdetűnek kell lennie annak megadásához, hogy a szkript `.\\` a helyi könyvtárban található.
 
 ### <a name="example"></a>Példa
 
-A következő példa egy teszt gyermek runbook indít el, amely egy összetett objektumot, egy egész értéket és egy logikai értéket fogad el. A rendszer egy változóhoz társítja a gyermekrunbook kimenetét. Ebben az esetben a gyermek runbook egy PowerShell-munkafolyamat runbook.
+Az alábbi példa elindít egy teszt gyermek runbookot, amely egy összetett objektumot, egy egész szám értéket és egy logikai értéket fogad el. A rendszer egy változóhoz társítja a gyermekrunbook kimenetét. Ebben az esetben a gyermek runbook egy PowerShell-munkafolyamat forgatókönyve.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName "LabRG" -Name "MyVM"
 $output = PSWF-ChildRunbook -VM $vm -RepeatCount 2 -Restart $true
 ```
 
-Ez ugyanaz a példa, amely egy PowerShell-runbook használja a gyermekként.
+Ez ugyanaz a példa, amely a gyermekként használt PowerShell-runbookot használja.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName "LabRG" -Name "MyVM"
 $output = .\PS-ChildRunbook.ps1 -VM $vm -RepeatCount 2 -Restart $true
 ```
 
-## <a name="start-a-child-runbook-using-a-cmdlet"></a>Gyermek runbook elindítása parancsmag használatával
+## <a name="start-a-child-runbook-using-a-cmdlet"></a>Gyermek runbook futtatása parancsmag használatával
 
 > [!IMPORTANT]
-> Ha a runbook egy gyermek runbook hív meg a (z) `Start-AzAutomationRunbook` `Wait` paraméterrel, és a gyermek runbook létrehoz egy objektumot, a művelet hibába ütközhet. A hiba megoldásához tekintse meg a [gyermek runbookok az objektum kimenetével](troubleshoot/runbooks.md#child-runbook-object) című témakört, amelyből megtudhatja, hogyan implementálhatja a logikát az eredmények lekérdezésére a [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) parancsmag használatával.
+> Ha a runbook meghív egy gyermek runbookot a(z) paraméterrel megadott parancsmaggal, és a gyermek runbook létrehoz egy objektum-eredményt, a művelet `Start-AzAutomationRunbook` `Wait` hibába ütközhet. A hiba a Gyermek [runbookok](troubleshoot/runbooks.md#child-runbook-object) objektumkimenettel való használatával való használatával kapcsolatos információkért tekintse meg, hogyan implementálhatja az eredményeket lekérdező logikát a [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) parancsmaggal.
 
-A segítségével `Start-AzAutomationRunbook` elindíthat egy runbook a [Runbook Windows PowerShell használatával történő elindításához](start-runbooks.md#start-a-runbook-with-powershell)című témakörben leírtak szerint. Ehhez a parancsmaghoz két mód használható. Egy módban a parancsmag a feladattípust adja vissza, ha a rendszer létrehozza a feladatot a gyermek runbook. A másik mód, amelyet a parancsfájl a *WAIT* paraméter megadásával engedélyez, a parancsmag addig vár, amíg a gyermek feladata be nem fejeződik, és visszaadja a gyermek runbook kimenetét.
+A használatával `Start-AzAutomationRunbook` elindíthat egy runbookot a [következővel: Runbook](start-runbooks.md#start-a-runbook-with-powershell)Windows PowerShell. Ehhez a parancsmaghoz két mód áll rendelkezésre. Az egyik módban a parancsmag a feladat azonosítóját adja vissza, amikor létrejön a feladat a gyermek runbookhoz. A másik módban, amelyet a szkript a *Wait* paraméter megadásával tesz lehetővé, a parancsmag megvárja, amíg a gyermek feladat befejeződik, és visszaadja a gyermek runbook kimenetét.
 
-A-parancsmaggal elindított runbook-feladatok a szülő runbook-feladatoktól függetlenül futnak. Ez a viselkedés több feladatot eredményez, mint a runbook inline elindítása, és nehezebbé teszi a feladatok nyomon követését. A szülő több alárendelt runbook is indíthat aszinkron módon anélkül, hogy az egyes műveletek befejezésére kellene várnia. Ahhoz, hogy ez a párhuzamos végrehajtás meghívja a alárendelt runbookok, a szülő runbook a [Parallel kulcsszót](automation-powershell-workflow.md#use-parallel-processing)kell használnia.
+A parancsmaggal indított gyermek runbookból származó feladat a szülő runbook feladattól elkülönítve fut. Ez a viselkedés több feladathoz vezet, mint a runbook beágyazott indítása, és megnehezíti a feladatok nyomon követését. A szülő több gyermek runbookot is elindíthat aszinkron módon anélkül, hogy megvárja, amíg mindegyik befejeződik. A gyermek runbookokat beágyazottan hívó párhuzamos végrehajtáshoz a szülő runbooknak a [párhuzamos kulcsszót kell használnia.](automation-powershell-workflow.md#use-parallel-processing)
 
-A gyermek runbook kimenete az időzítés miatt nem megbízhatóan tér vissza a szülő runbook. Emellett `$VerbosePreference` Előfordulhat, hogy a, a, `$WarningPreference` és mások változói nem lesznek propagálva a gyermek runbookok. Ezen problémák elkerülése érdekében a gyermek runbookok különálló Automation-feladatokként is elindíthatja `Start-AzAutomationRunbook` a `Wait` paraméterrel. Ez a módszer megakadályozza a szülő runbook, amíg a gyermek runbook be nem fejeződik.
+A gyermek runbook kimenete az időzítés miatt nem tér vissza megbízhatóan a szülő runbookhoz. Emellett előfordulhat, hogy a gyermek runbookok nem propagálják az olyan változókat, mint a , a és `$VerbosePreference` `$WarningPreference` más változók. A problémák elkerülése érdekében a gyermek runbookokat külön Automation-feladatokként is elindíthatja a `Start-AzAutomationRunbook` `Wait` paraméterrel. Ez a technika letiltja a szülő runbookot, amíg a gyermek runbook be nem fejeződik.
 
-Ha nem szeretné, hogy a szülő runbook le legyen tiltva a várakozás közben, a runbook a paraméter nélkül is elindíthatja `Start-AzAutomationRunbook` `Wait` . Ebben az esetben a runbook a [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) használatával kell várnia a feladatok befejezését. A [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) és a [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) használatával is le kell kérni az eredményeket.
+Ha nem szeretné, hogy a szülő runbook várakozáskor le legyen tiltva, az paraméter nélkül is elindíthatja a gyermek `Start-AzAutomationRunbook` `Wait` runbookot a használatával. Ebben az esetben a runbooknak a [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) használatával kell megvárni a feladat befejezését. Emellett a [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) és [a Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) használatával kell lekérnie az eredményeket.
 
-Egy parancsmaggal elindított alárendelt runbook paramétereinek megadása szórótábla, a [runbook paraméterben](start-runbooks.md#work-with-runbook-parameters)leírtak szerint. Csak az egyszerű adattípusokat lehet használni. Ha a runbook rendelkezik összetett adattípusú paraméterrel, beágyazottan kell meghívni.
+A parancsmaggal indított gyermek runbook paraméterei kivonattáblaként vannak megtéve, a [Runbook paramétereiben leírtak szerint.](start-runbooks.md#work-with-runbook-parameters) Csak egyszerű adattípusok használhatók. Ha a runbook rendelkezik összetett adattípusú paraméterrel, beágyazottan kell meghívni.
 
-Előfordulhat, hogy az előfizetési környezet elvész, amikor elindítják a gyermek runbookok különálló feladatként. Ahhoz, hogy a gyermek runbook az az Module-parancsmagok egy adott Azure-előfizetéssel való végrehajtásához, a gyermeknek a szülő runbook függetlenül hitelesítenie kell ezt az előfizetést.
+Az előfizetési környezet elveszhet, ha a gyermek runbookokat külön feladatként kezdi el. Ahhoz, hogy a gyermek runbook végrehajtsa az Az modul parancsmagokat egy adott Azure-előfizetésen, a gyermeknek a szülő runbooktól függetlenül hitelesítenie kell magát az előfizetésben.
 
-Ha ugyanabban az Automation-fiókban lévő feladatok egynél több előfizetéssel működnek, az egyik feladatban szereplő előfizetés kiválasztásával megváltoztathatja a jelenleg kijelölt előfizetési környezetet más feladatokhoz. Ha el szeretné kerülni ezt a helyzetet, használja `Disable-AzContextAutosave -Scope Process` az egyes runbook elején. Ez a művelet csak a környezetet menti a runbook végrehajtásához.
+Ha az ugyanabban az Automation-fiókban lévő feladatok több előfizetéssel is működnek, az egyik feladat előfizetésének kiválasztása módosíthatja a többi feladathoz jelenleg kiválasztott előfizetési környezetet. A helyzet elkerülése érdekében használja `Disable-AzContextAutosave -Scope Process` az et az egyes runbookok elejére. Ez a művelet csak a runbook végrehajtására menti a környezetet.
 
 ### <a name="example"></a>Példa
 
-A következő példa egy gyermek runbook indít el paraméterekkel, majd megvárja, amíg a `Start-AzAutomationRunbook` parancsmagot a paraméterrel elvégezte `Wait` . Ha elkészült, a példa a gyermek runbook származó parancsmag kimenetét gyűjti. A használatához `Start-AzAutomationRunbook` a szkriptnek hitelesítenie kell magát az Azure-előfizetésében.
+Az alábbi példa elindít egy gyermek runbookot paraméterekkel, majd megvárja, amíg befejeződik a parancsmag és a `Start-AzAutomationRunbook` paraméter `Wait` használatával. Ha befejeződött, a példa a parancsmag kimenetét gyűjti a gyermek runbookból. A használata `Start-AzAutomationRunbook` esetén a szkriptnek hitelesítenie kell magát az Azure-előfizetésében.
 
 ```azurepowershell-interactive
 # Ensure that the runbook does not inherit an AzContext
@@ -117,5 +118,5 @@ Start-AzAutomationRunbook `
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A runbook futtatásához tekintse meg [a Runbook elindítása a Azure Automationben](start-runbooks.md)című témakört.
-* A runbook művelet figyeléséhez tekintse meg a következő témakört: [runbook output and messages in Azure Automation](automation-runbook-output-and-messages.md).
+* A runbook futtatásához [lásd: Runbook futtatása a Azure Automation.](start-runbooks.md)
+* A Runbook-műveletek monitorozásával kapcsolatos további lásd: [Runbook-kimenet és -üzenetek a Azure Automation.](automation-runbook-output-and-messages.md)

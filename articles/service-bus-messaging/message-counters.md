@@ -1,48 +1,113 @@
 ---
-title: Azure Service Bus üzenetek száma
-description: A várólistákban és előfizetésekben tárolt üzenetek számának lekérése Azure Resource Manager és az Azure Service Bus NamespaceManager API-k használatával.
+title: Azure Service Bus – üzenetek száma
+description: Lekéri az üzenetsorban és előfizetésben lévő üzenetek számát a Azure Resource Manager és a NamespaceManager API Azure Service Bus használatával.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: d0e1a7a5c6eb0b281b4e6ac08135f41f28ecbec8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5fc7211673badfde664d77128f9d79523926ccc9
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85341280"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814599"
 ---
-# <a name="message-counters"></a>Üzenetszámlálók
+# <a name="get-message-counters"></a>Üzenetszámlálók lekérte
+Ez a cikk különböző módszereket mutat be az üzenetsorok vagy előfizetések alábbi üzenetszámának lekért kéréséhez. Az aktív üzenetek számának ismerete hasznos annak meghatározásához, hogy egy üzenetsor olyan hátralékot hoz-e létre, amely több erőforrást igényel, mint amit jelenleg üzembe helyezett. 
 
-A várólistákban és előfizetésekben tárolt üzenetek számát az Azure Resource Manager és a .NET-keretrendszer SDK Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API-k használatával kérheti le.
+| Számláló | Description |
+| ----- | ---------- | 
+| ActiveMessageCount | Azon üzenetek száma az üzenetsorban vagy előfizetésben, amelyek aktív állapotban vannak, és kézbesítésre készek. |
+| ScheduledMessageCount | Az ütemezett állapotban az üzenetek száma. |
+| DeadLetterMessageCount | A holtbetűs üzenetsorban lévő üzenetek száma. |
+| TransferMessageCount | A függőben lévő üzenetek száma egy másik üzenetsorba vagy témakörbe való átvitelre vár. |
+| TransferDeadLetterMessageCount | Azon üzenetek száma, amelyek nem sikerültek átkerülni egy másik üzenetsorba vagy témakörbe, és átkerültek az átvitelhez nem kapcsolódó üzenetek üzenetsorába. |
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-A PowerShell-lel a következőképpen kérheti le a darabszámot:
-
-```powershell
-(Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue).CountDetails
-```
-
-## <a name="message-count-details"></a>Üzenetek számának részletei
-
-Az aktív üzenetek számának ismerete hasznos annak meghatározásához, hogy egy várólista felépít-e egy várakozó várólistát, amely több erőforrást igényel a jelenleg üzembe helyezett erőforrások feldolgozásához. A következő számláló részletei a [MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) osztályban érhetők el:
-
--   [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ActiveMessageCount): az üzenetsor vagy az előfizetés, amely aktív állapotban van, és készen áll a kézbesítésre.
--   [DeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.deadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_DeadLetterMessageCount): üzenetek a kézbesítetlen levelek várólistáján.
--   [ScheduledMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.scheduledmessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ScheduledMessageCount): az ütemezett állapotú üzenetek.
--   [TransferDeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transferdeadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferDeadLetterMessageCount): nem sikerült átvinni az üzeneteket egy másik várólistába vagy témakörbe, és áthelyezték azokat a kézbesítetlen levelek várólistába.
--   [TransferMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount): egy másik várólistára vagy témakörbe való átvitelre váró üzenetek.
-
-Ha egy alkalmazás a várólista hossza alapján szeretné méretezni az erőforrásokat, azt a mért tempóval kell végrehajtania. Az üzenetek számlálóinak beszerzése egy költséges művelet az üzenetkezelőben, és gyakran közvetlenül, illetve az entitás teljesítményének hátrányos kihatásával jár.
+Ha egy alkalmazás az üzenetsor hossza alapján szeretné skálázni az erőforrásokat, azt mért ütemben kell megtennie. Az üzenetszámlálók beszerzése költséges művelet az üzenetközvetítőn belül, és a végrehajtása gyakran közvetlenül, kedvezőtlen hatással van az entitás teljesítményére.
 
 > [!NOTE]
-> A Service Bus témakörbe küldött üzenetek továbbítva lesznek az adott témakör előfizetéséhez. Így az aktív üzenetek száma a témakörben 0, mivel az üzenetek sikeresen továbbítódnak az előfizetésbe. Szerezze be az üzenetek számait az előfizetésben, és ellenőrizze, hogy a nullánál nagyobb-e. Annak ellenére, hogy az előfizetéshez tartozó üzenetek jelennek meg, valójában a témakörben tárolt tárolóban tárolódnak. 
+> A témakörbe küldött Service Bus a témakör előfizetéseibe továbbítja a rendszer. Tehát a témakör aktív üzenetszáma 0, mivel ezeket az üzeneteket sikeresen továbbította az előfizetéshez. Szerezze be az üzenetek számát az előfizetésben, és ellenőrizze, hogy nagyobb-e 0-snál. Bár az előfizetésben üzeneteket lát, azok valójában a témakör tulajdonában lévő tárolóban vannak tárolva. Ha megnézi az előfizetéseket, akkor azok nem nulla üzenetszámban térnek el (ami 323 MB-ot ad hozzá a teljes entitás számára).
 
-Ha megtekinti az előfizetéseket, akkor nem nulla számú üzenetnek kellene meglennie (amelyek a teljes entitáshoz 323MB fel).
+
+## <a name="using-azure-portal"></a>Az Azure Portal használata
+Lépjen a névtérre, és válassza ki az üzenetsort. Az üzenetsor Áttekintés  lapján üzenetszámlálók megjelenik.
+
+:::image type="content" source="./media/message-counters/queue-overview.png" alt-text="Üzenetszámlálók az üzenetsor áttekintő oldalán":::
+
+Lépjen a névtérre, válassza ki a témakört, majd válassza ki a témakör előfizetését. Az üzenetsor Áttekintés  lapján üzenetszámlálók megjelenik.
+
+:::image type="content" source="./media/message-counters/subscription-overview.png" alt-text="Üzenetszámlálók az előfizetés áttekintő oldalán":::
+
+## <a name="using-azure-cli"></a>Az Azure parancssori felület használata
+Az paranccsal lekért üzenetsor üzenetszámának részletei az [`az servicebus queue show`](/cli/azure/servicebus/queue#az_servicebus_queue_show) alábbi példában látható módon. 
+
+```azurecli-interactive
+az servicebus queue show --resource-group myresourcegroup \
+    --namespace-name mynamespace \
+    --name myqueue \
+    --query countDetails
+```
+
+Példa a kimenetre:
+
+```bash
+ActiveMessageCount    DeadLetterMessageCount    ScheduledMessageCount    TransferMessageCount    TransferDeadLetterMessageCount
+--------------------  ------------------------  -----------------------  ----------------------  --------------------------------
+0                     0                         0                        0                       0
+```
+
+Az [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription#az_servicebus_topic_subscription_show) paranccsal lekérte az előfizetés üzenetszámának részleteit az alábbi példában látható módon. 
+
+```azurecli-interactive
+az servicebus topic subscription show --resource-group myresourcegroup \
+    --namespace-name mynamespace \
+    --topic-name mytopic \
+    --name mysub \
+    --query countDetails
+```
+
+## <a name="using-azure-powershell"></a>Az Azure PowerShell használata
+A PowerShell segítségével a következőképpen szerezheti be az üzenetsorok üzenetszámának részleteit:
+
+```azurepowershell-interactive
+$queueObj=Get-AzServiceBusQueue -ResourceGroup myresourcegroup `
+                    -NamespaceName mynamespace `
+                    -QueueName myqueue 
+
+$queueObj.CountDetails
+```
+
+A példa kimenete a következő:
+
+```bash
+ActiveMessageCount             : 7
+DeadLetterMessageCount         : 1
+ScheduledMessageCount          : 3
+TransferMessageCount           : 0
+TransferDeadLetterMessageCount : 0
+```
+
+Az előfizetés üzenetszámának részleteit a következőképpen szerezheti be:
+
+```azurepowershell-interactive
+$topicObj= Get-AzServiceBusSubscription -ResourceGroup myresourcegroup `
+                -NamespaceName mynamespace `
+                -TopicName mytopic `
+                -SubscriptionName mysub
+
+$topicObj.CountDetails
+```
+
+A `MessageCountDetails` visszaadott objektum a következő tulajdonságokkal rendelkezik: `ActiveMessageCount` , , , , `DeadLetterMessageCount` `ScheduledMessageCount` `TransferDeadLetterMessageCount` `TransferMessageCount` . 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Service Bus üzenetkezeléssel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
+Próbálja ki a mintákat a választott nyelven, és fedezze fel Azure Service Bus funkcióit. 
 
-* [Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)](service-bus-queues-topics-subscriptions.md)
-* [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
-* [A Service Bus-üzenettémakörök és -előfizetések használata](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- [Azure Service Bus java-ügyféloldali kódtárminták](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [Azure Service Bus Pythonhoz készült ügyféloldali kódtárminták](/samples/azure/azure-sdk-for-python/servicebus-samples/)
+- [Azure Service Bus JavaScripthez való ügyféloldali kódtárminták](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [Azure Service Bus TypeScript ügyféloldali kódtárminái](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+- [Azure.Messaging.ServiceBus-minták a .NET-hez](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
+
+Az alábbiakban példákat talál a régebbi .NET- és Java-ügyfélkódtárakhoz:
+- [Microsoft.Azure.ServiceBus-minták a .NET-hez](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [azure-servicebus-minták Javához](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)

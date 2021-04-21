@@ -1,6 +1,6 @@
 ---
-title: Media Services adathivatkozás figyelése
-description: A Media Services figyeléséhez szükséges fontos referenciaanyagok
+title: Az Media Services monitorozása – referencia
+description: Fontos referenciaanyagok, amelyekre szükség van a Media Services
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
@@ -8,97 +8,68 @@ ms.topic: reference
 ms.service: media-services
 ms.custom: subject-monitoring
 ms.date: 03/17/2021
-ms.openlocfilehash: 8908fd1acc64fb180121ac0b6a4dc38ce5a02572
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 4e4c65966ec8a6a5b47d5f68596f6d2d496fda17
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121166"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835505"
 ---
-# <a name="monitoring-media-services-data-reference"></a>Media Services adathivatkozás figyelése
+# <a name="monitoring-media-services-data-reference"></a>Az Media Services monitorozása – referencia
 
-Ez a cikk a Media Services figyeléséhez hasznos információkat ismerteti. A Azure Monitor által támogatott összes platform metrikával kapcsolatos további információkért tekintse át [a támogatott mérőszámokat Azure monitor](../../../azure-monitor/essentials/metrics-supported.md).
+Ez a cikk azokat az adatokat tartalmazza, amelyek hasznosak lehetnek a Media Services. További információ a Azure Monitor támogatott platformmetrikákról: [Támogatott metrikák Azure Monitor.](../../../azure-monitor/essentials/metrics-supported.md)
 
 ## <a name="media-services-metrics"></a>Media Services metrikák
 
-A metrikák gyűjtése rendszeres időközönként történik, függetlenül attól, hogy az érték megváltozik-e. Ezek a riasztások azért hasznosak, mert gyakran mintavételezésre is képesek, és a riasztások gyorsan és viszonylag egyszerű logikával is elindíthatók.
+A rendszer rendszeres időközönként gyűjt metrikákat, függetlenül attól, hogy változik-e az érték. Hasznosak a riasztások esetében, mert gyakran mintavételezheti őket, a riasztások pedig viszonylag egyszerű logikával gyorsan elbocsáthatóak.
 
-Media Services támogatja a következő erőforrások figyelési metrikáit:
 
-* Fiók
-* Streamvégpont
+Media Services a következő erőforrásokhoz támogatja a metrikák monitorozását:
 
-### <a name="account"></a>Fiók
+|Metrika típusa | Erőforrás-szolgáltató / Névtér típusa<br/> és az egyes metrikákra mutató hivatkozás |
+|-------|-----|
+| Media Services általános | [Általános](/azure/azure-monitor/essentials/metrics-supported#microsoftmediamediaservices) |
+| Élő események | [Microsoft.Media/mediaservices/liveEvents](/azure/azure-monitor/essentials/metrics-supported#microsoftmediamediaservicesliveevents) 
+| Streamvégpontok | [Microsoft.Media/mediaservices/streamingEndpoints,](/azure/azure-monitor/essentials/metrics-supported#microsoftmediamediaservicesstreamingendpoints)amelyek a streamvégpontokhoz [kapcsolódóan REST API.](/rest/api/media/streamingendpoints) 
 
-A következő fiók metrikáit figyelheti.
 
-|Metrika neve|Megjelenített név|Leírás|
-|---|---|---|
-|AssetCount|Eszközök száma|A fiókban lévő eszközök.|
-|AssetQuota|Eszköz kvótája|A fiókban lévő eszköz kvótája.|
-|AssetQuotaUsedPercentage|Eszköz kvótájának kihasználtsága (%)|Az eszköz kvótájának százalékos aránya már használatban van.|
-|ContentKeyPolicyCount|Tartalmi kulcsokra vonatkozó szabályzatok száma|A fiókban található tartalmi kulcsokra vonatkozó szabályzatok.|
-|ContentKeyPolicyQuota|Tartalmi kulcs házirend-kvótája|A fiókban található tartalmi kulcs házirendjeinek kvótája.|
-|ContentKeyPolicyQuotaUsedPercentage|Tartalom kulcsára vonatkozó házirend kvótájának százalékos aránya|A tartalmi kulcs házirend-kvótájának százalékos aránya már használatban van.|
-|StreamingPolicyCount|Folyamatos átviteli szabályzatok száma|Streaming-szabályzatok a fiókban.|
-|StreamingPolicyQuota|Streaming Policy-kvóta|Folyamatos átviteli szabályzatok kvótája a fiókban.|
-|StreamingPolicyQuotaUsedPercentage|Adatfolyam-házirend kvótájának kihasználtsága (%)|Az adatfolyam-házirend kvótájának százalékos aránya már használatban van.|
+Emellett tekintse át a [fiókkvótákat és a korlátokat is.](../limits-quotas-constraints-reference.md)
 
-Tekintse át [a fiók kvótáit és korlátozásait](../limits-quotas-constraints-reference.md)is.
 
-### <a name="streaming-endpoint"></a>Streamvégpont
+## <a name="metric-dimensions"></a>Metrikadimenziók
 
-A következő Media Services [folyamatos átviteli végpontok](/rest/api/media/streamingendpoints) metrikáit támogatja:
-
-|Metrika neve|Megjelenített név|Leírás|
-|---|---|---|
-|Kérelmek|Kérelmek|A folyamatos átviteli végpont által kiszolgált HTTP-kérelmek teljes számát adja meg.|
-|Kimenő forgalom|Kimenő forgalom|Kimenő átviteli végpontok percenkénti bájtjainak száma.|
-|SuccessE2ELatency|A Befejezés végének késése|Az az időtartam, amikor a folyamatos átviteli végpont a válasz utolsó bájtjának küldésére vonatkozó kérést kapott.|
-|Processzorhasználat| | A prémium szintű streaming-végpontok CPU-használata. Ezek az adatátviteli végpontok nem érhetők el. |
-|Kimenő sávszélesség | | Kimenő forgalom (bit/mp).|
-
-## <a name="metric-dimensions"></a>Metrikus méretek
-
-A metrikus dimenziókkal kapcsolatos további információkért lásd: [többdimenziós mérőszámok](../../../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
+További információ a metrikadimenziókról: [Többdimenziós metrikák.](../../../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics)
 
 <!--**PLACEHOLDER** for dimensions table.-->
+OutputFormat, HttpStatusCode, ErrorCode, TrackName
 
 ## <a name="resource-logs"></a>Erőforrásnaplók
 
-## <a name="media-services-diagnostic-logs"></a>Diagnosztikai naplók Media Services
+## <a name="media-services-resource-logs"></a>Media Services erőforrásnaplók
 
-A diagnosztikai naplók részletes és gyakori információkat biztosítanak az Azure-erőforrások működéséről. További információkért lásd: az [Azure-erőforrások naplózási adatainak gyűjtése és felhasználása](../../../azure-monitor/essentials/platform-logs-overview.md).
+Az erőforrásnaplók részletes és gyakori adatokat biztosítanak az Azure-erőforrások működéséről. További információ: Naplóadatok gyűjtése és felhasználása [az Azure-erőforrásokból.](../../../azure-monitor/essentials/platform-logs-overview.md)
 
-A Media Services a következő diagnosztikai naplókat támogatja:
-
-* Kulcs kézbesítése
-
-### <a name="key-delivery"></a>Kulcs kézbesítése
-
-|Név|Leírás|
-|---|---|
-|Kulcs kézbesítési szolgáltatásának kérése|A kulcs kézbesítési szolgáltatására vonatkozó adatokat megjelenítő naplók. További információ: [sémák](monitor-media-services-data-reference.md).|
+Media Services a következő erőforrásnaplókat támogatja: [Microsoft.Media/mediaservices](/azure/azure-monitor/essentials/resource-logs-categories#microsoftmediamediaservices)
 
 ## <a name="schemas"></a>Sémák
 
-A legfelső szintű diagnosztikai naplók sémájának részletes ismertetését lásd: [támogatott szolgáltatások, sémák és kategóriák az Azure diagnosztikai naplóihoz](../../../azure-monitor/essentials/resource-logs-schema.md).
+A legfelső szintű diagnosztikai naplók sémáját a Támogatott szolgáltatások, sémák és kategóriák az Azure Diagnosztikai naplókhoz [szakasz tartalmazza részletesen.](../../../azure-monitor/essentials/resource-logs-schema.md)
 
-## <a name="key-delivery-log-schema-properties"></a>Kulcs kézbesítési naplójának sémájának tulajdonságai
+## <a name="key-delivery-log-schema-properties"></a>Kulcskésési napló sématulajdonságok
 
-Ezek a tulajdonságok a Key Delivery log sémára vonatkoznak.
+Ezek a tulajdonságok a kulcsk kézbesítési napló sémára vonatkoznak.
 
 |Név|Leírás|
 |---|---|
-|keyId|A kért kulcs azonosítója.|
+|keyId (kulcsazonosító)|A kért kulcs azonosítója.|
 |keyType|A következő értékek egyike lehet: "Clear" (nincs titkosítás), "FairPlay", "PlayReady" vagy "Widevine".|
-|policyName|A házirend Azure Resource Manager neve.|
+|policyName (szabályzat neve)|A Azure Resource Manager neve.|
 |tokenType|A jogkivonat típusa.|
-|statusMessage|Az állapotjelző üzenet.|
+|statusMessage (állapotüzenet)|Az állapotüzenet.|
 
 ### <a name="example"></a>Példa
 
-A kulcs kézbesítési kérések sémájának tulajdonságai.
+A kulcsk kézbesítési kérelmek sémája.
 
 ```json
 {
@@ -159,7 +130,7 @@ A kulcs kézbesítési kérések sémájának tulajdonságai.
 ```
 
 >[!NOTE]
-> A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
+> A Widevine a Google Inc. által biztosított szolgáltatás, amely a Google, Inc. szolgáltatási feltételeire és adatvédelmi szabályzatára vonatkozik.
 
 ## <a name="next-steps"></a>Következő lépések
 

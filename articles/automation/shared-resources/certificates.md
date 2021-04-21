@@ -1,74 +1,75 @@
 ---
-title: Tanúsítványok kezelése a Azure Automationban
-description: Ez a cikk azt ismerteti, hogyan használhatók a tanúsítványok a runbookok és a DSC-konfigurációkhoz való hozzáféréshez.
+title: Tanúsítványok kezelése a Azure Automation
+description: Ez a cikk azt mutatja be, hogyan lehet tanúsítványokkal dolgozni a runbookok és A DSC-konfigurációk által való hozzáféréshez.
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: fcd593beed6faa9ef142c62e2fbdb251b66c009f
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 788f15cd1edad228e695e6e87f5b630b8e4fdf55
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169419"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834443"
 ---
-# <a name="manage-certificates-in-azure-automation"></a>Tanúsítványok kezelése a Azure Automationban
+# <a name="manage-certificates-in-azure-automation"></a>Tanúsítványok kezelése a Azure Automation
 
-Azure Automation a tanúsítványokat biztonságos módon tárolja a runbookok és a DSC-konfigurációk számára, a [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) parancsmag használatával Azure Resource Manager erőforrásokhoz. A biztonságos tanúsítványtároló lehetővé teszi, hogy olyan runbookok és DSC-konfigurációkat hozzon létre, amelyek tanúsítványokat használnak a hitelesítéshez, illetve hozzáadhatják őket az Azure-hoz vagy harmadik féltől származó erőforrásokhoz.
+Azure Automation a Runbookok és DSC-konfigurációk által biztonságosan eltárolt tanúsítványokat a [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) parancsmag használatával a Azure Resource Manager erőforrásokhoz. A biztonságos tanúsítványtárolással olyan runbookokat és DSC-konfigurációkat hozhat létre, amelyek tanúsítványokat használnak a hitelesítéshez, vagy azure- vagy külső erőforrásokhoz adjuk őket.
 
 >[!NOTE]
->Azure Automation a biztonságos adategységek közé tartoznak a hitelesítő adatok, a tanúsítványok, a kapcsolatok és a titkosított változók. Az eszközök titkosítása és automatizálása az egyes Automation-fiókokhoz generált egyedi kulcs használatával történik. Az Automation tárolja a kulcsot a rendszer által felügyelt Key Vault szolgáltatásban. A biztonságos eszköz tárolása előtt az Automation betölti a kulcsot a Key Vault, majd a használatával titkosítja az eszközt.
+>A biztonsági Azure Automation tartalmaznak hitelesítő adatokat, tanúsítványokat, kapcsolatokat és titkosított változókat. Ezek az eszközök egy egyedi kulccsal vannak titkosítva és tárolva az Automationben, amely az egyes Automation-fiókokhoz jön létre. Az Automation a kulcsot a rendszer által felügyelt Key Vault tárolja. Biztonságos adateszköz tárolása előtt az Automation betölti a kulcsot a Key Vault, majd a segítségével titkosítja az eszközt.
 
-## <a name="powershell-cmdlets-to-access-certificates"></a>A tanúsítványok eléréséhez szükséges PowerShell-parancsmagok
+## <a name="powershell-cmdlets-to-access-certificates"></a>PowerShell-parancsmagok a tanúsítványok eléréséhez
 
-Az alábbi táblázatban található parancsmagok automatizálási tanúsítványokat hoznak létre és kezelhetnek a PowerShell-lel. Az az [modulok](modules.md#az-modules)részét képezik.
+Az alábbi táblázatban található parancsmagok Automation-tanúsítványokat hoznak létre és kezelnek a PowerShell használatával. A modulokat az Az modulok [részeként szállítják.](modules.md#az-modules)
 
 |Parancsmag |Leírás|
 | --- | ---|
-|[Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate)|Egy runbook vagy DSC-konfigurációban használandó tanúsítvány információinak beolvasása. A tanúsítványt csak a belső parancsmag használatával kérheti le `Get-AutomationCertificate` .|
-|[Új – AzAutomationCertificate](/powershell/module/Az.Automation/New-AzAutomationCertificate)|Új tanúsítvány létrehozása az Automationben.|
+|[Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate)|Lekéri egy runbookban vagy DSC-konfigurációban használható tanúsítvány adatait. Magát a tanúsítványt csak a belső parancsmag használatával `Get-AutomationCertificate` lehet lekérni.|
+|[New-AzAutomationCertificate](/powershell/module/Az.Automation/New-AzAutomationCertificate)|Létrehoz egy új tanúsítványt az Automationben.|
 |[Remove-AzAutomationCertificate](/powershell/module/Az.Automation/Remove-AzAutomationCertificate)|Eltávolít egy tanúsítványt az Automationből.|
-|[Set-AzAutomationCertificate](/powershell/module/Az.Automation/Set-AzAutomationCertificate)|Beállítja egy meglévő tanúsítvány tulajdonságait, beleértve a tanúsítványfájl feltöltését és a **. pfx** fájl jelszavának beállítását.|
+|[Set-AzAutomationCertificate](/powershell/module/Az.Automation/Set-AzAutomationCertificate)|Beállítja egy meglévő tanúsítvány tulajdonságait, beleértve a tanúsítványfájl feltöltését és a **.pfx fájl jelszavának beállítását.**|
 
-Az [Add-AzureCertificate](/powershell/module/servicemanagement/azure.service/add-azurecertificate) parancsmag használható a megadott felhőalapú szolgáltatáshoz tartozó szolgáltatási tanúsítvány feltöltésére is.
+Az [Add-AzureCertificate](/powershell/module/servicemanagement/azure.service/add-azurecertificate) parancsmag a megadott felhőszolgáltatás szolgáltatás tanúsítványának feltöltését is lehetővé tért.
 
-## <a name="internal-cmdlets-to-access-certificates"></a>A tanúsítványok elérésére szolgáló belső parancsmagok
+## <a name="internal-cmdlets-to-access-certificates"></a>Belső parancsmagok a tanúsítványok eléréséhez
 
-A következő táblázatban található belső parancsmag a runbookok lévő tanúsítványok elérésére szolgál. Ez a parancsmag a globális modulhoz tartozik `Orchestrator.AssetManagement.Cmdlets` . További információ: [belső parancsmagok](modules.md#internal-cmdlets).
+Az alábbi táblázatban található belső parancsmag a runbookok tanúsítványaihoz való hozzáférésre használható. Ez a parancsmag a globális modulhoz is `Orchestrator.AssetManagement.Cmdlets` jár. További információ: [Belső parancsmagok.](modules.md#internal-cmdlets)
 
-| Belső parancsmag | Leírás |
+| Belső parancsmag | Description |
 |:---|:---|
-|`Get-AutomationCertificate`|Lekéri egy runbook vagy DSC-konfigurációban használandó tanúsítványt. Egy [System. Security. kriptográfiai. X509Certificates. x509certificate2)](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) objektumot ad vissza.|
+|`Get-AutomationCertificate`|Lekér egy tanúsítványt, amely runbookban vagy DSC-konfigurációban használható. Egy [System.Security.Cryptography.X509Certificates.X509Certificate2 objektumot ad](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) vissza.|
 
 > [!NOTE]
-> Ne használjon változókat a `Name` `Get-AutomationCertificate` RUNBOOK vagy DSC-konfigurációban található paraméterben. Ezek a változók megnehezítik a runbookok-vagy DSC-konfigurációk és az Automation-változók közötti függőségek felderítését a tervezési időszakban.
+> Ne használja a változókat a(z) paraméterében `Name` `Get-AutomationCertificate` runbook- vagy DSC-konfigurációban. Az ilyen változók a tervezéskor bonyolítják a runbookok vagy a DSC-konfigurációk és az Automation-változók közötti függőségek felderítését.
 
 ## <a name="python-functions-to-access-certificates"></a>Python-függvények a tanúsítványok eléréséhez
 
-A következő táblázatban található függvény használatával férhet hozzá a Python 2 és 3 runbook lévő tanúsítványokhoz. A Python 3 runbookok jelenleg előzetes verzióban érhető el.
+Használja az alábbi táblázatban található függvényt a Python 2- és 3-runbookban található tanúsítványok eléréséhez. A Python 3-runbookok jelenleg előzetes verzióban állnak rendelkezésre.
 
 | Függvény | Leírás |
 |:---|:---|
-| `automationassets.get_automation_certificate` | Adatokat kér le egy tanúsítvány tárgyáról. |
+| `automationassets.get_automation_certificate` | Lekéri egy tanúsítványeszköz adatait. |
 
 > [!NOTE]
-> Az `automationassets` Asset functions eléréséhez importálnia kell a modult a Python-runbook elején.
+> Az adategység-függvények eléréséhez importálni kell a modult a `automationassets` Python-runbook elején.
 
 ## <a name="create-a-new-certificate"></a>Új tanúsítvány létrehozása
 
-Új tanúsítvány létrehozásakor fel kell töltenie egy. cer vagy. pfx fájlt az Automation szolgáltatásba. Ha a tanúsítványt exportálható jelöli meg, akkor átviheti azt az Automation-tanúsítványtárolóból. Ha nem exportálható, akkor csak a runbook vagy DSC-konfiguráción belüli aláíráshoz használható. Az Automation megköveteli, hogy a tanúsítvány rendelkezzen a szolgáltató **Microsoft Enhanced RSA és AES titkosítási szolgáltatóval**.
+Új tanúsítvány létrehozásakor feltölt egy .cer vagy .pfx fájlt az Automationbe. Ha exportálhatóként megjelöli a tanúsítványt, akkor átveheti azt az Automation tanúsítványtárolóból. Ha nem exportálható, akkor csak runbook- vagy DSC-konfiguráción belüli bejelentkezéshez használható. Az Automatizálás megköveteli, hogy a tanúsítvány **microsoftos bővített RSA- és AES-titkosítási szolgáltatóval rendelkezik.**
 
-### <a name="create-a-new-certificate-with-the-azure-portal"></a>Új tanúsítvány létrehozása a Azure Portal
+### <a name="create-a-new-certificate-with-the-azure-portal"></a>Hozzon létre egy új tanúsítványt a Azure Portal
 
-1. Az Automation-fiókban a bal oldali ablaktáblán válassza a **tanúsítványok** lehetőséget a **megosztott erőforrás** területen.
-1. A **tanúsítványok** lapon válassza a **tanúsítvány hozzáadása** lehetőséget.
-1. A **név** mezőbe írja be a tanúsítvány nevét.
-1. Egy **. cer** vagy **. pfx** fájl tallózásához a **tanúsítványfájl feltöltése** területen válassza **a fájl kiválasztása** lehetőséget. Ha **. pfx** -fájlt választ, adjon meg egy jelszót, és jelezze, hogy exportálható-e.
-1. Válassza a **Létrehozás** lehetőséget az új tanúsítvány-eszköz mentéséhez.
+1. Az Automation-fiókjában a bal oldali panelen válassza a **Tanúsítványok** lehetőséget a **Megosztott erőforrás alatt.**
+1. A Tanúsítványok **lapon** válassza a **Tanúsítvány hozzáadása lehetőséget.**
+1. A Név **mezőbe** írja be a tanúsítvány nevét.
+1. .cer- vagy **.pfx-fájl** tallózáshoz a **Tanúsítványfájl** feltöltése alatt válassza **a Fájl kiválasztása lehetőséget.**  Ha **.pfx** fájlt választ, adjon meg egy jelszót, és jelezze, hogy exportálható-e.
+1. Az **új tanúsítványeszköz** mentéshez válassza a Létrehozás lehetőséget.
 
-### <a name="create-a-new-certificate-with-powershell"></a>Új tanúsítvány létrehozása a PowerShell-lel
+### <a name="create-a-new-certificate-with-powershell"></a>Új tanúsítvány létrehozása a PowerShell használatával
 
-Az alábbi példa bemutatja, hogyan hozhat létre egy új Automation-tanúsítványt, és hogyan jelölheti meg exportálható. Ez a példa egy meglévő **. pfx** fájlt importál.
+Az alábbi példa bemutatja, hogyan hozhat létre egy új Automation-tanúsítványt, és hogyan jelölheti meg exportálhatóként. Ez a példa egy meglévő **.pfx fájlt importál.**
 
 ```powershell-interactive
 $certificateName = 'MyCertificate'
@@ -79,9 +80,9 @@ $ResourceGroup = "ResourceGroup01"
 New-AzAutomationCertificate -AutomationAccountName "MyAutomationAccount" -Name $certificateName -Path $PfxCertPath -Password $CertificatePassword -Exportable -ResourceGroupName $ResourceGroup
 ```
 
-### <a name="create-a-new-certificate-with-a-resource-manager-template"></a>Új tanúsítvány létrehozása Resource Manager-sablonnal
+### <a name="create-a-new-certificate-with-a-resource-manager-template"></a>Új tanúsítvány létrehozása Resource Manager sablonnal
 
-Az alábbi példa bemutatja, hogyan helyezhet üzembe egy tanúsítványt az Automation-fiókjában egy Resource Manager-sablonnal a PowerShell használatával:
+Az alábbi példa bemutatja, hogyan helyezhet üzembe tanúsítványt az Automation-fiókjában egy Resource Manager PowerShellen keresztül:
 
 ```powershell-interactive
 $AutomationAccountName = "<automation account name>"
@@ -122,15 +123,15 @@ $json | out-file .\template.json
 New-AzResourceGroupDeployment -Name NewCert -ResourceGroupName $ResourceGroupName -TemplateFile .\template.json
 ```
 
-## <a name="get-a-certificate"></a>Tanúsítvány beszerzése
+## <a name="get-a-certificate"></a>Tanúsítvány lekérve
 
-Tanúsítvány lekéréséhez használja a belső `Get-AutomationCertificate` parancsmagot. Nem használhatja a [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) parancsmagot, mert információt ad vissza a tanúsítvány adategységéről, de nem maga a tanúsítvány.
+Tanúsítvány lekérése a belső `Get-AutomationCertificate` parancsmag használatával. A [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) parancsmag nem használható, mert a tanúsítványeszközre vonatkozó adatokat ad vissza, magát a tanúsítványt azonban nem.
 
-### <a name="textual-runbook-examples"></a>Szöveges runbook-példák
+### <a name="textual-runbook-examples"></a>Példák szöveges runbookra
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Az alábbi példa bemutatja, hogyan adhat hozzá egy tanúsítványt egy felhőalapú szolgáltatáshoz egy runbook. Ebben a példában a jelszót egy titkosított Automation-változóból kéri le a rendszer.
+Az alábbi példa bemutatja, hogyan adhat hozzá tanúsítványt egy felhőszolgáltatáshoz egy runbookban. Ebben a példában a jelszót egy titkosított automatizálási változóból olvassa be a rendszer.
 
 ```powershell-interactive
 $serviceName = 'MyCloudService'
@@ -142,7 +143,7 @@ Add-AzureCertificate -ServiceName $serviceName -CertToDeploy $cert
 
 # <a name="python-2"></a>[Python 2](#tab/python2)
 
-Az alábbi példa bemutatja, hogyan érheti el a tanúsítványokat a Python 2 runbookok.
+Az alábbi példa bemutatja, hogyan férhet hozzá a Python 2-runbookok tanúsítványaihoz.
 
 ```python
 # get a reference to the Azure Automation certificate
@@ -154,7 +155,7 @@ print cert
 
 # <a name="python-3"></a>[Python 3](#tab/python3)
 
-Az alábbi példa bemutatja, hogyan érheti el a tanúsítványokat a Python 3 runbookok (előzetes verzió).
+Az alábbi példa bemutatja, hogyan férhet hozzá a tanúsítványokhoz a Python 3-runbookok (előzetes verzió) használatával.
 
 ```python
 # get a reference to the Azure Automation certificate
@@ -166,18 +167,18 @@ print (cert)
 
 ---
 
-### <a name="graphical-runbook-example"></a>Példa grafikus runbook
+### <a name="graphical-runbook-example"></a>Példa grafikus runbookra
 
-Adjon hozzá egy tevékenységet a belső `Get-AutomationCertificate` parancsmaghoz egy grafikus runbook. ehhez kattintson a jobb gombbal a tanúsítványra a könyvtár ablaktáblán, és válassza a **Hozzáadás a vászonhoz** lehetőséget.
+Adjon hozzá egy tevékenységet a belső parancsmaghoz egy grafikus runbookhoz. Ehhez kattintson a jobb gombbal a tanúsítványra a Könyvtár `Get-AutomationCertificate` panelen, majd válassza a Hozzáadás a **vászonhoz lehetőséget.**
 
-![Képernyőfelvétel a tanúsítvány hozzáadásáról a vászonhoz](../media/certificates/automation-certificate-add-to-canvas.png)
+![Képernyőkép egy tanúsítvány vászonhoz való hozzáadásáról](../media/certificates/automation-certificate-add-to-canvas.png)
 
-Az alábbi képen egy példa látható a tanúsítvány grafikus runbook való használatára.
+Az alábbi képen egy példa látható egy tanúsítvány grafikus runbookban való használatával.
 
-![Képernyőkép egy grafikus szerzői műveletről](../media/certificates/graphical-runbook-add-certificate.png)
+![Grafikus tartalom készítésére példa képernyőképe](../media/certificates/graphical-runbook-add-certificate.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ha többet szeretne megtudni a tanúsítványok eléréséhez használt parancsmagokról, tekintse meg a [modulok kezelése a Azure Automationban](modules.md)című témakört.
-* A runbookok kapcsolatos általános információkért lásd: [a Runbook végrehajtása Azure Automation](../automation-runbook-execution.md).
-* A DSC-konfigurációk részletes ismertetését lásd: [Azure Automation állapot konfigurációjának áttekintése](../automation-dsc-overview.md).
+* A tanúsítványok eléréséhez használt parancsmagokkal kapcsolatos további információkért lásd: Modulok kezelése a [Azure Automation.](modules.md)
+* A runbookokkal kapcsolatos általános információkért lásd: [Runbook végrehajtása](../automation-runbook-execution.md)a Azure Automation.
+* A DSC-konfigurációk részleteiért lásd a Azure Automation State Configuration [áttekintését.](../automation-dsc-overview.md)

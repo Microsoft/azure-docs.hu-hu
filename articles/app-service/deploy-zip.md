@@ -4,19 +4,19 @@ description: Megtudhatja, hogyan helyezheti üzembe alkalmazását Azure App Ser
 ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: fe906a63a681515d401d005bf3357a4e7218ae66
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 9f59576ea66b72a492e1e6c665a51258861842dd
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771424"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833016"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Az alkalmazás üzembe helyezése Azure App Service ZIP- vagy WAR-fájllal
 
 Ez a cikk bemutatja, hogyan helyezheti üzembe a webalkalmazást ZIP-fájl vagy [WAR-fájl](overview.md)használatával a Azure App Service. 
 
-Ez a ZIP-fájltelepítés ugyanazt a Kudu-szolgáltatást használja, amely a folyamatos integrációs alapú üzembe helyezéseket használja. A Kudu a következő funkciókat támogatja a ZIP-fájlok üzembe helyezéséhez: 
+Ez a ZIP-fájltelepítés ugyanazt a Kudu-szolgáltatást használja, amely a folyamatos integrációs alapú üzembe helyezéseket is használja. A Kudu a következő funkciókat támogatja a ZIP-fájlok üzembe helyezéséhez: 
 
 - Az előző üzembe helyezésből megmaradt fájlok törlése.
 - Az alapértelmezett buildfolyamat bekapcsolási lehetősége, beleértve a csomag-visszaállítást is.
@@ -26,10 +26,10 @@ Ez a ZIP-fájltelepítés ugyanazt a Kudu-szolgáltatást használja, amely a fo
 
 További információt a [Kudu dokumentációjában talál.](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)
 
-A WAR-fájl üzembe helyezése telepíti a [WAR-App Service](https://wikipedia.org/wiki/WAR_(file_format)) a Java-webalkalmazás futtatásához. Lásd: [WAR-fájl üzembe helyezése.](#deploy-war-file)
+A WAR-fájl üzembe helyezése üzembe App Service [WAR-fájlt](https://wikipedia.org/wiki/WAR_(file_format)) a Java-webalkalmazás futtatásához. Lásd: [DEPLOY WAR file (WAR-fájl üzembe helyezése).](#deploy-war-file)
 
 > [!NOTE]
-> A használata esetén a fájlok csak akkor lesznek átmásolva, ha az időbélyegeik nem egyeznek meg a már `ZipDeploy` üzembe helyezett fájlokkal. Ha a kimeneteket gyorsítótárazza egy zip-fájl buildfolyamattal, az gyorsabb üzembe helyezést eredményezhet. További információ: Üzembe helyezés [zip-fájlból vagy URL-címből.](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)
+> A használata esetén a fájlok másolása csak akkor történik meg, ha az időbélyegeik nem egyeznek meg `ZipDeploy` a már üzembe helyezett fájlokkal. A kimeneteket gyorsítótárazási folyamattal generáló zip-fájl gyorsabb üzembe helyezést eredményezhet. További információ: Üzembe helyezés [zip-fájlból vagy URL-címről.](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ A cikkben található lépések befejezéséhez hozzon létre egy App Service [a
 [!INCLUDE [Create a project ZIP file](../../includes/app-service-web-deploy-zip-prepare.md)]
 
 [!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
-A fenti végpont jelenleg nem működik linuxos App Services esetén. Fontolja meg inkább az FTP vagy [a ZIP üzembe helyezési API](faq-app-service-linux.md#continuous-integration-and-deployment) használatát.
+A fenti végpont jelenleg linuxos App Services nem működik. Fontolja meg inkább az FTP vagy [a ZIP üzembe helyezési API](faq-app-service-linux.md#continuous-integration-and-deployment) használatát.
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>ZIP-fájl üzembe helyezése az Azure CLI használatával
 
@@ -92,7 +92,7 @@ Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <
 
 ## <a name="next-steps"></a>Következő lépések
 
-A speciálisabb üzembe helyezési forgatókönyvekért próbálja meg üzembe [helyezni az Azure-ban a Git használatával.](deploy-local-git.md) A Git-alapú üzembe helyezés az Azure-ban lehetővé teszi a verzióvezérlést, a csomag-visszaállítást, az MSBuildet stb.
+A speciálisabb üzembe helyezési forgatókönyvekért próbálja meg üzembe [helyezni az Azure-ban a Git használatával.](deploy-local-git.md) A Git-alapú üzembe helyezés az Azure-ban lehetővé teszi a verzióvezérlést, a csomag-visszaállítást, az MSBuildet és sok más lehetőséget.
 
 ## <a name="more-resources"></a>További erőforrások
 

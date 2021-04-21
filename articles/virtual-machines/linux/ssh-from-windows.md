@@ -1,6 +1,6 @@
 ---
-title: SSH-kulcsok használata Linux rendszerű virtuális gépekhez való kapcsolódáshoz
-description: Útmutató SSH-kulcsok létrehozásához és használatához Windows-számítógépről az Azure-beli Linux rendszerű virtuális gépekhez való kapcsolódáshoz.
+title: SSH-kulcsok használata Linux rendszerű virtuális gépekhez való csatlakozáshoz
+description: Megtudhatja, hogyan hozhat létre és használhat SSH-kulcsokat Egy Windows rendszerű számítógépről linuxos virtuális géphez való csatlakozáshoz az Azure-ban.
 author: cynthn
 ms.service: virtual-machines
 ms.collection: linux
@@ -8,59 +8,59 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: f018f591052050431996e3017335ab003973d25a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0199a47b2306d7d461ba61057c7ab1015015df08
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771005"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835559"
 ---
-# <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>SSH-kulcsok használata az Azure-ban a Windowsban
+# <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>SSH-kulcsok használata Windows rendszeren az Azure-ban
 
-Ez a cikk olyan Windows-felhasználók számára készült, akik *Secure Shell* -(SSH-) kulcsokat szeretnének [létrehozni](#create-an-ssh-key-pair) és használni az Azure-beli linuxos virtuális gépekhez való [kapcsolódáshoz](#connect-to-your-vm) . Az SSH-kulcsokat a portálon a virtuális gépek létrehozásakor használt [Azure Portal is létrehozhatja és tárolhatja](../ssh-keys-portal.md) .
+Ez a cikk olyan Windows-felhasználók számára használható, akik Secure [](#connect-to-your-vm) *Shell-* (SSH-) kulcsokat szeretne létrehozni és használni az Azure-beli Linux rendszerű virtuális gépekhez való csatlakozáshoz. [](#create-an-ssh-key-pair) Emellett létrehozhat [és tárolhat SSH-kulcsokat](../ssh-keys-portal.md) a Azure Portal, amikor virtuális gépeket hoz létre a portálon.
 
 
-Ha Linux vagy macOS rendszerű ügyfélről szeretne SSH-kulcsokat használni, tekintse meg a [gyors lépéseket](mac-create-ssh-keys.md). Az SSH részletesebb áttekintését a [részletes lépések: ssh-kulcsok létrehozása és kezelése az Azure-beli Linux](create-ssh-keys-detailed.md)RENDSZERű virtuális gépeken történő hitelesítéshez című témakörben tekintheti meg.
+Linux- vagy macOS-ügyfél SSH-kulcsait a gyors [lépésekben használhatja.](mac-create-ssh-keys.md) Az SSH részletesebb áttekintését lásd: Részletes lépések: SSH-kulcsok létrehozása és kezelése Linux rendszerű virtuális gépek hitelesítéséhez az [Azure-ban.](create-ssh-keys-detailed.md)
 
 ## <a name="overview-of-ssh-and-keys"></a>Az SSH és a kulcsok áttekintése
 
-Az [SSH](https://www.ssh.com/ssh/) egy titkosított kapcsolati protokoll, amely biztonságos bejelentkezéseket tesz lehetővé a nem biztonságos kapcsolatokon keresztül. Az SSH az Azure-ban üzemeltetett Linux rendszerű virtuális gépek alapértelmezett kapcsolati protokollja. Habár az SSH titkosított kapcsolatokat biztosít, a jelszavak SSH-val való használata továbbra is sebezhetővé teszi a virtuális gépet a találgatásos támadásokkal szemben. Azt javasoljuk, hogy SSH-kapcsolaton keresztül csatlakozzon egy virtuális géphez egy nyilvános titkos kulcspár, más néven *SSH*-kulcs használatával. 
+[Az SSH](https://www.ssh.com/ssh/) egy titkosított kapcsolati protokoll, amely biztonságos bejelentkezéseket tesz lehetővé nem biztonságos kapcsolatokon keresztül. Az SSH az Azure-ban üzemeltetett Linux rendszerű virtuális gépek alapértelmezett kapcsolati protokollja. Bár maga az SSH titkosított kapcsolatot biztosít, a jelszavak SSH-val való használata továbbra is sebezhetővé teszi a virtuális gépet a találgatásos támadásokkal szemben. Javasoljuk, hogy SSH-kapcsolaton keresztül csatlakozzon egy virtuális géphez egy nyilvános-titkos kulcspár, más néven *SSH-kulcs használatával.* 
 
-A nyilvános titkos kulcspár olyan, mint a bejárati ajtó zárolása. A zárolás elérhetővé vált a **nyilvánosság** számára, a megfelelő kulccsal bárki megnyithatja az ajtót. A kulcs **magán**, és csak a megbízhatónak ítélt személyeket adja meg, mert feloldható az ajtó feloldása. 
+A nyilvános-titkos kulcspár olyan, mint a bejárati ajtó zárolása. A zárolást a nyilvános , bárki megnyithatja, aki a megfelelő kulccsal van. A kulcs **privát,** és csak olyan személyeknek van megadva, akikben megbízik, mert az ajtó feloldására használható. 
 
-- A *nyilvános kulcsot* a rendszer a linuxos virtuális gépre helyezi a virtuális gép létrehozásakor. 
+- A *nyilvános kulcs* a Linux rendszerű virtuális gépen lesz elhelyezve a virtuális gép létrehozásakor. 
 
 - A *titkos kulcs* a helyi rendszeren marad. Védje a titkos kulcsot. Ne ossza meg senkivel.
 
-A Linux rendszerű virtuális géphez való csatlakozáskor a virtuális gép teszteli az SSH-ügyfelet, hogy megbizonyosodjon róla, hogy a megfelelő titkos kulccsal rendelkezik. Ha az ügyfél rendelkezik titkos kulccsal, a rendszer hozzáférést kap a virtuális géphez. 
+Amikor csatlakozik a Linux rendszerű virtuális géphez, a virtuális gép teszteli az SSH-ügyfelet, hogy a megfelelő titkos kulccsal rendelkezik-e. Ha az ügyfél rendelkezik a titkos kulccsal, hozzáférést kap a virtuális géphez. 
 
-A szervezet biztonsági házirendjeitől függően egyetlen kulcspárt is felhasználhat több Azure-beli virtuális gép és szolgáltatás elérésére. Az egyes virtuális gépekhez nem kell külön kulcspárt létrehoznia. 
+A szervezet biztonsági szabályzataitól függően egyetlen kulcspárt használhat több Azure-beli virtuális gép és szolgáltatás eléréséhez. Nincs szükség külön kulcspárra minden virtuális géphez. 
 
-A nyilvános kulcs bárkivel megosztható, de csak Ön (vagy a helyi biztonsági infrastruktúra) férhetnek hozzá a titkos kulcshoz.
+A nyilvános kulcs bárkivel megosztható, de csak Ön (vagy a helyi biztonsági infrastruktúra) férhet hozzá a titkos kulcshoz.
 
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
 ## <a name="ssh-clients"></a>SSH-ügyfelek
 
-A Windows 10-es legújabb verziói az [OpenSSH-ügyfélprogramok](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/) ssh-kulcsok létrehozására és használatára, valamint a PowerShell vagy a parancssor használatával történő SSH-kapcsolatokra vonatkozó parancsokat tartalmaznak. Ez a legegyszerűbb módszer a Linux rendszerű virtuális géphez való SSH-kapcsolatok létrehozásához egy Windows rendszerű számítógépről. 
+A legújabb verziói Windows 10 [OpenSSH-ügyfélparancsokat](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/) tartalmaznak SSH-kulcsok létrehozásához és használathoz, valamint SSH-kapcsolatok létrehozásához a PowerShellből vagy egy parancssorból. Ez a legegyszerűbb módszer arra, hogy windowsos számítógépről hozzon létre SSH-kapcsolatot a Linux rendszerű virtuális géppel. 
 
-A virtuális géphez való kapcsolódáshoz a [Azure Cloud Shell](../../cloud-shell/overview.md) bash is használható. Az [Azure-fiók bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)használatával [webböngészőben](https://shell.azure.com/bash), a [Azure Portal](https://portal.azure.com)vagy a Visual Studio Code-ban található terminálként is használhatja a Cloud shell.
+A virtuális géphez való csatlakozáshoz a Bash Azure Cloud Shell [is](../../cloud-shell/overview.md) használhatja a virtuális géphez. Használhatja a Cloud Shell [böngészőben,](https://shell.azure.com/bash)a [Azure Portal-ban,](https://portal.azure.com)vagy terminálként az Visual Studio Code-ban az [Azure-fiók bővítmény használatával.](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
-A [Linux Windows alrendszerét](/windows/wsl/about) is telepítheti a virtuális géphez SSH-n keresztül, és más natív Linux-eszközöket is használhat a bash-rendszerhéjon belül.
+A virtuális géphez SSH Linuxos Windows-alrendszer keresztüli csatlakozáshoz és más natív Linux-eszközök [Bash-rendszerhéjon](/windows/wsl/about) belüli használatára is telepítheti a virtuális gépet.
 
 ## <a name="create-an-ssh-key-pair"></a>SSH-kulcs létrehozása
 
-Hozzon létre egy SSH-kulcspárt a `ssh-keygen` parancs használatával. Adjon meg egy fájlnevet, vagy használja az alapértelmezett zárójelet (például `C:\Users\username/.ssh/id_rsa` ).  Adjon meg egy hozzáférési kódot a fájlhoz, vagy hagyja üresen a jelszót, ha nem szeretne jelszót használni. 
+Hozzon létre egy SSH-kulcspárt az `ssh-keygen` paranccsal. Adjon meg egy fájlnevet, vagy használja az alapértelmezett zárójelet `C:\Users\username/.ssh/id_rsa` (például).  Adjon meg egy jelszót a fájlhoz, vagy hagyja üresen a jelszót, ha nem szeretne jelszót használni. 
 
 ```powershell
 ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-## <a name="create-a-vm-using-your-key"></a>Virtuális gép létrehozása a kulcs használatával
+## <a name="create-a-vm-using-your-key"></a>Virtuális gép létrehozása a kulccsal
 
-SSH-kulcsokat használó Linux rendszerű virtuális gép létrehozásához adja meg az SSH nyilvános kulcsát a virtuális gép létrehozásakor.
+Olyan Linux rendszerű virtuális gép létrehozásához, amely SSH-kulcsokat használ a hitelesítéshez, adja meg a nyilvános SSH-kulcsot a virtuális gép létrehozásakor.
 
-Az Azure CLI használatával a és a paraméter használatával adhatja meg a nyilvános kulcs elérési útját és fájlnevét `az vm create` `--ssh-key-value` .
+Az Azure CLI használatával megadhatja a nyilvános kulcs elérési útját és fájlnevét a és a `az vm create` `--ssh-key-value` paraméterrel.
 
 ```azurecli
 az vm create \
@@ -68,33 +68,33 @@ az vm create \
    --name myVM \
    --image UbuntuLTS\
    --admin-username azureuser \
-   --ssh-key-value ~/.ssh/id_rsa
+   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-A PowerShell használatával használja `New-AzVM` és adja hozzá az SSH-kulcsot a virtuális gép konfigurációjához a következő használatával:. Példa: gyors útmutató [: linuxos virtuális gép létrehozása az Azure-ban a PowerShell használatával](quick-create-powershell.md).
+A PowerShellben használja a parancsot, és adja hozzá az `New-AzVM` SSH-kulcsot a virtuálisgép-konfigurációhoz a használatával. Példa: Rövid útmutató: Linux rendszerű virtuális gép [létrehozása az Azure-ban a PowerShell használatával.](quick-create-powershell.md)
 
-Ha sok üzembe helyezést végez a portál használatával, feltölthet egy nyilvános kulcsot az Azure-ba, ahol egyszerűen kiválaszthatja a virtuális gép portálról való létrehozásakor. További információ: SSH- [kulcs feltöltése](../ssh-keys-portal.md#upload-an-ssh-key).
+Ha sok üzembe helyezést szeretne a portálon keresztül, érdemes lehet feltölteni a nyilvános kulcsot az Azure-ba, ahol könnyen kiválasztható, amikor virtuális gépet hoz létre a portálról. További információ: [SSH-kulcs feltöltése.](../ssh-keys-portal.md#upload-an-ssh-key)
 
 
 ## <a name="connect-to-your-vm"></a>Csatlakozás a virtuális géphez
 
-Az Azure-beli virtuális gépen üzembe helyezett nyilvános kulccsal és a helyi rendszeren lévő titkos kulccsal, SSH-val a virtuális géphez a virtuális gép IP-címét vagy DNS-nevét használva. Cserélje le az *azureuser* és a *10.111.12.123* parancsot a következő parancsra a rendszergazda FELHASZNÁLÓNEVÉVEL, az IP-címmel (vagy a teljes tartománynévvel) és a titkos kulcs elérési útjával:
+Az Azure-beli virtuális gépen üzembe helyezett nyilvános kulccsal és a helyi rendszeren található titkos kulccsal SSH-val a virtuális gép IP-címével vagy DNS-nevével. A következő parancsban cserélje le az *azureuser* és a *10.111.12.123* címet a rendszergazda felhasználónevére, az IP-címre (vagy teljes tartománynévre) és a titkos kulcs elérési útjára:
 
 ```bash
 ssh -i ~/.ssh/id_rsa.pub azureuser@10.111.12.123
 ```
 
-Ha a kulcspárt a kulcspár létrehozásakor konfigurálta, írja be a jelszót, amikor a rendszer kéri.
+Ha a kulcspár létrehozásakor jelszót konfigurált, amikor a rendszer kéri, adja meg a jelszót.
 
-Ha a virtuális gép az igény szerinti hozzáférési szabályzatot használja, a virtuális géphez való kapcsolódáshoz a hozzáférést kell kérnie. Az igény szerinti szabályzattal kapcsolatos további információkért lásd: [virtuális gépek hozzáférésének kezelése az igény szerinti házirend használatával](../../security-center/security-center-just-in-time.md).
+Ha a virtuális gép az "időben elérhető" hozzáférési szabályzatot használja, a virtuális géphez való csatlakozás előtt hozzáférést kell kérnie. További információ az "időben elérhető" szabályzatról: Manage virtual machine access using the just in time policy (Virtuális gépek hozzáférésének kezelése [az időben elérhető házirend használatával).](../../security-center/security-center-just-in-time.md)
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A Azure Portal SSH-kulcsaival kapcsolatos információkért lásd: az [ssh-kulcsok létrehozása és tárolása](../ssh-keys-portal.md) a portálon a virtuális gépek létrehozásához használt Azure Portal.
+- További információ az SSH-kulcsokról a Azure Portal: [Generate and store SSH keys](../ssh-keys-portal.md) in the Azure Portal to use when creating VMs in the portal.
 
-- Az SSH-kulcsok használatának részletes lépéseiről, lehetőségeiről és speciális példáit az [SSH-kulcspár létrehozásának részletes lépései](create-ssh-keys-detailed.md)című cikkben tekintheti meg.
+- Az SSH-kulcsokkal való munkavégzés részletes lépéseit, beállításait és speciális példáit az SSH-kulcspárok létrehozásához szükséges részletes [lépéseket lásd:](create-ssh-keys-detailed.md).
 
-- A PowerShellt Azure Cloud Shell is használhatja SSH-kulcsok létrehozásához és SSH-kapcsolatok létrehozásához Linux rendszerű virtuális gépekhez. Tekintse meg a [PowerShell](../../cloud-shell/quickstart-powershell.md#ssh)rövid útmutatóját.
+- Az SSH-kulcsok létrehozásához és linuxos virtuális gépekhez Azure Cloud Shell PowerShellt is használhatja. Lásd a [PowerShell rövid útmutatóját.](../../cloud-shell/quickstart-powershell.md#ssh)
 
-- Ha az SSH használatával nem tud csatlakozni a Linux rendszerű virtuális gépekhez, tekintse meg [az SSH-kapcsolatok Azure Linux rendszerű virtuális géphez](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)való kapcsolódásával kapcsolatos problémát.
+- Ha nehézségekbe ütközik a Linux rendszerű virtuális gépekhez való SSH-csatlakozás során, tekintse meg a Linux rendszerű Azure-beli virtuális géphez való [SSH-kapcsolatok hibaelhárításával kapcsolatos témakört.](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

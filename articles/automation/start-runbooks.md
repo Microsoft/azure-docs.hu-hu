@@ -1,44 +1,45 @@
 ---
 title: Runbook indítása az Azure Automationben
-description: Ez a cikk azt ismerteti, hogyan indítható el egy runbook a Azure Automationban.
+description: Ez a cikk bemutatja, hogyan indíthat runbookot a Azure Automation.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3a08d727f5257f48ba45fc132f493d33bbb0848f
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 01b6e060fcab9c7dab4934aad3d1ab6047ec5236
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169368"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829853"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Runbook indítása az Azure Automationben
 
-A következő táblázat segítségével határozhatja meg, hogy miként indítható el a runbook olyan Azure Automation, amely leginkább megfelel az adott forgatókönyvnek. Ez a cikk részletesen ismerteti, hogyan kell runbook elindítani a Azure Portal és a Windows PowerShell használatával. Az egyéb módszerekkel kapcsolatos további információkat az alábbi hivatkozásokon keresztül elérhető egyéb dokumentációban találja.
+Az alábbi táblázat segít meghatározni a runbookok Azure Automation az adott forgatókönyvnek leginkább megfelelő runbook-indítási módszert. Ez a cikk a runbookok a Azure Portal és a Windows PowerShell. A többi módszer részleteit más dokumentációkban találhatja meg, amelyekhez az alábbi hivatkozásokon keresztül férhet hozzá.
 
 | **Metódus** | **Jellemzők** |
 | --- | --- |
-| [Azure Portal](#start-a-runbook-with-the-azure-portal) |<li>Legegyszerűbb módszer interaktív felhasználói felülettel.<br> <li>Egyszerű paraméter-értékeket biztosító űrlap.<br> <li>A feladatok állapotának egyszerűen nyomon követhető.<br> <li>Az Azure-bejelentkezéssel hitelesített hozzáférés. |
-| [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Hívás a parancssorból Windows PowerShell-parancsmagokkal.<br> <li>Több lépésből is megadható az automatizált funkcióban.<br> <li>A kérelem hitelesítése tanúsítvány vagy OAuth egyszerű felhasználói tag/szolgáltatásnév alapján történik.<br> <li>Egyszerű és összetett paramétereket adjon meg.<br> <li>Feladatok állapotának nyomon követése<br> <li>A PowerShell-parancsmagok támogatásához szükséges ügyfél. |
-| [Azure Automation API](/rest/api/automation/) |<li>A legrugalmasabb módszer, de a legbonyolultabb is.<br> <li>Bármely olyan egyéni kód meghívása, amely HTTP-kéréseket tesz elérhetővé.<br> <li>A tanúsítványsal hitelesített kérelem vagy OAuth-felhasználó/egyszerű szolgáltatásnév.<br> <li>Egyszerű és összetett paramétereket adjon meg. *Ha az API használatával keres Python-runbook, a JSON-adattartalmat szerializálni kell.*<br> <li>Feladatok állapotának nyomon követése |
-| [Webhookok](automation-webhooks.md) |<li>Runbook elindítása egyetlen HTTP-kérelemből.<br> <li>Hitelesítve a biztonsági jogkivonattal az URL-címben.<br> <li>Az ügyfél nem bírálhatja felül a webhook létrehozásakor megadott paramétereket. A Runbook egyetlen paramétert is meghatározhat, amely a HTTP-kérelem részleteivel van feltöltve.<br> <li>Nincs lehetőség a feladatok állapotának nyomon követésére webhook URL-címén keresztül. |
-| [Válaszadás az Azure-riasztásra](../azure-monitor/alerts/alerts-overview.md) |<li>Runbook elindítása az Azure-riasztásra adott válaszként.<br> <li>Konfigurálja a webhookot a runbook, és hivatkozzon a riasztásra.<br> <li>Hitelesítve a biztonsági jogkivonattal az URL-címben. |
-| [Ütemezés](./shared-resources/schedules.md) |<li>Runbook automatikus elindítása óránként, naponta, hetente vagy havonta.<br> <li>Az ütemtervet Azure Portal, PowerShell-parancsmagokkal vagy Azure API-val kezelheti.<br> <li>Adja meg az ütemtervhez használandó paramétereket. |
-| [Másik Runbook](automation-child-runbooks.md) |<li>Runbook használata tevékenységként egy másik runbook.<br> <li>Több runbookok által használt funkciók esetében hasznos.<br> <li>Adja meg a gyermekobjektumok runbook, és használja a kimenetet a szülő runbook. |
+| [Azure Portal](#start-a-runbook-with-the-azure-portal) |<li>A legegyszerűbb módszer interaktív felhasználói felülettel.<br> <li>Űrlap egyszerű paraméterértékek megadása érdekében.<br> <li>Könnyedén nyomon követheti a feladat állapotát.<br> <li>Hozzáférés azure-beli bejelentkezéssel hitelesítve. |
+| [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Hívja meg a parancsot a parancssorból Windows PowerShell parancsmagokkal.<br> <li>Az automatizált szolgáltatás több lépésből áll.<br> <li>A kérelem hitelesítése tanúsítvánnyal vagy OAuth-felhasználónévvel/szolgáltatásnévvel történik.<br> <li>Egyszerű és összetett paraméterértékek megadása.<br> <li>Feladat állapotának nyomon követése.<br> <li>A PowerShell-parancsmagok támogatásához szükséges ügyfél. |
+| [Azure Automation API](/rest/api/automation/) |<li>A legrugalmasabb módszer, de egyben a legösszetettebb is.<br> <li>Hívja meg a metódust bármely egyéni kódból, amely képes HTTP-kérések igénylését.<br> <li>Igényelheti a hitelesítést tanúsítvánnyal vagy Oauth-felhasználónévvel/szolgáltatásnévvel.<br> <li>Egyszerű és összetett paraméterértékek megadása. *Ha az API-val hív meg egy Python-runbookot, a JSON hasznos adatokat szerializálni kell.*<br> <li>Feladat állapotának nyomon követése. |
+| [Webhookok](automation-webhooks.md) |<li>Runbookot egyetlen HTTP-kérésből indít el.<br> <li>Biztonsági jogkivonattal hitelesítve az URL-címben.<br> <li>Az ügyfél nem bírálhatja felül a webhook létrehozásakor megadott paraméterértékeket. A Runbook egyetlen paramétert definiálhat, amely a HTTP-kérés részleteivel van feltöltve.<br> <li>Nem lehet nyomon követni a feladat állapotát a webhook URL-címével. |
+| [Válasz az Azure-riasztásra](../azure-monitor/alerts/alerts-overview.md) |<li>Indítson el egy runbookot az Azure-riasztásra válaszul.<br> <li>Konfigurálja a webhookot a runbookhoz és a riasztásra mutató hivatkozást.<br> <li>Biztonsági jogkivonattal hitelesítve az URL-címben. |
+| [Ütemezés](./shared-resources/schedules.md) |<li>Automatikusan elindítja a runbookot óránként, naponta, hetente vagy havonta.<br> <li>Az ütemezést módosíthatja Azure Portal, PowerShell-parancsmagokkal vagy az Azure API-val.<br> <li>Adja meg az ütemezéshez használni szükséges paraméterértékeket. |
+| [Másik runbookból](automation-child-runbooks.md) |<li>Runbook használata tevékenységként egy másik runbookban.<br> <li>Több runbook által használt funkciókhoz hasznos.<br> <li>Adja meg a gyermek runbook paraméterértékét, és használja a szülő runbookban lévő kimenetet. |
 
-Az alábbi ábrán részletesen ismertetjük a runbook életciklusában bekövetkezett lépéseket. A runbook különböző módokon indul el Azure Automation, mely összetevők szükségesek a hibrid Runbook-feldolgozók számára Azure Automation runbookok végrehajtásához és a különböző összetevők közötti interakcióhoz. Az automatizálási runbookok az adatközpontban való végrehajtásával kapcsolatban a [hibrid runbook-feldolgozók](automation-hybrid-runbook-worker.md) című témakörben talál további információt.
+Az alábbi képen egy runbook életciklusának részletes lépései láthatóak. Különböző módszereket tartalmaz a runbookok Azure Automation-ban való futtatásához, amelyek ahhoz szükségesek, hogy a hibrid runbook-feldolgozó Azure Automation runbookokat és interakciókat hajtson végre a különböző összetevők között. Az Automation-runbookok adatközpontban való végrehajtásával kapcsolatos további információkért tekintse meg a hibrid [runbook-dolgozókkal kapcsolatos tudnivalókat](automation-hybrid-runbook-worker.md)
 
-![Runbook architektúra](media/automation-starting-runbook/runbooks-architecture.png)
+![Runbook-architektúra](media/automation-starting-runbook/runbooks-architecture.png)
 
-## <a name="work-with-runbook-parameters"></a>Runbook paraméterek használata
+## <a name="work-with-runbook-parameters"></a>Runbook-paraméterek futtatása
 
-Ha a Azure Portal vagy a Windows PowerShellből indít el egy runbook, a rendszer az utasítást a Azure Automation webszolgáltatáson keresztül továbbítja. Ez a szolgáltatás nem támogatja az összetett adattípusú paramétereket. Ha egy összetett paraméterhez értéket kell megadnia, akkor azt egy másik runbook kell meghívnia a [Azure Automation gyermek runbookok](automation-child-runbooks.md)című témakörben leírtak szerint.
+Amikor elindít egy runbookot a Azure Portal vagy Windows PowerShell, az utasítás a webszolgáltatáson Azure Automation keresztül lesz elküldve. Ez a szolgáltatás nem támogatja az összetett adattípusokkal kapcsolatos paramétereket. Ha meg kell adnia egy értéket egy összetett paraméterhez, akkor azt egy másik runbookból beágyazottan kell hívnia a következőben: Gyermek [runbookok](automation-child-runbooks.md)az Azure Automation.
 
-A Azure Automation webszolgáltatás speciális funkciókat biztosít a bizonyos adattípusokat használó paraméterek számára, az alábbi szakaszokban leírtak szerint:
+A Azure Automation webszolgáltatás speciális funkciókat biztosít bizonyos adattípusokat használó paraméterekhez a következő szakaszokban leírtak szerint:
 
 ### <a name="named-values"></a>Névvel ellátott értékek
 
-Ha a paraméter adattípusa [objektum], akkor a következő JSON formátummal küldhet neki egy névvel ellátott értékek listáját: *{Name1: "érték1", Name2: "érték2", név3: "érték3"}*. Ezeknek az értékek csak egyszerű típusok lehetnek. A runbook az egyes megnevezett értékeknek megfelelő tulajdonságokkal rendelkező [pscustomobject formájában kapja](/dotnet/api/system.management.automation.pscustomobject) fogadja a paramétert.
+Ha a paraméter adattípusa [object], akkor a következő JSON-formátummal küldhet neki egy elnevezett értéklistát: *{Név1:'Érték1', Név2:'Érték2', Név3:'Érték3'}*. Ezeknek az értékek csak egyszerű típusok lehetnek. A runbook [PSCustomObjectként](/dotnet/api/system.management.automation.pscustomobject) kapja meg a paramétert az egyes elnevezett értékeknek megfelelő tulajdonságokkal.
 
 A következő tesztrunbook elfogad egy usernevű paramétert.
 
@@ -64,7 +65,7 @@ A user paraméterhez a következő szöveg használható.
 {FirstName:'Joe',LastName:'Smith',RepeatCount:'2',Show:'True'}
 ```
 
-Ez a következő kimenetet eredményezi:
+Ez a következő kimenetet ad vissza:
 
 ```output
 Joe
@@ -75,7 +76,7 @@ Smith
 
 ### <a name="arrays"></a>Tömbök
 
-Ha a paraméter egy tömb, például [Array] vagy [string []], akkor a következő JSON formátummal küldheti el az értékek listáját: *[érték1, érték2, érték3]*. Ezeknek az értékek csak egyszerű típusok lehetnek.
+Ha a paraméter egy tömb, például [array] vagy [string[]], akkor a következő JSON-formátummal küldhet neki értéklistát: *[Value1, Value2, Value3]*. Ezeknek az értékek csak egyszerű típusok lehetnek.
 
 A következő tesztrunbook elfogad egy *user* nevű paramétert.
 
@@ -100,7 +101,7 @@ A user paraméterhez a következő szöveg használható.
 ["Joe","Smith",2,true]
 ```
 
-Ez a következő kimenetet eredményezi:
+Ez a következő kimenetet ad vissza:
 
 ```output
 Joe
@@ -111,7 +112,7 @@ Smith
 
 ### <a name="credentials"></a>Hitelesítő adatok
 
-Ha a paraméter adattípusú, megadhatja `PSCredential` egy Azure Automation [hitelesítőadat](./shared-resources/credentials.md)-objektum nevét. A runbook a megadott névvel kérdezi le a hitelesítő adatokat. A következő teszt runbook fogad egy nevű paramétert `credential` .
+Ha a paraméter adattípusa , meg kell adnia egy hitelesítő `PSCredential` Azure Automation [nevét.](./shared-resources/credentials.md) A runbook lekéri a megadott nevű hitelesítő adatokat. A következő teszt runbook egy nevű paramétert fogad `credential` el.
 
 ```powershell
 Workflow Test-Parameters
@@ -123,35 +124,35 @@ Workflow Test-Parameters
 }
 ```
 
-A User paraméterhez a következő szöveg használható, feltéve, hogy létezik egy nevű hitelesítőadat-eszköz `My Credential` .
+A következő szöveg használható a felhasználói paraméterhez, feltéve, hogy van egy nevű hitelesítő `My Credential` adateszköz.
 
 ```input
 My Credential
 ```
 
-Feltételezve, hogy a Felhasználónév a hitelesítő adatokban `jsmith` , a következő kimenet jelenik meg.
+Feltéve, hogy a hitelesítő adatokban a felhasználónév `jsmith` , a következő kimenet jelenik meg.
 
 ```output
 jsmith
 ```
 
-## <a name="start-a-runbook-with-the-azure-portal"></a>Runbook elindítása a Azure Portal
+## <a name="start-a-runbook-with-the-azure-portal"></a>Runbook futtatása a Azure Portal
 
-1. A Azure Portal válassza az **Automation** lehetőséget, majd kattintson az Automation-fiók nevére.
-2. A központi menüben válassza a **runbookok** lehetőséget.
-3. A Runbookok lapon válasszon ki egy runbook, majd kattintson az **Indítás** gombra.
-4. Ha a runbook paraméterekkel rendelkezik, a rendszer felszólítja, hogy adjon meg értékeket az egyes paraméterekhez tartozó szövegmezővel. A paraméterekkel kapcsolatos további információkért lásd: [Runbook paraméterek](#work-with-runbook-parameters).
-5. A feladatok ablaktáblán megtekintheti a runbook-feladatok állapotát.
+1. A Azure Portal válassza az **Automation lehetőséget,** majd kattintson egy Automation-fiók nevére.
+2. A központi menüben válassza a **Runbookok lehetőséget.**
+3. A Runbookok lapon válasszon ki egy runbookot, majd kattintson a **Start gombra.**
+4. Ha a runbook paraméterekkel rendelkezik, a rendszer az értékeket minden paraméterhez egy szövegmezőben kéri. A paraméterekkel kapcsolatos további információkért lásd: [Runbook-paraméterek.](#work-with-runbook-parameters)
+5. A Feladat panelen megtekintheti a runbook-feladat állapotát.
 
-## <a name="start-a-runbook-with-powershell"></a>Runbook elindítása a PowerShell-lel
+## <a name="start-a-runbook-with-powershell"></a>Runbook futtatása a PowerShell használatával
 
-A [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) használatával elindíthat egy Runbook a Windows PowerShell segítségével. Az alábbi mintakód egy **test-runbook** nevű runbook indít el.
+A [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) használatával elindíthat egy runbookot a Windows PowerShell. A következő mintakód elindít egy **Test-Runbook nevű runbookot.**
 
 ```azurepowershell-interactive
 Start-AzAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
 ```
 
-`Start-AzAutomationRunbook` egy olyan runbook ad vissza, amelyet a rendszer az állapot nyomon követésére használhat a elindítása után. Ezt követően a [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob) használatával meghatározhatja a feladatok állapotát, és lekérheti a [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) a kimenet lekéréséhez. Az alábbi példa elindítja a **test-runbook** nevű runbook, megvárja, amíg befejeződik, majd megjeleníti a kimenetét.
+`Start-AzAutomationRunbook` A egy feladatobjektumot ad vissza, amely a runbook elindulása után az állapot nyomon követésére használható. Ezt a feladatobjektumot a [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob) parancs használatával használhatja a feladat állapotának meghatározásához, a [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) parancs használatával pedig lekérheti a kimenetét. Az alábbi példa elindít egy **Test-Runbook** nevű runbookot, megvárja, amíg befejeződik, majd megjeleníti a kimenetét.
 
 ```azurepowershell-interactive
 $runbookName = "Test-Runbook"
@@ -170,7 +171,7 @@ While ($doLoop) {
 Get-AzAutomationJobOutput -AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup -Stream Output
 ```
 
-Ha a runbook paramétereket igényel, akkor [szórótábla](/powershell/module/microsoft.powershell.core/about/about_hash_tables)kell megadnia őket. A szórótábla kulcsának meg kell egyeznie a paraméter nevével, és az érték a paraméter értéke. A következő példa bemutatja egy FirstName és egy LastName sztringparaméterrel, egy RepeatCount nevű egész számmal, valamint egy Show nevű logikai paraméterrel rendelkező runbook futtatását. A paraméterekkel kapcsolatos további információkért lásd: [Runbook paraméterek](#work-with-runbook-parameters).
+Ha a runbook paramétereket igényel, kivonattáblázatként kell meg [adnia őket.](/powershell/module/microsoft.powershell.core/about/about_hash_tables) A kivonattábla kulcsának egyeznie kell a paraméter nevével, az érték pedig a paraméter értéke. A következő példa bemutatja egy FirstName és egy LastName sztringparaméterrel, egy RepeatCount nevű egész számmal, valamint egy Show nevű logikai paraméterrel rendelkező runbook futtatását. A paraméterekkel kapcsolatos további információkért lásd: [Runbook-paraméterek.](#work-with-runbook-parameters)
 
 ```azurepowershell-interactive
 $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
@@ -179,6 +180,6 @@ Start-AzAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Te
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A runbook-kezelés részleteiért lásd: [Runbookok kezelése a Azure Automationban](manage-runbooks.md).
-* A PowerShell részleteiért lásd: [PowerShell-dokumentumok](/powershell/scripting/overview).
-* A runbook-végrehajtással kapcsolatos problémák elhárításához tekintse meg a [runbook kapcsolatos problémák elhárítása](troubleshoot/runbooks.md)című témakört.
+* A runbookok kezelésével kapcsolatos részletekért lásd: [Runbookok kezelése a Azure Automation.](manage-runbooks.md)
+* A PowerShell részleteiért lásd: [PowerShell Docs.](/powershell/scripting/overview)
+* A runbook végrehajtásával kapcsolatos hibák elhárításához lásd: [Runbookokkal kapcsolatos problémák elhárítása.](troubleshoot/runbooks.md)

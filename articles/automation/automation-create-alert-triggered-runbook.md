@@ -1,59 +1,60 @@
 ---
-title: Azure Automation runbook elindítására szolgáló riasztás használata
-description: Ez a cikk azt ismerteti, hogyan indíthat el egy runbook az Azure-riasztások kiváltásakor.
+title: Riasztás használata egy runbook Azure Automation aktiválása
+description: Ez a cikk bemutatja, hogyan aktiválhat egy Runbookot, hogy az Azure-riasztások kiváltásakor fusson.
 services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: ea7979ad4a401d317ec126b7abfe354690475235
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 36f1881ddd10498e7736de2d117a42021075abdc
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104953102"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834875"
 ---
-# <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Automation runbook elindítására szolgáló riasztás használata
+# <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Riasztás használata egy runbook Azure Automation aktiválása
 
-A [Azure monitor](../azure-monitor/overview.md) segítségével figyelheti az Azure-ban a legtöbb szolgáltatáshoz tartozó alapszintű mérőszámokat és naplókat. A feladatok a riasztások alapján történő automatizálásához a [műveleti csoportok](../azure-monitor/alerts/action-groups.md) segítségével Azure Automation runbookok hívható meg. Ebből a cikkből megtudhatja, hogyan konfigurálhat és futtathat egy runbook riasztások használatával.
+Az [Azure-Azure Monitor](../azure-monitor/overview.md) alapszintű metrikák és naplók figyelése a legtöbb szolgáltatáshoz használható. A runbookok Azure Automation műveletcsoportok használatával [](../azure-monitor/alerts/action-groups.md) automatizálhatók a feladatok a riasztások alapján. Ez a cikk bemutatja, hogyan konfigurálhat és futtathat runbookokat riasztások használatával.
 
 ## <a name="alert-types"></a>Riasztástípusok
 
-Az Automation runbookok háromféle riasztási típust használhat:
+Az Automation-runbookok három riasztástípussal használhatók:
 
 * Gyakori riasztások
 * Tevékenységnapló-riasztások
-* Közel valós idejű metrikus riasztások
+* Közel valós idejű metrikákra vonatkozó riasztások
 
 > [!NOTE]
-> A Common Alert séma szabványosítja a riasztási értesítések fogyasztási élményét az Azure-ban még ma. Az Azure-ban a három riasztási típust (metrikus, log és Activity log) a saját e-mail-sablonjai, webhook-sémái stb. is megkapta. További információ: [Common Alert Schema](../azure-monitor/alerts/alerts-common-schema.md)
+> A gyakori riasztási séma szabványosítja az Azure-beli riasztási értesítések használatának élményét. Korábban az Azure három riasztástípusa (metrika, napló és tevékenységnapló) saját e-mail-sablonokkal, webhooksémákat stb. tartalmazott. További információ: Gyakori [riasztási séma](../azure-monitor/alerts/alerts-common-schema.md)
 
-Amikor egy riasztás meghívja a runbook, a tényleges hívás egy HTTP POST-kérelem a webhooknak. A POST kérelem törzse egy JSON-formátumú objektumot tartalmaz, amely a riasztáshoz kapcsolódó hasznos tulajdonságokkal rendelkezik. Az alábbi táblázat felsorolja az egyes riasztási típusok adatforgalmi sémájára mutató hivatkozásokat:
+Amikor egy riasztás runbookot hív meg, a tényleges hívás egy HTTP POST kérés a webhooknak. A POST-kérés törzse egy JSON-formátumú objektumot tartalmaz, amely a riasztáshoz kapcsolódó hasznos tulajdonságokkal rendelkezik. A következő táblázat az egyes riasztási típus hasznos adatsémáira mutató hivatkozásokat sorolja fel:
 
-|Riasztás  |Leírás|Hasznos adatok sémája  |
+|Riasztás  |Description|Hasznos adatséma  |
 |---------|---------|---------|
-|[Gyakori riasztás](../azure-monitor/alerts/alerts-common-schema.md)|A gyakori riasztási séma, amely szabványosítja a riasztási értesítések fogyasztási élményét az Azure-ban még ma.|Gyakori riasztási adattartalom sémája|
-|[Tevékenység naplójának riasztása](../azure-monitor/alerts/activity-log-alerts.md)    |Értesítés küldése, ha az Azure-tevékenység naplójában minden új esemény megfelel bizonyos feltételeknek. Ha például egy művelet a `Delete VM` **myProductionResourceGroup** -ban vagy egy új, aktív állapotú Azure Service Health eseményt jelenít meg.| [Műveletnapló riasztási hasznos sémája](../azure-monitor/alerts/activity-log-alerts-webhook.md)        |
-|[Közel valós idejű metrika riasztása](../azure-monitor/alerts/alerts-metric-near-real-time.md)    |A metrikus riasztások gyorsabban küld értesítést, ha egy vagy több platform szintű metrika megfelel a megadott feltételeknek. Ha például egy virtuális gépen a **CPU%** értéke nagyobb, mint 90, és a **hálózat** értéke nagyobb, mint 500 MB az elmúlt 5 percben.| [A közel valós idejű metrikus riasztás hasznos adattartalma sémája](../azure-monitor/alerts/alerts-webhooks.md#payload-schema)          |
+|[Gyakori riasztás](../azure-monitor/alerts/alerts-common-schema.md)|A gyakori riasztási séma, amely szabványosítja az Azure-beli riasztási értesítések használatának élményét.|Gyakori riasztási hasznos adatsémák|
+|[Tevékenységnapló-riasztás](../azure-monitor/alerts/activity-log-alerts.md)    |Értesítést küld, ha az Azure-tevékenységnaplóban bármely új esemény megfelel bizonyos feltételeknek. Például ha egy művelet a `Delete VM` **myProductionResourceGroup** erőforráscsoportban történik, vagy Azure Service Health aktív állapotú új esemény jelenik meg.| [Tevékenységnapló-riasztás hasznos adatséma](../azure-monitor/alerts/activity-log-alerts-webhook.md)        |
+|[Közel valós idejű metrikák riasztása](../azure-monitor/alerts/alerts-metric-near-real-time.md)    |Gyorsabban küld értesítést, mint a metrikariasztás, ha egy vagy több platformszintű metrika megfelel a megadott feltételeknek. Ha például egy virtuális gépen a **processzorhasználat (%** ) értéke nagyobb 90-nél, és a **Network In** (Hálózati terhelés) értéke nagyobb 500 MB-nál az elmúlt 5 percben.| [Közel valós idejű metrikák riasztásának hasznos adatsémára](../azure-monitor/alerts/alerts-webhooks.md#payload-schema)          |
 
-Mivel az egyes riasztási típusok által megadott információk eltérnek, az egyes riasztási típusokat a rendszer eltérően kezeli. A következő szakaszban megtudhatja, hogyan hozhat létre egy runbook a különböző típusú riasztások kezeléséhez.
+Mivel az egyes riasztási típus által biztosított adatok eltérőek, az egyes riasztási típusokat eltérő módon kezeli a rendszer. A következő szakaszban megtudhatja, hogyan hozhat létre olyan runbookot, amely különböző típusú riasztásokat kezel.
 
-## <a name="create-a-runbook-to-handle-alerts"></a>Riasztások kezelésére szolgáló runbook létrehozása
+## <a name="create-a-runbook-to-handle-alerts"></a>Runbook létrehozása a riasztások kezeléshez
 
-Az Automation riasztásokkal való használatához olyan runbook van szüksége, amely a runbook továbbított riasztási JSON-adattartalmat kezeli. Az alábbi példában szereplő runbook egy Azure-riasztásból kell meghívni.
+Ahhoz, hogy az Automationt riasztásokkal használjuk, szüksége lesz egy olyan runbookra, amely a runbooknak átadott JSON-riasztás hasznos 7-et kezelő logikával rendelkezik. Az alábbi példa runbookot egy Azure-riasztásból kell meghívni.
 
-Az előző szakaszban leírtaknak megfelelően a riasztások típusai eltérő sémával rendelkeznek. A parancsfájl a `WebhookData` runbook bemeneti paraméterében lévő riasztásból veszi fel a webhook-adatokat. Ezután a parancsfájl kiértékeli a JSON-adattartalmat, hogy meghatározza, melyik riasztási típust használja.
+Az előző szakaszban leírtak szerint minden riasztástípus más sémával rendelkezik. A szkript a runbook bemeneti paraméterében található riasztásból veszi át a `WebhookData` webhookadatokat. Ezután a szkript kiértékeli a JSON-hasznos okat, hogy megállapítsa, melyik riasztástípust használja.
 
-Ez a példa egy virtuális gépről származó riasztást használ. Lekéri a virtuális gép adatait a hasznos adatokból, majd ezt az információt használja a virtuális gép leállításához. A kapcsolatokat a runbook futtató Automation-fiókban kell beállítani. Ha riasztásokat használ a runbookok elindításához, fontos, hogy a riasztási állapotot az aktivált runbook vizsgálja. A runbook minden alkalommal aktiválódik, amikor a riasztás állapota megváltozik. A riasztások több állapottal rendelkeznek, és a két leggyakoribb aktiválás és megoldás történik. Ellenőrizze, hogy van-e olyan állapot a runbook-logikában, amely biztosítja, hogy a runbook egynél többször ne fusson. A cikkben szereplő példa azt mutatja be, hogyan lehet megkeresni a riasztásokat csak az állapot aktiválásával.
+Ez a példa egy virtuális gépről származó riasztást használ. Lekéri a virtuális gép adatait a hasznos adatokból, majd ezeket az adatokat használja a virtuális gép leállítására. A kapcsolatot abban az Automation-fiókban kell beállítani, ahol a runbook fut. Ha riasztásokat használ a runbookok aktiváláshoz, fontos ellenőrizni a riasztás állapotát az aktivált runbookban. A runbook minden alkalommal aktiválódik, amikor a riasztás állapota megváltozik. A riasztások több állammal is rendelkezők, amelyek közül a két leggyakoribb az Aktiválva és a Feloldva. Ellenőrizze, hogy a runbook logikájában van-e állapot, és győződjön meg arról, hogy a runbook nem fut egynél több alkalommal. A cikkben látható példa bemutatja, hogyan kereshet csak aktivált állapotú riasztásokat.
 
-A runbook a kapcsolati eszköz `AzureRunAsConnection` [futtató fiók](./automation-security-overview.md) használatával hitelesíti az Azure-t, hogy végrehajtsa a felügyeleti műveletet a virtuális gépen.
+A runbook a kapcsolati eszközként futó fiókot használja az Azure-ral való hitelesítéshez, hogy végrehajtsa a felügyeleti `AzureRunAsConnection` [](./automation-security-overview.md) műveletet a virtuális gépen.
 
-Ez a példa egy **stop-AzureVmInResponsetoVMAlert** nevű runbook létrehozására használható. Módosíthatja a PowerShell-parancsfájlt, és számos különböző erőforrással használhatja azt.
+Ebben a példában egy **Stop-AzureVmInResponsetoVMAlert nevű runbookot hozhat létre.** Módosíthatja a PowerShell-szkriptet, és számos különböző erőforrással használhatja.
 
-1. Nyissa meg Azure Automation-fiókját.
-2. A **folyamat automatizálása** területen válassza a **runbookok** lehetőséget.
-3. A runbookok listájának tetején válassza a **+ Runbook létrehozása** lehetőséget.
-4. A **Runbook hozzáadása** lapon adja meg a **stop-AzureVmInResponsetoVMAlert** értéket a Runbook nevéhez. A runbook típusnál válassza a **PowerShell** lehetőséget. Ezután kattintson a **Létrehozás** elemre.  
-5. Másolja a következő PowerShell-példát a **Szerkesztés** lapra.
+1. Ugrás az Azure Automation fiókra.
+2. A **Folyamatautomatizálás alatt** válassza a **Runbookok lehetőséget.**
+3. A runbookok listájának tetején válassza a **+ Runbook létrehozása lehetőséget.**
+4. A **Runbook hozzáadása lapon** adja meg a **Stop-AzureVmInResponsetoVMAlert** nevet a runbook neveként. A runbook típusaként válassza a **PowerShell lehetőséget.** Ezután kattintson a **Létrehozás** elemre.  
+5. Másolja az alábbi PowerShell-példát a **Szerkesztés lapra.**
 
     ```powershell-interactive
     [OutputType("PSAzureOperationResponse")]
@@ -164,35 +165,35 @@ Ez a példa egy **stop-AzureVmInResponsetoVMAlert** nevű runbook létrehozásá
     }
     ```
 
-6. Válassza a **Közzététel** lehetőséget a runbook mentéséhez és közzétételéhez.
+6. A **runbook mentéshez** és közzétételéhez válassza a Közzététel lehetőséget.
 
 ## <a name="create-the-alert"></a>A riasztás létrehozása
 
-A riasztások olyan műveleti csoportokat használnak, amelyek a riasztás által aktivált műveletek gyűjteményei. A runbookok csak a műveletek csoportjaival használható számos művelet egyike.
+A riasztások műveletcsoportokat használnak, amelyek a riasztás által aktivált műveletek gyűjteményei. A runbookok csak egyike a műveletcsoportokkal használható számos műveletnek.
 
-1. Az Automation-fiókjában válassza a **figyelés** alatt a **riasztások** lehetőséget.
+1. Az Automation-fiókjában válassza a **Figyelés alatt a** **Riasztások lehetőséget.**
 1. Válassza a **+ Új riasztási szabály** lehetőséget.
-1. Kattintson a **kiválasztás** az **erőforrás** alatt elemre. Az **erőforrás kiválasztása** lapon válassza ki a virtuális gépet a riasztáshoz, majd kattintson a **kész** gombra.
-1. Kattintson  a feltétel hozzáadása **elemre**. Válassza ki a használni kívánt jelet, például a **százalékos CPU** -t, majd kattintson a **kész** gombra.
-1. A **jel logikai beállítása** lapon adja meg a **küszöbérték értékét** a **riasztási logika** területen, majd kattintson a **kész** gombra.
-1. A **műveleti csoportok** területen válassza az **új létrehozása** lehetőséget.
-1. A **műveleti csoport hozzáadása** lapon adjon meg egy nevet és egy rövid nevet a műveleti csoportnak.
-1. Adjon nevet a műveletnek. A Művelettípus mezőben válassza az **Automation Runbook** lehetőséget.
-1. Válassza a **részletek szerkesztése** lehetőséget. A **Runbook konfigurálása** lap **Runbook forrása** területén válassza a **felhasználó** lehetőséget.  
-1. Válassza ki az **előfizetést** és az **Automation-fiókot**, majd válassza a **stop-AzureVmInResponsetoVMAlert** runbook.  
-1. Válassza az **Igen** lehetőséget **az általános riasztási séma engedélyezéséhez**.
-1. A műveleti csoport létrehozásához kattintson **az OK gombra**.
+1. Kattintson **a Select (Kijelölés)** elemre a **Resource (Erőforrás) alatt.** Az Erőforrás kiválasztása lapon válassza **ki azt a** virtuális gépet, amelyről riasztást küld, majd kattintson a Kész **gombra.**
+1. Kattintson **a Feltétel hozzáadása lehetőségre** a Feltétel **alatt.** Válassza ki a használni kívánt jelet( például **Százalékos processzorhasználat)** és kattintson a **Kész gombra.**
+1. A **Jellogika konfigurálása** lapon  adja meg a Küszöbértéket a **Riasztási logika alatt,** majd kattintson a Kész **gombra.**
+1. A **Műveletcsoportok alatt válassza** az Új létrehozása **lehetőséget.**
+1. A **Műveletcsoport hozzáadása lapon** adjon meg egy nevet és egy rövid nevet a műveletcsoportnak.
+1. Nevezze el a műveletet. A művelet típusaként válassza az **Automation-runbook lehetőséget.**
+1. Válassza **a Részletek szerkesztése lehetőséget.** A **Runbook konfigurálása lapon,** a **Runbook forrása alatt válassza** a **Felhasználó lehetőséget.**  
+1. Válassza ki **előfizetését** és **Automation-fiókját,** majd a **Stop-AzureVmInResponsetoVMAlert** runbookot.  
+1. Válassza **az Igen** lehetőséget a Gyakori **riasztási séma engedélyezése beállításhoz.**
+1. A műveletcsoport létrehozásához kattintson az **OK gombra.**
 
-    ![Műveleti csoport hozzáadása lap](./media/automation-create-alert-triggered-runbook/add-action-group.png)
+    ![Műveletcsoport hozzáadása oldal](./media/automation-create-alert-triggered-runbook/add-action-group.png)
 
-    Ezt a műveleti csoportot a [tevékenység naplójának riasztásai](../azure-monitor/alerts/activity-log-alerts.md) és a létrehozott [valós idejű riasztások mellett](../azure-monitor/alerts/alerts-overview.md) is használhatja.
+    Ezt a műveletcsoportot a [létrehozott](../azure-monitor/alerts/activity-log-alerts.md) tevékenységnapló-riasztások és közel [valós](../azure-monitor/alerts/alerts-overview.md) idejű riasztások között használhatja.
 
-1. A **riasztás részletei** területen adja meg a riasztási szabály nevét és leírását, majd kattintson a **riasztási szabály létrehozása** elemre.
+1. A **Riasztás részletei alatt** adja meg a riasztási szabály nevét és leírását, majd kattintson a **Riasztási szabály létrehozása elemre.**
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A runbook webhook használatával történő indításához tekintse meg [a Runbook indítása webhookból](automation-webhooks.md)című témakört.
-* A runbook elindításának különböző módjaival kapcsolatban lásd: [Runbook elindítása](./start-runbooks.md).
-* A műveletnapló riasztásának létrehozásával kapcsolatban lásd: [műveletnapló riasztásai](../azure-monitor/alerts/activity-log-alerts.md).
-* A közel valós idejű riasztás létrehozásáról további információt [a riasztási szabály létrehozása a Azure Portalban](../azure-monitor/alerts/alerts-metric.md?toc=/azure/azure-monitor/toc.json)című témakörben talál.
-* A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation).
+* Runbook webhookkal való futtatásához lásd: Runbook futtatása [webhookból.](automation-webhooks.md)
+* A runbookok indításának különböző módjaiért [lásd: Runbookok futtatása.](./start-runbooks.md)
+* Tevékenységnapló-riasztás létrehozásához lásd: [Tevékenységnapló-riasztások létrehozása.](../azure-monitor/alerts/activity-log-alerts.md)
+* A közel valós idejű riasztások létrehozásáról a Riasztási szabály létrehozása a következő [Azure Portal.](../azure-monitor/alerts/alerts-metric.md?toc=/azure/azure-monitor/toc.json)
+* A PowerShell-parancsmagok referenciáját lásd: [Az.Automation](/powershell/module/az.automation).
