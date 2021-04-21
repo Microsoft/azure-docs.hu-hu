@@ -1,6 +1,6 @@
 ---
-title: Rendszerkép verziójának másolása egy másik katalógusból a CLI használatával
-description: Másolja a rendszerkép verzióját egy másik katalógusból az Azure CLI-vel.
+title: Rendszerképverzió másolása másik katalógusból a CLI használatával
+description: Rendszerképverzió másolása másik katalógusból az Azure CLI használatával.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -9,40 +9,40 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 0bea4fbac062b498dabe04e6e58d530d09b16d6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2cd885d886a0f13783e61a04c7243efdf12967e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553102"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784982"
 ---
-# <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Rendszerkép másolása egy másik gyűjteményből az Azure CLI használatával
+# <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Rendszerkép másolása másik katalógusból az Azure CLI használatával
 
-Ha a szervezet több gyűjteményt is tartalmaz, akkor a meglévő rendszerkép-verziókról is létrehozhat képverziókat más gyűjteményekben tárolt képekből. Előfordulhat például, hogy egy fejlesztési és tesztelési galériával új képeket szeretne létrehozni és tesztelni. Ha készen állnak az éles környezetben való használatra, az alábbi példán keresztül másolhatja őket egy éles katalógusba. Létrehozhat egy rendszerképet is egy másik katalógusban lévő rendszerképből [Azure PowerShell](image-version-another-gallery-powershell.md)használatával.
+Ha a szervezetben több katalógus is található, létrehozhat rendszerképverziókat is a más katalógusban tárolt meglévő rendszerképverziókból. Tegyük fel például, hogy fejlesztési és tesztelési katalógusa van az új lemezképek létrehozásához és teszteléséhez. Ha készen állnak az éles környezetben való használatra, az alábbi példával átmásolhatja őket egy éles katalógusba. Lemezképet egy másik katalógusban található képből is létrehozhat a [Azure PowerShell.](image-version-another-gallery-powershell.md)
 
 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikk végrehajtásához rendelkeznie kell egy meglévő forrás-és képdefinícióval, valamint a rendszerkép verziószámával. Emellett a célhelyen is szerepelnie kell. 
+A cikk befejezéséhez egy meglévő forráskatatárra, rendszerkép-definícióra és rendszerképverzióra van lehetőség. Emellett egy célgalériának is kell lennie. 
 
-A forrás-rendszerkép verzióját replikálni kell arra a régióra, ahol a célhely található. 
+A forrás rendszerkép verzióját replikálni kell arra a régióra, ahol a célkatatár található. 
 
-A cikkben végzett munka során szükség esetén cserélje le az erőforrások nevét.
+A cikk munka közben szükség esetén cserélje le az erőforrásneveket.
 
 
 
-## <a name="get-information-from-the-source-gallery"></a>Információk lekérése a forrás-katalógusból
+## <a name="get-information-from-the-source-gallery"></a>Információk lekérte a forrásgyűjteményből
 
-Információra van szüksége a forrás rendszerkép-definíciójában, hogy másolatot készítsen róla az új katalógusban.
+A forrásként használt rendszerkép definíciójának információira lesz szüksége, hogy másolatot hoz létre róla az új katalógusban.
 
-Az az [SIG List](/cli/azure/sig#az-sig-list) paranccsal információkat listázhat a rendelkezésre álló képtárakról a forrás-katalógussal kapcsolatos információk megkereséséhez.
+Az elérhető rendszerkép-katalógusok információinak felsorolása [az az sig list](/cli/azure/sig#az_sig_list) használatával a forráskatatárra vonatkozó információk keresésére.
 
 ```azurecli-interactive 
 az sig list -o table
 ```
 
-A katalógusban szereplő képdefiníciók listázása az [az SIG rendszerkép-definition List](/cli/azure/sig/image-definition#az-sig-image-definition-list)paranccsal. Ebben a példában a *MyGallery* nevű galériában keresünk képdefiníciókat a *myGalleryRG* erőforráscsoporthoz.
+Listsa ki a katalógusban található képdefiníciókat [az az sig image-definition list használatával.](/cli/azure/sig/image-definition#az_sig_image_definition_list) Ebben a példában képdefiníciókat keresünk a *myGallery* nevű katalógusban a *myGalleryRG* erőforráscsoportban.
 
 ```azurecli-interactive 
 az sig image-definition list \
@@ -51,7 +51,7 @@ az sig image-definition list \
    -o table
 ```
 
-Egy katalógusban lévő rendszerkép verzióinak listázása az az [SIG rendszerkép-Version List](/cli/azure/sig/image-version#az-sig-image-version-list) paranccsal megkeresheti az új katalógusba másolni kívánt rendszerkép verzióját. Ebben a példában a *myImageDefinition* rendszerkép definíciójának részét képező összes rendszerkép-verziót keresi.
+Listsa ki a katalógusban található rendszerkép verzióit az [az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) használatával, hogy megtalálja az új katalógusba másolni kívánt rendszerképverziót. Ebben a példában a *myImageDefinition* rendszerképdefiníció részét képezi összes rendszerképverziót keressük.
 
 ```azurecli-interactive
 az sig image-version list \
@@ -61,7 +61,7 @@ az sig image-version list \
    -o table
 ```
 
-Ha már rendelkezik az összes szükséges információval, a forrás rendszerkép verziójának AZONOSÍTÓját az [az SIG rendszerkép-Version show](/cli/azure/sig/image-version#az-sig-image-version-show)paranccsal kérheti le.
+Ha minden szükséges információ megvan, a forrásként használt rendszerkép-verzió azonosítóját [az az sig image-version show használatával kaphatja meg.](/cli/azure/sig/image-version#az_sig_image_version_show)
 
 ```azurecli-interactive
 az sig image-version show \
@@ -73,9 +73,9 @@ az sig image-version show \
 ```
 
 
-## <a name="create-the-image-definition"></a>A rendszerkép definíciójának létrehozása 
+## <a name="create-the-image-definition"></a>A rendszerkép-definíció létrehozása 
 
-Létre kell hoznia egy rendszerkép-definíciót, amely megfelel a forrás rendszerkép-verziójának definíciójának. A rendszerkép definíciójának újbóli létrehozásához szükséges összes információt megtekintheti az [az SIG rendszerkép-definition show](/cli/azure/sig/image-definition#az-sig-image-definition-show)paranccsal.
+Létre kell hoznia egy olyan rendszerkép-definíciót, amely megfelel a forrásként használt rendszerképverzió képdefiníciójának. A képdefiníció új katalógusban való újbóli létrehozása érdekében az [az sig image-definition show](/cli/azure/sig/image-definition#az_sig_image_definition_show)használatával minden információt láthat.
 
 ```azurecli-interactive
 az sig image-definition show \
@@ -114,7 +114,7 @@ A kimenet a következőhöz hasonlóan fog kinézni:
 }
 ```
 
-Hozzon létre egy új rendszerkép-definíciót az új galériában a fenti kimenetből származó információk használatával.
+Hozzon létre egy új képdefiníciót az új katalógusban a fenti kimenetben található információk alapján.
 
 
 ```azurecli-interactive 
@@ -133,11 +133,11 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>A rendszerkép verziójának létrehozása
 
-Verziók létrehozása [az az a rendszerkép-gyűjtemény létrehozása-rendszerkép-Version](/cli/azure/sig/image-version#az-sig-image-version-create). A rendszerkép verziójának létrehozásához meg kell adnia a felügyelt rendszerkép AZONOSÍTÓját. Az [az Image List](/cli/azure/image?view#az-image-list) paranccsal kérheti le az erőforráscsoporthoz tartozó rendszerképekkel kapcsolatos információkat. 
+Hozzon létre verziókat [az az image gallery create-image-version használatával.](/cli/azure/sig/image-version#az_sig_image_version_create) Meg kell adni a felügyelt rendszerkép azonosítóját, hogy alapkonfigurációként használva létrehozza a rendszerkép verzióját. Az az [image list használatával](/cli/azure/image?view#az_image_list) információkat kaphat az erőforráscsoportban található rendszerképekről. 
 
-A képverzió megengedett karaktereinek száma számok és időszakok. A számoknak egy 32 bites egész számon belüli tartományba kell esniük. Formátum: *MajorVersion*. *MinorVersion*. *Javítás*.
+A képverzió megengedett karakterei a számok és a időszakok. A számoknak egy 32 bites egész szám tartományán belül kell lennie. Formátum: *MajorVersion.* *Alverzió.* *Javítás.*
 
-Ebben a példában a rendszerkép verziója a *1.0.0* , és 1 replikát hozunk létre az *USA déli középső* régiójában, az USA *keleti* régiójában pedig 1 replikát használunk a zóna redundáns tárolásával.
+Ebben a példában a rendszerkép verziója *1.0.0,* és 1  replikát fogunk létrehozni az USA  déli középső régiójában, és 1 replikát az USA keleti régiójában zónaredundáns tárolás használatával.
 
 
 ```azurecli-interactive 
@@ -152,15 +152,15 @@ az sig image-version create \
 ```
 
 > [!NOTE]
-> Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült és replikálva lett ahhoz, hogy ugyanazt a felügyelt képet használhassa egy másik rendszerkép-verzió létrehozásához.
+> Meg kell várnia, amíg a rendszerkép teljes verziószáma befejeződik és replikálódik, mielőtt ugyanezt a felügyelt rendszerképet egy másik rendszerképverzió létrehozásához használhatja.
 >
-> A rendszerképet a Premium Storage-ban is tárolhatja `--storage-account-type  premium_lrs` , ha a rendszerkép verziójának létrehozásakor hozzáadja vagy zónába helyezi a [redundáns tárolást](../storage/common/storage-redundancy.md) `--storage-account-type  standard_zrs` .
+> A rendszerképet prémium szintű tárolóban is tárolhatja, ha hozzáadja a et, vagy zónaredundáns tárolást ad hozzá a `--storage-account-type  premium_lrs` rendszerképverzió [](../storage/common/storage-redundancy.md) `--storage-account-type  standard_zrs` létrehozásakor.
 >
 
 ## <a name="next-steps"></a>Következő lépések
 
-Hozzon létre egy virtuális gépet [általánosított](vm-generalized-image-version-cli.md) vagy [speciális](vm-specialized-image-version-cli.md) rendszerkép-verzióból.
+Hozzon létre egy virtuális gépet [egy általánosított vagy](vm-generalized-image-version-cli.md) egy [specializált rendszerképverzióból.](vm-specialized-image-version-cli.md)
 
-Azt is megteheti, hogy az [Azure rendszerkép-szerkesztő (előzetes verzió)](./image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és a meglévő rendszerkép-verzióról is frissítheti és [létrehozhatja az új rendszerkép verzióját](./linux/image-builder-gallery-update-image-version.md). 
+Emellett próbálja ki az [Azure Image Builder (előzetes verzió)](./image-builder-overview.md) szolgáltatását, amely segíthet automatizálni a rendszerképverzió létrehozását, sőt akár egy meglévő rendszerképverzióból is frissíthet és létrehozhat egy új [rendszerképverziót.](./linux/image-builder-gallery-update-image-version.md) 
 
-A vásárlási tervre vonatkozó információk megadásával kapcsolatos információkért lásd: [Azure Marketplace vásárlási terv információinak megadása képek létrehozásakor](marketplace-images.md).
+A vásárlási terv információinak megszabadlása: Supply Azure Marketplace purchase plan information when creating images (Vásárlási terv Azure Marketplace a [rendszerképek létrehozásakor).](marketplace-images.md)

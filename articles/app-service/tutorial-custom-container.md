@@ -1,20 +1,20 @@
 ---
-title: 'Oktatóanyag: egyéni rendszerkép létrehozása és futtatása Azure App Service'
-description: Lépésenkénti útmutató egyéni Linux-vagy Windows-lemezképek létrehozásához, a lemezkép Azure Container Registry való elküldéséhez, majd a lemezkép központi telepítéséhez Azure App Service. Megtudhatja, hogyan telepítheti át az egyéni szoftverek telepítését App Service egy egyéni tárolóban.
+title: 'Oktatóanyag: Egyéni rendszerkép létrehozása és futtatása a Azure App Service'
+description: Részletes útmutató egyéni Linux- vagy Windows-rendszerkép létrehozásához, a rendszerkép Azure Container Registry- és üzembe helyezéséhez a Azure App Service. Megtudhatja, hogyan telepíthet át egyéni szoftvereket App Service egyéni tárolókba.
 ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: msangapu
-keywords: Azure app Service, webalkalmazás, Linux, Windows, Docker, tároló
+keywords: azure app service, webalkalmazás, linux, windows, docker, tároló
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 5d3a714230f0279bd68b39cd02624866b9b3bacf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0770b46a60f497d3a3da772e7be13ece0526eca0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102180513"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765700"
 ---
-# <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Egyéni szoftver migrálása Azure App Service egyéni tároló használatával
+# <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Egyéni szoftver áttelepítése Azure App Service egyéni tároló használatával
 
 ::: zone pivot="container-windows"  
 
@@ -29,9 +29,9 @@ Az oktatóanyag elvégzéséhez:
 - <a href="https://hub.docker.com/" target="_blank">Regisztráció Docker Hub-fiókra</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Windows rendszerhez készült Docker telepítése</a>.
 - <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">A Docker átváltása Windows-tárolók futtatására</a>.
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">Telepítse a Visual Studio 2019</a> -et a **ASP.net, valamint a webes fejlesztési** és az **Azure-fejlesztési** számítási feladatokkal. Ha már telepítette a Visual Studio 2019-et:
-    - A   >  **frissítések keresése** lehetőségre kattintva telepítse a legújabb frissítéseket a Visual Studióban.
-    - Adja hozzá a számítási feladatokat a Visual Studióban **az eszközök**  >  **beolvasása eszközök és szolgáltatások lekérése** elemre kattintva.
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">Telepítse Visual Studio 2019-es</a> ASP.NET a webes **fejlesztéssel** és **az Azure-fejlesztési** számítási feladatokkal. Ha már telepítette Visual Studio 2019-es Visual Studio:
+    - Telepítse a legújabb frissítéseket a Visual Studio a **Súgó frissítések**  >  **keresése parancsra kattintva.**
+    - Adja hozzá a számítási feladatokat a Visual Studio **eszközök Eszközök** és  >  **szolgáltatások lekérte elemre kattintva.**
 
 ## <a name="set-up-the-app-locally"></a>Az alkalmazás helyi beállítása
 
@@ -56,7 +56,7 @@ Nyissa meg a *custom-font-win-container/CustomFontSample.sln* fájlt a Visual St
 
 Az alkalmazás hibakeresés nélküli futtatásához nyomja le a `Ctrl+F5` billentyűkombinációt. Az alkalmazás megjelenik az alapértelmezett böngészőben. 
 
-:::image type="content" source="media/tutorial-custom-container/local-app-in-browser.png" alt-text="Az alapértelmezett böngészőben megjelenített alkalmazást ábrázoló képernyőkép.":::
+:::image type="content" source="media/tutorial-custom-container/local-app-in-browser.png" alt-text="Képernyőkép az alkalmazás alapértelmezett böngészőben való megjelenítéséről.":::
 
 Az alkalmazás nem futtatható az App Service tesztkörnyezetben, mert egy telepített betűkészletet használ. Egy Windows-tároló használatával viszont üzembe helyezheti, mert a betűkészlet a Windows-tárolóban telepíthető.
 
@@ -64,9 +64,9 @@ Az alkalmazás nem futtatható az App Service tesztkörnyezetben, mert egy telep
 
 A Megoldáskezelőben kattintson jobb gombbal a **CustomFontSample** projektre, és válassza az **Add** > **Container Orchestration Support** (Hozzáadás > Container Orchestration Support) lehetőséget.
 
-:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Képernyőkép a Megoldáskezelő ablakról, amely a CustomFontSample projektet, a hozzáadást és a tároló Orchestrator támogató menüelemeket mutatja.":::
+:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Képernyőkép a Megoldáskezelő, melyen a CustomFontSample projekt, a Hozzáadás és a Tárolóvezénylés támogatása menüpont van kiválasztva.":::
 
-Válassza a **Docker-összeállítás**  >  **OK** elemet.
+Válassza a **Docker Compose**  >  **OK lehetőséget.**
 
 A projekt mostantól futtatható egy Windows-tárolóban. Egy _Docker-fájl_ lesz hozzáadva a **CustomFontSample** projekthez, illetve egy **docker-compose** projekt a megoldáshoz. 
 
@@ -98,13 +98,13 @@ Az [Azure Container Registry](../container-registry/index.yml) képes tárolni a
 
 A Megoldáskezelőben kattintson jobb gombbal a **CustomFontSample** projektre, majd válassza a **Publish** (Közzététel) lehetőséget.
 
-:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="Képernyőfelvétel a CustomFontSample-projektről és a közzétenni kívánt Megoldáskezelőról.":::
+:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="Képernyőkép a Megoldáskezelő CustomFontSample projekt és a Kijelölt Közzététel elemről.":::
 
 ### <a name="create-registry-and-publish"></a>Beállításjegyzék létrehozása és közzététele
 
-A Közzétételi varázslóban válassza a **Container Registry**  >  **új Azure Container Registry**  >  **Közzététel** lehetőséget.
+A közzétételi varázslóban válassza az **Új Container Registry**  >  **létrehozása Azure Container Registry**  >  **lehetőséget.**
 
-:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="A közzétételi varázsló képernyőképe, amelyen Container Registry, új Azure Container Registry létrehozása és a közzététel gomb van kiválasztva.":::
+:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Képernyőkép a közzétételi varázslóról, amely Container Registry, az Új Azure Container Registry létrehozása és a kijelölt Közzététel gombot mutatja.":::
 
 ### <a name="sign-in-with-azure-account"></a>Bejelentkezés az Azure-fiók használatával
 
@@ -133,35 +133,35 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-A bal oldali menüben válassza az **erőforrás létrehozása**  >  **webes**  >  **Web App for containers** elemet.
+A bal oldali menüben válassza az **Erőforrás létrehozása**  >  **Webalkalmazás**  >  **Web App for Containers.**
 
-### <a name="configure-app-basics"></a>Alkalmazás alapalapjainak konfigurálása
+### <a name="configure-app-basics"></a>Az alkalmazás alapjainak konfigurálása
 
-Az **alapvető** beállítások lapon konfigurálja a beállításokat az alábbi táblázat szerint, majd kattintson a Tovább gombra **: Docker**.
+Az Alapvető **beállítások lapon** konfigurálja a beállításokat a következő táblázat szerint, majd kattintson a **Tovább: Docker elemre.**
 
 | Beállítás  | Ajánlott érték | További tudnivalók |
 | ----------------- | ------------ | ----|
 |**Előfizetés**| Győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva. |  |
-|**Erőforráscsoport**| Válassza az **új létrehozása** elemet, írja be a **myResourceGroup**, majd kattintson **az OK** gombra. |  |
+|**Erőforráscsoport**| Válassza **az Új létrehozása lehetőséget,** írja be a **myResourceGroup parancsot,** majd kattintson az **OK gombra.** |  |
 |**Név**| Írjon be egy egyedi nevet. | A webalkalmazás URL-címe `http://<app-name>.azurewebsites.net`, amelyben az `<app-name>` az alkalmazás neve. |
 |**Közzététel**| Docker-tároló | |
 |**Operációs rendszer**| Windows | |
 |**Régió**| Nyugat-Európa | |
-|**Windows-csomag**| Válassza az **új létrehozása** elemet, írja be a **myAppServicePlan**, majd kattintson **az OK** gombra. | |
+|**Windows-csomag**| Válassza **az Új létrehozása lehetőséget,** írja be a **myAppServicePlan parancsot,** majd kattintson az **OK gombra.** | |
 
-Az **alapvető beállítások** lap így néz ki:
+Az **Alapvető beállítások lapnak** így kell kinéznie:
 
-![A webalkalmazás konfigurálásához használt alapjai lapot jeleníti meg.](media/tutorial-custom-container/configure-app-basics.png)
+![Megjeleníti a webalkalmazás konfiguráláshoz használt Alapvető beállítások lapot.](media/tutorial-custom-container/configure-app-basics.png)
 
 ### <a name="configure-windows-container"></a>Windows-tároló konfigurálása
 
-A **Docker** lapon konfigurálja az egyéni Windows-tárolót az alábbi táblázatban látható módon, majd válassza a **felülvizsgálat + létrehozás** elemet.
+A **Docker lapon** konfigurálja az egyéni Windows-tárolót az alábbi táblázatban látható módon, majd válassza a **Felülvizsgálat + létrehozás lehetőséget.**
 
 | Beállítás  | Ajánlott érték |
 | ----------------- | ------------ |
-|**Kép forrása**| Azure Container-regisztráció |
-|**Registry**| Válassza ki [a korábban létrehozott beállításjegyzéket](#publish-to-azure-container-registry). |
-|**Kép**| customfontsample |
+|**Kép forrása**| Azure Container Register |
+|**Registry**| Válassza [ki a korábban létrehozott beállításjegyzéket.](#publish-to-azure-container-registry) |
+|**Kép**| customfontsample (egyénifontsample) |
 |**Tag**| legújabb |
 
 ### <a name="complete-app-creation"></a>Alkalmazás létrehozásának befejezése
@@ -180,17 +180,17 @@ Kattintson a **Létrehozás** parancsra, majd várjon, amíg az Azure létrehozz
 
 Egy új böngészőlapon a következő oldal jelenik meg:
 
-![Megjeleníti a webalkalmazás új böngésző oldalát.](media/tutorial-custom-container/app-starting.png)
+![Megjeleníti a webalkalmazás új böngészőoldalát.](media/tutorial-custom-container/app-starting.png)
 
 Várjon néhány percet, és próbálkozzon újra, amíg meg nem jelenik a kezdőlap a várt, gyönyörű betűtípussal:
 
-![Megjeleníti a megadott betűkészlettel rendelkező kezdőlapot.](media/tutorial-custom-container/app-running.png)
+![Megjeleníti a kezdőlapot a beállított betűtípussal.](media/tutorial-custom-container/app-running.png)
 
 **Gratulálunk!** Áttelepített egy ASP.NET-alkalmazást az Azure App Service szolgáltatásba egy Windows-tárolóban.
 
 ## <a name="see-container-start-up-logs"></a>A tároló rendszerindítási naplóinak megtekintése
 
-A Windows-tároló betöltése hosszabb időbe telhet. Ha szeretné megtekinteni a folyamatot, keresse meg a következő URL-címet, *\<app-name>* és cserélje le az alkalmazás nevét.
+A Windows-tároló betöltése hosszabb időbe telhet. A folyamat előrehaladásának nyomon lépéséhez lépjen a következő URL-címre úgy, hogy a et az *\<app-name>* alkalmazás nevére cseréli.
 ```
 https://<app-name>.scm.azurewebsites.net/api/logstream
 ```
@@ -211,49 +211,49 @@ A streamelt naplók a következőképpen néznek ki:
 
 ::: zone pivot="container-linux"
 
-A Azure App Service a Docker-tároló technológiáját használja a beépített rendszerképek és az Egyéni rendszerképek üzemeltetéséhez. A beépített rendszerképek listájának megtekintéséhez futtassa az ["az WebApp List-Runtimes--Linux"](/cli/azure/webapp#az-webapp-list-runtimes)nevű Azure CLI-parancsot. Ha ezek a képek nem felelnek meg az igényeinek, létrehozhat és üzembe helyezhet egyéni lemezképeket.
+Azure App Service a Docker tárolótechnológiáját használja a beépített rendszerképek és az egyéni rendszerképek számára is. A beépített rendszerképek listájának listához futtassa az ["az webapp list-runtimes --linux" Azure CLI-parancsot.](/cli/azure/webapp#az_webapp_list_runtimes) Ha ezek a rendszerképek nem tesznek eleget az igényeinek, létrehozhat és üzembe helyezhet egy egyéni rendszerképet.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Hozzon létre egy egyéni rendszerképet, ha a beépített rendszerkép nem elégíti ki az igényeinek megfelelőt
-> * Az egyéni rendszerkép leküldése az Azure-beli privát tároló-beállításjegyzékbe
-> * Az egyéni rendszerkép futtatása App Service
+> * Egyéni rendszerkép létrehozása, ha nincs az igényeinek megfelelő beépített rendszerkép
+> * Az egyéni rendszerkép leküldése egy privát tároló-beállításjegyzékbe az Azure-ban
+> * Futtassa az egyéni rendszerképet a App Service
 > * Környezeti változók konfigurálása
-> * A rendszerkép frissítése és újbóli üzembe helyezése
+> * A rendszerkép frissítése és ismételt üzembeása
 > * Diagnosztikai naplók elérése
 > * Csatlakozás a tárolóhoz SSH használatával
 
-Az oktatóanyag elvégzésével kis díjat számítunk fel az Azure-fiókjában a Container Registry számára, és további költségekkel jár, ha a tárolót több mint egy hónap alatt üzemelteti.
+Ennek az oktatóanyagnak az elvégzése kis költséget jelent az Azure-fiókjában a tároló-beállításjegyzékért, és további költségekkel jár a tároló egy hónapnál hosszabb ideig tartó üzemeltetése.
 
 ## <a name="set-up-your-initial-environment"></a>A kezdeti környezet beállítása
 
-- Rendelkeznie kell aktív előfizetéssel rendelkező Azure-fiókkal. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Telepítse a [Docker](https://docs.docker.com/get-started/#setup)-t, amelyet Docker-rendszerképek létrehozásához használ. A Docker telepítéséhez szükség lehet a számítógép újraindítására.
+- Aktív előfizetéssel rendelkezik egy Azure-fiókkal. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- Telepítse a [Docker](https://docs.docker.com/get-started/#setup)alkalmazást, amellyel Docker-rendszerképeket lehet összeépíteni. A Docker telepítéséhez szükség lehet a számítógép újraindítására.
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
-- Az oktatóanyaghoz az Azure CLI 2.0.80 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez az oktatóanyaghoz az Azure CLI 2.0.80-as vagy újabb verziójára lesz szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
-A Docker telepítése vagy a Azure Cloud Shell futtatása után nyisson meg egy terminál ablakot, és ellenőrizze, hogy telepítve van-e a Docker:
+A Docker telepítése vagy a Azure Cloud Shell után nyisson meg egy terminálablakot, és ellenőrizze, hogy a Docker telepítve van-e:
 
 ```bash
 docker --version
 ```
 
-## <a name="clone-or-download-the-sample-app"></a>A minta alkalmazás klónozása vagy letöltése
+## <a name="clone-or-download-the-sample-app"></a>A mintaalkalmazás klónozása vagy letöltése
 
-Ehhez az oktatóanyaghoz a git-klón vagy a letöltés használatával szerezheti be a mintát.
+Az oktatóanyaghoz szükséges mintát git-klónon vagy letöltésen keresztül szerezheti be.
 
-### <a name="clone-with-git"></a>Klónozás a git-vel
+### <a name="clone-with-git"></a>Klónozás Git használatával
 
-A minta tárház klónozása:
+Klónozza a mintaadattárat:
 
 ```terminal
 git clone https://github.com/Azure-Samples/docker-django-webapp-linux.git --config core.autocrlf=input
 ```
 
-Ügyeljen arra, hogy tartalmazza az `--config core.autocrlf=input` argumentumot, amely garantálja a megfelelő sorok befejezését a Linux-tárolón belül használt fájlokban:
+A Linux-tárolóban használt fájlokban a megfelelő sorvégződések garantálása érdekében mindenképpen használja a `--config core.autocrlf=input` argumentumot:
 
-Ezután nyissa meg a mappát:
+Ezután a következő mappába kell ásni:
 
 ```terminal
 cd docker-django-webapp-linux
@@ -261,15 +261,15 @@ cd docker-django-webapp-linux
 
 ### <a name="download-from-github"></a>Letöltés a GitHubról
 
-A git-klón használata helyett látogasson el a klónozás lehetőségre, [https://github.com/Azure-Samples/docker-django-webapp-linux](https://github.com/Azure-Samples/docker-django-webapp-linux) majd válassza a **zip letöltése** lehetőséget.  
+Git-klón használata helyett látogasson el a webhelyre, válassza a [https://github.com/Azure-Samples/docker-django-webapp-linux](https://github.com/Azure-Samples/docker-django-webapp-linux) **Clone**(Klónozás) lehetőséget, majd a Download ZIP **(ZIP letöltése) lehetőséget.** 
 
-Csomagolja ki a ZIP-fájlt egy *Docker-Django-WebApp-Linux* nevű mappába. 
+Csomagolja ki a ZIP-fájlt egy *docker-django-webapp-linux nevű mappába.* 
 
-Ezután nyisson meg egy terminál-ablakot a *Docker-Django-WebApp-Linux* mappában.
+Ezután nyisson meg egy terminálablakot a *docker-django-webapp-linux mappában.*
 
-## <a name="optional-examine-the-docker-file"></a>Választható A Docker-fájl vizsgálata
+## <a name="optional-examine-the-docker-file"></a>(Nem kötelező) A Docker-fájl vizsgálata
 
-A _Docker_ nevű mintában szereplő fájl, amely leírja a Docker-rendszerképet, és konfigurációs utasításokat tartalmaz:
+A _Dockerfile_ nevű mintafájl, amely leírja a Docker-rendszerképet, és tartalmazza a konfigurációs utasításokat:
 
 ```Dockerfile
 FROM tiangolo/uwsgi-nginx-flask:python3.6
@@ -298,195 +298,195 @@ EXPOSE 8000 2222
 ENTRYPOINT ["init.sh"]
 ```
 
-* A parancsok első csoportja telepíti az alkalmazás követelményeit a környezetben.
-* A második parancs egy [SSH](https://www.ssh.com/ssh/protocol/) -kiszolgálót hoz létre a tároló és a gazdagép közötti biztonságos kommunikációhoz.
-* Az utolsó sor, `ENTRYPOINT ["init.sh"]` amely elindítja `init.sh` az SSH-szolgáltatást és a Python-kiszolgálót.
+* Az első parancscsoport telepíti az alkalmazás követelményeit a környezetben.
+* A második parancscsoport egy [SSH-kiszolgálót](https://www.ssh.com/ssh/protocol/) hoz létre a tároló és a gazdagép közötti biztonságos kommunikációhoz.
+* Az utolsó sor `ENTRYPOINT ["init.sh"]` () az `init.sh` meghívását hívja meg az SSH-szolgáltatás és a Python-kiszolgáló indításhoz.
 
-## <a name="build-and-test-the-image-locally"></a>A rendszerkép helyi létrehozása és tesztelése
+## <a name="build-and-test-the-image-locally"></a>A rendszerkép helyi összeállítása és tesztelése
 
 > [!NOTE]
-> A Docker hub [kvótákat használ az IP-címekhez tartozó névtelen lekérések számával és az ingyenes felhasználók által hitelesített lekérések számával (lásd az **adatátvitelt**)](https://www.docker.com/pricing). Ha azt tapasztalja, hogy a Docker hub-ból való lekérések korlátozottak, próbálja meg, `docker login` Ha még nincs bejelentkezve.
+> Docker Hub IP-címenkénti névtelen lekért adatok és az ingyenes felhasználónkénti hitelesített le pull-címek száma kvótával rendelkezik [(lásd: **Adatátvitel**)](https://www.docker.com/pricing). Ha azt veszi észre, hogy a Docker Hub lekért adatok korlátozottak, próbálja meg, ha még nincs `docker login` bejelentkezve.
 > 
 
-1. A rendszerkép létrehozásához futtassa a következő parancsot:
+1. Futtassa a következő parancsot a rendszerkép felépítéséhez:
 
     ```bash
     docker build --tag appsvc-tutorial-custom-image .
     ```
     
-1. Ellenőrizze, hogy a Build működik-e a Docker-tároló helyi futtatásával:
+1. Tesztelje a build működését a Docker-tároló helyi futtatásával:
 
     ```bash
     docker run -p 8000:8000 appsvc-tutorial-custom-image
     ```
     
-    Ez [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) a parancs az argumentumot tartalmazó portot adja meg, `-p` amelyet a rendszerkép neve követ. 
+    Ez a parancs a portot a argumentummal és a lemezkép [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) `-p` nevével adja meg. 
     
     > [!TIP]
-    > Ha Windows rendszeren fut, és megtekinti a hibát, *standard_init_linux. go: 211: az exec felhasználói folyamata "nincs ilyen fájl vagy könyvtár"*, a *init.sh* -fájl a várt LF végződés helyett a CR-LF sorok végét tartalmazza. Ez a hiba akkor fordul elő, ha a git használatával klónozott a minta tárházat, de kihagyta a `--config core.autocrlf=input` paramétert. Ebben az esetben a tárházat a "--config" argumentummal újra klónozással. A hiba akkor is megjelenhet, ha szerkesztette a *init.sh* , és CRLF-végződésekkel mentette. Ebben az esetben mentse újra a fájlt csak LF végződéssel.
+    > Ha Windows rendszeren fut, és a következő hibaüzenetet látja: *standard_init_linux.go:211: exec user process caused "no such file or directory"*(nincs ilyen fájl vagy könyvtár) a *init.sh-fájl* CR-LF sorvégződéseket tartalmaz a várt LF végződés helyett. Ez a hiba akkor fordul elő, ha a git használatával klónozta a mintaadattárat, de kihagyta a `--config core.autocrlf=input` paramétert. Ebben az esetben klónozza újra az adattárat a --config argumentummal. A hiba akkor is előfordulhat,  ha szerkesztette a init.sh CRLF végződésűre mentette. Ebben az esetben mentse újra a fájlt csak LF végződésekkel.
 
-1. `http://localhost:8000`A webalkalmazás és a tároló megfelelő működésének ellenőrzéséhez keresse fel a következőt:.
+1. Tallózással ellenőrizze, hogy a webalkalmazás és a tároló `http://localhost:8000` megfelelően működik-e.
 
     ![Webalkalmazás helyi tesztelése](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-local.png)
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Ebben a szakaszban és a következő lépésekben olyan erőforrásokat kell kiépíteni az Azure-ban, amelyeken leküldi a lemezképet, majd üzembe helyezi a tárolót Azure App Service. Először hozzon létre egy erőforráscsoportot, amelyben az összes erőforrást össze szeretné gyűjteni.
+Ebben és a következő szakaszban kiépíti azokat az erőforrásokat az Azure-ban, amelyekbe lekultálja a rendszerképet, majd üzembe helyez egy tárolót a Azure App Service. Először létrehoz egy erőforráscsoportot, amelyben összegyűjti ezeket az erőforrásokat.
 
-Futtassa az az [Group Create](/cli/azure/group#az-group-create) parancsot egy erőforráscsoport létrehozásához:
+Futtassa [az az group create parancsot](/cli/azure/group#az_group_create) egy erőforráscsoport létrehozásához:
 
 ```azurecli-interactive
 az group create --name AppSvc-DockerTutorial-rg --location westus2
 ```
 
-Az érték módosításával `--location` megadhatja az Ön közelében lévő régiót.
+Módosíthatja az `--location` értéket, hogy egy közeli régiót adjon meg.
 
 ## <a name="push-the-image-to-azure-container-registry"></a>A rendszerkép leküldése Azure Container Registry
 
-Ebben a szakaszban leküldi a rendszerképet arra a Azure Container Registry, amelyről a App Service telepítheti.
+Ebben a szakaszban lekulpeli a rendszerképet Azure Container Registry, App Service üzembe tudja helyezni.
 
-1. [`az acr create`](/cli/azure/acr#az-acr-create)Azure Container Registry létrehozásához futtassa a parancsot:
+1. Futtassa [`az acr create`](/cli/azure/acr#az_acr_create) az parancsot egy új Azure Container Registry:
 
     ```azurecli-interactive
     az acr create --name <registry-name> --resource-group AppSvc-DockerTutorial-rg --sku Basic --admin-enabled true
     ```
     
-    Cserélje le a helyére a `<registry-name>` beállításjegyzék megfelelő nevét. A név csak betűket és számokat tartalmazhat, és egyedinek kell lennie az összes Azure-ban.
+    Cserélje `<registry-name>` le a helyére a beállításjegyzék megfelelő nevét. A név csak betűket és számokat tartalmazhat, és egyedinek kell lennie az Azure-ban.
 
-1. Futtassa a [`az acr show`](/cli/azure/acr#az-acr-show) parancsot a beállításjegyzék hitelesítő adatainak lekéréséhez:
+1. Futtassa [`az acr show`](/cli/azure/acr#az_acr_show) az parancsot a beállításjegyzék hitelesítő adatainak lekéréséhez:
 
     ```azurecli-interactive
     az acr credential show --resource-group AppSvc-DockerTutorial-rg --name <registry-name>
     ```
     
-    A parancs JSON-kimenete két jelszót biztosít a beállításjegyzék felhasználónevével együtt.
+    A parancs JSON-kimenete két jelszót és a beállításjegyzék felhasználónevét biztosítja.
     
-1. A `docker login` parancs használatával jelentkezzen be a tároló-beállításjegyzékbe:
+1. Az `docker login` paranccsal jelentkezzen be a tároló-beállításjegyzékbe:
 
     ```bash
     docker login <registry-name>.azurecr.io --username <registry-username>
     ```
     
-    Cserélje `<registry-name>` le `<registry-username>` az és az értékeket az előző lépésekből származó értékekre. Ha a rendszer kéri, írja be az előző lépésben szereplő jelszavak egyikét.
+    Cserélje le `<registry-name>` a és `<registry-username>` a értékeket az előző lépésekből származó értékekre. Amikor a rendszer kéri, írja be az előző lépésben használt jelszavak valamelyikét.
 
-    Ugyanazt a beállításjegyzék-nevet használja a szakasz összes hátralévő lépésében.
+    A szakasz további lépéseinél ugyanazt a beállításjegyzék-nevet használja.
 
-1. Miután a bejelentkezés sikeres volt, címkézze meg a beállításjegyzék helyi Docker-rendszerképét:
+1. Ha a bejelentkezés sikeres, címkézd fel a helyi Docker-rendszerképet a regisztrációs adatbázishoz:
 
     ```bash
    docker tag appsvc-tutorial-custom-image <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
     ```    
 
-1. A következő `docker push` paranccsal küldje le a rendszerképet a beállításjegyzékbe:
+1. A `docker push` paranccsal lekérte a rendszerképet a beállításjegyzékbe:
 
     ```bash
     docker push <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
     ```
 
-    A rendszerkép feltöltése az első alkalommal eltarthat néhány percig, mert az kiinduló képet tartalmazza. A későbbi feltöltések általában gyorsabbak.
+    A rendszerkép első feltöltése eltarthat néhány percig, mert tartalmazza az alapként felhozott rendszerképet. A későbbi feltöltések általában gyorsabbak.
 
-    Várakozás közben a következő szakaszban ismertetett lépések végrehajtásával konfigurálhatja a App Servicet a beállításjegyzékből való telepítéshez.
+    Amíg várakozik, a következő szakaszban található lépésekkel konfigurálhatja a regisztrációs adatbázisból App Service üzembe helyezést.
 
-1. A `az acr repository list` parancs használatával ellenőrizze, hogy a leküldése sikeres volt-e:
+1. A `az acr repository list` paranccsal ellenőrizze, hogy a leküldés sikeres volt-e:
 
     ```azurecli-interactive
     az acr repository list -n <registry-name>
     ```
     
-    A kimenetnek meg kell jelenítenie a rendszerkép nevét.
+    A kimenetnek meg kell mutatnia a rendszerkép nevét.
 
 
-## <a name="configure-app-service-to-deploy-the-image-from-the-registry"></a>App Service konfigurálása a rendszerkép beállításjegyzékből való üzembe helyezéséhez
+## <a name="configure-app-service-to-deploy-the-image-from-the-registry"></a>A App Service konfigurálása a rendszerkép beállításjegyzékből való üzembe helyezéséhez
 
-Azure App Service tároló üzembe helyezéséhez először létre kell hoznia egy webalkalmazást a App Service, majd a webalkalmazást a tároló-beállításjegyzékhez kell kötni. A webalkalmazás indításakor App Service automatikusan lekéri a rendszerképet a beállításjegyzékből.
+Egy tároló üzembe helyezéséhez Azure App Service létre egy webalkalmazást a App Service, majd csatlakoztassa a webalkalmazást a tárolójegyzékhez. A webalkalmazás indításakor a App Service automatikusan lekérte a rendszerképet a beállításjegyzékből.
 
-1. Hozzon létre egy App Service tervet a [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) parancs használatával:
+1. Hozzon létre egy App Service tervet az [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) paranccsal:
 
     ```azurecli-interactive
     az appservice plan create --name AppSvc-DockerTutorial-plan --resource-group AppSvc-DockerTutorial-rg --is-linux
     ```
 
-    A App Service-csomag megfelel a webalkalmazást futtató virtuális gépnek. Alapértelmezés szerint az előző parancs egy olcsó B1-es [díjszabási szintet](https://azure.microsoft.com/pricing/details/app-service/linux/) használ, amely az első hónapban ingyenes. A szintet a paraméterrel szabályozhatja `--sku` .
+    A App Service csomag megfelel a webalkalmazást tartalmazó virtuális gépnek. Alapértelmezés szerint az előző parancs egy olcsó [B1 tarifacsomagot használ,](https://azure.microsoft.com/pricing/details/app-service/linux/) amely az első hónapban ingyenes. A szintet a paraméterrel `--sku` szabályozhatja.
 
-1. Hozza létre a webalkalmazást a következő [`az webpp create`](/cli/azure/webapp#az-webapp-create) paranccsal:
+1. Hozza létre a webalkalmazást az [`az webpp create`](/cli/azure/webapp#az_webapp_create) paranccsal:
 
     ```azurecli-interactive
     az webapp create --resource-group AppSvc-DockerTutorial-rg --plan AppSvc-DockerTutorial-plan --name <app-name> --deployment-container-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
     ```
     
-    Cserélje le a `<app-name>` nevet a webalkalmazás nevére, amelynek egyedinek kell lennie az összes Azure-ban. Cserélje le a `<registry-name>` elemet az előző szakaszban szereplő beállításjegyzék nevére is.
+    Cserélje `<app-name>` le a helyére a webalkalmazás nevét, amelynek az Egész Azure-ban egyedinek kell lennie. Cserélje le `<registry-name>` a helyére az előző szakaszból származó regisztrációs adatbázis nevét is.
 
-1. A [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) `WEBSITES_PORT` környezeti változó az alkalmazás kódjának megfelelően történő beállításához használja a következőt: 
+1. A [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) használatával állítsa be a környezeti `WEBSITES_PORT` változót az alkalmazáskód által várt módon: 
 
     ```azurecli-interactive
     az webapp config appsettings set --resource-group AppSvc-DockerTutorial-rg --name <app-name> --settings WEBSITES_PORT=8000
     ```
 
-    Cserélje le az `<app-name>` nevet az előző lépésben használt névre.
+    Cserélje `<app-name>` le a helyére az előző lépésben használt nevet.
     
-    A környezeti változóval kapcsolatos további információkért tekintse [meg a minta GitHub-tárházában található Readme](https://github.com/Azure-Samples/docker-django-webapp-linux)témakört.
+    A környezeti változóval kapcsolatos további információkért tekintse meg a minta [GitHub-adattárának információs fájlját.](https://github.com/Azure-Samples/docker-django-webapp-linux)
 
-1. [Felügyelt identitás](./overview-managed-identity.md) engedélyezése a webalkalmazás számára a következő [`az webapp identity assign`](/cli/azure/webapp/identity#az-webapp-identity-assign) paranccsal:
+1. Engedélyezze a felügyelt [identitást](./overview-managed-identity.md) a webalkalmazáshoz az [`az webapp identity assign`](/cli/azure/webapp/identity#az_webapp_identity-assign) paranccsal:
 
     ```azurecli-interactive
     az webapp identity assign --resource-group AppSvc-DockerTutorial-rg --name <app-name> --query principalId --output tsv
     ```
 
-    Cserélje le az `<app-name>` nevet az előző lépésben használt névre. A parancs kimenete (a és az argumentumok alapján szűrve `--query` `--output` ) a hozzárendelt identitás egyszerű szolgáltatása, amelyet hamarosan használ.
+    Cserélje `<app-name>` le a helyére az előző lépésben használt nevet. A parancs kimenete (a és argumentumokkal szűrve) a hozzárendelt identitás szolgáltatásnévje, amelyet hamarosan `--query` `--output` használni fog.
 
-    A felügyelt identitás lehetővé teszi, hogy engedélyeket adjon a webalkalmazásnak más Azure-erőforrások eléréséhez, anélkül, hogy konkrét hitelesítő adatokat kellene megadnia.
+    A felügyelt identitással konkrét hitelesítő adatok nélkül adhat engedélyeket a webalkalmazásnak más Azure-erőforrások eléréséhez.
 
-1. Kérje le az előfizetés-azonosítót a [`az account show`](/cli/azure/account#az-account-show) paranccsal, amelyet a következő lépésben kell megadnia:
+1. Az előfizetés-azonosítót az paranccsal kell lekérni, amelyre a [`az account show`](/cli/azure/account#az_account_show) következő lépésben lesz szüksége:
 
     ```azurecli-interactive
     az account show --query id --output tsv
     ``` 
 
-1. Adja meg a webalkalmazás engedélyt a tároló beállításjegyzékének eléréséhez:
+1. Adjon engedélyt a webalkalmazásnak a tároló-beállításjegyzék elérésére:
 
     ```azurecli-interactive
     az role assignment create --assignee <principal-id> --scope /subscriptions/<subscription-id>/resourceGroups/AppSvc-DockerTutorial-rg/providers/Microsoft.ContainerRegistry/registries/<registry-name> --role "AcrPull"
     ```
 
     Cserélje le a következő értékeket:
-    - `<principal-id>` a szolgáltatás egyszerű azonosítója a `az webapp identity assign` parancsból
+    - `<principal-id>` a parancsban a szolgáltatásnév `az webapp identity assign` azonosítójával
     - `<registry-name>` a tároló-beállításjegyzék nevével
-    - `<subscription-id>`a parancsból beolvasott előfizetés-AZONOSÍTÓval `az account show`
+    - `<subscription-id>` a parancsból lekért `az account show` előfizetés-azonosítóval
 
-További információ ezekről az engedélyekről: [Mi az Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) és 
+További információ ezekről az engedélyekről: [Mi az az Azure szerepköralapú hozzáférés-vezérlés és](../role-based-access-control/overview.md) 
 
 ## <a name="deploy-the-image-and-test-the-app"></a>A rendszerkép üzembe helyezése és az alkalmazás tesztelése
 
-Ezeket a lépéseket akkor hajthatja végre, ha a rendszerkép leküldése a tároló-beállításjegyzékbe történik, és a App Service teljesen kiépítve.
+Ezeket a lépéseket akkor használhatja, ha a rendszerkép le van küldve a tároló-beállításjegyzékbe, és App Service rendszerkép teljes mértékben ki van építve.
 
-1. A [`az webapp config container set`](/cli/azure/webapp/config/container#az-webapp-config-container-set) paranccsal adhatja meg a tároló-beállításjegyzéket és a webalkalmazáshoz telepítendő lemezképet:
+1. Az [`az webapp config container set`](/cli/azure/webapp/config/container#az_webapp_config_container_set) paranccsal adhatja meg a tároló-beállításjegyzéket és a webalkalmazáshoz üzembe helyező rendszerképet:
 
     ```azurecli-interactive
     az webapp config container set --name <app-name> --resource-group AppSvc-DockerTutorial-rg --docker-custom-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest --docker-registry-server-url https://<registry-name>.azurecr.io
     ```
     
-    Cserélje le a `<app_name>` nevet a webalkalmazás nevére, és cserélje le `<registry-name>` két helyen a beállításjegyzék nevével. 
+    Cserélje `<app_name>` le a helyére a webalkalmazás nevét, a helyére pedig két helyen a regisztrációs adatbázis `<registry-name>` nevét. 
 
-    - Ha a Docker hub-tól eltérő beállításjegyzéket használ (ebben a példában látható), akkor `--docker-registry-server-url` `https://` a beállításjegyzék teljes tartományneve után kell formázni.
-    - A következő üzenet jelenik meg: "nincs hitelesítő adat a Azure Container Registry eléréséhez. Kísérlet a keresésre... " azt jelzi, hogy az Azure az alkalmazás felügyelt identitását használja a tároló beállításjegyzékének hitelesítéséhez, és nem kér felhasználónevet és jelszót.
-    - Ha hibát tapasztal, a "AttributeError:" NoneType "objektumnak nincs" foglalt "attribútuma, ellenőrizze, hogy `<app-name>` helyes-e.
+    - Ha a beállításjegyzéket nem Docker Hub (ahogy a példában is látható), a formátumát a beállításjegyzék teljes tartománynevének megfelelően `--docker-registry-server-url` `https://` kell formázni.
+    - A következő üzenet jelenik meg: "Nem adott meg hitelesítő adatokat a Azure Container Registry. Keresni próbál..." A azt jelzi, hogy az Azure az alkalmazás felügyelt identitását használja a tároló-beállításjegyzékben való hitelesítéshez, és nem kér felhasználónevet és jelszót.
+    - Ha a "AttributeError: "NoneType" objektum nem rendelkezik "reserved" attribútummal, ellenőrizze, hogy `<app-name>` helyes-e.
 
     > [!TIP]
-    > A webalkalmazás tárolójának beállításait bármikor lekérheti a paranccsal `az webapp config container show --name <app-name> --resource-group AppSvc-DockerTutorial-rg` . A rendszerkép a tulajdonságban van megadva `DOCKER_CUSTOM_IMAGE_NAME` . Ha a webalkalmazás üzembe helyezése az Azure DevOps vagy a Azure Resource Manager-sablonokon keresztül történik, akkor a lemezkép a nevű tulajdonságban is megjelenhet `LinuxFxVersion` . Mindkét tulajdonság ugyanazt a célt szolgálja. Ha mindkettő megtalálható a webalkalmazás konfigurációjában, `LinuxFxVersion` elsőbbséget élvez.
+    > A webalkalmazás tárolóbeállítását bármikor lekérheti a `az webapp config container show --name <app-name> --resource-group AppSvc-DockerTutorial-rg` paranccsal. A rendszerkép a tulajdonságban van `DOCKER_CUSTOM_IMAGE_NAME` megadva. Ha a webalkalmazást az Azure DevOps vagy Azure Resource Manager használatával telepíti, a rendszerkép egy nevű tulajdonságban is `LinuxFxVersion` megjelenhet. Mindkét tulajdonság ugyanazt a célt szolgálja. Ha mindkettő jelen van a webalkalmazás konfigurációjában, a `LinuxFxVersion` elsőbbséget élvez.
 
-1. A `az webapp config container set` parancs végrehajtása után a webalkalmazásnak a app Service tárolójában kell futnia.
+1. A parancs befejeződik, a webalkalmazásnak futnia kell a tárolóban `az webapp config container set` a App Service.
 
-    Az alkalmazás teszteléséhez keresse meg a `http://<app-name>.azurewebsites.net` következőt:, és cserélje le a kifejezést `<app-name>` a webalkalmazás nevére. Először is eltarthat egy ideig, amíg az alkalmazás válaszolni tud, mert App Service a teljes rendszerképet a beállításjegyzékből kell lekérnie. Ha a böngésző túllépi az időkorlátot, csak frissítse az oldalt. A kezdeti rendszerkép kihúzása után a további tesztek sokkal gyorsabban futnak.
+    Az alkalmazás teszteléséhez nyissa meg a webhelyet, és cserélje le a et `http://<app-name>.azurewebsites.net` `<app-name>` a webalkalmazás nevére. Az első hozzáféréskor az alkalmazásnak némi időre van szükség, mert App Service a teljes rendszerképet le kell vennie a regisztrációs adatbázisból. Ha a böngésző időkorrekta, egyszerűen frissítse az oldalt. A kezdeti rendszerkép lekért futtatása után a további tesztek sokkal gyorsabban fognak futni.
 
-    ![Az Azure-beli webalkalmazás sikeres tesztelése](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-azure.png)
+    ![A webalkalmazás sikeres tesztelése az Azure-ban](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-azure.png)
 
-## <a name="modify-the-app-code-and-redeploy"></a>Az alkalmazás kódjának módosítása és újbóli üzembe helyezése
+## <a name="modify-the-app-code-and-redeploy"></a>Az alkalmazás kódának módosítása és ismételt üzembe állás
 
-Ebben a szakaszban módosítja a webalkalmazás kódját, újraépíti a tárolót, majd leküldi a tárolót a beállításjegyzékbe. App Service ezután automatikusan lekéri a frissített rendszerképet a beállításjegyzékből a futó webalkalmazás frissítéséhez.
+Ebben a szakaszban módosítja a webalkalmazás kódját, újraépíti a tárolót, majd lekultálja a tárolót a regisztrációs adatbázisba. App Service le a frissített rendszerképet a beállításjegyzékből a futó webalkalmazás frissítéséhez.
 
-1. A helyi *Docker-Django-WebApp-Linux* mappában Nyissa meg a file *app/templates/app/index.html* fájlt.
+1. A helyi *docker-django-webapp-linux* mappában nyissa meg az *app/templates/app/index.htmfájlt.*
 
-1. Módosítsa az első HTML-elemet úgy, hogy az megfeleljen a következő kódnak.
+1. Módosítsa az első HTML-elemet úgy, hogy az megfeleljen az alábbi kódnak.
 
     ```html
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -500,13 +500,13 @@ Ebben a szakaszban módosítja a webalkalmazás kódját, újraépíti a tárol�
     
 1. Mentse a módosításokat.
 
-1. Váltson a *Docker-Django-WebApp-Linux* mappára, és hozza létre újra a rendszerképet:
+1. Váltsa át a *docker-django-webapp-linux* mappát, és építse újra a rendszerképet:
 
     ```bash
     docker build --tag appsvc-tutorial-custom-image .
     ```
 
-1. Frissítse a rendszerkép címkéjén található verziószámot v 1.0.1-re:
+1. Frissítse a rendszerkép címkében a verziószámot az 1.0.1-es verzióra:
 
     ```bash
     docker tag appsvc-tutorial-custom-image <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
@@ -514,7 +514,7 @@ Ebben a szakaszban módosítja a webalkalmazás kódját, újraépíti a tárol�
 
     Cserélje le a `<registry-name>` elemet a tárolójegyzék nevére.
 
-1. Küldje le a rendszerképet a beállításjegyzékbe:
+1. A rendszerkép leküldése a beállításjegyzékbe:
 
     ```bash
     docker push <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
@@ -526,19 +526,19 @@ Ebben a szakaszban módosítja a webalkalmazás kódját, újraépíti a tárol�
     az webapp restart --name <app_name> --resource-group AppSvc-DockerTutorial-rg
     ```
 
-    A `<app_name>` rész helyére a webalkalmazás nevét írja be. Újraindítás után App Service lekéri a frissített rendszerképet a tároló-beállításjegyzékből.
+    A `<app_name>` rész helyére a webalkalmazás nevét írja be. Újraindításkor a App Service le a frissített rendszerképet a tároló-beállításjegyzékből.
 
-1. A tallózással ellenőrizze, hogy a frissítés telepítve van-e `http://<app-name>.azurewebsites.net` .
+1. Ellenőrizze, hogy a frissítés telepítve lett-e. Ezt a következő oldal egyikében ellenőrizheti: `http://<app-name>.azurewebsites.net` .
 
 ## <a name="access-diagnostic-logs"></a>Diagnosztikai naplók elérése
 
-1. A tároló naplózásának bekapcsolása:
+1. A tárolónaplózás bekapcsolása:
 
     ```azurecli-interactive
     az webapp log config --name <app-name> --resource-group AppSvc-DockerTutorial-rg --docker-container-logging filesystem
     ```
     
-1. A log stream engedélyezése:
+1. Engedélyezze a naplóstreamet:
 
     ```azurecli-interactive
     az webapp log tail --name <app-name> --resource-group AppSvc-DockerTutorial-rg
@@ -548,15 +548,15 @@ Ebben a szakaszban módosítja a webalkalmazás kódját, újraépíti a tárol�
 
     A naplófájlokat a böngészőből is megtekintheti a következő címen: `https://<app-name>.scm.azurewebsites.net/api/logs/docker`.
 
-1. Ha bármikor le szeretné állítani a naplózási adatfolyamot, írja be a **CTRL C billentyűt** + .
+1. A naplóstreamelést bármikor leállíthatja a **Ctrl** C + **billentyűkombinációval.**
 
 ## <a name="connect-to-the-container-using-ssh"></a>Csatlakozás a tárolóhoz SSH használatával
 
-Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommunikációt. A tárolóhoz való SSH-kapcsolatok engedélyezéséhez konfigurálnia kell az egyéni rendszerképet. Miután a tároló fut, megnyithat egy SSH-kapcsolatokat.
+Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommunikációt. A tárolóhoz való SSH-kapcsolat engedélyezéséhez konfigurálni kell hozzá az egyéni rendszerképet. Ha a tároló már fut, megnyithat egy SSH-kapcsolatot.
 
-### <a name="configure-the-container-for-ssh"></a>Az SSH-tároló konfigurálása
+### <a name="configure-the-container-for-ssh"></a>A tároló konfigurálása SSH-hez
 
-Az oktatóanyagban használt minta alkalmazás már rendelkezik a szükséges konfigurációval a *Docker*, amely telepíti az SSH-kiszolgálót, és beállítja a bejelentkezési hitelesítő adatokat is. Ez a szakasz csak tájékoztató információkat tartalmaz. A tárolóhoz való kapcsolódáshoz ugorjon a következő szakaszra
+Az oktatóanyagban használt mintaalkalmazás már rendelkezik a szükséges konfigurációval a *Dockerfile-ban,* amely telepíti az SSH-kiszolgálót, és beállítja a bejelentkezési hitelesítő adatokat. Ez a szakasz csak tájékoztató. A tárolóhoz való csatlakozáshoz ugorjon a következő szakaszra
 
 ```Dockerfile
 ENV SSH_PASSWD "root:Docker!"
@@ -568,9 +568,9 @@ RUN apt-get update \
 ```
 
 > [!NOTE]
-> Ez a konfiguráció nem engedélyezi a külső kapcsolatokat a tárolóval. Az SSH csak a Kudu/SCM webhelyen keresztül érhető el. Az kudu/SCM-hely hitelesítése az Azure-fiókkal történik.
+> Ez a konfiguráció nem engedélyezi a tárolóhoz való külső kapcsolatokat. Az SSH csak a Kudu/SCM webhelyen keresztül érhető el. A Kudu/SCM webhely hitelesítése az Ön Azure-fiókjával történik.
 
-A *Docker* az *sshd_config* fájlt is átmásolja a */etc/ssh/* mappába, és az 2222-es portot a tárolón teszi elérhetővé:
+A *Dockerfile* a sshd_config *az* */etc/ssh/* mappába másolja, és elérhetővé teszi a tároló 2222-es portját:
 
 ```Dockerfile
 COPY sshd_config /etc/ssh/
@@ -580,9 +580,9 @@ COPY sshd_config /etc/ssh/
 EXPOSE 8000 2222
 ```
 
-Az 2222-es port egy belső port, amely csak a privát virtuális hálózathoz tartozó Bridge hálózaton lévő tárolók számára érhető el. 
+A 2222-es port egy belső port, amelyet csak a privát virtuális hálózat hídhálózatán belüli tárolók érhetők el. 
 
-Végül, a *init.sh*, elindítja az SSH-kiszolgálót.
+Végül a bejegyzés parancsfájlja (a *init.sh* elindítja az SSH-kiszolgálót.
 
 ```bash
 #!/bin/bash
@@ -591,15 +591,15 @@ service ssh start
 
 ### <a name="open-ssh-connection-to-container"></a>A tároló SSH-kapcsolatának megnyitása
 
-1. Keresse meg `https://<app-name>.scm.azurewebsites.net/webssh/host` és jelentkezzen be az Azure-fiókjával. A `<app-name>` rész helyére a webalkalmazás nevét írja be.
+1. Nyissa meg `https://<app-name>.scm.azurewebsites.net/webssh/host` a webhelyet, és jelentkezzen be Azure-fiókjával. A `<app-name>` rész helyére a webalkalmazás nevét írja be.
 
-1. Miután bejelentkezett, a rendszer átirányítja a webalkalmazáshoz tartozó információs oldalra. Válassza az **SSH** lehetőséget az oldal tetején a rendszerhéj megnyitásához és a parancsok használatához.
+1. Miután bejelentkezett, a rendszer átirányítja a webalkalmazás információs oldalára. Az oldal tetején válassza az **SSH** lehetőséget a rendszerhéj megnyitásához és a parancsok használathoz.
 
-    Megvizsgálhatja például a-ben futó folyamatokat a parancs használatával `top` .
+    Például megvizsgálhatja a benne futó folyamatokat az `top` paranccsal.
     
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az ebben a cikkben létrehozott erőforrások folyamatos költségeket okozhatnak. az erőforrások törléséhez csak az azokat tartalmazó erőforráscsoportot kell törölnie:
+Az ebben a cikkben létrehozott erőforrások folyamatos költségekkel is járhatnak. Az erőforrások törléséhez csak az azokat tartalmazó erőforráscsoportot kell törölnie:
 
 ```azurecli
 az group delete --name AppSvc-DockerTutorial-rg
@@ -612,27 +612,27 @@ az group delete --name AppSvc-DockerTutorial-rg
 Az alábbiak elvégzését ismerte meg:
 
 > [!div class="checklist"]
-> * Egyéni rendszerkép üzembe helyezése egy privát tároló beállításjegyzékében
-> * Üzembe helyezés és az egyéni lemezkép App Service
+> * Egyéni rendszerkép üzembe helyezése privát tároló-beállításjegyzékben
+> * Üzembe helyezés és az egyéni rendszerkép a App Service
 ::: zone pivot="container-linux"
-> * A rendszerkép frissítése és újbóli üzembe helyezése
+> * A rendszerkép frissítése és ismételt üzembeása
 ::: zone-end
 > * Diagnosztikai naplók elérése
 ::: zone pivot="container-linux"
 > * Csatlakozás a tárolóhoz SSH használatával
 ::: zone-end
 
-A következő oktatóanyagban megismerheti, hogyan képezhető le egyéni DNS-név az alkalmazáshoz.
+A következő oktatóanyagból megtudhatja, hogyan lehet leképezni egy egyéni DNS-nevet az alkalmazáshoz.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: egyéni DNS-név leképezése az alkalmazáshoz](app-service-web-tutorial-custom-domain.md)
+> [Oktatóanyag: Egyéni DNS-név leképezése az alkalmazásra](app-service-web-tutorial-custom-domain.md)
 
-Vagy tekintse meg a többi erőforrást:
+Vagy tekintse meg az egyéb erőforrásokat:
 
 > [!div class="nextstepaction"]
 > [Egyéni tároló konfigurálása](configure-custom-container.md)
 
 ::: zone pivot="container-linux"
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Multi-Container WordPress-alkalmazás](tutorial-multi-container-app.md)
+> [Oktatóanyag: Többtárolós WordPress-alkalmazás](tutorial-multi-container-app.md)
 ::: zone-end

@@ -1,30 +1,30 @@
 ---
-title: Function-alkalmazás létrehozása prémium csomagból – Azure CLI
-description: Function-alkalmazás létrehozása az Azure-ban skálázható prémium csomaggal az Azure CLI használatával
+title: Függvényalkalmazás létrehozása prémium szintű csomagon – Azure CLI
+description: Függvényalkalmazás létrehozása skálázható Prémium szintű csomagon az Azure-ban az Azure CLI használatával
 ms.service: azure-functions
 ms.topic: sample
 ms.date: 11/23/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 714dd8d886f567bcdf07c93803662ef4b2c635f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d9f72fa433364f8d71ba44207d570bb827cd243
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94565162"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786203"
 ---
-# <a name="create-a-function-app-in-a-premium-plan---azure-cli"></a>Function-alkalmazás létrehozása prémium csomagból – Azure CLI
+# <a name="create-a-function-app-in-a-premium-plan---azure-cli"></a>Függvényalkalmazás létrehozása prémium szintű csomagon – Azure CLI
 
-Ez az Azure Functions-példaszkript egy függvényalkalmazást hoz létre, amely az Ön függvényeinek tárolójaként szolgál. A létrehozott Function alkalmazás [méretezhető prémium csomagot](../functions-premium-plan.md)használ.
+Ez az Azure Functions-példaszkript egy függvényalkalmazást hoz létre, amely az Ön függvényeinek tárolójaként szolgál. A létrehozott függvényalkalmazás egy skálázható [Prémium szintű csomagot használ.](../functions-premium-plan.md)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - Az oktatóanyaghoz az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+ - Az oktatóanyaghoz az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 ## <a name="sample-script"></a>Példaszkript
 
-Ez a szkript egy [Prémium csomag](../functions-premium-plan.md)használatával hoz létre egy Function alkalmazást.
+Ez a szkript létrehoz egy függvényalkalmazást egy [prémium szintű csomag használatával.](../functions-premium-plan.md)
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-premium-plan/create-function-app-premium-plan.sh "Create an Azure Function on an App Service plan")]
 
@@ -36,10 +36,10 @@ A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatk
 
 | Parancs | Jegyzetek |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Létrehoz egy Azure Storage-fiókot. |
-| [az functionapp Plan Create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | Egy prémium szintű csomagot hoz létre egy [adott SKU](../functions-premium-plan.md#available-instance-skus)-ban. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Létrehoz egy függvényalkalmazást az App Service-csomagban. |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Létrehoz egy Azure Storage-fiókot. |
+| [az functionapp plan create](/cli/azure/functionapp/plan#az_functionapp_plan_create) | Prémium szintű csomagokat hoz létre egy [adott termékváltozatban.](../functions-premium-plan.md#available-instance-skus) |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | Létrehoz egy függvényalkalmazást az App Service-csomagban. |
 
 ## <a name="next-steps"></a>Következő lépések
 
