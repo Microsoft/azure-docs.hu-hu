@@ -1,52 +1,51 @@
 ---
-title: Microsoft csatlakoztatott gyorsítótár – két szintű beágyazott Azure IoT Edge átjáró kimenő, nem hitelesített proxyval | Microsoft Docs
+title: A Microsoft Csatlakoztatott gyorsítótár szintű beágyazott átjárót Azure IoT Edge kimenő, nem hitelesített proxyval | Microsoft Docs
 titleSuffix: Device Update for Azure IoT Hub
-description: Microsoft csatlakoztatott gyorsítótár – kétszintű beágyazott Azure IoT Edge átjáró kimenő, nem hitelesített proxyval – oktatóanyag
+description: Microsoft Csatlakoztatott gyorsítótár szintű beágyazott átjáró Azure IoT Edge kimenő, nem hitelesített proxyval oktatóanyag
 author: andyriv
 ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e9749dfd7b28551a4fc2e7c6ba70ba9cce4e5a69
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 623ce808423f76ae1be079e0424fe3ddf27d1d58
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307299"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811885"
 ---
-# <a name="microsoft-connected-cache-preview-deployment-scenario-sample-two-level-nested-azure-iot-edge-gateway-with-outbound-unauthenticated-proxy"></a>A Microsoft csatlakoztatott gyorsítótár előzetes telepítési forgatókönyvének mintája: kétszintű beágyazott Azure IoT Edge átjáró kimenő, nem hitelesített proxyval
+# <a name="microsoft-connected-cache-preview-deployment-scenario-sample-two-level-nested-azure-iot-edge-gateway-with-outbound-unauthenticated-proxy"></a>Microsoft Csatlakoztatott gyorsítótár előzetes verzió üzembe helyezési forgatókönyvének mintája: Kétszintű beágyazott átjáró Azure IoT Edge kimenő, nem hitelesített proxyval
 
-Az alábbi ábrának megfelelően ebben a forgatókönyvben van egy Azure IoT Edge átjáró és egy alsóbb rétegbeli Azure IoT Edge-eszköz, egy Azure IoT Edge-átjáró egy másik Azure IoT Edge átjáróhoz, és egy proxykiszolgáló az informatikai DMZ-ben. Alább látható egy példa arra, hogy a Microsoft csatlakoztatott gyorsítótár-környezeti változói hogyan lesznek beállítva a Azure Portal UX-ben a Azure IoT Edge-átjárók számára telepített MCC-modulok esetében. A példában látható példa Azure IoT Edge átjárók kétszintű konfigurációját mutatja be, de nincs korlátozva a Microsoft által csatlakoztatott gyorsítótár által támogatott felsőbb szintű gazdagépek mélysége. Az előző példákban nincs különbség az MCC-tároló létrehozási beállításai között.
+Az alábbi ábra azt a forgatókönyvet mutatja be, amikor egy Azure IoT Edge-átjáró közvetlen hozzáféréssel rendelkezik a CDN-erőforrásokhoz, és egy másik átjáró szülőjeként Azure IoT Edge működik. A gyermek-IoT Edge átjáró egy Azure IoT levéleszköz, például egy Raspberry Pi szülőjeként működik. A gyermek Azure IoT Edge és az Azure IoT-eszköz is el van különítve az internettől. Az alábbi példa bemutatja a Azure IoT Edge-átjárók kétszintes konfigurációját, de nincs korlátozva a Microsoft által támogatott felsőbb rétegbeli gazdagépek Csatlakoztatott gyorsítótár mélysége. A Microsoft és a Csatlakoztatott gyorsítótár között nincs különbség az előző példákból származó tároló-létrehozási lehetőségek között.
 
-A Azure IoT Edge-átjárók rétegzett központi telepítésének konfigurálásával kapcsolatos további részletekért tekintse meg a következő dokumentációt: az alsóbb rétegbeli [IoT Edge eszközök csatlakoztatása Azure IoT Edge](../iot-edge/how-to-connect-downstream-iot-edge-device.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11) . Emellett vegye figyelembe, hogy a Azure IoT Edge, a Microsoft csatlakoztatott gyorsítótára és az egyéni modulok telepítésekor minden modulnak ugyanabban a tároló-beállításjegyzékben kell lennie.
+Az átjárók réteges üzembe helyezésének konfigurálásával kapcsolatos további részletekért tekintse meg az IoT Edge [Azure IoT Edge-IoT Edge](../iot-edge/how-to-connect-downstream-iot-edge-device.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11) eszközök csatlakoztatása – Azure IoT Edge dokumentációt. Azt is vegye figyelembe, hogy a Azure IoT Edge, a Microsoft Csatlakoztatott gyorsítótár és az egyéni modulok üzembe helyezésekor minden modulnak ugyanabban a tároló-beállításjegyzékben kell lennie.
 
-Az alábbi ábra azt a forgatókönyvet ismerteti, amelyben az egyik Azure IoT Edge átjáró a CDN-erőforrásokhoz való közvetlen hozzáférésként viselkedik, mint egy másik Azure IoT Edge átjáró, amely szülőként működik egy Azure IoT Leaf-eszköz, például egy málna PI számára. Csak az Azure IoT Edge átjáró szülője rendelkezik internetkapcsolattal a CDN-erőforrásokhoz, és mind a Azure IoT Edge gyermek, mind az Azure IoT-eszköz internetes elkülönítésben van. 
+>[!Note]
+>A virtuális Azure IoT Edge, a Microsoft Csatlakoztatott gyorsítótár és az egyéni modulok üzembe helyezésekor minden modulnak ugyanabban a tárolójegyzékben kell lennie.
 
-  :::image type="content" source="media/connected-cache-overview/nested-level-proxy.png" alt-text="A Microsoft csatlakoztatott gyorsítótára egymásba ágyazva" lightbox="media/connected-cache-overview/nested-level-proxy.png":::
+  :::image type="content" source="media/connected-cache-overview/nested-level-proxy.png" alt-text="Microsoft Csatlakoztatott gyorsítótár beágyazott" lightbox="media/connected-cache-overview/nested-level-proxy.png":::
 
-## <a name="parent-gateway-configuration"></a>Szülő átjáró konfigurációja
-
-1. Adja hozzá a Microsoft Connected cache modult az Azure IoT Hub Azure IoT Edge átjáró eszközének üzembe helyezéséhez.
-2. Adja hozzá a környezet változóit a központi telepítéshez. Alább látható egy példa a környezeti változókra.
+## <a name="parent-gateway-configuration"></a>Szülőátjáró konfigurálása
+1. Adja hozzá a Microsoft Csatlakoztatott gyorsítótár modult az Azure IoT Edge-átjáróeszköz üzembe helyezéséhez [](connected-cache-disconnected-device-update.md) a Azure IoT Hub-ban (a modul lekért verziójának részleteiért lásd: Leválasztott eszközök támogatása).
+2. Adja hozzá az üzembe helyezés környezeti változóit. Az alábbiakban egy példa látható a környezeti változókra.
 
     **Környezeti változók**
 
-    | Name                 | Érték                                       |
-    | ----------------------------- | --------------------------------------------| 
-    | CACHE_NODE_ID                 | Lásd a fenti környezeti változók leírása című témakört. |
-    | CUSTOMER_ID                   | Lásd a fenti környezeti változók leírása című témakört. |
-    | CUSTOMER_KEY                  | Lásd a fenti környezeti változók leírása című témakört. |
-    | STORAGE_ *N* _SIZE_GB           | N = 5                                       |
-    | CACHEABLE_CUSTOM_1_HOST       | Packagerepo.com:80                          |
-    | CACHEABLE_CUSTOM_1_CANONICAL  | Packagerepo.com                             |
-    | IS_SUMMARY_ACCESS_UNRESTRICTED| true                                        |
-    | UPSTREAM_PROXY                | Proxykiszolgáló IP-címe vagy teljes tartományneve                     |
+    | Name                          | Érték                                                                 |
+    | ----------------------------- | ----------------------------------------------------------------------| 
+    | CACHE_NODE_ID                 | Környezeti [változók leírásának](connected-cache-configure.md) lásd: |
+    | CUSTOMER_ID                   | Lásd [a környezeti változók](connected-cache-configure.md) leírását |
+    | CUSTOMER_KEY                  | Lásd [a környezeti változók](connected-cache-configure.md) leírását |
+    | STORAGE_1_SIZE_GB             | 10                                                                    |
+    | CACHEABLE_CUSTOM_1_HOST       | Packagerepo.com:80                                                    |
+    | CACHEABLE_CUSTOM_1_CANONICAL  | Packagerepo.com                                                       |
+    | IS_SUMMARY_ACCESS_UNRESTRICTED| true                                                                  |
 
-3. Adja hozzá a tároló létrehozási beállításait a központi telepítéshez. Az MCC-tároló létrehozási beállításai nem különböznek az előző példától. Az alábbi példa a tároló létrehozási lehetőségeit mutatja be.
+3. Adja hozzá a tároló létrehozási beállításait az üzembe helyezéshez. Az MCC-tároló létrehozási beállításai között nincs különbség az előző példában. Az alábbiakban egy példa látható a tároló létrehozására szolgáló beállításokra.
 
-### <a name="container-create-options"></a>Tároló-létrehozási beállítások
+### <a name="container-create-options"></a>Tároló-létrehozási lehetőségek
 
-```markdown
+```json
 {
     "HostConfig": {
         "Binds": [
@@ -65,38 +64,42 @@ Az alábbi ábra azt a forgatókönyvet ismerteti, amelyben az egyik Azure IoT E
             ]
         }
     }
+}
 ```
 
-## <a name="child-gateway-configuration"></a>Alárendelt átjáró konfigurációja
+## <a name="child-gateway-configuration"></a>Gyermekátjáró konfigurálása
 
 >[!Note]
->Ha a saját privát beállításjegyzékében a konfigurációban használt replikált tárolók vannak, akkor módosítani kell a config. toml beállításait és a futásidejű beállításokat a modul üzembe helyezésében. További információkért lásd: az [alsóbb rétegbeli IoT Edge eszközök csatlakoztatása – Azure IoT Edge](../iot-edge/how-to-connect-downstream-iot-edge-device.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11#deploy-modules-to-lower-layer-devices) további részletekért.
+>Ha a konfigurációjában replikált tárolókat a saját privát beállításjegyzékében, akkor módosítania kell a config.toml és a futásidejű beállításokat a modul üzembe helyezése során. További információ: Lefelé irányuló IoT Edge csatlakoztatása – [Azure IoT Edge](../iot-edge/how-to-connect-downstream-iot-edge-device.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11#deploy-modules-to-lower-layer-devices) további információ.
 
-1. Módosítsa a peremhálózati ügynök rendszerképének elérési útját az alábbi példában bemutatott módon:
 
-```markdown
-[agent]
-name = "edgeAgent"
-type = "docker"
-env = {}
-[agent.config]
-image = "<parent_device_fqdn_or_ip>:8000/iotedge/azureiotedge-agent:1.2.0-rc2"
-auth = {}
-```
-2. Módosítsa az Edge hub és az Edge Agent futtatókörnyezet beállításait a Azure IoT Edge üzemelő példányban, ahogy az a következő példában látható:
+1. Módosítsa az Edge-ügynök képútvonalát az alábbi példában látható módon:
+
+    ```markdown
+    [agent]
+    name = "edgeAgent"
+    type = "docker"
+    env = {}
+    [agent.config]
+    image = "<parent_device_fqdn_or_ip>:8000/iotedge/azureiotedge-agent:1.2.0-rc2"
+    auth = {}
+    ```
+2. Módosítsa az Edge Hub és az Edge-ügynök futásidejű beállításait a Azure IoT Edge telepítésben az alábbi példában szemléltetettek szerint:
     
-    * Az Edge hub terület rendszerkép mezőjébe írja be a ```$upstream:8000/iotedge/azureiotedge-hub:1.2.0-rc2```
-    * Az Edge-ügynök területen a rendszerkép mezőbe írja be a ```$upstream:8000/iotedge/azureiotedge-agent:1.2.0-rc2```
+    * Az Edge Hub területen a kép mezőbe írja be a következőt: ```$upstream:8000/iotedge/azureiotedge-hub:1.2.0-rc2```
+    * Az Edge Agent területen a kép mezőbe írja be a következőt: ```$upstream:8000/iotedge/azureiotedge-agent:1.2.0-rc2```
 
-3. Adja hozzá a Microsoft Connected cache modult az Azure IoT Hub Azure IoT Edge átjáró eszközének üzembe helyezéséhez.
+3. Adja hozzá a Microsoft Csatlakoztatott gyorsítótár modult a Azure IoT Edge-átjáróeszköz üzembe helyezéséhez a Azure IoT Hub.
 
-   * Válassza ki a modul nevét: ```ConnectedCache```
-   * Módosítsa a rendszerkép URI-JÁT: ```$upstream:8000/mcc/linux/iot/mcc-ubuntu-iot-amd64:latest```
+   * Válasszon nevet a modulnak: ```ConnectedCache```
+   * Módosítsa a rendszerkép URI-ét: ```$upstream:8000/mcc/linux/iot/mcc-ubuntu-iot-amd64:latest```
 
-4. Adja hozzá ugyanazt a környezeti változót és a tároló létrehozási beállításait a fölérendelt központi telepítésben.
+4. Adja hozzá a szülőtelepítésben használt környezeti változókat és tároló-létrehozási beállításokat.
+>[!Note]
+>A CACHE_NODE_ID egyedinek kell lennie.  A CUSTOMER_ID és CUSTOMER_KEY azonosak lesznek a szülővel. [(lásd: A Microsoft Csatlakoztatott gyorsítótár](connected-cache-configure.md)
 
-A megfelelően működő Microsoft-gyorsítótár megfelelő működésének ellenőrzéséhez hajtsa végre a következő parancsot a modult futtató IoT Edge eszköz terminálján, vagy a hálózaton lévő összes eszközt.
+A Microsoft Csatlakoztatott gyorsítótár megfelelő működésének ellenőrzéséhez hajtsa végre a következő parancsot a modult vagy a hálózaton található bármely eszközt üzemeltető IoT Edge-eszköz terminálán. Cserélje le a helyére a saját \<Azure IoT Edge Gateway IP\> átjárója IP-címét IoT Edge állomásnevét. (A jelentés láthatóságával kapcsolatos információkért lásd a környezeti változó részleteit).
 
 ```bash
-    wget "http://<CHILD Azure IoT Edge Gateway IP>/mscomtest/wuidt.gif?cacheHostOrigin=au.download.windowsupdate.com
+    wget http://<CHILD Azure IoT Edge Gateway IP>/mscomtest/wuidt.gif?cacheHostOrigin=au.download.windowsupdate.com
 ```

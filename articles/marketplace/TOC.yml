@@ -61,25 +61,18 @@
           href: test-drive-hosted-detailed-config.md
         - name: Az Azure-előfizetés beállítása szolgáltatott tesztverziókhoz
           href: test-drive-azure-subscription-setup.md
-    - name: Az Azure-ügyfelek használatának forrásmegjelölése
+    - name: Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése
       href: azure-partner-customer-usage-attribution.md
     - name: Piaci bevezetési beállítások
       items:
         - name: A Marketplace-ből származó előnyei
           href: gtm-your-marketplace-benefits.md
-          items: null
-        - name: Együttes értékesítés a Microsofttal
-          items:
-            - name: Az együtt értékesítés áttekintése
-              href: co-sell-overview.md
-            - name: Közös értékesítés követelményei
-              href: co-sell-requirements.md
-            - name: Az együtt értékesítés konfigurálása
-              href: co-sell-configure.md
-            - name: Az együtt értékesítés állapotának ellenőrzése
-              href: co-sell-status.md
-            - name: Együttes értékesítési megoldások migrálása az OCP GTM-ből
-              href: co-sell-solution-migration.md
+        - name: Együttes értékesítési partnerek bevonása
+          href: marketplace-co-sell.md
+        - name: Együttes értékesítési lehetőség a Partnerközpontban
+          href: commercial-marketplace-co-sell.md
+        - name: Együttes értékesítési megoldások migrálása az OCP GTM-ből
+          href: co-sell-solution-migration.md
         - name: Viszonteladás CSP-partnereken keresztül
           href: cloud-solution-providers.md
         - name: A Connect program regisztrálási útmutatója
@@ -206,20 +199,32 @@
           href: create-consulting-service-pricing-availability.md
     - name: Dynamics 365-ajánlatok
       items:
-        - name: Dynamics 365-ajánlat megtervezése
-          href: appsource-offer-publishing-guide.md
-        - name: Dynamics 365-ajánlat létrehozása és közzététele
+        - name: Az ajánlat megterve
+          href: marketplace-dynamics-365.md
+        - name: Customer Engagement-& Power Apps létrehozása
           items:
-            - name: Dynamics 365 Customer Engagement- és PowerApps-ajánlat létrehozása
-              href: partner-center-portal/create-new-customer-engagement-offer.md
+            - name: Az ajánlat létrehozása
+              href: dynamics-365-customer-engage-offer-setup.md
+            - name: Tulajdonságok
+              href: dynamics-365-customer-engage-properties.md
+            - name: Ajánlatlista
+              href: dynamics-365-customer-engage-offer-listing.md
+            - name: Rendelkezésre állás
+              href: dynamics-365-customer-engage-availability.md
+            - name: Technikai konfiguráció
+              href: dynamics-365-customer-engage-technical-configuration.md
+            - name: Kiegészítő tartalom
+              href: dynamics-365-customer-engage-supplemental-content.md
+            - name: Felülvizsgálat és közzététel
+              href: dynamics-365-customer-engage-review-publish.md
+        - name: Műveleti ajánlat létrehozása
+          items:
             - name: Dynamics 365 for Operations-ajánlat létrehozása
-              items:
-                - name: Dynamics 365 for Operations-ajánlat létrehozása
-                  href: partner-center-portal/create-new-operations-offer.md
-                - name: Működési ellenőrzés
-                  href: dynamics-365-finance-operations-functional-validation.md
-            - name: Microsoft Dynamics 365 Business Central-ajánlat létrehozása
-              href: partner-center-portal/create-new-business-central-offer.md
+              href: partner-center-portal/create-new-operations-offer.md
+            - name: Működési ellenőrzés
+              href: dynamics-365-finance-operations-functional-validation.md
+        - name: Business Central-ajánlat létrehozása
+          href: partner-center-portal/create-new-business-central-offer.md
     - name: IoT Edge-modulajánlat
       items:
         - name: IoT Edge-modulajánlat megtervezése
@@ -228,8 +233,6 @@
           href: partner-center-portal/azure-iot-edge-module-creation.md
         - name: IoT Edge-modulok technikai eszközeinek előkészítése
           href: partner-center-portal/create-iot-edge-module-asset.md
-        - name: Előtanúsítási ellenőrzőlista
-          href: iot-edge-checklist.md
     - name: Felügyelt szolgáltatásra vonatkozó ajánlatok
       items:
         - name: Felügyelt szolgáltatási ajánlat megtervezése
@@ -328,48 +331,6 @@
       href: partner-center-portal/downloads-dashboard.md
     - name: Értékelések és vélemények irányítópult
       href: partner-center-portal/ratings-reviews.md
-    - name: Programozott hozzáférés az elemzéshez
-      items:
-        - name: Bevezetés
-          href: analytics-get-started.md
-        - name: Programozott hozzáférés előfeltételei
-          href: analytics-prerequisites.md
-        - name: Programozott hozzáférési paradigma
-          href: analytics-programmatic-access.md
-        - name: Az első API-hívás hívása
-          href: analytics-make-your-first-api-call.md
-        - name: Rendszerlekérdezések listája
-          href: analytics-system-queries.md
-        - name: Mintalekérdezések
-          href: analytics-sample-queries.md
-        - name: Mintaalkalmazás
-          href: analytics-sample-application.md
-        - name: Egyéni lekérdezési specifikáció
-          href: analytics-custom-query-specification.md
-        - name: Programozott elemzés – gyakori kérdések
-          href: analytics-programmatic-faq.md
-        - name: Analytics API-referencia
-          items:
-            - name: API-k listája
-              href: analytics-available-apis.md
-            - name: Az összes adatkészlet lekérte
-              href: analytics-api-get-all-datasets.md
-            - name: Jelentéslekérdezések API-jának le kérése
-              href: analytics-api-get-report-queries.md
-            - name: Jelentéslekérdezések törlése API
-              href: analytics-api-delete-report-queries.md
-            - name: A jelentéslekérdezések API-jának kipróbálja
-              href: analytics-api-try-report-queries.md
-            - name: A jelentés API-jának lekérte
-              href: analytics-api-get-report.md
-            - name: Jelentési API frissítése
-              href: analytics-api-update-report.md
-            - name: Jelentési API törlése
-              href: analytics-api-delete-report.md
-            - name: Jelentés-végrehajtási API szüneteltetése
-              href: analytics-api-pause-report-executions.md
-            - name: Jelentés-végrehajtások folytatása API
-              href: analytics-api-resume-report-executions.md
     - name: Forgalmi díjas számlázási anomáliák kezelése
       href: anomaly-detection.md
     - name: Gyakori kérdések az elemzésről
@@ -470,8 +431,6 @@
       href: commercial-marketplace-co-sell-countries.md
     - name: Együttes értékesítés államkódjai
       href: commercial-marketplace-co-sell-states.md
-    - name: Referenciaarchitektúra ábrája
-      href: reference-architecture-diagram.md
     - name: Kategóriák és alkategóriák
       href: categories.md
     - name: Támogatott HTML-címkék
