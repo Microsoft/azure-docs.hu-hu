@@ -1,16 +1,16 @@
 ---
 title: Azure CLI-példaszkript – Feliratkozás erőforráscsoportra | Microsoft Docs
-description: Ez a cikk egy Azure CLI-parancsfájlt tartalmaz, amely bemutatja, hogyan fizethet elő Azure Event Grid eseményekre az erőforráscsoport számára.
+description: Ez a cikk egy Azure CLI-példaszk szkriptet mutat be, amely bemutatja, hogyan iratkhat fel Azure Event Grid egy erőforráscsoporthoz az egyes eseményekre.
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/08/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f655ed3f2b6a3cef89c493137bd34732a60e414a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09869b2c60b5ffa703b5f1a53c06a5d7d923988d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87494094"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766586"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-azure-cli"></a>Feliratkozás egy erőforráscsoport eseményeire az Azure CLI-vel
 
@@ -36,7 +36,7 @@ A szkript a következő parancsot használja az esemény-előfizetés létrehoz�
 
 | Parancs | Jegyzetek |
 |---|---|
-| [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | Event Grid-előfizetés létrehozása. |
+| [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create) | Event Grid-előfizetés létrehozása. |
 | [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) – bővítmény verziója | Event Grid-előfizetés létrehozása. |
 
 ## <a name="next-steps"></a>Következő lépések

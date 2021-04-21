@@ -9,12 +9,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 871c9f83d7bdc3f4c9e2f3b53c0b855483995152
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 573e4c9d8db3f07f223826ab648f2ef57e1d9c58
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107748609"
+ms.locfileid: "107766316"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Tárfiókkulcsok kezelése a Key Vault és az Azure CLI használatával
 > [!IMPORTANT]
@@ -67,14 +67,14 @@ Az Azure CLI [az role assignment create parancsának](/cli/azure/role/assignment
 
 - `--role`: Adja át a "Tárfiókkulcs-kezelői szolgáltatási szerepkör" Azure-szerepkört. Ez a szerepkör korlátozza a tárfiók hozzáférési hatókörét. Klasszikus tárfiókok ehelyett a "Klasszikus tárfiókkulcs-kezelői szolgáltatásszerepkével" ehelyett a "Klasszikus tárfiókkulcs-kezelői szerepkör" szerepkört adja át.
 - `--assignee`: Adja meg a " " értéket, amely a nyilvános https://vault.azure.net Azure Key Vault ban található virtuális szolgáltatások URL-címe. (Az Azure Goverment-felhőhöz használja inkább az --asingee-object-id azonosítót, lásd: Egyszerű szolgáltatás [alkalmazásazonosítója.)](#service-principal-application-id)
-- `--scope`: Adja meg a tárfiók erőforrás-azonosítóját, amely a következő formában van: `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` . Az előfizetés-azonosító megkereséhez használja az Azure CLI [az account list parancsot;](/cli/azure/account?#az-account-list) A tárfiók nevét és a tárfiók erőforráscsoportját az Azure CLI [az storage account list paranccsal találhatja](/cli/azure/storage/account?#az-storage-account-list) meg.
+- `--scope`: Adja meg a tárfiók erőforrás-azonosítóját, amely a következő formában van: `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` . Az előfizetés-azonosító megkereséhez használja az Azure CLI [az account list parancsot;](/cli/azure/account?#az_account_list) A tárfiók nevét és a tárfiók erőforráscsoportját az Azure CLI [az storage account list paranccsal találhatja](/cli/azure/storage/account?#az_storage_account_list) meg.
 
 ```azurecli-interactive
 az role assignment create --role "Storage Account Key Operator Service Role" --assignee 'https://vault.azure.net' --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
  ```
 ### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Felhasználói fiók engedélyének adjuk a felügyelt tárfiókok számára
 
-Az Azure CLI [az keyvault-set-policy](/cli/azure/keyvault?#az-keyvault-set-policy) parancsmaggal frissítheti az Key Vault hozzáférési szabályzatot, és tárfiók-engedélyeket adhat a felhasználói fiókjának.
+Az Azure CLI [az keyvault-set-policy](/cli/azure/keyvault?#az_keyvault_set_policy) parancsmaggal frissítheti az Key Vault hozzáférési szabályzatot, és tárfiók-engedélyeket adhat a felhasználói fiókjának.
 
 ```azurecli-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
@@ -85,11 +85,11 @@ az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage
 Vegye figyelembe, hogy a tárfiókok engedélyei nem érhetők el a tárfiók "Hozzáférési szabályzatok" lapján a Azure Portal.
 ### <a name="create-a-key-vault-managed-storage-account"></a>Felügyelt Key Vault tárfiók létrehozása
 
- Hozzon létre Key Vault felügyelt tárfiókot az Azure CLI [az keyvault storage parancsával.](/cli/azure/keyvault/storage?#az-keyvault-storage-add) Állítsa be a 90 napos újratétes időszakot. A forgás ideje alatt a KeyVault újra létrehozza a nem aktív kulcsot, majd aktívként állítja be az újonnan létrehozott kulcsot. Az SAS-jogkivonatok egyszerre csak az egyik kulcs használatával kiállítására használható, ez az aktív kulcs. Adja meg a parancsot a következő paraméterértékekkel:
+ Hozzon létre Key Vault felügyelt tárfiókot az Azure CLI [az keyvault storage parancsával.](/cli/azure/keyvault/storage?#az_keyvault_storage_add) Állítsa be a 90 napos újratétes időszakot. A forgás ideje alatt a KeyVault újra létrehozza a nem aktív kulcsot, majd aktívként állítja be az újonnan létrehozott kulcsot. Az SAS-jogkivonatok egyszerre csak az egyik kulcs használatával kiállítására használható, ez az aktív kulcs. Adja meg a parancsot a következő paraméterértékekkel:
 
-- `--vault-name`: Adja meg a kulcstartó nevét. A kulcstartó nevét az Azure CLI [az keyvault list paranccsal találhatja](/cli/azure/keyvault?#az-keyvault-list) meg.
-- `-n`: Adja meg a tárfiók nevét. A tárfiók nevét az Azure CLI [az storage account list paranccsal találhatja](/cli/azure/storage/account?#az-storage-account-list) meg.
-- `--resource-id`: Adja meg a tárfiók erőforrás-azonosítóját, amely a következő formában van: `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` . Az előfizetés-azonosító megkereséhez használja az Azure CLI [az account list parancsot;](/cli/azure/account?#az-account-list) A tárfiók nevét és a tárfiók erőforráscsoportját az Azure CLI [az storage account list paranccsal találhatja](/cli/azure/storage/account?#az-storage-account-list) meg.
+- `--vault-name`: Adja meg a kulcstartó nevét. A kulcstartó nevét az Azure CLI [az keyvault list paranccsal találhatja](/cli/azure/keyvault?#az_keyvault_list) meg.
+- `-n`: Adja meg a tárfiók nevét. A tárfiók nevét az Azure CLI [az storage account list paranccsal találhatja](/cli/azure/storage/account?#az_storage_account_list) meg.
+- `--resource-id`: Adja meg a tárfiók erőforrás-azonosítóját, amely a következő formában van: `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` . Az előfizetés-azonosító megkereséhez használja az Azure CLI [az account list parancsot;](/cli/azure/account?#az_account_list) A tárfiók nevét és a tárfiók erőforráscsoportját az Azure CLI [az storage account list paranccsal találhatja](/cli/azure/storage/account?#az_storage_account_list) meg.
    
  ```azurecli-interactive
 az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountName> --active-key-name key1 --auto-regenerate-key --regeneration-period P90D --resource-id "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
@@ -108,7 +108,7 @@ Az ebben a szakaszban található parancsok a következő műveleteket ják vég
 
 ### <a name="create-a-shared-access-signature-token"></a>Közös hozzáférésű jogosultság jogosultsági jogkivonat létrehozása
 
-Hozzon létre egy közös hozzáférésű jogosultságjel-definíciót az Azure CLI [az storage account generate-sas paranccsal.](/cli/azure/storage/account?#az-storage-account-generate-sas) Ehhez a művelethez a `storage` és `setsas` a engedélyre van szükség.
+Hozzon létre egy közös hozzáférésű jogosultságjel-definíciót az Azure CLI [az storage account generate-sas paranccsal.](/cli/azure/storage/account?#az_storage_account_generate_sas) Ehhez a művelethez a `storage` és `setsas` a engedélyre van szükség.
 
 
 ```azurecli-interactive
@@ -124,7 +124,7 @@ Ez a kimenet lesz átadva a `--template-uri` paraméternek a következő lépés
 
 ### <a name="generate-a-shared-access-signature-definition"></a>Közös hozzáférésű jogosultság jogosultsága definíciójának létrehozása
 
-Használja az Azure CLI [az keyvault storage sas-definition create](/cli/azure/keyvault/storage/sas-definition?#az-keyvault-storage-sas-definition-create) parancsot, és az előző lépés kimenetét átadva a paraméternek egy közös hozzáférésű jogosultsága `--template-uri` definíciójának létrehozásához.  A paraméterhez meg is használhatja a választott `-n` nevet.
+Használja az Azure CLI [az keyvault storage sas-definition create](/cli/azure/keyvault/storage/sas-definition?#az_keyvault_storage_sas_definition_create) parancsot, és az előző lépés kimenetét átadva a paraméternek egy közös hozzáférésű jogosultsága `--template-uri` definíciójának létrehozásához.  A paraméterhez meg is használhatja a választott `-n` nevet.
 
 ```azurecli-interactive
 az keyvault storage sas-definition create --vault-name <YourKeyVaultName> --account-name <YourStorageAccountName> -n <YourSASDefinitionName> --validity-period P2D --sas-type account --template-uri <OutputOfSasTokenCreationStep>

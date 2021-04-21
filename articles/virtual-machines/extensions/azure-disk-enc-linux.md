@@ -1,6 +1,6 @@
 ---
-title: Linux-Azure Disk Encryption
-description: Üzembe helyezi Azure Disk Encryption Linux rendszerű virtuális gépre egy virtuálisgép-bővítmény használatával.
+title: Azure Disk Encryption Linuxhoz
+description: Linux Azure Disk Encryption virtuális gépre telepít egy virtuális gépre egy virtuálisgép-bővítmény használatával.
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: disks
@@ -8,39 +8,39 @@ author: ejarvi
 ms.author: ejarvi
 ms.date: 03/19/2020
 ms.collection: linux
-ms.openlocfilehash: 7c79391e3459804a4b5ce72c2230d17af3269641
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c0f233c2eb154636d64f747bb43bd392295aa9b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566260"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792380"
 ---
-# <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Linux-Azure Disk Encryption (Microsoft. Azure. Security. AzureDiskEncryptionForLinux)
+# <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption Linuxhoz (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
 ## <a name="overview"></a>Áttekintés
 
-Azure Disk Encryption kihasználja a Linux dm-crypt alrendszerét, hogy teljes lemezes titkosítást biztosítson az [Azure Linux-disztribúciók kiválasztása](../linux/disk-encryption-overview.md)során.  Ez a megoldás integrálva van Azure Key Vault a lemezes titkosítási kulcsok és titkos kódok kezeléséhez.
+Azure Disk Encryption linuxos dm-crypt alrendszer használatával teljes lemeztitkosítást biztosít egyes [Azure Linux-disztribúciókhoz.](../linux/disk-encryption-overview.md)  Ez a megoldás integrálva van a Azure Key Vault a lemeztitkosítási kulcsok és titkos kulcsok kezeléséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az előfeltételek teljes listájáért lásd: [Azure Disk Encryption Linux rendszerű virtuális gépekhez](../linux/disk-encryption-overview.md), konkrétan a következő részekben:
+Az előfeltételek teljes listájáért tekintse meg a Linux rendszerű virtuális [Azure Disk Encryption való](../linux/disk-encryption-overview.md)telepítésével kapcsolatos szakaszt, pontosabban a következő szakaszokat:
 
 - [Támogatott virtuális gépek és operációs rendszerek](../linux/disk-encryption-overview.md#supported-vms-and-operating-systems)
-- [További virtuális gépekre vonatkozó követelmények](../linux/disk-encryption-overview.md#additional-vm-requirements)
+- [További virtuálisgép-követelmények](../linux/disk-encryption-overview.md#additional-vm-requirements)
 - [Hálózati követelmények](../linux/disk-encryption-overview.md#networking-requirements)
 - [Titkosítási kulcs tárolási követelményei](../linux/disk-encryption-overview.md#encryption-key-storage-requirements)
 
-## <a name="extension-schema"></a>Kiterjesztési séma
+## <a name="extension-schema"></a>Bővítményséma
 
-A Azure Disk Encryption (ADE) bővítmény sémájának két verziója létezik:
-- v 1.1 – egy újabb ajánlott séma, amely nem használ Azure Active Directory (HRE) tulajdonságokat.
-- v 0.1 – egy régebbi séma, amelyhez Azure Active Directory (HRE) tulajdonság szükséges. 
+A bővítménysémának két verziója van a Azure Disk Encryption (ADE):
+- v1.1 – Egy újabb ajánlott séma, amely nem Azure Active Directory (AAD) tulajdonságokat.
+- 0.1-es verzió – Egy régebbi séma, amelyhez Azure Active Directory (AAD) tulajdonságokra van szükség. 
 
-A célként használandó séma kiválasztásához a `typeHandlerVersion` tulajdonságot a használni kívánt séma verziójával egyenlő értékre kell állítani.
+Célsémát úgy választhat ki, ha a tulajdonság értéke megegyezik a használni kívánt séma `typeHandlerVersion` verziójával.
 
-### <a name="schema-v11-no-aad-recommended"></a>Séma v 1.1: nincs HRE (ajánlott)
+### <a name="schema-v11-no-aad-recommended"></a>1.1-es séma: Nincs AAD (ajánlott)
 
-A v 1.1 séma használata javasolt, és nem igényel Azure Active Directory (HRE) tulajdonságokat.
+Az 1.1-es séma használata ajánlott, és nem igényel Azure Active Directory (AAD) tulajdonságokat.
 
 ```json
 {
@@ -69,11 +69,11 @@ A v 1.1 séma használata javasolt, és nem igényel Azure Active Directory (HRE
 ```
 
 
-### <a name="schema-v01-with-aad"></a>A Schema v 0.1: a HRE 
+### <a name="schema-v01-with-aad"></a>Séma v0.1: AAD-vel 
 
-Az 0,1 `AADClientID` -es séma használatához és a vagy a vagy a `AADClientSecret` `AADClientCertificate` .
+A 0.1 sémához és vagy `AADClientID` vagy `AADClientSecret` `AADClientCertificate` szükséges.
 
-Használat `AADClientSecret` :
+A `AADClientSecret` használatával:
 
 ```json
 {
@@ -103,7 +103,7 @@ Használat `AADClientSecret` :
 }
 ```
 
-Használat `AADClientCertificate` :
+A `AADClientCertificate` használatával:
 
 ```json
 {
@@ -136,53 +136,53 @@ Használat `AADClientCertificate` :
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name | Érték/példa | Adattípus |
+| Name | Érték / Példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | dátum |
-| közzétevő | Microsoft. Azure. Security | sztring |
+| közzétevő | Microsoft.Azure.Security | sztring |
 | típus | AzureDiskEncryptionForLinux | sztring |
-| typeHandlerVersion | 1,1, 0,1 | int |
-| (0,1 séma) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| (0,1 séma) AADClientSecret | jelszó | sztring |
-| (0,1 séma) AADClientCertificate | ujjlenyomat | sztring |
-| választható (0,1 séma) Jelszót | jelszó | sztring |
-| DiskFormatQuery | {"dev_path": "", "Name": "", "file_system": ""} | JSON-szótár |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | sztring | 
-| (opcionális – alapértelmezett RSA-OAEP) KeyEncryptionAlgorithm | "RSA-OAEP", "RSA-OAEP-256", "RSA1_5" | sztring |
+| typeHandlerVersion | 1.1, 0.1 | int |
+| (0.1 séma) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (0.1 séma) AADClientSecret (AADClientSecret) | jelszó | sztring |
+| (0.1 séma) AADClientCertificate | Ujjlenyomat | sztring |
+| (nem kötelező) (0.1 séma) Jelszót | jelszó | sztring |
+| DiskFormatQuery | {"dev_path":","name":"","file_system":""} | JSON-szótár |
+| EncryptionOperation (Titkosítási művelet) | EnableEncryption, EnableEncryptionFormatAll | sztring | 
+| (nem kötelező – alapértelmezett RSA-OAEP ) KeyEncryptionAlgorithm | RSA-OAEP, RSA-OAEP-256, RSA1_5 | sztring |
 | KeyVaultURL | url | sztring |
 | KeyVaultResourceId | url | sztring |
-| választható KeyEncryptionKeyURL | url | sztring |
-| választható KekVaultResourceId | url | sztring |
-| választható SequenceVersion | uniqueidentifier | sztring |
-| VolumeType | Operációs rendszer, az összes | sztring |
+| (nem kötelező) KeyEncryptionKeyURL | url | sztring |
+| (nem kötelező) KekVaultResourceId | url | sztring |
+| (nem kötelező) SequenceVersion | uniqueidentifier | sztring |
+| VolumeType (Kötet típusa) | Operációs rendszer, Adatok, Mind | sztring |
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az 1.1-es séma alapján történő központi telepítésre példaként tekintse meg az Azure gyors üzembe helyezési sablon [201-encrypt-Running-Linux-VM-Without-HRE](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad).
+Az 1.1-es séma alapján való sablontelepítésre példát az Azure gyorsindítási sablon [201-encrypt-running-linux-vm-without-aad](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)(Azure gyorsindítási sablon) tartalmaz.
 
-A sablon v 0.1-es sémán alapuló központi telepítésére példaként tekintse meg az Azure gyors üzembe helyezési sablon [201-encrypt-Running-Linux-VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)című témakört.
+A 0.1-es séma alapján való sablontelepítésre példát a [201-encrypt-running-linux-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)Azure gyorsindítási sablonban láthat.
 
 >[!WARNING]
-> - Ha korábban már használta Azure Disk Encryption az Azure AD-vel egy virtuális gép titkosításához, akkor továbbra is ezt a beállítást kell használnia a virtuális gép titkosításához.
-> - A Linux operációs rendszer köteteinek titkosításakor a virtuális gépet nem szabad megfontolni. Határozottan javasoljuk, hogy az SSH-bejelentkezések elkerülése érdekében a titkosítási folyamat során ne akadályozza meg az összes olyan megnyitott fájl blokkolását, amelyet a titkosítási folyamat során el kell érnie. A folyamat ellenőrzéséhez használja a [Get-AzVMDiskEncryptionStatus PowerShell-](/powershell/module/az.compute/get-azvmdiskencryptionstatus) parancsmagot vagy a [VM encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) CLI parancsot. Ez a folyamat várhatóan néhány órát is igénybe vehet egy 30 GB-OS kötetre, és további időt az adatkötetek titkosítására. Az adatmennyiség-titkosítási idő arányos lesz az adatkötetek méretétől és mennyiségétől, kivéve, ha az összes titkosítás formátuma beállítást használja. 
-> - A Linux rendszerű virtuális gépek titkosításának letiltása csak az adatkötetek esetében támogatott. Ha az operációsrendszer-kötet titkosítva van, a rendszer nem támogatja az adatvagy operációsrendszer-köteteken. 
+> - Ha korábban már használta Azure Disk Encryption Azure AD-val a virtuális gép titkosításához, akkor továbbra is ezt a lehetőséget kell használnia a virtuális gép titkosításához.
+> - Linux operációsrendszer-kötetek titkosítása esetén a virtuális gépet nem elérhetőnek kell tekinteni. Határozottan javasoljuk, hogy kerülje az SSH-bejelentkezéseket, amíg a titkosítás folyamatban van, hogy elkerülje a titkosítási folyamat során elérni szükséges nyitott fájlok blokkolásával kapcsolatos problémákat. A folyamat előrehaladásának ellenőrzéshez használja a [Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) PowerShell-parancsmagot vagy a [vm encryption show](/cli/azure/vm/encryption#az_vm_encryption_show) CLI parancsot. Ez a folyamat várhatóan néhány órát fog igénybe venni egy 30 GB-os operációsrendszer-köteten, valamint további időt az adatkötetek titkosításához. Az adatmennyiség titkosítási ideje arányos az adatkötetek méretével és mennyiségével, kivéve, ha az összes titkosítási formátumot használja. 
+> - A titkosítás letiltása Linux rendszerű virtuális gépeken csak adatkötetek esetén támogatott. Az adat- vagy operációsrendszer-kötetek nem támogatják, ha az operációs rendszer kötete titkosított. 
 
 >[!NOTE]
-> Ha a `VolumeType` paraméter értéke mind, az adatlemezek csak akkor lesznek titkosítva, ha megfelelően vannak csatlakoztatva.
+> Ha a paraméter Értéke Mind, az adatlemezek csak akkor lesznek titkosítva, ha `VolumeType` megfelelően vannak csatlakoztatva.
 
-## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
+## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-Hibaelhárításhoz tekintse meg a [Azure Disk Encryption hibaelhárítási útmutatót](../linux/disk-encryption-troubleshooting.md).
+A hibaelhárításhoz tekintse meg a Azure Disk Encryption [útmutatóját.](../linux/disk-encryption-troubleshooting.md)
 
 ### <a name="support"></a>Támogatás
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/community/)is. 
+Ha további segítségre van szüksége a cikk bármely pontján, lépjen kapcsolatba az Azure-szakértőkkel az [MSDN Azure-on](https://azure.microsoft.com/support/community/)és a Stack Overflow fórumain. 
 
-Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási szolgálatát](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Alternatív megoldásként be is Azure-támogatás incidenst. A Támogatás [Azure-támogatás](https://azure.microsoft.com/support/options/) válassza a Támogatás lehetőséget. További információ a Azure ügyfélszolgálata [támogatással kapcsolatos gyakori Microsoft Azure tartalmaz.](https://azure.microsoft.com/support/faq/)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a virtuálisgép-bővítményekről: [virtuálisgép-bővítmények és-szolgáltatások Linux rendszerhez](features-linux.md).
-* További információ a Linux Azure Disk Encryptionáról: [Linux Virtual Machines](../../security/fundamentals/azure-disk-encryption-vms-vmss.md#linux-virtual-machines).
+* További információ a virtuálisgép-bővítményekről: Virtuálisgép-bővítmények [és -funkciók Linux rendszeren.](features-linux.md)
+* További információ a Linux Azure Disk Encryption való telepítésről: [Linux rendszerű virtuális gépek.](../../security/fundamentals/azure-disk-encryption-vms-vmss.md#linux-virtual-machines)

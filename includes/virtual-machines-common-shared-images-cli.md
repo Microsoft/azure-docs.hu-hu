@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cynthn
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 9556b20ba0ceac2d4c1ad92897e6f9d46293387f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc35f277bfafa80f6239ef807f1a83591646a503
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96026788"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107800184"
 ---
-## <a name="create-an-image-gallery"></a>Rendszerkép-gyűjtemény létrehozása 
+## <a name="create-an-image-gallery"></a>Rendszerkép-katalógus létrehozása 
 
-A képgyűjtemény a képmegosztás engedélyezéséhez használt elsődleges erőforrás. 
+A rendszerkép-katalógus a rendszerképmegosztás engedélyezéséhez használt elsődleges erőforrás. 
 
-A katalógus nevének megengedett karaktere nagybetűs vagy kisbetűk, számjegyek, pontok és időszakok. A gyűjtemény neve nem tartalmazhat kötőjeleket.   A katalógus nevének egyedinek kell lennie az előfizetésen belül. 
+A Katalógus neve megengedett karakterei a kis- és nagybetűk, számjegyek, pont és pont. A katalógus neve nem tartalmazhat kötőjeleket.   A katalógusok nevének egyedinek kell lennie az előfizetésen belül. 
 
-Hozzon létre egy képtárat [az az SIG Create](/cli/azure/sig#az-sig-create)paranccsal. A következő példában létrehozunk egy *myGalleryRG* nevű ERŐFORRÁSCSOPORTOT az *USA keleti* régiójában, valamint egy *MyGallery* nevű katalógust.
+Hozzon létre egy rendszerkép-katalógust [az az sig create használatával.](/cli/azure/sig#az_sig_create) A következő példában létrehozunk egy *myGalleryRG* nevű erőforráscsoportot az *USA* keleti részén, valamint egy *myGallery nevű katalógust.*
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus
@@ -30,9 +30,9 @@ az sig create --resource-group myGalleryRG --gallery-name myGallery
 
 ## <a name="share-the-gallery"></a>A katalógus megosztása
 
-Role-Based Access Control (RBAC) használatával megoszthatja a lemezképeket az előfizetések között. A képeket megoszthatja a katalógusban, a képdefinícióban vagy a lemezkép verzió szintjén. Minden olyan felhasználó, aki olvasási engedéllyel rendelkezik a lemezkép verziójához, még az előfizetések között is, a lemezkép verziója segítségével telepítheti a virtuális gépet.
+A rendszerképeket előfizetések között oszthatja meg a Role-Based Access Control (RBAC) használatával. A rendszerképeket a katalógus, a rendszerkép definíciója vagy a rendszerképverzió szintjén oszthatja meg. Minden olyan felhasználó, aki olvasási engedéllyel rendelkezik egy rendszerképverzióhoz, akár több előfizetésben is, üzembe helyezhet egy virtuális gépet a rendszerkép verziójával.
 
-Javasoljuk, hogy a katalógus szintjén ossza meg más felhasználókkal. A katalógus objektum-AZONOSÍTÓjának lekéréséhez használja az [az SIG show](/cli/azure/sig#az-sig-show)lehetőséget.
+Javasoljuk, hogy a katalógus szintjén ossza meg a többi felhasználóval. A katalógus objektumazonosítóját az [az sig show használatával lehet lekérte.](/cli/azure/sig#az_sig_show)
 
 ```azurecli-interactive
 az sig show \
@@ -41,7 +41,7 @@ az sig show \
    --query id
 ```
 
-Használja az objektumazonosító hatókörként, valamint egy e-mail-cím és [az az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create) lehetőséget, hogy a felhasználók hozzáférhessenek a megosztott képgyűjteményhez. Cserélje le `<email-address>` a és a értékét `<gallery iD>` a saját adataira.
+Használja az objektumazonosítót hatókörként, valamint egy e-mail-címet és [az az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) címet, hogy hozzáférést adjon egy felhasználónak a megosztott rendszerkép-katalógushoz. Cserélje le `<email-address>` a és `<gallery iD>` a adatokat a saját adataira.
 
 ```azurecli-interactive
 az role assignment create \
@@ -50,4 +50,4 @@ az role assignment create \
    --scope <gallery ID>
 ```
 
-Az erőforrások RBAC használatával történő megosztásával kapcsolatos további információkért lásd: [hozzáférés kezelése a RBAC és az Azure CLI használatával](../articles/role-based-access-control/role-assignments-cli.md).
+További információ az erőforrások RBAC használatával való megosztásáról: Hozzáférés kezelése az RBAC és az [Azure CLI használatával.](../articles/role-based-access-control/role-assignments-cli.md)
