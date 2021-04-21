@@ -1,14 +1,14 @@
 ---
 title: Helm-diagramok tárolása
-description: Megtudhatja, hogyan tárolható Helm-diagram a Kubernetes-alkalmazásokhoz adattárak használatával a Azure Container Registry
+description: Útmutató a Helm-diagramok Kubernetes-alkalmazásokhoz való, adattárak használatával való Azure Container Registry
 ms.topic: article
 ms.date: 04/15/2021
-ms.openlocfilehash: 6698eb8f5e18511717e44bf5dc06a51d8f3903b8
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: c7dcdf222e9628daedb7e1c3617efb0b9c7af185
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537321"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772378"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Helm-diagramok leküldése és leküldése egy Azure Container Registrybe
 
@@ -23,7 +23,7 @@ Helm-diagramok tárolására, kezelésére és telepítésére a Helm-ügyfelet 
 A Helm 3-ast a Helm-diagramok gazdagépként való Azure Container Registry. A Helm 3-ban a következőt kell:
 
 * Létrehozhat egy vagy több Helm-adattárat egy Azure Container Registryben
-* Helm 3-diagramokat tárol egy regisztrációs adatbázisban [OCI-összetevőkként.](container-registry-image-formats.md#oci-artifacts) Azure Container Registry OCI-összetevők általánosan általánosan [támogatottak,](container-registry-oci-artifacts.md)beleértve a Helm-diagramokat is.
+* Helm 3-diagramokat tárol a beállításjegyzékben [OCI-összetevőkként.](container-registry-image-formats.md#oci-artifacts) Azure Container Registry OCI-összetevők általánosan általánosan [támogatottak,](container-registry-oci-artifacts.md)beleértve a Helm-diagramokat is.
 * Hitelesítse magát a beállításjegyzékben az `helm registry login` paranccsal.
 * Helm-diagramok leküldése, leküldése és kezelése beállításjegyzékben a Helm parancssori felület `helm chart` parancsai használatával
 * A `helm install` használatával diagramokat telepíthet egy Kubernetes-fürtre egy helyi adattár-gyorsítótárból.
@@ -88,7 +88,7 @@ További információ a példa létrehozásáról és futtatásáról: [Első l�
 
 ## <a name="save-chart-to-local-registry-cache"></a>Diagram mentése a helyi beállításjegyzék gyorsítótárában
 
-Módosítsa a könyvtárat `hello-world` az alkönyvtárra. Ezután a futtatásával mentse helyileg a diagram másolatát, és hozzon létre egy aliast a beállításjegyzék teljes nevével (csak kisbetűs), valamint a céladattár és `helm chart save` -címke nevével. 
+Váltsa át a `hello-world` könyvtárat az alkönyvtárra. Ezután a futtatásával mentse helyileg a diagram másolatát, és hozzon létre egy aliast a beállításjegyzék teljes nevével (csak kisbetűs), valamint a céladattár és `helm chart save` -címke nevével. 
 
 A következő példában a regisztrációs adatbázis neve *mycontainerregistry,* a céladattár a *hello-world*, a céldiagram címkéje pedig *v1*, de helyettesítse be a környezet értékeit:
 
@@ -201,7 +201,7 @@ Egy Helm-diagram Kubernetesben való telepítéséhez a diagramnak a helyi gyors
 helm chart remove mycontainerregistry.azurecr.io/helm/hello-world:v1
 ```
 
-A `helm chart pull` futtatásával töltse le a diagramot az Azure Container Registryből a helyi gyorsítótárba:
+Futtassa `helm chart pull` a következőt a diagram letöltéséhez az Azure Container Registryből a helyi gyorsítótárba:
 
 ```console
 helm chart pull mycontainerregistry.azurecr.io/helm/hello-world:v1
@@ -209,21 +209,21 @@ helm chart pull mycontainerregistry.azurecr.io/helm/hello-world:v1
 
 ## <a name="export-helm-chart"></a>Helm-diagram exportálása
 
-A diagram további felhasználásával exportálja azt egy helyi könyvtárba a `helm chart export` használatával. Exportálja például a könyvtárba lekért `install` diagramot:
+A diagram további felhasználásával exportálja azt egy helyi könyvtárba a `helm chart export` használatával. Például exportálja a könyvtárba lekért `install` diagramot:
 
 ```console
 helm chart export mycontainerregistry.azurecr.io/helm/hello-world:v1 \
   --destination ./install
 ```
 
-Az adattárban az exportált diagram információinak megtekintéséhez futtassa az parancsot abban a könyvtárban, `helm show chart` amelybe a diagramot exportálta.
+Az adattárban az exportált diagram információinak megtekintéséhez futtassa az parancsot abban a könyvtárban, amelybe `helm show chart` a diagramot exportálta.
 
 ```console
 cd install
 helm show chart hello-world
 ```
 
-A Helm részletes információkat ad vissza a diagram legújabb verziójáról, az alábbi kimenetben látható módon:
+A Helm részletes információkat ad vissza a diagram legújabb verziójáról, ahogyan az az alábbi kimenetben látható:
 
 ```output
 apiVersion: v2
@@ -236,7 +236,7 @@ version: 0.1.0
 
 ## <a name="install-helm-chart"></a>Helm-diagram telepítése
 
-A helyi gyorsítótárba lekért és exportált Helm-diagram telepítéséhez futtassa `helm install` a következőt: . Adjon meg egy kiadási nevet, például *myhelmtest,* vagy adja át a `--generate-name` paramétert. Például:
+A helyi gyorsítótárba lekért és exportált Helm-diagram telepítéséhez `helm install` futtassa a következőt: . Adjon meg egy kiadásnevet, például *myhelmtest*, vagy adja meg a `--generate-name` paramétert. Például:
 
 ```console
 helm install myhelmtest ./hello-world
@@ -253,7 +253,7 @@ REVISION: 1
 TEST SUITE: None
 ```
 
-A telepítés ellenőrzéséhez futtassa a `helm get manifest` parancsot. 
+A telepítés ellenőrzéséhez futtassa az `helm get manifest` parancsot. 
 
 ```console
 helm get manifest myhelmtest
@@ -261,7 +261,7 @@ helm get manifest myhelmtest
 
 A parancs a sablonfájlban található `configmap.yaml` YAML-adatokat adja vissza.
 
-A `helm uninstall` fürtön a diagram kiadásának eltávolításához futtassa a következőt:
+Futtassa `helm uninstall` a következőt a diagram kiadásának eltávolításához a fürtön:
 
 ```console
 helm uninstall myhelmtest
@@ -269,7 +269,7 @@ helm uninstall myhelmtest
 
 ## <a name="delete-chart-from-the-registry"></a>Diagram törlése a beállításjegyzékből
 
-Ha törölni szeretne egy diagramot a tároló-beállításjegyzékből, használja az [az acr repository delete parancsot.][az-acr-repository-delete] Futtassa a következő parancsot, és amikor a rendszer kéri, erősítse meg a műveletet:
+Ha törölni szeretne egy diagramot a tároló-beállításjegyzékből, használja az [az acr repository delete][az-acr-repository-delete] parancsot. Futtassa a következő parancsot, és amikor a rendszer kéri, erősítse meg a műveletet:
 
 ```azurecli
 az acr repository delete --name mycontainerregistry --image helm/hello-world:v1
@@ -291,12 +291,12 @@ az acr repository delete --name mycontainerregistry --image helm/hello-world:v1
 [azure-cli-install]: /cli/azure/install-azure-cli
 [aks-quickstart]: ../aks/kubernetes-walkthrough.md
 [acr-bestpractices]: container-registry-best-practices.md
-[az-configure]: /cli/azure/reference-index#az-configure
-[az-acr-login]: /cli/azure/acr#az-acr-login
+[az-configure]: /cli/azure/reference-index#az_configure
+[az-acr-login]: /cli/azure/acr#az_acr_login
 [az-acr-helm]: /cli/azure/acr/helm
 [az-acr-repository]: /cli/azure/acr/repository
-[az-acr-repository-show]: /cli/azure/acr/repository#az-acr-repository-show
-[az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete
-[az-acr-repository-show-tags]: /cli/azure/acr/repository#az-acr-repository-show-tags
-[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests
+[az-acr-repository-show]: /cli/azure/acr/repository#az_acr_repository_show
+[az-acr-repository-delete]: /cli/azure/acr/repository#az_acr_repository_delete
+[az-acr-repository-show-tags]: /cli/azure/acr/repository#az_acr_repository_show_tags
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az_acr_repository_show_manifests
 [acr-tasks]: container-registry-tasks-overview.md

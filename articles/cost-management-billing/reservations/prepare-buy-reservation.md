@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 04/12/2021
 ms.author: banders
-ms.openlocfilehash: 13a9e3ad1dcdfa230d757230e3fdea91e4ee9d23
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b2cdb106ab1c77c23626258f7e0708a20ffd3c4e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310393"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772252"
 ---
 # <a name="buy-a-reservation"></a>Foglalás vásárlása
 
@@ -44,9 +44,9 @@ Az igényeitől függően három lehetősége van a foglalás hatókörének be�
 
 A foglalási kedvezmények a használatra történő alkalmazása során az Azure a következő sorrendben dolgozza fel a foglalást:
 
-1. Egyetlen erőforráscsoport-hatókörrel rendelkező foglalások
-2. Egyetlen előfizetési hatókörrel rendelkező foglalások
-3. Fenntartások közös hatókörrel (több előfizetéssel), korábban ismertetve
+1. Foglalások egyetlen erőforráscsoport-hatókörrel
+2. Foglalások egyetlen előfizetési hatókörrel
+3. Foglalások megosztott hatókörrel (több előfizetéssel), korábban leírtak szerint
 
 A foglalás megvásárlása után bármikor frissítheti a hatókört. Ehhez lépjen a foglalásra, kattintson a **Konfigurálás** lehetőségre, és állítsa be újból a foglalás hatókörét. A foglalás hatókörének újbóli beállítása nem számít kereskedelmi tranzakciónak. A foglalási időszak nem módosul. A hatókör frissítésével kapcsolatos további információkért lásd [a foglalás megvásárlása utáni hatókörfrissítést](manage-reserved-vm-instance.md#change-the-reservation-scope) bemutató cikket.
 
@@ -133,4 +133,8 @@ Az egyéni előfizetéssel rendelkező ügyfelek esetében:
 
 ## <a name="next-steps"></a>További lépések
 
+- [További információ a Foglalási engedélyekről](view-reservations.md)
 - [Foglalások kezelése az Azure-erőforrásoknál](manage-reserved-vm-instance.md)
+- [Automatizálás REST API-k használatával](/rest/api/reserved-vm-instances/reservationorder)
+- [Automatizálás a Azure PowerShell](/powershell/module/az.reservations)
+- [Automatizálás a CLI használatával](/cli/azure/reservations)
