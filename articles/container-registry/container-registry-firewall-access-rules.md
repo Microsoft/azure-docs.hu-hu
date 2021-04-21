@@ -1,49 +1,49 @@
 ---
 title: Tűzfal-hozzáférési szabályok
-description: Szabályok konfigurálása az Azure Container Registry tűzfal mögötti eléréséhez a REST API és az adatvégpont-tartománynevek vagy a szolgáltatás-specifikus IP-címtartományok elérésének lehetővé tételével.
+description: Úgy konfigurálhatja a szabályokat, hogy tűzfal mögül férnek hozzá az Azure Container Registryhez, REST API és adatvégpont tartománynevéhez vagy szolgáltatásspecifikus IP-címtartományához való hozzáférés engedélyezésével.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 548d64632c1d726111770dfb49f705d31f5ca714
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6aea4415468eb21e8d010b74597fc68e4ebf573f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935988"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783934"
 ---
-# <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Szabályok konfigurálása az Azure Container Registry tűzfal mögötti eléréséhez
+# <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Szabályok konfigurálása tűzfal mögötti Azure Container Registry eléréséhez
 
-Ez a cikk bemutatja, hogyan konfigurálhat szabályokat a tűzfalon az Azure Container Registry elérésének engedélyezéséhez. Előfordulhat például, hogy egy tűzfal mögötti Azure IoT Edge eszköznek hozzá kell férnie egy tároló-beállításjegyzékhez egy tároló rendszerképének lekéréséhez. Emellett előfordulhat, hogy egy helyszíni hálózaton lévő zárolt kiszolgálónak hozzáférésre van szüksége a rendszerkép leküldéséhez.
+Ez a cikk azt ismerteti, hogyan konfigurálhatja a tűzfalon a szabályokat az Azure Container Registryhez való hozzáférés engedélyezése érdekében. Előfordulhat például, hogy Azure IoT Edge tűzfal vagy proxykiszolgáló mögötti tárolóeszköznek hozzá kell férni egy tárolójegyzékhez egy tároló rendszerképének lekért eléréséhez. Vagy egy helyszíni hálózat zárolt kiszolgálójának hozzáférésre lehet szüksége a rendszerkép leküldéséhez.
 
-Ha ehelyett csak egy Azure-beli virtuális hálózaton belül szeretné konfigurálni a bejövő hálózati hozzáférést egy tároló-beállításjegyzékhez, tekintse meg az Azure [Private-hivatkozás konfigurálása Azure Container registryhez](container-registry-private-link.md)című témakört.
+Ha ehelyett egy tároló-beállításjegyzék bejövő hálózati hozzáférését csak egy Azure-beli virtuális hálózaton belül szeretné konfigurálni, tekintse meg a következőt: Configure Azure Private Link for an Azure container registry (Tároló-adatbázis konfigurálása [Azure-beli tároló-beállításjegyzékhez).](container-registry-private-link.md)
 
-## <a name="about-registry-endpoints"></a>Tudnivalók a beállításjegyzékbeli végpontokról
+## <a name="about-registry-endpoints"></a>A beállításjegyzék-végpontok
 
-Képek vagy egyéb összetevők Azure Container registrybe való lekéréséhez vagy leküldéséhez egy ügyfélnek, például egy Docker-démonnak a HTTPS-kapcsolaton keresztül kell kommunikálnia két különálló végponttal. Azon ügyfelek esetében, amelyek tűzfal mögött férnek hozzá egy beállításjegyzékhez, mindkét végponthoz be kell állítania a hozzáférési szabályokat. Mindkét végpont a 443-as porton keresztül érhető el.
+Ahhoz, hogy rendszerképeket vagy más összetevőkkel kapcsolatban lekért vagy lekért egy Azure-beli tároló-beállításjegyzéket, az ügyfélnek, például a Docker-démonnak KÉT különböző végponttal kell https-kapcsolaton keresztül interakcióba lépnie. A tűzfal mögötti beállításjegyzékhez hozzáférő ügyfelek esetében mindkét végponthoz konfigurálnia kell a hozzáférési szabályokat. Mindkét végpont a 443-as porton keresztül érhető el.
 
-* A beállításjegyzék **REST API a végpontok** hitelesítése és a beállításjegyzék-kezelési műveletek a beállításjegyzék nyilvános REST API végpontján keresztül kezelhetők. Ez a végpont a beállításjegyzék bejelentkezési kiszolgálójának neve. Például: `myregistry.azurecr.io`
+* **Beállításjegyzékbeli REST API végpont** – A hitelesítési és beállításjegyzék-kezelési műveleteket a beállításjegyzék nyilvános REST API kezeli. Ez a végpont a regisztrációs adatbázis bejelentkezési kiszolgálójának neve. Például: `myregistry.azurecr.io`
 
-* **Storage-(adat) végpont** – az Azure a [blob Storage](container-registry-storage.md) -fiókokat az egyes beállításjegyzékek nevében a tároló lemezképek és más összetevők adatait kezeli. Amikor egy ügyfél egy Azure Container registryben fér hozzá a képrétegekhez, a a beállításjegyzék által biztosított Storage-fiók végpontján keresztül kéri a kérelmeket.
+* **Tárolási (adat-) végpont** – Az [Azure](container-registry-storage.md) blobtárolót foglal le az Azure Storage-fiókokban az egyes tárolójegyzékek nevében a tároló-rendszerképek és egyéb összetevők adatainak kezeléséhez. Amikor egy ügyfél hozzáfér egy Azure Container Registry rendszerképrétegéhez, a regisztrációs adatbázis által biztosított tárfiókvégpont használatával kéréseket tesz elérhetővé.
 
-Ha a beállításjegyzék [földrajzilag replikálódik](container-registry-geo-replication.md), előfordulhat, hogy az ügyfélnek egy adott régióban vagy több replikált régióban lévő adatvégponttal kell kommunikálnia.
+Ha a [](container-registry-geo-replication.md)beállításjegyzék georeplikált , előfordulhat, hogy az ügyfélnek egy adott régióban vagy több replikált régióban kell interakcióba lépnie az adatvégponttal.
 
-## <a name="allow-access-to-rest-and-data-endpoints"></a>Hozzáférés engedélyezése a REST-és az adatvégpontokhoz
+## <a name="allow-access-to-rest-and-data-endpoints"></a>REST- és adatvégpont-hozzáférés engedélyezése
 
-* **Rest-végpont** – hozzáférés engedélyezése a teljes beállításjegyzékbeli bejelentkezési kiszolgáló nevéhez, `<registry-name>.azurecr.io` vagy egy társított IP-címtartomány
-* **Tárolási (adat) végpont** – engedélyezi az összes Azure Blob Storage-fiókhoz való hozzáférést a helyettesítő karakter `*.blob.core.windows.net` vagy egy társított IP-címtartomány használatával.
+* **REST-végpont** – Hozzáférés engedélyezése a regisztrációs adatbázis teljes bejelentkezési kiszolgálójának nevéhez vagy egy társított `<registry-name>.azurecr.io` IP-címtartományhoz
+* **Tárolási (adat-) végpont** – Engedélyezi a hozzáférést az összes Azure Blob Storage-fiókhoz a helyettesítő karakter vagy `*.blob.core.windows.net` egy társított IP-címtartomány használatával.
 > [!NOTE]
-> Azure Container Registry [dedikált adatvégpontokat](#enable-dedicated-data-endpoints)vezet be, amelyek lehetővé teszik a beállításjegyzék-tárterület szűk hatókörű szabályainak megkötését. Az űrlap használatával engedélyezheti az adatvégpontokat minden olyan régióban, ahol a beállításjegyzék található vagy replikálva van `<registry-name>.<region>.data.azurecr.io` .
+> Azure Container Registry bevezeti a [](#enable-dedicated-data-endpoints)dedikált adatvégpontokat, amelyek lehetővé teszik a beállításjegyzék-tároló ügyféloldali tűzfalszabályainak szigorú hatókörét. Az űrlap használatával engedélyezheti az adatvégpontokat minden olyan régióban, ahol a beállításjegyzék található vagy replikálva `<registry-name>.<region>.data.azurecr.io` van.
 
 ## <a name="allow-access-by-ip-address-range"></a>Hozzáférés engedélyezése IP-címtartomány alapján
 
-Ha a szervezet rendelkezik olyan házirendekkel, amelyek csak adott IP-címekhez vagy címtartományok elérését engedélyezik, töltse le az [Azure IP-címtartományok és a szolgáltatási címkék – nyilvános felhő szolgáltatást](https://www.microsoft.com/download/details.aspx?id=56519).
+Ha a szervezete szabályzatokkal rendelkezik, amelyek csak bizonyos IP-címekhez vagy címtartományokhoz engedélyezik a hozzáférést, töltse le az [Azure IP-tartományok](https://www.microsoft.com/download/details.aspx?id=56519)és szolgáltatáscímkék – nyilvános felhő .
 
-Azon ACR REST-végpont IP-címtartományok megkereséséhez, amelyekhez engedélyezni szeretné a hozzáférést, keresse meg a **AzureContainerRegistry** a JSON-fájlban.
+Az ACR REST-végpont IP-tartományai, amelyekhez hozzáférést kell engedélyeznie, keresse meg az **AzureContainerRegistry** szolgáltatásokat a JSON-fájlban.
 
 > [!IMPORTANT]
-> Az Azure-szolgáltatások IP-címtartományok változhatnak, és a frissítések hetente lesznek közzétéve. Töltse le rendszeresen a JSON-fájlt, és végezze el a szükséges frissítéseket a hozzáférési szabályokban. Ha a forgatókönyv magában foglalja a hálózati biztonsági csoport szabályainak egy Azure-beli virtuális hálózatban való konfigurálását, vagy ha Azure Firewall használja, használja helyette a **AzureContainerRegistry** [szolgáltatás címkéjét](#allow-access-by-service-tag) .
+> Az Azure-szolgáltatások IP-címtartományai változhatnak, a frissítéseket pedig hetente közzéteszik. Töltse le rendszeresen a JSON-fájlt, és tegye meg a szükséges frissítéseket a hozzáférési szabályokban. Ha a forgatókönyvben hálózati biztonsági csoportokra vonatkozó szabályokat kell konfigurálni egy Azure-beli virtuális hálózaton, Azure Firewall az **AzureContainerRegistry** [szolgáltatáscímkét használja.](#allow-access-by-service-tag)
 >
 
-### <a name="rest-ip-addresses-for-all-regions"></a>REST IP-címek az összes régióban
+### <a name="rest-ip-addresses-for-all-regions"></a>REST IP-címek az összes régióhoz
 
 ```json
 {
@@ -59,9 +59,9 @@ Azon ACR REST-végpont IP-címtartományok megkereséséhez, amelyekhez engedél
     [...]
 ```
 
-### <a name="rest-ip-addresses-for-a-specific-region"></a>Adott régió REST IP-címei
+### <a name="rest-ip-addresses-for-a-specific-region"></a>ADOTT régió REST IP-címei
 
-Keresse meg az adott régiót, például a **AzureContainerRegistry. AustraliaEast**.
+Keresse meg az adott régiót, például **AzureContainerRegistry.AustraliaEast.**
 
 ```json
 {
@@ -77,7 +77,7 @@ Keresse meg az adott régiót, például a **AzureContainerRegistry. AustraliaEa
     [...]
 ```
 
-### <a name="storage-ip-addresses-for-all-regions"></a>Az összes régió tárolási IP-címei
+### <a name="storage-ip-addresses-for-all-regions"></a>Tárolási IP-címek az összes régióhoz
 
 ```json
 {
@@ -93,9 +93,9 @@ Keresse meg az adott régiót, például a **AzureContainerRegistry. AustraliaEa
     [...]
 ```
 
-### <a name="storage-ip-addresses-for-specific-regions"></a>Adott régiók tárolási IP-címei
+### <a name="storage-ip-addresses-for-specific-regions"></a>Tárolási IP-címek adott régiókhoz
 
-Keresse meg az adott régiót, például a **Storage. AustraliaCentral**.
+Keressen rá az adott régióra, például **Storage.AustraliaCentral**.
 
 ```json
 {
@@ -111,51 +111,51 @@ Keresse meg az adott régiót, például a **Storage. AustraliaCentral**.
     [...]
 ```
 
-## <a name="allow-access-by-service-tag"></a>Hozzáférés engedélyezése a Service tag számára
+## <a name="allow-access-by-service-tag"></a>Hozzáférés engedélyezése szolgáltatáscímke alapján
 
-Egy Azure-beli virtuális hálózatban a hálózati biztonsági szabályok használatával szűrheti a forgalmat egy erőforrásból, például egy virtuális gépről egy tároló-beállításjegyzékbe. Az Azure-beli hálózati szabályok létrehozásának egyszerűbbé tételéhez használja a **AzureContainerRegistry** [szolgáltatás címkéjét](../virtual-network/network-security-groups-overview.md#service-tags). A szolgáltatási címke az IP-címek egy csoportját jelöli, amely egy Azure-szolgáltatás globális vagy Azure-régióhoz való elérésére szolgál. A rendszer automatikusan frissíti a címkét a címek változásakor. 
+Az Azure-beli virtuális hálózatokban hálózati biztonsági szabályok használatával szűrheti az erőforrások, például a virtuális gépek és a tároló-beállításjegyzékek forgalmát. Az Azure hálózati szabályok létrehozásának egyszerűsítése érdekében használja az **AzureContainerRegistry** [szolgáltatáscímkét.](../virtual-network/network-security-groups-overview.md#service-tags) A szolgáltatáscímke ip-címelőtagok egy csoportját jelöli egy Azure-szolgáltatás globális vagy Azure-régiónkénti eléréséhez. A címek módosításakor a címke automatikusan frissül. 
 
-Hozzon létre például egy kimenő hálózati biztonsági csoportra vonatkozó szabályt a cél **AzureContainerRegistry** , hogy engedélyezze a forgalmat egy Azure Container registrybe. Ha csak egy adott régióban szeretné engedélyezni a szolgáltatás címkéhez való hozzáférést, a következő formátumban kell megadnia a régiót: **AzureContainerRegistry**. [*régió neve*].
+Hozzon létre például egy kimenő hálózati biztonságicsoport-szabályt **az AzureContainerRegistry** céladatbázissal, hogy engedélyezze az Azure Container Registrybe irányuló forgalmat. Ha csak egy adott régióban engedélyezi a szolgáltatáscímkéhez való hozzáférést, adja meg a régiót a következő formátumban: **AzureContainerRegistry**. [*régió neve*].
 
-## <a name="enable-dedicated-data-endpoints"></a>Dedikált adatvégpontok engedélyezése 
+## <a name="enable-dedicated-data-endpoints"></a>Dedikált adatvégpont engedélyezése 
 
 > [!WARNING]
-> Ha korábban konfigurálta az ügyfél-tűzfalhoz való hozzáférést a meglévő `*.blob.core.windows.net` végpontokhoz, a dedikált adatvégpontokra való áttérés hatással lesz az ügyfél-kapcsolatra, ami lekéréses hibákat okoz. Annak biztosítása érdekében, hogy az ügyfelek konzisztens hozzáféréssel rendelkezzenek, adja hozzá az új adatvégponti szabályokat az ügyfél tűzfalszabályok szabályaihoz. Miután végzett, engedélyezze a dedikált adatvégpontokat a beállításjegyzékhez az Azure CLI vagy más eszközök használatával.
+> Ha korábban konfigurálta az ügyfél tűzfalának hozzáférését a meglévő végpontok számára, a dedikált adatvégpontra való váltás hatással lesz az ügyfélkapcsolatra, ami le `*.blob.core.windows.net` pull-hibákat okoz. Az ügyfelek konzisztens hozzáférésének biztosításához adja hozzá az új adatvégpont-szabályokat az ügyfél tűzfalszabályihoz. Ha elkészült, engedélyezze a regisztrációs jegyzékek dedikált adatvégpontjait az Azure CLI vagy más eszközök használatával.
 
-A dedikált adatvégpontok a **prémium** szintű tároló beállításjegyzék-szolgáltatási szintjének választható funkciói. További információ a beállításjegyzék szolgáltatási szintjeiről és korlátairól: [Azure Container Registry szolgáltatási szintek](container-registry-skus.md). 
+A dedikált adatvégpont a **Prémium** tároló-beállításjegyzék szolgáltatásszint egyik választható funkciója. A beállításjegyzék szolgáltatásszintekkel és korlátozásokkal kapcsolatos további információkért lásd: Azure Container Registry [szolgáltatási szintek.](container-registry-skus.md) 
 
-A dedikált adatvégpontokat a Azure Portal vagy az Azure CLI használatával engedélyezheti. Az adatvégpontok regionális mintát követnek `<registry-name>.<region>.data.azurecr.io` . Földrajzilag replikált beállításjegyzékben az adatvégpontok engedélyezése lehetővé teszi a végpontok használatát az összes replika régióban.
+A dedikált adatvégpontokat a Azure Portal Azure CLI használatával engedélyezheti. Az adatvégpont egy regionális mintát követ: `<registry-name>.<region>.data.azurecr.io` . Egy georeplikált beállításjegyzékben az adatvégpont engedélyezése minden replikarégiában engedélyezi a végpontokat.
 
 ### <a name="portal"></a>Portál
 
-Adatvégpontok engedélyezése a portál használatával:
+Adatvégpont engedélyezése a portálon:
 
-1. Navigáljon a tároló-beállításjegyzékhez.
-1. Válassza a **hálózatkezelés**  >  **nyilvános hozzáférés** lehetőséget.
-1. Jelölje be a **dedikált adatvégpont engedélyezése** jelölőnégyzetet.
+1. Lépjen a tároló-beállításjegyzékhez.
+1. Válassza **a Hálózat nyilvános** hozzáférés  >  **lehetőséget.**
+1. Jelölje be **a Dedikált adatvégpont engedélyezése** jelölőnégyzetet.
 1. Kattintson a **Mentés** gombra.
 
-Az adatvégpont vagy végpontok megjelennek a portálon.
+Az adatvégpont vagy -végpontok megjelennek a portálon.
 
-:::image type="content" source="media/container-registry-firewall-access-rules/dedicated-data-endpoints-portal.png" alt-text="Dedikált adatvégpontok a portálon":::
+:::image type="content" source="media/container-registry-firewall-access-rules/dedicated-data-endpoints-portal.png" alt-text="Dedikált adatvégpont a portálon":::
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az Azure CLI használatával történő adatvégpontok engedélyezéséhez használja az Azure CLI 2.4.0 vagy újabb verzióját. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha az Azure CLI használatával szeretné engedélyezni az adatvégpontokat, használja az Azure CLI 2.4.0-s vagy újabb verzióját. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-A következő az [ACR Update][az-acr-update] paranccsal dedikált adatvégpontokat engedélyez a beállításjegyzék *myregistry*. 
+Az alábbi [az acr update parancs][az-acr-update] engedélyezi a dedikált adatvégpontokat a *myregistry beállításjegyzékben.* 
 
 ```azurecli
 az acr update --name myregistry --data-endpoint-enabled
 ```
 
-Az adatvégpontok megtekintéséhez használja az az [ACR show-endpoints][az-acr-show-endpoints] parancsot:
+Az adatvégpont megtekintéséhez használja az [az acr show-endpoints][az-acr-show-endpoints] parancsot:
 
 ```azurecli
 az acr show-endpoints --name myregistry
 ```
 
-A bemutató céljának kimenete két regionális végpontot mutat be
+A bemutató jellegű kimenet két regionális végpontot mutat be
 
 ```
 {
@@ -173,21 +173,21 @@ A bemutató céljának kimenete két regionális végpontot mutat be
 }
 ```
 
-Miután beállította a dedikált adatvégpontokat a beállításjegyzékhez, engedélyezheti az ügyfél-tűzfal hozzáférési szabályait az adatvégpontok számára. Engedélyezze az adatvégpont hozzáférési szabályait az összes szükséges beállításjegyzék-régióhoz.
+Miután beállította a dedikált adatvégpontokat a beállításjegyzékhez, engedélyezheti az ügyfél tűzfal-hozzáférési szabályait az adatvégponthoz. Adatvégpont-hozzáférési szabályok engedélyezése az összes szükséges beállításjegyzék-régióhoz.
 
-## <a name="configure-client-firewall-rules-for-mcr"></a>Az MCR tartozó ügyfél-tűzfalszabályok konfigurálása
+## <a name="configure-client-firewall-rules-for-mcr"></a>Ügyfél tűzfalszabályainak konfigurálása az MCR-hez
 
-Ha tűzfal mögött szeretné elérni a Microsoft Container Registryt (MCR), tekintse meg a [MCR-ügyfél tűzfalszabályok](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)konfigurálására vonatkozó útmutatót. A MCR az összes Microsoft által közzétett Docker-rendszerkép elsődleges beállításjegyzéke, például Windows Server-lemezképek.
+Ha tűzfal mögül kell Microsoft Container Registry MCR-t elérnie, tekintse meg az útmutatót az MCR-ügyfél tűzfalszabályainak [konfigurálásról.](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md) Az MCR az összes Microsoft által közzétett Docker-rendszerkép, például a Windows Server-rendszerképek elsődleges regisztrációs adatbázisa.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A [hálózati biztonsággal kapcsolatos Azure ajánlott eljárások](../security/fundamentals/network-best-practices.md) ismertetése
+* Ismerje meg az [Azure ajánlott hálózati biztonsági eljárásait](../security/fundamentals/network-best-practices.md)
 
-* További információ az Azure Virtual Network [biztonsági csoportjairól](../virtual-network/network-security-groups-overview.md)
+* További információ az [Azure-beli](../virtual-network/network-security-groups-overview.md) virtuális hálózatokban lévő biztonsági csoportokról
 
-* További információ a tároló-beállításjegyzék [privát hivatkozásának](container-registry-private-link.md) beállításáról
+* További információ a tároló-beállításjegyzék [Private Link](container-registry-private-link.md) beállításával kapcsolatban
 
-* További információ a Azure Container Registry [dedikált adatvégpontokról](https://azure.microsoft.com/blog/azure-container-registry-mitigating-data-exfiltration-with-dedicated-data-endpoints/)
+* További információ a dedikált [adatvégpontokkal kapcsolatban a](https://azure.microsoft.com/blog/azure-container-registry-mitigating-data-exfiltration-with-dedicated-data-endpoints/) Azure Container Registry
 
 
 
@@ -197,5 +197,5 @@ Ha tűzfal mögött szeretné elérni a Microsoft Container Registryt (MCR), tek
 
 <!-- LINKS - Internal -->
 
-[az-acr-update]: /cli/azure/acr#az-acr-update
-[az-acr-show-endpoints]: /cli/azure/acr#az-acr-show-endpoints
+[az-acr-update]: /cli/azure/acr#az_acr_update
+[az-acr-show-endpoints]: /cli/azure/acr#az_acr_show_endpoints

@@ -1,6 +1,6 @@
 ---
-title: Felügyelt identitás kiosztása egy alkalmazás-szerepkörhöz a PowerShell használatával – Azure AD
-description: Részletes útmutató a felügyelt identitások egy másik alkalmazás szerepkörhöz való hozzárendeléséhez a PowerShell használatával.
+title: Felügyelt identitás hozzárendelése alkalmazás-szerepkörhöz a PowerShell használatával – Azure AD
+description: Részletes útmutató felügyelt identitáshoz való hozzáférés másik alkalmazás szerepkörhöz való hozzárendeléshez a PowerShell használatával.
 services: active-directory
 documentationcenter: ''
 author: johndowns
@@ -15,61 +15,62 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jodowns
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2d844054e3744aafa01f43ded354a5b5d9f8b4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5150c26d67b77008c11764cc6e51ca7085ffcb31
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98732085"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784910"
 ---
-# <a name="assign-a-managed-identity-access-to-an-application-role-using-powershell"></a>Felügyelt identitás-hozzáférés kiosztása egy alkalmazás-szerepkörhöz a PowerShell használatával
+# <a name="assign-a-managed-identity-access-to-an-application-role-using-powershell"></a>Felügyelt identitás hozzáférésének hozzárendelése egy alkalmazás-szerepkörhöz a PowerShell használatával
 
-Az Azure-erőforrások felügyelt identitásai az Azure-szolgáltatásokat az Azure Active Directory identitásával biztosítják. A kódban nem szükséges hitelesítő adatok nélkül működniük. Az Azure-szolgáltatások ezt az identitást használják az Azure AD-hitelesítést támogató szolgáltatások hitelesítésére. Az alkalmazás szerepkörei szerepköralapú hozzáférés-vezérlést biztosítanak, és lehetővé teszik a szolgáltatások számára az engedélyezési szabályok megvalósítását.
+Az Azure-erőforrások felügyelt identitása identitást biztosít az Azure-szolgáltatásoknak a Azure Active Directory. Anélkül működnek, hogy hitelesítő adatokra lenne szükség a kódban. Az Azure-szolgáltatások ezzel az identitással hitelesítik magukat az Azure AD-hitelesítést támogató szolgáltatásokban. Az alkalmazás-szerepkörök szerepköralapú hozzáférés-vezérlést biztosítanak, és lehetővé teszik a szolgáltatások számára az engedélyezési szabályok implementációját.
 
-Ebből a cikkből megtudhatja, hogyan rendelhet hozzá felügyelt identitást egy másik alkalmazás által az Azure AD PowerShell használatával közzétett alkalmazási szerepkörhöz.
+Ebből a cikkből megtudhatja, hogyan rendelhet hozzá felügyelt identitást egy másik alkalmazás által elérhetővé tért alkalmazás-szerepkörhöz az Azure AD PowerShell használatával.
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#managed-identity-types)**.
+- Ha nem ismeri az Azure-erőforrások felügyelt identitását, tekintse meg az [áttekintés szakaszt.](overview.md) Mindenképpen tekintse át a rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt **[identitások közötti különbséget.](overview.md#managed-identity-types)**
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
-- A példaként szolgáló szkriptek futtatásához két lehetőség közül választhat:
-    - Használja a [Azure Cloud shellt](../../cloud-shell/overview.md), amelyet a kódrészletek jobb felső sarkában található **TRY IT (kipróbálás** ) gombra kattintva nyithat meg.
-    - Futtassa helyileg a parancsfájlokat az [Azure ad PowerShell](/powershell/azure/active-directory/install-adv2)legújabb verziójának telepítésével.
+- A példaszk szkriptek futtatásához két lehetőség áll rendelkezésre:
+    - Használja [a Azure Cloud Shell,](../../cloud-shell/overview.md)amelyet a kódblokkok jobb felső sarkában található **Try It (Próbálja** ki) gombbal nyithat meg.
+    - Futtatassa helyileg a szkripteket az [Azure AD PowerShell legújabb verziójának telepítésével.](/powershell/azure/active-directory/install-adv2)
 
-## <a name="assign-a-managed-identity-access-to-another-applications-app-role"></a>Felügyelt identitás hozzáférésének kiosztása egy másik alkalmazás-szerepkörhöz
+## <a name="assign-a-managed-identity-access-to-another-applications-app-role"></a>Felügyelt identitás hozzáférésének hozzárendelése egy másik alkalmazás alkalmazás-szerepköréhez
 
-1. Felügyelt identitás engedélyezése Azure-erőforrásokon, [például egy Azure-beli virtuális gépen](qs-configure-powershell-windows-vm.md).
+1. Felügyelt identitás engedélyezése egy Azure-erőforráson, például egy [Azure-beli virtuális gépen.](qs-configure-powershell-windows-vm.md)
 
-1. A felügyelt identitás szolgáltatásnév AZONOSÍTÓjának megkeresése.
+1. Keresse meg a felügyelt identitás szolgáltatásnévének objektumazonosítóját.
 
-   A **rendszer által hozzárendelt felügyelt identitások esetében** a Azure Portal az erőforrás **identitása** lapon található objektum azonosítóját. Az objektumazonosító megkereséséhez a következő PowerShell-parancsfájlt is használhatja. Szüksége lesz az 1. lépésben létrehozott erőforrás-AZONOSÍTÓra, amely az erőforrás **Tulajdonságok** lapjának Azure Portal érhető el.
+   **A rendszer által hozzárendelt** felügyelt identitások esetén az objektumazonosítót az Azure Portal az erőforrás Identitás lapján **találja.** Az objektumazonosítót az alábbi PowerShell-szkript használatával is megkeresheti. Szüksége lesz az 1. lépésben létrehozott erőforrás erőforrás-azonosítójára, amely az erőforrás Tulajdonságok lapján, Azure Portal lapon érhető **el.**
 
     ```powershell
     $resourceIdWithManagedIdentity = '/subscriptions/{my subscription ID}/resourceGroups/{my resource group name}/providers/Microsoft.Compute/virtualMachines/{my virtual machine name}'
     (Get-AzResource -ResourceId $resourceIdWithManagedIdentity).Identity.PrincipalId
     ```
 
-    **Felhasználó által hozzárendelt felügyelt identitás** esetén a felügyelt identitás OBJEKTUMának azonosítóját a Azure Portal az erőforrás **áttekintő** oldalán találja. Az objektumazonosító megkereséséhez a következő PowerShell-parancsfájlt is használhatja. Szüksége lesz a felhasználó által hozzárendelt felügyelt identitás erőforrás-AZONOSÍTÓJÁRA.
+    **Felhasználó által hozzárendelt** felügyelt identitás esetén a felügyelt identitás objektumazonosítóját az erőforrás Áttekintés lapján Azure Portal a felügyelt identitás **objektumazonosítóját.** A következő PowerShell-szkript használatával is megkeresheti az objektumazonosítót. Szüksége lesz a felhasználó által hozzárendelt felügyelt identitás erőforrás-azonosítójára.
 
     ```powershell
     $userManagedIdentityResourceId = '/subscriptions/{my subscription ID}/resourceGroups/{my resource group name}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{my managed identity name}'
     (Get-AzResource -ResourceId $userManagedIdentityResourceId).Properties.PrincipalId
     ```
 
-1. Hozzon létre egy új alkalmazás-regisztrációt annak a szolgáltatásnak a jelölésére, amelynek a felügyelt identitása kérelmet küld. Ha a felügyelt identitás számára elérhető API vagy szolgáltatás már rendelkezik egy egyszerű szolgáltatással az Azure AD-bérlőben, hagyja ki ezt a lépést. Ha például a felügyelt identitás elérését szeretné biztosítani a Microsoft Graph API számára, kihagyhatja ezt a lépést.
+1. Hozzon létre egy új alkalmazásregisztrációt, amely azt a szolgáltatást képviseli, amelybe a felügyelt identitás kérést küld. Ha az alkalmazásszerepkrét a felügyelt identitás számára elérhetővé tő API vagy szolgáltatás már rendelkezik szolgáltatásnévvel az Azure AD-bérlőben, hagyja ki ezt a lépést. Ha például hozzáférést szeretne a felügyelt identitás számára a Microsoft Graph API-hoz, kihagyhatja ezt a lépést.
 
-1. Keresse meg a szolgáltatásalkalmazás egyszerű szolgáltatásnév-AZONOSÍTÓját. Ezt a Azure Portal használatával találja meg. Nyissa meg Azure Active Directory a **vállalati alkalmazások** lapot, majd keresse meg az alkalmazást, és keresse meg az **objektumazonosítót**. Az egyszerű szolgáltatásnév AZONOSÍTÓját az alábbi PowerShell-parancsfájl használatával is megkeresheti a megjelenítendő névvel:
+1. Keresse meg a szolgáltatásalkalmazás szolgáltatásnévének objektumazonosítóját. Ezt a következő Azure Portal. Nyissa meg Azure Active Directory a Vállalati  alkalmazások lapot, keresse meg az alkalmazást, és keresse meg az **objektumazonosítót.** A szolgáltatásnév objektumazonosítóját a megjelenített neve alapján is megkeresheti a következő PowerShell-szkript használatával:
 
     ```powershell
     $serverServicePrincipalObjectId = (Get-AzureADServicePrincipal -Filter "DisplayName eq '$applicationName'").ObjectId
     ```
 
     > [!NOTE]
-    > Az alkalmazások megjelenítendő nevei nem egyediek, ezért győződjön meg arról, hogy a megfelelő alkalmazás egyszerű szolgáltatásnév beszerzése megtörténik.
+    > Az alkalmazások megjelenítendő nevei nem egyediek, ezért ellenőrizze, hogy a megfelelő alkalmazás szolgáltatásnevét szerezze-e be.
 
-1. Vegyen fel egy alkalmazás- [szerepkört](../develop/howto-add-app-roles-in-azure-ad-apps.md) a 3. lépésben létrehozott alkalmazáshoz. A szerepkört a Azure Portal használatával vagy a Microsoft Graph használatával hozhatja létre. Hozzáadhat például egy olyan alkalmazás-szerepkört, amely a következőhöz hasonló:
+1. Adjon hozzá [egy alkalmazásszerepet](../develop/howto-add-app-roles-in-azure-ad-apps.md) a 3. lépésben létrehozott alkalmazáshoz. A szerepkört létrehozhatja a Azure Portal vagy a Microsoft Graph. Hozzáadhat például egy alkalmazás-szerepkört az alábbihoz hasonlóval:
 
     ```json
     {
@@ -84,12 +85,12 @@ Ebből a cikkből megtudhatja, hogyan rendelhet hozzá felügyelt identitást eg
     }
     ```
 
-1. Rendelje hozzá az alkalmazás szerepkört a felügyelt identitáshoz. Az alkalmazás szerepkörének hozzárendeléséhez a következő információkra lesz szüksége:
-    * `managedIdentityObjectId`: a felügyelt identitás egyszerű szolgáltatásnév, amelyet a 2. lépésben talált.
-    * `serverServicePrincipalObjectId`: a kiszolgálóalkalmazás azon szolgáltatásnév, amelyet a 4. lépésben talált.
-    * `appRoleId`: a kiszolgálói alkalmazás által az 5. lépésben létrehozott alkalmazás-szerepkör azonosítója, amely a példában az alkalmazás szerepkör-azonosítója `0566419e-bb95-4d9d-a4f8-ed9a0f147fa6` .
+1. Rendelje hozzá az alkalmazás-szerepkört a felügyelt identitáshoz. Az alkalmazás-szerepkör hozzárendeléséhez a következő információkra lesz szüksége:
+    * `managedIdentityObjectId`: a felügyelt identitás szolgáltatásnévének objektumazonosítója, amelyet a 2. lépésben talált.
+    * `serverServicePrincipalObjectId`: a kiszolgálóalkalmazás szolgáltatásnévének objektumazonosítója, amelyet a 4. lépésben talált.
+    * `appRoleId`: a kiszolgálóalkalmazás által felfedett alkalmazás-szerepkör azonosítója, amelyet az 5. lépésben generált – a példában az alkalmazás szerepkör-azonosítója `0566419e-bb95-4d9d-a4f8-ed9a0f147fa6` .
    
-   A szerepkör-hozzárendelés hozzáadásához hajtsa végre a következő PowerShell-parancsfájlt:
+   A szerepkör-hozzárendelés hozzáadásához hajtsa végre a következő PowerShell-szkriptet:
 
     ```powershell
     New-AzureADServiceAppRoleAssignment -ObjectId $managedIdentityObjectId -Id $appRoleId -PrincipalId $managedIdentityObjectId -ResourceId $serverServicePrincipalObjectId
@@ -97,7 +98,7 @@ Ebből a cikkből megtudhatja, hogyan rendelhet hozzá felügyelt identitást eg
 
 ## <a name="complete-script"></a>Teljes szkript
 
-Ez a példa azt szemlélteti, hogyan rendelhet hozzá egy Azure-webalkalmazás felügyelt identitását egy alkalmazás-szerepkörhöz.
+Ez a példaszk szkript bemutatja, hogyan rendelheti hozzá egy Azure-webalkalmazás felügyelt identitását egy alkalmazás-szerepkörhöz.
 
 ```powershell
 # Install the module. (You need admin on the machine.)
@@ -136,5 +137,5 @@ New-AzureADServiceAppRoleAssignment `
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Felügyelt identitás az Azure-erőforrásokhoz – áttekintés](overview.md)
-- A felügyelt identitás Azure-beli virtuális gépen való engedélyezésével kapcsolatban lásd: [felügyelt identitások konfigurálása](qs-configure-powershell-windows-vm.md)Azure-beli virtuális gépeken a PowerShell használatával.
+- [Az Azure-erőforrások felügyelt identitásának áttekintése](overview.md)
+- A felügyelt identitás Azure-beli virtuális gépen való engedélyezéséről lásd: Azure-beli virtuális gépen található Azure-erőforrások felügyelt identitásának konfigurálása [a PowerShell használatával.](qs-configure-powershell-windows-vm.md)

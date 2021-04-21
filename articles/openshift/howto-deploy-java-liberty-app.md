@@ -1,84 +1,84 @@
 ---
-title: Java-alkalmazás üzembe helyezése Open Liberty/WebSphere Liberty-vel egy Azure Red Hat OpenShift 4 fürtön
-description: Egy Java-alkalmazás üzembe helyezése nyílt Liberty/WebSphere Liberty-vel egy Azure Red Hat OpenShift 4 fürtön.
+title: Java-alkalmazás üzembe helyezése az Open Azure Red Hat OpenShift/WebSphereVel egy 4 Azure Red Hat OpenShift fürtön
+description: Java-alkalmazás üzembe helyezése az Open Azure Red Hat OpenShift/WebSphereVel egy 4 Azure Red Hat OpenShift fürtön.
 author: jiangma
 ms.author: jiangma
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 10/30/2020
-keywords: Java, jakartaee, JavaEE, profil, Open-Liberty, WebSphere-Liberty, ARO, openshift, Red Hat
-ms.openlocfilehash: 08fd3ab112498a983b438d5ba1f1f100816cbf5d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+keywords: java, jakartaee, javaee, microprofile, open-microprofile, websphere-mert, aro, openshift, red hat
+ms.openlocfilehash: 2a308c7de754f395a3ef8a1bd97ed2441d27d21d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212994"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783574"
 ---
-# <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Java-alkalmazás üzembe helyezése Open Liberty/WebSphere Liberty-vel egy Azure Red Hat OpenShift 4 fürtön
+# <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Java-alkalmazás üzembe helyezése az Open Azure Red Hat OpenShift/WebSphereVel egy 4 Azure Red Hat OpenShift fürtön
 
-Ez az útmutató bemutatja, hogyan futtatható a Java, a Java EE, a [Jakarta EE](https://jakarta.ee/)vagy a [profil](https://microprofile.io/) alkalmazása a nyílt Liberty/WebSphere Liberty futtatókörnyezetben, majd a tároló alkalmazás üzembe helyezése egy Azure Red Hat OpenShift (ARO) 4 fürtön a nyílt Liberty operátor használatával. Ebből a cikkből megtudhatja, hogyan készítheti elő a Liberty-alkalmazást, hogyan építheti fel az Application Docker-rendszerképet, és hogyan futtathatja a tároló alkalmazást egy ARO 4 fürtön.  A nyitott szabadságról a [szabadság projekt megnyitása oldalon](https://openliberty.io/)talál további információt. Az IBM WebSphere Liberty szolgáltatással kapcsolatos további információkért tekintse meg [a WebSphere Liberty-termék oldalát](https://www.ibm.com/cloud/websphere-liberty).
+Ez az útmutató bemutatja, hogyan futtathatja Java-, Java EE-, [Jakarta EE-](https://jakarta.ee/)vagy [MicroProfile-alkalmazását](https://microprofile.io/) az Open WebSphereÁsára futtatott futási környezetben, majd hogyan helyezheti üzembe a tárolóba helyezett alkalmazást egy Azure Red Hat OpenShift- (ARO-) 4-fürtön az Open Container Operator használatával. Ez a cikk végigkényéri egy Application Application előkészítésén, az alkalmazás Docker-rendszerképének elkészítésén és a tárolóba ezett alkalmazás egy ARO 4-fürtön való futtatásán.  További részletekért lásd az Open [Merton projektoldalt.](https://openliberty.io/) Az IBM WebSphere Fogról további részleteket a [WebSphere Fog termékoldalán talál.](https://www.ibm.com/cloud/websphere-liberty)
 
 [!INCLUDE [aro-support](includes/aro-support.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az útmutató lépéseinek végrehajtásához hajtsa végre az alábbi előfeltételeket.
+Az útmutató sikeres végigvezeti az alábbi előfeltételeken.
 
 > [!NOTE]
-> Az Azure Red Hat OpenShift legalább 40 mag szükséges a OpenShift-fürt létrehozásához és futtatásához. Egy új Azure-előfizetéshez tartozó alapértelmezett Azure-erőforrás-kvóta nem felel meg ennek a követelménynek. Az erőforrás-korlát növeléséhez tekintse meg a [standard kvóta: a határértékek](../azure-portal/supportability/per-vm-quota-requests.md)csökkentése virtuálisgép-sorozat szerint című témakört. Vegye figyelembe, hogy az ingyenes próbaverziós előfizetés nem jogosult a kvóta növelésére, az utólagos elszámolású [előfizetésre való áttérésre](../cost-management-billing/manage/upgrade-azure-subscription.md) , a kvóta növelésének kérelmezése előtt.
+> Azure Red Hat OpenShift OpenShift-fürt létrehozásához és futtatásához legalább 40 mag szükséges. Az új Azure-előfizetések alapértelmezett Azure-erőforráskvótája nem felel meg ennek a követelménynek. Az erőforráskorlát növelésének kérését lásd: [Standard kvóta: Korlátok növelése virtuálisgép-sorozatok szerint.](../azure-portal/supportability/per-vm-quota-requests.md) Vegye figyelembe, hogy az ingyenes próba-előfizetés [](../cost-management-billing/manage/upgrade-azure-subscription.md) nem jogosult a kvóta növelésére, ezért a kvóta növelésének kérelmezését megelőzően frissítsen használat szerint fizetett előfizetésre.
 
-1. Készítsen elő egy olyan helyi gépet, amely a UNIX-hoz hasonló operációs rendszer van telepítve (például Ubuntu, macOS).
-1. Telepítsen Java SE-implementációt (például [AdoptOpenJDK OpenJDK 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)).
-1. Telepítse a [Maven](https://maven.apache.org/download.cgi) 3.5.0 vagy újabb verzióját.
-1. Telepítse a [Docker](https://docs.docker.com/get-docker/) -t az operációs rendszeréhez.
-1. Telepítse az [Azure CLI](/cli/azure/install-azure-cli) -2.0.75 vagy újabb verzióját.
-1. Ellenőrizze és telepítse, [`envsubst`](https://command-not-found.com/envsubst) Ha nem az operációs rendszer előre telepítve van.
-1. A minta kódjának klónozása a helyi rendszeren. A minta a [githubon](https://github.com/Azure-Samples/open-liberty-on-aro)található.
-1. Kövesse az [Azure Red Hat OpenShift 4-fürt létrehozása](./tutorial-create-cluster.md)című témakör utasításait.
+1. Helyi gép előkészítése telepített Unix-szerű operációs rendszerrel (például Ubuntu vagy macOS).
+1. Telepítsen egy Java SE-implementációt (például [AdoptOpenJDK OpenJDK 8 LTS/OpenJ9).](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)
+1. Telepítse [a Maven](https://maven.apache.org/download.cgi) 3.5.0-s vagy újabb verzióját.
+1. Telepítse [a Docker-t](https://docs.docker.com/get-docker/) az operációs rendszer számára.
+1. Telepítse [az Azure CLI](/cli/azure/install-azure-cli) 2.0.75-ös vagy újabb frissítését.
+1. Ellenőrizze és telepítse, hogy nincs-e előre telepítve [`envsubst`](https://command-not-found.com/envsubst) az operációs rendszerben.
+1. Klónozza a minta kódját a helyi rendszeren. A minta a [GitHubon található.](https://github.com/Azure-Samples/open-liberty-on-aro)
+1. Kövesse a [Create an Azure Red Hat OpenShift 4 cluster (4 fürt létrehozása) cikk utasításait.](./tutorial-create-cluster.md)
 
-   Bár a "Red Hat pull-kulcs beolvasása" lépés opcionálisként van megjelölve, ez a **cikk szükséges**.  A lekéréses titok lehetővé teszi, hogy az Azure Red Hat OpenShift-fürt megtalálja a nyílt Liberty-kezelőt.
+   Bár a "Get a Red Hat pull secret" lépés opcionálisként van megcímkézve, ez szükséges ehhez a **cikkhez:**.  A lekért titkos gombra való Azure Red Hat OpenShift, hogy a fürt megtalálja az Open Operator operátort.
 
-   Ha memória-igényű alkalmazásokat szeretne futtatni a fürtön, a paraméter használatával adja meg a munkavégző csomópontok megfelelő virtuálisgép-méretét `--worker-vm-size` . Például `Standard_E4s_v3` a virtuális gép minimális mérete, hogy a Elasticsearch-kezelőt egy fürtön telepítse. További információkért lásd:
+   Ha memóriaigényes alkalmazásokat tervez futtatni a fürtön, a paraméterrel adja meg a munkavégző csomópontok számára megfelelő `--worker-vm-size` virtuálisgép-méretet. A például a virtuális gép minimális mérete az `Standard_E4s_v3` Elasticsearch-operátor fürtön való telepítéséhez. További információkért lásd:
 
-   * [Azure CLI fürt létrehozásához](/cli/azure/aro#az-aro-create)
-   * [A virtuális gépek támogatott méretei a memória optimalizálása esetén](./support-policies-v4.md#memory-optimized)
-   * [A Elasticsearch operátor telepítésének előfeltételei](https://docs.openshift.com/container-platform/4.3/logging/cluster-logging-deploying.html#cluster-logging-deploy-eo-cli_cluster-logging-deploying)
+   * [Azure CLI fürt létrehozásához](/cli/azure/aro#az_aro_create)
+   * [A memóriaoptimalizált virtuálisgép-méretek támogatott méretei](./support-policies-v4.md#memory-optimized)
+   * [Az Elasticsearch-operátor telepítésének előfeltételei](https://docs.openshift.com/container-platform/4.3/logging/cluster-logging-deploying.html#cluster-logging-deploy-eo-cli_cluster-logging-deploying)
 
-1. Kapcsolódjon a fürthöz a [Kapcsolódás Azure Red Hat OpenShift 4-fürthöz](./tutorial-connect-cluster.md)című témakör lépéseit követve.
-   * Ügyeljen arra, hogy kövesse a "OpenShift CLI telepítése" című szakasz lépéseit, mert a `oc` parancsot a cikk későbbi részében fogjuk használni.
-   * Jegyezze fel a fürt konzoljának URL-címét, amely a következőképpen néz ki: `https://console-openshift-console.apps.<random>.<region>.aroapp.io/` .
+1. Csatlakozzon a fürthöz a Csatlakozás 4 Azure Red Hat OpenShift [lépéseit követve.](./tutorial-connect-cluster.md)
+   * Mindenképpen kövesse az "OpenShift parancssori felület telepítése" lépéseit, mert a cikk későbbi, `oc` parancsát fogjuk használni.
+   * Írja fel a fürtkonzol URL-címét, amely így néz `https://console-openshift-console.apps.<random>.<region>.aroapp.io/` ki: .
    * Jegyezze fel a `kubeadmin` hitelesítő adatokat.
 
-1. Ellenőrizze, hogy be tud-e jelentkezni a OpenShift CLI-be a felhasználó jogkivonatával `kubeadmin` .
+1. Ellenőrizze, hogy be tud-e jelentkezni az OpenShift cli-be a felhasználó `kubeadmin` jogkivonatával.
 
-### <a name="enable-the-built-in-container-registry-for-openshift"></a>A beépített tároló beállításjegyzékének engedélyezése a OpenShift
+### <a name="enable-the-built-in-container-registry-for-openshift"></a>Az OpenShift beépített tárolójegyzékének engedélyezése
 
-Az oktatóanyag lépései létrehoznak egy Docker-rendszerképet, amelyet a OpenShift számára elérhető tároló-beállításjegyzékbe kell leküldeni. A legegyszerűbb lehetőség a OpenShift által biztosított beépített beállításjegyzék használata. A beépített tároló beállításjegyzékének engedélyezéséhez kövesse a [beépített tároló beállításjegyzékének konfigurálása az Azure Red Hat OpenShift 4 rendszerhez](built-in-container-registry.md)című témakör lépéseit. Ebben a cikkben három elemet használunk ezekről a lépésekről.
+Az oktatóanyag lépései egy Docker-rendszerképet hoznak létre, amelyet az OpenShift számára elérhető tároló-beállításjegyzékbe kell leküldeni. A legegyszerűbb megoldás az OpenShift által biztosított beépített beállításjegyzék használata. A beépített tároló-beállításjegyzék engedélyezéséhez kövesse A beépített tároló-beállításjegyzék konfigurálása a [4 Azure Red Hat OpenShift lépéseit.](built-in-container-registry.md) Ebben a cikkben három elemet használunk a lépésekből.
 
-* Az Azure AD-felhasználó felhasználóneve és jelszava a OpenShift webkonzolba való bejelentkezéshez.
-* A kimenet a `oc whoami` OPENSHIFT CLI-be való bejelentkezés lépéseinek követése után következik be.  Ennek az értéknek a neve **HRE-User** .
-* A tároló beállításjegyzékének URL-címe.
+* Az OpenShift webkonzolra való bejelentkezéshez használt Azure AD-felhasználó felhasználóneve és jelszava.
+* A kimenete az OpenShift CLI-be való bejelentkezés `oc whoami` lépéseit követve.  Ezt az értéket **aad-usernek nevezzük** a vitafórumhoz.
+* A tárolójegyzék URL-címe.
 
-Jegyezze fel ezeket az elemeket a beépített tároló beállításjegyzékének engedélyezéséhez szükséges lépések végrehajtásával.
+Figyelje meg ezeket az elemeket a beépített tároló-beállításjegyzék engedélyezéséhez szükséges lépések befejezése után.
 
 ### <a name="create-an-openshift-namespace-for-the-java-app"></a>OpenShift-névtér létrehozása a Java-alkalmazáshoz
 
-1. Jelentkezzen be a OpenShift webkonzolra a böngészőjében a `kubeadmin` hitelesítő adatok használatával.
-2. Navigáljon az **adminisztrációs**  >  **névterekhez**  >  **névtér létrehozása** elemre.
-3. Adja meg `open-liberty-demo` a **nevet** , és válassza a **Létrehozás** lehetőséget, amint azt a következő mutatja.
+1. Jelentkezzen be az OpenShift webkonzolra a böngészőből a `kubeadmin` hitelesítő adatokkal.
+2. Lépjen az **Adminisztrációs**  >  **névterek**  >  **Névtér létrehozása lapra.**
+3. A Név `open-liberty-demo` mezőben adja meg **a nevet,** és **válassza a Létrehozás** lehetőséget, ahogy az alább látható.
 
    ![névtér létrehozása](./media/howto-deploy-java-liberty-app/create-namespace.png)
 
 ### <a name="create-an-administrator-for-the-demo-project"></a>Rendszergazda létrehozása a bemutató projekthez
 
-A képkezelés mellett a **HRE-felhasználó** rendszergazdai jogosultságokat is kap az erőforrások kezeléséhez az ARO 4 fürt bemutató projektben.  Jelentkezzen be a OpenShift CLI-be, és adja meg a **HRE-felhasználó** számára a szükséges jogosultságokat a következő lépésekkel.
+A rendszerképkezelés mellett **az aad-felhasználó** rendszergazdai engedélyeket is kap az erőforrások kezeléséhez az ARO 4-fürt bemutatóprojektében.  Jelentkezzen be az OpenShift cli-be, és adja meg **az aad-felhasználónak a** szükséges jogosultságokat az alábbi lépésekben.
 
-1. Jelentkezzen be a OpenShift webkonzolra a böngészőjében a `kubeadmin` hitelesítő adatok használatával.
-1. A webkonzol jobb felső részén bontsa ki a bejelentkezett felhasználó helyi menüjét, majd válassza a **bejelentkezési parancs másolása** lehetőséget.
-1. Ha szükséges, jelentkezzen be egy új Tab-ablakba.
-1. Válassza ki a **jogkivonat megjelenítése** elemet.
-1. Másolja az alábbi, a **tokent tartalmazó bejelentkezési** azonosítót a vágólapra, és futtassa azt egy rendszerhéjban az itt látható módon.
-1. A következő parancsok végrehajtásával adja meg a `admin` szerepkört a **HRE** a névtérben `open-liberty-demo` .
+1. Jelentkezzen be az OpenShift webkonzolra a böngészőből a `kubeadmin` hitelesítő adatokkal.
+1. A webkonzol jobb felső menüjében bontsa ki a bejelentkezett felhasználó helyi menüjét, majd válassza a Bejelentkezési parancs **másolása lehetőséget.**
+1. Ha szükséges, jelentkezzen be ugyanazokkal a felhasználóval egy új lapablakba.
+1. Válassza **a Jogkivonat megjelenítése lehetőséget.**
+1. Másolja a Login (Bejelentkezés) alatt látható **értéket** a vágólapra, és futtassa egy rendszerhéjban az itt látható módon.
+1. A következő parancsok végrehajtásával adjon szerepkört `admin` **az aad-felhasználónak a** névtérben. `open-liberty-demo`
 
    ```bash
    # Switch to project "open-liberty-demo"
@@ -90,35 +90,35 @@ A képkezelés mellett a **HRE-felhasználó** rendszergazdai jogosultságokat i
    clusterrole.rbac.authorization.k8s.io/admin added: "kaaIjx75vFWovvKF7c02M0ya5qzwcSJ074RZBfXUc34"
    ```
 
-### <a name="install-the-open-liberty-openshift-operator"></a>Az Open Liberty OpenShift-kezelő telepítése
+### <a name="install-the-open-liberty-openshift-operator"></a>Az Open OpenShift-operátor telepítése
 
-Miután létrehozta és csatlakoztatta a fürtöt, telepítse az Open Liberty operátort.  A nyílt Liberty operátor fő kezdőlapja a [githubon](https://github.com/OpenLiberty/open-liberty-operator)található.
+Miután létrehozta a fürtöt, és csatlakozott a fürthöz, telepítse az Open Azok operátorát.  Az Open Mostantól operátor fő kezdőlapja a [GitHubon található.](https://github.com/OpenLiberty/open-liberty-operator)
 
-1. Jelentkezzen be a OpenShift webkonzolra a böngészőjében a `kubeadmin` hitelesítő adatok használatával.
-2. Navigáljon a **kezelők**  >  **OperatorHub** , és keresse **meg a nyílt Liberty operátort**.
-3. Válassza a **szabadság-kezelő megnyitása** lehetőséget a keresési eredmények közül.
+1. Jelentkezzen be az OpenShift webkonzolra a böngészőből a hitelesítő `kubeadmin` adatokkal.
+2. Lépjen a Operators OperatorHub **(Operátorok**  >  **operátora) lapra,** és keressen rá az **Open Mert operátor kifejezésre.**
+3. A keresési eredmények közül válassza ki az **Open Merte Operator** gombra.
 4. Válassza a **Telepítés** gombot.
-5. Az előugró **ablak létrehozása-kezelő előfizetésben** a **fürt összes névterét (alapértelmezett)** a **telepítési mód**, a **bétaverzió** a **frissítési csatornához** és az **automatikus** **jóváhagyási stratégia** esetében:
+5. Az előugró **Operátor-előfizetés** létrehozása ablakban jelölje be a Fürt összes névterét **(alapértelmezett)** a Telepítési **mód,** a **bétaverzió** frissítési **csatorna** és **automatikus** jóváhagyási **stratégia beállításnál:**
 
-   ![kezelői előfizetés létrehozása a nyílt Liberty-kezelőhöz](./media/howto-deploy-java-liberty-app/install-operator.png)
-6. Válassza az **előfizetés** lehetőséget, és várjon egy percet, amíg meg nem jelenik a nyílt Liberty operátor.
-7. Tekintse meg a "sikeres" állapotú nyitott Liberty-kezelőt.  Ha nem, a folytatás előtt diagnosztizálja és oldja meg a problémát.
-   :::image type="content" source="media/howto-deploy-java-liberty-app/open-liberty-operator-installed.png" alt-text="A nyitott Liberty-t bemutató telepített operátorok telepítve vannak.":::
+   ![operátori előfizetés létrehozása az Open Fog Operátorhoz](./media/howto-deploy-java-liberty-app/install-operator.png)
+6. Válassza **a Feliratkozás** lehetőséget, és várjon egy-két percet, amíg megjelenik az Open Open The Operator operátor.
+7. A "Sikeres" állapottal figyelje meg az OpenRelked operátort.  Ha nem, a folytatás előtt diagnosztizálja és oldja meg a problémát.
+   :::image type="content" source="media/howto-deploy-java-liberty-app/open-liberty-operator-installed.png" alt-text="Telepített operátorok, amelyeken látható, hogy az Open Fog telepítve van.":::
 
-## <a name="prepare-the-liberty-application"></a>A Liberty-alkalmazás előkészítése
+## <a name="prepare-the-liberty-application"></a>A Rendszeralkalmazás előkészítése
 
-A jelen útmutatóban példaként egy Java EE 8 alkalmazást fogunk használni. A Open Liberty egy [Java EE 8 teljes profillal](https://javaee.github.io/javaee-spec/javadocs/) kompatibilis kiszolgáló, így könnyen futtatható az alkalmazás.  A nyílt Liberty is [Jakarta EE 8 teljes profil kompatibilis](https://jakarta.ee/specifications/platform/8/apidocs/).
+Ebben az útmutatóban egy Java EE 8-alkalmazást fogunk használni példaként. Az Open Fog egy [Java EE 8](https://javaee.github.io/javaee-spec/javadocs/) teljes profillal kompatibilis kiszolgáló, amely könnyedén futtathatja az alkalmazást.  Az Open Pedig [Jakarta EE 8 teljes profillal kompatibilis.](https://jakarta.ee/specifications/platform/8/apidocs/)
 
-### <a name="run-the-application-on-open-liberty"></a>Az alkalmazás futtatása nyitott szabadságon
+### <a name="run-the-application-on-open-liberty"></a>Az alkalmazás futtatása az Open Fogon
 
-Ha az alkalmazást nyitott szabadságon szeretné futtatni, létre kell hoznia egy nyitott Liberty-kiszolgáló konfigurációs fájlját, hogy a [Liberty Maven beépülő modul](https://github.com/OpenLiberty/ci.maven#liberty-maven-plugin) becsomagolja az alkalmazást az üzembe helyezéshez. A Liberty Maven beépülő modul nem szükséges az alkalmazás OpenShift való telepítéséhez.  Ebben a példában azonban a nyílt Liberty fejlesztői (dev) módban fogjuk használni.  A fejlesztői mód lehetővé teszi az alkalmazás helyi futtatását. Hajtsa végre a következő lépéseket a helyi számítógépen.
+Ahhoz, hogy az alkalmazást az Open Képesben futtassa, létre kell hoznia egy Open Ér-kiszolgáló konfigurációs fájlját, hogy a [Rendszer Maven](https://github.com/OpenLiberty/ci.maven#liberty-maven-plugin) beépülő modul becsomagolja az alkalmazást az üzembe helyezéshez. Az alkalmazás OpenShiften való üzembe helyezéséhez nincs szükség a Arram Maven beépülő modulra.  Ebben a példában azonban ezt fogjuk használni az Open Dev (dev) módban.  A fejlesztői móddal egyszerűen helyileg futtathatja az alkalmazást. A helyi számítógépen kövesse az alábbi lépéseket.
 
-1. Másolás `2-simple/src/main/liberty/config/server.xml` a `1-start/src/main/liberty/config` meglévő nulla hosszúságú fájl felülírásával. Ezzel `server.xml` konfigurálja a nyílt Liberty-kiszolgálót a Java EE-funkciókkal.
-1. Másolás ide: `2-simple/pom.xml` `1-start/pom.xml` .  Ez a lépés hozzáadja a `liberty-maven-plugin` -t a Pom-hez.
-1. Módosítsa a könyvtárat a `1-start` helyi klónra.
-1. Futtassa a parancsot `mvn clean package` egy konzolon a War-csomag létrehozásához `javaee-cafe.war` a címtárban `./target` .
-1. `mvn liberty:dev`Indítsa el a nyílt Liberty fejlesztői módban való megnyitását.
-1. Várjon, amíg a kiszolgáló elindul. A konzol kimenetének a következő üzenettel kell végződnie:
+1. Másolja `2-simple/src/main/liberty/config/server.xml` a `1-start/src/main/liberty/config` következőre: , felülírva a meglévő, nulla hosszúságú fájlt. Ez java EE-funkciókkal konfigurálja `server.xml` az OpenScript-kiszolgálót.
+1. Másolja a `2-simple/pom.xml` `1-start/pom.xml` gombra.  Ez a lépés hozzáadja a `liberty-maven-plugin` et a POM-hoz.
+1. Módosítsa a könyvtárat `1-start` a helyi klón könyvtárába.
+1. Futtassa `mvn clean package` a következőt egy konzolon egy War-csomag létrehozásához a `javaee-cafe.war` `./target` könyvtárban: .
+1. Futtassa `mvn liberty:dev` a következőt: Az Open Dev Mode megnyitásához.
+1. Várjon, amíg a kiszolgáló elindul. A konzol kimenetének a következő üzenettel kell végződni:
 
    ```Text
    [INFO] CWWKM2015I: Match number: 1 is [6/10/20 10:26:09:517 CST] 00000022 com.ibm.ws.kernel.feature.internal.FeatureManager            A CWWKF0011I: The defaultServer server is ready to run a smarter planet. The defaultServer server started in 6.447 seconds..
@@ -126,65 +126,65 @@ Ha az alkalmazást nyitott szabadságon szeretné futtatni, létre kell hoznia e
    [INFO] Source compilation was successful.
    ```
 
-1. A böngészőben nyissa meg `http://localhost:9080/` az alkalmazás kezdőlapját. Az alkalmazás az alábbi képhez hasonlóan fog kinézni:
+1. Nyissa `http://localhost:9080/` meg a böngészőben az alkalmazás kezdőlapját. Az alkalmazás az alábbi képen láthatóhoz hasonlóan fog kinézni:
 
-   ![JavaEE Cafe webes felhasználói felület](./media/howto-deploy-java-liberty-app/javaee-cafe-web-ui.png)
-1. Nyomja le a **Control-C** billentyűt az alkalmazás leállításához és a Liberty-kiszolgáló megnyitásához.
+   ![JavaEE Fog Webes felhasználói felület](./media/howto-deploy-java-liberty-app/javaee-cafe-web-ui.png)
+1. Nyomja **le a Control-C billentyűvel** állítsa le az alkalmazást, és nyissa meg a Kiszolgálót.
 
-A `2-simple` helyi klón könyvtára megjeleníti a Maven-projektet a fenti módosításokkal.
+A helyi `2-simple` klón könyvtárában megjelenik a Maven-projekt, és a fenti módosítások már alkalmazva vannak.
 
 ## <a name="prepare-the-application-image"></a>Az alkalmazás rendszerképének előkészítése
 
-A Liberty-alkalmazás egy ARO 4 fürtön való üzembe helyezéséhez és futtatásához tárolóba helyezése az alkalmazást Docker-rendszerképként a [nyílt Liberty-tárolók](https://github.com/OpenLiberty/ci.docker) rendszerképein vagy a [WebSphere Liberty Container-lemezképeken](https://github.com/WASdev/ci.docker).
+Ha egy ARO 4-fürtön kell üzembe helyeznie és futtatnia a Rendszeralkalmazást, tárolóba kell helyeznie az alkalmazást Docker-rendszerképként [Open Container Images](https://github.com/OpenLiberty/ci.docker) vagy [WebSphere Fog tárolólemezképek használatával.](https://github.com/WASdev/ci.docker)
 
 ### <a name="build-application-image"></a>Alkalmazás rendszerképének összeállítása
 
-Az alkalmazás rendszerképének létrehozásához hajtsa végre az alábbi lépéseket:
+Az alkalmazás rendszerképének felépítéséhez kövesse az alábbi lépéseket:
 
-1. Módosítsa a könyvtárat a `2-simple` helyi klónra.
-2. Futtassa `mvn clean package` az alkalmazást az alkalmazás előkészítéséhez.
-3. Futtassa az alábbi parancsok egyikét az alkalmazás rendszerképének létrehozásához.
-   * Build az Open Liberty alapképpel:
+1. Módosítsa a könyvtárat `2-simple` a helyi klón könyvtárába.
+2. Az `mvn clean package` alkalmazás csomagolásához futtassa a következőt: .
+3. Futtassa az alábbi parancsok egyikét az alkalmazás rendszerképének felépítéséhez.
+   * Build az Open Build alapként való rendszerképe:
 
      ```bash
      # Build and tag application image. This will cause Docker to pull the necessary Open Liberty base images.
      docker build -t javaee-cafe-simple:1.0.0 --pull .
      ```
 
-   * Build a WebSphere Liberty Base rendszerképpel:
+   * Build a WebSphere Arra alapként való rendszerképe:
 
      ```bash
      # Build and tag application image. This will cause Docker to pull the necessary WebSphere Liberty base images.
      docker build -t javaee-cafe-simple:1.0.0 --pull --file=Dockerfile-wlp .
      ```
 
-### <a name="run-the-application-locally-with-docker"></a>Az alkalmazás helyi futtatása a Docker-vel
+### <a name="run-the-application-locally-with-docker"></a>Az alkalmazás helyi futtatása a Docker segítségével
 
-Mielőtt telepítené a tároló alkalmazást egy távoli fürtön, futtassa a helyi Docker-vel, és ellenőrizze, hogy működik-e:
+Mielőtt üzembe helyez egy tárolóba helyezett alkalmazást egy távoli fürtön, futtassa a következőt a helyi Docker segítségével annak ellenőrzéséhez, hogy működik-e:
 
-1. Futtassa a parancsot a `docker run -it --rm -p 9080:9080 javaee-cafe-simple:1.0.0` konzolon.
-2. Várjon, amíg a Liberty-kiszolgáló elindul, és az alkalmazás üzembe helyezése sikeresen megtörtént.
-3. A böngészőben nyissa meg `http://localhost:9080/` az alkalmazás kezdőlapját.
-4. Nyomja le a **Control-C** billentyűt az alkalmazás és a Liberty-kiszolgáló leállításához.
+1. Futtassa `docker run -it --rm -p 9080:9080 javaee-cafe-simple:1.0.0` a következőt a konzolon: .
+2. Várjon, amíg a Rendszer-kiszolgáló elindul, és az alkalmazás üzembe helyezése sikeres lesz.
+3. Nyissa `http://localhost:9080/` meg a böngészőben az alkalmazás kezdőlapját.
+4. Az alkalmazás és a Kiszolgáló leállításához nyomja le a **Control-C** billentyűt.
 
-### <a name="push-the-image-to-the-container-image-registry"></a>A rendszerkép leküldése a tároló rendszerképének Hivatalához
+### <a name="push-the-image-to-the-container-image-registry"></a>A rendszerkép leküldése a tároló rendszerkép-beállításjegyzékbe
 
-Ha elégedett az alkalmazás állapotával, küldje el a beépített tároló rendszerkép-beállításjegyzékbe az alábbi utasításokat követve.
+Ha elégedett az alkalmazás állapotával, az alábbi utasításokat követve leküldi azt a beépített tároló rendszerkép-beállításjegyzékbe.
 
-#### <a name="log-in-to-the-openshift-cli-as-the-azure-ad-user"></a>Jelentkezzen be az OpenShift CLI-be az Azure AD-felhasználóként
+#### <a name="log-in-to-the-openshift-cli-as-the-azure-ad-user"></a>Jelentkezzen be az OpenShift CLI-be Azure AD-felhasználóként
 
-1. Jelentkezzen be a böngésző OpenShift webkonzolján egy Azure AD-felhasználó hitelesítő adataival.
+1. Jelentkezzen be az OpenShift webkonzolra a böngészőből egy Azure AD-felhasználó hitelesítő adataival.
 
-   1. A konzolba való bejelentkezéshez használjon InPrivate, inkognitóban vagy más, a böngészőablakhoz hasonló szolgáltatást.
-   1. **OpenID** kiválasztása
+   1. Az InPrivate, Inkognitó vagy más ezzel egyenértékű böngészőablak funkcióval jelentkezzen be a konzolra.
+   1. Openid **kiválasztása**
 
    > [!NOTE]
-   > Jegyezze fel a bejelentkezéshez használt felhasználónevet és jelszót. Ez a Felhasználónév és jelszó rendszergazdaként fog működni a többi művelethez és más cikkekhez.
-1. Jelentkezzen be az OpenShift CLI-vel a következő lépésekkel.  A vita esetében ez a folyamat ismert `oc login` .
-   1. A webkonzol jobb felső részén bontsa ki a bejelentkezett felhasználó helyi menüjét, majd válassza a **bejelentkezési parancs másolása** lehetőséget.
-   1. Ha szükséges, jelentkezzen be egy új Tab-ablakba.
-   1. Válassza ki a **jogkivonat megjelenítése** elemet.
-   1. Másolja az alábbi, a **tokent tartalmazó bejelentkezési** azonosítót a vágólapra, és futtassa azt egy rendszerhéjban az itt látható módon.
+   > Jegyezze fel a bejelentkezéshez használt felhasználónevet és jelszót. Ez a felhasználónév és jelszó rendszergazdaként fog működni a jelen és más cikkek más műveletei során.
+1. Jelentkezzen be az OpenShift CLI-hez a következő lépésekkel.  Ennek a folyamatnak a neve `oc login` .
+   1. A webkonzol jobb felső menüjében bontsa ki a bejelentkezett felhasználó helyi menüjét, majd válassza a Bejelentkezési parancs **másolása lehetőséget.**
+   1. Ha szükséges, jelentkezzen be ugyanaz a felhasználó egy új lapablakába.
+   1. Válassza **a Jogkivonat megjelenítése lehetőséget.**
+   1. Másolja a Login (Bejelentkezés) alatt látható **értéket** a vágólapra, és futtassa egy rendszerhéjban az itt látható módon.
 
        ```bash
        oc login --token=XOdASlzeT7BHT0JZW6Fd4dl5EwHpeBlN27TAdWHseob --server=https://api.aqlm62xm.rnfghf.aroapp.io:6443
@@ -195,9 +195,9 @@ Ha elégedett az alkalmazás állapotával, küldje el a beépített tároló re
        Using project "default".
        ```
 
-#### <a name="push-the-container-image-to-the-container-registry-for-openshift"></a>A tároló rendszerképének leküldése a tároló-beállításjegyzékbe a OpenShift
+#### <a name="push-the-container-image-to-the-container-registry-for-openshift"></a>A tároló rendszerképének leküldése az OpenShift tároló-beállításjegyzékbe
 
-Futtassa ezeket a parancsokat a rendszerkép tároló-beállításjegyzékbe való leküldéséhez a OpenShift.
+A következő parancsok végrehajtásával leküldi a rendszerképet az OpenShift tároló-beállításjegyzékének.
 
 ```bash
 # Note: replace "<Container_Registry_URL>" with the fully qualified name of the registry
@@ -210,62 +210,62 @@ docker tag javaee-cafe-simple:1.0.0 ${Container_Registry_URL}/open-liberty-demo/
 docker login -u $(oc whoami) -p $(oc whoami -t) ${Container_Registry_URL}
 ```
 
-A sikeres kimenet az alábbihoz hasonlóan fog kinézni.
+A sikeres kimenet az alábbihoz hasonló lesz.
 
 ```bash
 WARNING! Using --password via the CLI is insecure. Use --password-stdin.
 Login Succeeded
 ```
 
-Az alábbi paranccsal leküldheti a képet a beépített tároló rendszerkép-beállításjegyzékbe.
+A következő paranccsal lekért rendszerképet a beépített tároló rendszerkép-beállításjegyzékbe.
 
 ```bash
 
 docker push ${Container_Registry_URL}/open-liberty-demo/javaee-cafe-simple:1.0.0
 ```
 
-## <a name="deploy-application-on-the-aro-4-cluster"></a>Alkalmazás üzembe helyezése az ARO 4 fürtön
+## <a name="deploy-application-on-the-aro-4-cluster"></a>Alkalmazás üzembe helyezése az ARO 4-fürtön
 
-Most már üzembe helyezheti a minta Liberty-alkalmazást az előfeltételeken végzett munka során korábban létrehozott Azure Red Hat OpenShift 4 fürtön.
+Most már üzembe helyezheti a MintAten-alkalmazást a Azure Red Hat OpenShift 4 fürtben, amit az előfeltételek alkalmazásakor hozott létre.
 
 ### <a name="deploy-the-application-from-the-web-console"></a>Az alkalmazás üzembe helyezése a webkonzolról
 
-Mivel a Liberty-alkalmazások kezeléséhez a nyílt Liberty operátort használjuk, létre kell hozni az *egyéni erőforrás-definíció* egy példányát, amelynek típusa "OpenLibertyApplication". A kezelő ezt követően gondoskodik az üzembe helyezéshez szükséges OpenShift-erőforrások kezelésének minden aspektusáról.
+Mivel az Open Fog operátort használjuk a Tol-alkalmazások kezeléséhez, létre kell hoznunk az egyéni erőforrás-definíciójának "OpenLibertyApplication" típusú példányát. A kezelő ezután gondoskodik az üzembe helyezéshez szükséges OpenShift-erőforrások kezelésével kapcsolatos összes szempontról.
 
-1. Jelentkezzen be a OpenShift webkonzolra a böngészőjében az Azure AD-felhasználó hitelesítő adataival.
-1. Bontsa ki a **Home (Kezdőlap**) lehetőséget, és válassza a   >  **Open-Liberty-bemutató** projektet.
-1. Navigáljon a **kezelők** által  >  **telepített operátorokhoz**.
-1. A lap közepén válassza a **szabadság-kezelő megnyitása** lehetőséget.
-1. A lap közepén válassza a **szabadság alkalmazás megnyitása** lehetőséget.  A felhasználói felületen lévő elemek navigációja a használatban lévő technológiák tényleges betárolási hierarchiáját tükrözi.
+1. Jelentkezzen be az OpenShift webkonzolra a böngészőből az Azure AD-felhasználó hitelesítő adataival.
+1. **Bontsa ki a Home (Kezdőlap)** gombra, majd válassza a **Projects**  >  **open-open-open-demo (Projektek nyílt-mező-bemutató) lehetőséget.**
+1. Lépjen az **Operátorok**  >  **telepített operátorok lapra.**
+1. Az oldal közepén válassza az **OpenBro Operator** lehetőséget.
+1. Az oldal közepén válassza az **Open Application (Open Application) gombra.**  A felhasználói felület elemeinek navigációja tükrözi a ténylegesen használt technológiák el tartalmazott hierarchiáját.
    <!-- Diagram source https://github.com/Azure-Samples/open-liberty-on-aro/blob/master/diagrams/aro-java-containment.vsdx -->
-   ![ARO Java-tároló](./media/howto-deploy-java-liberty-app/aro-java-containment.png)
-1. Válassza a **OpenLibertyApplication létrehozása** lehetőséget.
-1. Cserélje le a generált YAML a tiéd értékre, amely a következő helyen található: `<path-to-repo>/2-simple/openlibertyapplication.yaml` .
-1. Válassza a **Létrehozás** lehetőséget. A rendszer visszaadja a OpenLibertyApplications listáját.
-1. Válassza a **JavaEE-Café-Simple** lehetőséget.
-1. A lap közepén válassza az **erőforrások** lehetőséget.
-1. A táblázatban válassza ki a **JavaEE-Café-Simple** hivatkozást az **útvonal** **típusának** megfelelően.
-1. A megnyíló oldalon válassza **az alábbi hivatkozást**.
+   ![ARO Java-eltár](./media/howto-deploy-java-liberty-app/aro-java-containment.png)
+1. Válassza **az OpenLibertyApplication létrehozása lehetőséget**
+1. Cserélje le a létrehozott yaml-t a következő helyen található saját yaml-fájlra: `<path-to-repo>/2-simple/openlibertyapplication.yaml` .
+1. Válassza a **Létrehozás** lehetőséget. A listában az OpenLibertyApplications megjelenik.
+1. Válassza **a javaee-bil-simple lehetőséget.**
+1. Az oldal közepén válassza az Erőforrások **lehetőséget.**
+1. A táblázatban válassza a **javaee-bil-simple** hivatkozást a Kind of Route **(Útvonal** **fajtája) beállítással.**
+1. A megnyíló oldalon kattintson a Hely alatti **hivatkozásra.**
 
-Ekkor megnyílik az alkalmazás kezdőlapja a böngészőben.
+Az alkalmazás kezdőlapja megnyílik a böngészőben.
 
 ### <a name="delete-the-application-from-the-web-console"></a>Az alkalmazás törlése a webkonzolról
 
-Ha elkészült az alkalmazással, a következő lépésekkel törölheti az alkalmazást a megnyitott Műszakból.
+Ha végzett az alkalmazással, az alábbi lépésekkel törölheti az alkalmazást az Open Shiftből.
 
-1. A bal oldali navigációs panelen bontsa ki az **operátorok** bejegyzést.
-1. Válassza a **telepített operátorok** lehetőséget.
-1. Válassza a **szabadság-kezelő megnyitása** lehetőséget.
-1. A lap közepén válassza a **nyílt Liberty-alkalmazás** lehetőséget.
-1. Válassza ki a függőleges három pontot (három függőleges pont), majd válassza a **OpenLiberty-alkalmazás törlése** lehetőséget.
+1. A bal oldali navigációs panelen bontsa ki az **Operátorok bejegyzést.**
+1. Válassza **a Telepített operátorok lehetőséget.**
+1. Válassza **a Megnyitás a Mező operátort** lehetőséget.
+1. Az oldal közepén válassza az **Open Application (Open Application) lehetőséget.**
+1. Válassza a függőleges három pont (három pont), majd a **Delete OpenLiberty Application (OpenLiberty-alkalmazás törlése) lehetőséget.**
 
-### <a name="deploy-the-application-from-cli"></a>Az alkalmazás üzembe helyezése a parancssori felületről
+### <a name="deploy-the-application-from-cli"></a>Az alkalmazás üzembe helyezése a cli-ről
 
-A webkonzol grafikus felhasználói felületének használata helyett üzembe helyezheti az alkalmazást a parancssori felületen. Ha még nem tette meg, töltse le és telepítse a `oc` parancssori eszközt az alábbi Red Hat dokumentációs [első lépések a CLI-vel](https://docs.openshift.com/container-platform/4.2/cli_reference/openshift_cli/getting-started-cli.html).
+A webkonzol grafikus felhasználói felületének használata helyett üzembe helyezheti az alkalmazást a CLI-ről. Ha még nem tette meg, töltse le és telepítse a parancssori eszközt a `oc` Következő Red Hat-dokumentáció Getting Started with the CLI (Ismerkedés a [parancssori felület használatával) dokumentumban.](https://docs.openshift.com/container-platform/4.2/cli_reference/openshift_cli/getting-started-cli.html)
 
-1. Jelentkezzen be a OpenShift webkonzolra a böngészőjében az Azure AD-felhasználó hitelesítő adataival.
+1. Jelentkezzen be az OpenShift webkonzolra a böngészőből az Azure AD-felhasználó hitelesítő adataival.
 2. Jelentkezzen be az OpenShift CLI-be az Azure AD-felhasználó jogkivonatával.
-3. Módosítsa a könyvtárat a `2-simple` helyi klónra, és futtassa a következő parancsokat a Liberty-alkalmazás az ARO 4 fürtön való üzembe helyezéséhez.  A parancs kimenete is beágyazottként jelenik meg.
+3. Módosítsa a könyvtárat a helyi klón könyvtárára, és futtassa a következő parancsokat a Saját alkalmazás `2-simple` ARO 4-fürtön való üzembe helyezéséhez.  A parancs kimenete beágyazottan is megjelenik.
 
    ```bash
    # Switch to namespace "open-liberty-demo" where resources of demo app will belong to
@@ -291,8 +291,8 @@ A webkonzol grafikus felhasználói felületének használata helyett üzembe he
    javaee-cafe-simple   1/1     1            0           102s
    ```
 
-4. `1/1`A folytatás előtt ellenőrizze, hogy az oszlop alatt látható-e `READY` .  Ha nem, a folytatás előtt vizsgálja meg és oldja meg a problémát.
-5. Fedezze fel az alkalmazáshoz tartozó útvonal gazdagépét az `oc get route` paranccsal, az itt látható módon.
+4. A folytatás előtt `1/1` ellenőrizze, hogy látható-e `READY` az oszlop alatt.  Ha nem, a folytatás előtt vizsgálja meg és oldja meg a problémát.
+5. Az paranccsal derítheti fel az alkalmazás útvonalának `oc get route` gazdagépét az itt látható módon.
 
    ```bash
    # Get host of the route
@@ -302,11 +302,11 @@ A webkonzol grafikus felhasználói felületének használata helyett üzembe he
    Route Host: javaee-cafe-simple-open-liberty-demo.apps.aqlm62xm.rnfghf.aroapp.io
    ```
 
-   Ha a Liberty-alkalmazás már fut, nyissa meg a **Route Host** kimenetét a böngészőben, és látogasson el az alkalmazás kezdőlapjára.
+   Ha a Rendszeralkalmazás már működik, nyissa meg a **Route Host** kimenetét a böngészőben, és nyissa meg az alkalmazás kezdőlapját.
 
-### <a name="delete-the-application-from-cli"></a>Az alkalmazás törlése a parancssori felületről
+### <a name="delete-the-application-from-cli"></a>Az alkalmazás törlése a CLI-ről
 
-Törölje az alkalmazást a CLI-ből a parancs végrehajtásával.
+Törölje az alkalmazást a parancssori felületről a következő paranccsal.
 
 ```bash
 oc delete -f openlibertyapplication.yaml
@@ -314,23 +314,23 @@ oc delete -f openlibertyapplication.yaml
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Törölje az ARO-fürtöt az [oktatóanyag: Azure Red Hat OpenShift 4-fürt törlése](./tutorial-delete-cluster.md) című témakör lépéseit követve.
+Törölje az ARO-fürtöt az [Oktatóanyag: 4-es](./tutorial-delete-cluster.md) fürt Azure Red Hat OpenShift lépéseit követve
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az útmutatóban megtanulta, hogyan teheti meg a következőket:
+Ebben az útmutatóban a következőt tanulta meg:
 > [!div class="checklist"]
 >
-> * A Liberty-alkalmazás előkészítése
+> * A Rendszeralkalmazás előkészítése
 > * Az alkalmazás rendszerképének összeállítása
-> * A tároló alkalmazás futtatása ARO 4 fürtön a grafikus felhasználói felület és a CLI használatával
+> * A tárolóba ezett alkalmazás futtatása egy ARO 4-fürtön a grafikus felhasználói felület és a cli használatával
 
-A jelen útmutatóban használt hivatkozásokból többet is megtudhat:
+Az útmutatóban használt hivatkozásokból többet is megtudhat:
 
-* [Szabadság megnyitása](https://openliberty.io/)
+* [Open Fog](https://openliberty.io/)
 * [Azure Red Hat OpenShift](https://azure.microsoft.com/services/openshift/)
-* [Szabadság-kezelő megnyitása](https://github.com/OpenLiberty/open-liberty-operator)
-* [A Liberty-kiszolgáló konfigurációjának megnyitása](https://openliberty.io/docs/ref/config/)
-* [Liberty Maven beépülő modul](https://github.com/OpenLiberty/ci.maven#liberty-maven-plugin)
-* [A Liberty Container-lemezképek megnyitása](https://github.com/OpenLiberty/ci.docker)
-* [WebSphere Liberty-tároló lemezképei](https://github.com/WASdev/ci.docker)
+* [Open Fog Operátor](https://github.com/OpenLiberty/open-liberty-operator)
+* [OpenBro Server Configuration](https://openliberty.io/docs/ref/config/)
+* [Érdi Maven beépülő modul](https://github.com/OpenLiberty/ci.maven#liberty-maven-plugin)
+* [A Container Images megnyitása](https://github.com/OpenLiberty/ci.docker)
+* [WebSphere Liberty Container Images](https://github.com/WASdev/ci.docker)

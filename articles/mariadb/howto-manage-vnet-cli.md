@@ -1,6 +1,6 @@
 ---
 title: VNet-végpontok kezelése – Azure CLI – Azure Database for MariaDB
-description: Ez a cikk azt ismerteti, hogyan hozhatók létre és kezelhetők Azure Database for MariaDB VNet szolgáltatásbeli végpontok és szabályok az Azure CLI parancssorral.
+description: Ez a cikk bemutatja, hogyan hozhat létre és kezelhet virtuális Azure Database for MariaDB szolgáltatásvégpontokat és szabályokat az Azure CLI parancssori felületének használatával.
 author: savjani
 ms.author: pariks
 ms.service: mariadb
@@ -8,50 +8,50 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 43d1b7700395bd06960737eae4f318d61aa03717
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8eaf87865fb2fc70251e1e417361333cfd750d6e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98665089"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783664"
 ---
-# <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>Azure Database for MariaDB VNet-szolgáltatásbeli végpontok létrehozása és kezelése az Azure CLI-vel
+# <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>Virtuális hálózati Azure Database for MariaDB létrehozása és kezelése az Azure CLI használatával
 
-A virtuális hálózat (VNet) szolgáltatásvégpontjai és szabályai kiterjesztik a virtuális hálózat magánhálózati címtartományát az Azure Database for MariaDB-kiszolgálóra. A kényelmes Azure parancssori felületi (CLI) parancsok használatával létrehozhat, frissíthet, törölhet, listázhat és megjeleníthet VNet szolgáltatási végpontokat és szabályokat a kiszolgáló kezeléséhez. Az Azure Database for MariaDB VNet szolgáltatásbeli végpontok, például a korlátozások áttekintését lásd: [Azure Database for MariaDB Server VNet Service-végpontok](concepts-data-access-security-vnet.md). A VNet szolgáltatási végpontok a Azure Database for MariaDB összes támogatott régiójában elérhetők.
+A virtuális hálózat (VNet) szolgáltatásvégpontjai és szabályai kiterjesztik a virtuális hálózat magánhálózati címtartományát az Azure Database for MariaDB-kiszolgálóra. A kényelmes Azure parancssori felületi (CLI-) parancsokkal létrehozhat, frissíthet, törölhet, list készíthet és felsorolhat VNet-szolgáltatásvégpontokat és szabályokat a kiszolgáló kezeléséhez. A virtuális hálózatok Azure Database for MariaDB áttekintését, beleértve a korlátozásokat: Azure Database for MariaDB [server VNet szolgáltatásvégpontokat.](concepts-data-access-security-vnet.md) A VNet-szolgáltatásvégpontokat az összes támogatott régióban el lehet Azure Database for MariaDB.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Szüksége van egy [Azure Database for MariaDB kiszolgálóra és adatbázisra](quickstart-create-mariadb-server-database-using-azure-cli.md).
+- Szüksége lesz egy [Azure Database for MariaDB-kiszolgálóra és -adatbázisra.](quickstart-create-mariadb-server-database-using-azure-cli.md)
 
-- Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+- Ehhez a cikkhez az Azure CLI 2.0-s vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
 > [!NOTE]
-> A VNet szolgáltatás-végpontok támogatása csak a általános célú és a memóriára optimalizált kiszolgálók esetében támogatott.
+> A VNet-szolgáltatásvégpontokat csak a virtuális hálózati általános célú memóriaoptimal optimalizált kiszolgálók támogatják.
 
-## <a name="configure-vnet-service-endpoints"></a>VNet-szolgáltatási végpontok konfigurálása
+## <a name="configure-vnet-service-endpoints"></a>VNet-szolgáltatásvégpont konfigurálása
 
-Az az [Network vnet](/cli/azure/network/vnet) parancs a virtuális hálózatok konfigurálására szolgál.
+Az [az network vnet](/cli/azure/network/vnet) parancsokkal konfigurálhatja a virtuális hálózatokat.
 
-Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Válassza ki a megadott előfizetés-azonosítót a fiókja alatt az [az account set](/cli/azure/account#az-account-set) paranccsal. Az előfizetés **az login** kimenetének **id** tulajdonságát illessze be az előfizetés-azonosító helyőrzője helyére.
+Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Válassza ki a megadott előfizetés-azonosítót a fiókja alatt az [az account set](/cli/azure/account#az_account_set) paranccsal. Az előfizetés **az login** kimenetének **id** tulajdonságát illessze be az előfizetés-azonosító helyőrzője helyére.
 
 - A fióknak rendelkeznie kell a megfelelő engedélyekkel egy virtuális hálózat és egy szolgáltatásvégpont létrehozásához.
 
-A szolgáltatási végpontok egymástól függetlenül konfigurálhatók virtuális hálózatokon a virtuális hálózathoz írási hozzáféréssel rendelkező felhasználóktól.
+A szolgáltatásvégpontokat a virtuális hálózatokon egymástól függetlenül konfigurálhatja egy olyan felhasználó, aki írási hozzáféréssel rendelkezik a virtuális hálózathoz.
 
-Az Azure-szolgáltatási erőforrások VNet való biztonságossá tételéhez a felhasználónak engedéllyel kell rendelkeznie a "Microsoft. Network/virtualNetworks/Subnets/joinViaServiceEndpoint/" jogosultsággal a hozzáadott alhálózatokhoz. Ez az engedély alapértelmezés szerint bele van foglalva a beépített szolgáltatás-rendszergazdai szerepkörökbe, és egyéni szerepkörök létrehozásával módosítható.
+Ahhoz, hogy azure-szolgáltatási erőforrásokat biztosítsunk egy virtuális hálózat számára, a felhasználónak rendelkeznie kell a hozzáadott alhálózatok "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/" engedélyével. Ez az engedély alapértelmezés szerint bele van foglalva a beépített szolgáltatás-rendszergazdai szerepkörökbe, és egyéni szerepkörök létrehozásával módosítható.
 
 További információk a [beépített szerepkörökről](../role-based-access-control/built-in-roles.md) és a bizonyos engedélyek [egyéni szerepkörökhöz](../role-based-access-control/custom-roles.md) való hozzárendeléséről.
 
-A virtuális hálózatok és az Azure-szolgáltatási erőforrások tartozhatnak egyazon előfizetéshez, vagy különböző előfizetésekhez is. Ha a VNet és az Azure-szolgáltatási erőforrások különböző előfizetésekben találhatók, akkor az erőforrásoknak ugyanahhoz a Active Directory (AD) bérlőhöz kell tartozniuk. Győződjön meg arról, hogy mindkét előfizetés regisztrálva van a **Microsoft. SQL** erőforrás-szolgáltatónál. További információ: [Resource-Manager-regisztráció][resource-manager-portal]
+A virtuális hálózatok és az Azure-szolgáltatási erőforrások tartozhatnak egyazon előfizetéshez, vagy különböző előfizetésekhez is. Ha a virtuális hálózat és az Azure-szolgáltatási erőforrások eltérő előfizetésben vannak, az erőforrásoknak ugyanabban a Active Directory (AD) bérlőben kell lennie. Győződjön meg arról, hogy mindkét előfizetésben regisztrálva van a **Microsoft.Sql** erőforrás-szolgáltató. További információ: [resource-manager-registration][resource-manager-portal]
 
 > [!IMPORTANT]
-> Javasoljuk, hogy a szolgáltatási végpontok konfigurálása előtt olvassa el ezt a cikket a szolgáltatás-végponti konfigurációkkal és szempontokkal kapcsolatban. **Virtual Network szolgáltatási végpont:** A [Virtual Network szolgáltatási végpont](../virtual-network/virtual-network-service-endpoints-overview.md) olyan alhálózat, amelynek tulajdonságértékek egy vagy több formális Azure-szolgáltatástípus nevét tartalmazzák. A VNet Services-végpontok a **Microsoft. SQL** nevű szolgáltatástípus-nevet használják, amely az SQL Database nevű Azure-szolgáltatásra hivatkozik. Ez a szolgáltatási címke a Azure SQL Databasera, a Azure Database for MariaDBra, a PostgreSQL-re és a MySQL szolgáltatásokra is vonatkozik. Fontos megjegyezni, hogy amikor a **Microsoft. SQL** szolgáltatás címkéjét egy VNet szolgáltatási végpontra alkalmazza, a szolgáltatás végponti forgalmát konfigurálja az összes Azure Database-szolgáltatáshoz, beleértve az alhálózaton Azure SQL Database, Azure Database for PostgreSQL, Azure Database for MariaDB és Azure Database for MySQL kiszolgálókat.
+> A szolgáltatásvégpont konfigurálása előtt erősen ajánlott elolvasni ezt a cikket a szolgáltatásvégpont-konfigurációkról és szempontokról. **Virtual Network szolgáltatásvégpont:** A [Virtual Network szolgáltatásvégpont](../virtual-network/virtual-network-service-endpoints-overview.md) olyan alhálózat, amelynek tulajdonságértékei egy vagy több formális Azure-szolgáltatástípusnevet tartalmaznak. A VNet-szolgáltatásvégpont a **Microsoft.Sql** szolgáltatástípusnevet használja, amely az SQL Database. Ez a szolgáltatáscímke a Azure SQL Database, Azure Database for MariaDB, a PostgreSQL és a MySQL szolgáltatásokra is vonatkozik. Fontos megjegyezni, hogy amikor a **Microsoft.Sql** szolgáltatáscímkét egy VNet-szolgáltatásvégpontra alkalmazza, a szolgáltatásvégpont forgalmát konfigurálja az összes Azure Database-szolgáltatáshoz, beleértve az Azure SQL Database-, Azure Database for PostgreSQL-, Azure Database for MariaDB- és Azure Database for MySQL-kiszolgálókat az alhálózaton.
 
 ### <a name="sample-script"></a>Példaszkript
 
-Ez a minta parancsfájl egy Azure Database for MariaDB kiszolgáló létrehozásához, egy VNet, egy VNet szolgáltatás végpontjának létrehozásához és a kiszolgáló VNet-szabállyal való biztonságossá tételéhez használható. A minta parancsfájlban módosítsa a rendszergazdai felhasználónevet és jelszót. Cserélje le a parancsban használt SubscriptionID a `az account set --subscription` saját előfizetés-azonosítójával.
+Ez a példaszkprogram egy Azure Database for MariaDB-kiszolgáló létrehozására, egy VNet- és egy VNet-szolgáltatásvégpont létrehozására, valamint a kiszolgáló alhálózattal való biztonságossá létrehozására szolgál egy VNet-s szabályt használva. Ebben a példaszk szkriptben módosítsa a rendszergazda felhasználónevét és jelszavát. Cserélje le a parancsban használt SubscriptionID `az account set --subscription` azonosítót a saját előfizetés-azonosítóra.
 
 ```azurecli-interactive
 # To find the name of an Azure region in the CLI run this command: az account list-locations

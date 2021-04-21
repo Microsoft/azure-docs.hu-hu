@@ -1,7 +1,7 @@
 ---
 title: Adatbázis visszaállítása biztonsági másolatból
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: Ismerje meg az időponthoz való visszaállítást, amely lehetővé teszi egy adatbázis visszaállítását Azure SQL Database vagy egy Azure SQL felügyelt példányban, akár 35 napig.
+description: Ismerje meg az időponthoz időben való visszaállítást, amellyel akár 35 nap alatt visszaállíthatja Azure SQL Database egy adatbázist Azure SQL Managed Instance példányban.
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
@@ -12,42 +12,42 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: 0c3db3b3f22f9f2639012068924708537f9ada77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 670176d7478ddab3d17e15526df512dfa7e99fd4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98795331"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762064"
 ---
-# <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Helyreállítás automatikus adatbázis-biztonsági másolatokkal – Azure SQL Database & SQL felügyelt példánya
+# <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Helyreállítás automatikus adatbázis-biztonsági mentések használatával – Azure SQL Database & SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-A következő beállítások érhetők el az adatbázis-helyreállításhoz az [automatikus adatbázis-biztonsági mentések](automated-backups-overview.md)használatával. A következőket teheti:
+Az adatbázis automatikus biztonsági mentésével az alábbi lehetőségek érhetők el az [adatbázisok helyreállításához.](automated-backups-overview.md) A következőket teheti:
 
-- Hozzon létre egy új adatbázist ugyanarra a kiszolgálóra, amely a megőrzési időtartamon belül egy megadott időpontra lett helyreállítva.
-- Hozzon létre egy adatbázist ugyanazon a kiszolgálón, amely a törölt adatbázis törlési idejére lett helyreállítva.
-- Hozzon létre egy új adatbázist minden olyan kiszolgálón, amely ugyanabban a régióban található, és a legújabb biztonsági másolatok pontjára lett helyreállítva.
-- Hozzon létre egy új adatbázist bármely más régióban lévő kiszolgálón, amely a legutóbbi replikált biztonsági másolatok pontjára lett helyreállítva.
+- Hozzon létre egy új adatbázist ugyanazon a kiszolgálón a megőrzési időtartamon belül egy megadott időpontra helyreállítva.
+- Hozzon létre egy adatbázist ugyanazon a kiszolgálón egy törölt adatbázis törlési ideje szerint helyreállítva.
+- Hozzon létre egy új adatbázist bármely, ugyanabban a régióban található kiszolgálón, a legutóbbi biztonsági mentések pontra helyreállítva.
+- Hozzon létre egy új adatbázist bármely másik régióban található bármely kiszolgálón, a legutóbbi replikált biztonsági mentések pontra helyreállítva.
 
-Ha a [biztonsági mentés hosszú távú megőrzését](long-term-retention-overview.md)állította be, létrehozhat egy új adatbázist is a hosszú távú adatmegőrzési biztonsági mentésből bármely kiszolgálón.
+Ha a biztonsági mentés [hosszú](long-term-retention-overview.md)távú megőrzését konfigurálta, bármely kiszolgálón létrehozhat egy új adatbázist bármely hosszú távú megőrzési biztonsági másolatból.
 
 > [!IMPORTANT]
-> A meglévő adatbázisok nem írhatók felül a visszaállítás során.
+> A visszaállítás során nem írhatja felül a meglévő adatbázist.
 
-Ha a standard vagy prémium szintű szolgáltatási szintet használja, az adatbázis-visszaállítás további tárolási költséget eredményezhet. Az extra költségek akkor merülnek fel, ha a visszaállított adatbázis maximális mérete nagyobb, mint a céladatbázis szolgáltatási szintjéhez és a teljesítmény szintjéhez tartozó tárterület mennyisége. A további tárterület részletes díjszabását a [SQL Database díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/sql-database/)tekintheti meg. Ha a felhasznált terület tényleges mennyisége kevesebb, mint a tárhelyek mennyisége, akkor ezt a többletköltséget elkerülheti, ha a maximális adatbázis méretét a befoglalt mennyiségre állítja.
+Ha a Standard vagy a Prémium szolgáltatási szintet használja, az adatbázis-visszaállítás további tárolási költségeket is felvehet. A többletköltség akkor merül fel, ha a visszaállított adatbázis maximális mérete meghaladja a céladatbázis szolgáltatási és teljesítményszintje által tartalmazott tárterületet. A további tárhellyel kapcsolatos díjszabási részletekért lásd a SQL Database [oldalon.](https://azure.microsoft.com/pricing/details/sql-database/) Ha a felhasznált terület tényleges mennyisége kisebb a benne foglalt tárterületnél, elkerülheti ezt a többletköltséget, ha a maximális adatbázisméretet a benne foglalt mennyiségre használhatja.
 
-## <a name="recovery-time"></a>Helyreállítás ideje
+## <a name="recovery-time"></a>Helyreállítási idő
 
-Az adatbázis automatikus biztonsági mentések használatával történő visszaállításának helyreállítási idejét számos tényező befolyásolja:
+Az adatbázisok automatikus biztonsági másolatokkal történő visszaállításának helyreállítási idejét számos tényező befolyásolja:
 
 - Az adatbázis mérete.
 - Az adatbázis számítási mérete.
-- A tranzakciós naplók száma.
-- Azon tevékenység mennyisége, amelyet újra kell játszani a visszaállítási pontra történő helyreállításhoz.
+- Az érintett tranzakciónaplók száma.
+- A visszaállítási pontra való helyreállításhoz visszajátszható tevékenység mennyisége.
 - A hálózati sávszélesség, ha a visszaállítás egy másik régióba történik.
-- A megcélzott régióban feldolgozott egyidejű visszaállítási kérelmek száma.
+- Az egyidejű visszaállítási kérések száma, amely a célterületen van feldolgozva.
 
-Nagyméretű vagy nagyon aktív adatbázisok esetén a visszaállítás több órát is igénybe vehet. Ha a régióban elhúzódó leállás következik be, előfordulhat, hogy a vészhelyreállítási folyamat túl sok georedundáns visszaállítási kérést ad ki. Ha túl sok a kérés, az egyes adatbázisok helyreállítási ideje megnőhet. A legtöbb adatbázis-visszaállítás kevesebb, mint 12 óra alatt fejeződik be.
+Nagy méretű vagy nagyon aktív adatbázisokban a visszaállítás több órát is igénybe vehet. Ha a régióban elhúzódó leállás következik be, előfordulhat, hogy a vészhelyreállítási folyamat túl sok georedundáns visszaállítási kérést ad ki. Ha túl sok a kérés, az egyes adatbázisok helyreállítási ideje megnőhet. A legtöbb adatbázis-visszaállítás kevesebb mint 12 óra alatt befejeződik.
 
 Korlátozva van, hogy egy előfizetésen belül mennyi egyidejű visszaállítási kérést lehet kiadni. Ezek a korlátozások az időponthoz kötött, a georedundáns és a hosszú távon megőrzött biztonsági másolatokból történő visszaállítások minden kombinációjára vonatkoznak.
 
@@ -57,209 +57,209 @@ Korlátozva van, hogy egy előfizetésen belül mennyi egyidejű visszaállítá
 |**Rugalmas készlet (készletenként)**|4|2000|
 
 
-Nincs beépített módszer a teljes kiszolgáló visszaállítására. A feladat végrehajtásával kapcsolatos példát a [Azure SQL Database: teljes kiszolgáló helyreállítása](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666)című témakörben talál.
+Nincs beépített módszer a teljes kiszolgáló visszaállítására. A feladat elvégzésének egy példáját a következő [Azure SQL Database: Teljes kiszolgáló-helyreállítás.](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666)
 
 > [!IMPORTANT]
-> Az automatizált biztonsági másolatok használatával történő helyreállításhoz a SQL Server közreműködő szerepkör vagy az SQL felügyelt példány közreműködői szerepkör (a helyreállítási célhelytől függően) tagjának kell lennie az előfizetésben, vagy az előfizetés tulajdonosának kell lennie. További információt az [Azure RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)című témakörben talál. A helyreállítást a Azure Portal, a PowerShell vagy a REST API használatával végezheti el. A Transact-SQL nem használható.
+> Az automatikus biztonsági mentések használatával történő helyreállításhoz az SQL Server-közreműködői vagy a SQL Managed Instance-közreműködői szerepkör tagja kell lennie (a helyreállítási célhelytől függően), vagy az előfizetés tulajdonosának kell lennie. További információ: [Azure RBAC: Beépített szerepkörök.](../../role-based-access-control/built-in-roles.md) A helyreállításhoz használhatja a Azure Portal, a PowerShellt vagy a REST API. A Transact-SQL nem használható.
 
 ## <a name="point-in-time-restore"></a>Adott időpontnak megfelelő helyreállítás
 
-A Azure Portal, a [PowerShell](/powershell/module/az.sql/restore-azsqldatabase)vagy a [REST API](/rest/api/sql/databases/createorupdate#creates-a-database-from-pointintimerestore.)használatával visszaállíthat egy önálló, készletezett vagy példány-adatbázist egy korábbi időpontra. A kérelem bármilyen szolgáltatási szintet vagy számítási méretet megadhat a visszaállított adatbázis számára. Győződjön meg arról, hogy elegendő erőforrása van azon a kiszolgálón, amelyhez az adatbázist állítja vissza. 
+Az önálló, készletbekészletett vagy példány-adatbázisokat visszaállíthatja egy korábbi időpontra a Azure Portal, [a PowerShell](/powershell/module/az.sql/restore-azsqldatabase)vagy a [REST API.](/rest/api/sql/databases/createorupdate#creates-a-database-from-pointintimerestore.) A kérés bármilyen szolgáltatási szintet vagy számítási méretet megadhat a visszaállított adatbázishoz. Győződjön meg arról, hogy elegendő erőforrással rendelkezik a kiszolgálón, amelyre az adatbázist visszaállítja. 
 
-Ha elkészült, a Restore egy új adatbázist hoz létre az eredeti adatbázissal megegyező kiszolgálón. A visszaállított adatbázist a szolgáltatás szintjétől és a számítási mérettől függően a normál díjszabás szerint számítjuk fel. Az adatbázis visszaállítása után nem számítunk fel díjat.
+Ha elkészült, a visszaállítás egy új adatbázist hoz létre ugyanazon a kiszolgálón, mint az eredeti adatbázis. A visszaállított adatbázisért normál díjszabás szerint kell fizetni a szolgáltatási szint és a számítási méret alapján. Az adatbázis visszaállításának befejezéséig nem kell költségeket fizetni.
 
-Általában egy adatbázis visszaállítása egy korábbi helyre helyreállítás céljából. A visszaállított adatbázist felhasználhatja az eredeti adatbázis helyett, vagy adatforrásként használhatja az eredeti adatbázis frissítéséhez.
+Helyreállítási célokból általában egy korábbi pontra kell visszaállítani az adatbázist. A visszaállított adatbázist az eredeti adatbázis helyett is használhatja, vagy használhatja adatforrásként az eredeti adatbázis frissítéséhez.
 
 - **Adatbázis cseréje**
 
-  Ha azt szeretné, hogy a visszaállított adatbázis helyettesítse az eredeti adatbázist, akkor meg kell adnia az eredeti adatbázis számítási méretét és a szolgáltatási szintet. Ezután átnevezheti az eredeti adatbázist, és megadhatja az eredeti nevet a visszaállított adatbázisnak az [Alter Database](/sql/t-sql/statements/alter-database-azure-sql-database) parancs használatával a T-SQL-ben.
+  Ha azt szeretné, hogy a visszaállított adatbázis az eredeti adatbázist helyettesítsen, meg kell adnia az eredeti adatbázis számítási méretét és szolgáltatási rétegét. Ezután átnevezheti az eredeti adatbázist, és a T-SQL [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) parancsával eredeti nevet adhat a visszaállított adatbázisnak.
 
-- **Adathelyreállítás**
+- **Adat-helyreállítás**
 
-  Ha a visszaállított adatbázisból szeretne adatokat lekérni egy felhasználói vagy alkalmazáshiba általi helyreállításhoz, írnia kell és végre kell hajtania egy olyan adathelyreállítási parancsfájlt, amely kinyeri az adatokat a visszaállított adatbázisból, és az eredeti adatbázisra vonatkozik. Bár a visszaállítási művelet végrehajtása hosszú időt is igénybe vehet, a visszaállítási folyamat során az adatbázis-lista látható. Ha a visszaállítás során törli az adatbázist, a visszaállítási művelet meg lesz szakítva, és nem kell fizetnie az adatbázisnak, amely nem végezte el a visszaállítást.
+  Ha azt tervezi, hogy adatokat fog lekérni a visszaállított adatbázisból egy felhasználói vagy alkalmazáshiba utáni helyreállításhoz, olyan adat-helyreállítási szkriptet kell írnia és végrehajtania, amely kinyeri az adatokat a visszaállított adatbázisból, és az eredeti adatbázisra vonatkozik. Bár a visszaállítási művelet hosszú időt vehet igénybe, a visszaállítási adatbázis a visszaállítási folyamat során végig látható az adatbázislistában. Ha törli az adatbázist a visszaállítás során, a visszaállítási művelet megszakad, és nem számítunk fel díjat az adatbázisért, amely nem fejeződött be.
   
-### <a name="point-in-time-restore-by-using-azure-portal"></a>Időponthoz való visszaállítás Azure Portal használatával
+### <a name="point-in-time-restore-by-using-azure-portal"></a>Időponthoz időben való visszaállítás a Azure Portal
 
-A Azure Portalban visszaállítani kívánt adatbázis áttekintés paneljéről egy adott időpontra állíthatja helyre az egy-vagy példány-adatbázist.
+Egy vagy többpéldányos adatbázist az adott időpontra a visszaállításra kívánt adatbázis áttekintési paneljének egy adott időpontra való visszaállításával Azure Portal.
 
 #### <a name="sql-database"></a>SQL Database
 
-Ha a Azure Portal használatával kívánja helyreállítani az adatbázist egy adott időpontra, nyissa meg az adatbázis áttekintése lapot, és válassza a **visszaállítás** lehetőséget az eszköztáron. Válassza ki a biztonsági mentési forrást, és válassza ki azt az időponthoz tartozó biztonsági mentési pontot, amelyből új adatbázist kíván létrehozni.
+Ha az adatbázist a megfelelő időpontra Azure Portal, nyissa meg az adatbázis áttekintő lapját, és válassza az eszköztár **Visszaállítás** pontját. Válassza ki a biztonsági mentési forrást, és válassza ki azt az időponthoz készített biztonsági mentési pontot, amelyből új adatbázist fog létrehozni.
 
-  ![Képernyőkép a SQL Database adatbázis-visszaállítási lehetőségeiről.](./media/recovery-using-backups/pitr-backup-sql-database-annotated.png)
+  ![Képernyőkép az adatbázis-visszaállítási lehetőségekről a SQL Database.](./media/recovery-using-backups/pitr-backup-sql-database-annotated.png)
 
 #### <a name="sql-managed-instance"></a>SQL Managed Instance
 
-Felügyelt példány adatbázisának egy időpontra történő helyreállításához a Azure Portal segítségével nyissa meg az adatbázis-áttekintés lapot, és válassza a **visszaállítás** lehetőséget az eszköztáron. Válassza ki azt az időponthoz tartozó biztonsági mentési pontot, amelyből új adatbázist kíván létrehozni.
+Ha egy felügyeltpéldány-adatbázist a Azure Portal segítségével egy adott időpontra is vissza akar állítani, nyissa meg az adatbázis áttekintő lapját, és válassza az eszköztár **Visszaállítás** pontját. Válassza ki azt az időponthoz készített biztonsági mentési pontot, amelyből új adatbázist fog létrehozni.
 
-  ![Képernyőkép a felügyelt SQL-példány adatbázis-visszaállítási lehetőségeiről.](./media/recovery-using-backups/pitr-backup-managed-instance-annotated.png)
+  ![Képernyőkép a felügyelt SQL-példány adatbázis-visszaállítási beállításairól.](./media/recovery-using-backups/pitr-backup-managed-instance-annotated.png)
 
 > [!TIP]
-> Egy adatbázis biztonsági másolatból való programozott visszaállításával kapcsolatban lásd: [programozott helyreállítás automatizált biztonsági mentéssel](recovery-using-backups.md).
+> Az adatbázisok biztonsági másolatból történő programozott visszaállításáról lásd: Programozott helyreállítás [automatikus biztonsági mentésekkel.](recovery-using-backups.md)
 
-## <a name="deleted-database-restore"></a>Adatbázis-visszaállítás törölve
+## <a name="deleted-database-restore"></a>Törölt adatbázis visszaállítása
 
-A törölt adatbázist visszaállíthatja a törlési időre vagy egy korábbi időpontra ugyanazon a kiszolgálón vagy ugyanazon a felügyelt példányon. Ezt a Azure Portal, a [PowerShell](/powershell/module/az.sql/restore-azsqldatabase)vagy a [Rest (CreateMode = Restore)](/rest/api/sql/databases/createorupdate)használatával végezheti el. Egy törölt adatbázist úgy állíthat vissza, hogy létrehoz egy új adatbázist a biztonsági mentésből.
+A törölt adatbázisokat visszaállíthatja a törlési időpontra vagy egy korábbi időpontra ugyanazon a kiszolgálón vagy ugyanazon felügyelt példányon. Ezt a következő parancsokkal tudja Azure Portal, [a PowerShell](/powershell/module/az.sql/restore-azsqldatabase)vagy a [REST (createMode=Restore) használatával.](/rest/api/sql/databases/createorupdate) A törölt adatbázisok visszaállításához hozzon létre egy új adatbázist a biztonsági másolatból.
 
 > [!IMPORTANT]
-> Ha töröl egy kiszolgálót vagy felügyelt példányt, az összes adatbázisa is törlődik, és nem állítható helyre. A törölt kiszolgálók vagy a felügyelt példányok nem állíthatók vissza.
+> Ha töröl egy kiszolgálót vagy felügyelt példányt, az összes adatbázisa is törlődik, és nem állítható helyre. Törölt kiszolgálót vagy felügyelt példányt nem lehet visszaállítani.
 
-### <a name="deleted-database-restore-by-using-the-azure-portal"></a>Az adatbázis-visszaállítás törölve a Azure Portal használatával
+### <a name="deleted-database-restore-by-using-the-azure-portal"></a>Törölt adatbázis-visszaállítás a Azure Portal
 
-A törölt adatbázisokat a kiszolgálóról vagy a felügyelt példányok erőforrásból kell visszaállítani a Azure Portalból.
+A törölt adatbázisokat visszaállítja a Azure Portal a kiszolgáló vagy a felügyelt példány erőforrásából.
 
 > [!TIP]
-> Több percet is igénybe vehet, hogy a nemrég törölt adatbázisok megjelenjenek a Azure Portal **törölt adatbázisok** lapján, vagy ha [programozott](#programmatic-recovery-using-automated-backups)módon jeleníti meg a törölt adatbázisokat.
+> Eltarthat néhány percig, amíg a nemrég törölt  adatbázisok megjelennek a törölt adatbázisok oldalán a Azure Portal, vagy ha programozott módon jeleníti meg a törölt [adatbázisokat.](#programmatic-recovery-using-automated-backups)
 
 #### <a name="sql-database"></a>SQL Database
 
-Ha a törölt adatbázist a Azure Portal használatával szeretné visszaállítani a törlési időre, nyissa meg a kiszolgáló áttekintése lapot, és válassza a **törölt adatbázisok** elemet. Válassza ki a visszaállítani kívánt törölt adatbázist, és írja be az új adatbázis nevét, amely a biztonsági másolatból visszaállított adatokkal lesz létrehozva.
+A törölt adatbázisok törlési időpontra való helyreállításához a Azure Portal nyissa meg a kiszolgáló áttekintő lapját, és válassza a **Törölt adatbázisok lehetőséget.** Válassza ki a visszaállítani kívánt törölt adatbázist, és írja be annak az új adatbázisnak a nevét, amely a biztonsági másolatból visszaállított adatokkal fog létrejönni.
 
-  ![Képernyőfelvétel a törölt adatbázis visszaállításáról](./media/recovery-using-backups/restore-deleted-sql-database-annotated.png)
+  ![Képernyőkép a törölt adatbázis visszaállításáról](./media/recovery-using-backups/restore-deleted-sql-database-annotated.png)
 
 #### <a name="sql-managed-instance"></a>SQL Managed Instance
 
-Felügyelt adatbázis helyreállításához a Azure Portal segítségével nyissa meg a felügyelt példányok áttekintése lapot, és válassza a **törölt adatbázisok** lehetőséget. Válassza ki a visszaállítani kívánt törölt adatbázist, és írja be az új adatbázis nevét, amely a biztonsági másolatból visszaállított adatokkal lesz létrehozva.
+Ha a felügyelt adatbázist a felügyelt adatbázis használatával Azure Portal, nyissa meg a felügyelt példány áttekintési oldalát, és válassza a **Törölt adatbázisok lehetőséget.** Válassza ki a visszaállítani kívánt törölt adatbázist, és írja be annak az új adatbázisnak a nevét, amely a biztonsági másolatból visszaállított adatokkal fog létrejönni.
 
-  ![Képernyőkép a törölt Azure SQL felügyelt példány-adatbázis visszaállításáról](./media/recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
+  ![Képernyőkép a törölt Azure SQL Managed Instance adatbázisról](./media/recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
 
-### <a name="deleted-database-restore-by-using-powershell"></a>Adatbázis-visszaállítás törölve a PowerShell használatával
+### <a name="deleted-database-restore-by-using-powershell"></a>Törölt adatbázis-visszaállítás a PowerShell használatával
 
-A következő parancsfájlokkal visszaállíthat egy törölt adatbázist SQL Database vagy SQL felügyelt példányhoz a PowerShell használatával.
+Az alábbi példaszkprogramokkal visszaállíthatja a törölt adatbázist egy SQL Database vagy SQL Managed Instance PowerShell használatával.
 
 #### <a name="sql-database"></a>SQL Database
 
-A törölt adatbázisok Azure SQL Database-ben való visszaállítását bemutató minta PowerShell-parancsfájlhoz lásd: [adatbázis visszaállítása a PowerShell használatával](scripts/restore-database-powershell.md).
+A törölt adatbázisok visszaállítását bemutató PowerShell-példaszk Azure SQL Database lásd: Adatbázis visszaállítása [a PowerShell használatával.](scripts/restore-database-powershell.md)
 
 #### <a name="sql-managed-instance"></a>SQL Managed Instance
 
-A törölt példányok adatbázisának visszaállítását bemutató minta PowerShell-parancsfájlhoz lásd: [példány-adatbázis visszaállítása a PowerShell használatával](../managed-instance/point-in-time-restore.md#restore-a-deleted-database)
+A törölt példányok adatbázisának visszaállítását bemutató PowerShell-példaszk szkriptért lásd: Törölt példányadatbázis visszaállítása a [PowerShell használatával](../managed-instance/point-in-time-restore.md#restore-a-deleted-database)
 
 > [!TIP]
-> A törölt adatbázisok programozott visszaállításával kapcsolatban lásd: a [helyreállítás programozott módon történő végrehajtása automatizált biztonsági mentéssel](recovery-using-backups.md).
+> A törölt adatbázisok programozott módon történő visszaállításáról lásd: Helyreállítás programozott módon, automatikus biztonsági [mentésekkel.](recovery-using-backups.md)
 
 ## <a name="geo-restore"></a>Georedundáns visszaállítás
 
 > [!IMPORTANT]
-> A Geo-visszaállítás csak az SQL-adatbázisok vagy a Geo-redundáns [biztonsági mentési tárolóval](automated-backups-overview.md#backup-storage-redundancy)konfigurált felügyelt példányok esetén érhető el.
+> A georedundáns visszaállítás csak a georedundáns biztonsági mentési tárolóval konfigurált SQL-adatbázisokhoz vagy felügyelt [példányokhoz érhető el.](automated-backups-overview.md#backup-storage-redundancy)
 
-A legutóbbi földrajzilag replikált biztonsági másolatokból bármely Azure-régióban felügyelt példányon visszaállíthat egy adatbázist bármely SQL Database-kiszolgálón vagy egy példány-adatbázison. A Geo-visszaállítás a forrásként egy földrajzilag replikált biztonsági mentést használ. Akkor is kérheti a Geo-visszaállítást, ha az adatbázis vagy az adatközpont egy leállás miatt nem érhető el.
+A legutóbbi georeplikált biztonsági mentések SQL Database bármely azure-régió bármely felügyelt példányán visszaállíthatja az adatbázist bármely SQL Database-kiszolgálón vagy példányadatbázison. A georedúnó-visszaállítás georeplikált biztonsági mentést használ forrásként. Georedún-visszaállítást akkor is kérhet, ha az adatbázis vagy az adatközpont egy kimaradás miatt nem érhető el.
 
-A Geo-visszaállítás az alapértelmezett helyreállítási lehetőség, ha az adatbázis nem érhető el az üzemeltetési régióban lévő incidens miatt. Az adatbázist bármely másik régióban található kiszolgálón visszaállíthatja. A biztonsági másolat készítése és az egy másik régióban lévő Azure-blobba való földrajzi replikálása között késés történik. Ennek eredményeképpen a visszaállított adatbázis akár egy óráig is elvégezhető az eredeti adatbázis mögött. Az alábbi ábrán egy másik régió utolsó elérhető biztonsági másolatából származó adatbázis-visszaállítás látható.
+A földrajzi visszaállítás az alapértelmezett helyreállítási lehetőség, ha az adatbázis egy, az üzemeltetési régióban történt incidens miatt nem érhető el. Az adatbázist bármely másik régióban található kiszolgálón visszaállíthatja. A biztonsági mentések készítésének és a georeplikált adatoknak egy másik régióban lévő Azure-blobba való replikálása között késés van. Ennek eredményeképpen a visszaállított adatbázis akár egy órával az eredeti adatbázis mögött is lehet. Az alábbi ábrán egy adatbázis-visszaállítás látható egy másik régióban utoljára elérhető biztonsági másolatból.
 
-![Geo-visszaállítási ábra](./media/recovery-using-backups/geo-restore-2.png)
+![Georedúnó-visszaállítás ábrája](./media/recovery-using-backups/geo-restore-2.png)
 
-### <a name="geo-restore-by-using-the-azure-portal"></a>Geo-visszaállítás a Azure Portal használatával
+### <a name="geo-restore-by-using-the-azure-portal"></a>Georedún helyreállítás a Azure Portal
 
-A Azure Portal létre kell hoznia egy új, egy vagy felügyelt példány-adatbázist, és ki kell választania egy elérhető geo-visszaállítási biztonsági mentést. Az újonnan létrehozott adatbázis tartalmazza a Geo-visszaállított biztonsági mentési adatkészleteket.
-
-#### <a name="sql-database"></a>SQL Database
-
-Az alábbi lépéseket követve geo-vissza lehet állítani egyetlen adatbázist a régió és a választott kiszolgáló Azure Portalból:
-
-1. Az **irányítópulton** válassza a **Hozzáadás**  >  **Létrehozás SQL Database** elemet. Az **alapvető beállítások** lapon adja meg a szükséges adatokat.
-2. Válassza a **További beállítások** lehetőséget.
-3. A **meglévő adatfelhasználáshoz** válassza a **biztonsági mentés** lehetőséget.
-4. A **biztonsági mentéshez** válassza ki a biztonsági mentést az elérhető geo-visszaállítási biztonsági mentések listájából.
-
-    ![Képernyőkép a SQL Database létrehozásának lehetőségeiről](./media/recovery-using-backups/geo-restore-azure-sql-database-list-annotated.png)
-
-Fejezze be az új adatbázis biztonsági másolatból való létrehozásának folyamatát. Amikor Azure SQL Databaseban hoz létre adatbázist, a visszaállított geo-visszaállítási biztonsági másolatot tartalmazza.
-
-#### <a name="sql-managed-instance"></a>SQL Managed Instance
-
-Felügyelt példányok adatbázisának geo-visszaállítása a Azure Portal egy meglévő felügyelt példányra egy tetszőleges régióban, válassza ki azt a felügyelt példányt, amelyen vissza kívánja állítani az adatbázist. Kövesse az alábbi lépéseket:
-
-1. Válassza az **új adatbázis** lehetőséget.
-2. Írja be a kívánt adatbázis nevét.
-3. A **meglévő adat használata** területen válassza a **biztonsági mentés** lehetőséget.
-4. Válasszon ki egy biztonsági másolatot az elérhető geo-visszaállítási biztonsági másolatok listájából.
-
-    ![Képernyőfelvétel az új adatbázis-beállításokról](./media/recovery-using-backups/geo-restore-sql-managed-instance-list-annotated.png)
-
-Fejezze be az új adatbázis létrehozásának folyamatát. A példány-adatbázis létrehozásakor a visszaállított geo-visszaállítási biztonsági másolatot tartalmazza.
-
-### <a name="geo-restore-by-using-powershell"></a>Geo-visszaállítás a PowerShell használatával
+A Azure Portal létrehoz egy új egy- vagy felügyeltpéldány-adatbázist, és kiválasztja az elérhető georedukt helyreállító biztonsági mentést. Az újonnan létrehozott adatbázis tartalmazza a georedurált biztonsági mentési adatokat.
 
 #### <a name="sql-database"></a>SQL Database
 
-Egy olyan PowerShell-parancsfájl esetében, amely bemutatja, hogyan végezhető el a Geo-visszaállítás egyetlen adatbázishoz, lásd: [a PowerShell használata egy adott adatbázis egy korábbi időpontra való visszaállításához](scripts/restore-database-powershell.md).
+Ha egyetlen adatbázist földrajzi Azure Portal a választott régióban és kiszolgálón található adatbázisból, kövesse az alábbi lépéseket:
+
+1. Az **Irányítópulton** válassza **a**  >  **Létrehozási SQL Database** lehetőséget. Az Alapvető **beállítások lapon** adja meg a szükséges adatokat.
+2. Válassza **a További beállítások lehetőséget.**
+3. A **Meglévő adatok használata beállításhoz válassza** a Biztonsági mentés **lehetőséget.**
+4. A **Biztonsági mentés** beállításnál válasszon ki egy biztonsági másolatot az elérhető georedúnó-visszaállítási biztonsági másolatok listájából.
+
+    ![Képernyőkép a Create SQL Database beállításokról](./media/recovery-using-backups/geo-restore-azure-sql-database-list-annotated.png)
+
+A biztonsági másolatból hozzon létre egy új adatbázist. Amikor adatbázist hoz létre a Azure SQL Database, az tartalmazza a visszaállított georedúnó-visszaállítási biztonsági mentést.
 
 #### <a name="sql-managed-instance"></a>SQL Managed Instance
 
-A felügyelt példányok adatbázisának geo-visszaállítását bemutató PowerShell-szkriptet a következő témakörben talál: a [felügyelt példányok adatbázisának visszaállítása másik földrajzi régióra a PowerShell használatával](../managed-instance/scripts/restore-geo-backup.md).
+Ha egy felügyeltpéldány-adatbázist szeretne georeduktálni a Azure Portal-ból egy kiválasztott régióban található meglévő felügyelt példányra, válasszon ki egy felügyelt példányt, amelyen vissza szeretné állítani az adatbázist. Kövesse az alábbi lépéseket:
 
-### <a name="geo-restore-considerations"></a>Geo-visszaállítási megfontolások
+1. Válassza **az Új adatbázis lehetőséget.**
+2. Írjon be egy kívánt adatbázisnevet.
+3. A **Meglévő adatok használata alatt válassza a** Biztonsági mentés **lehetőséget.**
+4. Válasszon ki egy biztonsági másolatot az elérhető georedúnis biztonsági másolatok listájából.
 
-A Geo-másodlagos adatbázison nem hajtható végre időponthoz való visszaállítás. Ezt csak elsődleges adatbázison teheti meg. További információ a Geo-visszaállítás a leállás utáni helyreállításhoz való használatáról: [áramkimaradás](../../key-vault/general/disaster-recovery-guidance.md)miatti helyreállítás.
+    ![Képernyőkép az Új adatbázis beállításairól](./media/recovery-using-backups/geo-restore-sql-managed-instance-list-annotated.png)
+
+Egy új adatbázis létrehozásának befejezése. A példányadatbázis létrehozásakor az tartalmazza a visszaállított georedúnó-visszaállítási biztonsági másolatot.
+
+### <a name="geo-restore-by-using-powershell"></a>Geored visszaállítás a PowerShell használatával
+
+#### <a name="sql-database"></a>SQL Database
+
+Ha olyan PowerShell-parancsfájlt keres, amely bemutatja, hogyan végezhet georedún-visszaállítást egyetlen adatbázison, tekintse meg az egyetlen adatbázis korábbi időpontra való visszaállítását [a PowerShell](scripts/restore-database-powershell.md)használatával.
+
+#### <a name="sql-managed-instance"></a>SQL Managed Instance
+
+Ha olyan PowerShell-szkriptet keres, amely bemutatja, hogyan végezhet georeduktikai visszaállítást egy felügyeltpéldány-adatbázison, tekintse meg [a felügyeltpéldány-adatbázis](../managed-instance/scripts/restore-geo-backup.md)másik földrajzi régióba való visszaállítását a PowerShell használatával.
+
+### <a name="geo-restore-considerations"></a>Georedúnitikai szempontok
+
+Földrajzi másodlagos adatbázison nem hajthat végre időponthoz időben végzett visszaállítást. Ezt csak egy elsődleges adatbázison lehet megtenni. A kimaradásból való helyreállítás georedúnit használatával kapcsolatos részletes információkért lásd: [Helyreállítás kimaradás után.](../../key-vault/general/disaster-recovery-guidance.md)
 
 > [!IMPORTANT]
-> A Geo-visszaállítás a SQL Database és az SQL felügyelt példányában elérhető alapszintű katasztrófa-helyreállítási megoldás. A szolgáltatás automatikusan létrehozott geo-replikált biztonsági mentéseket egy helyreállítási időkorláttal (RPO), legfeljebb 1 órára, a becsült helyreállítási időt pedig akár 12 óráig is elvégezheti. Nem garantálja, hogy a célként megadott régió a regionális leállás után helyreállíthatja az adatbázisokat, mivel a kereslet jelentős növekedése várható. Ha az alkalmazás viszonylag kis adatbázisokat használ, és nem kritikus fontosságú a vállalat számára, a Geo-visszaállítás egy megfelelő vész-helyreállítási megoldás. 
+> A georedúmentás a legapvetőbb vészhelyreállítási megoldás, amely a SQL Database és SQL Managed Instance. Automatikusan létrehozott, legfeljebb 1 órás helyreállításipont-célkitűzéssel (RPO) és legfeljebb 12 órás becsült helyreállítási idővel létrehozott georeplikált biztonsági másolatra támaszkodik. Nem garantálja, hogy a célterület képes lesz helyreállítani az adatbázisokat egy regionális kimaradás után, mivel a kereslet hirtelen növekedése várható. Ha az alkalmazás viszonylag kis méretű adatbázisokat használ, és nem kritikus fontosságú a vállalat számára, a georedúmentáció megfelelő vészhelyreállítási megoldás. 
 >
-> Az üzleti szempontból kritikus fontosságú alkalmazások esetében, amelyeknek nagy adatbázisokra van szükségük, és biztosítaniuk kell az üzletmenet folytonosságát, használja az [automatikus feladatátvételi csoportokat](auto-failover-group-overview.md). Sokkal alacsonyabb RPO és helyreállítási idő célkitűzést kínál, és a kapacitás mindig garantált. 
+> A nagy méretű adatbázisokat igénylő, üzletmenet-folytonosságot igénylő, üzleti fontosságú alkalmazásokhoz használjon automatikus [feladatátvételi csoportokat.](auto-failover-group-overview.md) Sokkal alacsonyabb RPO-t és helyreállítási időre vonatkozó célkitűzést kínál, és a kapacitás mindig garantált. 
 >
-> További információ az üzletmenet-folytonossági lehetőségekről: [az üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md).
+> További információ az üzletmenet-folytonossági lehetőségekről: [Az üzletmenet folytonosságának áttekintése.](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 
-## <a name="programmatic-recovery-using-automated-backups"></a>Programozott helyreállítás automatizált biztonsági mentéssel
+## <a name="programmatic-recovery-using-automated-backups"></a>Programozott helyreállítás automatizált biztonsági mentésekkel
 
-A helyreállításhoz Azure PowerShell vagy a REST API is használhatja. A következő táblázatok ismertetik az elérhető parancsok készletét.
+Használhatja a Azure PowerShell vagy a REST API is a helyreállításhoz. Az alábbi táblázatok az elérhető parancsokat ismertetik.
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> A PowerShell Azure Resource Manager modult továbbra is támogatja a SQL Database és az SQL felügyelt példánya, de az az. SQL modul jövőbeli fejlesztése is. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Az az modul és Azure Resource Manager moduljaiban található parancsok argumentumai nagy mértékben azonosak.
+> A PowerShell Azure Resource Manager modult továbbra is támogatja a SQL Database és SQL Managed Instance, de minden jövőbeli fejlesztés az Az.Sql modulra lesz kifejlesztésére. A parancsmagokért lásd: [AzureRM.Sql.](/powershell/module/AzureRM.Sql/) Az Az modulban és a Azure Resource Manager modulokban található parancsok argumentumai nagy mértékben azonosak.
 
 #### <a name="sql-database"></a>SQL Database
 
-Önálló vagy készletezett adatbázis visszaállításához tekintse meg a [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase)című témakört.
+Önálló vagy készletbekészletett adatbázis visszaállításához lásd: [Restore-AzSqlDatabase.](/powershell/module/az.sql/restore-azsqldatabase)
 
   | Parancsmag | Leírás |
   | --- | --- |
   | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) |Egy vagy több adatbázist kér le. |
   | [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | Lekér egy törölt adatbázist, amelyet visszaállíthat. |
   | [Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup) |Lekéri egy adatbázis georedundáns biztonsági másolatát. |
-  | [Visszaállítás – AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) |Visszaállítja az adatbázist. |
+  | [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) |Visszaállít egy adatbázist. |
 
   > [!TIP]
-  > Az adatbázisok egy adott időpontban történő visszaállítását bemutató minta PowerShell-parancsfájlt az [adatbázis visszaállítása a PowerShell használatával](scripts/restore-database-powershell.md)című témakörben talál.
+  > Az adatbázis időponthoz időben való visszaállítását bemutató PowerShell-parancsfájlminta: Adatbázis visszaállítása [a PowerShell használatával.](scripts/restore-database-powershell.md)
 
 #### <a name="sql-managed-instance"></a>SQL Managed Instance
 
-A felügyelt példányok adatbázisának visszaállításával kapcsolatban lásd: [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase).
+Felügyeltpéldány-adatbázis visszaállításához lásd: [Restore-AzSqlInstanceDatabase.](/powershell/module/az.sql/restore-azsqlinstancedatabase)
 
   | Parancsmag | Leírás |
   | --- | --- |
-  | [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance) |Egy vagy több felügyelt példány beolvasása. |
-  | [Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase) | Lekéri egy példány-adatbázist. |
-  | [Visszaállítás – AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase) |Visszaállítja egy példány-adatbázist. |
+  | [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance) |Lekért egy vagy több felügyelt példányt. |
+  | [Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase) | Lekért egy példányadatbázist. |
+  | [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase) |Visszaállít egy példányadatbázist. |
 
 ### <a name="rest-api"></a>REST API
 
-Adatbázis visszaállítása a REST API használatával:
+Adatbázis visszaállítása a következő REST API:
 
 | API | Leírás |
 | --- | --- |
-| [REST (createMode = helyreállítás)](/rest/api/sql/databases) |Visszaállítja az adatbázist. |
-| [Adatbázis-létrehozási vagy-frissítési állapot beolvasása](/rest/api/sql/operations) |Visszaadja az állapotot egy visszaállítási művelet során. |
+| [REST (createMode=Recovery)](/rest/api/sql/databases) |Visszaállít egy adatbázist. |
+| [Adatbázis-állapot létrehozása vagy frissítése](/rest/api/sql/operations) |A visszaállítási művelet során visszaadja az állapotot. |
 
 ### <a name="azure-cli"></a>Azure CLI
 
 #### <a name="sql-database"></a>SQL Database
 
-Az adatbázis az Azure CLI használatával történő visszaállításához lásd [az az SQL db Restore (az SQL adatbázis visszaállítása](/cli/azure/sql/db#az-sql-db-restore)) című témakört.
+Az adatbázis Azure CLI használatával való visszaállításához lásd: [az sql db restore.](/cli/azure/sql/db#az_sql_db_restore)
 
 #### <a name="sql-managed-instance"></a>SQL Managed Instance
 
-A felügyelt példányok adatbázisának az Azure CLI használatával történő visszaállításához lásd [az az SQL MidB Restore](/cli/azure/sql/midb#az-sql-midb-restore).
+Felügyeltpéldány-adatbázis Azure CLI-n keresztüli visszaállításához lásd: [az sql midb restore](/cli/azure/sql/midb#az_sql_midb_restore).
 
 ## <a name="summary"></a>Összefoglalás
 
-Az automatikus biztonsági mentések védik az adatbázisokat a felhasználók és alkalmazások hibáiból, a véletlen adatbázis-törlésből és a hosszan tartó kimaradásokból. Ez a beépített képesség minden szolgáltatási réteghez és számítási mérethez elérhető.
+Az automatikus biztonsági mentések megvédik az adatbázisokat a felhasználói és alkalmazáshibáktól, az adatbázisok véletlen törlésétől és a hosszan tartó kimaradástól. Ez a beépített funkció minden szolgáltatási szinthez és számítási mérethez elérhető.
 
 ## <a name="next-steps"></a>Következő lépések
 
 - [Az üzletmenet folytonossága – áttekintés](business-continuity-high-availability-disaster-recover-hadr-overview.md)
-- [Automatikus biztonsági mentések SQL Database](automated-backups-overview.md)
+- [SQL Database biztonsági mentések készítése](automated-backups-overview.md)
 - [Hosszú távú megőrzés](long-term-retention-overview.md)
-- A gyorsabb helyreállítási lehetőségek megismeréséhez lásd: [aktív földrajzi replikálás](active-geo-replication-overview.md) vagy [automatikus feladatátvételi csoportok](auto-failover-group-overview.md).
+- A gyorsabb helyreállítási lehetőségekkel kapcsolatban lásd: [Aktív georeplikáció](active-geo-replication-overview.md) vagy automatikus [feladatátvételi csoportok.](auto-failover-group-overview.md)

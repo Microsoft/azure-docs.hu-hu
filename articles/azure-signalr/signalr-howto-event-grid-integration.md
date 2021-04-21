@@ -1,32 +1,32 @@
 ---
-title: Az Azure szignáló szolgáltatás eseményeinek küldése Event Grid
-description: Egy útmutató, amelyből megtudhatja, hogyan engedélyezheti Event Grid eseményeit a Signaler szolgáltatáshoz, majd az ügyfélkapcsolathoz csatlakoztatott/leválasztott eseményeket küldhet egy minta alkalmazásba.
+title: Események küldése Azure SignalR Service a Event Grid
+description: Útmutató, amely bemutatja, hogyan engedélyezheti a Event Grid eseményeket a SignalR Service számára, majd hogyan küldheti el az ügyfélkapcsolattal összekapcsolt/leválasztott eseményeket egy mintaalkalmazásnak.
 services: signalr
 author: chenyl
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: chenyl
-ms.openlocfilehash: 84b83c1dd541418c446a89a6f51be668cb41e54e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65fb54dbfc5158ef8cc2b488f267c92f601502f6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94562644"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784586"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Események küldése az Azure SignalR Service-ből az Event Gridbe
 
-A Azure Event Grid egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely a pub-sub modell használatával egységes esemény-felhasználást biztosít. Ebben az útmutatóban az Azure CLI használatával hozzon létre egy Azure Signaler szolgáltatást, fizessen elő a kapcsolódási eseményekre, majd helyezzen üzembe egy minta webalkalmazást az események fogadásához. Végezetül kapcsolódhat és leválaszthat, és megtekintheti az esemény hasznos adatait a minta alkalmazásban.
+Azure Event Grid egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely egy pub-sub modell használatával egységes eseményfelhasználást biztosít. Ebben az útmutatóban az Azure CLI használatával létrehoz egy virtuális Azure SignalR Service, feliratkozik a kapcsolati eseményekre, majd üzembe helyez egy minta-webalkalmazást az események fogadásához. Végül csatlakozhat és leválaszthatja a kapcsolatot, és láthatja az esemény hasznosadatát a mintaalkalmazásban.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - A cikkben szereplő Azure CLI-parancsok a **bash** -rendszerhéjhoz vannak formázva. Ha más, például PowerShell-vagy parancssor-rendszerhéjt használ, lehetséges, hogy a sor folytatási karaktereit vagy a változók hozzárendelési sorait ennek megfelelően kell módosítania. Ez a cikk változók használatával minimálisra csökkentheti a parancsok szerkesztésének szükséges mennyiségét.
+ - A cikkben említett Azure CLI-parancsok a **Bash-felülethez vannak formázva.** Ha más rendszerhéjat használ, például a PowerShellt vagy a parancssort, előfordulhat, hogy ennek megfelelően kell módosítania a sor folytatási karaktereit vagy változó-hozzárendelési sorait. Ez a cikk változók használatával minimalizálja a szükséges parancsszerkesztés mennyiségét.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az Azure-erőforráscsoport olyan logikai tároló, amelyben üzembe helyezheti és felügyelheti Azure-erőforrásait. A következő az [Group Create][az-group-create] parancs létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *eastus* régióban. Ha más nevet szeretne használni az erőforráscsoport számára, állítsa `RESOURCE_GROUP_NAME` egy másik értékre.
+Az Azure-erőforráscsoport egy logikai tároló, amelyben üzembe helyezheti és kezelheti az Azure-erőforrásokat. A következő [az group create parancs létrehoz][az-group-create] egy *myResourceGroup* nevű erőforráscsoportot az *eastus régióban.* Ha más nevet szeretne használni az erőforráscsoporthoz, állítsa másik `RESOURCE_GROUP_NAME` értékre.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -36,14 +36,14 @@ az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 ## <a name="create-a-signalr-service"></a>SignalR szolgáltatás létrehozása
 
-Ezután helyezzen üzembe egy Azure Signaler szolgáltatást az erőforráscsoporthoz az alábbi parancsokkal.
+Ezután telepítsen egy Azure Signalr szolgáltatást az erőforráscsoportban az alábbi parancsokkal.
 ```azurecli-interactive
 SIGNALR_NAME=SignalRTestSvc
 
 az signalr create --resource-group $RESOURCE_GROUP_NAME --name $SIGNALR_NAME --sku Free_F1
 ```
 
-A jelző szolgáltatás létrehozása után az Azure CLI a következőhöz hasonló kimenetet ad vissza:
+A SignalR Service létrehozása után az Azure CLI az alábbihoz hasonló kimenetet ad vissza:
 
 ```json
 {
@@ -71,11 +71,11 @@ A jelző szolgáltatás létrehozása után az Azure CLI a következőhöz hason
 
 ```
 
-## <a name="create-an-event-endpoint"></a>Esemény-végpont létrehozása
+## <a name="create-an-event-endpoint"></a>Eseményvégpont létrehozása
 
-Ebben a szakaszban egy GitHub-tárházban található Resource Manager-sablont használ egy előre elkészített minta webalkalmazás üzembe helyezéséhez Azure App Service. Később előfizet a beállításjegyzék Event Grid eseményeire, és megadhatja az alkalmazást, mint az eseményeket küldő végpontot.
+Ebben a szakaszban egy GitHub Resource Manager tárban található sablonnal fog üzembe helyezni egy előre felépített minta-webalkalmazást a Azure App Service. Később előfizet a regisztrációs adatbázis Event Grid eseményekre, és ezt az alkalmazást adja meg végpontként, amelyre az eseményeket küldi.
 
-A minta alkalmazás üzembe helyezéséhez állítson be `SITE_NAME` egy egyedi nevet a webalkalmazás számára, és hajtsa végre a következő parancsokat. A hely nevének egyedinek kell lennie az Azure-ban, mivel az a webalkalmazás teljes tartománynevének (FQDN) részét képezi. Egy későbbi szakaszban navigáljon az alkalmazás teljes tartománynevéhez egy böngészőben a beállításjegyzék eseményeinek megtekintéséhez.
+A mintaalkalmazás üzembe helyezéséhez állítsa be a webalkalmazás egyedi nevét, és hajtsa végre a `SITE_NAME` következő parancsokat. A webhely nevének egyedinek kell lennie az Azure-ban, mert a webalkalmazás teljes tartománynevének (FQDN) részét képezi. Egy későbbi szakaszban meg kell navigálnia az alkalmazás teljes tartományához egy webböngészőben a regisztrációs adatbázis eseményeinek megtekintéséhez.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
@@ -86,15 +86,15 @@ az deployment group create \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
 ```
 
-Ha az üzembe helyezés sikeres volt (eltarthat néhány percig), nyisson meg egy böngészőt, és navigáljon a webalkalmazáshoz, és győződjön meg arról, hogy az fut:
+Ha az üzembe helyezés sikerült (eltarthat néhány percig), nyisson meg egy böngészőt, és navigáljon a webalkalmazáshoz, és ellenőrizze, hogy fut-e:
 
 `http://<your-site-name>.azurewebsites.net`
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
-## <a name="subscribe-to-registry-events"></a>Előfizetés a beállításjegyzék eseményeire
+## <a name="subscribe-to-registry-events"></a>Feliratkozás beállításjegyzékbeli eseményekre
 
-Event Grid a *témakörre* való előfizetéssel megtudhatja, hogy mely eseményeket kívánja nyomon követni, és hová szeretné elküldeni őket. A következő az [eventgrid Event-előfizetés-létrehozási][az-eventgrid-event-subscription-create] parancs előfizet a létrehozott Azure Signaler szolgáltatásra, és megadja a webalkalmazás URL-címét a végpontként, amelyhez az eseményeket küldeni kell. A korábbi szakaszokban feltöltött környezeti változók itt lesznek újra felhasználva, ezért nincs szükség módosításra.
+Ebben Event Grid feliratkozhat *egy* témakörre, amelyből meg tudja mondani, hogy mely eseményeket szeretné nyomon követni, és hová szeretné küldeni őket. A következő [az eventgrid event-subscription create][az-eventgrid-event-subscription-create] parancs feliratkozik a Azure SignalR Service létrehozott alkalmazásra, és megadja a webalkalmazás URL-címét végpontként, amelyre az eseményeket küldenie kell. A korábbi szakaszokban létrehozott környezeti változókat itt újra felhasználjuk, ezért nincs szükség szerkesztésre.
 
 ```azurecli-interactive
 SIGNALR_SERVICE_ID=$(az signalr show --resource-group $RESOURCE_GROUP_NAME --name $SIGNALR_NAME --query id --output tsv)
@@ -106,7 +106,7 @@ az eventgrid event-subscription create \
     --endpoint $APP_ENDPOINT
 ```
 
-Az előfizetés befejezésekor a következőhöz hasonló kimenetnek kell megjelennie:
+Az előfizetés befejezése után az alábbihoz hasonló kimenetnek kell lennie:
 
 ```JSON
 {
@@ -139,9 +139,9 @@ Az előfizetés befejezésekor a következőhöz hasonló kimenetnek kell megjel
 }
 ```
 
-## <a name="trigger-registry-events"></a>Beállításjegyzék-események kiváltása
+## <a name="trigger-registry-events"></a>Beállításjegyzék-események aktiválása
 
-Váltson a szolgáltatás módba, `Serverless Mode` és állítson be egy ügyfélkapcsolatot a signaler szolgáltatáshoz. A kiszolgáló nélküli [mintát](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless) hivatkozásként is elvégezheti.
+Váltson a szolgáltatási módra, és létesítsen be egy `Serverless Mode` ügyfélkapcsolatot a SignalR Service. Referenciaként [használhatja](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless) a Kiszolgáló nélküli mintát.
 
 ```bash
 git clone git@github.com:aspnet/AzureSignalR-samples.git
@@ -162,12 +162,12 @@ dotnet run
 
 ## <a name="view-registry-events"></a>Beállításjegyzék-események megtekintése
 
-Ezzel csatlakoztatta a-ügyfelet a Signaler szolgáltatáshoz. Navigáljon a Event Grid Viewer webalkalmazáshoz, és egy eseményt kell megjelennie `ClientConnectionConnected` . Ha leállítja az ügyfelet, akkor egy eseményt is láthat `ClientConnectionDisconnected` .
+Most már csatlakoztatta az ügyfelet a SignalR Service. Lépjen a Event Grid Viewer webalkalmazáshoz, és látnia kell egy `ClientConnectionConnected` eseményt. Ha megszakítja az ügyfelet, egy eseményt is `ClientConnectionDisconnected` látni fog.
 
 <!-- LINKS - External -->
 [azure-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F
 [sample-app]: https://github.com/dbarkol/azure-event-grid-viewer
 
 <!-- LINKS - Internal -->
-[az-eventgrid-event-subscription-create]: /cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create
-[az-group-create]: /cli/azure/group#az-group-create
+[az-eventgrid-event-subscription-create]: /cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create
+[az-group-create]: /cli/azure/group#az_group_create

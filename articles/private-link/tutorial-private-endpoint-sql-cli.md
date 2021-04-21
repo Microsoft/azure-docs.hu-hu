@@ -1,47 +1,47 @@
 ---
-title: 'Oktatóanyag: Kapcsolódás Azure SQL Serverhez Azure-beli privát végpont használatával – Azure CLI'
-description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy privát végponttal rendelkező Azure SQL Servert az Azure CLI használatával
+title: 'Oktatóanyag: Csatlakozás Azure SQL-kiszolgálóhoz Azure privát végpont használatával – Azure CLI'
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Azure SQL-kiszolgálót privát végponttal az Azure CLI használatával
 services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: allensu
-ms.custom: fasttrack-edit
-ms.openlocfilehash: a5562c5f40a321f5737fea73f6d7964b402953cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: fasttrack-edit, devx-track-azurecli
+ms.openlocfilehash: a8fafeaaf974893c9a1a71115912f2a7b019ddd9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889212"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771820"
 ---
-# <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-cli"></a>Oktatóanyag: Kapcsolódás Azure SQL Serverhez Azure-beli privát végpont használatával – Azure CLI
+# <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-cli"></a>Oktatóanyag: Csatlakozás Azure SQL-kiszolgálóhoz Azure privát végpont használatával – Azure CLI
 
-Az Azure privát végpontja az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal.
+Az Azure privát végpontja az Azure-beli Private Link építőeleme. Lehetővé teszi, hogy az Azure-erőforrások, például a virtuális gépek privát módon kommunikáljanak Private Link erőforrásokkal.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy virtuális hálózatot és egy megerősített gazdagépet.
 > * Virtuális gépet hoz létre.
-> * Hozzon létre egy Azure SQL-kiszolgálót és egy magánhálózati végpontot.
-> * Az SQL Server magánhálózati végpontjának kapcsolatának tesztelése.
+> * Hozzon létre egy Azure SQL-kiszolgálót és egy privát végpontot.
+> * Tesztelje az SQL Server privát végponthoz való csatlakozást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Jelentkezzen be a Azure Portalba, és győződjön meg arról, hogy az előfizetése aktív a futtatásával `az login` .
-* A futtatásával tekintse meg az Azure CLI-verziót egy terminálon vagy parancsablakban `az --version` . A legújabb verzióra vonatkozó megjegyzések a [legújabb kiadási megjegyzésekben](/cli/azure/release-notes-azure-cli?tabs=azure-cli)találhatók.
-  * Ha nem rendelkezik a legújabb verzióval, frissítse a telepítést az [operációs rendszer vagy a platform telepítési útmutatóját](/cli/azure/install-azure-cli)követve.
+* Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Jelentkezzen be a Azure Portal az futtatásával ellenőrizze, hogy az előfizetése `az login` aktív-e.
+* Ellenőrizze az Azure CLI verzióját egy terminál- vagy parancsablakban a parancs `az --version` futtatásával. A legújabb verzióért tekintse meg a [legújabb kibocsátási megjegyzéseket.](/cli/azure/release-notes-azure-cli?tabs=azure-cli)
+  * Ha nem a legújabb verzióval működik, frissítse a telepítést az operációs rendszer vagy a platform telepítési [útmutatója alapján.](/cli/azure/install-azure-cli)
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group#az_group_create)paranccsal:
+Hozzon létre egy erőforráscsoportot [az az group create gombra:](/cli/azure/group#az_group_create)
 
-* **CreateSQLEndpointTutorial-RG** névvel ellátott. 
-* A **eastus** helyen.
+* Neve: **CreateSQLEndpointTutorial-rg.** 
+* Az **eastus helyen.**
 
 ```azurecli-interactive
 az group create \
@@ -51,18 +51,18 @@ az group create \
 
 ## <a name="create-a-virtual-network-and-bastion-host"></a>Virtuális hálózat és megerősített gazdagép létrehozása
 
-Ebben a szakaszban létrehoz egy virtuális hálózatot, alhálózatot és egy megerősített gazdagépet. 
+Ebben a szakaszban egy virtuális hálózatot, egy alhálózatot és egy megerősített gazdagépet fog létrehozni. 
 
-A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuális géphez való biztonságos kapcsolódást fogja használni.
+A bástyagazdagép segítségével biztonságosan csatlakozhat a virtuális géphez a privát végpont tesztelése céljából.
 
-Virtuális hálózat létrehozása az [az Network vnet Create](/cli/azure/network/vnet#az_network_vnet_create)
+Virtuális hálózat létrehozása az [az network vnet create segítségével](/cli/azure/network/vnet#az_network_vnet_create)
 
-* Elnevezett **myVNet**.
-* A **10.0.0.0/16** címnek az előtagja.
-* **MyBackendSubnet** nevű alhálózat.
-* A **10.0.0.0/24** alhálózati előtag.
-* A **CreateSQLEndpointTutorial-RG** erőforráscsoporthoz.
-* A **eastus** helye.
+* **MyVNet névvel.**
+* A **10.0.0.0/16 címelőtagja.**
+* A **myBackendSubnet nevű alhálózat.**
+* A **10.0.0.0/24 alhálózati előtag.**
+* A **CreateSQLEndpointTutorial-rg** erőforráscsoportban.
+* Az **eastus helye.**
 
 ```azurecli-interactive
 az network vnet create \
@@ -74,7 +74,7 @@ az network vnet create \
     --subnet-prefixes 10.0.0.0/24
 ```
 
-Frissítse az alhálózatot a privát végpont hálózati házirendjeinek letiltásához az az [Network vnet subnet Update paranccsal](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
+Frissítse az alhálózatot, hogy letiltsa a privát végpont hálózati szabályzatát az [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update)használatával:
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -84,10 +84,10 @@ az network vnet subnet update \
     --disable-private-endpoint-network-policies true
 ```
 
-Az [az Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) paranccsal hozzon létre egy nyilvános IP-címet a megerősített gazdagép számára:
+Az [az network public-ip create használatával](/cli/azure/network/public-ip#az_network_public_ip_create) hozzon létre egy nyilvános IP-címet a megerősített gazdagéphez:
 
-* Hozzon létre egy szabványos, redundáns nyilvános IP-címet a **myBastionIP** néven.
-* **CreateSQLEndpointTutorial – RG**.
+* Hozzon létre egy standard zónaredundáns nyilvános IP-címet **myBastionIP névvel.**
+* A **CreateSQLEndpointTutorial-rg alatt.**
 
 ```azurecli-interactive
 az network public-ip create \
@@ -96,12 +96,12 @@ az network public-ip create \
     --sku Standard
 ```
 
-Az [az Network vnet subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) paranccsal hozzon létre egy megerősített alhálózatot:
+Az [az network vnet subnet create használatával](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) hozzon létre egy bástya-alhálózatot:
 
-* Elnevezett **AzureBastionSubnet**.
-* A **10.0.1.0/24** címek előtagja.
-* A virtuális hálózat **myVNet**.
-* Az erőforráscsoport **CreateSQLEndpointTutorial – RG**.
+* Neve: **AzureBastionSubnet.**
+* A **10.0.1.0/24 címelőtag.**
+* A **myVNet virtuális hálózatban.**
+* A **CreateSQLEndpointTutorial-rg erőforráscsoportban.**
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -111,13 +111,13 @@ az network vnet subnet create \
     --address-prefixes 10.0.1.0/24
 ```
 
-Az [az Network Bastion Create](/cli/azure/network/bastion#az-network-bastion-create) paranccsal hozzon létre egy megerősített gazdagépet:
+Az [az network bastion create használatával](/cli/azure/network/bastion#az_network_bastion_create) hozzon létre egy megerősített gazdagépet:
 
-* Elnevezett **myBastionHost**.
-* **CreateSQLEndpointTutorial – RG**.
-* Nyilvános IP- **myBastionIP** társítva.
-* Virtuális hálózati **myVNet** társítva.
-* A **eastus** helyen.
+* A **neve myBastionHost.**
+* A **CreateSQLEndpointTutorial-rg alatt.**
+* A **myBastionIP nyilvános IP-címhez van társítva.**
+* A myVNet virtuális hálózathoz **van társítva.**
+* Az **eastus helyen.**
 
 ```azurecli-interactive
 az network bastion create \
@@ -128,19 +128,19 @@ az network bastion create \
     --location eastus
 ```
 
-Az Azure Bastion-gazdagép üzembe helyezése néhány percet is igénybe vehet.
+A gazdagép üzembe helyezése eltarthat néhány Azure Bastion.
 
 ## <a name="create-test-virtual-machine"></a>Teszt virtuális gép létrehozása
 
-Ebben a szakaszban létre fog hozni egy virtuális gépet, amely a privát végpont tesztelésére szolgál.
+Ebben a szakaszban egy virtuális gépet fog létrehozni, amely a privát végpont tesztelésére lesz használva.
 
-Hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm#az_vm_create)paranccsal. Ha a rendszer kéri, adja meg a virtuális gép hitelesítő adataiként használandó jelszót:
+Hozzon létre egy virtuális gépet [az az vm create gombra.](/cli/azure/vm#az_vm_create) Amikor a rendszer kéri, adjon meg egy jelszót, amely a virtuális gép hitelesítő adataiként lesz használva:
 
-* Elnevezett **myVM**.
-* **CreateSQLEndpointTutorial – RG**.
-* A hálózati **myVNet**.
-* Az alhálózat **myBackendSubnet**.
-* Kiszolgáló rendszerképének **Win2019Datacenter**.
+* A **neve myVM.**
+* A **CreateSQLEndpointTutorial-rg alatt.**
+* A **myVNet hálózatban.**
+* A **myBackendSubnet alhálózatban.**
+* Kiszolgálói lemezkép **Win2019Datacenter**.
 
 ```azurecli-interactive
 az vm create \
@@ -153,16 +153,18 @@ az vm create \
     --admin-username azureuser
 ```
 
-## <a name="create-an-azure-sql-server"></a>Azure SQL-kiszolgáló létrehozása
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
-Ebben a szakaszban egy SQL Servert és egy adatbázist fog létrehozni.
+## <a name="create-an-azure-sql-server"></a>Új Azure SQL létrehozása
 
-SQL Server létrehozásához használja [az az SQL Server Create](/cli/azure/sql/server#az_sql_server_create) paranccsal:
+Ebben a szakaszban egy SQL-kiszolgálót és -adatbázist fog létrehozni.
 
-* Cserélje le **\<sql-server-name>** az nevet az egyedi kiszolgálónévre.
-* Cserélje le a **\<your-password>** jelszót a jelszóra.
-* **CreateSQLEndpointTutorial – RG**.
-* A **eastus** régióban.
+[SQL-kiszolgáló létrehozásához](/cli/azure/sql/server#az_sql_server_create) használja az az sql server create parancsokat:
+
+* Cserélje **\<sql-server-name>** le a helyére az egyedi kiszolgáló nevét.
+* Cserélje **\<your-password>** le a helyére a jelszavát.
+* A **CreateSQLEndpointTutorial-rg alatt.**
+* Az **eastus régióban.**
 
 ```azurecli-interactive
 az sql server create \
@@ -173,11 +175,11 @@ az sql server create \
     --admin-password <your-password>
 ```
 
-Adatbázis létrehozása [az az SQL db Create](/cli/azure/sql/db#az_sql_db_create) paranccsal:
+Az [az sql db create parancs használatával](/cli/azure/sql/db#az_sql_db_create) hozzon létre egy adatbázist:
 
-* Elnevezett **myDataBase**.
-* **CreateSQLEndpointTutorial – RG**.
-* Cserélje le **\<sql-server-name>** az nevet az egyedi kiszolgálónévre.
+* A **neve myDataBase.**
+* A **CreateSQLEndpointTutorial-rg alatt.**
+* Cserélje **\<sql-server-name>** le a helyére az egyedi kiszolgáló nevét.
 
 ```azurecli-interactive
 az sql db create \
@@ -191,15 +193,15 @@ az sql db create \
 
 Ebben a szakaszban a privát végpontot fogja létrehozni.
 
-Az az [SQL Server List](/cli/azure/sql/server#az_sql_server_list) paranccsal helyezze el az SQL Server erőforrás-azonosítóját egy rendszerhéj-változóba.
+Az [az sql server list parancs használatával](/cli/azure/sql/server#az_sql_server_list) helyezze az SQL Server erőforrás-azonosítóját egy rendszerhéjváltozóba.
 
-A végpont és a Kapcsolódás az [az Network Private-Endpoint Create](/cli/azure/network/private-endpoint#az_network_private_endpoint_create) paranccsal hozható létre:
+Az [az network private-endpoint create használatával](/cli/azure/network/private-endpoint#az_network_private_endpoint_create) hozza létre a végpontot és a kapcsolatot:
 
-* Elnevezett **myPrivateEndpoint**.
-* Az erőforráscsoport **CreateSQLEndpointTutorial – RG**.
-* A virtuális hálózat **myVNet**.
-* Az alhálózat **myBackendSubnet**.
-* **MyConnection** nevű kapcsolatok.
+* A **neve myPrivateEndpoint.**
+* A **CreateSQLEndpointTutorial-rg erőforráscsoportban.**
+* A **myVNet virtuális hálózatban.**
+* A **myBackendSubnet alhálózatban.**
+* Kapcsolat **myConnection névvel.**
 
 ```azurecli-interactive
 id=$(az sql server list \
@@ -216,20 +218,20 @@ az network private-endpoint create \
     --connection-name myConnection  
 ```
 
-## <a name="configure-the-private-dns-zone"></a>A magánhálózati DNS-zóna konfigurálása
+## <a name="configure-the-private-dns-zone"></a>A privát DNS-zóna konfigurálása
 
-Ebben a szakaszban a magánhálózati DNS-zónát az [az Network Private-DNS Zone Create](/cli/azure/network/private-dns/zone#ext_privatedns_az_network_private_dns_zone_create)paranccsal hozhatja létre és konfigurálja.  
+Ebben a szakaszban a privát DNS-zónát fogja létrehozni és konfigurálni [az az network private-dns zone create használatával.](/cli/azure/network/private-dns/zone#ext_privatedns_az_network_private_dns_zone_create)  
 
-Az az [Network Private-DNS link vnet Create](/cli/azure/network/private-dns/link/vnet#ext_privatedns_az_network_private_dns_link_vnet_create) paranccsal hozhatja létre a DNS-zónához tartozó virtuális hálózati kapcsolatot.
+A DNS-zónára mutató virtuális hálózati kapcsolatot az [az network private-dns link vnet create](/cli/azure/network/private-dns/link/vnet#ext_privatedns_az_network_private_dns_link_vnet_create) használatával fogja létrehozni.
 
-Hozzon létre egy DNS-zónát az [az Network Private-Endpoint DNS-Zone-Group Create](/cli/azure/network/private-endpoint/dns-zone-group#az_network_private_endpoint_dns_zone_group_create)paranccsal.
+Létre fog hozni egy dns-zónacsoportot [az az network private-endpoint dns-zone-group create használatával.](/cli/azure/network/private-endpoint/dns-zone-group#az_network_private_endpoint_dns_zone_group_create)
 
-* **Privatelink.database.Windows.net** nevű zóna
-* A virtuális hálózat **myVNet**.
-* Az erőforráscsoport **CreateSQLEndpointTutorial – RG**.
-* **MyDNSLink** nevű DNS-hivatkozás.
-* A **myPrivateEndpoint** társítva.
-* **MyZoneGroup** nevű zóna.
+* Zóna neve **privatelink.database.windows.net**
+* A **myVNet virtuális hálózatban.**
+* A **CreateSQLEndpointTutorial-rg erőforráscsoportban.**
+* DNS-hivatkozás **myDNSLink névvel.**
+* Társítva a **myPrivateEndpoint ponttal.**
+* MyZoneGroup nevű **zónacsoport.**
 
 ```azurecli-interactive
 az network private-dns zone create \
@@ -251,27 +253,27 @@ az network private-endpoint dns-zone-group create \
    --zone-name sql
 ```
 
-## <a name="test-connectivity-to-private-endpoint"></a>A magánhálózati végponthoz való kapcsolódás tesztelése
+## <a name="test-connectivity-to-private-endpoint"></a>Privát végponttal való kapcsolat tesztelése
 
-Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja használni az SQL Serverhez való kapcsolódáshoz a privát végponton keresztül.
+Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja használni az SQL-kiszolgálóhoz való csatlakozáshoz a privát végponton keresztül.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) 
  
-2. Válassza az **erőforráscsoportok** lehetőséget a bal oldali navigációs ablaktáblán.
+2. Válassza **az Erőforráscsoportok** lehetőséget a bal oldali navigációs panelen.
 
-3. Válassza a **CreateSQLEndpointTutorial-RG** elemet.
+3. Válassza **a CreateSQLEndpointTutorial-rg lehetőséget.**
 
-4. Válassza a **myVM** lehetőséget.
+4. Válassza **a myVM lehetőséget.**
 
-5. A **myVM** áttekintés lapján válassza a **kapcsolat** , majd a **megerősített** lehetőséget.
+5. A **myVM áttekintő oldalán** válassza a **Csatlakozás,** majd **a Bastion lehetőséget.**
 
-6. Válassza a kék **használat Bastion** gombot.
+6. Kattintson a kék **Bastion használata gombra.**
 
 7. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
-8. A kapcsolat után nyissa meg a Windows PowerShellt a kiszolgálón.
+8. Csatlakozás Windows PowerShell nyissa meg a kiszolgálón a következőt: .
 
-9. Írja be a következő szöveget: `nslookup <sqlserver-name>.database.windows.net`. A helyére írja **\<sqlserver-name>** be az előző lépésben létrehozott SQL Server nevét.  A következőhöz hasonló üzenet jelenik meg:
+9. Írja be a következő szöveget: `nslookup <sqlserver-name>.database.windows.net`. Cserélje le a helyére az előző lépésekben **\<sqlserver-name>** létrehozott SQL-kiszolgáló nevét.  Az alábbihoz hasonló üzenet jelenik meg:
 
     ```powershell
     Server:  UnKnown
@@ -283,35 +285,35 @@ Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja ha
     Aliases:  mysqlserver8675.database.windows.net
     ```
 
-    A rendszer a **10.0.0.5** magánhálózati IP-címét adja vissza az SQL-kiszolgáló nevéhez.  Ez a címe a korábban létrehozott virtuális hálózat alhálózatában található.
+    Az SQL-kiszolgáló neve **a 10.0.0.5** magánhálózati IP-címet ad vissza.  Ez a cím a korábban létrehozott virtuális hálózat alhálózatában található.
 
 
-10. Telepítse a [SQL Server Management Studiot](/sql/ssms/download-sql-server-management-studio-ssms?preserve-view=true&view=sql-server-2017) a **myVM**.
+10. Telepítse [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?preserve-view=true&view=sql-server-2017) **myVM-et.**
 
-11. Nyissa meg **SQL Server Management Studio**.
+11. Nyissa meg **SQL Server Management Studio.**
 
-12. A **Kapcsolódás a kiszolgálóhoz** lapon adja meg vagy válassza ki az alábbi adatokat:
+12. A **Connect to server (Csatlakozás kiszolgálóhoz) mezőben** adja meg vagy válassza ki a következő információkat:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | Server type (Kiszolgáló típusa) | Válassza a **Database Engine** (Adatbázismotor) lehetőséget.|
-    | Kiszolgálónév | Adja meg a **\<sql-server-name> . database.Windows.net** |
+    | Kiszolgálónév | Írja be **\<sql-server-name> a .database.windows.net** |
     | Hitelesítés | Válassza ki az **SQL Server-hitelesítés** lehetőséget. |
-    | Felhasználónév | Adja meg a kiszolgáló létrehozásakor megadott felhasználónevet |
-    | Jelszó | Adja meg a kiszolgáló létrehozásakor megadott jelszót |
+    | Felhasználónév | Adja meg a kiszolgáló létrehozása során megadott felhasználónevet |
+    | Jelszó | Adja meg a kiszolgáló létrehozása során megadott jelszót |
     | Jelszó megjegyzése | Válassza az **Igen** lehetőséget. |
 
 13. Válassza a **Kapcsolódás** lehetőséget.
 
-14. Az adatbázisok tallózása a bal oldali menüben.
+14. Adatbázisok tallózása a bal oldali menüből.
 
-15. Opcionálisan Információk létrehozása vagy lekérdezése a **mysqldatabase**.
+15. (Nem kötelező) Adatok létrehozása vagy lekérdezése a **mysqldatabase adatbázisból.**
 
-16. A **myVM** felé irányuló megerősített kapcsolódás lezárása. 
+16. Zárja be a **myVM-hez való megerősített kapcsolatot.** 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 
-Ha végzett a magánhálózati végpont, az SQL Server és a virtuális gép használatával, törölje az erőforráscsoportot és az összes benne lévő erőforrást: 
+Ha végzett a privát végpont, az SQL Server és a virtuális gép használatával, törölje az erőforráscsoportot és az összes benne lévő erőforrást: 
 
 ```azurecli-interactive
 az group delete \
@@ -320,14 +322,14 @@ az group delete \
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban a következőket hozta létre:
+Ebben az oktatóanyagban a következőt hozta létre:
 
-* Virtuális hálózat és a megerősített gazdagép.
+* Virtuális hálózat és megerősített gazdagép.
 * Virtuális gép.
-* Azure SQL Server magánhálózati végponttal.
+* Azure SQL kiszolgáló privát végponttal.
 
-A virtuális gépet arra használta, hogy biztonságosan tesztelje a kapcsolatot az SQL Serverhez a magánhálózati végponton keresztül.
+A virtuális gép használatával biztonságosan tesztelte az SQL-kiszolgálóval való kapcsolatot a privát végponton keresztül.
 
-A következő lépésként a webalkalmazás az Azure SQL Database architektúra-forgatókönyvhöz való **privát kapcsolattal** is érdekli, amely a virtuális hálózaton kívül egy webalkalmazást kapcsol össze egy adatbázis privát végpontján.
+Következő lépésként érdekelheti a Azure SQL **webalkalmazás,** amely privát kapcsolattal rendelkezik egy adatbázis-architektúra-forgatókönyvhöz, amely a virtuális hálózaton kívüli webalkalmazást egy adatbázis privát végpontjára csatlakoztatja.
 > [!div class="nextstepaction"]
-> [Webalkalmazás az Azure SQL Database szolgáltatáshoz való privát kapcsolattal](/azure/architecture/example-scenario/private-web-app/private-web-app)
+> [Webalkalmazás privát kapcsolattal a Azure SQL adatbázishoz](/azure/architecture/example-scenario/private-web-app/private-web-app)

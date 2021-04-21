@@ -1,38 +1,38 @@
 ---
-title: Dedikált készlet használata feladat futtatásához – Feladatok
+title: Feladat futtatása dedikált készlet használatával – Feladatok
 description: Állítson be egy dedikált számítási készletet (ügynökkészletet) a beállításjegyzékben egy Azure Container Registry futtatásához.
 ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 21db066b3f18106938d11fbd8e2cfe688c1ef276
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: c23d2ab866f621db27488860ab62a41765faef40
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389553"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763702"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>ACR-feladat futtatása dedikált ügynökkészleten
 
-Állítson be egy Azureáltal felügyelt virtuálisgép-készletet [(ügynökkészletet),][acr-tasks] amely lehetővé teszi a Azure Container Registry feladatok dedikált számítási környezetben való futtatását. Miután konfigurált egy vagy több készletet a beállításjegyzékben, kiválaszthatja azt a készletet, amely a szolgáltatás alapértelmezett számítási környezete helyén futtat egy feladatot.
+Állítson be egy Azure által felügyelt virtuálisgép-készletet (ügynökkészletet) az Azure Container Registry feladatok dedikált számítási környezetben való futtatásának engedélyezéséhez. [][acr-tasks] Miután konfigurált egy vagy több készletet a beállításjegyzékben, kiválaszthat egy készletet, amely a szolgáltatás alapértelmezett számítási környezete helyén futtat egy feladatot.
 
 Az ügynökkészletek a következő eket biztosítják:
 
 - **Virtuális hálózatok támogatása** – Ügynökkészlet hozzárendelése egy Azure-beli virtuális hálózathoz, amely hozzáférést biztosít a virtuális hálózat erőforrásaihoz, például egy tároló-beállításjegyzékhez, kulcstartóhoz vagy tárolóhoz.
-- **Igény szerint skálázhat** – Növelheti az ügynökkészletben található példányok számát a nagy számítási igényű feladatokhoz, vagy nullára skálázhat. A számlázás a készlet lefoglalásán alapul. Részletekért lásd: [Díjszabás.](https://azure.microsoft.com/pricing/details/container-registry/)
-- **Rugalmas lehetőségek** – A különböző [készletszintek](#pool-tiers) és skálázási lehetőségek közül választhat, hogy megfeleljen a feladat számítási feladatainak.
+- **Igény szerint méretezhető** – Növelheti az ügynökkészletben található példányok számát a nagy számítási igényű feladatokhoz, vagy nullára skálázhat. A számlázás a készletfelosztáson alapul. Részletekért lásd: [Díjszabás.](https://azure.microsoft.com/pricing/details/container-registry/)
+- **Rugalmas lehetőségek** – A különböző [készletszintek](#pool-tiers) és skálázási lehetőségek közül választhat a tevékenységterhelés igényeinek megfelelően.
 - **Azure-felügyelet** – A feladatkészleteket az Azure javítja és tartja karban, így fenntartott foglalást biztosít anélkül, hogy az egyes virtuális gépek karbantartására lenne szükség.
 
-Ez a szolgáltatás a **Prémium** tároló-beállításjegyzék szolgáltatási szinten érhető el. További információ a beállításjegyzék szolgáltatási rétegeiről és korlátairól: Azure Container Registry [SKU-k.][acr-tiers]
+Ez a szolgáltatás a Prémium tároló-beállításjegyzék **szolgáltatási** szinten érhető el. További információ a beállításjegyzék szolgáltatási rétegeiről és korlátairól: Azure Container Registry [SKU-k.][acr-tiers]
 
 > [!IMPORTANT]
-> Ez a funkció jelenleg előzetes verzióban érhető el, és bizonyos [korlátozások érvényesek.](#preview-limitations) Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> Ez a funkció jelenleg előzetes verzióban érhető el, és [bizonyos korlátozások érvényesek.](#preview-limitations) Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 >
 
 ## <a name="preview-limitations"></a>Az előzetes verzió korlátozásai
 
 - A feladatügynök-készletek jelenleg a Linux-csomópontokat támogatják. A Windows-csomópontok jelenleg nem támogatottak.
-- A feladatügynök-készletek az alábbi régiókban érhetők el előzetes verzióban: USA 2. nyugati régiója, USA déli középső régiója, USA 2. keleti régiója, USA keleti régiója, USA középső régiója, Nyugat-Európa, Észak-Európa, Közép-Kanada, USGov Arizona, USGov Texas és USGov Virginia.
-- Az egyes beállításjegyzékek esetében az alapértelmezett teljes vCPU- (mag-) kvóta 16 az összes standard ügynökkészlet esetében, és 0 az izolált ügynökkészletek esetében. Nyisson [meg egy támogatási kérést][open-support-ticket] a további lefoglaláshoz.
+- A feladatügynök-készletek előzetes verzióban a következő régiókban érhetők el: USA 2. nyugati régiója, USA déli középső régiója, USA 2. keleti régiója, USA keleti régiója, USA középső régiója, Nyugat-Európa, Észak-Európa, Közép-Kanada, USGov Arizona, USGov Texas és USGov Virginia.
+- Az egyes beállításjegyzékek esetében az alapértelmezett teljes vCPU-kvóta 16 az összes standard ügynökkészlet esetében, és 0 az izolált ügynökkészletek esetében. Nyisson [meg egy támogatási kérést][open-support-ticket] a további lefoglaláshoz.
 - Ügynökkészleten futó feladat jelenleg nem szakítható meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -75,7 +75,7 @@ az acr agentpool create \
 ```
 
 > [!NOTE]
-> Az ügynökkészlet és más készletkezelési műveletek létrehozása több percet is igénybe vehet.
+> Az ügynökkészlet és más készletkezelési műveletek létrehozása eltarthat néhány percig.
 
 ### <a name="scale-pool"></a>Készlet méretezése
 
@@ -106,7 +106,7 @@ A feladatügynök-készleteknek hozzá kell férni a következő Azure-szolgált
 
 ### <a name="create-pool-in-vnet"></a>Készlet létrehozása virtuális hálózatban
 
-A következő példa létrehoz egy ügynökkészletet a *myvnet hálózat mysubnet* *alhálózatában:*
+A következő példa létrehoz egy ügynökkészletet a *myvnet hálózat mysubnet* *alhálózatán:*
 
 ```azurecli
 # Get the subnet ID
@@ -132,7 +132,7 @@ Az alábbi példák bemutatják, hogyan adható meg egy ügynökkészlet egy fel
 
 ### <a name="quick-task"></a>Gyors feladat
 
-Az az [acr build][az-acr-build] paranccsal várakozási sorba kell ásni egy gyors feladatot az ügynökkészleten, és át kell adni a következő `--agent-pool` paramétert:
+Az az [acr build][az-acr-build] paranccsal üzenetsorba fogni egy gyors feladatot az ügynökkészleten, és át kell adni a `--agent-pool` paramétert:
 
 ```azurecli
 az acr build \
@@ -185,11 +185,11 @@ A tároló rendszerkép-buildjére és a felhőben való karbantartásra vonatko
 [azure-cli]:           /cli/azure/install-azure-cli
 [open-support-ticket]: https://aka.ms/acr/support/create-ticket
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
-[az-configure]: /cli/azure#az-configure
-[az-acr-agentpool-create]: /cli/azure/acr/agentpool#az-acr-agentpool-create
-[az-acr-agentpool-update]: /cli/azure/acr/agentpool#az-acr-agentpool-update
-[az-acr-agentpool-show]: /cli/azure/acr/agentpool#az-acr-agentpool-show
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
+[az-configure]: /cli/azure#az_configure
+[az-acr-agentpool-create]: /cli/azure/acr/agentpool#az_acr_agentpool_create
+[az-acr-agentpool-update]: /cli/azure/acr/agentpool#az_acr_agentpool_update
+[az-acr-agentpool-show]: /cli/azure/acr/agentpool#az_acr_agentpool_show
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
 [create-reg-cli]: container-registry-get-started-azure-cli.md

@@ -1,6 +1,6 @@
 ---
-title: Virtuális merevlemezek kibontása linuxos virtuális gépen
-description: Megtudhatja, hogyan bővítheti a virtuális merevlemezeket egy Linux rendszerű virtuális GÉPEN az Azure CLI-vel.
+title: Virtuális merevlemezek bővítése Linux rendszerű virtuális gépen
+description: Megtudhatja, hogyan bővítheti ki a virtuális merevlemezeket Linux rendszerű virtuális gépeken az Azure CLI használatával.
 author: roygara
 ms.service: virtual-machines
 ms.collection: linux
@@ -8,37 +8,37 @@ ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 72778c431c561f5345dde3d6803e814d6fdebfba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c27b042b78931fd58e43e4bbb06699abe510f385
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549124"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762550"
 ---
-# <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Virtuális merevlemezek kibontása Linux rendszerű virtuális GÉPEN az Azure CLI-vel
+# <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Virtuális merevlemezek bővítése Linux rendszerű virtuális gépen az Azure CLI használatával
 
-Ez a cikk azt ismerteti, hogyan lehet kibontani a Linux rendszerű virtuális gépek (VM) felügyelt lemezeit az Azure CLI-vel. [Adatlemezeket adhat hozzá](add-disk.md) a további tárolóhelyek biztosításához, és kibővítheti a meglévő adatlemezeket is. Az operációs rendszer (OS) alapértelmezett virtuális merevlemez-mérete jellemzően 30 GB az Azure-beli Linux rendszerű virtuális gépeken. 
+Ez a cikk bemutatja, hogyan bonthatja ki a linuxos virtuális gépek felügyelt lemezei az Azure CLI használatával. Hozzáadhat [adatlemezeket,](add-disk.md) amelyek további tárterületet biztosítanak, és kibővíthet egy meglévő adatlemezt is. Az operációs rendszer (OS) alapértelmezett virtuális merevlemez-mérete általában 30 GB Linux rendszerű virtuális gépen az Azure-ban. 
 
 > [!WARNING]
-> Mindig győződjön meg arról, hogy a fájlrendszer kifogástalan állapotban van, a lemezpartíció-tábla típusa támogatja az új méretet, és gondoskodjon arról, hogy az adatok biztonsági mentése a lemez átméretezési műveleteinek végrehajtása előtt megtörténjen. További információ: [Azure Backup](../../backup/quick-backup-vm-portal.md)rövid útmutató. 
+> Mindig győződjön meg arról, hogy a fájlrendszer kifogástalan állapotban van, a lemezpartíciós tábla típusa támogatni fogja az új méretet, és a lemezátméretezési műveletek végrehajtása előtt győződjön meg arról, hogy az adatokról biztonsági mentése van. További információért tekintse meg a [Azure Backup útmutatót.](../../backup/quick-backup-vm-portal.md) 
 
-## <a name="expand-an-azure-managed-disk"></a>Azure-beli felügyelt lemez kibontása
-Győződjön meg arról, hogy a legújabb [Azure CLI](/cli/azure/install-az-cli2) telepítve van, és be van jelentkezve egy Azure-fiókba az [az login](/cli/azure/reference-index#az-login)használatával.
+## <a name="expand-an-azure-managed-disk"></a>Azure Managed Disk bővítése
+Győződjön meg arról, hogy a legfrissebb [Azure CLI](/cli/azure/install-az-cli2) van telepítve, és hogy be van jelentkezve egy Azure-fiókba az az [login használatával.](/cli/azure/reference-index#az_login)
 
-Ez a cikk egy meglévő virtuális gépet igényel az Azure-ban legalább egy csatlakoztatott és előkészített adatlemezzel. Ha még nem rendelkezik a használni kívánt virtuális géppel, tekintse meg [a virtuális gép létrehozása és előkészítése adatlemezekkel](tutorial-manage-disks.md#create-and-attach-disks)című témakört.
+Ehhez a cikkhez egy meglévő Azure-beli virtuális gépre van szükség, amelyhez legalább egy adatlemez csatolva és elő van készítve. Ha még nem rendelkezik használható virtuális géptel, lásd: Virtuális gép létrehozása és előkészítése [adatlemezekkel.](tutorial-manage-disks.md#create-and-attach-disks)
 
-A következő példákban cserélje le a példában szereplő paraméterek nevét, például a *myResourceGroup* és a *myVM* értéket a saját értékeire.
+A következő mintákban cserélje le a példaparaméter-neveket *(például myResourceGroup* és *myVM)* a saját értékeire.
 
-1. A virtuális merevlemezeken végrehajtott műveletek nem hajthatók végre a rendszert futtató virtuális géppel. Szabadítsa fel a virtuális gépet az [az VM felszabadításával](/cli/azure/vm#az-vm-deallocate). Az alábbi példa felszabadítja a *myVM* nevű virtuális gépet a *myResourceGroup* nevű erőforráscsoport-csoportba:
+1. Virtuális merevlemezen nem végezhetők műveletek, ha a virtuális gép fut. Szabadította fel a virtuális gépet az [az vm deallocate sal.](/cli/azure/vm#az_vm_deallocate) Az alábbi példa felszabadítja a *myVM* nevű virtuális gépet a *myResourceGroup nevű erőforráscsoportban:*
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
     > [!NOTE]
-    > A virtuális merevlemez kibontásához fel kell osztani a virtuális GÉPET. A virtuális gép leállítása a szolgáltatással `az vm stop` nem szabadítja fel a számítási erőforrásokat. Számítási erőforrások kiadásához használja a következőt: `az vm deallocate` .
+    > A virtuális merevlemez bővítéséhez fel kell szabadodni a virtuális gépet. A virtuális gép leállítása `az vm stop` a-val nem oldja fel a számítási erőforrásokat. A számítási erőforrások felszabadítása a következővel oldható `az vm deallocate` fel: .
 
-1. Egy erőforráscsoport felügyelt lemezeinek listáját az [az Disk List](/cli/azure/disk#az-disk-list)paranccsal tekintheti meg. Az alábbi példa megjeleníti a felügyelt lemezek listáját a *myResourceGroup* nevű erőforráscsoport:
+1. Tekintse meg az erőforráscsoportban lévő felügyelt lemezek listáját az [az disk list listában.](/cli/azure/disk#az_disk_list) Az alábbi példa a *myResourceGroup* nevű erőforráscsoportban található felügyelt lemezek listáját jeleníti meg:
 
     ```azurecli
     az disk list \
@@ -47,7 +47,7 @@ A következő példákban cserélje le a példában szereplő paraméterek nevé
         --output table
     ```
 
-    Bontsa ki a szükséges lemezt az [az Disk Update paranccsal](/cli/azure/disk#az-disk-update). A következő példa a *myDataDisk* nevű felügyelt lemezt *200* GB-ra bővíti:
+    Bontsa ki a szükséges lemezt [az az disk update segítségével.](/cli/azure/disk#az_disk_update) Az alábbi példa *200* GB-ra bővíti a *myDataDisk* nevű felügyelt lemezt:
 
     ```azurecli
     az disk update \
@@ -57,19 +57,19 @@ A következő példákban cserélje le a példában szereplő paraméterek nevé
     ```
 
     > [!NOTE]
-    > Felügyelt lemez kibontásakor a frissített méret a legközelebbi felügyelt lemez méretére lesz kerekítve. Az elérhető felügyelt lemezek méreteiről és szintjeiről az [Azure Managed Disks áttekintése – díjszabás és számlázás](../managed-disks-overview.md)című cikkben olvashat.
+    > Felügyelt lemez kibontásakor a rendszer a frissített méretet a legközelebbi felügyelt lemezméretre kerekül. A felügyelt lemezek elérhető méretének és rétegének táblázatát az Azure Managed Disks – [Díjszabás és számlázás témakörben talál.](../managed-disks-overview.md)
 
-1. Indítsa el a virtuális gépet az [az VM Start](/cli/azure/vm#az-vm-start)paranccsal. A következő példa elindítja a *myVM* nevű virtuális gépet a *myResourceGroup* nevű erőforráscsoporthoz:
+1. Indítsa el a virtuális gépet [az az vm start sal.](/cli/azure/vm#az_vm_start) Az alábbi példa elindítja a *myResourceGroup* nevű erőforráscsoportban található *myVM* nevű virtuális gépet:
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
     ```
 
 
-## <a name="expand-a-disk-partition-and-filesystem"></a>Lemezpartíció és fájlrendszer kibontása
+## <a name="expand-a-disk-partition-and-filesystem"></a>Lemezpartíció és fájlrendszer bővítése
 Kibontott lemez használatához bontsa ki a mögöttes partíciót és a fájlrendszert.
 
-1. SSH-t a virtuális géphez a megfelelő hitelesítő adatokkal. A virtuális gép nyilvános IP-címét az [az VM show](/cli/azure/vm#az-vm-show)paranccsal tekintheti meg:
+1. Jelentkezzen be SSH-val a virtuális gépre a megfelelő hitelesítő adatokkal. A virtuális gép nyilvános IP-címét az [az vm show használhatja:](/cli/azure/vm#az_vm_show)
 
     ```azurecli
     az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --output tsv
@@ -77,19 +77,19 @@ Kibontott lemez használatához bontsa ki a mögöttes partíciót és a fájlre
 
 1. Bontsa ki a mögöttes partíciót és a fájlrendszert.
 
-    a. Ha a lemez már csatlakoztatva van, válassza le:
+    a. Ha a lemez már csatlakoztatva van, leválasztja:
 
     ```bash
     sudo umount /dev/sdc1
     ```
 
-    b. `parted`A használatával megtekintheti a lemez adatait, és átméretezheti a partíciót:
+    b. A `parted` használatával megtekintheti a lemezadatokat, és átméretezheti a partíciót:
 
     ```bash
     sudo parted /dev/sdc
     ```
 
-    Megtekintheti a meglévő partíciók elrendezésével kapcsolatos információkat `print` . A kimenet a következő példához hasonlóan jelenik meg, amely a mögöttes lemez 215 GB-ot mutatja:
+    A meglévő partícióelrendezéssel kapcsolatos információk megtekintése a `print` következővel: . A kimenet az alábbi példához hasonló, amely azt mutatja, hogy a mögöttes lemez 215 GB:
 
     ```bash
     GNU Parted 3.2
@@ -106,7 +106,7 @@ Kibontott lemez használatához bontsa ki a mögöttes partíciót és a fájlre
         1      0.00B  107GB  107GB  ext4
     ```
 
-    c. Bontsa ki a partíciót a rel `resizepart` . Adja meg a partíció számát, az *1* értéket és az új partíció méretét:
+    c. Bontsa ki a partíciót a `resizepart` következővel: . Adja meg az új partíció *partíciószámát (1)* és méretét:
 
     ```bash
     (parted) resizepart
@@ -114,27 +114,27 @@ Kibontott lemez használatához bontsa ki a mögöttes partíciót és a fájlre
     End?  [107GB]? 215GB
     ```
 
-    d. A kilépéshez írja be a következőt: `quit` .
+    d. A kilépéshez írja be a `quit` gombra.
 
-1. A partíció átméretezése után ellenőrizze a partíció konzisztenciáját az alábbiakkal `e2fsck` :
+1. A partíció átméretezése után ellenőrizze a partíciókonzisztenciát a `e2fsck` következővel:
 
     ```bash
     sudo e2fsck -f /dev/sdc1
     ```
 
-1. A fájlrendszer átméretezése az alábbiakkal `resize2fs` :
+1. Méretezze át a fájlrendszert a `resize2fs` következővel:
 
     ```bash
     sudo resize2fs /dev/sdc1
     ```
 
-1. Csatlakoztassa a partíciót a kívánt helyre, például `/datadrive` :
+1. Csatlakoztassa a partíciót a kívánt helyre, `/datadrive` például:
 
     ```bash
     sudo mount /dev/sdc1 /datadrive
     ```
 
-1. Az adatlemez átméretezésének ellenőrzéséhez használja a következőt: `df -h` . A következő példa kimenetében az adatmeghajtó */dev/sdc1* jelenleg 200 GB:
+1. Az adatlemez átméretezésének ellenőrzéséhez használja a következőt: `df -h` . Az alábbi példakimeneten látható, hogy a */dev/sdc1* adat meghajtó most már 200 GB:
 
     ```bash
     Filesystem      Size   Used  Avail Use% Mounted on
@@ -142,5 +142,5 @@ Kibontott lemez használatához bontsa ki a mögöttes partíciót és a fájlre
     ```
 
 ## <a name="next-steps"></a>Következő lépések
-* Ha további tárhelyre van szüksége, [adatlemezeket is hozzáadhat egy Linux rendszerű virtuális géphez](add-disk.md). 
-* További információ a lemezek titkosításáról: [Azure Disk Encryption Linux rendszerű virtuális gépekhez](disk-encryption-overview.md).
+* Ha további tárhelyre van szüksége, adatlemezeket is hozzáadhat [egy Linux rendszerű virtuális géphez.](add-disk.md) 
+* A lemeztitkosítással kapcsolatos további információkért lásd: Azure Disk Encryption [linuxos virtuális gépekhez.](disk-encryption-overview.md)

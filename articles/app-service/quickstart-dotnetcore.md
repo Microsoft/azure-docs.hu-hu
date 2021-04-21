@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: ASP.NET-webalkalmazás üzembe helyezése'
-description: Megtudhatja, hogyan futtathat webalkalmazásokat Azure App Service az első ASP.NET-alkalmazás üzembe helyezésével.
+title: 'Rövid útmutató: ASP.NET webalkalmazás üzembe helyezése'
+description: Ismerje meg, hogyan futtathat webalkalmazásokat a Azure App Service az első ASP.NET telepítéséhez.
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
 ms.date: 03/30/2021
@@ -10,12 +10,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-dotnetcore-uiex
-ms.openlocfilehash: 7f538f5accb533b01c5ea685e424c70bfeb44f00
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 482bf6d29fbc1e982ee4d17099d82915ff3a0241
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058251"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762460"
 ---
 <!-- NOTES:
 
@@ -35,47 +35,47 @@ target cross-platform with .NET Core 3.1 or .NET 5.0.
 
 -->
 
-# <a name="quickstart-deploy-an-aspnet-web-app"></a>Gyors útmutató: ASP.NET-webalkalmazás üzembe helyezése
+# <a name="quickstart-deploy-an-aspnet-web-app"></a>Rövid útmutató: ASP.NET webalkalmazás üzembe helyezése
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre és helyezheti üzembe az első ASP.NET-webalkalmazását [Azure app Service](overview.md). App Service támogatja a .NET-alkalmazások különböző verzióit, és egy jól méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. A ASP.NET Web Apps platformfüggetlen, és Linux vagy Windows rendszeren is üzemeltethető. Ha elkészült, egy App Service üzemeltetési csomagból és egy üzembe helyezett webalkalmazással rendelkező App Service álló Azure-erőforráscsoport lesz.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre és helyezheti üzembe első ASP.NET webalkalmazását a [Azure App Service.](overview.md) App Service .NET-alkalmazások különböző verzióit támogatja, és nagymértékben skálázható, önjavítást támogató webes üzemeltetési szolgáltatást biztosít. ASP.NET webalkalmazások platformfüggetlenek, és Linux vagy Windows rendszeren is üzemeltetheti. Ha végzett, egy Azure-erőforráscsoporttal fog App Service üzemeltetési csomaggal és egy üzembe helyezett webalkalmazással App Service erőforráscsoporttal.
 
 > [!TIP]
-> A .NET Core 3,1 a .NET jelenlegi hosszú távú támogatás (LTS) kiadása. További információ: .net- [támogatási szabályzat](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
+> A .NET Core 3.1 a .NET jelenlegi hosszú távú támogatása (LTS) kiadása. További információ: [.NET támogatási szabályzat.](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 :::zone target="docs" pivot="development-environment-vs"
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/dotnet).
-- A <a href="https://www.visualstudio.com/downloads" target="_blank">Visual Studio 2019</a> a **ASP.net és a webes fejlesztési** munkaterheléssel.
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/dotnet)
+- <a href="https://www.visualstudio.com/downloads" target="_blank">Visual Studio 2019-ben</a> a ASP.NET **és webfejlesztési számítási feladatokkal.**
 
     Ha már telepítette a Visual Studio 2019-et:
 
-    - A   >  **frissítések keresése** lehetőség kiválasztásával telepítse a legújabb frissítéseket a Visual Studióban.
-    - A számítási feladat hozzáadásához **válassza az eszközök**  >  **beolvasása eszközök és szolgáltatások** lehetőséget.
+    - Telepítse a legújabb frissítéseket a Visual Studio frissítések **keresése lehetőség**  >  **kiválasztásával.**
+    - Adja hozzá a számítási feladatot a **Tools**  >  **Get Tools and Features (Eszközök és szolgáltatások lekérte) lehetőség kiválasztásával.**
 
 :::zone-end
 
 :::zone target="docs" pivot="development-environment-vscode"
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/dotnet).
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/dotnet)
 - <a href="https://www.visualstudio.com/downloads" target="_blank">Visual Studio Code</a>.
 - Az <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack" target="_blank">Azure Tools</a> bővítmény.
 
 ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
-<a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank"> Telepítse a legújabb .NET Core 3,1 SDK-t. </a>
+<a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank"> Telepítse a legújabb .NET Core 3.1 SDK-t. </a>
 
-### <a name="net-50"></a>[.NET 5,0](#tab/net50)
+### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
-<a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank"> Telepítse a legújabb .NET 5,0 SDK-t. </a>
+<a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank"> Telepítse a legújabb .NET 5.0 SDK-t. </a>
 
 ### <a name="net-framework-48"></a>[.NET-keretrendszer 4.8](#tab/netframework48)
 
-<a href="https://dotnet.microsoft.com/download/dotnet-framework/net48" target="_blank"> Telepítse a .NET-keretrendszer 4,8 Developer Pack csomagot. </a>
+<a href="https://dotnet.microsoft.com/download/dotnet-framework/net48" target="_blank"> Telepítse a .NET-keretrendszer 4.8 fejlesztői csomagot. </a>
 
 > [!NOTE]
-> A Visual Studio Code platform platformfüggetlen, azonban a .NET-keretrendszer nem. Ha a .NET-keretrendszerbeli alkalmazásokat a Visual Studio Code-ban fejleszti, érdemes lehet Windows-gépet használni a létrehozási függőségek kielégítéséhez.
+> Visual Studio Code platformfüggetlen, .NET-keretrendszer viszont nem. Ha a .NET-keretrendszer Code-ban fejleszt, fontolja meg egy Windows rendszerű gép Visual Studio a buildfüggőségek kielégítéséhez.
 
 ---
 
@@ -85,24 +85,24 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre és helyezhet
 :::zone target="docs" pivot="development-environment-cli"
 <!-- markdownlint-enable MD044 -->
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/dotnet).
-- Az <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a>-vel.
-- A .NET SDK (tartalmazza a futtatókörnyezetet és a CLI-t).
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/dotnet)
+- Az <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI.</a>
+- A .NET SDK (a futásidejűt és a CLI-t is tartalmazza).
 
 ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
-<a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank"> Telepítse a legújabb .NET Core 3,1 SDK-t. </a>
+<a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank"> Telepítse a legújabb .NET Core 3.1 SDK-t. </a>
 
-### <a name="net-50"></a>[.NET 5,0](#tab/net50)
+### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
-<a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank"> Telepítse a legújabb .NET 5,0 SDK-t. </a>
+<a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank"> Telepítse a legújabb .NET 5.0 SDK-t. </a>
 
 ### <a name="net-framework-48"></a>[.NET-keretrendszer 4.8](#tab/netframework48)
 
-<a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank"> Telepítse a legújabb .net 5,0 SDK </a> -t. és <a href="https://dotnet.microsoft.com/download/dotnet-framework/net48" target="_blank"> a .NET-keretrendszer 4,8 fejlesztői csomagja. </a>
+<a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank"> Telepítse a legújabb .NET 5.0 SDK-t. </a> és <a href="https://dotnet.microsoft.com/download/dotnet-framework/net48" target="_blank"> a .NET-keretrendszer 4.8 Fejlesztői csomag. </a>
 
 > [!NOTE]
-> A [.net parancssori](/dotnet/core/tools) felület platformfüggetlen, azonban a .NET-keretrendszer nem. Ha .net-keretrendszerbeli alkalmazásokat fejleszt a .NET parancssori felülettel, érdemes lehet Windows-gépet használni a létrehozási függőségek kielégítéséhez.
+> A [.NET CLI](/dotnet/core/tools) azonban platformfüggetlen, .NET-keretrendszer nem. Ha .NET CLI-.NET-keretrendszer fejleszt, fontolja meg egy Windows rendszerű gép használatának a megfelelő buildfüggőségeket.
 
 ---
 
@@ -114,54 +114,54 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre és helyezhet
 
 ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
-1. Nyissa meg a Visual studiót, majd válassza **az új projekt létrehozása** lehetőséget.
-1. A **create a New Project (új projekt létrehozása**) területen keresse meg és válassza a **ASP.net Web Core-alkalmazás** elemet, majd kattintson a **tovább** gombra.
-1. Az **új projekt konfigurálása lapon** nevezze el az alkalmazás _MyFirstAzureWebApp_, majd kattintson a **tovább** gombra.
+1. Nyissa Visual Studio, majd válassza **az Új projekt létrehozása lehetőséget.**
+1. A **Create a new project (Új projekt létrehozása)** mezőben keresse meg és válassza ASP.NET Web Core App **(Web Core-alkalmazás létrehozása)** lehetőséget, majd kattintson a Next (Tovább) **gombra.**
+1. Az **Új projekt konfigurálása mezőben adja** a _MyFirstAzureWebApp_ nevet az alkalmazásnak, majd válassza a Tovább **lehetőséget.**
 
-   :::image type="content" source="media/quickstart-dotnet/configure-webapp-net.png" alt-text="ASP.NET Core 3,1-alapú webalkalmazás konfigurálása" border="true":::
+   :::image type="content" source="media/quickstart-dotnet/configure-webapp-net.png" alt-text="A ASP.NET Core 3.1-webalkalmazás konfigurálása" border="true":::
 
-1. Válassza a **.net Core 3,1 (hosszú távú támogatás)** lehetőséget.
-1. Győződjön meg arról, hogy a **Hitelesítés típusa** **none** értékre van állítva. Válassza a **Létrehozás** lehetőséget.
+1. Válassza **a .NET Core 3.1 (Hosszú távú támogatás) lehetőséget.**
+1. Győződjön meg **arról, hogy a Hitelesítési típus** beállítása **Nincs.** Válassza a **Létrehozás** lehetőséget.
 
-   :::image type="content" source="media/quickstart-dotnet/vs-additional-info-netcoreapp31.png" alt-text="Visual Studio – válassza a .NET Core 3,1 és a nincs lehetőséget a hitelesítési típushoz." border="true":::
+   :::image type="content" source="media/quickstart-dotnet/vs-additional-info-netcoreapp31.png" alt-text="Visual Studio – A Hitelesítés típusa beállításnál válassza a .NET Core 3.1 és a Nincs lehetőséget." border="true":::
 
-1. A Visual Studio menüjében válassza a **hibakeresés**  >  **Indítás hibakeresés nélkül** lehetőséget a webalkalmazás helyi futtatásához.
+1. A webalkalmazás Visual Studio válassza a **Hibakeresés** Indítás hibakeresés hibakeresés nélkül lehetőséget a  >   webalkalmazás helyi futtatásához.
 
-   :::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio – .NET Core 3,1 Tallózás helyileg" lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
+   :::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio – A .NET Core 3.1 helyi tallózása" lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
 
-### <a name="net-50"></a>[.NET 5,0](#tab/net50)
+### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
-1. Nyissa meg a Visual studiót, majd válassza **az új projekt létrehozása** lehetőséget.
-1. A **create a New Project (új projekt létrehozása**) területen keresse meg és válassza a **ASP.net Web Core-alkalmazás** elemet, majd kattintson a **tovább** gombra.
-1. Az **új projekt konfigurálása lapon** nevezze el az alkalmazás _MyFirstAzureWebApp_, majd kattintson a **tovább** gombra.
+1. Nyissa Visual Studio, majd válassza **az Új projekt létrehozása lehetőséget.**
+1. A Create a new project (Új projekt **létrehozása) mezőben** keresse meg és válassza **ASP.NET Web Core App (Web Core-alkalmazás létrehozása)** lehetőséget, majd válassza a Next (Tovább) **lehetőséget.**
+1. Az **Új projekt konfigurálása mezőben adja** a _MyFirstAzureWebApp_ nevet az alkalmazásnak, majd válassza a **Tovább lehetőséget.**
 
-   :::image type="content" source="media/quickstart-dotnet/configure-webapp-net.png" alt-text="Visual Studio – ASP.NET 5,0-webalkalmazás konfigurálása." border="true":::
+   :::image type="content" source="media/quickstart-dotnet/configure-webapp-net.png" alt-text="Visual Studio – ASP.NET 5.0-s webalkalmazás konfigurálása." border="true":::
 
-1. Válassza a **.net Core 5,0 (aktuális)** lehetőséget.
-1. Győződjön meg arról, hogy a **Hitelesítés típusa** **none** értékre van állítva. Válassza a **Létrehozás** lehetőséget.
+1. Válassza **a .NET Core 5.0 (aktuális) lehetőséget.**
+1. Győződjön meg **arról, hogy a Hitelesítési típus** beállítása **Nincs.** Válassza a **Létrehozás** lehetőséget.
 
-   :::image type="content" source="media/quickstart-dotnet/vs-additional-info-net50.png" alt-text="Visual Studio – további információ a .NET Core 5,0 kiválasztásakor." border="true":::
+   :::image type="content" source="media/quickstart-dotnet/vs-additional-info-net50.png" alt-text="Visual Studio – További információ a .NET Core 5.0 kiválasztásakor." border="true":::
 
-1. A Visual Studio menüjében válassza a **hibakeresés**  >  **Indítás hibakeresés nélkül** lehetőséget a webalkalmazás helyi futtatásához.
+1. A webalkalmazás Visual Studio válassza a **Hibakeresés** Indítás hibakeresés hibakeresés nélkül lehetőséget a  >   webalkalmazás helyi futtatásához.
 
-   :::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="A Visual Studio – ASP.NET Core 5,0 helyileg fut." lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
+   :::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio – ASP.NET Core 5.0 helyileg fut." lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
 
 ### <a name="net-framework-48"></a>[.NET-keretrendszer 4.8](#tab/netframework48)
 
-1. Nyissa meg a Visual studiót, majd válassza **az új projekt létrehozása** lehetőséget.
-1. Az **új projekt létrehozása** lapon keresse meg és válassza a **ASP.net webalkalmazás (.NET-keretrendszer)** elemet, majd kattintson a **tovább** gombra.
-1. Az **új projekt konfigurálása** lapon nevezze el az alkalmazás _MyFirstAzureWebApp_, majd válassza a **Létrehozás** lehetőséget.
+1. Nyissa Visual Studio, majd válassza **az Új projekt létrehozása lehetőséget.**
+1. Az **Új projekt létrehozása mezőben** keresse meg és válassza ASP.NET **Webalkalmazás (.NET-keretrendszer)** lehetőséget, majd kattintson a **Tovább gombra.**
+1. Az **Új projekt konfigurálása mezőben adja** a _MyFirstAzureWebApp_ nevet az alkalmazásnak, majd válassza a **Létrehozás lehetőséget.**
 
-   :::image type="content" source="media/quickstart-dotnet/configure-webapp-netframework48.png" alt-text="Visual Studio – a ASP.NET-keretrendszer 4,8 webalkalmazásának konfigurálása." border="true":::
+   :::image type="content" source="media/quickstart-dotnet/configure-webapp-netframework48.png" alt-text="Visual Studio – A ASP.NET Framework 4.8-webalkalmazás konfigurálása." border="true":::
 
-1. Válassza ki az **MVC** sablont.
-1. Győződjön meg arról, hogy a **hitelesítés** beállítása **Nincs hitelesítés**. Válassza a **Létrehozás** lehetőséget.
+1. Válassza ki az **MVC sablont.**
+1. Győződjön meg **arról, hogy a** Hitelesítés beállítása **Nincs hitelesítés.** Válassza a **Létrehozás** lehetőséget.
 
-   :::image type="content" source="media/quickstart-dotnet/vs-mvc-no-auth-netframework48.png" alt-text="Visual Studio – válassza ki az MVC sablont." border="true":::
+   :::image type="content" source="media/quickstart-dotnet/vs-mvc-no-auth-netframework48.png" alt-text="Visual Studio – Válassza ki az MVC sablont." border="true":::
 
-1. A Visual Studio menüjében válassza a **hibakeresés**  >  **Indítás hibakeresés nélkül** lehetőséget a webalkalmazás helyi futtatásához.
+1. A webalkalmazás Visual Studio válassza a **Hibakeresés** indítás hibakeresése hibakeresés nélkül lehetőséget a  >   webalkalmazás helyi futtatásához.
 
-   :::image type="content" source="media/quickstart-dotnet/vs-local-webapp-netframework48.png" alt-text="A Visual Studio-ASP.NET Framework 4,8 helyileg fut." lightbox="media/quickstart-dotnet/vs-local-webapp-netframework48.png" border="true":::
+   :::image type="content" source="media/quickstart-dotnet/vs-local-webapp-netframework48.png" alt-text="Visual Studio – ASP.NET 4.8-as keretrendszer helyileg fut." lightbox="media/quickstart-dotnet/vs-local-webapp-netframework48.png" border="true":::
 
 ---
 
@@ -169,7 +169,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre és helyezhet
 
 :::zone target="docs" pivot="development-environment-vscode"
 
-Hozzon létre egy _MyFirstAzureWebApp_ nevű új mappát, és nyissa meg a Visual Studio Code-ban. Nyissa meg a <a href="https://code.visualstudio.com/docs/editor/integrated-terminal" target="_blank">terminál</a> ablakot, és hozzon létre egy új .net-webalkalmazást a [`dotnet new webapp`](/dotnet/core/tools/dotnet-new#web-options) paranccsal.
+Hozzon létre egy _új mappát MyFirstAzureWebApp_ névvel, és nyissa meg az Visual Studio Code-ban. Nyissa meg <a href="https://code.visualstudio.com/docs/editor/integrated-terminal" target="_blank">a Terminál</a> ablakot, és hozzon létre egy új .NET-webalkalmazást az [`dotnet new webapp`](/dotnet/core/tools/dotnet-new#web-options) paranccsal.
 
 ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
@@ -177,7 +177,7 @@ Hozzon létre egy _MyFirstAzureWebApp_ nevű új mappát, és nyissa meg a Visua
 dotnet new webapp -f netcoreapp3.1
 ```
 
-### <a name="net-50"></a>[.NET 5,0](#tab/net50)
+### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
 ```dotnetcli
 dotnet new webapp -f net5.0
@@ -190,11 +190,11 @@ dotnet new webapp --target-framework-override net48
 ```
 
 > [!IMPORTANT]
-> A `--target-framework-override` jelző a projekthez tartozó cél-keretrendszer moniker (TFM) szabadszöveges cseréje, amely *nem garantálja* , hogy a támogató sablon létezik vagy le van fordítva. .NET-keretrendszerbeli alkalmazásokat csak Windows rendszeren hozhat létre és futtathat.
+> A jelző a projekt célkeretrendszeri `--target-framework-override` monikerének (TFM) szabad szöveges  helyettesítője, és nem garantálja, hogy a támogató sablon létezik vagy fordítható. A windowsos alkalmazások csak .NET-keretrendszer futtathatók.
 
 ---
 
-A Visual Studio Code-ban lévő **terminálon** futtassa az alkalmazást helyileg a [`dotnet run`](/dotnet/core/tools/dotnet-run) parancs használatával.
+Futtassa  helyileg az alkalmazást a Visual Studio Terminálból az [`dotnet run`](/dotnet/core/tools/dotnet-run) paranccsal.
 
 ```dotnetcli
 dotnet run
@@ -205,21 +205,21 @@ Nyisson meg egy webböngészőt, majd keresse fel az alkalmazást a következő 
 
 ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
-Ekkor megjelenik az oldalon megjelenő ASP.NET Core 3,1-es webalkalmazás sablonja.
+Az oldalon megjelenik a Core 3.1 ASP.NET alkalmazás sablonja.
 
-:::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio Code – a .NET Core 3,1 futtatása helyileg a böngészőben." lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
+:::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio Code – futtassa helyileg a böngészőben a .NET Core 3.1-et." lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
 
-### <a name="net-50"></a>[.NET 5,0](#tab/net50)
+### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
-Ekkor megjelenik az oldalon megjelenő ASP.NET Core 5,0-es webalkalmazás sablonja.
+Az oldalon megjelenik ASP.NET Core 5.0-webalkalmazás sablonja.
 
-:::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio Code – a .NET 5,0 futtatása helyileg a böngészőben." lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
+:::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio Code – futtassa helyileg a böngészőben a .NET 5.0-t." lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
 
 ### <a name="net-framework-48"></a>[.NET-keretrendszer 4.8](#tab/netframework48)
 
-Ekkor megjelenik az oldalon megjelenő ASP.NET-keretrendszer 4,8-es webalkalmazás.
+Az oldalon megjelenik a ASP.NET Framework 4.8 webalkalmazás sablonja.
 
-:::image type="content" source="media/quickstart-dotnet/local-webapp-net48.png" alt-text="Visual Studio Code – a .NET 4,8 futtatása helyileg a böngészőben." lightbox="media/quickstart-dotnet/local-webapp-net48.png" border="true":::
+:::image type="content" source="media/quickstart-dotnet/local-webapp-net48.png" alt-text="Visual Studio Code – futtassa helyileg a böngészőben a .NET 4.8-at." lightbox="media/quickstart-dotnet/local-webapp-net48.png" border="true":::
 
 ---
 
@@ -229,7 +229,7 @@ Ekkor megjelenik az oldalon megjelenő ASP.NET-keretrendszer 4,8-es webalkalmaz�
 :::zone target="docs" pivot="development-environment-cli"
 <!-- markdownlint-enable MD044 -->
 
-Nyisson meg egy terminál ablakot a gépen egy munkakönyvtárra. Hozzon létre egy új .NET-webalkalmazást a [`dotnet new webapp`](/dotnet/core/tools/dotnet-new#web-options) paranccsal, majd módosítsa a címtárakat az újonnan létrehozott alkalmazásba.
+Nyisson meg egy terminálablakot a gépen egy munkakönyvtárba. Hozzon létre egy új .NET-webalkalmazást az paranccsal, majd módosítsa a [`dotnet new webapp`](/dotnet/core/tools/dotnet-new#web-options) könyvtárakat az újonnan létrehozott alkalmazásra.
 
 ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
@@ -237,7 +237,7 @@ Nyisson meg egy terminál ablakot a gépen egy munkakönyvtárra. Hozzon létre 
 dotnet new webapp -n MyFirstAzureWebApp -f netcoreapp3.1 && cd MyFirstAzureWebApp
 ```
 
-### <a name="net-50"></a>[.NET 5,0](#tab/net50)
+### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
 ```dotnetcli
 dotnet new webapp -n MyFirstAzureWebApp -f net5.0 && cd MyFirstAzureWebApp
@@ -250,11 +250,11 @@ dotnet new webapp -n MyFirstAzureWebApp --target-framework-override net48 && cd 
 ```
 
 > [!IMPORTANT]
-> A `--target-framework-override` jelző a projekthez tartozó cél-keretrendszer moniker (TFM) szabadszöveges cseréje, amely *nem garantálja* , hogy a támogató sablon létezik vagy le van fordítva. Windows rendszeren csak .NET-keretrendszerbeli alkalmazásokat hozhat létre.
+> A jelző a projekt célkeretrendszeri `--target-framework-override` monikerének (TFM) szabad szöveges  helyettesítője, és nem garantálja, hogy a támogató sablon létezik vagy fordítható. Csak Windowson .NET-keretrendszer alkalmazásokat.
 
 ---
 
-Ugyanabból a terminál-munkamenetből futtassa az alkalmazást helyileg a [`dotnet run`](/dotnet/core/tools/dotnet-run) parancs használatával.
+Ugyanabban a terminál-munkamenetben futtassa helyileg az alkalmazást az [`dotnet run`](/dotnet/core/tools/dotnet-run) paranccsal.
 
 ```dotnetcli
 dotnet run
@@ -264,61 +264,61 @@ Nyisson meg egy webböngészőt, majd keresse fel az alkalmazást a következő 
 
 ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
-Ekkor megjelenik az oldalon megjelenő ASP.NET Core 3,1-es webalkalmazás sablonja.
+Az oldalon megjelenik ASP.NET Core 3.1-webalkalmazás sablonja.
 
-:::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio Code-ASP.NET Core 3,1 a helyi böngészőben." lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
+:::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio Code – ASP.NET Core 3.1 helyi böngészőben való használatával." lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
 
-### <a name="net-50"></a>[.NET 5,0](#tab/net50)
+### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
-Ekkor megjelenik az oldalon megjelenő ASP.NET Core 5,0-es webalkalmazás sablonja.
+Az oldalon megjelenik ASP.NET Core 5.0-webalkalmazás sablonja.
 
-:::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio Code-ASP.NET Core 5,0 a helyi böngészőben." lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
+:::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio Code – ASP.NET Core 5.0 a helyi böngészőben." lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
 
 ### <a name="net-framework-48"></a>[.NET-keretrendszer 4.8](#tab/netframework48)
 
-Ekkor megjelenik az oldalon megjelenő ASP.NET-keretrendszer 4,8-es webalkalmazás.
+Az oldalon megjelenik a ASP.NET Framework 4.8 webalkalmazás sablonja.
 
-:::image type="content" source="media/quickstart-dotnet/local-webapp-net48.png" alt-text="Visual Studio Code-ASP.NET Framework 4,8 a helyi böngészőben." lightbox="media/quickstart-dotnet/local-webapp-net48.png" border="true":::
+:::image type="content" source="media/quickstart-dotnet/local-webapp-net48.png" alt-text="Visual Studio Code – ASP.NET Framework 4.8 helyi böngészőben." lightbox="media/quickstart-dotnet/local-webapp-net48.png" border="true":::
 
 ---
 
 :::zone-end
 
-## <a name="publish-your-web-app"></a>Webalkalmazás közzététele
+## <a name="publish-your-web-app"></a>A webalkalmazás közzététele
 
-A webalkalmazás közzétételéhez először létre kell hoznia és konfigurálnia kell egy új App Service, amelyre közzé teheti az alkalmazást.
+A webalkalmazás közzétételéhez először létre kell hoznia és konfigurálnia kell egy új App Service, amelybe közzéteheti az alkalmazást.
 
-A App Service beállításának részeként a következőket fogja létrehozni:
+Az alkalmazás beállításának App Service a következőt fogja létrehozni:
 
-- Egy új [erőforráscsoport](../azure-resource-manager/management/overview.md#terminology) , amely a szolgáltatáshoz tartozó összes Azure-erőforrást tartalmazza.
-- Új [üzemeltetési csomag](overview-hosting-plans.md) , amely meghatározza az alkalmazást futtató webkiszolgáló-Farm helyét, méretét és funkcióit.
+- Egy új [erőforráscsoport,](../azure-resource-manager/management/overview.md#terminology) amely a szolgáltatás összes Azure-erőforrását tartalmazza.
+- Egy új [üzemeltetési csomag,](overview-hosting-plans.md) amely meghatározza az alkalmazást üzemeltető webkiszolgálófarm helyét, méretét és funkcióit.
 
 Kövesse az alábbi lépéseket a App Service létrehozásához és a webalkalmazás közzétételéhez:
 
 :::zone target="docs" pivot="development-environment-vs"
 
-1. A **megoldáskezelő** kattintson a jobb gombbal a **MyFirstAzureWebApp** projektre, és válassza a **Közzététel** lehetőséget.
-1. A **Közzététel** területen válassza az **Azure** lehetőséget, majd a **tovább** gombot.
+1. A **Megoldáskezelő** kattintson a jobb gombbal a **MyFirstAzureWebApp** projektre, és válassza a **Publish (Közzététel) lehetőséget.**
+1. A **Közzététel mezőben** válassza az **Azure,** majd a **Tovább lehetőséget.**
 
-    :::image type="content" source="media/quickstart-dotnet/vs-publish-target-Azure.png" alt-text="Visual Studio – tegye közzé a webalkalmazást és az Azure célját." border="true":::
+    :::image type="content" source="media/quickstart-dotnet/vs-publish-target-Azure.png" alt-text="Visual Studio – A webalkalmazás közzététele és az Azure megcélzott közzététele." border="true":::
 
-1. A lehetőségei attól függnek, hogy már bejelentkezett-e az Azure-ba, és hogy van-e egy Azure-fiókhoz társított Visual Studio-fiókja. Válassza a **fiók hozzáadása** lehetőséget, vagy **Jelentkezzen** be az Azure-előfizetésbe való bejelentkezéshez. Ha már bejelentkezett, válassza ki a kívánt fiókot.
+1. A lehetőségek attól függnek, hogy már be van-e jelentkezve az Azure-ba, és hogy van-e Visual Studio azure-fiókhoz csatolt fiókkal. Válassza a **Fiók hozzáadása vagy a** **Bejelentkezés** lehetőséget az Azure-előfizetésbe való bejelentkezéshez. Ha már bejelentkezett, válassza ki a kívánt fiókot.
 
-    :::image type="content" source="media/quickstart-dotnetcore/sign-in-Azure-vs2019.png" border="true" alt-text="Visual Studio – válassza a bejelentkezés az Azure-ba párbeszédpanelt.":::
+    :::image type="content" source="media/quickstart-dotnetcore/sign-in-Azure-vs2019.png" border="true" alt-text="Visual Studio – Válassza a Bejelentkezés az Azure-ba párbeszédpanel lehetőséget.":::
 
-1. Válassza ki az **adott célt**, vagy **Azure app Service (Linux)** vagy **Azure app Service (Windows)**.
+1. Válassza az **Adott cél** lehetőséget, **Azure App Service (Linux)** vagy **Azure App Service (Windows)** lehetőséget.
 
     > [!IMPORTANT]
-    > Az 4,8-es ASP.NET-keretrendszer célzásakor **Azure app Service (Windows) rendszert** kell használni.
+    > A ASP.NET 4.8-as verzió megcélzásakor a **következőt fogja használni: Azure App Service (Windows).**
 
-1. **App Service példányok** jobb oldalán válassza a elemet **+** .
+1. Az új példányok **jobb App Service válassza** a **+** lehetőséget.
 
-    :::image type="content" source="media/quickstart-dotnetcore/publish-new-app-service.png" border="true" alt-text="Visual Studio – új App Service alkalmazás párbeszédpanel.":::
+    :::image type="content" source="media/quickstart-dotnetcore/publish-new-app-service.png" border="true" alt-text="Visual Studio – App Service alkalmazás párbeszédpanel.":::
 
-1. Az **előfizetés** mezőben fogadja el a felsorolt előfizetést, vagy válasszon ki egy újat a legördülő listából.
-1. Az **erőforráscsoport** területen válassza az **új** lehetőséget. Az **Új erőforráscsoport neve** mezőbe írja be a *myResourceGroup* nevet, majd kattintson **az OK gombra**.
-1. **Üzemeltetési csomag** esetén válassza az **új** lehetőséget.
-1. A **üzemeltetési tervben: hozzon létre új** párbeszédpanelt, és adja meg a következő táblázatban megadott értékeket:
+1. Az **Előfizetés** mezőben fogadja el a felsorolt előfizetést, vagy válasszon ki egy újat a legördülő listából.
+1. Az **Erőforráscsoport mezőben** válassza az Új **lehetőséget.** Az **Új erőforráscsoport neve mezőben adja** meg a *myResourceGroup nevet,* majd kattintson az **OK gombra.**
+1. A **Csomag üzemeltetése beállításnál** válassza az Új **lehetőséget.**
+1. A Hosting **Plan: Create new (Üzemeltetési csomag: Új** létrehozása) párbeszédpanelen adja meg a következő táblázatban megadott értékeket:
 
     | Beállítás          | Ajánlott érték          | Leírás                                                           |
     |------------------|--------------------------|-----------------------------------------------------------------------|
@@ -328,33 +328,33 @@ Kövesse az alábbi lépéseket a App Service létrehozásához és a webalkalma
 
     :::image type="content" source="media/quickstart-dotnetcore/create-new-hosting-plan-vs2019.png" border="true" alt-text="Új üzemeltetési csomag létrehozása":::
 
-1. A **név** mezőben adjon meg egy egyedi nevet, amely csak az érvényes karaktereket tartalmazza:,, `a-z` `A-Z` `0-9` és `-` . Elfogadhatja az automatikusan létrehozott egyedi nevet is. A webalkalmazás URL-címe `http://<app-name>.azurewebsites.net`, amelyben az `<app-name>` az alkalmazás neve.
-1. Válassza a **Létrehozás** lehetőséget az Azure-erőforrások létrehozásához.
+1. A **Név alatt** adjon meg egy egyedi alkalmazásnevet, amely csak az érvényes karaktereket tartalmazza: , , és `a-z` `A-Z` `0-9` `-` . Elfogadhatja az automatikusan létrehozott egyedi nevet. A webalkalmazás URL-címe `http://<app-name>.azurewebsites.net`, amelyben az `<app-name>` az alkalmazás neve.
+1. Az **Azure-erőforrások** létrehozásához válassza a Létrehozás lehetőséget.
 
-    :::image type="content" source="media/quickstart-dotnetcore/web-app-name-vs2019.png" border="true" alt-text="Visual Studio – alkalmazás-erőforrások létrehozása párbeszédpanel.":::
+    :::image type="content" source="media/quickstart-dotnetcore/web-app-name-vs2019.png" border="true" alt-text="Visual Studio – Alkalmazás-erőforrások létrehozása párbeszédpanel.":::
 
-   A varázsló befejezése után létrejön az Azure-erőforrások, és készen áll a közzétételre.
+   Miután a varázsló befejeződött, az Azure-erőforrások létrejönnek, és készen áll a közzétételre.
 
-1. A varázsló bezárásához kattintson a **Befejezés** gombra.
-1. A **közzétételi** lapon válassza a **Közzététel** lehetőséget. A Visual Studio létrehozza, becsomagolja és közzéteszi az alkalmazást az Azure-ban, majd elindítja az alkalmazást az alapértelmezett böngészőben.
+1. A **varázsló befejezéséhez** válassza a Befejezés lehetőséget.
+1. A Közzététel **lapon** válassza a Közzététel **lehetőséget.** Visual Studio, csomagokat hoz létre és tesz közzé az Azure-ban, majd elindítja az alkalmazást az alapértelmezett böngészőben.
 
     ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
-    Megjelenik a lapon megjelenő ASP.NET Core 3,1 webalkalmazás.
+    Az oldalon megjelenik ASP.NET Core 3.1 webalkalmazás.
 
-    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="Visual Studio – ASP.NET Core 3,1 webalkalmazás az Azure-ban.":::
+    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="Visual Studio – ASP.NET Core 3.1-webalkalmazás az Azure-ban.":::
 
-    ### <a name="net-50"></a>[.NET 5,0](#tab/net50)
+    ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
-    Megjelenik a lapon megjelenő ASP.NET Core 5,0 webalkalmazás.
+    Az oldalon megjelenik ASP.NET Core 5.0 webalkalmazás.
 
-    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="Visual Studio – ASP.NET Core 5,0 webalkalmazás az Azure-ban.":::
+    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="Visual Studio – ASP.NET Core 5.0-webalkalmazás az Azure-ban.":::
 
     ### <a name="net-framework-48"></a>[.NET-keretrendszer 4.8](#tab/netframework48)
 
-    Megjelenik az oldalon megjelenő ASP.NET Framework 4,8 webalkalmazás.
+    Az oldalon megjelenik a ASP.NET Framework 4.8 webalkalmazás.
 
-    :::image type="content" source="media/quickstart-dotnet/vs-Azure-webapp-net48.png" lightbox="media/quickstart-dotnet/vs-Azure-webapp-net48.png" border="true" alt-text="Visual Studio-ASP.NET Framework 4,8 Web App az Azure-ban.":::
+    :::image type="content" source="media/quickstart-dotnet/vs-Azure-webapp-net48.png" lightbox="media/quickstart-dotnet/vs-Azure-webapp-net48.png" border="true" alt-text="Visual Studio – ASP.NET Framework 4.8 webalkalmazás az Azure-ban.":::
 
     ---
 
@@ -362,51 +362,51 @@ Kövesse az alábbi lépéseket a App Service létrehozásához és a webalkalma
 
 :::zone target="docs" pivot="development-environment-vscode"
 
-A webalkalmazás üzembe helyezése a Visual Studio Azure Tools bővítmény használatával:
+A webalkalmazás üzembe helyezése az Azure Tools Visual Studio használatával:
 
-1. A Visual Studio Code-ban nyissa meg a [**parancssort**](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette), majd a <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>P</kbd>billentyűkombinációt.
-1. Keresse meg és válassza ki a "Azure App Service: üzembe helyezés a webalkalmazásban" lehetőséget.
-1. Válaszoljon a kérésekre az alábbiak szerint:
+1. A Visual Studio kódban nyissa meg a [**Parancskatapaletta**](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette), <kbd>Ctrl</kbd>Shift P + <kbd>billentyűkombinációt.</kbd> + <kbd></kbd>
+1. Keresse meg és válassza a "Azure App Service: Deploy to Web App" (Üzembe helyezés a webalkalmazásban) lehetőséget.
+1. Válaszoljon az utasításokat a következőképpen:
 
-    - A központi telepítéshez válassza a *MyFirstAzureWebApp* mappát.
-    - Ha a rendszer kéri, válassza a **konfiguráció hozzáadása** lehetőséget.
+    - Válassza *ki a MyFirstAzureWebApp* mappát az üzembe helyezéshez.
+    - Amikor **a rendszer kéri, válassza** a Konfiguráció hozzáadása lehetőséget.
     - Ha a rendszer kéri, jelentkezzen be meglévő Azure-fiókjába.
 
-    :::image type="content" source="media/quickstart-dotnet/vscode-sign-in-to-Azure.png" alt-text="Visual Studio Code – jelentkezzen be az Azure-ba." border="true":::
+    :::image type="content" source="media/quickstart-dotnet/vscode-sign-in-to-Azure.png" alt-text="Visual Studio Kód – Bejelentkezés az Azure-ba." border="true":::
 
-    - Válassza ki az **előfizetését**.
-    - Válassza az **új Webalkalmazás létrehozása... lehetőséget. Speciális**.
-    - A **globálisan egyedi név megadása** esetén használjon az összes Azure-ban egyedi nevet (*érvényes karakterek:, `a-z` `0-9` és `-`*). Jó példa a vállalat nevének és az alkalmazás-azonosító kombinációjának használatára.
-    - Válassza az **Új erőforráscsoport létrehozása** lehetőséget, és adja meg a kívánt nevet `myResourceGroup` .
-    - Amikor a rendszer kéri, hogy **válasszon ki egy futtatókörnyezetet**:
-      - *.Net core 3,1* esetén válassza a **.net Core 3,1 (LTS) elemet.**
-      - *.Net 5,0* esetén válassza a **.net 5** elemet.
-      - A *.NET-keretrendszer 4,8*-es **verziójában válassza a ASP.net v 4.8** elemet.
+    - Válassza ki az **előfizetését.**
+    - Válassza **az Új webalkalmazás létrehozása... lehetőséget. Speciális**.
+    - A **Adjon meg egy globálisan egyedi** nevet: , adjon meg egy egyedi nevet az Azure-ban ( érvényes *karakterek: `a-z` `0-9` `-` , és*). Jó minta a vállalat nevének és egy alkalmazásazonosítónak a kombinációja.
+    - Válassza **az Új erőforráscsoport létrehozása lehetőséget,** és adjon meg egy nevet( `myResourceGroup` ).
+    - Amikor a rendszer rákérdez **a Select a runtime stack (Futásidejű verem kiválasztása) kérdésre:**
+      - A *.NET Core 3.1-hez válassza* a **.NET Core 3.1 (LTS) lehetőséget**
+      - A *.NET 5.0-ban válassza* a **.NET 5 lehetőséget.**
+      - A *.NET-keretrendszer 4.8-as ASP.NET* **v4.8 lehetőséget**
     - Válasszon operációs rendszert (Windows vagy Linux).
-        - A *.NET-keretrendszer 4,8* esetén a Windows implicit módon lesz kiválasztva.
-    - Válassza az **új App Service terv létrehozása** lehetőséget, adjon meg egy nevet, és válassza ki az **F1 ingyenes** [díjszabási szintjét][app-service-pricing-tier].
-    - Válassza a **kihagyás most** lehetőséget a Application Insights erőforráshoz.
+        - A *.NET-keretrendszer 4.8 esetén* a Windows implicit módon lesz kiválasztva.
+    - Válassza **az Új App Service létrehozása lehetőséget,** adjon meg egy nevet, majd válassza az **F1 ingyenes** [tarifacsomagot.][app-service-pricing-tier]
+    - Válassza **a Kihagyás most lehetőséget** a Application Insights erőforráshoz.
     - Válasszon egy közeli helyet.
 
-1. Ha a közzététel befejeződött, válassza az értesítésben a **Tallózás webhely** lehetőséget, majd a **megnyíló** gombra kattintva válassza a Megnyitás lehetőséget.
+1. Amikor a közzététel befejeződött, válassza a **Webhely tallózása** lehetőséget az értesítésben, majd válassza **a** Megnyitás lehetőséget, amikor a rendszer erre kéri.
 
     ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
-    Megjelenik a lapon megjelenő ASP.NET Core 3,1 webalkalmazás.
+    Az oldalon megjelenik ASP.NET Core 3.1 webalkalmazás.
 
-    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="Visual Studio Code-ASP.NET Core 3,1 webalkalmazás az Azure-ban.":::
+    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="Visual Studio Code – ASP.NET Core 3.1-webalkalmazás használata az Azure-ban.":::
 
-    ### <a name="net-50"></a>[.NET 5,0](#tab/net50)
+    ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
-    Megjelenik a lapon megjelenő ASP.NET Core 5,0 webalkalmazás.
+    Az oldalon megjelenik ASP.NET Core 5.0 webalkalmazás.
 
-    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="Visual Studio Code-ASP.NET Core 5,0 webalkalmazás az Azure-ban.":::
+    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="Visual Studio Code – ASP.NET Core 5.0-webalkalmazás használata az Azure-ban.":::
 
     ### <a name="net-framework-48"></a>[.NET-keretrendszer 4.8](#tab/netframework48)
 
-    Megjelenik az oldalon megjelenő ASP.NET Framework 4,8 webalkalmazás.
+    Az oldalon megjelenik a ASP.NET Framework 4.8 webalkalmazás.
 
-    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net48.png" lightbox="media/quickstart-dotnet/vs-Azure-webapp-net48.png" border="true" alt-text="Visual Studio Code-ASP.NET Framework 4,8 Web App az Azure-ban.":::
+    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net48.png" lightbox="media/quickstart-dotnet/vs-Azure-webapp-net48.png" border="true" alt-text="Visual Studio Code – ASP.NET Framework 4.8 webalkalmazás az Azure-ban.":::
 
     ---
 
@@ -416,43 +416,43 @@ A webalkalmazás üzembe helyezése a Visual Studio Azure Tools bővítmény has
 :::zone target="docs" pivot="development-environment-cli"
 <!-- markdownlint-enable MD044 -->
 
-A kód üzembe helyezése a helyi *MyFirstAzureWebApp* könyvtárban a [`az webapp up`](/cli/azure/webapp#az_webapp_up) parancs használatával:
+Telepítse a kódot a helyi *MyFirstAzureWebApp könyvtárban* az [`az webapp up`](/cli/azure/webapp#az_webapp_up) paranccsal:
 
 ```azurecli
 az webapp up --sku F1 --name <app-name> --os-type <os>
 ```
 
-- Ha a `az` parancs nem ismerhető fel, ellenőrizze, hogy az Azure CLI telepítve van-e az [Előfeltételek](#prerequisites)szakaszban leírtak szerint.
-- Cserélje le a `<app-name>` karaktert az összes Azure-beli egyedi névre (*érvényes karakterek: `a-z` , `0-9` és `-`*). Jó példa a vállalat nevének és az alkalmazás-azonosító kombinációjának használatára.
-- Az `--sku F1` argumentum a webalkalmazást az **ingyenes** [díjszabási][app-service-pricing-tier]szinten hozza létre. Hagyja ki ezt az argumentumot a gyorsabb prémium szint használatához, amely óradíjat eredményez.
-- Cserélje le `<os>` a `linux` vagy a-t `windows` . Az 4,8-es `windows` *ASP.NET-keretrendszer* célzásához kell használnia.
-- Igény szerint megadhatja az argumentumot `--location <location-name>` , ahol az `<location-name>` egy elérhető Azure-régió. Az Azure-fiók számára engedélyezett régiók listáját a parancs futtatásával kérheti le [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) .
+- Ha a parancs nem ismerhető fel, győződjön meg arról, hogy az Azure CLI telepítve van az `az` [Előfeltételek alatt leírtak szerint.](#prerequisites)
+- Cserélje le a helyére a teljes Azure-ban egyedi nevet ( érvényes `<app-name>` *karakterek: `a-z` , `0-9` és `-`*). Jó minta lehet a vállalat nevének és egy alkalmazásazonosítónak a kombinációja.
+- A `--sku F1` argumentum létrehozza a webalkalmazást az Ingyenes [tarifacsomagban.][app-service-pricing-tier]  Ezt az argumentumot kihagyva gyorsabb prémium szintet használhat, amely óránkénti költségeket használ.
+- Cserélje le `<os>` a helyére a vagy `linux` a helyére a `windows` következőt: . A keretrendszer `windows` *4.8-as ASP.NET a* következőt kell használnia: .
+- Igény szerint meg is használhatja a `--location <location-name>` argumentumot, ahol az egy elérhető `<location-name>` Azure-régió. Az Azure-fiókhoz elérhető régiók listáját az parancs futtatásával [`az account list-locations`](/cli/azure/appservice#az_appservice_list_locations) kaphatja meg.
 
-A parancs végrehajtása több percet is igénybe vehet. A futtatása közben üzeneteket biztosít az erőforráscsoport létrehozásához, a App Service tervhez és az üzemeltetési alkalmazáshoz, a naplózás konfigurálásához, majd a ZIP-telepítés elindításához. Ezután egy üzenetet küld az alkalmazás URL-címével:
+A parancs befejezése eltarthat néhány percig. A futtatás közben üzeneteket biztosít az erőforráscsoport, a App Service-csomag és az alkalmazás üzemeltetése, a naplózás konfigurálása, majd a ZIP üzembe helyezése végrehajtásához. Ezután egy üzenetet küld az alkalmazás URL-címével:
 
 ```azurecli
 You can launch the app at http://<app-name>.azurewebsites.net
 ```
 
-Nyisson meg egy webböngészőt, és navigáljon a következő URL-címre:
+Nyisson meg egy webböngészőt, és navigáljon az URL-címre:
 
 ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
-Megjelenik a lapon megjelenő ASP.NET Core 3,1 webalkalmazás.
+Az oldalon megjelenik ASP.NET Core 3.1 webalkalmazás.
 
-:::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="CLI-ASP.NET Core 3,1 webalkalmazás az Azure-ban.":::
+:::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="CLI – ASP.NET Core 3.1-webalkalmazás használata az Azure-ban.":::
 
-### <a name="net-50"></a>[.NET 5,0](#tab/net50)
+### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
-Megjelenik a lapon megjelenő ASP.NET Core 5,0 webalkalmazás.
+Az oldalon megjelenik ASP.NET Core 5.0 webalkalmazás.
 
-:::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="CLI-ASP.NET Core 5,0 webalkalmazás az Azure-ban.":::
+:::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="CLI – ASP.NET Core 5.0-webalkalmazás használata az Azure-ban.":::
 
 ### <a name="net-framework-48"></a>[.NET-keretrendszer 4.8](#tab/netframework48)
 
-Megjelenik az oldalon megjelenő ASP.NET Framework 4,8 webalkalmazás.
+Az oldalon megjelenik a ASP.NET Framework 4.8 webalkalmazás.
 
-:::image type="content" source="media/quickstart-dotnet/Azure-webapp-net48.png" lightbox="media/quickstart-dotnet/Azure-webapp-net48.png" border="true" alt-text="A CLI-ASP.NET keretrendszer 4,8 webalkalmazása az Azure-ban.":::
+:::image type="content" source="media/quickstart-dotnet/Azure-webapp-net48.png" lightbox="media/quickstart-dotnet/Azure-webapp-net48.png" border="true" alt-text="CLI – ASP.NET Framework 4.8 webalkalmazás az Azure-ban.":::
 
 ---
 
@@ -460,12 +460,12 @@ Megjelenik az oldalon megjelenő ASP.NET Framework 4,8 webalkalmazás.
 
 ## <a name="update-the-app-and-redeploy"></a>Az alkalmazás frissítése és ismételt üzembe helyezése
 
-A webalkalmazás frissítéséhez és újbóli üzembe helyezéséhez kövesse az alábbi lépéseket:
+Kövesse az alábbi lépéseket a webalkalmazás frissítéséhez és ismételt üzembe lépéséhez:
 
 :::zone target="docs" pivot="development-environment-vs"
 
-1. **Megoldáskezelő** a projekt alatt nyissa meg az *index. cshtml*.
-1. Cserélje le az első `<div>` elemet a következő kódra:
+1. A **Megoldáskezelő** a projekt alatt nyissa meg az *Index.cshtml et.*
+1. Cserélje le az `<div>` első elemet a következő kódra:
 
     ```razor
     <div class="jumbotron">
@@ -476,28 +476,28 @@ A webalkalmazás frissítéséhez és újbóli üzembe helyezéséhez kövesse a
 
    Mentse a módosításokat.
 
-1. Az Azure-ba történő ismételt üzembe helyezéshez kattintson a jobb gombbal a **MyFirstAzureWebApp** projektre **megoldáskezelő** , és válassza a **Közzététel** lehetőséget.
-1. Az összefoglalás **közzététele** lapon válassza a **Közzététel** lehetőséget.
+1. Az Azure-ban való ismételt üzembe álláshoz kattintson a jobb gombbal a **MyFirstAzureWebApp** projektre a **Megoldáskezelő** közzététel **parancsra.**
+1. A Közzététel **összegzése** lapon válassza a Közzététel **lehetőséget.**
 
     Miután a közzététel befejeződött, a Visual Studio tallózza a webalkalmazás URL-címét.
 
     ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
-    Megjelenik az oldalon megjelenő frissített ASP.NET Core 3,1 webalkalmazás.
+    Megjelenik a frissített ASP.NET Core 3.1-es webalkalmazás.
 
-    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="Visual Studio – frissített ASP.NET Core 3,1 webalkalmazás az Azure-ban.":::
+    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="Visual Studio – Frissített ASP.NET Core 3.1-webalkalmazás az Azure-ban.":::
 
-    ### <a name="net-50"></a>[.NET 5,0](#tab/net50)
+    ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
-    Megjelenik az oldalon megjelenő frissített ASP.NET Core 5,0 webalkalmazás.
+    Megjelenik a frissített ASP.NET Core 5.0-webalkalmazás.
 
-    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="Visual Studio – frissített ASP.NET Core 5,0 webalkalmazás az Azure-ban.":::
+    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="Visual Studio – Frissített ASP.NET Core 5.0-webalkalmazás az Azure-ban.":::
 
     ### <a name="net-framework-48"></a>[.NET-keretrendszer 4.8](#tab/netframework48)
 
-    Ekkor megjelenik a frissített ASP.NET Framework 4,8 webalkalmazás az oldalon.
+    Az oldalon megjelenik a ASP.NET Framework 4.8 frissített webalkalmazása.
 
-    :::image type="content" source="media/quickstart-dotnet/vs-updated-Azure-webapp-net48.png" lightbox="media/quickstart-dotnet/vs-updated-Azure-webapp-net48.png" border="true" alt-text="Visual Studio – frissített ASP.NET Framework 4,8 Web App az Azure-ban.":::
+    :::image type="content" source="media/quickstart-dotnet/vs-updated-Azure-webapp-net48.png" lightbox="media/quickstart-dotnet/vs-updated-Azure-webapp-net48.png" border="true" alt-text="Visual Studio – Frissített ASP.NET Framework 4.8 webalkalmazás az Azure-ban.":::
 
     ---
 
@@ -506,7 +506,7 @@ A webalkalmazás frissítéséhez és újbóli üzembe helyezéséhez kövesse a
 :::zone target="docs" pivot="development-environment-vscode"
 
 1. Nyissa meg az *Index.cshtml-t*.
-1. Cserélje le az első `<div>` elemet a következő kódra:
+1. Cserélje le az `<div>` első elemet a következő kódra:
 
     ```razor
     <div class="jumbotron">
@@ -517,29 +517,29 @@ A webalkalmazás frissítéséhez és újbóli üzembe helyezéséhez kövesse a
 
    Mentse a módosításokat.
 
-1. Nyissa meg a Visual Studio Code **oldali sávot**, és válassza ki az **Azure** ikont a lehetőségeinek kibontásához.
-1. Az **app Service** csomópont alatt bontsa ki az előfizetést, és kattintson a jobb gombbal a **MyFirstAzureWebApp**.
-1. Válassza az **üzembe helyezés a webalkalmazásban.**.. lehetőséget.
-1. Ha a rendszer kéri, válassza a **telepítés** lehetőséget.
-1. Ha a közzététel befejeződött, válassza az értesítésben a **Tallózás webhely** lehetőséget, majd a **megnyíló** gombra kattintva válassza a Megnyitás lehetőséget.
+1. Nyissa meg Visual Studio code **side bar (Kódoldali sáv) menüt,** és válassza az **Azure** ikont a lehetőségek kibontásához.
+1. Az **APP SERVICE csomópont alatt** bontsa ki az előfizetését, és kattintson a jobb gombbal a **MyFirstAzureWebApp elemre.**
+1. Válassza a **Deploy to Web App... (Üzembe helyezés a webalkalmazásban... )** lehetőséget.
+1. Amikor **a rendszer kéri,** válassza az Üzembe helyezés lehetőséget.
+1. Amikor a közzététel befejeződött, válassza a **Webhely tallózása** lehetőséget az értesítésben, majd válassza **a** Megnyitás lehetőséget, amikor a rendszer erre kéri.
 
     ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
-    Megjelenik az oldalon megjelenő frissített ASP.NET Core 3,1 webalkalmazás.
+    Megjelenik a frissített ASP.NET Core 3.1-es webalkalmazás.
 
-    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="Visual Studio Code – frissített ASP.NET Core 3,1 webalkalmazás az Azure-ban.":::
+    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="Visual Studio Code – Frissített ASP.NET Core 3.1-webalkalmazás az Azure-ban.":::
 
-    ### <a name="net-50"></a>[.NET 5,0](#tab/net50)
+    ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
-    Megjelenik az oldalon megjelenő frissített ASP.NET Core 5,0 webalkalmazás.
+    Megjelenik a frissített ASP.NET Core 5.0-webalkalmazás.
 
-    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="Visual Studio Code – frissített ASP.NET Core 5,0 webalkalmazás az Azure-ban.":::
+    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="Visual Studio Code – Frissített ASP.NET Core 5.0-webalkalmazás az Azure-ban.":::
 
     ### <a name="net-framework-48"></a>[.NET-keretrendszer 4.8](#tab/netframework48)
 
-    Ekkor megjelenik a frissített ASP.NET Framework 4,8 webalkalmazás az oldalon.
+    Az oldalon megjelenik a ASP.NET Framework 4.8 frissített webalkalmazása.
 
-    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net48.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net48.png" border="true" alt-text="Visual Studio Code – frissített ASP.NET Framework 4,8 Web App az Azure-ban.":::
+    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net48.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net48.png" border="true" alt-text="Visual Studio Code – Frissített ASP.NET Framework 4.8-webalkalmazás az Azure-ban.":::
 
     ---
 
@@ -549,7 +549,7 @@ A webalkalmazás frissítéséhez és újbóli üzembe helyezéséhez kövesse a
 :::zone target="docs" pivot="development-environment-cli"
 <!-- markdownlint-enable MD044 -->
 
-A helyi könyvtárban nyissa meg az *index. cshtml* fájlt. Cserélje le az első `<div>` elemet:
+A helyi könyvtárban nyissa meg az *Index.cshtml* fájlt. Cserélje le az első `<div>` elemet:
 
 ```razor
 <div class="jumbotron">
@@ -558,19 +558,19 @@ A helyi könyvtárban nyissa meg az *index. cshtml* fájlt. Cserélje le az els�
 </div>
 ```
 
-Mentse a módosításokat, majd telepítse újra az alkalmazást a `az webapp up` parancs használatával:
+Mentse a módosításokat, majd az paranccsal ismét üzembe kell `az webapp up` mentenie az alkalmazást:
 
 ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
-A ASP.NET Core 3,1 platformfüggetlen, a korábbi telepítéstől függően a vagy a értékre vált `<os>` `linux` `windows` .
+ASP.NET Core 3.1 platformfüggetlen, az előző üzemelő példánytól függően a vagy `<os>` a `linux` `windows` helyett.
 
 ```azurecli
 az webapp up --os-type <os>
 ```
 
-### <a name="net-50"></a>[.NET 5,0](#tab/net50)
+### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
-A ASP.NET Core 5,0 platformfüggetlen, a korábbi telepítéstől függően a vagy a értékre vált `<os>` `linux` `windows` .
+ASP.NET Core 5.0 platformfüggetlen, az előző üzemelő példánytól függően a vagy `<os>` a `linux` `windows` helyett.
 
 ```azurecli
 az webapp up --os-type <os>
@@ -578,38 +578,38 @@ az webapp up --os-type <os>
 
 ### <a name="net-framework-48"></a>[.NET-keretrendszer 4.8](#tab/netframework48)
 
-A ASP.NET Framework 4,8 keretrendszer-függőségekkel rendelkezik, és Windows rendszeren kell futnia.
+ASP.NET Framework 4.8 keretrendszer függőségekkel rendelkezik, és Windows rendszeren kell üzemeltetni.
 
 ```azurecli
 az webapp up --os-type windows
 ```
 
 > [!TIP]
-> Ha a .NET-alkalmazások Linux rendszeren való üzemeltetését érdekli, érdemes lehet áttelepíteni a [ASP.NET-keretrendszert a ASP.net Corera](/aspnet/core/migration/proper-to-2x).
+> Ha érdekli a .NET-alkalmazások Linuxon való üzemeltetése, fontolja meg a ASP.NET Frameworkről a [Core-ra ASP.NET áttelepítést.](/aspnet/core/migration/proper-to-2x)
 
 ---
 
-Ez a parancs azokat az értékeket használja, amelyek helyileg vannak gyorsítótárazva a *. Azure/config* fájlban, beleértve az alkalmazás nevét, az erőforráscsoportot és a app Service tervet.
+Ez a parancs olyan értékeket használ, amelyek helyileg vannak gyorsítótárazva az *.azure/config* fájlban, beleértve az alkalmazás nevét, az erőforráscsoportot és a App Service tervet.
 
-Az üzembe helyezés befejezése után váltson vissza a böngészőablakban megnyíló böngészőablakra, és kattintson a frissítés **gombra** .
+Az üzembe helyezés befejezése után váltson vissza az  alkalmazás tallózása lépésben megnyitott böngészőablakra, és kattintson a frissítés gombra.
 
 ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
-Megjelenik az oldalon megjelenő frissített ASP.NET Core 3,1 webalkalmazás.
+Az oldalon megjelenik ASP.NET Core 3.1-es webalkalmazás frissített frissítése.
 
-:::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="CLI – frissített ASP.NET Core 3,1 webalkalmazás az Azure-ban.":::
+:::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="CLI – Frissített ASP.NET Core 3.1-webalkalmazás az Azure-ban.":::
 
-### <a name="net-50"></a>[.NET 5,0](#tab/net50)
+### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
-Megjelenik az oldalon megjelenő frissített ASP.NET Core 5,0 webalkalmazás.
+Az oldalon megjelenik ASP.NET Core 5.0-webalkalmazás frissített frissítése.
 
-:::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="CLI – frissített ASP.NET Core 5,0 webalkalmazás az Azure-ban.":::
+:::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="CLI – Frissített ASP.NET Core 5.0-webalkalmazás az Azure-ban.":::
 
 ### <a name="net-framework-48"></a>[.NET-keretrendszer 4.8](#tab/netframework48)
 
-Ekkor megjelenik a frissített ASP.NET Framework 4,8 webalkalmazás az oldalon.
+Az oldalon megjelenik a ASP.NET Framework 4.8 frissített webalkalmazása.
 
-:::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net48.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net48.png" border="true" alt-text="CLI – frissített ASP.NET Framework 4,8 Web App az Azure-ban.":::
+:::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net48.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net48.png" border="true" alt-text="CLI – Frissítve ASP.NET Framework 4.8 webalkalmazás az Azure-ban.":::
 
 ---
 
@@ -617,17 +617,17 @@ Ekkor megjelenik a frissített ASP.NET Framework 4,8 webalkalmazás az oldalon.
 
 ## <a name="manage-the-azure-app"></a>Az Azure-alkalmazás kezelése
 
-A webalkalmazás kezeléséhez nyissa meg a [Azure Portal](https://portal.azure.com), és keresse meg, majd válassza a **app Services** lehetőséget.
+A webalkalmazás kezeléséhez keresse meg a [Azure Portal,](https://portal.azure.com)majd keresse meg és válassza a **App Services.**
 
-:::image type="content" source="media/quickstart-dotnetcore/app-services.png" alt-text="Azure Portal – válassza a App Services lehetőséget.":::
+:::image type="content" source="media/quickstart-dotnetcore/app-services.png" alt-text="Azure Portal – Válassza App Services lehetőséget.":::
 
-A **app Services** lapon válassza ki a webalkalmazás nevét.
+A **App Services** válassza ki a webalkalmazás nevét.
 
-:::image type="content" source="./media/quickstart-dotnetcore/select-app-service.png" alt-text="Azure Portal – App Services oldalon egy példaként kiválasztott webalkalmazást.":::
+:::image type="content" source="./media/quickstart-dotnetcore/select-app-service.png" alt-text="Azure Portal – App Services egy kiválasztott példa webalkalmazással.":::
 
-A webalkalmazás **áttekintő** lapja olyan alapszintű felügyeleti lehetőségeket tartalmaz, mint a Tallózás, Leállítás, indítás, újraindítás és törlés. A bal oldali menü további lapokat biztosít az alkalmazás konfigurálásához.
+A **webalkalmazás** Áttekintés lapja olyan alapszintű felügyeleti lehetőségeket tartalmaz, mint a tallózás, leállítás, indítás, újraindítás és törlés. A bal oldali menü további oldalakat biztosít az alkalmazás konfigurálásához.
 
-:::image type="content" source="media/quickstart-dotnetcore/web-app-overview-page.png" alt-text="Azure Portal – App Service – Áttekintés lap.":::
+:::image type="content" source="media/quickstart-dotnetcore/web-app-overview-page.png" alt-text="Azure Portal – App Service áttekintési oldal.":::
 
 <!--
 ## Clean up resources - H2 added from the next three includes
@@ -648,37 +648,37 @@ A webalkalmazás **áttekintő** lapja olyan alapszintű felügyeleti lehetősé
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott és telepített egy ASP.NET-webalkalmazást, hogy Azure App Service.
+Ebben a rövid útmutatóban létrehozott és üzembe helyezett egy ASP.NET webalkalmazást a Azure App Service.
 
 ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
-A következő cikkből megtudhatja, hogyan hozhat létre .NET Core-alkalmazást, és hogyan csatlakoztatható SQL Databasehoz:
+A következő cikkből megtudhatja, hogyan hozhat létre .NET Core-alkalmazást, és hogyan csatlakoztathatja azt egy SQL Database:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: ASP.NET Core alkalmazás az SQL Database-sel](tutorial-dotnetcore-sqldb-app.md)
+> [Oktatóanyag: ASP.NET Core-alkalmazás használata SQL Database-adatbázissal](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core 3,1-alkalmazás konfigurálása](configure-language-dotnetcore.md)
+> [A ASP.NET Core 3.1-alkalmazás konfigurálása](configure-language-dotnetcore.md)
 
-### <a name="net-50"></a>[.NET 5,0](#tab/net50)
+### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
-A következő cikkből megtudhatja, hogyan hozhat létre .NET Core-alkalmazást, és hogyan csatlakoztatható SQL Databasehoz:
-
-> [!div class="nextstepaction"]
-> [Oktatóanyag: ASP.NET Core alkalmazás az SQL Database-sel](tutorial-dotnetcore-sqldb-app.md)
+A következő cikkből megtudhatja, hogyan hozhat létre .NET Core-alkalmazást, és hogyan csatlakoztathatja azt egy SQL Database:
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core 5,0-alkalmazás konfigurálása](configure-language-dotnetcore.md)
+> [Oktatóanyag: ASP.NET Core-alkalmazás használata SQL Database-adatbázissal](tutorial-dotnetcore-sqldb-app.md)
+
+> [!div class="nextstepaction"]
+> [A ASP.NET Core 5.0-alkalmazás konfigurálása](configure-language-dotnetcore.md)
 
 ### <a name="net-framework-48"></a>[.NET-keretrendszer 4.8](#tab/netframework48)
 
-A következő cikkből megtudhatja, hogyan hozhat létre .NET-keretrendszerbeli alkalmazást, és hogyan csatlakoztatható SQL Databasehoz:
+A következő cikkből megtudhatja, hogyan hozhat létre .NET-keretrendszer alkalmazást, és hogyan csatlakoztathatja azt egy SQL Database:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: ASP.NET-alkalmazás és SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)
+> [Oktatóanyag: ASP.NET használata SQL Database-adatbázissal](app-service-web-tutorial-dotnet-sqldatabase.md)
 
 > [!div class="nextstepaction"]
-> [ASP.NET-keretrendszer alkalmazás konfigurálása](configure-language-dotnet-framework.md)
+> [A ASP.NET Framework alkalmazás konfigurálása](configure-language-dotnet-framework.md)
 
 ---
 
