@@ -1,42 +1,41 @@
 ---
-title: A Storage-fiók kulcsainak kezelése a Azure Key Vault és az Azure CLI használatával
-description: A Storage-fiókok kulcsai zökkenőmentes integrációt biztosítanak a Azure Key Vault és a kulcs-alapú Azure Storage-fiókhoz való hozzáférés között.
+title: Tárfiókkulcsok kezelése a Azure Key Vault és az Azure CLI használatával
+description: A tárfiókkulcsok zökkenőmentes integrációt biztosítanak Azure Key Vault azure-tárfiókhoz való hozzáférés és kulcsalapú hozzáférés között.
 ms.topic: tutorial
 services: key-vault
 ms.service: key-vault
 ms.subservice: secrets
 author: msmbaldwin
 ms.author: mbaldwin
-manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e89716d0560cbf7960cb7bde67156c8df0045a31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 871c9f83d7bdc3f4c9e2f3b53c0b855483995152
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499220"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748609"
 ---
-# <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>A Storage-fiók kulcsainak kezelése a Key Vault és az Azure CLI használatával
+# <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Tárfiókkulcsok kezelése a Key Vault és az Azure CLI használatával
 > [!IMPORTANT]
-> Javasoljuk, hogy az Azure Storage-integrációt Azure Active Directory (Azure AD), a Microsoft felhőalapú identitás-és hozzáférés-kezelési szolgáltatásával használja. Az Azure AD-integráció az [Azure-blobok és-várólisták](../../storage/common/storage-auth-aad.md)számára érhető el, és OAuth2 token-alapú hozzáférést biztosít az Azure Storage-hoz (akárcsak Azure Key Vault). Az Azure AD lehetővé teszi az ügyfélalkalmazás hitelesítését alkalmazás vagy felhasználói identitás használatával a Storage-fiók hitelesítő adatai helyett. Azure AD-beli [felügyelt identitást](../../active-directory/managed-identities-azure-resources/index.yml) használhat az Azure-ban való futtatáskor. A felügyelt identitások nem szükségesek az ügyfél-hitelesítéshez és a hitelesítő adatok tárolásához a vagy az alkalmazásban. Az alábbi megoldás csak akkor használható, ha az Azure AD-hitelesítés nem lehetséges.
+> Javasoljuk, hogy az Azure Storage-integrációt Azure Active Directory (Azure AD), a Microsoft felhőalapú identitás- és hozzáférés-kezelési szolgáltatásával. Az Azure AD-integráció elérhető az [Azure-blobok](../../storage/common/storage-auth-aad.md)és -üzenetsorok számára, és OAuth2 jogkivonat-alapú hozzáférést biztosít az Azure Storage-hoz (a Azure Key Vault). Az Azure AD lehetővé teszi az ügyfélalkalmazás hitelesítését egy alkalmazás vagy felhasználói identitás használatával a tárfiók hitelesítő adatai helyett. Azure [AD-beli](../../active-directory/managed-identities-azure-resources/index.yml) felügyelt identitást az Azure-on való futtatáskor használhat. A felügyelt identitások nem igényelnek ügyfél-hitelesítést, és nem kell az alkalmazásban vagy az alkalmazásban tárolni a hitelesítő adatokat. Az alábbi megoldást csak akkor használja, ha az Azure AD-hitelesítés nem lehetséges.
 
-Az Azure Storage-fiók a fiók nevét és kulcsát tartalmazó hitelesítő adatokat használ. A kulcs automatikusan jön létre, és jelszóként szolgál, nem pedig titkosítási kulcsként. Key Vault kezeli a Storage-fiókok kulcsait a Storage-fiókba való rendszeres újragenerálással, és megosztott hozzáférési aláírási jogkivonatokat biztosít a Storage-fiók erőforrásaihoz delegált hozzáféréshez.
+Az Azure Storage-fiók hitelesítő adatokat használ, amelyek egy fióknevet és egy kulcsot tartalmaznak. A rendszer automatikusan generálja a kulcsot, és nem titkosítási kulcsként, hanem jelszóként szolgál. Key Vault kezeli a tárfiókkulcsokat azáltal, hogy rendszeres időközönként újra létrehozza őket a tárfiókban, és közös hozzáférésű jogosultsági jogkivonatokat biztosít a tárfiókban található erőforrásokhoz való delegált hozzáféréshez.
 
-A Key Vault felügyelt Storage-fiók kulcsa funkció használatával listázhatja (szinkronizálhatja) a kulcsokat egy Azure Storage-fiókkal, és rendszeresen újragenerálhatja (elforgathatja) a kulcsokat. A kulcsokat a Storage-fiókok és a klasszikus Storage-fiókok esetében is kezelheti.
+A felügyelt tárfiók Key Vault funkcióval listálhatja (szinkronizálhatja) a kulcsokat egy Azure Storage-fiókkal, és rendszeres időközönként újragenerálhatja (elforgathatja) a kulcsokat. A tárfiókok és a klasszikus tárfiókok kulcsait is kezelheti.
 
-A felügyelt Storage-fiók kulcsa funkció használata esetén vegye figyelembe a következő szempontokat:
+A felügyelt tárfiókkulcs funkció használata során vegye figyelembe a következő pontokat:
 
-- A rendszer soha nem adja vissza a kulcs értékeit a hívónak adott válaszként.
-- Csak Key Vault kell kezelnie a Storage-fiók kulcsait. Ne kezelje a kulcsokat, és ne zavarja a Key Vault folyamatokat.
-- Csak egyetlen Key Vault objektumnak kell kezelnie a Storage-fiók kulcsait. Ne engedélyezze a kulcskezelő szolgáltatás több objektumból való felügyeletét.
-- Kulcsok újragenerálása csak Key Vault használatával. Ne végezze el manuálisan a Storage-fiók kulcsainak újragenerálása.
+- A hívónak adott válaszban a kulcsértékek soha nem térnek vissza.
+- Csak Key Vault kell kezelnie a tárfiók kulcsait. Ne kezelje saját maga a kulcsokat, és ne zavarja a Key Vault folyamatait.
+- Csak egyetlen Key Vault kell kezelnie a tárfiók kulcsait. Ne engedélyezze a kulcskezelést több objektumból.
+- Kulcsok újragenerálása csak Key Vault használatával. Ne manuálisan újragenerálja a tárfiók kulcsait.
 
 ## <a name="service-principal-application-id"></a>Alkalmazáspéldány – Alkalmazásazonosító
 
-Az Azure AD-bérlő minden regisztrált alkalmazást biztosít egy [egyszerű szolgáltatással](../../active-directory/develop/developer-glossary.md#service-principal-object). Az egyszerű szolgáltatás az alkalmazás-AZONOSÍTÓként szolgál, amelyet az engedélyezési beállítások az Azure RBAC-n keresztül való hozzáféréshez használhatnak más Azure-erőforrásokhoz.
+Az Azure AD-bérlő minden regisztrált alkalmazást biztosít egy [szolgáltatásnévvel.](../../active-directory/develop/developer-glossary.md#service-principal-object) A szolgáltatásnév az alkalmazásazonosítóként szolgál, amelyet a rendszer az engedélyezés beállításakor használ más Azure-erőforrások Azure RBAC-n keresztüli eléréséhez.
 
-A Key Vault egy olyan Microsoft-alkalmazás, amely az összes Azure AD-bérlőben előre regisztrálva van. A Key Vault minden Azure-felhőben ugyanazzal az alkalmazás-AZONOSÍTÓval van regisztrálva.
+Key Vault egy Olyan Microsoft-alkalmazás, amely minden Azure AD-bérlőben előre regisztrálva van. Key Vault azonos alkalmazásazonosító alatt van regisztrálva az egyes Azure-felhőkben.
 
 | Bérlők | Felhőbeli | Alkalmazásazonosító |
 | --- | --- | --- |
@@ -46,36 +45,36 @@ A Key Vault egy olyan Microsoft-alkalmazás, amely az összes Azure AD-bérlőbe
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az útmutató elvégzéséhez először a következőket kell tennie:
+Az útmutató befejezéséhez először a következőket kell végrehajtania:
 
-- [Telepítse az Azure CLI](/cli/azure/install-azure-cli)-t.
+- [Telepítse az Azure CLI-t.](/cli/azure/install-azure-cli)
 - [Kulcstartó létrehozása](quick-create-cli.md)
-- [Hozzon létre egy Azure Storage-fiókot](../../storage/common/storage-account-create.md?tabs=azure-cli). A Storage-fiók nevének csak kisbetűket és számokat kell használnia. A név hosszának 3 és 24 karakter közöttinek kell lennie.
+- [Hozzon létre egy Azure Storage-fiókot.](../../storage/common/storage-account-create.md?tabs=azure-cli) A tárfiók neve csak kisbetűket és számokat használhat. A név hossza 3–24 karakter hosszúságú lehet.
       
-## <a name="manage-storage-account-keys"></a>A Storage-fiók kulcsainak kezelése
+## <a name="manage-storage-account-keys"></a>Tárfiókkulcsok kezelése
 
 ### <a name="connect-to-your-azure-account"></a>Csatlakozás az Azure-fiókhoz
 
-Hitelesítse Azure CLI-munkamenetét az az [login](/powershell/module/az.accounts/connect-azaccount) parancsok használatával.
+Hitelesítse az Azure CLI-munkamenetet [az az login](/powershell/module/az.accounts/connect-azaccount) parancsokkal.
 
 ```azurecli-interactive
 az login
 ``` 
 
-### <a name="give-key-vault-access-to-your-storage-account"></a>Key Vault hozzáférés biztosítása a Storage-fiókhoz
+### <a name="give-key-vault-access-to-your-storage-account"></a>Hozzáférés Key Vault a tárfiókhoz
 
-A Storage-fiók eléréséhez használja az Azure CLI az [role hozzárendelés Create](/cli/azure/role/assignment) paranccsal Key Vault. Adja meg a parancsot a következő paraméter-értékekkel:
+Az Azure CLI [az role assignment create parancsának](/cli/azure/role/assignment) használatával hozzáférést Key Vault a tárfiókhoz. Adja meg a parancsot a következő paraméterértékekkel:
 
-- `--role`: Adja át a "Storage-fiók kulcsát kezelő szolgáltatás szerepkör" Azure-szerepkört. Ez a szerepkör korlátozza a hozzáférési hatókört a Storage-fiókra. Klasszikus Storage-fiók esetén a "klasszikus Storage-fiók kulcs-kezelője" szerepkört adja át helyette.
-- `--assignee`: Adja át a " https://vault.azure.net " értéket, amely az Azure nyilvános felhőben Key Vault URL-címe. (Az Azure kormányzati-felhőben használja a "--asingee-Object-id" helyet, lásd: [szolgáltatásnév alkalmazás azonosítója](#service-principal-application-id).)
-- `--scope`: Adja meg a Storage-fiók erőforrás-AZONOSÍTÓját, amely az űrlapon található `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` . Az előfizetés AZONOSÍTÓjának megkereséséhez használja az Azure CLI az [Account List](/cli/azure/account?#az-account-list) parancsot; a Storage-fiók neve és a Storage-fiók erőforráscsoport megkereséséhez használja az Azure CLI az [Storage Account List](/cli/azure/storage/account?#az-storage-account-list) parancsot.
+- `--role`: Adja át a "Tárfiókkulcs-kezelői szolgáltatási szerepkör" Azure-szerepkört. Ez a szerepkör korlátozza a tárfiók hozzáférési hatókörét. Klasszikus tárfiókok ehelyett a "Klasszikus tárfiókkulcs-kezelői szolgáltatásszerepkével" ehelyett a "Klasszikus tárfiókkulcs-kezelői szerepkör" szerepkört adja át.
+- `--assignee`: Adja meg a " " értéket, amely a nyilvános https://vault.azure.net Azure Key Vault ban található virtuális szolgáltatások URL-címe. (Az Azure Goverment-felhőhöz használja inkább az --asingee-object-id azonosítót, lásd: Egyszerű szolgáltatás [alkalmazásazonosítója.)](#service-principal-application-id)
+- `--scope`: Adja meg a tárfiók erőforrás-azonosítóját, amely a következő formában van: `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` . Az előfizetés-azonosító megkereséhez használja az Azure CLI [az account list parancsot;](/cli/azure/account?#az-account-list) A tárfiók nevét és a tárfiók erőforráscsoportját az Azure CLI [az storage account list paranccsal találhatja](/cli/azure/storage/account?#az-storage-account-list) meg.
 
 ```azurecli-interactive
 az role assignment create --role "Storage Account Key Operator Service Role" --assignee 'https://vault.azure.net' --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
  ```
-### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Felhasználói fiók engedélyezése a felügyelt Storage-fiókok számára
+### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Felhasználói fiók engedélyének adjuk a felügyelt tárfiókok számára
 
-Az Azure CLI az kulcstartó [-set-Policy](/cli/azure/keyvault?#az-keyvault-set-policy) parancsmag használatával frissítse a Key Vault hozzáférési szabályzatot, és adja meg a felhasználói fiókhoz tartozó Storage-fiók engedélyeit.
+Az Azure CLI [az keyvault-set-policy](/cli/azure/keyvault?#az-keyvault-set-policy) parancsmaggal frissítheti az Key Vault hozzáférési szabályzatot, és tárfiók-engedélyeket adhat a felhasználói fiókjának.
 
 ```azurecli-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
@@ -83,33 +82,33 @@ Az Azure CLI az kulcstartó [-set-Policy](/cli/azure/keyvault?#az-keyvault-set-p
 az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage-permissions get list delete set update regeneratekey getsas listsas deletesas setsas recover backup restore purge
 ```
 
-Vegye figyelembe, hogy a Storage-fiókokra vonatkozó engedélyek nem érhetők el a Azure Portal "hozzáférési szabályzatok" lapján.
-### <a name="create-a-key-vault-managed-storage-account"></a>Key Vault felügyelt Storage-fiók létrehozása
+Vegye figyelembe, hogy a tárfiókok engedélyei nem érhetők el a tárfiók "Hozzáférési szabályzatok" lapján a Azure Portal.
+### <a name="create-a-key-vault-managed-storage-account"></a>Felügyelt Key Vault tárfiók létrehozása
 
- Hozzon létre egy Key Vault felügyelt Storage-fiókot az Azure CLI az kulcstartó [Storage](/cli/azure/keyvault/storage?#az-keyvault-storage-add) paranccsal. Állítsa be a 90 napos újragenerálási időszakot. Az elforgatás ideje alatt a kulcstartó újra létrehozza a nem aktív kulcsot, majd az újonnan létrehozott kulcsot aktívként állítja be. A rendszer csak az egyik kulcsot használja az SAS-tokenek egyidejű kiküldésére, ez az aktív kulcs. Adja meg a parancsot a következő paraméter-értékekkel:
+ Hozzon létre Key Vault felügyelt tárfiókot az Azure CLI [az keyvault storage parancsával.](/cli/azure/keyvault/storage?#az-keyvault-storage-add) Állítsa be a 90 napos újratétes időszakot. A forgás ideje alatt a KeyVault újra létrehozza a nem aktív kulcsot, majd aktívként állítja be az újonnan létrehozott kulcsot. Az SAS-jogkivonatok egyszerre csak az egyik kulcs használatával kiállítására használható, ez az aktív kulcs. Adja meg a parancsot a következő paraméterértékekkel:
 
-- `--vault-name`: Adja át a kulcstartó nevét. A Key Vault nevének megkereséséhez használja az Azure CLI az kulcstartó [List](/cli/azure/keyvault?#az-keyvault-list) parancsot.
-- `-n`: Adja meg a Storage-fiók nevét. A Storage-fiók nevének megkereséséhez használja az Azure CLI az [Storage Account List](/cli/azure/storage/account?#az-storage-account-list) parancsot.
-- `--resource-id`: Adja meg a Storage-fiók erőforrás-AZONOSÍTÓját, amely az űrlapon található `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` . Az előfizetés AZONOSÍTÓjának megkereséséhez használja az Azure CLI az [Account List](/cli/azure/account?#az-account-list) parancsot; a Storage-fiók neve és a Storage-fiók erőforráscsoport megkereséséhez használja az Azure CLI az [Storage Account List](/cli/azure/storage/account?#az-storage-account-list) parancsot.
+- `--vault-name`: Adja meg a kulcstartó nevét. A kulcstartó nevét az Azure CLI [az keyvault list paranccsal találhatja](/cli/azure/keyvault?#az-keyvault-list) meg.
+- `-n`: Adja meg a tárfiók nevét. A tárfiók nevét az Azure CLI [az storage account list paranccsal találhatja](/cli/azure/storage/account?#az-storage-account-list) meg.
+- `--resource-id`: Adja meg a tárfiók erőforrás-azonosítóját, amely a következő formában van: `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` . Az előfizetés-azonosító megkereséhez használja az Azure CLI [az account list parancsot;](/cli/azure/account?#az-account-list) A tárfiók nevét és a tárfiók erőforráscsoportját az Azure CLI [az storage account list paranccsal találhatja](/cli/azure/storage/account?#az-storage-account-list) meg.
    
  ```azurecli-interactive
 az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountName> --active-key-name key1 --auto-regenerate-key --regeneration-period P90D --resource-id "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
  ```
 
-## <a name="shared-access-signature-tokens"></a>Közös hozzáférésű aláírási jogkivonatok
+## <a name="shared-access-signature-tokens"></a>Közös hozzáférésű jogosultságkivonatok
 
-Azt is megteheti, Key Vault hogy közös hozzáférésű aláírási jogkivonatokat állítson elő. A közös hozzáférésű aláírások delegált hozzáférést biztosítanak a Storage-fiók erőforrásaihoz. A fiók kulcsainak megosztása nélkül megadhatja az ügyfeleknek a Storage-fiók erőforrásaihoz való hozzáférést. A közös hozzáférésű aláírás biztonságos módot biztosít a tárolási erőforrások megosztására a fiók kulcsainak veszélyeztetése nélkül.
+Arra is megkérheti a Key Vault, hogy hozzon létre közös hozzáférésű jogosultsági jogkivonatokat. A közös hozzáférésű jogosultság aláírása delegált hozzáférést biztosít a tárfiók erőforrásaihoz. A fiókkulcsok megosztása nélkül adhat hozzáférést az ügyfeleknek a tárfiókban található erőforrásokhoz. A közös hozzáférésű jogosultságok lehetővé teszi a tárerőforrások biztonságos megosztását a fiókkulcsok veszélyeztetése nélkül.
 
-Az ebben a szakaszban szereplő parancsok a következő műveleteket hajtják végre:
+Az ebben a szakaszban található parancsok a következő műveleteket ják végre:
 
-- Fiók közös hozzáférésű aláírás-definíciójának beállítása `<YourSASDefinitionName>` . A definíció egy Key Vault felügyelt Storage-fiókban van beállítva a `<YourStorageAccountName>` kulcstartóban `<YourKeyVaultName>` .
-- Hozzon létre egy fiók közös hozzáférési aláírási tokent a blob-, fájl-, tábla-és üzenetsor-szolgáltatásokhoz. A jogkivonat az erőforrástípusok szolgáltatás, a tároló és az objektum számára lett létrehozva. A jogkivonat minden engedélyekkel, HTTPS-kapcsolattal és a megadott kezdési és befejezési dátumokkal jön létre.
-- Key Vault felügyelt tároló közös hozzáférésű aláírás-definíciójának beállítása a tárban. A definíció a megosztott hozzáférés-aláírási jogkivonat sablonjának URI-JÁT hozza létre. A definíció a közös hozzáférési aláírás típusát adja `account` meg, és N napig érvényes.
-- Ellenőrizze, hogy a közös hozzáférésű aláírás mentve lett-e a Key vaultban titkos kulcsként.
+- Állítsa be a fiók közös hozzáférésű jogosultsága `<YourSASDefinitionName>` definícióját. A definíció egy felügyelt Key Vault van beállítva a `<YourStorageAccountName>` `<YourKeyVaultName>` kulcstartóban.
+- Hozzon létre egy közös hozzáférésű jogosultsági jogkivonatot a blob-, fájl-, tábla- és üzenetsorszolgáltatásokhoz. A jogkivonat a Service, Container és Object erőforrástípusokhoz jön létre. A jogkivonat létrehozása az összes engedéllyel történik https-protokollon keresztül, valamint a megadott kezdési és befejezési dátumokkal.
+- Állítson be Key Vault tároló közös hozzáférésű jogosultságának definícióját a tárolóban. A definíció tartalmazza a létrehozott közös hozzáférésű jogosultságkivonat sablon URI-ját. A definíció közös hozzáférésű jogosultságkódot tartalmaz, `account` és N napig érvényes.
+- Ellenőrizze, hogy a közös hozzáférésű jogosultság jogosultsága titkos kulcsként lett-e mentve a kulcstartóban.
 
-### <a name="create-a-shared-access-signature-token"></a>Közös hozzáférésű aláírási jogkivonat létrehozása
+### <a name="create-a-shared-access-signature-token"></a>Közös hozzáférésű jogosultság jogosultsági jogkivonat létrehozása
 
-Hozzon létre egy közös hozzáférésű aláírás-definíciót az Azure CLI az [Storage Account regenerált-sas](/cli/azure/storage/account?#az-storage-account-generate-sas) parancs használatával. Ehhez a művelethez a és az engedélyek szükségesek `storage` `setsas` .
+Hozzon létre egy közös hozzáférésű jogosultságjel-definíciót az Azure CLI [az storage account generate-sas paranccsal.](/cli/azure/storage/account?#az-storage-account-generate-sas) Ehhez a művelethez a `storage` és `setsas` a engedélyre van szükség.
 
 
 ```azurecli-interactive
@@ -121,21 +120,21 @@ A művelet sikeres futtatása után másolja ki a kimenetet.
 "se=2020-01-01&sp=***"
 ```
 
-Ez a kimenet a `--template-uri` következő lépésben a paraméternek lesz átadva.
+Ez a kimenet lesz átadva a `--template-uri` paraméternek a következő lépésben.
 
-### <a name="generate-a-shared-access-signature-definition"></a>Közös hozzáférésű aláírás definíciójának létrehozása
+### <a name="generate-a-shared-access-signature-definition"></a>Közös hozzáférésű jogosultság jogosultsága definíciójának létrehozása
 
-A közös hozzáférésű aláírás definíciójának létrehozásához használja az Azure CLI az Key [Vault Storage sas-definition Create](/cli/azure/keyvault/storage/sas-definition?#az-keyvault-storage-sas-definition-create) parancsot, és adja át az előző lépés eredményét a `--template-uri` paraméternek.  Megadhatja az Ön által választott nevet a `-n` paraméternek.
+Használja az Azure CLI [az keyvault storage sas-definition create](/cli/azure/keyvault/storage/sas-definition?#az-keyvault-storage-sas-definition-create) parancsot, és az előző lépés kimenetét átadva a paraméternek egy közös hozzáférésű jogosultsága `--template-uri` definíciójának létrehozásához.  A paraméterhez meg is használhatja a választott `-n` nevet.
 
 ```azurecli-interactive
 az keyvault storage sas-definition create --vault-name <YourKeyVaultName> --account-name <YourStorageAccountName> -n <YourSASDefinitionName> --validity-period P2D --sas-type account --template-uri <OutputOfSasTokenCreationStep>
 ```
 
-### <a name="verify-the-shared-access-signature-definition"></a>A közös hozzáférésű aláírás definíciójának ellenőrzése
+### <a name="verify-the-shared-access-signature-definition"></a>A közös hozzáférésű jogosultság jogosultságának definíciójának ellenőrzése
 
-Ellenőrizheti, hogy a közös hozzáférésű aláírás definíciója a kulcstartóban van-e tárolva az Azure CLI az Key [Vault Storage sas-definition show](/cli/azure/keyvault/storage/sas-definition?#az_keyvault_storage_sas_definition_show) parancs használatával.
+Az Azure CLI [az keyvault storage sas-definition show](/cli/azure/keyvault/storage/sas-definition?#az_keyvault_storage_sas_definition_show) parancsával ellenőrizheti, hogy a közös hozzáférésű jogosultság jogosultságának definíciója tárolva lett-e a kulcstartóban.
 
-Most már használhatja az az kulcstartó [Storage sas-definition show](/cli/azure/keyvault/storage/sas-definition?#az_keyvault_storage_sas_definition_show) parancsot és a `id` tulajdonságot a titkos kód tartalmának megtekintéséhez.
+Most már használhatja [az az keyvault storage sas-definition show parancsot](/cli/azure/keyvault/storage/sas-definition?#az_keyvault_storage_sas_definition_show) és a tulajdonságot a titkos kulcs `id` tartalmának megtekintéséhez.
 
 ```azurecli-interactive
 az keyvault storage sas-definition show --id https://<YourKeyVaultName>.vault.azure.net/storage/<YourStorageAccountName>/sas/<YourSASDefinitionName>
@@ -143,6 +142,6 @@ az keyvault storage sas-definition show --id https://<YourKeyVaultName>.vault.az
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [kulcsokról, a titkokról és a tanúsítványokról](/rest/api/keyvault/).
-- Tekintse át a [Azure Key Vault csapat blogján](/archive/blogs/kv/)található cikkeket.
-- Lásd az az kulcstartó [Storage](/cli/azure/keyvault/storage) Reference dokumentációját.
+- További információ a [kulcsokról, titkos kulcsokról és tanúsítványokról.](/rest/api/keyvault/)
+- Tekintse át a Azure Key Vault [blog cikkeit.](/archive/blogs/kv/)
+- Lásd az [az keyvault storage referenciadokumentációt.](/cli/azure/keyvault/storage)

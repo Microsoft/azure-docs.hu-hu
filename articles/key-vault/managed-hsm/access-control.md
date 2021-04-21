@@ -1,6 +1,6 @@
 ---
-title: Azure Managed HSM hozzáférés-vezérlés
-description: Az Azure Managed HSM és kulcsok hozzáférési engedélyeinek kezelése. A felügyelt HSM hitelesítési és engedélyezési modelljét, valamint a HSM védelmét ismerteti.
+title: Az Azure Managed HSM hozzáférés-vezérlése
+description: Az Azure Managed HSM és a kulcsok hozzáférési engedélyeinek kezelése. Bemutatja a Managed HSM hitelesítési és engedélyezési modelljét, valamint a HSM-ek biztonságát.
 services: key-vault
 author: amitbapat
 tags: azure-resource-manager
@@ -9,84 +9,85 @@ ms.subservice: managed-hsm
 ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: ambapat
-ms.openlocfilehash: 0c0a0c5f62f92aaf195e207dfd505ffb017d924e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bea1ccf0777c6325bc86c15e0f88304c465d89c9
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653900"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750283"
 ---
 # <a name="managed-hsm-access-control"></a>A Managed HSM hozzáférés-vezérlése
 
 > [!NOTE]
-> Key Vault **erőforrás-szolgáltató** két erőforrástípust támogat: tárolókat és **felügyelt HSM**. A jelen cikkben leírt hozzáférés-vezérlés csak a **felügyelt HSM** vonatkozik. A felügyelt HSM hozzáférés-vezérlésével kapcsolatos további tudnivalókért lásd: [hozzáférés biztosítása Key Vault kulcsokhoz, tanúsítványokhoz és titkokhoz egy Azure szerepköralapú hozzáférés-vezérléssel](../general/rbac-guide.md).
+> Key Vault erőforrás-szolgáltató két erőforrástípust **támogat:** tárolókat és felügyelt **HSM-eket.** A jelen cikkben ismertetett hozzáférés-vezérlés csak a felügyelt **HSM-ekre vonatkozik.** További információ a felügyelt HSM hozzáférés-vezérlésről: Hozzáférés Key Vault kulcsokhoz, tanúsítványokhoz és titkos kulcsokhoz egy [Azure szerepköralapú hozzáférés-vezérléssel.](../general/rbac-guide.md)
 
-Azure Key Vault felügyelt HSM egy olyan felhőalapú szolgáltatás, amely védelmet biztosít a titkosítási kulcsoknak. Mivel ezek az adatok bizalmasak és üzleti szempontból kritikus fontosságúak, biztonságos hozzáférést kell biztosítani a felügyelt HSM ahhoz, hogy csak a jogosult alkalmazások és felhasználók férhessenek hozzá. Ez a cikk áttekintést nyújt a felügyelt HSM hozzáférés-vezérlési modelljéről. Ismerteti a hitelesítést és az engedélyezést, valamint ismerteti a felügyelt HSM való hozzáférés biztonságossá tételét.
+Azure Key Vault Managed HSM egy felhőszolgáltatás, amely védi a titkosítási kulcsokat. Mivel ezek az adatok bizalmasak és üzleti szempontból kritikus fontosságúak, biztonságossá kell téve a felügyelt HSM-hez való hozzáférést, mivel csak a jogosult alkalmazások és felhasználók férhetnek hozzá. Ez a cikk áttekintést nyújt a Managed HSM hozzáférés-vezérlési modelljéről. Ismerteti a hitelesítést és az engedélyezést, és leírja, hogyan biztosíthatja a felügyelt HSM-hez való hozzáférést.
 
 ## <a name="access-control-model"></a>Hozzáférés-vezérlési modell
 
-A felügyelt HSM-hez való hozzáférést két interfész szabályozza: a **felügyeleti síkon** és az **adatsíkon**. A felügyeleti sík a HSM kezelését végzi. Az ebben a síkban található műveletek közé tartozik a felügyelt HSM létrehozása és törlése, valamint a felügyelt HSM-tulajdonságok beolvasása. Az adatsíkon a felügyelt HSM-ben tárolt, a HSM-alapú titkosítási kulcsokat tartalmazó adatközpontok működnek. Hozzáadhat, törölhet, módosíthat és használhat kulcsokat titkosítási műveletek végrehajtásához, szerepkör-hozzárendelések kezeléséhez a kulcsok elérésének vezérléséhez, egy teljes HSM biztonsági mentés létrehozásához, a teljes biztonsági mentés visszaállításához és a biztonsági tartomány felügyeletéhez az adatközpont felületéről.
+A felügyelt HSM-hez való hozzáférés  vezérlése két felületen, a felügyeleti síkon és az **adatsíkon keresztül történik.** A felügyeleti síkon kezelheti magát a HSM-et. A síkon a műveletek közé tartozik a felügyelt HSM-gépek létrehozása és törlése, valamint a felügyelt HSM-tulajdonságok leolvasása. Az adatsík az a hely, ahol a HSM által védett titkosítási kulcsok egy felügyelt HSM-ban tárolt adatokkal dolgozhat. Kulcsokat adhat hozzá, törölhet, módosíthat és használhat kriptográfiai műveletek végrehajtásához, kezelheti a szerepkör-hozzárendeléseket a kulcsokhoz való hozzáférés szabályozásához, teljes HSM biztonsági mentést hozhat létre, visszaállíthatja a teljes biztonsági mentést, és kezelheti a biztonsági tartományt az adatsík felületén.
 
-A felügyelt HSM mindkét síkon való eléréséhez minden hívónak megfelelő hitelesítéssel és engedélyezéssel kell rendelkeznie. A hitelesítés létrehozza a hívó identitását. Az engedélyezés meghatározza, hogy a hívó milyen műveleteket hajthat végre. A hívó a Azure Active Directory felhasználó, csoport, szolgáltatásnév vagy felügyelt identitásban definiált [rendszerbiztonsági tag](../../role-based-access-control/overview.md#security-principal) egyike lehet.
+A felügyelt HSM bármelyik síkon való eléréséhez minden hívónak megfelelő hitelesítéssel és engedélyezéssel kell rendelkezik. A hitelesítés megállapítja a hívó identitását. Az engedélyezés határozza meg, hogy a hívó mely műveleteket hajthatja végre. A hívók bármelyike lehet [](../../role-based-access-control/overview.md#security-principal) a Azure Active Directory, csoport, szolgáltatásnév vagy felügyelt identitás által meghatározott bármely rendszerbiztonsági tag.
 
-Mindkét síkon Azure Active Directoryt használ a hitelesítéshez. Az engedélyezéshez a következőképpen használják a különböző rendszereket:
-- A felügyeleti sík Azure szerepköralapú hozzáférés-vezérlést használ – Azure RBAC – az Azure-ra épülő engedélyezési rendszer Azure Resource Manager 
-- Az adatsík felügyelt HSM szintű RBAC (felügyelt HSM helyi RBAC) használ – a felügyelt HSM szintjén megvalósított és érvényesített engedélyezési rendszer.
+Mindkét sík a Azure Active Directory használja a hitelesítéshez. Az engedélyezéshez különböző rendszereket használnak az alábbiak szerint
+- A felügyeleti sík azure-beli szerepköralapú hozzáférés-vezérlést (Azure RBAC) használ, amely az Azure-on Azure Resource Manager 
+- Az adatsík egy felügyelt HSM-szintű RBAC-t (Managed HSM helyi RBAC) használ – egy engedélyezési rendszert, amely a felügyelt HSM szintjén van megvalósítva és kényszerítve.
 
-Felügyelt HSM létrehozásakor a kérelmező az adatközpont-rendszergazdák listáját is megjeleníti (az összes [rendszerbiztonsági tag](../../role-based-access-control/overview.md#security-principal) támogatott). Csak ezek a rendszergazdák férhetnek hozzá a felügyelt HSM-adatsíkon a legfontosabb műveletek végrehajtásához és az adatsík szerepkör-hozzárendelések kezeléséhez (felügyelt HSM helyi RBAC).
+Felügyelt HSM létrehozásakor a kérelmező az adatsík-rendszergazdák listáját is tartalmazza (minden rendszerbiztonsági tag [támogatott).](../../role-based-access-control/overview.md#security-principal) Csak ezek a rendszergazdák férhetnek hozzá a felügyelt HSM-adatsíkhoz a kulcsműveletek végrehajtásához és az adatsík szerepkör-hozzárendelésének kezeléséhez (felügyelt HSM helyi RBAC).
 
-Mindkét sík engedélyezési modellje ugyanazt a szintaxist használja, de különböző szinteken, a szerepkör-hozzárendelések pedig különböző hatóköröket használnak. Az Azure RBAC felügyeleti síkot Azure Resource Manager kényszeríti, miközben a felügyelt HSM saját maga alkalmazza a felügyelt HSM helyi RBAC.
+A két sík engedélymodellje ugyanazt a szintaxist használja, de különböző szinteken vannak kényszerítve, és a szerepkör-hozzárendelések különböző hatókörökhöz tartoznak. Az Azure RBAC felügyeleti síkját a Azure Resource Manager, míg az adatsík felügyelt HSM helyi RBAC-ját maga a felügyelt HSM kényszeríti ki.
 
 > [!IMPORTANT]
-> Egy rendszerbiztonsági tag felügyelt HSM-hez való hozzáférésének megadása nem biztosít számukra hozzáférést az adatsíkon a kulcsok vagy adatsík szerepkör-hozzárendelések felügyelt HSM helyi RBAC való eléréséhez. Az elkülönítést úgy tervezték, hogy megakadályozza a felügyelt HSM-ben tárolt kulcsok elérését érintő jogosultságok véletlen kiterjesztését.
+> Ha egy rendszerbiztonsági tag felügyeleti síkjának hozzáférést ad egy felügyelt HSM-hez, nem biztosít számukra hozzáférést az adatsíkhoz a kulcsok vagy adatsík szerepkör-hozzárendelések eléréséhez Managed HSM helyi RBAC-hez). Ez az elkülönítés a terv szerint megakadályozza a jogosultságok véletlen bővítését, ami hatással van a Managed HSM-ban tárolt kulcsokhoz való hozzáférésre.
 
-Például egy előfizetés-rendszergazda (mivel az előfizetéshez tartozó összes erőforráshoz "közreműködői" engedéllyel rendelkezik) törölheti a felügyelt HSM-et az előfizetésében, de ha nem rendelkeznek kifejezetten a felügyelt HSM helyi RBAC, akkor nem férhetnek hozzá a kulcsokhoz, vagy kezelhetik a szerepkör-hozzárendelést a felügyelt HSM-ben, hogy maguk vagy mások hozzáférhessenek az adatsíkon.
+Például egy előfizetés-rendszergazda (mivel "Közreműködő" engedéllyel rendelkezik az előfizetésben található összes erőforráshoz) törölheti az előfizetésében található felügyelt HSM-et, de ha nem rendelkezik kifejezetten a Managed HSM helyi RBAC-n keresztül biztosított adatsík-hozzáféréssel, nem férhet hozzá a kulcsokhoz vagy kezelheti a szerepkör-hozzárendelést a felügyelt HSM-ről, hogy saját magának vagy másoknak hozzáférést biztosítson az adatsíkhoz.
 
 ## <a name="azure-active-directory-authentication"></a>Hitelesítés Azure Active Directory-fiókkal
 
-Ha egy Azure-előfizetésben hoz létre felügyelt HSM-t, az automatikusan az előfizetés Azure Active Directory bérlőhöz lesz társítva. A két síkon lévő összes hívót regisztrálni kell ebben a bérlőben, és hitelesítenie kell magát a felügyelt HSM-hez való hozzáféréshez.
+Amikor létrehoz egy felügyelt HSM-et egy Azure-előfizetésben, az automatikusan társítva lesz az Azure Active Directory bérlőhöz. Mindkét síkon minden hívót regisztrálni kell ebben a bérlőben, és hitelesíteni kell magát a felügyelt HSM eléréséhez.
 
-Az alkalmazás a Azure Active Directory a sík hívása előtt hitelesíti a következővel:. Az alkalmazás az alkalmazás típusától függően bármilyen [támogatott hitelesítési módszert](../../active-directory/develop/authentication-vs-authorization.md) alkalmazhat. Az alkalmazás egy jogkivonatot szerez be a síkon lévő erőforráshoz, hogy hozzáférjen. Az erőforrás az Azure-környezet alapján a felügyelet vagy az adatsík végpontja. Az alkalmazás a jogkivonatot használja, és REST API kérelmet küld a felügyelt HSM-végpontnak. További információért tekintse át a [teljes hitelesítési folyamatot](../../active-directory/develop/v2-oauth2-auth-code-flow.md).
+Az alkalmazás a hitelesítést a Azure Active Directory a sík hívása előtt. Az alkalmazás bármilyen támogatott [hitelesítési módszert használhat](../../active-directory/develop/authentication-vs-authorization.md) az alkalmazás típusa alapján. Az alkalmazás jogkivonatot szerez be egy erőforráshoz a síkon a hozzáféréshez. Az erőforrás az Azure-környezeten alapuló végpont a felügyeleti vagy adatsíkon. Az alkalmazás a jogkivonatot használja, és REST API a Managed HSM-végpontra. További tudnivalókért tekintse át a teljes [hitelesítési folyamatot.](../../active-directory/develop/v2-oauth2-auth-code-flow.md)
 
-Egyetlen hitelesítési mechanizmus használata mindkét síkon számos előnnyel jár:
+Az egyetlen hitelesítési mechanizmus mindkét síkon való használata számos előnyt biztosít:
 
-- A szervezetek központilag vezérelhetik a hozzáférést a szervezeten belüli összes felügyelt HSM.
-- Ha a felhasználó elhagyja, azonnal elvesztik a hozzáférést a szervezet összes felügyelt HSM.
-- A szervezetek a Azure Active Directory lehetőségeit használva szabhatják testre a hitelesítést, például a többtényezős hitelesítés engedélyezésével a további biztonság érdekében.
+- A szervezetek központilag vezérelheti a hozzáférést a szervezetük összes felügyelt HSM-éhez.
+- Ha egy felhasználó távozik, azonnal elveszíti a hozzáférést a szervezet összes felügyelt HSM-éhez.
+- A szervezetek testre szabhatják a hitelesítést az Azure Active Directory beállításaival, például a többtényezős hitelesítés engedélyezésével a további biztonság érdekében.
 
 ## <a name="resource-endpoints"></a>Erőforrás-végpontok
 
-A rendszerbiztonsági tag végpontokon keresztül fér hozzá a síkokhoz. A két sík hozzáférés-vezérlése egymástól függetlenül működik. Ahhoz, hogy egy alkalmazás hozzáférést biztosítson a felügyelt HSM-ben lévő kulcsok használatához, a felügyelt HSM helyi RBAC használatával biztosíthatja az adatsíkok elérését. Ha hozzáférést szeretne biztosítani a felügyelt HSM-erőforráshoz, hozzon létre, olvassa el, törölje, helyezze át a felügyelt HSM, és szerkessze az Azure RBAC-t használó egyéb tulajdonságokat és címkéket.
+A rendszerbiztonsági tag végpontok használatával fér hozzá a síkhoz. A két sík hozzáférés-vezérlése egymástól függetlenül működik. Ha hozzáférést ad egy alkalmazásnak a kulcsok felügyelt HSM-beli használatára, adatsík-hozzáférést biztosít a Managed HSM helyi RBAC használatával. Ha hozzáférést szeretne ad egy felhasználónak a Managed HSM-erőforráshoz a felügyelt HSM-ek létrehozásához, olvasáshoz, törléséhez, áthelyezéséhez, valamint az Azure RBAC-t használó egyéb tulajdonságok és címkék szerkesztéséhez.
 
-A következő táblázat a felügyeleti és adatsíkok végpontját mutatja be.
+Az alábbi táblázat a felügyeleti és adatsíkok végpontját mutatja be.
 
 | Hozzáférési &nbsp; sík | Hozzáférés végpontjai | Üzemeltetés | Hozzáférés-vezérlési mechanizmus |
 | --- | --- | --- | --- |
-| Felügyeleti sík | **Globális**<br> management.azure.com:443<br> | Felügyelt HSM létrehozása, olvasása, frissítése, törlése és áthelyezése<br>Felügyelt HSM-címkék beállítása | Azure RBAC-vel |
-| Adatsík | **Globális**<br> &lt;HSM – név &gt; . managedhsm.Azure.net:443<br> | **Kulcsok**: visszafejtés, titkosítás,<br> kicsomagolás, becsomagolás, ellenőrzés, aláírás, beolvasás, Listázás, frissítés, létrehozás, importálás, törlés, biztonsági mentés, visszaállítás, kiürítés<br/><br/> **Adatsík szerepkör-felügyelet (felügyelt HSM helyi RBAC)**_: szerepkör-definíciók listázása, szerepkörök hozzárendelése, szerepkör-hozzárendelések törlése, egyéni szerepkörök <br/> <br/> meghatározása_* biztonsági mentés/visszaállítás **: biztonsági mentés, <br/> <br/> visszaállítás, állapot biztonsági mentésének és visszaállítási műveletének** biztonsági tartománya * *: a biztonsági tartomány letöltése és feltöltése | Felügyelt HSM helyi RBAC |
+| Felügyeleti sík | **Globális:**<br> management.azure.com:443<br> | Felügyelt HSM-ek létrehozása, olvasása, frissítése, törlése és áthelyezése<br>Felügyelt HSM-címkék beállítása | Azure RBAC-vel |
+| Adatsík | **Globális:**<br> &lt;hsm-name &gt; .managedhsm.azure.net:443<br> | **Kulcsok:** visszafejtés, titkosítás,<br> unwrap, wrap, verify, sign, get, list, update, create, import, delete, backup, restore, purge<br/><br/> **Adatsík szerepkör-kezelése (Managed HSM helyi RBAC):** szerepkör-definíciók listása, szerepkörök hozzárendelése, szerepkör-hozzárendelések _törlése, <br/> <br/>_ egyéni szerepkörök definiálása *Biztonsági mentés/visszaállítás: biztonsági mentés, visszaállítás, állapot biztonsági **<br/> <br/> mentési/visszaállítási** műveleteinek ellenőrzése Biztonsági tartomány**: biztonsági tartomány letöltése és feltöltése | Felügyelt HSM helyi RBAC |
 |||||
+
 ## <a name="management-plane-and-azure-rbac"></a>Felügyeleti sík és Azure RBAC
 
-A felügyeleti síkon az Azure RBAC segítségével engedélyezheti a hívó által végrehajtható műveleteket. Az Azure RBAC modellben minden Azure-előfizetés Azure Active Directory egy példányával rendelkezik. Hozzáférést biztosít a felhasználóknak, csoportoknak és alkalmazásoknak ebben a címtárban. A hozzáférés a Azure Resource Manager üzemi modellt használó Azure-előfizetés erőforrásainak kezeléséhez van megadva. A hozzáférés megadásához használja a [Azure Portal](https://portal.azure.com/), az [Azure CLI](/cli/azure/install-classic-cli), a [Azure PowerShell](/powershell/azureps-cmdlets-docs)vagy a [Azure Resource Manager REST API-kat](/rest/api/authorization/roleassignments).
+A felügyeleti síkon az Azure RBAC használatával engedélyezheti a hívó által végrehajtható műveleteket. Az Azure RBAC-modellben minden Azure-előfizetés rendelkezik egy Azure Active Directory. Ebből a címtárból adhat hozzáférést a felhasználóknak, csoportoknak és alkalmazásoknak. A hozzáférés az Azure-előfizetésben az üzembe helyezési modellt Azure Resource Manager kezeléséhez. A hozzáférés megadásához használja a [Azure Portal,](https://portal.azure.com/)az [Azure CLI,](/cli/azure/install-classic-cli) [Azure PowerShell](/powershell/azureps-cmdlets-docs)vagy a Azure Resource Manager [REST API-kat.](/rest/api/authorization/roleassignments)
 
-Hozzon létre egy kulcstartót egy erőforráscsoporthoz, és kezelje a hozzáférést Azure Active Directory használatával. A felhasználók vagy csoportok számára engedélyezheti az erőforráscsoport kulcstárolóinak kezelését. A hozzáférést adott hatóköri szinten kell megadni a megfelelő Azure-szerepkörök hozzárendelésével. Ahhoz, hogy hozzáférést biztosítson egy felhasználónak a kulcstartók kezeléséhez, egy előre meghatározott `key vault Contributor` szerepkört kell hozzárendelni a felhasználóhoz egy adott hatókörben. Az Azure-szerepkörökhöz a következő hatóköröket lehet hozzárendelni:
+Egy kulcstartót egy erőforráscsoportban hozhat létre, és a hozzáférést a Azure Active Directory. Lehetővé teszi a felhasználók vagy csoportok számára az erőforráscsoportok kulcstartóinak kezelését. A hozzáférést egy adott hatókörszinten adhatja meg a megfelelő Azure-szerepkörök hozzárendelése által. Ahhoz, hogy hozzáférést biztosítsunk egy felhasználónak a kulcstartók kezeléséhez, előre meghatározott szerepkört kell hozzárendelni `key vault Contributor` a felhasználóhoz egy adott hatókörben. Az Azure-beli szerepkörhöz a következő hatókörszintek rendelhetők hozzá:
 
-- **Felügyeleti csoport**: az előfizetési szinten hozzárendelt Azure-szerepkörök az adott felügyeleti csoportban lévő összes előfizetésre érvényesek.
-- **Előfizetés**: az előfizetés szintjén hozzárendelt Azure-szerepkörök az adott előfizetésen belüli összes erőforráscsoport és erőforrásra érvényesek.
-- **Erőforráscsoport**: az erőforráscsoport szintjén hozzárendelt Azure-szerepkör az adott erőforráscsoport összes erőforrására vonatkozik.
-- **Adott** erőforrás: egy adott erőforráshoz hozzárendelt Azure-szerepkör az adott erőforrásra vonatkozik. Ebben az esetben az erőforrás egy adott kulcstartó.
+- **Felügyeleti csoport:** Az előfizetés szintjén hozzárendelt Azure-szerepkör az adott felügyeleti csoportban található összes előfizetésre vonatkozik.
+- **Előfizetés:** Az előfizetés szintjén hozzárendelt Azure-szerepkör az előfizetésben található összes erőforráscsoportra és erőforrásra vonatkozik.
+- **Erőforráscsoport:** Az erőforráscsoport szintjén hozzárendelt Azure-szerepkör az adott erőforráscsoportban található összes erőforrásra vonatkozik.
+- **Adott erőforrás:** Egy adott erőforráshoz hozzárendelt Azure-szerepkör az adott erőforrásra vonatkozik. Ebben az esetben az erőforrás egy adott kulcstartó.
 
-Számos előre definiált szerepkör létezik. Ha egy előre meghatározott szerepkör nem felel meg az igényeinek, megadhatja saját szerepkörét. További információt az [Azure RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)című témakörben talál.
+Több előre definiált szerepkör is íme. Ha egy előre meghatározott szerepkör nem illik az igényeihez, saját szerepkört is definiálhat. További információ: [Azure RBAC: Beépített szerepkörök.](../../role-based-access-control/built-in-roles.md)
 
 ## <a name="data-plane-and-managed-hsm-local-rbac"></a>Adatsík és felügyelt HSM helyi RBAC
 
-Egy szerepkör kiosztásával egy rendszerbiztonsági tag számára biztosít hozzáférést egy adott kulcsfontosságú művelet végrehajtásához. Minden szerepkör-hozzárendeléshez meg kell adnia egy szerepkört és hatókört, amelyre a hozzárendelés vonatkozik. A felügyelt HSM helyi RBAC két hatókör érhető el.
+A rendszerbiztonsági tagnak hozzáférést adhat adott kulcsműveletek végrehajtásához egy szerepkör hozzárendelése által. Minden szerepkör-hozzárendeléshez meg kell adnia egy szerepkört és hatókört, amelyre a hozzárendelés vonatkozik. A Managed HSM helyi RBAC-hez két hatókör érhető el.
 
-- **"/" vagy "/Keys"**: HSM szintű hatókör. Az ezen a hatókörben szerepkört hozzárendelő rendszerbiztonsági tag a felügyelt HSM-ben a szerepkörben meghatározott műveleteket hajthatja végre.
-- **"/Keys/ &lt; Key-name &gt; "**: kulcs szintű hatókör. Az ebben a hatókörben szerepkört hozzárendelő rendszerbiztonsági tag csak a megadott kulcs összes verziójára vonatkozóan tudja végrehajtani a szerepkörben definiált műveleteket.
+- **"/" vagy "/keys"**: HSM-szintű hatókör. Az ebben a hatókörben szerepkörhöz rendelt rendszerbiztonsági tagokkal elvégezheti a szerepkörben meghatározott műveleteket a felügyelt HSM összes objektumához (kulcsához).
+- **"/keys/ &lt; key-name &gt; "**: Kulcsszintű hatókör. A szerepkörhöz ebben a hatókörben hozzárendelt rendszerbiztonsági tag csak a megadott kulcs összes verziójára végezheti el az ebben a szerepkörben meghatározott műveleteket.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az első lépéseket ismertető oktatóanyagért lásd: [Mi a felügyelt HSM?](overview.md).
-- A szerepkör-kezelési oktatóanyagért lásd: [felügyelt HSM helyi RBAC](role-management.md)
-- A felügyelt HSM-naplózás használati naplózásával kapcsolatos további információkért lásd: [felügyelt HSM naplózása](logging.md).
+- A rendszergazdáknak való első lépésekről a Mi az a Managed HSM? (Mi az a [Managed HSM?](overview.md)
+- A szerepkör-kezelési oktatóanyagért lásd: [Managed HSM local RBAC (Felügyelt HSM helyi RBAC)](role-management.md)
+- A Managed HSM-naplózás használatának naplózását lásd: Managed HSM logging (Felügyelt [HSM-naplózás)](logging.md)

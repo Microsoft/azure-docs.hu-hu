@@ -1,127 +1,126 @@
 ---
-title: A helyreállítható Törlés engedélyezése az összes Key Vault-objektumon – Azure Key Vault | Microsoft Docs
-description: Ez a dokumentum fogadja el az összes kulcstartó helyreállítható törlését, valamint az alkalmazás-és adminisztrációs módosítások elvégzését az ütközési hibák elkerülése érdekében.
+title: A soft-delete engedélyezése az összes Key Vault-objektumon – Azure Key Vault | Microsoft Docs
+description: Ebből a dokumentumból a soft-delete parancsot használhatja az összes kulcstartóhoz, valamint alkalmazás- és adminisztrációs módosításokat is el lehet látni az ütközési hibák elkerülése érdekében.
 services: key-vault
-author: ShaneBala-keyvault
-manager: ravijan
+author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 12/15/2020
-ms.author: sudbalas
-ms.openlocfilehash: b96f2ca4f925846bd252e5cfd35088d832f5c216
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/31/2021
+ms.author: mbaldwin
+ms.openlocfilehash: 7e1b2ee95864affa6e5e72e1f8354767dc95bdb1
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98572867"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753325"
 ---
-# <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>A Soft-delete minden kulcstartón engedélyezve lesz.
+# <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>A soft-delete minden kulcstartón engedélyezve lesz
 
 > [!WARNING]
-> Megszakítási változás: a rendszer hamarosan letilthatja a törlés lehetőségét. Azure Key Vault felhasználóknak és rendszergazdáknak azonnal engedélyeznie kell a helyreállítható törlést a kulcstartón.
+> A nem megfelelő változás: a nem végleges törlési lehetőség hamarosan elamorzodhat. Azure Key Vault felhasználóknak és rendszergazdáknak azonnal engedélyezniük kell a kulcstartóikban a soft-delete parancsot.
 >
-> Azure Key Vault felügyelt HSM esetén a Soft delete alapértelmezés szerint engedélyezve van, és nem tiltható le.
+> A Azure Key Vault HSM esetén a soft-delete alapértelmezés szerint engedélyezve van, és nem tiltható le.
 
-Ha törölnek egy titkos kulcsot a kulcstartóból, és nem törli a védelmet, a titkos kulcs véglegesen törlődik. A Key Vault létrehozásakor a felhasználók jelenleg nem törölhetik a helyreállítható törlést. A Microsoft azonban hamarosan lehetővé teszi a helyreállítható törlési védelmet az összes kulcstartón, hogy a titkos kulcsokat a felhasználók véletlen vagy rosszindulatú törlésével védjék. A felhasználók többé nem fogják tudni letiltani vagy kikapcsolni a helyreállítható törlést.
+Ha egy titkos adatokat a rendszer a kulcstartóból a soft-delete védelem nélkül töröl, a titkos kulcs véglegesen törlődik. A felhasználók jelenleg leiratkozhatja a kulcstartó létrehozása során a soft-delete parancsot. A Microsoft azonban hamarosan engedélyezi a soft-delete védelmet az összes kulcstartón, hogy megvédje a titkos kulcsokat a felhasználók véletlen vagy rosszindulatú törléseitől. A felhasználók a továbbiakban nem tudják kikapcsolni vagy kikapcsolni a soft-delete parancsot.
 
-:::image type="content" source="../media/softdeletediagram.png" alt-text="A Key Vault törlését bemutató ábra, amely azt mutatja be, hogy a rendszer törli-e a törlési védelmet, és nem törölhető védelemmel.":::
+:::image type="content" source="../media/softdeletediagram.png" alt-text="A kulcstartók a soft-delete védelem és a soft-delete védelem nélküli törlését bemutató ábra.":::
 
-A Soft-delete funkció részletes ismertetését lásd: [Azure Key Vault-törlés – áttekintés](soft-delete-overview.md).
+A soft-delete funkcióval kapcsolatos részletes információkért lásd a Azure Key Vault [törlés áttekintését.](soft-delete-overview.md)
 
-## <a name="can-my-application-work-with-soft-delete-enabled"></a>Használható az alkalmazásom a helyreállítható törlési funkcióval?
+## <a name="can-my-application-work-with-soft-delete-enabled"></a>Működik az alkalmazásom a soft-delete funkció engedélyezése esetén?
 
 > [!Important] 
-> A kulcstartók törlésének bekapcsolása előtt figyelmesen tekintse át az alábbi információkat.
+> Alaposan tekintse át az alábbi információkat, mielőtt bekapcsolja a kulcstartókhoz a soft-delete parancsot.
 
-A Key Vault-nevek globálisan egyediek. A Key vaultban tárolt titkos kulcsok nevei szintén egyediek. Nem fogja tudni újra felhasználni egy olyan kulcstartó vagy kulcstartó-objektum nevét, amely már létezik a helyreállított állapotban. 
+A kulcstartók nevei globálisan egyediek. A kulcstartóban tárolt titkos kulcsok neve is egyedi. Nem használhatja újra a kulcstartó vagy a kulcstartó-objektum nevét, amely a soft-deleted állapotban létezik. 
 
-Ha például az alkalmazás programozott módon létrehoz egy "Vault A" nevű kulcstartót, és később törli az "A tárolót", akkor a Key vaultot a rendszer áthelyezi a helyreállított állapotba. Az alkalmazás nem tudja újból létrehozni a "Vault A" nevű kulcstartót, amíg a kulcstároló nem törlődik a helyreállított állapotból. 
+Ha például az alkalmazás programozott módon létrehoz egy "A tároló" nevű kulcstartót, majd később törli az A tárolót, a rendszer áthelyezi a kulcstartót a soft-deleted állapotba. Az alkalmazás addig nem tud újra létrehozni egy másik kulcstartót "A" nevű kulcstartóval, amíg a kulcstartót ki nem törli a soft-deleted állapotból. 
 
-Továbbá, ha az alkalmazás létrehoz egy nevű kulcsot `test key` a "Vault a" néven, és később törli ezt a kulcsot, az alkalmazás nem tudja létrehozni az "a tároló" nevű új kulcsot, `test key` amíg az objektum nem törlődik a helyreállított `test key` állapotból. 
+Ha az alkalmazás létrehoz egy nevű kulcsot az "A" tárolóban, majd később törli azt, az alkalmazás nem tud létrehozni egy új, nevű kulcsot az "A tárolóban", amíg az objektumot ki nem törli `test key` a `test key` `test key` soft-deleted állapotból. 
 
-Egy Key Vault-objektum törlésére történt kísérlet, és a rendszer újból létrehozza azt ugyanazzal a névvel, és nem törli azt a helyreállított állapotból. az ütközési hibákhoz vezethet. A hibák miatt előfordulhat, hogy az alkalmazások vagy az Automation meghibásodik. A következő szükséges alkalmazás-és adminisztrációs módosítások elvégzése előtt tekintse meg a fejlesztői csapatát. 
+Ha törölni próbál egy Key Vault-objektumot, majd újra létrehozza ugyanazokkal a névvel anélkül, hogy először törölné a törölt állapotból, ütközési hibákat okozhat. Ezek a hibák az alkalmazások vagy az automatizálás meghiúsulhat. A következő szükséges alkalmazás- és adminisztrációs módosítások előtt forduljon a fejlesztői csapathoz. 
 
-### <a name="application-changes"></a>Alkalmazás módosításai
+### <a name="application-changes"></a>Alkalmazásváltozások
 
-Ha az alkalmazás azt feltételezi, hogy a Soft-delete nincs engedélyezve, és azt várja, hogy a törölt titkos vagy kulcstároló-nevek azonnal újra elérhetők legyenek, a következő módosításokat kell elvégeznie az alkalmazás logikájában.
+Ha az alkalmazás feltételezi, hogy a soft-delete nincs engedélyezve, és azt várja, hogy a törölt titkos kulcsok vagy kulcstartók nevei azonnal újra felhasználhatók, a következő módosításokat kell eszközlünk az alkalmazás logikájában.
 
 1. Törölje az eredeti kulcstartót vagy titkos kulcsot.
-1. Törölje a Key vaultot vagy a titkos kulcsot a helyreállított állapotból.
-1. Várjon, amíg a kiürítés befejeződik. Az azonnali ismételt létrehozás ütközést okozhat.
-1. Hozza létre újra a kulcstárolót ugyanazzal a névvel.
-1. Ha a létrehozási művelet továbbra is névütközés-hibát eredményez, próbálkozzon újra a kulcstartó újbóli létrehozásával. Azure DNS rekordok frissítése akár 10 percet is igénybe vehet a legrosszabb esetben.
+1. Véglegesen törölt kulcstartó vagy titkos kulcs végleges törlése.
+1. Várja meg, amíg a véglegesen véglegesen véglegesen befejeződik. Az azonnali újrakészítés ütközést eredményezhet.
+1. Hozza létre újra a kulcstartót ugyanazokkal a névvel.
+1. Ha a létrehozási művelet továbbra is névütközési hibát ad vissza, próbálja meg újra létrehozni a kulcstartót. Azure DNS legrosszabb esetben a rekordok frissítése akár 10 percet is igénybe vehet.
 
-### <a name="administration-changes"></a>Adminisztrációs változások
+### <a name="administration-changes"></a>Az adminisztráció változásai
 
-A titkos kulcsok végleges törléséhez hozzáférést igénylő rendszerbiztonsági tageknek több hozzáférési házirendre van szükségük a titkok és a kulcstartó törléséhez.
+A titkos kulcsok végleges törléséhez hozzáférést kérő rendszerbiztonsági tagnak több hozzáférési szabályzati engedélyt kell adni a titkos kulcsok és a kulcstartó törléséhez.
 
-Tiltsa le az Azure-szabályzatokat a kulcstartók számára, amelyek feladata, hogy a helyreállított törlés ki legyen kapcsolva. Előfordulhat, hogy ezt a problémát egy olyan rendszergazdának kell megadnia, aki a környezetre alkalmazott Azure-szabályzatokat vezérli. Ha a házirend nincs letiltva, elveszítheti az új kulcstartók létrehozását az alkalmazott házirend hatókörében.
+Tiltsa le a kulcstartókra vonatkozó Azure-szabályzatokat, amelyek kötelezővé temetik a soft-delete kikapcsolását. Előfordulhat, hogy ezt a problémát eszkalálnia kell egy rendszergazdának, aki az Ön környezetére alkalmazott Azure-szabályzatokat szabályozza. Ha ez a szabályzat nincs letiltva, előfordulhat, hogy nem tud új kulcstartókat létrehozni az alkalmazott szabályzat hatókörében.
 
-Ha a szervezete jogi megfelelőségi követelmények hatálya alá tartozik, és nem teszi lehetővé, hogy a törölt kulcstartók és titkok hosszabb ideig maradjanak helyreállítható állapotban, akkor a szervezet szabványainak megfelelően módosítania kell a helyreállítható törlés megőrzési időtartamát. A megőrzési időtartamot az utolsó 7 és 90 nap között állíthatja be.
+Ha a szervezetre jogi megfelelőségi követelmények vonatkoznak, és nem engedélyezi, hogy a törölt kulcstartók és titkos kulcsok hosszabb ideig helyreállítható állapotban maradjanak, módosítania kell a helyreállítható törlés megőrzési idejét, hogy megfeleljen a szervezet szabványainak. A megőrzési időtartam 7 és 90 nap között lehet.
 
 ## <a name="procedures"></a>Eljárások
 
-### <a name="audit-your-key-vaults-to-check-if-soft-delete-is-enabled"></a>A kulcstárolók naplózásával ellenőrizze, hogy engedélyezve van-e a Soft delete
+### <a name="audit-your-key-vaults-to-check-if-soft-delete-is-enabled"></a>A kulcstartók naplózásával ellenőrizze, hogy engedélyezve van-e a soft-delete
 
 1. Jelentkezzen be az Azure Portalra.
-1. **Azure Policy** keresése.
-1. Válassza a **definíciók** lehetőséget.
-1. A **Kategória** területen válassza a **Key Vault** elemet a szűrőben.
-1. Válassza ki, hogy a **Key Vault törölje a törlésre engedélyezett** szabályzatot.
+1. Keressen rá a **Azure Policy.**
+1. Válassza **a Definíciók lehetőséget.**
+1. A **Category (Kategória)** Key Vault **a** szűrőben.
+1. Válassza ki **Key Vault szabályzatot, amely engedélyezi a soft-delete** szabályzatot.
 1. Válassza a **Hozzárendelés** elemet.
-1. Állítsa be a hatókört az előfizetésre.
-1. Győződjön meg arról, hogy a házirend hatása **naplózásra** van beállítva.
-1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. A környezet teljes vizsgálata akár 24 órát is igénybe vehet.
-1. A **Azure Policy** ablaktáblán válassza a **megfelelőség** lehetőséget.
+1. Állítsa be a hatókört az előfizetéséhez.
+1. Győződjön meg arról, hogy a házirend hatása Audit **(Naplózás) beállításra van állítva.**
+1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. A környezet teljes vizsgálatának befejezése akár 24 órát is igénybe vehet.
+1. A **Azure Policy** válassza a Megfelelőség **lehetőséget.**
 1. Válassza ki az alkalmazott szabályzatot.
 
-Mostantól szűrheti és megtekintheti, hogy mely kulcstartók rendelkeznek a helyreállítható törléssel (megfelelő erőforrásokkal), és hogy mely kulcstartók esetében nem engedélyezett a helyreállítható törlés (nem megfelelő erőforrások).
+Mostantól szűrheti és láthatja, hogy mely kulcstartók esetében engedélyezett a soft-delete (megfelelő erőforrások), és mely kulcstartók esetében nem engedélyezett a soft-delete (nem megfelelő erőforrások).
 
-### <a name="turn-on-soft-delete-for-an-existing-key-vault"></a>Helyreállítható törlés bekapcsolása meglévő kulcstartóhoz
+### <a name="turn-on-soft-delete-for-an-existing-key-vault"></a>A soft-delete bekapcsolás meglévő kulcstartóhoz
 
 1. Jelentkezzen be az Azure Portalra.
-1. Keresse meg a Key vaultot.
-1. A **Beállítások** területen válassza a **Tulajdonságok** lehetőséget.
-1. A helyreállítható **Törlés** területen jelölje be a tár **helyreállításának engedélyezése** jelölőnégyzetet.
-1. Állítsa be a megőrzési időszakot a Soft delete értékre.
+1. Keresse meg a kulcstartót.
+1. A **Beállítások alatt válassza** a Tulajdonságok **lehetőséget.**
+1. A **Helyreállító törlés alatt** válassza a Tároló és annak objektumai helyreállításának **engedélyezése** lehetőséget.
+1. Állítsa be a megőrzési megőrzési adatokat a soft-delete számára.
 1. Kattintson a **Mentés** gombra.
 
-### <a name="grant-purge-access-policy-permissions-to-a-security-principal"></a>Engedélyek kiürítésének engedélyezése a rendszerbiztonsági tag számára
+### <a name="grant-purge-access-policy-permissions-to-a-security-principal"></a>Véglegesen véglegesen kiürítő hozzáférési szabályzat engedélyeinek megadása egy rendszerbiztonsági tagnak
 
 1. Jelentkezzen be az Azure Portalra.
-1. Keresse meg a Key vaultot.
-1. A **Beállítások** területen válassza a **hozzáférési szabályzatok** lehetőséget.
-1. Válassza ki azt a szolgáltatásnevet, amelyhez hozzáférést szeretne biztosítani.
-1. A **kulcs**-, a **titkos** és a **tanúsítvány-engedélyek** területen a legördülő menün keresztül mozoghat, amíg meg nem jelenik a **Kiemelt művelet**. Válassza ki a **kiürítési** engedélyt.
+1. Keresse meg a kulcstartót.
+1. A **Beállítások alatt válassza a** Hozzáférési **szabályzatok lehetőséget.**
+1. Válassza ki azt a szolgáltatásnév, amely számára hozzáférést szeretne.
+1. Haladjon végig az egyes legördülő menükben a **Kulcs,** **Titkos** kulcs és Tanúsítvány engedélyek **alatt,** amíg meg nem látja a Kiemelt **műveletek elemet.** Válassza a **Véglegesen kiürítés** engedélyt.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-### <a name="does-this-change-affect-me"></a>Befolyásolja a változás a változást?
+### <a name="does-this-change-affect-me"></a>Érint ez a változás?
 
-Ha már bekapcsolta a Soft-delete funkciót, vagy ha nem törli és nem hozza létre újra a Key Vault-objektumokat ugyanazzal a névvel, akkor valószínűleg nem fogja észrevenni a kulcstartó viselkedésében bekövetkezett változást.
+Ha már be van kapcsolva a soft-delete, vagy ha nem törli, majd nem hozza létre újra az azonos nevű Key Vault-objektumokat, valószínűleg nem fogja észre venni a kulcstartó viselkedésének változását.
 
-Ha olyan alkalmazással rendelkezik, amely gyakran ugyanazokat az elnevezési konvenciókat törli és újra létrehozza, akkor a várt működés érdekében módosítania kell az alkalmazás logikáját. Tekintse meg a jelen cikk [alkalmazás módosításait](#application-changes) ismertető szakaszát.
+Ha olyan alkalmazása van, amely gyakran töröl és hoz létre újra kulcstartó-objektumokat ugyanazokkal az elnevezési konvencióval, az elvárt viselkedés fenntartása érdekében módosításokat kell eszközlünk az alkalmazáslogikában. Lásd a cikk [Alkalmazásváltozások](#application-changes) című szakaszát.
 
-### <a name="how-do-i-benefit-from-this-change"></a>Hogyan kihasználni ezt a változást?
+### <a name="how-do-i-benefit-from-this-change"></a>Hogyan ezt a változást?
 
-A Soft-delete Protection a szervezet számára egy másik védelmi réteget biztosít a véletlen vagy rosszindulatú törléssel szemben. Key Vault-rendszergazdaként korlátozhatja a hozzáférést az engedélyek és a kiürítési engedélyek esetében is.
+A törlés elleni védelem egy újabb védelmi réteget biztosít a szervezet számára a véletlen vagy rosszindulatú törlés ellen. Kulcstartó-rendszergazdaként korlátozhatja a helyreállításhoz és a véglegesen kiüríthető engedélyekhez való hozzáférést.
 
-Ha egy felhasználó véletlenül töröl egy kulcstartót vagy titkos kulcsot, a titkos kulcs vagy kulcstartó végleges törlésének kockázata nélkül megadhatja számukra a titkos kulcs helyreállításához szükséges hozzáférési engedélyeket. Ez a saját kiszolgálási folyamat a környezet leállását és a titkok rendelkezésre állását is csökkentheti.
+Ha egy felhasználó véletlenül töröl egy kulcstartót vagy titkos kulcsot, hozzáférési engedélyeket adhat neki a titkos kulcs helyreállításához anélkül, hogy ezzel a kockázattal jár, hogy véglegesen törli a titkos kulcsot vagy a kulcstartót. Ez az önkiszolgáló folyamat minimálisra csökkenti a környezetben való állásidőt, és garantálja a titkos kulcsok rendelkezésre állását.
 
-### <a name="how-do-i-find-out-if-i-need-to-take-action"></a>Hogyan megtudni, ha lépéseket kell tenniük?
+### <a name="how-do-i-find-out-if-i-need-to-take-action"></a>Hogyan, hogy van-e teendőm?
 
-Ebben a cikkben a [Key Vaults naplózása](#audit-your-key-vaults-to-check-if-soft-delete-is-enabled) című szakaszban ismertetett lépéseket követve ellenőrizheti, hogy engedélyezve van-e a Soft delete funkció. Ez a módosítás hatással van minden olyan kulcstartóra, amely nem rendelkezik a helyreállítható törléssel.
+A kulcstartók naplózása című szakasz lépéseit követve [ellenőrizze,](#audit-your-key-vaults-to-check-if-soft-delete-is-enabled) hogy a soft delete engedélyezve van-e ebben a cikkben. Ez a módosítás hatással van minden olyan kulcstartóra, amelynél nincs bekapcsolva a soft-delete.
 
-### <a name="what-action-do-i-need-to-take"></a>Milyen műveleteket kell elvégeznie?
+### <a name="what-action-do-i-need-to-take"></a>Milyen műveletet kell tennem?
 
-Miután meggyőződött róla, hogy nem kell módosítania az alkalmazás logikáját, kapcsolja be a Soft-delete szolgáltatást az összes kulcstartón.
+Miután megerősítette, hogy nem kell változtatnia az alkalmazáslogikán, kapcsolja be az összes kulcstartón a soft-delete (törlés) gombot.
 
-### <a name="when-do-i-need-to-take-action"></a>Mikor kell lépéseket végrehajtani?
+### <a name="when-do-i-need-to-take-action"></a>Mikor kell műveletet tennem?
 
-Annak érdekében, hogy az alkalmazások ne legyenek hatással, kapcsolja be a helyreállítható törlést a kulcstartón a lehető leghamarabb.
+Annak érdekében, hogy az alkalmazások ne legyenek hatással az alkalmazásokra, a lehető leghamarabb kapcsolja be a kulcstartókban a törlést.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ha kérdése van, lépjen kapcsolatba velünk a változással kapcsolatban [akvsoftdelete@microsoft.com](mailto:akvsoftdelete@microsoft.com) .
-- Olvassa el a [Soft-delete áttekintést](soft-delete-overview.md).
+- A változással kapcsolatos kérdéseit a következő elérhetőségen velünk kapcsolatba lépheti: [akvsoftdelete@microsoft.com](mailto:akvsoftdelete@microsoft.com) .
+- Olvassa el [a Soft-delete áttekintését.](soft-delete-overview.md)

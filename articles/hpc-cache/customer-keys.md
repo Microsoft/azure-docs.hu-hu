@@ -1,151 +1,151 @@
 ---
-title: Az Azure HPC cache-ben az ügyfelek által összefoglalt kulcsok használatával titkosíthatja az adattitkosítást
-description: A Azure Key Vault használata az Azure HPC cache használatával a titkosítási kulcs elérésének szabályozásához a Microsoft által felügyelt alapértelmezett titkosítási kulcsok használata helyett
+title: Ügyfél által használt kulcsok használata az adatok titkosításához a Azure HPC Cache
+description: Az Azure Key Vault használata Azure HPC Cache titkosítási kulcshoz való hozzáférés szabályozása az alapértelmezett Microsoft által felügyelt titkosítási kulcsok használata helyett
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: f587de4ee2ce051cb771db90d7f9ce00ce66b07f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36ce494c7fd51a1341834d5c231e32e60c5a32b9
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772705"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751993"
 ---
-# <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Ügyfél által felügyelt titkosítási kulcsok használata az Azure HPC cache-hez
+# <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Felhasználó által felügyelt titkosítási kulcsok használata a Azure HPC Cache
 
-A Azure Key Vault használatával szabályozhatja az Azure HPC cache-ben tárolt adatai titkosításához használt kulcsok tulajdonjogát. Ez a cikk azt ismerteti, hogyan használhatók az ügyfél által felügyelt kulcsok a gyorsítótár-adattitkosításhoz.
+A Azure Key Vault használhatja az adatok titkosításához használt kulcsok tulajdonjogának szabályozására a Azure HPC Cache. Ez a cikk bemutatja, hogyan használhatja az ügyfél által kezelt kulcsokat a gyorsítótár-adattitkosításhoz.
 
 > [!NOTE]
-> A rendszer alapértelmezés szerint a Microsoft által felügyelt kulcsok használatával titkosítja az Azure-ban tárolt összes, a gyorsítótár-lemezeket is tartalmazó adatforgalomat. A cikkben leírt lépéseket csak akkor kell végrehajtania, ha az adattitkosításhoz használt kulcsokat szeretné kezelni.
+> Az Azure-ban tárolt összes adat, beleértve a gyorsítótárlemezeket is, alapértelmezés szerint a Microsoft által kezelt kulcsokkal van titkosítva. Csak akkor kell követnie a cikkben található lépéseket, ha kezelni szeretné az adatok titkosításához használt kulcsokat.
 
-Az Azure HPC cache-t a [virtuális gépek gazdagépének titkosítása](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) is védi a gyorsítótárazott adatait tároló felügyelt lemezeken, még akkor is, ha felvesznek egy ügyfél-kulcsot a gyorsítótár-lemezekhez. Az ügyfél által felügyelt kulcs dupla titkosításhoz való hozzáadásával további biztonsági szint biztosítható a magas biztonsági igényeket kielégítő ügyfelek számára. A részletekért olvassa el az [Azure Disk Storage kiszolgálóoldali titkosítását ismertető oldalt](../virtual-machines/disk-encryption.md) .
+Azure HPC Cache a gyorsítótárazott adatokat tároló felügyelt lemezeken a virtuálisgép-gazdagép titkosítása is védelmet nyújt, még akkor is, ha hozzáad egy ügyfélkulcsot a gyorsítótárlemezek számára. [](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) Ha egy felhasználó által felügyelt kulcsot ad hozzá a kettős titkosításhoz, azzal magasabb szintű biztonságot nyújt a magas biztonsági igényű ügyfelek számára. További részletekért olvassa el az [Azure Disk Storage kiszolgálóoldali](../virtual-machines/disk-encryption.md) titkosítását.
 
-Három lépésben engedélyezheti az ügyfél által felügyelt kulcsos titkosítást az Azure HPC cache-ben:
+Az ügyfél által felügyelt kulcstitkosítás engedélyezésének három lépése Azure HPC Cache:
 
-1. Állítson be egy Azure Key Vault a kulcsok tárolásához.
-1. Az Azure HPC-gyorsítótár létrehozásakor válassza az ügyfél által felügyelt kulcs titkosítása lehetőséget, és adja meg a használni kívánt kulcstartót és kulcsot.
-1. A gyorsítótár létrehozása után engedélyezze, hogy hozzáférjen a kulcstartóhoz.
+1. Állítson be egy Azure Key Vault a kulcsok tárolására.
+1. A kulcs Azure HPC Cache válassza az ügyfél által felügyelt kulcstitkosítás lehetőséget, és adja meg a használni kívánt kulcstartót és kulcsot.
+1. A gyorsítótár létrehozása után engedélyezze számára a kulcstartóhoz való hozzáférést.
 
-A titkosítás nincs teljesen beállítva egészen addig, amíg az újonnan létrehozott gyorsítótárból nem engedélyezte (3. lépés). Ennek az az oka, hogy a gyorsítótár identitását át kell adni a Key vaultnak, hogy az egy erre a felhasználóra vonatkozó engedélyt adjon. Ezt a gyorsítótár létrehozása előtt nem teheti meg, mert az identitás nem létezik a gyorsítótár létrehozása előtt.
+A titkosítás csak azután lesz teljesen beállítva, hogy engedélyezte az újonnan létrehozott gyorsítótárból (3. lépés). Ennek az az oka, hogy a gyorsítótár identitását át kell adni a kulcstartónak, hogy jogosult felhasználó legyen. Ez a gyorsítótár létrehozása előtt nem létezik, mert az identitás addig nem létezik, amíg létre nem jön a gyorsítótár.
 
-A gyorsítótár létrehozása után az ügyfél által felügyelt kulcsok és a Microsoft által felügyelt kulcsok között nem módosítható. Ha azonban a gyorsítótár ügyfél által felügyelt kulcsokat használ, igény szerint [módosíthatja](#update-key-settings) a titkosítási kulcsot, a kulcs verzióját és a kulcstartót.
+A gyorsítótár létrehozása után nem lehet módosítani az ügyfél által kezelt és a Microsoft által kezelt kulcsok között. Ha azonban a gyorsítótár ügyfél által [](#update-key-settings) kezelt kulcsokat használ, szükség szerint módosíthatja a titkosítási kulcsot, a kulcsverziót és a kulcstartót.
 
-## <a name="understand-key-vault-and-key-requirements"></a>A Key Vault és a legfontosabb követelmények ismertetése
+## <a name="understand-key-vault-and-key-requirements"></a>A key vault és a kulcskövetelmények
 
-A Key vaultnak és a kulcsnak meg kell felelnie az alábbi követelményeknek az Azure HPC cache-vel való együttműködéshez.
+A kulcstartónak és a kulcsnak meg kell felelnie ezeknek a követelményeknek a Azure HPC Cache.
 
-Key Vault tulajdonságai:
+Kulcstartó tulajdonságai:
 
-* **Előfizetés** – használja ugyanazt az előfizetést, mint amelyet a gyorsítótárhoz használ.
-* **Régió** – a Key vaultnak ugyanabban a régióban kell lennie, mint az Azure HPC cache-nek.
-* A standard szintű **díjszabás** elegendő az Azure HPC cache-vel való használatra.
-* **Soft delete** – az Azure HPC cache lehetővé teszi a helyreállítható törlést, ha még nincs konfigurálva a Key vaultban.
-* **Védelem kiürítése** – a kiürítés védelmét engedélyezni kell.
-* **Hozzáférési szabályzat** – az alapértelmezett beállítások elegendőek.
-* **Hálózati kapcsolat** – az Azure HPC cache-nek képesnek kell lennie a kulcstartó elérésére, a választott végponti beállításoktól függetlenül.
+* **Előfizetés** – Használja ugyanazt az előfizetést, mint a gyorsítótárhoz.
+* **Régió** – A kulcstartónak ugyanabban a régióban kell lennie, mint a Azure HPC Cache.
+* **Tarifacsomag** – A Standard szint elegendő a Azure HPC Cache.
+* **Soft delete** –Azure HPC Cache engedélyezi a soft delete parancsot, ha az még nincs konfigurálva a kulcstartón.
+* **Véglegesen kiürítés elleni** védelem – Engedélyezni kell a véglegesen kiürítés elleni védelmet.
+* **Hozzáférési szabályzat** – Az alapértelmezett beállítások elegendőek.
+* **Hálózati kapcsolat** – Azure HPC Cache kulcstartónak a választott végpontbeállításoktól függetlenül hozzá kell férnie a kulcstartóhoz.
 
-Kulcs tulajdonságai:
+Fő tulajdonságok:
 
-* **Kulcs típusa** – RSA
+* **Kulcstípus** – RSA
 * **RSA-kulcs mérete** – 2048
-* **Engedélyezve** – igen
+* **Engedélyezve** – Igen
 
-Key Vault-hozzáférési engedélyek:
+Kulcstartó-hozzáférési engedélyek:
 
-* Az Azure HPC-gyorsítótárat létrehozó felhasználónak az [Key Vault közreműködő szerepkörrel](../role-based-access-control/built-in-roles.md#key-vault-contributor)egyenértékű jogosultságokkal kell rendelkeznie. A Azure Key Vault beállításához és kezeléséhez ugyanazok az engedélyek szükségesek.
+* Az új szerepkört Azure HPC Cache felhasználónak a közreműködői [szerepkörnek Key Vault rendelkeznie.](../role-based-access-control/built-in-roles.md#key-vault-contributor) Ugyanezek az engedélyek szükségesek a Azure Key Vault.
 
-  További információért olvassa el [a Key Vault biztonságos elérését](../key-vault/general/secure-your-key-vault.md) ismertető témakört.
+  További [információ: Secure access to a key vault](../key-vault/general/security-overview.md) (Biztonságos hozzáférés a kulcstartóhoz).
 
-## <a name="1-set-up-azure-key-vault"></a>1. Azure Key Vault beállítása
+## <a name="1-set-up-azure-key-vault"></a>1. A Azure Key Vault
 
-A gyorsítótár létrehozása előtt beállíthat egy kulcstartót és egy kulcsot, vagy megteheti azt a gyorsítótár létrehozása részeként. Győződjön meg arról, hogy ezek az erőforrások megfelelnek a [fent](#understand-key-vault-and-key-requirements)ismertetett követelményeknek.
+Beállíthatja a kulcstartót és a kulcsot a gyorsítótár létrehozása előtt, vagy a gyorsítótár létrehozásának részeként. Győződjön meg arról, hogy ezek az erőforrások megfelelnek a fent ismertetett [követelményeknek.](#understand-key-vault-and-key-requirements)
 
-A gyorsítótár-létrehozási időpontnál meg kell adnia a gyorsítótár titkosításához használni kívánt tárolót, kulcsot és kulcs verzióját.
+A gyorsítótár létrehozásakor meg kell adnia a gyorsítótár titkosítására használni kívánt tárolót, kulcsot és kulcsverziót.
 
-A részletekért olvassa el a [Azure Key Vault dokumentációját](../key-vault/general/overview.md) .
+A [részletekért olvassa Azure Key Vault dokumentációját.](../key-vault/general/overview.md)
 
 > [!NOTE]
-> A Azure Key Vaultnak ugyanazt az előfizetést kell használnia, és ugyanabban a régióban kell lennie, mint az Azure HPC cache-nek. Győződjön meg arról, hogy a választott régió [támogatja mindkét terméket](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=hpc-cache,key-vault).
+> A Azure Key Vault előfizetést kell használnia, és ugyanabban a régióban kell lennie, mint a Azure HPC Cache. Győződjön meg arról, hogy a választott régió [mindkét terméket támogatja.](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=hpc-cache,key-vault)
 
-## <a name="2-create-the-cache-with-customer-managed-keys-enabled"></a>2. a gyorsítótár létrehozása az ügyfél által felügyelt kulcsokkal engedélyezve
+## <a name="2-create-the-cache-with-customer-managed-keys-enabled"></a>2. Gyorsítótár létrehozása engedélyezett, felhasználó által kezelt kulcsokkal
 
-Az Azure HPC-gyorsítótár létrehozásakor meg kell adnia a titkosítási kulcs forrását. Kövesse az [Azure HPC cache létrehozása](hpc-cache-create.md)című témakör utasításait, majd a **lemez titkosítási kulcsainak** lapon válassza a Key vaultot és a kulcsot. A gyorsítótár létrehozása során új kulcstartót és kulcsot is létrehozhat.
+A titkosítási kulcs forrását a titkosítási kulcs létrehozásakor Azure HPC Cache. Kövesse a [Create an Azure HPC Cache](hpc-cache-create.md)(Új kulcs létrehozása) Azure HPC Cache key vault and key (Kulcstartó és kulcs) adatokat a **Disk encryption keys (Lemeztitkosítási kulcsok)** lapon. A gyorsítótár létrehozása során létrehozhat egy új kulcstartót és kulcsot.
 
 > [!TIP]
-> Ha a **lemez titkosítási kulcsainak** lapja nem jelenik meg, győződjön meg arról, hogy a gyorsítótár az egyik [támogatott régióban](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=hpc-cache,key-vault)található.
+> Ha a **Lemeztitkosítási** kulcsok lap nem jelenik meg, győződjön meg arról, hogy a gyorsítótár a támogatott régiók [valamelyikében található.](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=hpc-cache,key-vault)
 
-A gyorsítótárat létrehozó felhasználónak jogosultsággal kell rendelkeznie a [Key Vault közreműködő szerepkörrel](../role-based-access-control/built-in-roles.md#key-vault-contributor) vagy annál magasabb jogosultsággal.
+A gyorsítótárat létrehozó felhasználónak legalább a közreműködői szerepkör Key Vault [kell](../role-based-access-control/built-in-roles.md#key-vault-contributor) lennie.
 
-1. Kattintson a gombra a magánkézben lévő felügyelt kulcsok engedélyezéséhez. A beállítás módosítása után megjelennek a Key Vault beállításai.
+1. Kattintson a gombra a privát módon kezelt kulcsok engedélyezéséhez. A beállítás módosítása után megjelennek a Key Vault beállításai.
 
-1. Kattintson a **Key Vault kiválasztása** elemre a kulcs kiválasztása lap megnyitásához. Válasszon ki vagy hozzon létre egy kulcstartót és kulcsot a gyorsítótárban lévő lemezek adatainak titkosításához.
+1. Kattintson **a Kulcstartó kiválasztása elemre** a kulcsválasztási oldal megnyitásához. Válassza ki vagy hozza létre a kulcstartót és a kulcsot a gyorsítótár lemezén található adatok titkosításához.
 
-   Ha a Azure Key Vault nem jelenik meg a listában, ellenőrizze a következő követelményeket:
+   Ha a Azure Key Vault nem jelenik meg a listában, ellenőrizze az alábbi követelményeket:
 
-   * A gyorsítótár ugyanabban az előfizetésben található, mint a Key Vault?
-   * A gyorsítótár ugyanabban a régióban található, mint a Key Vault?
-   * Van hálózati kapcsolat a Azure Portal és a Key Vault között?
+   * A gyorsítótár ugyanabban az előfizetésben található, mint a kulcstartó?
+   * A gyorsítótár és a kulcstartó ugyanabban a régióban található?
+   * Van hálózati kapcsolat a Azure Portal és a kulcstartó között?
 
-1. A tár kiválasztása után válassza ki az egyes kulcsokat az elérhető beállítások közül, vagy hozzon létre egy új kulcsot. A kulcsnak 2048 bites RSA-kulcsnak kell lennie.
+1. A tároló kiválasztása után válassza ki az egyes kulcsokat az elérhető lehetőségek közül, vagy hozzon létre egy újat. A kulcsnak 2048 bites RSA-kulcsnak kell lennie.
 
-1. A kiválasztott kulcs verziószámának megadása. További információ a verziószámozásról: [Azure Key Vault dokumentáció](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning).
+1. Adja meg a kiválasztott kulcs verzióját. További információ a verziószámozásról: [Azure Key Vault dokumentációja.](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)
 
-Folytassa a többi specifikációval, és hozza létre a gyorsítótárat az [Azure HPC cache létrehozása](hpc-cache-create.md)című témakörben leírtak szerint.
+Folytassa a többi specifikációval, és hozza létre a gyorsítótárat a Create an Azure HPC Cache (Új alkalmazás [létrehozása) Azure HPC Cache.](hpc-cache-create.md)
 
-## <a name="3-authorize-azure-key-vault-encryption-from-the-cache"></a>3. Azure Key Vault titkosítás engedélyezése a gyorsítótárból
+## <a name="3-authorize-azure-key-vault-encryption-from-the-cache"></a>3. Titkosítás Azure Key Vault a gyorsítótárból
 <!-- header is linked from create article, update if changed -->
 
-Néhány perc elteltével megjelenik az új Azure HPC-gyorsítótár a Azure Portal. Az **Áttekintés** lapon engedélyezheti a Azure Key Vault elérését, és engedélyezheti az ügyfél által felügyelt kulcs titkosítását.
+Néhány perc múlva az új Azure HPC Cache megjelenik a Azure Portal. Az Áttekintés **lapon engedélyezze** a hozzáférését a Azure Key Vault és engedélyezze az ügyfél által felügyelt kulcstitkosítást.
 
 > [!TIP]
-> Előfordulhat, hogy a gyorsítótár a "központi telepítés folyamatban" üzenetek törlése előtt megjelenhet az erőforrások listájában. A sikeres értesítés megvárnia után egy-két perc múlva vizsgálja meg az erőforrások listáját.
+> Előfordulhat, hogy a gyorsítótár megjelenik az erőforrások listájában, mielőtt az "üzembe helyezés folyamatban" üzenetek törlődnek. Egy-két perc után ellenőrizze az erőforrások listáját ahelyett, hogy megvárja a sikerességről szóló értesítést.
 
-Erre a kétlépéses folyamatra azért van szükség, mert az Azure HPC cache-példánynak identitásra van szüksége ahhoz, hogy átadja a Azure Key Vault az engedélyezéshez. A gyorsítótár-identitás addig nem létezik, amíg a kezdeti létrehozási lépések be nem fejeződik.
+Erre a kétlépéses folyamatra azért van szükség, mert Azure HPC Cache-példánynak egy identitást kell átadnia a Azure Key Vault számára az engedélyezéshez. A gyorsítótár-identitás addig nem létezik, amíg a létrehozás kezdeti lépései be nem fejeződtek.
 
 > [!NOTE]
-> A gyorsítótár létrehozása után 90 percen belül engedélyeznie kell a titkosítást. Ha nem hajtja végre ezt a lépést, a gyorsítótár időtúllépést jelez, és sikertelen lesz. A sikertelen gyorsítótárat újra létre kell hozni, nem lehet rögzíteni.
+> A titkosítást a gyorsítótár létrehozása után 90 percen belül engedélyeznie kell. Ha nem fejeződik be ez a lépés, a gyorsítótár időkorrekta lesz, és meghiúsul. A sikertelen gyorsítótárat újra létre kell hozni, nem javítható.
 
-A gyorsítótár a **kulcsra váró** állapotot jeleníti meg. A lap tetején található **titkosítás engedélyezése** gombra kattintva engedélyezheti a gyorsítótár számára a megadott kulcstartó elérését.
+A gyorsítótárban a Várakozás a **kulcsra állapot látható.** Kattintson az **oldal tetején található** Titkosítás engedélyezése gombra, hogy engedélyezze a gyorsítótár számára a megadott kulcstartóhoz való hozzáférést.
 
-![a portál gyorsítótár-Áttekintés lapjának képernyőképe a titkosítás engedélyezése gomb (felső sor) és az állapot: várakozás a kulcsra](media/waiting-for-key.png)
+![képernyőkép a portál gyorsítótáráttekintő oldaláról, kiemelve a Titkosítás engedélyezése gombot (felső sor) és az Állapot: Várakozás a kulcsra](media/waiting-for-key.png)
 
-Kattintson a **titkosítás engedélyezése** lehetőségre, majd az **Igen** gombra kattintva engedélyezze a gyorsítótár számára a titkosítási kulcs használatát. Ezzel a művelettel a kulcstartón is engedélyezheti a törlést és a kiürítést (ha még nincs engedélyezve).
+Kattintson **a Titkosítás engedélyezése elemre,** majd kattintson az **Igen** gombra a titkosítási kulcs használatának engedélyezéséhez a gyorsítótár számára. Ez a művelet a kulcstartóban is engedélyezi a törlés és végleges törlés elleni védelmet (ha még nincs engedélyezve).
 
-![a portál gyorsítótár-Áttekintés oldalának képernyőképe egy, a tetején található szalagcím-üzenettel, amely arra kéri a felhasználót, hogy engedélyezze a titkosítást az Igen gombra kattintva.](media/enable-keyvault.png)
+![a portál gyorsítótáráttekintő oldalának képernyőképe, felül egy szalagcím-üzenettel, amely a titkosítás engedélyezését kéri a felhasználótól az igen gombra kattintva](media/enable-keyvault.png)
 
-Miután a gyorsítótár hozzáfér a kulcstartóhoz, létrehozhatja és titkosíthatja a gyorsítótárazott fájlokat tároló lemezeket.
+Miután a gyorsítótár hozzáférést kér a kulcstartóhoz, létrehozhatja és titkosíthatja a gyorsítótárazott adatokat tároló lemezeket.
 
-Miután engedélyezte a titkosítást, az Azure HPC cache több percen belül bekerül a telepítőből a titkosított lemezek és a kapcsolódó infrastruktúra létrehozásához.
+Miután engedélyezte a titkosítást, Azure HPC Cache beállítás több percig is eltarthat, és létrehozza a titkosított lemezeket és a kapcsolódó infrastruktúrát.
 
-## <a name="update-key-settings"></a>Kulcs beállításainak frissítése
+## <a name="update-key-settings"></a>Kulcsbeállítások frissítése
 
-A gyorsítótár kulcstárolójának, kulcsának vagy kulcsának verziószámát a Azure Portal lehet módosítani. Kattintson a gyorsítótár **titkosítási** beállítások hivatkozására a **Customer Key Settings** lap megnyitásához.
+A gyorsítótár kulcstartóját, kulcsát vagy kulcsverzióját a Azure Portal. Kattintson a gyorsítótár Titkosítási **beállítások hivatkozására** az **Ügyfélkulcs-beállítások lap megnyitásához.**
 
-Az ügyfél által felügyelt kulcsok és a rendszer által felügyelt kulcsok közötti gyorsítótár nem módosítható.
+A gyorsítótár nem változtatható meg az ügyfél által kezelt és a rendszer által kezelt kulcsok között.
 
-![a "Customer Key Settings" (ügyfél-kulcsok beállításai) oldal képernyőképe, amelyet a beállítások > titkosítás elemre kattintva érhet el a gyorsítótár oldaláról Azure Portal](media/change-key-click.png)
+![képernyőkép az "Ügyfélkulcsok beállításai" lapról, amelyet a beállítások > titkosítás elemre kattintva ér el a Azure Portal](media/change-key-click.png)
 
-Kattintson a kulcs **módosítása** hivatkozásra, majd kattintson a Key **Vault, a kulcs vagy a verzió módosítása** elemre a kulcs választójának megnyitásához.
+Kattintson **a Kulcs módosítása hivatkozásra,** majd a **Kulcstartó,** kulcs vagy verzió módosítása elemre a kulcsválasztó megnyitásához.
 
-![a Key Vault, a kulcs és a verzió kiválasztására szolgáló, a "kulcs kiválasztása a Azure Key Vaultból" lap képernyőképe](media/select-new-key.png)
+![képernyőkép a "kulcs kiválasztása a Azure Key Vault" oldalról három legördülő választóval a kulcstartó, kulcs és verzió kiválasztásához](media/select-new-key.png)
 
-Ugyanabban az előfizetésben és ugyanabban a régióban található kulcstartók jelennek meg a listában.
+A listában az ugyanabban az előfizetésben és régióban lévő kulcstartók jelennek meg.
 
-Miután kiválasztotta az új titkosítási kulcs értékeit, kattintson a **kiválasztás** elemre. Megjelenik egy megerősítő lap az új értékekkel. A kijelölés véglegesítéséhez kattintson a **Mentés** gombra.
+Az új titkosítási kulcs értékeinek kiválasztása után kattintson a **Kijelölés gombra.** Megjelenik egy megerősítő oldal az új értékekkel. Kattintson **a Mentés gombra** a kijelölés végleges mentéshez.
 
-![képernyőkép a megerősítő oldalról a bal felső sarokban található mentés gombbal](media/save-key-settings.png)
+![a megerősítési oldal képernyőképe a bal felső Mentés gombbal](media/save-key-settings.png)
 
-## <a name="read-more-about-customer-managed-keys-in-azure"></a>További információ az ügyfél által felügyelt kulcsokról az Azure-ban
+## <a name="read-more-about-customer-managed-keys-in-azure"></a>További információ az Azure-beli, ügyfél által kezelt kulcsokról
 
-Ezek a cikkek részletesen ismertetik a Azure Key Vault és az ügyfél által felügyelt kulcsok használatát az Azure-ban tárolt adattitkosításhoz:
+Ezek a cikkek bővebben ismertetik, hogyan lehet Azure Key Vault felhasználó által felügyelt kulcsokkal titkosítani az adatokat az Azure-ban:
 
 * [Az Azure Storage-titkosítás áttekintése](../storage/common/storage-service-encryption.md)
-* [Lemezek titkosítása az ügyfél által felügyelt kulcsokkal](../virtual-machines/disk-encryption.md#customer-managed-keys) – dokumentáció a Azure Key Vault felügyelt lemezekkel való használatához, amely hasonló forgatókönyv az Azure HPC cache-hez
+* [Lemeztitkosítás](../virtual-machines/disk-encryption.md#customer-managed-keys) ügyfél által felügyelt kulcsokkal – A felügyelt Azure Key Vault való használatának dokumentációja, amely hasonló az Azure HPC Cache
 
 ## <a name="next-steps"></a>Következő lépések
 
-Miután létrehozta az Azure HPC-gyorsítótárat és a jogosult Key Vault-alapú titkosítást, folytassa a gyorsítótár beállítását úgy, hogy hozzáférést biztosít az adatforrásokhoz.
+Miután létrehozta a Azure HPC Cache és engedélyezte a Key Vault-alapú titkosítást, folytassa a gyorsítótár beállítását úgy, hogy hozzáférést biztosít az adatforráshoz.
 
 * [Céltárak hozzáadása](hpc-cache-add-storage.md)

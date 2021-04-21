@@ -1,24 +1,24 @@
-- name: Cloud Services (bővített támogatás) – dokumentáció
+- name: Azure Cloud Services (kiterjesztett támogatás) dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Tudnivalók a Cloud Servicesról (bővített támogatás)
+    - name: A Cloud Services (kiterjesztett támogatás)
       href: overview.md
     - name: Az üzembe helyezés előfeltételei
       href: deploy-prerequisite.md
-    - name: Konfigurációs fájlok és csomagolás
+    - name: Fájlok és csomagolási fájlok
       href: cloud-services-model-and-package.md
 - name: Oktatóanyagok
   items:
-    - name: Cloud Service üzembe helyezése – portál
+    - name: Felhőszolgáltatás üzembe helyezése – Portal
       href: deploy-portal.md
-    - name: Cloud Service üzembe helyezése – PowerShell
+    - name: Felhőszolgáltatás üzembe helyezése – PowerShell
       href: deploy-powershell.md
-    - name: Felhőalapú szolgáltatás üzembe helyezése – sablon
+    - name: Felhőszolgáltatás üzembe helyezése – Sablon
       href: deploy-template.md
-    - name: Felhőalapú szolgáltatás üzembe helyezése – SDK
+    - name: Felhőszolgáltatás üzembe helyezése – SDK
       href: deploy-sdk.md
-    - name: Cloud Service üzembe helyezése – Visual Studio
+    - name: Felhőszolgáltatás üzembe helyezése – Visual Studio
       href: /visualstudio/azure/cloud-services-extended-support?context=%2fazure%2fcloud-services-extended-support%2fcontext%2fcontext
   expanded: true
 - name: Alapelvek
@@ -39,7 +39,7 @@
           href: schema-csdef-file.md
         - name: LoadBalancerProbe séma
           href: schema-csdef-loadbalancerprobe.md
-        - name: Webszerepkör-séma
+        - name: WebRole-séma
           href: schema-csdef-webrole.md
         - name: WorkerRole séma
           href: schema-csdef-workerrole.md
@@ -47,19 +47,19 @@
           href: schema-csdef-networktrafficrules.md
         - name: Cscfg XML-séma
           href: schema-cscfg-file.md
-        - name: Szerepkör-séma
+        - name: Szerepkörséma
           href: schema-cscfg-role.md
         - name: NetworkConfiguration séma
           href: schema-cscfg-networkconfiguration.md
 - name: Útmutató
   items:
-    - name: Migrálás Cloud Servicesre (kiterjesztett támogatás)
+    - name: Áttelepítés Azure Cloud Services (kiterjesztett támogatás)
       items:
         - name: Migrálás áttekintése
           href: in-place-migration-overview.md
-        - name: Áttelepítési technikai részletek
+        - name: A migrálás technikai részletei
           href: in-place-migration-technical-details.md
-        - name: Migrálás a Azure Portal használatával
+        - name: Áttelepítés a Azure Portal
           href: in-place-migration-portal.md
         - name: Áttelepítés a PowerShell-lel
           href: in-place-migration-powershell.md
@@ -67,7 +67,7 @@
           href: in-place-migration-common-errors.md
     - name: Bővítmények alkalmazása
       items:
-        - name: Távoli asztal-bővítmény alkalmazása
+        - name: Alkalmazás Távoli asztal bővítmény
           href: enable-rdp.md
         - name: WAD-bővítmény alkalmazása
           href: enable-wad.md
@@ -77,33 +77,33 @@
       href: configure-scaling.md
     - name: Tanúsítványok
       href: certificates-and-key-vault.md
-    - name: ARM-sablon előállítása a portál használatával
+    - name: ARM-sablon létrehozása a portál használatával
       href: generate-template-portal.md
-    - name: Két felhőalapú szolgáltatás cseréje
+    - name: Felhőszolgáltatás üzemelő példányának felcserél helyezése
       href: swap-cloud-service.md
-    - name: Az SKU felülbírálása – részletek
+    - name: Termékváltozat részleteinek felülbírálása
       href: override-sku.md
     - name: Hibaelhárítás
       items:
-        - name: Szerepkör-indítási hiba
+        - name: Szerepkör indítási hibája
           href: role-startup-failure.md
         - name: Gyakori kérdések
           href: faq.md
 - name: Példák
   items:
-    - name: Minta sablonok
+    - name: Példasablonok
       href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
-    - name: Új felhőalapú szolgáltatás létrehozása
+    - name: Új felhőszolgáltatás létrehozása
       href: sample-create-cloud-service.md
-    - name: A Cloud Service részleteinek beolvasása
+    - name: Felhőszolgáltatás részleteinek lekérte
       href: sample-get-cloud-service.md
-    - name: Felhőalapú szolgáltatás alaphelyzetbe állítása
+    - name: Felhőszolgáltatás alaphelyzetbe állítása
       href: sample-reset-cloud-service.md
 - name: Referencia
   items:
-    - name: Példa központi telepítési fájlokra
+    - name: Üzembe helyezési mintafájlok
       href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
-    - name: Az az. felhőszolgáltatás modul
+    - name: Az.CloudService modul
       href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
     - name: PowerShell-parancsmagok
       href: /powershell/module/az.cloudservice/#cloudservice

@@ -100,6 +100,8 @@
       items:
         - name: Üzenet-munkamenetek
           href: message-sessions.md
+        - name: Ismétlődő üzenetek észlelése
+          href: duplicate-detection.md
         - name: Témakörszűrők és -műveletek
           href: topic-filters.md
         - name: Üzenetek tallózása
@@ -206,8 +208,6 @@
           items:
             - name: Üzenetek előzetes betöltése
               href: service-bus-prefetch.md
-            - name: Ismétlődő üzenetek észlelése
-              href: duplicate-detection.md
             - name: Üzenetek halasztása
               href: message-deferral.md
             - name: Entitások láncolása automatikus továbbítással
@@ -236,6 +236,14 @@
           href: service-bus-integrate-with-rabbitmq.md
     - name: Kezelés
       items:
+        - name: Munkamenetek engedélyezése üzenetsorhoz vagy előfizetéshez
+          href: enable-message-sessions.md
+        - name: Ismétlődések észlelésének engedélyezése üzenetsorhoz vagy témakörhez
+          href: enable-duplicate-detection.md
+        - name: Partíciók engedélyezése üzenetsorhoz vagy témakörhez
+          href: enable-partitions.md
+        - name: Üzenetsor vagy előfizetés automatikus továbbításának engedélyezése
+          href: enable-auto-forward.md
         - name: Áthelyezés régiók között
           href: move-across-regions.md
         - name: Az üzenetkezelési egységek automatikus frissítése

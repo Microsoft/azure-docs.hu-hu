@@ -1,47 +1,47 @@
 ---
-title: Kulcstartó áthelyezése másik régióba – Azure Key Vault | Microsoft Docs
-description: Ez a cikk útmutatást nyújt a kulcstartó más régióba való áthelyezéséhez.
+title: Kulcstartó áthelyezése egy másik régióba – Azure Key Vault | Microsoft Docs
+description: Ez a cikk útmutatást nyújt a kulcstartó másik régióba való áthelyezésére vonatkozóan.
 services: key-vault
-author: ShaneBala-keyvault
+author: msmbaldwin
 manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 04/24/2020
-ms.author: sudbalas
-ms.openlocfilehash: 97956b8c6f18d37acd07543b8921b4973be3bda9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 03/31/2021
+ms.author: mbaldwin
+ms.openlocfilehash: ac2f6347776c2f5d230065b80b1c0336e21e181c
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066653"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751795"
 ---
 # <a name="move-an-azure-key-vault-across-regions"></a>Azure Key Vault áthelyezése régiók között
 
-A Azure Key Vault nem támogatja az erőforrás-áthelyezési műveletet, amely lehetővé teszi a kulcstartó áthelyezését az egyik régióból a másikba. Ez a cikk a Key Vault egy másik régióba való áthelyezését igénylő szervezetek megkerülő megoldásait ismerteti. Minden megkerülő megoldási beállítás korlátozásokkal rendelkezik. Fontos megérteni a megkerülő megoldások következményeit, mielőtt éles környezetben próbálja meg alkalmazni őket.
+Azure Key Vault nem támogatja az olyan erőforrás-áthelyezési műveleteket, amelyek lehetővé teszik a kulcstartók egyik régióból a másikba való áthelyezését. Ez a cikk áthidaló megoldásokat tartalmaz olyan szervezetek számára, amelyek üzleti szükségük van egy kulcstartó másik régióba való áthelyezésére. Minden áthidaló megoldás korlátozásokkal rendelkezik. Az éles környezetben való alkalmazásuk előtt rendkívül fontos megérteni ezeknek a megkerülő megoldásoknak a következményeit.
 
-Ha egy kulcstartót másik régióba szeretne áthelyezni, hozzon létre egy kulcstartót a másik régióban, majd manuálisan másolja az egyes titkos kulcsokat a meglévő kulcstartóból az új kulcstartóba. Ezt az alábbi két lehetőség egyikével teheti meg.
+A kulcstartó másik régióba való áthelyezéshez létre kell hoznia egy kulcstartót abban a másik régióban, majd manuálisan kell átmásolnia az egyes titkos kulcsokat a meglévő kulcstartóból az új kulcstartóba. Ezt az alábbi két lehetőség egyikével is meg lehet tenni.
 
 ## <a name="design-considerations"></a>Kialakítási szempontok
 
-Mielőtt elkezdené, vegye figyelembe a következő fogalmakat:
+Mielőtt hozzákezd, tartsa szem előtt az alábbi fogalmakat:
 
-* A Key Vault-nevek globálisan egyediek. A tár neve nem használható fel újra.
-* A hozzáférési házirendeket és a hálózati konfigurációs beállításokat újra kell konfigurálnia az új kulcstartóban.
-* Újra kell konfigurálnia a Soft-delete és a kiürítési védelmet az új kulcstartóban.
-* A biztonsági mentési és visszaállítási művelet nem őrzi meg az automatikus elforgatás beállításait. Előfordulhat, hogy újra kell konfigurálnia a beállításokat.
+* A kulcstartók nevei globálisan egyediek. A tároló nevét nem használhatja újra.
+* Újra kell konfigurálnia a hozzáférési szabályzatokat és a hálózati konfigurációs beállításokat az új kulcstartóban.
+* Újra kell konfigurálnia a soft-delete és a purge elleni védelmet az új kulcstartóban.
+* A biztonsági mentési és visszaállítási művelet nem őrzi meg az automatikus beállításokat. Előfordulhat, hogy újra kell konfigurálnia a beállításokat.
 
-## <a name="option-1-use-the-key-vault-backup-and-restore-commands"></a>1. lehetőség: a Key Vault biztonsági mentési és visszaállítási parancsainak használata
+## <a name="option-1-use-the-key-vault-backup-and-restore-commands"></a>1. lehetőség: A Key Vault biztonsági mentési és visszaállítási parancsának használata
 
-A biztonsági mentési parancs használatával biztonsági mentést készíthet a tárolóban lévő egyes titkos kulcsokról, kulcsokról és tanúsítványokról. A titkos kódok titkosított blobként lesznek letöltve. Ezután visszaállíthatja a blobot az új kulcstartóba. A parancsok listáját itt tekintheti meg: [Azure Key Vault parancsok](/powershell/module/azurerm.keyvault#key_vault).
+A biztonsági mentési paranccsal biztonsági másolatot készít a tárolóban tárolt egyes titkos kulcsokról, kulcsokról és tanúsítványokról. A titkos kulcsok titkosított blobként vannak letöltve. Ezután visszaállíthatja a blobot az új kulcstartóba. A parancsok listájáért lásd: Azure Key Vault [parancsokat.](/powershell/module/azurerm.keyvault#key_vault)
 
-A biztonsági mentési és visszaállítási parancsok használata két korlátozást tartalmaz:
+A biztonsági mentési és visszaállítási parancsok használatának két korlátozása van:
 
-* Egy kulcstartóban nem lehet biztonsági másolatot készíteni egy adott földrajzi helyen, és visszaállíthatja egy másik földrajzi helyre. További információ: [Azure földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/)területek.
+* Egy kulcstartóról nem lehet biztonsági mentést állítani egy adott földrajzi helyen, és visszaállítani egy másik földrajzi helyen. További információ: [Azure-beli földrajzi területek.](https://azure.microsoft.com/global-infrastructure/geographies/)
 
 * A biztonsági mentési parancs az egyes titkos kódok minden verziójáról biztonsági másolatot készít. Ha egy titkos kódnak nagy számú (10-nél több) korábbi verziója van, a kérelem mérete meghaladhatja a maximálisan megengedett méretet, és a művelet sikertelen lehet.
 
-## <a name="option-2-manually-download-and-upload-the-key-vault-secrets"></a>2. lehetőség: a Key Vault titkos kulcsainak manuális letöltése és feltöltése
+## <a name="option-2-manually-download-and-upload-the-key-vault-secrets"></a>2. lehetőség: Kulcstartó titkos kulcsának manuális letöltése és feltöltése
 
-Bizonyos titkos típusok manuálisan is letölthetők. Például a tanúsítványokat PFX-fájlként is letöltheti. Ez a beállítás kiküszöböli a földrajzi korlátozásokat bizonyos titkos típusok, például tanúsítványok esetén. A PFX-fájlokat bármely régióban lévő kulcstartóba feltöltheti. A titkokat nem jelszóval védett formátumban tölti le a rendszer. Az áthelyezés során Ön felelős a titkok védelméért.
+Bizonyos titkos adatokat manuálisan is letölthet. Letöltheti például a tanúsítványokat PFX-fájlként. Ez a beállítás kiküszöböli bizonyos titkos típusok, például tanúsítványok földrajzi korlátozásait. A PFX-fájlokat bármely régió bármelyik kulcstartóba feltöltheti. A titkos kulcsok letöltése nem jelszóval védett formátumban. A titkos kulcsok biztonságossá tétele az áthelyezés során Az Ön felelőssége.

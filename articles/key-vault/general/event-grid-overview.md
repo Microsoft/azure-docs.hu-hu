@@ -1,50 +1,49 @@
 ---
-title: Key Vault figyelése Azure Event Grid
-description: Azure Event Grid használata Key Vault eseményekre való előfizetéshez
+title: Az Key Vault monitorozása Azure Event Grid
+description: Feliratkozás Azure Event Grid eseményekre a Key Vault használatával
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1ee38196f0b1a6e00d385dc0d2c88d45a4291d3b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4fb6d57bb84f4a3b4c5c138be9306489191bfce8
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90087436"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753361"
 ---
-# <a name="monitoring-key-vault-with-azure-event-grid"></a>Key Vault figyelése Azure Event Grid
+# <a name="monitoring-key-vault-with-azure-event-grid"></a>Az Key Vault monitorozása Azure Event Grid
 
-Key Vault integrációja Event Grid lehetővé teszi a felhasználók számára, hogy a Key vaultban tárolt titkos kód állapotának változásakor értesítést kapjanak. Az állapotváltozás olyan titokként van meghatározva, amely hamarosan lejár (30 nappal a lejárat előtt), egy lejárt titkos kulcsot vagy egy új verziót tartalmazó titkos kulcsot. Az értesítések mind a három titkos típus (kulcs, tanúsítvány és titkos) esetében támogatottak.
+Key Vault integrációja Event Grid lehetővé teszi, hogy a felhasználók értesítést kapnak, ha a Key Vaultban tárolt titkos kulcsok állapota megváltozott. Az állapotváltozás olyan titkos kulcsként van definiálva, amely hamarosan lejár (30 nappal a lejárat előtt), lejárt titkos kulcsként vagy egy új elérhető verzióval rendelkező titkos kulcsként. Mindhárom titkos kulcstípus (kulcs, tanúsítvány és titkos kulcs) értesítései támogatottak.
 
-Az alkalmazások a modern kiszolgáló nélküli architektúrák segítségével reagálnak ezekre az eseményekre, anélkül, hogy bonyolult programkódot vagy költséges és nem hatékony lekérdezési szolgáltatásokat kellene igénybe venniük. Az eseményeket [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) az eseménykezelők, például a [Azure Functions](https://azure.microsoft.com/services/functions/), a [Azure Logic apps](https://azure.microsoft.com/services/logic-apps/), vagy akár a saját webhook számára is leküldik, és csak azért kell fizetnie, amit ténylegesen használ. További információ a díjszabásról: [Event Grid díjszabása](https://azure.microsoft.com/pricing/details/event-grid/).
+Az alkalmazások modern kiszolgáló nélküli architektúrák használatával reagálnak ezekre az eseményekre anélkül, hogy bonyolult kódra vagy költséges és nem hatékony lekérdezési szolgáltatásokra lenne szükség. Az események [](https://azure.microsoft.com/services/event-grid/) a Azure Event Grid eseménykezelőkbe ( például [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)) vagy akár a saját webhookjukba is lekértek, és csak azért kell fizetnie, amit használ. További információ a díjszabásról: Event Grid [díjszabása.](https://azure.microsoft.com/pricing/details/event-grid/)
 
-## <a name="key-vault-events-and-schemas"></a>Események és sémák Key Vault
+## <a name="key-vault-events-and-schemas"></a>Key Vault és sémák
 
-Az Event Grid [esemény-előfizetések](../../event-grid/concepts.md#event-subscriptions) használatával irányítja az esemény-üzeneteket az előfizetőknek. Key Vault események tartalmazzák az adatok változásaira való válaszadáshoz szükséges összes információt. Azonosíthatja Key Vault eseményt, mert a eventType tulajdonság a "Microsoft. kulcstartó" karakterrel kezdődik.
+Az Event Grid [esemény-előfizetésekkel](../../event-grid/concepts.md#event-subscriptions) irányít eseményüzeneteket az előfizetőknek. Key Vault események tartalmazzák az összes olyan információt, amely az adatok változásaira való válaszadáshoz szükséges. Az eseménytípus-esemény Key Vault, mert az eventType tulajdonság a "Microsoft.KeyVault" szóval kezdődik.
 
-További információ: [Key Vault esemény sémája](../../event-grid/event-schema-key-vault.md).
+További információkért lásd a Key Vault [eseménysémát.](../../event-grid/event-schema-key-vault.md)
 
 > [!WARNING]
-> Az értesítési események csak a titkok, kulcsok és tanúsítványok új verzióin aktiválódnak, és az értesítések fogadásához először elő kell fizetnie az eseményre a kulcstartóban.
+> Az értesítési események csak a titkos kulcsok, kulcsok és tanúsítványok új verzióiban aktiválódnak, és az értesítések fogadása érdekében először elő kell iratkoznunk a kulcstartó eseményére.
 
-## <a name="practices-for-consuming-events"></a>Az események felhasználásának eljárásai
+## <a name="practices-for-consuming-events"></a>Eljárások az események fogyasztására
 
-Az Key Vault eseményeket kezelő alkalmazásoknak néhány ajánlott gyakorlatot követniük kell:
+A Key Vault eseményeket kezelő alkalmazásoknak követnie kell néhány ajánlott gyakorlatot:
 
-* Több előfizetés is konfigurálható az események ugyanahhoz az eseménykezelőhöz való továbbítására. Fontos, hogy ne tegyük fel, hogy az események egy adott forrásból származnak, de az üzenet témaköreinek ellenőrzésével biztosíthatja, hogy a várt kulcstartóból származik.
-* Hasonlóképpen győződjön meg arról, hogy a eventType az egyik készen áll a feldolgozásra, és nem feltételezi, hogy az összes kapott esemény lesz a várt típus.
-* Figyelmen kívül hagyhatja a nem értelmezhető mezőket.  Ez a gyakorlat segít megőrizni a jövőben esetlegesen hozzáadott új funkciókkal való ellenálló képességet.
-* Az események adott eseményre való korlátozásához használja a "tárgy" előtagot és utótagot.
+* Több előfizetés is konfigurálható úgy, hogy az eseményeket ugyanabba az eseménykezelőbe irányítják. Fontos, hogy az események egy adott forrásból származiknak, de ellenőrizze az üzenet témakörét, hogy az a várt kulcstartóból származik-e.
+* Hasonlóképpen ellenőrizze, hogy az eventType az, amelyet fel tud-e készíteni, és ne feltételezzék, hogy minden kapott esemény a várt típusú lesz.
+* Hagyja figyelmen kívül a nem érthető mezőket.  Ez a gyakorlat segít rugalmasan alkalmazkodni az új funkciókhoz, amelyek a jövőben hozzáadhatóak.
+* Az események egy adott eseményre való korlátozására használja a "tárgy" előtagot és utótagot.
 
 ## <a name="next-steps"></a>Következő lépések
 
 - [Azure Key Vault áttekintése](overview.md)
 - [Azure Event Grid – áttekintés](../../event-grid/overview.md)
-- Útmutató: [Key Vault-események átirányítása az Automation-Runbook](event-grid-tutorial.md).
-- Útmutató: [e-mailek fogadása a Key Vault titkos változásairól](event-grid-logicapps.md)
-- [Azure Key Vault Azure Event Gridi esemény sémája](../../event-grid/event-schema-key-vault.md)
-- [Azure Automation áttekintése](../../automation/index.yml)
+- How to: [Route Key Vault Events to Automation Runbook](event-grid-tutorial.md).
+- How to: Receive email when a Key Vault secret changes (Hogyan lehet: [E-mail fogadása a Key Vault titkos kulcsának módosulás esetén)](event-grid-logicapps.md)
+- [Azure Event Grid eseménysémát a Azure Key Vault](../../event-grid/event-schema-key-vault.md)
+- [Azure Automation áttekintés](../../automation/index.yml)

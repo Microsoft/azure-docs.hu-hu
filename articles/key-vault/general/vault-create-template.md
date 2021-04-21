@@ -1,38 +1,37 @@
 ---
-title: Azure Key Vault és egy tároló hozzáférési szabályzatának létrehozása ARM-sablonnal
-description: Ez a cikk bemutatja, hogyan hozhat létre Azure Key Vault-és tároló-hozzáférési házirendeket egy Azure Resource Manager sablon használatával.
+title: Azure-kulcstartó és tároló-hozzáférési szabályzat létrehozása ARM-sablon használatával
+description: Ez a cikk bemutatja, hogyan hozhat létre Azure-kulcstartókat és tároló-hozzáférési szabályzatokat egy Azure Resource Manager sablonnal.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 3/14/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e489efd335d2a46a0e55d4ceb9bdee809ae6c39d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e70906cbf26c899744bfbe137da4ce9cfa651b20
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104595243"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753145"
 ---
-# <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Azure Key Vault és a tároló hozzáférési házirendjének létrehozása Resource Manager-sablonnal
+# <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Azure Key Vault- és tároló-hozzáférési szabályzat létrehozása Resource Manager sablonnal
 
-A [Azure Key Vault](../general/overview.md) egy felhőalapú szolgáltatás, amely biztonságos tárolót biztosít a titkokhoz, például kulcsokhoz, jelszavakhoz és tanúsítványokhoz. Ez a cikk egy Azure Resource Manager-sablon (ARM-sablon) üzembe helyezésének folyamatát ismerteti a kulcstartó létrehozásához.
+[Azure Key Vault](../general/overview.md) egy felhőszolgáltatás, amely biztonságos tárolót biztosít a titkos kulcsok, például kulcsok, jelszavak és tanúsítványok számára. Ez a cikk azt ismerteti, hogyan lehet üzembe helyezni egy Azure Resource Manager-sablont (ARM-sablont) egy kulcstartó létrehozásához.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben szereplő lépések végrehajtásához:
+A cikkben található lépések befejezéséhez:
 
-* Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+* Ha nem rendelkezik Azure-előfizetéssel, [](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) kezdés előtt hozzon létre egy ingyenes fiókot.
 
 
-## <a name="create-a-key-vault-resource-manager-template"></a>Key Vault Resource Manager-sablon létrehozása
+## <a name="create-a-key-vault-resource-manager-template"></a>Új Key Vault Resource Manager létrehozása
 
-A következő sablon egy alapszintű módszert mutat be kulcstartó létrehozásához. Néhány érték van megadva a sablonban.
+Az alábbi sablon egy alapvető kulcstartó-létrehozási módját mutatja be. Egyes értékek meg vannak adva a sablonban.
 
 ```json
 {
@@ -84,14 +83,14 @@ A következő sablon egy alapszintű módszert mutat be kulcstartó létrehozás
 
 ```
 
-További információ az Key Vault sablon beállításairól: [Key Vault ARM-sablon referenciája](/azure/templates/microsoft.keyvault/vaults).
+További információ a Key Vault beállításairól: [arm Key Vault sablon-referencia.](/azure/templates/microsoft.keyvault/vaults)
 
 > [!IMPORTANT]
-> A sablon újbóli üzembe helyezése esetén a Key vaultban lévő összes meglévő hozzáférési szabályzat felülbírálva lesz. Azt javasoljuk, hogy a `accessPolicies` tulajdonságot meglévő hozzáférési házirendekkel töltse fel, hogy elkerülje a kulcstartóhoz való hozzáférés elvesztését. 
+> Ha a sablont újra üzembe emik, a rendszer felülírja a kulcstartóban meglévő hozzáférési szabályzatokat. Javasoljuk, hogy a kulcstartóhoz való hozzáférés elvesztése érdekében töltse fel a tulajdonságot a meglévő `accessPolicies` hozzáférési szabályzatokkal. 
 
-## <a name="add-an-access-policy-to-a-key-vault-resource-manager-template"></a>Hozzáférési szabályzat hozzáadása Key Vault Resource Manager-sablonhoz
+## <a name="add-an-access-policy-to-a-key-vault-resource-manager-template"></a>Hozzáférési szabályzat hozzáadása Key Vault Resource Manager sablonhoz
 
-A teljes Key Vault-sablon újbóli üzembe helyezése nélkül is üzembe helyezhet hozzáférési házirendeket egy meglévő kulcstartón. A következő sablon a hozzáférési szabályzatok létrehozásának alapvető módját mutatja be:
+Hozzáférési szabályzatokat a teljes Key Vault-sablon ismételt üzembe helyezése nélkül helyezhet üzembe egy meglévő kulcstartóban. Az alábbi sablon a hozzáférési szabályzatok létrehozásának alapvető módját mutatja be:
 
 ```json
 {
@@ -161,23 +160,23 @@ A teljes Key Vault-sablon újbóli üzembe helyezése nélkül is üzembe helyez
 
 ```
 
-További információ az Key Vault sablon beállításairól: [Key Vault ARM-sablon referenciája](/azure/templates/microsoft.keyvault/vaults/accesspolicies).
+A sablonbeállításokról az ARM Key Vault referenciában [Key Vault további információt.](/azure/templates/microsoft.keyvault/vaults/accesspolicies)
 
-## <a name="more-key-vault-resource-manager-templates"></a>További Key Vault Resource Manager-sablonok
+## <a name="more-key-vault-resource-manager-templates"></a>További Key Vault Resource Manager sablonok
 
-Más Resource Manager-sablonok is elérhetők Key Vault objektumokhoz:
+Az objektumokhoz Resource Manager más sablon Key Vault is rendelkezésre áll:
 
 | Titkos kulcsok | Kulcsok | Tanúsítványok |
 |--|--|--|
 |<ul><li>[Gyors útmutató](../secrets/quick-create-template.md)<li>[Referencia](/azure/templates/microsoft.keyvault/vaults/secrets)|N.A.|N.A.|
 
-További Key Vault sablonokat itt talál: [Key Vault Resource Manager-referenciát](/azure/templates/microsoft.keyvault/allversions).
+További sablonokat itt Key Vault talál: [Key Vault Resource Manager hivatkozás.](/azure/templates/microsoft.keyvault/allversions)
 
 ## <a name="deploy-the-templates"></a>A sablonok üzembe helyezése
 
-A Azure Portal az előző sablonok üzembe helyezéséhez használja a **saját sablon létrehozása a szerkesztőben** című témakört az itt leírtak szerint: [erőforrások üzembe helyezése egyéni sablonból](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
+Az alábbi Azure Portal a fenti sablonokat a **Build your own template in editor** (Saját sablon létrehozása szerkesztőben) lehetőséggel helyezheti üzembe a következő módon: Erőforrások üzembe helyezése egyéni [sablonból.](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)
 
-Az előző sablonokat fájlokat is mentheti, és a következő parancsokat használhatja:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) és [az Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create):
+A fenti sablonokat fájlokba is mentheti, és a következő parancsokat használhatja: [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) és [az az deployment group create:](/cli/azure/deployment/group#az_deployment_group_create)
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile key-vault-template.json
@@ -189,7 +188,7 @@ az deployment group create --resource-group ExampleGroup --template-file key-vau
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt tervezi, hogy folytatja az ezt követő rövid útmutatók és oktatóanyagok meglétét, ezeket az erőforrásokat helyben hagyhatja. Ha már nincs szüksége az erőforrásokra, törölje az erőforráscsoportot. Ha törli a csoportot, a Key Vault és a kapcsolódó erőforrások is törlődnek. Az erőforráscsoport Azure CLI vagy Azure PowerShell használatával történő törléséhez hajtsa végre a következő lépéseket:
+Ha azt tervezi, hogy az ezt követő rövid útmutatókat és oktatóanyagokat folytatja, ezeket az erőforrásokat a helyén hagyhatja. Ha már nincs szüksége az erőforrásokra, törölje az erőforráscsoportot. Ha törli a csoportot, a kulcstartó és a kapcsolódó erőforrások is törlődnek. Ha törölni szeretné az erőforráscsoportot az Azure CLI vagy a Azure PowerShell használatával, kövesse az alábbi lépéseket:
 
 # <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
@@ -212,12 +211,12 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="resources"></a>Források
 
-- Olvassa el [a Azure Key Vault áttekintése című témakört](../general/overview.md).
-- További információ a [Azure Resource Managerról](../../azure-resource-manager/management/overview.md).
-- Tekintse át a [Azure Key Vault biztonsági áttekintést](security-overview.md)
+- Olvassa el az [áttekintést a Azure Key Vault.](../general/overview.md)
+- További információ a [Azure Resource Manager.](../../azure-resource-manager/management/overview.md)
+- A biztonsági [Azure Key Vault áttekintése](security-overview.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Biztonságos hozzáférés egy kulcstartóhoz](secure-your-key-vault.md)
-- [Hitelesítés a Key vaultban](authentication.md)
+- [Biztonságos hozzáférés egy kulcstartóhoz](security-overview.md)
+- [Hitelesítés kulcstartóban](authentication.md)
 - [Az Azure Key Vault fejlesztői útmutatója](developers-guide.md)

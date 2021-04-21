@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató a Azure Key Vault ügyféloldali kódtárának futtatásához – Java
-description: A rövid útmutató lépéseit követve Azure Key Vault a Java tanúsítvány ügyféloldali kódtárát.
+title: Rövid útmutató a Azure Key Vault ügyféloldali kódtárhoz – Java
+description: Ebben a rövid útmutatóban Azure Key Vault megismeri a Javához való Azure Key Vault ügyféloldali kódtárát.
 author: msmbaldwin
 ms.custom: devx-track-java
 ms.author: mbaldwin
@@ -8,15 +8,15 @@ ms.date: 12/18/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: db69258a774343af18e683444d22530a32f85555
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: c064a35ac6136d728f75b65379c543149cc8189d
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374947"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750031"
 ---
-# <a name="quickstart-azure-key-vault-certificate-client-library-for-java-certificates"></a>Rövid útmutató: Azure Key Vault Java-tanúsítvány ügyféloldali kódtára (tanúsítványok)
-Első lépések a Azure Key Vault Tanúsítvány ügyféloldali kódtárával a Javához. A csomag telepítéséhez kövesse az alábbi lépéseket, és próbálja ki az alapszintű feladatokhoz szükséges példakódot.
+# <a name="quickstart-azure-key-vault-certificate-client-library-for-java-certificates"></a>Rövid útmutató: Azure Key Vault Java-tanúsítvány ügyféloldali kódtárának létrehozása (Tanúsítványok)
+Első lépések a Azure Key Vault Java-tanúsítvány ügyféloldali kódtárával. Kövesse az alábbi lépéseket a csomag telepítéséhez, és próbálja ki az alapszintű feladatokhoz szükséges példakódot.
 
 További források:
 
@@ -31,10 +31,10 @@ További források:
 - [Apache Maven](https://maven.apache.org)
 - [Azure CLI](/cli/azure/install-azure-cli)
 
-Ez a rövid útmutató azt feltételezi, hogy az [Azure CLI-t](/cli/azure/install-azure-cli) és az [Apache Mavent](https://maven.apache.org) egy Linux terminálablakban futtatja.
+Ez a rövid útmutató feltételezi, hogy az [Azure CLI-t](/cli/azure/install-azure-cli) és az [Apache Mavent](https://maven.apache.org) egy Linux terminálablakban futtatja.
 
 ## <a name="setting-up"></a>Beállítása
-Ez a rövid útmutató az Azure Identity Library és az Azure CLI használatával hitelesíti a felhasználókat az Azure-szolgáltatásokban. A fejlesztők a Visual Studio vagy Visual Studio Code használatával is hitelesítik a hívásokat. További információ: Az ügyfél hitelesítése az [Azure Identity ügyféloldali kódtárával.](/java/api/overview/azure/identity-readme)
+Ez a rövid útmutató az Azure Identity Library és az Azure CLI használatával hitelesíti a felhasználókat az Azure-szolgáltatásokban. A fejlesztők a Visual Studio vagy Visual Studio Code használatával is hitelesítik a hívásokat. További információ: Az ügyfél hitelesítése az Azure Identity ügyféloldali [kódtárával.](/java/api/overview/azure/identity-readme)
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 1. Futtassa a következő parancsot: `login`.
@@ -60,7 +60,7 @@ mvn archetype:generate -DgroupId=com.keyvault.certificates.quickstart
                        -DinteractiveMode=false
 ```
 
-A projekt generálásának kimenete a következő lesz:
+A projekt generálásának kimenete a következőre hasonlít:
 
 ```console
 [INFO] ----------------------------------------------------------------------------
@@ -135,7 +135,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
 ## <a name="object-model"></a>Objektummodell
-A Azure Key Vault Java-tanúsítvány ügyféloldali kódtára lehetővé teszi a tanúsítványok kezelését. A [Példakódok](#code-examples) szakasz bemutatja, hogyan lehet ügyfelet létrehozni, tanúsítványt létrehozni, tanúsítványt lekérni és tanúsítványt törölni.
+A Azure Key Vault Tanúsítvány ügyféloldali kódtára a Javához lehetővé teszi a tanúsítványok kezelését. A [Példakódok](#code-examples) szakasz bemutatja, hogyan lehet ügyfelet létrehozni, tanúsítványt létrehozni, tanúsítványt lekérni és tanúsítványt törölni.
 
 A teljes konzolalkalmazás a alatt [található.](#sample-code)
 
@@ -159,7 +159,7 @@ import com.azure.security.keyvault.certificates.models.KeyVaultCertificateWithPo
 ### <a name="authenticate-and-create-a-client"></a>Ügyfél hitelesítése és létrehozása
 Ebben a rövid útmutatóban egy bejelentkezett felhasználóval történik a hitelesítés a Key Vault, amely a helyi fejlesztés előnyben részesített módszere. Az Azure-ban üzembe helyezett alkalmazások esetében felügyelt identitást kell hozzárendelni egy App Service virtuális géphez. További információ: [A felügyelt identitás áttekintése.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-Az alábbi példában a kulcstartó neve ki van bontva a kulcstartó URI-jába, "https:// \<your-key-vault-name\> .vault.azure.net" formátumban. Ez a példa a ["DefaultAzureCredential()"](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) osztályt használja, amely lehetővé teszi, hogy ugyanazt a kódot különböző környezetekben használja, különböző identitásbeállításokkal. További információ: Alapértelmezett [Azure-beli hitelesítőadat-hitelesítés.](https://docs.microsoft.com/java/api/overview/azure/identity-readme)
+Az alábbi példában a kulcstartó neve ki van bontva a Key Vault URI-nevére, "https:// \<your-key-vault-name\> .vault.azure.net". Ez a példa a ["DefaultAzureCredential()"](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) osztályt használja, amely lehetővé teszi, hogy ugyanazt a kódot használja különböző környezetekben különböző beállításokkal az identitások megadása érdekében. További információ: Alapértelmezett [Azure-beli hitelesítőadat-hitelesítés.](https://docs.microsoft.com/java/api/overview/azure/identity-readme)
 
 ```java
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
@@ -171,10 +171,10 @@ CertificateClient certificateClient = new CertificateClientBuilder()
     .buildClient();
 ```
 
-### <a name="save-a-secret"></a>Titkos fájl mentése
-Most, hogy az alkalmazás hitelesítve van, létrehozhat egy tanúsítványt a kulcstartóban a `certificateClient.beginCreateCertificate` metódussal. Ehhez szükség van a tanúsítvány nevére és egy tanúsítvány-házirendre – ebben a példában a "myCertificate" értéket rendeltük hozzá a változóhoz, és alapértelmezett házirendet `certificateName` használtunk.
+### <a name="save-a-secret"></a>Titkos gombra
+Most, hogy az alkalmazás hitelesítve van, létrehozhat egy tanúsítványt a kulcstartóban a `certificateClient.beginCreateCertificate` metódussal. Ehhez szükség van a tanúsítvány nevére és egy tanúsítvány-házirendre – a mintában a "myCertificate" értéket rendeltük hozzá a változóhoz, és egy alapértelmezett házirendet `certificateName` használtunk.
 
-A tanúsítvány létrehozása egy hosszú ideig futó művelet, amellyel lekérdezheti az előrehaladását, vagy megvárhatja, amíg befejeződik.
+A tanúsítvány létrehozása hosszú ideig futó művelet, amelynek során lekérdezheti az előrehaladását, vagy megvárhatja, amíg befejeződik.
 
 ```java
 SyncPoller<CertificateOperation, KeyVaultCertificateWithPolicy> certificatePoller =
@@ -195,10 +195,10 @@ Most már lekérheti a korábban létrehozott tanúsítványt a `certificateClie
 KeyVaultCertificate retrievedCertificate = certificateClient.getCertificate(certificateName);
  ```
 
-Most már hozzáférhet a lekért tanúsítvány részleteihez az olyan műveletekkel, mint a `retrievedCertificate.getName` , `retrievedCertificate.getProperties` stb. Valamint a `retrievedCertificate.getCer` tartalma.
+Most már hozzáférhet a lekért tanúsítvány részleteihez olyan műveletekkel, mint a `retrievedCertificate.getName` , `retrievedCertificate.getProperties` stb. Valamint a `retrievedCertificate.getCer` tartalma.
 
 ### <a name="delete-a-certificate"></a>Tanúsítvány törlése
-Végül töröljük a tanúsítványt a kulcstartóból a metódussal, amely `certificateClient.beginDeleteCertificate` szintén egy hosszú ideig futó művelet.
+Végül töröljük a tanúsítványt a kulcstartóból a metódussal, amely szintén egy `certificateClient.beginDeleteCertificate` hosszú ideig futó művelet.
 
 ```java
 SyncPoller<DeletedCertificate, Void> deletionPoller = certificateClient.beginDeleteCertificate(certificateName);
@@ -270,6 +270,6 @@ public class App {
 ## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban létrehozott egy kulcstartót, létrehozott egy tanúsítványt, lekérte, majd törölte. Ha többet szeretne megtudni a Key Vault és az alkalmazásokba való integrálásáról, folytassa az alábbi cikkekkel.
 
-- Áttekintés a [Azure Key Vault](../general/overview.md)
+- Olvassa el [a Azure Key Vault](../general/overview.md)
 - Lásd [Azure Key Vault fejlesztői útmutatót](../general/developers-guide.md)
-- [Kulcstartóhoz való hozzáférés biztonságossá tere](../general/secure-your-key-vault.md)
+- [Kulcstartóhoz való hozzáférés biztonságossá tere](../general/security-overview.md)

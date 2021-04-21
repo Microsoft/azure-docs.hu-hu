@@ -1,22 +1,22 @@
 ---
 title: Azure Key Vault hitelesítés alapjai
 description: A Key Vault hitelesítési modelljének működése
-author: ShaneBala-keyvault
-ms.author: sudbalas
-ms.date: 09/25/2020
+author: msmbaldwin
+ms.author: mbaldwin
+ms.date: 04/15/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: c43995a8b3a072d98db0ba2c8219694f17e49a26
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: f0cd2fb341dd790a7628cc3cf6a5bdd87d7c3687
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363427"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753415"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault – hitelesítési alapok
 
-Azure Key Vault segítségével biztonságosan tárolhatja és kezelheti az alkalmazás hitelesítő adatait, például a titkos kulcsokat, kulcsokat és tanúsítványokat egy központi és biztonságos felhőtárházban. Key Vault szükségtelenné, hogy a hitelesítő adatokat az alkalmazásokban tárolja. Az alkalmazások futásidőben hitelesíthetők Key Vault hitelesítő adatok lekéréséhez.
+Azure Key Vault segítségével biztonságosan tárolhatja és kezelheti az alkalmazás hitelesítő adatait, például a titkos kulcsokat, kulcsokat és tanúsítványokat egy központi és biztonságos felhőtárban. Key Vault szükségtelenné, hogy a hitelesítő adatokat az alkalmazásokban tárolja. Az alkalmazások futásidőben hitelesíthetők Key Vault hitelesítő adatok lekéréséhez.
 
 Rendszergazdaként szorosan szabályozhatja, hogy mely felhasználók és alkalmazások férhetnek hozzá a kulcstartóhoz, és korlátozhatja és naplóozhatja az ő műveleteit. Ez a dokumentum a kulcstartó-hozzáférési modell alapvető fogalmait ismerteti. Ez bevezető szintű ismereteket biztosít, és bemutatja, hogyan hitelesíthet egy felhasználót vagy alkalmazást a Key Vaultban az elsőtől a végéig.
 
@@ -37,39 +37,39 @@ Ez a dokumentum feltételezi, hogy ön ismeri az alábbi fogalmakat. Ha egyik fo
 
 ## <a name="register-a-user-or-application-in-azure-active-directory-as-a-security-principal"></a>Felhasználó vagy alkalmazás regisztrálása a Azure Active Directory rendszerbiztonsági tagként
 
-Amikor egy felhasználó vagy alkalmazás kérést tesz a Key Vaulthoz, a kérést először hitelesítenie kell a Azure Active Directory. Ahhoz, hogy ez működjön, a felhasználót vagy alkalmazást rendszerbiztonsági tagként Azure Active Directory regisztrálni a szolgáltatásban.
+Amikor egy felhasználó vagy alkalmazás kérést tesz a Key Vaulthoz, a kérést először hitelesítenie kell a Azure Active Directory. Ahhoz, hogy ez működjön, a felhasználót vagy az alkalmazást rendszerbiztonsági tagként Azure Active Directory regisztrálni a szolgáltatásban.
 
-Kövesse az alábbi dokumentációs hivatkozásokat, amelyekből tájékozódhat arról, hogyan regisztrálhat egy felhasználót vagy alkalmazást a Azure Active Directory.
-**Mindenképpen hozzon létre jelszót a felhasználói regisztrációhoz, valamint egy titkos ügyfél-titkos adatokat vagy ügyfél-tanúsítványt az alkalmazásokhoz.**
+Kövesse az alábbi dokumentációs hivatkozásokat, hogy megértse, hogyan regisztrálhat egy felhasználót vagy alkalmazást a Azure Active Directory.
+**Mindenképpen hozzon létre jelszót a felhasználói regisztrációhoz, valamint titkos ügyfél-titkos adatokat vagy ügyfél-tanúsítványt az alkalmazásokhoz.**
 
-* Felhasználó regisztrálása egy Azure Active Directory [hivatkozásban](../../active-directory/fundamentals/add-users-azure-active-directory.md)
-* Alkalmazás regisztrálása egy Azure Active Directory [hivatkozásban](../../active-directory/develop/quickstart-register-app.md)
+* Felhasználó regisztrálása a Azure Active Directory [hivatkozásban](../../active-directory/fundamentals/add-users-azure-active-directory.md)
+* Alkalmazás regisztrálása a Azure Active Directory [hivatkozásban](../../active-directory/develop/quickstart-register-app.md)
 
 ## <a name="assign-your-security-principal-a-role"></a>Szerepkör hozzárendelése a rendszerbiztonsági taghoz
 
 Az Azure szerepköralapú hozzáférés-vezérlésével (Azure RBAC) engedélyeket rendelhet a rendszerbiztonsági taghoz. Ezeket az engedélyeket szerepkör-hozzárendelésnek nevezzük.
 
-A kulcstartó kontextusában ezek a szerepkör-hozzárendelések határozzák meg a rendszerbiztonsági tag kulcstartó felügyeleti síkhoz (más néven vezérlősíkhoz) való hozzáférési szintjét. Ezek a szerepkör-hozzárendelések nem biztosítanak közvetlen hozzáférést az adatsík titkos kulcsához, hanem hozzáférést biztosítanak a kulcstartó tulajdonságainak kezeléséhez. Az Olvasó szerepkörhöz rendelt  felhasználók vagy alkalmazások például nem módosíthatnak a Key Vault tűzfalbeállításain, míg a közreműködői szerepkörhöz rendelt felhasználók vagy alkalmazások is.  Egyik szerepkör sem fog közvetlen hozzáféréssel a titkos kulcsokon, kulcsokon és tanúsítványokon végrehajtani a műveleteket, például az értékük létrehozását vagy leolvasását, amíg hozzá nem rendeli őket a Kulcstartó adatsíkhoz való hozzáféréshez. Ezt a következő lépésben fedi le.
+A kulcstartó kontextusában ezek a szerepkör-hozzárendelések határozzák meg a rendszerbiztonsági tag kulcstartó felügyeleti síkhoz (más néven vezérlősíkhoz) való hozzáférési szintjét. Ezek a szerepkör-hozzárendelések nem biztosítanak közvetlen hozzáférést az adatsík titkos kulcsaihoz, hanem hozzáférést biztosítanak a kulcstartó tulajdonságainak kezeléséhez. Az Olvasó szerepkörhöz rendelt  felhasználók vagy alkalmazások például nem módosíthatnak a Key Vault tűzfalbeállításain, míg a közreműködői szerepkörhöz rendelt felhasználók vagy alkalmazások is.  Egyik szerepkör sem fog közvetlen hozzáféréssel a titkos kulcsokon, kulcsokon és tanúsítványokon végrehajtani a műveleteket, például az értékük létrehozásához vagy leolvasáshoz, amíg hozzá nem rendeli őket a kulcstartó adatsíkhoz való hozzáféréshez. Ezt a következő lépésben fedi le.
 
 >[!IMPORTANT]
-> Bár a Közreműködő vagy Tulajdonos szerepkörű felhasználók alapértelmezés szerint nem férhetnek hozzá a Key Vaultban tárolt titkos kulcsok műveleteihez, a Közreműködő és a Tulajdonos szerepkör biztosít hozzáférési szabályzatokat a Key Vaultban tárolt titkos kulcsokhoz, vagy eltávolítják azokat. Ezért az ezekkel a szerepkör-hozzárendelésekkel rendelkezik felhasználók hozzáférést adhatnak saját maguknak a kulcstartóban tárolt titkos kulcsokhoz való hozzáféréshez. Ezért azt javasoljuk, hogy csak a rendszergazdák férnek hozzá a Közreműködő vagy a Tulajdonos szerepkörhöz. Azok a felhasználók és alkalmazások, akik csak titkos kulcsokat kell lekérni a Key Vaultból, Olvasó szerepkört kell biztosítani. **További részleteket a következő szakaszban talál.**
+> Bár a Közreműködő vagy Tulajdonos szerepkörű felhasználók alapértelmezés szerint nem férhetnek hozzá a Key Vaultban tárolt titkos kulcsok műveleteihez, a Közreműködő és a Tulajdonos szerepkör engedélyekkel rendelkezik a kulcstartóban tárolt titkos kulcsok hozzáférési szabályzatának hozzáadásához vagy eltávolításához. Ezért az ezekkel a szerepkör-hozzárendelésekkel egy felhasználó hozzáférést adhat magának a kulcstartóban tárolt titkos kulcsok eléréséhez. Ezért azt javasoljuk, hogy csak rendszergazdák férnek hozzá a Közreműködő vagy a Tulajdonos szerepkörhöz. Azok a felhasználók és alkalmazások, akik csak titkos kulcsokat kell lekérni a Key Vaultból, Olvasó szerepkört kell biztosítani. **További részleteket a következő szakaszban talál.**
 
 >[!NOTE]
-> Amikor szerepkör-hozzárendelést rendel egy felhasználóhoz Azure Active Directory Azure Active Directory bérlői szinten, ez az engedélykészlet a hozzárendelés hatókörébe tartozó összes előfizetésre, erőforráscsoportra és erőforrásra szűkül. A legkisebb jogosultságok rendszerbiztonsági tagjának követnie kell ezt a szerepkör-hozzárendelést egy részletesebb hatókörben. Hozzárendelhet például egy felhasználóhoz olvasói szerepkört az előfizetés szintjén, és egy Tulajdonos szerepkört egyetlen kulcstartóhoz. Egy előfizetés, erőforráscsoport vagy kulcstartó Identitás-hozzáférés-kezelési (IAM)-beállításai között részletesebb hatókörben is szerepkör-hozzárendelést lehet hozzárendelni.
+> Amikor szerepkör-hozzárendelést rendel egy felhasználóhoz Azure Active Directory Azure Active Directory bérlői szinten, ez az engedélykészlet a hozzárendelés hatókörébe tartozó összes előfizetésre, erőforráscsoportra és erőforrásra szűkül. A legkisebb jogosultságok rendszerbiztonsági tagjának követnie kell ezt a szerepkör-hozzárendelést egy részletesebb hatókörben. Hozzárendelhet például egy felhasználót olvasói szerepkörhöz az előfizetés szintjén, és egy Tulajdonos szerepkört egyetlen kulcstartóhoz. Egy előfizetés, erőforráscsoport vagy kulcstartó Identitás-hozzáférés-kezelési (IAM)-beállításai között részletesebb hatókörben is el lehet látni egy szerepkör-hozzárendelést.
 
 * További információ az Azure-szerepkörök [hivatkozásról](../../role-based-access-control/built-in-roles.md)
 * További információ a szerepkör-hozzárendelések hozzárendelésével vagy [eltávolításával](../../role-based-access-control/role-assignments-portal.md) kapcsolatban
 
 ## <a name="configure-key-vault-access-policies-for-your-security-principal"></a>Kulcstartó-hozzáférési szabályzatok konfigurálása a rendszerbiztonsági tag számára
 
-Mielőtt hozzáférést ad a felhasználóknak és az alkalmazásoknak a kulcstartó eléréséhez, fontos megérteni a kulcstartón elvégezhető különböző műveleteket. A kulcstartó-műveleteknek két fő típusa van: a felügyeleti síkon (más néven vezérlősíkon) és az adatsíkon.
+Mielőtt hozzáférést ad a felhasználóknak és az alkalmazásoknak a kulcstartó eléréséhez, fontos megérteni a kulcstartón elvégezhető különböző műveleteket. A kulcstartó-műveleteknek két fő típusa van: a felügyeleti sík (más néven vezérlősík) és az adatsík-műveletek.
 
 Ez a táblázat több példát mutat be a felügyeleti sík és az adatsík által vezérelt különböző műveletekre. A kulcstartó tulajdonságait megváltoztató műveletek felügyeletisík-műveletek. A kulcstartóban tárolt titkos kulcsok értékét megváltoztató vagy lekért műveletek adatsíkműveletek.
 
 |Felügyeleti sík műveletei (példák)|Adatsíkműveletek (példák)|
 | --- | --- |
-| Új Key Vault | Kulcs, titkos kulcs és tanúsítvány létrehozása
-| Delete Key Vault | Kulcs, titkos kulcs és tanúsítvány törlése
+| Create Key Vault | Kulcs, titkos kulcs és tanúsítvány létrehozása
+| Törlés Key Vault | Kulcs, titkos kulcs és tanúsítvány törlése
 | Szerepkör-hozzárendelések hozzáadása Key Vault eltávolítása | Kulcsok, titkos kulcsok, tanúsítványok értékeinek listása és lekérte
 | Hozzáférési szabályzatok hozzáadása Key Vault eltávolítása | Kulcsok, titkos kulcsok, tanúsítványok biztonsági mentése és visszaállítása
 | Tűzfalbeállítások Key Vault módosítása | Kulcsok, titkos kulcsok és tanúsítványok megújítása
@@ -95,7 +95,7 @@ A kulcstartó-hozzáférési szabályzatok hozzáférést engedélyeznek a felha
 
 A klasszikus hozzáférési szabályzatok részletesek, ami azt jelenti, hogy engedélyezheti vagy megtagadhatja az egyes felhasználók vagy alkalmazások azon képességét, hogy egyéni műveleteket hajtsanak végre egy kulcstartón belül. Íme, néhány példa:
 
-* Az 1. rendszerbiztonsági tag bármilyen kulcsműveletet végrehajthat, de a titkos kulcsokkal vagy tanúsítványokkal kapcsolatos műveletek nem hajthatnak végre.
+* Az 1. rendszerbiztonsági tag bármilyen kulcsműveletet végrehajthat, de nem engedélyezett a titkos kulcsokkal vagy tanúsítványokkal kapcsolatos műveletek végrehajtása.
 * A 2. rendszerbiztonsági tag listolhatja és beolvashatja az összes kulcsot, titkos kulcsot és tanúsítványt, de nem hajthat végre létrehozási, törlési vagy megújítási műveleteket.
 * A 3. rendszerbiztonsági tag biztonsági mentést készít és visszaállít minden titkos ot, de maguk nem tudják olvasni a titkos kulcsok értékét.
 
@@ -111,26 +111,26 @@ A kulcstartó adatsíkhoz való hozzáférés megadásának egy új módja a kul
 > [!NOTE]
 > Ez a hozzáférési modell nem kompatibilis a fent bemutatott klasszikus Key Vault-hozzáférési szabályzatokkal. Ki kell választania egyet. Ezt a lehetőséget akkor is meg lehet majd tenni, ha a kulcstartó Hozzáférési szabályzat lapra kattint.
 
-Key Vault szerepkör-hozzárendelések olyan beépített Azure-beli szerepkör-hozzárendelések, amelyek a kulcsok, titkos kulcsok és tanúsítványok eléréséhez használt általános engedélykészleteket foglalják magukban. Ez az engedélymodell további képességeket is lehetővé tesz, amelyek nem érhetők el a klasszikus kulcstartó-hozzáférési szabályzatmodellben.
+Key Vault szerepkör-hozzárendelések olyan beépített Azure-beli szerepkör-hozzárendelések halmazai, amelyek a kulcsok, titkos kulcsok és tanúsítványok eléréséhez használt általános engedélykészleteket foglalják magukban. Ez az engedélymodell olyan további képességeket is lehetővé tesz, amelyek a klasszikus kulcstartó-hozzáférési szabályzatmodellben nem érhetők el.
 
-* Az Azure RBAC-engedélyek nagy méretekben is kezelhetők, ha lehetővé teszi, hogy a felhasználók előfizetés, erőforráscsoport vagy egyéni kulcstartószinten rendelik hozzá ezeket a szerepköröket. A felhasználó az adatsíkra vonatkozó engedélyekkel fog rendelkezni az Azure RBAC-hozzárendelés hatókörébe tartozó összes kulcstartóhoz. Így nem kell egyedi hozzáférési szabályzati engedélyeket hozzárendelni felhasználónként/alkalmazásonként kulcstartónként.
+* Az Azure RBAC-engedélyek nagy méretekben is kezelhetők, ha lehetővé teszi, hogy a felhasználók előfizetés, erőforráscsoport vagy egyéni kulcstartószinten rendelik hozzá ezeket a szerepköröket. A felhasználó az adatsíkra vonatkozó engedélyekkel fog rendelkezni az Azure RBAC-hozzárendelés hatókörébe tartozó összes kulcstartóhoz. Így nincs szükség egyéni hozzáférési házirend-engedélyek felhasználónként/alkalmazásonkénti hozzárendelésére kulcstartónként.
 
-* Az Azure RBAC-engedélyek kompatibilisek a Privileged Identity Management PIM-el. Ez lehetővé teszi az olyan kiemelt szerepkörökhöz való hozzáférés-vezérlés konfigurálását, mint Key Vault rendszergazda. Ez a legjobb biztonsági eljárás, amely a kulcstartókhoz való állandó hozzáférés megszüntetésével a legkisebb jogosultságok alapvető gyakorlatát követi.
+* Az Azure RBAC-engedélyek kompatibilisek a Privileged Identity Management PIM-el. Ez lehetővé teszi, hogy az olyan kiemelt szerepkörökhöz is konfigurálja a hozzáférés-vezérlést, mint Key Vault rendszergazda. Ez a legjobb biztonsági eljárás, és a kulcstartókhoz való állandó hozzáférés megszüntetésével követi a legkevesebb jogosultságot.
 
-Az Azure RBAC for Key Vault további információért tekintse meg a következő dokumentumokat:
+A következő dokumentumokban további információt Key Vault Azure RBAC-ről:
 
-* Azure RBAC Key Vault [hivatkozáshoz](./secure-your-key-vault.md#management-plane-and-azure-rbac)
+* Azure RBAC Key Vault [hivatkozáshoz](rbac-guide.md)
 * Azure RBAC a Key Vault szerepkörökhöz [hivatkozás](../../role-based-access-control/built-in-roles.md#key-vault-administrator)
 
 ## <a name="configure-key-vault-firewall"></a>A Key Vault konfigurálása
 
-Alapértelmezés szerint a Key Vault lehetővé teszi, hogy a nyilvános internetről származó forgalom egy nyilvános végponton keresztül elérje a kulcstartót. További biztonsági rétegként konfigurálhatja a Azure Key Vault tűzfalat a Key Vault nyilvános végponthoz való hozzáférés korlátozására.
+Alapértelmezés szerint a Key Vault lehetővé teszi, hogy a nyilvános internetről származó forgalom egy nyilvános végponton keresztül elérjék a kulcstartót. További biztonsági rétegként konfigurálhatja a Azure Key Vault tűzfalat a Key Vault nyilvános végponthoz való hozzáférés korlátozására.
 
-A Key Vault tűzfalának engedélyezéséhez kattintson a Key Vault portálJának Hálózat lapjára, és válassza a Hozzáférés engedélyezése innen: "Privát végpont és kijelölt hálózatok" választógombot. Ha úgy dönt, hogy engedélyezi a Key Vault tűzfalát, az alábbi módokon engedélyezheti a forgalmat a Key Vault tűzfalán keresztül.
+A Key Vault tűzfalának engedélyezéséhez kattintson a Key Vault portálJának Hálózat lapjára, és jelölje be a Hozzáférés engedélyezése innen: "Privát végpont és kiválasztott hálózatok" választógombot. Ha úgy dönt, hogy engedélyezi a Key Vault tűzfalát, az alábbi módokon engedélyezheti a forgalmat a Key Vault tűzfalán keresztül.
 
-* Adja hozzá az IPv4-címeket a Key Vault tűzfal-engedélyező listájához. Ez a lehetőség statikus IP-címmel és alkalmazásokkal működik a legjobban.
+* Adja hozzá az IPv4-címeket a Key Vault tűzfalának engedélyezőlistához. Ez a lehetőség statikus IP-címmel és alkalmazásokkal működik a legjobban.
 
-* Adjon hozzá egy virtuális hálózatot a Key Vault tűzfalához. Ez a lehetőség olyan Azure-erőforrások esetén működik a legjobban, amelyek dinamikus IP-címekkel, például ip-Virtual Machines. Azure-erőforrásokat adhat egy virtuális hálózathoz, és hozzáadhatja a virtuális hálózatot a Key Vault tűzfalának engedélyezőlistához. Ez a beállítás egy szolgáltatásvégpontot használ, amely egy magánhálózati IP-cím a virtuális hálózaton belül. Ez egy további védelmi réteget biztosít, így a Key Vault és a virtuális hálózat közötti forgalom nem lesz a nyilvános interneten keresztül irányítva. A szolgáltatásvégponttal kapcsolatos további információkért tekintse meg a következő dokumentációt. [Link](./network-security.md)
+* Adjon hozzá egy virtuális hálózatot a Key Vault tűzfalához. Ez a lehetőség olyan Azure-erőforrások esetén működik a legjobban, amelyek dinamikus IP-címekkel, például ip-Virtual Machines. Hozzáadhat Azure-erőforrásokat egy virtuális hálózathoz, és hozzáadhatja a virtuális hálózatot a Key Vault tűzfalának engedélyezőlistához. Ez a lehetőség egy szolgáltatásvégpontot használ, amely egy magánhálózati IP-cím a virtuális hálózaton belül. Ez egy további védelmi réteget biztosít, így a Key Vault és a virtuális hálózat közötti forgalom nem lesz a nyilvános interneten keresztül irányítva. A szolgáltatásvégponttal kapcsolatos további információkért tekintse meg a következő dokumentációt. [Link](./network-security.md)
 
 * Adjon hozzá egy privát kapcsolati kapcsolatot a kulcstartóhoz. Ez a lehetőség közvetlenül csatlakoztatja a virtuális hálózatot a kulcstartó egy adott példányához, és hatékonyan behozza a kulcstartót a virtuális hálózatba. A privát végpont key vaulthoz való konfigurálásával kapcsolatos további információkért tekintse meg a következő [hivatkozást](./private-link-service.md)
 

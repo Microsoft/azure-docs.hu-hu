@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: a Hoxhunt konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
-description: Ismerje meg, hogy miként lehet automatikusan kiépíteni és kiépíteni felhasználói fiókjait az Azure AD-ből a Hoxhunt.
+title: 'Oktatóanyag: A Hoxhunt konfigurálása automatikus felhasználóátadáshoz Azure Active Directory | Microsoft Docs'
+description: Megtudhatja, hogyan létesítsen automatikusan felhasználói fiókokat az Azure AD-ból a Hoxhuntba.
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -15,66 +15,66 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: Zhchia
-ms.openlocfilehash: 24c8e2aafed6ee7b8823effc350dee4edb5e4873
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db33cc43419b4228ca270d3a69c0e88de2c05638
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101650826"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752047"
 ---
-# <a name="tutorial-configure-hoxhunt-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Hoxhunt konfigurálása
+# <a name="tutorial-configure-hoxhunt-for-automatic-user-provisioning"></a>Oktatóanyag: A Hoxhunt konfigurálása automatikus felhasználóátadáshoz
 
-Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a Hoxhunt és a Azure Active Directory (Azure AD) szolgáltatásban kell végrehajtania az automatikus felhasználó-kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat az Azure AD kiépítési szolgáltatás [Hoxhunt](https://www.hoxhunt.com/) . A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../app-provisioning/user-provisioning.md). 
+Ez az oktatóanyag azokat a lépéseket ismerteti, amelyekre szüksége lesz a Hoxhuntban és a Azure Active Directory (Azure AD) az automatikus felhasználóátadás konfigurálásában. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiépíti a felhasználókat és csoportokat a [Hoxhunt](https://www.hoxhunt.com/) számára az Azure AD provisioning service használatával. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../app-provisioning/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Támogatott képességek
 > [!div class="checklist"]
-> * Felhasználók létrehozása a Hoxhunt-ben
-> * Felhasználók eltávolítása a Hoxhunt-ben, ha már nincs szükség hozzáférésre
-> * Felhasználói attribútumok szinkronizálása az Azure AD és a Hoxhunt között
-> * [Egyszeri bejelentkezés](hoxhunt-tutorial.md) a Hoxhunt-be (ajánlott)
+> * Felhasználók létrehozása a Hoxhuntban
+> * Felhasználók eltávolítása a Hoxhuntból, ha már nincs szükségük hozzáférésre
+> * A felhasználói attribútumok szinkronizálása az Azure AD és a Hoxhunt között
+> * [Egyszeri bejelentkezés a](hoxhunt-tutorial.md) Hoxhuntba (ajánlott)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik az alábbi előfeltételek valamelyikével:
 
-* [Azure AD-bérlő](../develop/quickstart-create-new-tenant.md) 
-* Egy Azure AD-beli felhasználói fiók, amely [jogosult](../roles/permissions-reference.md) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
+* [Egy Azure AD-bérlő](../develop/quickstart-create-new-tenant.md) 
+* Felhasználói fiók az Azure [](../roles/permissions-reference.md) AD-ban, amely engedéllyel rendelkezik a kiépítés konfigurálásához (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazástulajdonos vagy globális rendszergazda). 
 * Egy Hoxhunt-bérlő.
-* SCIM API-kulcs és SCIM-végpont URL-címe a szervezet számára (Hoxhunt-támogatással konfigurálva).
+* SCIM API-kulcs és SCIM-végpont URL-címe a szervezet számára (a Hoxhunt-támogatás konfigurálja).
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
 1. Ismerje meg [az átadási szolgáltatás működését](../app-provisioning/user-provisioning.md).
 2. Határozza meg, hogy ki lesz [az átadás hatókörében](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
-3. Határozza meg, hogy az [Azure ad és a Hoxhunt között milyen adatleképezést kell leképezni](../app-provisioning/customize-application-attributes.md). 
+3. Határozza meg, hogy milyen [adatokat kell leképezni az Azure AD és a Hoxhunt között.](../app-provisioning/customize-application-attributes.md) 
 
-## <a name="step-2-configure-hoxhunt-to-support-provisioning-with-azure-ad"></a>2. lépés Hoxhunt konfigurálása az Azure AD-vel való kiépítés támogatásához
-Forduljon a [Hoxhunt támogatási szolgálatához](mailto:support@hoxhunt.com) a scim API-kulcs és a scim végpont URL-címének megadásához az Azure ad-vel való kiépítés támogatásához.
-## <a name="step-3-add-hoxhunt-from-the-azure-ad-application-gallery"></a>3. lépés Hoxhunt hozzáadása az Azure AD Application Galleryből
+## <a name="step-2-configure-hoxhunt-to-support-provisioning-with-azure-ad"></a>2. lépés A Hoxhunt konfigurálása az Azure AD-beli kiépítés támogatására
+Vegye fel a kapcsolatot a [Hoxhunt](mailto:support@hoxhunt.com) ügyfélszolgálatával az SCIM API-kulcs és az SCIM-végpont URL-címének fogadásához, és konfigurálja a Hoxhuntot az Azure AD-beli kiépítés támogatására.
+## <a name="step-3-add-hoxhunt-from-the-azure-ad-application-gallery"></a>3. lépés Hoxhunt hozzáadása az Azure AD alkalmazásgyűjteményből
 
-Vegyen fel Hoxhunt az Azure AD-alkalmazás-katalógusból a Hoxhunt való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a Hoxhunt az SSO-hoz, használhatja ugyanazt az alkalmazást. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](../manage-apps/add-application-portal.md) tudhat meg többet. 
+Adja hozzá a Hoxhuntot az Azure AD alkalmazásgyűjteményből a Hoxhunt kiépítés kezelésének elkezdéséhez. Ha korábban már beállít egy Hoxhuntot az SSO-nak, használhatja ugyanazt az alkalmazást. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](../manage-apps/add-application-portal.md) tudhat meg többet. 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés: Az átadás hatókörében lévő személyek meghatározása 
 
 Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) leírt hatókörszűrőt használhatja. 
 
-* Felhasználók és csoportok Hoxhunt való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
+* Amikor felhasználókat és csoportokat rendel a Hoxhunthoz, az alapértelmezett hozzáféréstől különböző **szerepkört kell választania.** Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
 
 * Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-hoxhunt"></a>5. lépés Automatikus felhasználó-kiépítés beállítása a Hoxhunt 
+## <a name="step-5-configure-automatic-user-provisioning-to-hoxhunt"></a>5. lépés Automatikus felhasználóátadás konfigurálása a Hoxhunthoz 
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy TestApp alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
+Ez a szakasz végigvezeti azon lépéseken, amelyek segítségével konfigurálhatja az Azure AD kiépítési szolgáltatást felhasználók és/vagy csoportok létrehozására, frissítésére és letiltására a TestAppben felhasználói és/vagy csoport-hozzárendelések alapján az Azure AD-ban.
 
-### <a name="to-configure-automatic-user-provisioning-for-hoxhunt-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a Hoxhunt az Azure AD-ben:
+### <a name="to-configure-automatic-user-provisioning-for-hoxhunt-in-azure-ad"></a>Automatikus felhasználóátadás konfigurálása a Hoxhunthoz az Azure AD-ban:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **Vállalati alkalmazások** lehetőséget, majd a **Minden alkalmazás** elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Hoxhunt** lehetőséget.
+2. Az alkalmazások listájában válassza a **Hoxhunt lehetőséget.**
 
-    ![Az Hoxhunt hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![A Hoxhunt hivatkozás az Alkalmazások listában](common/all-applications.png)
 
 3. Válassza a **Kiépítés** lapot.
 
@@ -84,7 +84,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Kiépítés lap automatikus](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Hoxhunt bérlői URL-címét és a titkos jogkivonatot. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Hoxhunt. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Hoxhunt-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **Rendszergazdai hitelesítő adatok szakaszban** adja meg a Hoxhunt-bérlő URL-címét és titkos jogkivonatát. Kattintson **a Kapcsolat tesztelése elemre** annak biztosításához, hogy az Azure AD csatlakozni tud a Hoxhunthoz. Ha a kapcsolat sikertelen, ellenőrizze, hogy a Hoxhunt-fiókja rendelkezik-e rendszergazdai engedélyekkel, majd próbálkozzon újra.
 
     ![Jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -94,9 +94,9 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Hoxhunt** lehetőséget.
+8. A **Leképezések szakaszban** válassza a **Felhasználók szinkronizálása Azure Active Directory a Hoxhuntba lehetőséget.**
 
-9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban lévő Hoxhunt. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Hoxhunt felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](../app-provisioning/customize-application-attributes.md), akkor biztosítania kell, hogy a Hoxhunt API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+9. Tekintse át az Azure AD-ről a Hoxhuntra szinkronizált felhasználói attribútumokat az **Attribútumleképezés szakaszban.** A Egyeztetési tulajdonságokként **kiválasztott** attribútumok a Hoxhunt felhasználói fiókjaihoz illeszkednek a frissítési műveletekhez. Ha úgy dönt, [](../app-provisioning/customize-application-attributes.md)hogy módosítja az egyező célattribútumot, meg kell győződni arról, hogy a Hoxhunt API támogatja a felhasználók ezen attribútum alapján való szűrését. A módosítások **véglegesítéshez** kattintson a Mentés gombra.
 
    |Attribútum|Típus|Szűréshez támogatott|
    |---|---|---|
@@ -105,16 +105,16 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    |active|Logikai|
    |name.givenName|Sztring|
    |name.familyName|Sztring|
-   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: részleg|Sztring|
-   |címek [type EQ "work"]. Country|Sztring|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|Sztring|
+   |addresses[type eq "work"].country|Sztring|
 
 10. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
-11. Az Azure AD-kiépítési szolgáltatás Hoxhunt való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
+11. Ha engedélyezni szeretné az Azure AD kiépítési  szolgáltatást a Hoxhunt számára, módosítsa a Kiépítési állapot beállítást **Be** állapotra a **Beállítások szakaszban.**
 
     ![Kiépítési állapot bekapcsolva](common/provisioning-toggle-on.png)
 
-12. Adja meg a Hoxhunt kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
+12. Határozza meg a Hoxhunt számára kiépítni kívánt felhasználókat és/vagy  csoportokat a Kívánt értékek kiválasztásával a Hatókör területen a **Beállítások szakaszban.**
 
     ![Átadási hatókör](common/provisioning-scope.png)
 
@@ -130,6 +130,9 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 * Az [átadási naplókkal](../reports-monitoring/concept-provisioning-logs.md) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
 * A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
 * Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.  
+
+## <a name="change-log"></a>Módosítási napló
+* 2021.04.20. – Támogatás hozzáadva a "preferredLanguage" és az "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division" vállalati bővítményattribútumhoz.
 
 ## <a name="additional-resources"></a>További források
 

@@ -1,9 +1,8 @@
 ---
-title: Azure rövid útmutató – Key Vault kulcsának beállítása és lekérése a Azure Portal használatával | Microsoft Docs
-description: Gyors útmutató, amely bemutatja, hogyan állíthatja be és kérhet le egy kulcsot a Azure Key Vault használatával a Azure Portal
+title: Azure rövid útmutató – Kulcs beállítása és lekérése a Key Vault használatával Azure Portal | Microsoft Docs
+description: Rövid útmutató, amely bemutatja, hogyan állíthat be és Azure Key Vault kulcsot a Azure Portal
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
@@ -11,16 +10,16 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 419fe72d400177ce9fa3d9811d7dfa06e74c0810
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 75ea1c0e92e4d22e73178685472eb1953565a616
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935053"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750337"
 ---
-# <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-the-azure-portal"></a>Gyors útmutató: kulcs beállítása és lekérése Azure Key Vault használatával a Azure Portal
+# <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-the-azure-portal"></a>Rövid útmutató: Kulcs beállítása és lekérése a Azure Key Vault a Azure Portal
 
-Az Azure Key Vault egy olyan felhőszolgáltatás, amely a titkos kulcsok biztonságos tárolására szolgál. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. Az Azure-kulcstartók létrehozhatók és kezelhetők az Azure Portal segítségével is. Ebben a rövid útmutatóban egy kulcstartót hoz létre, amelyet aztán a kulcs tárolására használhat. A Key Vaulttal kapcsolatosan további információt az [Áttekintés](../general/overview.md) szakaszban talál.
+Az Azure Key Vault egy olyan felhőszolgáltatás, amely a titkos kulcsok biztonságos tárolására szolgál. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. Az Azure-kulcstartók létrehozhatók és kezelhetők az Azure Portal segítségével is. Ebben a rövid útmutatóban létrehoz egy kulcstartót, majd annak használatával tárol egy kulcsot. A Key Vaulttal kapcsolatosan további információt az [Áttekintés](../general/overview.md) szakaszban talál.
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -30,39 +29,39 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-vault"></a>Tároló létrehozása
 
-1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása** lehetőséget.
-2. A keresőmezőbe írja be a **Key Vault** kifejezést.
+1. A Azure Portal menüben vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása lehetőséget.**
+2. A Keresőmezőbe írja be a **következőt: Key Vault.**
 3. Az eredmények listájában válassza a **Key Vault** lehetőséget.
 4. A Key Vault szakaszban kattintson a **Létrehozás** gombra.
 5. A **Kulcstartó létrehozása** szakaszban adja meg a következő információkat:
-    - **Név**: Egy egyedi nevet kell megadnia. Ebben a rövid útmutatóban **például a-vaultot** használjuk. 
+    - **Név**: Egy egyedi nevet kell megadnia. Ebben a rövid útmutatóban az **Example-Vaultot használjuk.** 
     - **Előfizetés**: Válassza ki az előfizetést.
-    - Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, és adjon meg egy erőforráscsoport-nevet.
+    - Az **Erőforráscsoport alatt válassza** az Új létrehozása **lehetőséget,** és adjon meg egy erőforráscsoport-nevet.
     - A **Hely** legördülő menüből válassza ki a helyet.
     - A többi beállítást hagyja az alapértelmezett értéken.
 6. A fenti adatok megadása után válassza a **Létrehozás** elemet.
 
 Jegyezze fel az alábbi két tulajdonságot:
 
-* Tár **neve**: a példában ez **például a-Vault**. Ezt a nevet fogja majd más lépésekben is használni.
+* **Tároló neve:** A példában ez az **Example-Vault.** Ezt a nevet fogja majd más lépésekben is használni.
 * **Tár URI-ja**: A példában ez a https://example-vault.vault.azure.net/. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
 
 Jelenleg csak az Azure-fiókja jogosult arra, hogy műveleteket végezzen ezen az új kulcstartón.
 
 ![Kimenet a Key Vault létrehozási parancsának befejeződése után](../media/keys/quick-create-portal/vault-properties.png)
 
-## <a name="add-a-key-to-key-vault"></a>Kulcs hozzáadása a Key Vaulthoz
+## <a name="add-a-key-to-key-vault"></a>Kulcs hozzáadása a Key Vault
 
-A kulcs a tárolóhoz való hozzáadásához mindössze néhány további lépést kell elvégeznie. Ebben az esetben olyan kulcsot adunk hozzá, amelyet egy alkalmazás használhat. A kulcs neve **ExampleKey**.
+Ha kulcsokat szeretne hozzáadni a tárolóhoz, csak néhány további lépést kell tennie. Ebben az esetben hozzáadunk egy kulcsot, amelyet egy alkalmazás használni tud. A kulcs neve **ExampleKey.**
 
-1. A Key Vault tulajdonságok lapon válassza a **kulcsok** lehetőséget.
+1. A Tulajdonságok Key Vault oldalán válassza a Kulcsok **lehetőséget.**
 2. Kattintson a **Létrehozás/Importálás** gombra.
-3. A **kulcs létrehozása** képernyőn válassza a következő értékeket:
-    - **Beállítások**: generált.
-    - **Név**: ExampleKey.
+3. A Kulcs **létrehozása képernyőn** válassza a következő értékeket:
+    - **Beállítások:** Generálás.
+    - **Név:** ExampleKey.
     - A többi értéket hagyja az alapértelmezett értéken. Kattintson a **Létrehozás** lehetőségre.
 
-Miután megkapta az üzenetet, hogy a kulcs sikeresen létrejött, kattintson rá a listában. Ezután megjelenik néhány tulajdonság. Ha a jelenlegi verzióra kattint, láthatja az előző lépésben megadott értéket.
+Miután megjelenik az üzenet arról, hogy a kulcs sikeresen létrejött, rákattinthat rá a listában. Ezután megjelenik néhány tulajdonság. Ha a jelenlegi verzióra kattint, láthatja az előző lépésben megadott értéket.
 
 ![Fő tulajdonságok](../media/keys/quick-create-portal/current-version-hidden.png)
 
@@ -79,8 +78,8 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a k
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy Key Vault, és egy kulcsot tárolt benne. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
+Ebben a rövid útmutatóban létrehozott egy Key Vault, és tárolt benne egy kulcsot. Ha többet szeretne megtudni a Key Vault és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 
-- [A Azure Key Vault áttekintése](../general/overview.md)
-- Tekintse [meg a Azure Key Vault fejlesztői útmutatóját](../general/developers-guide.md)
-- Tekintse át a [Key Vault biztonsági áttekintést](../general/security-overview.md)
+- Olvassa el [a Azure Key Vault](../general/overview.md)
+- Lásd [Azure Key Vault fejlesztői útmutatót](../general/developers-guide.md)
+- Tekintse át [a Key Vault biztonsági áttekintését](../general/security-overview.md)

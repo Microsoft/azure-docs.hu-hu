@@ -1,60 +1,60 @@
 ---
 title: Key Vault-referenciák használata
-description: Megtudhatja, hogyan állíthatja be Azure App Service és Azure Functions Azure Key Vault-hivatkozások használatára. Key Vault titkokat elérhetővé teheti az alkalmazás kódjában.
+description: Megtudhatja, hogyan állíthatja be a Azure App Service és Azure Functions referenciák Azure Key Vault használatát. Tegye Key Vault titkos kódokat elérhetővé az alkalmazáskód számára.
 author: mattchenderson
 ms.topic: article
 ms.date: 02/05/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: e0bba85cc99e1751f39172ac320fe721d6f02e87
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: b87001f9b283c774096fe669d58a9b487174625d
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076785"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750769"
 ---
-# <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Key Vault referenciák használata App Service és Azure Functions
+# <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Referencia Key Vault és App Service és Azure Functions
 
-Ebből a témakörből megtudhatja, hogyan dolgozhat fel a titkokat a App Service vagy Azure Functions alkalmazásban Azure Key Vault a kód módosítása nélkül. A [Azure Key Vault](../key-vault/general/overview.md) egy olyan szolgáltatás, amely központosított titkok felügyeletét teszi lehetővé a hozzáférési házirendek és a naplózási előzmények teljes körű szabályozásával.
+Ez a témakör azt mutatja be, hogyan dolgozhat titkos Azure Key Vault a App Service vagy Azure Functions alkalmazásban anélkül, hogy kódváltozásra lenne szükség. [Azure Key Vault](../key-vault/general/overview.md) szolgáltatás központi titkos kulcsok kezelését biztosítja, teljes körű vezérléssel a hozzáférési házirendek és a naplózási előzmények felett.
 
-## <a name="granting-your-app-access-to-key-vault"></a>Az alkalmazás hozzáférésének biztosítása Key Vault
+## <a name="granting-your-app-access-to-key-vault"></a>Hozzáférés megadása az alkalmazás számára Key Vault
 
-A Key Vault titkainak beolvasásához létre kell hoznia egy tárolót, és engedélyt kell adni az alkalmazásnak az eléréséhez.
+Ahhoz, hogy titkos kulcsokat Key Vault, rendelkeznie kell egy létrehozott tárolóval, és engedélyt kell adni az alkalmazásnak a hozzáférésre.
 
-1. Hozzon létre egy kulcstartót a [Key Vault](../key-vault/secrets/quick-create-cli.md)rövid útmutató alapján.
+1. Hozzon létre egy kulcstartót a [Key Vault útmutató alapján.](../key-vault/secrets/quick-create-cli.md)
 
-1. Hozzon létre egy [rendszerhez rendelt felügyelt identitást](overview-managed-identity.md) az alkalmazáshoz.
+1. Hozzon létre [egy rendszer által hozzárendelt felügyelt identitást](overview-managed-identity.md) az alkalmazáshoz.
 
    > [!NOTE] 
-   > Key Vault referenciák jelenleg csak a rendszer által hozzárendelt felügyelt identitásokat támogatják. Felhasználó által hozzárendelt identitások nem használhatók.
+   > Key Vault hivatkozások jelenleg csak a rendszer által hozzárendelt felügyelt identitásokat támogatják. Felhasználó által hozzárendelt identitások nem használhatók.
 
-1. Hozzon létre egy [hozzáférési szabályzatot a Key Vaultban](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies) a korábban létrehozott alkalmazás-identitáshoz. A "Get" Secret engedély engedélyezése a szabályzathoz. Ne konfigurálja a "meghatalmazott alkalmazást" vagy a `applicationId` beállításokat, mivel ez nem kompatibilis a felügyelt identitással.
+1. Hozzon [létre egy hozzáférési szabályzatot Key Vault](../key-vault/general/security-overview.md#privileged-access) korábban létrehozott alkalmazásidentitáshoz. Engedélyezze a "Titkos ok lekért" engedélyt a szabályzaton. Ne konfigurálja az "engedélyezett alkalmazást" vagy a beállításokat, mert ez nem kompatibilis `applicationId` a felügyelt identitásokkal.
 
-### <a name="access-network-restricted-vaults"></a>Hozzáférés a hálózatra korlátozott tárolók számára
+### <a name="access-network-restricted-vaults"></a>Hozzáférés a hálózattal korlátozott tárolókhoz
 
 > [!NOTE]
-> A Linux-alapú alkalmazások jelenleg nem tudják feloldani a titkos kulcsokat a hálózatra korlátozott Key vaultból, kivéve, ha az alkalmazás egy [app Service Environmenton](./environment/intro.md)belül fut.
+> A Linux-alapú alkalmazások jelenleg nem tudják feloldani a titkos kulcsokat egy hálózattal korlátozott kulcstartóból, kivéve, ha az alkalmazást egy [App Service Environment.](./environment/intro.md)
 
-Ha a tár [hálózati korlátozásokkal](../key-vault/general/overview-vnet-service-endpoints.md)van konfigurálva, akkor is biztosítania kell, hogy az alkalmazásnak legyen hálózati hozzáférése.
+Ha a tároló hálózati [korlátozásokkal](../key-vault/general/overview-vnet-service-endpoints.md)van konfigurálva, akkor arról is gondoskodnia kell, hogy az alkalmazás hálózati hozzáféréssel rendelkezik.
 
-1. Győződjön meg arról, hogy az alkalmazás konfigurálta-e a kimenő hálózati funkciókat a [app Service hálózati szolgáltatások](./networking-features.md) és [Azure functions hálózati beállítások](../azure-functions/functions-networking-options.md)című témakörben leírtak szerint.
+1. Győződjön meg arról, hogy az alkalmazás rendelkezik konfigurált kimenő hálózati képességekkel a következő App Service és hálózati beállítások [Azure Functions leírtak szerint:](../azure-functions/functions-networking-options.md). [](./networking-features.md)
 
-2. Győződjön meg arról, hogy a tároló azon hálózati vagy alhálózatához tartozó konfigurációs fiókjai, amelyeken az alkalmazás el fogja érni.
+2. Győződjön meg arról, hogy a tároló konfigurációs fiókjai annak a hálózatnak vagy alhálózatnak a fiókjai, amelyen keresztül az alkalmazás hozzá fog férni.
 
 > [!IMPORTANT]
-> A tároló virtuális hálózati integráción keresztüli elérése jelenleg nem kompatibilis a [titkos kulcsokkal a megadott verzió nélkül](#rotation).
+> A tároló virtuális hálózati integráción keresztüli elérése jelenleg nem kompatibilis a titkos kulcsok adott verzió nélküli [automatikus frissítésével.](#rotation)
 
-## <a name="reference-syntax"></a>Hivatkozás szintaxisa
+## <a name="reference-syntax"></a>Referenciaszintaxis
 
-A Key Vault hivatkozás az űrlapra mutat `@Microsoft.KeyVault({referenceString})` , ahol a `{referenceString}` a következő lehetőségek egyikével helyettesíti:
+A Key Vault típusú hivatkozás a következő formát követi, ahol a helyére az alábbi lehetőségek `@Microsoft.KeyVault({referenceString})` `{referenceString}` egyikét kell bevetni:
 
 > [!div class="mx-tdBreakAll"]
-> | Hivatkozási sztring                                                            | Leírás                                                                                                                                                                                 |
+> | Referenciasring                                                            | Description                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri =_SecretUri_                                                       | A **SecretUri** a titkos kulcs teljes adatsík URI-ja legyen Key Vaultban, opcionálisan egy verziót is beleértve, például `https://myvault.vault.azure.net/secrets/mysecret/` vagy `https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931`  |
-> | VaultName =_VaultName_; SecretName =_SecretName_; Titkoskulcsverziója =_titkoskulcsverziója_ | A **VaultName** kötelező megadni, és meg kell adni a Key Vault erőforrás nevét. A **SecretName** megadása kötelező, és a célként megadott titkos kód nevének kell lennie. A **titkoskulcsverziója** nem kötelező, de ha a jelen esetben a használni kívánt titok verzióját jelzi. |
+> | SecretUri=_secretUri_                                                       | A **SecretUri** a titkos adatsík teljes adatsík-URI-ját Key Vault, opcionálisan beleértve a verziót is, például: `https://myvault.vault.azure.net/secrets/mysecret/` vagy `https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931`  |
+> | VaultName=_vaultName_; SecretName=_secretName_; SecretVersion=_secretVersion_ | A **VaultName** paramétert kötelező megadni, és az erőforrás Key Vault kell lennie. A **SecretName** paraméter kötelező, és a cél titkos kód nevének kell lennie. A **SecretVersion** nem kötelező, de ha van, akkor a titkos használhatja. |
 
-A teljes hivatkozás például a következőhöz hasonló lesz:
+Egy teljes referencia például a következőre hasonlít:
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/)
@@ -69,24 +69,24 @@ Alternatív megoldás:
 ## <a name="rotation"></a>Változtatás
 
 > [!IMPORTANT]
-> [A tároló virtuális hálózati integráción keresztüli elérése](#access-network-restricted-vaults) jelenleg nem kompatibilis a titkos kulcsokkal a megadott verzió nélkül.
+> [A tároló virtuális hálózati integráción](#access-network-restricted-vaults) keresztüli elérése jelenleg nem kompatibilis a titkos kulcsok adott verzió nélküli automatikus frissítésével.
 
-Ha egy verzió nincs megadva a hivatkozásban, akkor az alkalmazás a Key Vault található legújabb verziót fogja használni. Ha az újabb verziók elérhetővé válnak, például egy rotációs eseménnyel, akkor az alkalmazás automatikusan frissül, és egy napon belül elkezdi használni a legújabb verziót. Az alkalmazásban végrehajtott összes konfigurációs módosítás azonnali frissítést eredményez az összes hivatkozott titok legújabb verzióihoz.
+Ha a hivatkozásban nincs megadva verzió, akkor az alkalmazás a legújabb verziót fogja használni, amely a Key Vault. Ha újabb verziók válnak elérhetővé , például egy rotációs esemény esetén, az alkalmazás egy napon belül automatikusan frissül, és használatba veszi a legújabb verziót. Az alkalmazáson végrehajtott konfigurációs módosítások azonnal frissülnek az összes hivatkozott titkos fájl legújabb verziójára.
 
-## <a name="source-application-settings-from-key-vault"></a>A forrásoldali Alkalmazásbeállítások Key Vault
+## <a name="source-application-settings-from-key-vault"></a>Forrásalkalmazás beállításai a Key Vault
 
-Key Vault referenciák az [Alkalmazásbeállítások](configure-common.md#configure-app-settings)értékeiként használhatók, ami lehetővé teszi, hogy a titkokat a hely konfigurációja helyett Key Vault tartsa. Az Alkalmazásbeállítások biztonságosan titkosítva maradnak, de ha titkos felügyeleti képességekre van szüksége, a Key Vaultba kell lépniük.
+Key Vault hivatkozások az alkalmazásbeállítások értékeiként [](configure-common.md#configure-app-settings)használhatók, így a hely konfigurációja helyett a titkos Key Vault is megtarthatja őket. Az alkalmazásbeállításokat a rendszer biztonságosan titkosítja az Key Vault.
 
-Ha Key Vault hivatkozást szeretne használni egy alkalmazás-beállításhoz, állítsa a hivatkozást a beállítás értékeként. Az alkalmazás a szokásos módon hivatkozhat a titkos kulcsra. Nincs szükség kód módosítására.
+Ha alkalmazásbeállításhoz Key Vault használni, állítsa be a hivatkozást a beállítás értékeként. Az alkalmazás a szokásos módon hivatkozhat a titkos kulcsra a kulcsán keresztül. Nincs szükség kódváltozásra.
 
 > [!TIP]
-> Key Vault hivatkozásokat használó legtöbb Alkalmazásbeállítások tárolóhely-beállításokként vannak megjelölve, mivel minden környezethez külön tárolókat kell megadni.
+> A hivatkozásokat használó Key Vault legtöbb alkalmazásbeállítást pontbeállításként kell megjelölni, mivel minden környezethez külön tárolót kell használnia.
 
 ### <a name="azure-resource-manager-deployment"></a>Az Azure Resource Manager üzembe helyezése
 
-Az erőforrás-telepítések Azure Resource Manager sablonokon keresztüli automatizálásakor előfordulhat, hogy a funkció működéséhez egy adott sorrendben kell sorba rendeznie a függőségeket. Fontos megjegyezni, hogy az alkalmazás beállításait saját erőforrásként kell meghatároznia ahelyett, hogy egy tulajdonságot kellene használnia `siteConfig` a hely definíciójában. Ennek az az oka, hogy a helyet először meg kell határozni, hogy a rendszer által hozzárendelt identitás létre legyen hozva, és a hozzáférési házirendben is használható legyen.
+Amikor az erőforrások üzembe helyezését Azure Resource Manager sablonokkal automatizálja, előfordulhat, hogy a függőségeket egy adott sorrendben kell sorrendbe rendelnie ahhoz, hogy ez a funkció működjön. Vegye figyelembe, hogy az alkalmazásbeállításokat saját erőforrásként kell meghatároznia ahelyett, hogy egy tulajdonságot használ a `siteConfig` hely definíciójában. Ennek az az oka, hogy a helyet először meg kell határozni, hogy a rendszer által hozzárendelt identitás vele legyen létrehozva, és használható legyen a hozzáférési szabályzatban.
 
-Egy Function alkalmazáshoz tartozó példa pszeudo-sablon a következőhöz hasonló lehet:
+A függvényalkalmazás példasablonja a következőre hasonlíthat:
 
 ```json
 {
@@ -190,30 +190,30 @@ Egy Function alkalmazáshoz tartozó példa pszeudo-sablon a következőhöz has
 ```
 
 > [!NOTE] 
-> Ebben a példában a verziókövetés központi telepítése az alkalmazásbeállításoktől függ. Ez általában nem biztonságos viselkedés, mivel az Alkalmazásbeállítások frissítése aszinkron módon történik. Mivel azonban az alkalmazás beállítása is megtörtént `WEBSITE_ENABLE_SYNC_UPDATE_SITE` , a frissítés szinkronban van. Ez azt jelenti, hogy a verziókövetés központi telepítése csak akkor kezdődik el, ha az Alkalmazásbeállítások teljes mértékben frissültek.
+> Ebben a példában a forrásvezérlés központi telepítése az alkalmazásbeállításoktól függ. Ez általában nem biztonságos működés, mivel az alkalmazásbeállítás frissítése aszinkron módon működik. Mivel azonban az alkalmazásbeállítást is tartalmazta, a frissítés szinkron `WEBSITE_ENABLE_SYNC_UPDATE_SITE` módon fog frissülni. Ez azt jelenti, hogy a forrásvezérlő üzembe helyezése csak akkor kezdődik meg, ha az alkalmazásbeállítások teljesen frissültek.
 
-## <a name="troubleshooting-key-vault-references"></a>Hibaelhárítási Key Vault referenciái
+## <a name="troubleshooting-key-vault-references"></a>Hibaelhárítási Key Vault hivatkozások
 
-Ha egy hivatkozás nem oldható fel megfelelően, a rendszer a hivatkozási értéket fogja használni. Ez azt jelenti, hogy az Alkalmazásbeállítások esetében létrejön egy környezeti változó, amelynek az értéke `@Microsoft.KeyVault(...)` szintaxissal rendelkezik. Ez azt eredményezheti, hogy az alkalmazás hibát jelez, mivel egy adott struktúra titkát várta.
+Ha egy hivatkozás nem oldható fel megfelelően, a rendszer a referenciaértéket használja helyette. Ez azt jelenti, hogy az alkalmazásbeállításokhoz egy környezeti változó jön létre, amelynek az értéke szintaxissal `@Microsoft.KeyVault(...)` rendelkezik. Ez hibákat okozhat az alkalmazásnak, mivel egy bizonyos struktúra titkos struktúráját várja.
 
-Ez általában a [Key Vault hozzáférési házirend](#granting-your-app-access-to-key-vault)helytelen konfigurációja miatt fordul elő. Az is előfordulhat azonban, hogy egy titkos kulcs már nem létezik, vagy szintaktikai hiba történt a hivatkozásban.
+Ezt leggyakrabban a hozzáférési szabályzat hibás [konfigurációja Key Vault oka.](#granting-your-app-access-to-key-vault) Ennek oka lehet azonban egy már nem létező titkos kód vagy magában a referenciaszintaxisban lévő szintaktikai hiba.
 
-Ha a szintaxis helyes, a hiba egyéb okait a portál aktuális feloldási állapotának ellenőrzésével tekintheti meg. Navigáljon az Alkalmazásbeállítások elemre, és válassza a szerkesztés lehetőséget a szóban forgó hivatkozáshoz. A beállítás beállítása alatt meg kell jelennie az állapotadatok között, beleértve az esetleges hibákat is. Ezek hiánya azt jelenti, hogy a hivatkozás szintaxisa érvénytelen.
+Ha a szintaxis helyes, a hiba egyéb okait az aktuális feloldási állapot a portálon való megtekintésével tudja megtekinteni. Lépjen az Alkalmazásbeállítások lapra, és válassza a "Szerkesztés" lehetőséget a kérdéses hivatkozáshoz. A beállítás konfigurációja alatt az állapotinformációknak kell jelenniük, beleértve az esetleges hibákat is. Ezek hiánya azt jelenti, hogy a referenciaszintaxis érvénytelen.
 
-A beépített érzékelők egyikét is használhatja további információk megszerzéséhez.
+Az egyik beépített érzékelővel további információkat is kaphat.
 
-### <a name="using-the-detector-for-app-service"></a>A App Service detektorának használata
+### <a name="using-the-detector-for-app-service"></a>Az érzékelő használata App Service
 
-1. A portálon navigáljon az alkalmazáshoz.
+1. A portálon lépjen az alkalmazáshoz.
 2. Válassza a **Problémák diagnosztizálása és megoldása** lehetőséget.
-3. Válassza a **rendelkezésre állás és teljesítmény** lehetőséget, majd válassza a **webalkalmazás lehetőséget.**
-4. Keresse meg **Key Vault az Alkalmazásbeállítások diagnosztikát** , és kattintson a **További információ** elemre.
+3. Válassza **a Rendelkezésre állás és teljesítmény,** majd a Nem elérhető **webalkalmazás lehetőséget.**
+4. Keresse **Key Vault az Alkalmazásbeállítások diagnosztikát,** majd kattintson a **További információ elemre.**
 
 
-### <a name="using-the-detector-for-azure-functions"></a>A Azure Functions detektorának használata
+### <a name="using-the-detector-for-azure-functions"></a>Az érzékelő használata Azure Functions
 
-1. A portálon navigáljon az alkalmazáshoz.
-2. Navigáljon a **platform szolgáltatásaihoz.**
+1. A portálon lépjen az alkalmazáshoz.
+2. Lépjen a **Platform funkciói felületre.**
 3. Válassza a **Problémák diagnosztizálása és megoldása** lehetőséget.
-4. Válassza a **rendelkezésre állás és teljesítmény** lehetőséget, majd válassza a **Function app Down vagy a jelentéskészítési hibák lehetőséget.**
-5. Kattintson **Key Vault alkalmazás-beállítások diagnosztika** elemre.
+4. Válassza **az Availability and Performance (Rendelkezésre állás és teljesítmény)** lehetőséget, majd válassza a **Function app down (A függvényalkalmazás nem működik) vagy a Reporting errors (Hibák jelentése) lehetőséget.**
+5. Kattintson a **Key Vault Application Settings Diagnostics elemre.**

@@ -1,6 +1,6 @@
 ---
-title: A Azure NetApp Files erőforrás-korlátai | Microsoft Docs
-description: Leírja a Azure NetApp Files erőforrásainak korlátait, valamint az erőforrás-korlát növelését.
+title: Erőforráskorlátok a Azure NetApp Files | Microsoft Docs
+description: Ismerteti a Azure NetApp Files korlátait és az erőforráskorlát növelésének kérését.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,91 +12,93 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 04/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 9b061184f97abeea79912aadbae2c2b188206c72
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f023bfa2b3941f7d667f4be34a8ee8dc1ed9a9c3
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058000"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750193"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Az Azure NetApp Files erőforráskorlátai
 
-A Azure NetApp Files erőforrás-korlátainak megismerése segíti a kötetek kezelését.
+A kötetek erőforráskorlátának Azure NetApp Files segít a kötetek kezelésében.
 
 ## <a name="resource-limits"></a>Erőforráskorlátok
 
-Az alábbi táblázat a Azure NetApp Files erőforrás-korlátozásait ismerteti:
+Az alábbi táblázat a fürtök erőforráskorlátát Azure NetApp Files:
 
-|  Erőforrás  |  Alapértelmezett korlát  |  A támogatási kérelem alapján állítható  |
+|  Erőforrás  |  Alapértelmezett korlát  |  Támogatási kérésen keresztül módosítható  |
 |----------------|---------------------|--------------------------------------|
-|  A NetApp-fiókok száma Azure-régiónként/előfizetés szerint  |  10    |  Yes   |
-|  Kapacitási készletek száma NetApp-fiókban   |    25     |   Yes   |
-|  Kötetek száma előfizetéskor   |    500     |   Yes   |
-|  Kötetek száma kapacitási készlet szerint     |    500   |    Yes     |
-|  Pillanatképek másodpercenkénti száma       |    255     |    No        |
-|  Azure NetApp Files (Microsoft. NetApp/kötetek) számára az Azure-ban delegált alhálózatok száma Virtual Network    |   1   |    No    |
-|  A VNet lévő használt IP-címek száma (beleértve az azonnal összetartozó virtuális hálózatok is) Azure NetApp Files   |    1000   |    No   |
-|  Egyetlen kapacitású készlet minimális mérete   |  4 TiB     |    No  |
-|  Egyetlen kapacitású készlet maximális mérete    |  500 TiB   |   No   |
+|  NetApp-fiókok száma Előfizetésenként Azure-régiónként  |  10    |  Yes   |
+|  Kapacitáskészletek száma NetApp-fiókonként   |    25     |   Yes   |
+|  Kötetek száma előfizetésenként   |    500     |   Yes   |
+|  Kötetek száma kapacitáskészletenként     |    500   |    Yes     |
+|  Pillanatképek száma kötetenként       |    255     |    No        |
+|  Azure-beli virtuális Azure NetApp Files (Microsoft.NetApp/volumes) számára delegált alhálózatok Virtual Network    |   1   |    No    |
+|  A virtuális hálózatokban használt IP-k száma (beleértve az azonnal társviszonyban Azure NetApp Files   |    1000   |    No   |
+|  Egyetlen kapacitáskészlet minimális mérete   |  4 TiB     |    No  |
+|  Egyetlen kapacitáskészlet maximális mérete    |  500 TiB   |   No   |
 |  Egyetlen kötet minimális mérete    |    100 GiB    |    No    |
 |  Egyetlen kötet maximális mérete     |    100 TiB    |    No    |
 |  Egyetlen fájl maximális mérete     |    16 TiB    |    No    |    
-|  A címtár metaadatainak maximális mérete egyetlen címtárban      |    320 MB    |    No    |    
-|  Fájlok maximális száma ([maxfiles](#maxfiles))/kötet     |    100 000 000    |    Yes    |    
-|  Az exportálási házirend szabályainak maximális száma köteten     |    5  |    No    | 
-|  Minimálisan hozzárendelt teljesítmény manuális QoS-kötethez     |    1 MiB/s   |    No    |    
-|  A manuális QoS-kötethez hozzárendelt maximális átviteli sebesség     |    4 500 MiB/s    |    No    |    
-|  Régiók közötti replikálási adatvédelmi kötetek (cél kötetei) száma     |    5    |    Yes    |     
+|  Könyvtármetaadatok maximális mérete egyetlen könyvtárban      |    320 MB    |    No    |    
+|  Fájlok maximális száma ([maxfiles](#maxfiles)) kötetenként     |    100 millió    |    Yes    |    
+|  Az exportálási szabályzat szabályainak maximális száma kötetenként     |    5  |    No    | 
+|  Minimális hozzárendelt átviteli sebesség manuális QoS-kötethez     |    1 MiB/s   |    No    |    
+|  Manuális QoS-kötethez hozzárendelt maximális átviteli sebesség     |    4500 MiB/s    |    No    |    
+|  Régiók közötti replikációs adatvédelmi kötetek száma (célkötetek)     |    5    |    Yes    |     
 
-Ha szeretné megtekinteni, hogy egy könyvtár eléri-e a könyvtár metaadatainak maximális méretét (320 MB), tekintse [meg a hogyan annak megállapítása, hogy a címtár eléri-e a korlát méretét](azure-netapp-files-faqs.md#how-do-i-determine-if-a-directory-is-approaching-the-limit-size).   
+Annak megállapításához, hogy egy könyvtár megközelíti-e a címtár-metaadatok maximális méretkorlátját (320 MB), tekintse meg Hogyan, hogy egy könyvtár megközelíti-e a korlát [méretét.](azure-netapp-files-faqs.md#how-do-i-determine-if-a-directory-is-approaching-the-limit-size)   
 
-További információ: a [kapacitások kezelésével kapcsolatos gyakori kérdések](azure-netapp-files-faqs.md#capacity-management-faqs).
+További információ: [Kapacitáskezelés – gyakori kérdések.](azure-netapp-files-faqs.md#capacity-management-faqs)
 
-## <a name="maxfiles-limits"></a>Maxfiles korlátok <a name="maxfiles"></a> 
+## <a name="maxfiles-limits"></a>Maximális fájlkorlátok <a name="maxfiles"></a> 
 
-Azure NetApp Files kötetek *maxfiles* nevű korláttal rendelkeznek. A maxfiles korlátja a kötet által tartalmazott fájlok száma. Egy Azure NetApp Files kötethez tartozó maxfiles-korlát indexelése a kötet mérete (kvóta) alapján történik. A kötetek maxfiles korlátja növekszik vagy csökken a kiosztott kötet méretének 20 000 000-os fájlja alapján. 
+Azure NetApp Files kötetek korlátja *maxfiles.* A maxfiles korlátja a köteten található fájlok maximális száma. A Linux-fájlrendszerek a korlátot *inode-nak (inodes) stb.* A kötetek maximális Azure NetApp Files a kötet mérete (kvótája) alapján indexeli a rendszer. A kötetek maximális fájlkorlátja a kiépített kötet méretének TiB-nkénti 20 millió fájlméretével nő vagy csökken. 
 
-A szolgáltatás dinamikusan módosítja a kötet maxfiles korlátját a kiosztott méret alapján. Például egy 1 TiB-os mérettel konfigurált kötethez maxfiles korlát 20 000 000. A kötet méretének későbbi módosításai a következő szabályok alapján automatikusan újramódosíthatják a maxfiles-korlátot: 
+A szolgáltatás dinamikusan módosítja egy kötet maxfiles korlátját a kiépített mérete alapján. Egy kezdetben 1 TiB-os mérettel konfigurált kötet maximális fájlkorlátja például 20 millió. A kötet méretének későbbi módosításai a maxfiles korlát automatikus, a következő szabályok alapján való módosításakor lépnek fel: 
 
-|    Kötet mérete (kvóta)     |  A maxfiles-korlát automatikus módosítása    |
+|    Kötet mérete (kvóta)     |  A maxfiles korlát automatikus újrakorlátja    |
 |----------------------------|-------------------|
-|    <= 1 TiB                |    20 000 000     |
-|    > 1 TiB, de <= 2 TiB    |    40 000 000     |
-|    > 2 TiB, de <= 3 TiB    |    60 000 000     |
-|    > 3 TiB, de <= 4 TiB    |    80 000 000     |
-|    > 4 TiB                 |    100 000 000    |
+|    <= 1 TiB                |    20 millió     |
+|    > 1 TiB, de <= 2 TiB    |    40 millió     |
+|    > 2 TiB, de <= 3 TiB    |    60 millió     |
+|    > 3 TiB, de <= 4 TiB    |    80 millió     |
+|    > 4 TiB                 |    100 millió    |
 
-Ha már lefoglalta a kötethez legalább 4 TiB-kvótát, akkor a 100 000 000-nál nagyobb maxfiles-korlát növelésére [támogatási kérést](#limit_increase) kezdeményezhet. Minden megnövelt 100 000 000-fájlhoz (vagy annak egy hányadához) a megfelelő mennyiségi kvótát 4 TiB-ra kell emelni.  Ha például a 100 000 000-es fájlokból az 200 000 000-es fájlokra (vagy a közöttük bármely számra) korlátozza a maxfiles korlátot, akkor a 4 TiB-ról 8 TiB-ra kell emelnie a mennyiségi kvótát.
+Ha már lefoglalt legalább 4 TiB kvótát egy kötethez, kezdeményezhet egy támogatási kérést, hogy növelje [a](#limit_increase) maximális fájlok (inode-k) korlátját 100 milliónál nagyobbra. Minden 100 millió megnövelt fájlhoz (vagy ezek töredékéhez) meg kell növelnie a megfelelő kötetkvótát 4 TiB-ral.  Ha például 100 millió fájlról 200 millió fájlra (vagy közöttük bármely számra) növeli a maximális fájlok korlátját, akkor a kötetkvótát 4 TiB-ről 8 TiB-ra kell növelnie.
 
-## <a name="request-limit-increase"></a>Kérelmek korlátjának növekedése <a name="limit_increase"></a> 
+Ha a kötetkvóta legalább 20 TiB, a maximális fájlszám korlátját 500 millióra növelheti. <!-- ANF-11854 --> 
 
-Létrehozhat egy Azure-támogatási kérelmet, amellyel növelheti az állítható korlátokat a fenti táblázatból. 
+## <a name="request-limit-increase"></a>Kérelemkorlát növelése <a name="limit_increase"></a> 
 
-Azure Portal navigációs síkon: 
+Létrehozhat egy új Azure-támogatás a fenti táblázatból a módosítható korlátok növeléséhez. 
 
-1. Kattintson a **Súgó és támogatás** elemre.
-2. Kattintson az **+ új támogatási kérelem** elemre.
-3. Az alapvető beállítások lapon adja meg a következő információkat: 
-    1. Probléma típusa: válassza **a szolgáltatás-és előfizetési korlátok (kvóták)** lehetőséget.
-    2. Előfizetések: válassza ki az erőforráshoz tartozó előfizetést, amelyre szüksége van a kvóta növeléséhez.
-    3. Kvóta típusa: válassza a **Storage: Azure NetApp Files korlátok** elemet.
-    4. Kattintson a **Tovább gombra: megoldások**.
+A Azure Portal síkról: 
+
+1. Kattintson **a Súgó és támogatás elemre.**
+2. Kattintson **az + Új támogatási kérelem elemre.**
+3. Az Alapvető beállítások lapon adja meg a következő információkat: 
+    1. Probléma típusa: Válassza **a Szolgáltatási és előfizetési korlátok (kvóták) lehetőséget.**
+    2. Előfizetések: Válassza ki annak az erőforrásnak az előfizetését, amely esetében növelni kell a kvótát.
+    3. Kvóta típusa: Válassza a **Storage: Azure NetApp Files lehetőséget.**
+    4. Kattintson **a Tovább: Megoldások elemre.**
 4. A Részletek lapon:
-    1. A Leírás mezőben adja meg a következő információkat a megfelelő erőforrástípus számára:
+    1. A Leírás mezőben adja meg a következő információkat a megfelelő erőforrástípushoz:
 
-        |  Erőforrás  |    Szülő erőforrások      |    Kért új korlátok     |    Kvótanövelés oka       |
+        |  Erőforrás  |    Szülőerőforrások      |    Kért új korlátok     |    Kvótanövelés oka       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
-        |  Fiók |  *Előfizetés azonosítója*   |  *Kért új maximális **fiók** száma*    |  *Milyen forgatókönyv vagy használati eset kéri a kérést?*  |
-        |  Készlet    |  *Előfizetés-azonosító, NetApp-fiók URI-ja*  |  *Kért új **készlet** maximális száma*   |  *Milyen forgatókönyv vagy használati eset kéri a kérést?*  |
-        |  Kötet  |  *Előfizetés-azonosító, NetApp-fiók URI-ja, kapacitási készlet URI azonosítója*   |  *Kért új maximális **kötet** száma*     |  *Milyen forgatókönyv vagy használati eset kéri a kérést?*  |
-        |  Maxfiles  |  *Előfizetés-azonosító, NetApp-fiók URI-ja, kapacitási készlet URI azonosítója, kötet URI*   |  *Kért új maximális **maxfiles** -szám*     |  *Milyen forgatókönyv vagy használati eset kéri a kérést?*  |    
-        |  Régiók közötti replikálás adatvédelmi kötetei  |  *Előfizetés-azonosító, cél NetApp-fiók URI azonosítója, cél kapacitási készlet URI azonosítója, forrás NetApp-fiók URI azonosítója, forrás kapacitási készlet URI azonosítója, forrás kötetének URI-ja*   |  * A **régiók közötti replikációs adatvédelemi kötetek (célként megadott kötetek)** új maximális számának kérése _     |  _What forgatókönyv vagy használati eset kéri a kérést? *  |    
+        |  Fiók |  *Előfizetés azonosítója*   |  *Új maximális fiókszám **kérése***    |  *Milyen forgatókönyv vagy felhasználási eset kérte a kérést?*  |
+        |  Készlet    |  *Előfizetés azonosítója, NetApp-fiók URI-azonosítója*  |  *Új maximális készletszám **kérése***   |  *Milyen forgatókönyv vagy felhasználási eset kérte a kérést?*  |
+        |  Kötet  |  *Előfizetés azonosítója, NetApp-fiók URI- és kapacitáskészlet-URI*   |  *Kért új maximális **kötetszám***     |  *Milyen forgatókönyv vagy felhasználási eset kérte a kérést?*  |
+        |  Maxfiles (Maximális fájlok)  |  *Előfizetés azonosítója, NetApp-fiók URI-azonosítója, kapacitáskészlet URI-azonosítója, kötet URI-azonosítója*   |  *Új maximális maximális **fájlszám kérése***     |  *Milyen forgatókönyv vagy felhasználási eset kérte a kérést?*  |    
+        |  Régiók közötti replikáció adatvédelmi kötetei  |  *Előfizetés azonosítója, cél NetApp-fiók URI-azonosítója, célkapacitás-készlet URI-azonosítója, forrás NetApp-fiók URI-azonosítója, forráskapacitás-készlet URI, forráskötet URI*   |  *A régiók közötti replikációs adatvédelmi kötetek **(célkötetek)** új maximális számának kérése _     |  _What forgatókönyv vagy a felhasználási eset a kérést kérte?*  |    
 
-    2. Adja meg a megfelelő támogatási módszert, és adja meg a szerződésre vonatkozó információkat.
+    2. Adja meg a megfelelő támogatási módszert, és adja meg a szerződés adatait.
 
-    3. Kattintson a **Tovább gombra: felülvizsgálat + létrehozás** elemre a kérelem létrehozásához. 
+    3. Kattintson **a Tovább: Áttekintés + létrehozás elemre** a kérés létrehozásához. 
 
 
 ## <a name="next-steps"></a>Következő lépések  

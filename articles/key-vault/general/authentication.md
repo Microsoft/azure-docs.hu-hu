@@ -1,18 +1,18 @@
 ---
 title: Hitelesítés az Azure Key Vaulttal
 description: Útmutató a hitelesítéshez a Azure Key Vault
-author: ShaneBala-keyvault
-ms.author: sudbalas
-ms.date: 08/27/2020
+author: msmbaldwin
+ms.author: mbaldwin
+ms.date: 03/31/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 8a8fe4ed0c24d2ccda5fb844005a33a93e85a169
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 7d219b752b894bbce9815911658c804ecb850ea1
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365518"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753433"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Hitelesítés az Azure Key Vaulttal
 
@@ -22,21 +22,21 @@ Azure Key Vault lehetővé teszi, hogy titkos adatokat tároljon, és egy közpo
 
 A Key Vault a Azure Active Directory [(Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md)használatával működik, amely az adott rendszerbiztonsági tag **identitásának hitelesítéséért felelős.**
 
-A rendszerbiztonsági tag olyan objektum, amely az Azure-erőforrásokhoz hozzáférést kérő felhasználót, csoportot, szolgáltatást vagy alkalmazást jelöli. Az Azure minden rendszerbiztonsági **taghoz** egyedi objektumazonosítót rendel.
+A rendszerbiztonsági tag olyan objektum, amely az Azure-erőforrásokhoz hozzáférést kérő felhasználót, csoportot, szolgáltatást vagy alkalmazást jelöli. Az Azure minden rendszerbiztonsági taghoz egyedi **objektumazonosítót** rendel.
 
-* A **felhasználó rendszerbiztonsági** tag azonosítja a profillal a Azure Active Directory.
+* A **felhasználói rendszerbiztonsági** tag azonosít egy felhasználót, aki profillal rendelkezik a Azure Active Directory.
 
-* A **csoportbiztonsági** tag azonosítja a Azure Active Directory. A csoporthoz rendelt szerepkörök vagy engedélyek a csoport összes felhasználója számára meg vannak osztva.
+* A **csoportbiztonsági** tag azonosítja a Azure Active Directory. A csoporthoz rendelt szerepkörök és engedélyek a csoport összes felhasználója számára meg vannak osztva.
 
-* A **szolgáltatásnév** olyan rendszerbiztonsági tagtípus, amely egy alkalmazást vagy szolgáltatást, vagyis egy kód egy darabját identitást biztosít felhasználó vagy csoport helyett. A szolgáltatásnév objektumazonosítóját ügyfél-azonosítónak nevezik, és felhasználónévként viselkedik.  A szolgáltatásnév titkos **ügyféltitkja** a jelszóhoz hasonló.
+* A **szolgáltatásnév** egy olyan rendszerbiztonsági tag, amely egy alkalmazást vagy szolgáltatást, azaz egy kód egy darabját identitást biztosít felhasználó vagy csoport helyett. A szolgáltatásnév objektumazonosítóját ügyfél-azonosítónak nevezik, és felhasználónévként viselkedik.  A szolgáltatásnév titkos **ügyféltitkja** a jelszavaként működik.
 
-Alkalmazások esetén a szolgáltatásnév beszerzésének két módja van:
+Az alkalmazások esetében a szolgáltatásnév beszerzésének két módja van:
 
-* Ajánlott: engedélyezzen egy rendszer által **hozzárendelt felügyelt identitást** az alkalmazáshoz.
+* Ajánlott: engedélyezze a rendszer által hozzárendelt **felügyelt identitást** az alkalmazáshoz.
 
     A felügyelt identitással az Azure belsőleg felügyeli az alkalmazás szolgáltatását, és automatikusan hitelesíti az alkalmazást más Azure-szolgáltatásokkal. A felügyelt identitás a különböző szolgáltatásokban üzembe helyezett alkalmazásokhoz érhető el.
 
-    További információkért lásd a felügyelt identitás [áttekintését.](../../active-directory/managed-identities-azure-resources/overview.md) Lásd [](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)még a felügyelt identitást támogató Azure-szolgáltatásokat, amelyek olyan cikkekre mutató hivatkozásokat tartalmaznak, amelyek ismertetik, hogyan engedélyezhetők a felügyelt identitások adott szolgáltatásokhoz (például App Service, Azure Functions, Virtual Machines stb.).
+    További információ: A felügyelt identitás [áttekintése.](../../active-directory/managed-identities-azure-resources/overview.md) Lásd [](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)még a felügyelt identitást támogató Azure-szolgáltatásokat, amelyek olyan cikkekre mutató hivatkozásokat tartalmaznak, amelyek ismertetik, hogyan engedélyezhető a felügyelt identitás adott szolgáltatásokhoz (például App Service, Azure Functions, Virtual Machines stb.).
 
 * Ha nem tudja használni a  felügyelt identitást, regisztrálja az alkalmazást az Azure AD-bérlőben a rövid útmutató: Alkalmazás regisztrálása az Azure identitásplatformjáncímen [leírtak szerint.](../../active-directory/develop/quickstart-register-app.md) A regisztráció egy második alkalmazásobjektumot is létrehoz, amely azonosítja az alkalmazást az összes bérlőn.
 
@@ -44,7 +44,7 @@ Alkalmazások esetén a szolgáltatásnév beszerzésének két módja van:
 
 Key Vault két különböző hitelesítési szinttel működik:
 
-- A **hozzáférési szabályzatok** azt szabályozják, hogy egy felhasználó, csoport vagy  szolgáltatásnév hozzáfér-e a titkos kulcsokhoz, kulcsokhoz és tanúsítványokhoz egy meglévő Key Vault-erőforráson belül (más néven "adatsíkműveletekkel"). A hozzáférési szabályzatokat általában a felhasználók, csoportok és alkalmazások kapják meg.
+- A **hozzáférési** szabályzatok azt szabályozják, hogy egy felhasználó, csoport vagy  szolgáltatásnév hozzáférhet-e a titkos kulcsokhoz, kulcsokhoz és tanúsítványokhoz egy meglévő Key Vault-erőforráson belül (más néven "adatsíkműveletekkel"). A hozzáférési szabályzatok általában a felhasználók, csoportok és alkalmazások számára vannak megszabadva.
 
     A hozzáférési szabályzatok hozzárendelését a következő cikkekben talál:
 
@@ -76,28 +76,28 @@ További információ: [Azure Key Vault tűzfal mögötti hozzáférési adatok.
 ## <a name="the-key-vault-authentication-flow"></a>A Key Vault hitelesítési folyamat
 
 1. A szolgáltatásnév az Azure AD-val való hitelesítést kéri, például:
-    * A felhasználó felhasználónévvel és jelszóval Azure Portal bejelentkezik az alkalmazásba.
-    * Az alkalmazások meghívnak egy Azure-REST API, és bemutatnak egy ügyfél-azonosítót és egy titkos ügyfélszámítógépet vagy egy ügyfél-tanúsítványt.
+    * A felhasználó felhasználónévvel és jelszóval Azure Portal jelentkezik be a fiókba.
+    * Az alkalmazások meghívnak egy Azure-REST API, amely egy ügyfél-azonosítót és egy titkos ügyfélszámítógépet vagy egy ügyfél-tanúsítványt ad meg.
     * Egy Azure-erőforrás, például egy felügyelt identitással rendelkezik virtuális gép, kapcsolatba lép az [Azure Instance Metadata Service (IMDS) REST-végponttal](../../virtual-machines/windows/instance-metadata-service.md) egy hozzáférési jogkivonat beszerzése érdekében.
 
-1. Ha az Azure AD-hitelesítés sikeres, a szolgáltatásnév OAuth-jogkivonatot kap.
+1. Ha az Azure AD-val való hitelesítés sikeres, a szolgáltatásnév OAuth-jogkivonatot kap.
 
-1. A szolgáltatásnév a szolgáltatásvégpontján (URI Key Vault REST API keresztül Key Vault hívást a szolgáltatásnévhez.
+1. A szolgáltatásnév a szolgáltatásvégpontján (URI Key Vault REST API keresztül Key Vault hívást a szolgáltatásnévnek.
 
-1. Key Vault tűzfal az alábbi feltételeket ellenőrzi. Ha bármely feltétel teljesül, a hívás engedélyezett. Ellenkező esetben a hívás blokkolva lesz, és a rendszer tiltott választ ad vissza.
+1. Key Vault tűzfal a következő feltételeket ellenőrzi. Ha bármely feltétel teljesül, a hívás engedélyezett. Ellenkező esetben a hívás blokkolva lesz, és a rendszer tiltott választ ad vissza.
 
     * A tűzfal le van tiltva, és a Key Vault nyilvános végpontja elérhető a nyilvános internetről.
     * A hívó egy [megbízható Key Vault szolgáltatás,](./overview-vnet-service-endpoints.md#trusted-services)amely lehetővé teszi a tűzfal megkerülését.
     * A hívó IP-cím, virtuális hálózat vagy szolgáltatásvégpont alapján szerepel a tűzfalon.
-    * A hívó egy konfigurált Key Vault kapcsolaton keresztül éri el a kapcsolatot.    
+    * A hívó egy konfigurált Key Vault kapcsolaton keresztül elérheti a kapcsolatot.    
 
 1. Ha a tűzfal engedélyezi a hívást, Key Vault az Azure AD-t a szolgáltatásnév hozzáférési jogkivonatának érvényesítéséhez.
 
-1. Key Vault, hogy a szolgáltatásnév rendelkezik-e a kért művelethez szükséges hozzáférési szabályzatokkal. Ha nem, Key Vault egy tiltott választ ad vissza.
+1. Key Vault ellenőrzi, hogy a szolgáltatásnév rendelkezik-e a kért művelethez szükséges hozzáférési szabályzatokkal. Ha nem, a Key Vault tiltott választ ad vissza.
 
 1. Key Vault végrehajtja a kért műveletet, és visszaadja az eredményt.
 
-Az alábbi ábra egy "Get Secret" API-t Key Vault hívó alkalmazás folyamatát mutatja be:
+Az alábbi ábra egy olyan alkalmazás folyamatát mutatja be, amely egy titkos Key Vault "Get Secret" API-t hív meg:
 
 ![A Azure Key Vault hitelesítési folyamat](../media/authentication/authentication-flow.png)
 
@@ -106,7 +106,7 @@ Az alábbi ábra egy "Get Secret" API-t Key Vault hívó alkalmazás folyamatát
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Az alábbi táblázatban található hivatkozások különböző cikkekre mutatnak, amelyek bemutatják, hogyan lehet Key Vault az alkalmazáskódban az adott nyelvhez tartozó Azure SDK-kódtárak használatával. Az egyszerűség kedvéért más felületek is Azure Portal, mint az Azure CLI és a Azure Portal.
+Az alábbi táblázatban található hivatkozások különböző cikkekre mutatnak, amelyek bemutatják, hogyan lehet Key Vault az alkalmazáskódban az adott nyelvHez tartozó Azure SDK-kódtárak használatával. Az egyszerűség kedvéért más felületek is Azure Portal, mint az Azure CLI és a Azure Portal.
 
 | Key Vault titkos kulcsok | Key Vault kulcsok | Key Vault tanúsítványok |
 |  --- | --- | --- |

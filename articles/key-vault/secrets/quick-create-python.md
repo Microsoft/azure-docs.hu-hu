@@ -8,16 +8,16 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: e9e27720c50de8653fa859e051c9cfb3af4509ff
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 2f15aa394f7a271d6b3af49f0106611c4fc943a1
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377471"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753081"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>Rövid útmutató: Azure Key Vault Python titkos ügyféloldali kódtárának létrehozása
 
-A Pythonhoz Azure Key Vault titkos ügyféloldali kódtár első lépések. A csomag telepítéséhez kövesse az alábbi lépéseket, és próbálja ki az alapszintű feladatokhoz szükséges példakódot. A titkos Key Vault használatával elkerülheti, hogy titkos kódokat tároljon a kódban, ami növeli az alkalmazás biztonságát.
+Első lépések a Pythonhoz Azure Key Vault titkos ügyféloldali kódtárával. A csomag telepítéséhez kövesse az alábbi lépéseket, és próbálja ki az alapszintű feladatokhoz szükséges példakódot. A titkos Key Vault használatával elkerülheti, hogy titkos kódokat tároljon a kódban, ami növeli az alkalmazás biztonságát.
 
 [API-referenciadokumentáció](/python/api/overview/azure/keyvault-secrets-readme)  |  [Kódtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets)  |  [Csomag (Python-csomagindex)](https://pypi.org/project/azure-keyvault-secrets/)
 
@@ -31,7 +31,7 @@ Ez a rövid útmutató azt feltételezi, hogy [az Azure CLI-t](/cli/azure/instal
 
 
 ## <a name="set-up-your-local-environment"></a>A helyi környezet beállítása
-Ez a rövid útmutató az Azure Identity Library és az Azure CLI használatával hitelesíti a felhasználókat az Azure-szolgáltatásokban. A fejlesztők a Visual Studio vagy Visual Studio Code használatával is hitelesítik a hívásokat. További információ: Az ügyfél hitelesítése az [Azure Identity ügyféloldali kódtárával.](/python/api/overview/azure/identity-readme)
+Ez a rövid útmutató az Azure Identity Library és az Azure CLI használatával hitelesíti a felhasználókat az Azure-szolgáltatásokban. A fejlesztők a Visual Studio vagy Visual Studio Code használatával is hitelesítik a hívásokat. További információ: Az ügyfél hitelesítése az Azure Identity ügyféloldali [kódtárával.](/python/api/overview/azure/identity-readme)
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -43,7 +43,7 @@ Ez a rövid útmutató az Azure Identity Library és az Azure CLI használatáva
 
     Ha a CLI meg tudja nyitni az alapértelmezett böngészőt, akkor ezt fogja megtenni, és betölt egy Azure bejelentkezési oldalt.
 
-    Ellenkező esetben nyisson meg egy böngészőoldalt a oldalon, és írja be a terminálban [https://aka.ms/devicelogin](https://aka.ms/devicelogin) megjelenő engedélyezési kódot.
+    Ellenkező esetben nyisson meg egy böngészőoldalt a oldalon, és adja meg a terminálon [https://aka.ms/devicelogin](https://aka.ms/devicelogin) megjelenő engedélyezési kódot.
 
 2. A böngészőben jelentkezzen be fiókja hitelesítő adataival.
 
@@ -185,7 +185,7 @@ A `begin_delete_secret` metódus aszinkron, és egy poller objektumot ad vissza.
 
 A titkos kulcs el lett távolítva az [az keyvault secret show Azure CLI-paranccsal.](/cli/azure/keyvault/secret?#az-keyvault-secret-show)
 
-A törlés után a titkos adatok egy ideig törölt, de helyreállítható állapotban maradnak. Ha újra futtatja a kódot, használjon másik titkos nevet.
+A törlés után a titkos adatok egy ideig törölt, de helyreállítható állapotban maradnak. Ha újra futtatja a kódot, használjon egy másik titkos nevet.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -200,7 +200,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Key Vault áttekintése](../general/overview.md)
-- [Biztonságos hozzáférés egy kulcstartóhoz](../general/secure-your-key-vault.md)
+- [Biztonságos hozzáférés egy kulcstartóhoz](../general/security-overview.md)
 - [Azure Key Vault fejlesztői útmutató](../general/developers-guide.md)
 - [Key Vault biztonsági áttekintése](../general/security-overview.md)
 - [Hitelesítés Key Vault](../general/authentication.md)

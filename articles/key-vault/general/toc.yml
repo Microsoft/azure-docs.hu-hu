@@ -47,21 +47,19 @@
       href: best-practices.md
     - name: Biztonság
       items:
-        - name: Áttekintés
+        - name: Biztonsági funkciók
           href: security-overview.md
-        - name: Biztonságos hozzáférés egy kulcstartóhoz
-          href: secure-your-key-vault.md
         - name: Key Vault – hitelesítési alapok
           href: authentication-fundamentals.md
-        - name: Biztonsági világok és földrajzi korlátok
+        - name: Biztonsági világok és földrajzi területek
           href: overview-security-worlds.md
         - name: Hálózati biztonság
           href: network-security.md
         - name: A Key Vault Azure-os biztonsági alapkonfigurációja
-          href: /security/benchmark/azure/baselines/key-vault-security-baseline?context=/azure/key-vault/context/context
+          href: /security/benchmark/azure/baselines/key-vault-security-baseline?context=/azure/key-vault/general/context/context
         - name: Az Azure Policy biztonsági vezérlői
           displayName: 'regulatory, compliance, standards, domains'
-          href: ../security-controls-policy.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+          href: ../security-controls-policy.md?context=/azure/key-vault/general/context/context
     - name: Az Azure Key Vault naplózása
       href: logging.md
     - name: Értesítések
@@ -181,7 +179,7 @@
       displayName: ARM
     - name: Az Azure Policy beépített elemei
       displayName: 'samples, policies, definitions'
-      href: ../policy-reference.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+      href: ../policy-reference.md?context=/azure/key-vault/general/context/context
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

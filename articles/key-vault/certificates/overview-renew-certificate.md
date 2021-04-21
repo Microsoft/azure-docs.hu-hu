@@ -3,30 +3,29 @@ title: További Azure Key Vault tanúsítvány megújításáról
 description: Ez a cikk a tanúsítványok megújítását Azure Key Vault ismerteti.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 0492575bef93a1b08d48475c3ab32ecbc7becd6e
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 082b0fd4d3324502516dcd2b45b9ad16a919c773
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364294"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749221"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Újítsa meg Azure Key Vault tanúsítványait
 
-A Azure Key Vault segítségével könnyedén kiépíthet, kezelhet és telepíthet digitális tanúsítványokat a hálózatához, és biztonságos kommunikációt tesz lehetővé alkalmazásai számára. További információ a tanúsítványokról: Tudnivalók a Azure Key Vault [tanúsítványokról.](./about-certificates.md)
+A Azure Key Vault segítségével könnyedén kiépíthet, kezelhet és telepíthet digitális tanúsítványokat a hálózatához, és biztonságos kommunikációt tesz lehetővé alkalmazásai számára. A tanúsítványokkal kapcsolatos további információkért lásd: Tudnivalók Azure Key Vault [tanúsítványokról.](./about-certificates.md)
 
 A rövid életű tanúsítványok vagy a tanúsítványrotáció gyakoriságának növelésével megakadályozhatja, hogy jogosulatlan felhasználók hozzáférjenek az alkalmazásokhoz.
 
 Ez a cikk a tanúsítvány tanúsítványai megújítását Azure Key Vault ismerteti.
 
 ## <a name="get-notified-about-certificate-expiration"></a>Értesítés a tanúsítvány lejáratával kapcsolatban
-Ha értesítést szeretne kapni a tanúsítvány életeseményéről, hozzá kell adni a tanúsítvány-kapcsolattartót. A tanúsítvány-kapcsolattartók kapcsolattartási adatokat tartalmaznak a tanúsítvány élettartameseményei által kiváltott értesítések küldése érdekében. A kapcsolati adatokat a kulcstartóban található összes tanúsítvány megosztja. A rendszer értesítést küld a kulcstartóban található összes tanúsítványhoz egy adott esemény összes megadott kapcsolattartója számára.
+Ha értesítést szeretne kapni a tanúsítvány életciklusának eseményeiről, hozzá kell adni a tanúsítvány-kapcsolattartót. A tanúsítvány-kapcsolattartók kapcsolattartási adatokat tartalmaznak a tanúsítvány élettartameseményei által kiváltott értesítések küldése érdekében. A névjegyek adatait a kulcstartóban található összes tanúsítvány megosztja. A rendszer értesítést küld a kulcstartóban található összes tanúsítványhoz egy adott esemény összes megadott kapcsolattartója számára.
 
 ### <a name="steps-to-set-certificate-notifications"></a>A tanúsítványértesítések beállításának lépései:
 Először adjon hozzá egy tanúsítvány-kapcsolattartót a kulcstartóhoz. A parancsmagot a Azure Portal PowerShell-parancsmag használatával [`Add-AzureKeyVaultCertificateContact`](/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact) használhatja.
@@ -73,7 +72,7 @@ További információ az új CSR létrehozásáról: CSR létrehozása és egyes
 Azure Key Vault az önaírt tanúsítványok automatikus újraújtanúsítványait is kezeli. A kiállítási szabályzat módosításával és a tanúsítvány életciklus-attribútumainak frissítésével kapcsolatos további információkért lásd: Tanúsítvány automatikus [rotálásának](./tutorial-rotate-certificates.md#update-lifecycle-attributes-of-a-stored-certificate)konfigurálása a Key Vault.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
-* Ha a kiadott  tanúsítvány le van tiltva az  Azure Portal, a Tanúsítványműveletben megtekintheti a tanúsítvány hibaüzenetét.
+* Ha a kiadott  tanúsítvány le van tiltva az  Azure Portal, a Tanúsítványművelet alatt megtekintheti a tanúsítvány hibaüzenetét.
 * Hibatípus: "A tanúsítvány lekérni használt CSR már használva van. Hozzon létre egy új tanúsítványt egy új CSR-val."
   A tanúsítvány "Speciális szabályzat" szakaszában ellenőrizze, hogy ki van-e kapcsolva az "újrafelhasználási kulcs **megújításkor"** beállítás.
 
@@ -82,7 +81,7 @@ Azure Key Vault az önaírt tanúsítványok automatikus újraújtanúsítványa
 
 **Hogyan tesztelheti a tanúsítvány automatikus automatizáló funkcióját?**
 
-Hozzon létre egy önaírt tanúsítványt **1** hónapos érvényességgel, majd állítsa be a rotáció élettartam-műveletét **1%-ra.** Meg kell tudnia tekinteni a következő napokon létrehozott tanúsítványverzió-előzményeket.
+Hozzon létre egy önaírt tanúsítványt **1** hónapos érvényességgel, majd állítsa be a rotáció élettartam-műveletét **1%-ra.** Meg kell tudnia tekinteni a következő néhány napban létrehozott tanúsítványverzió-előzményeket.
   
 **A rendszer replikálja a címkéket a tanúsítvány automatikus újraújulása után?**
 

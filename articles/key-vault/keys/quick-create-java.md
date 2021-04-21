@@ -8,12 +8,12 @@ ms.date: 01/05/2021
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: 124e56fad35be0f3ac5b08ee9dd66454b9d077c5
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: f0933a19ecfebfde8ac43ac3e88332506e2256ec
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374692"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750376"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>Rövid útmutató: Azure Key Vault Kulcs ügyféloldali kódtár létrehozása Javához
 Első lépések a java Azure Key Vault kulcs ügyféloldali kódtárával. Kövesse az alábbi lépéseket a csomag telepítéséhez, és próbálja ki az alapszintű feladatokhoz szükséges példakódot.
@@ -135,7 +135,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
 ## <a name="object-model"></a>Objektummodell
-A Azure Key Vault Key Java ügyféloldali kódtára lehetővé teszi a kulcsok kezelését. A [Példakódok](#code-examples) szakasz bemutatja, hogyan lehet ügyfelet létrehozni, kulcsot létrehozni, kulcsot lekérni és kulcsokat törölni.
+A Azure Key Vault Key java ügyféloldali kódtára lehetővé teszi a kulcsok kezelését. A [Példakódok](#code-examples) szakasz bemutatja, hogyan hozhat létre ügyfelet, hozhat létre kulcsot, hogyan lehet lekérni és törölni egy kulcsot.
 
 A teljes konzolalkalmazás a alatt [található.](#sample-code)
 
@@ -157,7 +157,7 @@ import com.azure.security.keyvault.keys.models.KeyVaultKey;
 ### <a name="authenticate-and-create-a-client"></a>Ügyfél hitelesítése és létrehozása
 Ebben a rövid útmutatóban egy bejelentkezett felhasználóval történik a hitelesítés a Key Vault, amely a helyi fejlesztés előnyben részesített módszere. Az Azure-ban üzembe helyezett alkalmazások esetében felügyelt identitást kell hozzárendelni egy App Service virtuális géphez. További információ: [A felügyelt identitás áttekintése.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-Az alábbi példában a kulcstartó neve ki van bontva a kulcstartó URI-jába, "https:// \<your-key-vault-name\> .vault.azure.net". Ez a példa a ["DefaultAzureCredential()"](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) osztályt használja, amely lehetővé teszi, hogy ugyanazt a kódot használja különböző környezetekben különböző beállításokkal az identitások megadása érdekében. További információ: Alapértelmezett [Azure-beli hitelesítőadat-hitelesítés.](https://docs.microsoft.com/java/api/overview/azure/identity-readme)
+Az alábbi példában a kulcstartó neve ki van bontva a kulcstartó URI-jába, "https:// \<your-key-vault-name\> .vault.azure.net" formátumban. Ez a példa a ["DefaultAzureCredential()"](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) osztályt használja, amely lehetővé teszi, hogy ugyanazt a kódot különböző környezetekben használja, különböző identitásbeállításokkal. További információ: Alapértelmezett [Azure-beli hitelesítőadat-hitelesítés.](https://docs.microsoft.com/java/api/overview/azure/identity-readme)
 
 ```java
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
@@ -194,7 +194,7 @@ Most már hozzáférhet a lekért kulcs részleteihez olyan műveletekkel, mint 
 ### <a name="delete-a-key"></a>Kulcs törlése
 Végül töröljük a kulcsot a kulcstartóból a `keyClient.beginDeleteKey` metódussal.
 
-A kulcstörlés egy hosszú ideig futó művelet, amelynek során lekérdezheti a folyamat előrehaladását, vagy megvárhatja, amíg befejeződik.
+A kulcstörlés egy hosszú ideig futó művelet, amellyel lekérdezheti a folyamat előrehaladását, vagy megvárhatja, amíg befejeződik.
 
 ```java
 SyncPoller<DeletedKey, Void> deletionPoller = keyClient.beginDeleteKey(keyName);
@@ -266,9 +266,9 @@ public class App {
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-Ebben a rövid útmutatóban létrehozott egy kulcstartót, létrehozott egy kulcsot, lekérte, majd törölte. Ha többet szeretne megtudni a Key Vault és az alkalmazásokba való integrálásáról, folytassa az alábbi cikkekkel.
+Ebben a rövid útmutatóban létrehozott egy kulcstartót, létrehozott egy kulcsot, lekérte, majd törölte. Ha többet szeretne megtudni a Key Vault és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 
-- Olvassa el [a Azure Key Vault](../general/overview.md)
-- Olvassa el [a Key Vault biztonsági áttekintését](../general/security-overview.md)
-- Lásd [Azure Key Vault fejlesztői útmutatót](../general/developers-guide.md)
-- [Kulcstartóhoz való hozzáférés biztonságossá tere](../general/secure-your-key-vault.md)
+- Áttekintés a [Azure Key Vault](../general/overview.md)
+- Olvassa el [a Key Vault áttekintését](../general/security-overview.md)
+- Lásd Azure Key Vault [fejlesztői útmutatót](../general/developers-guide.md)
+- [Kulcstartóhoz való hozzáférés biztonságossá tere](../general/security-overview.md)

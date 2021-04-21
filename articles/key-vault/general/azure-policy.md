@@ -1,242 +1,242 @@
 ---
 title: Az Azure Key Vault integrálása az Azure Policyval
-description: Ismerje meg, hogyan integrálhatja a Azure Key Vaultt Azure Policy
-author: ShaneBala-keyvault
-ms.author: sudbalas
-ms.date: 10/15/2020
+description: Megtudhatja, hogyan integrálhatja Azure Key Vault a Azure Policy
+author: msmbaldwin
+ms.author: mbaldwin
+ms.date: 03/31/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 6ac4d0e0744bfc82a686671234e013b2dd717146
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cddc7b931bf59412d4a7ec8e6b0eecfe148f3d5e
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92927753"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749275"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Az Azure Key Vault integrálása az Azure Policyval
 
-A [Azure Policy](../../governance/policy/index.yml) egy irányítási eszköz, amely lehetővé teszi a felhasználók számára az Azure-környezetek nagy léptékű naplózását és kezelését. A Azure Policy lehetővé teszi az Azure-erőforrások guardrails elhelyezését annak biztosítása érdekében, hogy azok megfeleljenek a hozzárendelt szabályzati szabályoknak. Lehetővé teszi a felhasználók számára az Azure-környezet naplózásának, valós idejű kényszerítésének és szervizelésének elvégzését. A szabályzat által végrehajtott ellenőrzések eredményei elérhetők lesznek a felhasználók számára a megfelelőségi irányítópulton, ahol láthatják, hogy mely erőforrások és összetevők megfelelőek, és melyek nem.  További információ: a [Azure Policy szolgáltatás áttekintése](../../governance/policy/overview.md).
+[Azure Policy](../../governance/policy/index.yml) egy olyan cégirányítási eszköz, amely lehetővé teszi a felhasználóknak az Azure-környezetük nagy léptékű naplózását és kezelését. Azure Policy lehetővé teszi, hogy védőkorlátokat helyezzen el az Azure-erőforrásokon, hogy azok megfeleljenek a hozzárendelt szabályzatszabályoknak. Lehetővé teszi a felhasználók számára az Azure-környezetük naplózását, valós idejű kényszerítését és szervizelését. A szabályzat által végzett naplózás eredményei a megfelelőségi irányítópulton érhetők el a felhasználók számára, ahol láthatják, hogy mely erőforrások és összetevők megfelelők és melyek nem.  További információkért lásd a Azure Policy [áttekintését.](../../governance/policy/overview.md)
 
 Példa használati forgatókönyvekre:
 
-- Szeretné javítani a vállalata biztonsági állapotát azáltal, hogy bevezeti a vállalat kulcstartójában a minimális kulcs méretére és a tanúsítványok maximális érvényességi idejére vonatkozó követelményeket, de nem tudja, hogy mely csapatok lesznek megfelelőek, és melyek nem.
-- Jelenleg nincs megoldás a szervezeten belüli ellenőrzés elvégzésére, vagy a környezet kézi naplózására, ha a szervezeten belül egyéni csapatokat kér a megfelelőségük jelentéséhez. Ennek a feladatnak az automatizálására keres rá, valós időben végezheti el a naplózást, és garantálhatja a naplózás pontosságát.
-- Szeretné kényszeríteni a vállalati biztonsági házirendeket, és állítsa le a magánszemélyeket önaláírt tanúsítványok létrehozásához, de nem rendelkezik automatikus módszerrel a létrehozásuk blokkolásához. 
-- Szeretné kipróbálni néhány követelményt a tesztelési csapatoknak, de az éles környezetben is szigorú szabályozást szeretne fenntartani. Az erőforrások kényszerítésének elkülönítéséhez egyszerű automatizált módszerre van szükség.
-- Biztos lehet benne, hogy az új szabályzatok érvényesítését egy élő helyen lévő probléma esetén szeretné visszaállítani. A szabályzat kényszerítésének kikapcsolásához egykattintásos megoldásra van szükség. 
-- Egy külső gyártótól származó megoldásra támaszkodik a környezet naplózására, és belső Microsoft-ajánlatot szeretne használni.
+- Szeretné javítani a vállalat biztonsági biztonságát a minimális kulcsméretekre és a tanúsítványok maximális érvényességi időtartamára vonatkozó követelmények alkalmazásával a vállalat kulcstartóiban, de nem tudja, hogy mely csapatok fognak megfelelő lenni, és melyek nem.
+- Jelenleg nincs megoldás a szervezeten belüli naplózás elvégzésére, vagy manuálisan naplóz a környezetben azáltal, hogy megkéri a szervezet egyes csapatait, hogy jelentsék a megfelelőségüket. A feladat automatizálására, a valós idejű naplózásra és a naplózás pontosságának garantálára keres egy módját.
+- Szeretné kikényszeríteni a vállalati biztonsági szabályzatokat, és megakadályozni, hogy egyes személyek önaírt tanúsítványokat hoznak létre, de nincs automatikus módja a létrehozásuk blokkolására. 
+- A tesztelési csapatokra vonatkozó követelményeket meg szeretné pihentetni, de az éles környezet felett szeretne szigorú ellenőrzést tartani. Egyszerű, automatizált módszerre van szüksége az erőforrások kényszerítési folyamatának elválasztása érdekében.
+- Biztos szeretne lenni abban, hogy az új szabályzatok kényszerítési eljárását vissza tudja állitni egy élő webhely problémája esetén. Egykattintásos megoldásra van szüksége a szabályzat kényszerítési érvényének kikapcsolhoz. 
+- Egy külső féltől származó megoldásra támaszkodik a környezet naplózása érdekében, és egy belső Microsoft-ajánlatot szeretne használni.
 
-## <a name="types-of-policy-effects-and-guidance"></a>A házirend hatásának és útmutatásának típusai
+## <a name="types-of-policy-effects-and-guidance"></a>Szabályzathatások típusai és útmutatás
 
-**Naplózás**: Ha egy házirend hatása naplózásra van beállítva, a házirend nem okoz változást a környezetében. Csak olyan összetevőkre figyelmeztet, amelyek nem felelnek meg a szabályzat-definícióknak egy adott hatókörön belül, ha ezeket az összetevőket nem megfelelőként jelöli meg a szabályzat megfelelőségi irányítópultján. A naplózás alapértelmezett, ha nincs kiválasztva házirend-effektus.
+**Naplózás:** Ha egy szabályzat hatása naplózásra van beállítva, a szabályzat nem okoz a környezetben jelentős változásokat. Ez csak a szabályzatmegfelelőségi irányítópulton nem megfelelőként megjelölt összetevőkről küld riasztást, például olyan összetevőkről, amelyek nem felelnek meg a szabályzatdefinícióknak egy adott hatókörben. A naplózás alapértelmezett beállítás, ha nincs házirend-hatás kijelölve.
 
-**Megtagadás**: Ha egy házirend hatására a Megtagadás érték van beállítva, a házirend letiltja az új összetevők, például a tanúsítványok létrehozását, valamint a meglévő összetevők olyan új verzióinak letiltását, amelyek nem felelnek meg a házirend-definíciónak. A kulcstartón belüli meglévő, nem megfelelő erőforrások nem érintettek. A "naplózás" funkció továbbra is működni fog.
+**Megtagadás:** Ha egy házirend megtagadásra van állítva, a házirend letiltja az új összetevők, például tanúsítványok létrehozását, valamint a szabályzatdefiníciónak nem megfelelő meglévő összetevők új verzióinak létrehozását. A kulcstartóban meglévő nem megfelelő erőforrásokra ez nincs hatással. Az auditálási képességek továbbra is működni fognak.
 
-## <a name="available-built-in-policy-definitions"></a>Elérhető "beépített" szabályzat-definíciók
+## <a name="available-built-in-policy-definitions"></a>Elérhető "Beépített" szabályzatdefiníciók
 
-Key Vault létrehozott egy szabályzatot, amely a kulcs, a tanúsítvány és a titkos objektumok kezelésére használható. Ezek a szabályzatok beépítettek, ami azt jelenti, hogy nincs szükség egyéni JSON-írásra, hogy azok elérhetők legyenek, és a Azure Portal a hozzárendeléshez. Továbbra is testreszabhatja bizonyos paramétereket, hogy illeszkedjenek a szervezet igényeihez.
+Key Vault létrehozott egy szabályzatkészletet, amely kulcs-, tanúsítvány- és titkosobjektumok kezelésére használható. Ezek a szabályzatok "beépítettek", ami azt jelenti, hogy nem kell egyéni JSON-t írnia az engedélyezésük érdekében, és elérhetők a Azure Portal a hozzárendeléshez. Bizonyos paramétereket továbbra is testreszabhat a szervezet igényeinek megfelelően.
 
 # <a name="certificate-policies"></a>[Tanúsítvány-házirendek](#tab/certificates)
 
-### <a name="certificates-should-have-the-specified-maximum-validity-period-preview"></a>A tanúsítványoknak a megadott maximális érvényességi időtartammal kell rendelkezniük (előzetes verzió)
+### <a name="certificates-should-have-the-specified-maximum-validity-period-preview"></a>A tanúsítványoknak a megadott maximális érvényességi időtartammal (előzetes verzió) kell lennie
 
-Ezzel a szabályzattal kezelheti a Key vaultban tárolt tanúsítványok maximális érvényességi időtartamát. Jó biztonsági gyakorlat a tanúsítványok maximális érvényességi időtartamának korlátozására. Ha a tanúsítvány titkos kulcsát az észlelés nélkül feltörték, a rövid életű tanúsítványok segítségével kis mértékben csökkentheti a folyamatos károsodások időbeli keretét, és csökkenti a tanúsítvány értékét egy támadó számára.
+Ez a szabályzat lehetővé teszi a Key Vaultban tárolt tanúsítványok maximális érvényességi időtartamának kezelését. Bevált biztonsági eljárás a tanúsítványok maximális érvényességi idejének korlátozása. Ha a tanúsítvány titkos kulcsát észlelés nélkül feltörik, a rövid életű tanúsítványok használata minimálisra csökkenti a folyamatos károkat, és csökkenti a tanúsítvány értékét a támadók számára.
 
-### <a name="certificates-should-use-allowed-key-types-preview"></a>A tanúsítványoknak engedélyezett típusú kulcsokat kell használniuk (előzetes verzió)
+### <a name="certificates-should-use-allowed-key-types-preview"></a>A tanúsítványoknak engedélyezett kulcstípusokat kell használniuk (előzetes verzió)
 
-Ez a szabályzat lehetővé teszi a kulcstartóban lévő tanúsítványok típusának korlátozását. Ennek a szabályzatnak a használatával meggyőződhet arról, hogy a tanúsítvány titkos kulcsa RSA, ECC vagy HSM-biztonsági másolat. A következő listából választhat, hogy milyen típusú tanúsítványok engedélyezettek.
-
-- RSA
-- RSA – HSM
-- ECC
-- ECC – HSM
-
-### <a name="certificates-should-have-the-specified-lifetime-action-triggers-preview"></a>A tanúsítványoknak meg kell adni a megadott élettartam műveleti eseményindítókat (előzetes verzió)
-
-Ez a szabályzat lehetővé teszi, hogy kezelje a lejáratuk meghatározott számú napjain vagy a felhasználható élettartamának bizonyos százalékában megadott élettartam-műveletet.
-
-### <a name="certificates-should-be-issued-by-the-specified-integrated-certificate-authority-preview"></a>A tanúsítványokat a megadott integrált hitelesítésszolgáltató (előzetes verzió) alapján kell kiállítani.
-
-Ha Key Vault integrált hitelesítésszolgáltatót (Digicert vagy GlobalSign) használ, és azt szeretné, hogy a felhasználók egy vagy több szolgáltatót használjanak, akkor ezt a házirendet használhatja a kijelölés naplózásához vagy érvényesítéséhez. Ez a szabályzat az önaláírt tanúsítványok a Key vaultban való létrehozásának naplózására és megtagadására is használható.
-
-### <a name="certificates-should-be-issued-by-the-specified-non-integrated-certificate-authority-preview"></a>A tanúsítványokat a megadott nem integrált hitelesítésszolgáltatótól kell kibocsátani (előzetes verzió)
-
-Ha belső hitelesítésszolgáltatót vagy a Key Vault szolgáltatással nem integrált hitelesítésszolgáltatót használ, és azt szeretné, hogy a felhasználók a megadott listából hitelesítő szolgáltatót használjanak, ezt a házirendet használhatja a hitelesítésszolgáltatók engedélyezési listájának létrehozásához a kiállító neve alapján. Ez a szabályzat az önaláírt tanúsítványok a Key vaultban való létrehozásának naplózására és megtagadására is használható.
-
-### <a name="certificates-using-elliptic-curve-cryptography-should-have-allowed-curve-names-preview"></a>Az elliptikus görbe titkosítását használó tanúsítványoknak engedélyezett görbe-névvel kell rendelkezniük (előzetes verzió)
-
-Ha elliptikus görbe típusú titkosítást vagy ECC-tanúsítványokat használ, az alábbi listából testreszabhatja a görbe neveinek engedélyezett listáját. Az alapértelmezett beállítás lehetővé teszi az összes alábbi görbe nevét.
-
-- P-256
-- P – 256K
-- P-384
-- P-521
-
-## <a name="certificates-using-rsa-cryptography-manage-minimum-key-size-for-rsa-certificates-preview"></a>Az RSA-titkosítást használó tanúsítványok kezelik az RSA-tanúsítványok minimális kulcsának méretét (előzetes verzió)
-
-Ha RSA-tanúsítványokat használ, kiválaszthatja, hogy a tanúsítványoknak milyen minimális méretűnek kell lennie. Az alábbi listából választhatja ki az egyik lehetőséget.
-
-- 2048 bit
-- 3072 bit
-- 4096 bit
-
-## <a name="manage-certificates-that-are-within-a-specified-number-of-days-of-expiration-preview"></a>A megadott számú napon belül lévő tanúsítványok kezelése (előzetes verzió)
-
-A szolgáltatás leállást tapasztalhat, ha egy nem megfelelően figyelt tanúsítvány nem kerül elforgatásra a lejárat előtt. Ez a szabályzat kritikus fontosságú annak biztosításához, hogy a Key vaultban tárolt tanúsítványok figyelése megtörténjen. Azt javasoljuk, hogy a szabályzatot többször alkalmazza különböző lejárati küszöbértékekkel, például 180, 90, 60 és 30 napos küszöbértékekkel. Ez a szabályzat a tanúsítvány lejáratának figyelésére és osztályozására használható a szervezetben.
-
-# <a name="key-policies"></a>[Kulcsfontosságú házirendek](#tab/keys)
-
-### <a name="keys-should-not-be-active-for-longer-than-the-specified-number-of-days-preview"></a>A kulcsok nem lehetnek aktívak a megadott számú napnál hosszabb ideig (előzetes verzió)
-
-Ha azt szeretné, hogy a kulcsok a megadott számú napnál hosszabb ideig ne legyenek aktívak, akkor ezzel a házirenddel naplózhatja, hogy a kulcs mennyi ideig aktív.
-
-**Ha a kulcs aktiválási dátummal van beállítva**, akkor ez a szabályzat a kulcs **aktiválási dátumával** eltelt napok számát számítja ki az aktuális dátumra. Ha a napok száma meghaladja a beállított küszöbértéket, a kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
-
-**Ha a kulcs nem rendelkezik aktiválási dátummal beállítva**, akkor ez a szabályzat a kulcs **létrehozási dátumától** számított napok számát számítja ki az aktuális dátumra. Ha a napok száma meghaladja a beállított küszöbértéket, a kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
-
-### <a name="keys-should-be-the-specified-cryptographic-type-rsa-or-ec-preview"></a>A kulcsnak a megadott RSA vagy EC titkosítási típusnak kell lennie (előzetes verzió)
-
-Ez a szabályzat lehetővé teszi a Key vaultban található kulcsok típusának korlátozását. Ezzel a szabályzattal meggyőződhet arról, hogy a kulcsok RSA-, ECC-vagy HSM-biztonsági mentés alatt állnak. A következő listából választhat, hogy milyen típusú tanúsítványok engedélyezettek.
+Ezzel a szabályzattal korlátozhatja a kulcstartóban található tanúsítványok típusát. Ezzel a szabályzattal győződhet meg arról, hogy a tanúsítvány titkos kulcsai RSA-, ECC-, vagy HSM-háttérbe vannak-e ásva. Az alábbi listából választhatja ki, hogy mely tanúsítványtípusok engedélyezettek.
 
 - RSA
 - RSA – HSM
-- ECC
+- Ecc
 - ECC – HSM
 
-### <a name="keys-using-elliptic-curve-cryptography-should-have-the-specified-curve-names-preview"></a>Az elliptikus görbe titkosítást használó kulcsoknak a megadott görbe-nevekkel kell rendelkezniük (előzetes verzió)
+### <a name="certificates-should-have-the-specified-lifetime-action-triggers-preview"></a>A tanúsítványoknak a megadott élettartamműveleti eseményindítóval (előzetes verzió) kell lennie
 
-Ha elliptikus görbe típusú titkosítást vagy ECC-kulcsot használ, az alábbi listából testreszabhatja a görbe neveinek engedélyezett listáját. Az alapértelmezett beállítás lehetővé teszi az összes alábbi görbe nevét.
+Ez a szabályzat lehetővé teszi az olyan tanúsítványok élettartam-műveletének kezelését, amelyek a lejáratuktól számított bizonyos számú napon belül vagy a használható élettartamuk egy bizonyos százalékán belül elérték az élettartamukat.
+
+### <a name="certificates-should-be-issued-by-the-specified-integrated-certificate-authority-preview"></a>A tanúsítványokat a megadott integrált hitelesítésszolgáltatónak kell kiadnia (előzetes verzió)
+
+Ha integrált Key Vault hitelesítésszolgáltatót (Digicert vagy GlobalSign) használ, és azt szeretné, hogy a felhasználók ezen szolgáltatók valamelyikét vagy valamelyikét használják, ezzel a szabályzattal naplót is kaphat vagy kényszerítheti a választást. Ezzel a szabályzattal naplózhatja vagy megtagadhatja az önaírt tanúsítványok létrehozását a Key Vaultban.
+
+### <a name="certificates-should-be-issued-by-the-specified-non-integrated-certificate-authority-preview"></a>A tanúsítványokat a megadott nem integrált hitelesítésszolgáltatónak kell kiadnia (előzetes verzió)
+
+Ha belső hitelesítésszolgáltatót vagy a kulcstartóval nem integrált hitelesítésszolgáltatót használ, és azt szeretné, hogy a felhasználók egy Ön által listából származó hitelesítésszolgáltatót használjanak, a házirend segítségével létrehozhatja a hitelesítésszolgáltatók engedélyezett listáját a kiállító neve alapján. Ezzel a szabályzattal naplózhatja vagy megtagadhatja az önaírt tanúsítványok létrehozását a Key Vaultban.
+
+### <a name="certificates-using-elliptic-curve-cryptography-should-have-allowed-curve-names-preview"></a>A három ponttal görbét használó titkosítást használó tanúsítványoknak engedélyezettnek kell lennie a görbeneveknek (előzetes verzió)
+
+Ha elliptikus görbe-titkosítást vagy ECC-tanúsítványokat használ, az alábbi listából testre szabhatja a görbenevek engedélyezett listáját. Az alapértelmezett beállítás az alábbi görbenevek mindegyikét engedélyezi.
 
 - P-256
-- P – 256K
+- P-256K
 - P-384
 - P-521
 
-### <a name="keys-should-have-expirations-dates-set-preview"></a>A kulcsoknak be kell állítani a lejárat dátumát (előzetes verzió)
+## <a name="certificates-using-rsa-cryptography-manage-minimum-key-size-for-rsa-certificates-preview"></a>RSA-titkosítást használó tanúsítványok Az RSA-tanúsítványok minimális kulcsméretének kezelése (előzetes verzió)
 
-Ez a házirend naplózza a kulcstartók összes kulcsát, és a nem megfelelőként beállított lejárati dátummal rendelkező kulcsokat. Ezt a házirendet használhatja a lejárati dátummal nem rendelkező kulcsok létrehozásának blokkolására is.
+RSA-tanúsítványok használata esetén megadhatja a tanúsítványokhoz szükséges minimális kulcsméretet. Az alábbi listából választhat egyet.
 
-### <a name="keys-should-have-more-than-the-specified-number-of-days-before-expiration-preview"></a>A kulcsoknak többnek kell lenniük a lejárat előtt megadott számú nappal (előzetes verzió)
+- 2048 bites
+- 3072 bites
+- 4096 bites
 
-Ha egy kulcs túl le van zárva a lejárathoz, akkor a kulcs elforgatására szolgáló szervezeti késleltetés kimaradást eredményezhet. A kulcsokat a lejárat előtt megadott számú nappal kell elforgatni, hogy elegendő idő álljon rendelkezésre a hibákra való reagáláshoz. Ez a szabályzat azokat a kulcsokat fogja naplózni, amelyek a lejárati dátumhoz képest túl lezárulnak, és a küszöbértéket napokban állíthatja be. Ezt a házirendet is használhatja, hogy megakadályozza a lejárati dátumhoz tartozó új kulcsok létrehozását.
+## <a name="manage-certificates-that-are-within-a-specified-number-of-days-of-expiration-preview"></a>Meghatározott számú lejárati napon belüli tanúsítványok kezelése (előzetes verzió)
 
-### <a name="keys-should-be-backed-by-a-hardware-security-module-preview"></a>A kulcsokat hardveres biztonsági modulnak (előzetes verzió) kell támogatnia
+A szolgáltatás kimaradást tapasztalhat, ha a lejárata előtt nem váltják le megfelelően a figyelt tanúsítványokat. Ez a szabályzat kritikus fontosságú annak érdekében, hogy a rendszer figyelni tudja a Key Vaultban tárolt tanúsítványokat. Javasoljuk, hogy ezt a szabályzatot többször is alkalmazza különböző lejárati küszöbértékekkel, például 180, 90, 60 és 30 napos küszöbértékekkel. Ez a szabályzat a tanúsítvány lejáratának figyelére és osztályozásére használható a szervezetben.
 
-A HSM egy hardveres biztonsági modul, amely a kulcsokat tárolja. A HSM fizikai védelmi réteget biztosít a titkosítási kulcsokhoz. A titkosítási kulcs nem hagyhat olyan fizikai HSM-t, amely nagyobb biztonsági szintet biztosít, mint a szoftver kulcsa. Egyes szervezetek megfelelőségi követelményekkel rendelkeznek, amelyek felhatalmazzák a HSM-kulcsok használatát. Ezzel a szabályzattal naplózhatja a kulcstartóban tárolt kulcsokat, amelyek nem HSM-biztonsági mentéssel rendelkeznek. Ezt a házirendet használhatja arra is, hogy letiltsa a HSM-t nem támogató új kulcsok létrehozását. Ez a szabályzat az összes, az RSA és az ECC típusú kulcsra érvényes lesz.
+# <a name="key-policies"></a>[Fő szabályzatok](#tab/keys)
 
-### <a name="keys-using-rsa-cryptography-should-have-a-specified-minimum-key-size-preview"></a>Az RSA-titkosítást használó kulcsoknak meg kell egyezniük a minimális kulcs méretével (előzetes verzió)
+### <a name="keys-should-not-be-active-for-longer-than-the-specified-number-of-days-preview"></a>A kulcsok nem lehet aktívak a megadott számú napnál hosszabb ideig (előzetes verzió)
 
-A kisebb méretű RSA-kulcsok használata nem biztonságos tervezési gyakorlat. Előfordulhat, hogy olyan naplózási és minősítési szabványokra van szüksége, amely a minimális kulcs méretének használatát bízza meg. A következő házirend lehetővé teszi a Key Vault minimális kulcs méretre vonatkozó követelményének megadását. Olyan kulcsokat is naplózhat, amelyek nem felelnek meg ennek a minimális követelménynek. Ezzel a szabályzattal letiltható az új kulcsok létrehozása, amelyek nem felelnek meg a minimális kulcs méretére vonatkozó követelménynek.
+Ha meg szeretne győződni arról, hogy a kulcsok a megadott számú napnál tovább nem voltak aktívak, ezzel a szabályzatmal naplót kaphat arról, hogy a kulcs mennyi ideig aktív.
 
-### <a name="keys-should-have-the-specified-maximum-validity-period-preview"></a>A kulcsoknak a megadott maximális érvényességi időtartammal kell rendelkezniük (előzetes verzió)
+**Ha a kulcshoz be** van állítva aktiválási dátum, ez a szabályzat  a kulcs aktiválási dátumtól az aktuális dátumig eltelt napok számát számítja ki. Ha a napok száma meghaladja a beállított küszöbértéket, a kulcs nem megfelelőként lesz megjelölve a szabályzatnak.
 
-A szervezeti megfelelőségi követelmények kezeléséhez adja meg azt a maximális időtartamot napokban, ameddig egy kulcs érvényes lehet a kulcstartón belül. A megadott küszöbértéknél hosszabb ideig érvényes kulcsok nem megfelelőként lesznek megjelölve. Ezt a házirendet használhatja arra is, hogy letiltsa a megadott érvényességi időtartamnál hosszabb lejárati dátummal rendelkező új kulcsok létrehozását.
+**Ha a kulcshoz** nincs beállítva aktiválási dátum, akkor ez a szabályzat a  kulcs létrehozásának dátumtól az aktuális dátumig eltelt napok számát számítja ki. Ha a napok száma meghaladja a beállított küszöbértéket, a kulcs nem megfelelőként lesz megjelölve a szabályzatnak.
+
+### <a name="keys-should-be-the-specified-cryptographic-type-rsa-or-ec-preview"></a>A kulcsoknak a megadott RSA vagy EC titkosítási típusnak kell lennie (előzetes verzió)
+
+Ez a szabályzat lehetővé teszi a kulcstartóban található kulcsok típusának korlátozását. Ezzel a szabályzatmal arról is győződhet meg, hogy a kulcsok RSA- vagy ECC-, illetve HSM-háttérként vannak-e használva. Az alábbi listából választhatja ki, hogy mely tanúsítványtípusok engedélyezettek.
+
+- RSA
+- RSA – HSM
+- Ecc
+- ECC – HSM
+
+### <a name="keys-using-elliptic-curve-cryptography-should-have-the-specified-curve-names-preview"></a>A három ponttal görbét használó titkosítást használó kulcsoknak meg kell adniuk a megadott görbeneveket (előzetes verzió)
+
+Ha elliptikus görbe-titkosítást vagy ECC-kulcsokat használ, az alábbi listából testreszabhatja a görbenevek engedélyezett listáját. Az alapértelmezett beállítás az alábbi görbenevek mindegyikét engedélyezi.
+
+- P-256
+- P-256K
+- P-384
+- P-521
+
+### <a name="keys-should-have-expirations-dates-set-preview"></a>A kulcsok lejárati dátumait be kell állítani (előzetes verzió)
+
+Ez a szabályzat naplót végez a kulcstartókban található összes kulcson, és megjelöli a nem megfelelőként beállított lejárati dátummal nem rendelkező kulcsokat. Ezzel a szabályzatmal letilthatja a lejárati dátummal nem rendelkező kulcsok létrehozását.
+
+### <a name="keys-should-have-more-than-the-specified-number-of-days-before-expiration-preview"></a>A kulcsok lejárata előtt a megadott számú napnál többnek kell lennie (előzetes verzió)
+
+Ha egy kulcs túl közel van a lejárathoz, a kulcs elforgatása szervezeti késéssel is eredményezhet kimaradást. A kulcsokat a lejárat előtt meghatározott számú napon kell elforgatni, hogy elegendő időt biztosítson a hibákra való reagáláshoz. Ez a szabályzat napló fogja naplóni a lejárati dátumukhoz túl közeli kulcsokat, és lehetővé teszi ennek a küszöbértéknek a napokban való beállítását. Ezzel a szabályzatmal megakadályozhatja az olyan új kulcsok létrehozását, amelyek túl közel vannak a lejárati dátumukhoz.
+
+### <a name="keys-should-be-backed-by-a-hardware-security-module-preview"></a>A kulcsok biztonsági kulcsait hardveres biztonsági modulnak kell mögötte (előzetes verzió)
+
+A HSM egy hardveres biztonsági modul, amely kulcsokat tárol. A HSM fizikai védelmi réteget biztosít a titkosítási kulcsok számára. A titkosítási kulcs nem hagyhatja el a fizikai HSM-et, amely a szoftverkulcsnál magasabb szintű biztonságot nyújt. Egyes szervezetek megfelelőségi követelményekkel szabályznak a HSM-kulcsok használatát. Ezzel a szabályzatkal naplózható a kulcstartóban tárolt, nem HSM-háttérbeli kulcsok naplózása. Ezzel a szabályzatmal letilthatja a HSM-háttéren nem található új kulcsok létrehozását. Ez a szabályzat minden kulcstípusra érvényes lesz, az RSA-t és az ECC-t is.
+
+### <a name="keys-using-rsa-cryptography-should-have-a-specified-minimum-key-size-preview"></a>Az RSA-titkosítást használó kulcsok minimális kulcsmérete (előzetes verzió)
+
+A kisebb kulcsméretű RSA-kulcsok használata nem biztonságos tervezési gyakorlat. A minimális kulcsméret használatát kötelezően előírt naplózási és tanúsítási szabványok vonatkozhatnak Önre. Az alábbi szabályzat lehetővé teszi a kulcstartó minimális kulcsméret-követelményének beállítását. Olyan kulcsokat is naplóolhat, amelyek nem teljesítik ezt a minimális követelményt. Ezzel a házirendtel blokkolható az olyan új kulcsok létrehozása is, amelyek nem felelnie meg a minimális kulcsméretre vonatkozó követelménynek.
+
+### <a name="keys-should-have-the-specified-maximum-validity-period-preview"></a>A kulcsoknak a megadott maximális érvényességi időtartammal (előzetes verzió) kell lennie
+
+A szervezeti megfelelőségi követelmények kezeléséhez adja meg a kulcstartóban érvényes kulcs legfeljebb napokban megadott maximális idejét. A beállított küszöbértéknél hosszabb ideig érvényes kulcsok nem megfelelőként lesznek megjelölve. Ezzel a szabályzatmal letilthatja az olyan új kulcsok létrehozását, amelyek lejárati dátuma hosszabb a megadott maximális érvényességi időtartamnál.
 
 # <a name="secret-policies"></a>[Titkos szabályzatok](#tab/secrets)
 
-### <a name="secrets-should-not-be-active-for-longer-than-the-specified-number-of-days-preview"></a>A titkok nem lehetnek aktívak a megadott számú napnál hosszabb ideig (előzetes verzió)
+### <a name="secrets-should-not-be-active-for-longer-than-the-specified-number-of-days-preview"></a>A titkos kulcsok nem lehet aktívak a megadott számú napnál hosszabb ideig (előzetes verzió)
 
-Ha azt szeretné, hogy a titkos kódok a megadott számú napnál hosszabb ideig ne legyenek aktívak, akkor ezt a házirendet követve naplózhatja, hogy mennyi ideig volt aktív a titka.
+Ha meg szeretne győződni arról, hogy a titkos kulcsok a megadott számú napnál tovább nem voltak aktívak, ezzel a szabályzatmal naplót kaphat arról, hogy a titkos kulcsok mennyi ideig voltak aktívak.
 
-**Ha a titkos kulcs aktiválási dátummal van beállítva**, akkor ez a szabályzat a titok **aktiválási dátumával** eltelt napok számát számítja ki az aktuális dátumra. Ha a napok száma meghaladja a beállított küszöbértéket, a titkos kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
+**Ha a titkos kód aktiválási dátuma** be van állítva, ez a  szabályzat kiszámítja, hogy hány nap eltelt a titkos kód aktiválási dátumtól az aktuális dátumig. Ha a napok száma meghaladja a beállított küszöbértéket, a titkos secret nem megfelelőként lesz megjelölve a szabályzatnak.
 
-**Ha a titka nem rendelkezik aktiválási dátummal**, akkor ez a szabályzat a titok **létrehozásának dátumától** számított napok számát számítja ki az aktuális dátumig. Ha a napok száma meghaladja a beállított küszöbértéket, a titkos kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
+**Ha a titkos kódhoz** nincs beállítva aktiválási dátum, ez a szabályzat kiszámítja, hogy hány nap eltelt a titkos kód létrehozásától az aktuális dátumig.  Ha a napok száma meghaladja a beállított küszöbértéket, a titkos secret nem megfelelőként lesz megjelölve a szabályzatnak.
 
-### <a name="secrets-should-have-content-type-set-preview"></a>A titkoknak rendelkezniük kell a tartalomtípus-készlettel (előzetes verzió)
+### <a name="secrets-should-have-content-type-set-preview"></a>A titkos kulcsokhoz tartalomtípust kell beállítani (előzetes verzió)
 
-Bármely egyszerű szöveges vagy kódolt fájl tárolható kulcstartó-titokként. Előfordulhat azonban, hogy a szervezet különböző rotációs házirendeket és korlátozásokat kíván beállítani a jelszavakra, a kapcsolódási karakterláncokra vagy a kulcsként tárolt tanúsítványokra vonatkozóan. A tartalomtípus címkéje segíthet a felhasználóknak megtekinteni, hogy mit tárolnak a titkos objektumokban a titkos kulcs értékének olvasása nélkül. Ezt a házirendet használhatja olyan titkok naplózására, amelyek nem rendelkeznek tartalomtípus-címkékkel. Ezt a házirendet arra is használhatja, hogy megakadályozza, hogy új titkokat hozzon létre, ha nem rendelkeznek tartalomtípus-címkével.
+Bármilyen egyszerű szöveg vagy kódolt fájl tárolható kulcstartókulcsként. Előfordulhat azonban, hogy a szervezet különböző rotációs szabályzatokat és korlátozásokat szeretne beállítani a jelszavakra, kapcsolati sztringekra vagy kulcsként tárolt tanúsítványokra. A tartalomtípuscímkék segítségével a felhasználók a titkos kód értékének beolvasása nélkül láthatják, hogy mi van tárolva egy titkos objektumban. Ezzel a szabályzatkal naplózhatja a tartalomtípuscímkével nem beállított titkos kódokat. Ezzel a szabályzatot arra is használhatja, hogy megakadályozza az új titkos kulcsok létrejöttét, ha nincs beállítva tartalomtípus-címke.
 
-### <a name="secrets-should-have-expiration-date-set-preview"></a>A titkokat le kell állítani a lejárat dátumánál (előzetes verzió)
+### <a name="secrets-should-have-expiration-date-set-preview"></a>A titkos kulcsok lejárati dátumának (előzetes verzió) kell lennie
 
-Ez a házirend naplózza a kulcstartó összes titkos kulcsát, és megtekinti a nem megfelelőként beállított lejárati dátummal rendelkező titkokat. Ezt a házirendet használhatja a lejárati dátummal nem rendelkező titkos kulcsok létrehozásának letiltásához is.
+Ez a szabályzat naplót végez a key vaultban tárolt összes titkos kulcson, és megjelöli a nem megfelelőként beállított lejárati dátummal nem rendelkező titkos kulcsokat. Ezzel a szabályzatmal letilthatja a lejárati dátummal nem rendelkező titkos kulcsok létrehozását.
 
-### <a name="secrets-should-have-more-than-the-specified-number-of-days-before-expiration-preview"></a>A titkoknak a lejárat előtt a megadott számú nappal hosszabbnak kell lenniük (előzetes verzió)
+### <a name="secrets-should-have-more-than-the-specified-number-of-days-before-expiration-preview"></a>A titkos kulcsok lejárata előtt a megadott számú napnál többnek kell lennie (előzetes verzió)
 
-Ha egy titkos kulcs túl lezárult a lejárathoz, a titkos kód elforgatásának szervezeti késése kimaradást eredményezhet. A titkokat a lejárat előtt a megadott számú nappal kell elforgatni, hogy elegendő idő álljon rendelkezésre a hibákra való reagáláshoz. Ez a szabályzat azokat a titkokat naplózza, amelyek túl leállnak a lejárati dátumhoz, és lehetővé teszik a küszöbérték napokon történő beállítását. Ezt a házirendet is használhatja, hogy megakadályozza a lejárati dátumhoz képest túl új titkos kódok létrehozását.
+Ha egy titkos kulcs túl közel van a lejárathoz, a titkos kulcs szervezeti késleltetése kimaradáshoz vezethet. A titkos kulcsokat a lejárat előtt meghatározott számú napon kell elforgatni, hogy elegendő időt biztosítson a hibákra való reagáláshoz. Ez a szabályzat naplója a lejárati dátumukhoz túl közeli titkos kulcsokat, és lehetővé teszi a küszöbérték napokban való beállítását. Ezzel a szabályzatmal megakadályozhatja olyan új titkos kulcsok létrehozását, amelyek túl közel vannak a lejárati dátumukhoz.
 
-### <a name="secrets-should-have-the-specified-maximum-validity-period-preview"></a>A titoknak meg kell egyeznie a megadott maximális érvényességi időtartammal (előzetes verzió)
+### <a name="secrets-should-have-the-specified-maximum-validity-period-preview"></a>A titkos kulcsoknak a megadott maximális érvényességi időtartammal (előzetes verzió) kell lennie
 
-A szervezeti megfelelőségi követelmények kezeléséhez adja meg azt a maximális időtartamot napokban, ameddig a titkos kulcs érvényes lehet a kulcstartón belül. A megadott küszöbértéknél hosszabb ideig érvényes titkos kódok nem megfelelőként lesznek megjelölve. Ezt a házirendet használhatja arra is, hogy letiltsa a megadott érvényességi időtartamnál hosszabb lejárati dátummal rendelkező új titkok létrehozását.
+A szervezeti megfelelőségi követelmények kezeléséhez adja meg a titkos kulcs kulcstartóban való érvényességének maximális idejét napokban. A beállított küszöbértéknél hosszabb ideig érvényes titkos kulcsok nem megfelelőként lesznek megjelölve. Ezzel a szabályzatmal letilthatja az olyan új titkos kulcsok létrehozását, amelyek lejárati dátuma hosszabb a megadott maximális érvényességi időtartamnál.
 
 ---
 
 ## <a name="example-scenario"></a>Példaforgatókönyv
 
-Az 100-es tanúsítványokat tartalmazó több csapat által használt kulcstartót kezelheti, és biztosítania kell, hogy a kulcstartóban lévő egyik tanúsítvány ne legyen két évnél hosszabb ideig érvényes.
+Ön több, 100 tanúsítványt tartalmazó csapat által használt kulcstartót kezel, és meg szeretne győződni arról, hogy a kulcstartóban található tanúsítványok egyike sem érvényes 2 évnél hosszabb ideig.
 
-1. A tanúsítványok hozzárendeléséhez meg **kell adni a megadott maximális érvényességi időszakra** vonatkozó házirendet, meg kell adnia, hogy a tanúsítvány maximális érvényességi időtartama 24 hónap, és a szabályzat hatása "naplózás" értékre van állítva. 
-1. A [megfelelőségi jelentést a Azure Portal](#view-compliance-results)tekintheti meg, és azt is felfedezheti, hogy 20 tanúsítvány nem megfelelő, és > 2 évig érvényes, és a fennmaradó tanúsítványoknak megfelelőek. 
-1. Felveszi Önnel a kapcsolatot a tanúsítványok tulajdonosainak, és közli az új biztonsági követelménysel, hogy a tanúsítványok nem lehetnek 2 évnél hosszabb ideig érvényesek. Néhány csapat válaszol, és a tanúsítványok 15-én megújítva a maximális érvényességi időtartam 2 év vagy kevesebb. Más csapatok nem válaszolnak, és továbbra is 5 nem megfelelő tanúsítvány található a kulcstartóban.
-1. Megváltoztathatja a "megtagadás" beállításhoz rendelt szabályzat hatásait. Az 5 nem megfelelő tanúsítvány nem vonható vissza, és továbbra is működni fognak. Azonban a két évnél hosszabb érvényességi időtartammal nem újítható meg. 
+1. A Tanúsítványok  hozzárendelése a megadott maximális érvényességi időtartamra vonatkozó házirendet kell, megadhatja, hogy a tanúsítvány érvényességi időtartama legfeljebb 24 hónap legyen, és a házirend hatását állítsa "naplózásra". 
+1. A megfelelőségi [](#view-compliance-results)jelentést a Azure Portal, és felderíti, hogy 20 tanúsítvány nem megfelelő és > 2 évig érvényes, a többi tanúsítvány pedig megfelelő. 
+1. Kapcsolatba lép a tanúsítványok tulajdonosaival, és közli az új biztonsági követelményt, amely szerint a tanúsítványok nem lehetnek 2 évnél hosszabb ideig érvényesek. Egyes csapatok válaszolnak, és 15 tanúsítványt újítottak meg legfeljebb 2 éves maximális érvényességi időtartammal. Más csapatok nem válaszolnak, és továbbra is 5 nem megfelelő tanúsítvány van a kulcstartóban.
+1. Módosíthatja a "megtagadás" szabályzat hatását. Az 5 nem megfelelő tanúsítványt a rendszer nem vonja vissza, és továbbra is működni fognak. Azonban nem újíthatók meg 2 évnél hosszabb érvényességi időtartammal. 
 
-## <a name="enabling-and-managing-a-key-vault-policy-through-the-azure-portal"></a>Key Vault szabályzat engedélyezése és kezelése a Azure Portal használatával
+## <a name="enabling-and-managing-a-key-vault-policy-through-the-azure-portal"></a>Új házirend engedélyezése Key Vault és kezelése a Azure Portal
 
-### <a name="select-a-policy-definition"></a>Házirend-definíció kiválasztása
+### <a name="select-a-policy-definition"></a>Szabályzatdefiníció kiválasztása
 
 1. Jelentkezzen be az Azure Portalra. 
-1. Keressen rá a "szabályzat" kifejezésre a keresősáv alatt, és válassza a **házirend** lehetőséget.
+1. Keressen rá a "Szabályzat" kifejezésre a keresősávban, és válassza a **Szabályzat lehetőséget.**
 
-    ![A keresősáv megjelenítő képernyőkép.](../media/policy-img1.png)
+    ![Képernyőkép a keresősávról.](../media/policy-img1.png)
 
-1. A házirend ablakban válassza a **definíciók** lehetőséget.
+1. A Szabályzat ablakban válassza a **Definíciók lehetőséget.**
 
-    ![Képernyőkép a definíciók beállításról.](../media/policy-img2.png)
+    ![Képernyőkép a Definíciók lehetőség kiemelésről.](../media/policy-img2.png)
 
-1. A kategória szűrőben törölje az **összes kijelölése** lehetőséget, majd válassza a **Key Vault** lehetőséget. 
+1. A Kategóriaszűrőben törölje az Összes **kijelölése** lehetőséget, majd válassza **a** Key Vault. 
 
-    ![A Kategória szűrőt és a kiválasztott Key Vault kategóriát megjelenítő képernyőkép.](../media/policy-img3.png)
+    ![Képernyőkép a Kategóriaszűrőről és a kiválasztott Key Vault kategóriáról.](../media/policy-img3.png)
 
-1. Most meg kell jelennie a nyilvános előzetes verzióhoz elérhető összes házirendnek, Azure Key Vault. Győződjön meg arról, hogy elolvasta és megértette a szabályzattal kapcsolatos útmutatást, és válassza ki azt a szabályzatot, amelyet hozzá szeretne rendelni egy hatókörhöz.  
+1. Most már látnia kell a nyilvános előzetes verzióhoz elérhető összes szabályzatot a Azure Key Vault. Győződjön meg arról, hogy elolvasta és megértette a fenti szabályzati útmutató szakaszt, és válasszon ki egy hatókört hozzárendelni kívánt szabályzatot.  
 
     ![A nyilvános előzetes verzióhoz elérhető szabályzatokat bemutató képernyőkép.](../media/policy-img4.png)
 
-### <a name="assign-a-policy-to-a-scope"></a>Szabályzat társítása hatókörhöz 
+### <a name="assign-a-policy-to-a-scope"></a>Szabályzat hozzárendelése hatókörökhez 
 
-1. Válassza ki az alkalmazni kívánt szabályzatot, ebben a példában a **tanúsítvány kezelése érvényességi időszaka** házirend látható. Kattintson a hozzárendelés gombra a bal felső sarokban.
+1. Válasszon ki egy alkalmazni kívánt szabályzatot. Ebben a példában a **Tanúsítvány** érvényességi idejének kezelése szabályzat jelenik meg. Kattintson a hozzárendelés gombra a bal felső sarokban.
 
-    ![A tanúsítvány érvényességi időtartamának kezelése házirendet megjelenítő képernyőkép.](../media/policy-img5.png)
+    ![A Tanúsítvány érvényességi idejének kezelése szabályzatot bemutató képernyőkép.](../media/policy-img5.png)
   
-1. Válassza ki azt az előfizetést, amelyre alkalmazni szeretné a szabályzatot. Dönthet úgy, hogy az előfizetésen belül csak egy erőforráscsoporthoz korlátozza a hatókört. Ha a szabályzatot a teljes előfizetésre szeretné alkalmazni, és néhány erőforráscsoportot kizár, akkor a kizárási listát is konfigurálhatja. Állítsa be úgy a házirend-kényszerítési választót, hogy **engedélyezve** legyen, ha azt szeretné, hogy a házirend hatása (naplózás vagy megtagadás) **ki legyen kapcsolva** . 
+1. Válassza ki azt az előfizetést, amelyben alkalmazni szeretné a szabályzatot. Dönthet úgy, hogy a hatókört egy előfizetésen belül csak egyetlen erőforráscsoportra korlátozza. Ha a szabályzatot a teljes előfizetésre szeretné alkalmazni, és kizárni néhány erőforráscsoportot, kizárási listát is konfigurálhat. Állítsa a házirend-kényszerítési választót Engedélyezve beállításra, ha szeretné, hogy  a házirend hatása (naplózás vagy megtagadás) bekövetkezjön, vagy letiltva kapcsolja ki a hatást (naplózás vagy megtagadás).  
 
-    ![Képernyőfelvétel: Itt választhatja ki, hogy a hatókör csak egyetlen erőforráscsoport számára legyen korlátozva egy előfizetésen belül.](../media/policy-img6.png)
+    ![Képernyőkép arról, hogy hol korlátozhatja a hatókört egyetlen erőforráscsoportra az előfizetésen belül.](../media/policy-img6.png)
 
-1. Kattintson a képernyő felső részén található parameters (paraméterek) fülre, hogy megadja a maximális érvényességi időtartamot a kívánt hónapokban. A fenti részekben ismertetett útmutatást követve válassza a **naplózás** vagy a **Megtagadás** lehetőséget a szabályzat hatásához. Ezután válassza a felülvizsgálat + létrehozás gombot. 
+1. Kattintson a paraméterek lapfülre a képernyő tetején a kívánt hónapokban megadott maximális érvényességi időtartam megadásához. Válassza **a naplózás** vagy megtagadás lehetőséget a szabályzat hatásának ellenőrzéshez a fenti szakaszok útmutatása alapján.  Ezután válassza a felülvizsgálat + létrehozás gombot. 
 
-    ![A parameters (paraméterek) lapot megjelenítő képernyőkép, amelyen megadhatja a maximális érvényességi időtartamot a kívánt hónapokban.](../media/policy-img7.png)
+    ![Képernyőkép a Paraméterek lapról, ahol megadhatja a maximális érvényességi időszakot a kívánt hónapokban.](../media/policy-img7.png)
 
-### <a name="view-compliance-results"></a>Megfelelési eredmények megtekintése
+### <a name="view-compliance-results"></a>Megfelelőségi eredmények megtekintése
 
-1. Lépjen vissza a szabályzat panelre, és válassza a megfelelőség lapot. Kattintson arra a szabályzat-hozzárendelésre, amelyben meg szeretné tekinteni a megfelelőségi eredményeket.
+1. Vissza a Szabályzat panelre, és válassza a Megfelelőség lapot. Kattintson arra a szabályzat-hozzárendelésre, amely megfelelőségi eredményeit meg szeretné tekinteni.
 
-    ![A megfelelőség lapot megjelenítő képernyőkép, ahol kiválaszthatja azt a szabályzat-hozzárendelést, amelyre vonatkozóan meg szeretné tekinteni a megfelelőségi eredményeket.](../media/policy-img8.png)
+    ![Képernyőkép a Megfelelőség lapról, ahol kiválaszthatja azt a szabályzat-hozzárendelést, amely számára meg szeretné tekinteni a megfelelőségi eredményeket.](../media/policy-img8.png)
 
-1. Ezen a lapon a megfelelő vagy nem megfelelő tárolók alapján szűrheti az eredményeket. Itt láthatja a szabályzat-hozzárendelés hatókörén belül nem megfelelő kulcstartók listáját. A tár nem megfelelőnek minősül, ha a tároló egyik összetevője (tanúsítványa) nem megfelelő. Kiválaszthat egy egyéni tárolót az egyes nem megfelelő összetevők (tanúsítványok) megtekintéséhez. 
+1. Ezen az oldalon szűrheti az eredményeket megfelelő vagy nem megfelelő tárolók szerint. Itt láthatja a nem megfelelő kulcstartók listáját a szabályzat-hozzárendelés hatókörében. A tároló nem megfelelőnek minősül, ha a tárolóban található összetevők (tanúsítványok) bármelyike nem megfelelő. Az egyes nem megfelelő összetevők (tanúsítványok) megtekintéséhez kiválaszthat egy adott tárolót. 
 
 
-    ![Képernyőkép, amely a szabályzat-hozzárendelés hatókörén belüli nem megfelelő kulcstartók listáját jeleníti meg.](../media/policy-img9.png)
+    ![Képernyőkép a szabályzat-hozzárendelés hatókörében található nem megfelelő kulcstartók listájáról.](../media/policy-img9.png)
 
 1. A nem megfelelő tárolóban található összetevők nevének megtekintése
 
 
-    ![Képernyőfelvétel: Itt megtekintheti a nem megfelelő tárolóban található összetevők nevét.](../media/policy-img10.png)
+    ![Képernyőkép a nem megfelelő tárolóban található összetevők nevének megtekintéséről.](../media/policy-img10.png)
 
-1. Ha ellenőriznie kell, hogy a felhasználók megtagadják-e az erőforrások létrehozását a Key vaulton belül, kattintson az **összetevő-események (előzetes verzió)** fülre, és tekintse meg a megtagadott tanúsítvány-műveletek összefoglalását a kérelmező és a kérelmek időbélyegével. 
+1. Ha ellenőriznie kell, hogy a rendszer megtagadja-e a felhasználók számára az erőforrások kulcstartón belüli létrehozására vonatkozó képességet, az Összetevőesemények **(előzetes verzió)** lapra kattintva megtekintheti a megtagadott tanúsítványműveleteket a kérelmezővel, valamint a kérelmek időbélyegeit. 
 
 
-    ![A Azure Key Vault működésének áttekintése](../media/policy-img11.png)
+    ![A Azure Key Vault áttekintése](../media/policy-img11.png)
 
 ## <a name="feature-limitations"></a>A szolgáltatás korlátozásai
 
-A "megtagadás" hatású szabályzatok kiosztása akár 30 percig is eltarthat (átlagos eset) és 1 óra (legrosszabb esetben), hogy megtagadja a nem megfelelő erőforrások létrehozását. Egy tár meglévő összetevőinek kiértékelése akár 1 órát (átlagos esetet) és 2 órát (legrosszabb esetben) is igénybe vehet, mielőtt a portál felhasználói felületén megtekintsék a megfelelőségi eredményeket. Ha a megfelelőségi eredmények "nem elindítottként" jelennek meg, akkor az a következő okok miatt fordulhat elő:
-- A szabályzat-értékelés még nem fejeződött be. A kezdeti értékelési késés a legrosszabb esetben akár 2 órát is igénybe vehet. 
-- Nincsenek kulcstárolók a szabályzat-hozzárendelés hatókörében.
-- Nincsenek kulcstárolók a szabályzat-hozzárendelés hatókörében található tanúsítványokkal.
+A "megtagadás" hatású szabályzatok hozzárendelése akár 30 percet (átlagos eset) és 1 órát is vehet (legrosszabb esetben) a nem megfelelő erőforrások létrehozásának megtagadása. A tároló meglévő összetevőinek szabályzatértékelése akár 1 órát (átlagos eset) és 2 órát (legrosszabb esetben) is igénybe vehet, mielőtt a megfelelőségi eredmények megtekinthetők a portál felhasználói felületén. Ha a megfelelőségi eredmények "Nincs elindítva" eredményt mutatnak, annak az alábbi okai lehetnek:
+- A szabályzat értékelése még nem fejeződött be. A kezdeti kiértékelési késés a legrosszabb esetben akár 2 órát is igénybe vehet. 
+- A szabályzat-hozzárendelés hatókörében nincsenek kulcstartók.
+- A szabályzat-hozzárendelés hatókörébe nem tartoznak tanúsítványokkal tartozó kulcstartók.
 
 > [!NOTE]
-> Azure Policy [erőforrás-szolgáltatói módokat](../../governance/policy/concepts/definition-structure.md#resource-provider-modes), például a Azure Key Vaulthoz tartozókat, adja meg a megfelelőségi adatokat az [összetevő megfelelőségi](../../governance/policy/how-to/get-compliance-data.md#component-compliance) lapján.
+> Azure Policy szolgáltatói [](../../governance/policy/concepts/definition-structure.md#resource-provider-modes)módok (például az Azure Key Vault esetén) a Megfelelőséggel kapcsolatos információkat az Összetevő [megfelelősége lapon biztosítanak.](../../governance/policy/how-to/get-compliance-data.md#component-compliance)
 
 ## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Policy szolgáltatásról](../../governance/policy/overview.md)
-- Lásd Key Vault példákat: [Key Vault beépített szabályzat-definíciókat](../../governance/policy/samples/built-in-policies.md#key-vault)
+- Lásd Key Vault: [Key Vault szabályzatdefiníciók](../../governance/policy/samples/built-in-policies.md#key-vault)
