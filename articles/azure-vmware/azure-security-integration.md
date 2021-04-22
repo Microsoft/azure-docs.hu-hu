@@ -1,163 +1,163 @@
 ---
-title: Az Azure VMware-megoldás virtuális gépei a Azure Security Center integrációval védhetők
-description: Az Azure VMware-megoldás virtuális gépei az Azure natív biztonsági eszközeivel védhetők az Azure Security Center irányítópulton.
+title: Az Azure VMware Solution virtuális gépek védelme Azure Security Center integrációval
+description: A virtuális Azure VMware Solution az Azure natív biztonsági eszközeivel védheti a virtuális gépeket Azure Security Center irányítópultról.
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: 7292ea4486a61f5b0cfd8f656d2763a3ce655e79
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d04f0ac3e3934442ce5b6d5fbf4b53e18b3dff18
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100578249"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877515"
 ---
-# <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Az Azure VMware-megoldás virtuális gépei a Azure Security Center integrációval védhetők
+# <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Az Azure VMware Solution virtuális gépek védelme Azure Security Center integrációval
 
-Az Azure natív biztonsági eszközei biztosítják az Azure, az Azure VMware megoldás és a helyszíni virtuális gépek (VM-EK) hibrid környezetének védelmét. Ez a cikk bemutatja, hogyan állíthatja be az Azure-eszközöket a hibrid környezetek biztonságához. Ezeket az eszközöket a különböző fenyegetések azonosítására és kezelésére fogja használni.
+Az Azure natív biztonsági eszközei védelmet biztosítanak az Azure, a Azure VMware Solution és a helyszíni virtuális gépek hibrid környezete számára. Ez a cikk bemutatja, hogyan állíthat be Azure-eszközöket a hibrid környezetek biztonságának érdekében. Ezeket az eszközöket a különböző fenyegetések azonosítására és kezelésére fogja használni.
 
-## <a name="azure-native-services"></a>Azure Native Services
+## <a name="azure-native-services"></a>Natív Azure-szolgáltatások
 
-Az Azure Native Services gyors összefoglalása:
+Az Azure natív szolgáltatásainak rövid összefoglalása:
 
-- **Log Analytics munkaterület:** Log Analytics munkaterület a naplófájlok tárolására szolgáló egyedi környezet. Mindegyik munkaterület saját adattárral és konfigurációval rendelkezik. Az adatforrások és megoldások úgy vannak konfigurálva, hogy egy adott munkaterületen tárolják az adatforrásokat.
-- **Azure Security Center:** Azure Security Center egy egységes infrastruktúra-biztonsági felügyeleti rendszer. Erősíti az adatközpontok biztonságát, és komplex veszélyforrások elleni védelmet biztosít a felhőben vagy a helyszínen lévő hibrid számítási feladatokhoz.
-- **Azure Sentinel:** Az Azure Sentinel egy felhőalapú, biztonsági Information Event Management-(SIEM-) megoldás. Biztonsági elemzéseket, riasztások észlelését és automatizált veszélyforrásokra adott válaszokat biztosít a környezetek között.
+- **Log Analytics-munkaterület:** A Log Analytics-munkaterület egy egyedi környezet a naplóadatok tárolására. Mindegyik munkaterület saját adattárral és konfigurációval rendelkezik. Az adatforrások és megoldások úgy vannak konfigurálva, hogy az adataikat egy adott munkaterületen tárolják.
+- **Azure Security Center:** Azure Security Center egy egységes infrastruktúrabiztonsági felügyeleti rendszer. Megerősíti az adatközpontok biztonságát, és fejlett fenyegetésvédelmet biztosít a hibrid számítási feladatok számára a felhőben vagy a helyszínen.
+- **Azure Sentinel:** Azure Sentinel egy natív felhőbeli biztonságiesemény-kezelési (SIEM-) megoldás. Biztonsági elemzéseket, riasztások észlelését és automatizált fenyegetésekre adott választ biztosít a környezetben.
 
 ## <a name="topology"></a>Topológia
 
-![Az Azure-beli integrált biztonság architektúráját bemutató ábra.](media/azure-security-integration/azure-integrated-security-architecture.png)
+![Az Azure integrált biztonsági architektúráját bemutató diagram.](media/azure-security-integration/azure-integrated-security-architecture.png)
 
-A Log Analytics ügynök lehetővé teszi a naplózási adatok gyűjtését az Azure-ból, az Azure VMware-megoldásból és a helyszíni virtuális gépekről. A rendszer elküldi a naplófájlokat Azure Monitor naplókba, és egy Log Analytics munkaterületen tárolja. Az Log Analytics-ügynököt az arc-kompatibilis kiszolgálók virtuálisgép- [bővítmények](../azure-arc/servers/manage-vm-extensions.md) segítségével telepítheti az új és a meglévő virtuális gépekhez. 
+A Log Analytics-ügynök lehetővé teszi a naplóadatok gyűjtését az Azure-ból, Azure VMware Solution és helyszíni virtuális gépekről. A naplóadatokat a rendszer Azure Monitor naplókba küldi, és egy Log Analytics-munkaterületen tárolja őket. A Log Analytics-ügynököt Az Arc-kompatibilis kiszolgálók virtuálisgép-bővítményei [támogatják](../azure-arc/servers/manage-vm-extensions.md) az új és meglévő virtuális gépeken. 
 
-Ha a naplók gyűjtése a Log Analytics munkaterületen történik, a Log Analytics munkaterületet Azure Security Center használatával konfigurálhatja. Azure Security Center felméri az Azure VMware-megoldás virtuális gépei sebezhetőségi állapotát, és riasztást küld a kritikus biztonsági rések ellen. Például az operációs rendszer hiányzó javításait, a biztonsági beállításokat és az [Endpoint Protectiont](../security-center/security-center-services.md)vizsgálja.
+Miután a Log Analytics-munkaterület összegyűjtötte a naplókat, konfigurálhatja a Log Analytics-munkaterületet a Azure Security Center. Azure Security Center felméri a virtuális gépek biztonsági Azure VMware Solution állapotát, és riasztást küld minden kritikus biztonsági résről. Felméri például a hiányzó operációsrendszer-javításokat, a biztonsági hibás konfigurációkat és a [végpontvédelmet.](../security-center/security-center-services.md)
 
-A Log Analytics munkaterület a riasztások észlelése, a fenyegetések láthatósága, a vadászat és a fenyegetés megválaszolásához konfigurálható az Azure Sentinel használatával. Az előző ábrán a Azure Security Center Azure Security Center Connector használatával csatlakozik az Azure Sentinelhez. A Azure Security Center továbbítja a környezeti sebezhetőséget az Azure Sentinelnek, hogy eseményt hozzon létre, és más fenyegetésekkel képezze le azokat. Az ütemezett szabályok lekérdezést is létrehozhatja a nemkívánatos tevékenységek észleléséhez és az incidensekre való átalakításához.
+A Log Analytics-munkaterületet úgy konfigurálhatja, hogy Azure Sentinel riasztások észlelésére, a fenyegetések láthatóságára, a veszélyforrás-felderítésre és a fenyegetésekre adott válaszokra. Az előző ábrán látható, Azure Security Center összekötő Azure Sentinel csatlakozik Azure Security Center összekötőhöz. Azure Security Center továbbítja a környezet biztonsági rését a Azure Sentinel, hogy létrehoz egy incidenst, és leképezse a többi fenyegetésre. Az ütemezett szabályok lekérdezésével a nemkívánatos tevékenységeket is észlelheti, és átalakíthatja incidensekké.
 
 ## <a name="benefits"></a>Előnyök
 
-- Az Azure natív szolgáltatásai az Azure-ban, az Azure VMware megoldásban és a helyszíni szolgáltatásokban is használhatók a hibrid környezetek biztonsága érdekében.
-- Log Analytics munkaterület használatával egyetlen pontba gyűjtheti az adatokat vagy a naplókat, és ugyanazokat az adatokat különböző Azure-beli natív szolgáltatásokhoz is bemutathatja.
-- Azure Security Center számos funkciót kínál, többek között:
+- A natív Azure-szolgáltatások hibrid környezetek biztonságára használhatók az Azure-ban, Azure VMware Solution helyszíni szolgáltatásokban.
+- A Log Analytics-munkaterület használatával egyetlen pontra gyűjtheti az adatokat vagy a naplókat, és ugyanezeket az adatokat különböző natív Azure-szolgáltatásoknak is bemutathatja.
+- Azure Security Center funkciókat kínál, többek között a következőket:
     - Fájlintegritás monitorozása
-    - Fájlok közötti támadás észlelése
-    - Operációs rendszer javításának felmérése 
-    - Biztonsági konfigurációs beállítások értékelése
-    - Endpoint Protection-Értékelés
-- Az Azure Sentinel a következőket teszi lehetővé:
-    - Minden felhasználó, eszköz, alkalmazás és infrastruktúra esetében, a helyszínen és több felhőben is gyűjthet adatokat a felhőben.
-    - A korábban nem észlelt fenyegetések észlelése.
-    - Kivizsgálhatja a fenyegetéseket a mesterséges intelligenciával, és a gyanús tevékenységekre való vadászatot.
-    - Az incidensekre való gyors reagálás a közös feladatok beépített összehangolása és automatizálása révén.
+    - Fájl nélküli támadásészlelés
+    - Operációs rendszer javításfelmérése 
+    - Biztonsági hibás konfigurációk felmérése
+    - Végpontvédelem értékelése
+- Azure Sentinel a következőt teszi lehetővé:
+    - Felhőméretű adatgyűjtés minden felhasználóra, eszközre, alkalmazásra és infrastruktúrára, a helyszínen és több felhőben egyaránt.
+    - Korábban nem észlelt fenyegetések észlelése.
+    - Fenyegetések kivizsgálása mesterséges intelligenciával és gyanús tevékenységek nagy léptékű felderítése.
+    - Gyorsan reagálhat az incidensekre a gyakori feladatok beépített vezénylése és automatizálása révén.
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics-munkaterület létrehozása
 
-A különböző forrásokból származó adatok gyűjtéséhez Log Analytics munkaterületre van szükség. További információ: [log Analytics munkaterület létrehozása a Azure Portal](../azure-monitor/logs/quick-create-workspace.md). 
+A különböző forrásokból származó adatok gyűjtéséhez Log Analytics-munkaterületre van szükség. További információ: [Log Analytics-munkaterület létrehozása a Azure Portal.](../azure-monitor/logs/quick-create-workspace.md) 
 
-## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>Az Azure VMware megoldás virtuális gépei Security Center üzembe helyezése és konfigurálása
+## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>Virtuális Security Center üzembe helyezése és Azure VMware Solution konfigurálása
 
-A Azure Security Center egy olyan előre konfigurált eszköz, amely nem igényel telepítést. A Azure Portal keresse meg **Security Center** és jelölje ki.
+Azure Security Center egy előre konfigurált eszköz, amely nem igényel üzembe helyezést. A Azure Portal keressen rá a **Security Center,** és válassza ki.
 
 ### <a name="enable-azure-defender"></a>Az Azure Defender engedélyezése
 
-Az Azure Defender a helyszíni és a felhőben egyaránt kiterjeszti Azure Security Center komplex veszélyforrások elleni védelmét. Az Azure-beli VMware-megoldás virtuális gépei elleni védelem érdekében engedélyeznie kell az Azure Defendert. 
+Azure Defender kiterjeszti Azure Security Center komplex veszélyforrások elleni védelmet a hibrid számítási feladatokra a helyszínen és a felhőben egyaránt. A virtuális gépek Azure VMware Solution védelméhez engedélyeznie kell a Azure Defender. 
 
-1. Security Center kattintson az **első lépések** elemre.
+1. A Security Center válassza az **Első lépések lehetőséget.**
 
-2. Válassza a **frissítés** lapot, majd válassza ki az előfizetést vagy a munkaterületet. 
+2. Válassza a **Frissítés lapot,** majd válassza ki az előfizetését vagy munkaterületét. 
 
-3. Válassza a **frissítés** lehetőséget az Azure Defender engedélyezéséhez.
+3. Válassza **a Frissítés lehetőséget** a Azure Defender.
 
-## <a name="add-azure-vmware-solution-vms-to-security-center"></a>Azure VMware-megoldás virtuális gépek hozzáadása Security Centerhoz
+## <a name="add-azure-vmware-solution-vms-to-security-center"></a>Virtuális Azure VMware Solution hozzáadása a Security Center
 
-1. A Azure Portal keresse meg az **Azure-ívet** , és válassza ki.
+1. A Azure Portal keressen rá **a** Azure Arc, és válassza ki.
 
-2. Az erőforrások területen válassza a **kiszolgálók** , majd a **+ Hozzáadás** lehetőséget.
+2. Az Erőforrások alatt válassza a **Kiszolgálók,** majd a **+Hozzáadás lehetőséget.**
 
-    :::image type="content" source="media/azure-security-integration/add-server-to-azure-arc.png" alt-text="Egy Azure-beli Azure-beli virtuális gép Azure-ba való felvételét bemutató képernyőkép az Azure arc-kiszolgálók lapon.":::
+    :::image type="content" source="media/azure-security-integration/add-server-to-azure-arc.png" alt-text="Képernyőkép a Azure Arc a virtuális gép Azure-hoz Azure VMware Solution hozzáadásáról.":::
 
-3. Válassza a **parancsfájl létrehozása** lehetőséget.
+3. Válassza **a Szkript létrehozása lehetőséget.**
  
-    :::image type="content" source="media/azure-security-integration/add-server-using-script.png" alt-text="Az Azure arc oldalának képernyőképe, amely a kiszolgáló interaktív parancsfájllal történő hozzáadásának lehetőségét mutatja be."::: 
+    :::image type="content" source="media/azure-security-integration/add-server-using-script.png" alt-text="Képernyőkép a Azure Arc oldalról, amely egy kiszolgáló interaktív szkript használatával való hozzáadásának beállítását mutatja be."::: 
  
-4. Az **Előfeltételek** lapon válassza a **tovább** lehetőséget.
+4. Az **Előfeltételek lapon** válassza a Tovább **lehetőséget.**
 
-5. Az **erőforrás részletei** lapon adja meg a következő adatokat: 
+5. Az Erőforrás **részletei lapon** adja meg a következő adatokat: 
     - Előfizetés
     - Erőforráscsoport
     - Region 
     - Operációs rendszer
     - Proxykiszolgáló részletei
     
-    Ezután válassza a **következő: címkék** lehetőséget.
+    Ezután válassza **a Tovább: Címkék lehetőséget.**
 
-6. A **címkék** lapon válassza a **tovább** lehetőséget.
+6. A Címkék **lapon** válassza a Tovább **lehetőséget.**
 
-7. A **letöltési és futtatási parancsfájl** lapon válassza a **Letöltés** lehetőséget.
+7. A Download **and run script (Szkript letöltése és futtatása) lapon** válassza a Download (Letöltés) **lehetőséget.**
 
-8. Adja meg az operációs rendszert, és futtassa a szkriptet az Azure VMware megoldás virtuális gépén.
+8. Adja meg az operációs rendszert, és futtassa a szkriptet a Azure VMware Solution virtuális gépen.
 
-## <a name="view-recommendations-and-passed-assessments"></a>Javaslatok megtekintése és a felmérések átadása
+## <a name="view-recommendations-and-passed-assessments"></a>Javaslatok megtekintése és az átadott értékelések
 
-1. Azure Security Center a bal oldali ablaktáblán válassza a **leltár** lehetőséget.
+1. A Azure Security Center bal **oldali panelen válassza** az Inventory lehetőséget.
 
-2. Az erőforrástípus mezőben válassza a **kiszolgálók – Azure arc** lehetőséget.
+2. Az Erőforrás típusa mezőben válassza **a Kiszolgálók – Azure Arc.**
  
-     :::image type="content" source="media/azure-security-integration/select-resource-in-security-center.png" alt-text="A Azure Security Center leltár oldalának képernyőképe, amelyen a kiszolgálók láthatók – az Azure arc van kiválasztva az erőforrás típusa területen.":::
+     :::image type="content" source="media/azure-security-integration/select-resource-in-security-center.png" alt-text="Képernyőkép a Azure Security Center lapról, amely a Kiszolgálók – Azure Arc az Erőforrástípus alatt látható.":::
 
-3. Válassza ki az erőforrás nevét. Megnyílik egy oldal, amely az erőforrás biztonsági állapotával kapcsolatos adatokat jeleníti meg.
+3. Válassza ki az erőforrás nevét. Megnyílik egy oldal, amely az erőforrás biztonsági állapotának részleteit mutatja.
 
-4. Az **ajánlás listában** válassza ki a **javaslatokat**, az **átadott értékeléseket** és a nem **elérhető értékelések** lapokat a részletek megtekintéséhez.
+4. A **Javaslatok lista** alatt válassza a **Javaslatok,** Az átadott **értékelések** és a Nem érhető **el értékelések** lapokat ezeknek a részleteknek a megtekintéséhez.
 
-    :::image type="content" source="media/azure-security-integration/view-recommendations-assessments.png" alt-text="A biztonsági ajánlásokat és értékeléseket bemutató Azure Security Center képernyőképe.":::
+    :::image type="content" source="media/azure-security-integration/view-recommendations-assessments.png" alt-text="Biztonsági javaslatokat Azure Security Center és értékeléseket megjelenítő képernyőkép.":::
 
-## <a name="deploy-an-azure-sentinel-workspace"></a>Azure Sentinel-munkaterület üzembe helyezése
+## <a name="deploy-an-azure-sentinel-workspace"></a>Munkaterület Azure Sentinel üzembe helyezése
 
-Az Azure Sentinel egy Log Analytics munkaterületre épül. Az Azure Sentinel bevezetésének első lépéseként válassza ki az adott célra használni kívánt Log Analytics munkaterületet.
+Azure Sentinel Log Analytics-munkaterületre épül. Az első lépés a Azure Sentinel, hogy ki kell választania az erre a célra használni kívánt Log Analytics-munkaterületet.
 
-1. A Azure Portal keressen rá az **Azure Sentinel** kifejezésre, és válassza ki.
+1. A Azure Portal keresse meg a **Azure Sentinel,** és jelölje ki.
 
-2. Az Azure Sentinel-munkaterületek lapon válassza a **+ Hozzáadás** lehetőséget.
+2. A Munkaterületek Azure Sentinel válassza a **+Hozzáadás lehetőséget.**
 
-3. Válassza ki a Log Analytics munkaterületet, és válassza a **Hozzáadás** lehetőséget.
+3. Válassza ki a Log Analytics-munkaterületet, és válassza a **Hozzáadás lehetőséget.**
 
-## <a name="enable-data-collector-for-security-events-on-azure-vmware-solution-vms"></a>Adatgyűjtő engedélyezése a biztonsági eseményekhez az Azure VMware-megoldás virtuális gépeken
+## <a name="enable-data-collector-for-security-events-on-azure-vmware-solution-vms"></a>Adatgyűjtő engedélyezése biztonsági eseményekhez Azure VMware Solution virtuális gépeken
 
-Most már készen áll az Azure Sentinel és az adatforrások (ebben az esetben a biztonsági események) összekapcsolására.
+Most már készen áll arra, hogy Azure Sentinel adatforrásokkal, ebben az esetben a biztonsági eseményekkel.
 
-1. Az Azure Sentinel-munkaterületek lapon válassza ki a konfigurált munkaterületet.
+1. Az Azure Sentinel munkaterületek lapon válassza ki a konfigurált munkaterületet.
 
-2. A konfiguráció területen válassza **az adatösszekötők** lehetőséget.
+2. A Konfiguráció alatt válassza az **Adat-összekötők lehetőséget.**
 
-3. Az összekötő neve oszlopban válassza a **biztonsági események** elemet a listából, majd válassza az **összekötő lap megnyitása** lehetőséget.
+3. Az Összekötő neve oszlopban válassza a **biztonsági események lehetőséget** a listából, majd válassza az Összekötő **oldalának megnyitása lehetőséget.**
 
-4. Az összekötő lapon válassza ki az adatfolyamként használni kívánt eseményeket, majd válassza a **módosítások alkalmazása** lehetőséget.
+4. Az összekötő lapon válassza ki a streamelni kívánt eseményeket, majd válassza a **Módosítások alkalmazása lehetőséget.**
 
-    :::image type="content" source="media/azure-security-integration/select-events-you-want-to-stream.png" alt-text="Képernyőkép a Security Events oldaláról az Azure Sentinel-ben, ahol kiválaszthatja, hogy mely eseményeket szeretné továbbítani.":::
+    :::image type="content" source="media/azure-security-integration/select-events-you-want-to-stream.png" alt-text="Képernyőkép a biztonsági események lapról a Azure Sentinel amelyen kiválaszthatja a streamelni kívánt eseményeket.":::
 
-## <a name="connect-azure-sentinel-with-azure-security-center"></a>Az Azure Sentinel és a Azure Security Center összekötése  
+## <a name="connect-azure-sentinel-with-azure-security-center"></a>Csatlakozás Azure Sentinel Azure Security Center  
 
-1. Az Azure Sentinel-munkaterület lapon válassza ki a konfigurált munkaterületet.
+1. A munkaterület Azure Sentinel válassza ki a konfigurált munkaterületet.
 
-2. A konfiguráció területen válassza **az adatösszekötők** lehetőséget.
+2. A Konfiguráció alatt válassza az **Adat-összekötők lehetőséget.**
 
-3. Válassza ki **Azure Security Center** a listából, majd válassza az **összekötő lap megnyitása** lehetőséget.
+3. Válassza **Azure Security Center** listában, majd válassza az **Összekötő oldalának megnyitása lehetőséget.**
 
-    :::image type="content" source="media/azure-security-integration/connect-security-center-with-azure-sentinel.png" alt-text="Képernyőkép az Azure Sentinel adatösszekötők oldaláról, amely a Azure Security Center és az Azure Sentinel összekapcsolását mutatja be.":::
+    :::image type="content" source="media/azure-security-integration/connect-security-center-with-azure-sentinel.png" alt-text="Képernyőkép az Adat-összekötők lapról a Azure Sentinel, amely a Azure Security Center összekötőkhöz való Azure Sentinel.":::
 
-4. Válassza a **Kapcsolódás** lehetőséget a Azure Security Center az Azure sentineltel való összekapcsolásához.
+4. Válassza **a Csatlakozás** lehetőséget a Azure Security Center Azure Sentinel.
 
-5. A **létrehozási incidens** engedélyezése Azure Security Center incidens előállításához.
+5. Engedélyezze **az Incidens létrehozása** gombra, hogy incidenst hozzon létre a Azure Security Center.
 
 ## <a name="create-rules-to-identify-security-threats"></a>Szabályok létrehozása a biztonsági fenyegetések azonosításához
 
-Az adatforrások Azure Sentinelhez való csatlakoztatása után létrehozhat olyan szabályokat, amelyek riasztásokat hoznak létre az észlelt fenyegetésekkel kapcsolatban. A következő példában létrehozunk egy szabályt, amely nem megfelelő jelszóval kísérli meg a Windows Server rendszerbe való bejelentkezést.
+Miután csatlakoztatta az adatforrásokat a Azure Sentinel, szabályokat hozhat létre az észlelt fenyegetésekre vonatkozó riasztások létrehozásához. A következő példában egy szabályt hozunk létre, amely a nem megfelelő jelszóval próbál bejelentkezni a Windows-kiszolgálóra.
 
-1. Az Azure Sentinel – Áttekintés lap konfigurációk területén válassza az **elemzés** lehetőséget.
+1. A Azure Sentinel lapján, a Konfigurációk alatt válassza az **Elemzés lehetőséget.**
 
-2. A konfigurációk területen válassza az **elemzés** lehetőséget.
+2. A Konfigurációk alatt válassza az **Elemzés lehetőséget.**
 
-3. Válassza a **+ Létrehozás** lehetőséget, majd a legördülő menüből válassza az **ütemezett lekérdezési szabály** lehetőséget.
+3. Válassza **a +Létrehozás** lehetőséget, majd a legördülő menüben válassza az **Ütemezett lekérdezési szabály lehetőséget.**
 
-4. Az **általános** lapon adja meg a szükséges adatokat.
+4. Az Általános **lapon** adja meg a szükséges adatokat.
 
     - Név
     - Leírás
@@ -165,11 +165,11 @@ Az adatforrások Azure Sentinelhez való csatlakoztatása után létrehozhat oly
     - Súlyosság
     - Állapot
 
-    Válassza a **Tovább: szabály logikai >beállítása** lehetőséget.
+    Válassza **a Tovább: Szabálylogika beállítása lehetőséget >.**
 
-5. A **szabály logikájának beállítása** lapon adja meg a szükséges adatokat.
+5. A **Szabálylogika beállítása lapon** adja meg a szükséges adatokat.
 
-    - Szabály lekérdezése (itt látható a példában szereplő lekérdezés)
+    - Szabálylekérdezés (itt látható a példalekérdezés)
     
         ```
         SecurityEvent
@@ -179,69 +179,69 @@ Az adatforrások Azure Sentinelhez való csatlakoztatása után létrehozhat oly
         ```
         
     - Entitások leképezése
-    - Lekérdezés ütemezése
+    - Lekérdezésütemezés
     - Riasztás küszöbértéke
     - Események csoportosítása
     - Mellőzés
 
     Kattintson a **Tovább** gombra.
 
-6. Az **incidens beállításai** lapon engedélyezze a **létrehozási incidensek létrehozását az elemzési szabály által aktivált riasztások közül** , és válassza a **Tovább: automatikus válasz >** lehetőséget.
+6. Az **Incidensbeállítások lapon** engedélyezze az **Incidensek** létrehozása az elemzési szabály által aktivált riasztások alapján beállítást, majd válassza a Tovább: Automatikus válaszlépések **>.**
  
-    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="Az elemzési szabály varázsló képernyőképe új szabály létrehozásához az Azure Sentinelben. Azt mutatja, hogy a szabály által aktivált riasztások létrehozási incidensei engedélyezve vannak.":::
+    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="Képernyőkép az Analytic rule varázslóról új szabály létrehozásához a Azure Sentinel. A szabály által aktivált riasztások incidensek létrehozása lehetőségét jeleníti meg engedélyezettként.":::
 
-7. Válassza a Next (tovább) lehetőséget **: >áttekintése**.
+7. Válassza **a Tovább: Áttekintés >** lehetőséget.
 
-8. Az **Áttekintés és létrehozás** lapon tekintse át az adatokat, és válassza a **Létrehozás** lehetőséget.
+8. Az Áttekintés **és létrehozás lapon** tekintse át az adatokat, és válassza a Létrehozás **lehetőséget.**
 
-Miután a harmadik sikertelen kísérletet tett a Windows Serverbe való bejelentkezésre, a létrehozott szabály minden sikertelen kísérlet esetén eseményt indít el.
+Miután a harmadik sikertelen bejelentkezési kísérlet történt a Windows-kiszolgálóra, a létrehozott szabály minden sikertelen kísérlet esetén kivált egy incidenst.
 
 ## <a name="view-alerts"></a>Riasztások megtekintése
 
-A generált incidenseket az Azure Sentinel használatával tekintheti meg. Az Azure Sentinel szolgáltatásból is hozzárendelhet incidenseket, és a megoldásuk után lezárhatja őket.
+A generált incidenseket a Azure Sentinel. Az incidenseket a megoldásuk után is hozzárendelheti és bezárhatja, mindezt a Azure Sentinel.
 
-1. Nyissa meg az Azure Sentinel áttekintés lapját.
+1. Ugrás a Azure Sentinel áttekintési lapjára.
 
-2. A veszélyforrások kezelése területen válassza az **incidensek** lehetőséget.
+2. A Fenyegetéskezelés alatt válassza az **Incidensek lehetőséget.**
 
-3. Válasszon ki egy incidenst. Ezután hozzárendelheti az incidenst egy csapathoz a feloldáshoz.
+3. Válasszon ki egy incidenst. Ezt követően az incidenst hozzárendelheti egy csapathoz a megoldásukhoz.
 
-    :::image type="content" source="media/azure-security-integration/assign-incident.png" alt-text="Képernyőkép az Azure Sentinel incidensekről oldalról, az incidens kiválasztásával és az incidens megoldáshoz való hozzárendelésének lehetőségével.":::
+    :::image type="content" source="media/azure-security-integration/assign-incident.png" alt-text="Képernyőkép az Azure Sentinel lapról, az incidens kijelölve, és lehetőség az incidens hozzárendelésre a megoldáshoz.":::
 
-    A probléma megoldása után lezárhatja azt.
+    A probléma megoldása után bezárhatja.
 
-## <a name="hunt-security-threats-with-queries"></a>Biztonsági fenyegetések vadászata lekérdezésekkel
+## <a name="hunt-security-threats-with-queries"></a>Biztonsági fenyegetések veszélyének kikeresése lekérdezésekkel
 
-Létrehozhat lekérdezéseket, vagy használhatja a rendelkezésre álló előre definiált lekérdezést az Azure Sentinelben, hogy azonosítsa a fenyegetéseket a környezetben. A következő lépések egy előre definiált lekérdezést futtatnak.
+A környezetben a fenyegetések azonosításához létrehozhat lekérdezéseket, vagy használhatja a Azure Sentinel elérhető, előre definiált lekérdezést. Az alábbi lépések egy előre definiált lekérdezést futtatnak.
 
-1. Nyissa meg az Azure Sentinel áttekintés lapját.
+1. Ugrás a Azure Sentinel áttekintési lapjára.
 
-2. A veszélyforrások kezelése területen válassza a **vadászat** lehetőséget. Megjelenik az előre definiált lekérdezések listája.
+2. A Fenyegetéskezelés alatt válassza a **Veszélyforrás-veszélyforrás-keresés lehetőséget.** Megjelenik az előre definiált lekérdezések listája.
 
-3. Válasszon ki egy lekérdezést, majd válassza a **lekérdezés futtatása** lehetőséget.
+3. Válasszon ki egy lekérdezést, majd válassza a **Lekérdezés futtatása lehetőséget.**
 
-4. Válassza az **eredmények megtekintése** lehetőséget az eredmények megtekintéséhez.
+4. Az **eredmények ellenőrzéshez** válassza az Eredmények megtekintése lehetőséget.
 
 ### <a name="create-a-new-query"></a>Új lekérdezés létrehozása
 
-1.  A veszélyforrások kezelése területen válassza a **vadászat** , majd az **+ Új lekérdezés** elemet.
+1.  A Fenyegetéskezelés alatt válassza a **Veszélyforrás-keresés,** majd az **+Új lekérdezés lehetőséget.**
 
-    :::image type="content" source="media/azure-security-integration/create-new-query.png" alt-text="Képernyőfelvétel az Azure Sentinel Hunting oldaláról + új lekérdezés kiemelve.":::
+    :::image type="content" source="media/azure-security-integration/create-new-query.png" alt-text="Képernyőkép a Azure Sentinel keresési oldalról, az + Új lekérdezés kiemeléssel.":::
 
-2. Egyéni lekérdezés létrehozásához adja meg a következő információkat.
+2. Egyéni lekérdezés létrehozásához adja meg az alábbi adatokat.
 
     - Név
     - Leírás
     - Egyéni lekérdezés
-    - Leképezés megadása
+    - Leképezés beírva
     - Taktikák
     
-3. Válassza a **Létrehozás** lehetőséget. Ezután kiválaszthatja a létrehozott lekérdezést, **futtathatja a lekérdezést**, és **megtekintheti az eredményeket**.
+3. Válassza a **Létrehozás** lehetőséget. Ezután kiválaszthatja a létrehozott lekérdezést, a **Lekérdezés futtatása és** az Eredmények megtekintése **lehetőséget.**
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy elvégezte az Azure VMware-megoldás virtuális gépei elleni védelem biztosítását, érdemes megismernie az alábbiakat:
+Most, hogy már tudja, hogyan védheti meg Azure VMware Solution virtuális gépeket, a következővel ismerkedhet meg:
 
-- Az [Azure Defender irányítópultjának](../security-center/azure-defender-dashboard.md)használata.
-- [Fejlett többlépcsős támadások észlelése az Azure sentinelben](../azure-monitor/logs/quick-create-workspace.md).
-- [Azure VMware-megoldás virtuális gépek életciklus-kezelése](lifecycle-management-of-azure-vmware-solution-vms.md).
+- Az irányítópult [Azure Defender használata](../security-center/azure-defender-dashboard.md)
+- [Speciális többlépcsős támadásészlelés a Azure Sentinel](../azure-monitor/logs/quick-create-workspace.md)
+- [Virtuális gépek életciklus-Azure VMware Solution kezelése](lifecycle-management-of-azure-vmware-solution-vms.md)

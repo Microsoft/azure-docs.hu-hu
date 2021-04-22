@@ -1,17 +1,17 @@
 ---
-title: Leltár frissítése Azure Portal és témakörök/előfizetések használatával
+title: Leltár frissítése Azure Portal témakörök/előfizetések használatával
 description: Ez az oktatóanyag bemutatja, hogyan küldhet és fogadhat témakörökhöz és előfizetésekhez tartozó üzeneteket, és hogyan adhat hozzá szűrési szabályokat a .NET használatával
 author: spelluru
 ms.author: spelluru
 ms.date: 10/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d0a94f346f9d3cf7a05a1ca6e1b37d4d008f3e75
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a7b03727c574dcee1cd56144a521f36de6dc48c6
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179663"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861372"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Oktatóanyag: Leltár frissítése az Azure Portal és témakörök/előfizetések használatával
 
@@ -29,14 +29,14 @@ Erre a forgatókönyvre egy példa, amikor több kiskereskedelmi üzletben friss
 
 ![témakör](./media/service-bus-tutorial-topics-subscriptions-portal/about-service-bus-topic.png)
 
-Ha nem rendelkezik Azure-előfizetéssel, akkor a Kezdés előtt létrehozhat egy [ingyenes fiókot][] .
+Ha nem rendelkezik Azure-előfizetéssel, a kezdés előtt létrehozhat egy [ingyenes][] fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a következőket:
 
 - [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](https://www.visualstudio.com/vs) vagy újabb.
-- [NET Core SDK](https://www.microsoft.com/net/download/windows), 2.0-s vagy újabb verzió.
+- [NET Core SDK](https://dotnet.microsoft.com/download), 2.0-s vagy újabb verzió.
 
 ## <a name="service-bus-topics-and-subscriptions"></a>Service Bus-témakörök és -előfizetések
 
@@ -396,7 +396,7 @@ private async Task ReceiveMessages(string subscription)
 ```
 
 > [!NOTE]
-> [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
+> Az erőforrás-Service Bus a [Service Bus Explorer.](https://github.com/paolosalvatori/ServiceBusExplorer/) A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez csatlakozzon, és könnyen felügyelik az üzenetküldési entitásokat. Az eszköz speciális funkciókat biztosít, például az importálási/exportálási funkciókat, valamint a témakörök, üzenetsorok, előfizetések, továbbítási szolgáltatások, értesítési központok és eseményközpontok tesztelésének képességét. 
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,31 +1,31 @@
 ---
-title: Rövid útmutató – az első Azure Batch-feladatok futtatása a .NET API-val
-description: Ebben a rövid útmutatóban egy Azure Batch minta feladatot és feladatot futtat egy C#-alkalmazásból a Batch .NET ügyféloldali kódtár használatával.
+title: Rövid útmutató – Az első Azure Batch futtatása a .NET API-val
+description: Ebben a rövid útmutatóban egy mintafeladatot és Azure Batch fog futtatni egy C#-alkalmazásból a Batch .NET ügyféloldali kódtára segítségével.
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 48166faa016defb719d8b48c2fff84de32f6c2e4
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 1c2328db520042ceff1861b740313befbed0e20d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168246"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876723"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rövid útmutató: Az első Azure Batch-feladat futtatása a .NET API használatával
 
-A Azure Batch első lépései a Azure Batch .NET API-ra épülő C#-alkalmazásból származó feladatok futtatásával. Az alkalmazás feltölt több bemeneti adatfájlt az Azure Storage-ba, majd létrehoz egy Batch számítási csomópontokból (virtuális gépekből) álló készletet. Ezután létrehoz egy mintafeladatot, amely tevékenységek futtatásával és egy alapvető parancs használatával minden egyes bemeneti fájlt feldolgoz a készleten.
+A Azure Batch a .NET API-ra épített C#-alkalmazásból futtatott Azure Batch első lépések. Az alkalmazás feltölt több bemeneti adatfájlt az Azure Storage-ba, majd létrehoz egy Batch számítási csomópontokból (virtuális gépekből) álló készletet. Ezután létrehoz egy mintafeladatot, amely tevékenységek futtatásával és egy alapvető parancs használatával minden egyes bemeneti fájlt feldolgoz a készleten.
 
 A rövid útmutatóból megismerheti a Batch szolgáltatás fő fogalmait, és készen áll majd a Batch szolgáltatás használatára realisztikusabb számítási feladatokkal, nagyobb léptékben.
 
-![Az Azure Batch alkalmazás munkafolyamatának áttekintését bemutató ábra.](./media/quick-run-dotnet/sampleapp.png)
+![Az alkalmazás-Azure Batch áttekintését bemutató ábra.](./media/quick-run-dotnet/sampleapp.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Aktív előfizetéssel rendelkezik egy Azure-fiók. [Hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
 - Egy Batch-fiók és egy társított Azure Storage-fiók. A fiókok létrehozásához tekintse meg a Batch az [Azure Portallal](quick-create-portal.md) vagy az [Azure CLI-vel](quick-create-cli.md) történő használatát ismertető rövid útmutatókat.
 
-- [Visual Studio 2017 vagy újabb](https://www.visualstudio.com/vs), vagy [.net Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) Linux, MacOS vagy Windows rendszerhez. 
+- [Visual Studio 2017-es](https://www.visualstudio.com/vs)vagy újabb, vagy [a .NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1) For Linux, macOS vagy Windows. 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -66,7 +66,7 @@ A Batch-munkafolyamat működésének megtekintéséhez hozza létre és futtass
 
 - Erősítse meg a NuGet-csomagok visszaállítását, ha a rendszer erre kéri. Ha hiányzó csomagokat kell letöltenie, győződjön meg arról, hogy a [NuGet-csomagkezelő](https://docs.nuget.org/consume/installing-nuget) telepítve van.
 
-A mintaalkalmazás futtatásakor a konzol kimenete az alábbihoz hasonló lesz. A futtatás során szünet jelentkezhet a következőnél a készlet számítási csomópontjainak indításakor: `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...`. A rendszer azonnal a futtatási várólistára helyezi a tevékenységeket, amint az első számítási csomópont fut. A készlet, a számítási csomópontok, a feladat és a tevékenységek figyeléséhez nyissa meg a [Azure Portal](https://portal.azure.com) batch-fiókját.
+A mintaalkalmazás futtatásakor a konzol kimenete az alábbihoz hasonló lesz. A futtatás során szünet jelentkezhet a következőnél a készlet számítási csomópontjainak indításakor: `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...`. A rendszer azonnal a futtatási várólistára helyezi a tevékenységeket, amint az első számítási csomópont fut. A készlet, a számítási csomópontok, a feladat és [a tevékenységek](https://portal.azure.com) Azure Portal Batch-fiókjához.
 
 ```
 Sample start: 11/16/2018 4:02:54 PM
