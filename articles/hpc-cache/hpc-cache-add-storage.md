@@ -1,149 +1,149 @@
 ---
-title: Tároló hozzáadása egy Azure HPC-gyorsítótárhoz
-description: Tárolási célok meghatározása úgy, hogy az Azure HPC-gyorsítótára használhassa a helyszíni NFS-rendszert vagy az Azure Blob-tárolókat a hosszú távú fájlok tárolásához
+title: Tároló hozzáadása Azure HPC Cache
+description: Tárolási célok meghatározása, hogy a Azure HPC Cache a helyszíni NFS-rendszert vagy Azure Blob-tárolókat használva hosszú távú fájltárolásra
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 44b2534d7aeb12f4819a6c42cfb29d057ce26ddc
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 708ad8bbfec9e3fd0176c53c111b5b5b25a5318f
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259030"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862236"
 ---
 # <a name="add-storage-targets"></a>Céltárak hozzáadása
 
-A *tárolási célok* az Azure HPC-gyorsítótáron keresztül elért fájlok háttérbeli tárolói. Hozzáadhat NFS-tárolót (például helyszíni hardverrendszer), vagy tárolhat adattárolást az Azure blobban.
+*A céltárolók* a tárfiókon keresztül elért fájlok háttértárhelyi Azure HPC Cache. Hozzáadhat NFS-tárolókat (például helyszíni hardverrendszereket), vagy tárolhat adatokat az Azure Blobban.
 
-Egy gyorsítótárhoz legfeljebb 20 különböző tárolási célt adhat meg. A gyorsítótár egy összesített névtérben jeleníti meg az összes tárolási célt.
+Egy gyorsítótárhoz legfeljebb 20 különböző tárolási célt definiálhat. A gyorsítótár egyetlen összesített névtérben mutatja be az összes tárolási célt.
 
-A névtér elérési útjai külön vannak konfigurálva a tárolási célok hozzáadása után. Általánosságban elmondható, hogy egy NFS-tárolási cél akár tíz névtér elérési úttal is rendelkezhet, vagy akár több nagy konfiguráció esetén is. A részletek az [NFS-névtér elérési útjai](add-namespace-paths.md#nfs-namespace-paths) olvashatók.
+A névtér elérési útjai külön vannak konfigurálva a céltárolók hozzáadása után. Az NFS-tárolók általában legfeljebb tíz névtérútvonalat, vagy néhány nagyobb konfiguráció esetén több elérési utat is kínálnak. Részletekért olvassa el [az NFS-névterek elérési](add-namespace-paths.md#nfs-namespace-paths) útjait.
 
-Ne feledje, hogy a tárolók exportálásának elérhetőnek kell lennie a gyorsítótár virtuális hálózatáról. A helyszíni hardveres tároláshoz előfordulhat, hogy olyan DNS-kiszolgálót kell beállítania, amely képes az NFS-tároló elérésére szolgáló gazdagépek feloldására. További információk: [DNS-hozzáférés](hpc-cache-prerequisites.md#dns-access).
+Ne feledje, hogy a tárolóexportok exportálásának elérhetőnek kell lennie a gyorsítótár virtuális hálózatán. Helyszíni hardveres tárolás esetén előfordulhat, hogy be kell állítania egy DNS-kiszolgálót, amely fel tudja oldani az NFS-tárelérés állomásneveit. További információ: [DNS-hozzáférés.](hpc-cache-prerequisites.md#dns-access)
 
-Adja hozzá a tárolási célokat a gyorsítótár létrehozása után. Kövesse ezt a folyamatot:
+A gyorsítótár létrehozása után adjon hozzá céltárolókat. Kövesse az alábbi folyamatot:
 
 1. [A gyorsítótár létrehozása](hpc-cache-create.md)
-1. Tárolási cél definiálása (a cikkben található információk)
-1. [Az ügyfél felé irányuló elérési utak létrehozása](add-namespace-paths.md) (az [összesített névtérhez](hpc-cache-namespace.md))
+1. Tárolási cél meghatározása (ebben a cikkben található információk)
+1. [Hozza létre az ügyféloldali elérési utakat](add-namespace-paths.md) (az [összesített névtérhez)](hpc-cache-namespace.md)
 
-A tárolási cél hozzáadására szolgáló eljárás némileg eltér attól függően, hogy milyen típusú tárolót használ. A részleteket az alábbiakban találja.
+A tárolóhely hozzáadásának eljárása az adott tároló típusától függően némileg eltérő. Az egyes részleteket alább olvashatja.
 
-Az alábbi képre kattintva megtekintheti a gyorsítótár létrehozásának és tárolási céljának a Azure Portal való hozzáadásának [bemutató videóját](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) .
+Kattintson az alábbi [képre,](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) és tekintse meg a gyorsítótár létrehozását és a tároló célhelyének hozzáadását bemutató videót a Azure Portal.
 
-[![videó miniatűrje: Azure HPC cache: Setup (kattintson ide a videó oldal megtekintéséhez)](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
+[![video thumbnail: Azure HPC Cache: Beállítás (kattintson ide a videó oldalának megjelenítéséhez)](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>Új Azure Blob Storage-cél hozzáadása
 
-Egy új blob Storage-célnak szüksége van egy üres blob-tárolóra vagy egy olyan tárolóra, amely az Azure HPC cache Cloud File System formátumában található adatokkal van feltöltve. További információ a blob-tárolók [Azure Blob Storage-ba való áthelyezésének](hpc-cache-ingest.md)előzetes betöltéséről.
+Egy új Blob Storage-célhelyhez szükség van egy üres Blob-tárolóra vagy egy olyan tárolóra, amely a felhőalapú fájlrendszer Azure HPC Cache adatokkal van feltöltve. További információ a blobtárolók előzetes betöltéséről: [Adatok áthelyezése az Azure Blob Storage-ba.](hpc-cache-ingest.md)
 
-A Azure Portal **tároló hozzáadása** lapon lehetőség van egy új blob-tároló létrehozására is, közvetlenül a hozzáadása előtt.
+A Azure Portal **Tárolócél hozzáadása** oldalon lehetősége van létrehozni egy új blobtárolót, mielőtt hozzáadja.
 
 > [!NOTE]
-> Az NFS-hez csatlakoztatott blob Storage esetében használja a [ADLS-NFS tárolási cél](#) típust.
+> NfS-hez csatlakoztatott blobtárolókhoz használja az [ADLS-NFS](#) tároló céltípust.
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A Azure Portal nyissa meg a gyorsítótár-példányt, és kattintson a bal oldali oldalsávon található **tárolási célok** elemre.
+A Azure Portal nyissa meg a gyorsítótárpéldányt, és kattintson a **storage targets (Tárolási** célok) elemre a bal oldali oldalsávon.
 
-![képernyőfelvétel a beállításokról > a tárolási cél lapon két meglévő tárolási cél szerepel egy táblában, és a táblázat fölé emelt a + tároló hozzáadása gomb](media/add-storage-target-button.png)
+![képernyőkép a tárolócél > lapról, amely két meglévő tárolócélt ad meg egy táblában, valamint egy kiemelést a + Tárolócél hozzáadása gomb körül a táblázat felett](media/add-storage-target-button.png)
 
-A **tárolási célok** lap felsorolja az összes meglévő célt, és egy hivatkozást ad hozzá egy újat.
+A **Tárolócélok** lap felsorolja az összes meglévő célt, és egy hivatkozást ad egy új hozzáadásához.
 
-Kattintson a **tárolási cél hozzáadása** gombra.
+Kattintson a **Tárolócél hozzáadása gombra.**
 
-![képernyőfelvétel a Storage-cél hozzáadása oldalról, amely az új Azure Blob Storage-tárolóra vonatkozó információkkal van feltöltve](media/hpc-cache-add-blob.png)
+![képernyőkép a tároló célhelyének hozzáadása lapról, amely egy új Azure Blob Storage-cél információival van feltöltve](media/hpc-cache-add-blob.png)
 
-Azure Blob-tároló definiálásához adja meg ezt az információt.
+Az Azure Blob-tároló meghatározásához adja meg ezt az információt.
 
-* **Tárolási cél neve** – adjon meg egy nevet, amely azonosítja ezt a tárolási célt az Azure HPC cache-ben.
-* **Cél típusa** – válassza a **blob** lehetőséget.
-* **Storage-fiók** – válassza ki a használni kívánt fiókot.
+* **Tároló célneve** – Állítson be egy nevet, amely azonosítja ezt a tárolócélt a Azure HPC Cache.
+* **Cél típusa –** Válassza a **Blob lehetőséget.**
+* **Tárfiók** – Válassza ki a használni kívánt fiókot.
 
-  Engedélyeznie kell a gyorsítótár-példányt a Storage-fiók eléréséhez a [hozzáférési Szerepkörök hozzáadása](#add-the-access-control-roles-to-your-account)című témakörben leírtak szerint.
+  A tárfiók eléréséhez engedélyeznie kell a gyorsítótárpéldányt a [Hozzáférési szerepkörök hozzáadása.](#add-the-access-control-roles-to-your-account)
 
-  A használható Storage-fiókkal kapcsolatos információkért olvassa el a [blob Storage-követelmények](hpc-cache-prerequisites.md#blob-storage-requirements)című témakört.
+  A használható tárfiókok fajtájára vonatkozó információkért olvassa el a [Blob Storage követelményeit.](hpc-cache-prerequisites.md#blob-storage-requirements)
 
-* **Storage-tároló** – jelölje ki a cél blob-tárolóját, vagy kattintson az **új létrehozása** gombra.
+* **Storage-tároló** – Válassza ki a cél blobtárolóját, vagy kattintson az **Új létrehozása elemre.**
 
-  ![képernyőkép a párbeszédpanelről az új tárolóhoz tartozó név és hozzáférési szint (Private) megadásához](media/add-blob-new-container.png)
+  ![képernyőkép az új tároló nevének és hozzáférési szintjének (privát) megadására szolgáló párbeszédpanelről](media/add-blob-new-container.png)
 
-Ha elkészült, kattintson az **OK** gombra a tárolási cél hozzáadásához.
+Ha végzett, kattintson az **OK gombra** a tároló célhelyének hozzáadásához.
 
 > [!NOTE]
-> Ha a Storage-fiók tűzfala úgy van beállítva, hogy csak a "kiválasztott hálózatokra" korlátozza a hozzáférést, használja a [blob Storage-fiók tűzfalának](hpc-cache-blob-firewall-fix.md)használata című dokumentumban ismertetett ideiglenes megkerülő megoldást.
+> Ha a tárfiók tűzfala úgy van beállítva, hogy csak a "kiválasztott hálózatokra" korlátozza a hozzáférést, használja a Blob Storage-fiók tűzfalbeállításait megkerülő cikkben leírt ideiglenes [áthidaló megoldást.](hpc-cache-blob-firewall-fix.md)
 
-### <a name="add-the-access-control-roles-to-your-account"></a>Hozzáférés-vezérlési Szerepkörök hozzáadása a fiókhoz
+### <a name="add-the-access-control-roles-to-your-account"></a>Hozzáférés-vezérlési szerepkörök hozzáadása a fiókhoz
 
-Az Azure HPC cache az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/index.yml) használatával engedélyezi a gyorsítótár-szolgáltatás számára, hogy hozzáférjen az Azure Blob Storage-célokhoz tartozó Storage-fiókhoz.
+Azure HPC Cache [Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../role-based-access-control/index.yml) engedélyezi a gyorsítótár-szolgáltatásnak, hogy hozzáférjen a tárfiókhoz az Azure Blob Storage-célokhoz.
 
-A Storage-fiók tulajdonosának explicit módon hozzá kell adnia a roles [Storage-fiók közreműködőjét](../role-based-access-control/built-in-roles.md#storage-account-contributor) és a [Storage blob adatközreműködőit](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) a "HPC cache erőforrás-szolgáltató" felhasználóhoz.
+A tárfiók tulajdonosának explicit [](../role-based-access-control/built-in-roles.md#storage-account-contributor) módon hozzá [](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) kell adnia a Tárfiók közreműködője és a Storage-blobadatok közreműködője szerepkört a "HPC Cache erőforrás-szolgáltató" felhasználóhoz.
 
-Ezt előre elvégezheti, vagy egy hivatkozásra kattintva megadhatja a blob Storage-tárolót tartalmazó oldalon. Ne feledje, hogy akár öt percet is igénybe vehet, hogy a szerepkör-beállítások továbbítsák az Azure-környezetet, ezért néhány percet várnia kell, miután hozzáadta a szerepköröket a tárolási cél létrehozása előtt.
+Ezt előre is megteheti, vagy kattintson arra a hivatkozásra az oldalon, ahol hozzáad egy Blob Storage-célt. Vegye figyelembe, hogy akár öt percig is eltarthat, amíg a szerepkör-beállítások propagálnak az Azure-környezetben, ezért néhány percet várnia kell a szerepkörök hozzáadása után, mielőtt létrehozná a tárolóhelyet.
 
 Az Azure-szerepkörök hozzáadásának lépései:
 
-1. Nyissa meg a Storage-fiókhoz tartozó **hozzáférés-vezérlés (iam)** lapot. (A **tároló hozzáadása** lapon lévő hivatkozás automatikusan megnyitja ezt a lapot a kiválasztott fiókhoz.)
+1. Nyissa meg a tárfiók **Hozzáférés-vezérlés (IAM)** lapját. (A Tárolási cél hozzáadása oldalon található **hivatkozás** automatikusan megnyitja ezt az oldalt a kiválasztott fiókhoz.)
 
-1. Kattintson a **+** lap tetején található elemre, majd válassza a **szerepkör-hozzárendelés hozzáadása** lehetőséget.
+1. Kattintson a **+** lap tetején található elemre, és válassza a **Szerepkör-hozzárendelés hozzáadása lehetőséget.**
 
-1. Válassza ki a "Storage-fiók közreműködője" szerepkört a listából.
+1. Válassza ki a "Tárfiók közreműködője" szerepkört a listából.
 
-1. A **hozzáférés kiosztása** mezőben hagyja meg a kiválasztott alapértelmezett értéket ("Azure ad-felhasználó, csoport vagy szolgáltatásnév").  
+1. A Hozzáférés **hozzárendelése mezőben** hagyja bejelölve az alapértelmezett értéket ("Azure AD-felhasználó, -csoport vagy -szolgáltatásnév").  
 
-1. A **Select (kiválasztás** ) mezőben keressen rá a "HPC" kifejezésre.  Ennek a karakterláncnak meg kell egyeznie egy "HPC cache erőforrás-szolgáltató" nevű egyszerű szolgáltatással. Kattintson erre a résztvevőre a kiválasztásához.
+1. A Select **(Kijelölés)** mezőben keressen a "hpc" kifejezésre.  Ennek a sztringnek egyeznie kell egy "HPC Cache erőforrás-szolgáltató" nevű szolgáltatásnévvel. Kattintson erre a rendszerbiztonsági tagra a kiválasztásához.
 
    > [!NOTE]
-   > Ha a "HPC" kifejezés nem működik, próbálja meg helyette a "storagecache" karakterláncot használni. Előfordulhat, hogy az előzetes verzióban részt vevő felhasználóknak (a GA előtt) a szolgáltatásnév régebbi nevét kell használniuk.
+   > Ha a "hpc" keresés nem működik, próbálja inkább a "storagecache" sztringet használni. Előfordulhat, hogy az előzetes verziókban részt vett felhasználóknak (az ga ga előtt) a szolgáltatásnévnek a régebbi nevet kell használnia.
 
-1. Kattintson a lap alján található **Save (Mentés** ) gombra.
+1. Kattintson **az** alul található Mentés gombra.
 
-1. Ismételje meg ezt a folyamatot a "Storage blob-adatközreműködői" szerepkör hozzárendeléséhez.  
+1. Ismételje meg ezt a folyamatot a "Storage-blobadatok közreműködője" szerepkör hozzárendeléséhez.  
 
-![a szerepkör-hozzárendelés grafikus felhasználói felületének hozzáadása képernyőkép](media/hpc-cache-add-role.png)
+![képernyőkép a szerepkör-hozzárendelési grafikus felhasználói felület hozzáadásáról](media/hpc-cache-add-role.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-### <a name="prerequisite-storage-account-access"></a>Előfeltétel: a Storage-fiók elérése
+### <a name="prerequisite-storage-account-access"></a>Előfeltétel: Tárfiók-hozzáférés
 
-[Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
+[Az Azure CLI beállítása a Azure HPC Cache.](./az-cli-prerequisites.md)
 
-BLOB Storage-cél hozzáadása előtt győződjön meg arról, hogy a gyorsítótár megfelelő szerepkörrel rendelkezik a Storage-fiók eléréséhez, és hogy a tűzfalbeállítások lehetővé teszik a tárolási cél létrehozását.
+Blob Storage-cél hozzáadása előtt ellenőrizze, hogy a gyorsítótár megfelelő szerepkörökkel rendelkezik-e a tárfiók eléréséhez, és hogy a tűzfalbeállítások lehetővé teszik-e a tároló célhelyének létrehozását.
 
-Az Azure HPC cache az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/index.yml) használatával engedélyezi a gyorsítótár-szolgáltatás számára, hogy hozzáférjen az Azure Blob Storage-célokhoz tartozó Storage-fiókhoz.
+Azure HPC Cache [Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../role-based-access-control/index.yml) engedélyezi a gyorsítótár-szolgáltatásnak, hogy hozzáférjen a tárfiókhoz az Azure Blob Storage-célokhoz.
 
-A Storage-fiók tulajdonosának explicit módon hozzá kell adnia a roles [Storage-fiók közreműködőjét](../role-based-access-control/built-in-roles.md#storage-account-contributor) és a [Storage blob adatközreműködőit](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) a "HPC cache erőforrás-szolgáltató" felhasználóhoz.
+A tárfiók tulajdonosának explicit [](../role-based-access-control/built-in-roles.md#storage-account-contributor) módon hozzá kell adni a Tárfiók közreműködője és a [Storage-blobadatok](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) közreműködője szerepkört a "HPC Cache erőforrás-szolgáltatóhoz".
 
-A tárolási cél létrehozása sikertelen lesz, ha a gyorsítótár nem rendelkezik ezekkel a szerepkörökkel.
+A tároló célhelyének létrehozása sikertelen lesz, ha a gyorsítótár nem rendelkezik ezekkel a szerepkörökkel.
 
-Akár öt percet is igénybe vehet, hogy a szerepkör-beállítások továbbítsák az Azure-környezetet, ezért néhány percet várnia kell, miután hozzáadta a szerepköröket a tárolási cél létrehozása előtt.
+A szerepkör-beállítások Azure-környezetben való propagálása akár öt percet is igénybe vehet, ezért a tárolóhely létrehozása előtt néhány percet várnia kell a szerepkörök hozzáadása után.
 
-Részletes utasításokért olvassa el az [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI használatával című részt](../role-based-access-control/role-assignments-cli.md) .
+Részletes útmutatásért olvassa el az [Azure-beli szerepkör-hozzárendelések hozzáadása](../role-based-access-control/role-assignments-cli.md) vagy eltávolítása az Azure CLI használatával cikkeket.
 
-Tekintse meg a Storage-fiók tűzfalának beállításait is. Ha a tűzfal úgy van beállítva, hogy csak a "kiválasztott hálózatokra" korlátozza a hozzáférést, akkor előfordulhat, hogy a tárolási cél létrehozása meghiúsul. Használja a [blob Storage-fiók tűzfalának](hpc-cache-blob-firewall-fix.md)használata című dokumentumban ismertetett megkerülő megoldást.
+Ellenőrizze a tárfiók tűzfalbeállítását is. Ha a tűzfal úgy van beállítva, hogy csak a "kiválasztott hálózatokra" korlátozza a hozzáférést, a tároló célhelyének létrehozása sikertelen lehet. Használja a Blob Storage-fiók tűzfalbeállításának [megkerülő megoldását.](hpc-cache-blob-firewall-fix.md)
 
-### <a name="add-a-blob-storage-target-with-azure-cli"></a>BLOB Storage-cél hozzáadása az Azure CLI-vel
+### <a name="add-a-blob-storage-target-with-azure-cli"></a>Blob Storage-cél hozzáadása az Azure CLI használatával
 
-Az Azure Blob Storage-tárolók definiálásához használja az az [HPC-cache blob-Storage-Target hozzáadási](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-add) felületet.
+Az [az hpc-cache blob-storage-target add interfész](/cli/azure/hpc-cache/blob-storage-target#az_hpc_cache_blob_storage_target_add) használatával definiálhat egy Azure Blob Storage-célt.
 
 > [!NOTE]
-> Az Azure CLI-parancsok esetében jelenleg a névtér elérési útjának létrehozására van szükség a tárolási cél hozzáadásakor. Ez eltér a Azure Portal felülettel használt folyamattól.
+> Az Azure CLI-parancsokhoz jelenleg létre kell hoznia egy névtér elérési útját egy tárolási cél hozzáadásakor. Ez eltér a felhasználói felületen használt Azure Portal folyamattól.
 
-A szabványos erőforráscsoport és a gyorsítótár neve paraméterek mellett meg kell adnia ezeket a beállításokat a tárolási cél számára:
+A standard erőforráscsoport- és gyorsítótárnév-paraméterek mellett ezeket a beállításokat is meg kell adnia a tárolási célhelyhez:
 
-* ``--name`` -Adjon meg egy nevet, amely azonosítja ezt a tárolási célt az Azure HPC cache-ben.
+* ``--name`` – Állítson be egy nevet, amely azonosítja ezt a tárolócélt a Azure HPC Cache.
 
-* ``--storage-account`` – A fiók azonosítója a következő formában:/Subscriptions/*<subscription_id>*/resourceGroups/*<storage_resource_group>*/Providers/Microsoft.Storage/storageAccounts/*<account_name>*
+* ``--storage-account`` – A fiókazonosító, ebben a formában: /subscriptions/*<subscription_id>*/resourceGroups/*<storage_resource_group>*/providers/Microsoft.Storage/storageAccounts/*<account_name>*
 
-  A használható Storage-fiókkal kapcsolatos információkért olvassa el a [blob Storage-követelmények](hpc-cache-prerequisites.md#blob-storage-requirements)című témakört.
+  A használható tárfiókok fajtájára vonatkozó információkért olvassa el a [Blob Storage követelményeit.](hpc-cache-prerequisites.md#blob-storage-requirements)
 
-* ``--container-name`` -Adja meg a tárolási célhoz használandó tároló nevét.
+* ``--container-name`` – Adja meg az ehhez a tárolóhoz használni kívánt tároló nevét.
 
-* ``--virtual-namespace-path`` – Állítsa be a tárolási cél ügyféloldali elérési útját. Útvonalak befoglalása idézőjelek közé. A virtuális névtér szolgáltatással kapcsolatos további információkért olvassa el [az összesített névtér megtervezése](hpc-cache-namespace.md) című témakört.
+* ``--virtual-namespace-path`` – Állítsa be az ügyféloldali fájl elérési útját ehhez a tárolási célhoz. Az elérési utakat idézőjelek közé kell tenni. A [virtuális névtér funkcióval](hpc-cache-namespace.md) kapcsolatos további információkért olvassa el az Aggregált névtér megterve lehetőséget.
 
-Példa parancs:
+Példaparancs:
 
 ```azurecli
 az hpc-cache blob-storage-target add --resource-group "hpc-cache-group" \
@@ -154,111 +154,111 @@ az hpc-cache blob-storage-target add --resource-group "hpc-cache-group" \
 
 ---
 
-## <a name="add-a-new-nfs-storage-target"></a>Új NFS-tárolási cél hozzáadása
+## <a name="add-a-new-nfs-storage-target"></a>Új NFS-tárolóhely hozzáadása
 
-Egy NFS-tárolási cél különböző beállításokkal rendelkezik a blob Storage-tárolóban. A használati modell beállítása segít a gyorsítótárban, hogy hatékonyan gyorsítótárazza az adatokat ebből a tárolási rendszerből.
+Az NFS-tároló célhelyének beállításai eltérnek a Blob Storage-cél beállításaitól. A használati modell beállításával a gyorsítótár hatékonyan gyorsítótárazza az ebből a tárolórendszerből származó adatokat.
 
-![Képernyőfelvétel a Storage-cél hozzáadása oldalról a megadott NFS-célként](media/add-nfs-target.png)
+![Képernyőkép a tároló célhelyének hozzáadásáról az NFS-cél definiálva](media/add-nfs-target.png)
 
 > [!NOTE]
-> Az NFS-tárolási cél létrehozása előtt győződjön meg arról, hogy a tárolási rendszer elérhető az Azure HPC-gyorsítótárból, és megfelel az engedélyek követelményeinek. A tárolási cél létrehozása sikertelen lesz, ha a gyorsítótár nem fér hozzá a tárolási rendszerhez. A részletekért olvassa el az [NFS-tárolási követelmények](hpc-cache-prerequisites.md#nfs-storage-requirements) , valamint a [NAS-konfiguráció és az NFS-tárolási cél hibaelhárítása](troubleshoot-nas.md) című cikk
+> Mielőtt létrehoz egy NFS-tárolóhelyet, győződjön meg arról, hogy a tárolórendszer elérhető a Azure HPC Cache és megfelel az engedélykövetelményeknek. A tároló célhelyének létrehozása sikertelen lesz, ha a gyorsítótár nem fér hozzá a tárolórendszerhez. Részletekért olvassa el [az NFS tárolási követelményeit](hpc-cache-prerequisites.md#nfs-storage-requirements) és [a NAS-konfigurációval és AZ NFS-tároló](troubleshoot-nas.md) célhibáival kapcsolatos hibák elhárítása témakört.
 
 ### <a name="choose-a-usage-model"></a>Használati modell kiválasztása
 <!-- referenced from GUI by aka.ms link -->
 
-Amikor olyan tárolási célt hoz létre, amely az NFS-t használja a tárolási rendszer eléréséhez, ki kell választania a cél használati modelljét. Ez a modell határozza meg, hogyan gyorsítótárazza az adatait.
+Amikor olyan tárolóhelyet hoz létre, amely NFS-t használ a tárolórendszerének eléréséhez, ki kell választania egy használati modellt a célhoz. Ez a modell határozza meg, hogyan vannak gyorsítótárazva az adatok.
 
-A beállításokkal kapcsolatos további információkért olvassa el a [használati modellek megismerése](cache-usage-models.md) című témakört.
+Az [ezekkel a beállításokkal](cache-usage-models.md) kapcsolatos további részletekért olvassa el a használati modelleket.
 
-A beépített használati modellek segítségével kiválaszthatja, hogyan egyenlítheti ki a gyors választ az elavult adatok beszerzésének kockázatával. Ha optimalizálni szeretné a fájlok olvasásának sebességét, előfordulhat, hogy nem biztos benne, hogy a gyorsítótárban lévő fájlok be vannak-e jelölve a háttérbeli fájlokban. Ha azonban azt szeretné, hogy a fájlok mindig naprakészek legyenek a távoli tárterülettel, válasszon olyan modellt, amely gyakran ellenőrzi a fájlokat.
+A beépített használati modellekkel kiválaszthatja, hogyan egyensúlyba hozza a gyors reagálást az elavult adatok kieső kockázatával. Ha optimalizálni szeretné a fájlok olvasásának sebességét, nem biztos, hogy a rendszer ellenőrzi a gyorsítótárban lévő fájlokat a háttérfájlok között. Ha azonban azt szeretné, hogy a fájlok mindig naprakészek a távoli tárolóval, válasszon olyan modellt, amely gyakran ellenőrzi a fájlokat.
 
-Ez a három lehetőség a legtöbb esetben a következőket fedi le:
+Ez a három lehetőség a legtöbb helyzetet lefedi:
 
-* **Gyakori, ritka írások olvasása** – felgyorsítja a statikus vagy ritkán módosított fájlok olvasási hozzáférését.
+* **Nagy írási terhelésű,** ritkán használt írások – Felgyorsítja a statikus vagy ritkán módosított fájlok olvasási hozzáférését.
 
-  Ezzel a beállítással a rendszer gyorsítótárazza a fájlokat az ügyfél olvasásai között, de azonnal továbbítja az ügyfeleket a háttérbeli tárolóba. A gyorsítótárban tárolt fájlok nincsenek automatikusan összehasonlítva az NFS-tároló kötetén található fájlokkal.
+  Ez a beállítás gyorsítótárazza a fájlokat az ügyfél olvasásaiból, de az ügyfél írási funkcióját azonnal átadja a háttértárnak. A rendszer nem hasonlítja össze automatikusan a gyorsítótárban tárolt fájlokat az NFS-tárolóköteten lévő fájlokkal.
 
-  Ne használja ezt a beállítást, ha fennáll a kockázata annak, hogy egy fájl közvetlenül a tárolási rendszeren módosul, anélkül, hogy először a gyorsítótárba kellene írni. Ha ez történik, a fájl gyorsítótárazott verziója nem lesz szinkronizálva a háttér-fájllal.
+  Ne használja ezt a beállítást, ha fennáll annak a kockázata, hogy egy fájl közvetlenül a tárolórendszeren, anélkül módosítható, hogy először a gyorsítótárba kellene írnia. Ha ez történik, a fájl gyorsítótárazott verziója nem lesz szinkronizálva a háttérfájllal.
 
-* **15%-nál nagyobb írások** – ez a beállítás az olvasási és írási teljesítményt is felgyorsítja.
+* **15%-nál nagyobb írási arány** – Ez a beállítás mind az olvasási, mind az írási teljesítményt felgyorsítja.
 
-  A rendszer gyorsítótárazza az ügyfél olvasását és az ügyfél írását. A gyorsítótárban lévő fájlok újabbak, mint a háttér-tárolási rendszer fájljai. A gyorsítótárazott fájlok csak a háttérbeli tároló fájljain, nyolc óránként lesznek automatikusan bejelölve. A gyorsítótárban lévő módosított fájlokat a rendszer a háttérbeli tárolóba írja, miután a gyorsítótárban 20 percen belül megtörtént a további módosítások nélkül.
+  Az ügyfél-olvasások és az ügyfélírások egyaránt gyorsítótárazva vannak. A rendszer feltételezi, hogy a gyorsítótárban lévő fájlok újabbak, mint a háttértárrendszer fájljai. A gyorsítótárazott fájlokat a rendszer csak 8 óránként ellenőrzi automatikusan a háttértárban lévő fájlokon. A gyorsítótárban lévő módosított fájlokat a rendszer a háttértárrendszerbe írja, miután 20 percig a gyorsítótárban voltak, további módosítások nélkül.
 
-  Ne használja ezt a beállítást, ha bármelyik ügyfél közvetlenül csatlakoztatja a háttérbeli tároló kötetét, mert fennáll a kockázata annak, hogy elavult fájlokkal fog rendelkezni.
+  Ne használja ezt a beállítást, ha bármelyik ügyfél közvetlenül csatlakoztatja a háttértárkötetet, mert fennáll a veszélye, hogy elavult fájlokat fog tartalmazni.
 
-* Az **ügyfelek az NFS-célhelyre írhatnak, és megkerülik a gyorsítótárat** – ezt a beállítást akkor válassza, ha a munkafolyamatban lévő bármelyik ügyfél közvetlenül a tárolási rendszerbe írja az adatait anélkül, hogy először a gyorsítótárba írna, vagy ha az adatkonzisztenciát szeretné optimalizálni.
+* **Az** ügyfelek az NFS-célhelyre írnak, megkerülve a gyorsítótárat – Akkor válassza ezt a beállítást, ha a munkafolyamat bármely ügyfele közvetlenül ír adatokat a tárolórendszerbe anélkül, hogy először a gyorsítótárba írna, vagy ha optimalizálni szeretné az adatkonzisztenciát.
 
-  Az ügyfelek által igényelt fájlok gyorsítótárazva vannak, de a fájloknak az ügyfélről történő módosításai azonnal átkerülnek a háttérrendszer-tároló rendszerbe. A gyorsítótárban lévő fájlokat a rendszer gyakran ellenőrzi a frissítések háttérbeli verzióin. Ez az ellenőrzés fenntartja az adatkonzisztenciaot, ha a fájlok közvetlenül a tárolási rendszeren változnak a gyorsítótáron keresztül.
+  A rendszer gyorsítótárazza az ügyfelek által kért fájlokat, de az ügyfélről ezen fájlokon végrehajtott módosításokat a rendszer azonnal a háttértárrendszernek is továbbkűszi. A gyorsítótárban lévő fájlokat gyakran ellenőrzik a frissítéseket a háttérverziókban. Ez az ellenőrzés fenntartja az adatkonzisztenciát, ha a fájlokat közvetlenül a tárolórendszeren, és nem a gyorsítótáron keresztül változtatják meg.
 
-A többi lehetőségről a [használati modellek](cache-usage-models.md)ismertetése című témakörben olvashat bővebben.
+A többi lehetőséggel kapcsolatos részletekért olvassa el [a használati modelleket.](cache-usage-models.md)
 
-Ez a táblázat a használati modellek közötti különbségeket foglalja össze:
+Ez a táblázat az összes használati modell közötti különbségeket foglalja össze:
 
 [!INCLUDE [usage-models-table.md](includes/usage-models-table.md)]
 
 > [!NOTE]
-> A **háttér-ellenőrzési** érték azt jelzi, hogy a gyorsítótár automatikusan összehasonlítja-e a fájljait a távoli tárolóban lévő forrásfájlokat. Az összehasonlítást azonban elindíthatja egy olyan ügyfélalkalmazás elküldésével, amely readdirplus műveletet tartalmaz a háttér-tárolási rendszeren. A Readdirplus egy szabványos NFS API (más néven kiterjesztett olvasás), amely a címtár metaadatait adja vissza, ami miatt a gyorsítótár összehasonlítja és frissíti a fájlokat.
+> A **háttér-ellenőrzési** érték azt mutatja, hogy a gyorsítótár mikor hasonlítja össze automatikusan a fájljait a távoli tárolóban lévő forrásfájlokkal. Összehasonlítást azonban aktiválhat, ha egy olyan ügyfélkérést küld, amely egy readdirplus műveletet tartalmaz a háttértárrendszeren. A Readdirplus egy szabványos NFS API (más néven bővített olvasás), amely visszaadja a könyvtár metaadatait, ami miatt a gyorsítótár összehasonlítja és frissíti a fájlokat.
 
-### <a name="create-an-nfs-storage-target"></a>NFS-tárolási cél létrehozása
+### <a name="create-an-nfs-storage-target"></a>NFS-tárolóhely létrehozása
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A Azure Portal nyissa meg a gyorsítótár-példányt, és kattintson a bal oldali oldalsávon található **tárolási célok** elemre.
+A Azure Portal nyissa meg a gyorsítótárpéldányt, és kattintson a bal oldali **oldalsávon a** Tárolási célok elemre.
 
-![képernyőfelvétel a beállításokról > a tárolási cél lapon két meglévő tárolási cél szerepel egy táblában, és a táblázat fölé emelt a + tároló hozzáadása gomb](media/add-storage-target-button.png)
+![képernyőkép a tárolási céloldal > beállításokról, két meglévő tárolócéllal a táblázatban, valamint egy kiemelés a tábla fölötti + Tárolócél hozzáadása gomb körül](media/add-storage-target-button.png)
 
-A **tárolási célok** lap felsorolja az összes meglévő célt, és egy hivatkozást ad hozzá egy újat.
+A **Tárolási célok lap** felsorolja az összes meglévő célt, és egy hivatkozást biztosít egy új hozzáadásához.
 
-Kattintson a **tárolási cél hozzáadása** gombra.
+Kattintson a **Tárolócél hozzáadása gombra.**
 
-![Képernyőfelvétel a Storage-cél hozzáadása oldalról a megadott NFS-célként](media/add-nfs-target.png)
+![Képernyőkép a tároló célhelyének hozzáadásáról az NFS-cél definiálva](media/add-nfs-target.png)
 
-Adja meg ezt az információt egy NFS-alapú tárolási cél számára:
+Adja meg ezt az információt egy NFS-alapú tárolócélhoz:
 
-* **Tárolási cél neve** – adjon meg egy nevet, amely azonosítja ezt a tárolási célt az Azure HPC cache-ben.
+* **Tárolási cél neve** – Adja meg a tároló célhelyét azonosító nevet a Azure HPC Cache.
 
-* **Cél típusa** – válassza az **NFS** lehetőséget.
+* **Cél típusa –** Válassza az **NFS lehetőséget.**
 
-* **Állomásnév** – adja meg az NFS-tárolási rendszer IP-címét vagy teljesen minősített tartománynevét. (Csak akkor használjon tartománynevet, ha a gyorsítótár egy olyan DNS-kiszolgálóhoz fér hozzá, amely fel tudja oldani a nevet.)
+* **Állomásnév** – Adja meg az NFS-tárolórendszer IP-címét vagy teljes tartománynevét. (Csak akkor használjon tartománynevet, ha a gyorsítótárnak hozzáférése van egy DNS-kiszolgálóhoz, amely fel tudja oldani a nevet.)
 
-* **Használati modell** – válassza ki az egyik adatgyorsítótárazási profilt a munkafolyamat alapján, a fenti [használati modell kiválasztása](#choose-a-usage-model) című részben leírtak szerint.
+* **Használati modell** – Válasszon egy adat-gyorsítótárazó profilt [a](#choose-a-usage-model) munkafolyamata alapján a fenti Használati modell kiválasztása szakasz alapján.
 
-Ha elkészült, kattintson az **OK** gombra a tárolási cél hozzáadásához.
+Ha végzett, kattintson az **OK gombra** a tároló célhelyének hozzáadásához.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
+[Az Azure CLI beállítása a Azure HPC Cache.](./az-cli-prerequisites.md)
 
-A tárolási cél létrehozásához használja az Azure CLI-parancsot az [HPC-cache NFS-Storage-Target Add](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add) paranccsal.
+A tárolási cél létrehozásához használja [az az hpc-cache nfs-storage-target azure CLI-parancsot.](/cli/azure/hpc-cache/nfs-storage-target#az_hpc_cache_nfs_storage_target_add)
 
 > [!NOTE]
-> Az Azure CLI-parancsok esetében jelenleg a névtér elérési útjának létrehozására van szükség a tárolási cél hozzáadásakor. Ez eltér a Azure Portal felülettel használt folyamattól.
+> Az Azure CLI-parancsokhoz jelenleg szükség van egy névtér elérési útjának létrehozására egy tárolóhely hozzáadásakor. Ez eltér a felhasználói felületen használt Azure Portal folyamattól.
 
-Adja meg ezeket az értékeket a gyorsítótár neve és a gyorsítótár-erőforráscsoport mellett:
+A gyorsítótár neve és a gyorsítótár erőforráscsoportja mellett a következő értékeket is meg kell adni:
 
-* ``--name`` -Adjon meg egy nevet, amely azonosítja ezt a tárolási célt az Azure HPC cache-ben.
-* ``--nfs3-target`` – Az NFS-tárolási rendszerek IP-címe. (Itt teljes tartománynevet használhat, ha a gyorsítótár egy olyan DNS-kiszolgálóhoz fér hozzá, amely fel tudja oldani a nevet.)
-* ``--nfs3-usage-model`` – Az egyik adatgyorsítótárazási profil, amely a fenti [használati modell kiválasztása](#choose-a-usage-model)című részben található.
+* ``--name`` – Állítson be egy nevet, amely azonosítja ezt a tárolócélt a Azure HPC Cache.
+* ``--nfs3-target`` – Az NFS-tárolórendszer IP-címe. (Itt teljes tartománynevet is használhat, ha a gyorsítótárnak hozzáférése van egy DNS-kiszolgálóhoz, amely fel tudja oldani a nevet.)
+* ``--nfs3-usage-model`` – Az egyik adat-gyorsítótárazó profil, [amelyről a fenti Használati modell kiválasztása leírásban](#choose-a-usage-model)van leírás.
 
-  Ellenőrizze a használati modellek nevét a parancs az [HPC-cache használati-Model List](/cli/azure/ext/hpc-cache/hpc-cache/usage-model#ext-hpc-cache-az-hpc-cache-usage-model-list)paranccsal.
+  Ellenőrizze a használati modellek nevét az [az hpc-cache usage-model list paranccsal.](/cli/azure/hpc-cache/usage-model#az_hpc_cache_usage_model_list)
 
-* ``--junction`` – A Junction paraméter összekapcsolja az ügyfélhez kapcsolódó virtuális fájl elérési útját a tárolási rendszeren lévő exportálási útvonallal.
+* ``--junction`` – A csomópontparaméter az ügyféloldali virtuális fájl elérési útját egy exportálási útvonallal összeköti a tárolórendszeren.
 
-  Egy NFS-tárolási cél több virtuális útvonallal is rendelkezhet, ha az egyes elérési utak ugyanazon a tárolási rendszeren eltérő exportálási vagy alkönyvtárat jelölnek. Hozzon létre egy tárolási rendszer összes elérési útját egy tárolási célra.
+  Egy NFS-tároló célhelyének több virtuális elérési útja is lehet, ha minden elérési út egy adott tárolórendszer különböző exportálási vagy alkönyvtárát jelöli. Egy tárolórendszer összes elérési útjának létrehozása egyetlen tárolóhelyen.
 
-  A [névtér elérési útját bármikor hozzáadhatja és szerkesztheti](add-namespace-paths.md) a tárolási célra.
+  A [tárolóhelyen bármikor](add-namespace-paths.md) hozzáadhat és szerkeszthet névtérútvonalat.
 
   A ``--junction`` paraméter a következő értékeket használja:
 
-  * ``namespace-path`` – Az ügyfélre irányuló virtuális fájl elérési útja
-  * ``nfs-export`` – A tárolásirendszer exportálja az ügyfél felé irányuló elérési úttal való hozzárendeléshez
-  * ``target-path`` (nem kötelező) – szükség esetén az Exportálás alkönyvtára
+  * ``namespace-path`` – Az ügyféloldali virtuális fájl elérési útja
+  * ``nfs-export`` – Az ügyféloldali elérési úthoz társítható tárolórendszer exportálása
+  * ``target-path`` (nem kötelező) – Az exportálás alkönyvtára, ha szükséges
 
   Például: ``--junction namespace-path="/nas-1" nfs-export="/datadisk1" target-path="/test"``
 
-  A virtuális névtér szolgáltatással kapcsolatos további tudnivalókért olvassa el az [összesített névtér konfigurálása](hpc-cache-namespace.md) című témakört.
+  További [információ a](hpc-cache-namespace.md) virtuális névtér funkcióról: Összesített névtér konfigurálása.
 
-Példa parancs:
+Példaparancs:
 
 ```azurecli
 
@@ -297,66 +297,66 @@ Kimenet:
 
 ---
 
-## <a name="add-a-new-adls-nfs-storage-target-preview"></a>Új ADLS-NFS Storage-cél hozzáadása (előzetes verzió)
+## <a name="add-a-new-adls-nfs-storage-target-preview"></a>Új ADLS-NFS tárolási cél hozzáadása (ELŐZETES VERZIÓ)
 
-A ADLS-NFS tárolási célok olyan Azure Blob-tárolókat használnak, amelyek támogatják a hálózati fájlrendszer (NFS) 3,0-es protokollját.
+Az ADLS-NFS tárolási célok olyan Azure Blob-tárolókat használnak, amelyek támogatják a hálózati fájlrendszer (NFS) 3.0 protokollt.
 
 > [!NOTE]
-> Az NFS 3,0 protokoll támogatása az Azure Blob Storage-hoz nyilvános előzetes verzióban érhető el. A rendelkezésre állás korlátozott, és előfordulhat, hogy a funkciók mostantól változnak, és a szolgáltatás általánosan elérhetővé válik. Az előnézeti technológiákat ne használja éles rendszerekben.
+> Az Azure Blob Storage NFS 3.0 protokoll támogatása nyilvános előzetes verzióban érhető el. A rendelkezésre állás korlátozott, és a funkciók változhatnak a funkció általános elérhetővé válnak. Éles rendszerekben ne használjon előzetes verziójú technológiát.
 >
-> A legfrissebb információkért olvassa el az [NFS 3,0 protokoll támogatása](../storage/blobs/network-file-system-protocol-support.md) című témakört.
+> A legfrissebb információkért olvassa el az [NFS 3.0](../storage/blobs/network-file-system-protocol-support.md) protokolltámogatást.
 
-A ADLS-NFS tárolási célpontok némelyike hasonlóságot mutat a blob Storage-célokkal és néhány NFS-tárolási célokkal. Például:
+Az ADLS-NFS tárolási célok hasonlóak a Blob Storage-célokkal és néhány NFS-céltárolóval. Például:
 
-* A blob Storage-tárolóhoz hasonlóan meg kell adnia az Azure HPC cache engedélyt a [Storage-fiók eléréséhez](#add-the-access-control-roles-to-your-account).
-* Az NFS Storage-tárolóhoz hasonlóan a gyorsítótár [használati modelljét](#choose-a-usage-model)is be kell állítania.
-* Mivel az NFS-t támogató blob-tárolók NFS-kompatibilis hierarchikus struktúrával rendelkeznek, nem kell a gyorsítótárat használnia az adat betöltéséhez, és a tárolókat más NFS-rendszerek is olvasni tudják. Az adatok előre tölthetők be egy ADLS-NFS-tárolóba, majd hozzáadhatók egy HPC-gyorsítótárhoz tárolási célként, majd később is elérhetők az adatok a HPC-gyorsítótáron kívülről. Ha standard BLOB-tárolót használ HPC cache Storage-tárolóként, az adatok tulajdonosi formában vannak megírva, és csak más Azure HPC cache-kompatibilis termékekből érhetők el.
+* A Blob Storage-tárolókhoz Azure HPC Cache engedélyt kell adni a [tárfiók eléréséhez.](#add-the-access-control-roles-to-your-account)
+* Az NFS-tárolókhoz hasonló gyorsítótár-használati modellt [kell beállítania.](#choose-a-usage-model)
+* Mivel az NFS-kompatibilis blobtárolók NFS-kompatibilis hierarchikus struktúrával rendelkezik, nincs szükség a gyorsítótár használatára az adatok betöltéséhez, és a tárolók más NFS-rendszerek számára is olvashatók. Előre betöltheti az adatokat egy ADLS-NFS-tárolóba, hozzáadhatja őket egy HPC Cache-tárolóhoz tárolási célként, majd később hozzáférhet az adatokhoz a HPC Cache. Ha standard blobtárolót használ HPC Cache tárolási célként, az adatok saját formátumban lesznek megírva, és csak más, Azure HPC Cache kompatibilis termékekből érhetők el.
 
-A ADLS-NFS tárolási cél létrehozása előtt létre kell hoznia egy NFS-kompatibilis Storage-fiókot. Kövesse az [Azure HPC cache előfeltételeinek](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview) és a [blob Storage csatlakoztatása az NFS használatával](../storage/blobs/network-file-system-protocol-support-how-to.md)című témakör útmutatásait. A Storage-fiók beállítása után létrehozhat egy új tárolót a tárolási cél létrehozásakor.
+Mielőtt létrehozhat egy ADLS-NFS-tárolót, létre kell hoznia egy NFS-kompatibilis tárfiókot. Kövesse az [Előfeltételek](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview) a blobok Azure HPC Cache és a [Blob Storage csatlakoztatása NFS használatával cikk utasításait.](../storage/blobs/network-file-system-protocol-support-how-to.md) A tárfiók beállítása után létrehozhat egy új tárolót a tároló célhelyének létrehozásakor.
 
-A konfigurációval kapcsolatos további információkért olvassa el az [NFS-hez csatlakoztatott blob Storage használata az Azure HPC cache használatával](nfs-blob-considerations.md) című témakört.
+A konfigurációval kapcsolatos további információkért olvassa el az [NFS-hez](nfs-blob-considerations.md) csatlakoztatott blobtároló és Azure HPC Cache használatával kapcsolatos további tudnivalókat.
 
-ADLS-NFS tárolási cél létrehozásához nyissa meg a **tároló hozzáadása** lapot a Azure Portal. (A további módszerek fejlesztés alatt állnak.)
+ADLS-NFS tárolási cél létrehozásához  nyissa meg a tároló célhelyének hozzáadása oldalt a Azure Portal. (További metódusok fejlesztés alatt állnak.)
 
-![Képernyőfelvétel a tárolási cél hozzáadása oldalról a ADLS-NFS-célhoz definiált](media/add-adls-target.png)
+![Képernyőkép a tároló céloldalának hozzáadásáról az ADLS-NFS-cél definiálva](media/add-adls-target.png)
 
 Adja meg ezt az információt.
 
-* **Tárolási cél neve** – adjon meg egy nevet, amely azonosítja ezt a tárolási célt az Azure HPC cache-ben.
-* **Cél típusa** – válassza a **ADLS – NFS** elemet.
-* **Storage-fiók** – válassza ki a használni kívánt fiókot. Ha az NFS-kompatibilis Storage-fiók nem jelenik meg a listában, ellenőrizze, hogy az megfelel-e az előfeltételeknek, és hogy a gyorsítótár el tudja-e érni.
+* **Tárolási cél neve** – Adja meg a tároló célhelyét azonosító nevet a Azure HPC Cache.
+* **Cél típusa** – Válassza az **ADLS-NFS lehetőséget.**
+* **Tárfiók** – Válassza ki a használni kívánt fiókot. Ha az NFS-kompatibilis tárfiók nem jelenik meg a listában, ellenőrizze, hogy megfelel-e az előfeltételeknek, és hogy a gyorsítótár hozzáfér-e hozzá.
 
-  Engedélyeznie kell a gyorsítótár-példányt a Storage-fiók eléréséhez a [hozzáférési Szerepkörök hozzáadása](#add-the-access-control-roles-to-your-account)című témakörben leírtak szerint.
+  A tárfiók eléréséhez engedélyeznie kell a gyorsítótárpéldányt a [Hozzáférési szerepkörök hozzáadása.](#add-the-access-control-roles-to-your-account)
 
-* **Storage-tároló** – válassza ki az NFS-kompatibilis BLOB-tárolót ehhez a célhoz, vagy kattintson az **új létrehozása** lehetőségre.
+* **Storage-tároló** – Válassza ki az NFS-kompatibilis blobtárolót ehhez a célhoz, vagy kattintson az **Új létrehozása elemre.**
 
-* **Használati modell** – válassza ki az egyik adatgyorsítótárazási profilt a munkafolyamat alapján, a fenti [használati modell kiválasztása](#choose-a-usage-model) című részben leírtak szerint.
+* **Használati modell** – Válasszon egy adat-gyorsítótárazó profilt [a](#choose-a-usage-model) munkafolyamata alapján, a fenti Használati modell kiválasztása szakasz alapján.
 
-Ha elkészült, kattintson az **OK** gombra a tárolási cél hozzáadásához.
+Ha végzett, kattintson az **OK gombra** a tároló célhelyének hozzáadásához.
 
-## <a name="view-storage-targets"></a>Tárolási célok megtekintése
+## <a name="view-storage-targets"></a>Céltárolók megtekintése
 
-A gyorsítótárhoz már definiált tárolási célok megjelenítéséhez használhatja a Azure Portal vagy az Azure CLI-t is.
+A gyorsítótárhoz Azure Portal vagy az Azure CLI használatával is meg tudja mutatni a gyorsítótárhoz már meghatározott tárolási célokat.
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A Azure Portal nyissa meg a gyorsítótár-példányt, és kattintson a **tárolási célok** elemre, amely a bal oldali oldalsávon a beállítások fejléc alatt található. A tárolási célok lap felsorolja az összes meglévő célt és vezérlőelemet a hozzáadáshoz vagy a törléshez.
+A Azure Portal nyissa meg a gyorsítótárpéldányt, és kattintson a Storage **targets**(Tárolási célok) elemre, amely a bal oldali oldalsáv Beállítások fejléce alatt található. A Tárolócélok lap felsorolja az összes meglévő célhelyet és vezérlőt azok hozzáadásához vagy törléséhez.
 
-Kattintson a tárolási cél nevére a Részletek lap megnyitásához.
+Kattintson egy tárolóhely nevére a részletek oldalának megnyitásához.
 
-További információért olvassa el a [tárolási célok szerkesztése](hpc-cache-edit-storage.md) című témakört.
+További [információ: Tárolócélok](hpc-cache-edit-storage.md) szerkesztése.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
+[Az Azure CLI beállítása a Azure HPC Cache.](./az-cli-prerequisites.md)
 
-Használja az az [HPC-cache Storage-Target List](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) kapcsolót a gyorsítótár meglévő tárolási céljainak megjelenítéséhez. Adja meg a gyorsítótár nevét és az erőforráscsoportot (kivéve, ha globálisan beállította).
+Az [az hpc-cache storage-target list lehetőséggel](/cli/azure/hpc-cache/storage-target#az_hpc_cache_storage-target-list) a gyorsítótár meglévő tárolási céljait mutatjuk be. Adja meg a gyorsítótár nevét és az erőforráscsoportot (kivéve, ha globálisan beállította).
 
 ```azurecli
 az hpc-cache storage-target list --resource-group "scgroup" --cache-name "sc1"
 ```
 
-Az [az HPC-cache Storage-Target show](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) használatával megtekintheti egy adott tárolási cél részleteit. (Adja meg a tárolási célt név szerint.)
+Egy adott tárolási cél részleteinek megtekintése [az az hpc-cache storage-target show](/cli/azure/hpc-cache/storage-target#az_hpc_cache_storage-target-list) használatával. (Adja meg a céltárolót név alapján.)
 
 Példa:
 
@@ -392,10 +392,10 @@ $
 
 ## <a name="next-steps"></a>Következő lépések
 
-A tárolási célok létrehozása után folytassa ezeket a feladatokat, hogy a gyorsítótár használatra készen álljon:
+A tárolócélok létrehozása után folytassa a következő feladatokkal, hogy a gyorsítótár használatra kész:
 
 * [Az összesített névtér beállítása](add-namespace-paths.md)
 * [Az Azure HPC Cache csatlakoztatása](hpc-cache-mount.md)
-* [Az Azure Blob Storage-ba irányuló adatáthelyezés](hpc-cache-ingest.md)
+* [Adatok áthelyezése az Azure Blob Storage-ba](hpc-cache-ingest.md)
 
-Ha frissítenie kell a beállításokat, [szerkesztheti a tárolási célt](hpc-cache-edit-storage.md).
+Ha bármilyen beállítást frissítenie kell, szerkesztheti [a tárolócélt.](hpc-cache-edit-storage.md)

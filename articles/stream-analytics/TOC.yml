@@ -316,7 +316,7 @@
               href: external-error-codes.md
             - name: Belső hibák
               href: internal-error-codes.md
-    - name: Integrálás Machine Learning
+    - name: Integráció a Machine Learning
       items:
         - name: Hangulatelemzés Machine Learning-modellekkel
           href: stream-analytics-machine-learning-integration-tutorial.md
@@ -677,7 +677,7 @@
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.streamanalytics/allversions
     - name: Azure CLI
-      href: /cli/azure/ext/stream-analytics/stream-analytics
+      href: /cli/azure/stream-analytics
     - name: Az Azure Policy beépített elemei
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

@@ -1,68 +1,68 @@
 ---
-title: Fogalmak – a privát felhő frissítései és frissítései
-description: Ismerje meg az Azure VMware-megoldás legfontosabb frissítési folyamatait és funkcióit.
+title: Alapfogalmak – Magánfelhők frissítései és frissítései
+description: Ismerje meg a legfontosabb frissítési folyamatokat és szolgáltatásokat a Azure VMware Solution.
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.openlocfilehash: 9810de40944f70a4efb7ec81d17868ffdf256c7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ced5832a6d994f6cbc7e659d44ce4f6ac88681d0
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104586148"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876813"
 ---
-# <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware-megoldás saját Felhőbeli frissítései és frissítései
+# <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware Solution és frissítései
 
-Az Azure VMware-megoldás privát felhők egyik előnye, hogy a platform karbantartás alatt áll. A karbantartás magában foglalja a VMware ellenőrzött szoftvercsomag automatizált frissítéseit, így biztosítva, hogy az Azure VMware-megoldás saját felhőalapú szoftverének legújabb verzióját használja.
+A magánfelhők Azure VMware Solution egyik előnye, hogy a platformot fenntartják Ön számára. A karbantartás magában foglalja a VMware által ellenőrzött szoftvercsomagok automatikus frissítéseit, így biztosítva, hogy a magánfelhős Azure VMware Solution legújabb verzióját használja.
 
-Pontosabban, az Azure VMware-megoldás saját felhője a következőket tartalmazza:
+A magánfelhők Azure VMware Solution a következőket tartalmazzák:
 
-- VMware ESXi hypervisorsal kiépített dedikált operációs rendszer nélküli kiszolgálói csomópontok 
-- vCenter-kiszolgáló az ESXi és a vSAN kezeléséhez 
-- VMware NSX-T szoftver által definiált hálózatkezelés vSphere számítási feladatokhoz virtuális gépek számára  
-- VMware vSAN adattár vSphere számítási feladatokhoz virtuális gépekhez  
-- VMware HCX a számítási feladatok mobilitásához  
+- Dedikált, operációs rendszer nélküli kiszolgálói csomópontok üzembe VMware ESXi hipervizorral 
+- vCenter-kiszolgáló AZ ESXi és a vSAN kezeléséhez 
+- VMware NSX-T szoftveres hálózat a vSphere számítási feladatok virtuális gépei számára  
+- VMware vSAN-adattár vSphere számítási feladatú virtuális gépekhez  
+- VMware HCX a számítási feladatok mobilitása érdekében  
 
-Az Azure VMware megoldás saját felhője a kapcsolódáshoz és a privát felhő üzemeltetéséhez szükséges Azure alátét erőforrásaival is rendelkezik. Az Azure VMware megoldás folyamatosan figyeli az alátét és a VMware-összetevők állapotát. Ha az Azure VMware-megoldás hibát észlel, végrehajtja a sikertelen összetevők kijavítását. 
+A Azure VMware Solution magánfelhő is tartalmazza a kapcsolathoz és a magánfelhő működtetéséhez szükséges Erőforrásokat az Azure-rétegben. Azure VMware Solution monitorozza az aláfedő és a VMware-összetevők állapotát is. Amikor Azure VMware Solution hibát észlel, a meghibásodott összetevők javításához szükséges lépéseket is el kell látnia. 
 
-## <a name="what-components-get-updated"></a>Milyen összetevőket kell frissíteni?   
+## <a name="what-components-get-updated"></a>Milyen összetevők frissülnek?   
 
-Az Azure VMware-megoldás a következő VMware-összetevőket frissíti: 
+Azure VMware Solution VMware következő összetevőit frissíti: 
 
-- az operációs rendszer nélküli kiszolgálók csomópontjain futó vCenter Server és ESXi 
+- vCenter Server operációs rendszer nélküli kiszolgálócsomópontokon futó operációs rendszer nélküli kiszolgálók és ESXi-kiszolgálók 
 - vSAN 
-- NSX – T 
+- NSX-T 
 
-Az Azure VMware megoldás az alátéten lévő szoftvereket is frissíti, például az illesztőprogramokat, a hálózati kapcsolókon lévő szoftvereket és az operációs rendszer nélküli csomópontokon található belső vezérlőprogramot. 
+Azure VMware Solution az alsó rétegben lévő szoftvereket is frissíti, például az illesztőprogramokat, a hálózati kapcsolók szoftvereit és az operációs rendszer nélküli csomópontok belső vezérlőprogramját. 
 
 ## <a name="types-of-updates"></a>A frissítések típusai
 
-Az Azure VMware-megoldás a következő típusú frissítéseket alkalmazza a VMware-összetevőkhöz:
+Azure VMware Solution vMware-összetevőkhöz a következő típusú frissítéseket alkalmazza:
 
-- Javítások: a VMware által kiadott biztonsági javítások és hibajavítások. 
-- Frissítések: egy vagy több VMware-összetevő másodlagos verziója. 
-- Frissítések: egy vagy több VMware-összetevő főverziójának frissítései.
+- Javítások: A VMware által kiadott biztonsági javítások és hibajavítások. 
+- Frissítések: Egy vagy több VMware-összetevő alverzió-frissítései. 
+- Frissítések: Egy vagy több VMware-összetevő főverzió-frissítései.
 
-A rendszer a javítások előtt és után is értesíti a privát felhőkre. Emellett a frissítések vagy a saját felhőre való frissítésük előtt is ütemezhet egy karbantartási időszakot. 
+A javítások magánfelhőkre való alkalmazása előtt és után értesítést kap. Emellett egy karbantartási időszak ütemezését is segítjük, mielőtt frissítéseket vagy frissítéseket alkalmaz a magánfelhőre. 
 
-## <a name="vmware-appliance-backup"></a>VMware készülék biztonsági mentése 
+## <a name="vmware-appliance-backup"></a>VMware-berendezés biztonsági mentése 
 
-Az Azure VMware megoldás a következő VMware-összetevők konfigurációs biztonsági mentését is végrehajtja:
+Azure VMware Solution VMware-összetevők konfigurációs biztonsági másolatát is készíti:
 
 - vCenter Server 
-- NSX – T Manager 
+- NSX-T Manager 
 
-Meghibásodás esetén az Azure VMware megoldás képes visszaállítani ezeket az összetevőket a konfiguráció biztonsági másolatából. 
+Hiba esetén a Azure VMware Solution visszaállíthatja ezeket az összetevőket a konfigurációs biztonsági másolatból. 
 
-## <a name="vmware-software-versions"></a>VMware-szoftverek verziói
+## <a name="vmware-software-versions"></a>VMware szoftververziók
 [!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy lefedette az Azure VMware-megoldás legfontosabb frissítési folyamatait és funkcióit, érdemes megismernie az alábbiakat:
+Most, hogy már megismerte a legfontosabb frissítési folyamatokat és szolgáltatásokat a Azure VMware Solution, a következővel ismerkedhet meg:
 
-- [Privát felhő létrehozása](tutorial-create-private-cloud.md)
-- [Az Azure VMware megoldás erőforrásának engedélyezése](enable-azure-vmware-solution.md).
+- [Magánfelhő létrehozása](tutorial-create-private-cloud.md)
+- [Az erőforrás Azure VMware Solution engedélyezése](enable-azure-vmware-solution.md)
 
 <!-- LINKS - external -->
 

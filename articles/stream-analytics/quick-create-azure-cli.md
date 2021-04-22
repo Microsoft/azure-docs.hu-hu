@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 58dccf56cd493782a422b0ddf0386e31d4d87daf
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: bb8f2d77c04e01c47318042337db819ac2f36d46
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765988"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107863190"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Rövid útmutató: Azure Stream Analytics létrehozása az Azure CLI használatával
 
@@ -59,7 +59,7 @@ A következő Azure CLI-kódblokkok olyan parancsok, amelyek előkészítik a fe
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
     ```
 
-3. Az az [iot hub device-identity show-connection-string paranccsal](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-show-connection-string) szerezze be az eszköz kapcsolati sztringet. Másolja ki a teljes kapcsolati sztringet, és mentse a hez a Raspberry Pi-szimulátor létrehozásakor.
+3. Az az [iot hub device-identity show-connection-string paranccsal](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_show_connection_string) szerezze be az eszköz kapcsolati sztringet. Másolja ki a teljes kapcsolati sztringet, és mentse a hez a Raspberry Pi-szimulátor létrehozásakor.
 
     ```azurecli
     az iot hub device-identity show-connection-string --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice" --output table
@@ -108,7 +108,7 @@ A következő Azure CLI-kódblokkok egy blobtároló-fiókot hoznak létre, amel
 
 A következő Azure CLI-kódblokkok létrehoznak egy Stream Analytics feladatot. Tekintse át a szakaszokat a kódért
 
-1. Hozzon létre Stream Analytics feladatot [az az stream-analytics job create paranccsal.](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-create)
+1. Hozzon létre Stream Analytics feladatot [az az stream-analytics job create paranccsal.](/cli/azure/stream-analytics/job#az_stream_analytics_job_create)
 
 ```azurecli
 az stream-analytics job create \
@@ -124,7 +124,7 @@ az stream-analytics job create \
 
 ## <a name="configure-input-to-the-job"></a>A feladat bemenetének konfigurálása
 
-Adjon hozzá egy bemenetet a feladathoz az [az stream-analytics input](/cli/azure/ext/stream-analytics/stream-analytics/input#ext-stream-analytics-az-stream-analytics-input-create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat bemenetének a neve, az erőforráscsoport neve, és a feladat bemenetének definíciója adható meg paraméterként. A feladat bemenetének definíciója egy JSON-fájl, amely a feladat bemenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ebben a példában egy új IoT Hub hoz létre bemenetként.
+Adjon hozzá egy bemenetet a feladathoz az [az stream-analytics input](/cli/azure/stream-analytics/input#az_stream_analytics_input_create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat bemenetének a neve, az erőforráscsoport neve, és a feladat bemenetének definíciója adható meg paraméterként. A feladat bemenetének definíciója egy JSON-fájl, amely a feladat bemenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ebben a példában egy új IoT Hub fog létrehozni bemenetként.
 
 Hozzon létre a helyi gépén egy `datasource.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. Ügyeljen arra, hogy a értékét cserélje le az előző IoT Hub mentett kapcsolati `sharedAccessPolicyKey` `SharedAccessKey` sztring részével.
 
@@ -166,7 +166,7 @@ az stream-analytics input create \
 
 ## <a name="configure-output-to-the-job"></a>A feladat kimenetének konfigurálása
 
-Adjon hozzá egy kimenetet a feladathoz az [az stream-analytics output create](/cli/azure/ext/stream-analytics/stream-analytics/output#ext-stream-analytics-az-stream-analytics-output-create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat kimenetének a neve, az erőforráscsoport neve, és a feladat kimenetének definíciója adható meg paraméterként. A feladat kimenetének definíciója egy JSON-fájl, amely a feladat kimenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ez a példa egy Blob Storage-tárolót használ kimenetként.
+Adjon hozzá egy kimenetet a feladathoz az [az stream-analytics output create](/cli/azure/stream-analytics/output#az_stream_analytics_output_create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat kimenetének a neve, az erőforráscsoport neve, és a feladat kimenetének definíciója adható meg paraméterként. A feladat kimenetének definíciója egy JSON-fájl, amely a feladat kimenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ez a példa egy Blob Storage-tárolót használ kimenetként.
 
 Hozzon létre a helyi gépén egy `datasink.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. A értékét cserélje le a tárfiók hozzáférési kulcsával, amely a tárfiókban tárolt `accountKey` $storageAccountKey érték.
 
@@ -201,7 +201,7 @@ az stream-analytics output create \
 
 ## <a name="define-the-transformation-query"></a>A transzformációs lekérdezés definiálása
 
-Adjon hozzá egy transzformációt a feladathoz [az az stream-analytics transformation create](/cli/azure/ext/stream-analytics/stream-analytics/transformation#ext-stream-analytics-az-stream-analytics-transformation-create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat transzformációjának a neve, az erőforráscsoport neve, és a feladat transzformációjának definíciója adható meg paraméterként. 
+Adjon hozzá egy transzformációt a feladathoz [az az stream-analytics transformation create](/cli/azure/stream-analytics/transformation#az_stream_analytics_transformation_create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat transzformációjának a neve, az erőforráscsoport neve, és a feladat transzformációjának definíciója adható meg paraméterként. 
 
 Futtassa `az stream-analytics transformation create` a parancsmagot.
 
@@ -225,7 +225,7 @@ az stream-analytics transformation create \
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>A Stream Analytics-feladat indítása és a kimenet ellenőrzése
 
-Indítsa el a feladatot az [az stream-analytics job start](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-start) parancsmag használatával. Ennél a parancsmagnál a feladat neve, az erőforráscsoport neve, a feladat kimenetének indítási módja, és a kezdés ideje adható meg paraméterként. Az `OutputStartMode` által elfogadott értékek: `JobStartTime`, `CustomTime` és `LastOutputEventTime`.
+Indítsa el a feladatot az [az stream-analytics job start](/cli/azure/stream-analytics/job#az_stream_analytics_job_start) parancsmag használatával. Ennél a parancsmagnál a feladat neve, az erőforráscsoport neve, a feladat kimenetének indítási módja, és a kezdés ideje adható meg paraméterként. Az `OutputStartMode` által elfogadott értékek: `JobStartTime`, `CustomTime` és `LastOutputEventTime`.
 
 A következő parancsmag futtatása a `True` kimenetet adja vissza, ha a feladat elindult. A Storage-tárolóban létrejön egy kimeneti mappa, amely az átalakított adatokat tartalmazza.
 

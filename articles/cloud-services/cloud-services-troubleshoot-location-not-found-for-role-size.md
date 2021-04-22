@@ -1,58 +1,58 @@
 ---
-title: A LocationNotFoundForRoleSize hibáinak megoldása a Cloud Service (klasszikus) Azure-ba történő telepítésekor | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan oldható fel a LocationNotFoundForRoleSize kivétel a Cloud Service (klasszikus) Azure-ba történő telepítésekor.
+title: A LocationNotFoundForRoleSize hibaelhárítása felhőszolgáltatás (klasszikus) Azure-beli virtuális | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan oldható fel a LocationNotFoundForRoleSize kivétel egy (klasszikus) felhőszolgáltatás Azure-ban való üzembe helyezésekor.
 services: cloud-services
-author: mibufo
-ms.author: v-mibufo
+author: mamccrea
+ms.author: mamccrea
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: 2ed889bea715ff5a26bf8e918789429e57fa31b2
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 54af2387ec0ff6c8f86f96821baad17736e8d85b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109662"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877965"
 ---
-# <a name="troubleshoot-locationnotfoundforrolesize-when-deploying-a-cloud-service-classic-to-azure"></a>A LocationNotFoundForRoleSize hibáinak megoldása a Cloud Service (klasszikus) Azure-ba történő telepítésekor
+# <a name="troubleshoot-locationnotfoundforrolesize-when-deploying-a-cloud-service-classic-to-azure"></a>A LocationNotFoundForRoleSize hibaelhárítása felhőszolgáltatás (klasszikus) Azure-ban való üzembe helyezésekor
 
-Ebben a cikkben azokat a foglalási hibákat fogja elhárítani, amelyekben a virtuális gép (VM) mérete nem érhető el az Azure Cloud Service (klasszikus) telepítésekor.
+Ebben a cikkben olyan foglalási hibák elhárítását fogja elhárítani, amelyek miatt a (klasszikus) Azure-felhőszolgáltatás üzembe helyezésekor nem érhető el virtuálisgép-méret.
 
-Ha a példányokat egy felhőalapú szolgáltatásba (klasszikus) telepíti, vagy új webes vagy feldolgozói szerepkör-példányokat ad hozzá, Microsoft Azure kioszt egy számítási erőforrást.
+Amikor példányokat helyez üzembe egy felhőszolgáltatásban (klasszikus), vagy új webes vagy feldolgozói szerepkörpéldányokat ad hozzá, a Microsoft Azure lefoglalja a számítási erőforrásokat.
 
-Időnként előfordulhat, hogy a műveletek során még az Azure-előfizetési korlát elérése előtt is hibákat fog kapni.
+Előfordulhat, hogy hibaüzenet jelenik meg ezen műveletek során, még az Azure-előfizetés korlátjának elérését megelőzően is.
 
 > [!TIP]
-> Az információk akkor is hasznosak lehetnek, ha a szolgáltatások üzembe helyezését tervezi.
+> Ezek az információk a szolgáltatások üzembe helyezésének megtervekor is hasznosak lehetnek.
 
 ## <a name="symptom"></a>Hibajelenség
 
-A naplók megtekintéséhez a Azure Portal navigáljon a Cloud Service-be (klasszikus), és az oldalsávon válassza a *műveleti napló (klasszikus)* lehetőséget.
+A Azure Portal nyissa meg a Felhőszolgáltatást (klasszikus), majd az oldalsávon válassza a Műveleti napló *(klasszikus)* lehetőséget a naplók megtekintéséhez.
 
-![A képen a művelet napló (klasszikus) panel látható.](./media/cloud-services-troubleshoot-location-not-found-for-role-size/cloud-services-troubleshoot-allocation-logs.png)
+![A képen a Műveleti napló (klasszikus) panel látható.](./media/cloud-services-troubleshoot-location-not-found-for-role-size/cloud-services-troubleshoot-allocation-logs.png)
 
-Ha megvizsgálja a Cloud Service naplóit (klasszikus), a következő kivétel jelenik meg:
+A felhőszolgáltatás (klasszikus) naplóinak vizsgálatakor a következő kivételt fogja látni:
 
 |Kivétel típusa  |Hibaüzenet  |
 |---------|---------|
-|LocationNotFoundForRoleSize     |A (z `{Operation ID}` ) "" művelet sikertelen volt: a kért virtuálisgép-platform jelenleg nem érhető el a (z) régióban () ehhez az `{Region ID}` előfizetéshez. Próbálkozzon másik szinten, vagy helyezzen üzembe egy másik helyet.|
+|LocationNotFoundForRoleSize     |A" művelet sikertelen: "A kért virtuálisgép-szint jelenleg nem érhető el az előfizetés `{Operation ID}` régiója ( `{Region ID}` ) esetében. Próbálkozzon egy másik szint vagy üzembe helyezés egy másik helyen."|
 
 ## <a name="cause"></a>Ok
 
-Van egy kapacitási probléma azzal a régióval vagy fürttel, amelyet üzembe helyez. A *LocationNotFoundForRoleSize* kivétel akkor fordul elő, ha a kiválasztott erőforrás-SKU (virtuális gép mérete) nem érhető el a megadott régióhoz.
+Kapacitási probléma van azzal a régióval vagy fürtgal, ahol az üzembe helyezést el kell helyezni. A *LocationNotFoundForRoleSize* kivétel akkor fordul elő, ha a kiválasztott erőforrás-termékváltozat (virtuálisgép-méret) nem érhető el a megadott régióban.
 
 ## <a name="solution"></a>Megoldás
 
-Ebben a forgatókönyvben egy másik régiót vagy SKU-t kell kiválasztania a Cloud Service (klasszikus) a rendszerbe való üzembe helyezéséhez. A Cloud Service (klasszikus) üzembe helyezése vagy frissítése előtt meghatározhatja, hogy mely SKU-helyek érhetők el egy adott régióban vagy rendelkezésre állási zónában. Kövesse az alábbi [Azure CLI](#list-skus-in-region-using-azure-cli)-, [PowerShell](#list-skus-in-region-using-powershell)-vagy [REST API](#list-skus-in-region-using-rest-api) -folyamatokat.
+Ebben a forgatókönyvben egy másik régiót vagy termékváltozatot kell választania a felhőszolgáltatás (klasszikus) üzembe helyezéséhez. A felhőszolgáltatás (klasszikus) üzembe helyezése vagy frissítése előtt meghatározhatja, hogy mely termékkódok érhetők el egy régióban vagy rendelkezésre állási zónában. Kövesse az [azure cli,](#list-skus-in-region-using-azure-cli) [a PowerShell](#list-skus-in-region-using-powershell) [vagy REST API](#list-skus-in-region-using-rest-api) alábbi folyamatokat.
 
-### <a name="list-skus-in-region-using-azure-cli"></a>Az Azure CLI-t használó régióban található SKU-lista listázása
+### <a name="list-skus-in-region-using-azure-cli"></a>A régióban található SKUS-k listái az Azure CLI használatával
 
-Használhatja az [az VM List-SKUs] (/CLI/Azure/VM? View = Azure-CLI-Latest)
-#<a name="az_vm_list_skus-command"></a>az_vm_list_skus) parancs.
+Használhatja az [az vm list-skus](/cli/azure/vm?view=azure-cli-latest
+#<a name="az_vm_list_skus-command"></a>az_vm_list_skus) parancsot.
 
-- A `--location` paraméter használatával szűrheti a kimenetet a használt helyre.
-- A paraméter használatával a `--size` részleges méret neve alapján kereshet.
-- További információ: a [hiba elhárítása az SKU-hoz nem elérhető](../azure-resource-manager/templates/error-sku-not-available.md#solution-2---azure-cli) útmutatóban.
+- A `--location` paraméterrel szűrheti a kimenetet az Ön által használt helyre.
+- A `--size` paraméterrel részleges méretnév alapján kereshet.
+- További információért tekintse meg a "Nem érhető el a [termékváltozat"](../azure-resource-manager/templates/error-sku-not-available.md#solution-2---azure-cli) hiba elhárítása útmutatót.
 
     **Például:**
 
@@ -60,15 +60,15 @@ Használhatja az [az VM List-SKUs] (/CLI/Azure/VM? View = Azure-CLI-Latest)
     az vm list-skus --location southcentralus --size Standard_F --output table
     ```
 
-    **Példa eredményei:** ![ Az Azure CLI kimenete az "az VM List-SKUs--Location southcentralus--size Standard_F--output Table" parancs futtatásához, amely megjeleníti az elérhető SKU-ket.](./media/cloud-services-troubleshoot-constrained-allocation-failed/cloud-services-troubleshoot-constrained-allocation-failed-1.png)
+    **Példaeredmények:** ![ Az "az vm list-skus --location southcentralus --size Standard_F --output table" parancs futtatásának Azure CLI-kimenete, amely az elérhető termékkódokat jeleníti meg.](./media/cloud-services-troubleshoot-constrained-allocation-failed/cloud-services-troubleshoot-constrained-allocation-failed-1.png)
 
-#### <a name="list-skus-in-region-using-powershell"></a>Az SKU listázása a régióban a PowerShell használatával
+#### <a name="list-skus-in-region-using-powershell"></a>A régióban található SKUS-k felsorolása a PowerShell használatával
 
-Használhatja a [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) parancsot.
+Használhatja a [Get-AzComputeResourceSku parancsot.](/powershell/module/az.compute/get-azcomputeresourcesku)
 
-- Az eredmények kiszűrése hely szerint.
-- Ehhez a parancshoz a PowerShell legújabb verzióját kell megadnia.
-- További információ: a [hiba elhárítása az SKU-hoz nem elérhető](../azure-resource-manager/templates/error-sku-not-available.md#solution-1---powershell) útmutatóban.
+- Szűrje az eredményeket hely szerint.
+- Ehhez a parancshoz a PowerShell legújabb verziójával kell lennie.
+- További információért tekintse meg a "Nem érhető el a [termékváltozat"](../azure-resource-manager/templates/error-sku-not-available.md#solution-1---powershell) hiba elhárítása útmutatót.
 
 **Például:**
 
@@ -76,23 +76,23 @@ Használhatja a [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azc
 Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
 ```
 
-**Más hasznos parancsok:**
+**Néhány további hasznos parancs:**
 
-A méretet (Standard_DS14_v2) tartalmazó tárolóhelyek kiszűrése:
+Szűrje ki a méretet tartalmazó helyeket (Standard_DS14_v2):
 
 ```azurepowershell
 Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_DS14_v2")}
 ```
 
-A méretet (v3) tartalmazó összes tárolóhely kiszűrése:
+Szűrje ki a méretet (V3) tartalmazó összes helyet:
 
 ```azurepowershell
 Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("v3")} | fc
 ```
 
-#### <a name="list-skus-in-region-using-rest-api"></a>A régióban található SKU-ket REST API használatával listázhatja
+#### <a name="list-skus-in-region-using-rest-api"></a>List SKUs in region using REST API
 
-Használhatja a [Resource SKU-List](/rest/api/compute/resourceskus/list) műveletet. Az elérhető SKU-ket és régiókat a következő formátumban adja vissza:
+Használhatja az [Erőforrás-Skus – List műveletet.](/rest/api/compute/resourceskus/list) Az elérhető SKUs-okat és régiókat a következő formátumban adja vissza:
 
 ```json
 {
@@ -125,9 +125,9 @@ Használhatja a [Resource SKU-List](/rest/api/compute/resourceskus/list) művele
 
 ## <a name="next-steps"></a>Következő lépések
 
-További lefoglalási hibák megoldásához és a generált eszközök jobb megismeréséhez:
+További foglalási hibamegoldások és azok generálása jobb érthetőség érdekében:
 
 > [!div class="nextstepaction"]
-> [Foglalási hibák – Cloud Service (klasszikus)](cloud-services-allocation-failures.md)
+> [Foglalási hibák – Felhőszolgáltatás (klasszikus)](cloud-services-allocation-failures.md)
 
-Ha az Azure-beli probléma nem szerepel ebben a cikkben, látogasson el az MSDN webhelyen található Azure-fórumokra, [és stack overflow](https://azure.microsoft.com/support/forums/). Felteheti a problémát ezekben a fórumokon, vagy közzéteheti a [ @AzureSupport Twitteren](https://twitter.com/AzureSupport). Azure-támogatási kérelmet is küldhet. Ha támogatási kérést szeretne küldeni, az [Azure-támogatás](https://azure.microsoft.com/support/options/) lapon válassza a *támogatás* lekérése lehetőséget.
+Ha a cikk nem foglalkozik az Azure-ral kapcsolatos probléma megoldásával, látogasson el az [MSDN-ről](https://azure.microsoft.com/support/forums/)az Azure fórumára, és Stack Overflow. A problémát közzétenheti ezeken a fórumokon, vagy közzétenheti a [ @AzureSupport twitteren.](https://twitter.com/AzureSupport) Elküldhet egy Azure-támogatás is. Támogatási kérés elküldését a támogatási [Azure-támogatás](https://azure.microsoft.com/support/options/) oldalon válassza a *Támogatás kérése lehetőséget.*

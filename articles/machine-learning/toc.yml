@@ -326,12 +326,12 @@
             - name: Címkézett adathalmazok létrehozása
               displayName: 'data, labels, torchvision'
               href: how-to-use-labeled-dataset.md
-        - name: Adatok & előkészítése
+        - name: Az & előkészítése
           items:
             - name: Adatbetöltés az Azure Data Factoryvel
               displayName: 'data, ingestion, adf'
               href: how-to-data-ingest-adf.md
-            - name: Adat-előkészítés Azure Synapse
+            - name: Adatok előkészítése Azure Synapse
               displayName: 'data, data prep, spark, spark pool, cluster, spark cluster,dataset, datastore'
               href: how-to-data-prep-synapse-spark-pool.md
             - name: DevOps használata adatfeldolgozáshoz
@@ -393,7 +393,7 @@
             - name: 'Futtatás nyomon követése, figyelése és elemzése'
               displayName: 'cancel, fail, status, child run'
               href: how-to-track-monitor-analyze-runs.md
-            - name: Napló & metrikák és naplófájlok megtekintése
+            - name: Naplók & metrikák és naplófájlok megtekintése
               displayName: 'troubleshoot, log, files, tracing, metrics'
               href: how-to-log-view-metrics.md
             - name: Futtatások megjelenítése a TensorBoard használatával
@@ -437,9 +437,6 @@
         - name: Automatizált gépi tanulás használata a Databricksszel
           displayName: automl
           href: how-to-configure-databricks-automl-environment.md
-        - name: Távoli számítógépcélok használata
-          displayName: automl automated auto ml
-          href: how-to-auto-train-remote.md
         - name: Előrejelzési modellek automatikus betanítása
           displayName: time series
           href: how-to-auto-train-forecast.md
@@ -622,7 +619,7 @@
       displayName: 'environments, curated environments'
       href: resource-curated-environments.md
     - name: Azure CLI
-      href: /cli/azure/ext/azure-cli-ml/ml
+      href: /cli/azure/ml
 - name: További források
   items:
     - name: Kibocsátási megjegyzések

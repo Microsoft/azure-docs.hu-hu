@@ -8,27 +8,27 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/15/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3dd971ff36bde02072d14c465dbafec2823b256d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 63c7fe703a1fbf4cb46532085a33efd74e6a76ef
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780316"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875376"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Rövid útmutató: Új Azure Database for MySQL létrehozása az Azure CLI használatával
 
 > [!TIP]
-> Érdemes lehet az [egyszerűbb az mysql up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI-parancsot használni (jelenleg előzetes verzióban érhető el). Próbálja ki a [rövid útmutatót.](./quickstart-create-server-up-azure-cli.md)
+> Érdemes lehet az [egyszerűbb az mysql up](/cli/azure/mysql#az_mysql_up) Azure CLI-parancsot használni (jelenleg előzetes verzióban érhető el). Próbálja ki a [rövid útmutatót.](./quickstart-create-server-up-azure-cli.md)
 
-Ez a rövid útmutató bemutatja, hogyan [](https://shell.azure.com) hozhat létre Azure Cloud Shell Azure [CLI-parancsokkal](/cli/azure/get-started-with-azure-cli) Azure Database for MySQL kiszolgálót öt perc alatt. 
+Ez a rövid útmutató bemutatja, hogyan [](https://shell.azure.com) hozhat létre Azure Cloud Shell azure [cli-parancsokkal](/cli/azure/get-started-with-azure-cli) Azure Database for MySQL kiszolgálót öt perc alatt. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - Ehhez a rövid útmutatóhoz az Azure CLI 2.0-s vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
+ - Ehhez a rövid útmutatóhoz az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
- - Válassza ki az adott előfizetést a fiókjában [az az account set paranccsal.](/cli/azure/account) Jegyezze fel  az az **login** output parancs id értékét, amely a subscription argumentum értékeként lesz használva a parancsban.  Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetését az [az account list használatával használhatja.](/cli/azure/account#az_account_list)
+ - Válassza ki a fiókjában az adott előfizetést [az az account set paranccsal.](/cli/azure/account) Jegyezze fel  az az **login** kimenet azonosítóértékét,  amely a subscription argumentum értékeként lesz használva a parancsban. Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetését az [az account list használatával használhatja.](/cli/azure/account#az_account_list)
 
    ```azurecli
    az account set --subscription <subscription id>
@@ -51,22 +51,22 @@ A fenti argumentumok részletei a következőek:
 
 **Beállítás** | **Mintaérték** | **Leírás**
 ---|---|---
-name | mydemoserver | Adjon meg egy egyedi nevet a Azure Database for MySQL számára. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. 3–63 karakter hosszúságú lehet.
+name | mydemoserver | Adjon egyedi nevet a Azure Database for MySQL kiszolgálónak. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. 3–63 karakter hosszúságú lehet.
 resource-group | myResourceGroup | Adja meg az Azure-erőforráscsoport nevét.
 location | westus | A kiszolgáló Azure-helye.
 admin-user | myadmin | A rendszergazda bejelentkezéshez használt felhasználóneve. Nem lehet **azure_superuser**, **admin**, **administrator**, **root**, **guest** vagy **public**.
 admin-password | *secure password* | A rendszergazda felhasználó jelszava. A jelszó 8–128 karakterből állhat. A jelszónak legalább háromféle karaktert tartalmaznia kell a következő kategóriák közül: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek.
-sku-name|GP_Gen5_2|Adja meg a tarifacsomag és a számítási konfiguráció nevét. A {tarifacsomag}_{számítási generáció}_{virtuális magok} mintát követi rövidített módon. További [információért tekintse meg](./concepts-pricing-tiers.md) a tarifacsomagokat.
+sku-name|GP_Gen5_2|Adja meg a tarifacsomag és a számítási konfiguráció nevét. A {tarifacsomag}_{számítási generáció}_{virtuális magok} mintát követi rövidített módon. További [információért tekintse meg a](./concepts-pricing-tiers.md) tarifacsomagokat.
 
 >[!IMPORTANT] 
 >- A kiszolgálón az alapértelmezett MySQL-verzió az 5.7-es. Jelenleg 5.6-os és 8.0-s verziók is elérhetők.
 >- Az **az mysql server create** parancs összes argumentumának megtekintéséhez tekintse meg ezt a [referenciadokumentumot.](/cli/azure/mysql/server#az_mysql_server_create)
->- Az SSL alapértelmezés szerint engedélyezve van a kiszolgálón. Az SSL-hez való további infroamtionról lásd: [SSL-kapcsolat konfigurálása](howto-configure-ssl.md)
+>- Az SSL alapértelmezés szerint engedélyezve van a kiszolgálón. Az SSL-lel kapcsolatos további problémákért lásd: [SSL-kapcsolat konfigurálása](howto-configure-ssl.md)
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály konfigurálása 
-Alapértelmezés szerint a létrehozott új kiszolgálót tűzfalszabályok védik, és nem érhetők el nyilvánosan. A tűzfalszabályt az [az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule) paranccsal konfigurálhatja a kiszolgálón. Ez lehetővé teszi a helyi csatlakozást a kiszolgálóhoz.
+Alapértelmezés szerint a létrehozott új kiszolgáló tűzfalszabályokkal van védve, és nem érhető el nyilvánosan. A tűzfalszabályt az [az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule) paranccsal konfigurálhatja a kiszolgálón. Ez lehetővé teszi a helyi csatlakozást a kiszolgálóhoz.
 
-A következő példában egy olyan `AllowMyIP` nevű tűzfalszabályt hozunk létre, amely a 192.168.0.1 IP-címről engedélyezi a kapcsolódást. Cserélje le azt az IP-címet, amelyről csatlakozni fog. Szükség esetén IP-címtartományt is használhat. Nem tudom, hogyan keresse meg az IP-címét, majd keresse meg [https://whatismyipaddress.com/](https://whatismyipaddress.com/) az IP-címét.
+A következő példában egy olyan `AllowMyIP` nevű tűzfalszabályt hozunk létre, amely a 192.168.0.1 IP-címről engedélyezi a kapcsolódást. Cserélje le azt az IP-címet, amelyről csatlakozni fog. Szükség esetén IP-címtartományt is használhat. Nem tudom, hogyan keresse meg az IP-címet, majd keresse fel az [https://whatismyipaddress.com/](https://whatismyipaddress.com/) IP-címét.
 
 ```azurecli-interactive
 az mysql server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1

@@ -8,24 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/25/2021
+ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 1d167962e22953a4a9ca69ece347f8427b9218c9
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 820b5f39192fffa0ec54b44c6016965599d85a8c
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107836247"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107863694"
 ---
 # <a name="start-translation"></a>Fordítás kezdése
 
-Ezzel az API-val tömeges (kötegelt) fordítási kérelmet indít el a Document Translation szolgáltatással. Minden kérés több dokumentumot tartalmazhat, és minden dokumentumhoz tartalmaznia kell egy forrás- és céltárolót.
+Ezzel az API-val tömeges (kötegelt) fordítási kérelmet indít el a Document Translation szolgáltatással. Minden kérés több dokumentumot is tartalmazhat, és minden dokumentumhoz tartalmaznia kell egy forrás- és céltárolót.
 
 Az előtag- és utótagszűrő (ha meg van adva) a mappák szűréséhez használható. Az előtag a tároló neve utáni aloldalra lesz alkalmazva.
 
-Szószedetek/fordítási memória is szerepeltethető a kérésben, és a szolgáltatás alkalmazza őket a dokumentum fordításakor.
+Szószedetek/fordítási memória is szerepeltethető a kérésben, és a szolgáltatás a dokumentum fordításakor alkalmazza.
 
-Ha a szószedet érvénytelen vagy nem érhető el a fordítás során, a dokumentum állapota hibát jelez. Ha már létezik ilyen nevű fájl a célhelyen, a rendszer felülírja azt. Az egyes célnyelvek targetUrl-ének egyedinek kell lennie.
+Ha a szószedet érvénytelen vagy nem érhető el a fordítás során, a dokumentum állapota hibát jelez. Ha már létezik ilyen nevű fájl a célhelyen, a rendszer felülírja. Az egyes célnyelvek targetUrl-ének egyedinek kell lennie.
 
 ## <a name="request-url"></a>URL-cím kérése
 
@@ -34,12 +34,12 @@ Kérés küldése a `POST` következőre:
 POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches
 ```
 
-Megtudhatja, hogyan találhatja meg [az egyéni tartománynevet.](../get-started-with-document-translation.md#find-your-custom-domain-name)
+Ismerje meg, hogyan találhatja meg [az egyéni tartománynevét.](../get-started-with-document-translation.md#find-your-custom-domain-name)
 
 > [!IMPORTANT]
 >
-> * **A Document Translation szolgáltatásnak minden API-kéréséhez egyéni tartományvégpontra van szükség.**
-> * Nem használhatja az erőforráskulcsok és Azure Portal  oldalán található végpontot, sem a globális fordítóvégpontot – a Dokumentumfordítás szolgáltatásnak `api.cognitive.microsofttranslator.com` való HTTP-kérések igénylésére.
+> * **A Document Translation szolgáltatásnak minden API-kérelemhez egyéni tartományvégpontra van szükség.**
+> * Nem használhatja az erőforráskulcsok és -végpontok oldalán található végpontot Azure Portal, sem a globális fordítóvégpontot– a  `api.cognitive.microsofttranslator.com` dokumentumfordításra vonatkozó HTTP-kérések igénylésére.
 
 ## <a name="request-headers"></a>Kérésfejlécek
 
@@ -76,7 +76,7 @@ A bemeneti dokumentumok forrása.
 |filter.suffix|sztring|Hamis|Kis- és nagybetűket megkülönböztető utótagsring a dokumentumok forrásútvonalon való szűréséhez a fordításhoz. Ez leggyakrabban fájlkiterjesztéshez használható.|
 |language|sztring|Hamis|Nyelvi kód Ha nincs megadva, a rendszer automatikusan észleli a dokumentumot.|
 |sourceUrl|sztring|True (Igaz)|A mappa/tároló vagy egyetlen fájl helye a dokumentumokkal.|
-|storageSource|StorageSource|Hamis|Az alábbiakban felsorolt StorageSource.|
+|storageSource|StorageSource|Hamis|A StorageSource az alábbi listában látható.|
 |storageSource.AzureBlob|sztring|Hamis||
 
 **inputs.storageType**
@@ -97,7 +97,7 @@ A kész lefordított dokumentumok célhelye.
 |category|sztring|Hamis|Kategória/egyéni rendszer a fordítási kéréshez.|
 |Szószedetek|Szószedet[]|Hamis|Az alábbiakban felsorolt szószedet. Szószedetlista.|
 |glossaries.format|sztring|Hamis|Formátum.|
-|glossaries.glossaryUrl|sztring|Igaz (ha szószedeteket használ)|A szószedet helye. Ha a formátumparaméter nincs megadva, a fájlkiterjesztéssel fogjuk kinyerni a formázást. Ha a fordítási nyelvpár nincs jelen a szószedetben, akkor nem lesz alkalmazva.|
+|glossaries.glossaryUrl|sztring|Igaz (szószedetek használata esetén)|A szószedet helye. Ha a formátumparaméter nincs megadva, a fájlkiterjesztéssel fogjuk kinyerni a formázást. Ha a fordítási nyelvpár nincs jelen a szószedetben, akkor nem lesz alkalmazva.|
 |glossaries.storageSource|StorageSource|Hamis|A fent felsorolt StorageSource.|
 |targetUrl|sztring|True (Igaz)|A mappa/tároló helye a dokumentumokkal.|
 |language|sztring|True (Igaz)|Kétbetűs célnyelvi kód. Lásd [a nyelvkódok listáját.](../../language-support.md)|
@@ -128,9 +128,9 @@ Az alábbiakban példákat talál a kötegelt kérelmekre.
 }
 ```
 
-**Egy szószedeteket alkalmazó tárolóban található összes dokumentum lefordítása**
+**Egy tárolóban található összes dokumentum lefordítása szószedetek alkalmazásával**
 
-Győződjön meg arról, hogy létrehozta a szószedet URL& SAS-jogkivonatot az adott blobhoz/dokumentumhoz (nem a tárolóhoz)
+Győződjön meg arról, hogy létrehozta a szószedet URL-& SAS-jogkivonathoz az adott blobhoz/dokumentumhoz (nem a tárolóhoz)
 
 ```json
 {
@@ -160,7 +160,7 @@ Győződjön meg arról, hogy létrehozta a szószedet URL& SAS-jogkivonatot az 
 
 **Tároló adott mappájának fordítása**
 
-Győződjön meg arról, hogy a szűrőben előtagként a mappanevet (a kis- és nagybetűket megkülönböztetve) adja meg, bár az SAS-jogkivonat továbbra is a tárolóhoz van megadva.
+Győződjön meg arról, hogy a szűrőben előtagként a mappanevet (megkülönböztetve a kis- és nagybetűket) adott meg, bár az SAS-jogkivonat továbbra is a tárolóhoz van megadva.
 
 ```json
 {
@@ -185,9 +185,9 @@ Győződjön meg arról, hogy a szűrőben előtagként a mappanevet (a kis- és
 
 **Adott dokumentum fordítása egy tárolóban**
 
-* Győződjön meg arról, hogy a "storageType": "File" értéket adott meg
-* Győződjön meg arról, hogy létrehozta a forrás URL& SAS-jogkivonatot az adott blobhoz/dokumentumhoz (nem a tárolóhoz)
-* Győződjön meg arról, hogy a cél URL-cím részeként meg lett adva a célfájlnév, bár az SAS-jogkivonat továbbra is a tárolóhoz van megadva.
+* Győződjön meg arról, hogy a "storageType": "File" értéket adja meg
+* Győződjön meg arról, hogy a forrás URL-& sas-jogkivonatot hozott létre az adott blobhoz/dokumentumhoz (nem a tárolóhoz)
+* Győződjön meg arról, hogy a célKÉNT megadott fájlnevet a cél URL-cím részeként adja meg, bár az SAS-jogkivonat továbbra is a tárolóhoz van megadva.
 * Az alábbi mintakérés egyetlen dokumentumot mutat be, amely két célnyelvre lesz lefordítva
 
 ```json
@@ -215,13 +215,13 @@ Győződjön meg arról, hogy a szűrőben előtagként a mappanevet (a kis- és
 
 ## <a name="response-status-codes"></a>Válasz állapotkódok
 
-A kérések által visszaadott lehetséges HTTP-állapotkódok a következők.
+A kérés által visszaadott lehetséges HTTP-állapotkódok a következők.
 
 |Állapotkód|Description|
 |--- |--- |
-|202|Elfogadott. A sikeres kérést és a kötegelt kérést a szolgáltatás hozta létre. A fejléc Operation-Location url-címet fog jelezni az ID.HeadersOperation-Location: sztring művelettel|
+|202|Elfogadott. A sikeres kérést és a kötegelt kérelmet a szolgáltatás hozta létre. A fejléc Operation-Location állapot URL-címét jelöli, amely tartalmazza az ID.HeadersOperation-Location: sztring műveletet|
 |400|Hibás kérés. Érvénytelen kérés. Ellenőrizze a bemeneti paramétereket.|
-|401|Jogosulatlan. Ellenőrizze hitelesítő adatait.|
+|401|Jogosulatlan. Ellenőrizze a hitelesítő adatait.|
 |429|A kérelmek sebessége túl magas.|
 |500|Belső kiszolgálóhiba.|
 |503|A szolgáltatás jelenleg nem érhető el.  Próbálkozzon újra később.|
@@ -233,17 +233,17 @@ A kérések által visszaadott lehetséges HTTP-állapotkódok a következők.
 |--- |--- |--- |
 |code|sztring|Magas szintű hibakódokat tartalmazó felsorolások. Lehetséges értékek:<br/><ul><li>InternalServerError</li><li>InvalidArgument (Érvénytelen nyelv)</li><li>InvalidRequest (Érvénytelen kérdés)</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nem engedélyezett</li></ul>|
 |message|sztring|Magas szintű hibaüzenetet kap.|
-|innerError|InnerErrorV2|Új belső hibaformátum, amely megfelel Cognitive Services API-irányelveknek. Tartalmazza a szükséges ErrorCode tulajdonságokat, az üzenetet és az opcionális céltulajdonságokat, a részleteket (kulcs-érték párt), a belső hibát (ez beágyazható).|
+|innerError|InnerErrorV2|Új belső hibaformátum, amely megfelel Cognitive Services API-irányelveknek. Tartalmazza a következő kötelező tulajdonságokat: ErrorCode, üzenet és opcionális céltulajdonság, részletek (kulcs-érték pár), belső hiba (ez beágyazható).|
 |Belső. Hibakód|sztring|Lekérte a kód hibasringet.|
 |innerError.message|sztring|Magas szintű hibaüzenetet kap.|
 
 ## <a name="examples"></a>Példák
 
-### <a name="example-successful-response"></a>Példa a sikeres válaszra
+### <a name="example-successful-response"></a>Példa sikeres válaszra
 
 A sikeres válasz az alábbi adatokat tartalmazza.
 
-A feladatazonosítót a POST-metódus válaszfejlécében, az URLOperation-Location találja. Az URL-cím utolsó paramétere a művelet feladatazonosítója (a "/operation/" sztring).
+A feladatazonosítót a POST metódus válaszfejlécében, az URLOperation-Location találja. Az URL-cím utolsó paramétere a művelet feladatazonosítója (a "/operation/" sztring).
 
 ```HTTP
 Operation-Location: https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0.preview.1/operation/0FA2822F-4C2A-4317-9C20-658C801E0E55

@@ -1,6 +1,6 @@
 ---
 title: Telepítés & CLI Azure Machine Learning használatával
-description: Megtudhatja, hogyan használhatja az Azure CLI ML-bővítményt erőforrások &, például a munkaterület, az adattárolók, az adatkészletek, a folyamatok, a modellek és az üzemelő példányok kezeléséhez.
+description: Megtudhatja, hogyan használhatja a gépi tanuláshoz használható Azure CLI-bővítményt & erőforrások, például a munkaterület, az adattárolók, az adatkészletek, a folyamatok, a modellek és az üzemelő példányok kezeléséhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,44 +9,44 @@ ms.author: jordane
 author: jpe316
 ms.date: 04/02/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 8e912e141ab769f3121fcccdecb9c3952920572f
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: f30cd528a329708a7478b1a4a343f7be3b9eac04
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516212"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877785"
 ---
-# <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Telepítse & cli-bővítményt a Azure Machine Learning
+# <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Telepítse & cli bővítményt a Azure Machine Learning
 
 
-A Azure Machine Learning CLI az Azure CLI egy platformfüggetlen parancssori felülete, az [Azure-platform](/cli/azure/)bővítménye. Ez a bővítmény parancsokat biztosít a Azure Machine Learning. Lehetővé teszi a gépi tanulási tevékenységek automatizálását. Az alábbi lista néhány példaműveletet mutat be a CLI-bővítményhez:
+A Azure Machine Learning CLI az [Azure CLI](/cli/azure/)egy, az Azure platformfüggetlen parancssori felülete. Ez a bővítmény parancsokat biztosít a Azure Machine Learning. Lehetővé teszi a gépi tanulási tevékenységek automatizálását. Az alábbi lista néhány példaműveletet mutat be, amelyekre a CLI-bővítményt használhatja:
 
 + Kísérletek futtatása gépi tanulási modellek létrehozásához
 
 + Gépi tanulási modellek regisztrálása ügyfélhasználathoz
 
-+ A gépi tanulási modellek csomagolása, üzembe helyezése és nyomon követése
++ A gépi tanulási modellek csomagolása, üzembe helyezése és életciklusának nyomon követése
 
-A CLI nem helyettesíti a Azure Machine Learning SDK-t. Ez egy kiegészítő eszköz, amely úgy van optimalizálva, hogy jól paraméterezett feladatokat kezeljen, amelyek jól illeszkednek az automatizáláshoz.
+A CLI nem helyettesíti a Azure Machine Learning SDK-t. Ez egy kiegészítő eszköz, amely az automatizáláshoz jól illeszkedő, nagymértékben paraméterezett feladatok kezelésére van optimalizálva.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A CLI-hez Azure-előfizetéssel kell lennie. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a Azure Machine Learning [ingyenes vagy fizetős](https://aka.ms/AMLFree) verzióját.
+* A CLI-hez Azure-előfizetéssel kell rendelkezik. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a Azure Machine Learning [ingyenes vagy Azure Machine Learning](https://aka.ms/AMLFree) verzióját.
 
-* Az ebben a dokumentumban használt CLI-parancsoknak a helyi **környezetből** való használatára az [Azure CLI-nek kell szüksége.](/cli/azure/install-azure-cli)
+* A dokumentum cli-parancsainak a helyi környezetből való használatával az [Azure CLI-nek kell használnia.](/cli/azure/install-azure-cli)
 
-    Ha a Azure Cloud Shell [használja,](https://azure.microsoft.com/features/cloud-shell/)a CLI a böngészőn keresztül érhető el, és a felhőben van.
+    Ha a [(Azure Cloud Shell)](https://azure.microsoft.com/features/cloud-shell/)használatával használja, a CLI a böngészőn keresztül érhető el, és a felhőben működik.
 
 ## <a name="full-reference-docs"></a>Teljes referencia-dokumentumok
 
-Keresse meg [az Azure CLI azure-cli-ml](/cli/azure/ml/)bővítményének teljes referencia-dokumentumokját.
+Az [Azure CLI azure-cli-ml](/cli/azure/ml/)bővítményének teljes referencia-útmutatóját itt találja: .
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>A CLI csatlakoztatása az Azure-előfizetéshez
 
 > [!IMPORTANT]
-> Ha a következőt használja Azure Cloud Shell, kihagyhatja ezt a szakaszt. A Cloud Shell automatikusan hitelesíti Az Azure-előfizetésbe bejelentkező fiókkal.
+> Ha a következőt használja Azure Cloud Shell kihagyhatja ezt a szakaszt. A Cloud Shell automatikusan hitelesíti Az Azure-előfizetésbe bejelentkező fiókkal.
 
-Az Azure-előfizetésben többféleképpen is hitelesítheti magát a CLI-ről. A legfontosabb az interaktív hitelesítés böngésző használatával. Az interaktív hitelesítéshez nyisson meg egy parancssort vagy terminált, és használja a következő parancsot:
+Az Azure-előfizetésben többféleképpen is hitelesítheti magát a CLI-ről. A legfontosabb az interaktív hitelesítés egy böngésző használatával. Az interaktív hitelesítéshez nyisson meg egy parancssort vagy terminált, és használja a következő parancsot:
 
 ```azurecli-interactive
 az login
@@ -56,7 +56,7 @@ Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és bet
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
 
-A hitelesítés egyéb módjaiért lásd: [Bejelentkezés az Azure CLI-val.](/cli/azure/authenticate-azure-cli)
+A hitelesítés egyéb módjaiért lásd: Bejelentkezés az [Azure CLI-val.](/cli/azure/authenticate-azure-cli)
 
 ## <a name="install-the-extension"></a>A bővítmény telepítése
 
@@ -94,7 +94,7 @@ Az alábbi parancsok bemutatják, hogyan használható a parancssori felület a 
     az ml workspace create -w myworkspace -g myresourcegroup
     ```
 
-    További információ: [az ml workspace create.](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-create)
+    További információ: [az ml workspace create.](/cli/azure/ml/workspace#az_ml_workspace_create)
 
 + Csatoljon egy munkaterület-konfigurációt egy mappához a CLI környezetfüggőségének engedélyezéséhez.
 
@@ -102,9 +102,9 @@ Az alábbi parancsok bemutatják, hogyan használható a parancssori felület a 
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
 
-    Ez a parancs létrehoz egy alkönyvtárat, amely példa `.azureml` runconfig- és Conda-környezeti fájlokat tartalmaz. Emellett tartalmaz egy fájlt is, amely a `config.json` munkaterülettel való Azure Machine Learning használható.
+    Ez a parancs létrehoz egy alkönyvtárat, amely példa `.azureml` runconfig- és Conda-környezeti fájlokat tartalmaz. Emellett egy fájlt is tartalmaz, amely a `config.json` munkaterülettel való Azure Machine Learning használható.
 
-    További információ: [az ml folder attach](/cli/azure/ext/azure-cli-ml/ml/folder#ext-azure-cli-ml-az-ml-folder-attach).
+    További információ: [az ml folder attach](/cli/azure/ml/folder#az_ml_folder_attach).
 
 + Azure Blob-tároló csatolása adattárként.
 
@@ -112,7 +112,7 @@ Az alábbi parancsok bemutatják, hogyan használható a parancssori felület a 
     az ml datastore attach-blob  -n datastorename -a accountname -c containername
     ```
 
-    További információ: [az ml datastore attach-blob.](/cli/azure/ext/azure-cli-ml/ml/datastore#ext-azure-cli-ml-az-ml-datastore-attach-blob)
+    További információ: [az ml datastore attach-blob.](/cli/azure/ml/datastore#az_ml_datastore_attach-blob)
 
 + Fájlok feltöltése egy adattárba.
 
@@ -120,7 +120,7 @@ Az alábbi parancsok bemutatják, hogyan használható a parancssori felület a 
     az ml datastore upload  -n datastorename -p sourcepath
     ```
 
-    További információ: [az ml datastore upload.](/cli/azure/ext/azure-cli-ml/ml/datastore#ext-azure-cli-ml-az-ml-datastore-upload)
+    További információ: [az ml datastore upload.](/cli/azure/ml/datastore#az_ml_datastore_upload)
 
 + AKS-fürt csatolása számítási célként.
 
@@ -128,7 +128,7 @@ Az alábbi parancsok bemutatják, hogyan használható a parancssori felület a 
     az ml computetarget attach aks -n myaks -i myaksresourceid -g myresourcegroup -w myworkspace
     ```
 
-    További információ: [az ml computetarget attach aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach#ext-azure-cli-ml-az-ml-computetarget-attach-aks)
+    További információ: [az ml computetarget attach aks](/cli/azure/ml/computetarget/attach#az_ml_computetarget_attach-aks)
 
 ### <a name="compute-clusters"></a>Számítási fürtök
 
@@ -165,7 +165,7 @@ Az alábbi parancsok bemutatják, hogyan használható a parancssori felület a 
         az ml computetarget amlcompute identity assign --name cpu-cluster '[system]'
         ```
 
-További információ: [az ml computetarget create amlcompute](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute).
+További információ: [az ml computetarget create amlcompute](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_amlcompute).
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-note.md)]
 
@@ -180,7 +180,7 @@ Számítási példányok kezelése.  Az alábbi példákban a számítási péld
     az ml computetarget create computeinstance -n cpu -s "STANDARD_D3_V2" -v
     ```
 
-    További információ: [az ml computetarget create computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-computeinstance).
+    További információ: [az ml computetarget create computeinstance](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_computeinstance).
 
 + Számítási példányok leállítása.
 
@@ -188,7 +188,7 @@ Számítási példányok kezelése.  Az alábbi példákban a számítási péld
     az ml computetarget computeinstance stop -n cpu -v
     ```
 
-    További információ: [az ml computetarget computeinstance stop.](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop)
+    További információ: [az ml computetarget computeinstance stop.](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_stop)
 
 + Indítsunk el egy számítástelepítést.
 
@@ -196,7 +196,7 @@ Számítási példányok kezelése.  Az alábbi példákban a számítási péld
     az ml computetarget computeinstance start -n cpu -v
     ```
 
-    További információ: [az ml computetarget computeinstance start.](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start)
+    További információ: [az ml computetarget computeinstance start.](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_start)
 
 + Indítsa újra a computeinstance-t.
 
@@ -204,7 +204,7 @@ Számítási példányok kezelése.  Az alábbi példákban a számítási péld
     az ml computetarget computeinstance restart -n cpu -v
     ```
 
-    További információ: [az ml computetarget computeinstance restart](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart).
+    További információ: [az ml computetarget computeinstance restart](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_restart).
 
 + Számítási példány törlése.
 
@@ -212,7 +212,7 @@ Számítási példányok kezelése.  Az alábbi példákban a számítási péld
     az ml computetarget delete -n cpu -v
     ```
 
-    További információ: [az ml computetarget delete computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget#ext-azure-cli-ml-az-ml-computetarget-delete).
+    További információ: [az ml computetarget delete computeinstance.](/cli/azure/ml/computetarget#az_ml_computetarget_delete)
 
 
 ## <a name="run-experiments"></a><a id="experiments"></a>Kísérletek futtatása
@@ -228,9 +228,9 @@ Számítási példányok kezelése.  Az alábbi példákban a számítási péld
     >
     > Ha olyan Python-szkriptet használ, amely programozott módon hoz létre egy futtatási konfigurációs objektumot, a [RunConfig.save()](/python/api/azureml-core/azureml.core.runconfiguration#save-path-none--name-none--separate-environment-yaml-false-) használatával mentheti runconfig fájlként.
     >
-    > A teljes runconfig séma ebben a [JSON-fájlban található.](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) A séma az egyes objektumok kulcsán `description` keresztül saját maga dokumentálja. Emellett a lehetséges értékekhez enumok is vannak, a végén pedig egy sablonrészlet.
+    > A teljes runconfig séma ebben a [JSON-fájlban található.](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) A séma az egyes objektumok kulcsán `description` keresztül öndokumentumot ad. Emellett a lehetséges értékekhez enumok is vannak, a végén pedig egy sablonrészlet.
 
-    További információ: [az ml run submit-script.](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-submit-script)
+    További információ: [az ml run submit-script.](/cli/azure/ml/run#az_ml_run_submit_script)
 
 * Kísérletek listájának megtekintése:
 
@@ -238,11 +238,11 @@ Számítási példányok kezelése.  Az alábbi példákban a számítási péld
     az ml experiment list
     ```
 
-    További információ: [az ml experiment list.](/cli/azure/ext/azure-cli-ml/ml/experiment#ext-azure-cli-ml-az-ml-experiment-list)
+    További információ: [az ml experiment list.](/cli/azure/ml/experiment#az_ml_experiment_list)
 
 ### <a name="hyperdrive-run"></a>HyperDrive-futtatás
 
-A HyperDrive és az Azure CLI segítségével paraméter-finomhangolási futtatásokat hajthat végre. Először hozzon létre egy HyperDrive konfigurációs fájlt a következő formátumban. A [hiperparaméterek](how-to-tune-hyperparameters.md) finomhangolási paramétereivel kapcsolatos részletekért lásd: Hiperparaméterek hangolása a modellhez.
+A HyperDrive és az Azure CLI használatával paraméter-finomhangolási futtatásokat hajthat végre. Először hozzon létre egy HyperDrive konfigurációs fájlt a következő formátumban. A [hiperparaméterek](how-to-tune-hyperparameters.md) finomhangolási paramétereivel kapcsolatos részletekért lásd: Hiperparaméterek hangolása a modellhez cikkben.
 
 ```yml
 # hdconfig.yml
@@ -268,7 +268,7 @@ Adja hozzá ezt a fájlt a futtatás konfigurációs fájljaival együtt. Ezutá
 az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configuration-name <hdconfig> my_train.py
 ```
 
-Jegyezze *fel a* runconfig és a paramétertér argumentumok szakaszát a HyperDrive konfigurációban.  Ezek tartalmazzák a betanító szkriptnek átadott parancssori argumentumokat. A runconfig értéke minden iterációban ugyanaz marad, míg a HyperDrive-konfiguráció tartománya iterálva van. Ne adja meg ugyanazt az argumentumot mindkét fájlban.
+Jegyezze *fel a* runconfig és a paraméterterület argumentumok szakaszát a HyperDrive konfigurációban.  Ezek tartalmazzák a betanító szkriptnek átadott parancssori argumentumokat. A runconfig értéke minden iterációban ugyanaz marad, míg a HyperDrive-konfiguráció tartománya iterálva van. Ne adja meg ugyanazt az argumentumot mindkét fájlban.
 
 ## <a name="dataset-management"></a>Adatkészlet-kezelés
 
@@ -282,7 +282,7 @@ A következő parancsok bemutatják, hogyan dolgozhat adatkészletekkel a Azure 
 
     Az adatkészlet meghatározásához használt JSON-fájl formátumával kapcsolatos információkért használja a következőt: `az ml dataset register --show-template` .
 
-    További információ: [az ml dataset register.](/cli/azure/ext/azure-cli-ml/ml/dataset#ext-azure-cli-ml-az-ml-dataset-register)
+    További információ: [az ml dataset register.](/cli/azure/ml/dataset#az_ml_dataset_register)
 
 + List all datasets in a workspace (Egy munkaterület összes adatát listába sorolja):
 
@@ -290,7 +290,7 @@ A következő parancsok bemutatják, hogyan dolgozhat adatkészletekkel a Azure 
     az ml dataset list
     ```
 
-    További információ: [az ml dataset list](/cli/azure/ext/azure-cli-ml/ml/dataset#ext-azure-cli-ml-az-ml-dataset-list).
+    További információ: [az ml dataset list](/cli/azure/ml/dataset#az_ml_dataset_list).
 
 + Adatkészlet részleteinek lekérte:
 
@@ -298,7 +298,7 @@ A következő parancsok bemutatják, hogyan dolgozhat adatkészletekkel a Azure 
     az ml dataset show -n dataset-name
     ```
 
-    További információ: [az ml dataset show](/cli/azure/ext/azure-cli-ml/ml/dataset#ext-azure-cli-ml-az-ml-dataset-show).
+    További információ: [az ml dataset show](/cli/azure/ml/dataset#az_ml_dataset_show).
 
 + Adatkészlet regisztrációjának a regisztrációja:
 
@@ -306,7 +306,7 @@ A következő parancsok bemutatják, hogyan dolgozhat adatkészletekkel a Azure 
     az ml dataset unregister -n dataset-name
     ```
 
-    További információ: [az ml dataset unregister](/cli/azure/ext/azure-cli-ml/ml/dataset#ext-azure-cli-ml-az-ml-dataset-archive).
+    További információ: [az ml dataset unregister](/cli/azure/ml/dataset#az_ml_dataset_archive).
 
 ## <a name="environment-management"></a>A környezet kezelése
 
@@ -318,7 +318,7 @@ A következő parancsok bemutatják, hogyan hozhat létre, regisztrálhat és li
     az ml environment scaffold -n myenv -d myenvdirectory
     ```
 
-    További információ: [az ml environment scaffold](/cli/azure/ext/azure-cli-ml/ml/environment#ext-azure-cli-ml-az-ml-environment-scaffold).
+    További információ: [az ml environment scaffold](/cli/azure/ml/environment#az_ml_environment_scaffold).
 
 + Környezet regisztrálása:
 
@@ -326,7 +326,7 @@ A következő parancsok bemutatják, hogyan hozhat létre, regisztrálhat és li
     az ml environment register -d myenvdirectory
     ```
 
-    További információ: [az ml environment register.](/cli/azure/ext/azure-cli-ml/ml/environment#ext-azure-cli-ml-az-ml-environment-register)
+    További információ: [az ml environment register.](/cli/azure/ml/environment#az_ml_environment_register)
 
 + Regisztrált környezetek felsorolása:
 
@@ -334,7 +334,7 @@ A következő parancsok bemutatják, hogyan hozhat létre, regisztrálhat és li
     az ml environment list
     ```
 
-    További információ: [az ml environment list.](/cli/azure/ext/azure-cli-ml/ml/environment#ext-azure-cli-ml-az-ml-environment-list)
+    További információ: [az ml environment list.](/cli/azure/ml/environment#az_ml_environment_list)
 
 + Regisztrált környezet letöltése:
 
@@ -342,7 +342,7 @@ A következő parancsok bemutatják, hogyan hozhat létre, regisztrálhat és li
     az ml environment download -n myenv -d downloaddirectory
     ```
 
-    További információ: [az ml environment download](/cli/azure/ext/azure-cli-ml/ml/environment#ext-azure-cli-ml-az-ml-environment-download).
+    További információ: [az ml environment download](/cli/azure/ml/environment#az_ml_environment_download).
 
 ### <a name="environment-configuration-schema"></a>Környezetkonfigurációs séma
 
@@ -392,7 +392,7 @@ Ha a parancsot használta, az létrehoz egy sablonfájlt, amely módosítható, 
 
 Az alábbi táblázat a JSON-fájl összes legfelső szintű mezőjét, típusát és leírását részletezi. Ha egy objektumtípus egy osztályhoz kapcsolódik a Python SDK-ból, lazán 1:1 egyezés van az egyes JSON-mezők és a nyilvános változók neve között a Python-osztályban. Bizonyos esetekben a mező leképezheti egy konstruktorarátor argumentumát egy osztályváltozó helyett. A mező például `environmentVariables` a osztály `environment_variables` változóját [`Environment`](/python/api/azureml-core/azureml.core.environment%28class%29) leképezi.
 
-| JSON-mező | Típus | Leírás |
+| JSON-mező | Típus | Description |
 |---|---|---|
 | `name` | `string` | A környezet neve. Ne kezdje el a nevet **a Microsoft vagy** az **AzureML használatával.** |
 | `version` | `string` | A környezet verziója. |
@@ -401,7 +401,7 @@ Az alábbi táblázat a JSON-fájl összes legfelső szintű mezőjét, típusá
 | `docker` | [`DockerSection`](/python/api/azureml-core/azureml.core.environment.dockersection) | A környezet specifikációihoz készült Docker-rendszerkép testreszabásához szükséges beállításokat határozza meg. |
 | `spark` | [`SparkSection`](/python/api/azureml-core/azureml.core.environment.sparksection) | A szakasz a Spark beállításait konfigurálja. Csak akkor használatos, ha a keretrendszer PySparkra van beállítva. |
 | `databricks` | [`DatabricksSection`](/python/api/azureml-core/azureml.core.databricks.databrickssection) | Konfigurálja a Databricks-kódtár függőségeit. |
-| `inferencingStackVersion` | `string` | Megadja a lemezképhez hozzáadott következtetési verem verzióját. A következtetési verem hozzáadásának elkerüléséhez hagyja meg ezt a `null` mezőt. Érvényes érték: "latest". |
+| `inferencingStackVersion` | `string` | A lemezképhez hozzáadott következtetési verem verzióját határozza meg. Ha el kell kerülnie a következtetési verem hozzáadását, hagyja meg ezt a `null` mezőt. Érvényes érték: "latest". |
 
 ## <a name="ml-pipeline-management"></a>Gépi tanulási folyamatok kezelése
 
@@ -413,9 +413,9 @@ Az alábbi parancsok bemutatják, hogyan dolgozhat gépi tanulási folyamatokkal
     az ml pipeline create -n mypipeline -y mypipeline.yml
     ```
 
-    További információ: [az ml pipeline create.](/cli/azure/ext/azure-cli-ml/ml/pipeline#ext-azure-cli-ml-az-ml-pipeline-create)
+    További információ: [az ml pipeline create.](/cli/azure/ml/pipeline#az_ml_pipeline_create)
 
-    További információ a folyamat YAML-fájlról: Gépi tanulási folyamatok [definiálás a YAML-ban.](reference-pipeline-yaml.md)
+    A folyamat YAML-fájllal kapcsolatos további információkért lásd: [Gépi tanulási folyamatok definiálja a YAML-ben.](reference-pipeline-yaml.md)
 
 + Folyamat futtatása:
 
@@ -423,9 +423,9 @@ Az alábbi parancsok bemutatják, hogyan dolgozhat gépi tanulási folyamatokkal
     az ml run submit-pipeline -n myexperiment -y mypipeline.yml
     ```
 
-    További információ: [az ml run submit-pipeline.](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-submit-pipeline)
+    További információ: [az ml run submit-pipeline.](/cli/azure/ml/run#az_ml_run_submit_pipeline)
 
-    További információ a folyamat YAML-fájlról: Gépi tanulási folyamatok [definiálás a YAML-ban.](reference-pipeline-yaml.md)
+    A folyamat YAML-fájllal kapcsolatos további információkért lásd: [Gépi tanulási folyamatok definiálja a YAML-ben.](reference-pipeline-yaml.md)
 
 + Folyamat ütemezése:
 
@@ -433,9 +433,9 @@ Az alábbi parancsok bemutatják, hogyan dolgozhat gépi tanulási folyamatokkal
     az ml pipeline create-schedule -n myschedule -e myexpereiment -i mypipelineid -y myschedule.yml
     ```
 
-    További információ: [az ml pipeline create-schedule.](/cli/azure/ext/azure-cli-ml/ml/pipeline#ext-azure-cli-ml-az-ml-pipeline-create-schedule)
+    További információ: [az ml pipeline create-schedule.](/cli/azure/ml/pipeline#az_ml_pipeline_create-schedule)
 
-    A folyamat ütemezési YAML-fájllal kapcsolatos további információkért lásd: Gépi tanulási folyamatok [meghatározása a YAML-ben.](reference-pipeline-yaml.md#schedules)
+    A folyamat ütemezési YAML-fájllal kapcsolatos további információkért lásd: [Gépi tanulási folyamatok meghatározása a YAML-ben.](reference-pipeline-yaml.md#schedules)
 
 ## <a name="model-registration-profiling-deployment"></a>Modellregisztráció, profilkészítés, üzembe helyezés
 
@@ -447,14 +447,14 @@ A következő parancsok bemutatják, hogyan regisztrálhat egy betanított model
     az ml model register -n mymodel -p sklearn_regression_model.pkl
     ```
 
-    További információ: [az ml model register.](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-register)
+    További információ: [az ml model register.](/cli/azure/ml/model#az_ml_model_register)
 
 + **NEM KÖTELEZŐ** Profilt kell használnia a modellről, hogy optimális processzor- és memóriaértékeket kap az üzembe helyezéshez.
     ```azurecli-interactive
     az ml model profile -n myprofile -m mymodel:1 --ic inferenceconfig.json -d "{\"data\": [[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]]}" -t myprofileresult.json
     ```
 
-    További információ: [az ml model profile.](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-profile)
+    További információ: [az ml model profile.](/cli/azure/ml/model#az_ml_model_profile)
 
 + A modell üzembe helyezése az AKS-be
     ```azurecli-interactive
@@ -463,9 +463,9 @@ A következő parancsok bemutatják, hogyan regisztrálhat egy betanított model
     
     A dedíciós konfigurációs fájlsémára vonatkozó további információkért lásd: [Következtetési konfigurációs séma.](#inferenceconfig)
     
-    Az üzembe helyezés konfigurációs fájlsémára vonatkozó további információkért lásd: Üzembe [helyezési konfigurációs séma.](#deploymentconfig)
+    Az üzembe helyezési konfigurációs fájlsémára vonatkozó további információkért lásd: Üzembe [helyezési konfigurációs séma.](#deploymentconfig)
 
-    További információ: [az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy).
+    További információ: [az ml model deploy](/cli/azure/ml/model#az_ml_model_deploy).
 
 <a id="inferenceconfig"></a>
 
@@ -485,12 +485,12 @@ A következő parancsok bemutatják, hogyan regisztrálhat egy betanított model
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aci-deploy-config.md)]
 
-### <a name="azure-kubernetes-service-deployment-configuration-schema"></a>Azure Kubernetes Service konfigurációs sémája
+### <a name="azure-kubernetes-service-deployment-configuration-schema"></a>Azure Kubernetes Service konfigurációs sémájának konfigurálása
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [A parancssori felületi bővítmény Machine Learning parancsreferenciája.](/cli/azure/ext/azure-cli-ml/ml)
+* [A parancssori felületi Machine Learning parancsreferenciája.](/cli/azure/ml)
 
 * [Gépi tanulási modellek betanítása és üzembe helyezése az Azure Pipelines használatával](/azure/devops/pipelines/targets/azure-machine-learning)

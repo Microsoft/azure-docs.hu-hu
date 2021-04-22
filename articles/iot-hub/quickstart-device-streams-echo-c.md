@@ -1,6 +1,6 @@
 ---
-title: Gyors útmutató – kommunikáció az eszköz alkalmazásával C-ben az Azure IoT Hub eszköz streamekkel
-description: Ebben a rövid útmutatóban egy olyan C-eszközön futó alkalmazást futtat, amely egy IoT-eszközzel kommunikál egy eszköz streamen keresztül.
+title: Rövid útmutató – Kommunikáció eszközalkalmazással C-ben Azure IoT Hub eszközstreamekkel
+description: Ebben a rövid útmutatóban egy eszközoldali C-alkalmazást fog futtatni, amely egy eszközstreamen keresztül kommunikál az IoT-eszközzel.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -9,40 +9,40 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: fd179bf17f481ae84f768d619c6ddc0b9afab280
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ce0d0f9df4862d3c8ac8417e257fbf340e41961f
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202552"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864093"
 ---
-# <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Gyors útmutató: a C eszközön lévő alkalmazásokkal való kommunikáció IoT Hub eszköz streamen keresztül (előzetes verzió)
+# <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Rövid útmutató: Kommunikáció egy C-eszközalkalmazással IoT Hub eszközstreamekkel (előzetes verzió)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
-Az Azure IoT Hub jelenleg [előzetes verziójú szolgáltatásként](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)támogatja az eszközök streamjét.
+Azure IoT Hub jelenleg előzetes verziójú funkcióként támogatja az [eszközstreameket.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-[IoT hub az eszközökön elérhető streamek](iot-hub-device-streams-overview.md) lehetővé teszik a szolgáltatás-és eszköz-alkalmazások számára a biztonságos és tűzfalon alapuló kommunikációt. A nyilvános előzetes verzióban a C SDK csak az eszközön található adatfolyamokat támogatja. Ennek eredményeképpen ez a rövid útmutató csak az eszköz oldali alkalmazások futtatására vonatkozó utasításokat tartalmazza. A megfelelő kiszolgálóoldali alkalmazás futtatásához tekintse meg a következő cikkeket:
+[IoT Hub az eszközstreamek](iot-hub-device-streams-overview.md) lehetővé teszik, hogy a szolgáltatás- és eszközalkalmazások biztonságos és tűzfalbarát módon kommunikáljanak. A nyilvános előzetes verzióban a C SDK csak az eszközoldalon támogatja az eszközstreameket. Ennek eredményeképpen ez a rövid útmutató csak az eszközoldali alkalmazás futtatására vonatkozó utasításokat tartalmazza. A megfelelő szolgáltatásoldali alkalmazás futtatásához tekintse meg az alábbi cikkeket:
 
-* [Kommunikáció a C# eszköz alkalmazásaival IoT Hub eszköz streamen keresztül](./quickstart-device-streams-echo-csharp.md)
+* [Kommunikáció eszközalkalmazásokkal C#-ban IoT Hub eszközstreamek segítségével](./quickstart-device-streams-echo-csharp.md)
 
-* [Kommunikáció a Node.js eszköz alkalmazásaival IoT Hub eszköz streamen keresztül](./quickstart-device-streams-echo-nodejs.md)
+* [Kommunikáció az eszközalkalmazásokkal Node.js eszközstreamek IoT Hub keresztül](./quickstart-device-streams-echo-nodejs.md)
 
-Az ebben a rövid útmutatóban található eszköz C alkalmazás a következő funkciókkal rendelkezik:
+Ebben a rövid útmutatóban az eszközoldali C alkalmazás a következő funkciókkal rendelkezik:
 
-* Hozzon létre egy eszköz streamet egy IoT-eszközhöz.
+* Eszközstream létrehozása IoT-eszközre.
 
-* Fogadja a szolgáltatás-oldali alkalmazásból elküldett adatok fogadását, és adja meg a visszavisszhangot.
+* Fogadja a szolgáltatásoldali alkalmazásból küldött adatokat, és megismétli őket.
 
-A kód bemutatja egy eszköz adatfolyamának kezdeményezési folyamatát, valamint azt, hogyan lehet az adatküldésre és fogadásra használni.
+A kód bemutatja az eszközstream kezdeményezési folyamatát, valamint azt, hogyan használható adatok küldására és fogadására.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A következő előfeltételek szükségesek:
+A következő előfeltételekre van szüksége:
 
-* A [Visual Studio 2019](https://www.visualstudio.com/vs/) -es verziójának telepítése a C++ munkaterhelést használó **asztali fejlesztéssel** .
+* Telepítse [Visual Studio 2019-es](https://www.visualstudio.com/vs/) verzióra úgy, hogy engedélyezve van az asztali fejlesztés **A C++ számítási** feladat.
 
 * Telepítse a [Git](https://git-scm.com/download/) legújabb verzióját.
 
@@ -50,23 +50,23 @@ A következő előfeltételek szükségesek:
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-Az adatfolyamok előnézete jelenleg csak a következő régiókban létrehozott IoT hubok esetében támogatott:
+Az eszközstreamek előzetes verziója jelenleg csak a következő régiókban létrehozott IoT Hubok esetében támogatott:
 
   * Az USA középső régiója
-  * USA középső – EUAP
+  * USA középső régiója – EUAP
   * Észak-Európa
   * Délkelet-Ázsia
 
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése
 
-Ebben a rövid útmutatóban a [C Azure IoT Device SDK](iot-hub-device-sdk-c-intro.md)-t használja. Készítse elő az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) -nak a githubról történő klónozásához és létrehozásához használt fejlesztési környezetet. A GitHubon található SDK tartalmazza az ebben a rövid útmutatóban használt mintakód-kódot.
+Ebben a rövid útmutatóban a C-hez készült [Azure IoT eszközoldali SDK-t használja.](iot-hub-device-sdk-c-intro.md) Előkészít egy fejlesztési környezetet, amely az Azure IoT C SDK GitHubról való [klónozásához](https://github.com/Azure/azure-iot-sdk-c) és felépítéséhez használható. A GitHubon elérhető SDK tartalmazza a rövid útmutatóban használt mintakódot.
 
    > [!NOTE]
-   > Az eljárás megkezdése előtt győződjön meg arról, hogy a Visual Studio telepítve van a C++ munkaterheléssel **rendelkező asztali fejlesztéssel** .
+   > Az eljárás megkezdése előtt győződjön meg arról, hogy Visual Studio telepítve van az asztali fejlesztés **C++ alkalmazással számítási feladathoz.**
 
-1. Telepítse a [CMAK-Build rendszerét](https://cmake.org/download/) a letöltési oldalon leírtak szerint.
+1. Telepítse a [CMake buildrendszert a](https://cmake.org/download/) letöltési oldalon leírtak szerint.
 
-1. Nyisson meg egy parancssort vagy a Git Bash-felületet. Futtassa az alábbi parancsokat az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-tárház klónozásához:
+1. Nyisson meg egy parancssort vagy a Git Bash-felületet. Futtassa a következő parancsokat az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-adattár klónozásához:
 
     ```cmd/sh
     git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
@@ -74,25 +74,25 @@ Ebben a rövid útmutatóban a [C Azure IoT Device SDK](iot-hub-device-sdk-c-int
     git submodule update --init
     ```
 
-    A művelet eltarthat néhány percig.
+    Ez a művelet eltarthat néhány percig.
 
-1. Hozzon létre egy *CMAK* -alkönyvtárat a git-tárház gyökérkönyvtárában, és navigáljon a mappához. Futtassa az alábbi parancsokat az *Azure-IOT-SDK-c* könyvtárból:
+1. Hozzon *létre egy cmake* alkönyvtárat a Git-adattár gyökérkönyvtárában, és lépjen erre a mappára. Futtassa a következő parancsokat az *azure-iot-sdk-c könyvtárból:*
 
     ```cmd/sh
     mkdir cmake
     cd cmake
     ```
 
-1. Futtassa az alábbi parancsokat a *CMAK* könyvtárból, hogy az SDK egy olyan verzióját hozza létre, amely a fejlesztői ügyfél platformra jellemző.
+1. Futtassa a következő parancsokat a *cmake* könyvtárból az SDK a fejlesztési ügyfélplatformra jellemző verziójának buildjének felépítéséhez.
 
-   * Linux rendszerben:
+   * Linux rendszeren:
 
       ```bash
       cmake ..
       make -j
       ```
 
-   * A Windows rendszerben nyisson meg egy [fejlesztői parancssort a Visual studióhoz](/dotnet/framework/tools/developer-command-prompt-for-vs). Futtassa a parancsot a Visual Studio-verzióhoz. Ez a rövid útmutató a Visual Studio 2019-et használja. Ezek a parancsok létrehoznak egy Visual Studio-megoldást a *CMAK* könyvtárában a szimulált eszközhöz.
+   * A Windowsban nyisson meg egy [fejlesztői parancssort](/dotnet/framework/tools/developer-command-prompt-for-vs)a Visual Studio. Futtassa az parancsot a Visual Studio. Ez a rövid útmutató a 2019 Visual Studio t használja. Ezek a parancsok Visual Studio megoldást hoznak létre a szimulált eszköz számára a *cmake könyvtárban.*
 
       ```cmd
       rem For VS2015
@@ -114,40 +114,40 @@ Ebben a rövid útmutatóban a [C Azure IoT Device SDK](iot-hub-device-sdk-c-int
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
-A csatlakoztatása előtt regisztrálnia kell egy eszközt az IoT hub használatával. Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](/cli/azure/ext/azure-iot/iot) használatával regisztrálja a szimulált eszközt.
+A csatlakozáshoz regisztrálnia kell egy eszközt az IoT Hubon. Ebben a szakaszban egy szimulált [](/cli/azure/iot) Azure Cloud Shell fog regisztrálni az IoT-bővítvével.
 
-1. Az eszköz identitásának létrehozásához futtassa a következő parancsot Cloud Shellban:
+1. Az eszközidentitás létrehozásához futtassa a következő parancsot a Cloud Shell:
 
    > [!NOTE]
-   > * Cserélje le a *YourIoTHubName* helyőrzőt az IoT hub számára kiválasztott névre.
-   > * Annak az eszköznek a nevére, amelyet regisztrál, javasolt a *MyDevice* használata az ábrán látható módon. Ha más nevet választ az eszköznek, ezt a nevet használja ebben a cikkben, és a futtatásuk előtt frissítse az eszköz nevét a minta alkalmazásokban.
+   > * Cserélje le *a YourIoTHubName* helyőrzőt az IoT Hubhoz választott névre.
+   > * A regisztráló eszköz neveként javasoljuk, hogy használja a *MyDevice* eszközt az itt látható módon. Ha másik nevet választ az eszközhöz, használja ezt a nevet a cikkben, és a futtatás előtt frissítse az eszköz nevét a mintaalkalmazásban.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
-1. Az imént regisztrált eszközhöz tartozó *eszköz-kapcsolódási karakterlánc* lekéréséhez futtassa a következő parancsot a Cloud Shellban:
+1. Az előbb *regisztrált* eszköz eszközkapcsolati sztringjéhez futtassa a következő parancsot a Cloud Shell:
 
    > [!NOTE]
-   > Cserélje le a *YourIoTHubName* helyőrzőt az IoT hub számára kiválasztott névre.
+   > Cserélje le *a YourIoTHubName* helyőrzőt az IoT Hubhoz választott névre.
 
     ```azurecli-interactive
     az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
-    Jegyezze fel a visszaadott eszköz csatlakoztatási karakterláncát a rövid útmutató későbbi verzióihoz. Az alábbi példához hasonlóan néz ki:
+    Jegyezze fel a visszaadott eszközkapcsolati sztringet a rövid útmutató későbbi használatra. Az alábbi példához hasonlóan néz ki:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
-## <a name="communicate-between-the-device-and-the-service-via-device-streams"></a>Kommunikáció az eszköz és a szolgáltatás között az eszköz streamen keresztül
+## <a name="communicate-between-the-device-and-the-service-via-device-streams"></a>Az eszköz és a szolgáltatás közötti kommunikáció eszközstreamek útján
 
-Ebben a szakaszban az eszköz-és a kiszolgálóoldali alkalmazást is futtatja, és kommunikál a kettő között.
+Ebben a szakaszban az eszközoldali alkalmazást és a szolgáltatásoldali alkalmazást is futtatja, és kommunikál a kettő között.
 
-### <a name="run-the-device-side-application"></a>Az eszköz oldali alkalmazás futtatása
+### <a name="run-the-device-side-application"></a>Az eszközoldali alkalmazás futtatása
 
-Az eszköz oldali alkalmazás futtatásához kövesse az alábbi lépéseket:
+Az eszközoldali alkalmazás futtatásához kövesse az alábbi lépéseket:
 
-1. Adja meg az eszköz hitelesítő adatait a mappában található **iothub_client_c2d_streaming_sample. c** forrásfájl szerkesztésével `iothub_client/samples/iothub_client_c2d_streaming_sample` , és adja hozzá az eszköz-csatlakoztatási karakterláncot.
+1. Az eszköz hitelesítő adatainak megadásához szerkesszen **egy iothub_client_c2d_streaming_sample.c** forrásfájlt a mappában, és adja hozzá `iothub_client/samples/iothub_client_c2d_streaming_sample` az eszköz kapcsolati sztringet.
 
    ```C
    /* Paste in your iothub connection string  */
@@ -168,7 +168,7 @@ Az eszköz oldali alkalmazás futtatásához kövesse az alábbi lépéseket:
    cmake --build . -- /m /p:Configuration=Release
    ```
 
-1. A lefordított program futtatása:
+1. Futtassa a lefordított programot:
 
    ```bash
    # In Linux
@@ -182,13 +182,13 @@ Az eszköz oldali alkalmazás futtatásához kövesse az alábbi lépéseket:
    iothub_client_c2d_streaming_sample.exe
    ```
 
-### <a name="run-the-service-side-application"></a>A szolgáltatás-oldali alkalmazás futtatása
+### <a name="run-the-service-side-application"></a>A szolgáltatásoldali alkalmazás futtatása
 
-Ahogy azt korábban említettük, a IoT Hub C SDK csak az eszközön található adatfolyamokat támogatja. A kapcsolódó kiszolgálóoldali alkalmazás létrehozásához és futtatásához kövesse az alábbi rövid útmutatók valamelyikét:
+Ahogy korábban említettük, a IoT Hub C SDK csak az eszközoldalon támogatja az eszközstreameket. A kapcsolódó szolgáltatásoldali alkalmazás felépítéséhez és futtatásához kövesse az alábbi rövid útmutatók egyikét:
 
-* [Kommunikáció a C# eszköz alkalmazásával IoT Hub eszköz streamen keresztül](./quickstart-device-streams-echo-csharp.md)
+* [Kommunikáció eszközalkalmazással C# használatával IoT Hub eszközstreamek használatával](./quickstart-device-streams-echo-csharp.md)
 
-* [Kommunikáció Node.js eszközön IoT Hub eszköz streamen keresztül](./quickstart-device-streams-echo-nodejs.md)
+* [Kommunikáció eszközalkalmazásokkal a Node.js eszközstreamek IoT Hub keresztül](./quickstart-device-streams-echo-nodejs.md)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -196,9 +196,9 @@ Ahogy azt korábban említettük, a IoT Hub C SDK csak az eszközön található
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban egy IoT hub, egy eszköz regisztrálása, az eszközön lévő C-alkalmazás és a szolgáltatás oldalán egy másik alkalmazás között létrehozott egy adatfolyamot, és a stream használatával visszaküldheti az adatátvitelt az alkalmazások között.
+Ebben a rövid útmutatóban beállít egy IoT Hubot, regisztrált egy eszközt, létrehozott egy eszközstreamet egy C-alkalmazás és egy másik alkalmazás között a szolgáltatási oldalon, és a stream segítségével adatokat küldött az alkalmazások között.
 
-További információ az eszközök streamekről:
+További információ az eszközstreamekkel kapcsolatban:
 
 > [!div class="nextstepaction"]
-> [Az eszközök adatfolyamának áttekintése](./iot-hub-device-streams-overview.md)
+> [Eszközstreamek áttekintése](./iot-hub-device-streams-overview.md)

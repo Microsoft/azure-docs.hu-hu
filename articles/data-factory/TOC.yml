@@ -109,13 +109,13 @@
           items:
             - name: Ajánlott eljárások adatok a lake-ben való ADLS Gen2
               href: tutorial-data-flow-write-to-lake.md
-            - name: Adatok átalakítása a lake-ben a Delta Lake-el
+            - name: Adatok átalakítása a Lake-ben a Delta Lake-el
               href: tutorial-data-flow-delta-lake.md
             - name: Adatok átalakítása leképezési adatfolyamokkal
               href: tutorial-data-flow.md
             - name: Adatfolyamok leképezését ismertető oktatóvideók
               href: data-flow-tutorials.md
-        - name: Adatok előkészítése a rendszerezéssel
+        - name: Adatok előkészítése az adatrendezéssel
           href: wrangling-tutorial.md
         - name: Külső szolgáltatások használata
           items:
@@ -201,7 +201,7 @@
               href: data-flow-expression-functions.md
         - name: Adatok előkészítése Power Query adatrendezéssel
           items:
-            - name: Adatrendezés áttekintése
+            - name: Az adatrendezés áttekintése
               href: wrangling-overview.md
             - name: Támogatott függvények
               href: wrangling-functions.md
@@ -498,7 +498,7 @@
           href: transform-data-machine-learning-service.md
         - name: Machine Learning Studio (klasszikus) Batch Execution tevékenység
           href: transform-data-using-machine-learning.md
-        - name: Machine Learning Studio (klasszikus) Erőforrás frissítése tevékenység
+        - name: Machine Learning Studio (klasszikus) erőforrás-frissítési tevékenysége
           href: update-machine-learning-models.md
         - name: Tárolt eljárási tevékenység
           href: transform-data-using-stored-procedure.md
@@ -506,7 +506,7 @@
           href: compute-linked-services.md
     - name: Átvitelvezérlés
       items:
-        - name: Változótevékenység hozzáfűzése
+        - name: Változóművelet hozzáfűzése
           href: control-flow-append-variable-activity.md
         - name: Execute Pipeline tevékenység
           href: control-flow-execute-pipeline-activity.md
@@ -532,7 +532,7 @@
           href: control-flow-wait-activity.md
         - name: Webes tevékenység
           href: control-flow-web-activity.md
-        - name: Webhooktevékenység
+        - name: Webhook-tevékenység
           href: control-flow-webhook-activity.md
     - name: Adatfolyam-átalakítások
       items:
@@ -600,7 +600,7 @@
           href: data-movement-security-considerations.md
         - name: Adathozzáférési stratégiák
           href: data-access-strategies.md
-        - name: Azure-beli integrációskörnyezet IP-címei
+        - name: Azure integration runtime IP-címek
           href: azure-integration-runtime-ip-addresses.md
         - name: Hitelesítő adatok tárolása az Azure Key Vaultban
           href: store-credentials-in-key-vault.md
@@ -614,7 +614,7 @@
           href: enable-customer-managed-key.md
         - name: Felügyelt virtuális hálózat
           href: managed-virtual-network-private-endpoint.md
-        - name: Azure privát hivatkozás Data Factory
+        - name: Azure privát kapcsolat Data Factory
           href: data-factory-private-link.md
         - name: Az Azure biztonsági alapkonfigurációja
           href: security-baseline.md
@@ -774,9 +774,9 @@
           href: solution-template-databricks-notebook.md
     - name: A díjszabás ismertetése
       items:
-        - name: Fenntartott adatfolyam-kapacitás áttekintése
+        - name: Az adatfolyam számára fenntartott kapacitás áttekintése
           href: data-flow-reserved-capacity-overview.md
-        - name: Az adatfolyam a foglalási díjakat érti
+        - name: Az adatfolyamok a foglalási díjakat értik
           href: data-flow-understand-reservation-charges.md
         - name: Költségtervezés és a költségek kezelése
           href: plan-manage-costs.md
@@ -827,7 +827,7 @@
     - name: Az Azure Policy beépített elemei
       href: policy-reference.md
     - name: Azure CLI
-      href: /cli/azure/ext/datafactory/datafactory
+      href: /cli/azure/datafactory
 - name: További források
   items:
     - name: Tanulmányok

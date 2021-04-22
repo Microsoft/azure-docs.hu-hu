@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 1eaf58f4f951547e6e4e461803e79844f99e630a
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 845a146d9e3f920f3313a80f1bb8c845cb781f37
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501739"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875538"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Modell üzembe helyezése az Azure Container Instances szolgáltatásban
 
@@ -38,7 +38,7 @@ Az ACI kvótáiról és régiónkénti rendelkezésre állásról további infor
 
 - A munkaterületen regisztrált gépi tanulási modell. Ha még nem regisztrált modellel, tekintse meg a modellek üzembe helyezésének [mikéntjéhez és helyéhez lásd:](how-to-deploy-and-where.md).
 
-- Az [Azure CLI-bővítmény Machine Learning szolgáltatáshoz,](reference-azure-machine-learning-cli.md) [a Azure Machine Learning Python SDK-hoz](/python/api/overview/azure/ml/intro)vagy a [Azure Machine Learning Visual Studio Code-bővítményhez.](tutorial-setup-vscode-extension.md)
+- Az [Azure CLI-bővítmény Machine Learning szolgáltatáshoz,](reference-azure-machine-learning-cli.md) [Azure Machine Learning Python SDK-hoz](/python/api/overview/azure/ml/intro)vagy a [Azure Machine Learning Visual Studio Code-bővítményhez.](tutorial-setup-vscode-extension.md)
 
 - A __cikkben__ a Python-kódrészletek feltételezik, hogy a következő változók vannak beállítva:
 
@@ -55,7 +55,7 @@ Az ACI kvótáiról és régiónkénti rendelkezésre állásról további infor
 * Ha virtuális Azure Container Instances használ, a virtuális hálózatnak ugyanabban az erőforráscsoportban kell lennie, mint a Azure Machine Learning munkaterületen.
 * Ha virtuális Azure Container Instances belül használ, a munkaterület Azure Container Registry (ACR) nem lehet a virtuális hálózatban.
 
-További információkért lásd: [How to secure deferencing with virtual networks (A](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci)virtuális hálózatokkal való biztonságos dedokencia).
+További információkért lásd: [How to secure deferencing with virtual networks (A](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci)következtetés biztonságossákolása virtuális hálózatokkal).
 
 ## <a name="deploy-to-aci"></a>Üzembe helyezés az ACI-ban
 
@@ -94,17 +94,17 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aci-deploy-config.md)]
 
-További információért tekintse meg az [az ml model deploy reference (az az ml model deploy referencia)](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) referenciát. 
+További információért tekintse meg az [az ml model deploy reference (az az ml model deploy referencia)](/cli/azure/ml/model#az_ml_model_deploy) referenciát. 
 
 ## <a name="using-vs-code"></a>A VS Code használata
 
 Lásd: [Modellek üzembe helyezése a VS Code-kóddal.](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)
 
 > [!IMPORTANT]
-> Az előzetes teszteléshez nem kell ACI-tárolót létrehoznia. Az ACI-tárolók szükség szerint létrejönnek.
+> A teszteléshez nem szükséges ACI-tárolót létrehoznia. Az ACI-tárolók szükség szerint létrejönnek.
 
 > [!IMPORTANT]
-> A kivonatolt munkaterület-azonosítót az összes létrehozott mögöttes ACI-erőforráshoz hozzáfűzjük, és az ugyanattól a munkaterülettől származó összes ACI-névnek ugyanaz lesz az utótagja. A Azure Machine Learning service neve továbbra is ugyanaz az ügyfél által megadott "service_name" lesz, és az SDK API Azure Machine Learning felé néző összes felhasználónak nincs szüksége módosításra. A mögöttes erőforrások nevére nem vállalunk garanciát.
+> Kivonatolt munkaterület-azonosítót fűzünk az összes létrehozott mögöttes ACI-erőforráshoz, és az ugyanannak a munkaterületnek az összes ACI-neve ugyanaz lesz az utótagja. A Azure Machine Learning service neve továbbra is ugyanaz az ügyfél által megadott "service_name" lesz, és az SDK API Azure Machine Learning felé néző összes felhasználónak nincs szüksége módosításra. A mögöttes erőforrások nevére nem vállalunk garanciát.
 
 ## <a name="next-steps"></a>Következő lépések
 

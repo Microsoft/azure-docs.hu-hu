@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/04/2020
-ms.openlocfilehash: 9a7a0795a15de52c34b8591c4224c3ca5883445c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ae5ca6ac822dabd32b6463c3a742901f32b34323
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772072"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862254"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Integrációs fiókok létrehozása és felügyelete B2B vállalati integrációkhoz az Azure Logic Appsben
 
@@ -93,7 +93,7 @@ Integrációs fiókot az ebben a szakaszban található Azure CLI-parancsokkal h
 
 Ezekkel a parancsokkal hozhat létre integrációs fiókot.
 
-1. Az [az logic integration-account bővítmény hozzáadásához](/cli/azure/ext/logic/logic/integration-account) használja [az az extension add](/cli/azure/extension#az_extension_add) parancsot:
+1. Az [az logic integration-account bővítmény hozzáadásához](/cli/azure/logic/integration-account) használja [az az extension add](/cli/azure/extension#az_extension_add) parancsot:
 
    ```azurecli
    az extension add –-name logic
@@ -105,13 +105,13 @@ Ezekkel a parancsokkal hozhat létre integrációs fiókot.
    az group create --name myresourcegroup --location westus
    ```
 
-   Egy erőforráscsoport integrációs fiókjainak listához használja az [az logic integration-account list parancsot:](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_list)
+   Egy erőforráscsoport integrációs fiókjainak listához használja az [az logic integration-account list parancsot:](/cli/azure/logic/integration-account#az_logic_integration_account_list)
 
    ```azurecli
    az logic integration-account list --resource-group myresourcegroup
    ```
 
-1. Integrációs fiók létrehozásához futtassa az [az logic integration-account create](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_create) parancsot:
+1. Integrációs fiók létrehozásához futtassa az [az logic integration-account create](/cli/azure/logic/integration-account#az_logic_integration_account_create) parancsot:
 
    ```azurecli
    az logic integration-account create --resource-group myresourcegroup \
@@ -123,13 +123,13 @@ Ezekkel a parancsokkal hozhat létre integrációs fiókot.
    > [!TIP]
    > Integrációs szolgáltatási környezetben [(ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)belüli integrációs fiók létrehozásához válassza ki az ISE helyet. További információ: [Integrációs fiókok létrehozása ISE-ban.](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)
 
-   Egy adott integrációs fiók megtekintéséhez használja [az az logic integration-account show parancsot:](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_show)
+   Egy adott integrációs fiók megtekintéséhez használja [az az logic integration-account show parancsot:](/cli/azure/logic/integration-account#az_logic_integration_account_show)
 
    ```azurecli
    az logic integration-account show --name integration_account_01 --resource-group myresourcegroup
    ```
 
-   A termékváltozatot vagy a tarifacsomagot az [az logic integration-account update](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_update) paranccsal módosíthatja:
+   A termékváltozatot vagy a tarifacsomagot az [az logic integration-account update](/cli/azure/logic/integration-account#az_logic_integration_account_update) paranccsal módosíthatja:
 
    ```azurecli
    az logic integration-account update --sku name=Basic --name integration_account_01 \
@@ -142,14 +142,14 @@ Ezekkel a parancsokkal hozhat létre integrációs fiókot.
    * [Logic Apps és konfigurálás](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)
    * [A Logic Apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/)
 
-Integrációs fiók JSON-fájl használatával történő importáláshoz használja [az az logic integration-account import](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_import) parancsot:
+Integrációs fiók JSON-fájl használatával történő importáláshoz használja [az az logic integration-account import](/cli/azure/logic/integration-account#az_logic_integration_account_import) parancsot:
 
 ```azurecli
 az logic integration-account import --name integration_account_01 \
     --resource-group myresourcegroup --input-path integration.json
 ```
 
-Integrációs fiókot az az [logic integration-account delete](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_delete) paranccsal törölhet:
+Integrációs fiókot az az [logic integration-account delete](/cli/azure/logic/integration-account#az_logic_integration_account_delete) paranccsal törölhet:
 
 ```azurecli
 az logic integration-account delete --name integration_account_01 --resource-group myresourcegroup

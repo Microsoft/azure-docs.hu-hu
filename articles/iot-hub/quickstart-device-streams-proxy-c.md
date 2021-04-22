@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: references_regions, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c9c09914e30bdeae809924bc4256c773f42abd52
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 8a74b5e463045e92e703ef6932f92b84d4709f36
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479937"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864088"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Rövid útmutató: SSH és RDP engedélyezése IoT Hub eszközstreamen C proxyalkalmazással (előzetes verzió)
 
@@ -22,7 +22,7 @@ ms.locfileid: "107479937"
 
 Azure IoT Hub jelenleg előzetes verziójú funkcióként támogatja az [eszközstreameket.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-[IoT Hub az eszközstreamek lehetővé](./iot-hub-device-streams-overview.md) teszik, hogy a szolgáltatás- és eszközalkalmazások biztonságos és tűzfalbarát módon kommunikáljanak. A telepítés áttekintését a Helyi [proxyminta oldalon olvashatja el.](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)
+[IoT Hub az eszközstreamek lehetővé](./iot-hub-device-streams-overview.md) teszik, hogy a szolgáltatás- és eszközalkalmazások biztonságos és tűzfalbarát módon kommunikáljanak. A beállítás áttekintését a Helyi [proxyminta oldalon olvashatja el.](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)
 
 Ez a rövid útmutató a Secure Shell-forgalom (a 22-es porton keresztül) eszközstreamek keresztüli bújtatásának beállítását ismerteti. Az RDP RDP protokoll forgalom beállítása hasonló, és egyszerű konfigurációs változtatást igényel. Mivel az eszközstreamek alkalmazás- és protokolltól függetlenek, ezt a rövid útmutatót módosíthatja más típusú alkalmazásforgalomhoz.
 
@@ -120,7 +120,7 @@ Ebben a rövid útmutatóban a C-hez készült [Azure IoT eszközoldali SDK-t ha
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
-Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a szakaszban egy szimulált [](/cli/azure/ext/azure-iot/iot) Azure Cloud Shell fog regisztrálni az IoT-bővítvével.
+Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a szakaszban egy szimulált [](/cli/azure/iot) Azure Cloud Shell fog regisztrálni az IoT-bővítvével.
 
 1. Az eszközidentitás létrehozásához futtassa a következő parancsot a Cloud Shell:
 
@@ -151,7 +151,7 @@ Ebben a szakaszban egy végpontok között streamet hoz létre az SSH-forgalom b
 
 ### <a name="run-the-device-local-proxy-application"></a>Az eszköz helyi proxyalkalmazásának futtatása
 
-1. Szerkessze a **iothub_client_c2d_streaming_proxy_sample.c** nevű forrásfájlt a mappában, és adja meg az eszköz kapcsolati sztringje, a céleszköz `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample` IP-címe/állomásneve és a 22-es SSH-portot:
+1. Szerkessze a **iothub_client_c2d_streaming_proxy_sample.c** fájlt a mappában, és adja meg az eszköz kapcsolati sztringje, a céleszköz `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample` IP-címe/állomásneve és a 22-es SSH-portot:
 
    ```C
    /* Paste in your device connection string  */
@@ -219,7 +219,7 @@ Az alábbi képen az SSH-ügyfélprogram konzolkimenete látható. Az SSH-ügyf�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban beállít egy IoT Hubot, regisztrált egy eszközt, üzembe helyezett egy eszközt és egy szolgáltatás helyi proxyprogramját az IoT Hub-kapcsolaton keresztüli eszközstreamek létrehozására, és a proxyk használatával bújtatta az SSH-forgalmat.
+Ebben a rövid útmutatóban beállít egy IoT Hubot, regisztrált egy eszközt, üzembe helyezett egy eszközt és egy szolgáltatás helyi proxyprogramját az IoT Hub-kapcsolaton keresztüli eszközstream létrehozására, és a proxyk használatával bújtatta az SSH-forgalmat.
 
 További információ az eszközstreamekkel kapcsolatban:
 

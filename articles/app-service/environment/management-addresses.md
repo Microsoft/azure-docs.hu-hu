@@ -7,20 +7,20 @@ ms.topic: article
 ms.date: 03/22/2021
 ms.author: ccompy
 ms.custom: seodec18, references_regions, devx-track-azurecli
-ms.openlocfilehash: aaaa190935da8c016c43832712f553a116332974
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 796ee38140e72a56f1f22b0594dd904a43ac53c0
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482568"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865224"
 ---
 # <a name="app-service-environment-management-addresses"></a>App Service Environment címek
 
-A App Service Environment (ASE) az Azure Azure App Service (VNet) szolgáltatásban futó virtuális Virtual Network üzemelő példánya.  Bár az ASE fut a virtuális hálózaton, továbbra is elérhetőnek kell lennie számos dedikált IP-címről, amelyet a Azure App Service a szolgáltatás kezeléséhez.  ASE esetén a felügyeleti forgalom áthalad a felhasználó által vezérelt hálózaton. Ha a forgalom blokkolva van vagy helytelenül van átirányítva, az ASE fel lesz függesztve. Az ASE hálózatépítési függőségekkel kapcsolatos részletekért olvassa el a [Hálózati][networking]szempontok és a App Service Environment. Az ASE-ről a Bevezetés az ASE-be [App Service Environment.][intro]
+A App Service Environment (ASE) az Azure Azure App Service (VNet) szolgáltatásban futó virtuális Virtual Network üzemelő példánya.  Bár az ASE fut a virtuális hálózaton, továbbra is elérhetőnek kell lennie számos dedikált IP-címről, amelyet a Azure App Service a szolgáltatás kezeléséhez.  ASE esetén a felügyeleti forgalom áthalad a felhasználó által vezérelt hálózaton. Ha ez a forgalom blokkolva van vagy helytelenül van átirányítva, az ASE fel lesz függesztve. Az ASE hálózattal kapcsolatos függőségekkel kapcsolatos részletekért olvassa el a [Hálózati][networking]szempontok és a App Service Environment. Az ASE-ről a Bevezetés az ASE-be [App Service Environment.][intro]
 
 Minden ABA-nak van egy nyilvános VIP-ed, amelybe a felügyeleti forgalom érkezik. Az ezekről a címekről bejövő felügyeleti forgalom az ASE nyilvános VIP-címének 454-es és 455-ös portjairól érkezik. Ez a dokumentum felsorolja App Service ASE felügyeleti forgalmának forráscímeit. Ezek a címek szintén az AppServiceManagement nevű IP-szolgáltatáscímkében vannak.
 
-Az alább feljegyzett címek egy útvonaltáblában konfigurálhatóak a felügyeleti forgalom aszimmetrikus útválasztási problémáinak elkerülése érdekében. Az útvonalak az IP-szinten reagálnak a forgalomra, és nem figyelmét a forgalom irányára, illetve arra, hogy a forgalom egy TCP-válaszüzenet része. Ha egy TCP-kérés válaszcíme eltér a címzett címtől, akkor aszimmetrikus útválasztási problémája van. Az ASE felügyeleti forgalom aszimmetrikus útválasztási problémáinak elkerülése érdekében gondoskodnia kell arról, hogy a válaszok ugyanatról a címről kerüljenek vissza, amelybe a rendszer elküldte őket. Az ASE olyan környezetben való működésre való konfigurálásával kapcsolatos részletekért, ahol a kimenő forgalom a helyszínen van elküldve, olvassa el a következőt: Az ASE konfigurálása kényszerített [bújtatással][forcedtunnel]
+Az alább feljegyzett címek egy útvonaltáblában konfigurálhatóak a felügyeleti forgalom aszimmetrikus útválasztási problémáinak elkerülése érdekében. Az útvonalak az IP-szinten reagálnak a forgalomra, és nem figyelmét a forgalom irányára, illetve arra, hogy a forgalom egy TCP-válaszüzenet része. Ha egy TCP-kérés válaszcíme eltér a címtől, amelybe azt küldték, akkor aszimmetrikus útválasztási problémája van. Az ASE felügyeleti forgalom aszimmetrikus útválasztási problémáinak elkerülése érdekében gondoskodnia kell arról, hogy a válaszok ugyanatról a címről kerüljenek vissza, amelybe a rendszer elküldte őket. Az ASE olyan környezetben való működésre való konfigurálásával kapcsolatos részletekért, ahol a kimenő forgalom a helyszínen van elküldve, olvassa el a következőt: Az ASE konfigurálása kényszerített [bújtatással][forcedtunnel]
 
 ## <a name="list-of-management-addresses"></a>Felügyeleti címek listája ##
 
@@ -32,7 +32,7 @@ Az alább feljegyzett címek egy útvonaltáblában konfigurálhatóak a felügy
 
 ## <a name="configuring-a-network-security-group"></a>Hálózati biztonsági csoport konfigurálása
 
-A hálózati biztonsági csoportok esetében nem kell aggódnia az egyes címek vagy a saját konfiguráció fenntartása miatt. Van egy AppServiceManagement nevű IP-szolgáltatáscímke, amely az összes címmel naprakész marad. Ha ezt az IP-szolgáltatáscímkét használnia kell az NSG-ben, nyissa meg a portált, nyissa meg a hálózati biztonsági csoportok felhasználói felületét, és válassza a Bejövő biztonsági szabályok lehetőséget. Ha a bejövő felügyeleti forgalomhoz már van meglévő szabálya, szerkessze azt. Ha ez az NSG nem az ASE-val lett létrehozva, vagy ha új, válassza a Hozzáadás **lehetőséget.** A Source (Forrás) legördülő menüben válassza a **Service Tag (Szolgáltatáscímke) lehetőséget.**  A Forrásszolgáltatás címke alatt válassza az **AppServiceManagement lehetőséget.** A forrásporttartományokat állítsa a következőre: , Cél: \* **Bármely,** Célporttartományok: **454–455,** **Protokoll: TCP,** Művelet: **.** A szabály létrehozása esetén be kell állítania a Prioritást. 
+A hálózati biztonsági csoportok esetében nem kell aggódnia az egyes címek vagy a saját konfiguráció fenntartása miatt. Van egy AppServiceManagement nevű IP-szolgáltatáscímke, amely az összes címmel naprakész marad. Ha ezt az IP-szolgáltatáscímkét használnia kell az NSG-ben, nyissa meg a portált, nyissa meg a hálózati biztonsági csoportok felhasználói felületét, és válassza a Bejövő biztonsági szabályok lehetőséget. Ha a bejövő felügyeleti forgalomhoz már van meglévő szabálya, szerkessze azt. Ha ez az NSG nem az ASE-val lett létrehozva, vagy ha az egész új, válassza a **Hozzáadás lehetőséget.** A Source (Forrás) legördülő menüben válassza a **Service Tag (Szolgáltatáscímke) lehetőséget.**  A Forrás szolgáltatáscímke alatt válassza az **AppServiceManagement lehetőséget.** A forrásporttartományokat állítsa a következőre: , Cél: \* **Bármely,** Célporttartományok: **454–455,** **Protokoll: TCP,** Művelet: **.** A szabály létrehozása esetén be kell állítania a Prioritást. 
 
 ![NSG létrehozása a szolgáltatáscímkével][1]
 

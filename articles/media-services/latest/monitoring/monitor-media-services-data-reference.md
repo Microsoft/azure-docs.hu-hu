@@ -7,19 +7,19 @@ manager: femila
 ms.topic: reference
 ms.service: media-services
 ms.custom: subject-monitoring
-ms.date: 03/17/2021
-ms.openlocfilehash: 4e4c65966ec8a6a5b47d5f68596f6d2d496fda17
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.date: 04/21/2021
+ms.openlocfilehash: 3fd7b8013ec67d718f308ccd1b72a6f90012e02e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107835505"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873054"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Az Media Services monitorozása – referencia
 
 Ez a cikk azokat az adatokat tartalmazza, amelyek hasznosak lehetnek a Media Services. További információ a Azure Monitor támogatott platformmetrikákról: [Támogatott metrikák Azure Monitor.](../../../azure-monitor/essentials/metrics-supported.md)
 
-## <a name="media-services-metrics"></a>Media Services metrikák
+## <a name="metrics"></a>Mérőszámok
 
 A rendszer rendszeres időközönként gyűjt metrikákat, függetlenül attól, hogy változik-e az érték. Hasznosak a riasztások esetében, mert gyakran mintavételezheti őket, a riasztások pedig viszonylag egyszerű logikával gyorsan elbocsáthatóak.
 
@@ -40,12 +40,13 @@ Emellett tekintse át a [fiókkvótákat és a korlátokat is.](../limits-quotas
 
 További információ a metrikadimenziókról: [Többdimenziós metrikák.](../../../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics)
 
-<!--**PLACEHOLDER** for dimensions table.-->
-OutputFormat, HttpStatusCode, ErrorCode, TrackName
+A Media Services a következő metrikadimenziókkal rendelkezik.  Ezek az ő támogatásukhoz támogatott metrikákon alapulnak.  További [információért tekintse meg a fenti](#metrics) metrikákra mutató hivatkozásokat.   
+- OutputFormat (Kimenet formázása)
+- HttpStatusCode 
+- ErrorCode 
+- TrackName (Nyomon követése) 
 
 ## <a name="resource-logs"></a>Erőforrásnaplók
-
-## <a name="media-services-resource-logs"></a>Media Services erőforrásnaplók
 
 Az erőforrásnaplók részletes és gyakori adatokat biztosítanak az Azure-erőforrások működéséről. További információ: Naplóadatok gyűjtése és felhasználása [az Azure-erőforrásokból.](../../../azure-monitor/essentials/platform-logs-overview.md)
 
@@ -53,7 +54,7 @@ Media Services a következő erőforrásnaplókat támogatja: [Microsoft.Media/m
 
 ## <a name="schemas"></a>Sémák
 
-A legfelső szintű diagnosztikai naplók sémáját a Támogatott szolgáltatások, sémák és kategóriák az Azure Diagnosztikai naplókhoz [szakasz tartalmazza részletesen.](../../../azure-monitor/essentials/resource-logs-schema.md)
+A legfelső szintű diagnosztikai naplók sémáját a Támogatott szolgáltatások, sémák és kategóriák [az Azure Diagnostics-naplókhoz szakasz tartalmazza részletesen.](../../../azure-monitor/essentials/resource-logs-schema.md)
 
 ## <a name="key-delivery-log-schema-properties"></a>Kulcskésési napló sématulajdonságok
 

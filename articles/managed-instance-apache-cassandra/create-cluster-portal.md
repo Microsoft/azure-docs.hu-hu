@@ -7,19 +7,19 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: e42f85bb79dcb1bfe14cacbbfda3576888b841c9
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 315b505e9de853fbe4663eacdfe929149dbaa458
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481328"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873144"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>Rövid útmutató: Felügyelt Azure-példány létrehozása Apache Cassandra-fürthöz a Azure Portal (előzetes verzió)
  
 Az Apache Cassandrára használható Felügyelt Azure-példány automatizált üzembe helyezési és méretezési műveleteket biztosít a felügyelt nyílt forráskódú Apache Cassandra-adatközpontokhoz, felgyorsítja a hibrid forgatókönyveket, és csökkenti a folyamatos karbantartást.
 
 > [!IMPORTANT]
-> Az Azure Managed Instance for Apache Cassandra jelenleg nyilvános előzetes verzióban érhető el.
+> Az Apache Cassandrára felügyelt Azure-példány jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -81,7 +81,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
    > [!NOTE]
    > Az előző parancs és értékei rögzített értékek, ezeket az értékeket pontosan a `assignee` `role` parancsban említettek szerint adja meg. Ha ezt nem teszi meg, az hibákhoz vezet a fürt létrehozásakor. Ha hibába ütközik a parancs végrehajtásakor, előfordulhat, hogy nem rendelkezik a futtatáshoz szükséges engedélyekkel, forduljon a rendszergazdához az engedélyekért.
 
-1. Most, hogy végzett a hálózattal, kattintson az **Áttekintés + létrehozás**  >  **gombra.**
+1. Most, hogy végzett a hálózattal, kattintson az **Áttekintés + létrehozás gombra.**  >  
 
     > [!NOTE]
     > A fürt létrehozása akár 15 percet is igénybe vehet.
@@ -100,7 +100,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="connecting-to-your-cluster"></a>Csatlakozás a fürthöz
 
-Az Apache Cassandrára készült Felügyelt Azure-példány nem hoz létre nyilvános IP-címekkel csomópontokat, ezért az újonnan létrehozott Cassandra-fürthöz való csatlakozáshoz létre kell hoznia egy másik erőforrást a virtuális hálózaton belül. Ez lehet egy alkalmazás, vagy egy virtuális gép, amely az Apache nyílt forráskódú [CQLSH](https://cassandra.apache.org/doc/latest/tools/cqlsh.html) lekérdezési eszközével van telepítve. Ubuntu-alapú [virtuális gép üzembe](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/) helyezéséhez használhat sablont. Az üzembe helyezéskor SSH-val csatlakozzon a géphez, és telepítse a CQLSH-t az alábbi parancsokkal:
+Az Apache Cassandrára készült Felügyelt Azure-példány nem hoz létre nyilvános IP-címmel bíró csomópontokat, ezért az újonnan létrehozott Cassandra-fürthöz való csatlakozáshoz létre kell hoznia egy másik erőforrást a virtuális hálózaton belül. Ez lehet egy alkalmazás, vagy egy virtuális gép, amely az Apache nyílt forráskódú [CQLSH](https://cassandra.apache.org/doc/latest/tools/cqlsh.html) lekérdezési eszközével van telepítve. Ubuntu-alapú [virtuális gép üzembe](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/) helyezéséhez használhat sablont. Az üzembe helyezéskor SSH-val csatlakozzon a géphez, és telepítse a CQLSH-t az alábbi parancsokkal:
 
 ```bash
 # Install default-jre and default-jdk
@@ -135,7 +135,7 @@ Ha hibába ütközik az Virtual Network-engedélyek alkalmazásakor, például N
 
 Ha nem folytatja a felügyeltpéldány-fürt használatát, törölje a következő lépésekkel:
 
-1. A bal oldali menüben válassza Azure Portal **Erőforráscsoportok lehetőséget.**
+1. A bal oldali menüben válassza Azure Portal **erőforráscsoportok lehetőséget.**
 1. A listából válassza ki a rövid útmutatóhoz létrehozott erőforráscsoportot.
 1. Az erőforráscsoport Áttekintés **panelen** válassza az **Erőforráscsoport törlése lehetőséget.**
 1. A következő ablakban adja meg a törölni kívánt erőforráscsoport nevét, majd válassza a **Törlés lehetőséget.**

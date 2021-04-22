@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 0ea4e3ae0113608203dad63f636ae4adb4eeff9b
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 5e13c97427736d60f300d2d7b502c6f3e15fb481
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107737513"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861444"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Munkaterület Azure Private Link konfigurálása Azure Machine Learning munkaterülethez
 
@@ -66,7 +66,7 @@ ws = Workspace.create(name='myworkspace',
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A [gépi tanuláshoz használt Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) az [az ml workspace create parancsot](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_create) biztosítja. A parancs alábbi paraméterei használhatók egy magánhálózattal létrehozott munkaterület létrehozásához, de ehhez egy meglévő virtuális hálózatra van szükség:
+A [gépi tanuláshoz használt Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) az [az ml workspace create parancsot](/cli/azure/ml/workspace#az_ml_workspace_create) biztosítja. A parancs alábbi paraméterei használhatók egy magánhálózattal létrehozott munkaterület létrehozásához, de ehhez egy meglévő virtuális hálózatra van szükség:
 
 * `--pe-name`: A létrehozott privát végpont neve.
 * `--pe-auto-approval`: Azt határozza meg, hogy a munkaterület privát végponti kapcsolatait automatikusan jóvá kell-e hagyni.
@@ -116,7 +116,7 @@ A példában használt osztályokkal és metódusokkal kapcsolatos további info
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A [gépi tanuláshoz elérhető Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) az [az ml workspace private-endpoint add](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add) parancsot biztosítja.
+A [gépi tanuláshoz elérhető Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) az [az ml workspace private-endpoint add](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_add) parancsot biztosítja.
 
 ```azurecli
 az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval true --pe-vnet-name myvnet
@@ -153,7 +153,7 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A [gépi tanuláshoz elérhető Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) az [az ml workspace private-endpoint delete parancsot](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete) biztosítja.
+A [gépi tanuláshoz elérhető Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) az [az ml workspace private-endpoint delete parancsot](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_delete) biztosítja.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -192,7 +192,7 @@ ws.update(allow_public_access_when_behind_vnet=True)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A [gépi tanuláshoz elérhető Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) az [az ml workspace update parancsot](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_update) biztosítja. A munkaterülethez való nyilvános hozzáférés engedélyezéséhez adja hozzá a `--allow-public-access true` paramétert.
+A [gépi tanuláshoz elérhető Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) az [az ml workspace update parancsot](/cli/azure/ml/workspace#az_ml_workspace_update) biztosítja. A munkaterülethez való nyilvános hozzáférés engedélyezéséhez adja hozzá a `--allow-public-access true` paramétert.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 

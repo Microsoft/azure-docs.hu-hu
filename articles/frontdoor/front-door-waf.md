@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: d315fa5b588c6e5f2e4643ca18626e400e6ca01b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f31e592f3e8fa9501b0aa1f8ed47fa5122f75820
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785648"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869598"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Oktatóanyag: Webalkalmazások gyors méretezése és védelme a Azure Front Door és Azure Web Application Firewall (WAF) használatával
 
@@ -48,7 +48,7 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
    ```
 
 > [!NOTE] 
-> Az oktatóanyagban használt parancsokkal kapcsolatos további információkért lásd: [Azure CLI-referencia a Front Door.](/cli/azure/ext/front-door)
+> Az oktatóanyagban használt parancsokkal kapcsolatos további információkért lásd: [Azure CLI-referencia a Front Door.](/cli/azure/)
 
 ## <a name="create-an-azure-front-door-resource"></a>Erőforrás Azure Front Door létrehozása
 
@@ -124,7 +124,7 @@ az network front-door update --name <> --resource-group <> --set frontendEndpoin
 `--set`: Itt frissíti a Azure Front Door erőforráshoz társított attribútumot `WebApplicationFirewallPolicyLink` `frontendEndpoint` az új WAF-szabályzathoz. Az oktatóanyag korábbi, WAF-profiljának létrehozásakor kapott válaszban meg kell lennie a WAF-szabályzat azonosítójának.
 
  > [!NOTE] 
-> Az előző példa akkor alkalmazható, ha nem egyéni tartományt használ. Ha nem használ egyéni tartományokat a webalkalmazások eléréséhez, kihagyhatja a következő szakaszt. Ebben az esetben a saját erőforrás létrehozásakor kapott adatokat fogja Azure Front Door `hostName` számára. Ezt a `hostName` webalkalmazáshoz használják majd.
+> Az előző példa akkor alkalmazható, ha nem egyéni tartományt használ. Ha nem használ egyéni tartományokat a webalkalmazások eléréséhez, kihagyhatja a következő szakaszt. Ebben az esetben a saját erőforrás létrehozásakor kapott adatokat fogja Azure Front Door `hostName` számára. Ezt a `hostName` webalkalmazáshoz használják.
 
 ## <a name="configure-the-custom-domain-for-your-web-application"></a>Az egyéni tartomány konfigurálása a webalkalmazáshoz
 

@@ -1,32 +1,32 @@
 ---
-title: NP-Series – Azure Virtual Machines
-description: Az NP-sorozatú virtuális gépek specifikációi.
+title: NP-sorozat – Azure Virtual Machines
+description: Az NP sorozatú virtuális gépek specifikációi.
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: aa67a858d0396badc25a625b23dc2f2fdf1bdff9
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 61488b88b00206cb78beed4fe773bf9377848701
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551373"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861048"
 ---
-# <a name="np-series"></a>NP sorozat 
-Az NP-sorozatú virtuális gépeket a [xilinx U250 ](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html) FPGA, amely felgyorsítja a számítási feladatokat, beleértve a gépi tanulási következtetéseket, a videó-átkódolást és az adatbázis-keresési & elemzéseket. Az NP-sorozatú virtuális gépeket az Intel Xeon 8171M (Skylake) processzorok is használják, amelyek az összes Core Turbo órajeltel rendelkeznek, 3,2 GHz-es sebességgel.
+# <a name="np-series"></a>NP-sorozat 
+Az NP-sorozat virtuális gépeit [Xilinx U250 ](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html) FPGA-k működtetik a számítási feladatok felgyorsítására, beleértve a gépi tanulási következtetést, a videóátkódolást és az adatbázis-& elemzéseket. Az NP-sorozat virtuális gépei szintén Intel Xeon 8171M (Skylake) processzorokkal működnek, és az órajel összes magja 3,2 GHz-es.
 
-[Premium Storage](premium-storage-performance.md): támogatott<br>
-[Premium Storage gyorsítótárazás](premium-storage-performance.md): támogatott<br>
-[Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
-[Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
-VM-generáció támogatása: 1. generáció<br>
-[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
-[Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): nem támogatott <br>
+[Premium Storage:](premium-storage-performance.md)Támogatott<br>
+[Premium Storage gyorsítótárazás:](premium-storage-performance.md)Támogatott<br>
+[Élő áttelepítés:](maintenance-and-updates.md)Nem támogatott<br>
+[Memóriamegőrzési frissítések:](maintenance-and-updates.md)Nem támogatott<br>
+Virtuális gépek generációtámogatása: 1. generáció<br>
+[Gyorsított hálózat:](../virtual-network/create-vm-accelerated-networking-cli.md)Támogatott<br>
+[Aphemeral operációsrendszer-lemezek:](ephemeral-os-disks.md)Nem támogatott <br>
 <br>
 
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | FPGA | FPGA memória: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma/várt hálózati sávszélesség (MBps) | 
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Fpga | FPGA-memória: GiB | Adatlemezek max. száma | Hálózati adapterek maximális/várt hálózati sávszélessége (MBps) | 
 |---|---|---|---|---|---|---|---|
 | Standard_NP10s | 10 | 168 | 736  | 1 | 64  | 8 | 1 / 7500 | 
 | Standard_NP20s | 20 | 336 | 1474 | 2 | 128 | 16 | 2 / 15000 | 
@@ -39,102 +39,111 @@ VM-generáció támogatása: 1. generáció<br>
 
 ##  <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**K:** A Vitis milyen verzióját érdemes használni? 
+**K:** A Vfül melyik verzióját használjam? 
 
-**A:** A xilinx a [Vitis 2020,2](https://www.xilinx.com/products/design-tools/vitis/vitis-platform.html) -et ajánlja
+**A:** Az Xilinx a [Vtha 2020.2-t javasolja](https://www.xilinx.com/products/design-tools/vitis/vitis-platform.html)
 
 
-**K:** Kell-e NP virtuális gépeket használni a megoldás fejlesztéséhez? 
+**K:** Np virtuális gépeket kell használnom a megoldásom fejlesztéshez? 
 
-**A:** Nem, a helyszínen fejlesztheti és üzembe helyezheti a felhőben. Győződjön meg arról, hogy kövesse az igazolási dokumentációt az NP virtuális gépeken való üzembe helyezéshez. 
+**A:** Nem, fejleszthet a saját környezetében, és üzembe helyezheti a felhőben! Kövesse az igazolási dokumentációt az NP virtuális gépeken való üzembe helyezéshez. 
 
-**K:** Milyen XRT-verziót használok?
+**K:** Az XRT melyik verzióját használjam?
 
 **A:** xrt_202020.2.8.832 
 
-**K:** Mi a cél telepítési platform?
+**K:** Mi a cél üzembe helyezési platform?
 
-**A:** Használja az alábbi platformokat.
+**A:** Használja a következő platformokat.
 - xilinx-u250-gen3x16-xdma-platform-2.1-3_all
-- xilinx-u250-gen3x16-xdma-validate_2.1 – 3005608.1 
+- xilinx-u250-gen3x16-xdma-validate_2.1-3005608.1 
 
-**K:** Milyen platformra van szükségem a fejlesztéshez?
+**K:** Melyik platformot érdemes megcélnom a fejlesztéshez?
 
 **A:** xilinx-u250-gen3x16-xdma-2.1-202010-1-dev_1-2954688_all 
 
-**K:** Mik a támogatott operációs rendszerek? 
+**K:** Mi a támogatott operációs rendszer (operációs rendszer)? 
 
-**A:** A xilinx és a Microsoft érvényesített Ubuntu 18,04 LTS és CentOS 7,8.
+**A:** Az Xilinx és a Microsoft érvényesíti az Ubuntu 18.04 LTS és a CentOS 7.8 operációs rendszereket.
 
- A xilinx a következő Piactéri rendszerképeket hozta létre a virtuális gépek üzembe helyezésének egyszerűsítése érdekében. 
+ Az Xilinx a következő marketplace-rendszerképeket hozta létre a virtuális gépek üzembe helyezésének egyszerűsítése érdekében. 
 
-[Xilinx Alveo U250 üzembe helyezési VM – Ubuntu 18.04](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/xilinx.xilinx_alveo_u250_deployment_vm_ubuntu1804_032321)
+[Xilinx Alveo U250 üzembe helyezési virtuális gép – Ubuntu18.04](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/xilinx.xilinx_alveo_u250_deployment_vm_ubuntu1804_032321)
 
-[Xilinx Alveo U250 üzembe helyezési VM – CentOS 7.8](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/xilinx.xilinx_alveo_u250_deployment_vm_centos78_032321)
+[Xilinx Alveo U250 üzembe helyezési virtuális gép – CentOS7.8](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/xilinx.xilinx_alveo_u250_deployment_vm_centos78_032321)
 
-**K:** Telepíthetem saját Ubuntu/CentOS virtuális gépeket, és telepíthetem a XRT/Deployment Target platformot? 
+**K:** Üzembe helyezhetem a saját Ubuntu-/CentOS-alapú virtuális gépemet, és telepítem az XRT/Deployment Target Platformot? 
 
 **V:** Igen.
 
-**K:** Ha saját Ubuntu 18.04 virtuális gépet telepítek, akkor Mik a szükséges csomagok és lépések?
+**K:** Ha saját Ubuntu18.04-es virtuális gépet helyezek üzembe, mik a szükséges csomagok és lépések?
 
-**A:** Kernel 4.1 X/ [xilinx XRT dokumentáció](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1451-xrt-release-notes.pdf) használata
+**A:** A Kernel 4.1X használata [Xilinx XRT-dokumentációnként](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1451-xrt-release-notes.pdf)
        
-Telepítse a következő csomagokat.
-- xrt_202020 xrt_202020.2.8.832_18.04-amd64-XRT. deb
+Telepítse az alábbi csomagokat.
+- xrt_202020.2.8.832_18.04-amd64-xrt.deb
        
-- xrt_202020 xrt_202020.2.8.832_18.04-amd64-Azure. deb
+- xrt_202020.2.8.832_18.04-amd64-azure.deb
        
-- xilinx-u250-gen3x16-xdma-platform-2.1-3_all_18.04. deb. tar. gz
+- xilinx-u250-gen3x16-xdma-platform-2.1-3_all_18.04.deb.tar.gz
        
-- xilinx-u250-gen3x16-xdma-validate_2.1 – 3005608.1_all. deb  
+- xilinx-u250-gen3x16-xdma-validate_2.1-3005608.1_all.deb  
 
-**K:** Ubuntu rendszeren a virtuális gép újraindítása után nem találom a FPGA (ka) t: 
+**K:** Ubuntun a virtuális gép újraindítása után nem találom az FPGA-(k)t: 
 
-**A:** Győződjön meg arról, hogy a kernel nem lett frissítve (uname-a). Ha igen, térjen vissza a kernel 4.1 X verzióra. 
+**A:** Ellenőrizze, hogy a kernel nem lett-e frissítve (uname -a). Ha igen, lépjen vissza a 4.1X kernelre. 
 
-**K:** Ha üzembe helyezem a saját CentOS 7.8 virtuális gépet, akkor mi a szükséges csomagok és lépések?
+**K:** Ha saját CentOS7.8 virtuális gépet helyezek üzembe, mik a szükséges csomagok és lépések?
 
-**A:** Kernel verziójának használata: 3.10.0-1160.15.2.el7.x86_64
+**A:** Kernelverzió használata: 3.10.0-1160.15.2.el7.x86_64
 
- Telepítse a következő csomagokat.
+ Telepítse az alábbi csomagokat.
    
- - xrt_202020 xrt_202020.2.8.832_7.4.1708-x86_64-XRT. rpm 
+ - xrt_202020.2.8.832_7.4.1708-x86_64-xrt.rpm 
       
- - xrt_202020 xrt_202020.2.8.832_7.4.1708-x86_64-Azure. rpm 
+ - xrt_202020.2.8.832_7.4.1708-x86_64-azure.rpm 
      
- - xilinx-u250-gen3x16-xdma-platform-2.1 -3. a. 
+ - xilinx-u250-gen3x16-xdma-platform-2.1-3.noarch.rpm.tar.gz 
       
- - xilinx-u250-gen3x16-xdma-validate-2.1 – 3005608.1...  
+ - xilinx-u250-gen3x16-xdma-validate-2.1-3005608.1.noarch.rpm  
 
-**K:** A xbutil-ellenőrzés futtatásakor a CentOS-ben a következő figyelmeztetés jelenik meg: "Figyelmeztetés: a kernel verziója 3.10.0-1160.15.2.el7.x86_64 nem hivatalosan támogatott. a 4.18.0-193 a legújabb támogatott verzió. " 
+**K:** Az xbutil validate CentOS-on való futtatásakor a következő figyelmeztetés jelenik meg: "WARNING: Kernel version 3.10.0-1160.15.2.el7.x86_64 is officially supported. A 4.18.0-193 a legújabb támogatott verzió." 
 
-**A:** Ezt nyugodtan figyelmen kívül hagyhatja. 
+**A:** Ez nyugodtan figyelmen kívül hagyható. 
 
-**K:** Mi a különbség a helyszíni és az NP virtuális gépek között a XRT kapcsolatban? 
+**K:** Mi a különbség a onPrem és az NP virtuális gépek között az XRT-re vonatkozóan? 
 
-**A:** Az Azure-ban a XDMA 2,1 platform csak a Host_Mem (SB) és a DDR adatmegőrzési funkciókat támogatja. 
+**A:** Az Azure-ban az XDMA 2.1 platform csak a Host_Mem (SB) és DDR adatmegőrzési funkciókat támogatja. 
 
-Host_Mem (SB) engedélyezése (1 GB RAM): sudo xbutil host_mem--Enable--size 1g 
+A Host_Mem (SB) (1 Gb RAM) engedélyezéséhez: sudo xbutil host_mem --enable --size 1g 
 
-Host_Mem letiltása (SB): sudo xbutil host_mem--Disable 
+A Host_Mem (SB) letiltása: sudo xbutil host_mem --disable 
 
-**K:** Futtathatok xbmgmt parancsokat? 
+**K:** Futtatok xbmgmt-parancsokat? 
 
-**A:** Nem, az Azure-beli virtuális gépeken az Azure-beli virtuális gépen nincs felügyeleti támogatás. 
+**A:** Nem, az Azure-beli virtuális gépeken nem támogatott közvetlenül az Azure-beli virtuális gép kezelése. 
 
- **K:** Be kell tölteni egy PLP? 
+ **K:** Be kell töltenem egy PLP-t? 
 
-**A:** Nem, a PLP automatikusan betöltődik, így nem kell betölteni a xbmgmt-parancsokon keresztül. 
+**A:** Nem, a PLP-t a rendszer automatikusan betölti, így nem kell xbmgmt-parancsokkal betöltenie. 
 
  
-**K:** Támogatja az Azure a különböző PLPs? 
+**K:** Különböző Azure-támogatás plp-eket? 
 
-**A:** Jelenleg nem. Csak a telepítési platform csomagjaiban megadott PLP támogatjuk. 
+**A:** Jelenleg nem. Csak az üzembe helyezési platform csomagjaiban biztosított PLP-t támogatjuk. 
 
-**K:** Hogyan lehet lekérdezni a PLP adatait? 
+**K:** Hogyan lehet lekérdezni a PLP-adatokat? 
 
-**A:** Xbutil-lekérdezést kell futtatnia, és meg kell vizsgálnia az alsó részt. 
+**A:** Futtatnia kell az xbutil lekérdezést, és meg kell néznie az alsó részt. 
+
+**K:** Ha saját virtuális gépet hozok létre, és manuálisan telepítem az XRT-t, milyen további módosításokat kell tennem? 
+
+**A:** Az /opt/xilinx/xrt/setup.sh-ban adjon hozzá egy bejegyzést a XRT_INI_PATH-hoz, amely a /opt/xilinx/xrt/xrt.ini
+
+ 
+Az /opt/xilinx/xrt/xrt.ini tartalma a következőket tartalmazza: <br>
+[Runtime]<br>
+ert=false <br>
 
 ## <a name="other-sizes"></a>Egyéb méretek
 
@@ -147,4 +156,4 @@ Host_Mem letiltása (SB): sudo xbutil host_mem--Disable
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.
+További információ arról, hogyan hasonlíthatja össze az Azure-beli számítási egységek [(ACU)](acu.md) a számítási teljesítményt az Azure-beli SKU-k között.

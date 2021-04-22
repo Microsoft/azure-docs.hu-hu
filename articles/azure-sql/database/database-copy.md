@@ -11,25 +11,25 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: wiassaf
 ms.date: 03/10/2021
-ms.openlocfilehash: 3ce07af74c3f01fd78ef15ab0e7d43b91361e556
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b7084ef045d14b9715c41bb9ffa483d1f2f7bedf
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784476"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865104"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Adatbázis tranzakciós szempontból konzisztens másolatának másolása a Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Azure SQL Database több módszert is kínál egy meglévő [](single-database-overview.md) adatbázis másolatának létrehozására ugyanazon a kiszolgálón vagy egy másik kiszolgálón. Az adatbázisokat a következő parancsokkal másolhatja Azure Portal, PowerShell, Azure CLI vagy T-SQL használatával.
+Azure SQL Database több módszert is kínál egy meglévő [](single-database-overview.md) adatbázis másolatának létrehozására ugyanazon a kiszolgálón vagy egy másik kiszolgálón. Az adatbázisokat a következő használatával másolhatja: Azure Portal, PowerShell, Azure CLI vagy T-SQL.
 
 ## <a name="overview"></a>Áttekintés
 
-Az adatbázis-másolat a forrásadatbázis tranzakciós szempontból konzisztens pillanatképe a másolási kérelem kezdeményezése utáni időponttól. Kiválaszthatja ugyanazt a kiszolgálót vagy egy másik kiszolgálót a másoláshoz. Dönthet úgy is, hogy megtartja a biztonsági másolatok redundanciát, a szolgáltatási szintet és a forrásadatbázis számítási méretét, vagy eltérő biztonsági mentési tárhelyredundanciát és/vagy számítási méretet használ ugyanazon vagy egy másik szolgáltatási szinten belül. A másolás befejeződik, és teljesen működőképes, független adatbázissá válik. A másolt adatbázisban a bejelentkezéseket, a felhasználókat és az engedélyeket a forrásadatbázistól függetlenül kezeli a rendszer. A másolat a georeplikációs technológiával jön létre. Ha a replika index-összehangolása befejeződött, a georeplikációs hivatkozás automatikusan megszűnik. A georeplikáció használatára vonatkozó követelmények az adatbázis-másolási műveletnél is érvényesülnek. A [részleteket az Aktív georeplikáció áttekintése](active-geo-replication-overview.md) című témakörben olvashatja.
+Az adatbázis-másolat a forrásadatbázis tranzakciós szempontból konzisztens pillanatképe a másolási kérelem kezdeményezése utáni időponttól. A másoláshoz kiválaszthatja ugyanazt a kiszolgálót vagy egy másik kiszolgálót. Dönthet úgy is, hogy megtartja a biztonsági mentési redundanciát, a szolgáltatási szintet és a forrásadatbázis számítási méretét, vagy eltérő biztonsági mentési tárhely-redundanciát és/vagy számítási méretet használ ugyanazon vagy egy másik szolgáltatási szinten belül. A másolás befejeződik, és teljesen működőképes, független adatbázissá válik. A másolt adatbázisban a bejelentkezéseket, a felhasználókat és az engedélyeket a rendszer a forrásadatbázistól függetlenül kezeli. A másolat a georeplikációs technológiával jön létre. Ha a replika index-összehangolása befejeződött, a georeplikációs hivatkozás automatikusan megszűnik. A georeplikáció használatára vonatkozó követelmények az adatbázis-másolási műveletnél is érvényesülnek. A [részletekért lásd: Aktív georeplikáció áttekintése.](active-geo-replication-overview.md)
 
 > [!NOTE]
-> Azure SQL Database Backup Storage redundanciának konfigurálása jelenleg nyilvános előzetes verzióban érhető el Dél-Brazília területén, és általánosan csak Délkelet-Ázsia Azure-régiójában. Ha az előzetes verzióban a forrásadatbázis helyileg redundáns vagy zónaredundáns biztonsági mentési tárhelyredundanssal van létrehozva, az adatbázis másik Azure-régióban található kiszolgálóra való másolása nem támogatott. 
+> Azure SQL Database Configurable Backup Storage Redundancy (Konfigurálható biztonsági mentési tárhely-redundancia) jelenleg nyilvános előzetes verzióban érhető el Dél-Brazília területén, és általánosan csak Délkelet-Ázsia Azure-régiójában érhető el. Ha az előzetes verzióban a forrásadatbázis helyileg redundáns vagy zónaredundáns biztonsági mentési tárredundanssal van létrehozva, az adatbázis egy másik Azure-régióban található kiszolgálóra való másolása nem támogatott. 
 
 ## <a name="logins-in-the-database-copy"></a>Bejelentkezések az adatbázis másolatában
 
@@ -37,13 +37,13 @@ Amikor adatbázist másol ugyanerre a kiszolgálóra, ugyanezek a bejelentkezés
 
 Ha egy adatbázist egy másik kiszolgálóra másol, a másolási műveletet a célkiszolgálón kezdeményező rendszerbiztonsági tag lesz az új adatbázis tulajdonosa.
 
-A célkiszolgálótól függetlenül a rendszer minden adatbázis-felhasználót, azok engedélyét és biztonsági azonosítóját (SID) átmásolja az adatbázis-másolatba. A [tartalmazottadatbázis-felhasználók](logins-create-manage.md) adateléréshez való használata biztosítja, hogy a másolt adatbázis ugyanazokkal a felhasználói hitelesítő adatokkal rendelkezik, így a másolás befejezése után azonnal elérheti ugyanezekkel a hitelesítő adatokkal.
+A célkiszolgálótól függetlenül a rendszer az adatbázis minden felhasználóját, engedélyét és biztonsági azonosítóját (SID) átmásolja az adatbázis-másolatba. A [tartalmazottadatbázis-felhasználók](logins-create-manage.md) adateléréshez való használata biztosítja, hogy a másolt adatbázis ugyanazokkal a felhasználói hitelesítő adatokkal rendelkezik, így a másolás befejezése után azonnal hozzáférhet ugyanazokhoz a hitelesítő adatokhoz.
 
-Ha kiszolgálói szintű bejelentkezési adatokat használ az adatok eléréséhez, és az adatbázist egy másik kiszolgálóra másolja, előfordulhat, hogy a bejelentkezési alapú hozzáférés nem fog működni. Ennek az lehet az oka, hogy a bejelentkezési adatok nem léteznek a célkiszolgálón, vagy a jelszavuk és a biztonsági azonosítóik (SID) eltérnek. Ha többet szeretne megtudni a bejelentkezések kezeléséről, amikor adatbázist másol egy másik kiszolgálóra, tekintse meg a vészhelyreállítás utáni biztonsági Azure SQL Database [kezelését.](active-geo-replication-security-configure.md) Miután a másolási művelet sikeres volt egy másik kiszolgálóra, és a többi felhasználó újra leképezés előtt csak az adatbázis tulajdonosához vagy a kiszolgáló rendszergazdájához társított bejelentkezés tud bejelentkezni a másolt adatbázisba. A bejelentkezések feloldásához és az adatokhoz való hozzáférés a másolási művelet befejezése után történő létrehozására vonatkozó információkért lásd: [Bejelentkezések feloldása.](#resolve-logins)
+Ha kiszolgálói szintű bejelentkezési adatokat használ az adatok eléréséhez, és az adatbázist egy másik kiszolgálóra másolja, előfordulhat, hogy a bejelentkezési alapú hozzáférés nem fog működni. Ennek az lehet az oka, hogy a bejelentkezési adatok nem léteznek a célkiszolgálón, vagy a jelszavuk és a biztonsági azonosítóik (SID) eltérnek. Ha többet szeretne megtudni a bejelentkezések kezeléséről, amikor adatbázist másol egy másik kiszolgálóra, tekintse meg a vészhelyreállítás utáni biztonsági Azure SQL Database [kezelését.](active-geo-replication-security-configure.md) Miután a másolási művelet sikeres volt egy másik kiszolgálóra, és a többi felhasználó újra leképezása előtt csak az adatbázis tulajdonosához társított bejelentkezés vagy a kiszolgáló-rendszergazda jelentkezhet be a másolt adatbázisba. A bejelentkezések feloldásához és az adatokhoz való hozzáférésnek a másolási művelet befejezése utáni létesítéséhez lásd: [Bejelentkezések feloldása.](#resolve-logins)
 
 ## <a name="copy-using-the-azure-portal"></a>Másolás az Azure Portal használatával
 
-Az adatbázis másolásához a Azure Portal nyissa meg az adatbázis lapját, majd kattintson a Másolás **gombra.**
+Az adatbázis másolásához a Azure Portal nyissa meg az adatbázis lapját, majd kattintson a **Másolás gombra.**
 
    ![Adatbázis-másolat](./media/database-copy/database-copy.png)
 
@@ -53,17 +53,17 @@ Adatbázis másolásához használja az alábbi példákat.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-A PowerShellhez használja a [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) parancsmagot.
+A PowerShell esetében használja a [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) parancsmagot.
 
 > [!IMPORTANT]
-> A PowerShell Azure Resource Manager (RM) modult továbbra is támogatja a Azure SQL Database, de minden jövőbeli fejlesztés az Az.Sql modulra lesz kihozva. Az AzureRM modul legalább 2020 decemberéig továbbra is megkapja a hibajavításokat.  Az Az modulban és az AzureRm-modulokban található parancsok argumentumai jelentősen megegyeznek. További információ a kompatibilitásukról: [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az)(Az új Azure PowerShell Az modul).
+> A PowerShell Azure Resource Manager (RM) modult továbbra is támogatja a Azure SQL Database, de minden jövőbeli fejlesztés az Az.Sql modulhoz lesz. Az AzureRM modul 2020 decemberéig továbbra is megkapja a hibajavításokat.  Az Az modulban és az AzureRm-modulokban található parancsok argumentumai jelentősen megegyeznek. További információ a kompatibilitásukról: [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az)(Az új Azure PowerShell Az modul).
 
 ```powershell
 New-AzSqlDatabaseCopy -ResourceGroupName "<resourceGroup>" -ServerName $sourceserver -DatabaseName "<databaseName>" `
     -CopyResourceGroupName "myResourceGroup" -CopyServerName $targetserver -CopyDatabaseName "CopyOfMySampleDatabase"
 ```
 
-Az adatbázis másolata aszinkron művelet, de a céladatbázis a kérés elfogadás után azonnal létrejön. Ha meg kell szakítania a másolási műveletet, miközben még folyamatban van, a [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) parancsmag használatával törölje a céladatbázist.
+Az adatbázis másolata aszinkron művelet, de a céladatbázis a kérés elfogadás után azonnal létrejön. Ha meg kell szakítania a másolási műveletet, miközben még folyamatban van, a [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) parancsmag használatával távolítsa el a céladatbázist.
 
 A teljes PowerShell-parancsfájlminta: [Adatbázis másolása új kiszolgálóra.](scripts/copy-database-to-new-server-powershell.md)
 
@@ -108,7 +108,7 @@ Jelentkezzen be a master adatbázisba a kiszolgáló-rendszergazdai bejelentkez�
 
 Ez a parancs a Database1 adatbázist egy új, Database2 nevű adatbázisba másolja egy pool1 nevű rugalmas készletben. Az adatbázis méretétől függően a másolási művelet némi időt vehet igénybe.
 
-A Database1 adatbázis lehet egy vagy egy készletbe oltott adatbázis. A különböző rétegkészletek közötti másolás támogatott, de egyes többrétegű másolatok nem fognak sikerülni. Például átmásolhat egy vagy több rugalmas standard adatbázist egy általános célú készletbe, de standard rugalmas adatbázist nem másolhat prémium szintű készletbe. 
+A Database1 lehet egyetlen vagy készletbe készletbe ett adatbázis. A különböző rétegkészletek közötti másolás támogatott, de egyes többrétegű példányok nem fognak sikerülni. Átmásolhat például egy vagy több rugalmas standard adatbázist egy általános célú készletbe, de standard rugalmas adatbázist nem másolhat prémium szintű készletbe. 
 
    ```sql
    -- Execute on the master database to start copying
@@ -121,7 +121,7 @@ A Database1 adatbázis lehet egy vagy egy készletbe oltott adatbázis. A külö
 
 Jelentkezzen be annak a célkiszolgálónak a master adatbázisába, ahol az új adatbázist létre kell hozva. Olyan bejelentkezést használjon, amely ugyanazokkal a névvel és jelszóval rendelkezik, mint a forráskiszolgálón található forrásadatbázis tulajdonosa. A célkiszolgálón történő bejelentkezésnek a szerepkörnek is tagja kell lennie, vagy `dbmanager` kiszolgáló-rendszergazdai bejelentkezésnek kell lennie.
 
-Ez a parancs a Database1 adatbázist a server1 kiszolgálón egy új, Database2 nevű adatbázisba másolja a server2 kiszolgálón. Az adatbázis méretétől függően a másolási művelet befejezése némi időt vehet igénybe.
+Ez a parancs a Database1 adatbázist a server1 kiszolgálón egy új, Database2 nevű adatbázisba másolja a server2 kiszolgálón. Az adatbázis méretétől függően a másolási művelet némi időt vehet igénybe.
 
 ```sql
 -- Execute on the master database of the target server (server2) to start copying from Server1 to Server2
@@ -133,7 +133,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
 ### <a name="copy-to-a-different-subscription"></a>Másolás másik előfizetésbe
 
-Az Adatbázis másolása másik [kiszolgálóra SQL Database](#copy-to-a-different-server) szakaszban található lépésekkel másolhatja az adatbázist egy másik előfizetésben található kiszolgálóra a T-SQL használatával. Ügyeljen arra, hogy olyan bejelentkezést használjon, amely ugyanazokkal a névvel és jelszóval rendelkezik, mint a forrásadatbázis adatbázis-tulajdonosa. Emellett a bejelentkezésnek a szerepkör vagy a kiszolgáló rendszergazdájának kell lennie `dbmanager` mind a forrás-, mind a célkiszolgálón.
+Az Adatbázis másolása másik kiszolgálóra [SQL Database](#copy-to-a-different-server) szakaszban található lépésekkel másolhatja az adatbázist egy másik előfizetésben található kiszolgálóra a T-SQL használatával. Ügyeljen arra, hogy olyan bejelentkezést használjon, amely ugyanazokkal a névvel és jelszóval rendelkezik, mint a forrásadatbázis adatbázis-tulajdonosa. Emellett a bejelentkezésnek a szerepkör vagy a kiszolgáló rendszergazdájának kell lennie `dbmanager` mind a forrás-, mind a célkiszolgálón.
 
 ```sql
 --Step# 1
@@ -181,7 +181,7 @@ AS COPY OF source_server_name.source_database_name;
 > A [Azure Portal,](https://portal.azure.com)a PowerShell és az Azure CLI nem támogatja az adatbázis másik előfizetésbe való másolását.
 
 > [!TIP]
-> Az adatbázis T-SQL-t használó másolása támogatja az adatbázisok másolását egy másik Azure-bérlő előfizetéséből. Ez csak akkor támogatott, ha SQL-hitelesítéssel jelentkezik be a célkiszolgálóra.
+> A T-SQL-t használó adatbázis-másolatok támogatják az adatbázisok másolását egy másik Azure-bérlő előfizetéséből. Ez csak akkor támogatott, ha SQL-hitelesítéssel jelentkezik be a célkiszolgálóra.
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>A másolási művelet előrehaladásának figyelése
 
@@ -218,17 +218,17 @@ Az adatbázis-másolásnak a Azure Portal való kezeléséhez a következő enge
 
    Microsoft.Resources/subscriptions/resources/read Microsoft.Resources/subscriptions/resources/write Microsoft.Resources/deployments/read Microsoft.Resources/deployments/write Microsoft.Resources/deployments/operationstatuses/read
 
-Ha látni szeretné a portálon az erőforráscsoport üzemelő példányai alatt, a több erőforrás-szolgáltatón, köztük az SQL-műveleteken keresztüli műveleteket is, szüksége lesz a következő további Azure-szerepkörökre:
+Ha szeretné látni a portálon az erőforráscsoport üzemelő példányai alatt, a több erőforrás-szolgáltatón, köztük az SQL-műveleteken keresztüli műveleteket is, a következő további engedélyekre lesz szüksége:
 
    Microsoft.Resources/subscriptions/resourcegroups/deployments/operations/read Microsoft.Resources/subscriptions/resourcegroups/deployments/operationstatuses/read
 
 ## <a name="resolve-logins"></a>Bejelentkezések feloldása
 
-Miután az új adatbázis online állapotba jött a célkiszolgálón, az [ALTER USER](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current&preserve-view=true) utasítással leképezhet felhasználókat az új adatbázisból a célkiszolgálóra való bejelentkezéshez. Az árva felhasználók megoldásához lásd: [Árva felhasználók hibaelhárítása.](/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server) Lásd [még: Biztonsági Azure SQL Database kezelése vészhelyreállítás után.](active-geo-replication-security-configure.md)
+Miután az új adatbázis online állapotba jött a célkiszolgálón, az [ALTER USER](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current&preserve-view=true) utasítással leképezi újra a felhasználókat az új adatbázisból a célkiszolgálóra való bejelentkezéshez. Az árva felhasználók megoldásához lásd: [Árva felhasználók hibaelhárítása.](/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server) Lásd [még: Biztonsági Azure SQL Database kezelése vészhelyreállítás után.](active-geo-replication-security-configure.md)
 
-Az új adatbázis összes felhasználója megőrzi a forrásadatbázishoz szükséges engedélyeket. Az adatbázis másolatát kezdeményező felhasználó lesz az új adatbázis tulajdonosa. A másolás sikeres és a többi felhasználó újra leképezása előtt csak az adatbázis tulajdonosa jelentkezhet be az új adatbázisba.
+Az új adatbázis összes felhasználója megőrzi a forrásadatbázisban már rendelkezik engedélyekkel. Az adatbázis másolatát kezdeményező felhasználó lesz az új adatbázis tulajdonosa. A másolás sikeres után és a többi felhasználó újra leképezása előtt csak az adatbázis tulajdonosa jelentkezhet be az új adatbázisba.
 
-Ha meg szeretne ismerkedni a felhasználók és bejelentkezések kezelésével, amikor adatbázist másol egy másik kiszolgálóra, tekintse meg a vészhelyreállítás utáni biztonsági Azure SQL Database [kezelését.](active-geo-replication-security-configure.md)
+Ha meg szeretne ismerkedni a felhasználók és a bejelentkezések kezelésével, amikor adatbázist másol egy másik kiszolgálóra, tekintse meg a vészhelyreállítás utáni biztonsági Azure SQL Database [kezelését.](active-geo-replication-security-configure.md)
 
 ## <a name="database-copy-errors"></a>Adatbázis-másolási hibák
 
@@ -236,13 +236,13 @@ A következő hibák merülhetnek fel az adatbázis másolása során a Azure SQ
 
 | Hibakód | Súlyosság | Leírás |
 | ---:| ---:|:--- |
-| 40635 |16 |A(z) %.&#x2a;ls IP-címmel megadott ügyfél átmenetileg le van tiltva. |
+| 40635 |16 |A %.&#x2a;ls IP-címmel kapcsolatos ügyfél átmenetileg le van tiltva. |
 | 40637 |16 |Az adatbázis-másolat létrehozása jelenleg le van tiltva. |
 | 40561 |16 |Az adatbázis másolása sikertelen volt. A forrás- vagy a céladatbázis nem létezik. |
 | 40562 |16 |Az adatbázis másolása sikertelen volt. A forrásadatbázis el lett dobva. |
 | 40563 |16 |Az adatbázis másolása sikertelen volt. A céladatbázis el lett dobva. |
 | 40564 |16 |Az adatbázis másolása belső hiba miatt meghiúsult. Hagyja el a céladatbázist, és próbálkozzon újra. |
-| 40565 |16 |Az adatbázis másolása sikertelen volt. Egy forrásból egynél több egyidejű adatbázis-másolat nem engedélyezett. Hagyja el a céladatbázist, és próbálkozzon újra később. |
+| 40565 |16 |Az adatbázis másolása sikertelen volt. Egy forrásból egyszerre csak 1 adatbázis-másolat engedélyezett. Hagyja el a céladatbázist, és próbálkozzon újra később. |
 | 40566 |16 |Az adatbázis másolása belső hiba miatt meghiúsult. Hagyja el a céladatbázist, és próbálkozzon újra. |
 | 40567 |16 |Az adatbázis másolása belső hiba miatt meghiúsult. Hagyja el a céladatbázist, és próbálkozzon újra. |
 | 40568 |16 |Az adatbázis másolása sikertelen volt. A forrásadatbázis elérhetetlenné vált. Hagyja el a céladatbázist, és próbálkozzon újra. |
@@ -252,5 +252,5 @@ A következő hibák merülhetnek fel az adatbázis másolása során a Azure SQ
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A bejelentkezésekkel kapcsolatos információkért lásd: [Bejelentkezések](logins-create-manage.md) kezelése és Biztonsági Azure SQL Database [kezelése vészhelyreállítás után.](active-geo-replication-security-configure.md)
+* A bejelentkezésekkel kapcsolatos információkért lásd: [Bejelentkezések kezelése](logins-create-manage.md) és Biztonsági Azure SQL Database [kezelése vészhelyreállítás után.](active-geo-replication-security-configure.md)
 * Adatbázis exportálásához lásd: Az adatbázis [exportálása BACPAC-fájlba.](database-export.md)

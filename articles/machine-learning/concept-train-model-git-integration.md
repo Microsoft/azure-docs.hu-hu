@@ -1,7 +1,7 @@
 ---
-title: Git-integráció a Azure Machine Learning
+title: Git-integráció Azure Machine Learning
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan integrálható a Azure Machine Learning egy helyi git-adattárral, hogy nyomon kövessék a tárházat, az ágakat és az aktuális véglegesítő információkat egy képzési Futtatás részeként.
+description: Megtudhatja, Azure Machine Learning hogyan integrálható egy helyi Git-adattárakba az adattár, az ág és az aktuális véglegesítési információk betanítás során való nyomon követéséhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,107 +9,107 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 04/08/2021
-ms.openlocfilehash: 2dc50702113f591075b790878347c4ca47beec4e
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 60dca43f95b190791c8fb593042ed612340a3af5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027805"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874548"
 ---
-# <a name="git-integration-for-azure-machine-learning"></a>Git-integráció a Azure Machine Learning
+# <a name="git-integration-for-azure-machine-learning"></a>Git-integráció Azure Machine Learning
 
-A [git](https://git-scm.com/) egy népszerű verziókövető rendszer, amely lehetővé teszi a projektek megosztását és együttműködését. 
+[A Git](https://git-scm.com/) egy népszerű verzióvezérlő rendszer, amely lehetővé teszi a projektek megosztását és közös működését. 
 
-A Azure Machine Learning teljes mértékben támogatja a nyomon követéshez használható git-Tárházak használatát – a Tárházak közvetlenül a megosztott munkaterület fájlrendszerére, a git használata a helyi munkaállomáson, vagy a git használata CI/CD-folyamatból.
+Azure Machine Learning teljes mértékben támogatja a Git-adattárakat a munka nyomon követéséhez – az adattárakat közvetlenül a megosztott munkaterület fájlrendszerére klónozhatja, a Gitet a helyi munkaállomáson használhatja, vagy a Gitet ci-/CD-folyamatból is használhatja.
 
-Ha Azure Machine Learningre küld el egy feladatot, ha a forrásfájlok egy helyi git-tárházban tárolódnak, akkor a rendszer a betanítási folyamat részeként nyomon követi a tárházra vonatkozó információkat.
+Amikor feladatot ad Azure Machine Learning, ha a forrásfájlokat egy helyi Git-adattárban tárolják, akkor a betanítási folyamat részeként nyomon követi az adattár információit.
 
-Mivel Azure Machine Learning nyomon követi a helyi git-tárház adatait, nem kötődik egyetlen konkrét központi adattárhoz sem. A tárházat a GitHub, a GitLab, a bitbucket, az Azure DevOps vagy más git-kompatibilis szolgáltatásból lehet klónozott.
+Mivel Azure Machine Learning helyi Git-adattár információit követi nyomon, nincs konkrét központi tárházhoz kötve. Az adattár klónozható a GitHubról, a GitLab-ről, a Bitbucketről, az Azure DevOpsról vagy bármely más git-kompatibilis szolgáltatásból.
 
 > [!TIP]
-> A Visual Studio Code használatával a git a grafikus felhasználói felületen keresztül kommunikálhat. Ha a Visual Studio Code használatával szeretne csatlakozni egy Azure Machine Learning távoli számítási példányhoz, tekintse meg a következőt: [kapcsolódás Azure Machine learning számítási példányhoz a Visual Studio Code-ban (előzetes verzió)](how-to-set-up-vs-code-remote.md)
+> A Visual Studio Code használatával egy grafikus felhasználói felületen keresztül kommunikálhat a Gittel. Ha egy távoli számítási Azure Machine Learning-példányhoz szeretne csatlakozni a Visual Studio Code használatával, tekintse meg a Csatlakozás Azure Machine Learning számítási példányhoz az [Visual Studio Code (előzetes verzió) szolgáltatásban)](how-to-set-up-vs-code-remote.md)
 >
-> A Visual Studio Code Version Control funkcióival kapcsolatos további információkért lásd: a [Version Control használata a vs Code](https://code.visualstudio.com/docs/editor/versioncontrol) -ban, és [a GITHUB használata a vs Code-ban](https://code.visualstudio.com/docs/editor/github).
+> További információ a code Visual Studio funkcióiról: [Using Version Control in VS Code (Verzióvezérlés](https://code.visualstudio.com/docs/editor/versioncontrol) használata a VS Code-ban) és Working with GitHub in VS Code (A [GitHub használata a VS Code-ban).](https://code.visualstudio.com/docs/editor/github)
 
 ## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Git-adattárak klónozása a munkaterület fájlrendszerébe
 Azure Machine Learning megosztott fájlrendszert biztosít a munkaterület összes felhasználója számára.
-Ha a git-tárházat ebbe a fájlmegosztásba szeretné klónozott, javasoljuk, hogy hozzon létre egy számítási példányt & [Nyisson meg egy terminált](how-to-access-terminal.md).
-Miután megnyitotta a terminált, egy teljes git-ügyfélhez férhet hozzá, és a git parancssori felületén keresztül klónozott és dolgozhat a git használatával.
+Ha Git-adattárat szeretné klónozni ebbe a fájlmegosztásba, javasoljuk, hogy hozzon létre egy számítási példányt, & [nyisson meg egy terminált.](how-to-access-terminal.md)
+A terminál megnyitása után hozzáférhet egy teljes Git-ügyfélhez, és a Git CLI használatával klónozhatja és használhatja a Gitet.
 
-Azt javasoljuk, hogy a tárházat a felhasználók könyvtárába klónozással, hogy mások ne hozzanak ütközéseket közvetlenül a munkaágra.
+Javasoljuk, hogy klónozza az adattárat a felhasználók könyvtárába, hogy mások ne ütköznek közvetlenül a munkaágban.
 
-A (GitHub, Azure Repos, BitBucket stb.) használatával bármilyen git-tárház klónozását végezheti el.
+Bármilyen git-adattárat klónozhat, amelybe hitelesíthet (GitHub, Azure Repos, BitBucket stb.)
 
-A klónozással kapcsolatos további információkért tekintse meg a [git parancssori felület használatának](https://guides.github.com/introduction/git-handbook/)útmutatója című témakört.
+A klónozásról a Git CLI használatával kapcsolatos [útmutatóban található további információ.](https://guides.github.com/introduction/git-handbook/)
 
-## <a name="authenticate-your-git-account-with-ssh"></a>A git-fiók hitelesítése SSH-val
+## <a name="authenticate-your-git-account-with-ssh"></a>Git-fiók hitelesítése SSH-val
 ### <a name="generate-a-new-ssh-key"></a>Új SSH-kulcs létrehozása
-1) [Nyissa meg a terminál ablakot](./how-to-access-terminal.md) a Azure Machine learning notebook lapon.
+1) [Nyissa meg a terminálablakot](./how-to-access-terminal.md) a Azure Machine Learning Notebook lapon.
 
-2) Illessze be az alábbi szöveget az e-mail-címébe való Behelyettesítéssel.
+2) Illessze be az alábbi szöveget, és az e-mail-címét helyettesítve.
 
 ```bash
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 
-Ez egy új SSH-kulcsot hoz létre, amely a megadott e-mail-címkét használja.
+Ez létrehoz egy új SSH-kulcsot, címkeként használva a megadott e-mailt.
 
 ```
 > Generating public/private rsa key pair.
 ```
 
-3) Amikor a rendszer arra kéri, hogy "adjon meg egy fájlt, amelybe menteni szeretné a kulcsot" nyomja le az ENTER billentyűt. Ez a fájl alapértelmezett helyét fogadja el.
+3) Amikor a rendszer az "Enter a file in which to save the key" (Írja be a fájlt, amelybe a kulcsot menteni fogja) kérdésre, nyomja le az Enter billentyűt. Ez fogadja el az alapértelmezett fájlhelyet.
 
-4) Győződjön meg arról, hogy az alapértelmezett hely a "/Home/azureuser/.ssh", majd nyomja le az ENTER billentyűt. Egyéb esetben a "/Home/azureuser/.ssh" helyet kell megadni.
+4) Ellenőrizze, hogy az alapértelmezett hely a /home/azureuser/.ssh, majd nyomja le az Enter billentyűt. Ellenkező esetben adja meg a /home/azureuser/.ssh helyet.
 
 > [!TIP]
-> Győződjön meg róla, hogy az SSH-kulcs a "/Home/azureuser/.ssh" mappába van mentve. Ezt a fájlt a számítási példányon menti a rendszer, csak a számítási példány tulajdonosa férhet hozzá.
+> Győződjön meg arról, hogy az SSH-kulcs a /home/azureuser/.ssh fájlban van mentve. Ez a fájl a számítási példányon van mentve, csak a számítási példány tulajdonosa számára érhető el
 
 ```
 > Enter a file in which to save the key (/home/azureuser/.ssh/id_rsa): [Press enter]
 ```
 
-5) A parancssorba írja be a biztonságos hozzáférési kódot. Azt javasoljuk, hogy adjon hozzá egy hozzáférési kódot az SSH-kulcshoz a további biztonság érdekében
+5) Amikor a rendszer kéri, adjon meg egy biztonságos jelszót. Javasoljuk, hogy adjon hozzá egy jelszót az SSH-kulcshoz a további biztonság érdekében
 
 ```
 > Enter passphrase (empty for no passphrase): [Type a passphrase]
 > Enter same passphrase again: [Type passphrase again]
 ```
 
-### <a name="add-the-public-key-to-git-account"></a>A nyilvános kulcs hozzáadása a git-fiókhoz
-1) Másolja ki a nyilvános kulcs fájljának tartalmát a terminál ablakban. Ha átnevezte a kulcsot, cserélje le a id_rsa. pub fájlt a nyilvános kulcs fájljának nevére.
+### <a name="add-the-public-key-to-git-account"></a>A nyilvános kulcs hozzáadása a Git-fiókhoz
+1) A terminálablakban másolja ki a nyilvános kulcsfájl tartalmát. Ha átnevezte a kulcsot, cserélje id_rsa.pub helyére a nyilvános kulcs fájlnevét.
 
 ```bash
 cat ~/.ssh/id_rsa.pub
 ```
 > [!TIP]
-> **Másolás és beillesztés a terminálon**
-> * Windows: `Ctrl-Insert` Másolás és használat `Ctrl-Shift-v` vagy `Shift-Insert` Beillesztés.
-> * Mac OS: `Cmd-c` a másoláshoz és `Cmd-v` a beillesztéshez.
-> * A FireFox/IE nem támogatja megfelelően a vágólap-engedélyeket.
+> **Másolás és beillesztés a terminálban**
+> * Windows: `Ctrl-Insert` a másoláshoz és a vagy a `Ctrl-Shift-v` `Shift-Insert` beillesztéshez.
+> * Mac OS: `Cmd-c` másoláshoz és `Cmd-v` beillesztéshez.
+> * Előfordulhat, hogy a FireFox/IE nem támogatja megfelelően a vágólapra vonatkozó engedélyeket.
 
-2) Válassza ki és másolja a vágólapra a kulcs kimenetét.
+2) Jelölje ki és másolja a vágólapra a kulcskimenetet.
 
 + [GitHub](https://docs.github.com/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)
 
 + [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
 
-+ [Azure-DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate#step-2--add-the-public-key-to-azure-devops-servicestfs)  Kezdje a **2. lépéssel**.
++ [Azure DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate#step-2--add-the-public-key-to-azure-devops-servicestfs)  Kezdje a **2. lépéssel.**
 
-+ [BitBucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2). Kezdje a **4. lépéssel**.
++ [BitBucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2). Kezdje a **4. lépéssel.**
 
-### <a name="clone-the-git-repository-with-ssh"></a>A git-tárház klónozása SSH-val
+### <a name="clone-the-git-repository-with-ssh"></a>A Git-adattár klónozása SSH-val
 
-1) Másolja az SSH git Clone URL-címét a git-tárházból.
+1) Másolja ki az SSH Git-klón URL-címét a Git-adattárból.
 
-2) Illessze be az URL-címet az `git clone` alábbi parancsba az SSH git-tárház URL-címének használatához. Ez a következőképpen fog kinézni:
+2) Illessze be az URL-címet az alábbi `git clone` parancsba az SSH Git-adattár URL-címének használatára. Ez a következőre hasonlít:
 
 ```bash
 git clone git@example.com:GitUser/azureml-example.git
 Cloning into 'azureml-example'...
 ```
 
-A következőhöz hasonló választ fog látni:
+A következő hasonló választ fog látni:
 
 ```bash
 The authenticity of host 'example.com (192.30.255.112)' can't be established.
@@ -118,51 +118,51 @@ Are you sure you want to continue connecting (yes/no)? yes
 Warning: Permanently added 'github.com,192.30.255.112' (RSA) to the list of known hosts.
 ```
 
-Előfordulhat, hogy az SSH megjeleníti a kiszolgáló SSH-ujjlenyomatát, és megkéri, hogy ellenőrizze. Győződjön meg arról, hogy a megjelenített ujjlenyomat megegyezik az SSH nyilvános kulcsok oldalának egyik ujjlenyomatával.
+Előfordulhat, hogy az SSH megjeleníti a kiszolgáló SSH-ujjlenyomatát, és megkéri, hogy ellenőrizze. Ellenőrizze, hogy a megjelenített ujjlenyomat megegyezik-e az egyik ujjlenyomattal az SSH nyilvános kulcsok oldalán.
 
-Az SSH ezt az ujjlenyomatot jeleníti meg, amikor egy ismeretlen gazdagéphez csatlakozik, és így védelmet nyújt a támadók [számára.](/previous-versions/windows/it-pro/windows-2000-server/cc959354(v=technet.10)) Ha elfogadja a gazdagép ujjlenyomatát, az SSH nem kérdezi újra, ha az ujjlenyomat megváltozása megtörténik.
+Az SSH ezt az ujjlenyomatot jeleníti meg, amikor egy ismeretlen gazdagéphez csatlakozik, hogy megvédje a ["man-in-the-middle" támadásoktól.](/previous-versions/windows/it-pro/windows-2000-server/cc959354(v=technet.10)) Ha elfogadja a gazdagép ujjlenyomatát, az SSH csak akkor kéri újra, ha az ujjlenyomat megváltozik.
 
-3) Ha a rendszer megkérdezi, hogy szeretné-e folytatni a csatlakozást, írja be a következőt: `yes` . A git a tárház klónozásával és az SSH-val a későbbi git-parancsokkal való kapcsolódáshoz állítja be a forrás távoli kapcsolatot.
+3) Amikor a kapcsolódás folytatásáról ad kérdést, írja be a következőt: `yes` . A Git klónozza az adattárat, és beállít egy távoli forrást az SSH-val való csatlakozáshoz a jövőbeli Git-parancsokhoz.
 
-## <a name="track-code-that-comes-from-git-repositories"></a>A git-adattárakból származó kód nyomon követése
+## <a name="track-code-that-comes-from-git-repositories"></a>Git-adattárakból származó kód nyomon követése
 
-Amikor beküld egy képzést a Python SDK-ból vagy Machine Learning CLI-ből, a modell betanításához szükséges fájlok fel lesznek töltve a munkaterületre. Ha a `git` parancs elérhető a fejlesztői környezetben, a feltöltési folyamat azt a segítségével ellenőrizze, hogy a fájlok egy git-tárházban tárolódnak-e. Ha igen, akkor a git-tárházból származó információk is fel vannak töltve a betanítási Futtatás részeként. Ezeket az adatokat a következő tulajdonságok tárolják a betanítási futtatáshoz:
+Amikor elküldi a betanítás futtatását a Python SDK-ból vagy a Machine Learning CLI-ről, a modell betanításához szükséges fájlokat a rendszer feltölti a munkaterületre. Ha a parancs elérhető a fejlesztési környezetben, a feltöltési folyamat annak ellenőrzéséhez használja, hogy a fájlok `git` git-adattárban vannak-e tárolva. Ha igen, akkor a git-adattárból származó információk is fel vannak töltve a betanítás során. Ezek az információk a betanítás futtatásának alábbi tulajdonságaiban vannak tárolva:
 
-| Tulajdonság | Az érték beolvasásához használt git-parancs | Description |
+| Tulajdonság | Az érték lekért git-parancsa | Description |
 | ----- | ----- | ----- |
-| `azureml.git.repository_uri` | `git ls-remote --get-url` | Az a URI, amelyből a tárház klónozott volt. |
-| `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Az a URI, amelyből a tárház klónozott volt. |
-| `azureml.git.branch` | `git symbolic-ref --short HEAD` | Az aktív ág a Futtatás elküldését követően. |
-| `mlflow.source.git.branch` | `git symbolic-ref --short HEAD` | Az aktív ág a Futtatás elküldését követően. |
-| `azureml.git.commit` | `git rev-parse HEAD` | A futtatáshoz benyújtott kód véglegesítő kivonata. |
-| `mlflow.source.git.commit` | `git rev-parse HEAD` | A futtatáshoz benyújtott kód véglegesítő kivonata. |
-| `azureml.git.dirty` | `git status --porcelain .` | `True`, ha a ág/véglegesítés piszkos; Ellenkező esetben `false` . |
+| `azureml.git.repository_uri` | `git ls-remote --get-url` | Az URI, amelyből az adattár klónozva lett. |
+| `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Az URI, amelyből az adattár klónozva lett. |
+| `azureml.git.branch` | `git symbolic-ref --short HEAD` | A futtatás elküldött aktív ága. |
+| `mlflow.source.git.branch` | `git symbolic-ref --short HEAD` | A futtatás elküldött aktív ága. |
+| `azureml.git.commit` | `git rev-parse HEAD` | A futtatáshoz elküldött kód véglegesítési kivonata. |
+| `mlflow.source.git.commit` | `git rev-parse HEAD` | A futtatáshoz elküldött kód véglegesítési kivonata. |
+| `azureml.git.dirty` | `git status --porcelain .` | `True`, ha az ág/véglegesítés nem megfelelő; Ellenkező `false` esetben: . |
 
-Ezeket az információkat a rendszer a becsléseket, a gépi tanulási folyamatot vagy a parancsfájlok futtatását használó futtatásokhoz továbbítja.
+A rendszer ezeket az információkat olyan futtatásokkal küldi el, amelyek becslátort, gépi tanulási folyamatot vagy szkriptfuttatást használnak.
 
-Ha a képzési fájlok nem egy git-tárházban találhatók a fejlesztői környezetben, vagy a `git` parancs nem érhető el, a rendszer nem követi a git-hez kapcsolódó adatokat.
+Ha a betanítás fájljai nem a fejlesztési környezet git-adattárában találhatók, vagy a parancs nem érhető el, akkor a rendszer nem követi nyomon a Gittel kapcsolatos `git` információkat.
 
 > [!TIP]
-> Ha szeretné megnézni, hogy a git-parancs elérhető-e a fejlesztői környezetben, nyisson meg egy rendszerhéj-munkamenetet, parancssort, PowerShell-t vagy más parancssori felületet, és írja be a következő parancsot:
+> Annak ellenőrzéséhez, hogy a git parancs elérhető-e a fejlesztési környezetben, nyisson meg egy felületi munkamenetet, egy parancssort, egy PowerShellt vagy más parancssori felületet, és írja be a következő parancsot:
 >
 > ```
 > git --version
 > ```
 >
-> Ha telepítve van, és az elérési úton, a következőhöz hasonló választ kap: `git version 2.4.1` . A git fejlesztési környezetben való telepítésével kapcsolatos további információkért tekintse meg a [git webhelyét](https://git-scm.com/).
+> Ha telepítve van, és az elérési úton a következő hasonló választ kapja: `git version 2.4.1` . A git fejlesztői környezetben való telepítésével kapcsolatos további információkért tekintse meg a [Git webhelyét.](https://git-scm.com/)
 
-## <a name="view-the-logged-information"></a>Naplózott adatok megtekintése
+## <a name="view-the-logged-information"></a>A naplózott adatok megtekintése
 
-A git-adatokat egy tanítási Futtatás tulajdonságai tárolják. Ezeket az információkat a Azure Portal, a Python SDK és a CLI használatával tekintheti meg. 
+A git-adatok a betanítás futtatásának tulajdonságaiban vannak tárolva. Ezt az információt megtekintheti a Azure Portal, a Python SDK és a CLI használatával. 
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. A [Studio portálon](https://ml.azure.com)válassza ki a munkaterületet.
-1. Válassza a __kísérletek__ lehetőséget, majd válassza ki az egyik kísérletet.
-1. Válassza ki a __futtatások száma__ oszlop egyik futtatását.
-1. Válassza a __kimenetek + naplók__ lehetőséget, majd bontsa ki a __naplók__ és a __azureml__ bejegyzéseket. Válassza ki a hivatkozást, amely az __### \_ Azure__-ban kezdődik.
+1. A [studioportálon](https://ml.azure.com)válassza ki a munkaterületét.
+1. Válassza __a Kísérletek__ lehetőséget, majd válasszon egyet a kísérletek közül.
+1. Válasszon ki egy futtatást a __RUN NUMBER (FUTTATÁS SZÁMA) oszlopból.__
+1. Válassza __a Kimenetek + naplók__ lehetőséget, majd bontsa ki a __naplókat__ és __az azureml-bejegyzéseket.__ Válassza ki az azure-ral kezdődik __### \_ hivatkozást.__
 
-A naplózott információ a következő JSON-hoz hasonló szöveget tartalmaz:
+A naplózott adatok a következő JSON-hoz hasonló szöveget tartalmaznak:
 
 ```json
 "properties": {
@@ -183,7 +183,7 @@ A naplózott információ a következő JSON-hoz hasonló szöveget tartalmaz:
 
 ### <a name="python-sdk"></a>Python SDK
 
-A betanítási Futtatás elküldése után a rendszer egy [futtatási](/python/api/azureml-core/azureml.core.run%28class%29) objektumot ad vissza. Az `properties` objektum attribútuma tartalmazza a naplózott git-információkat. A következő kód például lekéri a véglegesítő kivonatot:
+A betanítási futtatás elküldése után [a](/python/api/azureml-core/azureml.core.run%28class%29) rendszer futtatási objektumot ad vissza. Az `properties` objektum attribútuma tartalmazza a naplózott git-adatokat. A következő kód például a véglegesítési kivonatot olvassa be:
 
 ```python
 run.properties['azureml.git.commit']
@@ -191,14 +191,14 @@ run.properties['azureml.git.commit']
 
 ### <a name="cli"></a>parancssori felület
 
-A `az ml run` CLI-parancs használatával lekérheti a tulajdonságokat egy futtatásból. A következő parancs például visszaadja a (z) nevű kísérlet utolsó futtatásának tulajdonságait `train-on-amlcompute` :
+A `az ml run` CLI-paranccsal lekérheti a tulajdonságokat egy futtatásból. A következő parancs például a nevű kísérlet utolsó futtatásának tulajdonságait adja `train-on-amlcompute` vissza:
 
 ```azurecli-interactive
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-További információ: az [ml Run](/cli/azure/ext/azure-cli-ml/ml/run) Reference dokumentáció.
+További információt az [az ml run referenciadokumentációban](/cli/azure/ml/run) talál.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Számítási célok használata a modell betanításához](how-to-set-up-training-targets.md)
+* [Számítási célok használata a modell betanításhoz](how-to-set-up-training-targets.md)

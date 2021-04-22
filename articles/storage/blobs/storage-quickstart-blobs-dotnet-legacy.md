@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Azure Blob Storage ügyféloldali kódtára a .NET-hez'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan használható az Azure Blob Storage-ügyfél kódtára a .NET-hez tárolók és Blobok (Object) tárolók létrehozásához. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan listázhatja ki a tárolóban található összes blobot.
+title: 'Rövid útmutató: Az Azure Blob Storage .NET-hez való ügyféloldali kódtára'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure Blob Storage .NET-hez használható ügyféloldali kódtárát egy tároló és egy blob létrehozására a Blob (objektum) tárolóban. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan listázhatja ki a tárolóban található összes blobot.
 author: twooley
 ms.author: twooley
 ms.date: 07/24/2020
@@ -8,59 +8,59 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5eacf9c53715bf42c466aaf6a58938bd681630b9
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 631b01dadacf81d66c3f42dc1401d2cf492316b8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280649"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869238"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár v11 a .NET-hez
+# <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Rövid útmutató: Azure Blob Storage ügyféloldali kódtár v11 for .NET
 
-Ismerkedés az Azure Blob Storage .NET-hez készült ügyféloldali kódtár-v11. Az Azure Blob Storage a Microsoft objektum-tárolási megoldás a felhőhöz. Kövesse a csomag telepítésének lépéseit, és próbálja ki például az alapszintű feladatokhoz tartozó kódot. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva.
+Első lépések a Azure Blob Storage .NET-hez Azure Blob Storage ügyféloldali kódtárával. Azure Blob Storage a Microsoft felhőalapú objektumtárolási megoldása. Kövesse a csomag telepítésének lépéseit, és próbálja ki az alapszintű feladatokhoz szükséges példakódot. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva.
 
 > [!NOTE]
-> Ez a rövid útmutató az Azure Blob Storage ügyféloldali függvénytárának örökölt verzióját használja. A legújabb verzió használatának megkezdéséhez lásd: gyors útmutató [: Azure Blob Storage ügyféloldali kódtára a .net-hez](storage-quickstart-blobs-dotnet.md).
+> Ez a rövid útmutató az Azure Blob Storage ügyféloldali kódtárának örökölt verzióját használja. A legújabb verzió használatának első lépésekhez lásd: Rövid útmutató: Azure Blob Storage ügyféloldali [kódtár v12 for .NET.](storage-quickstart-blobs-dotnet.md)
 
-Használja az Azure Blob Storage .NET-hez készült ügyféloldali kódtárat a következőhöz:
+Használja a Azure Blob Storage .NET-hez használható ügyféloldali kódtárát a következőre:
 
 * Tároló létrehozása
-* Engedélyek beállítása tárolón
-* BLOB létrehozása az Azure Storage-ban
+* Tároló engedélyeinek beállítása
+* Blob létrehozása az Azure Storage-ban
 * A blob letöltése a helyi számítógépre
-* Egy tároló összes blobjának listázása
+* A tárolóban lévő összes blob felsorolása
 * Tároló törlése
 
 További források:
 
 * [API-referenciadokumentáció](/dotnet/api/overview/azure/storage)
-* [Könyvtár forráskódja](https://github.com/Azure/azure-storage-net/tree/master/Blob)
-* [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
+* [Kódtár forráskódja](https://github.com/Azure/azure-storage-net/tree/master/Blob)
+* [Package (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
 * [Példák](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* Azure Storage-fiók – [Storage-fiók létrehozása](../common/storage-account-create.md)
-* Az operációs rendszer jelenlegi [.net Core SDK](https://dotnet.microsoft.com/download/dotnet-core) . Győződjön meg arról, hogy az SDK-t és nem a futtatókörnyezetet kapja meg.
+* Azure-előfizetés [– hozzon létre egyet ingyenesen](https://azure.microsoft.com/free/)
+* Azure Storage-fiók [– tárfiók létrehozása](../common/storage-account-create.md)
+* Aktuális [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) az operációs rendszer számára. Ne a futásidőt, csak az SDK-t szerezze be.
 
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
-Ez a szakasz végigvezeti a projekt előkészítésének folyamatán az Azure Blob Storage .NET-hez készült ügyféloldali kódtár használatával.
+Ez a szakasz végigvezeti egy projekt előkészítésén a .NET-hez készült Azure Blob Storage ügyféloldali kódtárával való munkához.
 
 ### <a name="create-the-project"></a>A projekt létrehozása
 
-Először hozzon létre egy *blob-Gyorsindítás* nevű .net Core-alkalmazást.
+Először hozzon létre egy *blob-quickstart* nevű .NET Core-alkalmazást.
 
-1. Egy konzolablak (például cmd, PowerShell vagy bash) használatával `dotnet new` hozzon létre egy új Console-alkalmazást a *blob-Gyorsindítás* néven. Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájl: *program. cs*.
+1. Egy konzolablakban (például cmd, PowerShell vagy Bash) az paranccsal hozzon létre egy blob-quickstart nevű új `dotnet new` *konzolalkalmazást.* Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájllal: *Program.cs*.
 
    ```console
    dotnet new console -n blob-quickstart
    ```
 
-2. Váltson az újonnan létrehozott *blob-Gyorsindítás* mappára, és hozza létre az alkalmazást, és ellenőrizze, hogy minden rendben van-e.
+2. Váltson az újonnan létrehozott *blob-quickstart* mappára, és készítse el az alkalmazást annak ellenőrzéséhez, hogy minden rendben van-e.
 
    ```console
    cd blob-quickstart
@@ -70,7 +70,7 @@ Először hozzon létre egy *blob-Gyorsindítás* nevű .net Core-alkalmazást.
    dotnet build
    ```
 
-A Build várt kimenetének a következőhöz hasonlóan kell kinéznie:
+A build várt kimenetének a következő módon kell kinéznie:
 
 ```output
 C:\QuickStarts\blob-quickstart> dotnet build
@@ -89,7 +89,7 @@ Time Elapsed 00:00:03.08
 
 ### <a name="install-the-package"></a>A csomag telepítése
 
-Noha még mindig az alkalmazás könyvtárában van, telepítse az Azure Blob Storage .NET-csomaghoz készült ügyféloldali kódtárat a `dotnet add package` paranccsal.
+Az alkalmazás könyvtárában maradva telepítse a Azure Blob Storage .NET-csomaghoz ügyféloldali kódtárát az `dotnet add package` paranccsal.
 
 ```console
 dotnet add package Microsoft.Azure.Storage.Blob
@@ -97,13 +97,13 @@ dotnet add package Microsoft.Azure.Storage.Blob
 
 ### <a name="set-up-the-app-framework"></a>Az alkalmazás-keretrendszer beállítása
 
-A projekt könyvtárából:
+A projektkönyvtárból:
 
-1. Nyissa meg a *program. cs* fájlt a szerkesztőben
-2. Az `Console.WriteLine` utasítás eltávolítása
-3. `using`Irányelvek hozzáadása
-4. Hozzon létre egy `ProcessAsync` metódust, ahol a példában a fő kód található.
-5. A metódus aszinkron meghívása `ProcessAsync` innen: `Main`
+1. Nyissa meg *a Program.cs* fájlt a szerkesztőben
+2. A utasítás `Console.WriteLine` eltávolítása
+3. `using`Direktíva hozzáadása
+4. Hozzon létre egy metódust, amelyben a példa fő kódja `ProcessAsync` található
+5. Aszinkron módon hívja meg a `ProcessAsync` metódust a következőből: `Main`
 
 A kód a következő:
 
@@ -137,9 +137,9 @@ namespace blob_quickstart
 
 ### <a name="copy-your-credentials-from-the-azure-portal"></a>A hitelesítési adatok másolása az Azure Portalról
 
-Ha a minta alkalmazás az Azure Storage-ba irányuló kérést tesz elérhetővé, akkor azt engedélyezni kell. A kérések engedélyezéséhez adja hozzá a Storage-fiók hitelesítő adatait az alkalmazáshoz kapcsolódási karakterláncként. A tárfiók hitelesítő adatainak megtekintéséhez kövesse az alábbi lépéseket:
+Amikor a mintaalkalmazás kérést tesz az Azure Storage-hoz, azt engedélyezni kell. A kérelem hitelesítéshez adja hozzá a tárfiók hitelesítő adatait az alkalmazáshoz kapcsolati sztringként. A tárfiók hitelesítő adatainak megtekintéséhez kövesse az alábbi lépéseket:
 
-1. Navigáljon a [Azure Portal](https://portal.azure.com).
+1. Lépjen a [Azure Portal.](https://portal.azure.com)
 2. Keresse meg a Storage-fiókját.
 3. A tárfiók áttekintésének **Beállítások** szakaszában válassza a **Hozzáférési kulcsok** elemet. Itt megtekintheti a fiókhoz tartozó hozzáférési kulcsokat, valamint az egyes kulcsokhoz tartozó teljes kapcsolati sztringeket.
 4. Keresse meg a **Kapcsolati sztring** értéket a **key1** területen, és kattintson a **Másolás** gombra a kapcsolati sztring másolásához. A kapcsolati sztring értékét hozzáadja egy környezeti változóhoz a következő lépés során.
@@ -148,7 +148,7 @@ Ha a minta alkalmazás az Azure Storage-ba irányuló kérést tesz elérhetőv�
 
 ### <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati sztring konfigurálása
 
-A kapcsolati sztring másolása után írja azt egy új környezeti változóba az alkalmazást futtató helyi gépen. A környezeti változó megadásához nyisson meg egy konzolablakot, és kövesse az operációs rendszerének megfelelő utasításokat. Cserélje le a- `<yourconnectionstring>` t a tényleges kapcsolatok karakterláncára.
+A kapcsolati sztring másolása után írja azt egy új környezeti változóba az alkalmazást futtató helyi gépen. A környezeti változó megadásához nyisson meg egy konzolablakot, és kövesse az operációs rendszerének megfelelő utasításokat. Cserélje `<yourconnectionstring>` le a helyére a tényleges kapcsolati sztringet.
 
 #### <a name="windows"></a>Windows
 
@@ -156,7 +156,7 @@ A kapcsolati sztring másolása után írja azt egy új környezeti változóba 
 setx AZURE_STORAGE_CONNECTION_STRING "<yourconnectionstring>"
 ```
 
-Miután hozzáadta a környezeti változót a Windows rendszerben, el kell indítania a parancssorablak új példányát.
+Miután hozzáadta a környezeti változót a Windowsban, el kell kezdenie a parancsablak egy új példányát.
 
 #### <a name="linux"></a>Linux
 
@@ -170,34 +170,34 @@ export AZURE_STORAGE_CONNECTION_STRING="<yourconnectionstring>"
 export AZURE_STORAGE_CONNECTION_STRING="<yourconnectionstring>"
 ```
 
-A környezeti változó hozzáadását követően indítsa újra a futó programokat, amelyeknek olvasnia kell a környezeti változót. A folytatás előtt indítsa el például a fejlesztési környezetet vagy a szerkesztőt.
+A környezeti változó hozzáadása után indítsa újra az összes olyan futó programot, amely beolvassa a környezeti változót. A folytatás előtt például indítsa újra a fejlesztési környezetet vagy a szerkesztőt.
 
 ## <a name="object-model"></a>Objektummodell
 
-Az Azure Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva. A strukturálatlan adatok olyan adatok, amelyek nem követnek egy adott adatmodellt vagy definíciót, például szöveges vagy bináris adatok. A blob Storage háromféle típusú erőforrást kínál:
+Az Azure Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva. A strukturálatlan adatok olyan adatok, amelyek nem követnek egy adott adatmodellt vagy definíciót, például szöveges vagy bináris adatok. A Blob Storage háromféle erőforrástípust kínál:
 
-* A Storage-fiók.
-* Egy tároló a Storage-fiókban
-* Egy tárolóban lévő blob
+* A tárfiók.
+* Egy tároló a tárfiókban
+* Blob egy tárolóban
 
 Az alábbi ábra az ezen erőforrások közötti kapcsolatot mutatja be.
 
-![BLOB Storage-architektúra ábrája](./media/storage-quickstart-blobs-dotnet/blob1.png)
+![A Blob Storage architektúráját szemléltető diagram](./media/storage-quickstart-blobs-dotnet/blob1.png)
 
-Használja az alábbi .NET-osztályokat a következő erőforrásokkal való interakcióhoz:
+Az alábbi .NET-osztályokkal használhatja ezeket az erőforrásokat:
 
-* [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount): az `CloudStorageAccount` osztály az Azure Storage-fiókját jelöli. Ezt az osztályt használva engedélyezheti a blob Storage-hoz való hozzáférést a fiók hozzáférési kulcsainak használatával.
-* [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient): az `CloudBlobClient` osztály a kódban lévő blob Service elérési pontját biztosítja.
-* [CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer): az `CloudBlobContainer` osztály a kódban szereplő BLOB-tárolót jelöli.
-* [CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob): az `CloudBlockBlob` objektum a kódban található blokk-blobot jelöli. A blokkblobok önállóan felügyelhető adatblokkokból állnak.
+* [CloudStorageAccount:](/dotnet/api/microsoft.azure.storage.cloudstorageaccount)A `CloudStorageAccount` osztály az Ön Azure Storage-fiókját jelöli. Ezzel az osztálysal engedélyezheti a Blob Storage-hoz való hozzáférést a fiók hozzáférési kulcsával.
+* [CloudBlobClient:](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient)A osztály hozzáférési pontot `CloudBlobClient` biztosít a Blob service kódban.
+* [CloudBlobContainer:](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer)A `CloudBlobContainer` osztály egy blobtárolót képvisel a kódban.
+* [CloudBlockBlob:](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob)A `CloudBlockBlob` objektum egy blokkblobot képvisel a kódban. A blokkblobok önállóan felügyelhető adatblokkokból állnak.
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következőket a .NET-hez készült Azure Blob Storage ügyféloldali kódtára használatával:
+Ezek a példakódrészletek megmutatják, hogyan hajthatja végre a következőket a .NET-hez elérhető Azure Blob Storage ügyféloldali kódtárával:
 
    * [Az ügyfél hitelesítése](#authenticate-the-client)
    * [Tároló létrehozása](#create-a-container)
-   * [Engedélyek beállítása tárolón](#set-permissions-on-a-container)
+   * [Tároló engedélyeinek beállítása](#set-permissions-on-a-container)
    * [Blobok feltöltése tárolóba](#upload-blobs-to-a-container)
    * [Tárolóban lévő blobok kilistázása](#list-the-blobs-in-a-container)
    * [Blobok letöltése](#download-blobs)
@@ -205,7 +205,7 @@ Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következőke
 
 ### <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Az alábbi kód ellenőrzi, hogy a környezeti változó tartalmaz-e egy olyan kapcsolódási karakterláncot, amely elemezhető egy olyan [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount) objektum létrehozásához, amely a Storage-fiókra mutat. A kapcsolati sztring érvényességének ellenőrzéséhez alkalmazza a [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse) metódust. Ha `TryParse` a sikeres, inicializálja a `storageAccount` változót, és visszatér `true` .
+Az alábbi kód ellenőrzi, hogy a környezeti változó tartalmaz-e kapcsolati sztringet, amely elemezve létrehozhat egy [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount) objektumot, amely a tárfiókra mutat. A kapcsolati sztring érvényességének ellenőrzéséhez alkalmazza a [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse) metódust. Ha `TryParse` a sikeres, inicializálja a változót, `storageAccount` és a értéket adja `true` vissza.
 
 Adja hozzá ezt a kódot a `ProcessAsync` metódushoz:
 
@@ -239,13 +239,13 @@ else
 ```
 
 > [!NOTE]
-> A cikkben szereplő további műveletek elvégzéséhez cserélje le a `// ADD OTHER OPERATIONS HERE` fenti kódot az alábbi részekben található kódrészletekre.
+> A cikkben található további műveletek végrehajtásához a fenti kódban cserélje le a helyére a következő szakaszokban található `// ADD OTHER OPERATIONS HERE` kódrészleteket.
 
 ### <a name="create-a-container"></a>Tároló létrehozása
 
 Tároló létrehozásához előbb hozza létre a [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient) objektum egy példányát, amely a tárfiókban található Blob Storage-ra mutat. Ezután hozza létre a [CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) objektum egy példányát, majd a tárolót.
 
-Ebben az esetben a kód meghívja a [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync) metódust a tároló létrehozásához. A rendszer egy GUID azonosítót fűz a tároló nevének végéhez, hogy biztosítsa annak egyediségét. Éles környezetben általában a [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync) metódus használata ajánlott a tároló létrehozásához, ha még nem létezik.
+Ebben az esetben a kód a [CreateAsync metódust](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync) hívja meg a tároló létrehozásához. A rendszer egy GUID azonosítót fűz a tároló nevének végéhez, hogy biztosítsa annak egyediségét. Éles környezetben gyakran előnyösebb a [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync) metódussal létrehozni egy tárolót, ha az még nem létezik.
 
 > [!IMPORTANT]
 > A tárolók nevei csak kisbetűket tartalmazhatnak. A tárolók és blobok elnevezésével kapcsolatos további információkért lásd a [tárolók, blobok és metaadatok elnevezését és hivatkozását](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
@@ -263,9 +263,9 @@ CloudBlobContainer cloudBlobContainer =
 await cloudBlobContainer.CreateAsync();
 ```
 
-### <a name="set-permissions-on-a-container"></a>Engedélyek beállítása tárolón
+### <a name="set-permissions-on-a-container"></a>Tároló engedélyeinek beállítása
 
-Állítsa be a tároló engedélyeit úgy, hogy a tárolóban lévő Blobok nyilvánosak legyenek. A nyilvános blobok névtelenül elérhetők bármely ügyfél által.
+Állítsa be a tároló engedélyeinek beállítását úgy, hogy a tárolóban lévő blobok nyilvánosak. A nyilvános blobok névtelenül elérhetők bármely ügyfél által.
 
 ```csharp
 // Set the permissions so the blobs are public.
@@ -278,7 +278,7 @@ await cloudBlobContainer.SetPermissionsAsync(permissions);
 
 ### <a name="upload-blobs-to-a-container"></a>Blobok feltöltése tárolóba
 
-Az alábbi kódrészlet egy objektumra mutató hivatkozást kap, ha `CloudBlockBlob` meghívja a [GetBlockBlobReference](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getblockblobreference) metódust az előző szakaszban létrehozott tárolóban. Ezután a [UploadFromFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromfileasync) metódus meghívásával feltölti a kijelölt helyi fájlt a blobba. Ez a metódus létrehozza a blobot, ha az még nem létezett, vagy felülírja, ha már igen.
+Az alábbi kódrészlet lehívja a `CloudBlockBlob` [GetBlockBlobReference](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getblockblobreference) metódust az előző szakaszban létrehozott tárolón egy objektumra való hivatkozással. Ezután feltölti a kiválasztott helyi fájlt a blobba az [UploadFromFileAsync metódus hívásával.](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromfileasync) Ez a metódus létrehozza a blobot, ha az még nem létezett, vagy felülírja, ha már igen.
 
 ```csharp
 // Create a file in your local MyDocuments folder to upload to a blob.
@@ -299,9 +299,9 @@ await cloudBlockBlob.UploadFromFileAsync(sourceFile);
 
 ### <a name="list-the-blobs-in-a-container"></a>Tárolóban lévő blobok kilistázása
 
-A tárolóban lévő Blobok listázása a [ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync) metódus használatával. Ebben az esetben a tárolóhoz csak egy blob lett hozzáadva, így a listázási művelet csak ezt az egy blobot adja vissza.
+Listzza a tárolóban lévő blobokat a [ListBlobsSegmentedAsync metódussal.](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync) Ebben az esetben csak egy blob lett hozzáadva a tárolóhoz, így a listázási művelet csak ezt az egy blobot adja vissza.
 
-Ha túl sok blobot szeretne visszaadni egy hívásban (alapértelmezés szerint több mint 5000), akkor a `ListBlobsSegmentedAsync` metódus a teljes eredményhalmaz egy szegmensét és egy folytatási tokent ad vissza. A blobhalmaz következő szeletének visszaadásához az előző hívás által visszaadott folytatási tokent kell megadnia. Egészen addig, amíg a folytatási token nullértékű nem lesz. A nullértékű folytatási token jelzi, hogy az összes blob le lett kérve. A kód bemutatja, hogyan használható a folytatási jogkivonat az ajánlott eljárások kedvéért.
+Ha túl sok blobot kell visszaadni egy hívásban (alapértelmezés szerint több mint 5000), akkor a metódus a teljes eredményhalmaz egy szegmensét és egy folytatási tokent `ListBlobsSegmentedAsync` ad vissza. A blobhalmaz következő szeletének visszaadásához az előző hívás által visszaadott folytatási tokent kell megadnia. Egészen addig, amíg a folytatási token nullértékű nem lesz. A nullértékű folytatási token jelzi, hogy az összes blob le lett kérve. A kód bemutatja, hogyan használhatja a folytatási tokent az ajánlott eljárások érdekében.
 
 ```csharp
 // List the blobs in the container.
@@ -322,7 +322,7 @@ do
 
 ### <a name="download-blobs"></a>Blobok letöltése
 
-Töltse le a korábban létrehozott blobot a helyi fájlrendszerbe a [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) metódus használatával. A példában szereplő kód hozzáadja a "_DOWNLOADED" utótagot a blob nevéhez, hogy mindkét fájl megjelenjen a helyi fájlrendszerben.
+Töltse le a korábban létrehozott blobot a helyi fájlrendszerbe [a DownloadToFileAsync metódussal.](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) A példakód egy "_DOWNLOADED" utótagot ad a blob nevéhez, így mindkét fájlt láthatja a helyi fájlrendszerben.
 
 ```csharp
 // Download the blob to a local file, using the reference created earlier.
@@ -335,7 +335,7 @@ await cloudBlockBlob.DownloadToFileAsync(destinationFile, FileMode.Create);
 
 ### <a name="delete-a-container"></a>Tároló törlése
 
-A következő kód megtisztítja az alkalmazás által létrehozott erőforrásokat, ha törli a teljes tárolót a [CloudBlobContainer. DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync)használatával. Ha szeretné, a helyi fájlokat is törölheti.
+Az alábbi kód törli az alkalmazás által létrehozott erőforrásokat a teljes tároló [CloudBlobContainer.DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync)használatával való törlésével. Ha szeretné, a helyi fájlokat is törölheti.
 
 ```csharp
 Console.WriteLine("Press the 'Enter' key to delete the example files, " +
@@ -354,9 +354,9 @@ File.Delete(destinationFile);
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-Ez az alkalmazás létrehoz egy tesztoldalt a helyi *MyDocuments* mappában, és feltölti a blob Storage-ba. A példa ezután felsorolja a tárolóban lévő blobokat, és letölti a fájlt egy új névvel, hogy össze lehessen hasonlítani a régi és az új fájlokat.
+Ez az alkalmazás létrehoz egy tesztfájlt a *helyi MyDocuments mappában,* és feltölti azt a Blob Storage-ba. A példa ezután listázza a tárolóban lévő blobokat, és letölti a fájlt egy új névvel, hogy összehasonlítsa a régi és az új fájlokat.
 
-Navigáljon az alkalmazás könyvtárába, majd hozza létre és futtassa az alkalmazást.
+Navigáljon az alkalmazás könyvtárához, majd készítse el és futtassa az alkalmazást.
 
 ```console
 dotnet build
@@ -396,10 +396,10 @@ A fájlok ellenőrzése után nyomja le bármelyik billentyűt a bemutató befej
 
 Ennek a rövid útmutatónak a segítségével megismerkedett a blobok a .NET használatával való fel- és letöltésével, valamint kilistázásával.
 
-A következő témakörből megtudhatja, hogyan hozhat létre olyan webalkalmazást, amely feltölt egy rendszerképet a blob Storage-ba:
+Ha meg szeretne tudni egy képet a Blob Storage-be feltöltő webalkalmazás létrehozásáról, folytassa a következővel:
 
 > [!div class="nextstepaction"]
 > [Rendszerképek feltöltése és feldolgozása](storage-upload-process-images.md)
 
-* A .NET Core keretrendszerrel kapcsolatos további információért lásd [a .NET használatának első lépéseit 10 percben](https://www.microsoft.com/net/learn/get-started/) ismertető szakaszt.
+* A .NET Core keretrendszerrel kapcsolatos további információért lásd [a .NET használatának első lépéseit 10 percben](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro) ismertető szakaszt.
 * Ha szeretne megtekinteni egy olyan mintaalkalmazást, amely a Windowshoz készült Visual Studióból helyezhető üzembe, tekintse meg [az Azure Blob Storage-et használó .NET fényképgaléria-mintawebalkalmazást](https://azure.microsoft.com/resources/samples/storage-blobs-dotnet-webapp/).

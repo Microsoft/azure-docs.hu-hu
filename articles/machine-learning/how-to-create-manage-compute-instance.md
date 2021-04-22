@@ -1,7 +1,7 @@
 ---
 title: Számítási példány létrehozása és kezelése
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan hozhat létre és kezelhet egy Azure Machine Learning számítási példányt. Fejlesztési vagy tesztelési célokra használható számítási célként.
+description: Megtudhatja, hogyan hozhat létre és kezelhet Azure Machine Learning számítási példányt. Fejlesztési környezetként vagy fejlesztési/tesztelési célokra számítási célként használható.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,42 +11,42 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 2778f52b312e5d2fda7879b834fcd204285b7144
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5ac525ae062efca25601c9e63a5c8f16f2be29be
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628951"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861222"
 ---
-# <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning számítási példány létrehozása és kezelése
+# <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Számítási példány létrehozása Azure Machine Learning kezelése
 
-Megtudhatja, hogyan hozhat létre és kezelhet [számítási példányokat](concept-compute-instance.md) a Azure Machine learning munkaterületen.
+Megtudhatja, hogyan hozhat létre és kezelhet számítási példányt [a](concept-compute-instance.md) Azure Machine Learning munkaterületén.
 
-Számítási példányt használhat a felhőben teljes mértékben konfigurált és felügyelt fejlesztési környezetként. A fejlesztéshez és teszteléshez használhatja a példányt [tanítási számítási célként](concept-compute-target.md#train) vagy egy [következtetési célra](concept-compute-target.md#deploy)is.   Egy számítási példány több feladatot is futtathat párhuzamosan, és feladat-várólistával rendelkezik. Fejlesztési környezetként a számítási példányok nem oszthatók meg a munkaterület más felhasználóival.
+Számítási példány használata teljes körűen konfigurált és felügyelt fejlesztési környezetként a felhőben. Fejlesztési és tesztelési célokra a példányt [](concept-compute-target.md#train) betanítás számítási célként vagy következtetési [célként is használhatja.](concept-compute-target.md#deploy)   Egy számítási példány több feladatot is futtathat párhuzamosan, és feladat-várólistával rendelkezik. Fejlesztési környezetként a számítási példányok nem megoszthatók a munkaterület más felhasználóival.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 * Új számítási példány létrehozása 
-* A számítási példányok kezelése (indítás, Leállítás, újraindítás, törlés)
-* A terminál ablakának elérése 
-* R-vagy Python-csomagok telepítése
+* Számítási példány kezelése (indítás, leállítás, újraindítás, törlés)
+* A terminálablak elérése 
+* R- vagy Python-csomagok telepítése
 * Új környezetek vagy Jupyter-kernelek létrehozása
 
-A számítási példányok biztonságosan futtathatnak feladatokat egy [virtuális hálózati környezetben](how-to-secure-training-vnet.md)anélkül, hogy a vállalatoknak SSH-portokat kellene megnyitnia. A feladatot egy tároló környezetben hajtja végre a rendszer, és a modell függőségeit egy Docker-tárolóban csomagolja. 
+A számítási példányok biztonságosan futtatnak feladatokat egy virtuális hálózati [környezetben](how-to-secure-training-vnet.md)anélkül, hogy a vállalatoknak SSH-portokat kell megnyitniuk. A feladat tárolóba telepített környezetben fut, és a modell függőségeit egy Docker-tárolóba csomagolása. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
+* Egy Azure Machine Learning-munkaterület. További információ: [Create an Azure Machine Learning workspace](how-to-manage-workspace.md)(Munkaterület Azure Machine Learning létrehozása).
 
-* Az [Azure CLI-bővítmény Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), [Azure Machine learning Python SDK](/python/api/overview/azure/ml/intro)-hoz vagy a [Azure Machine learning Visual Studio Code bővítményhez](tutorial-setup-vscode-extension.md).
+* Az [Azure CLI-bővítmény Machine Learning szolgáltatáshoz,](reference-azure-machine-learning-cli.md) [Azure Machine Learning Python SDK-hoz](/python/api/overview/azure/ml/intro)vagy a [Azure Machine Learning Visual Studio Code-bővítményhez.](tutorial-setup-vscode-extension.md)
 
 ## <a name="create"></a>Létrehozás
 
-**Becsült idő**: körülbelül 5 perc.
+**Becsült idő:** Körülbelül 5 perc.
 
-A számítási példány létrehozása a munkaterület egyszeri folyamata. Felhasználhatja a számítási kapacitást fejlesztési munkaállomásként vagy kiszámítási célként a képzéshez. Több számítási példány is csatolható a munkaterülethez.
+A számítási példányok létrehozása a munkaterület egy egyszeres folyamata. A számítást felhasználhatja fejlesztői munkaállomásként vagy betanítási célként is. A munkaterülethez több számítási példány is csatolható.
 
-A számítási példányok létrehozásakor a dedikált magok régiónként, a virtuálisgép-család kvótája és a teljes regionális kvóta alapján, valamint az Azure Machine Learning betanítása számítási fürt kvótáját egyesítjük és megosztva. A számítási példány leállítása nem mentesíti a kvótát, hogy biztosan újra tudja indítani a számítási példányt. Megjegyzés: a számítási példányok virtuálisgép-méretének módosítása a létrehozás után nem lehetséges.
+A virtuálisgép-családra és a számítási példány létrehozására vonatkozó teljes regionális kvóta régiónkénti dedikált magok egységesek és meg vannak osztva Azure Machine Learning számítási fürtkvóta betanítása során. A számítási példány leállítása nem ad ki kvótát, hogy újra tudja-e indítani a számítási példányt. Vegye figyelembe, hogy a virtuális gép mérete a létrehozás után nem változtatható meg.
 
 Az alábbi példa bemutatja, hogyan hozhat létre számítási példányt:
 
@@ -80,10 +80,10 @@ except ComputeTargetException:
     instance.wait_for_completion(show_output=True)
 ```
 
-Az ebben a példában használt osztályokkal, metódusokkal és paraméterekkel kapcsolatos további információkért tekintse meg a következő dokumentációt:
+A példában használt osztályokkal, metódusokkal és paraméterekkel kapcsolatos további információkért tekintse meg a következő referenciadokumentumokat:
 
 * [ComputeInstance osztály](/python/api/azureml-core/azureml.core.compute.computeinstance.computeinstance)
-* [ComputeTarget. Create](/python/api/azureml-core/azureml.core.compute.computetarget#create-workspace--name--provisioning-configuration-)
+* [ComputeTarget.create](/python/api/azureml-core/azureml.core.compute.computetarget#create-workspace--name--provisioning-configuration-)
 * [ComputeInstance.wait_for_completion](/python/api/azureml-core/azureml.core.compute.computeinstance(class)#wait-for-completion-show-output-false--is-delete-operation-false-)
 
 
@@ -93,31 +93,31 @@ Az ebben a példában használt osztályokkal, metódusokkal és paraméterekkel
 az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 ```
 
-További információ: az [ml computetarget Create computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext_azure_cli_ml_az_ml_computetarget_create_computeinstance) Reference.
+További információkért tekintse meg az [az ml computetarget create computeinstance referenciát.](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_computeinstance)
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
-A Azure Machine Learning Studio munkaterületén hozzon létre egy új számítási példányt a **számítási** szakaszból vagy a **jegyzetfüzetek** szakaszban, amikor készen áll az egyik jegyzetfüzet futtatására.
+A munkaterületen a Azure Machine Learning stúdió hozzon létre egy új  számítási példányt a Számítás vagy a **Jegyzetfüzetek** szakaszban, amikor készen áll az egyik jegyzetfüzet futtatására.
 
-A számítási példányok Studióban történő létrehozásával kapcsolatos információkért lásd: [számítási célok létrehozása Azure Machine learning Studióban](how-to-create-attach-compute-studio.md#compute-instance).
+További információ számítási példány létrehozásáról a Studióban: Számítási célok létrehozása a [Azure Machine Learning stúdió.](how-to-create-attach-compute-studio.md#compute-instance)
 
 ---
 
-Létrehozhat egy [Azure Resource Manager sablonnal](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)rendelkező számítási példányt is. 
+Számítási példányt is létrehozhat egy Azure Resource Manager [sablonnal.](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance) 
 
-### <a name="create-on-behalf-of-preview"></a>Létrehozás a következő nevében (előzetes verzió)
+### <a name="create-on-behalf-of-preview"></a>Létrehozás a nevében (előzetes verzió)
 
-Rendszergazdaként létrehozhat egy számítási példányt egy adattudós nevében, és hozzárendelheti a példányt a következőhöz:
-* [Azure Resource Manager sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  A sablonban szükséges TenantID és ObjectID megkeresésével kapcsolatos részletekért lásd a [hitelesítési konfiguráció azonosító objektum-azonosítóinak megkeresése](../healthcare-apis/fhir/find-identity-object-ids.md)című témakört.  Ezeket az értékeket a Azure Active Directory portálon is megtalálhatja.
+Rendszergazdaként létrehozhat egy számítási példányt egy adattudós nevében, és a következővel rendelheti hozzá a példányt:
+* [Azure Resource Manager sablon.](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)  A sablonban szükséges TenantID és ObjectID megkereső részleteiért lásd: Identitásobjektum azonosítójának megkeresása [a hitelesítési konfigurációhoz.](../healthcare-apis/fhir/find-identity-object-ids.md)  Ezeket az értékeket a portálon is Azure Active Directory találhatja.
 * REST API
 
-A számítási példányt a következő [Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC)](../role-based-access-control/overview.md) engedélyekkel kell létrehoznia: 
-* *Microsoft. MachineLearningServices/munkaterületek/számítások/indítás/művelet*
-* *Microsoft. MachineLearningServices/munkaterületek/számítások/leállítás/művelet*
-* *Microsoft. MachineLearningServices/munkaterületek/számítások/újraindítás/művelet*
-* *Microsoft. MachineLearningServices/munkaterületek/számítások/applicationaccess/művelet*
+Az adattudósnak, aki számára létrehozza a számítási példányt, a következőkre van szüksége: [Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC)](../role-based-access-control/overview.md) engedélyek: 
+* *Microsoft.MachineLearningServices/workspaces/computes/start/action*
+* *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
+* *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
+* *Microsoft.MachineLearningServices/workspaces/computes/applicationaccess/action*
 
-Az adattudós elindíthatja, leállíthatja és újraindíthatja a számítási példányt. A számítási példány a következőhöz használható:
+Az adattudós elindíthatja, leállíthatja és újraindíthatja a számítási példányt. A számítási példányt a következőre használhatja:
 * Jupyter
 * JupyterLab
 * RStudio
@@ -125,16 +125,16 @@ Az adattudós elindíthatja, leállíthatja és újraindíthatja a számítási 
 
 ## <a name="manage"></a>Kezelés
 
-Számítási példány elindítása, leállítása, újraindítása és törlése. A számítási példányok nem méretezhetők le automatikusan, ezért ügyeljen arra, hogy a folyamatos költségek elkerülése érdekében állítsa le az erőforrást.
+Számítási példányok elindítása, leállítása, újraindítása és törlése. A számítási példányok nem skálázódnak le automatikusan, ezért mindenképpen állítsa le az erőforrást a folyamatos költségek elkerülése érdekében.
 
 > [!TIP]
-> A számítási példány 120 GB-OS operációsrendszer-lemezzel rendelkezik. Ha elfogyott a szabad lemezterület, a [terminál használatával](how-to-access-terminal.md) törölje legalább 1-2 GB-ot a számítási példány leállítása vagy újraindítása előtt.
+> A számítási példány 120 GB-os operációsrendszer-lemezzel rendelkezik. Ha elfogy a [lemezterület,](how-to-access-terminal.md) a terminállal törölje legalább 1–2 GB-ot, mielőtt leállítja vagy újraindítja a számítási példányt.
 
 # <a name="python"></a>[Python](#tab/python)
 
 Az alábbi példákban a számítási példány neve **példány**
 
-* Állapot beolvasása
+* Állapot lekérte
 
     ```python
     # get_status() gets the latest status of the ComputeInstance target
@@ -181,7 +181,7 @@ Az alábbi példákban a számítási példány neve **példány**
     az ml computetarget stop computeinstance -n instance -v
     ```
 
-    További információ: [az ml computetarget stop computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop).
+    További információ: [az ml computetarget stop computeinstance.](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_stop)
 
 * Indítás 
 
@@ -189,7 +189,7 @@ Az alábbi példákban a számítási példány neve **példány**
     az ml computetarget start computeinstance -n instance -v
     ```
 
-    További információ: [az ml computetarget Start computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start).
+    További információ: [az ml computetarget start computeinstance.](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_start)
 
 * Újraindítás 
 
@@ -197,7 +197,7 @@ Az alábbi példákban a számítási példány neve **példány**
     az ml computetarget restart computeinstance -n instance -v
     ```
 
-    További információ: [az ml computetarget restart computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart).
+    További információ: [az ml computetarget restart computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_restart).
 
 * Törlés
 
@@ -205,43 +205,43 @@ Az alábbi példákban a számítási példány neve **példány**
     az ml computetarget delete -n instance -v
     ```
 
-    További információ: [az ml computetarget delete computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget#ext-azure-cli-ml-az-ml-computetarget-delete).
+    További információ: [az ml computetarget delete computeinstance.](/cli/azure/ml/computetarget#az_ml_computetarget_delete)
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
-Azure Machine Learning Studio munkaterületén válassza a **számítás**, majd a felül található **számítási példány** elemet.
+A munkaterületen a Azure Machine Learning stúdió válassza a **Számítás,** majd a felül **található Számítási** példány lehetőséget.
 
 ![Számítási példány kezelése](./media/concept-compute-instance/manage-compute-instance.png)
 
-A következő műveleteket hajthatja végre:
+A következő műveleteket végezheti el:
 
 * Új számítási példány létrehozása 
-* Frissítse a számítási példányok lapot.
-* Számítási példány elindítása, leállítása és újraindítása.  A példányért kell fizetnie, amikor fut. Állítsa le a számítási példányt, ha nem használja azt a Cost csökkentése érdekében. Egy számítási példány leállítása felszabadítja azt. Ezután indítsa el újra, amikor szüksége van rá.
+* Frissítse a Számítási példányok lapot.
+* Számítási példányok elindítása, leállítása és újraindítása.  A példányért mindig fizetnie kell, amikor fut. Állítsa le a számítási példányt, ha nem használja a költségek csökkentése érdekében. A számítási példány leállítása felszabadítja azt. Ezután indítsa el újra, amikor szüksége van rá.
 * Számítási példány törlése.
-* A számítási példányok listájának szűrése csak a létrehozott adatok megjelenítéséhez.
+* Szűrje a számítási példányok listáját, hogy csak a létrehozott példányok mutassanak.
 
-A munkaterületen létrehozott minden számítási példányhoz (vagy az Ön számára létrehozott) a következőket teheti:
+A munkaterület minden létrehozott (vagy az Ön számára létrehozott) számítási példánya számára a következőt használhatja:
 
-* Hozzáférés Jupyter, JupyterLab, RStudio a számítási példányon
-* Az SSH-t a számítási példányba. Az SSH-hozzáférés alapértelmezés szerint le van tiltva, de a számítási példány létrehozási idején is engedélyezhető. Az SSH-hozzáférés a nyilvános/titkos kulcs mechanizmusán keresztül történik. A lapon megadhatja az SSH-kapcsolat adatait, például az IP-címet, a felhasználónevet és a portszámot.
-* Egy adott számítási példány, például az IP-cím és a régió részletes adatainak beolvasása.
+* A Jupyter, a JupyterLab és az RStudio elérése a számítási példányon
+* SSH a számítási példányba. Az SSH-hozzáférés alapértelmezés szerint le van tiltva, de a számítási példány létrehozásakor engedélyezhető. Az SSH-hozzáférés nyilvános/titkos kulcsos mechanizmuson keresztüli. A lapon adatokat talál az SSH-kapcsolatról, például az IP-címet, a felhasználónevet és a portszámot.
+* Egy adott számítási példány, például az IP-cím és a régió részleteinek lekérte.
 
 ---
 
 
-Az [Azure RBAC](../role-based-access-control/overview.md) lehetővé teszi annak szabályozását, hogy a munkaterület mely felhasználói hozhatnak létre, törölhetnek, indíthatnak le, állíthatnak le, indíthatnak újra egy számítási példányt. A munkaterület közreműködői és tulajdonosi szerepkörben lévő összes felhasználó létrehozhatja, törölheti, elindíthatja, leállíthatja és újraindíthatja a számítási példányokat a munkaterületen. Azonban csak egy adott számítási példány létrehozója, vagy a felhasználó nevében létrejött, a Jupyter, a JupyterLab és a RStudio hozzáférése engedélyezett a számítási példányon. A számítási példányok egyetlen, rendszergazdai hozzáféréssel rendelkező felhasználóhoz vannak hozzárendelve, és a Jupyter/JupyterLab/RStudio-en keresztül is csatlakozhatnak. A számítási példánynak egyfelhasználós bejelentkezéssel kell rendelkeznie, és minden művelet a felhasználó identitását fogja használni az Azure RBAC és a kísérlet futtatásához. Az SSH-hozzáférés a nyilvános/titkos kulcs mechanizmusán keresztül vezérelhető.
+[Az Azure RBAC](../role-based-access-control/overview.md) segítségével szabályozhatja, hogy a munkaterület mely felhasználói hozhatnak létre, törölhet, indíthat el, állíthatnak le és indíthat újra számítási példányokat. A munkaterület közreműködője és a tulajdonosi szerepkör minden felhasználója létrehozhat, törölhet, elindíthat, leállíthat és újraindíthat számítási példányokat a munkaterületen. Azonban csak egy adott számítási példány létrehozója, vagy a hozzárendelt felhasználó férhet hozzá a Jupyterhez, a JupyterLab-hez és az RStudióhoz az adott számítási példányon. A számítási példány egyetlen felhasználó számára van ki dedikáltan, aki gyökér hozzáféréssel rendelkezik, és jupyter/JupyterLab/RStudio-terminállal is rendelkezik. A számítási példány egyfelhasználós bejelentkezéssel fog bejelentkezni, és minden művelet az adott felhasználó identitását fogja használni az Azure RBAC-hez és a kísérletfuttatások forrásmegjelölését. Az SSH-hozzáférés vezérlése nyilvános/titkos kulcsos mechanizmussal történik.
 
-Ezeket a műveleteket az Azure RBAC is szabályozhatja:
-* *Microsoft. MachineLearningServices/munkaterületek/számítások/olvasás*
+Ezeket a műveleteket az Azure RBAC vezérelheti:
+* *Microsoft.MachineLearningServices/workspaces/computes/read*
 * *Microsoft.MachineLearningServices/workspaces/computes/write*
-* *Microsoft. MachineLearningServices/munkaterületek/számítások/törlés*
-* *Microsoft. MachineLearningServices/munkaterületek/számítások/indítás/művelet*
-* *Microsoft. MachineLearningServices/munkaterületek/számítások/leállítás/művelet*
-* *Microsoft. MachineLearningServices/munkaterületek/számítások/újraindítás/művelet*
+* *Microsoft.MachineLearningServices/workspaces/computes/delete*
+* *Microsoft.MachineLearningServices/workspaces/computes/start/action*
+* *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
+* *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [A számítási példány termináljának elérése](how-to-access-terminal.md)
+* [A számításipéldány-terminál elérése](how-to-access-terminal.md)
 * [Fájlok létrehozása és kezelése](how-to-manage-files.md)
-* [Betanítási Futtatás beküldése](how-to-set-up-training-targets.md)
+* [Betanítás futtatása elküldése](how-to-set-up-training-targets.md)

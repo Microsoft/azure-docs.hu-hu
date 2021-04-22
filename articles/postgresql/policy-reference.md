@@ -1,18 +1,18 @@
 ---
 title: Beépített szabályzatdefiníciók a Azure Database for PostgreSQL
 description: Felsorolja Azure Policy beépített szabályzatdefiníciókat a Azure Database for PostgreSQL. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: reference
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 61e8246c8eddced3138227364f22e8f021c4ea94
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: ec86d408102c3b481c26199b6ad66dcbf5b232f1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107496561"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861901"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-database-for-postgresql"></a>Azure Policy beépített definíciók a Azure Database for PostgreSQL
 

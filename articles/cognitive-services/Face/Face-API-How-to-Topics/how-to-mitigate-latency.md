@@ -1,77 +1,75 @@
 ---
-title: Az arc szolgáltatás használatakor felhasználható késés csökkentése
+title: A késés csökkentése a Face szolgáltatás használata esetén
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan csökkentheti a késést a Face szolgáltatás használatakor.
+description: Megtudhatja, hogyan csökkentheti a késést a Face szolgáltatás használata esetén.
 services: cognitive-services
-author: v-jaswel
 manager: chrhoder
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
-ms.author: v-jawe
-ms.openlocfilehash: 412105e3262a3baf8780bd3bd1082508967ea486
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: a306883573387a2a5c20a53c7015c6dbd3eddf65
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012584"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878667"
 ---
-# <a name="how-to-mitigate-latency-when-using-the-face-service"></a>Útmutató: az arc szolgáltatás használatakor felhasználható késés csökkentése
+# <a name="how-to-mitigate-latency-when-using-the-face-service"></a>How to: mitigate latency when using the Face service (A késés csökkentése a Face szolgáltatás használata esetén)
 
-A Face szolgáltatás használatakor késés tapasztalható. A késés a hálózaton keresztüli kommunikáció során felmerülő bármilyen késleltetésre utal. Általánosságban elmondható, hogy a késés lehetséges okai a következők:
-- Az egyes csomagok fizikai távolságának a forrástól a célhelyig kell utaznia.
-- Az átviteli közeggel kapcsolatos problémák.
-- Az útválasztók vagy kapcsolók hibája az átviteli útvonal mentén.
-- A csomagok vizsgálatára szolgáló víruskereső alkalmazások, tűzfalak és egyéb biztonsági mechanizmusok által igényelt idő.
-- Az ügyfél vagy a kiszolgáló alkalmazásaiban hibásan működik.
+Késést okozhat a Face szolgáltatás használata során. A késés bármilyen késést jelenti, amely a hálózaton keresztüli kommunikáció során következik be. A késés lehetséges okai általában a következők:
+- Az egyes csomagok fizikai távolsága a forrástól a célig.
+- Az átviteli adathordozóval kapcsolatos problémák.
+- Hibák az útválasztókban vagy kapcsolókban az átviteli útvonalon.
+- A víruskereső alkalmazások, tűzfalak és más biztonsági mechanizmusok által a csomagok vizsgálatához szükséges idő.
+- Hibás az ügyfél- vagy kiszolgálóalkalmazások működése.
 
-Ez a témakör az Azure-Cognitive Services használatának késésének lehetséges okairól, valamint az ilyen okok enyhítésének módjáról beszél.
+Ez a témakör a késés lehetséges okait tárgyalja a Azure Cognitive Services használatának lehetséges okairól, és hogy hogyan mérsékelheti ezeket az okokat.
 
 > [!NOTE]
-> Az Azure Cognitive Services nem biztosít semmilyen szolgáltatói szerződés (SLA) a késéssel kapcsolatban.
+> Azure Cognitive Services nem biztosít semmilyen szolgáltatói szerződés (SLA) a késéssel kapcsolatban.
 
 ## <a name="possible-causes-of-latency"></a>A késés lehetséges okai
 
-### <a name="slow-connection-between-the-cognitive-service-and-a-remote-url"></a>Lassú kapcsolat a kognitív szolgáltatás és egy távoli URL-cím között
+### <a name="slow-connection-between-the-cognitive-service-and-a-remote-url"></a>Lassú kapcsolat a Cognitive Services-szolgáltatás és egy távoli URL-cím között
 
-Egyes Azure-Cognitive Services olyan metódusokat biztosítanak, amelyek az Ön által megadott távoli URL-címről szereznek be adatforrást. Például a Face szolgáltatás [DetectWithUrlAsync metódusának](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithUrlAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) meghívásakor megadhatja egy olyan rendszerkép URL-címét, amelyben a szolgáltatás megpróbálja felderíteni az arcokat.
+Egyes Azure Cognitive Services olyan metódusokat biztosítanak, amelyek az Ön által megadott távoli URL-címről szereznek be adatokat. Ha például a Face szolgáltatás [DetectWithUrlAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithUrlAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) metódusát hívja meg, megadhatja annak a képnek az URL-címét, amelyen a szolgáltatás arcokat próbál felismerni.
 
 ```csharp
 var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg");
 ```
 
-A Face szolgáltatásnak ezután le kell töltenie a rendszerképet a távoli kiszolgálóról. Ha a Face szolgáltatás és a távoli kiszolgáló közötti kapcsolatok lassúak, ez hatással lesz az észlelési módszer válaszideje.
+A Face szolgáltatásnak ezután le kell töltenie a képet a távoli kiszolgálóról. Ha a Face szolgáltatás és a távoli kiszolgáló kapcsolata lassú, az hatással lesz a Detect metódus válaszidejére.
 
-Ennek enyhítése érdekében érdemes lehet [a rendszerképet az Azure Premium blob Storage tárolni](../../../storage/blobs/storage-upload-process-images.md?tabs=dotnet). Például:
+Ennek enyhítése érdekében fontolja meg a rendszerkép [Azure Premium](../../../storage/blobs/storage-upload-process-images.md?tabs=dotnet)Blob Storage. Például:
 
 ``` csharp
 var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
 ```
 
-### <a name="large-upload-size"></a>Nagyméretű feltöltés mérete
+### <a name="large-upload-size"></a>Nagy feltöltési méret
 
-Egyes Azure-Cognitive Services olyan metódusokat biztosítanak, amelyek egy feltöltött fájlból szereznek be adatforrást. Ha például a Face szolgáltatás [DetectWithStreamAsync metódusát](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithStreamAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_IO_Stream_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) hívja meg, feltöltheti azt a rendszerképet, amelyben a szolgáltatás megpróbálja felderíteni az arcokat.
+Egyes Azure Cognitive Services olyan metódusokat biztosítanak, amelyek egy feltöltött fájlból szereznek be adatokat. Ha például a Face szolgáltatás [DetectWithStreamAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithStreamAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_IO_Stream_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) metódusát hívja meg, feltölthet egy képet, amelyben a szolgáltatás arcokat próbál felismerni.
 
 ```csharp
 using FileStream fs = File.OpenRead(@"C:\images\face.jpg");
 System.Collections.Generic.IList<DetectedFace> faces = await client.Face.DetectWithStreamAsync(fs, detectionModel: DetectionModel.Detection02);
 ```
 
-Ha a feltölteni kívánt fájl nagy méretű, az a `DetectWithStreamAsync` következő okok miatt befolyásolja a metódus válaszideje:
-- A fájl feltöltése tovább tart.
-- A fájl méretének arányában a szolgáltatás továbbra is feldolgozza a fájlt.
+Ha a feltölteni kívánt fájl nagy, az hatással lesz a metódus válaszidere `DetectWithStreamAsync` a következő okok miatt:
+- A fájl feltöltése hosszabb időt vesz igénybe.
+- A fájl feldolgozása a fájl méretétől függően hosszabb időt vesz igénybe a szolgáltatás számára.
 
-Enyhítését
-- Érdemes lehet [a rendszerképet az Azure Premium blob Storage tárolni](../../../storage/blobs/storage-upload-process-images.md?tabs=dotnet). Például:
+Enyhítése:
+- Fontolja [meg a rendszerkép Azure Premium Blob Storage.](../../../storage/blobs/storage-upload-process-images.md?tabs=dotnet) Például:
 ``` csharp
 var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
 ```
-- Érdemes lehet kisebb fájlt feltölteni.
-    - Tekintse meg a [bemeneti adatokkal](../concepts/face-detection.md#input-data) kapcsolatos útmutatást a arcfelismerés és a [bemeneti adatok](../concepts/face-recognition.md#input-data)észleléséhez.
-    - Az Arcfelismerés esetében az észlelési modell használatakor `DetectionModel.Detection01` a képfájl méretének csökkentése növeli a feldolgozási sebességet. Az észlelési modell használatakor `DetectionModel.Detection02` a képfájlok méretének csökkentése csak akkor növeli a feldolgozási sebességet, ha a képfájl mérete kisebb, mint 1920 × 1080.
-    - Az Arcfelismerés esetében az arc méretének a 200x200 képpont értékre való csökkentése nem befolyásolja az elismerési modell pontosságát.
-    - A `DetectWithUrlAsync` és a `DetectWithStreamAsync` metódusok teljesítménye attól is függ, hogy hány arc van egy képben. A Face szolgáltatás legfeljebb 100 arcot tud visszaadni egy képhez. Az arcok nagy és kis méretűre vannak rendezve.
-    - Ha több szolgáltatási módszert kell meghívnia, érdemes párhuzamosan meghívni őket, ha az alkalmazás kialakítása lehetővé teszi a számára. Ha például két rendszerképben lévő arcokat kell felderíteni egy arc-összehasonlítás végrehajtásához:
+- Érdemes lehet egy kisebb fájlt feltölteni.
+    - Lásd az [arcfelismeréshez szükséges bemeneti](../concepts/face-detection.md#input-data) adatokra és az arcfelismeréshez [szükséges bemeneti adatokra vonatkozó irányelveket.](../concepts/face-recognition.md#input-data)
+    - Az arcfelismeréshez az észlelési modell használata esetén a képfájl méretének csökkentése `DetectionModel.Detection01` növeli a feldolgozási sebességet. Észlelési modell használata esetén a képfájl méretének csökkentése csak akkor növeli a feldolgozási sebességet, ha a képfájl kisebb, mint `DetectionModel.Detection02` 1920x1080.
+    - Arcfelismerés esetén az arcméret 200x200 képpontra csökkentése nem befolyásolja a felismerési modell pontosságát.
+    - A és a metódus teljesítménye attól is függ, hogy hány arc látható `DetectWithUrlAsync` egy `DetectWithStreamAsync` képen. A Face szolgáltatás legfeljebb 100 arcot képes visszaadni egy képhez. Az arcok az arc téglalapmérete szerint vannak rangsorolva a nagytól a kis méretűek felé.
+    - Ha több szolgáltatási metódust kell hívnia, fontolja meg azok párhuzamos hívását, ha az alkalmazás kialakítása ezt lehetővé teszi. Ha például arcokat kell észlelni két képről az arcok összehasonlításához:
 ```csharp
 var faces_1 = client.Face.DetectWithUrlAsync("https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg");
 var faces_2 = client.Face.DetectWithUrlAsync("https://www.biography.com/.image/t_share/MTQ1NDY3OTIxMzExNzM3NjE3/john-f-kennedy---debating-richard-nixon.jpg");
@@ -81,21 +79,21 @@ IEnumerable<DetectedFace> results = faces_1.Result.Concat (faces_2.Result);
 
 ### <a name="slow-connection-between-your-compute-resource-and-the-face-service"></a>Lassú kapcsolat a számítási erőforrás és a Face szolgáltatás között
 
-Ha a számítógép lassú kapcsolatban áll a Face szolgáltatással, az hatással lesz a szolgáltatási módszerek válaszideje.
+Ha a számítógép lassú kapcsolattal rendelkezik a Face szolgáltatáshoz, az hatással lesz a szolgáltatási metódusok válaszidejére.
 
-Enyhítését
-- Az arc-előfizetés létrehozásakor ügyeljen arra, hogy a legközelebb eső régiót válassza ki, ahol az alkalmazás üzemeltetve van.
-- Ha több szolgáltatási módszert kell meghívnia, érdemes párhuzamosan meghívni őket, ha az alkalmazás kialakítása lehetővé teszi a számára. Példaként tekintse meg az előző szakaszt.
-- Ha a hosszabb késés hatással van a felhasználói élményre, válasszon időtúllépési küszöbértéket (például maximális 5 mp) az API-hívás újbóli megkísérlése előtt.
+Enyhítése:
+- A Face-előfizetés létrehozásakor ügyeljen arra, hogy az alkalmazáshoz legközelebb eső régiót válassza.
+- Ha több szolgáltatás metódust kell hívnia, fontolja meg azok párhuzamos hívását, ha az alkalmazás kialakítása ezt lehetővé teszi. Erre az előző szakaszban láthat példát.
+- Ha a hosszabb késések hatással vannak a felhasználói élményre, az API-hívás újrapróbálása előtt válasszon ki egy időtúllépési küszöbértéket (pl. maximum 5 másodperc).
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az útmutatóban megtanulta, hogyan csökkentheti a késést a Face szolgáltatás használatakor. Következő lépésként megtudhatja, hogyan méretezheti fel a meglévő PersonGroup és FaceList objektumokat a LargePersonGroup és a LargeFaceList objektumokra.
+Ebben az útmutatóban megtanulta, hogyan csökkentheti a késést a Face szolgáltatás használata esetén. Ezután megtudhatja, hogyan skálázható fel a meglévő PersonGroup- és FaceList-objektumokról LargePersonGroup- és LargeFaceList-objektumokra.
 
 > [!div class="nextstepaction"]
-> [Példa: a nagyméretű szolgáltatás használata](how-to-use-large-scale.md)
+> [Példa: A nagy léptékű funkció használata](how-to-use-large-scale.md)
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
 
-- [Dokumentáció (REST)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
-- [Hivatkozási dokumentáció (.NET SDK)](/dotnet/api/overview/azure/cognitiveservices/client/faceapi)
+- [Referenciadokumentáció (REST)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+- [Referenciadokumentáció (.NET SDK)](/dotnet/api/overview/azure/cognitiveservices/client/faceapi)

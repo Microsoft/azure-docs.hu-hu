@@ -7,16 +7,16 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: b81d9b4a637965dd103d8fa89305424686a0c72c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8086ce0e5964d4e37a5ffc3082d5f2856058e4e5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789914"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875484"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Azure CLI-példaszkret – logikai alkalmazás létrehozása
 
-Ez a szkript létrehoz egy logikai mintaalkalmazást az [Azure CLI-Logic Apps ,](/cli/azure/ext/logic/logic)( ) `az logic` használatával. A logikai alkalmazások Azure CLI-alapú létrehozásának és kezelésének részletes útmutatóját az Azure [CLI-hez Logic Apps rövid útmutatójában láthatja.](quickstart-logic-apps-azure-cli.md)
+Ez a szkript létrehoz egy logikai mintaalkalmazást az [Azure CLI-Logic Apps ,](/cli/azure/logic)( ) `az logic` használatával. A logikai alkalmazások Azure CLI-alapú létrehozásának és kezelésének részletes útmutatóját az Azure [CLI-hez Logic Apps rövid útmutatójában láthatja.](quickstart-logic-apps-azure-cli.md)
 
 > [!WARNING]
 > Az Azure CLI Logic Apps bővítmény jelenleg *kísérleti,* és nem fedezi az *ügyfélszolgálat.* Ezt a CLI-bővítményt körültekintően használja, különösen akkor, ha éles környezetben használja.
@@ -37,7 +37,7 @@ A környezet ellenőrzése a kezdés előtt:
 
 * Ellenőrizze az Azure CLI verzióját egy terminál- vagy parancsablakban a parancs `az --version` futtatásával. A legújabb verzióért tekintse meg a [legújabb kibocsátási megjegyzéseket.](/cli/azure/release-notes-azure-cli)
 
-  * Ha nem a legújabb verzióval működik, frissítse a telepítést az operációs rendszer vagy a platform telepítési [útmutatója alapján.](/cli/azure/install-azure-cli)
+  * Ha nem a legújabb verzióval működik, frissítse a telepítést az operációs rendszerének vagy platformján elérhető telepítési [útmutatónak a segítségével.](/cli/azure/install-azure-cli)
 
 ### <a name="sample-workflow-explanation"></a>Példa a munkafolyamat magyarázatára
 
@@ -45,15 +45,15 @@ Ez a munkafolyamat-definíciós példafájl ugyanazt az alapszintű logikai alka
 
 Ez a minta-munkafolyamat: 
 
-1. A logikai alkalmazás `$schema` sémáját határozza meg.
+1. Egy sémát () `$schema` ad meg a logikai alkalmazáshoz.
 
 1. Meghatározza a logikai alkalmazás eseményindítóját az eseményindítók `triggers` listájában. Az eseményindító 3 óránként ismétlődik ( `recurrence` ). A műveletek akkor aktiválódnak, ha új hírcsatornaelem () van közzétéve a `When_a_feed_item_is_published` megadott RSS-hírcsatornához ( `feedUrl` ).
 
-1. Definiál egy műveletet a logikai alkalmazáshoz a műveletek `actions` listájában. A művelet egy e-mailt ( ) küld Microsoft 365 a művelet bemenetének törzs szakaszában () megadott RSS-hírcsatornaelemek `Send_an_email_(V2)` `body` részleteivel ( `inputs` ).
+1. Definiál egy műveletet a logikai alkalmazáshoz a műveletek `actions` listájában. A művelet egy e-mailt ( ) küld Microsoft 365 a művelet bemenetének törzs szakaszában ( ) megadott RSS-hírcsatornaelemek `Send_an_email_(V2)` `body` részleteivel ( `inputs` ).
 
 ## <a name="sample-workflow-definition"></a>Munkafolyamat-definíció mintája
 
-A mintaszkprogram futtatása előtt létre kell hoznia egy [minta-munkafolyamat-definíciót.](#prerequisites)
+A minta szkript futtatása előtt létre kell hoznia egy [minta-munkafolyamat-definíciót.](#prerequisites)
 
 1. Hozzon létre egy JSON-fájlt `testDefinition.json` a számítógépén. 
 
@@ -136,9 +136,9 @@ A mintaszkprogram futtatása előtt létre kell hoznia egy [minta-munkafolyamat-
 
 1. Frissítse a helyőrző értékeket a saját adataival:
 
-    1. Cserélje le a helyőrző e-mail-címét ( `"To": "test@example.com"` ). Olyan e-mail-címet kell használnia, amely kompatibilis a Logic Apps összekötőivel. További információkért lásd az [előfeltételeket.](#prerequisites)
+    1. Cserélje le a helyőrző e-mail-címét ( `"To": "test@example.com"` ). Olyan e-mail-címet kell használnia, amely kompatibilis az Logic Apps összekötőivel. További információkért lásd az [előfeltételeket.](#prerequisites)
 
-    1. Ha az Office 365 Outlook-összekötő helyett más e-mail-összekötőt használ, cserélje le az összekötő további adatait.
+    1. Ha az Office 365 Outlook-összekötőnél más e-mail-összekötőt használ, cserélje le az összekötő további adatait.
 
     1. Cserélje le a kapcsolati azonosítók ( és ) helyőrző előfizetési értékeit ( ) a connections paraméter ( ) alatt a `00000000-0000-0000-0000-000000000000` `connectionId` saját `id` `$connections` előfizetési értékeire.
 
@@ -198,7 +198,7 @@ Ez a példaszkprogram a következő parancsokat használja egy új erőforráscs
 | Parancs | Jegyzetek |
 | ------- | ----- |
 | [`az group create`](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amelyben a logikai alkalmazás erőforrásai tárolva vannak. |
-| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) | Létrehoz egy logikai alkalmazást a paraméterben meghatározott munkafolyamat `--definition` alapján. |
+| [`az logic workflow create`](/cli/azure/logic/workflow#az_logic_workflow_create) | Létrehoz egy logikai alkalmazást a paraméterben meghatározott munkafolyamat `--definition` alapján. |
 | [`az group delete`](/cli/azure/vm/extension) | Töröl egy erőforráscsoportot és annak összes beágyazott erőforrását. |
 
 ## <a name="next-steps"></a>Következő lépések

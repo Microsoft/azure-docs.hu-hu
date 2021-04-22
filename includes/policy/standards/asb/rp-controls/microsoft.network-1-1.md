@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 7a9e461aab44e523bade31c8a679c258f8706ab1
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 39d8bb0d61a49a5a4818f944adaace93cd0f85e5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107513582"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107880343"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Minden internetes forgalmat az üzembe helyezett virtuális gépre kell Azure Firewall](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c) |Azure Security Center azonosította, hogy egyes alhálózatokat nem véd a következő generációs tűzfal. Védje meg az alhálózatokat a lehetséges fenyegetésekkel szemben azáltal, hogy korlátozza a Azure Firewall vagy egy támogatott következő generációs tűzfallal |AuditIfNotExists, Disabled |[3.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ASC_All_Internet_traffic_should_be_routed_via_Azure_Firewall.json) |
 |[Az alhálózatokat egy hálózati biztonsági csoporthoz kell hozzárendelni](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe71308d3-144b-4262-b144-efdc3cc90517) |Egy hálózati biztonsági csoporttal (NSG) korlátozhatja az alhálózat védelmét a lehetséges fenyegetésekkel szemben. Az NSG-k az alhálózatra Access Control (ACL) vonatkozó szabályok listáját tartalmazzák, amelyek engedélyezik vagy megtagadják az alhálózatra való hálózati forgalmat. |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_NetworkSecurityGroupsOnSubnets_Audit.json) |

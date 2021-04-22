@@ -1,99 +1,99 @@
 ---
 title: Az Azure Functions fejlesztése a Visual Studio Code használatával
-description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functions a Visual Studio Code-hoz készült Azure Functions bővítménnyel.
+description: Megtudhatja, hogyan fejleszthet és tesztelhet Azure Functions a Azure Functions Code-hoz Visual Studio bővítmény használatával.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: d4353e6be313d61716933879efa930e22472781b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2869b2b30722495523a9f0dfb2d70a17a205854
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99493946"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871272"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Az Azure Functions fejlesztése a Visual Studio Code használatával
 
-A [Visual Studio Code Azure functions-bővítménye] lehetővé teszi a függvények helyi fejlesztését és üzembe helyezését az Azure-ban. Ha ez a felhasználói élmény Azure Functions, akkor a [Azure functions bevezetésével](functions-overview.md)többet is megtudhat.
+A [Azure Functions Code Visual Studio bővítménye] lehetővé teszi a függvények helyi fejlesztését és az Azure-ban való üzembe helyezését. Ha ez az első alkalom a Azure Functions, a Bevezetés a [Azure Functions.](functions-overview.md)
 
 A Azure Functions bővítmény a következő előnyöket biztosítja:
 
-* Függvények szerkesztése, létrehozása és futtatása a helyi fejlesztői számítógépen.
-* Tegye közzé a Azure Functions projektet közvetlenül az Azure-ban.
-* A Visual Studio Code előnyeinek kihasználásával különböző nyelveken írhat függvényeket.
+* Függvények szerkesztése, összeállítása és futtatása a helyi fejlesztői számítógépen.
+* Tegye közzé Azure Functions projektjét közvetlenül az Azure-ban.
+* Függvényeket írhat különböző nyelveken, miközben kihasználja a kód Visual Studio előnyeit.
 
-A bővítmény a következő nyelvekkel használható, amelyeket a Azure Functions Runtime a 2. x verziótól kezdődően támogat:
+A bővítmény a következő nyelvekkel használható, amelyeket a Azure Functions 2.x verziótól kezdődően támogat:
 
 * [C# lefordítva](functions-dotnet-class-library.md)
-* [C#-parancsfájl](functions-reference-csharp.md)<sup>*</sup>
+* [C#-szkript](functions-reference-csharp.md)<sup>*</sup>
 * [JavaScript](functions-reference-node.md)
 * [Java](functions-reference-java.md)
 * [PowerShell](functions-reference-powershell.md)
 * [Python](functions-reference-python.md)
 
-<sup>*</sup>Ehhez az szükséges, hogy [a C#-szkriptet a projekt alapértelmezett nyelvének megfelelően állítsa be](#c-script-projects).
+<sup>*</sup>Ehhez be kell [állítania a C#-szkriptet alapértelmezett projektnyelvként.](#c-script-projects)
 
-Ebben a cikkben a példák jelenleg csak a JavaScript (Node.js) és a C# Class Library függvények esetében érhetők el.  
+Ebben a cikkben a példák jelenleg csak a JavaScript (Node.js) és a C# osztálytári függvények esetén érhetők el.  
 
-Ez a cikk részletesen ismerteti, hogyan használhatók a Azure Functions bővítmény a függvények fejlesztéséhez és az Azure-ban való közzétételéhez. A cikk elolvasása előtt létre kell [hoznia az első függvényt a Visual Studio Code használatával](./create-first-function-vs-code-csharp.md).
+Ez a cikk részletesen bemutatja, hogyan használhatja a Azure Functions bővítményt függvények fejlesztéshez és az Azure-ban való közzétételéhez. Mielőtt elolvassa ezt a cikket, létre kell hoznia az első függvényét a [Visual Studio használatával.](./create-first-function-vs-code-csharp.md)
 
 > [!IMPORTANT]
-> Egyetlen Function-alkalmazás esetében ne keverje a helyi fejlesztést és a portál fejlesztését. Amikor egy helyi projektből tesz közzé egy Function alkalmazást, a telepítési folyamat felülírja a portálon kifejlesztett összes funkciót.
+> Ne keverje a helyi fejlesztést és a portálfejlesztést egyetlen függvényalkalmazáshoz. Amikor helyi projektből tesz közzé közzétételt egy függvényalkalmazásba, az üzembe helyezési folyamat felülírja a portálon fejlesztett összes függvényt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt telepítené és futtatja a [Azure functions-Azure functions bővítményt]a[Visual Studio Code]-hoz, meg kell felelnie a következő követelményeknek:
+Mielőtt telepíti és futtatja a [Azure Functions-bővítményt][Azure Functions]code-Visual Studio bővítményéhez, meg kell felelnie a következő követelményeknek:
 
-* A [Visual Studio Code](https://code.visualstudio.com/) telepítve van az egyik [támogatott platformon](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
+* [Visual Studio támogatott](https://code.visualstudio.com/) platformok egyikére telepített [kód.](https://code.visualstudio.com/docs/supporting/requirements#_platforms)
 
 * Aktív Azure-előfizetés.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Az előfizetésében a [Visual Studio Code használatával történő közzétételkor](#publish-to-azure)a szükséges egyéb erőforrások, például az Azure Storage-fiók létrehozása is létrejön. 
+A további szükséges erőforrások, például egy Azure Storage-fiók, a kód használatával való közzétételkor, az [előfizetésben Visual Studio létrejönnek.](#publish-to-azure) 
 
 ### <a name="run-local-requirements"></a>Helyi követelmények futtatása
 
-Ezek az előfeltételek csak a [függvények helyi futtatásához és hibakereséséhez](#run-functions-locally)szükségesek. Nem szükségesek projektek létrehozásához vagy közzétételéhez Azure Functions.
+Ezek az előfeltételek csak a függvények helyi futtatásához és [hibakereséséhez szükségesek.](#run-functions-locally) Nem szükséges projekteket létrehozni vagy közzétenni a Azure Functions.
 
 # <a name="c"></a>[C\#](#tab/csharp)
 
-+ A [Azure functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 2. x vagy újabb verzió. A rendszer automatikusan letölti és telepíti a központi eszközkészletet a projekt helyi indításakor. Az alapvető eszközök tartalmazzák a teljes Azure Functions futtatókörnyezetet, így a letöltés és a telepítés is eltarthat egy ideig.
++ A [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 2.x vagy újabb verzió. A Core Tools-csomag letöltése és telepítése automatikusan megtörténik a projekt helyi indítsa el. A Core Tools a teljes Azure Functions tartalmazza, ezért a letöltés és a telepítés némi időt is el fog venni.
 
 + A Visual Studio Code [C#-bővítménye](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp). 
 
-+ [A .net Core parancssori felülete eszközök](/dotnet/core/tools/?tabs=netcore2x).  
++ [a .NET Core parancssori felülete eszközök:](/dotnet/core/tools/?tabs=netcore2x).  
 
 # <a name="java"></a>[Java](#tab/java)
 
-+ A [Azure functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 2. x vagy újabb verzió. A rendszer automatikusan letölti és telepíti a központi eszközkészletet a projekt helyi indításakor. Az alapvető eszközök tartalmazzák a teljes Azure Functions futtatókörnyezetet, így a letöltés és a telepítés is eltarthat egy ideig.
++ A [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 2.x vagy újabb verzió. A Core Tools-csomag letöltése és telepítése automatikusan megtörténik a projekt helyi indítsa el. A Core Tools a teljes Azure Functions tartalmazza, ezért a letöltés és a telepítés némi időt is el fog venni.
 
-+ [Hibakereső a Java-bővítményhez](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug).
++ [Hibakereső Java-bővítményhez.](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)
 
-+ A [Java 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) ajánlott. Más támogatott verziók esetében lásd: [Java-verziók](functions-reference-java.md#java-versions).
++ [Java 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) ajánlott. További támogatott verziókért lásd: [Java-verziók.](functions-reference-java.md#java-versions)
 
 + [Maven 3 vagy újabb](https://maven.apache.org/)
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
-+ A [Azure functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 2. x vagy újabb verzió. A rendszer automatikusan letölti és telepíti a központi eszközkészletet a projekt helyi indításakor. Az alapvető eszközök tartalmazzák a teljes Azure Functions futtatókörnyezetet, így a letöltés és a telepítés is eltarthat egy ideig.
++ A [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 2.x vagy újabb verzió. A Core Tools-csomag letöltése és telepítése automatikusan megtörténik a projekt helyi indítsa el. A Core Tools a teljes Azure Functions tartalmazza, ezért a letöltés és a telepítés némi időt is el fog venni.
 
-+ [Node.js](https://nodejs.org/), aktív LTS-és karbantartási LTS-verziók (10.14.1 ajánlott). A `node --version` parancs használatával vizsgálja meg a verziót. 
++ [Node.js](https://nodejs.org/), Active LTS és Maintenance LTS verziók (10.14.1 ajánlott). A verzió `node --version` ellenőrzéshez használja a parancsot. 
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-+ A [Azure functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 2. x vagy újabb verzió. A rendszer automatikusan letölti és telepíti a központi eszközkészletet a projekt helyi indításakor. Az alapvető eszközök tartalmazzák a teljes Azure Functions futtatókörnyezetet, így a letöltés és a telepítés is eltarthat egy ideig.
++ A [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 2.x vagy újabb verzió. A Core Tools-csomag letöltése és telepítése automatikusan megtörténik a projekt helyi indítsa el. A Core Tools a teljes Azure Functions tartalmazza, így a letöltés és a telepítés némi időt is bele fog tetsszen.
 
-+ A [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows) használata javasolt. A verzióval kapcsolatos információkért lásd: [PowerShell-verziók](functions-reference-powershell.md#powershell-versions).
++ [PowerShell 7 ajánlott.](/powershell/scripting/install/installing-powershell-core-on-windows) A verzióra vonatkozó információkért lásd: [PowerShell-verziók.](functions-reference-powershell.md#powershell-versions)
 
-+ [.Net core 3,1 Runtime](https://www.microsoft.com/net/download) és [.net Core 2,1 Runtime](https://dotnet.microsoft.com/download/dotnet-core/2.1)  
++ A [.NET Core 3.1-es és](https://dotnet.microsoft.com/download) a [.NET Core 2.1-es futtatás is](https://dotnet.microsoft.com/download/dotnet/2.1)  
 
-+ A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)-hoz készült PowerShell-bővítmény.  
++ A [kódhoz Visual Studio PowerShell-bővítmény.](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)  
 
 # <a name="python"></a>[Python](#tab/python)
 
-+ A [Azure functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 2. x vagy újabb verzió. A rendszer automatikusan letölti és telepíti a központi eszközkészletet a projekt helyi indításakor. Az alapvető eszközök tartalmazzák a teljes Azure Functions futtatókörnyezetet, így a letöltés és a telepítés is eltarthat egy ideig.
++ A [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 2.x vagy újabb verzió. A Core Tools-csomag letöltése és telepítése automatikusan megtörténik a projekt helyi indítsa el. A Core Tools a teljes Azure Functions tartalmazza, így a letöltés és a telepítés némi időt is bele fog tetsszen.
 
-+ [Python 3. x](https://www.python.org/downloads/). A verzióval kapcsolatos információkért lásd a Azure Functions Runtime [Python-verzióit](functions-reference-python.md#python-version) .
++ [Python 3.x](https://www.python.org/downloads/). A verzióinformációkért lásd: [Python-verziók](functions-reference-python.md#python-version) a Azure Functions szerint.
 
 + [Python-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-python.python) a Visual Studio Code-hoz.
 
@@ -103,76 +103,76 @@ Ezek az előfeltételek csak a [függvények helyi futtatásához és hibakeres�
 
 ## <a name="create-an-azure-functions-project"></a>Azure Functions-projekt létrehozása
 
-A functions bővítmény lehetővé teszi egy Function app-projekt létrehozását az első függvénnyel együtt. A következő lépések bemutatják, hogyan hozhat létre egy HTTP-triggert függvényt egy új functions-projektben. A [http-trigger](functions-bindings-http-webhook.md) a legegyszerűbb függvény trigger-sablonja, amely bemutatja.
+A Függvénybővítmény lehetővé teszi egy függvényalkalmazás-projekt és az első függvény létrehozását. A következő lépések azt mutatják be, hogyan hozhat létre HTTP által aktivált függvényt egy új Functions-projektben. [A HTTP-eseményindító](functions-bindings-http-webhook.md) a legegyszerűbben bemutatható függvény eseményindító-sablonja.
 
-1. Az **Azure: functions** lapon válassza a **create Function (függvény létrehozása** ) ikont:
+1. Az **Azure: Functionsben válassza** a **Függvény létrehozása ikont:**
 
     ![Függvény létrehozása](./media/functions-develop-vs-code/create-function.png)
 
-1. Válassza ki a Function app-projekt mappáját, majd **válasszon egy nyelvet a függvény projekthez**.
+1. Válassza ki a függvényalkalmazás-projekt mappáját, majd válassza ki a függvényprojekt **nyelvét.**
 
-1. Válassza ki a **http-trigger** függvény sablonját, vagy a **kihagyás** gombra kattintva hozzon létre egy projektet anélkül, hogy függvényt kellene létrehoznia. Később bármikor [hozzáadhat egy függvényt a projekthez](#add-a-function-to-your-project) .
+1. Válassza ki a **HTTP-eseményindító** függvénysablont, vagy válassza a **Kihagyás** most lehetőséget egy függvény nélküli projekt létrehozásához. Később mindig [hozzáadhat függvényt a projekthez.](#add-a-function-to-your-project)
 
     ![A HTTP-eseményindító sablon kiválasztása](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. Írja be a **HttpExample** nevet a függvény neveként, majd válassza az ENTER, majd a **függvény** engedélyezése lehetőséget. Ehhez az engedélyezési szinthez meg kell adnia egy [funkcióbillentyűk](functions-bindings-http-webhook-trigger.md#authorization-keys) használatát a függvény végpontjának meghívásakor.
+1. A függvény neveként írja be a **HttpExample** nevet, válassza az Enter, majd a Függvény **engedélyezése** lehetőséget. Ehhez az engedélyezési szinthez meg kell adnia egy [függvénykulcsot,](functions-bindings-http-webhook-trigger.md#authorization-keys) amikor a függvényvégpontot hívja meg.
 
-    ![Függvény engedélyezésének kiválasztása](./media/functions-develop-vs-code/create-function-auth.png)
+    ![Függvényengedélyezési funkció kiválasztása](./media/functions-develop-vs-code/create-function-auth.png)
 
-    A rendszer egy függvényt hoz létre a választott nyelven, valamint a sablonban egy HTTP által aktivált függvényhez.
+    A rendszer létrehoz egy függvényt a választott nyelven és egy HTTP-eseményindítóval aktivált függvény sablonjának használatával.
 
-    ![HTTP által aktivált függvények sablonja a Visual Studio Code-ban](./media/functions-develop-vs-code/new-function-full.png)
+    ![HTTP által aktivált függvénysablon a Visual Studio Code-ban](./media/functions-develop-vs-code/new-function-full.png)
 
 ### <a name="generated-project-files"></a>Létrehozott projektfájlok
 
-A Project sablon létrehoz egy projektet a választott nyelven, és telepíti a szükséges függőségeket. Az új projekt bármilyen nyelven rendelkezik a következő fájlokkal:
+A projektsablon létrehoz egy projektet a választott nyelven, és telepíti a szükséges függőségeket. Az új projekt minden nyelvhez a következő fájlokat tartalmazza:
 
-* **host.json**: lehetővé teszi a functions gazdagép konfigurálását. Ezek a beállítások akkor lépnek érvénybe, ha a functions szolgáltatást helyileg futtatja, és az Azure-ban futtatja őket. További információ: [host.json Reference](functions-host-json.md).
+* **host.jsbe:** A Függvénygazda konfigurálható. Ezek a beállítások a függvények helyi futtatásakor és az Azure-ban való futtatásakor érvényesek. További információt a referencia [host.jstartalmaz.](functions-host-json.md)
 
-* **local.settings.json**: megtartja a függvények helyi futtatásakor használt beállításokat. Ezeket a beállításokat csak akkor használja a rendszer, ha helyileg futtatja a függvényeket. További információ: [Local Settings fájl](#local-settings-file).
+* **local.settings.js:** A függvények helyi futtatásakor használt beállításokat tartja fenn. Ezeket a beállításokat csak akkor használja a rendszer, ha helyileg futtat függvényeket. További információ: Helyi [beállításfájl.](#local-settings-file)
 
     >[!IMPORTANT]
-    >Mivel a fájl local.settings.jstartalmazhatja a titkos kulcsokat, ki kell zárnia azt a projekt forrása vezérlőelemből.
+    >Mivel a local.settings.jsfájlban található adatok titkos adatokat is tartalmazhatnak, ki kell zárnia azt a projekt forráskezelőjéhez.
 
-A nyelvtől függően ezek a többi fájl is létrejön:
+A nyelvtől függően a következő fájlok is létrejönnek:
 
 # <a name="c"></a>[C\#](#tab/csharp)
 
-* A függvényt megvalósító [HttpExample. cs osztály függvénytár-fájlja](functions-dotnet-class-library.md#functions-class-library-project) .
+* [A függvényt megvalósító HttpExample.cs](functions-dotnet-class-library.md#functions-class-library-project) osztálytárfájl.
 
 # <a name="java"></a>[Java](#tab/java)
 
-+ Egy pom.xml fájl a gyökérkönyvtárban, amely meghatározza a projekt-és telepítési paramétereket, beleértve a projekt függőségeit és a [Java-verziót](functions-reference-java.md#java-versions). A pom.xml az üzembe helyezés során létrehozott Azure-erőforrásokról is tartalmaz információkat.   
++ Egy pom.xml a gyökérmappában, amely meghatározza a projekt és az üzembe helyezés paramétereit, beleértve a projektfüggőségeket és a [Java-verziót.](functions-reference-java.md#java-versions) A pom.xml az üzembe helyezés során létrehozott Azure-erőforrásokkal kapcsolatos információkat is tartalmaz.   
 
-+ A függvényt megvalósító src elérési úton található [functions. Java fájl](functions-reference-java.md#triggers-and-annotations) .
++ Az src elérési útján található [Functions.java](functions-reference-java.md#triggers-and-annotations) fájl, amely megvalósítja a függvényt.
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
-* Egy package.jsa gyökérmappa fájljában.
+* Egy package.jsa gyökérmappában található fájlban.
 
-* Egy HttpExample mappa, amely tartalmazza a [function.jsa definíciós fájlban](functions-reference-node.md#folder-structure) , valamint a [index.js fájlt](functions-reference-node.md#exporting-a-function), a függvény kódját tartalmazó Node.js fájlt.
+* Egy HttpExample mappa, amelyfunction.js[ definíciós](functions-reference-node.md#folder-structure) fájlt és a [index.js](functions-reference-node.md#exporting-a-function)fájlt ( ) tartalmazza, amely Node.js függvénykódot tartalmazza.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-* Egy HttpExample mappa, amely tartalmazza a [function.jsa definíciós fájlban](functions-reference-powershell.md#folder-structure) , valamint a run.ps1 fájlt, amely tartalmazza a függvény kódját.
+* Egy HttpExample-mappa, amelyfunction.js[ definíciós](functions-reference-powershell.md#folder-structure) fájlon található és run.ps1 fájlt, amely a függvénykódot tartalmazza.
  
 # <a name="python"></a>[Python](#tab/python)
     
-* Egy projekt szintű requirements.txt fájl, amely a függvények által igényelt csomagokat sorolja fel.
+* A Functions által requirements.txt csomagokat felsoroló projektszintű fájl.
     
-* Egy HttpExample mappa, amely tartalmazza a [function.jst a definíciós fájlon](functions-reference-python.md#folder-structure) , valamint az \_ \_ init \_ \_ . file fájlt, amely tartalmazza a függvény kódját.
+* Egy HttpExample mappa, amely a [definíciósfunction.jsés](functions-reference-python.md#folder-structure) a függvénykódot tartalmazó \_ \_ init \_ \_ .py fájlt tartalmazza.
 
 ---
 
-Ezen a ponton [bemeneti és kimeneti kötéseket adhat hozzá](#add-input-and-output-bindings) a függvényhez. [Új függvényt is hozzáadhat a projekthez](#add-a-function-to-your-project).
+Ezen a ponton bemeneti és kimeneti kötéseket [adhat hozzá a](#add-input-and-output-bindings) függvényhez. A [projekthez új függvényt is hozzáadhat.](#add-a-function-to-your-project)
 
 ## <a name="install-binding-extensions"></a>Kötési bővítmények telepítése
 
-A HTTP-és időzítő-eseményindítók kivételével a kötések a kiterjesztési csomagokban vannak implementálva. Telepítenie kell a kiterjesztési csomagokat a szükséges eseményindítók és kötések számára. A kötési bővítmények telepítésének folyamata a projekt nyelvétől függ.
+A HTTP- és időzítő eseményindítók kivételével a kötések bővítménycsomagban vannak megvalósítva. Telepítenie kell a bővítménycsomagokat az azokat szükséges eseményindítókhoz és kötésekhez. A kötésbővítmények telepítésének folyamata a projekt nyelvétől függ.
 
 # <a name="c"></a>[C\#](#tab/csharp)
 
-A terminál ablakban futtassa a [DotNet-csomag hozzáadása](/dotnet/core/tools/dotnet-add-package) parancsot a projektben szükséges kiterjesztési csomagok telepítéséhez. A következő parancs telepíti az Azure Storage bővítményt, amely a blob, a várólista és a Table Storage kötéseit valósítja meg.
+Futtassa a [dotnet add package](/dotnet/core/tools/dotnet-add-package) parancsot a Terminal (Terminál) ablakban a projektben szükséges bővítménycsomagok telepítéséhez. A következő parancs telepíti az Azure Storage-bővítményt, amely a Blob, Queue és Table Storage kötéseket implementálja.
 
 ```bash
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
@@ -198,77 +198,77 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 ## <a name="add-a-function-to-your-project"></a>Függvény hozzáadása a projekthez
 
-Hozzáadhat egy új függvényt egy meglévő projekthez az előre meghatározott függvények trigger-sablonjainak használatával. Új függvény-trigger hozzáadásához válassza az F1 billentyűt a parancs paletta megnyitásához, majd keresse meg és futtassa a következő parancsot **Azure functions: Create Function**. Az utasításokat követve válassza ki az trigger típusát, és határozza meg az trigger szükséges attribútumait. Ha az triggerhez hozzáférési kulcs vagy kapcsolati karakterlánc szükséges a szolgáltatáshoz való kapcsolódáshoz, a függvény trigger létrehozása előtt készüljön fel.
+Új függvényt az egyik előre definiált Functions-eseményindító sablon használatával adhat hozzá egy meglévő projekthez. Új függvény-eseményindító hozzáadásához kattintson az F1 gombra a parancskatapaletta megnyitásához, majd keresse meg és futtassa a következő **parancsot: Azure Functions Függvény létrehozása.** Kövesse az utasításokat az eseményindító típusának meghatározásához és az eseményindító szükséges attribútumainak meghatározásához. Ha az eseményindítónak hozzáférési kulcsra vagy kapcsolati sztringre van szüksége a szolgáltatáshoz való csatlakozáshoz, készítse elő, mielőtt létrehoz egy függvény-eseményindítót.
 
-A művelet eredménye a projekt nyelvétől függ:
+A művelet eredménye a projekt nyelvtől függ:
 
 # <a name="c"></a>[C\#](#tab/csharp)
 
-A rendszer új C#-függvénytárat (. cs) ad hozzá a projekthez.
+A rendszer hozzáad egy új C#-osztálytárfájlt (.cs) a projekthez.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Új Java-(. Java-) fájl van hozzáadva a projekthez.
+A rendszer hozzáad egy új Java- (.java) fájlt a projekthez.
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
-Egy új mappa jön létre a projektben. A mappa új function.jst tartalmaz a fájl és az új JavaScript-kód fájljában.
+A projektben létrejön egy új mappa. A mappa egy új fájlt function.jsa fájlban és az új JavaScript-kódfájlt.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Egy új mappa jön létre a projektben. A mappa új function.jst tartalmaz a fájl és az új PowerShell-kód fájljában.
+A projektben létrejön egy új mappa. A mappa egy új fájlt function.jsa fájlban és az új PowerShell-kódfájlt.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Egy új mappa jön létre a projektben. A mappa új function.jst tartalmaz a fájl és az új Python-kód fájljában.
+A projektben létrejön egy új mappa. A mappa egy új fájlt function.jsa fájlban és az új Python-kódfájlt.
 
 ---
 
 ## <a name="connect-to-services"></a><a name="add-input-and-output-bindings"></a>Kapcsolódás szolgáltatásokhoz
 
-A függvényt más Azure-szolgáltatásokhoz is csatlakoztathatja bemeneti és kimeneti kötések hozzáadásával. A kötések összekötik a függvényt más szolgáltatásokkal anélkül, hogy írnia kellene a kapcsolat kódját. A kötések hozzáadásának folyamata a projekt nyelvétől függ. További információ a kötésekről: [Azure functions eseményindítók és kötések fogalmai](functions-triggers-bindings.md).
+A függvényt csatlakoztathatja más Azure-szolgáltatásokhoz bemeneti és kimeneti kötések hozzáadásával. A kötések anélkül csatlakoztatják a függvényt más szolgáltatásokhoz, hogy meg kellene írnia a kapcsolati kódot. A kötések hozzáadásának folyamata a projekt nyelvétől függ. A kötésekkel kapcsolatos további információkért lásd: Azure Functions eseményindítók és kötések [alapfogalmai.](functions-triggers-bindings.md)
 
-Az alábbi példák egy nevű Storage-várólistához csatlakoznak `outqueue` , ahol a Storage-fiók kapcsolati karakterlánca a `MyStorageConnection` local.settings.jsalkalmazás beállításában van beállítva.
+Az alábbi példák egy nevű tárolási üzenetsorhoz csatlakoznak, ahol a tárfiók kapcsolati sztringjének beállítása az `outqueue` `MyStorageConnection` alkalmazásbeállításban local.settings.jsbe.
 
 # <a name="c"></a>[C\#](#tab/csharp)
 
-A Function metódus frissítésével adja hozzá a következő paramétert a `Run` metódus-definícióhoz:
+Frissítse a függvény metódusát úgy, hogy a következő paramétert adja hozzá `Run` a metódus definícióhoz:
 
 :::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-cli/HttpExample.cs" range="17":::
 
-A `msg` paraméter egy `ICollector<T>` típus, amely a függvény befejeződése után kimeneti kötésbe írt üzenetek gyűjteményét jelöli. A következő kód egy üzenetet szúr be a gyűjteménybe:
+A paraméter egy típus, amely a kimeneti kötésbe írt üzenetek gyűjteményét jelöli, amikor `msg` `ICollector<T>` a függvény befejeződik. A következő kód egy üzenetet ad hozzá a gyűjteményhez:
 
 :::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-cli/HttpExample.cs" range="30-31":::
 
- A függvény befejezésekor a rendszer elküldi az üzeneteket a várólistára.
+ A függvény befejeződése után a rendszer üzeneteket küld az üzenetsorba.
 
-További információt a [várólista-tároló kimeneti kötési útmutatója című cikkben](functions-bindings-storage-queue-output.md?tabs=csharp) találhat. Ha többet szeretne megtudni arról, hogy mely kötéseket lehet egy függvényhez adni, tekintse meg a [kötések hozzáadása egy meglévő függvényhez Azure functions](add-bindings-existing-function.md?tabs=csharp). 
+További tudnivalókért tekintse meg a Queue Storage kimeneti [kötésének referenciadokumentációját.](functions-bindings-storage-queue-output.md?tabs=csharp) A függvényhez hozzáadható kötésekkel kapcsolatos általános információkért lásd: [Kötések](add-bindings-existing-function.md?tabs=csharp)hozzáadása meglévő függvényhez a Azure Functions. 
 
 # <a name="java"></a>[Java](#tab/java)
 
-A Function metódus frissítésével adja hozzá a következő paramétert a `Run` metódus-definícióhoz:
+Frissítse a függvény metódusát úgy, hogy a következő paramétert adja hozzá `Run` a metódus definícióhoz:
 
 :::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/src/main/java/com/function/Function.java" range="20-21":::
 
-A `msg` paraméter egy `OutputBinding<T>` típus, ahol a a `T` függvény befejeződése után kimeneti kötésbe írt karakterlánc. A következő kód a kimeneti kötésben szereplő üzenetet állítja be:
+A paraméter egy típus, ahol a egy kimeneti kötésbe írt sztring, amikor `msg` `OutputBinding<T>` a függvény `T` befejeződik. A következő kód állítja be az üzenetet a kimeneti kötésben:
 
 :::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/src/main/java/com/function/Function.java" range="33-34":::
 
-Ezt az üzenetet a rendszer a függvény befejeződése után küldi el a várólistára.
+Ez az üzenet a függvény befejeződése után lesz elküldve az üzenetsorba.
 
-További információt a [várólista-tároló kimeneti kötési útmutatója című cikkben](functions-bindings-storage-queue-output.md?tabs=java) találhat. Ha többet szeretne megtudni arról, hogy mely kötéseket lehet egy függvényhez adni, tekintse meg a [kötések hozzáadása egy meglévő függvényhez Azure functions](add-bindings-existing-function.md?tabs=java). 
+További tudnivalókért tekintse meg a Queue Storage kimeneti [kötésének referenciadokumentációját.](functions-bindings-storage-queue-output.md?tabs=java) A függvényhez hozzáadható kötésekkel kapcsolatos általános információkért lásd: [Kötések](add-bindings-existing-function.md?tabs=java)hozzáadása meglévő függvényhez a Azure Functions. 
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-add-output-binding-vs-code](../../includes/functions-add-output-binding-vs-code.md)]
 
-A függvény kódjában a `msg` kötés a `context` következővel érhető el, az alábbi példában látható módon:
+A függvénykódban a kötés az -ból érhető `msg` `context` el, ahogy az alábbi példában is:
 
 :::code language="javascript" range="5-7" source="~/functions-docs-javascript/functions-add-output-binding-storage-queue-cli/HttpExample/index.js":::
 
-Ezt az üzenetet a rendszer a függvény befejeződése után küldi el a várólistára.
+Ez az üzenet a függvény befejeződése után lesz elküldve az üzenetsorba.
 
-További információt a [várólista-tároló kimeneti kötési útmutatója című cikkben](functions-bindings-storage-queue-output.md?tabs=javascript) találhat. Ha többet szeretne megtudni arról, hogy mely kötéseket lehet egy függvényhez adni, tekintse meg a [kötések hozzáadása egy meglévő függvényhez Azure functions](add-bindings-existing-function.md?tabs=javascript). 
+További tudnivalókért tekintse meg a Queue Storage kimeneti [kötésének referenciadokumentációját.](functions-bindings-storage-queue-output.md?tabs=javascript) A függvényhez hozzáadható kötésekkel kapcsolatos általános információkért lásd: [Kötések](add-bindings-existing-function.md?tabs=javascript)hozzáadása meglévő függvényhez a Azure Functions. 
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -276,25 +276,25 @@ További információt a [várólista-tároló kimeneti kötési útmutatója c�
 
 :::code language="powershell" range="18-19" source="~/functions-docs-powershell/functions-add-output-binding-storage-queue-cli/HttpExample/run.ps1":::
 
-Ezt az üzenetet a rendszer a függvény befejeződése után küldi el a várólistára.
+Ez az üzenet a függvény befejeződése után lesz elküldve az üzenetsorba.
 
-További információt a [várólista-tároló kimeneti kötési útmutatója című cikkben](functions-bindings-storage-queue-output.md?tabs=powershell) találhat. Ha többet szeretne megtudni arról, hogy mely kötéseket lehet egy függvényhez adni, tekintse meg a [kötések hozzáadása egy meglévő függvényhez Azure functions](add-bindings-existing-function.md?tabs=powershell). 
+További tudnivalókért tekintse meg a Queue Storage kimeneti [kötésének referenciadokumentációját.](functions-bindings-storage-queue-output.md?tabs=powershell) A függvényhez hozzáadható kötésekkel kapcsolatos általános információkért lásd: [Kötések](add-bindings-existing-function.md?tabs=powershell)hozzáadása meglévő függvényhez a Azure Functions. 
 
 # <a name="python"></a>[Python](#tab/python)
 
 [!INCLUDE [functions-add-output-binding-vs-code](../../includes/functions-add-output-binding-vs-code.md)]
 
-A definíció frissítése a `Main` kimeneti paraméter hozzáadásához, `msg: func.Out[func.QueueMessage]` hogy a definíció a következő példához hasonlítson:
+Frissítse a `Main` definíciót egy kimeneti paraméter hozzáadásához, hogy `msg: func.Out[func.QueueMessage]` a definíció az alábbi példához hasonlítsa:
 
 :::code language="python" range="6" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/__init__.py":::
 
-A következő kód karakterlánc-adatokat ad hozzá a kérésből a kimeneti várólistába:
+A következő kód sztringadatokat ad hozzá a kérelemből a kimeneti üzenetsorhoz:
 
 :::code language="python" range="18" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/__init__.py":::
 
-Ezt az üzenetet a rendszer a függvény befejeződése után küldi el a várólistára.
+Ez az üzenet a függvény befejeződése után lesz elküldve az üzenetsorba.
 
-További információt a [várólista-tároló kimeneti kötési útmutatója című cikkben](functions-bindings-storage-queue-output.md?tabs=python) találhat. Ha többet szeretne megtudni arról, hogy mely kötéseket lehet egy függvényhez adni, tekintse meg a [kötések hozzáadása egy meglévő függvényhez Azure functions](add-bindings-existing-function.md?tabs=python). 
+További tudnivalókért tekintse meg a Queue Storage kimeneti [kötésének referenciadokumentációját.](functions-bindings-storage-queue-output.md?tabs=python) A függvényhez hozzáadható kötésekkel kapcsolatos általános információkért lásd: [Kötések](add-bindings-existing-function.md?tabs=python)hozzáadása meglévő függvényhez a Azure Functions. 
 
 ---
 
@@ -302,57 +302,57 @@ További információt a [várólista-tároló kimeneti kötési útmutatója c�
 
 ## <a name="publish-to-azure"></a>Közzététel az Azure-ban
 
-A Visual Studio Code lehetővé teszi, hogy közvetlenül az Azure-ban tegye közzé a functions-projektet. A folyamat során létrehoz egy függvényalkalmazást és az azokhoz tartozó erőforrásokat az Azure-előfizetésében. A függvényalkalmazás végrehajtási környezetet biztosít a függvények számára. A projektet a rendszer becsomagolja, és az Azure-előfizetésben lévő új függvényalkalmazásban helyezi üzembe.
+Visual Studio Code lehetővé teszi a Functions-projekt közvetlen közzétételét az Azure-ban. A folyamat során létrehoz egy függvényalkalmazást és az azokhoz tartozó erőforrásokat az Azure-előfizetésében. A függvényalkalmazás végrehajtási környezetet biztosít a függvények számára. A projektet a rendszer becsomagolja, és az Azure-előfizetésben lévő új függvényalkalmazásban helyezi üzembe.
 
-Ha Visual Studio Code-ból tesz közzé egy új Function alkalmazást az Azure-ban, kiválaszthatja a gyors függvény alkalmazás létrehozási útvonalát az alapértelmezett beállításokkal vagy egy speciális elérési úttal, ahol a létrehozott távoli erőforrások nagyobb mértékben szabályozható. 
+Amikor az Visual Studio Code-ból egy új függvényalkalmazásba tesz közzé közzétételt az Azure-ban, választhat egy gyors függvényalkalmazás létrehozási útvonalát az alapértelmezett értékekkel vagy egy speciális elérési út használatával, ahol jobban szabályozhatja a létrehozott távoli erőforrásokat. 
 
-A Visual Studio Code-ból való közzétételkor kihasználhatja a [zip üzembe helyezési](functions-deployment-technologies.md#zip-deploy) technológiát. 
+Amikor egy kódból Visual Studio közzé, kihasználhatja a Zip üzembe [helyezési technológiáját.](functions-deployment-technologies.md#zip-deploy) 
 
-### <a name="quick-function-app-create"></a>Gyors funkció alkalmazás létrehozása
+### <a name="quick-function-app-create"></a>Gyors függvényalkalmazás létrehozása
 
-Ha az **+ új Function alkalmazás létrehozása az Azure-ban** lehetőséget választja, a bővítmény automatikusan generál értékeket a Function alkalmazás által igényelt Azure-erőforrásokhoz. Ezek az értékek a kiválasztott Function app-név alapján jelennek meg. A Project új Azure-beli Function alkalmazásban való közzétételére szolgáló alapértelmezett beállításokkal kapcsolatos példát a [Visual Studio Code](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure)rövid útmutatójában talál.
+Ha az + Új függvényalkalmazás létrehozása az **Azure-ban...** lehetőséget választja, a bővítmény automatikusan létrehozza a függvényalkalmazáshoz szükséges Azure-erőforrások értékeit. Ezek az értékek a választott függvényalkalmazás-névn alapulnak. A projekt azure-beli új függvényalkalmazásban való alapértelmezett közzétételre való használatának példájért tekintse meg a [Visual Studio Code rövid útmutatóját.](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure)
 
-Ha explicit neveket kíván megadni a létrehozott erőforrásokhoz, ki kell választania a speciális létrehozási útvonalat.
+Ha explicit neveket szeretne adni a létrehozott erőforrásoknak, a speciális létrehozási útvonalat kell választania.
 
-### <a name="publish-a-project-to-a-new-function-app-in-azure-by-using-advanced-options"></a><a name="enable-publishing-with-advanced-create-options"></a>Projekt közzététele egy új Function alkalmazásban az Azure-ban speciális beállítások használatával
+### <a name="publish-a-project-to-a-new-function-app-in-azure-by-using-advanced-options"></a><a name="enable-publishing-with-advanced-create-options"></a>Projekt közzététele egy új függvényalkalmazásban az Azure-ban speciális beállításokkal
 
-A következő lépésekkel teheti közzé a projektjét a speciális létrehozási beállításokkal létrehozott új Function alkalmazásban:
+A következő lépésekkel közzéteheti a projektet egy speciális létrehozási beállításokkal létrehozott új függvényalkalmazásban:
 
-1. A Command raklapon írja be a következőt **: Azure functions: Deploy to Function app**.
+1. A parancs raklapon írja be a **következőt: Azure Functions: Üzembe helyezés a függvényalkalmazásban.**
 
-1. Ha nincs bejelentkezve, a rendszer felszólítja, hogy **Jelentkezzen be az Azure-** ba. **Létrehozhat egy ingyenes Azure-fiókot** is. A böngészőből való bejelentkezés után lépjen vissza a Visual Studio Code-ba.
+1. Ha nincs bejelentkezve, a rendszer felszólítja, hogy jelentkezzen be **az Azure-ba.** Létrehozhat egy **ingyenes Azure-fiókot is.** Miután bejelentkezik a böngészőből, vissza kell Visual Studio Code-hoz.
 
-1. Ha több előfizetéssel rendelkezik, **válasszon egy előfizetést** a Function alkalmazáshoz, majd válassza az **+ új Függvényalkalmazás létrehozása az Azure-ban... _Speciális_**. Ez a _speciális_ beállítás nagyobb mértékű irányítást biztosít az Azure-ban létrehozott erőforrások felett. 
+1. Ha több előfizetéssel rendelkezik, válassza **ki a** függvényalkalmazás előfizetését, majd válassza a + Új függvényalkalmazás létrehozása **az Azure-ban... lehetőséget. _Speciális_**. Ezzel _a Speciális_ beállítással jobban szabályozhatja az Azure-ban létrehozott erőforrásokat. 
 
-1. Az utasításokat követve adja meg a következő információkat:
+1. Az utasításokat követően adja meg az alábbi adatokat:
 
     | Adatkérés | Érték | Leírás |
     | ------ | ----- | ----------- |
-    | Function app kiválasztása az Azure-ban | Új függvényalkalmazás létrehozása az Azure-ban | A következő üzenetben írjon be egy globálisan egyedi nevet, amely azonosítja az új Function alkalmazást, majd válassza az ENTER billentyűt. A függvényalkalmazás nevéhez használható érvényes karakterek a következők: `a-z`, `0-9` és `-`. |
-    | Operációs rendszer kiválasztása | Windows | A Function alkalmazás Windows rendszeren fut. |
-    | Üzemeltetési csomag kiválasztása | Használatalapú csomag | A kiszolgáló nélküli [fogyasztási csomag üzemeltetése](consumption-plan.md) használatos. |
-    | Válasszon futtatókörnyezetet az új alkalmazáshoz | A projekt nyelve | A futtatókörnyezetnek meg kell egyeznie a közzétett projekttel. |
-    | Válasszon ki egy erőforráscsoportot az új erőforrásokhoz | Új erőforráscsoport létrehozása | A következő parancssorba írja be az erőforráscsoport nevét, például:, majd kattintson az `myResourceGroup` ENTER gombra. Választhat egy meglévő erőforráscsoportot is. |
-    | Válasszon Storage-fiókot | Új tárfiók létrehozása | A következő üzenetben írjon be egy globálisan egyedi nevet a Function alkalmazás által használt új Storage-fiókhoz, majd válassza az ENTER billentyűt. A Storage-fiókok nevének 3 – 24 karakter hosszúnak kell lennie, és csak számokból és kisbetűkből állhat. Választhat egy meglévő fiókot is. |
-    | Válasszon helyet az új erőforrásokhoz | régió | Válasszon egy helyet a közeli [régióban](https://azure.microsoft.com/regions/) vagy más, a funkciókhoz hozzáférő szolgáltatások közelében. |
+    | Függvényalkalmazás kiválasztása az Azure-ban | Új függvényalkalmazás létrehozása az Azure-ban | A következő parancssorba írjon be egy globálisan egyedi nevet, amely azonosítja az új függvényalkalmazást, majd válassza az Enter billentyűt. A függvényalkalmazás nevéhez használható érvényes karakterek a következők: `a-z`, `0-9` és `-`. |
+    | Operációs rendszer kiválasztása | Windows | A függvényalkalmazás Windows rendszeren fut. |
+    | Üzemeltetési csomag kiválasztása | Használatalapú csomag | Kiszolgáló nélküli [használatcsomag-üzemeltetést](consumption-plan.md) használ. |
+    | Futásidő kiválasztása az új alkalmazáshoz | A projekt nyelve | A runtime-nak egyeznie kell a közzétevő projekttel. |
+    | Erőforráscsoport kiválasztása az új erőforrásokhoz | Új erőforráscsoport létrehozása | A következő parancssorba írjon be egy erőforráscsoport-nevet,például `myResourceGroup` , majd válassza az Enter billentyűt. Kiválaszthat egy meglévő erőforráscsoportot is. |
+    | Tárfiók kiválasztása | Új tárfiók létrehozása | A következő parancssorba írjon be egy globálisan egyedi nevet a függvényalkalmazás által használt új tárfiókhoz, majd válassza az Enter billentyűt. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokat és kisbetűket tartalmazhat. Kiválaszthat egy meglévő fiókot is. |
+    | Új erőforrások helyének kiválasztása | régió | Válasszon ki egy helyet egy olyan [régióban,](https://azure.microsoft.com/regions/) amely a függvények által elérhető, az Ön közelében vagy más szolgáltatások közelében található. |
 
-    Megjelenik egy értesítés a Function alkalmazás létrehozása és a központi telepítési csomag alkalmazása után. Válassza ki az értesítés **kimenetének megtekintése** lehetőséget a létrehozási és a telepítési eredmények megtekintéséhez, beleértve a létrehozott Azure-erőforrásokat is.
+    A függvényalkalmazás létrehozása és az üzembe helyezési csomag alkalmazása után megjelenik egy értesítés. Az **értesítés kimenetének** megtekintése lehetőséget választva megtekintheti a létrehozási és üzembe helyezési eredményeket, beleértve a létrehozott Azure-erőforrásokat is.
 
-### <a name="get-the-url-of-an-http-triggered-function-in-azure"></a><a name="get-the-url-of-the-deployed-function"></a>HTTP által aktivált függvény URL-címének beolvasása az Azure-ban
+### <a name="get-the-url-of-an-http-triggered-function-in-azure"></a><a name="get-the-url-of-the-deployed-function"></a>HTTP-eseményindítóval aktivált függvény URL-címének le kérése az Azure-ban
 
-Egy HTTP által aktivált függvény ügyféltől való meghívásához szüksége lesz a függvény URL-címére, amikor a rendszer üzembe helyezi a Function alkalmazásban. Ez az URL-cím tartalmazza az összes szükséges funkcióbillentyűk. A bővítmény használatával lekérheti a telepített függvények URL-címeit. Ha csak az Azure-ban szeretné futtatni a távoli függvényt, [használja a bővítmény funkcióját](#run-functions-in-azure) .
+Ha egy ügyfélről http által aktivált függvényt kell hívnia, szüksége lesz a függvény URL-címére, amikor üzembe lesz telepítve a függvényalkalmazásban. Ez az URL-cím tartalmazza a szükséges függvénykulcsokat. A bővítmény használatával lekérte ezeket az URL-címeket az üzembe helyezett függvények számára. Ha csak a távoli függvényt szeretné futtatni az Azure-ban, használja a bővítmény [Execute függvény most](#run-functions-in-azure) funkcióját.
 
-1. Válassza az F1 billentyűt a parancs paletta megnyitásához, majd keresse meg és futtassa a parancsot **Azure functions: Copy Function URL-cím**.
+1. Válassza az F1 lehetőséget a parancskatapaletta megnyitásához, majd keresse meg és futtassa az **Azure Functions: Függvény URL-címének másolása** lehetőséget.
 
-1. Az utasításokat követve válassza ki a Function alkalmazást az Azure-ban, majd adja meg a meghívni kívánt HTTP-eseményindítót.
+1. Kövesse az utasításokat, és válassza ki a függvényalkalmazást az Azure-ban, majd válassza ki a meghívni kívánt HTTP-eseményindítót.
 
-A függvény URL-címét a vágólapra másolja a rendszer, valamint a lekérdezési paraméter által átadott szükséges kulcsokat `code` . HTTP-eszköz használatával küldhet POST kéréseket, vagy egy böngészőt a kérések távoli függvénynek való beolvasásához.  
+A függvény URL-címét a rendszer a vágólapra másolja a lekérdezési paraméter által átadott szükséges `code` kulcsokkal együtt. EGY HTTP-eszközzel POST-kéréseket küldhet, vagy egy böngészőt, hogy GET-kéréseket küldjön a távoli függvénynek.  
 
-Az Azure-beli függvények URL-címének lekérése során a bővítmény az Azure-fiók használatával automatikusan lekéri a függvény elindításához szükséges kulcsokat. [További információ a függvény-hozzáférési kulcsokról](security-concepts.md#function-access-keys). A nem HTTP által aktivált függvények indításához a rendszergazdai kulcsot kell használnia.
+Az Azure-beli függvények URL-címének lekérésekor a bővítmény az Ön Azure-fiókjával automatikusan lekéri a függvény elindítani kívánt kulcsokat. [További információ a függvényelérési kulcsokról.](security-concepts.md#function-access-keys) A nem HTTP által aktivált függvények indításához a rendszergazdai kulcsot kell használni.
 
 ## <a name="republish-project-files"></a>Projektfájlok ismételt közzététele
 
-A [folyamatos üzembe helyezés](functions-continuous-deployment.md)beállításakor az Azure-beli Function alkalmazás frissül, amikor a forrás fájljait frissíti a csatlakoztatott forrás helyén. Javasoljuk a folyamatos üzembe helyezést, de a Project-fájlok frissítéseit is újra közzéteheti a Visual Studio Code-ból.
+A folyamatos üzembe helyezés [beállításakor](functions-continuous-deployment.md)a függvényalkalmazás frissül az Azure-ban, amikor frissíti a forrásfájlokat a csatlakoztatott forráshelyen. Javasoljuk a folyamatos üzembe helyezést, de a projektfájl frissítéseit újra közzé is tehet a Visual Studio Code-ból.
 
 > [!IMPORTANT]
 > Meglévő függvényalkalmazásba való közzététel felülírja az adott alkalmazás tartalmát az Azure-ban.
@@ -361,69 +361,69 @@ A [folyamatos üzembe helyezés](functions-continuous-deployment.md)beállítás
 
 ## <a name="run-functions"></a>Függvények futtatása
 
-A Azure Functions bővítmény lehetővé teszi az egyes függvények futtatását a projektben a helyi fejlesztési számítógépen vagy az Azure-előfizetésében. 
+A Azure Functions bővítmény lehetővé teszi egyéni függvények futtatását a projektben a helyi fejlesztői számítógépen vagy az Azure-előfizetésében. 
 
-HTTP-trigger függvények esetén a bővítmény meghívja a HTTP-végpontot. Más típusú eseményindítók esetén meghívja a rendszergazda API-kat a függvény elindításához. A függvénynek küldött kérelem szövege az trigger típusától függ. Ha egy triggerhez tesztelési célú adatműveletre van szükség, a rendszer kéri, hogy adjon meg egy adott JSON-formátumú adatbevitelt.
+HTTP-eseményindító függvények esetén a bővítmény a HTTP-végpontot hívja meg. Más típusú eseményindítókhoz rendszergazdai API-kat hív meg a függvény elindítani. A függvénynek küldött kérés üzenet törzse az eseményindító típusától függ. Ha egy eseményindító tesztadatokat igényel, a rendszer arra kéri, hogy adjon meg adatokat egy adott JSON-formátumban.
 
 ### <a name="run-functions-in-azure"></a>Függvények futtatása az Azure-ban
 
-Függvények végrehajtása az Azure-ban a Visual Studio Code-ból. 
+Függvény végrehajtása az Azure-ban a Visual Studio kódból. 
 
-1. A Command raklapon írja be **Azure functions: Execute függvényt most** , és válassza ki az Azure-előfizetését. 
+1. A parancs raklapon írja be a **következőt: Azure Functions: Függvény** végrehajtása most, és válassza ki az Azure-előfizetését. 
 
-1. Válassza ki a Function alkalmazást az Azure-ban a listából. Ha nem látja a Function alkalmazást, ellenőrizze, hogy be van-e jelentkezve a megfelelő előfizetésbe. 
+1. Válassza ki a függvényalkalmazást az Azure-ban a listából. Ha nem látja a függvényalkalmazást, ellenőrizze, hogy a megfelelő előfizetésbe jelentkezett-e be. 
 
-1. Válassza ki a listából a futtatni kívánt függvényt, és írja be a kérelem szövegtörzsét az **ENTER kérelem törzsében**. Nyomja le az ENTER billentyűt a kérelem üzenetének a függvénynek való elküldéséhez. Az **ENTER kérelem törzsében** szereplő alapértelmezett szövegnek a törzs formátumát kell megadnia. Ha a Function alkalmazás nem rendelkezik függvényekkel, a hibával kapcsolatos értesítési hiba jelenik meg. 
+1. Válassza ki a listából a futtatni kívánt függvényt, és írja be a kérés üzenet törzsét az **Enter request body (Kérés törzsének begépelését) mezőbe.** Nyomja le az Enter billentyűt a kérésüzenet függvénynek való elküldését. Az Enter kérés törzsének **alapértelmezett szövegében** meg kell adnia a törzs formátumát. Ha a függvényalkalmazás nem rendelkezik függvényekkel, egy értesítési hiba jelenik meg ezzel a hibával. 
 
-1. Amikor a függvény végrehajtja az Azure-ban, és választ ad vissza, a Visual Studio Code-ban megjelenik egy értesítés.
+1. Amikor a függvény fut az Azure-ban, és választ ad vissza, egy értesítés jön Visual Studio Kódban.
  
-A függvényt az **Azure: functions** területén is futtathatja. ehhez kattintson a jobb gombbal (CTRL + kattintás Mac gépen) az Azure-előfizetésében futtatni kívánt függvényt, és válassza a **művelet végrehajtása most.**.. lehetőséget.
+A függvényt az **Azure: Functions** területről is futtathatja, ha a jobb gombbal kattint (a Ctrl billentyűt lenyomva tartva a Mac gépen) a függvényalkalmazásból futtatni kívánt függvényre az Azure-előfizetésben, és válassza a Függvény végrehajtása **most...** lehetőséget.
 
-A függvények Azure-ban való futtatásakor a bővítmény az Azure-fiók használatával automatikusan lekéri a függvény elindításához szükséges kulcsokat. [További információ a függvény-hozzáférési kulcsokról](security-concepts.md#function-access-keys). A nem HTTP által aktivált függvények indításához a rendszergazdai kulcsot kell használnia.
+Amikor függvényeket futtat az Azure-ban, a bővítmény az Azure-fiókjával automatikusan lekéri a függvény futtatásához szükséges kulcsokat. [További információ a függvényelérési kulcsokról.](security-concepts.md#function-access-keys) A nem HTTP által aktivált függvények indításához a rendszergazdai kulcsot kell használni.
 
 ### <a name="run-functions-locally"></a>Függvények helyi futtatása
 
-A helyi futtatókörnyezet megegyezik az Azure-beli Function alkalmazást futtató futtatókörnyezettel. A helyi beállításokat a rendszer beolvassa a [local.settings.jsfájlból](#local-settings-file). A functions projekt helyi futtatásához [további követelményeknek](#run-local-requirements)kell megfelelnie.
+A helyi futtatás ugyanaz a futtatás, amely a függvényalkalmazást az Azure-ban futtatja. A helyi beállításokat a fájl [local.settings.jsolvassa be.](#local-settings-file) A Functions-projekt helyi futtatásához további követelményeknek [kell megfelelnie.](#run-local-requirements)
 
-#### <a name="configure-the-project-to-run-locally"></a>A projekt konfigurálása helyileg történő futtatásra
+#### <a name="configure-the-project-to-run-locally"></a>A projekt konfigurálása helyi futtatáshoz
 
-A functions Runtime az Azure Storage-fiókot belsőleg használja az összes trigger típushoz, a HTTP és webhookok kivételével. Ezért az **Values. AzureWebJobsStorage** kulcsot egy érvényes Azure Storage-fiók kapcsolódási karakterlánccá kell beállítania.
+A Functions-futtatás belsőleg egy Azure Storage-fiókot használ a HTTP- és webhookokon kívül minden eseményindító-típushoz. Ezért a **Values.AzureWebJobsStorage** kulcsot egy érvényes Azure Storage-fiók kapcsolati sztringre kell beállítania.
 
-Ez a szakasz a [Visual Studio Code-hoz készült Azure Storage-bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage) használja a [Azure Storage Explorer](https://storageexplorer.com/) a kapcsolódáshoz és a tárolási kapcsolati karakterlánc lekéréséhez.
+Ez a szakasz az Azure Storage-bővítményt [](https://storageexplorer.com/) használja a [Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage) Azure Storage Explorer a storage kapcsolati sztringhez való csatlakozáshoz és a sztring lekéréshez.
 
-A Storage-fiók kapcsolódási karakterláncának beállítása:
+A tárfiók kapcsolati sztringének beállítása:
 
-1. A Visual Studióban nyissa meg a **Cloud Explorer alkalmazást** **, bontsa ki a Storage-**  >  **fiók** elemet, majd válassza a **Tulajdonságok** lehetőséget, és másolja ki az **elsődleges kapcsolatok karakterláncának** értékét.
+1. A Visual Studio nyissa meg a **Cloud Explorert,** bontsa ki a **Tárfiók** Saját tárfiók területet, majd válassza a Tulajdonságok lehetőséget, és másolja ki az Elsődleges kapcsolati  >   **sztring értékét.** 
 
-2. A projektben nyissa meg a local.settings.jsfájlt, és állítsa be a **AzureWebJobsStorage** kulcs értékét a másolt kapcsolódási karakterláncra.
+2. A projektben nyissa meg a local.settings.jsfájlban, és állítsa az **AzureWebJobsStorage** kulcs értékét a kimásott kapcsolati sztringre.
 
-3. Az előző lépés megismétlésével egyedi kulcsokat adhat hozzá az **értékek** tömbhöz a függvények által igényelt egyéb kapcsolatokhoz.
+3. Ismételje meg az előző lépést, ha egyedi kulcsokat szeretne hozzáadni az **Értékek** tömbhöz a függvények által megkövetelt egyéb kapcsolatokhoz.
 
-További információ: [Local Settings fájl](#local-settings-file).
+További információ: Helyi [beállításfájl.](#local-settings-file)
 
-#### <a name="debug-functions-locally"></a><a name="debugging-functions-locally"></a>Helyi hibakeresési függvények  
+#### <a name="debug-functions-locally"></a><a name="debugging-functions-locally"></a>Függvények helyi hibakeresése  
 
-A függvények hibakereséséhez válassza az F5 lehetőséget. Ha még nem töltötte le a [Core Tools][Azure functions Core Tools], a rendszer erre kéri. Ha a Core Tools telepítése és futtatása történik, a kimenet megjelenik a terminálban. Ez ugyanaz, mint a `func host start` Core Tools parancs terminálból való futtatása, de további felépítési feladatokkal és egy csatolt hibakeresővel.  
+A függvények hibakeresését az F5 billentyűvel lehet végezni. Ha még nem letöltötte a [Core Tools][Azure Functions Core Tools,]a rendszer erre kéri. A Core Tools telepítése és futtatása után a kimenet megjelenik a terminálon. Ez ugyanaz, mint a Core Tools parancs futtatása a terminálról, de további buildfeladatokkal és egy csatolt `func host start` hibakeresővel.  
 
-Ha a projekt fut, a bővítmény **végrehajtás funkciójának** használatával aktiválhatja a függvényeket úgy, ahogy a projekt üzembe helyezését végzi az Azure-ban. Ha a projekt hibakeresési módban fut, a töréspontokat a Visual Studio Code-ban találja, ahogy azt várnánk. 
+Ha a projekt fut, a bővítmény **Execute Function Now...** funkcióját használva úgy aktiválhatja a függvényeket, mintha a projektet az Azure-ban helyezné üzembe. Ha a projekt hibakeresési módban fut, a töréspontok a várt Visual Studio a kódban. 
 
-1. A Command raklapon írja be **Azure functions: Execute függvényt** , és válassza a **helyi projekt** lehetőséget. 
+1. A parancssorba írja be a **következőt: Azure Functions: Execute function now (Függvény** végrehajtása most) és válassza **a Local project (Helyi projekt) lehetőséget.** 
 
-1. Válassza ki a projektben futtatni kívánt függvényt, és írja be a kérelem üzenet törzsét az **ENTER kérelem törzsében**. Nyomja le az ENTER billentyűt a kérelem üzenetének a függvénynek való elküldéséhez. Az **ENTER kérelem törzsében** szereplő alapértelmezett szövegnek a törzs formátumát kell megadnia. Ha a Function alkalmazás nem rendelkezik függvényekkel, a hibával kapcsolatos értesítési hiba jelenik meg. 
+1. Válassza ki a projektben futtatni kívánt függvényt, és írja be a kérés üzenet törzsét az **Enter request body (Kérés törzsének begépelését) mezőbe.** Nyomja le az Enter billentyűt a kérésüzenet függvénynek való elküldését. Az Enter kérés törzsében az alapértelmezett **szövegnek** a törzs formátumát kell jeleznie. Ha a függvényalkalmazás nem rendelkezik függvényekkel, egy értesítési hiba jelenik meg ezzel a hibával. 
 
-1. Ha a függvény helyileg fut, és a válasz fogadása után a rendszer értesítést küld a Visual Studio Code-ban. A függvény végrehajtásával kapcsolatos információk a **Terminal** panelen jelennek meg.
+1. Amikor a függvény helyileg fut, és a válasz érkezik, egy értesítés jelenik meg a Visual Studio Kódban. A függvény végrehajtásával kapcsolatos információk a Terminál **panelen jelennek** meg.
 
-A függvények helyi futtatása nem igényli a kulcsok használatát. 
+A függvények helyi futtatásához nincs szükség kulcsokra. 
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-Alapértelmezés szerint ezek a beállítások nem települnek át automatikusan, ha a projekt közzé van téve az Azure-ban. A közzététel befejeződése után lehetősége van a beállítások közzétételére local.settings.jsaz Azure-beli Function alkalmazásban. További információ:  [Alkalmazásbeállítások közzététele](#publish-application-settings).
+Alapértelmezés szerint ezek a beállítások nem migrálódnak automatikusan, amikor a projektet közzéteszik az Azure-ban. A közzététel befejezése után lehetősége van a beállítások közzétételére a local.settings.jsa függvényalkalmazásban az Azure-ban. További információ: [Alkalmazásbeállítások közzététele.](#publish-application-settings)
 
-A **ConnectionStrings** lévő értékek soha nem lesznek közzétéve.
+A **ConnectionStrings értékei soha** nem vannak közzétéve.
 
-A Function Application Alkalmazásbeállítások értékei környezeti változókként is olvashatók a kódban. További információkért tekintse meg a nyelvspecifikus hivatkozási cikkek környezeti változók című részeit:
+A függvényalkalmazás beállításainak értékei környezeti változókként is olvashatók a kódban. További információért tekintse meg az alábbi nyelvspecifikus referenciacikkek Környezeti változók szakaszát:
 
-* [C# előre lefordított](functions-dotnet-class-library.md#environment-variables)
+* [C# előre le van kompatiálva](functions-dotnet-class-library.md#environment-variables)
 * [C#-szkript (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
@@ -432,108 +432,108 @@ A Function Application Alkalmazásbeállítások értékei környezeti változó
 
 ## <a name="application-settings-in-azure"></a>Alkalmazásbeállítások az Azure-ban
 
-A projektben lévő local.settings.jsban szereplő beállításoknak meg kell egyezniük az Azure-beli Function alkalmazás beállításaival. A local.settings.jshoz hozzáadott beállításokat az Azure-beli Function alkalmazáshoz is hozzá kell adnia. Ezeket a beállításokat a projekt közzétételekor nem kell automatikusan feltölteni. Hasonlóképpen, [a portálon](functions-how-to-use-azure-function-app-settings.md#settings) létrehozott összes beállítást le kell tölteni a helyi projektbe.
+A projekt fájljában local.settings.jsfájl beállításainak meg kell egyednek lennie az Azure-beli függvényalkalmazás alkalmazásbeállításával. A függvényalkalmazáshoz local.settings.jsbeállításokat az Azure-beli függvényalkalmazáshoz is hozzá kell adni. Ezeket a beállításokat a rendszer nem tölti fel automatikusan a projekt közzétételekor. Hasonlóképpen, a függvényalkalmazásban a [](functions-how-to-use-azure-function-app-settings.md#settings) portálon létrehozott beállításokat is le kell tölteni a helyi projektbe.
 
 ### <a name="publish-application-settings"></a>Alkalmazásbeállítások közzététele
 
-Az Azure-beli Function alkalmazásban a szükséges beállítások közzétételének legegyszerűbb módja a projekt közzététele után megjelenő **feltöltési beállítások** hivatkozás használata:
+A szükséges beállítások azure-beli függvényalkalmazásban való közzétételének legegyszerűbb módja a projekt közzététele után megjelenő Beállítások feltöltése hivatkozás használata: 
 
 ![Alkalmazásbeállítások feltöltése](./media/functions-develop-vs-code/upload-app-settings.png)
 
-A beállításokat a **Azure functions: feltöltés helyi beállítás** parancs használatával is közzéteheti a parancs palettáján. Az Azure-ban a **Azure functions: Add New Setting** parancs használatával egyéni beállításokat adhat hozzá az alkalmazás beállításaihoz.
+A beállításokat a parancskatapaletta **helyi Azure Functions helyi** beállítás feltöltése parancsával is közzéteheti. Az Azure-beli alkalmazásbeállításokhoz egyéni beállításokat adhat hozzá a **Azure Functions: Új beállítás hozzáadása paranccsal.**
 
 > [!TIP]
-> Ügyeljen arra, hogy a közzététel előtt mentse a local.settings.jsfájlt.
+> A közzététel előtt local.settings.jsmenteni a fájlt.
 
-Ha a helyi fájl titkosítva van, a rendszer visszafejti, közzéteszi és titkosítja újra. Ha vannak olyan beállítások, amelyek ütköző értékekkel rendelkeznek a két helyen, a rendszer kéri, hogy válassza ki a folytatás módját.
+Ha a helyi fájl titkosítva van, a rendszer visszafejti, közzéteszi és újra titkosítja. Ha a két helyen ütköző értékek találhatók, a rendszer felkéri, hogy válassza ki a folytatási lehetőséget.
 
-Megtekintheti az alkalmazás meglévő beállításait az **Azure: functions** területen az előfizetés, a Function alkalmazás és az **Alkalmazásbeállítások** kibontásával.
+Tekintse meg a meglévő alkalmazásbeállításokat az **Azure: Functions** területen az előfizetés, a függvényalkalmazás és az **alkalmazásbeállítások kibontásához.**
 
-![A Function app-beállítások megtekintése a Visual Studio Code-ban](./media/functions-develop-vs-code/view-app-settings.png)
+![Függvényalkalmazás beállításainak megtekintése a Visual Studio Code-ban](./media/functions-develop-vs-code/view-app-settings.png)
 
 ### <a name="download-settings-from-azure"></a>Beállítások letöltése az Azure-ból
 
-Ha az Azure-ban hozta létre az Alkalmazásbeállítások használatát, letöltheti őket a local.settings.jsfájlba a **Azure functions: távoli beállítások letöltése** paranccsal.
+Ha már létrehozott alkalmazásbeállításokat az Azure-ban, letöltheti őket a local.settings.jsfájlba a **következő Azure Functions: Távoli** beállítások letöltése paranccsal.
 
-A feltöltéshez hasonlóan, ha a helyi fájl titkosítva van, annak visszafejtése, frissítése és titkosítása újra megtörténik. Ha vannak olyan beállítások, amelyek ütköző értékekkel rendelkeznek a két helyen, a rendszer kéri, hogy válassza ki a folytatás módját.
+A feltöltéshez mint a feltöltéshez, ha a helyi fájl titkosítva van, a rendszer visszafejti, frissíti és újra titkosítja. Ha a két helyen ütköző értékek találhatók, a rendszer felkéri, hogy válassza ki a folytatási lehetőséget.
 
-## <a name="monitoring-functions"></a>Figyelési függvények
+## <a name="monitoring-functions"></a>Monitorozási függvények
 
-Ha [helyileg futtatja a függvényeket](#run-functions-locally), a rendszer a naplófájlba továbbítja az adatok továbbítását. Ha a functions-projekt egy Azure-beli Function alkalmazásban fut, akkor a naplózási adatok is beszerezhetők. Csatlakozhat az Azure-beli streaming-naplókhoz, és megtekintheti a közel valós idejű naplózási adatait, vagy engedélyezheti Application Insights a Function app működésének részletesebb megismeréséhez.
+Amikor [helyileg futtat függvényeket,](#run-functions-locally)a rendszer a naplóadatokat a terminálkonzolra streameli. Naplóadatokat akkor is lekért, ha a Functions-projekt egy Függvényalkalmazásban fut az Azure-ban. Csatlakozhat az Azure-beli streamnaplókhoz a közel valós idejű naplóadatok megtekintéséhez, vagy engedélyezheti a Application Insights-t a függvényalkalmazás működésének teljesebb megértéséhez.
 
 ### <a name="streaming-logs"></a>Streamelési naplók
 
-Az alkalmazások fejlesztésekor gyakran hasznos a naplózási információk megjelenítése a közel valós időben. Megtekintheti a függvények által generált naplófájlok streamjét. Ez a kimenet egy HTTP által aktivált függvényre irányuló kérelem továbbítási naplóinak példája:
+Alkalmazás fejlesztésekor gyakran hasznos közel valós időben látni a naplózási adatokat. Megtekintheti a függvények által létrehozott naplófájlok streamét. Ez a kimenet egy példa egy HTTP-eseményindítóval aktivált függvényre vonatkozó kérés streamnaplóira:
 
-![A folyamatos átviteli naplók kimenete HTTP-trigger esetén](media/functions-develop-vs-code/streaming-logs-vscode-console.png)
+![Streamnaplók kimenete HTTP-eseményindítóhoz](media/functions-develop-vs-code/streaming-logs-vscode-console.png)
 
-További információ: [streaming logs](functions-monitoring.md#streaming-logs).
+További információ: [Streamnaplók.](functions-monitoring.md#streaming-logs)
 
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
 
 > [!NOTE]
-> A folyamatos átviteli naplók csak a functions gazdagép egyetlen példányát támogatják. Ha a függvény több példányra van méretezve, a más példányokból származó adatok nem jelennek meg a log streamben. A Application Insights [élő metrikastream](../azure-monitor/app/live-stream.md) több példányt támogat. A streaming Analytics közel valós időben is a [mintavételezésen](configure-monitoring.md#configure-sampling)alapul.
+> A streamelési naplók csak a Functions-gazdagép egyetlen példányát támogatják. Ha a függvény több példányra van skálázva, más példányok adatai nem jelennek meg a naplóstreamben. [Élő metrikastream](../azure-monitor/app/live-stream.md) a Application Insights több példányt is támogat. Bár közel valós időben is, a streamelési elemzés a [mintavételből vett adatokon alapul.](configure-monitoring.md#configure-sampling)
 
 ### <a name="application-insights"></a>Application Insights
 
-Javasoljuk, hogy figyelje a függvények végrehajtását úgy, hogy integrálja a Function alkalmazást a Application Insightsával. Ha a Azure Portalban hoz létre egy Function alkalmazást, az integráció alapértelmezés szerint bekövetkezik. Ha a Visual Studio Publishing szolgáltatásban hozza létre a Function alkalmazást, integrálnia kell Application Insights magát. További információt a [Application Insights integrációjának engedélyezése](configure-monitoring.md#enable-application-insights-integration)című témakörben talál.
+Javasoljuk, hogy monitorja a függvények végrehajtását a függvényalkalmazás és a Application Insights. Amikor függvényalkalmazást hoz létre a Azure Portal, ez az integráció alapértelmezés szerint megtörténik. Amikor a közzététel során létrehozza a függvényalkalmazást Visual Studio, saját magának kell integrálni Application Insights alkalmazásokat. További információ: [Enable Application Insights integration](configure-monitoring.md#enable-application-insights-integration)( Integráció engedélyezése).
 
-Ha többet szeretne megtudni a Application Insights használatával végzett figyelésről, tekintse meg a [Azure functions figyelése](functions-monitoring.md)című témakört.
+További információ a monitorozásról a Application Insights [monitorozását Azure Functions.](functions-monitoring.md)
 
-## <a name="c-script-projects"></a>C \# parancsfájl-projektek
+## <a name="c-script-projects"></a>\#C-szkriptprojektek
 
-Alapértelmezés szerint a rendszer minden C#-projektet [c# lefordított függvénytár-projektként](functions-dotnet-class-library.md)hoz létre. Ha inkább C# parancsfájl-projekteket szeretne dolgozni, a C#-parancsfájlt az alapértelmezett nyelvként kell kiválasztania a Azure Functions bővítmény beállításaiban:
+Alapértelmezés szerint minden C#-projekt [C#-fordítású osztálytárprojektként jön létre.](functions-dotnet-class-library.md) Ha inkább C#-szkriptprojektekkel szeretne dolgozni, a C#-szkriptet kell kiválasztania alapértelmezett nyelvként a Azure Functions beállításaiban:
 
-1. Válassza a **fájl**  >  **beállításai**  >  **Beállítások** lehetőséget.
+1. Válassza **a**  >  **Fájlbeállítások**  >  **lehetőséget.**
 
-1. Lépjen a **felhasználói beállítások**  >  **bővítmények**  >  **Azure functions**.
+1. A Felhasználói **beállítások**  >  **bővítményei lapra Azure Functions.**  >  
 
-1. Válassza ki a **C # szkriptet** az **Azure-függvényből: projekt nyelve**.
+1. Válassza a C#Script from Azure Function: Project Language **(C#-szkript** az **Azure-függvényből: Projekt nyelve) lehetőséget.**
 
-A fenti lépések elvégzése után a mögöttes alapeszközökre irányuló hívások közé tartozik a `--csx` beállítás, amely C# parancsfájl-(. CSX) projektfájlt hoz létre és tesz közzé. Ha ez az alapértelmezett nyelv van megadva, a rendszer minden olyan projektet, amelyet a C# parancsfájl-projektjeihez alapértelmezettként hoz létre. A rendszer nem kéri a projekt nyelvének kiválasztását az alapértelmezett beállítás megadásakor. Ha más nyelveken szeretne projekteket létrehozni, ezt a beállítást módosítania kell, vagy el kell távolítania a fájl felhasználói settings.js. Ha eltávolítja ezt a beállítást, a rendszer ismét rákérdez a nyelv kiválasztására a projekt létrehozásakor.
+A lépések befejezése után a mögöttes Core Tools-hívások között szerepel a beállítás, amely `--csx` C#-szkriptfájlokat (.csx) hoz létre és tesz közzé. Ha meg van adva ez az alapértelmezett nyelv, az összes létrehozott projekt alapértelmezetten C#-szkriptprojekt lesz. Az alapértelmezett beállítás esetén a rendszer nem kéri a projekt nyelvének választását. Ha más nyelvű projekteket szeretne létrehozni, módosítania kell ezt a beállítást, vagy el kell távolítania azt a settings.jsfájlban található felhasználói fiókból. A beállítás eltávolítása után a rendszer a projekt létrehozásakor ismét kérni fogja a nyelv választását.
 
-## <a name="command-palette-reference"></a>A Command paletta referenciája
+## <a name="command-palette-reference"></a>Parancskatapaletta referenciája
 
-A Azure Functions bővítmény egy hasznos grafikus felületet biztosít az Azure-beli Function apps-alkalmazásokkal való interakcióhoz. Ugyanez a funkció a Command paletta (F1) parancsként is elérhető. Ezek a Azure Functions parancsok elérhetők:
+A Azure Functions bővítmény hasznos grafikus felületet biztosít az Azure-beli függvényalkalmazásokkal való interakcióhoz. Ugyanez a funkció parancsként is elérhető a parancskatajánlában (F1). A Azure Functions alábbi parancsokat érhetők el:
 
-|Azure Functions parancs  | Leírás  |
+|Azure Functions parancs  | Description  |
 |---------|---------|
-|**Új beállítások hozzáadása**  |  Létrehoz egy új Alkalmazásbeállítás-beállítást az Azure-ban. További információ: [Alkalmazásbeállítások közzététele](#publish-application-settings). Előfordulhat, hogy a [beállítást a helyi beállításokra is le kell töltenie](#download-settings-from-azure). |
-| **Központi telepítési forrás konfigurálása** | A Function alkalmazást az Azure-ban csatlakoztatja egy helyi git-tárházhoz. További információ: [Azure functions folyamatos üzembe helyezése](functions-continuous-deployment.md). |
-| **Kapcsolódás a GitHub-tárházhoz** | Összekapcsolja a Function alkalmazást egy GitHub-adattárral. |
-| **Függvény URL-címének másolása** | Lekérdezi az Azure-ban futó HTTP-triggerű függvények távoli URL-címét. További információ: az [üzembe helyezett függvény URL-címének lekérése](#get-the-url-of-the-deployed-function). |
-| **Function-alkalmazás létrehozása az Azure-ban** | Létrehoz egy új Function-alkalmazást az előfizetésben az Azure-ban. További információt az [Azure-beli új Function App-alkalmazásban való közzétételről](#publish-to-azure)szóló szakaszban talál.        |
-| **Visszafejtési beállítások** | Visszafejti a Azure Functions által titkosított [helyi beállításokat](#local-settings-file) **: Titkosítsa a beállításokat**.  |
-| **függvényalkalmazás törlése** | Eltávolít egy Function alkalmazást az előfizetésből az Azure-ban. Ha a App Service-csomagban nincsenek más alkalmazások, lehetősége van törölni azt is. Más erőforrások, például a Storage-fiókok és-erőforráscsoportok nem törlődnek. Az összes erőforrás eltávolításához Ehelyett [törölje az erőforráscsoportot](functions-add-output-binding-storage-queue-vs-code.md#clean-up-resources). A helyi projekt nincs hatással. |
-|**Függvény törlése**  | Eltávolít egy meglévő függvényt egy Azure-beli Function alkalmazásból. Mivel ez a törlés nem befolyásolja a helyi projektet, érdemes lehet helyileg eltávolítani a függvényt, majd újból [közzétenni a projektet](#republish-project-files). |
-| **Proxy törlése** | Eltávolít egy Azure Functions proxyt a Function alkalmazásból az Azure-ban. További információ a proxykkal kapcsolatban: [Azure functions-proxyk használata](functions-proxies.md). |
-| **Beállítás törlése** | Egy Function app-beállítás törlése az Azure-ban. Ez a törlés nem érinti a local.settings.jsfájl beállításait. |
-| **Leválasztás az adattárból**  | Eltávolítja a [folyamatos üzembe helyezési](functions-continuous-deployment.md) kapcsolatot egy Azure-beli Function alkalmazás és egy verziókövetés tárháza között. |
-| **Távoli beállítások letöltése** | Az Azure-ban kiválasztott Function alkalmazásban lévő beállítások letöltése a local.settings.jsfájlba. Ha a helyi fájl titkosítva van, annak visszafejtése, frissítése és titkosítása újra megtörténik. Ha vannak olyan beállítások, amelyek ütköző értékekkel rendelkeznek a két helyen, a rendszer kéri, hogy válassza ki a folytatás módját. A parancs futtatása előtt ne felejtse el menteni a local.settings.jsfájl módosításait. |
-| **Beállítások szerkesztése** | Megváltoztatja egy meglévő Function app-beállítás értékét az Azure-ban. Ez a parancs nem érinti a local.settings.jsfájljának beállításait.  |
-| **Beállítások titkosítása** | Titkosítja a tömb egyes elemeit `Values` a [helyi beállításokban](#local-settings-file). Ebben a fájlban a `IsEncrypted` is értékre van állítva `true` , amely megadja, hogy a helyi futtatókörnyezet visszafejtse a beállításokat a használat előtt. A helyi beállítások titkosításával csökkentheti az értékes információk szivárgásának kockázatát. Az Azure-ban az Alkalmazásbeállítások mindig titkosítva tárolódnak. |
-| **A művelet végrehajtása most** | A függvény manuális elindítása a felügyeleti API-k használatával. Ezt a parancsot a rendszer a hibakereséshez és az Azure-ban futó függvényeknél helyileg teszteli. Amikor egy függvényt aktivál az Azure-ban, a bővítmény először automatikusan beolvas egy rendszergazdai kulcsot, amelyet a a függvényeket indító távoli felügyeleti API-k meghívására használ az Azure-ban. Az API-nak küldött üzenet törzse az trigger típusától függ. Az időzítő-eseményindítók nem igénylik az adattovábbítást. |
-| **Projekt inicializálása a VS Code-ban való használatra** | Hozzáadja a szükséges Visual Studio Code Project-fájlokat egy meglévő functions-projekthez. Ezzel a paranccsal dolgozhat a Core Tools használatával létrehozott projekttel. |
-| **Azure Functions Core Tools telepítése vagy frissítése** | A [Azure functions Core Tools]telepítése vagy frissítése, amely a függvények helyi futtatására szolgál. |
-| **Ismételt üzembe helyezés**  | Lehetővé teszi, hogy egy csatlakoztatott git-tárházból újratelepítse a projektfájlok egy adott üzembe helyezését az Azure-ban. Ha újra közzé szeretné tenni a helyi frissítéseket a Visual Studio Code-ból, [tegye közzé újra a projektet](#republish-project-files). |
-| **Beállítások átnevezése** | Megváltoztatja egy meglévő Function app-beállítás kulcsának nevét az Azure-ban. Ez a parancs nem érinti a local.settings.jsfájljának beállításait. Miután átnevezte az Azure-beli beállításokat, [töltse le ezeket a módosításokat a helyi projektbe](#download-settings-from-azure). |
-| **Újraindítás** | Újraindítja a Function alkalmazást az Azure-ban. A frissítések telepítése a Function alkalmazást is újraindítja. |
-| **AzureWebJobsStorage beállítása**| Az Alkalmazásbeállítás értékének beállítása `AzureWebJobsStorage` . Ezt a beállítást a Azure Functions kötelező megadni. Akkor van beállítva, amikor egy Function-alkalmazás létrejön az Azure-ban. |
-| **Kezdés** | Elindít egy leállított Function alkalmazást az Azure-ban. |
-| **Adatfolyam-naplók indítása** | Elindítja az Azure-beli Function alkalmazás adatfolyam-naplóit. Ha a naplózási információkat közel valós időben kell megtekinteni, használja az Azure-ban a távoli hibaelhárítás során használt adatfolyam-naplókat. További információ: [streaming logs](#streaming-logs). |
-| **Leállítás** | Leállítja az Azure-ban futó Function alkalmazást. |
-| **Folyamatos átviteli naplók leállítása** | Leállítja az Azure-beli Function alkalmazás adatfolyam-naplóit. |
-| **Váltás tárolóhely-beállításként** | Ha engedélyezve van, gondoskodik arról, hogy egy alkalmazás beállítása megmaradjon egy adott üzembe helyezési pontnál. |
-| **Azure Functions Core Tools eltávolítása** | Eltávolítja a bővítmény által igényelt Azure Functions Core Toolst. |
-| **Helyi beállítások feltöltése** | Feltölti a beállításokat a local.settings.jsfájlból a kiválasztott Function alkalmazásba az Azure-ban. Ha a helyi fájl titkosítva van, a rendszer visszafejti, feltölti és titkosítja újra. Ha vannak olyan beállítások, amelyek ütköző értékekkel rendelkeznek a két helyen, a rendszer kéri, hogy válassza ki a folytatás módját. A parancs futtatása előtt ne felejtse el menteni a local.settings.jsfájl módosításait. |
-| **Véglegesítés megtekintése a GitHubon** | Megjeleníti a legutóbbi véglegesítés egy adott központi telepítésben, ha a Function alkalmazás egy adattárhoz csatlakozik. |
-| **Telepítési naplók megtekintése** | Megjeleníti az Azure-beli Function alkalmazáshoz megadott központi telepítés naplóit. |
+|**Új beállítások hozzáadása**  |  Új alkalmazásbeállítást hoz létre az Azure-ban. További információ: Alkalmazásbeállítások [közzététele.](#publish-application-settings) Előfordulhat, hogy le kell [töltenie ezt a beállítást a helyi beállításokra.](#download-settings-from-azure) |
+| **Központi telepítési forrás konfigurálása** | Csatlakoztatja az Azure-beli függvényalkalmazást egy helyi Git-adattárhoz. További információ: Folyamatos üzembe [helyezés a Azure Functions.](functions-continuous-deployment.md) |
+| **Csatlakozás GitHub-adattárhoz** | Csatlakoztatja a függvényalkalmazást egy GitHub-adattárhoz. |
+| **Függvény URL-címének másolása** | Lekérte az Azure-ban futó HTTP-eseményindítóval aktivált függvény távoli URL-címét. További tudnivalókért lásd: Az üzembe helyezett függvény [URL-címének lekért címe.](#get-the-url-of-the-deployed-function) |
+| **Függvényalkalmazás létrehozása az Azure-ban** | Létrehoz egy új függvényalkalmazást az Azure-előfizetésében. További tudnivalókért tekintse meg az új függvényalkalmazásban való közzétételről [az Azure-ban című szakaszt.](#publish-to-azure)        |
+| **Beállítások visszafejtése** | Visszafejti [a következő](#local-settings-file) által titkosított helyi **beállításokat: Azure Functions beállítások titkosítása.**  |
+| **Függvényalkalmazás törlése** | Eltávolít egy függvényalkalmazást az Azure-előfizetésből. Ha a csomag nem App Service más alkalmazást, akkor azt is törölheti. Más erőforrások, például a tárfiókok és az erőforráscsoportok nem törlődnek. Az összes erőforrás eltávolításához törölje az [erőforráscsoportot.](functions-add-output-binding-storage-queue-vs-code.md#clean-up-resources) A helyi projektet ez nem érinti. |
+|**Függvény törlése**  | Eltávolít egy meglévő függvényt egy Azure-beli függvényalkalmazásból. Mivel ez a törlés nincs hatással a helyi projektre, fontolja meg a függvény helyi eltávolítását, majd a [projekt újra közzétételét.](#republish-project-files) |
+| **Proxy törlése** | Eltávolít egy Azure Functions proxyt az Azure-beli függvényalkalmazásból. A proxykról a Work with Azure Functions-proxyk (A proxyk [Azure Functions-proxyk) Azure Functions-proxyk.](functions-proxies.md) |
+| **Beállítás törlése** | Töröl egy függvényalkalmazás-beállítást az Azure-ban. Ez a törlés nincs hatással a fájl local.settings.jsbeállításaira. |
+| **Leválasztás az újratétről**  | Eltávolítja [a folyamatos üzembe helyezési](functions-continuous-deployment.md) kapcsolatot egy Azure-beli függvényalkalmazás és egy forrásvezérlő adattár között. |
+| **Távoli beállítások letöltése** | Letölti a beállításokat a kiválasztott azure-beli függvényalkalmazásból local.settings.jsfájlba. Ha a helyi fájl titkosítva van, a rendszer visszafejti, frissíti és újra titkosítja. Ha a két helyen ütköző értékek találhatók, a rendszer felkéri, hogy válassza ki a folytatást. A parancs futtatása előtt ne local.settings.jsa fájlba a módosításokat. |
+| **Beállítások szerkesztése** | Módosítja egy meglévő függvényalkalmazás beállításának értékét az Azure-ban. Ez a parancs nincs hatással a fájl local.settings.jsbeállításaira.  |
+| **Beállítások titkosítása** | A tömb egyes elemeit `Values` titkosítja a [helyi beállításokban.](#local-settings-file) Ebben a fájlban szintén a van beállítva, ami azt határozza meg, hogy a helyi futásidő a használat előtt visszafejti `IsEncrypted` `true` a beállításokat. A helyi beállítások titkosítása az értékes információk kiszivárgásának kockázatának csökkentése érdekében. Az Azure-ban az alkalmazásbeállítások mindig titkosítva vannak tárolva. |
+| **Függvény végrehajtása** | Manuálisan elindít egy függvényt rendszergazdai API-k használatával. Ez a parancs helyi teszteléshez használható a hibakeresés során és az Azure-ban futó függvények esetén is. Amikor elindít egy függvényt az Azure-ban, a bővítmény először automatikusan beszerez egy rendszergazdai kulcsot, amellyel az Azure-ban függvényeket elindító távoli rendszergazdai API-kat hív meg. Az API-nak küldött üzenet törzse az eseményindító típusától függ. Az időzítő eseményindítókhoz nem szükséges adatokat átadni. |
+| **Projekt inicializálása a VS Code-kóddal való használatra** | Hozzáadja a Visual Studio Code-projektfájlokat egy meglévő Functions-projekthez. Ezzel a paranccsal dolgozhat egy, a Core Tools használatával létrehozott projekttel. |
+| **Telepítési vagy frissítési Azure Functions Core Tools** | Telepíti vagy frissíti [a Azure Functions Core Tools,]amely a függvények helyi futtatására használható. |
+| **Ismételt üzembe helyezés**  | Lehetővé teszi projektfájlok ismételt üzembe helyezését egy csatlakoztatott Git-adattárból egy adott Üzemelő példányra az Azure-ban. A helyi frissítéseknek az Visual Studio Code-ból való újbóli közzétételéhez tegye közzé újra a [projektet.](#republish-project-files) |
+| **Beállítások átnevezése** | Módosítja egy meglévő függvényalkalmazás-beállítás kulcsnevét az Azure-ban. Ez a parancs nincs hatással a fájl local.settings.jsbeállításaira. Miután átnevezte a beállításokat az Azure-ban, töltse le a módosításokat a [helyi projektbe.](#download-settings-from-azure) |
+| **Újraindítás** | Újraindítja a függvényalkalmazást az Azure-ban. A frissítések üzembe helyezése szintén újraindítja a függvényalkalmazást. |
+| **Az AzureWebJobsStorage beállítása**| Beállítja az `AzureWebJobsStorage` alkalmazásbeállítás értékét. Erre a beállításra a Azure Functions. Ez akkor van beállítva, amikor függvényalkalmazás jön létre az Azure-ban. |
+| **Kezdés** | Elindít egy leállított függvényalkalmazást az Azure-ban. |
+| **Streamelési naplók kezdete** | Elindítja a függvényalkalmazás streamnaplóit az Azure-ban. Streamnaplók használata távoli hibaelhárítás során az Azure-ban, ha közel valós időben kell látnia a naplózási információkat. További információ: [Streamnaplók.](#streaming-logs) |
+| **Leállítás** | Leállít egy Azure-ban futó függvényalkalmazást. |
+| **Streamelési naplók leállítása** | Leállítja a függvényalkalmazás streamnaplóit az Azure-ban. |
+| **Váltás tárolóhely-beállításként** | Ha engedélyezve van, biztosíthatja, hogy az alkalmazásbeállítás megmarad egy adott üzembe helyezési tárolóhelyen. |
+| **A Azure Functions Core Tools** | Eltávolítja Azure Functions Core Tools, amelyre a bővítménynek szüksége van. |
+| **Helyi beállítások feltöltése** | Feltölti a beállításokat a local.settings.jsfájlból a kiválasztott függvényalkalmazásba az Azure-ban. Ha a helyi fájl titkosítva van, a rendszer visszafejti, feltölti és újra titkosítja. Ha a két helyen ütköző értékek találhatók, a rendszer felkéri, hogy válassza ki a folytatási lehetőséget. A parancs futtatása előtt ne local.settings.jsa fájlba a módosításokat. |
+| **Véglegesítés megtekintése a GitHubon** | Megjeleníti a legutóbbi véglegesítést egy adott üzemelő példányban, amikor a függvényalkalmazás csatlakozik egy adattárhoz. |
+| **Telepítési naplók megtekintése** | Megjeleníti az Azure-beli függvényalkalmazásban való adott üzembe helyezés naplóit. |
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a Azure Functions Core Toolsről: [a Azure functions Core Tools használata](functions-run-local.md).
+További információ a Azure Functions Core Tools: [Work with Azure Functions Core Tools](functions-run-local.md).
 
-Ha többet szeretne megtudni a függvények .NET-es kódtáraként való fejlesztéséről, tekintse meg a [Azure functions C# fejlesztői referenciát](functions-dotnet-class-library.md). A cikk hivatkozásokat is tartalmaz arra vonatkozóan, hogyan használhatók az attribútumok a Azure Functions által támogatott különböző típusú kötések deklarálása céljából.
+További információ a függvények .NET-osztálytárakként való fejlesztésről: Azure Functions [C# fejlesztői referencia.](functions-dotnet-class-library.md) Ez a cikk olyan példákra mutató hivatkozásokat is tartalmaz, amelyek bemutatják, hogyan deklaráljuk az attribútumok használatával a Azure Functions.
 
 [Azure Functions-bővítmény a Visual Studio Code-hoz]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
 [Azure Functions Core Tools]: functions-run-local.md

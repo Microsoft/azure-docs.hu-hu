@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: az Azure Storage v11 használata a .NET-hez egy üzenetsor kezeléséhez'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a .NET-hez készült Azure Storage ügyféloldali kódtárat üzenetsor létrehozására és az ahhoz tartozó üzenetek hozzáadására. Ezután megtudhatja, hogyan olvashatja és dolgozhatja fel az üzeneteket a várólistából.
+title: 'Rövid útmutató: Üzenetsor kezelése az Azure Storage v11 for .NET használatával'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure Storage .NET-hez használható ügyféloldali kódtárát üzenetsor létrehozására és üzenetek hozzáadására. A következő lépés az üzenetek olvasása és feldolgozása az üzenetsorból.
 author: twooley
 ms.author: twooley
 ms.reviewer: dineshm
@@ -9,19 +9,19 @@ ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 10ab1c487095fe1587a3c665d8a06e0d5cbab7e0
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: df2f3593f904c5c6c6c9af0ae635a2e152f9eb82
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275889"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871074"
 ---
-# <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Rövid útmutató: a .NET-hez készült Azure Storage SDK v11 használatával kezelheti a várólistákat
+# <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Rövid útmutató: Üzenetsor kezelése az Azure Storage SDK v11 for .NET használatával
 
-Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a .NET-hez készült Azure Storage ügyféloldali kódtár-v11 egy üzenetsor létrehozásához és az üzenetek hozzáadásához. Ezután megtudhatja, hogyan olvashatja és dolgozhatja fel az üzeneteket a várólistából.
+Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure Storage .NET-hez használható ügyféloldali kódtárának v11-et egy üzenetsor létrehozásához és üzenetek hozzáadásához. A következő lépés az üzenetek olvasása és feldolgozása az üzenetsorból.
 
 > [!NOTE]
-> Ez a rövid útmutató az Azure Queue Storage ügyféloldali kódtár örökölt verzióját használja. A legújabb verzió használatának megkezdéséhez tekintse meg a következőt: gyors útmutató [: Azure Queue Storage a .net-hez készült ügyféloldali kódtár](storage-quickstart-queues-dotnet.md).
+> Ez a rövid útmutató az ügyféloldali kódtár Azure Queue Storage verzióját használja. A legújabb verzióval való első lépésekért lásd: Rövid útmutató: Azure Queue Storage [.NET-es ügyféloldali kódtár 12-es verziójának létrehozása.](storage-quickstart-queues-dotnet.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,32 +31,32 @@ Ezután töltse le és telepítse a .NET Core 2.0 az operációs rendszernek meg
 
 ### <a name="windows"></a>Windows
 
-- A [.NET Core for Windows](https://www.microsoft.com/net/download/windows) vagy a [.NET-keretrendszer](https://www.microsoft.com/net/download/windows) telepítése (a Windows rendszerhez készült Visual Studio része)
+- Telepítse .NET Core SDK Windowshoz vagy a .NET-keretrendszer [(a](https://dotnet.microsoft.com/download/dotnet-framework) [Windowshoz](https://dotnet.microsoft.com/download) Visual Studio tartalmazza)
 - Telepítse [a Windowshoz készült Visual Studio programot](https://www.visualstudio.com/). Ha .NET Core keretrendszert használ, a Visual Studio telepítése nem kötelező.
 
 A .NET Core és a .NET-keretrendszer közötti választással kapcsolatos további információért lásd a [.NET Core és a .NET-keretrendszer közötti, kiszolgálóalkalmazások esetén való választásról](/dotnet/standard/choosing-core-framework-server) szóló részt.
 
 ### <a name="linux"></a>Linux
 
-- Telepítse a [.NET Core for Linux keretrendszert](https://www.microsoft.com/net/download/linux).
+- Linux [.NET Core SDK telepítése](/dotnet/core/install/linux)
 - Emellett telepítheti [a Visual Studio Code programot](https://www.visualstudio.com/) és a [C#-bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) is.
 
 ### <a name="macos"></a>macOS
 
-- Telepítse a [.NET Core for macOS keretrendszert](https://www.microsoft.com/net/download/macos).
+- Telepítse [a .NET Core SDK macOS-hez.](https://dotnet.microsoft.com/download)
 - Emellett telepítheti [a Visual Studio for Mac programot](https://www.visualstudio.com/vs/visual-studio-mac/) is.
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 
 A rövid útmutatóban használt mintaalkalmazás egy egyszerű konzolalkalmazás. A mintaalkalmazást megismerheti a [GitHubon](https://github.com/Azure-Samples/storage-queues-dotnet-quickstart).
 
-A [git](https://git-scm.com/) használatával letöltheti az alkalmazás egy példányát a fejlesztői környezetbe.
+A [Git](https://git-scm.com/) használatával töltse le az alkalmazás egy példányát a fejlesztési környezetbe.
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
 ```
 
-Ez a parancs klónozott a tárházat a helyi git-mappába. A Visual Studio-megoldás megnyitásához keresse meg a `storage-queues-dotnet-quickstart` mappát, nyissa meg, majd kattintson duplán a elemre `storage-queues-dotnet-quickstart.sln` .
+Ez a parancs klónozza az adattárat a helyi Git-mappába. A Visual Studio megnyitásához keresse meg a mappát, nyissa meg, majd kattintson duplán `storage-queues-dotnet-quickstart` `storage-queues-dotnet-quickstart.sln` a elemre.
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -94,11 +94,11 @@ A környezeti változó hozzáadását követően futtassa a `source .bash_profi
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-A minta alkalmazás létrehoz egy várólistát, és felvesz egy üzenetet. Az alkalmazás először az üzenetbe kerül a várólistából való eltávolítás nélkül, majd lekéri az üzenetet, és törli azt a várólistából.
+A mintaalkalmazás létrehoz egy üzenetsort, és hozzáad egy üzenetet. Az alkalmazás először bepillant az üzenetbe anélkül, hogy eltávolítaná az üzenetsorból, majd lekéri az üzenetet, és törli az üzenetsorból.
 
 ### <a name="windows"></a>Windows
 
-Ha szerkesztőként használja a Visual studiót, kattintson `F5` a Futtatás gombra.
+Ha szerkesztőként Visual Studio, a billentyű lenyomásával `F5` futtathatja a következőt: .
 
 Máskülönben lépjen az alkalmazás könyvtárába, majd futtassa az alkalmazást a `dotnet run` paranccsal.
 
@@ -148,7 +148,7 @@ A következőkben áttekintjük a mintakódot, és értelmezzük, hogyan működ
 
 ### <a name="try-parsing-the-connection-string"></a>Kapcsolati sztring elemzése
 
-A minta először ellenőrzi, hogy a környezeti változó tartalmaz-e egy olyan kapcsolódási karakterláncot, amely elemezhető egy olyan objektum létrehozásához, amely [`CloudStorageAccount`](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) a Storage-fiókra mutat. Annak ellenőrzéséhez, hogy a kapcsolódási karakterlánc érvényes-e, a minta a [`TryParse`](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) metódust használja. Ha `TryParse` a sikeres, inicializálja a `storageAccount` változót, és visszatér `true` .
+A minta először ellenőrzi, hogy a környezeti változó tartalmaz-e kapcsolati sztringet, amely elemezve létrehoz egy objektumot, amely a [`CloudStorageAccount`](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) tárfiókra mutat. A kapcsolati sztring érvényességének ellenőrzéshez a minta a metódust [`TryParse`](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) használja. Ha `TryParse` a sikeres, inicializálja a változót, `storageAccount` és a értéket adja `true` vissza.
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage connection string is stored
@@ -174,7 +174,7 @@ else
 
 ### <a name="create-the-queue"></a>Az üzenetsor létrehozása
 
-Először a minta létrehoz egy várólistát, és felvesz egy üzenetet.
+Először a minta létrehoz egy üzenetsort, és hozzáad egy üzenetet.
 
 ```csharp
 // Create a queue called 'quickstartqueues' and append a GUID value so that the queue name
@@ -188,11 +188,11 @@ Console.WriteLine();
 
 ### <a name="add-a-message"></a>Üzenet hozzáadása
 
-Ezután a minta egy üzenetet hoz létre a várólista hátoldalához.
+Ezután a minta hozzáad egy üzenetet az üzenetsor hátához.
 
-Az üzenetnek olyan formátumúnak kell lennie, amely UTF-8 kódolású XML-kérelemben is szerepelhet, és akár 64 KB méretű is lehet. Ha egy üzenet bináris adatfájlt tartalmaz, azt javasoljuk, hogy Base64 kódolással kódolja az üzenetet.
+Az üzeneteknek UTF-8 kódolású XML-kérések formátumában kell szerepelniük, és legfeljebb 64 KB méretűnek kell lennie. Ha egy üzenet bináris adatokat tartalmaz, javasoljuk, hogy base64 kódolással kódolja az üzenetet.
 
-Alapértelmezés szerint az üzenetekhez tartozó maximális élettartam 7 nap. Megadhatja az üzenet élettartamának pozitív számát.
+Alapértelmezés szerint az üzenetek maximális időtartamának beállítása 7 nap. Az üzenethez bármilyen pozitív számot megadhat az üzenethez.
 
 ```csharp
 // Create a message and add it to the queue. Set expiration time to 14 days.
@@ -204,15 +204,15 @@ Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToStrin
 Console.WriteLine();
 ```
 
-Ha nem lejáró üzenetet szeretne hozzáadni, használja a `Timespan.FromSeconds(-1)` hívást a következőre: [`AddMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) .
+Ha nem jár le, használja a következőt `Timespan.FromSeconds(-1)` a hívásában: [`AddMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) .
 
 ```csharp
 await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
 ```
 
-### <a name="peek-a-message-from-the-queue"></a>Üzenet betekintése a sorból
+### <a name="peek-a-message-from-the-queue"></a>Üzenet betekintése az üzenetsorból
 
-A minta bemutatja, hogyan lehet üzeneteket betekintést elküldeni egy várólistából. Amikor betekintést küld egy üzenetbe, elolvashatja az üzenet tartalmát. Az üzenet azonban továbbra is látható marad a többi ügyfél számára, így egy másik ügyfél később is lekérheti és feldolgozhatja az üzenetet.
+A minta bemutatja, hogyan lehet betekintés egy üzenetsorból. Amikor bepillant egy üzenetbe, elolvashatja az üzenet tartalmát. Az üzenet azonban látható marad más ügyfelek számára, így egy másik ügyfél később lekérheti és feldolgozhatja az üzenetet.
 
 ```csharp
 // Peek at the message at the front of the queue. Peeking does not alter the message's
@@ -226,9 +226,9 @@ Console.WriteLine();
 
 ### <a name="dequeue-a-message"></a>Üzenet eltávolítása az üzenetsorból
 
-A minta azt is bemutatja, hogyan lehet egy üzenetet elválasztani. Amikor elvégez egy üzenetet, a várólista elejéről lekéri az üzenetet, és ideiglenesen láthatatlanná teszi a többi ügyfél számára. Alapértelmezés szerint egy üzenet 30 másodpercig láthatatlan marad. Ebben az időszakban a kód képes feldolgozni az üzenetet. Az üzenet eltávolításának befejezéséhez a feldolgozás után azonnal törölni kell az üzenetet, hogy egy másik ügyfél ne távolítsa el ugyanazt az üzenetet.
+A minta azt is bemutatja, hogyan lehet üzeneteket a sorból kivenni. Amikor leküld egy üzenetet, lekéri az üzenetet az üzenetsor elejéről, és ideiglenesen láthatatlanná teszi más ügyfelek számára. Alapértelmezés szerint az üzenetek 30 másodpercig láthatatlanok maradnak. Ez idő alatt a kód feldolgozhatja az üzenetet. Az üzenet törlésének befejezéséhez közvetlenül a feldolgozás után törölnie kell az üzenetet, hogy egy másik ügyfél ne törölje ugyanazt az üzenetet.
 
-Ha a kód hardver vagy szoftver meghibásodása miatt nem tud feldolgozni egy üzenetet, akkor az üzenet ismét láthatóvá válik a láthatatlanság időszakának lejárta után. Egy másik ügyfél lekérheti ugyanazt az üzenetet, és próbálkozzon újra.
+Ha a kód hardver- vagy szoftverhiba miatt nem tudja feldolgozni az üzenetet, akkor az üzenet a láthatósági időszak megszakadása után ismét láthatóvá válik. Egy másik ügyfél lekérheti ugyanazt az üzenetet, és újra próbálkozhat.
 
 ```csharp
 // Retrieve the message at the front of the queue. The message becomes invisible for
@@ -247,7 +247,7 @@ Console.WriteLine();
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A minta törli a várólista törlésével létrehozott erőforrásokat. A várólista törlése a benne található összes üzenetet is törli.
+A minta törli a létrehozott erőforrásokat az üzenetsor törlésével. Az üzenetsor törlésével az üzenetek is törölve vannak.
 
 ```csharp
 Console.WriteLine("Press any key to delete the sample queue.");
@@ -260,27 +260,27 @@ if (queue != null)
 }
 ```
 
-## <a name="resources-for-developing-net-applications-with-queues"></a>Erőforrások várólistákkal rendelkező .NET-alkalmazások fejlesztéséhez
+## <a name="resources-for-developing-net-applications-with-queues"></a>Üzenetsorokkal használható .NET-alkalmazások fejlesztéséhez használható források
 
-Tekintse meg ezeket a további forrásokat a .NET-fejlesztéshez az Azure Queue Storage használatával:
+Az alábbi források a .NET-fejlesztéshez a következő Azure Queue Storage:
 
 ### <a name="binaries-and-source-code"></a>Bináris fájlok és forráskód
 
-- A .NET-hez készült [Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage) legújabb verziójához tartozó NuGet-csomagok letöltése
+- Töltse le a NuGet-csomagokat az Azure Storage .NET-hez elérhető [ügyféloldali kódtárának legújabb verziójához](/dotnet/api/overview/azure/storage)
   - [Közös](https://www.nuget.org/packages/microsoft.azure.storage.common/)
   - [Üzenetsorok](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - A [.NET ügyféloldali kódtár forráskódját](https://github.com/Azure/azure-storage-net) a GitHubon tekintheti meg.
 
-### <a name="azure-storage-client-library-reference-and-samples"></a>Az Azure Storage ügyféloldali kódtár referenciái és mintái
+### <a name="azure-storage-client-library-reference-and-samples"></a>Az Azure Storage ügyféloldali kódtárának referenciái és mintái
 
-- A .NET-ügyfél kódtárakkal kapcsolatos további információkért tekintse meg az [Azure Storage ügyféloldali kódtárai](/dotnet/api/overview/azure/storage) című témakört.
-- Ismerkedjen meg Queue Storage a .NET ügyféloldali kódtár használatával írt [mintákkal](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues) .
+- A [.NET-ügyfélkódtárakkal](/dotnet/api/overview/azure/storage) kapcsolatos további információkért tekintse meg az Azure Storage .NET-ügyfélkódtárait.
+- Megismerheti Queue Storage .NET [ügyféloldali](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues) kódtár használatával írt mintákat.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből a rövid útmutatóból megtudhatta, hogyan adhat hozzá üzeneteket egy várólistához, hogyan szúrhat be üzeneteket egy várólistából, és hogyan dolgozza fel az üzeneteket a .NET használatával.
+Ebben a rövid útmutatóban megtanulta, hogyan adhat hozzá üzeneteket egy üzenetsorhoz, hogyan lehet üzeneteket bepillantásni egy üzenetsorba, illetve hogyan lehet az üzeneteket a .NET használatával levenni és feldolgozni.
 
 > [!div class="nextstepaction"]
-> [Az alkalmazások közötti kommunikáció az Azure Queue Storage](/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
+> [Alkalmazások közötti kommunikáció Azure Queue Storage](/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
 
-- A .NET Core keretrendszerrel kapcsolatos további információért lásd [a .NET használatának első lépéseit 10 percben](https://www.microsoft.com/net/learn/get-started/) ismertető szakaszt.
+- A .NET Core keretrendszerrel kapcsolatos további információért lásd [a .NET használatának első lépéseit 10 percben](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro) ismertető szakaszt.

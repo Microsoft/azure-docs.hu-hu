@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: af050ae95b4ab161028229299a8de5ed3426430b
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 08bf165254c8759a978b406b3e9a990a41ab7a30
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482833"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873204"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Oktatóanyag: Exportált adatok létrehozása és kezelése
 
@@ -37,7 +37,7 @@ Az adatexportálás számos Azure-fióktípushoz elérhető, beleértve a [Nagyv
 
 - Tulajdonos: Ütemezett exportálásokat hozhat létre, módosíthat vagy törölhet egy előfizetéshez.
 - Közreműködő– Létrehozhat, módosíthat vagy törölhet saját ütemezett exportálásokat. Módosíthatja a mások által létrehozott ütemezett exportálási feladatok nevét.
-- Olvasó: Ütemezheti az exportálásokat, amelyekhez engedéllyel rendelkezik.
+- Olvasó." Ütemezheti az olyan exportálásokat, amelyekhez engedéllyel rendelkezik.
 
 Azure Storage-fiókok esetén:
 - A konfigurált tárfiók módosításához írási engedélyekre van szükség függetlenül attól, hogy az exportálásra milyen engedélyek vonatkoznak.
@@ -63,9 +63,9 @@ Adatexportálás létrehozásához, megtekintéséhez vagy ütemezéséhez nyiss
     - **Tényleges költség (használat és vásárlások)** – Válassza ezt a lehetőséget, ha a standard használatot és költségeket szeretné exportálni
     - **Amortizált költség (használat és vásárlások)** – Válassza ezt a lehetőséget, ha a vásárlások, például az Azure Reservations amortizált költségeit szeretné exportálni
 1. Az **Exportálás típusa** elemhez válasszon a következő lehetőségek közül:
-    - **Az aktuális hónap költségeinek** napi exportálása" Naponta biztosít egy új exportálási fájlt az aktuális havi költségekhez. Az aktuális adatokat a rendszer összesíti a korábbi napi exportálások adataival.
-    - **Az elmúlt hét nap** költségeinek heti exportálása" – A költségek heti exportálását hozza létre az elmúlt hét napra az exportálás kiválasztott kezdő dátumának dátumtól függően.
-    - **A múlt havi költségek** havi exportálása" A múlt havi költségek exportálását biztosítja az előző havi költségekről az exportálás létrehozásához használt hónaphoz képest. Ezután az ütemezés minden új hónap ötödik napján exportálást fog futtatni, amely tartalmazza az előző hónap költségeit.
+    - **Az aktuális hónap** költségeinek napi exportálása" Naponta egy új exportálási fájlt biztosít az aktuális havi költségekhez. Az aktuális adatokat a rendszer összesíti a korábbi napi exportálások adataival.
+    - **Az elmúlt hét nap** költségeinek heti exportálása" – Az elmúlt hét napra vonatkozó költségek heti exportálását hozza létre az exportálás kiválasztott kezdő dátumának dátumán belül.
+    - **A múlt havi** költségek havi exportálása stb." Az elmúlt havi költségek exportálását biztosítja az aktuális hónaphoz képest, amikor az exportálást létrehozza. Ezután az ütemezés minden új hónap ötödik napján exportálást fog futtatni, amely tartalmazza az előző hónap költségeit.
     - **Az egyszeres exportálás** lehetővé teszi egy dátumtartomány választását az előzményadatok Azure Blob Storage-ba való exportálására. A kiválasztott naptól számítva legfeljebb 90 nap előzményadatai exportálhatók. Ez az exportálás azonnal lefut, és két órán belül elérhetővé válik a tárfiókjában.
         Az exportálás típusától függően kiválaszthat egy kezdődátumot, vagy megadhat **Kezdő** és **Záró** dátumot.
 1. Adja meg az Azure-tárfiókhoz tartozó előfizetést, majd válasszon ki egy erőforráscsoportot, vagy hozzon létre egy újat.
@@ -87,7 +87,7 @@ Először készítse elő a környezetet az Azure CLI-hez:
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-1. A bejelentkezés után használja az [az costmanagement export list](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_list) parancsot az aktuális exportálások megtekintéséhez:
+1. A bejelentkezés után használja az [az costmanagement export list](/cli/azure/costmanagement/export#az_costmanagement_export_list) parancsot az aktuális exportálások megtekintéséhez:
 
    ```azurecli
    az costmanagement export list --scope "subscriptions/00000000-0000-0000-0000-000000000000"
@@ -110,7 +110,7 @@ Először készítse elő a környezetet az Azure CLI-hez:
    az storage account create --resource-group TreyNetwork --name cmdemo
    ```
 
-1. Futtassa az [az costmanagement export create](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_create) parancsot az exportálás létrehozásához:
+1. Futtassa az [az costmanagement export create](/cli/azure/costmanagement/export#az_costmanagement_export_create) parancsot az exportálás létrehozásához:
 
    ```azurecli
    az costmanagement export create --name DemoExport --type ActualCost \
@@ -124,14 +124,14 @@ Először készítse elő a környezetet az Azure CLI-hez:
 
    Ez a példa a következőt használja: `MonthToDate`. Az exportálás naponta létrehoz egy exportálási fájlt a tárgyhavi költségekről. Az aktuális adatokat a rendszer összesíti az aktuális hónap korábbi napi exportálásainak adataival.
 
-1. Az exportálási művelet részleteinek megtekintéséhez használja az [az costmanagement export show](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_show) parancsot:
+1. Az exportálási művelet részleteinek megtekintéséhez használja az [az costmanagement export show](/cli/azure/costmanagement/export#az_costmanagement_export_show) parancsot:
 
    ```azurecli
    az costmanagement export show --name DemoExport \
       --scope "subscriptions/00000000-0000-0000-0000-000000000000"
    ```
 
-1. Egy exportálás frissítéséhez használja az [az costmanagement export update](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_update) parancsot:
+1. Egy exportálás frissítéséhez használja az [az costmanagement export update](/cli/azure/costmanagement/export#az_costmanagement_export_update) parancsot:
 
    ```azurecli
    az costmanagement export update --name DemoExport
@@ -143,7 +143,7 @@ Először készítse elő a környezetet az Azure CLI-hez:
 >[!NOTE]
 >Kezdetben 12–24 óra is eltelhet az exportálási feladat lefutásáig. Azonban több időt igénybe vehet, mire az adatok megjelennek az exportált fájlokban.
 
-Egy exportálás törléséhez használja az [az costmanagement export delete](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_delete) parancsot:
+Egy exportálás törléséhez használja az [az costmanagement export delete](/cli/azure/costmanagement/export#az_costmanagement_export_delete) parancsot:
 
 ```azurecli
 az costmanagement export delete --name DemoExport --scope "subscriptions/00000000-0000-0000-0000-000000000000"
