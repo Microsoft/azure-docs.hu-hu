@@ -10,10 +10,10 @@
     - name: ARM-sablonok
       expanded: true
       items:
-        - name: Bármilyen útvonal
+        - name: Bármely közötti útválasztás
           displayName: Resource Manager Any-to-any routing
           href: quickstart-any-to-any-template.md
-        - name: Útvonal a megosztott szolgáltatások virtuális hálózatok
+        - name: Útvonal megosztott szolgáltatások virtuális hálózataihoz
           displayName: Resource Manager route to shared services VNets
           href: quickstart-route-shared-services-vnet-template.md
 - name: Oktatóanyagok
@@ -61,9 +61,9 @@
           href: scenario-isolate-vnets.md
         - name: Virtuális hálózatok elkülönítése – egyéni
           href: scenario-isolate-vnets-custom.md
-        - name: Virtuális hálózatok és ágak elkülönítése
+        - name: Virtuális hálózatok és ágak elágazásai
           href: scenario-isolate-virtual-networks-branches.md
-        - name: Megosztott szolgáltatások virtuális hálózatok
+        - name: Megosztott szolgáltatások virtuális hálózatai
           href: scenario-shared-services-vnet.md
         - name: Útvonal NVA-n keresztül
           href: scenario-route-through-nva.md
@@ -71,7 +71,7 @@
           href: scenario-route-through-nvas-custom.md
         - name: Azure Firewall – egyéni
           href: scenario-route-between-vnets-firewall.md
-        - name: Application Gateway és háttérbeli készletek
+        - name: Application Gateway és háttérkészletek
           href: scenario-secured-hub-app-gateway.md
     - name: Figyelés
       items:
@@ -79,13 +79,13 @@
           href: azure-monitor-insights.md
     - name: Helyek közötti kapcsolat
       items:
-        - name: Tudnivalók a S2S IPsec-házirendjeiről
+        - name: Az S2S IPsec-szabályzatok
           href: virtual-wan-ipsec.md
         - name: Több ISP-hivatkozás – Azure-beli elérési út kiválasztása
           href: path-selection-multiple-links.md
     - name: Pont–hely kapcsolat
       items:
-        - name: Tudnivalók a P2S IPsec-házirendjeiről
+        - name: A P2S IPsec-szabályzatok
           href: point-to-site-ipsec.md
     - name: Biztonság
       items:
@@ -95,7 +95,7 @@
       href: pricing-concepts.md
     - name: NVA egy virtuális központban
       href: about-nva-hub.md
-    - name: A biztonságos virtuális hubok ismertetése
+    - name: A biztonságos virtuális központokról
       href: ../firewall-manager/secured-virtual-hub.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
 - name: Útmutatók
   items:
@@ -117,6 +117,8 @@
           href: virtual-wan-site-to-site-portal.md
         - name: Virtuális hálózati átjáró csatlakoztatása virtuális WAN-ra
           href: connect-virtual-network-gateway-vwan.md
+        - name: Csomagrögzítés végrehajtása
+          href: virtual-wan-site-to-site-packet-capture.md
         - name: Egyéni IPsec-szabályzat konfigurálása
           href: virtual-wan-custom-ipsec-portal.md
         - name: NAT-szabályok konfigurálása
@@ -129,11 +131,11 @@
           href: certificates-point-to-site.md
         - name: Azure AD-bérlő konfigurálása
           href: openvpn-azure-ad-tenant.md
-        - name: Ügyféloldali profilok
+        - name: Ügyfélprofilok
           items:
-            - name: Globális és hub-alapú profilok letöltése
+            - name: Globális és központalapú profilok letöltése
               href: global-hub-profile.md
-            - name: Profil adatainak kinyerése és megtekintése
+            - name: Profilinformációk kinyerása és megtekintése
               href: about-vpn-profile-download.md
             - name: Profilok üzembe helyezése az Intune-nal
               href: vpn-profile-intune.md
@@ -143,11 +145,11 @@
               href: openvpn-azure-ad-client.md
             - name: OpenVPN
               href: howto-openvpn-clients.md?
-        - name: Always-On alagutak konfigurálása
+        - name: Alagutak Always-On konfigurálása
           items:
             - name: Felhasználói alagút
               href: howto-always-on-user-tunnel.md
-            - name: Eszköz bújtatása
+            - name: Eszközalagút
               href: howto-always-on-device-tunnel.md
         - name: Hitelesítés
           items:
@@ -155,7 +157,7 @@
               href: openvpn-azure-ad-mfa.md
             - name: Azure AD-hitelesítés
               href: virtual-wan-point-to-site-azure-ad.md
-            - name: Több alkalmazásból álló Azure AD-hitelesítés
+            - name: Többalkalmazásos Azure AD-hitelesítés
               href: openvpn-azure-ad-tenant-multi-app.md
     - name: Útválasztás
       items:
@@ -188,7 +190,7 @@
     - name: REST
       href: /rest/api/azure
     - name: Azure CLI
-      href: /cli/azure/ext/virtual-wan
+      href: /cli/azure/
     - name: Python SDK
       href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-mgmt-network/10.0.0/azure.mgmt.network.v2019_02_01.operations.html#azure.mgmt.network.v2019_02_01.operations.VirtualWansOperations'
 - name: További források

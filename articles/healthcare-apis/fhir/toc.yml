@@ -93,10 +93,10 @@
           href: export-data.md
         - name: Azonosításra nem alkalmas exportálás
           href: de-identified-export.md
-    - name: Adatátalakítás
+    - name: Adatok konvertálása
       expanded: false
       items:
-        - name: adat$convert-és FHIR Converter Extension-sablonok
+        - name: $convert-data és az FHIR Converter bővítménysablonok
           href: convert-data.md
     - name: Identitásobjektum-azonosítók keresése
       href: find-identity-object-ids.md
@@ -137,14 +137,14 @@
       href: fhir-faq.md
     - name: Támogatott funkciók
       href: fhir-features-supported.md
-    - name: GitHub-projektek
+    - name: GitHub Projects
       href: fhir-github-projects.md
     - name: Partneri ökoszisztéma
       href: partner-ecosystem.md
 - name: Referencia
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/healthcareapis/healthcareapis
+      href: /cli/azure/healthcareapis
     - name: Az Azure Policy beépített elemei
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

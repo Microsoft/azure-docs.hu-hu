@@ -1,44 +1,44 @@
 ---
-title: Információ kérése az Azure IoT Central alkalmazás verziójáról | Microsoft Docs
-description: Információk beszerzése a használt IoT Central alkalmazásról
+title: Információk az Azure IoT Central verziójáról | Microsoft Docs
+description: Információ lekért IoT Central használt alkalmazásról
 services: iot-central
-author: TheJasonAndrew
-ms.author: v-anjaso
+author: philmea
+ms.author: philmea
 ms.date: 02/26/2021
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 80a35ab41b05609642667da9e8561921ecc20852
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1fed73e460c2fde83fbcb239d31837e113477fe8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102051708"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865584"
 ---
 # <a name="about-your-application"></a>Az alkalmazásról
 
-Ez a cikk bemutatja, hogyan kérheti le a IoT Central alkalmazással kapcsolatos információkat. A következőkre lehet szüksége:
+Ez a cikk bemutatja, hogyan olvashat be információkat a IoT Central alkalmazásról. A következőre lehet szüksége:
 
-- Ez az információ, ha az ügyfélszolgálathoz fordul.
-- Az alkalmazás által a számlázási információk megkereséséhez használt Azure-előfizetés a Azure Portalban.
-- Az alkalmazás azonosítója, ha a REST API dolgozik.
-- Az alkalmazás verziója a feladatok elvégzéséhez, például összekötő hozzáadásához.
+- Ez az információ, ha kapcsolatba lép az ügyfélszolgálattal.
+- Az azure-előfizetés, amely alapján az alkalmazás megkeresi a számlázási adatokat a Azure Portal.
+- Az alkalmazás azonosítója az alkalmazás REST API.
+- Az alkalmazás verziója olyan feladatok elvégzéséhez, mint az összekötő hozzáadása.
 
 ## <a name="get-information-about-your-application"></a>Az alkalmazás adatainak lekérése
 
-A IoT Central alkalmazással kapcsolatos információk lekérése: 
+További információ a IoT Central alkalmazásról: 
 
-1. A felső menüben kattintson a **Súgó** hivatkozásra.
+1. Válassza a **felső menü** Súgó hivatkozását.
 
-1. Válassza ki **az alkalmazást**.
+1. Válassza **az About your app (Az alkalmazásról) lehetőséget.**
 
-1. Az alkalmazás **névjegye** oldalon az alkalmazással kapcsolatos információk láthatók:  
+1. Az **About your app (Tudnivalók az alkalmazásról)** oldalon az alkalmazással kapcsolatos információk megjelenikek:  
 
-    :::image type="content" source="media/howto-get-app-info/about-your-app2.png" alt-text="Az alkalmazás képernyőképe":::
+    :::image type="content" source="media/howto-get-app-info/about-your-app2.png" alt-text="Az alkalmazásról készült képernyőkép":::
 
-    Az adatok vágólapra másolásához használja az információ **másolása** gombot.
+    Az Adatok **másolása gombbal** másolja az adatokat a vágólapra.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy már tudja, hogyan találhatja meg IoT Central alkalmazásának verzióját, javasolt következő lépésként folytassa a rendszergazdáknak szóló útmutató cikkeinek megismerését: [IoT Central alkalmazás beállításainak módosítása](howto-administer.md).
+Most, hogy már tudja, hogyan találhatja meg a IoT Central-alkalmazás verzióját, a következő javasolt lépés a rendszergazdáknak készült útmutató cikkek további felfedezése: A IoT Central [módosítása.](howto-administer.md)
 
-Ha v2-alkalmazással rendelkezik, tekintse [meg a v2 IoT Central alkalmazás áttelepítését v3 verzióra](howto-migrate.md)című témakört.
+V2-alkalmazás esetén lásd: V2 IoT Central [3-asra.](howto-migrate.md)

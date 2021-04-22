@@ -1,6 +1,6 @@
 ---
 title: Azure Nagyvállalati Szerződéshez tartozó előfizetések létrehozása programozott módon a legújabb API-kkal
-description: Megtudhatja, hogyan hozhat létre programozott módon Azure Nagyvállalati Szerződés-előfizetéseket az REST API, az Azure CLI, a Azure PowerShell és a Azure Resource Manager sablonok legújabb verzióinak használatával.
+description: Megtudhatja, hogyan hozhat létre Azure Nagyvállalati Szerződés-előfizetéseket programozott módon az REST API, az Azure CLI, a Azure PowerShell és a Azure Resource Manager legújabb verzióival.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
@@ -9,12 +9,12 @@ ms.date: 03/29/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 3275fe0a72b70038cf834436e8290b9c55643414
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: e57f385dce6446ebb3aa2df0ceb48f97a7e0c2f4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105963291"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877900"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>Azure Nagyvállalati Szerződéshez tartozó előfizetések létrehozása programozott módon a legújabb API-kkal
 
@@ -32,7 +32,7 @@ Előfizetés létrehozásához tulajdonosi szerepkörrel kell rendelkeznie egy r
 
 * A regisztráció vállalati rendszergazdája [megteszi Önt fióktulajdonosnak](https://ea.azure.com/helpdocs/addNewAccount) (ehhez bejelentkezés szükséges), amely eredményeként Ön a regisztrációs fiók tulajdonosává válik.
 * A regisztrációs fiók meglévő tulajdonosa [hozzáférést biztosít Önnek](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Hasonlóképpen, ha szolgáltatásnevet szeretne használni egy EA-előfizetés létrehozásához, [lehetővé kell tennie a szolgáltatásnév számára, hogy előfizetéseket hozzon létre](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put).  
-    Ha SPN-t használ előfizetések létrehozásához, használja az Azure AD-alkalmazás regisztrációjának ObjectId az egyszerű szolgáltatásnév ObjectId [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) vagy az [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list)használatával.
+    Ha egyszerű szolgáltatásnévvel hoz létre előfizetéseket, használja az Azure AD-alkalmazásregisztráció ObjectId objektumazonosítóját szolgáltatásnév objectId-ként a [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) vagy [az Azure CLI használatával.](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list)
   > [!NOTE]
   > Győződjön meg róla, hogy a megfelelő API-verziót használja, amikor tulajdonosi engedélyeket ad a regisztrációs fióknak. A jelen cikk és a benne dokumentált API-k esetében használja a [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) verziójú API-t. Ha az újabb API-k használatára kíván átállni, akkor a [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) verzió használatával újra meg kell adnia a tulajdonosi engedélyt. A [2015-07-01-es verzióval](grant-access-to-create-subscription.md) végzett korábbi konfiguráció nem lesz automatikusan konvertálva az újabb API-kkal való használatra.
 
@@ -92,11 +92,11 @@ Az API-válasz felsorolja azokat a regisztrációs fiókokat, amelyekhez hozzáf
 
 ```
 
-A számlázási hatókör értékei és `id` ugyanazok a dolgok. A regisztrációs fiókjához tartozó `id` az a számlázási hatókör, amelyben az előfizetésre vonatkozó kérelem el lesz küldve. Fontos, hogy ismerje az azonosítót, mivel ez egy kötelező paraméter, amelyet a cikk későbbi részében az előfizetés létrehozásához fog használni.
+A és számlázási hatókör értékei `id` ugyanazok. A regisztrációs fiókjához tartozó `id` az a számlázási hatókör, amelyben az előfizetésre vonatkozó kérelem el lesz küldve. Fontos, hogy ismerje az azonosítót, mivel ez egy kötelező paraméter, amelyet a cikk későbbi részében az előfizetés létrehozásához fog használni.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Az érték beszerzéséhez használja az Azure CLI-t vagy a REST API.
+Ezt az értéket az Azure CLI vagy REST API használja.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -106,7 +106,7 @@ Kérelem azon fiókok felsorolására, amelyekhez hozzáféréssel rendelkezik:
 > az billing account list
 ```
 
-Válasz felsorolja az összes olyan regisztrációs fiókot, amelyhez hozzáférése van
+A válasz felsorolja az összes olyan regisztrációs fiókot, amelyekhez hozzáféréssel rendelkezik
 
 ```json
 [
@@ -157,7 +157,7 @@ Válasz felsorolja az összes olyan regisztrációs fiókot, amelyhez hozzáfér
   },
 ```
 
-A számlázási hatókör értékei és `id` ugyanazok a dolgok. A regisztrációs fiókjához tartozó `id` az a számlázási hatókör, amelyben az előfizetésre vonatkozó kérelem el lesz küldve. Fontos, hogy ismerje az azonosítót, mivel ez egy kötelező paraméter, amelyet a cikk későbbi részében az előfizetés létrehozásához fog használni.
+A és számlázási hatókör értékei `id` ugyanazok. A regisztrációs fiókjához tartozó `id` az a számlázási hatókör, amelyben az előfizetésre vonatkozó kérelem el lesz küldve. Fontos, hogy ismerje az azonosítót, mivel ez egy kötelező paraméter, amelyet a cikk későbbi részében az előfizetés létrehozásához fog használni.
 
 ---
 
@@ -253,7 +253,7 @@ A parancsra adott válasz részeként megkapja a subscriptionId paramétert.
 
 Első lépésként telepítse a bővítményt az `az extension add --name account` és az `az extension add --name alias` futtatásával.
 
-Futtassa az alábbi [az account alias create](/cli/azure/ext/account/account/alias#ext_account_az_account_alias_create) parancsot, és adja meg az egyik `enrollmentAccounts` `billing-scope` és `id` paraméterét. 
+Futtassa az alábbi [az account alias create](/cli/azure/account/alias#az_account_alias_create) parancsot, és adja meg az egyik `enrollmentAccounts` `billing-scope` és `id` paraméterét. 
 
 ```azurecli-interactive
 az account alias create --name "sampleAlias" --billing-scope "/providers/Microsoft.Billing/billingAccounts/1234567/enrollmentAccounts/654321" --display-name "Dev Team Subscription" --workload "Production"
@@ -277,9 +277,9 @@ A parancsra adott válasz részeként megkapja a subscriptionId paramétert.
 
 ## <a name="use-arm-template"></a>ARM-sablon használata
 
-Az előző szakasz azt mutatta be, hogyan lehet előfizetést létrehozni a PowerShell, a CLI vagy a REST API használatával. Ha automatizálni szeretné az előfizetések létrehozását, érdemes lehet egy Azure Resource Manager sablont (ARM-sablont) használni.
+Az előző szakasz azt mutatta be, hogyan hozhat létre előfizetést a PowerShell, a parancssori felület vagy a REST API. Ha automatizálni kell az előfizetések létrehozását, fontolja meg egy Azure Resource Manager (ARM-sablon) alkalmazását.
 
-A következő sablon létrehoz egy előfizetést. A esetében `billingScope` adja meg a beléptetési fiók azonosítóját. A esetében adja meg azt `targetManagementGroup` a felügyeleti csoportot, amelyben létre szeretné hozni az előfizetést.
+Az alábbi sablon létrehoz egy előfizetést. A `billingScope` esetén adja meg a regisztrációs fiók azonosítóját. A `targetManagementGroup` esetén adja meg azt a felügyeleti csoportot, amelyben létre szeretné hozni az előfizetést.
 
 ```json
 {
@@ -323,7 +323,7 @@ A következő sablon létrehoz egy előfizetést. A esetében `billingScope` adj
 }
 ```
 
-Telepítse a sablont a [felügyeleti csoport szintjén](../../azure-resource-manager/templates/deploy-to-management-group.md).
+Telepítse a sablont a [felügyeleti csoport szintjén.](../../azure-resource-manager/templates/deploy-to-management-group.md)
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -331,7 +331,7 @@ Telepítse a sablont a [felügyeleti csoport szintjén](../../azure-resource-man
 PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Resources/deployments/exampledeployment?api-version=2020-06-01
 ```
 
-Kérelem törzse:
+A kérelem törzsével:
 
 ```json
 {
@@ -394,4 +394,4 @@ az deployment mg create \
 
 * Most, hogy létrehozott egy előfizetést, elérhetővé teheti ezt a képességek más felhasználók és szolgáltatásnevek számára is. További információ: [Hozzáférés biztosítása nagyvállalati Azure-előfizetés létrehozáshoz (előzetes verzió)](grant-access-to-create-subscription.md).
 * Több előfizetés felügyeleti csoportok használatával történő kezeléséről az [erőforrások Azure-beli felügyeleti csoportokkal való rendszerezését](../../governance/management-groups/overview.md) ismertető részben talál további információt.
-* Az előfizetések felügyeleti csoportjának módosításához lásd: [előfizetések áthelyezése](../../governance/management-groups/manage.md#move-subscriptions).
+* Az előfizetés felügyeleti csoportjának módosítása: [Előfizetések áthelyezése.](../../governance/management-groups/manage.md#move-subscriptions)

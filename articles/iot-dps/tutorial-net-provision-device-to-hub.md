@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – eszköz kiépítése az Azure IoT Hub Device Provisioning Service (.NET) használatával
-description: Ez az oktatóanyag bemutatja, hogyan építheti ki az eszközt egyetlen IoT hubhoz az Azure IoT Hub Device Provisioning Service (DPS) használatával a .NET használatával.
+title: Oktatóanyag – Eszköz kiépítése Azure IoT Hub Device Provisioning Service (.NET) használatával
+description: Ez az oktatóanyag bemutatja, hogyan létesítheti az eszközt egyetlen IoT Hubon a Azure IoT Hub Device Provisioning Service (DPS) használatával a .NET használatával.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,14 +9,14 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: f9a14ee6ee3e10b36d64ec11fc23807efe2bfaf2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84fe935c1122d3d5c65423341b8760643257f992
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94966564"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868570"
 ---
-# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Oktatóanyag: az eszköz regisztrálása egy IoT hubhoz az Azure IoT Hub-létesítési szolgáltatás ügyfelének használatával (.NET)
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Oktatóanyag: Az eszköz regisztrálása egy IoT Hubra az Azure IoT Hub Provisioning Service Client (.NET) használatával
 
 Az előző oktatóanyagban bemutattuk, hogyan állíthat be egy eszközt úgy, hogy az a Device Provisioning Service-hez csatlakozzon. Ebben az oktatóanyagban megtudhatja, hogyan építheti ki az eszközt ezzel a szolgáltatással egyetlen IoT Hubra, **_egyéni regisztráció_** és **_regisztrációs csoportok_** használatával. Ez az oktatóanyag a következőket mutatja be:
 
@@ -32,7 +32,7 @@ A folytatás előtt győződjön meg arról, hogy [a kiépítendő eszköz az Az
 * Visual Studio
 
 > [!NOTE]
-> Visual Studio nem szükséges. Elegendő a [.NET](https://www.microsoft.com/net) telepítése, és a fejlesztők az általuk előnyben részesített, Windowson vagy Linuxon futó szerkesztőt használhatják.  
+> Visual Studio nem szükséges. Elegendő a [.NET](https://dotnet.microsoft.com) telepítése, és a fejlesztők az általuk előnyben részesített, Windowson vagy Linuxon futó szerkesztőt használhatják.  
 
 Ez az oktatóanyag a hardvergyártási folyamat közbeni vagy az azutáni időszakot szimulálja, amikor az eszközinformációt hozzáadják a regisztrációs szolgáltatáshoz. Ez a kód általában egy számítógépen vagy egy .NET-kód futtatására képes gyári eszközön fut, és nem szabad hozzáadni magukhoz az eszközökhöz.
 
@@ -129,7 +129,7 @@ A következő két módon regisztrálható az eszköz a Device Provisioning Serv
     Console.ReadLine();
     ```
         
-1. A Visual Studio Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd kattintson az **indítási projektek beállítása.**.. elemre. Válassza az **egyetlen indítási projekt** lehetőséget, majd a legördülő menüben válassza ki a **DeviceProvisioning** projektet.  
+1. A Visual Studio Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd kattintson az **Indítási projektek beállítása... elemre.** Válassza **az Egyetlen kezdőprojekt** lehetőséget, majd a legördülő menüben válassza a **DeviceProvisioning** projektet.  
 
 1. Futtassa a **DeviceProvisiong** .NET-eszközalkalmazást. Az eszközalkalmazás beállítja az eszköz kiépítését: 
 

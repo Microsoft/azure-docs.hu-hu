@@ -1,48 +1,48 @@
 ---
-title: Azure felügyelt példány kezelése Apache Cassandra-erőforrásokhoz az Azure CLI használatával
-description: Ismerkedjen meg az Azure felügyelt példányának az Azure CLI használatával való felügyeletét automatizáló általános parancsokkal.
+title: Felügyelt Azure-példány kezelése Apache Cassandra-erőforrásokhoz az Azure CLI használatával
+description: Ismerje meg az Apache Cassandrára vonatkozó felügyelt Azure-példány felügyeletének automatizálására használt gyakori parancsokat az Azure CLI használatával.
 author: TheovanKraay
 ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: thvankra
-ms.openlocfilehash: 3e44625d23a302c58ea065a4fc3ecec5605e60b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea28bf21424f0624b4f1bb5856a17672c1c7b106
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103564524"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875448"
 ---
-# <a name="manage-azure-managed-instance-for-apache-cassandra-resources-using-azure-cli-preview"></a>Azure felügyelt példány kezelése Apache Cassandra-erőforrásokhoz az Azure CLI (előzetes verzió) használatával
+# <a name="manage-azure-managed-instance-for-apache-cassandra-resources-using-azure-cli-preview"></a>Felügyelt Azure-példány kezelése Apache Cassandra-erőforrásokhoz az Azure CLI (előzetes verzió) használatával
 
-Ez a cikk általános parancsokat tartalmaz, amelyekkel automatizálható az Azure felügyelt példányok felügyelete az Apache Cassandra-fürtökön az Azure CLI használatával.
+Ez a cikk az Apache Cassandra-fürtökhöz használt Felügyelt Azure-példány felügyeletének automatizálására használt általános parancsokat ismerteti az Azure CLI használatával.
 
 > [!IMPORTANT]
-> Az Apache Cassandra Azure felügyelt példánya jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Managed Instance for Apache Cassandra jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 > [!IMPORTANT]
-> Ehhez a cikkhez az Azure CLI 2.17.1 vagy újabb verziójára van szükség. Ha Azure Cloud Shell használ, a legújabb verzió már telepítve van.
+> Ehhez a cikkhez az Azure CLI 2.17.1-es vagy újabb verziójára van szükség. Ha az alkalmazást Azure Cloud Shell, a legújabb verzió már telepítve van.
 >
-> Az Azure felügyelt példányának kezelése Apache Cassandra-erőforrásokhoz nem nevezhető át, mert ez megsérti, hogyan működik a Azure Resource Manager erőforrás-URI-k.
+> Az Apache Cassandra-erőforrásokhoz használható felügyelt Azure-példányok kezelése nem nevezhető át, mivel ez Azure Resource Manager az erőforrás-URI-ket.
 
-## <a name="azure-managed-instance-for-apache-cassandra-clusters"></a>Azure felügyelt példány az Apache Cassandra-fürtökhöz
+## <a name="azure-managed-instance-for-apache-cassandra-clusters"></a>Felügyelt Azure-példány Apache Cassandra-fürtökhöz
 
-Az alábbi szakaszban bemutatjuk, hogyan kezelhető az Azure felügyelt példánya az Apache Cassandra-fürtökhöz, beleértve a következőket:
+A következő szakaszok bemutatják az Apache Cassandra-fürtökhöz való felügyelt Azure-példányok kezelését, beleértve a következőket:
 
-* [Felügyelt példány fürt létrehozása](#create-cluster)
-* [Felügyelt példány fürt törlése](#delete-cluster)
-* [A fürt részleteinek beolvasása](#get-cluster-details)
-* [Fürtcsomópont állapotának beolvasása](#get-cluster-status)
-* [Fürtök listázása erőforráscsoport szerint](#list-clusters-resource-group)
-* [Fürtök listázása előfizetés-azonosító alapján](#list-clusters-subscription)
+* [Felügyeltpéldány-fürt létrehozása](#create-cluster)
+* [Felügyeltpéldány-fürt törlése](#delete-cluster)
+* [A fürt részleteinek lekérte](#get-cluster-details)
+* [A fürtcsomópont állapotának lekért állapota](#get-cluster-status)
+* [Fürtök listása erőforráscsoport szerint](#list-clusters-resource-group)
+* [Fürtök felsorolása előfizetés-azonosító alapján](#list-clusters-subscription)
 
-### <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>Felügyelt példány fürt létrehozása
+### <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>Felügyeltpéldány-fürt létrehozása
 
-Azure-beli felügyelt példány létrehozása az Apache Cassandra-fürthöz az az [Managed-Cassandra cluster Create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_create) parancs használatával:
+Hozzon létre egy Felügyelt Azure-példányt az Apache [Cassandra-fürthöz az az managed-cassandra cluster create paranccsal:](/cli/azure/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_cluster_create)
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -63,9 +63,9 @@ az managed-cassandra cluster create \
     --initial-cassandra-admin-password $initialCassandraAdminPassword \
 ```
 
-### <a name="delete-a-managed-instance-cluster"></a><a id="delete-cluster"></a>Felügyelt példány fürt törlése
+### <a name="delete-a-managed-instance-cluster"></a><a id="delete-cluster"></a>Felügyeltpéldány-fürt törlése
 
-Fürt törlése az az [Managed-Cassandra cluster delete](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_delete) parancs használatával:
+Fürt törlése az [az managed-cassandra cluster delete paranccsal:](/cli/azure/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_cluster_delete)
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -76,9 +76,9 @@ az managed-cassandra cluster delete \
     --resource-group $resourceGroupName
 ```
 
-### <a name="get-the-cluster-details"></a><a id="get-cluster-details"></a>A fürt részleteinek beolvasása
+### <a name="get-the-cluster-details"></a><a id="get-cluster-details"></a>A fürt részleteinek lekérte
 
-A fürt adatainak beolvasása az az [Managed-Cassandra cluster show](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_show) parancs használatával:
+Az [az managed-cassandra cluster show paranccsal lekért fürtadatok:](/cli/azure/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_cluster_show)
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -89,9 +89,9 @@ az managed-cassandra cluster show \
     --resource-group $resourceGroupName
 ```
 
-### <a name="get-the-cluster-node-status"></a><a id="get-cluster-status"></a>Fürtcsomópont állapotának beolvasása
+### <a name="get-the-cluster-node-status"></a><a id="get-cluster-status"></a>A fürtcsomópont állapotának lekért állapota
 
-A fürt adatainak beolvasása az az [Managed-Cassandra cluster node-status](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_node_status) parancs használatával:
+A fürt részleteit az [az managed-cassandra cluster node-status paranccsal olvashatja](/cli/azure/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_cluster_node_status) be:
 
 ```azurecli-interactive
 clusterName='cassandra-hybrid-cluster'
@@ -102,9 +102,9 @@ az managed-cassandra cluster node-status \
     --resource-group $resourceGroupName
 ```
 
-### <a name="list-the-clusters-by-resource-group"></a><a id="list-clusters-resource-group"></a>Fürtök listázása erőforráscsoport szerint
+### <a name="list-the-clusters-by-resource-group"></a><a id="list-clusters-resource-group"></a>A fürtök felsorolása erőforráscsoport szerint
 
-Fürtök listázása erőforráscsoport szerint az az [Managed-Cassandra cluster List](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_list) parancs használatával:
+A fürtök listazása erőforráscsoport szerint az [az managed-cassandra cluster list paranccsal:](/cli/azure/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_cluster_list)
 
 ```azurecli-interactive
 subscriptionId='MySubscriptionId'
@@ -114,9 +114,9 @@ az managed-cassandra cluster list\
     --resource-group $resourceGroupName
 ```
 
-### <a name="list-clusters-by-subscription-id"></a><a id="list-clusters-subscription"></a>Fürtök listázása előfizetés-azonosító alapján
+### <a name="list-clusters-by-subscription-id"></a><a id="list-clusters-subscription"></a>Fürtök felsorolása előfizetés-azonosító alapján
 
-Fürtök listázása előfizetés-azonosító alapján az az [Managed-Cassandra cluster List](/cli/azure/ext/cosmosdb-preview/managed-cassandra?view=azure-cli-latest&preserve-view=true) parancs használatával:
+Lists clusters by subscription ID by using [the az managed-cassandra cluster list](/cli/azure/managed-cassandra?view=azure-cli-latest&preserve-view=true) command:
 
 ```azurecli-interactive
 # set your subscription id
@@ -125,19 +125,19 @@ az account set -s <subscription id>
 az managed-cassandra cluster list
 ```
 
-## <a name="the-managed-instance-datacenters"></a><a id="managed-instance-datacenter"></a>A felügyelt példány adatközpontja
+## <a name="the-managed-instance-datacenters"></a><a id="managed-instance-datacenter"></a>A felügyelt példányok adatközpontjai
 
-Az alábbi szakaszban bemutatjuk, hogyan kezelhető az Azure felügyelt példánya az Apache Cassandra-adatközpontokhoz, beleértve a következőket:
+A következő szakaszok az Apache Cassandra-adatközpontokhoz elérhető felügyelt Azure-példányok kezelését mutatják be, beleértve a következőket:
 
 * [Adatközpont létrehozása](#create-datacenter)
 * [Adatközpont törlése](#delete-datacenter)
-* [Adatközpont részleteinek beolvasása](#get-datacenter-details)
-* [Adatközpont frissítése vagy méretezése](#update-datacenter)
-* [Adatközpontok beolvasása fürtben](#get-datacenters-cluster)
+* [Adatközpont részleteinek lekérte](#get-datacenter-details)
+* [Adatközpont frissítése vagy skálázása](#update-datacenter)
+* [Adatközpontok lekérte egy fürtben](#get-datacenters-cluster)
 
 ### <a name="create-a-datacenter"></a><a id="create-datacenter"></a>Adatközpont létrehozása
 
-Hozzon létre egy adatközpontot az az [Managed-Cassandra Datacenter Create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_create) parancs használatával:
+Hozzon létre egy adatközpontot [az az managed-cassandra datacenter create paranccsal:](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_create)
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -157,7 +157,7 @@ az managed-cassandra datacenter create \
 
 ### <a name="delete-a-datacenter"></a><a id="delete-datacenter"></a>Adatközpont törlése
 
-Az az [Managed-Cassandra Datacenter delete](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_delete) paranccsal törölhet egy adatközpontot:
+Töröljön egy adatközpontot az [az managed-cassandra datacenter delete paranccsal:](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_delete)
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -170,9 +170,9 @@ az managed-cassandra datacenter delete \
     --data-center-name $dataCenterName 
 ```
 
-### <a name="get-datacenter-details"></a><a id="get-datacenter-details"></a>Adatközpont részleteinek beolvasása
+### <a name="get-datacenter-details"></a><a id="get-datacenter-details"></a>Adatközpont részleteinek lekérte
 
-Adatközpont részleteinek beolvasása az az [Managed-Cassandra Datacenter show](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_show) parancs használatával:
+Az adatközpont részleteit az [az managed-cassandra datacenter show](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_show) paranccsal olvashatja be:
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -185,9 +185,9 @@ az managed-cassandra datacenter show \
     --data-center-name $dataCenterName 
 ```
 
-### <a name="update-or-scale-a-datacenter"></a><a id="update-datacenter"></a>Adatközpont frissítése vagy méretezése
+### <a name="update-or-scale-a-datacenter"></a><a id="update-datacenter"></a>Adatközpont frissítése vagy skálázása
 
-Adatközpont frissítése vagy skálázása (a Change nodeCount értékének méretezéséhez) az az [Managed-Cassandra Datacenter Update](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_update) parancs használatával:
+Az [az managed-cassandra datacenter update](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_update) paranccsal frissítheti vagy skálázhat egy adatközpontot (a csomópontszám értékének skálázása érdekében):
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -203,9 +203,9 @@ az managed-cassandra datacenter update \
     --node-count 13 
 ```
 
-### <a name="get-the-datacenters-in-a-cluster"></a><a id="get-datacenters-cluster"></a>Adatközpontok beszerzése egy fürtben
+### <a name="get-the-datacenters-in-a-cluster"></a><a id="get-datacenters-cluster"></a>Fürt adatközpontjainak leözése
 
-Adatközpontok beszerzése egy fürtben az az [Managed-Cassandra Datacenter List](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_list) parancs használatával:
+A fürtben található adatközpontokat az [az managed-cassandra datacenter list paranccsal lehet lekérte:](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_list)
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -218,5 +218,5 @@ az managed-cassandra datacenter list \
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Felügyelt példány-fürt létrehozása a Azure Portal](create-cluster-portal.md)
-* [Felügyelt Apache Spark-fürt üzembe helyezése Azure Databricks](deploy-cluster-databricks.md)
+* [Felügyeltpéldány-fürt létrehozása a Azure Portal](create-cluster-portal.md)
+* [Felügyelt fürt Apache Spark üzembe helyezése Azure Databricks](deploy-cluster-databricks.md)

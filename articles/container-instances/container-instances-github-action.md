@@ -1,21 +1,21 @@
 ---
 title: Tárolópéldány üzembe helyezése GitHub-művelet alapján
-description: Konfiguráljon egy GitHub-műveletet, amely automatizálja a tároló rendszerképének buildhez, leküldéséhez és üzembe helyezéséhez szükséges Azure Container Instances
+description: Egy GitHub-művelet konfigurálása, amely automatizálja a tároló rendszerképének build- és leküldéses üzembe helyezésének lépéseit a Azure Container Instances
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: e6a4d9ecff292d79f132f933c36b0030e04f4efa
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: df8f7a546767f1198cee6fc6ceb6032645c14989
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771298"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868986"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>GitHub-művelet konfigurálása tárolópéldány létrehozásához
 
 [GitHub Actions](https://docs.github.com/en/actions) a GitHub egy olyan szolgáltatáscsomagja, amely ugyanazon a helyen automatizálja a szoftverfejlesztési munkafolyamatokat, ahol a kódot tárolja, és együttműködik a lekéréses kérelmeken és problémákon.
 
-A [Deploy to Azure Container Instances](https://github.com/azure/aci-deploy) GitHub művelet használatával automatizálhatja egyetlen tároló üzembe helyezését a Azure Container Instances. A művelet lehetővé teszi, hogy az az container create parancsban találhatóakhoz hasonló tulajdonságokat állítson be egy [tárolópéldányhoz.][az-container-create]
+Az [Üzembe helyezés a Azure Container Instances](https://github.com/azure/aci-deploy) GitHub-művelet használatával automatizálhatja egyetlen tároló üzembe helyezését a Azure Container Instances. A művelet lehetővé teszi, hogy az az container create parancsban találhatóakhoz hasonló tulajdonságokat állítson be egy [tárolópéldányhoz.][az-container-create]
 
 Ez a cikk bemutatja, hogyan állíthat be egy munkafolyamatot egy GitHub-adattárban, amely a következő műveleteket végzi el:
 
@@ -26,15 +26,15 @@ Ez a cikk bemutatja, hogyan állíthat be egy munkafolyamatot egy GitHub-adattá
 Ez a cikk a munkafolyamat beállításának két módját mutatja be:
 
 * [GitHub-munkafolyamat](#configure-github-workflow) konfigurálása – Munkafolyamat létrehozása GitHub-adattárban a Deploy to Azure Container Instances action and other actions (Üzembe helyezés Azure Container Instances műveletekhez) használatával.  
-* [Parancssori felületi bővítmény használata](#use-deploy-to-azure-extension) – Használja az Azure `az container app up` CLI-beli Üzembe helyezés az [Azure-ban](https://github.com/Azure/deploy-to-azure-cli-extension) bővítményben lévő parancsot. Ez a parancs leegyszerűsíti a GitHub-munkafolyamat és az üzembe helyezés lépéseit.
+* [Parancssori felületi bővítmény használata](#use-deploy-to-azure-extension) – Használja az `az container app up` Azure CLI-beli Üzembe helyezés az [Azure-ban](https://github.com/Azure/deploy-to-azure-cli-extension) bővítményben lévő parancsot. Ez a parancs leegyszerűsíti a GitHub-munkafolyamat létrehozását és az üzembe helyezés lépéseit.
 
 > [!IMPORTANT]
 > A GitHub-művelet Azure Container Instances jelenleg előzetes verzióban érhető el. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **GitHub-fiók** – Hozzon létre egy fiókot a webhelyen, ha még https://github.com nem rendelkezik fiókkal.
-* **Azure CLI** – Az Azure CLI Azure Cloud Shell az Azure CLI helyi telepítésével használhatja. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+* **GitHub-fiók** – Hozzon létre egy fiókot a webhelyen, ha https://github.com még nem rendelkezik fiókkal.
+* **Azure CLI** – Az Azure CLI Azure Cloud Shell az Azure CLI-t a helyi telepítéssel is használhatja. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 * **Azure Container Registry** – Ha még nem létezik ilyen, hozzon létre egy Azure Container Registryt az Alapszintű szinten az [Azure CLI,](../container-registry/container-registry-get-started-azure-cli.md) [a Azure Portal](../container-registry/container-registry-get-started-portal.md)vagy más módszerek használatával. Jegyezze fel az üzembe helyezéshez használt erőforráscsoportot, amelyet a GitHub-munkafolyamathoz használ.
 
 ## <a name="set-up-repo"></a>Az repo beállítása
@@ -45,13 +45,13 @@ Ez a cikk a munkafolyamat beállításának két módját mutatja be:
 
   ![A GitHub Fork (Leágaztatás) gombjának (kiemelve) képernyőképe](../container-registry/media/container-registry-tutorial-quick-build/quick-build-01-fork.png)
 
-* Győződjön meg arról, hogy a Műveletek engedélyezve vannak az adattárhoz. Keresse meg az eltárolt adattárat, és válassza a **Beállítások**  >  **műveletek lehetőséget.** Az **Actions permissions (Műveletek engedélyei)** mezőben győződjön meg arról, hogy a **Enable local and third party Actions for this repository** (Helyi és külső féltől származó műveletek engedélyezése ehhez az adattárhoz) lehetőség be van jelölve.
+* Győződjön meg arról, hogy a Műveletek engedélyezve vannak az adattárhoz. Keresse meg az eltárolt adattárat, és válassza a **Beállítások**  >  **műveletek lehetőséget.** A **Műveletek engedélyei mezőben** győződjön meg arról, hogy **az Enable local and third party Actions for this repository** (Helyi és külső féltől származó műveletek engedélyezése az adattárhoz) lehetőség be van jelölve.
 
 ## <a name="configure-github-workflow"></a>GitHub-munkafolyamat konfigurálása
 
 ### <a name="create-service-principal-for-azure-authentication"></a>Szolgáltatásnév létrehozása Azure-hitelesítéshez
 
-A GitHub-munkafolyamatban Azure-beli hitelesítő adatokat kell megadnia az Azure CLI-ben való hitelesítéshez. A következő példa létrehoz egy szolgáltatásnévt a Közreműködő szerepkörrel, amely a tároló-beállításjegyzék erőforráscsoportjának hatókörére van kihatva.
+A GitHub-munkafolyamatban Azure-beli hitelesítő adatokat kell megadnia az Azure CLI-ben való hitelesítéshez. A következő példában létrehozunk egy szolgáltatásnévhez a Közreműködő szerepkörrel, amely a tároló-beállításjegyzék erőforráscsoportjának hatókörére terjed ki.
 
 Először szerezze be az erőforráscsoport erőforrás-azonosítóját. Helyettesítse be a csoport nevét a következő [az group show parancsban:][az-group-show]
 
@@ -87,7 +87,7 @@ A kimenet a következőhöz hasonló:
 }
 ```
 
-Mentse a JSON-kimenetet, mert egy későbbi lépésben használni kell. Jegyezze fel a et is, amelyet frissítenie kell `clientId` a szolgáltatásnévvel a következő szakaszban.
+Mentse a JSON-kimenetet, mert egy későbbi lépésben használni kell. Jegyezze fel a et is, amelyet a következő szakaszban `clientId` frissítenie kell.
 
 ### <a name="update-service-principal-for-registry-authentication"></a>Szolgáltatásnév frissítése beállításjegyzék-hitelesítéshez
 
@@ -110,25 +110,25 @@ az role assignment create \
   --role AcrPush
 ```
 
-### <a name="save-credentials-to-github-repo"></a>Hitelesítő adatok mentése GitHub-adattárba
+### <a name="save-credentials-to-github-repo"></a>Hitelesítő adatok mentése a GitHub-adattárba
 
 1. A GitHub felhasználói felületén keresse meg az elágazásos adattárat, és válassza a Settings Secrets **(Titkos beállítások)**  >  **lehetőséget.** 
 
-1. Válassza **az Add a new secret (Új titkos titkos kulcsok** hozzáadása) lehetőséget a következő titkos kulcsok hozzáadásához:
+1. A **következő titkos kulcsok hozzáadásához válassza az** Add a new secret (Új titkos kulcsok hozzáadása) lehetőséget:
 
 |Titkos  |Érték  |
 |---------|---------|
-|`AZURE_CREDENTIALS`     | A szolgáltatásnév létrehozásának lépés teljes JSON-kimenete |
+|`AZURE_CREDENTIALS`     | A szolgáltatásnév létrehozási lépésének teljes JSON-kimenete |
 |`REGISTRY_LOGIN_SERVER`   | A regisztrációs adatbázis bejelentkezési kiszolgálójának neve (csak kisbetűk). Például: *myregistry.azurecr.io*        |
-|`REGISTRY_USERNAME`     |  A `clientId` szolgáltatásnév létrehozásának JSON-kimenetében       |
-|`REGISTRY_PASSWORD`     |  A `clientSecret` szolgáltatásnév létrehozásának JSON-kimenetében |
+|`REGISTRY_USERNAME`     |  A `clientId` a szolgáltatásnév létrehozásának JSON-kimenetében       |
+|`REGISTRY_PASSWORD`     |  A `clientSecret` a szolgáltatásnév létrehozásának JSON-kimenetében |
 | `RESOURCE_GROUP` | A szolgáltatásnév hatókörének hatóköreként használt erőforráscsoport neve |
 
-### <a name="create-workflow-file"></a>Munkafolyamat-fájl létrehozása
+### <a name="create-workflow-file"></a>Munkafolyamatfájl létrehozása
 
-1. A GitHub felhasználói felületén válassza az Actions New workflow **(Műveletek**  >  **új munkafolyamat) lehetőséget.**
+1. A GitHub felhasználói felületén válassza a **Műveletek Új**  >  **munkafolyamat lehetőséget.**
 1. Válassza **a Munkafolyamat saját beállítása lehetőséget.**
-1. Az **Új fájl szerkesztése menüben** illessze be a következő YAML-tartalmat a mintakód felülírásaként. Fogadja el az alapértelmezett `main.yml` fájlnevet, vagy adja meg a választott fájlnevet.
+1. Az **Edit new file (Új fájl szerkesztése) menüben** illessze be a következő YAML-tartalmat a mintakód felülírásaként. Fogadja el az alapértelmezett `main.yml` fájlnevet, vagy adjon meg egy ön által választott fájlnevet.
 1. Válassza **a Véglegesítés kezdése** lehetőséget, igény szerint adja meg a véglegesítés rövid és kibővített leírását, majd válassza az **Új fájl véglegesítése lehetőséget.**
 
 ```yml
@@ -173,7 +173,7 @@ jobs:
 
 ### <a name="validate-workflow"></a>Munkafolyamat ellenőrzése
 
-A munkafolyamat-fájl véglegesítését követően a munkafolyamat aktiválódik. A munkafolyamat előrehaladásának áttekintéshez lépjen az **Actions**  >  **Workflows (Műveletek munkafolyamatai) lapra.** 
+A munkafolyamat-fájl véglegesítését követően a munkafolyamat aktiválódik. A munkafolyamat előrehaladásának áttekintését az **Actions Workflows (Műveletek munkafolyamatai)**  >  **menüben lehet áttekintni.** 
 
 ![Munkafolyamat előrehaladásának megtekintése](./media/container-instances-github-action/github-action-progress.png)
 
@@ -203,13 +203,13 @@ A példány kiépítése után nyissa meg a tároló teljes tartományát a bön
 
 ## <a name="use-deploy-to-azure-extension"></a>A Deploy to Azure extension (Üzembe helyezés az Azure-ban) használata
 
-Másik lehetőségként az [Azure CLI-beli](https://github.com/Azure/deploy-to-azure-cli-extension) Üzembe helyezés az Azure-ban bővítmény használatával konfigurálhatja a munkafolyamatot. A `az container app up` bővítményben lévő parancs bemeneti paramétereket vesz fel, hogy beállítsa az üzembe helyező munkafolyamatot a Azure Container Instances. 
+Másik lehetőségként az Üzembe helyezés az [Azure-ban bővítmény](https://github.com/Azure/deploy-to-azure-cli-extension) használatával konfigurálhatja a munkafolyamatot az Azure CLI-ban. A `az container app up` bővítményben lévő parancs bemeneti paramétereket vesz igénybe, és beállít egy munkafolyamatot, amely üzembe lesz állítva a Azure Container Instances. 
 
 Az Azure CLI által létrehozott munkafolyamat hasonlít a GitHub használatával manuálisan [létrehozható munkafolyamathoz.](#configure-github-workflow)
 
 ### <a name="additional-prerequisite"></a>További előfeltételek
 
-A forgatókönyv [](#prerequisites) előfeltételei és a [repo](#set-up-repo) beállítása mellett telepítenie kell a Deploy to Azure extension for the Azure CLI (Üzembe helyezés az **Azure-ban)** bővítményt is az Azure CLI-hez.
+A forgatókönyv [előfeltételein](#prerequisites) és a [repo](#set-up-repo) beállításán kívül telepítenie kell a Deploy to Azure extension for the Azure CLI (Üzembe helyezés az  **Azure-ban)** bővítményt is az Azure CLI-hez.
 
 Futtassa [az az extension add][az-extension-add] parancsot a bővítmény telepítéséhez:
 
@@ -222,12 +222,12 @@ További információ a bővítmények kereséséről, telepítéséről és kez
 
 ### <a name="run-az-container-app-up"></a>Az `az container app up` parancs futtatása
 
-Az [az container app up parancs futtatásához][az-container-app-up] adja meg legalább a következőt:
+Az [az container app up parancs futtatásához legalább][az-container-app-up] a következőt adja meg:
 
 * Az Azure Container Registry neve, például *myregistry*
 * A GitHub-adattár URL-címe, például: `https://github.com/<your-GitHub-Id>/acr-build-helloworld-node`
 
-Mintaparancs:
+Példaparancs:
 
 ```azurecli
 az container app up \
@@ -237,7 +237,7 @@ az container app up \
 
 ### <a name="command-progress"></a>Parancs állapota
 
-* Amikor a rendszer kéri, adja meg GitHub-hitelesítő adatait, vagy  adjon meg  egy személyes [hozzáférési jogkivonatot](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) (PAT), amely adattárat és felhasználói hatókört biztosít a GitHub-fiókkal való hitelesítéshez. Ha GitHub-hitelesítő adatokat ad meg, a parancs létrehoz egy PAT-t. A munkafolyamat konfigurálásához kövesse a további utasításokat.
+* Amikor a rendszer kéri, adja meg a GitHub hitelesítő adatait,  vagy adjon  meg egy személyes [hozzáférési](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) jogkivonatot (PAT), amely adattárat és felhasználói hatókört biztosít a GitHub-fiókkal való hitelesítéshez. Ha GitHub-hitelesítő adatokat ad meg, a parancs létrehoz egy PAT-et. A munkafolyamat konfigurálásához kövesse a további utasításokat.
 
 * A parancs titkos táras titkos okat hoz létre a munkafolyamathoz:
 
@@ -319,4 +319,4 @@ A [githubi piactéren további](https://github.com/marketplace?type=actions) mű
 [az-container-show]: /cli/azure/container#az_container_show
 [az-container-delete]: /cli/azure/container#az_container_delete
 [az-extension-add]: /cli/azure/extension#az_extension_add
-[az-container-app-up]: /cli/azure/ext/deploy-to-azure/container/app#ext-deploy-to-azure-az-container-app-up
+[az-container-app-up]: /cli/azure/container/app#az_container_app_up

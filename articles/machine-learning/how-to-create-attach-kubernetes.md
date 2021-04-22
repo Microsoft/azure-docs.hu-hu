@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 04/08/2021
-ms.openlocfilehash: 1c9434d137114560b5585b081961497412dfbf69
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 375a8f6613ff90edd3df635c8236196aab62b6ac
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770254"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861138"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Fürt létrehozása és Azure Kubernetes Service csatolása
 
@@ -34,32 +34,32 @@ Azure Machine Learning gépi tanulási modellek üzembe helyezhetők a Azure Kub
 
 - Ha alapszintű **Load Balancer(BLB) helyett egy standard Load Balancer-fürtre (SLB)** van szüksége, hozzon létre egy fürtöt az AKS-portálon/CLI/SDK-ban, majd csatolja azt az AML-munkaterülethez. 
 
-- Ha olyan hálózati Azure Policy, amely korlátozza a nyilvános IP-címek létrehozását, az AKS-fürt létrehozása sikertelen lesz. Az AKS-hez nyilvános IP-cím szükséges a [bejövő forgalomhoz.](../aks/limit-egress-traffic.md) A forgalomról való kivezetésről is olvashat, amely útmutatást nyújt a fürtből a nyilvános IP-címen keresztül bejövő forgalom zárolására vonatkozóan, néhány teljes tartománynév kivételével. A nyilvános IP-címek engedélyezésének két módja van:
+- Ha olyan hálózati Azure Policy, amely korlátozza a nyilvános IP-címek létrehozását, az AKS-fürt létrehozása sikertelen lesz. Az AKS-hez nyilvános IP-cím szükséges a [bejövő forgalomhoz.](../aks/limit-egress-traffic.md) A forgalmi forgalomról vonatkozó cikk emellett útmutatást nyújt a fürtből a nyilvános IP-címen keresztül bejövő forgalom zárolására vonatkozóan, néhány teljes tartománynév kivételével. A nyilvános IP-címek engedélyezésének két módja van:
     - A fürt használhatja az alapértelmezés szerint a BLB-hez vagy az SLB-hez létrehozott nyilvános IP-címet, vagy
     - A fürt nyilvános IP-cím nélkül is létre lehet hozni, majd a nyilvános IP-cím egy felhasználó által megadott útvonallal konfigurálható tűzfallal. További információkért [lásd: Fürtök ki- és becslének testreszabása felhasználó által megadott útvonalon.](../aks/egress-outboundtype.md)
     
     Az AML-vezérlősík nem tud ezzel a nyilvános IP-címmel beszélni. Az üzembe helyezéshez az AKS-vezérlősíkhoz beszél. 
 
-- Ha **olyan** AKS-fürtöt csatlakoztat, amelynek engedélyezett IP-címtartománya van az [API-kiszolgáló](../aks/api-server-authorized-ip-ranges.md)eléréséhez, engedélyezze az AML-vezérlősík IP-tartományát az AKS-fürt számára. Az AML-vezérlősík a párosított régiókban van telepítve, és következtetési podokat helyez üzembe az AKS-fürtön. Az API-kiszolgálóhoz való hozzáférés nélkül a következtetési podok nem helyezhetők üzembe. Az [IP-címtartományokat](https://www.microsoft.com/download/confirmation.aspx?id=56519) mindkét [párosított](../best-practices-availability-paired-regions.md) régióban használhatja, amikor engedélyezi az IP-címtartományokat egy AKS-fürtben.
+- Ha **olyan** AKS-fürtöt csatol, amelynek engedélyezett IP-címtartománya van az [API-kiszolgáló](../aks/api-server-authorized-ip-ranges.md)eléréséhez, engedélyezze az AKS-fürt AML-vezérlősíkjának IP-tartományát. Az AML-vezérlősík két párosított régióban van telepítve, és következtetési podokat helyez üzembe az AKS-fürtön. Az API-kiszolgálóhoz való hozzáférés nélkül a következtetési podok nem helyezhetők üzembe. Az [IP-tartományok](https://www.microsoft.com/download/confirmation.aspx?id=56519) AKS-fürtben való engedélyezésekor mindkét párosított régióban használja az IP-címtartományokat. [](../best-practices-availability-paired-regions.md)
 
-    Az engedélyezett IP-címtartományok csak a standard Load Balancer.
+    Az engedélyezett IP-tartományok csak a standard Load Balancer.
 
-- AKS-fürt csatolásakor annak ugyanabban az Azure-előfizetésben kell lennie, mint a Azure Machine Learning munkaterületen. 
+- AKS-fürt csatolásakor annak ugyanabban az Azure-előfizetésben kell lennie, mint a Azure Machine Learning munkaterületnek. 
 
-- Ha privát AKS-fürtöt szeretne használni (Azure Private Link használatával), először létre kell  hoznia a fürtöt, majd csatolnia kell a munkaterülethez. További információ: Privát fürt [Azure Kubernetes Service.](../aks/private-clusters.md)
+- Ha privát AKS-fürtöt szeretne használni (Azure Private Link használatával), először létre kell  hoznia a fürtöt, majd csatolnia kell a munkaterülethez. További információkért [lásd: Privát](../aks/private-clusters.md)fürt Azure Kubernetes Service létrehozása.
 
 - Az AKS-fürt számítási nevének egyedinek kell lennie az Azure ML-munkaterületen belül. Betűket, számjegyeket és kötőjeleket tartalmazhat. Betűvel kell kezdődnie, betűvel vagy számmal kell végződnie, és 3–24 karakter hosszúságúnak kell lennie.
  
- - Ha GPU-csomópontokon  vagy **FPGA-csomópontokon** (vagy bármely adott termékváltozatban) szeretne modelleket üzembe helyezni, létre kell hoznia egy fürtöt az adott termékváltozattal. A másodlagos csomópontkészlet meglévő fürtben való létrehozása és a modellek a másodlagos csomópontkészletben való üzembe helyezése nem támogatott.
+ - Ha modelleket szeretne  üzembe helyezni GPU-csomópontokon vagy **FPGA-csomópontokon** (vagy bármely adott termékváltozatban), létre kell hoznia egy fürtöt az adott termékváltozattal. A másodlagos csomópontkészletek meglévő fürtben való létrehozása és a modellek a másodlagos csomópontkészletben való üzembe helyezése nem támogatott.
  
-- Fürt létrehozásakor vagy csatolásakor kiválaszthatja, hogy a fürtöt __fejlesztési-tesztelési__ vagy éles környezetben hozza __létre.__ Ha éles környezet helyett __fejlesztési,__ ellenőrzési és tesztelési célokra szeretne  létrehozni egy AKS-fürtöt, állítsa a fürtöt __fejlesztési-tesztelési célra.__  Ha nem adja meg a fürt célját, létrejön egy __éles__ fürt. 
+- Fürt létrehozásakor vagy csatolásakor kiválaszthatja, hogy a fürtöt __fejlesztési-tesztelési__ vagy éles környezetben __hozza-e létre.__ Ha éles környezet helyett __fejlesztési,__ ellenőrzési és tesztelési célokra szeretne  létrehozni egy AKS-fürtöt, állítsa a fürt célját __fejlesztési-tesztelési célra.__  Ha nem adja meg a fürt célját, létrejön egy __éles__ fürt. 
 
     > [!IMPORTANT]
-    > A __fejlesztési-tesztelési__ fürtök nem alkalmasak éles szintű forgalomhoz, és növelhetik a következtetési időket. A fejlesztési/tesztelési fürtök szintén nem garantálják a hibatűrést.
+    > A __fejlesztési-tesztelési__ fürtök nem alkalmasak éles szintű forgalomhoz, és növelhetik a következtetési időt. A fejlesztési/tesztelési fürtök szintén nem garantálják a hibatűrést.
 
-- Fürt létrehozásakor vagy csatolásakor, ha a fürt éles környezetben lesz használva, akkor legalább 12 virtuális CPU-t __kell tartalmaznia.__ A virtuális processzorok száma a fürtben  lévő csomópontok számának  és a kiválasztott virtuálisgép-méret által megadott magok számának szorozása alapján számítható ki. Ha például a "Standard_D3_v2" virtuálisgép-méretet használja, amely 4 virtuális maggal rendelkezik, akkor a csomópontok számaként válassza a 3-as vagy nagyobb lehetőséget.
+- Fürt létrehozásakor vagy csatolásakor, ha a fürt éles környezetben lesz használva, akkor legalább 12 virtuális CPU-t __kell tartalmaznia.__ A virtuális processzorok száma a fürtben  lévő csomópontok számának  és a kiválasztott virtuálisgép-méret által megadott magok számának szorozása alapján számítható ki. Ha például "Standard_D3_v2" virtuálisgép-méretet használ, amely 4 virtuális maggal rendelkezik, akkor a csomópontok számaként válassza a 3-as vagy nagyobb lehetőséget.
 
-    __Fejlesztési-tesztelési fürt esetén__ legalább 2 virtuális CPU-t ajánlunk.
+    __Fejlesztési-tesztelési fürt esetén__ legalább 2 virtuális processzort ajánlunk.
 
 - Az Azure Machine Learning SDK nem támogatja az AKS-fürtök skálázását. A fürt csomópontjainak méretezéséhez használja az AKS-fürt felhasználói felületét a Azure Machine Learning stúdió. A csomópontok számát csak módosíthatja, a fürt virtuálisgép-méretét nem. Az AKS-fürtök csomópontjainak méretezésével kapcsolatos további információkért tekintse meg a következő cikkeket:
 
@@ -68,38 +68,38 @@ Azure Machine Learning gépi tanulási modellek üzembe helyezhetők a Azure Kub
 
 - __Ne frissítse közvetlenül a fürtöt YAML-konfigurációval.__ Bár az Azure Kubernetes Services YAML-konfiguráción keresztül támogatja a frissítéseket, Azure Machine Learning üzemelő példányok felülírják a módosításokat. Az egyetlen két YAML-mező,  amely nem lesz felülírva, a kérelemkorlátok, valamint a processzor és a __memória.__
 
-- Az AKS-fürt létrehozása az Azure Machine Learning stúdió felhasználói felülettel, SDK-val vagy CLI-bővítménysel __nem__ idempotent. Ha ismét megpróbálja létrehozni az erőforrást, az azt a hibát fogja eredményezni, hogy már létezik ilyen nevű fürt.
+- Az AKS-fürt létrehozása az Azure Machine Learning stúdió felhasználói felülettel, SDK-val vagy CLI-bővítménysel __nem__ idempotent. Ha ismét megpróbálja létrehozni az erőforrást, az azt a hibát eredményezi, hogy már létezik ilyen nevű fürt.
     
-    - Az AKS Azure Resource Manager létrehozása nem  idempotent, ha egy új sablont és a [Microsoft.MachineLearningServices/workspaces/computes](/azure/templates/microsoft.machinelearningservices/2019-11-01/workspaces/computes) erőforrást használja az AKS-fürt létrehozásához. Ha egy már létező erőforrás frissítésére próbálja ismét használni a sablont, ugyanez a hibaüzenet jelenik meg.
+    - Az AKS Azure Resource Manager létrehozása nem  idempotent, ha egy új sablont és a [Microsoft.MachineLearningServices/workspaces/computes](/azure/templates/microsoft.machinelearningservices/2019-11-01/workspaces/computes) erőforrást használja az AKS-fürt létrehozásához. Ha egy már meglévő erőforrás frissítésére próbálja ismét használni a sablont, ugyanezt a hibaüzenetet kapja.
 
 ## <a name="azure-kubernetes-service-version"></a>Az Azure Kubernetes Service verziója
 
-Azure Kubernetes Service lehetővé teszi a fürtök különböző Kubernetes-verziók használatával való létrehozására. Az elérhető verziókról a támogatott [Kubernetes-verziók](../aks/supported-kubernetes-versions.md)című Azure Kubernetes Service.
+Azure Kubernetes Service lehetővé teszi a fürtök különböző Kubernetes-verziók használatával való létrehozására. További információ az elérhető verziókról: [Támogatott Kubernetes-verziók](../aks/supported-kubernetes-versions.md)a Azure Kubernetes Service.
 
-Ha **a következő** Azure Kubernetes Service használatával hoz létre egy fürtöt, nincs választási lehetőség *a* létrehozott fürt verziójában:
+Amikor **egy** Azure Kubernetes Service a következő módszerek egyikével hoz létre egy fürtöt, nincs választási lehetőség *a* létrehozott fürt verziójában:
 
-* Azure Machine Learning stúdió vagy Azure Machine Learning szakasza Azure Portal.
+* Azure Machine Learning stúdió vagy a Azure Machine Learning szakaszának Azure Portal.
 * Machine Learning Azure CLI-hez.
 * Azure Machine Learning SDK.
 
-Az AKS-fürt létrehozásának ezen módszerei a fürt __alapértelmezett__ verzióját használják. *Az alapértelmezett verzió idővel megváltozik,* amint új Kubernetes-verziók válnak elérhetővé.
+Az AKS-fürt létrehozásának ezen módszerei a fürt __alapértelmezett__ verzióját használják. *Az alapértelmezett verzió idővel megváltozik, amint* az új Kubernetes-verziók elérhetővé válnak.
 
 Meglévő  AKS-fürt csatolása esetén az összes jelenleg támogatott AKS-verziót támogatjuk.
 
 > [!NOTE]
-> Előfordulhatnak peremhálózati esetek, amelyekben egy régebbi fürt már nem támogatott. Ebben az esetben a csatolási művelet hibát ad vissza, és felsorolja a jelenleg támogatott verziókat.
+> Lehetnek olyan peremhálózati esetek, amelyekben egy régebbi fürt már nem támogatott. Ebben az esetben a csatolási művelet hibát ad vissza, és felsorolja a jelenleg támogatott verziókat.
 >
-> Csatolhatja az **előzetes verziókat.** Az előzetes verziójú funkciókat szolgáltatói szerződés nélkül biztosítjuk, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. Az előzetes verziók használatának támogatása korlátozott lehet. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Csatolhatja az **előzetes verziókat.** Az előzetes verziójú funkciókat szolgáltatói szerződés nélkül biztosítjuk, éles számítási feladatokhoz pedig nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. Az előzetes verziók használata korlátozott lehet. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ### <a name="available-and-default-versions"></a>Elérhető és alapértelmezett verziók
 
-Az elérhető és alapértelmezett AKS-verziók kereséshez használja [az az aks get-versions Azure CLI-parancsot.](/cli/azure/aks#az_aks_get_versions) [](/cli/azure/install-azure-cli) A következő parancs például az USA nyugati régiójában elérhető verziókat adja vissza:
+Az elérhető és alapértelmezett AKS-verziók megkereshez használja az [az aks get-versions Azure CLI-parancsot.](/cli/azure/aks#az_aks_get_versions) [](/cli/azure/install-azure-cli) A következő parancs például az USA nyugati régiójában elérhető verziókat adja vissza:
 
 ```azurecli-interactive
 az aks get-versions -l westus -o table
 ```
 
-A parancs kimenete a következő szöveghez hasonló:
+A parancs kimenete az alábbi szöveghez hasonló:
 
 ```text
 KubernetesVersion    Upgrades
@@ -114,13 +114,13 @@ KubernetesVersion    Upgrades
 1.15.11              1.15.12, 1.16.10, 1.16.13
 ```
 
-A fürt létrehozásakor használt alapértelmezett  verzió Azure Machine Learning az paraméterrel választhatja ki `--query` az alapértelmezett verziót:
+Ha meg kell találnia  a fürt létrehozásakor Azure Machine Learning alapértelmezett verziót, a paraméterrel kiválaszthatja `--query` az alapértelmezett verziót:
 
 ```azurecli-interactive
 az aks get-versions -l westus --query "orchestrators[?default == `true`].orchestratorVersion" -o table
 ```
 
-A parancs kimenete a következő szöveghez hasonló:
+A parancs kimenete az alábbi szöveghez hasonló:
 
 ```text
 Result
@@ -130,7 +130,7 @@ Result
 
 Ha programozott módon szeretné ellenőrizni az elérhető verziókat, használja a [Container Service Client – List Orchestrators](/rest/api/container-service/container%20service%20client/listorchestrators) REST API. Az elérhető verziók megkeresésében keresse meg a következő `orchestratorType` bejegyzéseket: `Kubernetes` . A társított bejegyzések tartalmazzák a munkaterülethez csatolható elérhető `orchestrationVersion` verziókat. 
 
-A fürt létrehozásakor használt alapértelmezett  verzió megkereséhez Azure Machine Learning a bejegyzést, ahol a és `orchestratorType` a `Kubernetes` `default` `true` . A társított `orchestratorVersion` érték az alapértelmezett verzió. Az alábbi JSON-kódrészlet egy példabejegyzést mutat be:
+Ha meg kell találnia a fürt létrehozásakor használt alapértelmezett verziót a Azure Machine Learning, keresse meg **azt** a bejegyzést, ahol a és `orchestratorType` a `Kubernetes` `default` `true` . A társított `orchestratorVersion` érték az alapértelmezett verzió. Az alábbi JSON-kódrészlet egy példabejegyzést mutat be:
 
 ```json
 ...
@@ -153,7 +153,7 @@ A fürt létrehozásakor használt alapértelmezett  verzió megkereséhez Azure
 
 **Becsült idő:** Körülbelül 10 perc.
 
-Az AKS-fürtök létrehozása vagy csatolása a munkaterület egy egyszeres folyamata. Ezt a fürtöt több üzemelő példányhoz is felhasználhatja. Ha törli a fürtöt vagy az azt tartalmazó erőforráscsoportot, a következő üzembe helyezéskor új fürtöt kell létrehoznia. A munkaterülethez több AKS-fürt is csatolható.
+Az AKS-fürt létrehozása vagy csatolása a munkaterület egy egyszeres folyamata. Ezt a fürtöt több üzemelő példányhoz is felhasználhatja. Ha törli a fürtöt vagy az azt tartalmazó erőforráscsoportot, a következő üzembe helyezéskor új fürtöt kell létrehoznia. A munkaterülethez több AKS-fürt is csatolható.
 
 Az alábbi példa bemutatja, hogyan hozhat létre új AKS-fürtöt az SDK és a CLI használatával:
 
@@ -198,11 +198,11 @@ A példában használt osztályokkal, metódusokkal és paraméterekkel kapcsola
 az ml computetarget create aks -n myaks
 ```
 
-További információkért tekintse meg az [az ml computetarget create aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-aks) referenciát.
+További információkért lásd az [az ml computetarget create aks](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_aks) referenciát.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Az AKS-fürtök portálon való létrehozásával kapcsolatos információkért lásd: Számítási célok létrehozása a [Azure Machine Learning stúdió.](how-to-create-attach-compute-studio.md#inference-clusters)
+Az AKS-fürt portálon való létrehozásával kapcsolatos információkért lásd: Számítási célok létrehozása a [Azure Machine Learning stúdió.](how-to-create-attach-compute-studio.md#inference-clusters)
 
 ---
 
@@ -210,16 +210,16 @@ Az AKS-fürtök portálon való létrehozásával kapcsolatos információkért 
 
 **Becsült idő:** Körülbelül 5 perc.
 
-Ha már rendelkezik AKS-fürttel az Azure-előfizetésében, használhatja azt a munkaterülettel.
+Ha már rendelkezik AKS-fürttel az Azure-előfizetésében, használhatja azt a munkaterületével.
 
 > [!TIP]
 > A meglévő AKS-fürt a saját munkaterületén kívül más Azure Azure Machine Learning is lehet.
 
 
 > [!WARNING]
-> Ne hozzon létre több egyidejű mellékletet ugyanannak az AKS-fürtnek a munkaterületről. Például egy AKS-fürt csatolása egy munkaterülethez két különböző névvel. Minden új melléklet megszakítja a korábbi melléklet(eket).
+> Ne hozzon létre több egyidejű mellékletet ugyanannak az AKS-fürtnek a munkaterületről. Például egy AKS-fürtöt csatolhat egy munkaterülethez két különböző névvel. Minden új melléklet megszakítja az előző meglévő melléklet(eket).
 >
-> Ha újra szeretne csatolni egy AKS-fürtöt, például a TLS vagy más fürtkonfigurációs beállítás módosításához, először el kell távolítania a meglévő mellékletet az [AksCompute.detach() használatával.](/python/api/azureml-core/azureml.core.compute.akscompute#detach--)
+> Ha egy AKS-fürtöt szeretne újra csatolni, például a TLS vagy más fürtkonfigurációs beállítás módosításához, először el kell távolítania a meglévő mellékletet az [AksCompute.detach() használatával.](/python/api/azureml-core/azureml.core.compute.akscompute#detach--)
 
 Az AKS-fürtök Azure CLI vagy portál használatával való létrehozásával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
@@ -263,19 +263,19 @@ Ha meglévő fürtöt a CLI használatával kell csatolnia, le kell szereznie a 
 az aks show -n myexistingcluster -g myresourcegroup --query id
 ```
 
-Ez a parancs a következő szöveghez hasonló értéket ad vissza:
+Ez a parancs az alábbi szöveghez hasonló értéket ad vissza:
 
 ```text
 /subscriptions/{GUID}/resourcegroups/{myresourcegroup}/providers/Microsoft.ContainerService/managedClusters/{myexistingcluster}
 ```
 
-A meglévő fürtöt a következő paranccsal csatlakoztathatja a munkaterülethez. Cserélje `aksresourceid` le a helyére az előző parancs által visszaadott értéket. Cserélje `myresourcegroup` le a helyére a munkaterületet tartalmazó erőforráscsoportot. Cserélje `myworkspace` le a helyére a munkaterület nevét.
+A meglévő fürt a munkaterülethez való csatlakoztatására használja a következő parancsot. Cserélje `aksresourceid` le a helyére az előző parancs által visszaadott értéket. Cserélje `myresourcegroup` le a helyére a munkaterületet tartalmazó erőforráscsoportot. Cserélje `myworkspace` le a helyére a munkaterület nevét.
 
 ```azurecli
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-További információt az [az ml computetarget attach aks reference (az ml computetarget attach aks referenciája) tartalmaz.](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach#ext-azure-cli-ml-az-ml-computetarget-attach-aks)
+További információt az [az ml computetarget attach aks reference (az ml computetarget attach aks referenciája) tartalmaz.](/cli/azure/ml/computetarget/attach#az_ml_computetarget_attach_aks)
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -286,7 +286,7 @@ Az AKS-fürtök portálon való csatolásának információiért lásd: Számít
 ## <a name="create-or-attach-an-aks-cluster-with-tls-termination"></a>AKS-fürt létrehozása vagy csatolása TLS-letöltéssel
 [AKS-fürt](how-to-create-attach-kubernetes.md)létrehozásakor vagy csatolásakor engedélyezheti a TLS-letöltést **[AksCompute.provisioning_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** és **[AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** konfigurációs objektumokkal. Mindkét metódus egy konfigurációs objektumot  ad vissza, amely enable_ssl metódussal rendelkezik, és a **enable_ssl** használatával engedélyezheti a TLS-t.
 
-Az alábbi példa bemutatja, hogyan engedélyezheti a TLS-letöltést automatikus TLS-tanúsítvány-generációval és -konfigurációval a Háttérben a Microsoft-tanúsítvány használatával.
+Az alábbi példa bemutatja, hogyan engedélyezheti a TLS-letöltést automatikus TLS-tanúsítvány-generálás és -konfiguráció használatával a háttérben a Microsoft-tanúsítvánnyal.
 ```python
    from azureml.core.compute import AksCompute, ComputeTarget
    
@@ -306,7 +306,7 @@ Az alábbi példa bemutatja, hogyan engedélyezheti a TLS-letöltést automatiku
 
 
 ```
-Az alábbi példa bemutatja, hogyan engedélyezheti a TLS-megszakítást egyéni tanúsítvánnyal és egyéni tartománynévvel. Egyéni tartomány és tanúsítvány esetén úgy kell frissítenie a DNS-rekordot, hogy a pontozási végpont IP-címére mutasson. Lásd: [A DNS frissítése](how-to-secure-web-service.md#update-your-dns)
+Az alábbi példa bemutatja, hogyan engedélyezheti a TLS-megszakítást egyéni tanúsítvánnyal és egyéni tartománynévvel. Egyéni tartomány és tanúsítvány esetén úgy kell frissítenie a DNS-rekordot, hogy a pontozási végpont IP-címére mutasson. Lásd: [DNS frissítése](how-to-secure-web-service.md#update-your-dns)
 
 ```python
    from azureml.core.compute import AksCompute, ComputeTarget
@@ -324,10 +324,10 @@ Az alábbi példa bemutatja, hogyan engedélyezheti a TLS-megszakítást egyéni
 
 ```
 >[!NOTE]
-> A modellek AKS-fürtön való üzembe helyezésének biztonságossá való használatával kapcsolatos további információkért tekintse meg [a TLS](how-to-secure-web-service.md) használatát webszolgáltatás biztonságossá Azure Machine Learning
+> A modellek AKS-fürtön való üzembe helyezésének biztonságossá helyezéséről további információt [a TLS](how-to-secure-web-service.md) használata webszolgáltatás biztonságossá Azure Machine Learning
 
-## <a name="create-or-attach-an-aks-cluster-to-use-internal-load-balancer-with-private-ip"></a>AKS-fürt létrehozása vagy csatolása a belső ip Load Balancer ip-címmel való használathoz
-AKS-fürt létrehozásakor vagy csatolásakor a fürtöt belső fürt használatára is Load Balancer. Belső hálózati Load Balancer az AKS-hez való üzemelő példányok pontozási végpontjai privát IP-címet fognak használni a virtuális hálózaton belül. Az alábbi kódrészletek azt mutatják be, hogyan konfigurálható belső Load Balancer egy AKS-fürthöz.
+## <a name="create-or-attach-an-aks-cluster-to-use-internal-load-balancer-with-private-ip"></a>AKS-fürt létrehozása vagy csatolása belső ip Load Balancer ip-címmel való használathoz
+AKS-fürt létrehozásakor vagy csatolásakor konfigurálhatja a fürtöt úgy, hogy belső fürtöt Load Balancer. Belső hálózati Load Balancer az AKS-hez üzemelő példányok pontozási végpontjai magánhálózati IP-címet fognak használni a virtuális hálózaton belül. Az alábbi kódrészletek azt mutatják be, hogyan konfigurálható belső Load Balancer egy AKS-fürthöz.
 ```python
    
    from azureml.core.compute.aks import AksUpdateConfiguration
@@ -350,14 +350,14 @@ AKS-fürt létrehozásakor vagy csatolásakor a fürtöt belső fürt használat
    
 ```
 >[!IMPORTANT]
-> Azure Machine Learning nem támogatja a TLS belső biztonsági Load Balancer. A Load Balancer IP-címmel rendelkezik, és hogy a magánhálózati IP-cím lehet egy másik hálózaton, és a tanúsítványt vissza lehet szabadítatni. 
+> Azure Machine Learning nem támogatja a TLS belső biztonsági Load Balancer. A Load Balancer IP-címmel rendelkezik, és a magánhálózati IP-cím lehet egy másik hálózatban, és a tanúsítványt át lehet szabadítatni. 
 
 >[!NOTE]
-> A következtetési környezet biztonságossá teről további információért lásd: Biztonságossá Azure Machine Learning [környezetek](how-to-secure-inferencing-vnet.md)
+> További információ a következtetési környezet biztonságossá való alkalmazásról: Biztonságossá [Azure Machine Learning környezet](how-to-secure-inferencing-vnet.md)
 
 ## <a name="detach-an-aks-cluster"></a>AKS-fürt leválasztása
 
-A fürt munkaterületről való leválasztása a következő módszerek egyikével létezik:
+A fürtök a munkaterületről való leválasztása a következő módszerek egyikével létezik:
 
 > [!WARNING]
 > Ha az AKS Azure Machine Learning stúdió, SDK vagy a gépi tanuláshoz készült Azure CLI-bővítmény használatával leválaszt egy AKS-fürtöt, az nem törli az **AKS-fürtöt.** A fürt törléséhez lásd: Az Azure CLI használata [az AKS-sel.](../aks/kubernetes-walkthrough.md#delete-the-cluster)
@@ -370,7 +370,7 @@ aks_target.detach()
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A meglévő fürt a következő paranccsal leválasztható a munkaterületről. Cserélje le a helyére azt a nevet, amely szerint az `myaks` AKS-fürt a munkaterülethez van csatlakoztatva. Cserélje `myresourcegroup` le a helyére a munkaterületet tartalmazó erőforráscsoportot. Cserélje `myworkspace` le a helyére a munkaterület nevét.
+A meglévő fürtöt a következő paranccsal választhatja le a munkaterületről. Cserélje le a helyére azt a nevet, amelyként az `myaks` AKS-fürt a munkaterülethez van csatolva. Cserélje `myresourcegroup` le a helyére a munkaterületet tartalmazó erőforráscsoportot. Cserélje `myworkspace` le a helyére a munkaterület nevét.
 
 ```azurecli
 az ml computetarget detach -n myaks -g myresourcegroup -w myworkspace
@@ -378,7 +378,7 @@ az ml computetarget detach -n myaks -g myresourcegroup -w myworkspace
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A Azure Machine Learning stúdió válassza a __Számítás,__ Következtetési fürtök __lehetőséget,__ majd az eltávolítani kívánt fürtöt. Válassza le __a__ fürtöt a Leválasztás hivatkozással.
+A Azure Machine Learning stúdió válassza a __Számítás,__ Következtetési fürtök __lehetőséget,__ és az eltávolítani kívánt fürtöt. Válassza le __a__ fürtöt a Leválasztás hivatkozással.
 
 ---
 
@@ -387,7 +387,7 @@ A Azure Machine Learning stúdió válassza a __Számítás,__ Következtetési 
 
 Az Azure Machine Learning fürtben telepített Azure Kubernetes Service frissítéseit manuálisan kell alkalmazni. 
 
-Ezeket a frissítéseket úgy alkalmazhatja, ha leválasztja a fürtöt a Azure Machine Learning munkaterületről, majd újra a fürtöt a munkaterülethez. Ha a fürtön engedélyezve van a TLS, meg kell adnunk a TLS-/SSL-tanúsítványt és a titkos kulcsot a fürt újraajánlásakor. 
+Ezeket a frissítéseket úgy alkalmazhatja, ha leválasztja a fürtöt a Azure Machine Learning munkaterületről, majd újra a fürtöt a munkaterülethez. Ha a fürtön engedélyezve van a TLS, a fürt újracsatolásakor meg kell majd adnunk a TLS-/SSL-tanúsítványt és a titkos kulcsot. 
 
 ```python
 compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
@@ -408,18 +408,18 @@ compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceNa
 compute_target.wait_for_completion(show_output=True)
 ```
 
-Ha már nincs TLS-/SSL-tanúsítványa és titkos kulcsa, vagy ha az Azure Machine Learning által létrehozott tanúsítványt használ, a fürt leválasztása előtt lekérheti a fájlokat a fürthöz való csatlakozással és a titkos kulcs lekérése `kubectl` `azuremlfessl` révén.
+Ha már nincs TLS-/SSL-tanúsítványa és titkos kulcsa, vagy ha a Azure Machine Learning által létrehozott tanúsítványt használ, a fürt leválasztása előtt lekérheti a fájlokat a fürthöz való csatlakozással és a titkos kulcs lekérése `kubectl` `azuremlfessl` révén.
 
 ```bash
 kubectl get secret/azuremlfessl -o yaml
 ```
 
 >[!Note]
->A Kubernetes base-64 kódolású formátumban tárolja a titkos kódokat. A titkos kulcsok és összetevőit a 64-es kóddal kell dekódolni, mielőtt `cert.pem` `key.pem` a számára ad `attach_config.enable_ssl` hozzáférést. 
+>A Kubernetes base-64 kódolású formátumban tárolja a titkos kódokat. A titkos kulcsok és összetevőit a base-64-es kódban kell dekódolni, mielőtt `cert.pem` a rendszer a számára `key.pem` ad `attach_config.enable_ssl` hozzáférést. 
 
 ### <a name="webservice-failures"></a>Webszolgáltatás-hibák
 
-Az AKS-ben számos webszolgáltatás-hiba hibakereséséhez csatlakozzon a fürthöz a `kubectl` használatával. Az `kubeconfig.json` AKS-fürthöz a következő futtatásával kaphatja meg:
+Az AKS számos webszolgáltatás-hibája hibakereséséhez csatlakozzon a fürthöz a `kubectl` használatával. Az `kubeconfig.json` AKS-fürthöz a következő futtatásával kaphatja meg:
 
 ```azurecli-interactive
 az aks get-credentials -g <rg> -n <aks cluster name>

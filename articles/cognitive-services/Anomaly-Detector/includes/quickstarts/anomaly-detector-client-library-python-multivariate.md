@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/25/2020
 ms.author: mbullwin
-ms.openlocfilehash: 684c61dfb34d55681904943160ca389c19a4c8db
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: b0eba6d0be1d6a65b911f05dabf3cdbecc9c666d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107732398"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107879888"
 ---
 A Pythonhoz készült anomáliadetektor ügyféloldali kódtár első lépések. Kövesse az alábbi lépéseket a csomag telepítéséhez, és kezdje el használni a szolgáltatás által biztosított algoritmusokat. Az új többváltozós anomáliadetektálási API-k lehetővé teszik a fejlesztők számára a fejlett AI integrálását a metrikák csoportjaiból származó anomáliák észleléséhez anélkül, hogy gépi tanulási ismeretekre vagy címkével jelölt adatokra lenne szükség. A különböző jelek közötti függőségeket és korrelációkat a rendszer automatikusan kulcsfontosságú tényezőknek számítja. Ez segít proaktív módon megvédeni az összetett rendszereket a hibáktól.
 
@@ -23,7 +23,7 @@ Használja a anomáliadetektor Pythonhoz készült ügyféloldali kódtárát a 
 * Ha egyetlen idősor sem árul el sokat, és minden jelet meg kell néznie a probléma észlelése érdekében.
 * Drága fizikai eszközök predikatív karbantartása több tíz vagy több száz különböző típusú érzékelővel, amelyek a rendszer állapotának különböző aspektusait mérik.
 
-[Kódtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector)  |  [Csomag (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/)
+[Kódtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector)  |  [Csomag (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/)  |  [Mintakód](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/samples/sample_multivariate_detect.py)  |  [Jupyter Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -79,9 +79,9 @@ Ezek a kódrészletek a következőket mutatják be a Pythonhoz készült anomá
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Egy új anomáliadetektor példányának példányosíthoz át kell adni a anomáliadetektor előfizetői előfizetési kulcsot és a társított végpontot. Létrehozunk egy adatforrást is.  
+Az új anomáliadetektor példányának példányosíthoz át kell adni a anomáliadetektor előfizetői előfizetési kulcsot és a társított végpontot. Létrehozunk egy adatforrást is.  
 
-A többváltozós ANOMÁLIADETEKTOR használata előtt be kell betanítanunk a saját modellünket. A betanításhoz használt adatok idősorozatok, és minden idősornak CSV formátumúnak kell lennie két oszloppal, időbélyegzővel és értékkel. Az idősorokat egyetlen zip-fájlba kell tömörítenünk, és fel kell tölteni az [Azure Blob Storage-ba.](../../../../storage/blobs/storage-blobs-introduction.md#blobs) Alapértelmezés szerint a fájlnév az idősor változóját képviseli. Azt is meta.js, hogy a zip-fájlban egy további fájlnevet is fel kell venni, ha azt szeretné, hogy a változó neve eltér a .zip fájl nevétől. Miután létrehoztunk [egy BLOB SAS-url-címet (közös](../../../../storage/common/storage-sas-overview.md)hozzáférésű jogosultságú jogosultságok) URL-címet, a zip-fájl URL-címét használjuk a betanításhoz.
+A többváltozós ANOMÁLIADETEKTOR használata előtt be kell betanítanunk a saját modellünket. A betanításhoz használt adatok idősorozatok, és minden idősornak CSV formátumúnak kell lennie két oszloppal, időbélyegzővel és értékkel. Az idősorokat egyetlen zip-fájlba kell tömörítenünk, és fel kell tölteni az [Azure Blob Storage-ba.](../../../../storage/blobs/storage-blobs-introduction.md#blobs) Alapértelmezés szerint a fájlnév az idősor változóját képviseli. Azt is meta.js, hogy a zip-fájlban egy további fájlnevet is fel kell venni, ha azt szeretné, hogy a változó neve eltér a .zip fájl nevétől. Miután létrehoztunk [egy BLOB SAS-url-címet (közös](../../../../storage/common/storage-sas-overview.md)hozzáférésű jogosultságok) URL-címet, a zip-fájl URL-címét használjuk a betanításhoz.
 
 ```python
 def __init__(self, subscription_key, anomaly_detector_endpoint, data_source=None):
@@ -143,7 +143,7 @@ def train(self, start_time, end_time, max_tryout=500):
 
 ## <a name="detect-anomalies"></a>Anomáliák észlelése
 
-A és a használatával állapítsa meg, hogy vannak-e `detect_anomaly` `get_dectection_result` anomáliák az adatforrásban. Át kell adnia az előbb betanított modell modellazonosítóját.
+A és `detect_anomaly` a `get_dectection_result` használatával állapítsa meg, hogy vannak-e anomáliák az adatforrásban. Át kell adnia az előbb betanított modell modellazonosítóját.
 
 ```python
 def detect(self, model_id, start_time, end_time, max_tryout=500):
@@ -236,6 +236,11 @@ if __name__ == '__main__':
 
 ```
 
+A futtatása előtt hasznos lehet ellenőrizni [](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb) a projektet a teljes mintakóddal, amelyből ez a rövid útmutató származik.
+
+Az első [lépésekhez Jupyter Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb) is van egy részletes Jupyter Notebook.
+
 Futtassa az alkalmazást a `python` paranccsal és a fájlnévvel.
+
 
 [!INCLUDE [anomaly-detector-next-steps](../quickstart-cleanup-next-steps.md)]

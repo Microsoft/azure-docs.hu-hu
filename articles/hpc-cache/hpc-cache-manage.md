@@ -1,81 +1,81 @@
 ---
-title: Az Azure HPC cache kezelése és frissítése
-description: Az Azure HPC cache kezelése és frissítése az Azure Portal vagy az Azure CLI használatával
+title: Alkalmazások kezelése és Azure HPC Cache
+description: Adatok kezelése és frissítése Azure HPC Cache az Azure Portal Azure CLI használatával
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: b34beb65bb8c4136887651d8365c937b17718572
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a831aa7b2f3b0d438d9db8fefa3d26428fea3680
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471903"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862596"
 ---
 # <a name="manage-your-cache"></a>A gyorsítótár kezelése
 
-A gyorsítótár Áttekintés lapja a Azure Portal megjeleníti a projekt részleteit, a gyorsítótár állapotát és a gyorsítótár alapszintű statisztikáit. Emellett a gyorsítótár leállításához vagy elindításához, a gyorsítótár törléséhez, az adatürítéshez és a szoftver frissítéséhez szükséges vezérlőkkel is rendelkezik.
+A gyorsítótár áttekintési lapja Azure Portal a projekt részleteit, a gyorsítótár állapotát és a gyorsítótár alapvető statisztikáit. Vezérlőkkel is rendelkezik a gyorsítótár leállítására vagy elindítani, a gyorsítótár törlésére, az adatok hosszú távú tárolóba való kiürítésére és a szoftverek frissítésére.
 
-Ez a cikk azt is ismerteti, hogyan végezheti el ezeket az alapvető feladatokat az Azure CLI-vel.
+Ez a cikk azt is bemutatja, hogyan kell elvégezni ezeket az alapszintű feladatokat az Azure CLI-val.
 
-Az Áttekintés lap megnyitásához válassza ki a gyorsítótár-erőforrást a Azure Portal. Töltse be például a **minden erőforrás** lapot, és kattintson a gyorsítótár nevére.
+Az áttekintési oldal megnyitásához válassza ki a gyorsítótár-erőforrást a Azure Portal. Töltse be például a **Minden erőforrás lapot,** és kattintson a gyorsítótár nevére.
 
-![Az Azure HPC cache-példány áttekintési oldalának képernyőképe](media/hpc-cache-overview.png)
+![képernyőkép egy Azure HPC Cache áttekintési oldalának képernyőképe](media/hpc-cache-overview.png)
 
-A lap tetején található gombok segítenek a gyorsítótár kezelésében:
+Az oldal tetején található gombok segíthetnek a gyorsítótár kezelésében:
 
-* **Indítás** és [**Leállítás**](#stop-the-cache) – gyorsítótár-művelet folytatása vagy felfüggesztése
-* [**Ürítés**](#flush-cached-data) – módosított adatot ír a tárolási célokba
-* [**Frissítés**](#upgrade-cache-software) – frissíti a gyorsítótár szoftverét
-* [**Diagnosztika gyűjtése**](#collect-diagnostics) – hibakeresési adatok feltöltése
-* **Frissítés** – újratölti az Áttekintés oldalt
-* [**Delete (Törlés**](#delete-the-cache) ) – véglegesen elpusztítja a gyorsítótárat
+* **Indítás** és [**leállítás**](#stop-the-cache) – Folytatja vagy felfüggeszti a gyorsítótár-műveletet
+* [**Kiürítés**](#flush-cached-data) – A módosított adatokat tároló célokra írja
+* [**Frissítés**](#upgrade-cache-software) – Frissíti a gyorsítótárszoftvert
+* [**Diagnosztika gyűjtése**](#collect-diagnostics) – Hibakeresési információk feltöltése
+* **Frissítés** – Újra betölti az áttekintő oldalt
+* [**Törlés**](#delete-the-cache) – Véglegesen megsemmisíti a gyorsítótárat
 
-Az alábbi lehetőségekről itt olvashat bővebben.
+Ezekről a lehetőségekről alább olvashat bővebben.
 
-Az alábbi képre kattintva megtekintheti a gyorsítótár-kezelési feladatokat bemutató [videót](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) .
+Kattintson az alábbi képre [a](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) gyorsítótár-kezelési feladatokat bemutató videó megtekintése érdekében.
 
-[![videó miniatűrje: Azure HPC cache: Manage (kattintson ide a videó oldalának megtekintéséhez)](media/video-5-manage.png)](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)
+[![video thumbnail: Azure HPC Cache: Kezelés (kattintson ide a videó oldalának megjelenítéséhez)](media/video-5-manage.png)](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)
 
 ## <a name="stop-the-cache"></a>A gyorsítótár leállítása
 
-A gyorsítótár leállításával csökkentheti a költségeket az inaktív időszakokban. Nem számítunk fel időt a gyorsítótár leállítási idejére, de a gyorsítótár lefoglalt lemezes tárterületét kell fizetnie. (A részletekért tekintse meg a [díjszabási](https://aka.ms/hpc-cache-pricing) oldalt.)
+A gyorsítótár leállításával csökkentheti a költségeket inaktív időszakban. A gyorsítótár leállított üzemidejére nem számítunk fel díjat, a gyorsítótár lefoglalt lemezes tárterülete azonban díj ellenében van felszámállítva. (Részletekért tekintse meg [a](https://aka.ms/hpc-cache-pricing) díjszabási oldalt.)
 
-A leállított gyorsítótár nem válaszol az ügyfelek kéréseire. A gyorsítótár leállítása előtt le kell választania az ügyfeleket.
+A leállított gyorsítótár nem válaszol az ügyfélkérésekre. A gyorsítótár leállítása előtt leválasztani kell az ügyfeleket.
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A **Leállítás** gomb felfüggeszti az aktív gyorsítótárat. A **Leállítás** gomb akkor érhető el, ha a gyorsítótár állapota **kifogástalan** vagy **csökkentett teljesítményű**.
+A **Leállítás** gomb felfüggeszti az aktív gyorsítótárat. A **Leállítás** gomb akkor érhető el, ha a gyorsítótár állapota **Kifogástalan** vagy **Csökkentett teljesítményű.**
 
-![képernyőkép a leállítást lefedő gombokról és egy előugró üzenetről, amely leírja a leállítási műveletet, és azt kérdezi, hogy folytatja? Igen (alapértelmezett) és nincs gomb](media/stop-cache.png)
+![képernyőkép a felső gombokról a Leállítás kiemeléssel és a leállítási műveletet leíró előugró üzenettel, és a "folytatni szeretné?" kérdést Igen (alapértelmezett) és Nem gombokkal](media/stop-cache.png)
 
-Miután rákattintott az Igen gombra a gyorsítótár leállításának megerősítéséhez, a gyorsítótár automatikusan kiüríti a tartalmát a tárolási célokhoz. Ez a folyamat hosszabb időt is igénybe vehet, de gondoskodik az adatkonzisztenciaről. Végül a gyorsítótár állapota **Leállítva** értékre változik.
+Miután az Igen gombra kattint a gyorsítótár leállításának megerősítéséhez, a gyorsítótár automatikusan kiüríti annak tartalmát a céltárolókba. Ez a folyamat némi időt is el fog venni, de biztosítja az adatkonzisztenciát. Végül a gyorsítótár állapota Leállítva **állapotra változik.**
 
-A leállított gyorsítótár újraaktiválásához kattintson a **Start** gombra. Nincs szükség jóváhagyásra.
+A leállított gyorsítótár újraaktiválhoz kattintson az Indítás **gombra.** Nincs szükség megerősítésre.
 
-![képernyőkép a legfontosabb gombokról a Start Kiemelt](media/start-cache.png)
+![a felső gombok képernyőképe a Kiemelt Indítás gombra kattintva](media/start-cache.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
+[Az Azure CLI beállítása a Azure HPC Cache.](./az-cli-prerequisites.md)
 
-A gyorsítótár ideiglenes felfüggesztése az az [HPC-cache stop](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-stop) paranccsal. Ez a művelet csak akkor érvényes, ha a gyorsítótár állapota **kifogástalan** vagy **csökkentett teljesítményű**.
+Ideiglenesen függessze fel a gyorsítótárat [az az hpc-cache stop paranccsal.](/cli/azure/hpc-cache#az_hpc_cache_stop) Ez a művelet csak akkor érvényes, ha a gyorsítótár állapota **Kifogástalan** vagy **Csökkentett teljesítményű.**
 
-A gyorsítótár a leállítás előtt automatikusan üríti a tartalmat a tárolási célokba. Ez a folyamat hosszabb időt is igénybe vehet, de gondoskodik az adatkonzisztenciaről.
+A gyorsítótár a leállítás előtt automatikusan kiüríti a tartalmát a céltárolókra. Ez a folyamat némi időt is el fog venni, de biztosítja az adatkonzisztenciát.
 
-Ha a művelet befejeződött, a gyorsítótár állapota **Leállítva** értékre változik.
+Ha a művelet befejeződött, a gyorsítótár állapota Leállítva **állapotra változik.**
 
-Aktiválja újra a leállított gyorsítótárat az [az HPC-cache Start](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-start)paranccsal.
+A leállított gyorsítótár újraaktiválható [az az hpc-cache start val.](/cli/azure/hpc-cache#az_hpc_cache_start)
 
-A Start vagy a stop parancs kiadása után a parancssorban egy "futó" állapotjelző üzenet jelenik meg, amíg a művelet be nem fejeződik.
+Amikor kiállítja a start vagy stop parancsot, a parancssor "Fut" állapotüzenetet küld, amíg a művelet be nem fejeződik.
 
 ```azurecli
 $ az hpc-cache start --name doc-cache0629
  - Running ..
 ```
 
-Befejezésekor az üzenet a "kész" értékre frissül, és megjeleníti a visszatérési kódokat és egyéb információkat.
+A befejezéskor az üzenet "Finished" (Kész) lesz, és megjeleníti a visszatérési kódokat és egyéb információkat.
 
 ```azurecli
 $ az hpc-cache start --name doc-cache0629
@@ -92,30 +92,30 @@ $ az hpc-cache start --name doc-cache0629
 
 ---
 
-## <a name="flush-cached-data"></a>Gyorsítótárazott adattárolás ürítése
+## <a name="flush-cached-data"></a>Gyorsítótárazott adatok kiürítése
 
-Az áttekintő lap **kiürítés** gombja azt jelzi, hogy a gyorsítótár azonnal írni tudja a gyorsítótárban tárolt összes módosult, a háttérbeli tárolási célokat. A gyorsítótár rendszeres módon menti az adatok tárolási célhelyeit, ezért ezt manuálisan nem kell elvégezni, ha nem szeretné, hogy a háttérrendszer naprakész legyen. Előfordulhat például, hogy a **kiürítést** a tárolási pillanatkép elkészítése vagy az adathalmaz méretének ellenőrzése előtt használja.
+Az **áttekintési** oldal Kiürítés gombja arra utasítja a gyorsítótárat, hogy azonnal írja a gyorsítótárban tárolt összes módosított adatot a háttérbeli tároló célokra. A gyorsítótár rendszeresen menti az adatokat a céltárolókba, ezért ezt nem szükséges manuálisan elvégezni, hacsak nem szeretné, hogy a háttértárrendszer naprakész legyen. Használhatja például a Flush (Kiürítés) használhatja a **tároló** pillanatképének készítése vagy az adatkészlet méretének ellenőrzése előtt.
 
 > [!NOTE]
-> A kiürítési folyamat során a gyorsítótár nem tudja kiszolgálni az ügyfelek kérelmeit. A gyorsítótár-hozzáférés fel van függesztve, és a művelet befejeződése után folytatódik.
+> A kiürítési folyamat során a gyorsítótár nem tudja kiszolgálni az ügyfélkéréseket. A gyorsítótár-hozzáférés fel van függesztve, és a művelet befejezése után folytatódik.
 
-Ha elindítja a gyorsítótár kiürítési műveletét, a gyorsítótár leáll az ügyfelek kéréseinek fogadása után, és a gyorsítótár állapota az Áttekintés oldalon a **Kiürítésre** változik.
+Amikor elindítja a gyorsítótár kiürítési műveletét, a gyorsítótár nem fogadja el az ügyfélkéréseket, és az áttekintő lapon a gyorsítótár állapota **Kiürítés állapotra változik.**
 
-A gyorsítótárban tárolt adattárolók a megfelelő tárolási célokba lesznek mentve. Attól függően, hogy mennyi adatra van szükség a kiürítéshez, a folyamat eltarthat néhány percig, vagy akár egy óráig is.
+A rendszer a gyorsítótárban lévő adatokat a megfelelő tároló célokra menti. Attól függően, hogy mennyi adatot kell kiüríteni, a folyamat eltarthat néhány percig vagy több mint egy óráig.
 
-Miután az összes adatmentést a tárolási célokba menti, a gyorsítótár automatikusan elindul az ügyfelek kéréseinek megkezdése után. A gyorsítótár állapota **kifogástalanra** vált.
+Miután az összes adat tárolóhelyre mentve van, a gyorsítótár automatikusan elkezdi ismét az ügyfélkéréseket. A gyorsítótár állapota Kifogástalan **lesz.**
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A gyorsítótár kiürítéséhez kattintson a **kiürítés** gombra, majd a művelet megerősítéséhez kattintson az **Igen** gombra.
+A gyorsítótár ürítéshez kattintson a **Kiürítés** gombra, majd kattintson az **Igen gombra** a művelet megerősítéséhez.
 
-![képernyőkép a felső gombokról és a flush kiemeléséről, valamint egy előugró üzenet, amely leírja a kiürítési műveletet, és megkérdezi, hogy szeretné-e folytatni? Igen (alapértelmezett) és nincs gomb](media/hpc-cache-flush.png)
+![képernyőkép a felső gombokról, kiemelt Flush gombra, valamint egy előugró üzenettel, amely leírja a kiürítési műveletet, és megkérdezi, hogy folytatja-e a műveletet. Igen (alapértelmezett) és Nem gombokkal](media/hpc-cache-flush.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
+[Az Azure CLI beállítása a Azure HPC Cache.](./az-cli-prerequisites.md)
 
-Az [az HPC-cache flush](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-flush) paranccsal kényszerítheti a gyorsítótárat, hogy az összes módosult adattal írja a tárolási célokat.
+Az [az hpc-cache flush használatával](/cli/azure/hpc-cache#az_hpc_cache_flush) kényszerítse a gyorsítótárat arra, hogy minden módosított adatot a tárolási célokra írjon.
 
 Példa:
 
@@ -124,7 +124,7 @@ $ az hpc-cache flush --name doc-cache0629 --resource-group doc-rg
  - Running ..
 ```
 
-A kiürítés befejeződése után a rendszer sikeres üzenetet küld.
+Amikor a kiürítés befejeződik, a rendszer sikert ad vissza.
 
 ```azurecli
 {- Finished ..
@@ -141,35 +141,35 @@ $
 
 ---
 
-## <a name="upgrade-cache-software"></a>A cache szoftver frissítése
+## <a name="upgrade-cache-software"></a>Gyorsítótárszoftver frissítése
 
-Ha elérhetővé vált egy új szoftververzió, a **frissítés** gomb aktívvá válik. A szoftver frissítésével kapcsolatos üzenet a lap tetején is megjelenik.
+Ha új szoftververzió érhető el, a **Frissítés** gomb aktívvá válik. A lap tetején egy üzenet is megjelenik a szoftver frissítéséről.
 
-![képernyőfelvétel a gombok felső soráról a frissítés gomb engedélyezésével](media/hpc-cache-upgrade-button.png)
+![képernyőfelvétel a felső gombsorról, engedélyezve a Frissítés gombbal](media/hpc-cache-upgrade-button.png)
 
-A szoftverfrissítés során az ügyfél-hozzáférés nem szakad meg, a gyorsítótár teljesítménye azonban lelassul. Tervezze meg a szoftver frissítését a használaton kívüli órákban vagy tervezett karbantartási időszakban.
+Az ügyfél-hozzáférés nem szakad meg a szoftverfrissítés során, de a gyorsítótár teljesítménye lassú. Tervezze meg a szoftverek frissítését nem csúcsidőszakban vagy tervezett karbantartási időszakban.
 
-A szoftverfrissítés több órát is igénybe vehet. A magasabb átviteli sebességgel konfigurált gyorsítótárak hosszabb ideig tartanak, mint a kisebb csúcsérték-értékekkel rendelkező gyorsítótárak.
+A szoftverfrissítés több órát is igénybe vehet. A nagyobb átviteli sebességre konfigurált gyorsítótárak frissítése hosszabb időt igénybe, mint a kisebb csúcsteljesítményű gyorsítótárak.
 
-Ha egy szoftverfrissítés elérhető, akkor a rendszer hetente vagy manuálisan alkalmazza azt. A befejezési dátum a frissítési üzenetben jelenik meg. Ha ez idő alatt nem végez frissítést, az Azure automatikusan alkalmazza a frissítést a gyorsítótárba. Az automatikus frissítés ütemezése nem konfigurálható. Ha aggódik a gyorsítótár teljesítményére gyakorolt hatás miatt, a szoftvert saját kezűleg kell frissítenie az időtartam lejárta előtt.
+Ha elérhetővé válik egy szoftverfrissítés, akkor egy vagy több héttel manuálisan alkalmazhatja azt. A záró dátum megjelenik a frissítési üzenetben. Ha ez idő alatt nem frissít, az Azure automatikusan alkalmazza a frissítést a gyorsítótárra. Az automatikus frissítés időzítése nem konfigurálható. Ha aggódik a gyorsítótár teljesítményére gyakorolt hatás miatt, az időszak lejárta előtt saját maga frissítse a szoftvert.
 
-Ha a rendszer leállítja a gyorsítótárat a befejezési dátum után, a gyorsítótár a következő indításakor automatikusan frissíti a szoftvert. (Előfordulhat, hogy a frissítés nem indul el azonnal, de az első órában indul el.)
+Ha a gyorsítótár le van állítva, amikor a záró dátum véget ér, a gyorsítótár automatikusan frissíti a szoftvert a következő gombra való töltéskor. (Előfordulhat, hogy a frissítés nem indul el azonnal, de az első órában kezdődik.)
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A szoftverfrissítés megkezdéséhez kattintson a **frissítés** gombra. A gyorsítótár állapota a **frissítésig** változik, amíg a művelet be nem fejeződik.
+Kattintson **a Frissítés gombra** a szoftverfrissítés megkezdéséhez. A gyorsítótár állapota Frissítésre **változik,** amíg a művelet be nem fejeződik.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
+[Az Azure CLI beállítása a Azure HPC Cache.](./az-cli-prerequisites.md)
 
-Az Azure CLI-ben a gyorsítótár állapotáról szóló jelentés végén új szoftver-információk szerepelnek. (Az [az HPC-cache show](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-show) paranccsal ellenőrizhető.) Keresse meg a "upgradeStatus" karakterláncot az üzenetben.
+Az Azure CLI-ről a gyorsítótár állapotjelentésének végén új szoftverinformációk szerepelnek. (Az [ellenőrzéshez használja az az hpc-cache show](/cli/azure/hpc-cache#az_hpc_cache_show) adatokat.) Keresse meg az "upgradeStatus" sztringet az üzenetben.
 
-Az az [HPC-cache upgrade-firmware](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-upgrade-firmware) paranccsal alkalmazza a frissítést, ha van ilyen.
+Ha van ilyen, az [az hpc-cache upgrade-firmware](/cli/azure/hpc-cache#az_hpc_cache_upgrade-firmware) használatával alkalmazhatja a frissítést.
 
-Ha nincs elérhető frissítés, a műveletnek nincs hatása.
+Ha nem érhető el frissítés, ennek a műveletnek nincs hatása.
 
-Ez a példa a gyorsítótár állapotát jeleníti meg (nincs elérhető frissítés) és a frissítés – belső vezérlőprogram parancs eredményét.
+Ez a példa bemutatja a gyorsítótár állapotát (nincs elérhető frissítés) és az upgrade-firmware parancs eredményeit.
 
 ```azurecli
 $ az hpc-cache show --name doc-cache0629
@@ -200,34 +200,34 @@ $
 
 ## <a name="collect-diagnostics"></a>Diagnosztikai információk gyűjtése
 
-A **diagnosztika összegyűjtése** gomb manuálisan elindítja a rendszerinformációk gyűjtésének és a Microsoft-szolgáltatásba való feltöltésének folyamatát, és támogatja a hibaelhárítást. A gyorsítótár automatikusan gyűjti és feltölti ugyanazokat a diagnosztikai adatokat, ha súlyos gyorsítótárazási probléma lép fel.
+A **Diagnosztika gyűjtése gomb** manuálisan elindítja a rendszerinformációk gyűjtését, majd feltöltését a Microsoft szolgáltatásba és a hibaelhárítási támogatásba. A gyorsítótár automatikusan gyűjti és feltölti ugyanezeket a diagnosztikai adatokat, ha súlyos gyorsítótár-probléma merül fel.
 
-Akkor használja ezt a vezérlőt, ha a Microsoft szolgáltatás és a támogatás kéri.
+Akkor használja ezt a vezérlőt, ha a Microsoft szolgáltatás és a támogatási szolgálat ezt kéri.
 
-Miután rákattintott a gombra, kattintson az **Igen** gombra a feltöltés megerősítéséhez.
+Miután a gombra kattintott, kattintson az **Igen gombra** a feltöltés megerősítéséhez.
 
-![képernyőkép: "a diagnosztikai gyűjtemény elindítása" előugró ablak megerősítő üzenete. Az alapértelmezett "yes" gomb ki van emelve.](media/diagnostics-confirm.png)
+![képernyőkép a diagnosztikai gyűjtemény indítását megerősítő előugró üzenetről. Az alapértelmezett "igen" gomb ki van emelve.](media/diagnostics-confirm.png)
 
 ## <a name="delete-the-cache"></a>A gyorsítótár törlése
 
-A **Törlés** gomb megsemmisíti a gyorsítótárat. Ha töröl egy gyorsítótárat, a rendszer minden erőforrását megsemmisíti, és többé nem számít fel fiókra vonatkozó díjat.
+A **Törlés** gomb megsemmisíti a gyorsítótárat. Gyorsítótár törlésekor a rendszer az összes erőforrását megsemmisíti, és nem számít fel további díjakat.
 
-A tárolási célokként használt háttérbeli tárolási kötetek nem érintik a gyorsítótár törlésekor. Később hozzáadhatja őket egy későbbi gyorsítótárhoz, vagy elvégezheti őket külön leszereléssel.
+A tároló célokként használt háttértárköteteket ez nem érinti a gyorsítótár törlésekor. Később hozzáadhatja őket egy jövőbeli gyorsítótárhoz, vagy leszerelheti őket külön.
 
 > [!NOTE]
-> Az Azure HPC-gyorsítótár nem ír automatikusan módosított adatokból a gyorsítótárból a háttér-tárolási rendszerbe a gyorsítótár törlése előtt.
+> Azure HPC Cache nem ír automatikusan módosított adatokat a gyorsítótárból a háttértárrendszerekbe a gyorsítótár törlése előtt.
 >
-> Annak érdekében, hogy a gyorsítótárban lévő összes adattal a hosszú távú tárolásra legyen írva, [a törlés előtt állítsa le a gyorsítótárat](#stop-the-cache) . Győződjön meg arról, hogy az állapot **leállt** a törlés előtt.
+> Annak érdekében, hogy a gyorsítótárban lévő összes adat [](#stop-the-cache) hosszú távú tárolóba legyen írva, a törlés előtt állítsa le a gyorsítótárat. A törlés előtt ellenőrizze, hogy a **Leállítva** állapotot jeleníti-e meg.
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A gyorsítótár leállítása után kattintson a **Törlés** gombra a gyorsítótár végleges eltávolításához.
+A gyorsítótár leállítása után kattintson a **Törlés gombra** a gyorsítótár végleges eltávolításához.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
+[Az Azure CLI beállítása a Azure HPC Cache.](./az-cli-prerequisites.md)
 
-A gyorsítótár végleges eltávolításához használja az Azure CLI-parancsot az [HPC-cache delete](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-delete) paranccsal.
+A gyorsítótár végleges eltávolításához használja [az az hpc-cache delete Azure CLI-parancsot.](/cli/azure/hpc-cache#az_hpc_cache_delete)
 
 Példa:
 ```azurecli
@@ -247,29 +247,29 @@ $
 
 ---
 
-## <a name="cache-metrics-and-monitoring"></a>Gyorsítótár-metrikák és-figyelés
+## <a name="cache-metrics-and-monitoring"></a>Gyorsítótárazási metrikák és monitorozás
 
-Az Áttekintés oldalon néhány alapszintű gyorsítótár-statisztika – a gyorsítótárazási sebesség, a másodpercenkénti műveletek és a késés – grafikonok láthatók.
+Az áttekintő oldal néhány alapszintű gyorsítótár-statisztika grafikonját jeleníti meg– a gyorsítótár átviteli sebességét, a másodpercenkénti műveleteket és a késést.
 
-![képernyőfelvétel a fent említett statisztikai adatokat bemutató három vonalas gráfról](media/hpc-cache-overview-stats.png)
+![képernyőkép három vonaldiagramról, amely egy minta-gyorsítótár fent említett statisztikáit mutatja](media/hpc-cache-overview-stats.png)
 
-Ezek a diagramok az Azure beépített monitorozási és elemzési eszközeinek részét képezik. A portál oldalsávjának **figyelés** fejléce alatt további eszközök és riasztások érhetők el. További információt az [Azure monitoring dokumentációjának](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-in-the-azure-portal)portál szakasza tartalmaz.
+Ezek a diagramok az Azure beépített monitorozási és elemzési eszközeinek részei. További eszközök és riasztások érhetők el a portál oldalsávjának **Figyelés** fejléce alatt található oldalakon. További információt az Azure Monitoring dokumentációjának portál szakaszában [talál.](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-in-the-azure-portal)
 
 ## <a name="view-warnings"></a>Figyelmeztetések megtekintése
 
-Ha a gyorsítótár sérült állapotba kerül, ellenőrizze a **figyelmeztetések** lapot. Ezen az oldalon a gyorsítótár-szoftverek értesítései láthatók, amelyek segíthetnek az állapotának megértésében.
+Ha a gyorsítótár állapota nem megfelelő, ellenőrizze a **Figyelmeztetések** oldalt. Ezen az oldalon a gyorsítótárszoftver értesítései segíthetnek megérteni annak állapotát.
 
-Ezek az értesítések nem jelennek meg a tevékenység naplójában, mert nem Azure Portal vezérlik. Gyakran az esetlegesen létrehozott egyéni beállításokhoz vannak társítva.
+Ezek az értesítések nem jelennek meg a tevékenységnaplóban, mert nem az Azure Portal. Ezek gyakran az Ön által megadott egyéni beállításokhoz vannak társítva.
 
-Az itt látható figyelmeztetések típusai például a következők lehetnek:
+Az itt látható figyelmeztetések a következők lehetnek:
 
-* A gyorsítótár nem tudja elérni az NTP-kiszolgálóját
+* A gyorsítótár nem tudja elérni az NTP-kiszolgálót
 * A gyorsítótár nem tudta letölteni a kiterjesztett csoportok felhasználónevének adatait
-* Az egyéni DNS-beállítások módosultak a tárolási célra
+* Az egyéni DNS-beállítások megváltoztak a tárolóhelyen
 
-![képernyőkép a figyelési > figyelmeztetésekről, amely egy üzenetet jelenít meg arról, hogy a kiterjesztett csoportok felhasználónevei nem tölthetők le](media/warnings-page.png)
+![képernyőkép a Figyelés > figyelmeztetések lapról, amely azt az üzenetet mutatja, hogy a kiterjesztett csoportok felhasználónevei nem tölthetők le](media/warnings-page.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ az [Azure mérőszámok és statisztikai eszközökről](../azure-monitor/index.yml)
-* Segítség kérése [Az Azure HPC cache](hpc-cache-support-ticket.md) -hez
+* További információ az [Azure metrika- és statisztikai eszközeiről](../azure-monitor/index.yml)
+* Segítség [a Azure HPC Cache](hpc-cache-support-ticket.md)

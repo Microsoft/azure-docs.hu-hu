@@ -1,130 +1,130 @@
 ---
-title: 'Oktatóanyag: megosztás a szervezeti környezeten kívül – Azure-adatmegosztás'
-description: Oktatóanyag – az Azure-adatmegosztást használó ügyfelekkel és partnerekkel való adatmegosztás
+title: 'Oktatóanyag: Szervezeten kívüli megosztás – Azure Data Share'
+description: Oktatóanyag – Adatok megosztása ügyfelekkel és partnerekkel a Azure Data Share
 author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 8e149270d8f98cbf72d3864d238a3d8ddfd61c67
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b8d49e3b3c6f6407fe241e00ada5039bd94fd706
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639536"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870876"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Oktatóanyag: Adatok megosztása az Azure Data Share-rel  
 
-Ebből az oktatóanyagból megtudhatja, hogyan állíthat be új Azure-adatmegosztást, és hogyan oszthatja meg adatait az Azure-szervezeten kívüli ügyfelekkel és partnerekkel. 
+Ez az oktatóanyag bemutatja, hogyan állíthat be új Azure Data Share és hogyan kezdheti meg az adatok megosztását az Azure-szervezeten kívüli ügyfelekkel és partnerekkel. 
 
 Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Data Share-t.
 > * Adjon hozzá adathalmazokat a Data Share-hez.
-> * Pillanatkép-ütemterv engedélyezése az adatmegosztáshoz. 
+> * Pillanatkép-ütemezés engedélyezése a Data Share. 
 > * Adjon hozzá címzetteket a Data Share-hez. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
-* A címzett Azure bejelentkezési e-mail-címe (az e-mail alias használata nem fog működni).
-* Ha az Azure-beli adattár egy másik Azure-előfizetésben található, mint amelyet az adatmegosztási erőforrás létrehozásához fog használni, regisztrálja a [Microsoft. DataShare erőforrás-szolgáltatót](concepts-roles-permissions.md#resource-provider-registration) abban az előfizetésben, amelyben az Azure-adattár található. 
+* Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, [kezdés](https://azure.microsoft.com/free/) előtt hozzon létre egy ingyenes fiókot.
+* A címzett Azure-beli bejelentkezési e-mail-címe (az e-mail-aliasuk használata nem fog működni).
+* Ha Data Share forrás Azure-adattár egy másik Azure-előfizetésben található, mint az erőforrás létrehozásához használt, regisztrálja Data Share [Microsoft.DataShare](concepts-roles-permissions.md#resource-provider-registration) erőforrás-szolgáltatót abban az előfizetésben, amelyben az Azure-adattár található. 
 
-### <a name="share-from-a-storage-account"></a>Megosztás egy Storage-fiókból
+### <a name="share-from-a-storage-account"></a>Megosztás tárfiókból
 
-* Azure Storage-fiók: Ha még nem rendelkezik ilyennel, létrehozhat egy [Azure Storage-fiókot](../storage/common/storage-account-create.md)
-* A Storage-fiókba való írásra vonatkozó engedély, amely megtalálható a *Microsoft. Storage/storageAccounts/Write* szolgáltatásban. Ez az engedély a **Közreműködő** szerepkör részét képezi.
-* Jogosultság a szerepkör-hozzárendelés hozzáadásához a Storage-fiókhoz, amely megtalálható a *Microsoft. Authorization/szerepkör-hozzárendelésekben/írásban*. Ez az engedély a **Tulajdonos** szerepkör részét képezi. 
+* Azure Storage-fiók: Ha még nem rendelkezik fiókkal, létrehozhat egy [Azure Storage-fiókot](../storage/common/storage-account-create.md)
+* Engedély a Tárfiókba való íráshoz, amely a *Microsoft.Storage/storageAccounts/write* fájlban van. Ez az engedély a **Közreműködő** szerepkör részét képezi.
+* Engedély szerepkör-hozzárendelés hozzáadására a tárfiókhoz, amely a *Microsoft.Authorization/role assignments/write* fájlban van jelen. Ez az engedély a **Tulajdonos** szerepkör részét képezi. 
 
 
 ### <a name="share-from-a-sql-based-source"></a>Megosztás SQL-alapú forrásból
-Az alábbi lista tartalmazza az SQL-forrásokból származó adatok megosztásának előfeltételeit. 
+Az alábbi lista az SQL-forrásból származó adatok megosztásának előfeltételeit sorolja fel. 
 
-#### <a name="prerequisites-for-sharing-from-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>A Azure SQL Database vagy az Azure szinapszis Analytics (korábban Azure SQL DW) megosztásának előfeltételei
+#### <a name="prerequisites-for-sharing-from-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>A Azure SQL Database vagy Azure Synapse Analytics (korábban DW) Azure SQL előfeltételei
 
-* Egy Azure SQL Database vagy Azure szinapszis Analytics (korábban Azure SQL DW) a megosztani kívánt táblázatokkal és nézetekkel.
-* A *Microsoft. SQL/Servers/Databases/Write* adatbázisban található SQL Server-adatbázisba való írásra vonatkozó engedély. Ez az engedély a **Közreműködő** szerepkör részét képezi.
-* Az SQL Server **Azure Active Directory rendszergazdája**
-* SQL Server tűzfal-hozzáférés. Ezt a következő lépések végrehajtásával teheti meg: 
-    1. A Azure Portalban navigáljon az SQL Server elemre. A bal oldali navigációs sávon válassza a *tűzfalak és virtuális hálózatok* lehetőséget.
-    1. Az **Igen** gombra kattintva *engedélyezheti, hogy az Azure-szolgáltatások és-erőforrások hozzáférjenek ehhez a kiszolgálóhoz*.
-    1. Kattintson az **+ ügyfél IP-** címének hozzáadása elemre. Az ügyfél IP-címének módosítása változhat. Előfordulhat, hogy ezt a folyamatot meg kell ismételni, amikor legközelebb megosztja az SQL-adatok Azure Portalból való megosztását. Hozzáadhat IP-címtartományt is.
+* Egy Azure SQL Database vagy Azure Synapse Analytics (Azure SQL DW) a megosztani kívánt táblákkal és nézetekkel.
+* Engedély a *Microsoft.Sql/servers/databases/write* fájlban található SQL Server-adatbázisokba való íráshoz. Ez az engedély a **Közreműködő** szerepkör részét képezi.
+* **Azure Active Directory SQL Server** rendszergazdája
+* SQL Server tűzfal-hozzáférés. Ezt a következő lépésekkel lehet tenni: 
+    1. A Azure Portal nyissa meg az SQL Servert. Válassza *a Tűzfalak és virtuális hálózatok lehetőséget* a bal oldali navigációs sávon.
+    1. Kattintson **az Igen gombra,** ha engedélyeznie kell az Azure-szolgáltatások és *-erőforrások számára a kiszolgálóhoz való hozzáférést.*
+    1. Kattintson **a +Ügyfél IP-címének hozzáadása elemre.** Az ügyfél IP-címe változhat. Előfordulhat, hogy a következő alkalommal meg kell ismételni ezt a folyamatot, amikor sql-adatokat oszt meg Azure Portal. IP-címtartományt is hozzáadhat.
     1. Kattintson a **Mentés** gombra. 
 
-#### <a name="prerequisites-for-sharing-from-azure-synapse-analytics-workspace-sql-pool"></a>Az Azure szinapszis Analytics (munkaterület) SQL-készlet megosztásának előfeltételei
+#### <a name="prerequisites-for-sharing-from-azure-synapse-analytics-workspace-sql-pool"></a>Előfeltételek a Azure Synapse Analytics (munkaterület) SQL-készletből való megosztáshoz
 
-* * Egy Azure szinapszis Analytics (munkaterület) dedikált SQL-készlet a megosztani kívánt táblázatokkal. A nézet megosztása jelenleg nem támogatott. A kiszolgáló nélküli SQL-készletből való megosztás jelenleg nem támogatott.
-* Engedély a szinapszis munkaterületen található SQL-készletbe való írásra, amely megtalálható a *Microsoft. szinapszis/munkaterület/sqlPools/Write* fájlokban. Ez az engedély a **Közreműködő** szerepkör részét képezi.
-* Engedély az adatmegosztási erőforrás felügyelt identitásához a szinapszis-munkaterület SQL-készletének eléréséhez. Ezt a következő lépések végrehajtásával teheti meg: 
-    1. A Azure Portalban navigáljon a szinapszis munkaterületre. Válassza az SQL Active Directory-rendszergazda lehetőséget a bal oldali navigációs sávon, és állítsa be magát a **Azure Active Directory-rendszergazdaként**.
-    1. Nyissa meg a szinapszis Studio alkalmazást, és válassza a *kezelés* lehetőséget a bal oldali navigációs sávon. Válassza a *hozzáférés-vezérlés* lehetőséget a biztonság területen. Rendeljen hozzá saját **SQL-rendszergazdai** vagy **munkaterület-rendszergazdai** szerepkört.
-    1. A szinapszis Studióban válassza a *fejlesztés* lehetőséget a bal oldali navigációs sávon. Hajtsa végre a következő parancsfájlt az SQL-készletben az adatmegosztási erőforrás felügyelt identitásának db_datareader való hozzáadásához. 
+* * Egy Azure Synapse Analytics (munkaterület) dedikált SQL-készlet a megosztani kívánt táblákkal. A nézetmegosztás jelenleg nem támogatott. A kiszolgáló nélküli SQL-készletből való megosztás jelenleg nem támogatott.
+* Engedély az SQL-készletbe való íráshoz a *Microsoft.Synapse/workspaces/sqlPools/write fájlban található Synapse-munkaterületen.* Ez az engedély a **Közreműködő** szerepkör részét képezi.
+* Engedély a Data Share erőforrás felügyelt identitásához a Synapse-munkaterület SQL-készletének eléréséhez. Ezt a következő lépésekkel lehet tenni: 
+    1. A Azure Portal nyissa meg a Synapse-munkaterületet. Válassza ki az SQL Active Directory rendszergazdai szerepkört a bal oldali navigációs sávon, és állítsa be magát Azure Active Directory **rendszergazdának.**
+    1. Nyissa Synapse Studio bal *oldali navigációs sávon a Kezelés* lehetőséget. A Biztonság alatt válassza a *Hozzáférés-vezérlés* lehetőséget. Rendelje hozzá **saját SQL-rendszergazdai** vagy **munkaterület-rendszergazdai szerepkörét.**
+    1. A Synapse Studio bal *oldali navigációs sávon válassza* a Fejlesztés lehetőséget. Hajtsa végre a következő szkriptet az SQL-készletben a felügyelt Data Share erőforrás db_datareader. 
     
         ```sql
         create user "<share_acct_name>" from external provider;     
         exec sp_addrolemember db_datareader, "<share_acct_name>"; 
         ```                   
-       Vegye figyelembe, hogy a *<share_acc_name>* az adatmegosztási erőforrás neve. Ha még nem hozott létre adatmegosztási erőforrást, később is visszatérhet ehhez az előfeltételhöz.  
+       Vegye *figyelembe<share_acc_name>* hogy a Data Share neve. Ha még nem hozott létre Data Share erőforrást, később is visszatérhet erre az előfeltételre.  
 
-* A szinapszis munkaterület tűzfal-hozzáférése. Ezt a következő lépések végrehajtásával teheti meg: 
-    1. A Azure Portalban navigáljon a szinapszis munkaterületre. A bal oldali navigációs sávon válassza a *tűzfalak* lehetőséget.
-    1. Ide **kattintva** *engedélyezheti, hogy az Azure-szolgáltatások és-erőforrások hozzáférjenek ehhez a munkaterülethez*.
-    1. Kattintson az **+ ügyfél IP-** címének hozzáadása elemre. Az ügyfél IP-címének módosítása változhat. Előfordulhat, hogy ezt a folyamatot meg kell ismételni, amikor legközelebb megosztja az SQL-adatok Azure Portalból való megosztását. Hozzáadhat IP-címtartományt is.
+* Synapse-munkaterület tűzfal-hozzáférése. Ezt a következő lépésekkel lehet tenni: 
+    1. A Azure Portal nyissa meg a Synapse-munkaterületet. A *bal oldali navigációs panelen* válassza a Tűzfalak lehetőséget.
+    1. Kattintson **a BE** gombra a Munkaterület elérésének engedélyezése Az Azure-szolgáltatások és *-erőforrások számára lehetőséget.*
+    1. Kattintson **a +Ügyfél IP-címének hozzáadása elemre.** Az ügyfél IP-címe változhat. Előfordulhat, hogy a következő alkalommal meg kell ismételni ezt a folyamatot, amikor sql-adatokat oszt meg Azure Portal. IP-címtartományt is hozzáadhat.
     1. Kattintson a **Mentés** gombra. 
 
 
 ### <a name="share-from-azure-data-explorer"></a>Megosztás az Azure Data Explorerből
-* Egy Azure Adatkezelő-fürt, amelynek adatbázisait meg szeretné osztani.
-* Engedély az Azure Adatkezelő-fürtbe való írásra, amely megtalálható a *Microsoft. Kusto/fürtök/írás* szolgáltatásban. Ez az engedély a **Közreműködő** szerepkör részét képezi.
+* Egy Azure Data Explorer a megosztani kívánt adatbázisokkal.
+* Engedély egy Azure Data Explorer, amely a *Microsoft.Kusto/clusters/write* fájlban található. Ez az engedély a **Közreműködő** szerepkör részét képezi.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-## <a name="create-a-data-share-account"></a>Adatmegosztási fiók létrehozása
+## <a name="create-a-data-share-account"></a>Új Data Share létrehozása
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz.
+Hozzon létre Azure Data Share erőforrást egy Azure-erőforráscsoportban.
 
-1. Kattintson a portál bal felső sarkában található menü gombra, majd válassza az **erőforrás létrehozása** (+) lehetőséget.
+1. Válassza a portál bal felső sarkában található menügombot, majd az **Erőforrás létrehozása** (+) lehetőséget.
 
-1. Keresse meg az *adatmegosztást*.
+1. Keressen rá a *Data Share.*
 
-1. Válassza az adatmegosztás lehetőséget, majd válassza a **Létrehozás** lehetőséget.
+1. Válassza a Data Share, majd a **Létrehozás lehetőséget.**
 
-1. Töltse ki az Azure-beli adatmegosztási erőforrás alapvető adatait az alábbi információkkal. 
+1. Adja meg a Azure Data Share alapvető adatait. 
 
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | Előfizetés | Az Ön előfizetése | Válassza ki az adatmegosztási fiókhoz használni kívánt Azure-előfizetést.|
-    | Erőforráscsoport | *testresourcegroup* | Használjon meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot. |
-    | Hely | *USA 2. keleti régiója* | Válassza ki az adatmegosztási fiókhoz tartozó régiót.
-    | Name | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
+    | Előfizetés | Az Ön előfizetése | Válassza ki az adat share-fiókjához használni kívánt Azure-előfizetést.|
+    | Erőforráscsoport | *testresourcegroup* | Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. |
+    | Hely | *USA 2. keleti régiója* | Válasszon ki egy régiót az adat share-fiókjához.
+    | Name | *datashareaccount* | Adja meg az adat-megosztási fiók nevét. |
     | | |
 
-1. Válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget az adatmegosztási fiók kiépítéséhez. Az új adatmegosztási fiók üzembe helyezése általában körülbelül 2 percet vesz igénybe. 
+1. Válassza **az Áttekintés + létrehozás,** majd a **Létrehozás** lehetőséget az adat share-fiók létrehozásához. Egy új adat share-fiók kiépítése általában körülbelül 2 percet vagy kevesebb időt vesz igénybe. 
 
-1. Ha a telepítés befejeződött, válassza az **Ugrás erőforráshoz** lehetőséget.
+1. Az üzembe helyezés befejezése után válassza az **Ugrás az erőforráshoz lehetőséget.**
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz.
+Hozzon létre Azure Data Share erőforrást egy Azure-erőforráscsoportban.
 
 Először készítse elő a környezetet az Azure CLI-hez:
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Az erőforrás létrehozásához használja az alábbi parancsokat:
+Használja az alábbi parancsokat az erőforrás létrehozásához:
 
-1. Az az [Account set](/cli/azure/account#az_account_set) paranccsal állíthatja be az előfizetését az aktuális alapértelmezett előfizetésre:
+1. Az [az account set paranccsal](/cli/azure/account#az_account_set) állítsa be az előfizetését az aktuális alapértelmezett előfizetésre:
 
    ```azurecli
    az account set --subscription 00000000-0000-0000-0000-000000000000
    ```
 
-1. Futtassa az az [Provider Register](/cli/azure/provider#az_provider_register) parancsot az erőforrás-szolgáltató regisztrálásához:
+1. Futtassa [az az provider register](/cli/azure/provider#az_provider_register) parancsot az erőforrás-szolgáltató regisztráláshoz:
 
    ```azurecli
    az provider register --name "Microsoft.DataShare"
@@ -136,13 +136,13 @@ Az erőforrás létrehozásához használja az alábbi parancsokat:
    az group create --name testresourcegroup --location "East US 2"
    ```
 
-1. Futtassa az az [DataShare Account Create](/cli/azure/ext/datashare/datashare/account#ext_datashare_az_datashare_account_create) parancsot egy adatmegosztási fiók létrehozásához:
+1. Futtassa [az az datashare account create parancsot](/cli/azure/datashare/account#az_datashare_account_create) egy új Data Share létrehozásához:
 
    ```azurecli
    az datashare account create --resource-group testresourcegroup --name datashareaccount --location "East US 2" 
    ```
 
-   Az adatmegosztási fiókok megtekintéséhez futtassa az az [DataShare Account List](/cli/azure/ext/datashare/datashare/account#ext_datashare_az_datashare_account_list) parancsot:
+   Futtassa [az az datashare account list parancsot](/cli/azure/datashare/account#az_datashare_account_list) a Data Share a fiókokat:
 
    ```azurecli
    az datashare account list --resource-group testresourcegroup
@@ -154,63 +154,63 @@ Az erőforrás létrehozásához használja az alábbi parancsokat:
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. Navigáljon az adatmegosztás áttekintő oldalára.
+1. Lépjen a Data Share Áttekintés lapjára.
 
     ![Az adatok megosztása](./media/share-receive-data.png "Az adatok megosztása") 
 
-1. Válassza **az adatmegosztás megkezdése** lehetőséget.
+1. Válassza **a Start sharing your data (Az adatok megosztásának elkezdődjön) lehetőséget.**
 
 1. Válassza a **Létrehozás** lehetőséget.   
 
-1. Adja meg a megosztás részleteit. Adja meg a nevet, a megosztás típusát, a megosztási tartalmak leírását és a használati feltételeket (opcionális). 
+1. Adja meg a megosztás adatait. Adja meg a nevet, a megosztás típusát, a megosztás tartalmának leírását és a használati feltételeket (nem kötelező). 
 
-    ![EnterShareDetails](./media/enter-share-details.png "Adja meg a megosztás részleteit") 
+    ![EnterShareDetails](./media/enter-share-details.png "Adja meg a Megosztás részletei adatokat") 
 
 1. Válassza a **Folytatás** lehetőséget.
 
-1. Az adatkészletek megosztáshoz való hozzáadásához válassza az **adatkészletek hozzáadása** elemet. 
+1. Ha adatkészleteket szeretne hozzáadni a megosztáshoz, válassza az **Adatkészletek hozzáadása lehetőséget.** 
 
     ![Adatkészletek hozzáadása a megosztáshoz](./media/datasets.png "Adathalmazok")
 
-1. Válassza ki a hozzáadni kívánt adatkészlet típusát. Az adathalmazok eltérő listáját fogja látni az előző lépésben kiválasztott megosztási típustól (pillanatkép vagy helyben) függően. Ha Azure SQL Database vagy Azure szinapszis Analytics (korábban Azure SQL DW) használatával oszt meg megosztást, a rendszer a táblák listázásához a hitelesítési módszert fogja kérni. Válassza a HRE-hitelesítés lehetőséget, és jelölje be az **adatmegosztás engedélyezése a fenti "felhasználó létrehozása" szkript futtatása a saját nevében** jelölőnégyzetet. 
+1. Válassza ki a hozzáadni kívánt adatkészlettípust. Az adatkészlettípusok különböző listája fog megjelenik az előző lépésben kiválasztott megosztási típustól (pillanatkép vagy helyi). Ha a megosztás egy Azure SQL Database vagy Azure Synapse Analytics (korábbi nevén DW Azure SQL), a rendszer kérni fogja a hitelesítési módszert a táblák listához. Válassza az AAD-hitelesítés lehetőséget, és jelölje be az Allow Data Share to run the above **'create user' script on myhalf**. 
 
-    ![AddDatasets](./media/add-datasets.png "Adatkészletek hozzáadása")    
+    ![AddDatasets (Adatkészletek hozzáadása)](./media/add-datasets.png "Adatkészletek hozzáadása")    
 
-1. Navigáljon a megosztani kívánt objektumhoz, és válassza az "adatkészletek hozzáadása" lehetőséget. 
+1. Keresse meg a megosztani kívánt objektumot, és válassza az "Adatkészletek hozzáadása" lehetőséget. 
 
-    ![SelectDatasets](./media/select-datasets.png "Adatkészletek kiválasztása")    
+    ![SelectDatasets (Adatkészletek kiválasztása)](./media/select-datasets.png "Adatkészletek kiválasztása")    
 
-1. A címzettek lapon adja meg az adatfogyasztó e-mail-címeit a "+ Címzett hozzáadása" lehetőség kiválasztásával. 
+1. A Címzettek lapon a "+ Címzett hozzáadása" lehetőség kiválasztásával adja meg az adat fogyasztója e-mail-címét. 
 
-    ![AddRecipients](./media/add-recipient.png "Címzettek hozzáadása") 
+    ![AddRecipients (Átmenetiek hozzáadása)](./media/add-recipient.png "Címzettek hozzáadása") 
 
 1. Válassza a **Folytatás** lehetőséget.
 
-1. Ha kiválasztotta a pillanatkép-megosztás típusát, beállíthatja a pillanatkép-ütemtervet, hogy az adatokra vonatkozó frissítéseket biztosítson az adatfogyasztónak. 
+1. Ha a pillanatkép-megosztás típusát választotta, konfigurálhatja úgy a pillanatkép-ütemezést, hogy az adatok frissítéseit az adat fogyasztója számára adja meg. 
 
-    ![EnableSnapshots](./media/enable-snapshots.png "Pillanatképek engedélyezése") 
+    ![EnableSnapshots (Napshots engedélyezése)](./media/enable-snapshots.png "Pillanatképek engedélyezése") 
 
 1. Válassza ki a kezdési időt és az ismétlődési időközt. 
 
 1. Válassza a **Folytatás** lehetőséget.
 
-1. A felülvizsgálat + létrehozás lapon tekintse át a csomag tartalmát, a beállításokat, a címzetteket és a szinkronizálási beállításokat. Válassza a **Létrehozás** lehetőséget.
+1. Az Áttekintés + létrehozás lapon tekintse át a csomag tartalmát, a beállításokat, a címzetteket és a szinkronizálási beállításokat. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. Az az [Storage Account Create](/cli/azure/storage/account#az_storage_account_create) parancs futtatásával hozzon létre egy adatmegosztást:
+1. Futtassa [az az storage account create parancsot](/cli/azure/storage/account#az_storage_account_create) egy új Data Share:
 
    ```azurecli
    az storage account create --resource-group testresourcegroup --name ContosoMarketplaceAccount
    ```
 
-1. Az az [Storage Container Create](/cli/azure/storage/container#az_storage_container_create) paranccsal hozzon létre egy tárolót a megosztáshoz az előző parancsban:
+1. Az [az storage container create paranccsal](/cli/azure/storage/container#az_storage_container_create) hozzon létre egy tárolót az előző parancsban található megosztáshoz:
 
    ```azurecli
    az storage container create --name ContosoMarketplaceContainer --account-name ContosoMarketplaceAccount
    ```
 
-1. Az adatmegosztás létrehozásához futtassa az az [DataShare Create](/cli/azure/ext/datashare/datashare#ext_datashare_az_datashare_create) parancsot:
+1. Futtassa [az az datashare create](/cli/azure/datashare#az_datashare_create) parancsot a Data Share:
 
    ```azurecli
    az datashare create --resource-group testresourcegroup \
@@ -218,7 +218,7 @@ Az erőforrás létrehozásához használja az alábbi parancsokat:
      --description "Data Share" --share-kind "CopyBased" --terms "Confidential"
    ```
 
-1. Az az [DataShare meghívás Create](/cli/azure/ext/datashare/datashare/invitation#ext_datashare_az_datashare_invitation_create) paranccsal hozza létre a meghívót a megadott címen:
+1. Az [az datashare invitation create paranccsal](/cli/azure/datashare/invitation#az_datashare_invitation_create) hozza létre a meghívást a megadott címhez:
 
    ```azurecli
    az datashare invitation create --resource-group testresourcegroup \
@@ -228,15 +228,15 @@ Az erőforrás létrehozásához használja az alábbi parancsokat:
 
 ---
 
-Az Azure-beli adatmegosztás már létrejött, és az adatmegosztás címzettje most már készen áll a meghívás elfogadására.
+A Azure Data Share létrejött, és a címzettje Data Share készen áll a meghívás elfogadására.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha az erőforrásra már nincs szükség, lépjen az **adatmegosztás áttekintése** lapra, és válassza a **Törlés** lehetőséget az eltávolításához.
+Ha az erőforrásra már nincs szükség, az Áttekintés Data Share  **válassza** a Törlés lehetőséget az eltávolításához.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan hozhat létre Azure-beli adatmegosztást, és hogyan hívhat meg címzetteket. Ha szeretne többet megtudni arról, hogy az adatfogyasztó hogyan fogadhat és fogadhat adatmegosztást, folytassa az elfogadás és fogadás adatgyűjtéssel foglalkozó oktatóanyagot.
+Ez az oktatóanyag bemutatja, hogyan hozhat létre Azure Data Share és hívhat meg címzetteket. Ha meg szeretne ismerkedni az adat fogyasztója által az adat megosztásának elfogadásával és fogadásának mikéntjére vonatkozó információkkal, folytassa az adatok fogadását és fogadását ismertető oktatóanyagot.
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Adatok elfogadása és fogadása az Azure Data Share használatával](subscribe-to-data-share.md)

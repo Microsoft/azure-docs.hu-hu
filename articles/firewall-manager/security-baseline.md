@@ -1,24 +1,24 @@
 ---
-title: Az Azure biztonsági alapterve Azure Firewall Managerhez
-description: A Azure Firewall Manager biztonsági alapterve az Azure biztonsági Teljesítménytesztben meghatározott biztonsági javaslatok megvalósítására szolgáló eljárási útmutatást és erőforrásokat biztosít.
+title: Az Azure biztonsági alapkonfigurációja Azure Firewall Manager
+description: A Azure Firewall Manager alapkonfigurációja eljárásokkal kapcsolatos útmutatást és forrásforrásokat biztosít az Azure biztonsági teljesítménytesztben meghatározott biztonsági javaslatok megvalósításához.
 author: msmbaldwin
 ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bec5cafaf7d506d9ab25228c680d00af91dbf3d0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7cb37de7c5f101ea5f72ff87ccdf94e5925a95d4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200138"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864414"
 ---
-# <a name="azure-security-baseline-for-azure-firewall-manager"></a>Az Azure biztonsági alapterve Azure Firewall Managerhez
+# <a name="azure-security-baseline-for-azure-firewall-manager"></a>Az Azure biztonsági alapkonfigurációja Azure Firewall Manager
 
-Ez a biztonsági alapkonfiguráció az [Azure biztonsági teljesítményteszt 2,0-es verziójáról](../security/benchmarks/overview.md) Azure Firewall Managerre vonatkozó útmutatást alkalmazza. Az Azure Security Benchmark ajánlásokat ad arra nézve, hogy hogyan tehetők biztonságossá a felhőalapú megoldások az Azure-ban. A tartalom az Azure biztonsági teljesítményteszt által meghatározott **biztonsági vezérlők** és a Azure Firewall Managerre vonatkozó kapcsolódó útmutatás szerint van csoportosítva. A Azure Firewall-kezelőre nem alkalmazható **vezérlők** ki lettek zárva.
+Ez a biztonsági alapkonfiguráció az Azure Biztonsági teljesítményteszt [2.0-s](../security/benchmarks/overview.md) verziójának útmutatását alkalmazza a Azure Firewall Manager. Az Azure Security Benchmark ajánlásokat ad arra nézve, hogy hogyan tehetők biztonságossá a felhőalapú megoldások az Azure-ban. A tartalmat az Azure  biztonsági teljesítményteszt által meghatározott biztonsági vezérlők és a kapcsolódó, az adott Azure Firewall Manager. **A** Azure Firewall Manager nem alkalmazható vezérlők.
 
-Ha szeretné megtekinteni, hogy a Azure Firewall Manager hogyan felel meg teljesen az Azure biztonsági Teljesítménytesztének, tekintse meg a [teljes Azure Firewall Manager biztonsági alapkonfiguráció-hozzárendelési fájlt](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)
+Ha meg Azure Firewall Manager az Azure-biztonsági teljesítménytesztre, tekintse meg a teljes Azure Firewall Manager [referenciakonfiguráció-leképezési fájlt.](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)
 
 ## <a name="identity-management"></a>Identitáskezelés
 
@@ -26,15 +26,15 @@ Ha szeretné megtekinteni, hogy a Azure Firewall Manager hogyan felel meg teljes
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1: Az Azure Active Directory, mint központi identitáskezelő és hitelesítési rendszer szabványosítása
 
-**Útmutató**: a Azure Firewall Manager az Azure Active Directory (Azure ad) alapértelmezett identitás-és hozzáférés-kezelési szolgáltatásként használja. Egységesítse az Azure AD-t a szervezet identitás-és hozzáférés-kezelésének szabályozásához a ben:
+**Útmutató:** Azure Firewall Manager szolgáltatás Azure Active Directory (Azure AD) az alapértelmezett identitás- és hozzáférés-kezelési szolgáltatás. Szabványosítania kell az Azure AD-t, hogy szabályozza a szervezet identitás- és hozzáférés-kezelését:
 
-- Microsoft Cloud erőforrások, például a Azure Portal, az Azure Storage, az Azure virtuális gép (Linux és Windows), a Azure Key Vault, a Pásti és az SaaS-alkalmazások.
+- Microsoft Cloud-erőforrások, például a Azure Portal, az Azure Storage, az Azure Virtual Machine (Linux és Windows), Azure Key Vault, PaaS és SaaS alkalmazások.
 
 - a szervezet erőforrásaiban, például az Azure-on vagy a vállalati hálózat erőforrásain lévő alkalmazásokban.
 
 Az Azure AD biztonságának kiemelten fontosnak kell lennie a vállalat felhőbiztonsági gyakorlatában. Az Azure AD egy identitásbiztonsági pontszámmal segít felmérni az identitásbiztonsági helyzetet a Microsoft ajánlott eljárásaihoz viszonyítva. A pontszám alapján felmérheti, mennyire felel meg a konfiguráció az ajánlott eljárásoknak, és javíthatja a biztonság állapotát.
 
-Az Azure AD támogatja a külső identitást, amely lehetővé teszi a felhasználók számára, hogy Microsoft-fiók nélkül bejelentkezzenek alkalmazásaiba és erőforrásaiba külső identitásával.
+Az Azure AD támogatja a külső identitást, amely lehetővé teszi a Microsoft-fiók nélküli felhasználók számára, hogy külső identitással jelentkezzenek be az alkalmazásaikba és erőforrásaikba.
 
 - [Bérlői viszony az Azure Active Directoryban](../active-directory/develop/single-and-multi-tenant-apps.md)
 
@@ -50,7 +50,7 @@ Az Azure AD támogatja a külső identitást, amely lehetővé teszi a felhaszn�
 
 ### <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3: Az Azure AD-beli egyszeri bejelentkezés használata alkalmazások eléréséhez
 
-**Útmutató**: a Azure Firewall Manager a Azure Active Directory használatával biztosítja az identitás-és hozzáférés-kezelést az Azure-erőforrásokhoz, a felhőalapú alkalmazásokhoz és a helyszíni alkalmazásokhoz. Ez vonatkozik az olyan nagyvállalati identitásokra, mint az alkalmazottak, valamint az olyan külső identitásokra is, mint a partnerek, szállítók és ellátók. Ez lehetővé teszi a vállalati adatok és erőforrások egyszeri bejelentkezéssel (SSO) megvalósított kezelését és védelmét a helyszínen és a felhőben. Az összes felhasználót, alkalmazást és eszközt beléptetheti az Azure AD-be a zökkenőmentes, biztonságos hozzáférés, valamint a jobb átláthatóság és vezérlés érdekében.
+**Útmutató:** Azure Firewall Manager Azure Active Directory azure-erőforrások, felhőalkalmazások és helyszíni alkalmazások identitás- és hozzáférés-kezelését biztosítja. Ez vonatkozik az olyan nagyvállalati identitásokra, mint az alkalmazottak, valamint az olyan külső identitásokra is, mint a partnerek, szállítók és ellátók. Ez lehetővé teszi a vállalati adatok és erőforrások egyszeri bejelentkezéssel (SSO) megvalósított kezelését és védelmét a helyszínen és a felhőben. Az összes felhasználót, alkalmazást és eszközt beléptetheti az Azure AD-be a zökkenőmentes, biztonságos hozzáférés, valamint a jobb átláthatóság és vezérlés érdekében.
 
 - [Az Azure AD-vel megvalósított alkalmazás-SSO ismertetése](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -60,11 +60,11 @@ Az Azure AD támogatja a külső identitást, amely lehetővé teszi a felhaszn�
 
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4: Erős hitelesítési vezérlők használata minden Azure Active Directory-alapú hozzáféréshez
 
-**Útmutató**: a Azure Firewall Manager olyan Azure Active Directory használ, amely támogatja a többtényezős hitelesítés (MFA) és az erős, jelszóval nem használható metódusok erős hitelesítési vezérlését.
+**Útmutató:** Azure Firewall Manager a Azure Active Directory, amely támogatja az erős hitelesítési vezérlőket a többtényezős hitelesítés (MFA) és az erős jelszó nélküli módszerek használatával.
 - Többtényezős hitelesítés – Engedélyezheti az Azure AD MFA-t, és az Azure Security Center identitás- és hozzáférés-kezelésre vonatkozó javaslatait követve megvalósíthat néhány, az MFA beállításához ajánlott eljárást. Az MFA megkövetelhető az összes kijelölt felhasználótól, vagy felhasználónként a bejelentkezési feltételek és a kockázati tényezők alapján.
 - Jelszó nélküli hitelesítés – Három jelszó nélküli hitelesítési lehetőség érhető el: a Windows Hello for Business, a Microsoft Authenticator alkalmazás, és az olyan helyszíni hitelesítési módszerek, mint az intelligens kártyák.
 
-A rendszergazda és a Kiemelt jogosultságú felhasználók számára győződjön meg arról, hogy az erős hitelesítési módszer legmagasabb szintje van használatban, majd ezt követi a megfelelő erős hitelesítési házirend kiosztása más felhasználók számára.
+Rendszergazdai és kiemelt jogosultságú felhasználók esetén győződjön meg arról, hogy az erős hitelesítési módszer legmagasabb szintjét használja, majd a megfelelő erős hitelesítési házirendet kell alkalmaznia más felhasználók számára.
 
 - [MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md) 
 
@@ -80,15 +80,15 @@ A rendszergazda és a Kiemelt jogosultságú felhasználók számára győződj�
 
 ### <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5: Fiókok rendellenességeinek monitorozása, és riasztás azok alapján
 
-**Útmutató**: a Azure Firewall Manager integrálva van a Azure Active Directory, amely a következő adatforrásokat biztosítja:
+**Útmutató:** Azure Firewall Manager integrálva van a Azure Active Directory, amely a következő adatforrásokat biztosítja:
 - Bejelentkezések – a bejelentkezési jelentés a felügyelt alkalmazások használatával és a felhasználók bejelentkezési tevékenységeivel kapcsolatos információkat biztosít.
 - Auditnaplók – az Azure AD-n belül különböző szolgáltatások által végrehajtott összes módosításra vonatkozó nyomkövetési naplókat biztosít. A naplók rögzítik például az erőforrások módosításait az Azure AD-n belül, például a felhasználók, alkalmazások, csoportok, szerepkörök és szabályzatok hozzáadását vagy eltávolítását.
 - Kockázatos bejelentkezések – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa.
 - Kockázatosként megjelölt felhasználók – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága.
 
-Ezek az adatforrások a Azure Monitor, az Azure Sentinel vagy a harmadik féltől származó SIEM rendszerekkel integrálhatók.
+Ezek az adatforrások integrálhatók Azure Monitor, Azure Sentinel külső SIEM-rendszerekkel.
 
-A tevékenység naplója nem támogatja a tűzfalszabályok csoportházirend-csoportokra vonatkozó szabályait, ez egy ismert probléma, és a jövőbeli frissítésekben kerül megcímzésre.
+A tevékenységnapló jelenleg nem támogatja a tűzfalszabály-gyűjteménycsoportokkal kapcsolatos műveleteket. Ez egy ismert probléma, és a későbbi frissítésekben már foglalkozunk.
 
 Az Azure Security Center riasztásokat is küldhet bizonyos gyanús tevékenységek észlelésekor. Ezek közé tartozik például a sikertelen hitelesítési kísérletek kiugróan magas száma vagy az előfizetésben talált elavult fiókok.
 
@@ -102,7 +102,7 @@ Az Azure Advanced Threat Protection (ATP) olyan biztonsági megoldás, amely Act
 
 - [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Ismert problémák a Azure Firewall Managerben](overview.md#known-issues)
+- [Azure Firewall Manager problémák](overview.md#known-issues)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -110,7 +110,7 @@ Az Azure Advanced Threat Protection (ATP) olyan biztonsági megoldás, amely Act
 
 ### <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6: Azure-erőforrásokhoz való hozzáférés korlátozása feltételek alapján
 
-**Útmutató**: a Azure Firewall Manager támogatja az Azure Active Directory (Azure ad) feltételes hozzáférését egy részletesebb hozzáférés-vezérléshez a felhasználó által definiált feltételek alapján, például olyan IP-tartományokból származó felhasználói bejelentkezéseket, amelyeknek az MFA-t kell használniuk a bejelentkezéshez. A részletes hitelesítési munkamenet-kezelési szabályzat többféle helyzetben is felhasználható.
+**Útmutató:** a Azure Firewall Manager támogatja az Azure Active Directory (Azure AD) feltételes hozzáférést a felhasználó által meghatározott feltételeken alapuló részletesebb hozzáférés-vezérlés érdekében, például bizonyos IP-tartományok felhasználói bejelentkezését, amelyek MFA-t kell használni a bejelentkezéshez. A részletes hitelesítési munkamenet-kezelési szabályzat többféle helyzetben is felhasználható.
 
 - [Az Azure-beli feltételes hozzáférés áttekintése](../active-directory/conditional-access/overview.md)
 
@@ -128,11 +128,11 @@ Az Azure Advanced Threat Protection (ATP) olyan biztonsági megoldás, amely Act
 
 ### <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: Emelt jogosultságú felhasználók védelme és korlátozása
 
-**Útmutató**: a Azure Firewall Manager a Azure Active Directory (Azure ad) szolgáltatást használja az identitáshoz és a hozzáféréshez. A legfontosabb beépített szerepkörök az Azure AD globális rendszergazda és a Kiemelt szerepkörű rendszergazda, mivel a két szerepkörhöz hozzárendelt felhasználók delegálhatja a rendszergazdai szerepköröket:
-- Globális rendszergazda: az ehhez a szerepkörhöz tartozó felhasználók hozzáférhetnek az Azure AD összes felügyeleti funkciójához, valamint az Azure AD-identitásokat használó szolgáltatásokhoz.
-- Kiemelt szerepkörű rendszergazda: az ezzel a szerepkörrel rendelkező felhasználók kezelhetik a szerepkör-hozzárendeléseket az Azure AD-ben, valamint a Azure AD Privileged Identity Managementon (PIM) belül is. Emellett ez a szerepkör lehetővé teszi a PIM és a felügyeleti egységek valamennyi aspektusának kezelését.
+**Útmutató:** Azure Firewall Manager az Azure Active Directory (Azure AD) identitást és hozzáférést használ. A legfontosabb beépített szerepkörök az Azure AD a globális rendszergazda és a kiemelt szerepkörű rendszergazda, mivel a két szerepkörhöz hozzárendelt felhasználók rendszergazdai szerepköröket delegálnak:
+- Globális rendszergazda: Az ezzel a szerepkörsel rendelkező felhasználók hozzáférhetnek az Azure AD összes felügyeleti funkciójához, valamint az Azure AD-identitásokat használó szolgáltatásokhoz.
+- Kiemelt szerepkör rendszergazdája: Az ezzel a szerepkörsel rendelkező felhasználók kezelhetik a szerepkör-hozzárendeléseket az Azure AD-ban, valamint a Azure AD Privileged Identity Management (PIM) belül. Emellett ez a szerepkör lehetővé teszi a PIM és a felügyeleti egységek minden aspektusának kezelését.
 
-Előfordulhat, hogy más kritikus szerepkörökre is szükség van, amelyeket az egyéni szerepkörök hozzárendelésekor kell alkalmazni. Emellett előfordulhat, hogy hasonló vezérlőket szeretne alkalmazni a kritikus fontosságú üzleti eszközök rendszergazdai fiókjára.
+Előfordulhat, hogy más kritikus fontosságú szerepköröket is meg kell szabályoznia, ha egyéni szerepköröket használ, amelyekhez bizonyos kiemelt jogosultságok vannak hozzárendelve. Emellett hasonló vezérlőket is alkalmazhat a kritikus üzleti eszközök rendszergazdai fiókjára.
 
 Az Azure AD Privileged Identity Management (PIM) használatával engedélyezheti az Azure-erőforrások és az Azure AD igény szerinti (just-in-time, JIT) jogosultságú hozzáférését. A JIT ideiglenes engedélyeket biztosít az érintett feladatok végrehajtásához, csak annyi időre, ameddig a felhasználóknak erre szükségük van. A PIM biztonsági riasztásokat is képes kiadni, amikor gyanús vagy nem biztonságos tevékenységeket észlel az Azure AD-szervezetben.
 
@@ -148,19 +148,19 @@ Az Azure AD Privileged Identity Management (PIM) használatával engedélyezheti
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: Az üzletileg kritikus rendszerek rendszergazdai elérésének korlátozása
 
-**Útmutató**: egyéni Azure RBAC-szerepkörök használata a Azure Firewall házirendhez tartozó szabálykészlet-csoportok elérésének elkülönítéséhez. Az Azure egyéni szerepkör-definíciójának használatával megakadályozhatja a véletlen alapházirend-eltávolítást, és szelektív hozzáférést biztosíthat a szabályok gyűjtési csoportjaihoz egy előfizetésen vagy erőforráscsoporton belül.
+**Útmutató:** Egyéni Azure RBAC-szerepkörökkel különítse el a hozzáférést a szabályzat szabálygyűjtemény-Azure Firewall számára. Egyéni Azure-szerepkördefiníció használatával megakadályozhatja az alapszabálykészlet véletlen eltávolítását, és szelektív hozzáférést nyújthat az előfizetésen vagy erőforráscsoporton belüli szabálygyűjtemény-csoportokhoz.
 
-Győződjön meg arról, hogy az üzleti szempontból kritikus rendszerekhez való rendszergazdai hozzáféréssel rendelkező felügyeleti, identitási és biztonsági rendszerekhez is korlátozza a hozzáférést. Azok a támadók, akik veszélyeztetik ezeket a felügyeleti és biztonsági rendszereket, azonnal weaponize azokat az üzleti szempontból kritikus fontosságú eszközök biztonsága érdekében.
+Ügyeljen arra, hogy korlátozza a felügyeleti, identitási és biztonsági rendszerekhez való hozzáférést is, amelyek rendszergazdai hozzáféréssel rendelkezik az üzleti kritikus rendszerekhez. Azok a támadók, akik feltörik ezeket a felügyeleti és biztonsági rendszereket, azonnal feltörhetik őket az üzleti kritikus fontosságú eszközök feltörése érdekében.
 
-A hozzáférés-vezérlés összes típusát a vállalati szegmentálási stratégiához kell igazítani, hogy biztosítsa a konzisztens hozzáférés-vezérlést.
+A hozzáférés-vezérlés minden típusát a vállalati szegmentációs stratégiához kell igazítani a konzisztens hozzáférés-vezérlés biztosítása érdekében.
 
-- [Szabály hierarch definiálása Azure Firewall házirend használatával](rule-hierarchy.md)
+- [Szabályhierarchia Azure Firewall szabályzat használatával](rule-hierarchy.md)
 
-- [Azure-összetevők és-hivatkozási modell](/security/compass/microsoft-security-compass-introduction#azure-components-and-reference-model-2151)
+- [Azure-összetevők és -referenciamodell](/security/compass/microsoft-security-compass-introduction#azure-components-and-reference-model-2151)
 
-- [Felügyeleti csoport elérése](../governance/management-groups/overview.md#management-group-access)
+- [Felügyeleti csoport hozzáférése](../governance/management-groups/overview.md#management-group-access)
 
-- [Azure-előfizetés rendszergazdái](../cost-management-billing/manage/add-change-subscription-administrator.md)
+- [Azure-előfizetések rendszergazdái](../cost-management-billing/manage/add-change-subscription-administrator.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -168,13 +168,13 @@ A hozzáférés-vezérlés összes típusát a vállalati szegmentálási strat�
 
 ### <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3: Felhasználói hozzáférés rendszerességének áttekintése és egyeztetése
 
-**Útmutató**: a Azure Firewall Manager Azure Active Directory-(Azure ad-) fiókokat használ az erőforrások kezeléséhez. Rendszeresen tekintse át a felhasználói fiókokat és a hozzáférés-hozzárendelést, hogy a fiókok és a hozzáférésük érvényes legyen. Az Azure AD hozzáférési felülvizsgálatok segítségével áttekintheti a csoporttagság, a vállalati alkalmazásokhoz való hozzáférés és a szerepkör-hozzárendelések áttekintését. Az Azure AD jelentéskészítési szolgáltatása lehetővé teszi, hogy a naplók segítséget nyújtsanak az elavult fiókok felderítéséhez. A felülvizsgálati folyamat megkönnyítése érdekében a Azure AD Privileged Identity Management használatával hozzáférési felülvizsgálati jelentési munkafolyamatot is létrehozhat.
+**Útmutató:** Azure Firewall Manager (Azure Active Directory Azure AD-fiókokkal kezeli az erőforrásait. Rendszeresen tekintse át a felhasználói fiókokat és a hozzáférés-hozzárendeléseket, hogy a fiókok és a hozzáférésük érvényes legyen. Az Azure AD hozzáférési felülvizsgálatok segítségével áttekintheti a csoporttagságokat, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. Az Azure AD-jelentéskészítés naplókat biztosít az elavult fiókok felderítése érdekében. A hozzáférés-Azure AD Privileged Identity Management jelentés-munkafolyamat létrehozásához is használhatja, hogy megkönnyítse a felülvizsgálati folyamatot.
 
-Emellett az Azure Privileged Identity Management is beállítható úgy, hogy riasztást hozzon létre túl sok rendszergazdai fiók létrehozásakor, valamint a elavult vagy helytelenül konfigurált rendszergazdai fiókok azonosításához.
+Emellett az Azure Privileged Identity Management is konfigurálható úgy, hogy riasztást állítson be túl sok rendszergazdai fiók létrehozásakor, és azonosítsa az elavult vagy nem megfelelően konfigurált rendszergazdai fiókokat.
 
-Bizonyos Azure-szolgáltatások támogatják a helyi felhasználókat és szerepköröket, amelyek nem az Azure AD-n keresztül kezelhetők. Ezeket a felhasználókat külön kell kezelnie.
+Egyes Azure-szolgáltatások támogatják a helyi felhasználókat és szerepköröket, amelyeket nem az Azure AD-n keresztül kezeltek. Ezeket a felhasználókat külön kell kezelnie.
 
-- [Azure-beli erőforrás-szerepkörök hozzáférési felülvizsgálatának létrehozása Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
+- [Azure-erőforrásszerepk szerepkörök hozzáférési felülvizsgálatának létrehozása a Privileged Identity Management (PIM) szolgáltatásban](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
 
 - [Az Azure AD identitás- és hozzáférési felülvizsgálatainak használata](../active-directory/governance/access-reviews-overview.md)
 
@@ -184,7 +184,7 @@ Bizonyos Azure-szolgáltatások támogatják a helyi felhasználókat és szerep
 
 ### <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4: Vészhelyzeti hozzáférés beállítása az Azure AD-ben
 
-**Útmutató**: a Azure Firewall Manager Azure Active Directory használ a szolgáltatást kezelő felhasználók hitelesítéséhez. Ha nem szeretné megakadályozni, hogy véletlenül kizárja az Azure AD-szervezetét, állítson be egy vészhelyzeti hozzáférési fiókot a hozzáféréshez, ha a normál rendszergazdai fiókok nem használhatók. A vészhelyzeti hozzáférési fiókok általában magas szintű jogosultságokkal rendelkeznek, és nem ajánlott azokat egyes személyekhez társítani. A vészhelyzeti hozzáférési fiókok csak az olyan vészhelyzeti esetekre valók, amikor a normál rendszergazdai fiókok nem használhatók.
+**Útmutató:** Azure Firewall Manager a Azure Active Directory a szolgáltatást kezelő felhasználók hitelesítéséhez. Ha meg szeretné akadályozni, hogy véletlenül kizárják az Azure AD-szervezetből, állítson be egy vészelérési fiókot a hozzáféréshez, ha a normál rendszergazdai fiókok nem használhatók. A vészhelyzeti hozzáférési fiókok általában magas szintű jogosultságokkal rendelkeznek, és nem ajánlott azokat egyes személyekhez társítani. A vészhelyzeti hozzáférési fiókok csak az olyan vészhelyzeti esetekre valók, amikor a normál rendszergazdai fiókok nem használhatók.
 
 Érdemes biztosítani, hogy a vészhelyzeti hozzáférési fiókok hitelesítő adatai (például jelszó, tanúsítvány vagy intelligens kártya) biztonságos helyen vannak tárolva, amelyet csak azok ismernek, akik jogosultak azokat használni, kizárólag vészhelyzet esetén.
 
@@ -194,13 +194,13 @@ Bizonyos Azure-szolgáltatások támogatják a helyi felhasználókat és szerep
 
 **Felelősség**: Ügyfél
 
-### <a name="pa-5-automate-entitlement-management"></a>PA-5: a jogosultságok kezelésének automatizálása 
+### <a name="pa-5-automate-entitlement-management"></a>PA-5: Jogosultságkezelés automatizálása 
 
-**Útmutató**: a Azure Firewall Manager integrálva van a Azure Active Directoryekkel az erőforrások kezeléséhez. Az Azure AD-jogosultságok kezelési funkciói segítségével automatizálhatja a hozzáférési kérelmek munkafolyamatait, beleértve a hozzáférési hozzárendeléseket, az értékeléseket és a lejáratokat. A kettős vagy többfázisú jóváhagyás is támogatott.
+**Útmutató:** Azure Firewall Manager integrálva van a Azure Active Directory az erőforrások kezeléséhez. Az Azure AD jogosultságkezelési funkcióival automatizálhatja a hozzáférési kérelmek munkafolyamatait, beleértve a hozzáférés-hozzárendeléseket, felülvizsgálatokat és lejáratot. A kettős vagy többszakaszos jóváhagyás is támogatott.
 
-- [Az Azure AD hozzáférési felülvizsgálatai](../active-directory/governance/access-reviews-overview.md)
+- [Mik azok az Azure AD hozzáférési felülvizsgálatok?](../active-directory/governance/access-reviews-overview.md)
 
-- [Mi az Azure AD-jogosultságok kezelése?](../active-directory/governance/entitlement-management-overview.md)
+- [Mi az az Azure AD-jogosultságkezelés?](../active-directory/governance/entitlement-management-overview.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -208,9 +208,9 @@ Bizonyos Azure-szolgáltatások támogatják a helyi felhasználókat és szerep
 
 ### <a name="pa-6-use-privileged-access-workstations"></a>PA-6: Emelt szintű hozzáférésű munkaállomások használata
 
-**Útmutató**: A biztonságos, elkülönített munkaállomások kritikus fontosságúak az olyan bizalmas szerepkörök biztonsága szempontjából, mint a rendszergazdák, a fejlesztők vagy a kritikus fontosságú szolgáltatások üzemeltetői. A fokozottan biztonságos felhasználói munkaállomások használatával felügyeleti feladatokat hajthat végre a Azure Firewall Manager-erőforrásokkal éles környezetben. Az Azure Active Directory, a Microsoft Defender Advanced Threat Protection (ATP) és/vagy a Microsoft Intune használatával biztonságos és felügyelt felhasználói munkaállomásokat helyezhet üzembe a rendszergazdai tevékenységekhez. A biztonságos munkaállomások központilag felügyelhetők a biztonságos konfiguráció kikényszerítéséhez, beleértve az erős hitelesítést, a szoftver-és a hardver-alapterveket, valamint a korlátozott logikai és hálózati hozzáférést is.
+**Útmutató**: A biztonságos, elkülönített munkaállomások kritikus fontosságúak az olyan bizalmas szerepkörök biztonsága szempontjából, mint a rendszergazdák, a fejlesztők vagy a kritikus fontosságú szolgáltatások üzemeltetői. A magas szintű biztonságú felhasználói munkaállomások segítségével felügyeleti felügyeleti feladatokat végezhet Azure Firewall Manager éles környezetekben használt erőforrásokkal. Az Azure Active Directory, a Microsoft Defender Advanced Threat Protection (ATP) és/vagy a Microsoft Intune használatával biztonságos és felügyelt felhasználói munkaállomásokat helyezhet üzembe a rendszergazdai tevékenységekhez. A biztonságos munkaállomások központilag kezelhetők a biztonságos konfiguráció kényszerítéséhez, beleértve az erős hitelesítést, a szoftver- és hardverkonfigurációkat, valamint a korlátozott logikai és hálózati hozzáférést.
 
-- [Az emelt szintű hozzáférésű munkaállomások ismertetése](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
+- [Az emelt szintű hozzáférésű munkaállomások](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Emelt szintű hozzáférésű munkaállomás üzembe helyezése](/security/compass/privileged-access-deployment)
 
@@ -220,11 +220,11 @@ Bizonyos Azure-szolgáltatások támogatják a helyi felhasználókat és szerep
 
 ### <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7: A Just Enough Administration (legkisebb jogosultsági alapelv) követése 
 
-**Útmutató**: a Azure Firewall Manager integrálva van az Azure szerepköralapú hozzáférés-vezérléssel (RBAC) az erőforrások kezeléséhez. Az Azure RBAC lehetővé teszi, hogy szerepkörök hozzárendelésével felügyelje az Azure-erőforrások hozzáférését. Ezeket a szerepköröket hozzárendelheti a felhasználókhoz, a csoportok egyszerű szolgáltatásaihoz és a felügyelt identitásokhoz. Bizonyos erőforrásokhoz előre meghatározott beépített szerepkörök tartoznak, és ezek a szerepkörök olyan eszközökkel leltározhatók vagy kérdezhetők le, mint az Azure CLI, az Azure PowerShell vagy az Azure Portal. Az erőforrásokhoz az Azure RBAC-n keresztül hozzárendelt jogosultságokat mindig arra kell korlátozni, amit a szerepkörök megkövetelnek. Ez a megközelítés megfelel az Azure AD Privileged Identity Management (PIM) igény szerinti (JIT) módszerének, és a jogosultságok rendszeres felülvizsgálatával jár.
+**Útmutató:** Azure Firewall Manager azure-beli szerepköralapú hozzáférés-vezérléssel (RBAC) integrálva van az erőforrások kezelése érdekében. Az Azure RBAC lehetővé teszi, hogy szerepkörök hozzárendelésével felügyelje az Azure-erőforrások hozzáférését. Ezeket a szerepköröket felhasználókhoz, csoportokhoz, szolgáltatásnévhez és felügyelt identitásokhoz rendelheti hozzá. Bizonyos erőforrásokhoz előre meghatározott beépített szerepkörök tartoznak, és ezek a szerepkörök olyan eszközökkel leltározhatók vagy kérdezhetők le, mint az Azure CLI, az Azure PowerShell vagy az Azure Portal. Az erőforrásokhoz az Azure RBAC-n keresztül hozzárendelt jogosultságokat mindig arra kell korlátozni, amit a szerepkörök megkövetelnek. Ez a megközelítés megfelel az Azure AD Privileged Identity Management (PIM) igény szerinti (JIT) módszerének, és a jogosultságok rendszeres felülvizsgálatával jár.
 
 A beépített szerepkörökkel engedélyeket oszthat ki, és csak akkor kell egyéni szerepköröket létrehoznia, ha szükséges.
 
-- [Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../role-based-access-control/overview.md) 
+- [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) 
 
 - [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md)
 
@@ -238,7 +238,7 @@ A beépített szerepkörökkel engedélyeket oszthat ki, és csak akkor kell egy
 
 ### <a name="dp-2-protect-sensitive-data"></a>DP-2: A bizalmas adatok védelme
 
-**Útmutató**: a bizalmas adatok, például a Azure Firewall házirend konfigurációs adatainak védelme azáltal, hogy az azure szerepköralapú Access Control (Azure RBAC), a hálózati hozzáférés-vezérlés és az Azure-szolgáltatások adott vezérlőinek használatával korlátozza a hozzáférést.
+**Útmutató:** Bizalmas adatok, például az Azure Firewall Policy konfigurációs adatainak védelme az Azure-beli szerepköralapú Access Control (Azure RBAC), a hálózatalapú hozzáférés-vezérlés és az Azure-szolgáltatások adott vezérlőinek használatával való hozzáférés korlátozásával.
 
 A következetes hozzáférés-vezérlés biztosításához a hozzáférés-vezérlés összes típusát a vállalati szegmentálási stratégiához kell igazítani. A vállalati szegmentálási stratégiát a bizalmas vagy üzleti szempontból kritikus fontosságú adatok és rendszerek helyének tudatában kell kialakítani.
 
@@ -254,9 +254,9 @@ A Microsoft által felügyelt mögöttes platformon a Microsoft az összes ügyf
 
 ### <a name="dp-3-monitor-for-unauthorized-transfer-of-sensitive-data"></a>DP-3: Bizalmas adatok jogosulatlan átvitelének monitorozása
 
-**Útmutató**: Azure Firewall házirend-erőforrások csak a hitelesített felhasználók számára érhetők el. Az ügyfeleknek meg kell győződniük arról, hogy csak a jogosult felhasználók férhetnek hozzá az adatforráshoz.
+**Útmutató:** Azure Firewall szabályzat erőforrásai csak hitelesített felhasználók számára érhetők el. Az ügyfeleknek meg kell győződni arról, hogy csak a jogosult felhasználók férhetnek hozzá az adatokhoz.
 
-- [Egyéni szerepkörök létrehozása a szabályok gyűjtési csoportjaihoz való hozzáféréshez](rule-hierarchy.md#create-custom-roles-to-access-the-rule-collection-groups)
+- [Egyéni szerepkörök létrehozása szabálygyűjtemény-csoportok eléréséhez](rule-hierarchy.md#create-custom-roles-to-access-the-rule-collection-groups)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -264,19 +264,19 @@ A Microsoft által felügyelt mögöttes platformon a Microsoft az összes ügyf
 
 ### <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4: Bizalmas információk átvitel közbeni titkosítása
 
-**Útmutató**: a hozzáférés-vezérlés kiegészítéseként az átvitt adatoknak védeniük kell a "sávon kívüli" támadásoktól (például Traffic Capture) a titkosítás használatával, hogy a támadók ne tudják egyszerűen beolvasni vagy módosítani az adatokat.
+**Útmutató:** A hozzáférés-vezérlés kiegészítése érdekében az átvitel alatt áteső adatokat titkosítással kell védeni a "sávon túli" támadásoktól (például a forgalomrögzítéstől), hogy a támadók ne tudják könnyen olvasni vagy módosítani az adatokat.
 
-A Azure Firewall Manager támogatja az adattitkosítást a TLS 2.0-s vagy újabb verziókban.
+Azure Firewall Manager TLS 1.2-es vagy annál nagyobb átvitel során támogatja az adattitkosítást.
 
-Habár ez nem kötelező a magánhálózaton lévő forgalom esetében, ez kritikus fontosságú a külső és a nyilvános hálózatok forgalmában. HTTP-forgalom esetén győződjön meg arról, hogy az Azure-erőforrásokhoz csatlakozó összes ügyfél egyeztetheti a TLS v 1.2-es vagy újabb verzióját. A Távoli felügyelet érdekében titkosítatlan protokoll helyett használja az SSH-t (Linuxon) vagy RDP/TLS (Windows rendszeren). Az elavult SSL-, TLS-és SSH-verziók és protokollok, valamint a gyenge titkosítások le lesznek tiltva.
+Bár ez a magánhálózatok forgalmához nem kötelező, ez kritikus fontosságú a külső és nyilvános hálózatok forgalmánál. HTTP-forgalom esetében győződjön meg arról, hogy az Azure-erőforrásokhoz csatlakozó ügyfelek egyeztetni tudnak a TLS 1.2-es vagy annál nagyobb rendszerről. A távfelügyelethez titkosítatlan protokoll helyett használjon SSH-t (Linux esetén) vagy RDP/TLS -t (Windows esetén). Az SSL-, TLS- és SSH-verziók és protokollok elavulttá váltak, a gyenge titkosításokat pedig le kell tiltani.
 
-Alapértelmezés szerint az Azure titkosítást biztosít az Azure-adatközpontok közötti adatátvitelhez.
+Alapértelmezés szerint az Azure titkosítást biztosít az Azure-adatközpontok között átvitel közbeni adatokhoz.
 
-- [A titkosítás ismertetése az Azure-ban](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) 
+- [Az átvitel során az Azure-ral történő titkosítás](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) 
 
 - [Információk a TLS biztonságáról](/security/engineering/solving-tls1-problem) 
 
-- [Kettős titkosítás az Azure-beli adatforgalomban](../security/fundamentals/double-encryption.md#data-in-transit)
+- [Az átvitel közbeni Azure-adatok kettős titkosítása](../security/fundamentals/double-encryption.md#data-in-transit)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -294,7 +294,7 @@ A biztonsági kockázatok monitorozása a biztonsági csapat felelősségi köre
 
 A biztonsági olvasó engedélyek széles körben alkalmazhatók egy teljes bérlőre (gyökérszintű felügyeleti csoport), vagy a hatókör alkalmazható adott felügyeleti csoportokra vagy előfizetésekre. 
 
-További engedélyek szükségesek lehetnek a számítási feladatok és szolgáltatások láthatóságának megismeréséhez. 
+További engedélyekre lehet szükség a számítási feladatok és szolgáltatások láthatóságának érdekében. 
 
 - [A biztonsági olvasó szerepkör áttekintése](../role-based-access-control/built-in-roles.md#security-reader)
 
@@ -306,15 +306,15 @@ További engedélyek szükségesek lehetnek a számítási feladatok és szolgá
 
 ### <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2: Az összetevőleltár és a metaadatok biztonsági csapat általi elérhetőségének biztosítása
 
-**Útmutató**: gondoskodjon arról, hogy a biztonsági csapatok hozzáférjenek a Azure Firewall Manager-eszközök Azure-beli folyamatosan frissített leltárához. Az Azure Resource Graph segítségével lekérdezheti és felderítheti az előfizetések összes Azure Firewall erőforrását, beleértve az Azure-szolgáltatásokat, az alkalmazásokat és a hálózati erőforrásokat is.
+**Útmutató:** Annak biztosítása, hogy a biztonsági csapatok hozzáférnek az Azure-beli Azure Firewall Manager folyamatosan frissített leltárhoz. A szolgáltatásokkal Azure Resource Graph lekérdezhetik és felderíthetik az előfizetések Azure Firewall összes erőforrását, beleértve az Azure-szolgáltatásokat, az alkalmazásokat és a hálózati erőforrásokat is.
 
-Címkéket alkalmazhat az Azure-erőforrások,-erőforráscsoportok és-előfizetések számára, hogy logikailag szervezze őket egy besorolásba. Minden címke egy nevet és egy érték párokat tartalmaz. Alkalmazhatja például a „Környezet” nevet és az „Éles” értéket az összes éles üzemben használt erőforrásra.
+Címkéket alkalmazhat azure-erőforrásaira, erőforráscsoportjaira és előfizetéseire, hogy logikailag rendszerezze őket egy taxonóniában. Minden címke egy névből és egy értékpárból áll. Alkalmazhatja például a „Környezet” nevet és az „Éles” értéket az összes éles üzemben használt erőforrásra.
 
 - [Lekérdezések létrehozása az Azure Resource Graph Explorerrel](../governance/resource-graph/first-query-portal.md) 
 
-- [Azure Security Center Asset Inventory Management](../security-center/asset-inventory.md) 
+- [Azure Security Center eszközleltár kezelése](../security-center/asset-inventory.md) 
 
-- [További információ az eszközök címkézéséről: erőforrás-elnevezési és címkézési döntési útmutató](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
+- [Az eszközök címkézésére vonatkozó további információkért tekintse meg az erőforrás-elnevezési és címkézési döntési útmutatót](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -322,11 +322,11 @@ Címkéket alkalmazhat az Azure-erőforrások,-erőforráscsoportok és-előfize
 
 ### <a name="am-3-use-only-approved-azure-services"></a>AM-3: Csak jóváhagyott Azure-szolgáltatások használata
 
-**Útmutató**: a Azure Policy használatával naplózhatja és korlátozhatja, hogy a felhasználók mely szolgáltatásokat tudják kiépíteni a környezetében. Ez magában foglalja a Azure Firewall erőforrások üzembe helyezésének engedélyezését vagy megtagadását. Az Azure Resource Graph használatával lekérdezheti és felderítheti az előfizetésükön belüli erőforrásokat. Az Azure Monitort is használhatja olyan szabályok létrehozásához, amelyek riasztást aktiválnak nem jóváhagyott szolgáltatás észlelésekor.
+**Útmutató:** A Azure Policy segítségével naplót és korlátozást használhat arra, hogy a felhasználók mely szolgáltatásokat foglalják üzembe a környezetben. Ez magában foglalja az erőforrások üzembe helyezésének Azure Firewall letiltését is. Az Azure Resource Graph használatával lekérdezheti és felderítheti az előfizetésükön belüli erőforrásokat. Az Azure Monitort is használhatja olyan szabályok létrehozásához, amelyek riasztást aktiválnak nem jóváhagyott szolgáltatás észlelésekor.
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/built-in-policies.md#general) 
+- [Adott erőforrástípus megtagadása a Azure Policy](../governance/policy/samples/built-in-policies.md#general) 
 
 - [Lekérdezések létrehozása az Azure Resource Graph Explorerrel](../governance/resource-graph/first-query-portal.md)
 
@@ -336,9 +336,9 @@ Címkéket alkalmazhat az Azure-erőforrások,-erőforráscsoportok és-előfize
 
 ### <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4: Az objektuméletciklus-kezelés biztonságának garantálása
 
-**Útmutató**: távolítsa el Azure Firewall Manager erőforrásait, ha már nincs szükségük a támadási felület minimalizálására. A felhasználók a Azure Portal, a CLI vagy a REST API-k segítségével kezelhetik Azure Firewall Manager-erőforrásait.
+**Útmutató:** Távolítsa Azure Firewall Manager erőforrásokat, amikor már nincs rájuk szükség a támadási felület minimalizálása érdekében. A felhasználók a Azure Firewall Manager, cli Azure Portal REST API-kon keresztül kezelhetik a saját erőforrásaikat.
 
-- [Azure Firewall szabályzat parancssori felület](/cli/azure/ext/azure-firewall/network/firewall/policy)
+- [Azure Firewall Policy CLI-hez](/cli/azure/network/firewall/policy)
 
 - [Azure hálózati CLI](/powershell/module/az.network/?preserve-view=true&view=azps-5.1.0#networking)
 
@@ -346,11 +346,11 @@ Címkéket alkalmazhat az Azure-erőforrások,-erőforráscsoportok és-előfize
 
 **Felelősség**: Ügyfél
 
-### <a name="am-5-limit-users-ability-to-interact-with-azure-resource-manager"></a>AM-5: korlátozza a felhasználók képességét a Azure Resource Manager való interakcióra
+### <a name="am-5-limit-users-ability-to-interact-with-azure-resource-manager"></a>AM-5: Korlátozza a felhasználók számára a Azure Resource Manager
 
-**Útmutató**: a Azure Firewall Manager integrálva van Azure Active Directory (Azure ad) identitás-és hitelesítési szolgáltatásokhoz. Az Azure feltételes hozzáférés használatával korlátozhatja, hogy a felhasználók képesek legyenek az Azure erőforrás-kezelővel való interakcióra az "Microsoft Azure felügyelet" alkalmazás "hozzáférés tiltása" beállításával.
+**Útmutató:** Azure Firewall Manager integrálva van az Azure Active Directory (Azure AD) identitás- és hitelesítési szolgáltatásával. Az Azure feltételes hozzáférés használatával korlátozhatja a felhasználók Azure Resources Managerrel való interakcióját, ha a "Hozzáférés blokkolása" lehetőséget konfigurálja a "Microsoft Azure Management" alkalmazáshoz.
 
-- [Feltételes hozzáférés konfigurálása az Azure Resources Manager elérésének blokkolásához](../role-based-access-control/conditional-access-azure-management.md)
+- [Feltételes hozzáférés konfigurálása az Azure Resources Managerhez való hozzáférés letiltása érdekében](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -360,13 +360,13 @@ Címkéket alkalmazhat az Azure-erőforrások,-erőforráscsoportok és-előfize
 
 *További információ: [Azure Security Benchmark: Naplózás és fenyegetésészlelés](../security/benchmarks/security-controls-v2-logging-threat-detection.md).*
 
-### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: az Azure-erőforrások fenyegetés-észlelésének engedélyezése
+### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: Fenyegetésészlelés engedélyezése Azure-erőforrásokhoz
 
-**Útmutató**: a tűzfal-szabályzatok által létrehozott vagy a Siem-hez kapcsolódó továbbítási tevékenységek naplója, amely az egyéni veszélyforrások észlelésének beállítására használható. Győződjön meg arról, hogy a különböző típusú Azure-eszközöket figyeli a lehetséges fenyegetések és rendellenességek tekintetében. A magas színvonalú riasztások beszerzésével csökkentheti a hamis pozitív értéket az elemzők számára a rendezéshez. A riasztások naplózási adatokból, ügynökökből vagy más adatokból is származnak.
+**Útmutató:** A tűzfal-szabályzat által létrehozott vagy ahhoz kapcsolódó tevékenységnaplók továbbítása az SIEM-nek, amelyek egyéni fenyegetésészlelési beállítások beállítására használhatók. Győződjön meg arról, hogy különböző típusú Azure-eszközöket figyel a lehetséges fenyegetések és anomáliák észlelése érdekében. Összpontosítson a jó minőségű riasztások szerzésre, hogy csökkentse a téves riasztásokat az elemzők számára a rendezéshez. A riasztások forrása lehet naplóadatok, ügynökök vagy más adatok.
 
-- [Egyéni elemzési szabályok létrehozása a fenyegetések észleléséhez](../sentinel/tutorial-detect-threats-custom.md) 
+- [Egyéni elemzési szabályok létrehozása a fenyegetések észlelésére](../sentinel/tutorial-detect-threats-custom.md) 
 
-- [A Cyber Threat Intelligence és az Azure Sentinel](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)
+- [Kiberfenyegetési intelligencia Azure Sentinel](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)
 
 - [Az Azure Firewall naplói és metrikái](../firewall/firewall-diagnostics.md)
 
@@ -383,9 +383,9 @@ Címkéket alkalmazhat az Azure-erőforrások,-erőforráscsoportok és-előfize
 - Kockázatos bejelentkezések – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa.
 - Kockázatosként megjelölt felhasználók – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága.
 
-Az Azure Security Center riasztásokat is küldhet bizonyos gyanús tevékenységek észlelésekor. Ezek közé tartozik például a sikertelen hitelesítési kísérletek kiugróan magas száma vagy az előfizetésben talált elavult fiókok. A biztonsági állapot alapszintű monitorozása mellett Azure Security Center fenyegetésvédelmi modulja részletesebb biztonsági riasztásokat is gyűjthet az egyes Azure-beli számítási erőforrásokból (virtuális gépek, tárolók, App Service), adatforrásokból (SQL DB és Storage) és az Azure-szolgáltatásrétegekből. Ezzel a képességgel megtekintheti az egyes erőforrásokon belüli fiókok rendellenességeit.
+Az Azure Security Center riasztásokat is küldhet bizonyos gyanús tevékenységek észlelésekor. Ezek közé tartozik például a sikertelen hitelesítési kísérletek kiugróan magas száma vagy az előfizetésben talált elavult fiókok. A biztonsági állapot alapszintű monitorozása mellett Azure Security Center fenyegetésvédelmi modulja részletesebb biztonsági riasztásokat is gyűjthet az egyes Azure-beli számítási erőforrásokból (virtuális gépek, tárolók, App Service), adatforrásokból (SQL DB és Storage) és az Azure-szolgáltatásrétegekből. Ez a képesség lehetővé teszi az egyes erőforrásokon belüli fiókanomáliák áttekintését.
 
-A tevékenység naplója nem támogatja a tűzfalszabályok csoportházirend-csoportokra vonatkozó szabályait, ez egy ismert probléma, és a jövőbeli frissítésekben kerül megcímzésre.
+A tevékenységnapló jelenleg nem támogatja a tűzfalszabály-gyűjteménycsoportokkal kapcsolatos műveleteket. Ez egy ismert probléma, és a későbbi frissítésekben már foglalkozik.
 
 - [Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directoryban](../active-directory/reports-monitoring/concept-audit-logs.md)
 
@@ -399,13 +399,13 @@ A tevékenység naplója nem támogatja a tűzfalszabályok csoportházirend-cso
 
 ### <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4: Naplózás engedélyezése Azure-erőforrásokhoz
 
-**Útmutató**: a automatikusan elérhető tevékenység-naplók tartalmazzák a tűzfalszabályok erőforrásainak összes írási műveletét (Put, post, DELETE), kivéve az olvasási MŰVELETEKET (Get). A Tevékenységnaplók segítségével hibát kereshet a hibaelhárítás során, vagy megfigyelheti, hogy a szervezet felhasználója hogyan módosított egy erőforrást.
+**Útmutató:** Az automatikusan elérhető tevékenységnaplók tartalmazzák a tűzfal-házirend erőforrásaira vonatkozó összes írási műveletet (PUT, POST, DELETE) az olvasási műveletek (GET) kivételével. A tevékenységnaplók hibakeresésre használhatók hibaelhárításkor, vagy annak figyelése érdekében, hogy a szervezet felhasználói hogyan módosították az erőforrásokat.
 
-A tevékenység naplója nem támogatja a tűzfalszabályok csoportházirend-csoportokra vonatkozó szabályait, ez egy ismert probléma, és a jövőbeli frissítésekben kerül megcímzésre.
+A tevékenységnapló jelenleg nem támogatja a tűzfalszabály-gyűjteménycsoportokkal kapcsolatos műveleteket. Ez egy ismert probléma, és a későbbi frissítésekben már foglalkozik.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
+- [Platformnaplók és -metrikák gyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../azure-monitor/essentials/platform-logs-overview.md)
+- [A naplózás és a különböző naplótípusok az Azure-ban](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -413,17 +413,17 @@ A tevékenység naplója nem támogatja a tűzfalszabályok csoportházirend-cso
 
 ### <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5: Biztonsági naplók kezelésének és elemzésének központosítása
 
-**Útmutató**: a korreláció engedélyezéséhez központosítsa a naplózási tárolást és az elemzést. Minden naplózási forrás esetében ellenőrizze, hogy rendelkezik-e az adatok tulajdonosával, a hozzáférési útmutatással, a tárolási hellyel, az adatok feldolgozásához és eléréséhez, valamint az adatmegőrzési követelményekhez használt eszközökhöz.
+**Útmutató:** A naplózás tárolásának és elemzésének központosítása a korreláció lehetővé teszi. Minden naplózási forráshoz rendelt hozzá adattulajdonost, hozzáférési útmutatót, tárolási helyet, az adatok feldolgozásához és eléréséhez használt eszközöket, valamint az adatmegőrzési követelményeket.
 
-Győződjön meg arról, hogy integrálja az Azure-tevékenységek naplóit a központi naplózásba. Naplók betöltése Azure Monitor használatával a végponti eszközök, a hálózati erőforrások és más biztonsági rendszerek által generált biztonsági adatokat összesítve. Azure Monitor a Log Analytics-munkaterületek használatával kérdezheti le és végezheti el az elemzéseket, és használhatja az Azure Storage-fiókokat hosszú távú és archiválási tároláshoz.
+Győződjön meg arról, hogy az Azure-tevékenységnaplókat integrálja a központi naplózásba. Naplók Azure Monitor a végponteszközök, hálózati erőforrások és más biztonsági rendszerek által létrehozott biztonsági adatok összesítéséhez. A Azure Monitor Log Analytics-munkaterületek használatával lekérdezheti és elvégezheti az elemzéseket, valamint Azure Storage-fiókokat használhat hosszú távú és archiválási tárterülethez.
 
-Továbbá engedélyezze és helyezze üzembe a napló adatait az Azure Sentinel vagy egy harmadik féltől származó SIEM-nek.
+Emellett engedélyezze és tegye lehetővé a naplóadatok Azure Sentinel külső SIEM-hez.
 
-Számos szervezet úgy dönt, hogy a gyakran használt és az Azure-tárolót használja a ritkábban használt adatokhoz az Azure Sentinel használatával.
+Számos szervezet választ Azure Sentinel gyakran használt "gyakori adatokat" és az Azure Storage-et a ritkábban használt "hideg" adatokhoz.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
+- [Platformnaplók és -metrikák gyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
+- [A Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -431,13 +431,13 @@ Számos szervezet úgy dönt, hogy a gyakran használt és az Azure-tárolót ha
 
 ### <a name="lt-6-configure-log-storage-retention"></a>LT-6: Tárolt naplók megőrzésének konfigurálása
 
-**Útmutató**: gondoskodjon arról, hogy a tűzfal-naplók tárolására használt összes Storage-fiók vagy log Analytics-munkaterület a szervezet megfelelőségi szabályainak megfelelően állítsa be a napló megőrzési időtartamát.
+**Útmutató:** Győződjön meg arról, hogy a tűzfal házirendnaplók tárolására használt tárfiókok vagy Log Analytics-munkaterületek naplómegőrzési időszaka a szervezet megfelelőségi szabályozásának megfelelően van beállítva.
 
-Azure Monitor az Log Analytics munkaterület megőrzési időszakát a szervezet megfelelőségi előírásai szerint állíthatja be. Az Azure Storage, a Data Lake vagy a Log Analytics munkaterület-fiókokat használhatja a hosszú távú és az archiválási tároláshoz.
+A Azure Monitor a Log Analytics-munkaterület megőrzési időszakát a szervezet megfelelőségi szabályzatai alapján állíthatja be. Hosszú távú és archiválási célokat szolgáló Azure Storage-, Data Lake- vagy Log Analytics-munkaterületfiókok használata.
 
-- [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/logs/manage-cost-storage.md)
+- [A Log Analytics-munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/logs/manage-cost-storage.md)
 
-- [Erőforrás-naplók tárolása Azure Storage-fiókban](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
+- [Erőforrásnaplók tárolása Azure Storage-fiókban](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -475,7 +475,7 @@ Azure Monitor az Log Analytics munkaterület megőrzési időszakát a szervezet
 
 A magas minőségű riasztások készítése épülhet a korábbi incidensek tapasztalataira, az ellenőrzött közösségi forrásokra, valamint azokra az eszközökre, amelyek a riasztások generálását és tisztítását a különböző jelforrások egyesítésével és egyeztetésével végzik. 
 
-Azure Security Center kiváló minőségű riasztásokat biztosít számos Azure-eszközön. Az ASC adatösszekötővel streamelheti a riasztásokat az Azure Sentinelbe. Az Azure Sentinellel speciális riasztási szabályokat hozhat létre, amelyekkel automatikusan hozhat létre incidenseket a vizsgálatokhoz. 
+Azure Security Center számos Azure-eszközre vonatkozó magas minőségű riasztásokat biztosít. Az ASC adatösszekötővel streamelheti a riasztásokat az Azure Sentinelbe. Az Azure Sentinellel speciális riasztási szabályokat hozhat létre, amelyekkel automatikusan hozhat létre incidenseket a vizsgálatokhoz. 
 
 Az exportálási funkcióval exportálhatja az Azure Security Center riasztásait és javaslatait, amelyek segítenek az Azure-erőforrások kockázatainak azonosításában. A riasztásokat és javaslatokat manuálisan vagy folyamatosan is exportálhatja.
 
@@ -521,7 +521,7 @@ Az Azure Sentinel széles körű adatelemzést tesz lehetővé szinte bármely n
 
 **Útmutató**: Megadhat arra vonatkozó információkat az elemzők számára, hogy melyik incidensekre kell először összpontosítaniuk a súlyosság és az objektum bizalmassága alapján. 
 
-Az Azure Security Center súlyossági szintet rendel az egyes riasztásokhoz, és segít rangsorolni, hogy melyik riasztásokat kell először kivizsgálni. A súlyosság azon alapul, hogy az Security Center milyen mértékben szerepel a riasztás kibocsátásához használt elemzésben vagy elemzésben, valamint azt a megbízhatósági szintet, amely a riasztáshoz vezető tevékenység mögött rosszindulatú szándékú volt.
+Az Azure Security Center súlyossági szintet rendel az egyes riasztásokhoz, és segít rangsorolni, hogy melyik riasztásokat kell először kivizsgálni. A súlyosság azon alapul, hogy Security Center mennyire magabiztos a riasztás kiadásához használt eredményben vagy elemzésben, valamint a megbízhatósági szinten, hogy a riasztáshoz vezető tevékenység mögött rosszindulatú szándék volt-e.
 
 Emellett a címkék használatával megjelölheti az erőforrásokat, és létrehozhat egy elnevezési rendszert az Azure-erőforrások, különösen a bizalmas adatok feldolgozását végző erőforrások azonosításához és kategorizálásához.  Az Ön felelőssége, hogy rangsorolja a riasztások megoldását azon Azure-erőforrások és -környezetek kritikussága alapján, ahol az incidens történt.
 
@@ -553,13 +553,13 @@ Emellett a címkék használatával megjelölheti az erőforrásokat, és létre
 
 ### <a name="pv-1-establish-secure-configurations-for-azure-services"></a>PV-1: Biztonságos konfigurációk kialakítása Azure-szolgáltatásokhoz 
 
-**Útmutató**: Azure Firewall Manager-erőforrások üzembe helyezésének és konfigurálásának automatizálása és konfigurálása a környezetekben olyan mechanizmusok használatával, mint például a következők: Azure Resource Manager sablonok, Azure RBAC-vezérlők és Azure Policy. Adja meg a Azure Firewall Manager erőforrásainak biztonságos konfigurációit az üzembe helyezés során, majd az "Azure. Network" névtér Aliasok használatával határozza meg az egyéni Azure Policy-definíciókat.
+**Útmutató:** Automatizálhatja és biztosíthatja a Azure Firewall Manager-erőforrások üzembe helyezését és konfigurálást a környezetekben a következő mechanizmusokkal: Azure Resource Manager sablonok, Azure RBAC-vezérlők és Azure Policy. Az "Azure.Network" névtérben aliasok használatával egyéni Azure Policy-definíciók definiálása segítségével biztonságos konfigurációkat határozhat meg az Azure Firewall Manager-erőforrásokhoz az üzembe helyezéskor, naplót hozhat létre és kényszeríthat ki.
 
-- [Azure Firewall házirend-sablon referenciája](/azure/templates/microsoft.network/firewallpolicies)
+- [Azure Firewall szabályzatsablonok referenciája](/azure/templates/microsoft.network/firewallpolicies)
 
-- [Azure Firewall szabályzat parancssori felület](/cli/azure/ext/azure-firewall/network/firewall/policy)
+- [Azure Firewall Policy CLI-hez](/cli/azure/network/firewall/policy)
 
-- [A guardrails megvalósításának szemléltetése a nagyvállalati szintű kirakodási zónában](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture#landing-zone-expanded-definition)
+- [Ábra a védőkorlátok implementációról a nagyvállalati szintű kezdőlapon](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture#landing-zone-expanded-definition)
 
 - [Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából](../governance/policy/tutorials/create-and-manage.md)
 
@@ -569,13 +569,13 @@ Emellett a címkék használatával megjelölheti az erőforrásokat, és létre
 
 ### <a name="pv-2-sustain-secure-configurations-for-azure-services"></a>PV-2: Biztonságos konfigurációk fenntartása Azure-szolgáltatásokhoz
 
-**Útmutató**: a Azure Firewall Manager Azure Resource Manager-alapú sablonokat és a konfigurációs beállítások kényszerítését Azure Policy használatával támogatja. Az "Azure. Network" névtérben az Aliasok használatával naplózhatja és Azure Firewall érvényesítheti az egyéni Azure Policy-definíciókat.
+**Útmutató:** Azure Firewall Manager a Azure Resource Manager sablonokat és a konfigurációs beállítások kényszerítése a Azure Policy. Egyéni Azure Policy definiálhat az erőforrás-konfigurációk naplózásához és Azure Firewall Manager az "Azure.Network" névtérben aliasok használatával.
 
-- [Azure Policy effektusok ismertetése](../governance/policy/concepts/effects.md)
+- [A Azure Policy hatásainak](../governance/policy/concepts/effects.md)
 
-- [Azure Firewall házirend-sablon referenciája](/azure/templates/microsoft.network/firewallpolicies)
+- [Azure Firewall szabályzatsablonok referenciája](/azure/templates/microsoft.network/firewallpolicies)
 
-- [A guardrails megvalósításának szemléltetése a nagyvállalati szintű kirakodási zónában](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture#landing-zone-expanded-definition)
+- [Ábra a védőkorlátok implementációról a nagyvállalati szintű kezdőlapon](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture#landing-zone-expanded-definition)
 
 - [Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából](../governance/policy/tutorials/create-and-manage.md)
 
@@ -583,9 +583,9 @@ Emellett a címkék használatával megjelölheti az erőforrásokat, és létre
 
 **Felelősség**: Ügyfél
 
-### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>PV-3: biztonságos konfigurációk létrehozása számítási erőforrásokhoz
+### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>PV-3: Biztonságos konfigurációk létrehozása számítási erőforrásokhoz
 
-**Útmutató**: nem alkalmazható; Azure Firewall Manager a tűzfal-vezérlési sík felügyeleti szolgáltatás, és nem teszi elérhetővé a mögöttes szolgáltatás számítási infrastruktúráját az ügyfelek számára a konfiguráláshoz.
+**Útmutató:** Nem alkalmazható; Azure Firewall Manager a tűzfal vezérlősík-kezelő szolgáltatása, és nem teszi elérhetővé az ügyfelek számára konfigurálható számítási infrastruktúrát a mögöttes szolgáltatáshoz.
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -610,17 +610,17 @@ A Microsoft-felhő behatolástesztelési beavatkozási szabályai szerint eljár
 
 *További információ: [Azure Security Benchmark: Biztonsági mentés és helyreállítás](../security/benchmarks/security-controls-v2-backup-recovery.md).*
 
-### <a name="br-1-ensure-regular-automated-backups"></a>BR-1: rendszeres automatikus biztonsági mentések biztosítása
+### <a name="br-1-ensure-regular-automated-backups"></a>BR-1: Rendszeres automatikus biztonsági mentések biztosítása
 
-**Útmutató**: a Azure Firewall Manager nem rendelkezik az ügyfelek rendszerbiztonsági mentésének fogalmával, a mögöttes infrastruktúrát a Microsoft kezeli.
+**Útmutató:** Azure Firewall Manager nem rendelkezik az ügyfelek felé néző rendszer biztonsági mentésének fogalmával, a mögöttes infrastruktúrát a Microsoft kezeli.
 
-Erőforrás-konfigurációs biztonsági másolatok esetén a Azure Resource Manager használatával exportálhatja a tűzfal-házirendeket és a kapcsolódó erőforrásokat egy olyan JavaScript Object Notation (JSON) sablonba, amely konfigurációs biztonsági másolatként használható. A tűzfal-házirendek konfigurációit a Azure Firewall exportálás sablon használatával is exportálhatja Azure Portalból. A Azure Automation használatával bármilyen egyéni biztonsági mentési parancsfájlt futtathat, hogy automatikusan rögzítse a Azure Firewall Manager-erőforrások erőforrás-konfigurációit.
+Az erőforrás-konfigurációk biztonsági mentéséhez a Azure Resource Manager használatával exportálhatja a tűzfal-szabályzatokat és a kapcsolódó erőforrásokat egy JavaScript Object Notation- (JSON-) sablonba, amely konfigurációs biztonsági mentésként használható. A tűzfal szabályzatkonfigurációit az exportálási sablon szolgáltatásának használatával is exportálhatja Azure Firewall a Azure Portal. A Azure Automation egyéni biztonsági mentési szkriptek futtatásával automatikusan rögzítheti a Azure Firewall Manager erőforrás-konfigurációit.
 
 - [Biztonságos virtuális központ üzembe helyezése sablon használatával](quick-secure-virtual-hub.md)
 
-- [A Microsoft tűzfal házirend-sablonjának referenciája](/azure/templates/microsoft.network/firewallpolicies)
+- [A Microsoft tűzfal házirendsablonjának referenciája](/azure/templates/microsoft.network/firewallpolicies)
 
-- [Tudnivalók Azure Automation](../automation/automation-intro.md)
+- [A Azure Automation](../automation/automation-intro.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -628,11 +628,11 @@ Erőforrás-konfigurációs biztonsági másolatok esetén a Azure Resource Mana
 
 ### <a name="br-3-validate-all-backups-including-customer-managed-keys"></a>BR-3: Az összes biztonsági másolat és az ügyfelek által kezelt kulcsok ellenőrzése
 
-**Útmutató**: a Azure Firewall Manager nem rendelkezik az ügyfelekkel szemben álló rendszerbiztonsági mentés fogalmával. Az exportált Azure Firewall Manager-erőforrásokhoz a Azure Resource Manager sablonfájlok használatával rendszeresen végezzen visszaállítást.
+**Útmutató:** Azure Firewall Manager rendszer nem rendelkezik az ügyfelek számára biztonsági másolatok fogalmával. Az exportált erőforrássablonok Azure Firewall Manager a fenti sablonfájlokkal rendszeresen végrehajtják a visszaállítást Azure Resource Manager használatával.
 
-- [Biztonságos virtuális központ üzembe helyezése Azure Resource Manager-sablonok használatával](quick-secure-virtual-hub.md)
+- [Biztonságos virtuális központ üzembe helyezése Azure Resource Manager sablonokkal](quick-secure-virtual-hub.md)
 
-- [A Microsoft tűzfal házirend-sablonjának referenciája](/azure/templates/microsoft.network/firewallpolicies)
+- [A Microsoft tűzfal házirendsablonjának referenciája](/azure/templates/microsoft.network/firewallpolicies)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/04/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 23615daf4a07e02b01bbd5a9cdf57ec9a81a2b76
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
-ms.translationtype: HT
+ms.openlocfilehash: 241b7c0c07d1fbaa6a43c6be4b264424612f538a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347394"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869040"
 ---
 ::: zone target="docs"
 
@@ -52,11 +52,11 @@ Jelentkezzen be az Azure Portalra a [https://aka.ms/azuredataboxfromdiskdocs](ht
 
 > [!div class="checklist"]
 >
-> - **Előfeltételek áttekintése** : Ellenőrizze a lemezek és a kábelek számát, az operációs rendszert és az egyéb szoftvereket.
-> - **Csatlakoztatás és zárolás feloldása** : Csatlakoztassa az eszközt, és az adatok másolásához oldja fel a lemez zárolását.
+> - **Előfeltételek áttekintése**: Ellenőrizze a lemezek és a kábelek számát, az operációs rendszert és az egyéb szoftvereket.
+> - **Csatlakoztatás és zárolás feloldása**: Csatlakoztassa az eszközt, és az adatok másolásához oldja fel a lemez zárolását.
 > - **Adatmásolás a lemezre és ellenőrzés** Másolja az adatokat a lemezen található, előre létrehozott mappákba.
-> - **Lemezek visszaküldése** : Küldje vissza a lemezeket az Azure-adatközpontba, ahol feltöltik az adatokat a tárfiókjába.
-> - **Az Azure-beli adatok ellenőrzése** : Az adatok forrás-adatkiszolgálóról történő törlése előtt ellenőrizze, hogy fel lettek-e töltve a tárfiókba.
+> - **Lemezek visszaküldése**: Küldje vissza a lemezeket az Azure-adatközpontba, ahol feltöltik az adatokat a tárfiókjába.
+> - **Az Azure-beli adatok ellenőrzése**: Az adatok forrás-adatkiszolgálóról történő törlése előtt ellenőrizze, hogy fel lettek-e töltve a tárfiókba.
 
 ::: zone-end
 
@@ -94,7 +94,7 @@ Ezekkel az Azure CLI-parancsokkal Data Box Disk-feladatokat hozhat létre.
    az storage account create --resource-group databox-rg --name databoxtestsa
    ```
 
-1. Futtassa az [az databox job create](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_create) parancsot egy DataBoxDisk termékváltozattal rendelkező Data Box-feladat létrehozásához:
+1. Futtassa az [az databox job create](/cli/azure/databox/job#az_databox_job_create) parancsot egy DataBoxDisk termékváltozattal rendelkező Data Box-feladat létrehozásához:
 
    ```azurecli
    az databox job create --resource-group databox-rg --name databoxdisk-job \
@@ -104,37 +104,37 @@ Ezekkel az Azure CLI-parancsokkal Data Box Disk-feladatokat hozhat létre.
        --storage-account databoxtestsa --expected-data-size 1
    ```
 
-1. Futtassa az [az databox job update](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_update) parancsot egy feladat frissítéséhez, mint ebben a példában, amelyben módosítja a kapcsolattartó nevét és e-mail-címét:
+1. Futtassa az [az databox job update](/cli/azure/databox/job#az_databox_job_update) parancsot egy feladat frissítéséhez, mint ebben a példában, amelyben módosítja a kapcsolattartó nevét és e-mail-címét:
 
    ```azurecli
    az databox job update -g databox-rg --name databox-job --contact-name "Robert Anic" --email-list RobertAnic@contoso.com
    ```
 
-   Futtassa az [az databox job show](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_show) parancsot a feladat adatainak lekéréséhez:
+   Futtassa az [az databox job show](/cli/azure/databox/job#az_databox_job_show) parancsot a feladat adatainak lekéréséhez:
 
    ```azurecli
    az databox job show --resource-group databox-rg --name databox-job
    ```
 
-   Futtassa az [az databox job list]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list) parancsot egy erőforráscsoport összes Data Box-feladatának megtekintéséhez:
+   Futtassa az [az databox job list]( /cli/azure/databox/job#az_databox_job_list) parancsot egy erőforráscsoport összes Data Box-feladatának megtekintéséhez:
 
    ```azurecli
    az databox job list --resource-group databox-rg
    ```
 
-   Futtassa az [az databox job cancel](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_cancel) parancsot egy feladat megszakításához:
+   Futtassa az [az databox job cancel](/cli/azure/databox/job#az_databox_job_cancel) parancsot egy feladat megszakításához:
 
    ```azurecli
    az databox job cancel –resource-group databox-rg --name databox-job --reason "Cancel job."
    ```
 
-   Futtassa az [az databox job delete](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_delete) parancsot egy feladat törléséhez:
+   Futtassa az [az databox job delete](/cli/azure/databox/job#az_databox_job_delete) parancsot egy feladat törléséhez:
 
    ```azurecli
    az databox job delete –resource-group databox-rg --name databox-job
    ```
 
-1. Futtassa az [az databox job list-credentials]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list_credentials) parancsot a Data Box-feladat hitelesítő adatainak listázásához:
+1. Futtassa az [az databox job list-credentials]( /cli/azure/databox/job#az_databox_job_list_credentials) parancsot a Data Box-feladat hitelesítő adatainak listázásához:
 
    ```azurecli
    az databox job list-credentials --resource-group "databox-rg" --name "databoxdisk-job"
@@ -170,7 +170,7 @@ Ez a lépés nagyjából 5 percet vesz igénybe.
 
 A művelet végrehajtásának időtartama az adatok mennyiségétől függ.
 
-1. A meghajtó a *PageBlob* , a *BlockBlob* , az *AzureFile* , a *ManagedDisk* és a *DataBoxDiskImport* mappát tartalmazza. A blokkblobokként importálandó adatokat húzással másolja a *BlockBlob* mappába. Hasonlóképpen húzza a VHD/VHDX és hasonló típusú adatokat a *PageBlob* mappába, valamint a megfelelő adatokat az *AzureFile* mappába. Másolja a felügyelt lemezként feltölteni kívánt VHD-kat egy, a *ManagedDisk* mappában található almappába.
+1. A meghajtó a *PageBlob*, a *BlockBlob*, az *AzureFile*, a *ManagedDisk* és a *DataBoxDiskImport* mappát tartalmazza. A blokkblobokként importálandó adatokat húzással másolja a *BlockBlob* mappába. Hasonlóképpen húzza a VHD/VHDX és hasonló típusú adatokat a *PageBlob* mappába, valamint a megfelelő adatokat az *AzureFile* mappába. Másolja a felügyelt lemezként feltölteni kívánt VHD-kat egy, a *ManagedDisk* mappában található almappába.
 
     A rendszer a *BlockBlob* és a *PageBlob* mappa alatt található minden almappához létrehoz egy tárolót az Azure-tárfiókban. Létrejön egy fájlmegosztás egy, az *AzureFile* mappában található almappában.
 

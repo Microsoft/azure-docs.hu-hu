@@ -1,15 +1,15 @@
 ---
 title: Beépített szabályzati kezdeményezések listája
 description: List built-in policy initiatives for Azure Policy. A kategóriák közé tartozik többek között a jogszabályi megfelelőség, a vendégkonfiguráció stb.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: c43886f19d2128b7e1168810a0ac20577ccded15
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 69c77f53e198d16298b66750ac211328a5450412
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107504847"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866075"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy beépített kezdeményezési definíciók
 

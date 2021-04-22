@@ -1,18 +1,18 @@
 ---
 title: Azure Policy megfelelőségi vezérlők a Azure Cache for Redis
-description: Felsorolja Azure Policy megfelelőségi vezérlőket, amelyek a Azure Cache for Redis. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 04/14/2021
+description: A Azure Policy megfelelőségi vezérlőinek listáját Azure Cache for Redis. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
+ms.date: 04/21/2021
 ms.topic: sample
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 10c0e86f4a76a0d746258728169c5c6953a5ef67
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: a3ef8c54205dfb5fce8eb5e95ab552d86e9ca154
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107497309"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874322"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cache-for-redis"></a>Azure Policy megfelelőségi vezérlők a Azure Cache for Redis
 
@@ -24,5 +24,5 @@ ms.locfileid: "107497309"
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [jogszabályi Azure Policy való megfelelésről.](../governance/policy/concepts/regulatory-compliance.md)
+- További információ a jogszabályi [Azure Policy való megfelelésről.](../governance/policy/concepts/regulatory-compliance.md)
 - A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).

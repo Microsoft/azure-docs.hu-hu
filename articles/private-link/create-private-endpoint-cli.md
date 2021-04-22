@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 11/07/2020
 ms.author: allensu
-ms.openlocfilehash: 5088b4e50899a2643488103ba29a7e36a7f256ea
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 036052dc45b8d029dac6e137b3a878b75e6e015c
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778354"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873396"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Rövid útmutató: Privát végpont létrehozása az Azure CLI használatával
 
@@ -185,9 +185,9 @@ az network private-endpoint create \
 
 ## <a name="configure-the-private-dns-zone"></a>A privát DNS-zóna konfigurálása
 
-Ebben a szakaszban létrehozza és konfigurálja a privát [DNS-zónát az az network private-dns zone create használatával.](/cli/azure/network/private-dns/zone#ext_privatedns_az_network_private_dns_zone_create)  
+Ebben a szakaszban létrehozza és konfigurálja a privát [DNS-zónát az az network private-dns zone create használatával.](/cli/azure/network/private-dns/zone#az_network_private_dns_zone_create)  
 
-A DNS-zónára mutató virtuális hálózati kapcsolatot [az az network private-dns link vnet create](/cli/azure/network/private-dns/link/vnet#ext_privatedns_az_network_private_dns_link_vnet_create) használatával hozhatja létre.
+A DNS-zónára mutató virtuális hálózati kapcsolatot [az az network private-dns link vnet create](/cli/azure/network/private-dns/link/vnet#az_network_private_dns_link_vnet_create) használatával hozhatja létre.
 
 Létre fog hozni egy dns-zónacsoportot [az az network private-endpoint dns-zone-group create használatával.](/cli/azure/network/private-endpoint/dns-zone-group#az_network_private_endpoint_dns_zone_group_create)
 
@@ -238,7 +238,7 @@ Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja ha
 
 8. Csatlakozás Windows PowerShell nyissa meg a kiszolgálón a következőt: .
 
-9. Írja be a következő szöveget: `nslookup <your-webapp-name>.azurewebsites.net`. Cserélje le a helyére az előző lépésekben **\<your-webapp-name>** létrehozott webalkalmazás nevét.  Az alábbihoz hasonló üzenet jelenik meg:
+9. Írja be a következő szöveget: `nslookup <your-webapp-name>.azurewebsites.net`. Cserélje le a helyére az előző lépésekben létrehozott **\<your-webapp-name>** webalkalmazás nevét.  Az alábbihoz hasonló üzenet jelenik meg:
 
     ```powershell
     Server:  UnKnown
@@ -250,17 +250,17 @@ Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja ha
     Aliases:  mywebapp8675.azurewebsites.net
     ```
 
-    A webalkalmazás neve **a 10.0.0.5** magánhálózati IP-címet ad vissza.  Ez a cím a korábban létrehozott virtuális hálózat alhálózatában található.
+    A rendszer a **10.0.0.5** magánhálózati IP-címet ad vissza a webalkalmazás neveként.  Ez a cím a korábban létrehozott virtuális hálózat alhálózatában található.
 
-10. A **myVM-hez** való megerősített kapcsolaton nyissa meg Internet Explorer.
+10. A megerősített kapcsolatban a **myVM-hez** nyissa meg a Internet Explorer.
 
-11. Adja meg a webalkalmazás URL-címét, **majd https:// \<your-webapp-name> .azurewebsites.net.**
+11. Adja meg a webalkalmazás URL-címét, majd **https:// \<your-webapp-name> .azurewebsites.net.**
 
-12. Az alapértelmezett webalkalmazás-oldalt fogja kapni, ha az alkalmazás még nem lett üzembe állítva:
+12. Ha az alkalmazás még nincs üzembe állítva, az alapértelmezett webalkalmazás-oldalt fogja kapni:
 
     :::image type="content" source="./media/create-private-endpoint-portal/web-app-default-page.png" alt-text="Alapértelmezett webalkalmazás-oldal." border="true":::
 
-13. Zárja be a **myVM-hez való kapcsolódást.**
+13. Zárja be a **myVM-hez való csatlakozást.**
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 Ha végzett a privát végpont és a virtuális gép használatával, az [az group delete](/cli/azure/group#az_group_delete) parancs használatával távolítsa el az erőforráscsoportot és az összes erőforrását:

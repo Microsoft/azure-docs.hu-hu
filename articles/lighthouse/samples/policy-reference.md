@@ -1,19 +1,19 @@
 ---
 title: Beépített szabályzatdefiníciók a Azure Lighthouse
 description: A Azure Policy beépített szabályzatdefinícióit és Azure Lighthouse. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: ab3596c8c14e7d82e2c90117dff6d9f2e676f66e
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 14698e2d620346157dc07c08a8cf1d6c273eb82a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505674"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871136"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-lighthouse"></a>Azure Policy beépített definíciók a Azure Lighthouse
 
-Ez az oldal a Azure Policy [beépített](../../governance/policy/overview.md) szabályzatdefiníciók indexe Azure Lighthouse. Az egyéb Azure Policy további beépített szolgáltatásaiért lásd a Azure Policy [definíciókat.](../../governance/policy/samples/built-in-policies.md)
+Ez az oldal a Azure Policy [beépített](../../governance/policy/overview.md) szabályzatdefiníciók indexe Azure Lighthouse. Az egyéb Azure Policy további beépített szolgáltatásaival kapcsolatban lásd a Azure Policy [definíciókat.](../../governance/policy/samples/built-in-policies.md)
 
 Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 

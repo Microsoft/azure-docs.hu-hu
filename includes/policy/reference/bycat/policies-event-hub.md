@@ -2,20 +2,20 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: b03eca515f2bc1ec217c0d256f2dead15971be42
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: c3dedbdcf20010737bca1276f2e150992bd90c90
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107498706"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866775"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[A RootManageSharedAccessKey kivételével minden engedélyezési szabályt el kell távolítani az Eseményközpont-névtérből](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb278e460-7cfc-4451-8294-cccc40a940d7) |Az Eseményközpont-ügyfelek nem használhatnak olyan névtérszintű hozzáférési szabályzatot, amely hozzáférést biztosít a névtér összes üzenetsorához és témakörének. A legkisebb jogosultságú biztonsági modellhez való igazodás érdekében az üzenetsorok és témakörök entitásszinten kell létrehoznia hozzáférési szabályzatokat, hogy csak az adott entitáshoz biztosítson hozzáférést |Naplózás, Megtagadás, Letiltva |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Hub/EventHub_AuditNamespaceAccessRules_Audit.json) |
-|[Meg kell határozni az eseményközpont-példány engedélyezési szabályait](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4826e5f-6a27-407c-ae3e-9582eb39891d) |Eseményközpont-entitások engedélyezési szabályainak naplózása a legkevesebb jogosultsági szintű hozzáférés megadásához |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Hub/EventHub_AuditEventHubAccessRules_Audit.json) |
+|[Meg kell határozni az eseményközpont-példány engedélyezési szabályait](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4826e5f-6a27-407c-ae3e-9582eb39891d) |Az Event Hub-entitások engedélyezési szabályainak naplózása a legkevesebb jogosultsági szintű hozzáférés megadásához |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Hub/EventHub_AuditEventHubAccessRules_Audit.json) |
 |[Eseményközpont-névterek konfigurálása privát DNS-zónák használatára](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fed66d4f5-8220-45dc-ab4a-20d1749c74e6) |Privát DNS-zónák használatával bírálja felül a privát végpont DNS-feloldásait. A privát DNS-zóna az Event Hub-névterek feloldása érdekében a virtuális hálózatra csatlakozik. További információ: [https://docs.microsoft.com/azure/event-hubs/private-link-service](https://docs.microsoft.com/azure/event-hubs/private-link-service) . |DeployIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Hub/EventHub_PrivateDNSZone_DeployIfNotExists.json) |
 |[Event Hubs-névterek konfigurálása privát végpontokkal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F91678b7c-d721-4fc5-b179-3cdf74e96b1c) |A privát végpontok nyilvános IP-cím nélkül csatlakoztatják a virtuális hálózatot az Azure-szolgáltatásokhoz a forrásnál vagy a célnál. A privát végpontok Event Hub-névterekbe való leképezése csökkentheti az adatszivárgási kockázatokat. További információ: [https://docs.microsoft.com/azure/event-hubs/private-link-service](https://docs.microsoft.com/azure/event-hubs/private-link-service) . |DeployIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Hub/EventHub_PrivateEndpoint_DeployIfNotExists.json) |
 |[Az eseményközpont-névterek ügyfél által felügyelt kulcsot kell használniuk a titkosításhoz](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa1ad735a-e96f-45d2-a7b2-9a4932cab7ec) |Azure Event Hubs támogatja az adatok titkosítását a Microsoft által felügyelt kulcsokkal (alapértelmezett) vagy az ügyfél által kezelt kulcsokkal. Ha az ügyfél által kezelt kulcsokkal titkosítja az adatokat, akkor hozzárendelheti, elforgathatja, letilthatja és visszavonhatja a hozzáférést ahhoz a kulcshoz, amellyel az Event Hub titkosítja a névtérben található adatokat. Vegye figyelembe, hogy az Eseményközpont csak az ügyfél által felügyelt kulcsokkal való titkosítást támogatja a dedikált fürtökben található névterek esetén. |Naplózás, Letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Hub/EventHub_CustomerManagedKeyEnabled_Audit.json) |

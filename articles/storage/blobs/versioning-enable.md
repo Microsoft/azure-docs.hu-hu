@@ -1,7 +1,7 @@
 ---
-title: BLOB-verziószámozás engedélyezése és kezelése
+title: Blobok verziószámozásának engedélyezése és kezelése
 titleSuffix: Azure Storage
-description: Megtudhatja, hogyan engedélyezheti a Blobok verziószámozását a Azure Portal vagy egy Azure Resource Manager sablon használatával.
+description: Megtudhatja, hogyan engedélyezheti a blobok verziószámozását a Azure Portal vagy egy Azure Resource Manager használatával.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,18 +10,18 @@ ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5b6bd16eacf4b1bbb7b93f5500813e7fa9dc7eef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6a1d315342ea98ccaf1382630eccca876ada3f1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100095841"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870192"
 ---
-# <a name="enable-and-manage-blob-versioning"></a>BLOB-verziószámozás engedélyezése és kezelése
+# <a name="enable-and-manage-blob-versioning"></a>Blobok verziószámozásának engedélyezése és kezelése
 
-A blob Storage verziószámozásának engedélyezésével automatikusan megtarthatja a blob korábbi verzióit a módosítás vagy a törlés után. Ha a blob verziószámozása engedélyezve van, akkor visszaállíthatja a blob egy korábbi verzióját az adatok helyreállításához, ha az hibásan van módosítva vagy törölve.
+A Blob Storage verziószámozásának engedélyezésével automatikusan megtarthatja a blobok korábbi verzióit annak módosításakor vagy törlésekor. Ha a blobok verziószámozása engedélyezve van, visszaállíthatja egy blob korábbi verzióját, hogy helyreállítsa az adatokat, ha azokat hibásan módosították vagy törölték.
 
-Ez a cikk bemutatja, hogyan engedélyezheti vagy tilthatja le a Blobok verziószámozását a Storage-fiókhoz a Azure Portal vagy egy Azure Resource Manager sablon használatával. A blob verziószámozásával kapcsolatos további tudnivalókért tekintse meg a [blob verziószámozását](versioning-overview.md)ismertető témakört.
+Ez a cikk bemutatja, hogyan engedélyezheti vagy tilthatja le a tárfiók blobverzió-Azure Portal vagy egy Azure Resource Manager használatával. További információ a blobok verziószámozásról: [Blob verziószámozása.](versioning-overview.md)
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -29,17 +29,17 @@ Ez a cikk bemutatja, hogyan engedélyezheti vagy tilthatja le a Blobok verziósz
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-A blob verziószámozásának engedélyezése egy Storage-fiókhoz a Azure Portalban:
+Blob verziószámozásának engedélyezése a tárfiókhoz a Azure Portal:
 
-1. Navigáljon a Storage-fiókjához a portálon.
-1. Az **blob Service** területen válassza **az adatvédelem** elemet.
-1. A **verziószámozás** szakaszban válassza az **engedélyezve** lehetőséget.
+1. Keresse meg a tárfiókját a portálon.
+1. A **Blob service** válassza az **Adatvédelem lehetőséget.**
+1. A **Verziószámozás szakaszban** válassza az Engedélyezve **lehetőséget.**
 
-:::image type="content" source="media/versioning-enable/portal-enable-versioning.png" alt-text="A blob verziószámozásának engedélyezését bemutató képernyőkép Azure Portal":::
+:::image type="content" source="media/versioning-enable/portal-enable-versioning.png" alt-text="Képernyőkép a blobok verziószámozásának engedélyezéséről a Azure Portal":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Ha engedélyezni szeretné a Blobok verziószámozását a PowerShell-lel rendelkező Storage-fiókhoz, először telepítse az az [. Storage](https://www.powershellgallery.com/packages/Az.Storage) modul Version 2.3.0 vagy újabb verzióját. Ezután hívja meg az [Update-AzStorageBlobServiceProperty](/powershell/module/az.storage/update-azstorageblobserviceproperty) parancsot a verziószámozás engedélyezéséhez, ahogy az az alábbi példában is látható. Ne felejtse el lecserélni a szögletes zárójelben lévő értékeket a saját értékeire:
+Ha engedélyezni szeretné a blobok verziószámozását egy tárfiókhoz a PowerShell használatával, először telepítse az [Az.Storage](https://www.powershellgallery.com/packages/Az.Storage) modul 2.3.0-s vagy újabb verzióját. Ezután hívja meg az [Update-AzStorageBlobServiceProperty](/powershell/module/az.storage/update-azstorageblobserviceproperty) parancsot a verziószámozás engedélyezéséhez, az alábbi példában látható módon. Ne felejtse el lecserélni a szögletes zárójelben lévő értékeket a saját értékeire:
 
 ```powershell
 # Set resource group and account variables.
@@ -54,7 +54,7 @@ Update-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Ha az Azure CLI-vel szeretné engedélyezni a Blobok verziószámozását, először telepítse az Azure CLI-es vagy újabb verzióját. Ezután hívja meg az az [Storage Account blob-Service-Properties Update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) parancsot a verziószámozás engedélyezéséhez, az alábbi példában látható módon. Ne felejtse el lecserélni a szögletes zárójelben lévő értékeket a saját értékeire:
+Ha engedélyezni szeretné a blobok verziószámozását egy tárfiókhoz az Azure CLI használatával, először telepítse az Azure CLI 2.2.0-s vagy újabb verzióját. Ezután hívja meg [az az storage account blob-service-properties update parancsot](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update) a verziószámozás engedélyezéséhez, az alábbi példában látható módon. Ne felejtse el lecserélni a szögletes zárójelben lévő értékeket a saját értékeire:
 
 ```azurecli
 az storage account blob-service-properties update \
@@ -65,14 +65,14 @@ az storage account blob-service-properties update \
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-A Blobok verziószámozásának engedélyezéséhez sablon használatával hozzon létre egy sablont a **IsVersioningEnabled** tulajdonsággal az **igaz** értékre. A következő lépések azt ismertetik, hogyan lehet sablont létrehozni a Azure Portalban.
+Ha engedélyezni szeretné a blobok sablonnal való verziószámozását, hozzon létre egy sablont true (igaz) értéken az **IsVersioningEnabled** **tulajdonsággal.** Az alábbi lépések azt ismertetik, hogyan hozhat létre sablont a Azure Portal.
 
-1. A Azure Portal válassza az **erőforrás létrehozása** lehetőséget.
-1. A **Keresés a piactéren** mezőbe írja be a **sablon központi telepítése** kifejezést, majd nyomja le az **ENTER** billentyűt.
-1. Válassza a **template Deployment** lehetőséget, válassza a **Létrehozás** lehetőséget, majd **a szerkesztőben válassza a saját sablon** létrehozása lehetőséget.
-1. A sablon szerkesztőjében illessze be a következő JSON-t. Cserélje le a `<accountName>` helyőrzőt a Storage-fiók nevére.
+1. A Azure Portal válassza az **Erőforrás létrehozása lehetőséget.**
+1. A **Keresés a Marketplace-en mezőbe írja** be a sablon üzembe **helyezését,** majd nyomja le az ENTER **billentyűt.**
+1. Válassza **Template deployment** lehetőséget, válassza a **Létrehozás,** majd a Saját sablon létrehozása lehetőséget a **szerkesztőben.**
+1. A sablonszerkesztőben illessze be a következő JSON-t. Cserélje le `<accountName>` a helyőrzőt a tárfiókja nevére.
 1. Mentse a sablont.
-1. Adja meg a fiókhoz tartozó erőforráscsoportot, majd válassza a **vásárlás** gombot a sablon telepítéséhez és a blob verziószámozásának engedélyezéséhez.
+1. Adja meg a fiók erőforráscsoportját, majd kattintson a **Vásárlás** gombra a sablon üzembe helyezéséhez és a blob verziószámozásának engedélyezéséhez.
 
     ```json
     {
@@ -93,27 +93,27 @@ A Blobok verziószámozásának engedélyezéséhez sablon használatával hozzo
     }
     ```
 
-Az erőforrások Azure Portal-sablonokkal való üzembe helyezésével kapcsolatos további információkért lásd: [erőforrások központi telepítése Azure Portalokkal](../../azure-resource-manager/templates/deploy-portal.md).
+További információ az erőforrások sablonokkal való üzembe helyezéséről a Azure Portal: Erőforrások üzembe helyezése [a Azure Portal.](../../azure-resource-manager/templates/deploy-portal.md)
 
 ---
 
-## <a name="modify-a-blob-to-trigger-a-new-version"></a>BLOB módosítása új verzió elindításához
+## <a name="modify-a-blob-to-trigger-a-new-version"></a>Blob módosítása új verzió aktiválása
 
-Az alábbi mintakód bemutatja, hogyan indíthat el egy új verziót az Azure Storage ügyféloldali kódtára .NET, Version [12.5.1](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.1) vagy újabb verzióra. A példa futtatása előtt győződjön meg arról, hogy engedélyezte a verziószámozást a Storage-fiókhoz.
+Az alábbi példakód bemutatja, hogyan aktiválható egy új verzió létrehozása az Azure Storage .NET-hez való ügyféloldali [kódtárának 12.5.1-es](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.1) vagy újabb verziójával. A példa futtatása előtt győződjön meg arról, hogy engedélyezte a tárfiók verziószámozását.
 
-A példa létrehoz egy blokk blobot, majd frissíti a blob metaadatait. A blob metaadatainak frissítése elindítja egy új verzió létrehozását. A példa lekéri a kezdeti verziót és a jelenlegi verziót, és azt mutatja, hogy csak az aktuális verzió tartalmazza a metaadatokat.
+A példa létrehoz egy blokkblobot, majd frissíti a blob metaadatait. A blob metaadatainak frissítése új verzió létrehozását váltja ki. A példa lekéri a kezdeti verziót és az aktuális verziót, és azt mutatja, hogy csak az aktuális verzió tartalmazza a metaadatokat.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_UpdateVersionedBlobMetadata":::
 
-## <a name="list-blob-versions"></a>BLOB-verziók listázása
+## <a name="list-blob-versions"></a>Blobverziók listája
 
-A .NET V12-es ügyféloldali függvénytárral rendelkező blob-verziók vagy-Pillanatképek listázásához a [BlobStates](/dotnet/api/azure.storage.blobs.models.blobstates) paramétert a **Version (verzió** ) mezővel kell megadni.
+A blobverziók vagy pillanatképek .NET v12 ügyféloldali kódtára segítségével való listához adja meg a [BlobStates](/dotnet/api/azure.storage.blobs.models.blobstates) paramétert **a Verzió mezővel.**
 
-A következő mintakód bemutatja, hogyan listázhatja a Blobok verzióját a .NET-hez készült Azure Storage ügyféloldali kódtára, a [12.5.1](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.1) vagy újabb verzióra. A példa futtatása előtt győződjön meg arról, hogy engedélyezte a verziószámozást a Storage-fiókhoz.
+Az alábbi példakód bemutatja, hogyan listhatja a blobok verzióját a .NET-hez elérhető Azure Storage ügyféloldali kódtára [12.5.1-es](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.1) vagy újabb verziójával. A példa futtatása előtt győződjön meg arról, hogy engedélyezte a tárfiók verziószámozását.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobVersions":::
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [BLOB verziószámozása](versioning-overview.md)
+- [Blobok verziószámozása](versioning-overview.md)
 - [Az Azure Storage-blobok helyreállítható törlése](./soft-delete-blob-overview.md)

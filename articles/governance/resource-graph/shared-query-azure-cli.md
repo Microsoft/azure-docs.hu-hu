@@ -1,20 +1,20 @@
 ---
-title: 'Gyors útmutató: megosztott lekérdezés létrehozása az Azure CLI-vel'
-description: Ebben a rövid útmutatóban az Azure CLI-hez készült Resource Graph-bővítmény engedélyezéséhez és egy megosztott lekérdezés létrehozásához szükséges lépéseket követheti.
+title: 'Rövid útmutató: Megosztott lekérdezés létrehozása az Azure CLI használatával'
+description: Ebben a rövid útmutatóban a lépéseket követve engedélyezheti a Resource Graph bővítményt az Azure CLI-hez, és létrehozhat egy megosztott lekérdezést.
 ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: ec1b010771790339a13777624f04c7bd2db01f11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2befc2b6895cd9d2c797fc8ed0e28a27eb6e73e8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99594383"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870552"
 ---
-# <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>Gyors útmutató: erőforrás-gráf megosztott lekérdezés létrehozása az Azure CLI használatával
+# <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>Rövid útmutató: Megosztott Resource Graph létrehozása az Azure CLI használatával
 
-Az Azure Resource Graph és az [Azure CLI](/cli/azure/) használatának első lépéseként győződjön meg arról, hogy a bővítmény telepítve van. E rövid útmutató segítségével hozzáadhatja a bővítményt a telepített Azure CLI-hez. A bővítményt helyileg telepített Azure CLI-vel vagy az [Azure Cloud Shellen](https://shell.azure.com) keresztül is használhatja.
+Az Azure [CLI-Azure Resource Graph](/cli/azure/) használatának első lépése annak ellenőrzése, hogy a bővítmény telepítve van-e. E rövid útmutató segítségével hozzáadhatja a bővítményt a telepített Azure CLI-hez. A bővítményt helyileg telepített Azure CLI-vel vagy az [Azure Cloud Shellen](https://shell.azure.com) keresztül is használhatja.
 
-A folyamat végén hozzáadta a bővítményt az Azure CLI-telepítéshez, és létrehoz egy Resource Graph megosztott lekérdezést.
+A folyamat végén hozzáadja a bővítményt a választott Azure CLI-telepítéshez, és létrehoz egy Resource Graph lekérdezést.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -24,18 +24,18 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="add-the-resource-graph-extension"></a>A Resource Graph bővítmény hozzáadása
 
-Annak engedélyezéséhez, hogy az Azure CLI működjön az Azure Resource Graph használatával, hozzá kell adni a bővítményt. Ez a bővítmény mindenhol működik, ahol az Azure CLI használható, beleértve a [Basht Windows 10-en](/windows/wsl/install-win10), a [Cloud Shellt](https://shell.azure.com) (különállón és portálon belülin egyaránt), az [Azure CLI Docker-rendszerképet](https://hub.docker.com/_/microsoft-azure-cli), vagy akár helyileg telepítve is.
+Ahhoz, hogy az Azure CLI működjön a Azure Resource Graph, hozzá kell adni a bővítményt. Ez a bővítmény mindenhol működik, ahol az Azure CLI használható, beleértve a [Basht Windows 10-en](/windows/wsl/install-win10), a [Cloud Shellt](https://shell.azure.com) (különállón és portálon belülin egyaránt), az [Azure CLI Docker-rendszerképet](https://hub.docker.com/_/microsoft-azure-cli), vagy akár helyileg telepítve is.
 
-1. Győződjön meg arról, hogy a legújabb Azure CLI telepítve van (legalább a **2.8.0**). Ha még nincs telepítve, kövesse [ezeket az utasításokat](/cli/azure/install-azure-cli-windows).
+1. Ellenőrizze, hogy telepítve van-e a legújabb Azure CLI **(legalább 2.8.0).** Ha még nincs telepítve, kövesse [ezeket az utasításokat](/cli/azure/install-azure-cli-windows).
 
-1. Az Azure CLI-környezetében válassza az [az Extension Add](/cli/azure/extension#az_extension_add) parancsot az erőforrás-gráf bővítmény importálásához a következő paranccsal:
+1. A választott Azure CLI-környezetben az [az extension add](/cli/azure/extension#az_extension_add) paranccsal importálja Resource Graph bővítményt:
 
    ```azurecli-interactive
    # Add the Resource Graph extension to the Azure CLI environment
    az extension add --name resource-graph
    ```
 
-1. Ellenőrizze, hogy telepítve van-e a bővítmény, és a várt verzió (legalább **1.1.0**) az [az Extension List](/cli/azure/extension#az_extension_list):
+1. Ellenőrizze, hogy a bővítmény telepítve van-e, és a várt verzió -e **(legalább 1.1.0),** [és hogy az az extension list:](/cli/azure/extension#az_extension_list)
 
    ```azurecli-interactive
    # Check the extension list (note that you may have other extensions installed)
@@ -45,11 +45,11 @@ Annak engedélyezéséhez, hogy az Azure CLI működjön az Azure Resource Graph
    az graph query -h
    ```
 
-## <a name="create-a-resource-graph-shared-query"></a>Erőforrás-gráf megosztott lekérdezésének létrehozása
+## <a name="create-a-resource-graph-shared-query"></a>Megosztott Resource Graph létrehozása
 
-Ha az Azure CLI-bővítmény hozzá van adva a környezethez, itt az ideje, hogy egy erőforrás-gráf megosztott lekérdezés legyen. A megosztott lekérdezés egy Azure Resource Manager objektum, amely engedélyt adhat az Azure Resource Graph Explorerben, vagy futtathatja azt. A lekérdezés a _hely_ szerint csoportosított összes erőforrás számát összegzi.
+Most, hogy az Azure CLI-bővítmény hozzá van adva a választott környezethez, itt az ideje egy Resource Graph lekérdezésnek. A megosztott lekérdezés egy Azure Resource Manager objektum, amely számára engedélyeket adhat vagy futtathat Azure Resource Graph Explorerben. A lekérdezés hely szerint csoportosítva összegzi az összes erőforrás _számát._
 
-1. Hozzon létre egy erőforráscsoportot az az [Group Create](/cli/azure/group#az_group_create) paranccsal az Azure Resource Graph megosztott lekérdezés tárolásához. Ez az erőforráscsoport neve `resource-graph-queries` , a helye pedig `westus2` .
+1. Hozzon létre egy erőforráscsoportot [az az group create](/cli/azure/group#az_group_create) használatával a megosztott Azure Resource Graph tárolására. Ennek az erőforráscsoportnak a neve, `resource-graph-queries` a helye pedig `westus2` .
 
    ```azurecli-interactive
    # Login first with az login if not using Cloud Shell
@@ -58,7 +58,7 @@ Ha az Azure CLI-bővítmény hozzá van adva a környezethez, itt az ideje, hogy
    az group create --name 'resource-graph-queries' --location 'westus2'
    ```
 
-1. Hozza létre az Azure Resource Graph megosztott lekérdezését a `graph` kiterjesztéssel és az [az Graph Shared-Query Create](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_create) paranccsal:
+1. Hozza létre Azure Resource Graph lekérdezést a bővítmény `graph` és az az graph [shared-query create paranccsal:](/cli/azure/graph/shared-query#az_graph_shared_query_create)
 
    ```azurecli-interactive
    # Create the Azure Resource Graph shared query
@@ -68,14 +68,14 @@ Ha az Azure CLI-bővítmény hozzá van adva a környezethez, itt az ideje, hogy
       --resource-group 'resource-graph-queries'
    ```
 
-1. Az új erőforráscsoport megosztott lekérdezéseit sorolja fel. Az az [Graph Shared-Query List](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_list) parancs az értékek tömbjét adja vissza.
+1. Listába sorolja az új erőforráscsoportban található megosztott lekérdezéseket. Az [az graph shared-query list parancs](/cli/azure/graph/shared-query#az_graph_shared_query_list) értéktömböt ad vissza.
 
    ```azurecli-interactive
    # List all the Azure Resource Graph shared queries in a resource group
    az graph shared-query list --resource-group 'resource-graph-queries'
    ```
 
-1. Csak egyetlen megosztott lekérdezési eredmény eléréséhez használja az az [Graph Shared-Query show](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_show) parancsot.
+1. Egyetlen megosztott lekérdezési eredmény lekérdezhető az [az graph shared-query show paranccsal.](/cli/azure/graph/shared-query#az_graph_shared_query_show)
 
    ```azurecli-interactive
    # Show a specific Azure Resource Graph shared query
@@ -83,8 +83,8 @@ Ha az Azure CLI-bővítmény hozzá van adva a környezethez, itt az ideje, hogy
       --name 'Summarize resources by location'
    ```
 
-1. Futtassa a megosztott lekérdezést az Azure CLI-ben az az `{{shared-query-uri}}` [gráf Query](/cli/azure/ext/resource-graph/graph#ext_resource_graph_az_graph_query) parancs szintaxisával.
-   Először másolja a `id` mezőt az előző parancs eredményéről `show` . Cserélje le a `shared-query-uri` példában szereplő szöveget a mező értékére `id` , de hagyja meg a környező `{{` és a `}}` karaktereket.
+1. Futtassa a megosztott lekérdezést az Azure CLI-ban az az graph query parancs `{{shared-query-uri}}` [szintaxisával.](/cli/azure/graph#az_graph_query)
+   Először másolja ki `id` a mezőt az előző parancs `show` eredményből. Cserélje `shared-query-uri` le a példában szereplő szöveget a mező `id` értékére, de hagyja meg a körüli `{{` és `}}` karaktereket.
 
    ```azurecli-interactive
    # Run a Azure Resource Graph shared query
@@ -92,17 +92,17 @@ Ha az Azure CLI-bővítmény hozzá van adva a környezethez, itt az ideje, hogy
    ```
 
    > [!NOTE]
-   > A `{{shared-query-uri}}` szintaxis egy **előzetes** verziójú funkció.
+   > A `{{shared-query-uri}}` szintaxis egy előzetes **verziójú** funkció.
 
-Az erőforrás-gráf megosztott lekérdezésének másik módja a Azure Portal. A portálon a keresősáv használatával keressen rá a "Resource Graph-lekérdezések" kifejezésre. Válassza ki a megosztott lekérdezést. Az **Áttekintés** lapon a **lekérdezés** lapon megjelenik a mentett lekérdezés. A **Szerkesztés** gomb megnyitható az [Erőforrás-diagram Explorerben](./first-query-portal.md).
+A megosztott lekérdezések keresésének Resource Graph is a Azure Portal. A portálon a keresősávban keressen rá a "lekérdezések Resource Graph keresésre". Válassza ki a megosztott lekérdezést. Az Áttekintés **lapon** a Lekérdezés **lapon** megjelenik a mentett lekérdezés. A **Szerkesztés** gomb megnyitja a [Resource Graph Explorerben.](./first-query-portal.md)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha el szeretné távolítani az erőforrás-gráf megosztott lekérdezését, az erőforráscsoportot és a bővítményt az Azure CLI-környezetből, ezt az alábbi parancsokkal végezheti el:
+Ha el szeretné távolítani a Resource Graph lekérdezést, erőforráscsoportot és bővítményt az Azure CLI-környezetből, ezt a következő parancsokkal használhatja:
 
-- [az Graph Shared-Query delete](/cli/azure/ext/resource-graph/graph/shared-query#ext_resource_graph_az_graph_shared_query_delete)
+- [az graph shared-query delete](/cli/azure/graph/shared-query#az_graph_shared_query_delete)
 - [az group delete](/cli/azure/group#az_group_delete)
-- [Az Extension Remove](/cli/azure/extension#az_extension_remove)
+- [az extension remove](/cli/azure/extension#az_extension_remove)
 
 ```azurecli-interactive
 # Delete the Azure Resource Graph shared query
@@ -119,7 +119,7 @@ az extension remove -n resource-graph
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban hozzáadta a Resource Graph-bővítményt az Azure CLI-környezethez, és létrehozott egy megosztott lekérdezést. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
+Ebben a rövid útmutatóban hozzáadta a Resource Graph bővítményt az Azure CLI-környezethez, és létrehozott egy megosztott lekérdezést. Ha többet szeretne megtudni a Resource Graph nyelvről, folytassa a lekérdezési nyelv részleteit tartalmazó oldalon.
 
 > [!div class="nextstepaction"]
 > [További információ a lekérdezési nyelvről](./concepts/query-language.md)

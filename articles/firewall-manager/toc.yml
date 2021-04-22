@@ -10,7 +10,7 @@
     - name: Virtuális központ védelme – ARM-sablon
       displayName: Resource Manager
       href: quick-secure-virtual-hub.md
-    - name: Tűzfal üzembe helyezése házirend-ARM sablonnal
+    - name: Tűzfal üzembe helyezése szabályzat használatával – ARM-sablon
       displayName: Resource Manager
       href: quick-firewall-policy.md
 - name: Oktatóanyagok
@@ -51,7 +51,7 @@
   items:
     - name: Biztonságipartner-szolgáltatók üzembe helyezése
       href: deploy-trusted-security-partner.md
-    - name: Privát végpontok biztonságossá tétele
+    - name: Biztonságos privát végpontok
       href: private-link-inspection-secure-virtual-hub.md
     - name: Migrálás tűzfalszabályzatba – PowerShell
       href: migrate-to-policy.md
@@ -64,7 +64,7 @@
 - name: Referencia
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/azure-firewall/network/firewall/policy
+      href: /cli/azure/network/firewall/policy
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewallpolicy
     - name: .NET

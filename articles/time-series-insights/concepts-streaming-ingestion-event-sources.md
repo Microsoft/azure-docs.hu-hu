@@ -9,16 +9,16 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 499cb3c978a67f9ef71e6ad9dd03be9f05b45729
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: e0d40a4e0e376a42841bd8df5d76e5c83d11b1e3
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726969"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865481"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2-eseményforrások
 
-A Azure Time Series Insights Gen2-környezet akár két streamelési eseményforrást is lehet. Kétféle Azure-erőforrás támogatott bemenetként:
+A Azure Time Series Insights Gen2-környezet legfeljebb két streamelési eseményforrást is lehet. Kétféle Azure-erőforrás támogatott bemenetként:
 
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
@@ -27,9 +27,9 @@ Az eseményeket UTF-8 kódolású JSON formátumban kell elküldeni.
 
 ## <a name="create-or-edit-event-sources"></a>Eseményforrások létrehozása vagy szerkesztése
 
-Az eseményforrás a hub és a Azure Time Series Insights Gen2-környezet közötti kapcsolat, és egy külön típusú erőforrás jön létre az `Time Series Insights event source` erőforráscsoportban. A IoT Hub vagy Event Hub-erőforrás(k) ugyanabban az Azure-előfizetésben is elérhető(k), mint a Azure Time Series Insights Gen2-környezet vagy egy másik előfizetés. Az ajánlott eljárás azonban az, ha a Azure Time Series Insights és az IoT Hub vagy az eseményközpontot ugyanabban az Azure-régióban található.
+Az eseményforrás a hub és a Azure Time Series Insights Gen2-környezet közötti kapcsolat, és egy külön típusú erőforrás jön létre az `Time Series Insights event source` erőforráscsoportban. A IoT Hub vagy Event Hub-erőforrás(k) ugyanabban az Azure-előfizetésben is elérhető(k), mint a Azure Time Series Insights Gen2-környezet vagy egy másik előfizetés. Az ajánlott eljárás azonban az, ha a Azure Time Series Insights és a IoT Hub vagy az eseményközpontot ugyanabban az Azure-régióban található.
 
-A környezet [eseményforrásának](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment)létrehozásához, szerkesztéséhez vagy eltávolításához [](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) használhatja a Azure Portal , [az Azure CLI,](https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/tsi/event-source)Azure Resource Manager [sablonok](time-series-insights-manage-resources-using-azure-resource-manager-template.md)és a REST API sablonokat.
+A környezet [eseményforrásának](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment)létrehozásához, szerkesztéséhez vagy eltávolításához [](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) használhatja a Azure Portal , [az Azure CLI,](/cli/azure/tsi/event-source)Azure Resource Manager [sablonok](time-series-insights-manage-resources-using-azure-resource-manager-template.md)és a REST API sablonokat.
 
 > [!WARNING]
 > Ne korlátozza a nyilvános internet-hozzáférést egy központra vagy eseményforrásra, Time Series Insights a szükséges kapcsolat megszakad.
@@ -42,7 +42,7 @@ Eseményforrás létrehozásakor megadhatja, hogy milyen, már létező adatokat
 |----------|-------------|------|
 | EarliestAvailable (Legkorábbi rendelkezésre áll) | Az IoT-ben vagy az Eseményközpontban tárolt összes meglévő adat bemenően | `"ingressStartAt": {"type": "EarliestAvailable"}` |
 | EventSourceCreationTime |  Kezdje meg az eseményforrás létrehozása után érkező adatok beérkezését. A rendszer figyelmen kívül hagyja az eseményforrás létrehozása előtt streamelt, már meglévő adatokat. Ez az alapértelmezett beállítás a Azure Portal   |   `"ingressStartAt": {"type": "EventSourceCreationTime"}` |
-| CustomEnqueuedTime | A környezet adatokat fog behozni az egyéni időzónában (UTC) előre. Az IoT-be vagy az eseményközpontba az egyéni be- vagy után beemelt események be lesznek edve és tárolva lesznek. Az egyénileg bekért idő előtt érkezett eseményeket a rendszer figyelmen kívül hagyja. Vegye figyelembe, hogy az "üzenetsorba állítva idő" azt az időt jelenti (UTC-ben), amikor az esemény megérkezett az IoT-be vagy az eseményközpontba. Ez eltér az [](./concepts-streaming-ingestion-event-sources.md#event-source-timestamp) esemény törzsében található egyéni időbélyeg-tulajdonságtól. |     `"ingressStartAt": {"type": "CustomEnqueuedTime", "time": "2021-03-01T17:00:00.20Z"}` |
+| CustomEnqueuedTime | A környezet az egyéni idősorból (UTC) továbbítja az adatokat. Az IoT-be vagy az eseményközpontba az egyéni be- vagy után beemelt események be lesznek edve és tárolva lesznek. Az egyénileg bekért idő előtt érkezett eseményeket a rendszer figyelmen kívül hagyja. Vegye figyelembe, hogy az "üzenetsorba állítva idő" azt az időt jelenti (UTC-ben), amikor az esemény megérkezett az IoT-be vagy az eseményközpontba. Ez eltér az [](./concepts-streaming-ingestion-event-sources.md#event-source-timestamp) esemény törzsében található egyéni időbélyeg-tulajdonságtól. |     `"ingressStartAt": {"type": "CustomEnqueuedTime", "time": "2021-03-01T17:00:00.20Z"}` |
 
 > [!IMPORTANT]
 >
@@ -90,7 +90,7 @@ Javasoljuk, hogy a fenti ajánlott eljárások mellett az alábbiakat is impleme
 
   - Az IngressReceivedMessagesTimeLag nagyobb, mint 5 perc
   - Az IngressReceivedBytes 0
-- A betöltési terhelést kiegyensúlyozottan tartsa a IoT Hub event hubs partíciók között.
+- A betöltési terhelést kiegyensúlyozottan tarthatja a IoT Hub- vagy Event Hub-partíciók között.
 
 ### <a name="historical-data-ingestion"></a>Előzményadatok be- és bebe-
 
@@ -111,7 +111,7 @@ Ha az egyéni időbélyeg egy beágyazott JSON-objektumban vagy tömbben találh
 
 ### <a name="time-zone-offsets"></a>Időzóna-eltolások
 
-Az időbélyegeket ISO 8601 formátumban kell elküldeni, és UTC időzónában lesznek tárolva. Ha meg van adva egy időzóna-eltolódás, a rendszer alkalmazza az eltolást, majd a tárolt és visszaadott időt UTC formátumban. Ha az eltolás nem megfelelően van formázva, a rendszer figyelmen kívül hagyja. Olyan esetekben, amikor a megoldás nem tartalmaz az eredeti eltolás kontextusát, az eltolási adatokat egy további külön eseménytulajdonságba is elküldheti, így biztosíthatja, hogy az adatok megmaradnak, és hogy az alkalmazás hivatkozni tud a lekérdezési válaszban.
+Az időbélyegeket ISO 8601 formátumban kell elküldeni, és UTC időzónában lesznek tárolva. Ha meg van adva egy időzóna-eltolódás, a rendszer alkalmazza az eltolást, majd a tárolt és visszaadott időt UTC formátumban. Ha az eltolás nem megfelelően van formázva, a rendszer figyelmen kívül hagyja. Olyan esetekben, amikor a megoldás nem tartalmaz az eredeti eltolás kontextusát, elküldheti az eltolási adatokat egy további külön eseménytulajdonságba annak érdekében, hogy megmaradjon, és hogy az alkalmazás hivatkozni tud a lekérdezési válaszban.
 
 Az időzóna-eltolódást a következő formátumban kell formázni:
 

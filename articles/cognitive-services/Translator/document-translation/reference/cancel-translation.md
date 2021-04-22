@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/25/2021
+ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 3de052f50676065a6656f77a0ea68cf8c9ab46a8
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: e3b7da30f54b9d9468b46a2cd0972a3397e5cdce
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107836202"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865106"
 ---
 # <a name="cancel-translation"></a>Fordítás megszakítása
 
@@ -73,7 +73,7 @@ A sikeres válasz az alábbi adatokat tartalmazza.
 |Név|Típus|Description|
 |--- |--- |--- |
 |id|sztring|A művelet azonosítója.|
-|createdDateTimeUtc|sztring|Művelet létrehozási dátumának időpontja.|
+|createdDateTimeUtc|sztring|A művelet létrehozási dátumának időpontja.|
 |lastActionDateTimeUtc|sztring|A művelet állapotának frissítésének dátuma.|
 |status|Sztring|Feladat vagy dokumentum lehetséges állapotának listája: <ul><li>Megszakítva</li><li>Érvénytelenítés</li><li>Sikertelen</li><li>NotStarted (Nem új)</li><li>Futó</li><li>Sikeres</li><li>ValidationFailed (Érvényesítési hiba)</li></ul>|
 |összegzés|StatusSummary (Állapot állapota)|Az alább felsorolt részleteket tartalmazó összegzés.|

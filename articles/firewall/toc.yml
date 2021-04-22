@@ -32,11 +32,11 @@
   items:
     - name: Az Azure Firewall funkciói
       href: features.md
-    - name: Prémium szintű szolgáltatások Azure Firewall
+    - name: Azure Firewall Prémium szintű funkciók
       href: premium-features.md
-    - name: Prémium Azure Firewall a portálon
+    - name: Azure Firewall Premium használata a portálon
       href: premium-portal.md
-    - name: Prémium szintű tanúsítványok Azure Firewall
+    - name: Azure Firewall Premium-tanúsítványok használata
       href: premium-certificates.md
     - name: FQDN-címkék
       href: fqdn-tags.md
@@ -97,16 +97,16 @@
       displayName: 'Azure CLI, az monitor diagnostic-settings create, monitor diagnostic settings'
     - name: Azure Firewall-munkafüzet
       href: firewall-workbook.md
-    - name: A tűzfal Premium telepítése és konfigurálása
+    - name: A Premium tűzfal üzembe helyezése és konfigurálása
       href: premium-deploy.md
-    - name: Vállalati HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok telepítése prémium szintű használatra
+    - name: Vállalati hitelesítésszolgáltatói tanúsítványok üzembe helyezése prémium szintű környezetben
       href: premium-deploy-certificates-enterprise-ca.md
-    - name: Migrálás Azure Firewall Premiumra
+    - name: Mirate to Azure Firewall Premium
       href: premium-migrate.md
 - name: Referencia
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/azure-firewall/network/firewall
+      href: /cli/azure/network/firewall
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewall
     - name: .NET

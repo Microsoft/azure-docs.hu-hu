@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/25/2021
+ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: a67544dc4f654a692338c76099daa19934a9ea45
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: c3301283f0a7334a7c207ff7c80b4f71a13de465
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107836208"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864828"
 ---
 # <a name="get-translations-status"></a>Fordítások állapotának lekérte
 
@@ -44,7 +44,7 @@ Ismerje meg, hogyan találhatja meg [az egyéni tartománynevét.](../get-starte
 > [!IMPORTANT]
 >
 > * **A Document Translation szolgáltatásnak minden API-kérelemhez egyéni tartományvégpontra van szükség.**
-> * Nem használhatja az erőforráskulcsok és -végpontok oldalán található végpontot Azure Portal a globális fordítóvégpontot sem a dokumentumfordításra vonatkozó  `api.cognitive.microsofttranslator.com` HTTP-kérések igénylésére.
+> * Nem használhatja az erőforráskulcsok és -végpontok oldalán található végpontot Azure Portal, sem a globális fordítóvégpontot– a  `api.cognitive.microsofttranslator.com` dokumentumfordításra vonatkozó HTTP-kérések igénylésére.
 
 ## <a name="request-parameters"></a>Kérelemparaméterek
 
@@ -65,19 +65,19 @@ A kérelemfejlécek a következőek:
 
 ## <a name="response-status-codes"></a>Válasz állapotkódok
 
-A kérések által visszaadott lehetséges HTTP-állapotkódok a következők.
+A kérés által visszaadott lehetséges HTTP-állapotkódok a következők.
 
 |Állapotkód|Description|
 |--- |--- |
 |200|OK gombra. Sikeres kérés, és az összes művelet állapotát adja vissza. HeadersRetry-After: integerETag: sztring|
 |400|Hibás kérés. Érvénytelen kérés. Ellenőrizze a bemeneti paramétereket.|
-|401|Jogosulatlan. Ellenőrizze a hitelesítő adatait.|
+|401|Jogosulatlan. Ellenőrizze hitelesítő adatait.|
 |500|Belső kiszolgálóhiba.|
 |Egyéb állapotkódok|<ul><li>Túl sok kérelem</li><li>A kiszolgáló ideiglenesen nem érhető el</li></ul>|
 
-## <a name="get-translations-status-response"></a>Fordítások állapotválaszának lekért válasza
+## <a name="get-translations-status-response"></a>Fordítási állapot lekért válasza
 
-### <a name="successful-get-translations-status-response"></a>Sikeres fordítási állapotválasz
+### <a name="successful-get-translations-status-response"></a>Sikeres fordítási állapot lekért állapota válasz
 
 A sikeres válasz az alábbi adatokat tartalmazza.
 
@@ -86,15 +86,15 @@ A sikeres válasz az alábbi adatokat tartalmazza.
 |id|sztring|A művelet azonosítója.|
 |createdDateTimeUtc|sztring|Művelet létrehozási dátumának időpontja.|
 |lastActionDateTimeUtc|sztring|A művelet állapotának frissítésének dátuma.|
-|status|Sztring|Feladat vagy dokumentum lehetséges állapotának listája: <ul><li>Megszakítva</li><li>Érvénytelenítés</li><li>Sikertelen</li><li>NotStarted (Nincs indítás)</li><li>Futó</li><li>Sikeres</li><li>ValidationFailed (Érvényesítési hiba)</li></ul>|
+|status|Sztring|Feladat vagy dokumentum lehetséges állapotának listája: <ul><li>Megszakítva</li><li>Érvénytelenítés</li><li>Sikertelen</li><li>NotStarted (Nem új)</li><li>Futó</li><li>Sikeres</li><li>ValidationFailed (Érvényesítési hiba)</li></ul>|
 |összegzés|StatusSummary[]|Az alább felsorolt részleteket tartalmazó összegzés.|
 |summary.total|egész szám|Az összes dokumentum száma.|
 |summary.failed|egész szám|A sikertelen dokumentumok száma.|
 |summary.success|egész szám|A sikeresen lefordított dokumentumok száma.|
-|summary.inProgress (összegzés.inProgress)|egész szám|A folyamatban lévő dokumentumok száma.|
-|summary.notYetStarted|egész szám|A feldolgozásra még nem elindított dokumentumok száma.|
+|summary.inProgress (Összegzés.inProgress)|egész szám|A folyamatban lévő dokumentumok száma.|
+|summary.notYetStarted|egész szám|A feldolgozással még nem elindított dokumentumok száma.|
 |summary.cancelled|egész szám|A lemondott dokumentumok száma.|
-|summary.totalCharacterCharged|egész szám|A felszámért karakterek teljes száma.|
+|summary.totalCharacterCharged|egész szám|A számított karakterek teljes száma.|
 
 ### <a name="error-response"></a>Hibaválasz
 
@@ -102,7 +102,7 @@ A sikeres válasz az alábbi adatokat tartalmazza.
 |--- |--- |--- |
 |code|sztring|Magas szintű hibakódokat tartalmazó felsorolások. Lehetséges értékek:<br/><ul><li>InternalServerError</li><li>InvalidArgument (Érvénytelen nyelv)</li><li>InvalidRequest (Érvénytelen kérdés)</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nem engedélyezett</li></ul>|
 |message|sztring|Magas szintű hibaüzenetet kap.|
-|Cél|sztring|Lekérte a hiba forrását. Ez lehet például "documents" (dokumentumok) vagy "document id" (dokumentumazonosító) érvénytelen dokumentum esetén.|
+|Cél|sztring|Lekérte a hiba forrását. Érvénytelen dokumentum esetén például "documents" (dokumentumok) vagy "document id" (dokumentumazonosító).|
 |innerError|InnerErrorV2|Új belső hibaformátum, amely megfelel Cognitive Services API-irányelveknek. Tartalmazza a szükséges ErrorCode tulajdonságokat, az üzenetet és az opcionális céltulajdonságokat, a részleteket (kulcs-érték párt), a belső hibát (ez beágyazható).|
 |innerError.code|sztring|Lekérte a kód hibasringet.|
 |innerError.message|sztring|Magas szintű hibaüzenetet kap.|
@@ -137,7 +137,7 @@ Az alábbi példa egy sikeres választ mutat be.
 
 ### <a name="example-error-response"></a>Példa hibaválaszra
 
-Az alábbiakban egy példa egy hibaválaszra. A többi hibakód sémája ugyanaz.
+Az alábbi példa egy hibaválaszra mutat példát. A többi hibakód sémája megegyezik.
 
 Állapotkód: 500
 

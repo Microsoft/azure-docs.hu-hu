@@ -1,7 +1,7 @@
 ---
 title: Biztonságos következtetési környezetek virtuális hálózatokkal
 titleSuffix: Azure Machine Learning
-description: Egy elkülönített Azure-Virtual Network segítségével biztonságossá teheti Azure Machine Learning következtetési környezetét.
+description: Elkülönített Azure-Virtual Network használatával biztosíthatja a Azure Machine Learning következtetési környezetet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,87 +11,87 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 1a1a9158c06a12caaeb5702f2fdf7da3c801c143
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 610ab82bfc4665fbb30aa3d3bc0448fa9338689c
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103573438"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872550"
 ---
-# <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Azure Machine Learning következtetési környezet biztonságossá tétele virtuális hálózatokkal
+# <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Biztonságossá Azure Machine Learning következtetési környezetben virtuális hálózatokkal
 
-Ebből a cikkből megtudhatja, hogyan teheti biztonságossá a következtetési környezeteket Azure Machine Learning-beli virtuális hálózattal.
+Ebből a cikkből megtudhatja, hogyan biztosíthatja a következtetési környezetek biztonságossá Azure Machine Learning.
 
-Ez a cikk egy öt részes sorozat negyedik része, amely végigvezeti egy Azure Machine Learning munkafolyamat biztonságossá tételének lépésein. Javasoljuk, hogy először olvassa el az első [részt: VNet – áttekintés](how-to-network-security-overview.md) az általános architektúra megismeréséhez. 
+Ez a cikk egy ötrészes sorozat negyedik része, amely végigvezeti egy Azure Machine Learning biztosításán. Javasoljuk, hogy először olvassa el az [első rész: VNet](how-to-network-security-overview.md) áttekintése részt, hogy először a teljes architektúrát értse meg. 
 
-Tekintse meg a sorozat egyéb cikkeit:
+Tekintse meg a sorozat többi cikkét:
 
-[1. a VNet áttekintése](how-to-network-security-overview.md)  >  [védi a 3. munkaterületet](how-to-secure-workspace-vnet.md)  >  [. Gondoskodjon a 4. képzési környezet védelméről](how-to-secure-training-vnet.md)  >  **. Gondoskodjon az 5. következtetési környezet védelméről**  >  [. A Studio funkcióinak engedélyezése](how-to-enable-studio-virtual-network.md)
+[1. Virtuális hálózat áttekintése](how-to-network-security-overview.md)  >  [A munkaterület biztonságossáése](how-to-secure-workspace-vnet.md)  >  [3. A betanító környezet védelme](how-to-secure-training-vnet.md)  >  **4. A következtetési környezet**  >  [5. védelme. Studio-funkciók engedélyezése](how-to-enable-studio-virtual-network.md)
 
-Ebből a cikkből megtudhatja, hogyan védheti meg a következő, a virtuális hálózatban található erőforrásokat:
+Ebből a cikkből megtudhatja, hogyan biztosíthatja a következő következtetési erőforrások biztonságát egy virtuális hálózatban:
 > [!div class="checklist"]
-> - Alapértelmezett Azure Kubernetes Service (ak) fürt
-> - Privát AK-fürt
-> - AK-fürt magánhálózati kapcsolattal
+> - Alapértelmezett Azure Kubernetes Service (AKS-) fürt
+> - Privát AKS-fürt
+> - AKS-fürt privát kapcsolatokkal
 > - Azure Container Instances (ACI)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Olvassa el a [hálózati biztonság áttekintése című](how-to-network-security-overview.md) cikket a gyakori virtuális hálózati forgatókönyvek és az általános virtuális hálózati architektúra megismeréséhez.
++ A gyakori [virtuális hálózati forgatókönyvekkel](how-to-network-security-overview.md) és a teljes virtuális hálózati architektúrával kapcsolatos további információért olvassa el a Hálózati biztonság áttekintése cikket.
 
-+ Meglévő virtuális hálózat és alhálózat a számítási erőforrásokkal való használatra.
++ Meglévő virtuális hálózat és alhálózat, amely a számítási erőforrásokkal használható.
 
-+ Ha erőforrásokat szeretne telepíteni egy virtuális hálózatba vagy alhálózatba, a felhasználói fióknak engedéllyel kell rendelkeznie a következő műveletekhez az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) szolgáltatásban:
++ Az erőforrások virtuális hálózaton vagy alhálózaton való üzembe helyezéséhez a felhasználói fióknak engedéllyel kell rendelkeznie a következő műveletekhez az Azure szerepköralapú hozzáférés-vezérlésében (Azure RBAC):
 
-    - "Microsoft. Network/virtualNetworks/JOIN/Action" a virtuális hálózati erőforráson.
-    - "Microsoft. Network/virtualNetworks/subnet/JOIN/Action" az alhálózati erőforráson.
+    - "Microsoft.Network/virtualNetworks/join/action" a virtuális hálózati erőforráson.
+    - "Microsoft.Network/virtualNetworks/subnet/join/action" az alhálózati erőforráson.
 
-    A hálózatkezeléssel rendelkező Azure RBAC kapcsolatos további információkért tekintse meg a [hálózatkezelés beépített szerepköreit](../role-based-access-control/built-in-roles.md#networking) .
+    További információ a hálózattal rendelkező Azure [RBAC-ről: Beépített hálózatépítési szerepkörök](../role-based-access-control/built-in-roles.md#networking)
 
 <a id="aksvnet"></a>
 
 ## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-Ha AK-fürtöt szeretne használni egy virtuális hálózaton, a következő hálózati követelményeknek kell teljesülniük:
+Egy AKS-fürt virtuális hálózaton való használatának a következő hálózati követelményeknek kell megfelelnie:
 
 > [!div class="checklist"]
-> * Kövesse az előfeltételeket a [speciális hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak)](../aks/configure-azure-cni.md#prerequisites).
-> * Az AK-példánynak és a virtuális hálózatnak ugyanabban a régióban kell lennie. Ha a virtuális hálózatban a munkaterület által használt Azure Storage-fiók (oka) t védi, azoknak ugyanabban a virtuális hálózatban kell lenniük, mint az AK-példány.
+> * Kövesse a Speciális hálózat beállítása a Azure Kubernetes Service [(AKS) szolgáltatásban cikk előfeltételét.](../aks/configure-azure-cni.md#prerequisites)
+> * Az AKS-példánynak és a virtuális hálózatnak ugyanabban a régióban kell lennie. Ha a munkaterület által egy virtuális hálózatban használt Azure Storage-fiók(ok)nak is ugyanabban a virtuális hálózatban kell lennie, mint az AKS-példánynak.
 
-A következő lépésekkel adhatja hozzá az AK-t egy virtuális hálózathoz a munkaterületéhez:
+Ha AKS-t szeretne hozzáadni egy virtuális hálózathoz a munkaterülethez, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com/), majd válassza ki az előfizetést és a munkaterületet.
+1. Jelentkezzen be a [Azure Machine Learning stúdió,](https://ml.azure.com/)majd válassza ki az előfizetését és a munkaterületét.
 
-1. Válassza a bal oldali __számítás__ lehetőséget.
+1. A __bal oldalon__ válassza a Számítás lehetőséget.
 
-1. Válassza a középpontban a kikövetkeztetés __fürtök__ lehetőséget, majd válassza a lehetőséget __+__ .
+1. Válassza __a Dedigenciafürtök__ lehetőséget a középpontban, majd válassza a __+__ lehetőséget.
 
-1. A New következtető __fürt__ párbeszédpanelen válassza a __speciális__ a __hálózati konfiguráció__ alatt lehetőséget.
+1. Az Új __következtetési fürt__ párbeszédpanelen válassza a Speciális __lehetőséget__ a __Hálózati konfiguráció alatt.__
 
 1. Ha ezt a számítási erőforrást virtuális hálózat használatára szeretné konfigurálni, hajtsa végre a következő műveleteket:
 
-    1. Az __erőforráscsoport__ legördülő listában válassza ki a virtuális hálózatot tartalmazó erőforráscsoportot.
-    1. A __virtuális hálózat__ legördülő listában válassza ki azt a virtuális hálózatot, amely az alhálózatot tartalmazza.
-    1. Az __alhálózat__ legördülő listában válassza ki az alhálózatot.
-    1. A __Kubernetes szolgáltatás címtartomány__ mezőjébe írja be a Kubernetes szolgáltatás címtartományt. Ez a címtartomány egy osztály nélküli Inter-Domain Routing (CIDR) jelölésű IP-címtartományt használ a fürt számára elérhető IP-címek definiálásához. Nem lehet átfedésben egyetlen alhálózati IP-tartománnyal sem (például 10.0.0.0/16).
-    1. A __KUBERNETES DNS-szolgáltatás IP-címe__ mezőbe írja be a Kubernetes DNS-szolgáltatás IP-címét. Ezt az IP-címet a Kubernetes DNS szolgáltatáshoz rendeli a rendszer. A Kubernetes a szolgáltatási címtartomány (például 10.0.0.10) közé kell esnie.
-    1. A __Docker Bridge-címe__ mezőbe írja be a Docker-híd címe mezőt. Ezt az IP-címet a Docker-híd rendeli hozzá. Nem lehet alhálózati IP-címtartományok vagy a Kubernetes szolgáltatási címtartomány (például 172.17.0.1/16).
+    1. Az __Erőforráscsoport legördülő__ listában válassza ki a virtuális hálózatot tartalmazó erőforráscsoportot.
+    1. A Virtuális __hálózat legördülő__ listában válassza ki az alhálózatot tartalmazó virtuális hálózatot.
+    1. Az __Alhálózat legördülő__ listában válassza ki az alhálózatot.
+    1. A __Kubernetes Service címtartománya mezőben__ adja meg a Kubernetes-szolgáltatás címtartományát. Ez a címtartomány osztály nélküli útválasztási Inter-Domain (CIDR) ip-címtartományt használ a fürt számára elérhető IP-címek meghatározásához. Nem lehet átfedésben az alhálózati IP-címtartományokkal (például 10.0.0.0/16).
+    1. A __Kubernetes DNS-szolgáltatás IP-címe__ mezőbe írja be a Kubernetes DNS-szolgáltatás IP-címét. Ez az IP-cím a Kubernetes DNS-szolgáltatáshoz van rendelve. A Kubernetes-szolgáltatás címtartományában kell lennie (például 10.0.0.10).
+    1. A __Docker-híd címe mezőbe__ írja be a Docker-híd címét. Ez az IP-cím a Docker Bridge-hez van rendelve. Nem lehet egyetlen alhálózati IP-címtartományban sem, sem a Kubernetes-szolgáltatás címtartományában (például 172.17.0.1/16).
 
-   ![Azure Machine Learning: Machine Learning Compute virtuális hálózati beállítások](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
+   ![Azure Machine Learning: Machine Learning Compute hálózati beállítások konfigurálása](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
-1. Ha a modellt webszolgáltatásként helyezi üzembe az AK-ban, a rendszer egy pontozási végpontot hoz létre a következtetési kérelmek kezeléséhez. Győződjön meg arról, hogy a virtuális hálózatot vezérlő NSG-csoport rendelkezik egy bejövő biztonsági szabállyal, amely engedélyezi a pontozási végpont IP-címét, ha a virtuális hálózaton kívülről szeretné hívni.
+1. Amikor webszolgáltatásként helyez üzembe egy modellt az AKS-be, létrejön egy pontozási végpont a következtetési kérelmek kezeléséhez. Ha a virtuális hálózaton kívülről szeretné hívni, győződjön meg arról, hogy a virtuális hálózatot vezérlő NSG-csoportban engedélyezve van egy bejövő biztonsági szabály a pontozási végpont IP-címére.
 
-    A pontozási végpont IP-címének megkereséséhez tekintse meg a központilag telepített szolgáltatás pontozási URI-JÁT. A pontozási URI megtekintésével kapcsolatos információkért lásd: [webszolgáltatásként üzembe helyezett modell felhasználása](how-to-consume-web-service.md#connection-information).
+    A pontozási végpont IP-címének megkereséhez keresse meg az üzembe helyezett szolgáltatás pontozási URI-ját. A pontozási URI megtekintésével kapcsolatos információkért lásd: Webszolgáltatásként üzembe helyezett [modell felhasználta.](how-to-consume-web-service.md#connection-information)
 
    > [!IMPORTANT]
-   > Tartsa meg a NSG alapértelmezett kimenő szabályait. További információ: [biztonsági csoportok](../virtual-network/network-security-groups-overview.md#default-security-rules)alapértelmezett biztonsági szabályai.
+   > Tartsa meg az NSG alapértelmezett kimenő szabályait. További információkért lásd a Biztonsági csoportok alapértelmezett [biztonsági szabályait.](../virtual-network/network-security-groups-overview.md#default-security-rules)
 
-   [![Egy bejövő biztonsági szabály](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png#lightbox)
+   [![Bejövő biztonsági szabály](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png#lightbox)
 
     > [!IMPORTANT]
-    > A pontozási végpont rendszerképében megjelenő IP-cím eltérő lesz az üzemelő példányok esetében. Míg az összes üzemelő példány ugyanazon az IP-címen osztozik egy AK-fürtön, az egyes AK-fürtök eltérő IP-címmel rendelkeznek.
+    > A pontozási végponthoz a képen látható IP-cím az üzemelő példányok esetén eltérő lesz. Bár az összes üzemelő példány ugyanazt az IP-címet osztja meg egy AKS-fürtön, minden AKS-fürt eltérő IP-címmel fog üzemelni.
 
-A Azure Machine Learning SDK-val is hozzáadhatja az Azure Kubernetes szolgáltatást egy virtuális hálózatban. Ha már van egy AK-fürtje egy virtuális hálózaton, csatolja azt a munkaterülethez a következő témakörben leírtak szerint: [üzembe helyezés az AK](how-to-deploy-and-where.md)-ban. A következő kód létrehoz egy új AK-példányt `default` egy nevű virtuális hálózat alhálózatában `mynetwork` :
+Az Azure Machine Learning SDK-val virtuális Azure Kubernetes Service is hozzáadhat. Ha már rendelkezik AKS-fürttel egy virtuális hálózatban, csatolja azt a munkaterülethez a [How to deploy to AKS (Üzembe helyezés az AKS-be) dokumentumban leírtak szerint.](how-to-deploy-and-where.md) A következő kód létrehoz egy új AKS-példányt egy nevű virtuális `default` hálózat alhálózatában: `mynetwork`
 
 ```python
 from azureml.core.compute import ComputeTarget, AksCompute
@@ -111,73 +111,73 @@ aks_target = ComputeTarget.create(workspace=ws,
                                   provisioning_configuration=config)
 ```
 
-A létrehozási folyamat befejezésekor futtathat következtetéseket vagy modell-pontozást egy virtuális hálózat mögötti AK-fürtön. További információ: [üzembe helyezés az AK](how-to-deploy-and-where.md)-ban.
+A létrehozási folyamat befejezése után deduktációt vagy modellpontozást futtathat egy virtuális hálózat mögötti AKS-fürtön. További információ: Üzembe helyezés [az AKS-be.](how-to-deploy-and-where.md)
 
-A Role-Based Access Control Kubernetes való használatával kapcsolatos további információkért lásd: az [Azure RBAC használata a Kubernetes engedélyezéséhez](../aks/manage-azure-rbac.md).
+További információ a kubernetes-Role-Based Access Control a Use [Azure RBAC for Kubernetes authorization (Azure RBAC használata Kubernetes-hitelesítéshez) című Role-Based Access Control.](../aks/manage-azure-rbac.md)
 
-## <a name="network-contributor-role"></a>Hálózati közreműködő szerepkör
+## <a name="network-contributor-role"></a>Hálózati közreműködői szerepkör
 
 > [!IMPORTANT]
-> Ha AK-fürtöt hoz létre vagy csatol egy korábban létrehozott virtuális hálózattal, akkor meg kell adnia a szolgáltatásnév (SP) vagy a felügyelt identitást az AK-fürt számára a _hálózati közreműködő_ szerepkört a virtuális hálózatot tartalmazó erőforráscsoporthoz.
+> Ha korábban létrehozott virtuális hálózat biztosításával hoz létre vagy csatol egy AKS-fürtöt, az AKS-fürt  szolgáltatásnév (SP) vagy felügyelt identitása számára a Hálózati közreműködő szerepkört kell megadja a virtuális hálózatot tartalmazó erőforráscsoportnak.
 >
 > Az identitás hálózati közreműködőként való hozzáadásához kövesse az alábbi lépéseket:
 
-1. Az alábbi Azure CLI-parancsokkal keresheti meg az egyszerű szolgáltatásnév vagy a felügyelt identitás AZONOSÍTÓját. Cserélje le a `<aks-cluster-name>` nevet a fürt nevére. A helyére írja be az `<resource-group-name>` _AK-fürtöt tartalmazó_ erőforráscsoport nevét:
+1. Az AKS szolgáltatásnév vagy felügyelt identitásazonosítójának megkereshez használja a következő Azure CLI-parancsokat. Cserélje `<aks-cluster-name>` le a helyére a fürt nevét. Cserélje le a helyére az `<resource-group-name>` AKS-fürtöt tartalmazó _erőforráscsoport nevét:_
 
     ```azurecli-interactive
     az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
     ``` 
 
-    Ha a parancs egy értéket ad vissza `msi` , használja a következő parancsot a felügyelt identitás résztvevő-azonosítójának azonosításához:
+    Ha ez a parancs értéket ad vissza, használja a következő parancsot a felügyelt identitás `msi` egyszerű azonosítójának azonosításához:
 
     ```azurecli-interactive
     az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
     ```
 
-1. A virtuális hálózatot tartalmazó erőforráscsoport AZONOSÍTÓjának megkereséséhez használja a következő parancsot. Cserélje le a `<resource-group-name>` nevet a _virtuális hálózatot tartalmazó_ erőforráscsoport nevére:
+1. A virtuális hálózatot tartalmazó erőforráscsoport azonosítóját az alábbi paranccsal találhatja meg. Cserélje le a helyére a virtuális hálózatot `<resource-group-name>` tartalmazó _erőforráscsoport nevét:_
 
     ```azurecli-interactive
     az group show -n <resource-group-name> --query id
     ```
 
-1. Ha a szolgáltatásnevet vagy a felügyelt identitást hálózati közreműködőként szeretné felvenni, használja a következő parancsot. Cserélje le az értéket az `<SP-or-managed-identity>` egyszerű szolgáltatásnév vagy a felügyelt identitás számára visszaadott azonosítóra. Cserélje le a értéket a `<resource-group-id>` virtuális hálózatot tartalmazó erőforráscsoport által visszaadott azonosítóra:
+1. A szolgáltatásnév vagy a felügyelt identitás hálózati közreműködőként való hozzáadásához használja a következő parancsot. Cserélje `<SP-or-managed-identity>` le a helyére a szolgáltatásnévhez vagy a felügyelt identitáshoz visszaadott azonosítót. Cserélje le a helyére a virtuális hálózatot tartalmazó `<resource-group-id>` erőforráscsoport által visszaadott azonosítót:
 
     ```azurecli-interactive
     az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
     ```
-A belső terheléselosztó az AK-val való használatáról további információt a [belső Load Balancer használata az Azure Kubernetes szolgáltatással](../aks/internal-lb.md)című témakörben talál.
+További információ a belső terheléselosztás AKS-sel való használatával kapcsolatban: Belső terheléselosztás használata a [Azure Kubernetes Service.](../aks/internal-lb.md)
 
-## <a name="secure-vnet-traffic"></a>Biztonságos VNet-forgalom
+## <a name="secure-vnet-traffic"></a>Biztonságos virtuális hálózati forgalom
 
-Az AK-fürt és a virtuális hálózat közötti forgalom elkülönítésére két módszer áll rendelkezésre:
+Az AKS-fürt és a virtuális hálózat között kétféle módszer létezik az adatforgalom elkülönítéséhez:
 
-* __Privát AK-fürt__: Ez a módszer az Azure Private-hivatkozást használja a fürttel való kommunikáció biztonságossá tételéhez üzembe helyezési/felügyeleti műveletekhez.
-* __Belső AK-Load Balancer__: Ez a módszer konfigurálja a végpontot a központi telepítések számára, hogy a virtuális hálózaton belüli magánhálózati IP-címet használjanak.
+* __Privát AKS-fürt:__ Ez a megközelítés Azure Private Link a fürttel való kommunikáció biztonságossá helyezéséhez az üzembe helyezési/felügyeleti műveletekhez.
+* __Belső AKS-terheléselosztás:__ Ez a megközelítés úgy konfigurálja az AKS-hez üzemelő példányok végpontját, hogy magánhálózati IP-címet használjanak a virtuális hálózaton belül.
 
 > [!WARNING]
-> A belső Load Balancer nem működik a kubenet-t használó AK-fürtökkel. Ha egy belső terheléselosztó és egy privát AK-fürt egyidejű használatát kívánja használni, konfigurálja a privát AK-fürtöt az Azure Container Network Interface (CNI) használatával. További információ: [Az Azure CNI hálózatkezelésének konfigurálása az Azure Kubernetes szolgáltatásban](../aks/configure-azure-cni.md).
+> A belső terheléselosztás nem működik kubenetet használó AKS-fürtökön. Ha egyszerre szeretne használni egy belső terheléselosztást és egy privát AKS-fürtöt, konfigurálja a privát AKS-fürtöt Azure Container Networking Interface (CNI). További információ: [Hálózati Azure CNI konfigurálása a Azure Kubernetes Service.](../aks/configure-azure-cni.md)
 
-### <a name="private-aks-cluster"></a>Privát AK-fürt
+### <a name="private-aks-cluster"></a>Privát AKS-fürt
 
-Alapértelmezés szerint az AK-fürtök vezérlési síkon vagy API-kiszolgálóval rendelkeznek nyilvános IP-címekkel. Egy privát AK-fürt létrehozásával beállíthatja, hogy az AK privát vezérlési síkot használjon. További információt a [privát Azure Kubernetes Service-fürt létrehozása](../aks/private-clusters.md)című témakörben talál.
+Alapértelmezés szerint az AKS-fürtök egy vezérlősíkkal vagy API-kiszolgálóval, nyilvános IP-címekkel vannak. Az AKS-t privát vezérlősík használatára konfigurálhatja egy privát AKS-fürt létrehozásával. További információ: Privát fürt [Azure Kubernetes Service.](../aks/private-clusters.md)
 
-Miután létrehozta a privát AK-fürtöt, [csatolja a fürtöt a virtuális hálózathoz](how-to-create-attach-kubernetes.md) Azure Machine Learninghoz való használathoz.
-
-> [!IMPORTANT]
-> Mielőtt egy magánhálózati kapcsolattal rendelkező AK-fürtöt Azure Machine Learning-mel használ, meg kell nyitnia egy támogatási eseményt a funkció engedélyezéséhez. További információ: a [kvóták kezelése és növelése](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
-
-### <a name="internal-aks-load-balancer"></a>Belső AK-Load Balancer
-
-Alapértelmezés szerint az AK-ban üzemelő példányok [nyilvános Load balancert](../aks/load-balancer-standard.md)használnak. Ebből a szakaszból megtudhatja, hogyan konfigurálhatja az AK-t belső terheléselosztó használatára. Egy belső (vagy privát) terheléselosztó akkor használatos, ha csak a magánhálózati IP-címek engedélyezettek a rendszerfelületként. A belső terheléselosztó a virtuális hálózaton belüli forgalom elosztására szolgál.
-
-A privát terheléselosztó úgy van beállítva, hogy az AK-t _belső terheléselosztó_ használatára konfigurálja. 
-
-#### <a name="enable-private-load-balancer"></a>Privát Load Balancer engedélyezése
+A privát AKS-fürt [](how-to-create-attach-kubernetes.md) létrehozása után csatlakoztassa a fürtöt a virtuális hálózathoz, hogy az Azure Machine Learning.
 
 > [!IMPORTANT]
-> Az Azure Kubernetes Service-fürt Azure Machine Learning Studióban való létrehozásakor nem engedélyezhető a magánhálózati IP-cím. Létrehozhat egyet belső terheléselosztó használatával, ha a Python SDK-t vagy az Azure CLI-bővítményt használja a gépi tanuláshoz.
+> Mielőtt privát kapcsolattal rendelkező AKS-fürtöt használ Azure Machine Learning, meg kell nyitnia egy támogatási incidenst a funkció engedélyezéséhez. További információ: [Kvóták kezelése és növelése.](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)
 
-Az alábbi példák bemutatják, hogyan __hozhat létre egy új AK-fürtöt privát IP-/belső terheléselosztó__ használatával az SDK és a parancssori felület segítségével:
+### <a name="internal-aks-load-balancer"></a>Belső AKS-terheléselosztás
+
+Alapértelmezés szerint az AKS üzemelő példányai nyilvános [terheléselosztást használnak.](../aks/load-balancer-standard.md) Ebben a szakaszban megtudhatja, hogyan konfigurálhatja az AKS-t belső terheléselosztás használatára. Belső (vagy privát) terheléselosztást használ, ahol csak privát IP-k engedélyezettek előtereként. A belső terheléselosztás a virtuális hálózaton belüli forgalom terheléselosztásához használható
+
+A privát terheléselosztás úgy engedélyezhető, hogy az AKS-t belső terheléselosztás _használatára konfigurálja._ 
+
+#### <a name="enable-private-load-balancer"></a>Privát terheléselosztás engedélyezése
+
+> [!IMPORTANT]
+> A magánhálózati IP-cím nem engedélyezhető a Azure Kubernetes Service fürt létrehozásakor a Azure Machine Learning stúdió. Belső terheléselosztással létrehozhat egyet, ha a Python SDK-t vagy az Azure CLI-bővítményt használja a gépi tanuláshoz.
+
+Az alábbi példák bemutatják, hogyan hozhat létre új AKS-fürtöt privát __IP-címmel/belső terheléselosztással__ az SDK és a CLI használatával:
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -219,15 +219,15 @@ az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalance
 ```
 
 > [!IMPORTANT]
-> A CLI-vel csak belső terheléselosztó használatával hozhat létre egy AK-fürtöt. Nincs az ml parancs egy meglévő fürt belső terheléselosztó használatára való frissítéséhez.
+> A CLI használatával csak belső terheléselosztással hozhat létre AKS-fürtöt. Nem létezik az az ml parancs egy meglévő fürt belső terheléselosztás használatára való frissítéséhez.
 
-További információ: az [ml computetarget Create AK](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-aks) Reference.
+További információkért lásd az [az ml computetarget create aks](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_aks) referenciát.
 
 ---
 
-Amikor __meglévő fürtöt csatol__ a munkaterülethez, meg kell várnia, amíg a csatlakoztatási művelet be nem konfigurálja a terheléselosztó-t. A fürtök csatlakoztatásával kapcsolatos információkért lásd: [meglévő AK-fürt csatolása](how-to-create-attach-kubernetes.md).
+Ha __meglévő fürtöt csatlakoztat a__ munkaterülethez, meg kell várnia, amíg a csatolási művelet után konfigurálja a terheléselosztást. A fürtök csatolásának információiért lásd: [Meglévő AKS-fürt csatolása.](how-to-create-attach-kubernetes.md)
 
-A meglévő fürt csatolása után frissítheti a fürtöt belső terheléselosztó/magánhálózati IP-cím használatára:
+A meglévő fürt csatolása után frissítheti a fürtöt egy belső terheléselosztási/magánhálózati IP-cím használatára:
 
 ```python
 import azureml.core
@@ -246,37 +246,37 @@ aks_target.update(update_config)
 aks_target.wait_for_completion(show_output = True)
 ```
 
-## <a name="enable-azure-container-instances-aci"></a>Azure Container Instances engedélyezése (ACI)
+## <a name="enable-azure-container-instances-aci"></a>A Azure Container Instances (ACI) engedélyezése
 
-A Azure Container Instances a modell telepítésekor dinamikusan jönnek létre. Annak engedélyezéséhez, hogy a Azure Machine Learning az ACI-t a virtuális hálózaton belül hozza létre, engedélyeznie kell az alhálózati __delegálást__ az üzemelő példány által használt alhálózathoz.
+Azure Container Instances a rendszer dinamikusan hoz létre egy modellt. Ha engedélyezni Azure Machine Learning, hogy ACI-t hozzon létre  a virtuális hálózaton belül, engedélyeznie kell az alhálózat delegálását az üzembe helyezés által használt alhálózathoz.
 
 > [!WARNING]
-> Ha a virtuális hálózatban Azure Container Instancest használ, a virtuális hálózatnak a következőket kell tennie:
-> * Ugyanabban az erőforráscsoporthoz, mint a Azure Machine Learning munkaterülete.
-> * Ha a munkaterület __privát végponttal__ rendelkezik, a Azure Container instances használt virtuális hálózatnak meg kell egyeznie a munkaterület privát végpontja által használttal.
+> Ha virtuális Azure Container Instances használ, a virtuális hálózatnak a következőnek kell lennie:
+> * Ugyanabban az erőforráscsoportban, mint a Azure Machine Learning munkaterületen.
+> * Ha a munkaterület privát __végponttal__ rendelkezik, a munkaterülethez használt Azure Container Instances hálózatnak egy kell lennie a munkaterület privát végpontja által használt hálózattal.
 >
-> A virtuális hálózaton belüli Azure Container Instances használatakor a munkaterület Azure Container Registry (ACR) nem lehet a virtuális hálózaton.
+> Ha virtuális Azure Container Instances használ, a munkaterülethez Azure Container Registry virtuális hálózaton belüli virtuális hálózat (ACR) nem lehet.
 
-Ha egy virtuális hálózatban szeretné használni az ACI-t a munkaterületére, kövesse az alábbi lépéseket:
+Ha az ACI-t virtuális hálózaton keresztül a munkaterülethez használja, kövesse az alábbi lépéseket:
 
-1. Ha engedélyezni szeretné az alhálózati delegálást a virtuális hálózaton, használja az [alhálózati delegálás hozzáadása vagy eltávolítása](../virtual-network/manage-subnet-delegation.md) című cikk információit. A delegálást engedélyezheti virtuális hálózat létrehozásakor, vagy hozzáadhatja egy meglévő hálózathoz.
+1. Ha engedélyezni szeretné az alhálózat delegálását a virtuális hálózaton, használja az Alhálózat-delegálás hozzáadása vagy eltávolítása cikkben [található](../virtual-network/manage-subnet-delegation.md) információkat. Engedélyezheti a delegálást a virtuális hálózatok létrehozásakor, vagy hozzáadhatja egy meglévő hálózathoz.
 
     > [!IMPORTANT]
-    > A delegálás engedélyezésekor használja `Microsoft.ContainerInstance/containerGroups` a __meghatalmazott alhálózatot a szolgáltatás__ értékéhez.
+    > A delegálás engedélyezésekor használja `Microsoft.ContainerInstance/containerGroups` a értéket az __Alhálózat delegálása szolgáltatásértékként.__
 
-2. Telepítse a modellt [AciWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-)használatával, használja a `vnet_name` és a `subnet_name` paramétereket. Állítsa be ezeket a paramétereket a virtuális hálózat nevére és az alhálózatra, ahol engedélyezte a delegálást.
+2. A modell üzembe helyezése a [AciWebservice.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-)használatával, használja a `vnet_name` és a `subnet_name` paramétert. Állítsa be ezeket a paramétereket arra a virtuális hálózat nevére és alhálózatra, ahol engedélyezte a delegálást.
 
 ## <a name="limit-outbound-connectivity-from-the-virtual-network"></a>A virtuális hálózat kimenő kapcsolatainak korlátozása
 
-Ha nem szeretné az alapértelmezett kimenő szabályokat használni, és korlátozni szeretné a virtuális hálózat kimenő hozzáférését, engedélyeznie kell a Azure Container Registryhoz való hozzáférést. Győződjön meg például arról, hogy a hálózati biztonsági csoportok (NSG) olyan szabályt tartalmaznak, amely lehetővé teszi a __AzureContainerRegistry. RegionName__ szolgáltatáshoz való hozzáférést, ahol a (z) {RegionName} egy Azure-régió neve.
+Ha nem szeretné használni az alapértelmezett kimenő szabályokat, és korlátozni szeretné a virtuális hálózat kimenő hozzáférését, engedélyeznie kell a hozzáférést a Azure Container Registry. Győződjön meg például arról, hogy a hálózati biztonsági csoportok (NSG) tartalmaznak egy szabályt, amely engedélyezi a hozzáférést az __AzureContainerRegistry.RegionName__ szolgáltatáscímkéhez, ahol a {RegionName} egy Azure-régió neve.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ez a cikk egy öt részből álló virtuális hálózati sorozat negyedik része. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
+Ez a cikk egy ötrészes virtuális hálózati sorozat negyedik része. A további cikkekből megtudhatja, hogyan biztosíthatja a virtuális hálózatok biztonságát:
 
-* [1. rész: a Virtual Network áttekintése](how-to-network-security-overview.md)
-* [2. rész: a munkaterület erőforrásainak védelme](how-to-secure-workspace-vnet.md)
-* [3. rész: a képzési környezet biztonságossá tétele](how-to-secure-training-vnet.md)
-* [5. rész: a Studio funkcióinak engedélyezése](how-to-enable-studio-virtual-network.md)
+* [1. rész: A virtuális hálózat áttekintése](how-to-network-security-overview.md)
+* [2. rész: A munkaterület erőforrásainak biztonságossáése](how-to-secure-workspace-vnet.md)
+* [3. rész: A betanító környezet védelme](how-to-secure-training-vnet.md)
+* [5. rész: A Studio funkcióinak engedélyezése](how-to-enable-studio-virtual-network.md)
 
-Tekintse meg az [Egyéni DNS](how-to-custom-dns.md) használata névfeloldáshoz című cikket is.
+Lásd még az egyéni [DNS névfeloldáshoz való](how-to-custom-dns.md) használatával kapcsolatos cikket.

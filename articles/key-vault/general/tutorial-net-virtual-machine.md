@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: c08d0c210e992cba5bca2695fda0bcf08c4689dc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ba299ff52ccdf811d739efdb1d379889444a02b8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772090"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868392"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Oktatóanyag: Azure Key Vault használata virtuális géppel a .NET-en
 
-Azure Key Vault segít megvédeni a titkos kulcsokat, például az API-kulcsokat, az alkalmazások, szolgáltatások és it-erőforrások eléréséhez szükséges adatbázis-kapcsolati sztringeket.
+Azure Key Vault segít megvédeni a titkos kulcsokat, például az API-kulcsokat, az alkalmazások, szolgáltatások és az it-erőforrások eléréséhez szükséges adatbázis-kapcsolati sztringeket.
 
 Ez az oktatóanyag bemutatja, hogyan olvashat be információkat egy konzolalkalmazással a Azure Key Vault. Az alkalmazás a virtuális gép által felügyelt identitással hitelesíti magát a Key Vault. 
 
@@ -138,7 +138,7 @@ Hozzon létre egy konzolalkalmazást, és telepítse a szükséges csomagokat az
 
 ### <a name="install-net-core"></a>A .NET Core telepítése
 
-A .NET Core telepítéséhez kattintson a [.NET letöltési oldalára.](https://www.microsoft.com/net/download)
+A .NET Core telepítéséhez kattintson a [.NET letöltési oldalára.](https://dotnet.microsoft.com/download)
 
 ### <a name="create-and-run-a-sample-net-app"></a>Minta .NET-alkalmazás létrehozása és futtatása
 
