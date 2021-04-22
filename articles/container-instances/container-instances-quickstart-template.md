@@ -1,6 +1,6 @@
 ---
 title: Rövid útmutató – Tárolópéldány létrehozása – Azure Resource Manager sablon
-description: Ebben a rövid útmutatóban egy Azure Resource Manager sablont fog használni egy elkülönített Azure-tárolópéldányban futó tárolóba helyezett webalkalmazás gyors üzembe helyezéséhez.
+description: Ebben a rövid útmutatóban egy Azure Resource Manager egy elkülönített Azure-tárolópéldányban futó tárolóba helyezett webalkalmazás gyors üzembe helyezéséhez.
 services: azure-resource-manager
 ms.date: 04/30/2020
 ms.topic: quickstart
@@ -9,16 +9,16 @@ ms.custom:
 - subject-armqs
 - devx-track-js
 - mode-arm
-ms.openlocfilehash: 5e8b9e1b2a396bb20b35dd69efe26758ba0db543
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 2f57e86421f7522467a3f4adf4a4e9a21456ba4c
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537501"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878739"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-an-arm-template"></a>Rövid útmutató: Tárolópéldány üzembe helyezése az Azure-ban ARM-sablon használatával
 
-A Azure Container Instances egyszerűséggel és sebességgel futtathat kiszolgáló nélküli Docker-tárolókat az Azure-ban. Üzembe helyezhet egy alkalmazást igény szerint egy tárolópéldányon, ha nincs szüksége egy teljes tárolóvezénylési platformra, például a Azure Kubernetes Service. Ebben a rövid útmutatóban egy Azure Resource Manager-sablonnal (ARM-sablonnal) helyez üzembe egy elkülönített Docker-tárolót, és elérhetővé teszi a webalkalmazását egy nyilvános IP-címmel.
+A Azure Container Instances egyszerűséggel és sebességgel futtathat kiszolgáló nélküli Docker-tárolókat az Azure-ban. Igény szerint helyezhet üzembe egy alkalmazást egy tárolópéldányon, ha nincs szüksége egy teljes körű tárolóvezénylési platformra, például a Azure Kubernetes Service. Ebben a rövid útmutatóban egy Azure Resource Manager sablont (ARM-sablont) fog használni egy elkülönített Docker-tároló üzembe helyezéséhez, és a webalkalmazás nyilvános IP-címmel való elérhetővé helyezéséhez.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -34,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-aci-linuxcontainer-public-ip/) közül származik.
 
-:::code language="json" source="~/quickstart-templates/101-aci-linuxcontainer-public-ip/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.containerinstance/aci-linuxcontainer-public-ip/azuredeploy.json":::
 
 A sablon a következő erőforrást definiálja:
 
@@ -52,13 +52,13 @@ További Azure Container Instances sablonmintákat a gyorsindítási [sablongyű
 
     * **Előfizetés**: válasszon ki egy Azure-előfizetést.
     * **Erőforráscsoport:** válassza az **Új létrehozása** lehetőséget, adjon egyedi nevet az erőforráscsoportnak, majd kattintson az **OK gombra.**
-    * **Hely**: válasszon egy helyet az erőforráscsoportnak. Például: **AZ USA középső középső államoka.**
+    * **Hely**: válasszon egy helyet az erőforráscsoportnak. Például: **USA középső középső országa.**
     * **Név:** fogadja el a példány létrehozott nevét, vagy adjon meg egy nevet.
     * **Kép:** fogadja el az alapértelmezett rendszerképnevet. Ez a Linux-rendszerképminta egy statikus HTML-oldalt Node.js webalkalmazást tartalmaz. 
 
     Fogadja el az alapértelmezett értékeket a többi tulajdonsághoz.
 
-    Tekintse át a használati feltételeket. Ha elfogadja, válassza az Elfogadom a fenti feltételeket és **feltételeket lehetőséget.**
+    Tekintse át a használati feltételeket. Ha elfogadja, válassza az Elfogadom a fenti feltételeket és **feltételeket** lehetőséget.
 
     ![Sablontulajdonságok](media/container-instances-quickstart-template/template-properties.png)
 

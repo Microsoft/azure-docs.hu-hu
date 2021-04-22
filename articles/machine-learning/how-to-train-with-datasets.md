@@ -12,18 +12,18 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: edb7ebc94d2706d1bf20db8ed9a869107163ff8d
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 0b2bb49863e07e6f06512e868ed12ecf00cc11c2
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107387989"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872388"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Modellek betanítása Azure Machine Learning adatkészletekkel 
 
-Ebből a cikkből megtudhatja, hogyan munkához Azure Machine Learning [gépi](/python/api/azureml-core/azureml.core.dataset%28class%29) tanulási modellek betanítása érdekében.  A helyi vagy távoli számítási cél adatkészletei anélkül is használhatók, hogy aggódnia kellene a kapcsolati sztringek vagy az adatútvonalak miatt. 
+Ebből a cikkből megtudhatja, hogyan használhatók Azure Machine Learning [gépi](/python/api/azureml-core/azureml.core.dataset%28class%29) tanulási modellek betanítása érdekében.  A helyi vagy távoli számítási cél adatkészletei anélkül is használhatók, hogy aggódnia kellene a kapcsolati sztringek vagy az adatútvonalak miatt. 
 
-Azure Machine Learning adatkészletek zökkenőmentes integrációt biztosítanak az olyan betanító Azure Machine Learning funkciókkal, mint a [ScriptRunConfig,](/python/api/azureml-core/azureml.core.scriptrunconfig)a [HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive)és Azure Machine Learning [folyamatok.](./how-to-create-machine-learning-pipelines.md)
+Azure Machine Learning adatkészletek zökkenőmentes integrációt biztosítanak az olyan Azure Machine Learning betanító funkciókkal, mint a [ScriptRunConfig,](/python/api/azureml-core/azureml.core.scriptrunconfig)a [HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive)és Azure Machine Learning [folyamatok.](./how-to-create-machine-learning-pipelines.md)
 
 Ha még nem áll készen arra, hogy az adatokat elérhetővé tegye a modell betanítására, de adatfeltárásra szeretné betölteni az adatokat a jegyzetfüzetbe, tekintse meg, hogyan tárhatja fel az adatkészlet [adatait.](how-to-create-register-datasets.md#explore-data) 
 
@@ -31,20 +31,20 @@ Ha még nem áll készen arra, hogy az adatokat elérhetővé tegye a modell bet
 
 Az adatkészletek létrehozásához és betanításhoz a következőre van szükség:
 
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a Azure Machine Learning [ingyenes vagy fizetős](https://aka.ms/AMLFree) verzióját.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a Azure Machine Learning [ingyenes vagy Azure Machine Learning](https://aka.ms/AMLFree) verzióját.
 
 * Egy [Azure Machine Learning munkaterület.](how-to-manage-workspace.md)
 
-* A [Azure Machine Learning pythonhoz](/python/api/overview/azure/ml/install) készült >(>= 1.13.0), amely tartalmazza a `azureml-datasets` csomagot.
+* A [Azure Machine Learning pythonhoz készült](/python/api/overview/azure/ml/install) >(1.13.0), amely tartalmazza a `azureml-datasets` csomagot.
 
 > [!Note]
-> Egyes adatkészletosztályok az [azureml-dataprep csomagtól függnek.](https://pypi.org/project/azureml-dataprep/) Linux-felhasználók esetén ezek az osztályok csak a következő disztribúciókban támogatottak: Red Hat Enterprise Linux, Ubuntu, Fedora és CentOS.
+> Egyes Adatkészletosztályok az [azureml-dataprep csomagtól függnek.](https://pypi.org/project/azureml-dataprep/) Linux-felhasználók esetén ezek az osztályok csak a következő disztribúciókban támogatottak: Red Hat Enterprise Linux, Ubuntu, Fedora és CentOS.
 
-## <a name="consume-datasets-in-machine-learning-training-scripts"></a>Adatkészletek használata gépi tanulási betanító szkriptekben
+## <a name="consume-datasets-in-machine-learning-training-scripts"></a>Adatkészletek használata gépi tanulási betanítás szkriptjében
 
 Ha még nem regisztrált strukturált adatokat adatkészletként, hozzon létre egy TabularDataset adatkészletet, és használja közvetlenül a betanítási szkriptben a helyi vagy távoli kísérlethez.
 
-Ebben a példában egy nem regisztrált [TabularDataset-et](/python/api/azureml-core/azureml.data.tabulardataset) hoz létre, és megadja szkriptar argumentumként a [ScriptRunConfig](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig) objektumban a betanításhoz. Ha újra fel szeretné használni ezt a TabularDataset adatkészletet a munkaterületen lévő többi kísérlettel, tekintse meg az adatkészletek munkaterületre való [regisztrálását.](how-to-create-register-datasets.md#register-datasets)
+Ebben a példában egy nem regisztrált [TabularDatasetet](/python/api/azureml-core/azureml.data.tabulardataset) hoz létre, és megadja szkriptar argumentumként a [ScriptRunConfig](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig) objektumban a betanításhoz. Ha újra fel szeretné használni ezt a TabularDataset adatkészletet a munkaterületen található más kísérletekkel, tekintse meg, hogyan regisztrálhat adatkészleteket [a munkaterületen.](how-to-create-register-datasets.md#register-datasets)
 
 ### <a name="create-a-tabulardataset"></a>TabularDataset létrehozása
 
@@ -57,16 +57,16 @@ web_path ='https://dprepdata.blob.core.windows.net/demo/Titanic.csv'
 titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path)
 ```
 
-A TabularDataset objektumokkal betöltheti a TabularDatasetben lévő adatokat egy pandas vagy Spark DataFrame-be, így a jegyzetfüzet elhagyása nélkül dolgozhat a jól ismert adat-előkészítési és betanítási kódtárakkal.
+A TabularDataset objektumokkal betöltheti a TabularDatasetben lévő adatokat egy pandas- vagy Spark DataFrame-keretbe, így a jegyzetfüzet elhagyása nélkül dolgozhat a már ismert adat-előkészítési és -betanítási kódtárakkal.
 
 ### <a name="access-dataset-in-training-script"></a>Adatkészlet elérése a betanító szkriptben
 
-A következő kód egy szkript-argumentumot konfigurál, amely a betanítás futtatásakor lesz megadhatja (lásd a `--input-data` következő szakaszt). Ha a táblázatos adatkészletet argumentumértékként adja át, az Azure ML ezt az adatkészlet azonosítójára oldja fel, amellyel hozzáférhet a betanítási szkriptben található adatkészlethez (anélkül, hogy szoftveres kódot kellene írnia a szkriptben található adatkészlet nevéhez vagy azonosítójának). Ezután a metódussal betölti az adatkészletet egy pandas-adatkeretbe további adatfeltárás és előkészítés érdekében [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) a betanítás előtt.
+A következő kód konfigurál egy szkript-argumentumot, amely a betanítás futtatásakor lesz megadhatja (lásd a `--input-data` következő szakaszt). Amikor a táblázatos adatkészletet argumentumértékként adja át, az Azure ML ezt az adatkészlet azonosítójára oldja fel, amellyel hozzáférhet a betanítási szkriptben található adatkészlethez (anélkül, hogy szoftveres kódot kellene írnia a szkriptben található adatkészlet nevéhez vagy azonosítójához). Ezután a metódussal betölti az adatkészletet egy pandas-adatkeretbe további adatfeltárás és előkészítés érdekében [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) a betanítás előtt.
 
 > [!Note]
-> Ha az eredeti adatforrás NaN, üres sztringeket vagy üres értékeket tartalmaz, az használata esetén ezek az értékek `to_pandas_dataframe()` *Null értékként vannak lecserélve.*
+> Ha az eredeti adatforrás NaN-t, üres sztringeket vagy üres értékeket tartalmaz, az használata esetén ezek az értékek Null értékként vannak `to_pandas_dataframe()` *lecserélve.*
 
-Ha az előkészített adatokat be kell töltenie egy új adatkészletbe egy memóriabeli pandas-adatkeretből, írja az adatokat egy helyi fájlba, például egy parquetbe, és hozzon létre egy új adatkészletet ebből a fájlból. További információ [az adatkészletek létrehozásáról.](how-to-create-register-datasets.md)
+Ha az előkészített adatokat egy memóriabeli pandas-adatkeretből kell betöltenie egy új adatkészletbe, írja az adatokat egy helyi fájlba, például egy parquetbe, és hozzon létre egy új adatkészletet ebből a fájlból. További információ [az adatkészletek létrehozásáról.](how-to-create-register-datasets.md)
 
 ```Python
 %%writefile $script_folder/train_titanic.py
@@ -94,9 +94,9 @@ A betanítás futtatásának konfigurálása és elküldése egy [ScriptRunConfi
 
 Ez a kód egy ScriptRunConfig objektumot hoz `src` létre, amely a
 
-* Egy szkriptkönyvtár a szkriptek számára. Az ebben a könyvtárban található összes fájl fel lesz töltve a fürtcsomópontokra végrehajtás céljából.
+* A szkriptek szkriptkönyvtára. Az ebben a könyvtárban található összes fájl fel lesz töltve a fürtcsomópontokra végrehajtás céljából.
 * A betanító szkript *train_titanic.py.*
-* A betanítás bemeneti adatkészlete `titanic_ds` () szkriptar argumentumként. Az Azure ML ezt az adatkészlet megfelelő azonosítójára oldja fel, amikor a szkriptnek továbbadja.
+* A betanítás bemeneti adatkészlete, `titanic_ds` szkriptar argumentumként. Az Azure ML ezt az adatkészlet megfelelő azonosítójára oldja fel, amikor az a szkriptnek lesz továbbadva.
 * A futtatás számítási célja.
 * A futtatás környezete.
 
@@ -117,7 +117,7 @@ run.wait_for_completion(show_output=True)
 
 ## <a name="mount-files-to-remote-compute-targets"></a>Fájlok csatlakoztatása távoli számítási célokhoz
 
-Strukturálatlan adatok esetén hozzon létre egy [FileDataset adatkészletet,](/python/api/azureml-core/azureml.data.filedataset) és csatlakoztassa vagy töltse le az adatfájlokat, hogy elérhetővé tegye őket a távoli számítási cél számára a betanításhoz. Megtudhatja, mikor használja a [csatlakoztatást és a letöltést](#mount-vs-download) a távoli betanítás kísérleteihez. 
+Strukturálatlan adatok esetén hozzon létre egy [FileDataset adatkészletet,](/python/api/azureml-core/azureml.data.filedataset) és csatlakoztassa vagy töltse le az adatfájlokat, hogy elérhetővé tegye őket a távoli számítási cél számára a betanításhoz. Megtudhatja, mikor használja a [csatlakoztatást és](#mount-vs-download) a letöltést a távoli betanítás kísérleteihez. 
 
 A következő példa: 
 
@@ -126,15 +126,15 @@ A következő példa:
 * Csatlakoztatja a bemeneti adatkészletet a számítási célhoz.
 
 > [!Note]
-> Ha egyéni Docker-alapként használt rendszerképet használ, a fuse-t a használatával kell telepítenie függőségként ahhoz, hogy az adatkészlet csatlakoztatása `apt-get install -y fuse` működjön. Megtudhatja, hogyan [hozhat létre egyéni összeállítási rendszerképet.](how-to-deploy-custom-docker-image.md#build-a-custom-base-image)
+> Ha egyéni Docker-alapként használt rendszerképet használ, a fuse-t a használatával kell telepítenie függőségként ahhoz, hogy az adatkészlet `apt-get install -y fuse` csatlakoztatása működjön. Megtudhatja, hogyan [hozhat létre egyéni összeállítási rendszerképet.](how-to-deploy-custom-docker-image.md#build-a-custom-base-image)
 
 A jegyzetfüzet-példáért lásd: Betanítás futtatása adatbemenettel [és -kimenettel.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/scriptrun-with-data-input-output/how-to-use-scriptrun.ipynb)
 
 ### <a name="create-a-filedataset"></a>FileDataset létrehozása
 
-Az alábbi példa egy nem regisztrált FileDataset fájlt hoz létre a `mnist_data` webes URL-címekből. Ez a FileDataset a betanítás futtatásának bemeneti adatai.
+Az alábbi példa egy nem regisztrált FileDataset adatokat hoz létre `mnist_data` a webes URL-címekből. Ez a FileDataset a betanítás futtatásának bemeneti adatai.
 
-További információ [adatkészletek](how-to-create-register-datasets.md) más forrásokból való létrehozásáról.
+További információ [az adatkészletek](how-to-create-register-datasets.md) más forrásokból való létrehozásáról.
 
 ```Python
 
@@ -152,7 +152,7 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 ```
 ### <a name="where-to-write-training-output"></a>A betanítás kimenetének írási hely
 
-Az [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig)objektummal megadhatja, hogy hová írja a betanítás eredményeit. 
+Az [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig)objektummal megadhatja a betanítás eredményeinek írási helyét. 
 
 Az OutputFileDatasetConfig objektumok a következőt teszik lehetővé: 
 
@@ -161,9 +161,9 @@ Az OutputFileDatasetConfig objektumok a következőt teszik lehetővé:
     * Azure Blob
     * Azure-fájlmegosztás
     * Azure Data Lake Storage 1. és 2. generáció
-* A betanításfuttatások közötti adatkapcsolat nyomon követése.
+* Nyomon követheti a betanítás futtatásai közötti adat leszúkódást.
 
-A következő kód megadja, hogy a betanítás eredményeit FileDataset néven kell menteni az alapértelmezett `outputdataset` blob-adattár mappájába. `def_blob_store` 
+A következő kód megadja, hogy a betanítás eredményeit FileDataset adatkészletként kell menteni az alapértelmezett `outputdataset` blob-adattár () `def_blob_store` mappájába. 
 
 ```python
 from azureml.core import Workspace
@@ -177,9 +177,9 @@ output = OutputFileDatasetConfig(destination=(def_blob_store, 'sample/outputdata
 
 ### <a name="configure-the-training-run"></a>A betanítás futtatásának konfigurálása
 
-Javasoljuk, hogy a konstruktor paraméterének használatával történő csatlakoztatáskor argumentumként `arguments` `ScriptRunConfig` továbbjasa az adatkészletet. Ezzel argumentumokkal lekérte az adatútvonalat (csatlakoztatási pontot) a betanító szkriptben. Így ugyanazt a betanító szkriptet használhatja helyi hibakereséshez és távoli betanításhoz bármely felhőplatformon.
+Javasoljuk, hogy az adatkészletet argumentumként továbbadva a konstruktor paraméterének használatával `arguments` történő `ScriptRunConfig` csatlakoztatáskor. Ezzel lekért adatútvonalat (csatlakoztatási pontot) kap a betanító szkriptben argumentumok használatával. Így ugyanazt a betanító szkriptet használhatja helyi hibakereséshez és távoli betanításhoz bármely felhőplatformon.
 
-Az alábbi példa egy ScriptRunConfig fájlt hoz létre, amely a fájladatkészletben a következőn keresztül halad `arguments` át: . A futtatás elküldése után az adatkészlet által hivatkozott adatfájlok csatlakoztatva vannak a számítási célhoz, és a betanítás eredményeit a rendszer az alapértelmezett adattár megadott `mnist_ds` `outputdataset` mappájába menti.
+Az alábbi példa egy ScriptRunConfig fájlt hoz létre, amely a fájladatkészletben a használatával halad `arguments` át. A futtatás elküldése után az adatkészlet által hivatkozott adatfájlok csatlakoztatva vannak a számítási célhoz, a betanítás eredményeit pedig az alapértelmezett adattár megadott `mnist_ds` `outputdataset` mappájába menti a rendszer.
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -228,7 +228,7 @@ with open(mounted_input_path, 'r') as f:
 
 Bármilyen formátumú fájl csatlakoztatása vagy letöltése támogatott az Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database és Azure Database for PostgreSQL. 
 
-Amikor csatlakoztat **egy** adatkészletet, az adatkészlet által hivatkozott fájlokat egy könyvtárhoz csatolja (csatlakoztatási pont), és elérhetővé teszi a számítási célon. A csatlakoztatás Linux-alapú számítási feladatokhoz támogatott, beleértve a Azure Machine Learning Compute, a virtuális gépek és a HDInsight esetén. 
+Adatkészlet **csatlakoztatásakor** az adatkészlet által hivatkozott fájlokat egy könyvtárhoz (csatlakoztatási ponthoz) csatolja, és elérhetővé teszi a számítási célon. A csatlakoztatás Linux-alapú számítási feladatokhoz támogatott, beleértve a Azure Machine Learning Compute, a virtuális gépek és a HDInsight esetén. 
 
 Amikor letölt **egy** adatkészletet, az adatkészlet által hivatkozott összes fájl letöltve lesz a számítási célhoz. A letöltés minden számítási típus esetében támogatott. 
 
@@ -252,7 +252,7 @@ print (mounted_path)
 
 ## <a name="get-datasets-in-machine-learning-scripts"></a>Adatkészletek lekért használata gépi tanulási szkriptek használatával
 
-A regisztrált adathalmazok helyileg és távolról is elérhetők olyan számítási fürtökön, mint a Azure Machine Learning számítás. A regisztrált adatkészlet kísérletek közötti eléréséhez használja a következő kódot a munkaterület eléréséhez, és szerezze be a korábban elküldött futtatás során használt adatkészletet. Alapértelmezés szerint a osztály metódusa az adatkészletnek a munkaterületen regisztrált legújabb verzióját [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset#get-by-name-workspace--name--version--latest--) `Dataset` adja vissza.
+A regisztrált adathalmazok helyileg és távolról is elérhetők olyan számítási fürtökön, mint a Azure Machine Learning számítás. A regisztrált adatkészlet kísérletek közötti eléréséhez használja a következő kódot a munkaterület eléréséhez és a korábban elküldött futtatás során használt adatkészlet lekért létrehozásához. Alapértelmezés szerint a osztály metódusa az adatkészletnek a munkaterületen regisztrált [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset#get-by-name-workspace--name--version--latest--) `Dataset` legújabb verzióját adja vissza.
 
 ```Python
 %%writefile $script_folder/train.py
@@ -273,9 +273,9 @@ df = titanic_ds.to_pandas_dataframe()
 
 ## <a name="access-source-code-during-training"></a>Forráskód elérése a betanítás során
 
-Az Azure Blob Storage nagyobb átviteli sebességgel rendelkezik, mint az Azure-fájlmegosztások, és nagy számú párhuzamosan elindított feladatra méretezhető. Ezért javasoljuk, hogy a futtatásokat a Blob Storage használatára konfigurálja a forráskódfájlok átviteléhez.
+Az Azure Blob Storage nagyobb átviteli sebességgel rendelkezik, mint az Azure-fájlmegosztások, és nagy számú, párhuzamosan elindított feladatra skálázható. Ezért javasoljuk, hogy konfigurálja a futtatásokat úgy, hogy a Blob Storage-tárolót használják a forráskódfájlok átviteléhez.
 
-A következő példakód meghatározza a futtatási konfigurációban, hogy melyik blobadattárat használja a forráskódátvitelhez.
+A következő példakód határozza meg a futtatási konfigurációban, hogy melyik blobadattárat használja a forráskódátvitelhez.
 
 ```python 
 # workspaceblobstore is the default blob storage
@@ -284,25 +284,25 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 
 ## <a name="notebook-examples"></a>Jegyzetfüzet-példák
 
-+ További példákat és fogalmakat az adatkészlet-jegyzetfüzetek [között talál.](https://aka.ms/dataset-tutorial)
-+ Tekintse meg, [hogyan lehet parametrizni az adatkészleteket a gépi tanulási folyamatokban.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb)
++ További példákat és fogalmakat az [adatkészlet-jegyzetfüzetek között talál.](https://aka.ms/dataset-tutorial)
++ Tekintse meg, [hogyan lehet parametizálni az adatkészleteket a gépi tanulási folyamatokban.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb)
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-* **Az adatkészlet inicializálása sikertelen: A csatlakoztatási pontra való várakozás időkorrelált:** 
-  * Ha nincsenek kimenő hálózati biztonsági [](../virtual-network/network-security-groups-overview.md) csoportra vonatkozó szabályai, és a (frissítés) és annak függőségei a legújabbak az adott alverzióhoz, vagy ha futtatás során használja, hozza létre újra a környezetet, hogy a javítással együtt a legújabb javítást tudja `azureml-sdk>=1.12.0` `azureml-dataset-runtime` használni. 
+* **Az adatkészlet inicializálása sikertelen volt: A csatlakoztatási pontra való várakozás időkorrelált:** 
+  * Ha nincsenek kimenő hálózati biztonsági [](../virtual-network/network-security-groups-overview.md) csoportra vonatkozó szabályai, és a (frissítés) és annak függőségeit az adott alverzió legfrissebb verziójára használja, vagy ha futtatáskor használja, hozza létre újra a környezetet, hogy a javítással együtt a legújabb javítást tudja `azureml-sdk>=1.12.0` `azureml-dataset-runtime` használni. 
   * Ha a verziót `azureml-sdk<1.12.0` használja, frissítsen a legújabb verzióra.
-  * Ha kimenő NSG-szabályokkal is van, győződjön meg arról, hogy van egy kimenő szabály, amely engedélyezi a szolgáltatáscímke összes `AzureResourceMonitor` forgalmát.
+  * Ha kimenő NSG-szabályok vannak, győződjön meg arról, hogy van olyan kimenő szabály, amely engedélyezi a szolgáltatáscímke összes `AzureResourceMonitor` forgalmát.
 
 ### <a name="overloaded-azurefile-storage"></a>Túlterhelt AzureFile-tároló
 
-Ha hibaüzenetet `Unable to upload project files to working directory in AzureFile because the storage is overloaded` kap, alkalmazza az alábbi megkerülő megoldásokat.
+Ha hibaüzenetet `Unable to upload project files to working directory in AzureFile because the storage is overloaded` kap, alkalmazza a következő megkerülő megoldásokat.
 
-Ha más számítási feladatokhoz, például adatátvitelhez használ fájlmegosztást, javasoljuk, hogy használjon blobokat, hogy a fájlmegosztást szabadon használva küldje el a futtatásokat. A számítási feladatot két különböző munkaterület között is feloszthatja.
+Ha más számítási feladatokhoz, például adatátvitelhez használ fájlmegosztást, javasoljuk, hogy blobokat használjon, hogy a fájlmegosztás ingyenesen használható legyen futtatási feladatok beküldéséhez. A számítási feladatot két különböző munkaterület között is feloszthatja.
 
 ### <a name="passing-data-as-input"></a>Adatok átadása bemenetként
 
-*  **TypeError: FileNotFound: Nincs** ilyen fájl vagy könyvtár: Ez a hiba akkor fordul elő, ha a fájl elérési útja nem a fájl helyének megfelelő. Győződjön meg arról, hogy a fájlra való hivatkozás módja összhangban van azzal, ahol az adatkészletet csatlakoztatta a számítási célhoz. A determinisztikus állapot biztosítása érdekében azt javasoljuk, hogy az absztrakt útvonalat használja az adatkészlet számítási célhoz való csatlakoztatásakor. Az alábbi kódban például a számítási cél fájlrendszerének gyökérkönyvtárában csatlakoztatjuk az `/tmp` adatkészletet. 
+*  **TypeError: FileNotFound: Nincs** ilyen fájl vagy könyvtár: Ez a hiba akkor fordul elő, ha a fájl elérési útja nem a fájl helyének megfelelő. Meg kell győződni arról, hogy a fájlra való hivatkozás módja összhangban van azzal, ahol az adatkészletet csatlakoztatta a számítási célhoz. A determinisztikus állapot biztosítása érdekében azt javasoljuk, hogy használja az absztrakt útvonalat, amikor egy adatkészletet egy számítási célhoz rögzít. Az alábbi kódban például csatlakoztatjuk az adatkészletet a számítási cél fájlrendszerének `/tmp` gyökérkönyvtárában. 
     
     ```python
     # Note the leading / in '/tmp/dataset'
@@ -316,7 +316,7 @@ Ha más számítási feladatokhoz, például adatátvitelhez használ fájlmegos
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Gépi tanulási modellek automatikus betanítása](how-to-auto-train-remote.md) a TabularDatasets használatával.
+* [Gépi tanulási modellek automatikus betanítása](how-to-configure-auto-train.md#data-source-and-format) a TabularDatasets használatával.
 
 * [Képbesorolási modellek betanítása](https://aka.ms/filedataset-samplenotebook) FileDatasets használatával.
 

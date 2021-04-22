@@ -1,14 +1,14 @@
 ---
-title: 'Rövid útmutató: Event hub létrehozása a PowerShell használatával – Azure Event Hubs'
+title: 'Rövid útmutató: Eseményközpont létrehozása a PowerShell használatával – Azure Event Hubs'
 description: Ez a rövid útmutató azt mutatja be, hogyan hozhat létre egy eseményközpontot az Azure PowerShell-lel, majd hogyan küldhet és fogadhat eseményeket a .NET Standard SDK használatával.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 1c81024a9195e463eeaaf384d5cbbd1e0054c485
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be2761bedd3198d25cb279e6a8ff188db6a51de2
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88933953"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873766"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Rövid útmutató: Eseményközpont létrehozása a PowerShell-lel
 
@@ -23,8 +23,8 @@ Ebben a rövid útmutatóban az Azure PowerShell használatával hoz létre esem
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a következőkkel:
 
 - Egy Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot][], mielőtt hozzákezd.
-- [Visual Studio 2019](https://www.visualstudio.com/vs).
-- A [.NET Standard SDK](https://www.microsoft.com/net/download/windows) 2.0-s vagy újabb verziója.
+- [Visual Studio 2019- ben.](https://www.visualstudio.com/vs)
+- [.NET Core SDK](https://dotnet.microsoft.com/download), 2.0-s vagy újabb verzió.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -51,7 +51,7 @@ New-AzEventHubNamespace -ResourceGroupName myResourceGroup -NamespaceName namesp
 ## <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
 Most, hogy rendelkezik Event Hubs-névtérrel, hozzon létre egy eseményközpontot abban a névtérben:  
-`MessageRetentionInDays`1 és 7 nap közötti engedélyezett időtartam.
+A engedélyezett `MessageRetentionInDays` időtartama 1 és 7 nap között lehet.
 
 ```azurepowershell-interactive
 New-AzEventHub -ResourceGroupName myResourceGroup -NamespaceName namespace_name -EventHubName eventhub_name -MessageRetentionInDays 3
@@ -61,7 +61,7 @@ Gratulálunk! Az Azure PowerShell segítségével létrehozott egy Event Hubs-n�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben egy Event Hubs-névteret hozott létre, és mintaalkalmazások használatával eseményeket küldött az eseményközpontba, illetve fogadott onnan. Az események küldése az Event hub-tól (vagy) események fogadására vonatkozó részletes utasításokért lásd a **küldési és fogadási események** oktatóanyagokat: 
+Ebben a cikkben egy Event Hubs-névteret hozott létre, és mintaalkalmazások használatával eseményeket küldött az eseményközpontba, illetve fogadott onnan. Az események eseményközpontba való küldésének (vagy az eseményközpontból való fogadásának) lépéseiért tekintse meg az Események küldése és **fogadása** oktatóanyagokat: 
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [Java](event-hubs-java-get-started-send.md)

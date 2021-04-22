@@ -168,7 +168,7 @@
           href: how-to-create-a-group.md
         - name: Azure-beli virtuális gép felmérésének létrehozása
           href: how-to-create-assessment.md
-        - name: Felmérés Azure SQL létrehozása
+        - name: Adatelemzési Azure SQL létrehozása
           href: how-to-create-azure-sql-assessment.md
         - name: AVS-felmérés létrehozása
           href: how-to-create-azure-vmware-solution-assessment.md
@@ -188,7 +188,7 @@
       items:
         - name: Migrálási eszközök hozzáadása
           href: how-to-migrate.md
-        - name: Replikálás Az ExpressRoute használatával
+        - name: Replikálás ExpressRoute használatával
           href: replicate-using-expressroute.md
         - name: Gépek előkészítése migrálásra
           href: prepare-for-migration.md
@@ -212,7 +212,7 @@
           href: how-to-delete-project.md
         - name: Az Azure Migrate előző verziójának használata
           href: migrate-v1.md
-        - name: Migrálási projektek kezelése a Azure Lighthouse
+        - name: Migrálási projektek kezelése Azure Lighthouse
           href: ../lighthouse/how-to/migration-at-scale.md?toc=/azure/migrate/toc.json&bc=/azure/migrate/breadcrumb/toc.json
 - name: Hibaelhárítás
   items:
@@ -237,7 +237,7 @@
 - name: Referencia
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/offazure/offazure
+      href: /cli/azure/offazure
     - name: Azure PowerShell
       href: /powershell/module/az.migrate/
     - name: Az Azure Policy beépített elemei

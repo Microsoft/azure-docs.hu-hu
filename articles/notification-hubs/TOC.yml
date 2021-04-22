@@ -24,9 +24,9 @@
       items:
         - name: Firebase Cloud Messaging
           items:
-            - name: Leküldéses értesítések küldése az összes regisztrációra (aktuális SDK)
+            - name: Leküldéses értesítések küldése az összes regisztrációnak (aktuális SDK)
               href: android-sdk.md
-            - name: Leküldéses értesítések küldése az összes regisztrációra (örökölt SDK)
+            - name: Leküldéses értesítések küldése az összes regisztrációnak (örökölt SDK)
               href: notification-hubs-android-push-notification-google-fcm-get-started.md
             - name: Leküldéses értesítések küldése adott eszközökre
               href: push-notifications-android-specific-devices-firebase-cloud-messaging.md
@@ -151,14 +151,14 @@
       href: notification-hubs-baidu-china-android-notifications-get-started.md
     - name: Az APNS VOIP használata a Notification Hubson keresztül
       href: voip-apns.md
-    - name: Diagnosztikai naplók engedélyezése Notification Hubshoz
+    - name: Diagnosztikai naplók engedélyezése Notification Hubs
       href: notification-hubs-diagnostic-logs.md
 - name: Referencia
   items:
     - name: .NET
       href: /dotnet/api/microsoft.azure.notificationhubs
     - name: Azure CLI
-      href: /cli/azure/ext/notification-hub/notification-hub
+      href: /cli/azure/notification-hub
     - name: PowerShell
       href: /powershell/module/az.notificationhubs
     - name: REST

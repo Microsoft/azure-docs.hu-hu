@@ -1,26 +1,27 @@
 ---
-title: Azure VMware-megoldás virtuális gépekre vonatkozó biztonsági mentési megoldások
-description: Ismerje meg az Azure VMware-megoldás virtuális gépei vezető biztonsági mentési és visszaállítási megoldásait.
+title: Biztonsági mentési megoldások Azure VMware Solution virtuális gépekhez
+description: Ismerje meg a virtuális gépek vezető biztonsági mentési és visszaállítási Azure VMware Solution megoldásait.
 ms.topic: how-to
-ms.date: 03/17/2021
-ms.openlocfilehash: 92726cae8a6f99140e4401763d14506f71884cc1
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.date: 04/21/2021
+ms.openlocfilehash: fc12c21265e4615e25bb324835364cb9119ac6fa
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166343"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874719"
 ---
-# <a name="backup-solutions-for-azure-vmware-solution-virtual-machines-vms"></a>Biztonsági mentési megoldások az Azure VMware Solution virtuális gépekhez (VM)
+# <a name="backup-solutions-for-azure-vmware-solution-virtual-machines-vms"></a>Biztonsági mentési megoldások Azure VMware Solution virtuális gépekhez
 
-Az Azure VMware-megoldás kulcsfontosságú alapelve, hogy lehetővé teszi, hogy továbbra is használhassa a befektetéseit és az Azure-on futó kedvenc VMware-megoldásait. A független szoftvergyártók (ISV) technológiájának támogatása, amely az Azure VMware megoldással lett érvényesítve, fontos része ennek a stratégiának. 
+A legfontosabb alapelv Azure VMware Solution, hogy továbbra is használhatja a befektetéseit és az Azure-ban futó kedvenc VMware-megoldásait. Ennek a stratégiának fontos része a független szoftverszállító (ISV) Azure VMware Solution által ellenőrzött technológia támogatása. 
 
-A biztonsági mentési partnereink piacvezető biztonsági mentési és helyreállítási megoldásokkal rendelkeznek a VMware-alapú környezetekben. Az ügyfelek széles körben elfogadták ezeket a megoldásokat a helyszíni üzembe helyezésekhez. Most, hogy ezek a partnerek kibővítették megoldásaikat az Azure VMware-megoldásra, az Azure használatával biztosítanak biztonsági mentési tárházat és tárolási célt a hosszú távú adatmegőrzéshez és archiváláshoz.
+Biztonsági mentési partnereink iparágvezető biztonsági mentési és visszaállítási megoldásokkal működnek VMware-alapú környezetekben. Az ügyfelek széles körben alkalmazzák ezeket a megoldásokat a helyszíni üzemelő példányaikhoz. Ezek a partnerek mostantól kiterjesztik a megoldásokat a Azure VMware Solution, és az Azure-ral biztosítják a biztonsági mentési tárházat és a hosszú távú megőrzési és archiválási célhelyet.
 
-Az Azure VMware megoldás virtuális gépei és az Azure-beli biztonsági mentési tárház közötti hálózati forgalom biztonsági mentése nagy sávszélességű, kis késleltetésű kapcsolaton keresztül történik. A régiók közötti replikációs forgalom a belső Azure hátlap-hálózaton halad át, ami csökkenti a felhasználók sávszélességének költségeit.
+A hálózati forgalom biztonsági mentése Azure VMware Solution virtuális gépek és az Azure-beli biztonsági mentési adattár között nagy sávszélességű, kis késleltetésű kapcsolaton keresztül. A régiók közötti replikációs forgalom a belső Azure-beli háttérsíkhálózaton keresztül jön létre, ami csökkenti a sávszélességgel kapcsolatos költségeket a felhasználók számára.
 
 Ezekről a biztonsági mentési megoldásokról itt talál további információt:
-- [CommVault](https://documentation.commvault.com/11.21/essential/128997_support_for_azure_vmware_solution.html)
-- [Veritas](https://vrt.as/nb4avs)
+- [Cohesity (Összetartóság)](https://www.cohesity.com/blogs/expanding-cohesitys-support-for-microsofts-ecosystem-azure-stack-and-azure-vmware-solution/)
+- [Commvault](https://documentation.commvault.com/11.21/essential/128997_support_for_azure_vmware_solution.html)
+- [Dell-technológiák](https://www.delltechnologies.com/resources/en-us/asset/briefs-handouts/solutions/dell-emc-data-protection-for-avs.pdf)
+- [Fogrik](https://www.rubrik.com/en/products/cloud-data-management)
 - [Veeam](https://www.veeam.com/kb4012)
-- [Cohesity](https://www.cohesity.com/blogs/expanding-cohesitys-support-for-microsofts-ecosystem-azure-stack-and-azure-vmware-solution/)
-- [Dell Technologies](https://www.delltechnologies.com/resources/en-us/asset/briefs-handouts/solutions/dell-emc-data-protection-for-avs.pdf)
+- [Veritas](https://vrt.as/nb4avs)

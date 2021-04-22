@@ -138,17 +138,17 @@
       items:
         - name: Támogatási kérés megnyitása a sikertelen üzembe helyezésekhez
           href: fix-deployment-provisioning-failures.md
-        - name: VMware-eszközök vix hibakód = 21009
+        - name: VMware-eszközök vix error code = 21009
           href: 'https://kb.vmware.com/s/article/2129927'
     - name: GYIK
       items:
         - name: Általános kérdések
           href: /azure/azure-vmware/faq#general
-        - name: Ügyfélkommunikáció
+        - name: Ügyfél-kommunikáció
           href: /azure/azure-vmware/faq#customer-communication
         - name: Konfigurálás és beállítás
           href: /azure/azure-vmware/faq#configuration-and-setup
-        - name: VMware-szoftver
+        - name: VMware-szoftverek
           href: /azure/azure-vmware/faq#vmware-software
         - name: 'Számítás, biztonsági mentés és vészhelyreállítás'
           href: '/azure/azure-vmware/faq#compute,-backup,-and-disaster-recovery'
@@ -179,7 +179,7 @@
     - name: REST API
       href: /rest/api/avs
     - name: Azure CLI
-      href: /cli/azure/ext/vmware/vmware
+      href: /cli/azure/vmware
     - name: Azure PowerShell
       href: /powershell/module/az.vmware/
     - name: Terraform Azure-szolgáltató

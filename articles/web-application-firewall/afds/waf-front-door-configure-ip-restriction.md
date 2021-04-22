@@ -1,54 +1,54 @@
 ---
-title: IP-korlátozási WAF szabály konfigurálása az Azure-beli bejárati ajtóhoz
-description: Megtudhatja, hogyan konfigurálhat egy webalkalmazási tűzfalszabály-szabályt egy meglévő Azure-beli bejárati végpont IP-címeinek korlátozására.
+title: IP-korlátozási WAF-szabály konfigurálása a Azure Front Door
+description: Megtudhatja, hogyan konfigurálhat egy Web Application Firewall egy meglévő végpont IP-címeinek Azure Front Door korlátozására.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 ms.date: 12/22/2020
 ms.author: tyao
-ms.openlocfilehash: 65e378c0380804c13e4b42d855aede7781b93592
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 32bf7a5ecc93fa23c8c704dc346048c26c086121
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211668"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107860850"
 ---
-# <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>IP-korlátozási szabály konfigurálása az Azure-hoz készült webalkalmazási tűzfallal
+# <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>IP-korlátozási szabály konfigurálása Web Application Firewall a Azure Front Door
 
-Ez a cikk bemutatja, hogyan konfigurálhat IP-korlátozási szabályokat egy webalkalmazási tűzfalon (WAF) az Azure bejárati ajtóhoz a Azure Portal, az Azure CLI, a Azure PowerShell vagy egy Azure Resource Manager sablon használatával.
+Ez a cikk bemutatja, hogyan konfigurálhatja az IP-korlátozási szabályokat egy Web Application Firewall-ban (WAF) az Azure Front Door-hoz az Azure Portal, az Azure CLI, a Azure PowerShell vagy egy Azure Resource Manager sablon használatával.
 
-Az IP-cím alapú hozzáférés-vezérlési szabály egy egyéni WAF-szabály, amely lehetővé teszi a webalkalmazásokhoz való hozzáférés szabályozását. Ezt úgy végezheti el, hogy az IP-címek és az IP-címtartományok listáját az osztály nélküli Inter-Domain útválasztási (CIDR) formátumban határozza meg. Az IP-címek egyeztetése, a **RemoteAddr** és a **SocketAddr** kétféle egyezési változóval rendelkezik. A RemoteAddr az az eredeti ügyfél IP-címe, amelyet általában X-továbbított-kérelem fejlécre küldenek. A SocketAddr a forrás IP-WAF látja. Ha a felhasználó proxy mögött található, a SocketAddr gyakran a proxykiszolgáló címe.
+Az IP-címalapú hozzáférés-vezérlési szabály egy egyéni WAF-szabály, amely lehetővé teszi a webalkalmazások hozzáférésének szabályozását. Ehhez meg kell adnia az IP-címek vagy IP-címtartományok listáját classless Inter-Domain Routing (CIDR) formátumban. Az IP-cím megfeleltetve két egyező változótípus van: **RemoteAddr** és **SocketAddr.** A RemoteAddr az eredeti ügyfél IP-címe, amely általában az X-Forwarded-For kérésfejlécen keresztül van elküldve. A SocketAddr a WAF által látható forrás IP-cím. Ha a felhasználó proxy mögött van, a SocketAddr gyakran a proxykiszolgáló címe.
 
-Alapértelmezés szerint a webalkalmazás elérhető az internetről. Ha szeretné korlátozni az ügyfelek hozzáférését az ismert IP-címek vagy IP-címtartományok listájáról, létrehozhat egy olyan IP-megfeleltetési szabályt, amely az IP-címek listáját tartalmazza egyező értékként, és beállítja az operátort a "not" (tagadás igaz) és a **blokkolt** művelet számára. Az IP-korlátozási szabály alkalmazása után az ezen az engedélyezett listán kívüli címekről származó kérelmek 403-es tiltott választ kapnak.
+Alapértelmezés szerint a webalkalmazás elérhető az internetről. Ha korlátozni szeretné az ügyfelek hozzáférését az ismert IP-címek vagy IP-címtartományok listájából, létrehozhat egy IP-címegyeztetési szabályt, amely az IP-címek listáját egyeztetési értékként tartalmazza, és az operátort "Not" (Nem) (a negate értéke true), a művelet pedig Block (Blokkolás) **lesz.** Az IP-korlátozási szabály alkalmazása után az engedélyezett listán kívüli címekről származó kérések 403 Tiltott választ kapnak.
 
-## <a name="configure-a-waf-policy-with-the-azure-portal"></a>WAF házirend konfigurálása a Azure Portal
+## <a name="configure-a-waf-policy-with-the-azure-portal"></a>WAF-szabályzat konfigurálása a Azure Portal
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Hozzon létre egy Azure-beli bejárati profilt a gyors üzembe helyezési útmutatóban ismertetett utasításokat követve, a gyors [rendelkezésre állású globális webalkalmazások létrehozásához](../../frontdoor/quickstart-create-front-door.md).
+Hozzon létre Azure Front Door-profilt a rövid útmutató: Front Door létrehozása magas rendelkezésre álló [globális webalkalmazáshozcímű útmutató utasításait követve.](../../frontdoor/quickstart-create-front-door.md)
 
-### <a name="create-a-waf-policy"></a>WAF szabályzat létrehozása
+### <a name="create-a-waf-policy"></a>WAF-szabályzat létrehozása
 
-1. A Azure Portal válassza az **erőforrás létrehozása** elemet, írja be a  **webalkalmazási tűzfal** kifejezést a keresőmezőbe, majd válassza a **webalkalmazási tűzfal (WAF)** lehetőséget.
+1. A Azure Portal válassza az **Erőforrás** létrehozása lehetőséget, írja be a **Webalkalmazási** tűzfal lehetőséget a keresőmezőbe, majd válassza a Web Application Firewall **(WAF) lehetőséget.**
 2. Válassza a **Létrehozás** lehetőséget.
-3. A **WAF házirend létrehozása** lapon a következő értékekkel fejezheti be az **alapok** lapot:
+3. A **WAF-szabályzat** létrehozása oldalon használja a következő értékeket az Alapvető **beállítások lap befejezéséhez:**
    
    |Beállítás  |Érték  |
    |---------|---------|
-   |Házirend a következőhöz:     |Globális WAF (bejárati ajtó)|
+   |Szabályzat a     |Globális WAF (Front Door)|
    |Előfizetés     |Az előfizetés kiválasztása|
-   |Erőforráscsoport     |Válassza ki azt az erőforráscsoportot, amelyben a bejárati ajtó található.|
+   |Erőforráscsoport     |Válassza ki azt az erőforráscsoportot, Front Door az erőforráscsoportot.|
    |Házirend neve     |Adja meg a szabályzat nevét|
-   |Házirend állapota     |Engedélyezve|
+   |Szabályzat állapota     |Engedélyezve|
 
-   Válassza a **tovább lehetőséget: házirend-beállítások**
+   Válassza **a Tovább: Szabályzatbeállítások lehetőséget**
 
-1. A **házirend-beállítások** lapon válassza a **megelőzés** lehetőséget. A **blokk válasz törzséhez** írja be a következőt: *.* láthatja, hogy az egyéni szabály érvényben van.
-2. Válassza a **Next (tovább): felügyelt szabályok** elemet.
-3. Válassza a Next (tovább) lehetőséget **: egyéni szabályok**.
-4. Válassza az **Egyéni szabály hozzáadása** lehetőséget.
-5. Az **Egyéni szabály hozzáadása** lapon a következő tesztelési értékeket használva hozzon létre egy egyéni szabályt:
+1. A Házirend **beállításai lapon** válassza a **Megelőzés lehetőséget.** A Block **response body (Blokkválasz törzse)** mezőbe írja be a *következőt: You's been blocked!* így láthatja, hogy az egyéni szabály érvényben van.
+2. Válassza **a Tovább: Felügyelt szabályok lehetőséget.**
+3. Válassza **a Tovább: Egyéni szabályok lehetőséget.**
+4. Válassza **az Egyéni szabály hozzáadása lehetőséget.**
+5. Az Egyéni **szabály hozzáadása lapon** használja a következő tesztértékeket egy egyéni szabály létrehozásához:
 
    |Beállítás  |Érték  |
    |---------|---------|
@@ -57,45 +57,45 @@ Hozzon létre egy Azure-beli bejárati profilt a gyors üzembe helyezési útmut
    |Szabály típusa     |Match|
    |Prioritás    |100|
    |Egyezés típusa     |IP-cím|
-   |Egyezés változó|RemoteAddr|
+   |Változó egyeztetése|RemoteAddr|
    |Művelet|Nem tartalmazza|
-   |IP-cím vagy-tartomány|10.10.10.0/24|
-   |Majd|Forgalom megtagadása|
+   |IP-cím vagy tartomány|10.10.10.0/24|
+   |Akkor|Forgalom megtagadása|
 
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/custom-rule.png" alt-text="Egyéni szabály":::
 
    Válassza a **Hozzáadás** lehetőséget.
-6. Válassza a **Tovább: társítás** lehetőséget.
-7. Válassza a előtér- **gazda hozzáadása** lehetőséget.
-8. A előtér- **gazdagéphez** válassza ki a előtér-gazdagépet, és válassza a **Hozzáadás** lehetőséget.
+6. Válassza **a Tovább: Társítás lehetőséget.**
+7. Válassza **az Add frontend host (Előtere gazdagép hozzáadása) lehetőséget.**
+8. Az **Előtere gazdagép beállításnál válassza** ki az előtere gazdagépet, majd válassza a **Hozzáadás lehetőséget.**
 9. Válassza az **Áttekintés + létrehozás** lehetőséget.
-10. A szabályzat érvényesítése után válassza a **Létrehozás** lehetőséget.
+10. A szabályzatérvényesítés után válassza a **Létrehozás lehetőséget.**
 
-### <a name="test-your-waf-policy"></a>A WAF szabályzat tesztelése
+### <a name="test-your-waf-policy"></a>A WAF-szabályzat tesztelése
 
-1. A WAF házirend üzembe helyezésének befejezése után keresse meg a front Door előtér-gazdagép nevét.
-2. Az egyéni blokk üzenetnek kell megjelennie.
+1. Miután a WAF-szabályzat üzembe helyezése befejeződött, keresse meg Front Door előtere gazdagépnevét.
+2. Megjelenik az egyéni blokküzenet.
 
-   :::image type="content" source="../media/waf-front-door-configure-ip-restriction/waf-rule-test.png" alt-text="WAF-szabály tesztelése":::
+   :::image type="content" source="../media/waf-front-door-configure-ip-restriction/waf-rule-test.png" alt-text="WAF-szabályteszt":::
 
    > [!NOTE]
-   > Egy magánhálózati IP-címet szándékosan használtak az egyéni szabályban annak biztosítására, hogy a szabály aktiválódik. Tényleges telepítés esetén hozzon létre *engedélyezési* és *megtagadási* szabályokat az adott helyzethez tartozó IP-címek használatával.
+   > A magánhálózati IP-címet szándékosan használták az egyéni szabályban annak garantálása érdekében, hogy a szabály aktiválódik. A tényleges üzembe helyezés  során az *adott* helyzetre vonatkozó IP-címekkel hozzon létre engedélyező és megtagadási szabályokat.
 
-## <a name="configure-a-waf-policy-with-the-azure-cli"></a>WAF szabályzat konfigurálása az Azure CLI-vel
+## <a name="configure-a-waf-policy-with-the-azure-cli"></a>WAF-szabályzat konfigurálása az Azure CLI-val
 
 ### <a name="prerequisites"></a>Előfeltételek
-Mielőtt megkezdené az IP-korlátozási szabályzat konfigurálását, állítsa be a CLI-környezetet, és hozzon létre egy Azure-beli bejárati profilt.
+Az IP-korlátozási szabályzat konfigurálása előtt állítsa be a CLI-környezetet, és hozzon létre egy Azure Front Door profilt.
 
 #### <a name="set-up-the-azure-cli-environment"></a>Az Azure CLI-környezet beállítása
-1. Telepítse az [Azure CLI](/cli/azure/install-azure-cli)-t, vagy használja a Azure Cloud shell. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A fiókjával való használat érdekében az Azure CLI már előre telepítve és konfigurálva van rajta. Válassza ki az alábbi CLI-parancsok **kipróbálása** gombot, majd jelentkezzen be az Azure-fiókjába a megnyíló Cloud Shell-munkamenetben. A munkamenet elindítása után adja meg `az extension add --name front-door` Az Azure bejárati ajtó bővítményét.
- 2. Ha a parancssori felületet a Bashben helyileg használja, jelentkezzen be az Azure-ba a használatával `az login` .
+1. Telepítse az [Azure CLI-t,](/cli/azure/install-azure-cli)vagy használja a Azure Cloud Shell. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A fiókjával való használat érdekében az Azure CLI már előre telepítve és konfigurálva van rajta. Válassza a **Try it (Kipróbálom)** gombot a következő CLI-parancsokban, majd a megnyíló Cloud Shell jelentkezzen be az Azure-fiókjába. A munkamenet kezdete után adja meg a következőt a Azure Front Door `az extension add --name front-door` hozzáadásához.
+ 2. Ha helyileg használja a CLI-t a Bashben, jelentkezzen be az Azure-ba a `az login` használatával.
 
-#### <a name="create-an-azure-front-door-profile"></a>Azure-beli előtérben lévő profil létrehozása
-Hozzon létre egy Azure-beli bejárati profilt a gyors üzembe helyezési útmutatóban ismertetett utasításokat követve, a gyors [rendelkezésre állású globális webalkalmazások létrehozásához](../../frontdoor/quickstart-create-front-door.md).
+#### <a name="create-an-azure-front-door-profile"></a>Új Azure Front Door létrehozása
+Hozzon létre Azure Front Door-profilt a rövid útmutató: Front Door létrehozása magas rendelkezésre álló globális [webalkalmazáshozcímű útmutató utasításait követve.](../../frontdoor/quickstart-create-front-door.md)
 
-### <a name="create-a-waf-policy"></a>WAF szabályzat létrehozása
+### <a name="create-a-waf-policy"></a>WAF-szabályzat létrehozása
 
-Hozzon létre egy WAF szabályzatot az az [Network elsőfékes-Door WAF-Policy Create](/cli/azure/ext/front-door/network/front-door/waf-policy#ext-front-door-az-network-front-door-waf-policy-create) parancs használatával. Az alábbi példában cserélje le a szabályzat neve *IPAllowPolicyExampleCLI* egyedi házirend-névre.
+Hozzon létre egy [WAF-szabályzatot az az network front-door waf-policy create paranccsal.](/cli/azure/network/front-door/waf-policy#az_network_front_door_waf_policy_create) A következő példában cserélje le az *IPAllowPolicyExampleCLI* szabályzatnevet egy egyedi házirendnévre.
 
 ```azurecli-interactive 
 az network front-door waf-policy create \
@@ -105,15 +105,15 @@ az network front-door waf-policy create \
   ```
 ### <a name="add-a-custom-ip-access-control-rule"></a>Egyéni IP-hozzáférés-vezérlési szabály hozzáadása
 
-Az az [Network elülső WAF-Policy Custom-Rule Create](/cli/azure/ext/front-door/network/front-door/waf-policy/rule#ext-front-door-az-network-front-door-waf-policy-rule-create) paranccsal adhat hozzá egyéni IP-hozzáférés-vezérlési szabályt az IMÉNT létrehozott WAF-szabályzathoz.
+Az [az network front-door waf-policy custom-rule create paranccsal](/cli/azure/network/front-door/waf-policy/rule#az_network_front_door_waf_policy_rule_create) adjon hozzá egy egyéni IP-hozzáférés-vezérlési szabályt az újonnan létrehozott WAF-szabályzathoz.
 
-Az alábbi példákban:
--  Cserélje le a *IPAllowPolicyExampleCLI* -t a korábban létrehozott egyedi szabályzatra.
--  Cserélje le az *IP-cím-Range-1*, *IP-cím-Range-2* tartományt a saját tartományára.
+A következő példákban:
+-  Cserélje *le az IPAllowPolicyExampleCLI helyére* a korábban létrehozott egyedi szabályzatot.
+-  Cserélje *le az ip-address-range-1,* *az ip-address-range-2 helyére* a saját tartományát.
 
-Először hozzon létre egy IP-engedélyezési szabályt az előző lépésben létrehozott házirendhez. 
+Először hozzon létre egy IP-engedélyező szabályt az előző lépésben létrehozott szabályzathoz. 
 > [!NOTE]
-> **– a késleltetés** megadása kötelező, mert egy szabálynak meg kell egyeznie a következő lépésben felvenni kívánt egyeztetési feltétellel.
+> **A --defer** kötelező, mert a szabálynak egy egyeztetési feltétellel kell megegyeznie, hogy a következő lépésben hozzá legyen adva.
 
 ```azurecli
 az network front-door waf-policy rule create \
@@ -124,7 +124,7 @@ az network front-door waf-policy rule create \
   --resource-group <resource-group-name> \
   --policy-name IPAllowPolicyExampleCLI --defer
 ```
-Ezután adja hozzá az egyeztetési feltételt a szabályhoz:
+Ezután adja hozzá a szabályhoz az egyeztetési feltételt:
 
 ```azurecli
 az network front-door waf-policy rule match-condition add \
@@ -137,8 +137,8 @@ az network front-door waf-policy rule match-condition add \
   --policy-name IPAllowPolicyExampleCLI 
   ```
                                                    
-### <a name="find-the-id-of-a-waf-policy"></a>WAF szabályzat AZONOSÍTÓjának megkeresése 
-A WAF szabályzat AZONOSÍTÓjának megkereséséhez használja az az [Network elsőfékes-Door WAF-Policy show](/cli/azure/ext/front-door/network/front-door/waf-policy#ext-front-door-az-network-front-door-waf-policy-show) parancsot. Cserélje le a *IPAllowPolicyExampleCLI* a következő példában a korábban létrehozott egyedi szabályzatra.
+### <a name="find-the-id-of-a-waf-policy"></a>WAF-szabályzat azonosítójának megkerese 
+Keresse meg a WAF-szabályzat azonosítóját az [az network front-door waf-policy show paranccsal.](/cli/azure/network/front-door/waf-policy#az_network_front_door_waf_policy_show) A következő példában cserélje le az *IPAllowPolicyExampleCLI* helyére a korábban létrehozott egyedi szabályzatot.
 
    ```azurecli
    az network front-door  waf-policy show \
@@ -146,9 +146,9 @@ A WAF szabályzat AZONOSÍTÓjának megkereséséhez használja az az [Network e
      --name IPAllowPolicyExampleCLI
    ```
 
-### <a name="link-a-waf-policy-to-an-azure-front-door-front-end-host"></a>WAF-szabályzat csatolása egy Azure-beli előtér-előtér-gazdagéphez
+### <a name="link-a-waf-policy-to-an-azure-front-door-front-end-host"></a>WAF-szabályzat csatolása egy Azure Front Door-gazdagéphez
 
-Állítsa be az Azure bejárati ajtó *WebApplicationFirewallPolicyLink* azonosítóját a házirend-azonosítóra az az [Network elsőfékes-Door Update](/cli/azure/ext/front-door/network/front-door#ext-front-door-az-network-front-door-update) paranccsal. Cserélje le a *IPAllowPolicyExampleCLI* -t a korábban létrehozott egyedi szabályzatra.
+Állítsa be Azure Front Door *WebApplicationFirewallPolicyLink* azonosítóját a szabályzatazonosítóra [az az network front-door update paranccsal.](/cli/azure/network/front-door#az_network_front_door_update) Cserélje *le az IPAllowPolicyExampleCLI helyére* a korábban létrehozott egyedi szabályzatot.
 
    ```azurecli
    az network front-door update \
@@ -156,41 +156,41 @@ A WAF szabályzat AZONOSÍTÓjának megkereséséhez használja az az [Network e
      --name <frontdoor-name>
      --resource-group <resource-group-name>
    ```
-Ebben a példában a WAF szabályzat a **FrontendEndpoints [0]** értékre van alkalmazva. A WAF-szabályzatot bármelyik előtér-végponthoz csatolhatja.
+Ebben a példában a WAF-szabályzat a **FrontendEndpoints[0]** pontra lesz alkalmazva. A WAF-szabályzatot bármely előoldalhoz csatolhatja.
 > [!Note]
-> A **WebApplicationFirewallPolicyLink** tulajdonságot csak egyszer kell beállítania ahhoz, hogy egy WAF-szabályzatot egy Azure-beli előtér-előtérben lehessen kapcsolni. A következő házirend-frissítéseket a rendszer automatikusan alkalmazza az előtérben.
+> A **WebApplicationFirewallPolicyLink** tulajdonságot csak egyszer kell beállítania, hogy egy WAF-szabályzatot egy Azure Front Door hozzá. A későbbi szabályzatfrissítések automatikusan alkalmazva vannak az előlapra.
 
-## <a name="configure-a-waf-policy-with-azure-powershell"></a>WAF szabályzat konfigurálása Azure PowerShell
+## <a name="configure-a-waf-policy-with-azure-powershell"></a>WAF-szabályzat konfigurálása Azure PowerShell
 
 ### <a name="prerequisites"></a>Előfeltételek
-Mielőtt megkezdené az IP-korlátozási szabályzat konfigurálását, állítsa be a PowerShell-környezetet, és hozzon létre egy Azure-beli bejárati profilt.
+Az IP-korlátozási szabályzat konfigurálása előtt állítsa be a PowerShell-környezetet, és hozzon létre egy Azure Front Door profilt.
 
 #### <a name="set-up-your-powershell-environment"></a>A PowerShell-környezet beállítása
-Azure PowerShell olyan parancsmagokat biztosít, amelyek a [Azure Resource Manager](../../azure-resource-manager/management/overview.md) modellt használják az Azure-erőforrások kezeléséhez.
+Azure PowerShell olyan parancsmagokat biztosít, amelyek az [azure Azure Resource Manager modellt](../../azure-resource-manager/management/overview.md) használják az Azure-erőforrások kezeléséhez.
 
-Az [Azure PowerShellt](/powershell/azure/) telepítheti a helyi számítógépen és bármely PowerShell-munkamenetben használhatja. Kövesse az oldalon megjelenő utasításokat, és jelentkezzen be a PowerShellbe az Azure-beli hitelesítő adataival, majd telepítse az az modult.
+Az [Azure PowerShellt](/powershell/azure/) telepítheti a helyi számítógépen és bármely PowerShell-munkamenetben használhatja. Az oldalon található utasításokat követve jelentkezzen be a PowerShellbe az Azure-beli hitelesítő adataival, majd telepítse az Az modult.
 
-1. Kapcsolódjon az Azure-hoz az alábbi paranccsal, majd jelentkezzen be egy interaktív párbeszédablak használatával.
+1. Csatlakozzon az Azure-hoz a következő paranccsal, majd egy interaktív párbeszédpanelen jelentkezzen be.
     ```
     Connect-AzAccount
     ```
- 2. Mielőtt telepítené az Azure-beli bejárati modult, győződjön meg arról, hogy a PowerShellGet modul aktuális verziója van telepítve. Futtassa a következő parancsot, majd nyissa meg újra a PowerShellt.
+ 2. Mielőtt telepít egy Azure Front Door modult, győződjön meg arról, hogy telepítve van a PowerShellGet modul aktuális verziója. Futtassa a következő parancsot, majd nyissa meg újra a PowerShellt.
 
     ```
     Install-Module PowerShellGet -Force -AllowClobber
     ``` 
 
-3. Telepítse az az. FrontDoor modult az alábbi parancs használatával. 
+3. Telepítse az Az.FrontDoor modult a következő paranccsal. 
     
     ```
     Install-Module -Name Az.FrontDoor
     ```
-### <a name="create-an-azure-front-door-profile"></a>Azure-beli előtérben lévő profil létrehozása
-Hozzon létre egy Azure-beli bejárati profilt a gyors üzembe helyezési útmutatóban ismertetett utasításokat követve, a gyors [rendelkezésre állású globális webalkalmazások létrehozásához](../../frontdoor/quickstart-create-front-door.md).
+### <a name="create-an-azure-front-door-profile"></a>Új Azure Front Door létrehozása
+Hozzon létre Azure Front Door-profilt a rövid útmutató: Front Door létrehozása magas rendelkezésre álló [globális webalkalmazáshozcímű útmutató utasításait követve.](../../frontdoor/quickstart-create-front-door.md)
 
-### <a name="define-an-ip-match-condition"></a>IP-egyeztetési feltétel definiálása
-A [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) parancs használatával határozza meg az IP-egyeztetés feltételeit.
-Az alábbi példában cserélje le az *IP-cím-tartomány-1*, *IP-cím-tartomány-2* értékét a saját tartományára.    
+### <a name="define-an-ip-match-condition"></a>IP-egyeztetési feltétel meghatározása
+A [New-AzFrontDoorWafMatchConditionObject paranccsal](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) határozzon meg egy IP-egyeztetési feltételt.
+A következő példában cserélje *le az ip-address-range-1,* *az ip-address-range-2* helyére a saját tartományát.    
 ```powershell
 $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchVariable  RemoteAddr `
@@ -199,9 +199,9 @@ $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -NegateCondition 1
 ```
      
-### <a name="create-a-custom-ip-allow-rule"></a>Egyéni IP-engedélyezési szabály létrehozása
+### <a name="create-a-custom-ip-allow-rule"></a>Egyéni IP-cím-engedélyező szabály létrehozása
 
-A [New-AzFrontDoorWafCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject) parancs használatával Definiáljon egy műveletet, és állítsa be a prioritást. A következő példában a listán nem szereplő ügyfelek IP-címeitől érkező kérések le lesznek tiltva.
+A [New-AzFrontDoorWafCustomRuleObject paranccsal](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject) definiálhat egy műveletet, és beállíthatja a prioritást. A következő példában a listán nem található ügyfél-IP-ről származó kérések blokkolva lesznek.
 
 ```azurepowershell
 $IPAllowRule = New-AzFrontDoorWafCustomRuleObject `
@@ -211,8 +211,8 @@ $IPAllowRule = New-AzFrontDoorWafCustomRuleObject `
 -Action Block -Priority 1
 ```
 
-### <a name="configure-a-waf-policy"></a>WAF házirend konfigurálása
-Keresse meg az Azure-beli bejárati profilt tartalmazó erőforráscsoport nevét a használatával `Get-AzResourceGroup` . Ezután konfigurálja a WAF szabályzatot az IP-szabállyal a [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)használatával.
+### <a name="configure-a-waf-policy"></a>WAF-szabályzat konfigurálása
+Keresse meg az erőforráscsoport nevét, amely a Azure Front Door profilt tartalmazza a `Get-AzResourceGroup` használatával. Ezután konfigurálja a WAF-szabályzatot az IP-s s szabálysal a [New-AzFrontDoorWafPolicy használatával.](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)
 
 ```azurepowershell
   $IPAllowPolicyExamplePS = New-AzFrontDoorWafPolicy `
@@ -223,9 +223,9 @@ Keresse meg az Azure-beli bejárati profilt tartalmazó erőforráscsoport nevé
     -EnabledState Enabled
    ```
 
-### <a name="link-a-waf-policy-to-an-azure-front-door-front-end-host"></a>WAF-szabályzat csatolása egy Azure-beli előtér-előtér-gazdagéphez
+### <a name="link-a-waf-policy-to-an-azure-front-door-front-end-host"></a>WAF-szabályzat csatolása egy Azure Front Door-gazdagéphez
 
-WAF házirend-objektum csatolása meglévő előtér-gazdagéphez és az Azure-beli előtér-tulajdonságok frissítése. Először a [Get-AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor)használatával kérje le az Azure-beli előtérben lévő objektumot. Ezután állítsa a **WebApplicationFirewallPolicyLink** tulajdonságot az előző lépésben létrehozott *$IPALLOWPOLICYEXAMPLEPS* erőforrás-azonosítóra a [set-AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor) parancs használatával.
+WAF-szabályzatobjektum csatolása meglévő előoldali gazdagéphez, és a Azure Front Door frissítése. Először olvassa be a Azure Front Door objektumot a [Get-AzFrontDoor használatával.](/powershell/module/Az.FrontDoor/Get-AzFrontDoor) Ezután állítsa a **WebApplicationFirewallPolicyLink** *tulajdonságot* az előző lépésben létrehozott $IPAllowPolicyExamplePS erőforrás-azonosítójára a [Set-AzFrontDoor paranccsal.](/powershell/module/Az.FrontDoor/Set-AzFrontDoor)
 
 ```azurepowershell
   $FrontDoorObjectExample = Get-AzFrontDoor `
@@ -236,13 +236,13 @@ WAF házirend-objektum csatolása meglévő előtér-gazdagéphez és az Azure-b
 ```
 
 > [!NOTE]
-> Ebben a példában a WAF szabályzat a **FrontendEndpoints [0]** értékre van alkalmazva. WAF-szabályzatot bármelyik előtér-végponthoz csatolhat. A **WebApplicationFirewallPolicyLink** tulajdonságot csak egyszer kell beállítania ahhoz, hogy egy WAF-szabályzatot egy Azure-beli előtér-előtérben lehessen kapcsolni. A következő házirend-frissítéseket a rendszer automatikusan alkalmazza az előtérben.
+> Ebben a példában a WAF-szabályzat a **FrontendEndpoints[0]** pontra lesz alkalmazva. A WAF-szabályzatokat bármelyik előoldalhoz csatolhatja. A **WebApplicationFirewallPolicyLink** tulajdonságot csak egyszer kell beállítania, hogy egy WAF-szabályzatot egy Azure Front Door hozzá. A későbbi szabályzatfrissítések automatikusan alkalmazva vannak az előlapra.
 
 
-## <a name="configure-a-waf-policy-with-a-resource-manager-template"></a>WAF házirend konfigurálása Resource Manager-sablonnal
-Ha meg szeretné tekinteni a sablont, amely létrehoz egy Azure-beli bejárati házirendet és egy WAF szabályzatot egyéni IP-korlátozási szabályokkal, lépjen a [githubra](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-waf-clientip).
+## <a name="configure-a-waf-policy-with-a-resource-manager-template"></a>WAF-szabályzat konfigurálása Resource Manager sablonnal
+Az egyéni IP-korlátozási szabályokkal Azure Front Door WAF-szabályzatot Azure Front Door sablon megtekintéséhez kattintson a [GitHubra.](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-waf-clientip)
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ismerje meg, hogyan [hozhat létre Azure-beli bejárati profilt](../../frontdoor/quickstart-create-front-door.md).
+- Ismerje meg, [hogyan hozhat létre Azure Front Door profilt.](../../frontdoor/quickstart-create-front-door.md)

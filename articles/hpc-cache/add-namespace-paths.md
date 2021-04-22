@@ -1,167 +1,167 @@
 ---
-title: Az Azure HPC-gyorsítótár összesített névterének konfigurálása
-description: Ügyfelek felé irányuló elérési utak létrehozása a háttérbeli tároláshoz az Azure HPC cache használatával
+title: Az Azure HPC Cache névtér konfigurálása
+description: Ügyféloldali elérési utak létrehozása háttértárhelyhez a Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: 5427389f007b7598274d35425a9b3e8e10a63e49
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2cb8db4e73a8f4fa299031070bffc15a2b754d7e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798527"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870372"
 ---
-# <a name="set-up-the-aggregated-namespace"></a>Az összesített névtér beállítása
+# <a name="set-up-the-aggregated-namespace"></a>Az aggregált névtér beállítása
 
-Miután létrehozta a tárolási célokat, létre kell hoznia a névtér elérési útját is. Az ügyfélszámítógépek ezeket a virtuális útvonalakat használják a fájloknak a gyorsítótárból való elérésére a háttérbeli tárolóhoz való közvetlen csatlakozás helyett. Ez a rendszer lehetővé teszi a gyorsítótár-rendszergazdák számára a háttérbeli tárolási rendszerek módosítását anélkül, hogy újra kellene írnia az ügyfél utasításait.
+A céltárolók létrehozása után névtérútvonalat is létre kell hoznia hozzájuk. Az ügyfélgépek ezeket a virtuális elérési utakat használják a fájlok gyorsítótáron keresztüli eléréséhez ahelyett, hogy közvetlenül a háttértárhoz csatlakoznak. Ez a rendszer lehetővé teszi, hogy a gyorsítótár-rendszergazdák anélkül módosítják a háttértárrendszereket, hogy átírják az ügyfél utasításait.
 
-A szolgáltatással kapcsolatos további információkért olvassa el [az összesített névtér megtervezése](hpc-cache-namespace.md) című témakört.
+A funkcióval kapcsolatos további [információkért olvassa](hpc-cache-namespace.md) el az Aggregált névtér megterve lehetőséget.
 
-A Azure Portal **névtér** lapja megjeleníti azokat az elérési utakat, amelyeket az ügyfelek a gyorsítótáron keresztül férnek hozzá az adataihoz. Ezen a lapon lehet létrehozni, eltávolítani vagy módosítani a névtér elérési útját. A névtér elérési útját az Azure CLI használatával is konfigurálhatja.
+A **lap Névtér** Azure Portal megjeleníti azokat az elérési utakat, amelyek használatával az ügyfelek a gyorsítótáron keresztül férnek hozzá az adatokhoz. Ezen az oldalon névtér elérési útjait hozhatja létre, távolíthatja el vagy módosíthatja. A névtér elérési útjait az Azure CLI használatával is konfigurálhatja.
 
-Az ehhez a gyorsítótárhoz definiált ügyféloldali elérési utak listája a **névtér** oldalon található. Azok a tárolási célok, amelyek nem rendelkeznek definiált névtér-elérési úttal, nem jelennek meg a táblában.
+A gyorsítótárhoz definiált összes ügyféloldali elérési út megjelenik a **Névtér** lapon. Az olyan tárolócélok, amelyek még nem határoznak meg névtérútvonalat, nem jelennek meg a táblában.
 
-Rendezheti a táblázat oszlopait, hogy jobban megértse a gyorsítótár összesített névterét. Az elérési utak rendezéséhez kattintson az oszlopok fejlécében lévő nyilakra.
+Rendezheti a tábla oszlopait, hogy jobban át tudja érteni a gyorsítótár összesített névterét. Az elérési utak rendezéséhez kattintson az oszlopfejlécek nyilára.
 
-[![képernyőkép a portál névteréről a tábla két útvonalával. Oszlopfejlécek: névtér elérési útja, tárolási cél, exportálási útvonal és alkönyvtár exportálása és ügyfél-hozzáférési házirend. Az első oszlopban található elérési utak a hivatkozások elemre kattintanak. Leggyakoribb gombok: névtér elérési útjának hozzáadása, frissítés, törlés ](media/namespace-page.png)](media/namespace-page.png#lightbox)
+[![képernyőkép a portál névtéroldalának két elérési útról egy táblázatban. Oszlopfejlécek: Névtér elérési útja, Tárolási cél, Elérési út exportálása, Exportálás alkönyvtára és Ügyfél-hozzáférési szabályzat. Az első oszlopban található elérési utak nevei kattintható hivatkozások. Felső gombok: Névtér elérési útjának hozzáadása, frissítés, törlés ](media/namespace-page.png)](media/namespace-page.png#lightbox)
 
 ## <a name="add-or-edit-namespace-paths"></a>Névtér elérési útjának hozzáadása vagy szerkesztése
 
-Legalább egy névtér elérési útját létre kell hoznia ahhoz, hogy az ügyfelek hozzáférhessenek a tárolási célhoz. (Az ügyfelek hozzáféréséről [Az Azure HPC cache csatlakoztatása](hpc-cache-mount.md) című cikkből tájékozódhat.)
+Létre kell hoznia legalább egy névtérútvonalat, mielőtt az ügyfelek hozzáférhetnek a tároló célhelyhez. (További [információ az ügyfél-Azure HPC Cache](hpc-cache-mount.md) csatlakoztatását.)
 
-Ha nemrég hozzáadott egy tárolási célt, vagy testreszabott egy hozzáférési szabályzatot, akkor a névtér elérési útjának létrehozása előtt egy-két percet is igénybe vehet.
+Ha a közelmúltban hozzáadott egy tárolóhelyet vagy testre szabott egy hozzáférési szabályzatot, a névtér elérési útjának létrehozása egy-két percet is igénybe vehet.
 
-### <a name="blob-namespace-paths"></a>BLOB-névtér elérési útjai
+### <a name="blob-namespace-paths"></a>Blob névterének elérési útjai
 
-Az Azure Blob Storage-tárolóhoz csak egy névtér elérési útja tartozhat.
+Az Azure Blob Storage-célhely csak egy névtérútvonalral lehet.
 
-Az alábbi útmutatást követve állíthatja be vagy módosíthatja az elérési utat a Azure Portal vagy az Azure CLI használatával.
+Az elérési út beállításhoz vagy módosításhoz kövesse az alábbi utasításokat a Azure Portal vagy az Azure CLI használatával.
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A Azure Portal töltse be a **névtér** -beállítások lapot. Ezen a lapon adhatja hozzá, módosíthatja vagy törölheti a névtér elérési útját.
+A Azure Portal töltse be a **Névtér** beállításai lapot. Ezen az oldalon hozzáadhat, módosíthat vagy törölhet névtérútvonalat.
 
-* **Új elérési út hozzáadása:** Kattintson a felül található **+ Hozzáadás** gombra, és adja meg az adatokat a szerkesztési panelen.
+* **Adjon hozzá egy új elérési utat:** Kattintson felül **a +** Hozzáadás gombra, és töltse ki az adatokat a szerkesztési panelen.
 
-  ![Képernyőkép a névtér-szerkesztési mezők hozzáadásáról a blob Storage-tárolók kiválasztásával. Az exportálási és alkönyvtári elérési utak a következőre vannak beállítva:/és nem szerkeszthető.](media/namespace-add-blob.png)
+  ![Képernyőkép a névtérszerkesztés mezőinek hozzáadásáról egy kijelölt blobtároló cél használatával. Az exportálás és az alkönyvtár elérési útjai /- és nem szerkeszthetők.](media/namespace-add-blob.png)
 
-  * Adja meg azt az elérési utat, amellyel az ügyfelek hozzáférnek ehhez a tárolási célhoz.
+  * Adja meg azt az elérési utat, amit az ügyfelek a tárolási cél eléréséhez használni fognak.
 
-  * Válassza ki, hogy melyik hozzáférési házirendet szeretné használni ehhez az elérési úthoz. További információ az ügyfél-hozzáférés [ügyfél-hozzáférési házirendekben](access-policies.md)való testreszabásáról.
+  * Válassza ki az elérési úthoz használni kívánt hozzáférési szabályzatot. További információ az ügyfél-hozzáférés testreszabásáról: [Ügyfél-hozzáférési házirendek használata.](access-policies.md)
 
-  * Válassza ki a tárolási célt a legördülő listából. Ha egy blob Storage-célként már van névtérbeli elérési út, nem lehet kijelölni.
+  * Válassza ki a tárolócélt a legördülő listából. Ha egy blobtároló cél már rendelkezik névtérútvonalval, nem választható ki.
 
-  * Az Azure Blob Storage-tárolók esetében a rendszer automatikusan beállítja az exportálási és alkönyvtári elérési utakat ``/`` .
+  * Azure Blob Storage-cél esetén az exportálás és az alkönyvtár elérési útjai automatikusan a következőre vannak beállítva: ``/`` .
 
-* **Meglévő elérési út módosítása:** Kattintson a névtér elérési útjára. Megnyílik a szerkesztési panel. Módosíthatja az elérési utat és a hozzáférési házirendet, de nem válthat másik tárolási célra.
+* **Meglévő elérési út módosítása:** Kattintson a névtér elérési útjára. Megnyílik a Szerkesztés panel. Módosíthatja az elérési utat és a hozzáférési szabályzatot, de nem módosíthatja másik tárolási célhelyre.
 
-* **Névtér elérési útjának törlése:** Jelölje be az elérési út bal oldalán található jelölőnégyzetet, majd kattintson a **Törlés** gombra.
+* **Névtér elérési útjának törlése:** Jelölje be az elérési úttól balra található jelölőnégyzetet, és kattintson a **Törlés gombra.**
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
+[Az Azure CLI beállítása a Azure HPC Cache.](./az-cli-prerequisites.md)
 
-Az Azure CLI használatakor a tárolási cél létrehozásakor hozzá kell adnia egy névtér elérési útját. További részletekért olvassa el az [új Azure Blob Storage-tároló hozzáadása](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-azure-blob-storage-target) című leírást.
+Az Azure CLI használata esetén hozzá kell adni egy névtér elérési útját a tárolási cél létrehozásakor. További [információ: Új Azure Blob Storage-cél](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-azure-blob-storage-target) hozzáadása.
 
-A cél névtérbeli elérési útjának frissítéséhez használja az az [HPC-cache blob-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-update) parancsot. A frissítési parancs argumentumai hasonlóak a Create parancs argumentumai, azzal a különbséggel, hogy nem adja át a tároló nevét vagy a Storage-fiókot.
+A cél névtérútvonalának frissítéséhez használja [az az hpc-cache blob-storage-target update parancsot.](/cli/azure/hpc-cache/blob-storage-target#az_hpc_cache_blob_storage_target_update) A frissítési parancs argumentumai hasonlóak a create parancs argumentumaihoz, azzal a kivételsel, hogy nem adja át a tároló nevét vagy a tárfiókot.
 
-A névtér elérési útja nem törölhető egy blob Storage-tárolóból az Azure CLI-vel, de az elérési utat más értékkel is felülírhatja.
+Az Azure CLI használatával nem törölhet névtérútvonalat a blobtároló célhelyről, de az elérési utat felülírhatja egy másik értékkel.
 
 ---
 
 ### <a name="nfs-namespace-paths"></a>NFS-névtér elérési útjai
 
-Egy NFS-tárolási cél több virtuális útvonallal is rendelkezhet, ha az egyes elérési utak ugyanazon a tárolási rendszeren eltérő exportálási vagy alkönyvtárat jelölnek.
+Egy NFS-tároló célhelyének több virtuális elérési útja is lehet, ha minden elérési út egy adott tárolórendszer különböző exportálási vagy alkönyvtárát jelöli.
 
-Amikor megtervezi a névteret egy NFS-tárolási cél számára, ne feledje, hogy minden elérési útnak egyedinek kell lennie, és nem lehet más névtérbeli elérési út alkönyvtára. Ha például névtérbeli elérési úttal rendelkezik, a és a névtér elérési útja ``/parent-a`` nem hozható létre ``/parent-a/user1`` ``/parent-a/user2`` . Ezek a címtár-elérési utak már elérhetők a névtérben a () alkönyvtáraként ``/parent-a`` .
+Az NFS-tárolóhely névterének tervezésekor ne feledje, hogy minden elérési útnak egyedinek kell lennie, és nem lehet más névtér elérési útjának alkönyvtára. Ha például van egy nevű névtérútvonala, nem hozhat létre olyan névtér-elérési utakat, mint a ``/parent-a`` ``/parent-a/user1`` és a ``/parent-a/user2`` . Ezek a könyvtárútvonalak már elérhetők a névtérben a alkönyvtáraiként. ``/parent-a``
 
-Egy NFS-tárolási rendszer összes névtér-elérési útja egyetlen tárolási célra van létrehozva. A gyorsítótár-konfigurációk többsége legfeljebb tíz névtér-elérési utat tud támogatni tárolási célra, de a nagyobb konfigurációk akár 20-ot is támogatnak.
+Egy NFS-tárolórendszer összes névtér-elérési útja egyetlen tárolóhelyen jön létre. A legtöbb gyorsítótár-konfiguráció legfeljebb tíz névtérútvonalat támogat tárolócélonként, de a nagyobb konfigurációk legfeljebb 20-ast támogatnak.
 
-Ez a lista a névtérbeli elérési utak maximális számát jeleníti meg konfiguráció alapján.
+Ez a lista a névtér elérési útjának konfigurációnkénti maximális számát mutatja.
 
 * Legfeljebb 2 GB/s átviteli sebesség:
 
-  * 3 TB gyorsítótár – 10 névtér elérési útja
-  * 6 TB gyorsítótár – 10 névtér elérési útja
-  * 12 TB gyorsítótár – 20 névtér elérési útja
+  * 3 TB-os gyorsítótár – 10 névtérútvonal
+  * 6 TB-os gyorsítótár – 10 névtérútvonal
+  * 12 TB-os gyorsítótár – 20 névtérútvonal
 
 * Legfeljebb 4 GB/s átviteli sebesség:
 
-  * 6 TB gyorsítótár – 10 névtér elérési útja
-  * 12 TB gyorsítótár – 10 névtér elérési útja
-  * 24 TB gyorsítótár – 20 névtér elérési útja
+  * 6 TB-os gyorsítótár – 10 névtérútvonal
+  * 12 TB-os gyorsítótár – 10 névtérútvonal
+  * 24 TB gyorsítótár –20 névtér elérési útja
 
 * Legfeljebb 8 GB/s átviteli sebesség:
 
-  * 12 TB gyorsítótár – 10 névtér elérési útja
-  * 24 TB gyorsítótár – 10 névtér elérési útja
-  * 48 TB gyorsítótár – 20 névtér elérési útja
+  * 12 TB gyorsítótár – 10 névtérútvonal
+  * 24 TB gyorsítótár – 10 névtérútvonal
+  * 48 TB-os gyorsítótár – 20 névtérútvonal
 
-Minden NFS-névtér elérési útján adja meg az ügyfél felé irányuló elérési utat, a tárolási rendszer exportálását és opcionálisan az Exportálás alkönyvtárát.
+Minden NFS-névtér elérési útjaként adja meg az ügyféloldali elérési utat, a tárolórendszer exportálását és opcionálisan egy exportálási alkönyvtárat.
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A Azure Portal töltse be a **névtér** -beállítások lapot. Ezen a lapon adhatja hozzá, szerkesztheti vagy törölheti a névtér elérési útját.
+A Azure Portal töltse be a **Névtér** beállításai lapot. Ezen a lapon adhat hozzá, szerkeszthet vagy törölhet névtérútvonalat.
 
-* **Új elérési út hozzáadása:** Kattintson a felül található **+ Hozzáadás** gombra, és adja meg az adatokat a szerkesztési panelen.
+* **Új elérési út hozzáadása:** Kattintson felül **a +** Hozzáadás gombra, és töltse ki az adatokat a szerkesztési panelen.
 * **Meglévő elérési út módosítása:** Kattintson a névtér elérési útjára. Megnyílik a szerkesztési panel, és módosíthatja az elérési utat.
-* **Névtér elérési útjának törlése:** Jelölje be az elérési út bal oldalán található jelölőnégyzetet, majd kattintson a **Törlés** gombra.
+* **Névtér elérési útjának törlése:** Jelölje be az elérési úttól balra található jelölőnégyzetet, és kattintson a **Törlés gombra.**
 
-Adja meg ezeket az értékeket az egyes névterek elérési útjához:
+Adja meg az alábbi értékeket az egyes névterek elérési útjaihoz:
 
-* **Névtér elérési útja** – az ügyfél felé irányuló fájl elérési útja.
+* **Névtér elérési útja** – Az ügyféloldali fájl elérési útja.
 
-* **Ügyfél-hozzáférési házirend** – válassza ki, hogy melyik hozzáférési házirendet szeretné használni ehhez az elérési úthoz. További információ az ügyfél-hozzáférés [ügyfél-hozzáférési házirendekben](access-policies.md)való testreszabásáról.
+* **Ügyfél-hozzáférési házirend** – Válassza ki az elérési úthoz használni kívánt hozzáférési szabályzatot. További információ az ügyfél-hozzáférés testreszabásáról: [Ügyfél-hozzáférési házirendek használata.](access-policies.md)
 
-* **Tárolási cél** – új névtér elérési útjának létrehozásakor válasszon ki egy tárolási célt a legördülő menüből.
+* **Tárolási cél** – Új névtér elérési útjának létrehozásakor válasszon ki egy tárolási célt a legördülő menüből.
 
-* **Exportálási útvonal** – adja meg az NFS-exportálás elérési útját. Ügyeljen arra, hogy helyesen írja be az Exportálás nevét – a portál érvényesíti a mező szintaxisát, de nem ellenőrzi az exportálást, amíg el nem küldi a módosítást.
+* **Exportálási útvonal** – Adja meg az NFS-exportálás elérési útját. Ügyeljen rá, hogy helyesen írja be az exportálás nevét – a portál érvényesíti a mező szintaxisát, de a módosítás elküldése előtt nem ellenőrzi az exportálást.
 
-* **Alkönyvtár exportálása** – ha azt szeretné, hogy ez az elérési út egy adott alkönyvtárat csatoljon az exportáláshoz, adja meg a következőt:. Ha nem, hagyja üresen ezt a mezőt.
+* **Alkönyvtár exportálása** – Ha azt szeretné, hogy ez az elérési út az exportálás egy adott alkönyvtárát csatlakoztassa, itt adhatja meg. Ha nem, hagyja üresen ezt a mezőt.
 
-![képernyőkép a portál névtér oldaláról a jobb oldalon megnyíló szerkesztés oldalon. A szerkesztési űrlap az NFS-tárolási cél névtérbeli elérési útjának beállításait jeleníti meg](media/namespace-edit-nfs.png)
+![képernyőkép a portál névtéroldalról, jobb oldalt megnyitva a szerkesztési oldallal. A szerkesztési űrlapon egy nfs-tároló célnévterének elérési útja látható](media/namespace-edit-nfs.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
+[Az Azure CLI beállítása a Azure HPC Cache.](./az-cli-prerequisites.md)
 
-Az Azure CLI használatakor hozzá kell adnia legalább egy névtér elérési útját a tárolási cél létrehozásakor. További részletekért olvassa el az [új NFS-tárolási cél hozzáadása](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target) című leírást.
+Az Azure CLI használata esetén legalább egy névtérútvonalat hozzá kell adni a tároló célhelyének létrehozásakor. További [információ: Új NFS-tároló hozzáadása.](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target)
 
-A cél névtérbeli elérési útjának frissítéséhez vagy további elérési utak hozzáadásához használja az az [HPC-cache NFS-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) parancsot. A ``--junction`` lehetőséggel megadhatja az összes használni kívánt névtér-elérési utat.
+A cél névtérútvonalának frissítéséhez vagy további elérési utak hozzáadásához használja [az az hpc-cache nfs-storage-target update](/cli/azure/hpc-cache/nfs-storage-target#az_hpc_cache_nfs_storage_target_update) parancsot. A ``--junction`` kapcsolóval adhatja meg az összes kívánt névtérútvonalat.
 
-A frissítési parancshoz használt beállítások hasonlóak a "Create" parancshoz, azzal a különbséggel, hogy nem adja át a tárolási rendszer adatait (IP-cím vagy állomásnév), és a használati modell nem kötelező. A beállítás szintaxisával kapcsolatos további információkért olvassa el az [új NFS-tárolási cél hozzáadása](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target) címűt ``--junction`` .
+A frissítési parancshoz használt beállítások hasonlóak a "create" parancshoz, azzal a kivételel, hogy nem adja meg a tárolórendszer adatait (IP-cím vagy állomásnév), és a használati modell megadása nem kötelező. A beállítás szintaxisával kapcsolatos további részletekért olvassa el [az Új NFS-tároló](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target) hozzáadása ``--junction`` lehetőséget.
 
 ---
 
-### <a name="adls-nfs-namespace-paths-preview"></a>ADLS – NFS-névtér elérési útjai (előzetes verzió)
+### <a name="adls-nfs-namespace-paths-preview"></a>ADLS-NFS-névtér elérési útjai (ELŐZETES VERZIÓ)
 
-A normál blob Storage-tárolóhoz hasonlóan a ADLS-NFS tárolási cél csak egy exportálással rendelkezik, így csak egy névtér elérési útja lehet.
+A normál Blob Storage-célhoz hasonló az ADLS-NFS tárolási cél csak egy exportálással rendelkezik, ezért csak egy névtérútvonala lehet.
 
-Az alábbi útmutatást követve állíthatja be vagy módosíthatja az elérési utat a Azure Portal.
+Kövesse az alábbi utasításokat az elérési út beállításhoz vagy az elérési út Azure Portal.
 
-Töltse be a **névtér** beállításait tartalmazó lapot.
+Töltse be **a Névtér beállításai** lapot.
 
-* **Új elérési út hozzáadása:** Kattintson a felül található **+ Hozzáadás** gombra, és adja meg az adatokat a szerkesztési panelen.
+* **Adjon hozzá egy új elérési utat:** Kattintson felül **a +** Hozzáadás gombra, és töltse ki az adatokat a szerkesztési panelen.
 
-  ![Képernyőkép a névtér-szerkesztési mezők hozzáadásáról egy kiválasztott ADLS-NFS-tároló céljával. Az exportálási és alkönyvtári elérési utak a következőre vannak beállítva:/és nem szerkeszthető.](media/namespace-add-adls.png)
+  ![Képernyőkép a névtérszerkesztés mezőinek hozzáadásáról, az ADLS-NFS célhely kijelölve. Az exportálási és az alkönyvtár elérési útjai /-be vannak állítva, és nem szerkeszthetők.](media/namespace-add-adls.png)
 
-  * Adja meg azt az elérési utat, amellyel az ügyfelek hozzáférnek ehhez a tárolási célhoz.
+  * Adja meg, hogy az ügyfelek mely elérési utat használják a tárolási cél eléréséhez.
 
-  * Válassza ki, hogy melyik hozzáférési házirendet szeretné használni ehhez az elérési úthoz. További információ az ügyfél-hozzáférés [ügyfél-hozzáférési házirendekben](access-policies.md)való testreszabásáról.
+  * Válassza ki az elérési úthoz használni kívánt hozzáférési szabályzatot. További információ az ügyfél-hozzáférés testreszabásáról: [Ügyfél-hozzáférési házirendek használata.](access-policies.md)
 
-  * Válassza ki a tárolási célt a legördülő listából. Ha egy ADLS-NFS tárolási célnak már van névtérbeli elérési útja, nem választható ki.
+  * Válassza ki a tárolócélt a legördülő listából. Ha az ADLS-NFS tárolási cél már rendelkezik névtérútvonalval, nem választható ki.
 
-  * A ADLS-NFS tárolási célpont esetében az exportálási és alkönyvtári elérési utak automatikusan értékre vannak állítva ``/`` .
+  * ADLS-NFS tárolási cél esetén az exportálás és az alkönyvtár elérési útjai automatikusan a következőre vannak beállítva: ``/`` .
 
-* **Meglévő elérési út módosítása:** Kattintson a névtér elérési útjára. Megnyílik a szerkesztési panel. Módosíthatja az elérési utat és a hozzáférési házirendet, de nem válthat másik tárolási célra.
+* **Meglévő elérési út módosítása:** Kattintson a névtér elérési útjára. Megnyílik a Szerkesztés panel. Módosíthatja az elérési utat és a hozzáférési szabályzatot, de nem módosíthatja másik tárolási célhelyre.
 
-* **Névtér elérési útjának törlése:** Jelölje be az elérési út bal oldalán található jelölőnégyzetet, majd kattintson a **Törlés** gombra.
+* **Névtér elérési útjának törlése:** Jelölje be az elérési úttól balra található jelölőnégyzetet, és kattintson a **Törlés gombra.**
 
 ## <a name="next-steps"></a>Következő lépések
 
-Miután létrehozta a tárolási célok összesített névterét, csatlakoztathatja az ügyfeleket a gyorsítótárhoz. További információért olvassa el ezeket a cikkeket.
+Miután létrehozta az összesített névteret a tárolási célokhoz, ügyfeleket csatlakoztathat a gyorsítótárhoz. További információért olvassa el ezeket a cikkeket.
 
 * [Az Azure HPC Cache csatlakoztatása](hpc-cache-mount.md)
-* [Az Azure Blob Storage-ba irányuló adatáthelyezés](hpc-cache-ingest.md)
+* [Adatok áthelyezése az Azure Blob Storage-ba](hpc-cache-ingest.md)

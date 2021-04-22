@@ -3,12 +3,12 @@ title: Azure-irányítópultok programozott létrehozása
 description: Az irányítópultot sablonként használhatja a Azure Portal Azure-irányítópultok programozott módon történő létrehozásához. Tartalmazza a JSON-referenciát.
 ms.topic: how-to
 ms.date: 12/4/2020
-ms.openlocfilehash: 416eeb772e347b28fcb4a4dcc93c746562ea3571
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 92848ac238ff11a90afc82713639b8abebf076ec
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767058"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878793"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Azure-irányítópultok programozott létrehozása
 
@@ -54,13 +54,13 @@ A **Megosztás lehetőség** kiválasztásával kiválaszthatja, hogy melyik el�
 
 A közzététel csak néhány másodpercet vesz igénybe. Ha ezzel végzett, a következő lépés a JSON beolvasása a **Letöltés paranccsal.**
 
-![JSON-ábrázolás letöltése](./media/azure-portal-dashboards-create-programmatically/download-command.png)
+![JSON-reprezentáció letöltése](./media/azure-portal-dashboards-create-programmatically/download-command.png)
 
 ## <a name="create-a-template-from-the-json"></a>Sablon létrehozása a JSON-ból
 
 A következő lépés egy sablon létrehozása ebből a JSON-ból. Ezt a sablont programozott módon használhatja a megfelelő erőforrás-kezelési API-okkal, parancssori eszközökkel vagy a portálon belül.
 
-Sablon létrehozásához nem kell teljesen megértenie az irányítópult JSON-struktúráját. A legtöbb esetben meg szeretné őrizni az egyes csempék szerkezetét és konfigurációját. Ezután paraméterezi az Azure-erőforrások készletét, amelyekre a csempék mutatnak. Nézze meg az exportált JSON-irányítópultot, és keresse meg az Azure-erőforrás-idok összes előfordulását. A példa irányítópult több csempét tartalmaz, amelyek egyetlen Azure-beli virtuális gépre mutatnak. Ennek az az oka, hogy az irányítópult csak ezt az erőforrást nézi. Ha a dokumentum végén található JSON-mintában a "/subscriptions" kifejezésre keres rá, az azonosító több előfordulását is megtalálja.
+Sablon létrehozásához nem kell teljesen megértenie az irányítópult JSON-struktúráját. A legtöbb esetben meg szeretné őrizni az egyes csempék szerkezetét és konfigurációját. Ezután paraméterezi az Azure-erőforrások készletét, amelyekre a csempék mutatnak. Nézze meg az exportált JSON-irányítópultot, és keresse meg az Azure-erőforrás-idok összes előfordulását. A példa irányítópult több csempével rendelkezik, amelyek egyetlen Azure-beli virtuális gépre mutatnak. Ennek az az oka, hogy az irányítópult csak ezt az erőforrást nézi. Ha a dokumentum végén található JSON-mintában az "/subscriptions" kifejezésre keres rá, ennek az azonosítónak több előfordulását is megtalálja.
 
 `/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/contoso/providers/Microsoft.Compute/virtualMachines/myVM1`
 
@@ -69,15 +69,15 @@ Ha ezt az irányítópultot a jövőben bármely virtuális géphez közzétehet
 Az Azure-ban erőforrásokat létrehozására használt API-knak két megközelítése van:
 
 * Az imperatív API-k egyszerre egy erőforrást hoznak létre. További információ: [Erőforrások.](/rest/api/resources/resources)
-* Egy sablonalapú üzembe helyezési rendszer, amely több függő erőforrást hoz létre egyetlen API-hívással. További információ: Erőforrások üzembe [helyezése Resource Manager sablonokkal és Azure PowerShell.](../azure-resource-manager/templates/deploy-powershell.md)
+* Egy sablonalapú üzembe helyezési rendszer, amely több függő erőforrást hoz létre egyetlen API-hívással. További információ: Erőforrások üzembe helyezése Resource Manager [sablonokkal és Azure PowerShell.](../azure-resource-manager/templates/deploy-powershell.md)
 
 A sablonalapú üzembe helyezés támogatja a paraméterezést és a sablonozást. Ebben a cikkben ezt a megközelítést használjuk.
 
-## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>Irányítópult létrehozása sablonból sablontelepítés használatával programozott módon
+## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>Irányítópult létrehozása sablonból programozott módon sablontelepítés használatával
 
-Az Azure lehetővé teszi több erőforrás üzembe helyezésének vezénylét. Létrehoz egy üzembe helyezési sablont, amely kifejezi az üzembe helyezni kívánt erőforrásokat és a közöttük álló kapcsolatokat.  Az egyes erőforrások JSON-formátuma megegyezik azzal, mintha külön-külön hozta volna létre őket. A különbség az, hogy a sablonnyelv több fogalmat is tartalmaz, például változókat, paramétereket, alapszintű függvényeket stb. Ez a kiterjesztett szintaxis csak a sablontelepítések kontextusában támogatott. Nem működik, ha a korábban tárgyalt imperatív API-okkal használják. További információ: A sablonok szerkezetének [és szintaxisának Azure Resource Manager.](../azure-resource-manager/templates/template-syntax.md)
+Az Azure lehetővé teszi több erőforrás üzembe helyezésének vezénylét. Létrehoz egy üzembe helyezési sablont, amely az üzembe helyezni kívánt erőforrások készletét és a közöttük álló kapcsolatokat fejezi ki.  Az egyes erőforrások JSON-formátuma megegyezik azzal, mintha egyesenként hozta volna létre őket. A különbség az, hogy a sablonnyelv további fogalmakat is tartalmaz, például változókat, paramétereket, alapszintű függvényeket stb. Ez a kiterjesztett szintaxis csak sablontelepítés esetén támogatott. Nem működik, ha a korábban tárgyalt imperatív API-okkal használják. További információ: A sablonok szerkezetének [és szintaxisának Azure Resource Manager.](../azure-resource-manager/templates/template-syntax.md)
 
-A paraméterezést a sablon paraméterszintaxisával kell létrehozni.  Cserélje le a korábban megtalált erőforrás-azonosító összes példányát az itt látható módon.
+A paraméterezést a sablon paraméterszintaxisával kell tenni.  Lecseréli a korábban megtalált erőforrás-azonosító összes példányát az itt látható módon.
 
 Példa JSON-tulajdonságra nem kódolt erőforrás-azonosítóval:
 
@@ -118,13 +118,13 @@ Miután konfigurálta a sablont, az alábbi módszerek bármelyikével üzembe h
 * [REST API-k](/rest/api/resources/deployments)
 * [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](/cli/azure/group/deployment#az_group_deployment_create)
-* [Az Azure Portal sablon üzembe helyezési oldala](https://portal.azure.com/#create/Microsoft.Template)
+* [A Azure Portal sablon üzembe helyezési oldala](https://portal.azure.com/#create/Microsoft.Template)
 
-A következő példában az irányítópult JSON-jának két verziója látható. Az első a portálról exportált verzió, amely már hozzá volt kötve egy erőforráshoz. A második a sablon verziója, amely programozott módon kötődik bármely virtuális géphez, és üzembe helyezhető a Azure Resource Manager.
+Ezután a példa irányítópult JSON-verziójának két verzióját fogja látni. Az első az a verzió, amit a portálról exportáltunk, és amely már hozzá volt kötve egy erőforráshoz. A második a sablon verziója, amely programozott módon kötődik bármely virtuális géphez, és üzembe helyezhető a Azure Resource Manager.
 
-### <a name="json-representation-of-our-example-dashboard-before-templating"></a>A példa irányítópult JSON-ábrázolása a sablon létrehozása előtt
+### <a name="json-representation-of-our-example-dashboard-before-templating"></a>A példa irányítópult JSON-ábrázolása a sablon használata előtt
 
-Ez a példa bemutatja, mire számíthat, ha követte a cikkel együtt. Az utasítások egy már üzembe helyezett irányítópult JSON-reprezentációját exportálta. A nem rögzített erőforrás-azonosítók azt mutatják, hogy ez az irányítópult egy adott Azure-beli virtuális gépre mutat.
+Ez a példa bemutatja, mire számíthat, ha követte a cikkel együtt. Az utasítások egy már üzembe helyezett irányítópult JSON-ábrázolását exportálta. A nem rögzített erőforrás-azonosítók azt mutatják, hogy ez az irányítópult egy adott Azure-beli virtuális gépre mutat.
 
 ```json
 
@@ -378,7 +378,7 @@ Ez a példa bemutatja, mire számíthat, ha követte a cikkel együtt. Az utasí
 
 ### <a name="template-representation-of-our-example-dashboard"></a>A példa-irányítópult sablonrekrezentációja
 
-Az irányítópult sablonverziója három paramétert `virtualMachineName` definiált: , `virtualMachineResourceGroup` és `dashboardName` .  A paraméterekkel ezt az irányítópultot minden üzembe helyezéskor egy másik Azure-beli virtuális gépre mutatjuk. Ez az irányítópult programozott módon konfigurálható és üzembe helyezhető úgy, hogy bármely Azure-beli virtuális gépre mutasson. A szolgáltatás teszteléséhez másolja ki a következő sablont, és illessze be a Azure Portal [üzembe helyezési oldalára.](https://portal.azure.com/#create/Microsoft.Template)
+Az irányítópult sablonverziója három paramétert `virtualMachineName` definiált: , `virtualMachineResourceGroup` és `dashboardName` .  A paraméterekkel ezt az irányítópultot minden üzembe helyezéskor egy másik Azure-beli virtuális gépre mutat. Ez az irányítópult programozott módon konfigurálható és üzembe helyezhető úgy, hogy bármely Azure-beli virtuális gépre mutasson. A szolgáltatás teszteléséhez másolja ki a következő sablont, és illessze be a Azure Portal [üzembe helyezési oldalára.](https://portal.azure.com/#create/Microsoft.Template)
 
 Ez a példa önmagában helyez üzembe egy irányítópultot, de a sablonnyelv lehetővé teszi több erőforrás üzembe helyezését, és egy vagy több irányítópult kötegbe helyezését.
 
@@ -648,7 +648,7 @@ Ez a példa önmagában helyez üzembe egy irányítópultot, de a sablonnyelv l
 }
 ```
 
-Most, hogy látott egy példát, amely egy paraméteres sablont használ egy irányítópult üzembe helyezéséhez, megpróbálhatja üzembe helyezni a sablont [a Azure Resource Manager REST](/rest/api/)API-k, az Azure [CLI](/cli/azure)vagy a Azure PowerShell [parancs használatával.](/powershell/azure/get-started-azureps)
+Most, hogy látott egy példát arra, hogyan helyezhet üzembe egy irányítópultot paraméteres sablonnal, megpróbálhatja üzembe helyezni a sablont [a Azure Resource Manager REST API-k,](/rest/api/)az Azure [CLI](/cli/azure)vagy a Azure PowerShell [parancs használatával.](/powershell/azure/get-started-azureps)
 
 ## <a name="programmatically-create-a-dashboard-by-using-azure-cli"></a>Irányítópult programozott létrehozása az Azure CLI használatával
 
@@ -658,27 +658,27 @@ A környezet előkészítése az Azure CLI-hez.
 
 - Ezek a példák a következő irányítópultot használják: [portal-dashboard-template-testvm.jsa következőn:](https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json). Cserélje le a szögletes zárójelben lévő tartalmat a saját értékeire.
 
-Az [irányítópult létrehozásához](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) futtassa az az portal dashboard create parancsot:
+Az [irányítópult létrehozásához](/cli/azure/portal/dashboard#az_portal_dashboard_create) futtassa az az portal dashboard create parancsot:
 
 ```azurecli
 az portal dashboard create --resource-group myResourceGroup --name 'Simple VM Dashboard' \
    --input-path portal-dashboard-template-testvm.json --location centralus
 ```
 
-Az irányítópultot az [az portal dashboard update](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) paranccsal frissítheti:
+Az irányítópultot az [az portal dashboard update](/cli/azure/portal/dashboard#az_portal_dashboard_update) paranccsal frissítheti:
 
 ```azurecli
 az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Dashboard' \
 --input-path portal-dashboard-template-testvm.json --location centralus
 ```
 
-Az irányítópult részleteinek megtekintése az [az portal dashboard show](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) parancs futtatásával:
+Az irányítópult részleteinek megtekintése az [az portal dashboard show paranccsal:](/cli/azure/portal/dashboard#az_portal_dashboard_show)
 
 ```azurecli
 az portal dashboard show --resource-group myResourceGroup --name 'Simple VM Dashboard'
 ```
 
-Az aktuális előfizetéshez elérhető összes irányítópultot az az portal dashboard list használatával [láthatja:](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list)
+Az aktuális előfizetéshez az az portal dashboard list használatával használhatja az [összes irányítópultot:](/cli/azure/portal/dashboard#az_portal_dashboard_list)
 
 ```azurecli
 az portal dashboard list
@@ -692,6 +692,6 @@ az portal dashboard list --resource-group myResourceGroup
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az asztali környezetekkel kapcsolatos további információkért lásd: [Manage Azure Portal settings (Beállítások és beállítások kezelése).](set-preferences.md)
+Az asztali környezetekkel kapcsolatos további információkért lásd: [Manage Azure Portal settings and preferences (Beállítások és](set-preferences.md)beállítások kezelése).
 
-Az irányítópultok Azure CLI-támogatásával kapcsolatos további információkért lásd: [az portal dashboard](/cli/azure/ext/portal/portal/dashboard).
+Az irányítópultok Azure CLI-támogatásával kapcsolatos további információkért lásd: [az portal dashboard](/cli/azure/portal/dashboard).

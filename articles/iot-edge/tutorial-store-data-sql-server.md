@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – Adatok tárolása SQL-modullal a Azure IoT Edge
-description: Ez az oktatóanyag bemutatja, hogyan tárolunk helyileg adatokat egy IoT Edge-eszközön egy SQL Server modullal
+description: Ez az oktatóanyag bemutatja, hogyan tárolunk helyileg adatokat a IoT Edge egy SQL Server modullal
 services: iot-edge
 author: kgremban
 manager: philmea
@@ -9,20 +9,20 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 709c7bf352635ffb1c17f6cb24aee59dcae2e033
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: bd64c95bcf59cef27aa988712315403c00a5dfd7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479763"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871254"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Oktatóanyag: Adatok tárolása a peremhálózaton SQL Server-adatbázisokkal
 
 [!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-Üzembe helyezhet egy SQL Server modult, amely linuxos tárolókat futtató Azure IoT Edge tárolja az adatokat.
+Üzembe helyezhet egy SQL Server modult, amely Linux-tárolókat futtató Azure IoT Edge tárolja az adatokat.
 
-Az Azure IoT Edge és az SQL Server segítségével adatokat tárolhat és kérdezhet le a peremhálózaton. Azure IoT Edge tárolóeszköz alapszintű tárolási képességekkel rendelkezik az üzenetek gyorsítótárazáshoz, ha egy eszköz offline állapotba kerül, majd továbbítja őket, amikor a kapcsolat újra létre lett hozva. Szüksége lehet azonban ennél fejlettebb tárolási képességekre is, például az adatok helyi lekérdezéséhez. A IoT Edge helyi adatbázisok használatával összetettebb számításokat végezhet anélkül, hogy kapcsolatot kell fenntartania a IoT Hub.
+Az Azure IoT Edge és az SQL Server segítségével adatokat tárolhat és kérdezhet le a peremhálózaton. Azure IoT Edge rendelkezik alapszintű tárolási képességekkel az üzenetek gyorsítótárazáshoz, ha egy eszköz offline állapotba kerül, majd továbbítja őket a kapcsolat újratétesszése után. Szüksége lehet azonban ennél fejlettebb tárolási képességekre is, például az adatok helyi lekérdezéséhez. A IoT Edge helyi adatbázisok használatával összetettebb számításokat végezhet anélkül, hogy kapcsolatot kell fenntartania a IoT Hub.
 
 A jelen cikk az SQL Server-adatbázisok IoT Edge-eszközön történő üzembe helyezésének utasításait tartalmazza. Az IoT Edge-eszközön futó Azure Functions-függvények elvégzik a bejövő adatok rendszerezését, majd elküldik azokat az adatbázisnak. A cikkben szereplő lépések a tárolókban üzemeltetett egyéb adatbázisokra (például MySQL vagy PostgreSQL) is alkalmazhatók.
 
@@ -48,10 +48,10 @@ Az oktatóanyag megkezdése előtt át kellett volna néznie az előző oktatóa
 * [Visual Studio a következővel](https://code.visualstudio.com/) konfigurált [Azure IoT Tools.](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 * [Linux-tárolók](https://docs.docker.com/install/) futtatására konfigurált Docker CE.
 
-Ez az oktatóanyag egy Azure Functions modul segítségével küld adatokat a SQL Server. Ha egy IoT Edge modult Azure Functions, telepítse a következő további előfeltételeket a fejlesztői gépen:
+Ez az oktatóanyag egy Azure Functions használatával küld adatokat a SQL Server. Ha egy IoT Edge modult Azure Functions, telepítse a következő további előfeltételeket a fejlesztői gépen:
 
-* [C# a Visual Studio Code -hez (az OmniSharp által működtetett) Visual Studio kódhoz.](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-* [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
+* [C# a Visual Studio Code-bővítményhez (az OmniSharp által működtetve) a Visual Studio Code-hez.](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+* [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1).
 
 ## <a name="create-a-function-project"></a>Függvényprojekt létrehozása
 
@@ -63,7 +63,7 @@ A következő lépések azt mutatják be, hogyan hozhat létre IoT Edge függvé
 
 1. Nyissa meg a Visual Studio Code-ot.
 
-2. Nyissa meg a VS Code parancskatapadját a **Parancskatapaletta**  >  **megtekintése lehetőség kiválasztásával.**
+2. Nyissa meg a VS Code parancskatapadját a View Command palette **(Parancskatapaletta**  >  **megtekintése) lehetőség kiválasztásával.**
 
 3. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: új IoT Edge-megoldás) parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához:
 
@@ -73,7 +73,7 @@ A következő lépések azt mutatják be, hogyan hozhat létre IoT Edge függvé
    | Provide a solution name (Megoldásnév megadása) | Adjon egy leíró nevet a megoldásnak, például **SqlSolution,** vagy fogadja el az alapértelmezettet. |
    | Select module template (Modulsablon kiválasztása) | Válassza **a Azure Functions - C# lehetőséget.** |
    | Provide a module name (Modulnév megadása) | A modulnak adja az **sqlFunction** nevet. |
-   | Provide Docker image repository for the module (Docker-rendszerkép adattárának megadása a modulhoz) | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tárolórendszerkép előre fel van töltve az előző lépésből. Cserélje **le a localhost:5000** értéket az Azure Container Registry bejelentkezési kiszolgálójának értékére.  A bejelentkezési kiszolgálót a tároló-beállításjegyzék Áttekintés lapján olvashatja be a Azure Portal. <br><br>Az utolsó sztring a \<registry name\> következő: .azurecr.io/sqlfunction. |
+   | Provide Docker image repository for the module (Docker-rendszerkép adattárának megadása a modulhoz) | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tárolórendszerkép előre fel van töltve az előző lépésből. Cserélje **le a localhost:5000** értéket az Azure Container Registry bejelentkezési kiszolgálójának értékére.  A bejelentkezési kiszolgálót a tároló-beállításjegyzék Áttekintés lapján olvashatja be a Azure Portal. <br><br>Az utolsó sztring így néz ki: \<registry name\> .azurecr.io/sqlfunction. |
 
    A VS Code-ablak betölti az IoT Edge-megoldás munkaterületét.
 
@@ -81,7 +81,7 @@ A következő lépések azt mutatják be, hogyan hozhat létre IoT Edge függvé
 
 A környezeti fájl tárolja a tárolóregisztrációs adatbázis hitelesítő adatait, és megosztja őket az IoT-Edge futtatókörnyezettel. A futtatókörnyezetnek szüksége van ezekre a hitelesítő adatokra a privát rendszerképek letöltéséhez az IoT Edge-eszközre.
 
-A IoT Edge a bővítmény megpróbálja lekért hitelesítő adatokat lekért tárolójegyzékből az Azure-ból, és feltölti őket a környezeti fájlba. Ellenőrizze, hogy szerepel-e már a hitelesítő adatai között. Ha nem, adja hozzá őket most:
+A IoT Edge bővítmény megpróbálja lekért hitelesítő adatokat az Azure-ból a tároló-beállításjegyzékből, és feltölti őket a környezeti fájlba. Ellenőrizze, hogy a hitelesítő adatai már szerepelnek-e benne. Ha nem, adja hozzá őket most:
 
 1. A VS Code Explorerben nyissa meg a .env fájlt.
 2. Adja meg az Azure Container Registryből kimásolt **felhasználónevet** és **jelszót** a megfelelő mezőkben.
@@ -89,15 +89,15 @@ A IoT Edge a bővítmény megpróbálja lekért hitelesítő adatokat lekért t�
 
 ### <a name="select-your-target-architecture"></a>A célarchitektúra kiválasztása
 
-Ki kell választania, hogy melyik architektúrát célozza meg az egyes megoldások, mivel a tároló minden architektúratípushoz másképpen van felépítve és futtatva. Az alapértelmezett beállítás a Linux AMD64.
+Ki kell választania, hogy melyik architektúrát célozza meg az egyes megoldások, mivel a tároló minden architektúratípushoz másként van felépítve és futtatva. Az alapértelmezett beállítás a Linux AMD64.
 
-1. Nyissa meg a parancskataccsal, és keressen rá a **Azure IoT Edge: Set Default Target Platform for Edge Solution**(Alapértelmezett célplatform beállítása az Edge-megoldáshoz) kifejezésre, vagy válassza az ablak alján található oldalsáv parancsikonját.
+1. Nyissa meg a parancskataccsal, és keressen a **Azure IoT Edge: Set Default Target Platform for Edge Solution**(Alapértelmezett célplatform beállítása az Edge-megoldáshoz) kifejezésre, vagy válassza az ablak alján található oldalsáv parancsikonját.
 
-2. A parancskatatúrában válassza ki a célarchitektúrát a lehetőségek listájából. Ebben az oktatóanyagban ubuntus virtuális gépet fogunk használni IoT Edge eszközként, ezért megtartjuk az alapértelmezett **amd64-et.**
+2. A parancskataában válassza ki a célarchitektúrát a lehetőségek listájából. Ebben az oktatóanyagban ubuntus virtuális gépet használunk IoT Edge eszközként, ezért megtartjuk az **alapértelmezett amd64 -et.**
 
 ### <a name="update-the-module-with-custom-code"></a>A modul módosítása egyéni kóddal
 
-1. A VS Code Explorerben nyissa meg **az**  >  **sqlFunction**  >  **sqlFunction.csproj modulokat.**
+1. A VS Code Explorerben nyissa **meg** az  >  **sqlFunction**  >  **sqlFunction.csproj modult.**
 
 2. Keresse meg a csomaghivatkozások csoportját, és adjon hozzá egy újat az SqlClient hozzáadásához.
 
@@ -212,18 +212,18 @@ Az IoT Edge-futtatókörnyezet által az IoT Edge-eszközön telepítendő modul
 
 1. A Visual Studio Code-ban nyissa meg a parancskatapaletta nézetét a **Parancskatapaletta**  >  **megtekintése lehetőség kiválasztásával.**
 
-2. A parancskata ban írja be és futtassa a **következő parancsot: Azure IoT Edge: Add IoT Edge module**. A parancskataában adja meg a következő információkat egy új modul hozzáadásához:
+2. A parancskataában írja be és futtassa a **következő parancsot: Azure IoT Edge: Add IoT Edge module**. Új modul hozzáadásához adja meg a következő információkat a parancskatasonában:
 
    | Mező | Érték |
    | ----- | ----- |
-   | Select deployment template file (Üzembehelyezési sablonfájl kiválasztása) | A parancskatapaletta kiemeli **deployment.template.jsaktuális** megoldásmappában található fájlban található fájlt. Válassza ki a fájlt.  |
-   | Select module template (Modulsablon kiválasztása) | Válassza **a Modul lehetőséget Azure Marketplace.** |
+   | Select deployment template file (Üzembehelyezési sablonfájl kiválasztása) | A parancskatapaletta kiemeli **deployment.template.jsaktuális** megoldásmappában található fájlban lévő fájlt. Válassza ki a fájlt.  |
+   | Select module template (Modulsablon kiválasztása) | Válassza **a Modul lehetőséget a Azure Marketplace.** |
 
 3. Az Azure IoT Edge modul piacterén keresse meg és válassza ki **a SQL Server modult.**
 
 4. Módosítsa a modul nevét **sql-névre,** csak kisbetűket. Ez a név megegyezik az sqlFunction.cs fájlban található kapcsolati sztringben deklarált tárolónévvel.
 
-5. Válassza **az Importálás** lehetőséget, hogy hozzáadja a modult a megoldáshoz.
+5. Válassza **az Importálás** lehetőséget a modul a megoldáshoz való hozzáadásához.
 
 6. A megoldás mappájában nyissa meg adeployment.template.js **fájlban.**
 
@@ -236,7 +236,7 @@ Az IoT Edge-futtatókörnyezet által az IoT Edge-eszközön telepítendő modul
 
 ## <a name="build-your-iot-edge-solution"></a>Az IoT Edge-megoldás összeállítása
 
-Az előző szakaszokban egyetlen modullal hozott létre megoldást, majd hozzáadott egy másik modult az üzembehelyezési jegyzéksablonfájlhoz. Az SQL Server modult a Microsoft üzemelteti nyilvánosan, de a kódot tárolóba kell helyeznie a Functions modulban. Ebben a szakaszban létre fog hozni egy megoldást, tároló rendszerképeket hoz létre az sqlFunction modulhoz, majd lekulpeli a rendszerképet a tároló-beállításjegyzékbe.
+Az előző szakaszokban egyetlen modullal hozott létre megoldást, majd hozzáadott egy másik modult az üzembehelyezési jegyzéksablonfájlhoz. A SQL Server modult a Microsoft üzemelteti, de a kódot tárolóba kell helyeznie a Functions modulban. Ebben a szakaszban létre fog hozni egy megoldást, tároló rendszerképeket hoz létre az sqlFunction modulhoz, majd lekulpeli a rendszerképet a tároló-beállításjegyzékbe.
 
 1. A Visual Studio Code-ban nyissa meg az integrált terminált a **View** Terminal (Terminál  >  **megtekintése) lehetőség kiválasztásával.**  
 
@@ -264,7 +264,7 @@ Az IoT Hub felületén keresztül modulokat állíthat be egy eszközön, de az 
 
 2. Kattintson a jobb gombbal arra az eszközre, amelybe a telepítést meg szeretné célozni, majd válassza a Create Deployment for Single Device (Üzembe helyezés **létrehozása egyetlen eszközhöz) lehetőséget.**
 
-3. Válassza ki **deployment.amd64.jsfájlt a** **config mappában,** majd kattintson a Select Edge Deployment Manifest (Edge üzembe **helyezési jegyzék kiválasztása) elemre.** Ne használja a deployment.template.json fájlt.
+3. Válassza ki **deployment.amd64.jsfájlban található** fájlt a **config mappában,** majd kattintson a Select Edge Deployment Manifest (Edge üzembe **helyezési jegyzék kiválasztása) elemre.** Ne használja a deployment.template.json fájlt.
 
 4. Az eszköz alatt **bontsa** ki a Modulok listában az üzembe helyezett és futó modulok listáját. Kattintson a frissítés gombra. Látnia kell, hogy az **új sql** és **sqlFunction** modulok futnak a **SimulatedTemperatureSensor** modullal, valamint a $edgeAgent **és** a **$edgeHub.**
 
@@ -274,7 +274,7 @@ Az IoT Hub felületén keresztül modulokat állíthat be egy eszközön, de az 
    iotedge list
    ```
 
-    A modulok elindulás eltarthat néhány percig. A IoT Edge-modulnak meg kell kapnia az új üzembe helyezési jegyzékfájlt, le kell húznia a modul rendszerképét a tároló-modulból, majd el kell kezdenie minden új modult.
+    A modulok elindulás eltarthat néhány percig. A IoT Edge-modulnak meg kell kapnia az új üzembe helyezési jegyzékfájlt, le kell húznia a modul rendszerképét a tároló-modulból, majd el kell kezdenie az új modulokat.
 
 ## <a name="create-the-sql-database"></a>Az SQL-adatbázis létrehozása
 

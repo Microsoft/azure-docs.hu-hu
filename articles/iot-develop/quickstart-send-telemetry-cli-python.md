@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 03/24/2021
-ms.openlocfilehash: ea0b161a9038666e1e7ddd5a6c6af2078afff8aa
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: be44ecf6dd154a21fd024ee37d92f61504350664
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766522"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876428"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-azure-iot-hub-python"></a>Rövid útmutató: Telemetria küldése eszközről Azure IoT Hubra (Python)
 
@@ -85,7 +85,7 @@ Ebben a szakaszban a Python SDK használatával fog üzeneteket küldeni a szimu
     export IOTHUB_DEVICE_SECURITY_TYPE="connectionString"
     ```
 
-1. Futtassa az [az iot hub monitor-events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) parancsot a nyílt CLI-rendszerhéjban a szimulált IoT-eszközön futó események monitorozásának megkezdéséhez.  Az eseményüzenetek érkezésükkor gombra fognak érkezni a terminálon.
+1. Futtassa az [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) parancsot a nyílt CLI-rendszerhéjban a szimulált IoT-eszközön futó események monitorozásának megkezdéséhez.  Az eseményüzenetek érkezésükkor gombra fognak érkezni a terminálon.
 
     ```azurecli
     az iot hub monitor-events --output table --hub-name {YourIoTHubName}
@@ -139,5 +139,5 @@ Ebben a rövid útmutatóban egy alapszintű Azure IoT-alkalmazás-munkafolyamat
 Következő lépésként tekintse át az Azure IoT Python SDK-t az alkalmazásminták segítségével.
 
 - [Aszinkron minták:](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-hub-scenarios)Ez a könyvtár aszinkron Python-mintákat tartalmaz további IoT Hub forgatókönyvekhez.
-- [Szinkron minták:](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples)Ez a könyvtár Python-mintákat tartalmaz a Python 2.7-hez vagy a Python 3.6+-hoz készült szinkron kompatibilitási forgatókönyvekhez
+- [Szinkron minták:](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples)Ez a könyvtár Python-mintákat tartalmaz a Python 2.7-es vagy a Python 3.6-os vagy további verziók szinkron kompatibilitási forgatókönyvéhez
 - [IoT Edge:](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)Ez a könyvtár Python-mintákat tartalmaz az Edge-modulok és alsóbb rétegbeli eszközök használatához.

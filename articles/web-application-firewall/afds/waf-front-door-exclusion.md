@@ -1,78 +1,78 @@
 ---
-title: Webalkalmazási tűzfal kizárási listája az Azure bejárati ajtóban – Azure Portal
-description: Ez a cikk információt nyújt a kizárási listáról az Azure-ban a Azure Portal.
+title: Webalkalmazási tűzfalak kizárási listái a Azure Front Door – Azure Portal
+description: Ez a cikk az Azure Front kizárási listák konfigurációját és a Azure Portal.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.date: 11/10/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: a92679bb3114c4a60870424f3ec68a8de7b303da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83baf03c414d9b0f7acb6a93db03794a539a3c58
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499917"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107860832"
 ---
-# <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Webalkalmazási tűzfal (WAF) a bejárati ajtó szolgáltatás kizárási listájával 
+# <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Web Application Firewall (WAF) Front Door szolgáltatáskizárási listákkal 
 
-Előfordulhat, hogy a webalkalmazási tűzfal (WAF) blokkolni kívánja az alkalmazás számára engedélyezni kívánt kérelmet. A Active Directory például beszúrja a hitelesítéshez használt jogkivonatokat. Ezek a tokenek olyan speciális karaktereket tartalmazhatnak, amelyek a WAF-szabályokból hamis pozitív riasztást indíthatnak. A WAF kizárási listája lehetővé teszi bizonyos WAF kiértékelését.  A kizárási lista a  [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject), az [Azure CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add), a [REST API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)vagy a Azure Portal használatával konfigurálható. A következő példa a Azure Portal konfigurációját mutatja be. 
-## <a name="configure-exclusion-lists-using-the-azure-portal"></a>Kizárási listák konfigurálása a Azure Portal használatával
-A **kizárások kezelése** a WAF-portálról a **felügyelt szabályok** területen érhető el
+Egyes Web Application Firewall (WAF) blokkolhatja az alkalmazás számára engedélyezni kívánt kéréseket. Például a Active Directory a hitelesítéshez használt jogkivonatokat szúr be. Ezek a jogkivonatok speciális karaktereket tartalmazhatnak, amelyek téves riasztást aktiválhatnak a WAF-szabályok alapján. A WAF kizárási listái lehetővé teszik bizonyos kérelemattribútumok kihagyését a WAF-értékelésekből.  Kizárási lista konfigurálható a  [PowerShell,](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject) [az Azure CLI,](/cli/azure/network/front-door/waf-policy/managed-rules/exclusion#az_network_front_door_waf_policy_managed_rules_exclusion_add)a [Rest API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)vagy a Azure Portal. Az alábbi példa a Azure Portal mutatja be. 
+## <a name="configure-exclusion-lists-using-the-azure-portal"></a>Kizárási listák konfigurálása a Azure Portal
+**A kizárások kezelése** a WAF-portálon érhető el a **Felügyelt szabályok alatt**
 
 ![Kizárások ](../media/waf-front-door-exclusion/exclusion1.png)
- ![ kezelése exclusion_add kezelése](../media/waf-front-door-exclusion/exclusion2.png)
+ ![ kezelése – Exclusion_add](../media/waf-front-door-exclusion/exclusion2.png)
 
- Példa kizárási listára: ![ exclusion_define kezelése](../media/waf-front-door-exclusion/exclusion3.png)
+ Példa kizárási lista: Az exclusion_define ![](../media/waf-front-door-exclusion/exclusion3.png)
 
-Ez a példa a *felhasználói* fejléc mezőben lévő értéket zárja ki. Egy érvényes kérelem tartalmazhatja az SQL-injektálási szabályt kiváltó karakterláncot tartalmazó *felhasználói* mezőt is. Ebben az esetben kizárhatja a *felhasználói* paramétereket, így a WAF-szabály nem értékel semmit a mezőben.
+Ez a példa kizárja a felhasználói fejléc *mezőben* található értéket. Érvényes kérés lehet  az SQL-injektálást kiváltó sztringet tartalmazó felhasználói mező is. Ebben az esetben kizárhatja *a felhasználói* paramétert, hogy a WAF-szabály semmit se értékeljen ki a mezőben.
 
-A következő attribútumok adhatók hozzá a kizárási listához név szerint. A rendszer nem értékeli ki a használt mezők értékeit a WAF-szabályok alapján, de a nevük kiértékelése megtörténik. A kizárási listán el kell távolítani a mező értékének ellenőrzését.
+A következő attribútumok név szerint hozzáadhatóak a kizárási listákhoz. A használt mezők értékeit a rendszer nem a WAF-szabályok alapján értékeli ki, hanem a neveket. A kizárási listák eltávolítják a mező értékének vizsgálatát.
 
-* Kérelem fejlécének neve
-* Kérelem cookie-neve
-* Lekérdezési karakterlánc-argumentumok neve
-* Kérelem törzse post argumentumok neve
+* Kérelemfejléc neve
+* Cookie-név kérése
+* Lekérdezési sztring args neve
+* Kérés törzse az args neve után
 
-Megadhat egy pontos kérelem fejlécét, törzsét, cookie-t vagy lekérdezési karakterlánc-attribútumát.  Másik lehetőségként megadhatja a részleges egyezéseket is. A támogatott egyeztetési feltételek a következő operátorok:
+Pontos kérelemfejlécet, -törzset, cookie-t vagy lekérdezési sztringattribútum-egyezést is megadhat.  Vagy megadhatja a részleges egyezéseket is. A támogatott egyeztetési feltételek a következő operátorok:
 
-- **Egyenlő**: ez az operátor pontos egyezést használ. Például egy **bearerToken** nevű fejléc kiválasztásához használja az Equals operátort a választó **bearerToken**.
-- A következővel **kezdődik**: ez az operátor megegyezik a megadott választó értékkel kezdődő összes mezővel.
-- **Végződik**: ez az operátor a megadott választó értékkel végződő összes kérelem mezőre illeszkedik.
-- **Tartalmazza**: ez az operátor megfelel az összes olyan kérelem mezőnek, amely tartalmazza a megadott választó értéket.
-- **Egyenlő**: ez az operátor megfelel az összes kérelem mezőnek. * a választó értéke.
+- **Egyenlő:** Ez az operátor pontos egyezéshez használatos. Ha például ki kell választania egy **bearerToken** nevű fejlécet, használja az equals operátort úgy, hogy a **választó értéke bearerToken**.
+- **Kezdete:** Ez az operátor megfelel minden olyan mezőnek, amely a megadott választóértékkel kezdődik.
+- **Vége:**: Ez az operátor az összes olyan kérelemmezővel egyezik, amely a megadott választóértékre végződik.
+- **Contains**: Ez az operátor megfelel minden olyan kérelemmezőnek, amely a megadott választóértéket tartalmazza.
+- **Bármely egyenlő:** Ez az operátor az összes kérelemmezővel egyezik. * a választó értéke.
 
-A fejléc és a cookie neve nem megkülönbözteti a kis-és nagybetűket.
+A fejléc- és cookie-nevek nem érzékenyek.
 
-Ha egy fejléc értéke, a cookie értéke, a post argumentum értéke vagy a lekérdezési argumentum értéke hamis pozitív értéket hoz létre egyes szabályokhoz, kizárhatja a kérelem adott részét a szabálytól:
+Ha egy fejlécérték, cookie-érték, argumentum utáni érték vagy lekérdezési argumentum értéke egyes szabályok esetén téves pozitív eredményt ad, a szabály a kérelem adott részét kizárhatja a megfontolásból:
 
 
-|matchVariableName a WAF-naplókból  |Szabály kizárása a portálon  |
+|matchVariableName a WAF-naplókból  |Szabálykizárás a portálon  |
 |---------|---------|
-|CookieValue: SOME_NAME        |A kérelem cookie-neve egyenlő SOME_NAME|
-|HeaderValue: SOME_NAME        |A kérelem fejlécének neve egyenlő SOME_NAME|
-|PostParamValue: SOME_NAME     |Kérelem törzse post ARG neve egyenlő SOME_NAME|
-|QueryParamValue: SOME_NAME    |A lekérdezési karakterlánc-argumentumok neve egyenlő SOME_NAME|
+|CookieValue:SOME_NAME        |Request cookie name Equals SOME_NAME|
+|HeaderValue:SOME_NAME        |Kérelemfejléc neve Egyenlő SOME_NAME|
+|PostParamValue:SOME_NAME     |Kérelem törzse az args name Equals SOME_NAME|
+|QueryParamValue:SOME_NAME    |Lekérdezési sztring args neve Egyenlő SOME_NAME|
 
 
-Jelenleg csak a fenti matchVariableNames vonatkozó szabályok kizárását támogatják a WAF-naplókban. Bármely más matchVariableNames esetében le kell tiltania a hamis pozitív értéket biztosító szabályokat, vagy létre kell hoznia egy egyéni szabályt, amely explicit módon engedélyezi ezeket a kéréseket. Különösen, ha a matchVariableName CookieName, HeaderName, PostParamName vagy QueryParamName, az azt jelenti, hogy maga a név indítja el a szabályt. A szabály kizárása jelenleg nem támogatja ezeket a matchVariableNames.
+Jelenleg csak a fenti matchVariableNames szabálykizárásokat támogatjuk a WAF-naplóikban. Minden más matchVariableNames esetén le kell tiltania a téves riasztásokat létrehozására vonatkozó szabályokat, vagy létre kell hoznia egy egyéni szabályt, amely kifejezetten engedélyezi ezeket a kéréseket. Ha a matchVariableName a CookieName, HeaderName, PostParamName vagy QueryParamName, az azt jelenti, hogy maga a név aktiválja a szabályt. A szabálykizárás jelenleg nem támogatja ezeket a matchVariableNames paramétert.
 
 
-Ha a kérelem törzsét egy *FOO* nevű argumentummal zárja ki, akkor egyetlen szabálynak sem kell megjelenítenie a POSTPARAMVALUE: Foo nevet a WAF-naplók matchVariableName. Előfordulhat azonban, hogy továbbra is megjelenik egy olyan szabály, amely a matchVariableName InitialBodyContents, amely megfelel a post param FOO értékének, mivel a post param értéke a InitialBodyContents részét képezi.
+Ha kizár egy *FOO* nevű kérelem törzsét, egyetlen szabály sem mutathatja a PostParamValue:FOO paramétert matchVariableName értékként a WAF-naplókban. Előfordulhat azonban, hogy továbbra is létezik egy matchVariableName InitialBodyContents nevű szabály, amely megfelel a FOO post paraméter értékének, mivel a post paraméterértékek az InitialBodyContents részei.
 
-Kizárási listát alkalmazhat a felügyelt szabálykészlet összes szabályára, egy adott szabálykészlet szabályaira vagy egy olyan szabályra, amely az előző példában is látható.
+Kizárási listákat alkalmazhat a felügyelt szabálykészleten belüli összes szabályra, egy adott szabálycsoport szabályaira vagy egyetlen szabályra, ahogyan az előző példában látható.
 
-## <a name="define-exclusion-based-on-web-application-firewall-logs"></a>Kizárás definiálása a webalkalmazási tűzfal naplófájljai alapján
- Az [Azure webalkalmazási tűzfal figyelése és naplózása](waf-front-door-monitor.md) egy letiltott kérelem részletes adatait jeleníti meg. Ha egy fejléc értéke, a cookie értéke, a post argumentum értéke vagy a lekérdezési argumentum értéke hamis pozitív értéket hoz létre egyes szabályokhoz, kizárhatja a kérelemnek a szabály általi megítélésének a részét. Az alábbi táblázat a WAF-naplókból és a megfelelő kizárási feltételekből származó értékeket mutatja be.
+## <a name="define-exclusion-based-on-web-application-firewall-logs"></a>Kizárás meghatározása a naplók Web Application Firewall alapján
+ [Azure Web Application Firewall monitorozás és naplózás a](waf-front-door-monitor.md) blokkolt kérés egyező adatait jeleníti meg. Ha egy fejlécérték, cookie-érték, argumentum utáni érték vagy lekérdezési argumentum értéke egyes szabályoknál téves pozitív eredményt ad, kizárhatja, hogy a kérés adott részét a szabály figyelembe foglalja. Az alábbi táblázat a WAF-naplókból származó példaértékeket és a vonatkozó kizárási feltételeket mutatja be.
 
-|matchVariableName a WAF-naplókból    |Szabály kizárása a portálon|
+|matchVariableName a WAF-naplókból    |Szabálykizárás a portálon|
 |--------|------|
-|CookieValue: SOME_NAME  |A kérelem cookie-neve egyenlő SOME_NAME|
-|HeaderValue: SOME_NAME  |A kérelem fejlécének neve egyenlő SOME_NAME|
-|PostParamValue: SOME_NAME|  Kérelem törzse post ARG neve egyenlő SOME_NAME|
-|QueryParamValue: SOME_NAME| A lekérdezési karakterlánc-argumentumok neve egyenlő SOME_NAME|
+|CookieValue:SOME_NAME  |Request cookie name Equals SOME_NAME|
+|HeaderValue:SOME_NAME  |Kérelemfejléc neve Egyenlő SOME_NAME|
+|PostParamValue:SOME_NAME|  Kérelem törzse az args name Equals SOME_NAME|
+|QueryParamValue:SOME_NAME| Lekérdezési sztring args neve Egyenlő SOME_NAME|
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-A WAF beállításainak konfigurálása után megtudhatja, hogyan tekintheti meg a WAF-naplókat. További információ: a [bejárati ajtó diagnosztikája](../afds/waf-front-door-monitor.md).
+A WAF-beállítások konfigurálása után megtudhatja, hogyan megtekintheti a WAF-naplókat. További információ: Front Door [diagnosztikát.](../afds/waf-front-door-monitor.md)

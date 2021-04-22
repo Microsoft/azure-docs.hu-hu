@@ -1,22 +1,22 @@
 ---
 title: Beépített szabályzatdefiníciók azure-beli virtuálisgép-méretezési készletekhez
-description: Felsorolja Azure Policy Azure-beli virtuálisgép-méretezési készletek beépített szabályzatdefinícióit. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 04/14/2021
+description: Az Azure Policy Azure-beli virtuálisgép-méretezési készletek beépített szabályzatdefinícióit sorolja fel. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+ms.date: 04/21/2021
 ms.topic: reference
 author: ju-shim
 ms.author: jushiman
 ms.service: virtual-machine-scale-sets
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 638d44f32084aed066690219eddb5f8613f8d1e4
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 7cef7c299dc6fac8cf16828bc9c39789f38d572d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503711"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877245"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-machine-scale-sets"></a>Azure Policy Azure-beli virtuálisgép-méretezési készletek beépített definíciói
 
-Ez az oldal az [Azure-beli virtuálisgép-méretezési Azure Policy](../governance/policy/overview.md) beépített szabályzatdefiníciók indexe. További Azure Policy más szolgáltatások beépített szolgáltatásaihoz: Azure Policy [beépített definíciók.](../governance/policy/samples/built-in-policies.md)
+Ez az oldal az [Azure-beli Azure Policy](../governance/policy/overview.md) méretezési halmazok beépített szabályzatdefinícióit indexeli. Az egyéb Azure Policy további beépített szolgáltatásaiért lásd a Azure Policy [definíciókat.](../governance/policy/samples/built-in-policies.md)
 
 Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 

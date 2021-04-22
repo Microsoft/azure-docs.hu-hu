@@ -10,12 +10,12 @@ ms.devlang: java
 ms.custom:
 - devx-track-java
 - mode-api
-ms.openlocfilehash: 15453fb8177248087cbec98fd734bcff3bf66868
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 0d93b9b645aaf4190a36dbc523d40dec2757a18b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533238"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869796"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Rövid útmutató: Csevegőszoba létrehozása Javával Azure Functions és SignalR Service
 
@@ -31,7 +31,7 @@ Azure SignalR Service segítségével egyszerűen adhat hozzá valós idejű fun
    > A szükséges SignalR Service kötések Csak az Azure Function Core Tools 2.4.419-es (2.0.12332-es gazdagépverzió) vagy újabb verzióiban támogatottak.
 
    > [!NOTE]
-   > A bővítmények telepítéséhez Azure Functions Core Tools szükséges a [.NET Core SDK](https://www.microsoft.com/net/download) telepítése. A JavaScript-alapú Azure-függvényalkalmazások létrehozásához azonban nem szükséges a .NET ismerete.
+   > A bővítmények telepítéséhez Azure Functions Core Tools szükséges a [.NET Core SDK](https://dotnet.microsoft.com/download) telepítése. A JavaScript-alapú Azure-függvényalkalmazások létrehozásához azonban nem szükséges a .NET ismerete.
 
 - A [Java Developer Kit](https://www.azul.com/downloads/zulu/) 8-as verziója
 - Az [Apache Maven](https://maven.apache.org) 3.0-s vagy újabb verziója

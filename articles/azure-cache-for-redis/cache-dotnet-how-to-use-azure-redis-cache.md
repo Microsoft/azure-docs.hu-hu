@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
-ms.openlocfilehash: 71e973e359c21c9ec6a77de93b8b56dfa16da342
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: effab14316c4a959f22467b9cc50984b6571da55
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739169"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872154"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-framework"></a>Rövid útmutató: A Azure Cache for Redis használata .NET-keretrendszer
 
@@ -27,7 +27,7 @@ Ha közvetlenül a kódra szeretne ugrani, tekintse meg a [githubon .NET-keretre
 
 - Azure-előfizetés [– hozzon létre egyet ingyenesen](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)
-- [.NET-keretrendszer 4-es vagy újabb](https://www.microsoft.com/net/download/dotnet-framework-runtime)verzió, amelyre a StackExchange.Redis ügyfélnek van szüksége.
+- [.NET-keretrendszer 4-es vagy újabb](https://dotnet.microsoft.com/download/dotnet-framework)verzió, amelyre a StackExchange.Redis ügyfélnek van szüksége.
 
 ## <a name="create-a-cache"></a>Gyorsítótár létrehozása
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -344,7 +344,7 @@ Azure Cache for Redis .NET-objektumokat és primitív adattípusokat is gyorsít
 
 Az objektumok szerializálásának egy egyszerű módja, ha a [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) kódtárban található `JsonConvert` szerializálási metódusokat használja a JSON formátumból és a JSON formátumba szerializálásra. Ebben a szakaszban egy .NET-objektumot fog hozzáadni a gyorsítótárhoz.
 
-A Visual Studio kattintson a **Tools**  >  **NuGet (Eszközök) NuGet Csomagkezelő** Csomagkezelő Console (Konzol) elemre, és futtassa a következő parancsot a Csomagkezelő konzol  >  ablakából.
+A Visual Studio kattintson a **Tools**  >  **NuGet (Eszközök) NuGet Csomagkezelő Csomagkezelő** Console (Konzol) elemre, és futtassa a következő parancsot a Csomagkezelő konzol  >  ablakából.
 
 ```powershell
 Install-Package Newtonsoft.Json
@@ -421,7 +421,7 @@ A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Azure Cache for Redis .NET-alkalmazásból származó alkalmazásból. Folytassa a következő rövid útmutatóval, és használja Azure Cache for Redis egy ASP.NET webalkalmazással.
+Ebben a rövid útmutatóban megtanulta, hogyan használhatja Azure Cache for Redis .NET-alkalmazásból származó alkalmazásból származó alkalmazásokat. Folytassa a következő rövid útmutatóval, és használja Azure Cache for Redis egy ASP.NET webalkalmazással.
 
 > [!div class="nextstepaction"]
 > [Hozzon létre ASP.NET webalkalmazást, amely egy Azure Cache for Redis.](./cache-web-app-howto.md)

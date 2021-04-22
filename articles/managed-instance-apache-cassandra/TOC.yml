@@ -1,33 +1,33 @@
-- name: Azure felügyelt példány az Apache Cassandra dokumentációhoz
+- name: Felügyelt Azure-példány az Apache Cassandrában – dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi az az Azure felügyelt példány az Apache Cassandra-hoz?
+    - name: Mi az az Azure Managed Instance for Apache Cassandra?
       href: introduction.md
 - name: Rövid útmutatók
   items:
-    - name: Fürt létrehozása – portál
+    - name: Fürt létrehozása – Portal
       href: create-cluster-portal.md
-    - name: Fürt létrehozása – parancssori felület
+    - name: Fürt létrehozása – CLI
       displayName: 'az managed-cassandra, cluster, datacenter, connect'
       href: create-cluster-cli.md
     - name: Hibrid fürt konfigurálása
       href: configure-hybrid-cluster.md
-    - name: Spark-fürt üzembe helyezése a Databricks
+    - name: Spark-fürt üzembe helyezése a Databricksben
       href: deploy-cluster-databricks.md
 - name: Alapelvek
   items:
     - name: Gyakori kérdések
       displayName: 'cost, region, monitor, backup'
       href: faq.md
-    - name: Felügyelt példány vs Azure Cosmos DB Cassandra API
+    - name: Felügyelt példány és Azure Cosmos DB Cassandra API
       href: compare-cosmosdb-managed-instance.md
 - name: Útmutatók
   items:
     - name: Kezelés az Azure CLI-vel
       displayName: 'az managed-cassandra, cluster, datacenter'
       href: manage-resources-cli.md
-    - name: Metrikák megjelenítése a Prometheus-ben a Grafana
+    - name: Metrikák vizualizációja a Prometheusban a Grafana segítségével
       href: visualize-prometheus-grafana.md
 - name: Referencia
   items:
@@ -35,7 +35,7 @@
       items:
         - name: Cassandra-fürtök
           href: /rest/api/cosmos-db-resource-provider/2021-03-01-preview/cassandraclusters
-        - name: Cassandra adatközpontok
+        - name: Cassandra-adatközpontok
           href: /rest/api/cosmos-db-resource-provider/2021-03-01-preview/cassandradatacenters
     - name: Azure CLI
-      href: /cli/azure/ext/cosmosdb-preview/managed-cassandra
+      href: /cli/azure/managed-cassandra

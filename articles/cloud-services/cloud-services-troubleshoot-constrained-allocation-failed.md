@@ -1,80 +1,80 @@
 ---
-title: A ConstrainedAllocationFailed hibáinak megoldása a Cloud Service (klasszikus) Azure-ba történő telepítésekor | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan oldható fel a ConstrainedAllocationFailed kivétel a Cloud Service (klasszikus) Azure-ba történő telepítésekor.
+title: A ConstrainedAllocationFailed hibaelhárítása felhőszolgáltatás (klasszikus) Azure-beli | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan oldható fel a ConstrainedAllocationFailed kivétel egy (klasszikus) felhőszolgáltatás Azure-ban való üzembe helyezésekor.
 services: cloud-services
-author: mibufo
-ms.author: v-mibufo
+author: mamccrea
+ms.author: mamccrea
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: 346e7eb77039ab80e6f9dffb8ea8360198040504
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4a92246f81ddd10840bb0dcf7edf2b01853fd148
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738283"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876597"
 ---
-# <a name="troubleshoot-constrainedallocationfailed-when-deploying-a-cloud-service-classic-to-azure"></a>A ConstrainedAllocationFailed hibáinak megoldása a Cloud Service (klasszikus) Azure-ba történő telepítésekor
+# <a name="troubleshoot-constrainedallocationfailed-when-deploying-a-cloud-service-classic-to-azure"></a>A ConstrainedAllocationFailed hibaelhárítása felhőszolgáltatás (klasszikus) Azure-ban való üzembe helyezésekor
 
-Ebben a cikkben azokat a foglalási hibákat fogja elhárítani, amelyekben az Azure Cloud Services (klasszikus) nem telepíthető a foglalási megkötések miatt.
+Ebben a cikkben olyan foglalási hibákat fog elhárítani, amelyek miatt az Azure Cloud Services (klasszikus) foglalási korlátozások miatt nem helyezhető üzembe.
 
-Ha a példányokat egy felhőalapú szolgáltatásba (klasszikus) telepíti, vagy új webes vagy feldolgozói szerepkör-példányokat ad hozzá, Microsoft Azure kioszt egy számítási erőforrást.
+Amikor példányokat helyez üzembe egy felhőszolgáltatásban (klasszikus), vagy új webes vagy feldolgozói szerepkörpéldányokat ad hozzá, a Microsoft Azure erőforrásokat foglal le.
 
-Időnként előfordulhat, hogy a műveletek során még az Azure-előfizetési korlát elérése előtt is hibákat fog kapni.
+Előfordulhat, hogy hibaüzenet jelenik meg ezen műveletek során, még az Azure-előfizetés korlátjának elérését megelőzően is.
 
 > [!TIP]
-> Az információk akkor is hasznosak lehetnek, ha a szolgáltatások üzembe helyezését tervezi.
+> Ezek az információk a szolgáltatások üzembe helyezésének megtervekor is hasznosak lehetnek.
 
 ## <a name="symptom"></a>Hibajelenség
 
-A naplók megtekintéséhez a Azure Portal navigáljon a Cloud Service-be (klasszikus), és az oldalsávon válassza a *műveleti napló (klasszikus)* lehetőséget.
+A Azure Portal nyissa meg a Felhőszolgáltatást (klasszikus), majd az oldalsávon válassza a Műveleti napló *(klasszikus)* lehetőséget a naplók megtekintéséhez.
 
-![A képen a művelet napló (klasszikus) panel látható.](./media/cloud-services-troubleshoot-constrained-allocation-failed/cloud-services-troubleshoot-allocation-logs.png)
+![A képen a Műveleti napló (klasszikus) panel látható.](./media/cloud-services-troubleshoot-constrained-allocation-failed/cloud-services-troubleshoot-allocation-logs.png)
 
-Ha megvizsgálja a Cloud Service naplóit (klasszikus), a következő kivétel jelenik meg:
+A (klasszikus) felhőszolgáltatás naplóinak vizsgálatakor a következő kivételt fogja látni:
 
 |Kivétel típusa  |Hibaüzenet  |
 |---------|---------|
-|ConstrainedAllocationFailed     |A (z) "" Azure-művelet `{Operation ID}` végrehajtása sikertelen volt, kód: számítás. ConstrainedAllocationFailed. Részletek: a foglalás nem sikerült; nem lehet kielégíteni a megkötéseket a kérelemben. A kért új szolgáltatás üzembe helyezése egy affinitáscsoporthoz van kötve, egy virtuális hálózatot céloz, vagy már van egy üzemelő példány az üzemeltetett szolgáltatásban. Ezen feltételek bármelyike korlátozza az új üzembe helyezést bizonyos Azure-erőforrásokra. Próbálkozzon újra később, vagy próbálja meg csökkenteni a virtuális gép méretét vagy a szerepkör-példányok számát. Ha lehetséges, alternatív lehetőségként távolítsa el a fentebb említett korlátozásokat, vagy végezze el az üzembe helyezést egy másik régión.|
+|ConstrainedAllocationFailed     |A következő `{Operation ID}` Azure-művelet meghiúsult: Compute.ConstrainedAllocationFailed. Részletek: A foglalás sikertelen volt; nem lehet kielégíteni a kérések megkötéseinek. A kért új szolgáltatás üzembe helyezése egy affinitáscsoporthoz van kötve, egy virtuális hálózatot céloz, vagy már van egy üzemelő példány az üzemeltetett szolgáltatásban. Ezen feltételek bármelyike adott Azure-erőforrásokra korlátozza az új üzembe helyezést. Próbálkozzon újra később, vagy próbálja meg csökkenteni a virtuális gép méretét vagy a szerepkörpéldányok számát. Ha lehetséges, alternatív lehetőségként távolítsa el a fentebb említett korlátozásokat, vagy végezze el az üzembe helyezést egy másik régión.|
 
 ## <a name="cause"></a>Ok
 
-Ha az első példány üzembe helyezése egy felhőalapú szolgáltatásban (átmeneti vagy éles üzemben) történik, a felhőalapú szolgáltatás egy fürthöz lesz rögzítve.
+Amikor az első példányt üzembe helyez egy felhőszolgáltatásban (akár előkészítési, akár éles környezetben), a felhőszolgáltatás egy fürthöz lesz tűzve.
 
-Idővel az ebben a fürtben lévő erőforrások teljes mértékben kihasználhatók lesznek. Ha egy felhőalapú szolgáltatás (klasszikus) kiosztási kérést biztosít további erőforrásokhoz, ha nincs elegendő erőforrás a rögzített fürtben, a kérés foglalási hibát eredményez. További információ: a [foglalási hibák gyakori problémái](cloud-services-allocation-failures.md#common-issues).
+Idővel a fürt erőforrásai teljes mértékben ki vannak használva. Ha egy felhőszolgáltatás (klasszikus) foglalási kérést tesz több erőforrásra, ha nem áll rendelkezésre elegendő erőforrás a rögzített fürtben, a kérés foglalási hibát eredményez. További információkért tekintse meg a foglalási [hibák gyakori problémáit.](cloud-services-allocation-failures.md#common-issues)
 
 ## <a name="solution"></a>Megoldás
 
-A meglévő felhőalapú szolgáltatások egy fürthöz vannak *rögzítve* . A Cloud Service (klasszikus) további telepítései ugyanazon a fürtön történnek.
+A meglévő felhőszolgáltatások *egy fürthöz* vannak tűzve. A felhőszolgáltatás (klasszikus) további üzembe helyezései ugyanabban a fürtben történnek.
 
-Ha ebben a forgatókönyvben lefoglalási hibát tapasztal, a javasolt művelet az új felhőalapú szolgáltatás (klasszikus) újratelepítése (és a *CNAME* frissítése).
+Ha foglalási hibát tapasztal ebben a forgatókönyvben, az ajánlott megoldás az új (klasszikus) felhőszolgáltatásba való ismételt üzembe ásás (és a *CNAME frissítése).*
 
 > [!TIP]
 > Valószínűleg ez a megoldás a legeredményesebb, mivel lehetővé teszi a platform számára, hogy az adott régióban lévő összes fürt közül válasszon.
 
 > [!NOTE]
-> Ennek a megoldásnak nulla állásidőt kell fizetnie.
+> Ennek a megoldásnak nulla állásidővel kell lennie.
 
-1. A számítási feladatok üzembe helyezése egy új felhőalapú szolgáltatásban (klasszikus).
-    - További útmutatásért tekintse meg a [Cloud Service (klasszikus) létrehozásával és üzembe helyezésével](cloud-services-how-to-create-deploy-portal.md) kapcsolatos útmutatót.
+1. Üzembe helyezheti a számítási feladatot egy új (klasszikus) felhőszolgáltatásban.
+    - További útmutatásért tekintse meg a Felhőszolgáltatás [(klasszikus)](cloud-services-how-to-create-deploy-portal.md) létrehozása és üzembe helyezése útmutatót.
 
     > [!WARNING]
-    > Ha nem szeretné elveszíteni az üzembe helyezési ponthoz tartozó IP-címet, használja [a 3. megoldást: tartsa meg az IP-címet](cloud-services-allocation-failures.md#solutions).
+    > Ha nem szeretné elveszteni az üzembe helyezési helyhez társított IP-címet, használhatja a 3. megoldást – [Tartsa meg az IP-címet.](cloud-services-allocation-failures.md#solutions)
 
-1. Frissítse a *CNAME* -t vagy *egy* rekordot úgy, hogy az az új Cloud Service-be (klasszikus) irányítsa a forgalmat.
-    - További útmutatásért tekintse meg az [Egyéni tartománynév konfigurálása Azure Cloud Service (klasszikus)](cloud-services-custom-domain-name-portal.md#understand-cname-and-a-records) útmutatóhoz című témakört.
+1. Frissítse a *CNAME vagy* *az A* rekordot, hogy a forgalom az új felhőszolgáltatásra (klasszikus) mutasson.
+    - További útmutatásért tekintse meg az Egyéni tartománynév konfigurálása [azure-felhőszolgáltatáshoz (klasszikus)](cloud-services-custom-domain-name-portal.md#understand-cname-and-a-records) útmutatót.
 
-1. Ha nulla forgalom lesz a régi helyre, akkor törölheti a régi Cloud Service-t (klasszikus).
-    - További útmutatásért tekintse meg a [központi telepítések és a Cloud Service (klasszikus)](cloud-services-how-to-manage-portal.md#delete-deployments-and-a-cloud-service) című útmutatót.
-    - A felhőalapú szolgáltatás (klasszikus) hálózati forgalmának megtekintéséhez tekintse meg a [Cloud Service (klasszikus) monitorozásának bemutatása](cloud-services-how-to-monitor.md)című témakört.
+1. Ha nincs forgalom a régi webhelyre, törölheti a régi felhőszolgáltatást (klasszikus).
+    - További útmutatásért tekintse meg [az Üzemelő példányok törlése és a felhőszolgáltatás (klasszikus)](cloud-services-how-to-manage-portal.md#delete-deployments-and-a-cloud-service) útmutatóját.
+    - A (klasszikus) felhőszolgáltatás hálózati forgalmának ellenőrzésével lásd: Bevezetés a felhőszolgáltatás [(klasszikus) monitorozási szolgáltatásba.](cloud-services-how-to-monitor.md)
 
-Lásd: a [Cloud Service (klasszikus) lefoglalási hibáinak elhárítása | Microsoft Docs](cloud-services-allocation-failures.md#common-issues) a további szervizelési lépésekhez.
+Lásd: [Felhőszolgáltatás (klasszikus) foglalási hibáinak elhárítása | Microsoft Docs](cloud-services-allocation-failures.md#common-issues) további javítási lépésekért.
 
 ## <a name="next-steps"></a>Következő lépések
 
-További foglalási hibákra vonatkozó megoldások és háttér-információk:
+További foglalási hibamegoldások és háttérinformációk:
 
 > [!div class="nextstepaction"]
-> [Foglalási hibák – Cloud Service (klasszikus)](cloud-services-allocation-failures.md)
+> [Foglalási hibák – Felhőszolgáltatás (klasszikus)](cloud-services-allocation-failures.md)
 
-Ha az Azure-beli probléma nem szerepel ebben a cikkben, látogasson el az MSDN webhelyen található Azure-fórumokra, [és stack overflow](https://azure.microsoft.com/support/forums/). Felteheti a problémát ezekben a fórumokon, vagy közzéteheti a [ @AzureSupport Twitteren](https://twitter.com/AzureSupport). Azure-támogatási kérelmet is küldhet. Ha támogatási kérést szeretne küldeni, az [Azure-támogatás](https://azure.microsoft.com/support/options/) lapon válassza a *támogatás* lekérése lehetőséget.
+Ha az Azure-ral kapcsolatos problémája nem foglalkozik ebben a cikkben, látogasson el az AZURE fórumaira az [MSDN-ről,](https://azure.microsoft.com/support/forums/)és Stack Overflow. A problémát közzétenheti ezeken a fórumokon, vagy közzétenheti a [ @AzureSupport Twitteren.](https://twitter.com/AzureSupport) Egy kérést is Azure-támogatás küldhet. Támogatási kérés elküldését a támogatási [Azure-támogatás](https://azure.microsoft.com/support/options/) oldalon válassza a *Támogatás kérése lehetőséget.*

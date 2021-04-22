@@ -1,6 +1,6 @@
 ---
-title: Fejlesztés a ASP.NET – Azure Signaler szolgáltatással
-description: Egy rövid útmutató, amely az Azure Signaler szolgáltatást használja egy ASP.NET-keretrendszerrel rendelkező chat-hely létrehozásához.
+title: Fejlesztés ASP.NET – Azure SignalR Service
+description: Rövid útmutató a Azure SignalR Service egy csevegőszoba létrehozásához ASP.NET keretrendszer használatával.
 author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
@@ -8,20 +8,20 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: c39ef505b0cea0ad0c03b81683db8441077cd0d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ac17de3f73424994fc39ef0044d17ef83b501b7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94874542"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866142"
 ---
-# <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Rövid útmutató: csevegési helyiség létrehozása a ASP.NET és a Signaler szolgáltatással
+# <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Rövid útmutató: Csevegőszoba létrehozása ASP.NET és SignalR Service
 
-Az Azure Signaler szolgáltatás a [ASP.NET Core 2,1-es jelzőn](/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1)alapul, amely **nem** 100%-kompatibilis a ASP.net-jelzővel. Az Azure Signaler szolgáltatás a legújabb ASP.NET Core technológiák alapján újra implementálta a ASP.NET Signaler adatprotokollját. Ha az Azure Signaler szolgáltatást a ASP.NET-jelzőhöz használja, akkor egyes ASP.NET-jelző funkciók már nem támogatottak, például az Azure-szignáló nem küldi újra az üzeneteket, amikor az ügyfél újrakapcsolódik. Emellett a Forever frame Transport és a JSNOP támogatással nem támogatott. A ASP.NET-szignáló alkalmazás a Signaler szolgáltatással való működéséhez szükség van a Code Changes és a függő könyvtárak megfelelő verziójára.
+Azure SignalR Service a SignalR a [ASP.NET Core 2.1-hez,](/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1)amely **nem** 100%-ban kompatibilis az ASP.NET SignalR-sel. Azure SignalR Service a SignalR ASP.NET a legújabb core ASP.NET alapján. A Azure SignalR Service SignalR ASP.NET egyes ASP.NET SignalR-funkciók már nem támogatottak, például az Azure SignalR nem lejátszja az üzeneteket, amikor az ügyfél újra csatlakozik. Emellett a Forever Frame-hez és a JSONP-hez való szállítás nem támogatott. Bizonyos kódváltozások és a függő kódtárak megfelelő verziója szükséges ahhoz, hogy ASP.NET SignalR-alkalmazás működjön SignalR Service.
 
-A ASP.NET-jelző és a ASP.NET Core-jelző közötti szolgáltatások összehasonlításának teljes listájáért tekintse meg a [verzió-különbségek dokumentációját](/aspnet/core/signalr/version-differences?preserve-view=true&view=aspnetcore-3.1) .
+A SignalR [és](/aspnet/core/signalr/version-differences?preserve-view=true&view=aspnetcore-3.1) a Core SignalR ASP.NET szolgáltatások teljes összehasonlítását a verziók közötti különbségeket ASP.NET dokumentumban.
 
-Ebből a rövid útmutatóból megtudhatja, hogyan kezdheti el a ASP.NET és az Azure Signaler szolgáltatást egy hasonló [Chat Room-alkalmazáshoz](./signalr-quickstart-dotnet-core.md).
+Ebből a rövid útmutatóból megtudhatja, hogyan ismerkedhet meg a hasonló ASP.NET Azure SignalR Service hasonló [csevegőszoba-alkalmazással.](./signalr-quickstart-dotnet-core.md)
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note-dotnet.md)]
@@ -29,24 +29,24 @@ Ebből a rövid útmutatóból megtudhatja, hogyan kezdheti el a ASP.NET és az 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-* [.NET 4.6.1](https://www.microsoft.com/net/download/windows)
-* [ASP.NET-jelző 2.4.1](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/)
+* [.NET-keretrendszer 4.6.1](https://dotnet.microsoft.com/download/dotnet-framework/net461)
+* [ASP.NET SignalR 2.4.1](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/)
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnet).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudtossa velünk a következőt:](https://aka.ms/asrs/qsnet).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-fiókjával.
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnet).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudtossa velünk a következőt:](https://aka.ms/asrs/qsnet).
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-A ASP.NET-jelző alkalmazások nem támogatják a *kiszolgáló* nélküli üzemmódot. Mindig használja az alapértelmezett vagy a *klasszikus* *értéket* az Azure signaler szolgáltatás példányához.
+*A kiszolgáló nélküli* mód nem támogatott ASP.NET SignalR-alkalmazásokhoz. Mindig az *Alapértelmezett vagy* a *Klasszikus értéket* használja a Azure SignalR Service példányhoz.
 
-Az ebben a rövid útmutatóban használt Azure-erőforrásokat is létrehozhatja [a signaler Service-parancsfájl létrehozásával](scripts/signalr-cli-create-service.md).
+Az ebben a rövid útmutatóban használt Azure-erőforrásokat a Create a SignalR Service script (Új szkript [létrehozása) SignalR Service is létrehozhatja.](scripts/signalr-cli-create-service.md)
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnet).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudajuk meg velünk a következőt:](https://aka.ms/asrs/qsnet).
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
@@ -60,19 +60,19 @@ Amíg a szolgáltatás üzembe helyezése folyamatban van, térjünk át a kódd
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnet).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudajuk meg velünk a következőt:](https://aka.ms/asrs/qsnet).
 
-## <a name="configure-and-run-chat-room-web-app"></a>A chat room Web App konfigurálása és futtatása
+## <a name="configure-and-run-chat-room-web-app"></a>Csevegőszoba-webalkalmazás konfigurálása és futtatása
 
-1. Indítsa el a Visual studiót, és nyissa meg a megoldást a klónozott adattár *ASPNET-Samples/chat/* mappában.
+1. Indítsa Visual Studio, és nyissa meg a megoldást a klónozott adattár *aspnet-samples/ChatRoom/* mappájában.
 
-1. Keresse meg és válassza ki a létrehozott példányt a böngészőben, ahol a Azure Portal meg van nyitva.
+1. A böngészőben, ahol a Azure Portal meg van nyitva, keresse meg és válassza ki a létrehozott példányt.
 
 1. Válassza a **Kulcsok** elemet a SignalR-szolgáltatáspéldány kapcsolati sztringjeinek megtekintéséhez.
 
 1. Válassza ki és másolja a vágólapra az elsődleges kapcsolati sztring értékét.
 
-1. Most állítsa be a *web.config* fájlban a kapcsolatok karakterláncát.
+1. Most állítsa be a kapcsolati sztringet *aweb.config* fájlban.
 
     ```xml
     <configuration>
@@ -83,7 +83,7 @@ Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr
     </configuration>
     ```
 
-1. A *Startup. cs*, hívása helyett `MapSignalR()` meg kell hívnia `MapAzureSignalR({YourApplicationName})` és továbbítania kell a kapcsolati karakterláncot, hogy az alkalmazás kapcsolódjon a szolgáltatáshoz ahelyett, hogy saját maga is felhasználja a jelet. Cserélje le `{YourApplicationName}` az alkalmazást az alkalmazás nevére. Ez a név egy egyedi név, amely megkülönbözteti ezt az alkalmazást a többi alkalmazástól. Ezt használhatja `this.GetType().FullName` értékként.
+1. A *Startup.cs fájlban* a hívása helyett meg kell hívnia és át kell adnia a kapcsolati sztringet, hogy az alkalmazás a SignalR üzemeltetése helyett a szolgáltatáshoz `MapSignalR()` `MapAzureSignalR({YourApplicationName})` kapcsolódjon. Cserélje `{YourApplicationName}` le a helyére az alkalmazás nevét. Ez a név egy egyedi név, amely megkülönbözteti az alkalmazást a többi alkalmazástól. Ezt `this.GetType().FullName` használhatja értékként.
 
     ```cs
     public void Configuration(IAppBuilder app)
@@ -93,20 +93,20 @@ Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr
     }
     ```
 
-    Ezen API-k használata előtt a Service SDK-ra is hivatkoznia kell. Az **eszközök megnyitása | NuGet csomagkezelő | Package Manager konzol** és futtatási parancs:
+    Az API-k használata előtt hivatkozni kell a szolgáltatási SDK-ra is. Nyissa meg **a Tools | NuGet-Csomagkezelő | Csomagkezelő konzolt,** és futtassa a következő parancsot:
 
     ```powershell
     Install-Package Microsoft.Azure.SignalR.AspNet
     ```
 
-    A változásokon kívül minden más változatlan marad, továbbra is használhatja a hub felületét, amellyel az üzleti logikát írhat.
+    A módosításokon kívül minden más változatlan marad, továbbra is használhatja a már ismert központi felületet az üzleti logika írásához.
 
     > [!NOTE]
-    > Az implementációban a végpont `/signalr/negotiate` Az Azure signaler Service SDK általi egyeztetésre van kitéve. Speciális egyeztetési választ ad vissza, amikor az ügyfelek megpróbálnak csatlakozni a kapcsolati sztringben meghatározott szolgáltatási végponthoz, és átirányítják az ügyfeleket.
+    > Az implementációban a végpontot az SDK Azure SignalR Service `/signalr/negotiate` teszi elérhetővé. Ez egy speciális egyeztetési választ ad vissza, amikor az ügyfelek megpróbálnak csatlakozni és átirányítani az ügyfeleket a kapcsolati sztringben meghatározott szolgáltatásvégpontra.
 
-1. A projekt hibakeresési módban való futtatásához nyomja le az <kbd>F5</kbd> billentyűt. Láthatja, hogy az alkalmazás helyileg fut. A szignáló futtatókörnyezetet az alkalmazás nem üzemelteti, hanem az Azure Signaler szolgáltatáshoz csatlakozik.
+1. Nyomja <kbd>le az F5</kbd> billentyűt a projekt hibakeresési módban való futtatásához. Láthatja, hogy az alkalmazás helyileg fut. Ahelyett, hogy a SignalR-runtime-t önmagában az alkalmazáson keresztül futtatja, most már csatlakozik a Azure SignalR Service.
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnet).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudtossa velünk a következőt:](https://aka.ms/asrs/qsnet).
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
@@ -121,11 +121,11 @@ A **Szűrés név alapján...** mezőbe írja be az erőforráscsoport nevét. E
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnet).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudtossa velünk a következőt:](https://aka.ms/asrs/qsnet).
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy új Azure Signal Service-erőforrást, és felhasználta azt egy ASP.NET-webalkalmazással. Következő lépésként megtudhatja, hogyan fejleszthet valós idejű alkalmazásokat az Azure Signaler szolgáltatással a ASP.NET Core használatával.
+Ebben a rövid útmutatóban létrehozott egy új Azure SignalR Service, és egy új webalkalmazással ASP.NET azt. Ezután megtudhatja, hogyan fejleszthet valós idejű alkalmazásokat a Azure SignalR Service core ASP.NET használatával.
 
 > [!div class="nextstepaction"]
-> [Azure Signaler szolgáltatás és ASP.NET Core](./signalr-quickstart-dotnet-core.md)
+> [Azure SignalR Service a ASP.NET Core-sal](./signalr-quickstart-dotnet-core.md)

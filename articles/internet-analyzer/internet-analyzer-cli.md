@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 46caae53ed81de335c2b9d5ddbd3fd7f89424fdd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4e200440bd37d3593d5fc096b3dd79eff25dc1d8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780414"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877226"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Teszt létrehozása Internet Analyzer CLI (előzetes verzió) használatával
 
@@ -44,7 +44,7 @@ A Internet Analyzer CLI a következő típusú erőforrásokat teszi elérhetőv
     ```
 
     Ha a CLI meg tudja nyitni az alapértelmezett böngészőt, akkor ezt fogja megtenni, és betölt egy Azure bejelentkezési oldalt.
-    Ellenkező esetben nyisson meg egy böngészőoldalt a oldalon, és adja meg a terminálon https://aka.ms/devicelogin megjelenő engedélyezési kódot.
+    Ellenkező esetben nyisson meg egy böngészőoldalt a oldalon, és írja be a terminálban https://aka.ms/devicelogin megjelenő engedélyezési kódot.
 
 4. A böngészőben jelentkezzen be fiókja hitelesítő adataival.
 
@@ -132,6 +132,6 @@ A Internet Analyzer CLI a következő típusú erőforrásokat teszi elérhetőv
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A támogatott [Internet Analyzer](/cli/azure/ext/internet-analyzer/internet-analyzer) és használati példák teljes listájáért tekintse meg a parancssori felület referenciáját.
+* A támogatott [Internet Analyzer](/cli/azure/internet-analyzer) és használati példák teljes listájáért tekintse meg a parancssori felület referenciáját.
 * Olvassa el [a gyakori Internet Analyzer.](internet-analyzer-faq.md)
 * További információ a Internet Analyzer [ügyfél beágyazásról](internet-analyzer-embed-client.md) és egyéni [végpont létrehozásáról.](internet-analyzer-custom-endpoint.md)

@@ -11,16 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref, devx-track-azurecli
-ms.openlocfilehash: 225e72bc00ce0a80ff655a76562b5c6b70b7fa79
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 8e50b650eaffe3d0ec8d3d2cd1841bd139d33750
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479491"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107867511"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Hitelesítés és engedélyezés az Azure Time Series Insights API-hoz
 
-Az üzleti igényektől függően a megoldás egy vagy több ügyfélalkalmazást is tartalmazhat, amelyek használatával kommunikálhat a Azure Time Series Insights [környezetÉNEK API-ival.](/rest/api/time-series-insights/reference-data-access-overview) Azure Time Series Insights Azure AD biztonsági jogkivonatok használatával végez hitelesítést [az OAUTH 2.0 alapján.](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims) Az ügyfél(ök) hitelesítéséhez be kell szereznie egy megfelelő engedélyekkel rendelkező jogkivonatot, és át kell adnia az API-hívásokkal együtt. Ez a dokumentum számos módszert ismertet a hitelesítő adatok lekért felhasználásával, amelyek segítségével be lehet szerezni a jogkivonatokat és hitelesíteni lehet őket, beleértve a felügyelt identitás és az Azure Active Directory alkalmazásregisztráció használatát.
+Az üzleti igényektől függően a megoldás egy vagy több ügyfélalkalmazást is tartalmazhat, amelyek használatával kommunikálhat a Azure Time Series Insights [környezetÉNEK API-ival.](/rest/api/time-series-insights/reference-data-access-overview) Azure Time Series Insights Azure AD biztonsági jogkivonatokkal végez hitelesítést [az OAUTH 2.0 alapján.](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims) Az ügyfél(ök) hitelesítéséhez be kell szereznie egy megfelelő engedélyekkel rendelkező jogkivonatot, és át kell adnia az API-hívásokkal együtt. Ez a dokumentum számos módszert ismertet a hitelesítő adatok lekért felhasználásával, amelyek segítségével be lehet szerezni a jogkivonatokat és hitelesíteni lehet őket, beleértve a felügyelt identitás és az Azure Active Directory alkalmazásregisztráció használatát.
 
 ## <a name="managed-identities"></a>Felügyelt identitások
 
@@ -30,7 +30,7 @@ A következő szakaszok azt ismertetik, hogyan használhatja a felügyelt identi
 - A felügyelt identitások használatával bármely Olyan Azure-szolgáltatásban hitelesíthet, amely támogatja az Azure AD-hitelesítést, beleértve a Azure Key Vault.
 - A felügyelt identitások további költségek nélkül használhatók.
 
-A felügyelt identitások két típusának további információiért olvassa el a [Mi az Azure-erőforrások felügyelt identitása?](../active-directory/managed-identities-azure-resources/overview.md)
+A felügyelt identitások két típusának további információiért olvassa el a Mi [az Azure-erőforrások felügyelt identitása?](../active-directory/managed-identities-azure-resources/overview.md)
 
 A felügyelt identitásokat a következőből használhatja:
 
@@ -40,19 +40,19 @@ A felügyelt identitásokat a következőből használhatja:
 - Azure Container Instances
 - és még sok más...
 
-A [teljes listát az Azure-erőforrások](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) felügyelt identitását támogató Azure-szolgáltatásokban található.
+A [teljes listát az Azure-erőforrások](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) felügyelt identitását támogató Azure-szolgáltatások listájában láthatja.
 
 ## <a name="azure-active-directory-app-registration"></a>Azure Active Directory alkalmazásregisztráció
 
-Amikor csak lehetséges, javasoljuk a felügyelt identitások használatát, hogy ne legyen szükség a hitelesítő adatok kezelésére. Ha az ügyfélalkalmazást nem a felügyelt identitásokat támogató Azure-szolgáltatás üzemelteti, regisztrálhatja az alkalmazást egy Azure AD-bérlővel. Amikor regisztrálja az alkalmazást az Azure AD-ban, olyan identitáskonfigurációt hoz létre az alkalmazáshoz, amely lehetővé teszi az Azure AD-val való integrációt. Amikor regisztrál egy alkalmazást [](https://portal.azure.com/)a Azure Portal-ben, kiválaszthatja, hogy az egyetlen bérlő (csak a bérlőn belül érhető el) vagy több-bérlős (más bérlőkben érhető el), és opcionálisan átirányítási URI-t is beállíthat (ahová a hozzáférési jogkivonatot küldi).
+Ha lehetséges, javasoljuk a felügyelt identitások használatát, hogy ne legyen szükség a hitelesítő adatok kezelésére. Ha az ügyfélalkalmazást nem a felügyelt identitásokat támogató Azure-szolgáltatás üzemelteti, regisztrálhatja az alkalmazást egy Azure AD-bérlővel. Amikor regisztrálja az alkalmazást az Azure AD-ban, olyan identitáskonfigurációt hoz létre az alkalmazáshoz, amely lehetővé teszi az Azure AD-val való integrációt. Amikor regisztrál egy alkalmazást [](https://portal.azure.com/)a Azure Portal-ben, kiválaszthatja, hogy az egyetlen bérlő (csak a bérlőn belül érhető el) vagy több-bérlős (más bérlőkben érhető el), és opcionálisan átirányítási URI-t is beállíthat (ahová a hozzáférési jogkivonatot küldi).
 
 Az alkalmazásregisztráció befejezése után az alkalmazásnak (az alkalmazásobjektumnak) egy globálisan egyedi példánya lesz, amely az otthoni bérlőben vagy címtárban található. Emellett rendelkezik egy globálisan egyedi azonosítóval is az alkalmazáshoz (az alkalmazás vagy az ügyfél-azonosító). A portálon ezután titkos kulcsok, tanúsítványok és hatókörök felvételére is lehetőség van az alkalmazás megfelelő munkához, az alkalmazás arculatának testreszabásához a bejelentkezési párbeszédpanelen, és így tovább.
 
 Ha regisztrál egy alkalmazást a portálon, a rendszer automatikusan létrehoz egy alkalmazásobjektumot és egy szolgáltatásnév-objektumot a saját bérlőben. Ha a Microsoft Graph API-k használatával regisztrál/hoz létre egy alkalmazást, a szolgáltatásnév-objektum létrehozása külön lépés. A jogkivonatok lekéréséhez szolgáltatásnév-objektumra van szükség.
 
-Mindenképpen tekintse át az alkalmazás [biztonsági](../active-directory/develop/identity-platform-integration-checklist.md#security) ellenőrzőlistát. Ajánlott eljárásként a tanúsítvány hitelesítő adatait [használja,](../active-directory/develop/active-directory-certificate-credentials.md)ne a jelszót (titkos ügyfél titkos adatait).
+Mindenképpen tekintse át az alkalmazás [biztonsági](../active-directory/develop/identity-platform-integration-checklist.md#security) ellenőrzőlistát. Ajánlott eljárásként a tanúsítvány hitelesítő adatait [használja,](../active-directory/develop/active-directory-certificate-credentials.md)ne a jelszóhoz (titkos ügyfélhez) használt hitelesítő adatokat.
 
-További [részletekért](../active-directory/develop/app-objects-and-service-principals.md) tekintse meg a Azure Active Directory és szolgáltatásnév-objektumokat.
+További [részletekért lásd](../active-directory/develop/app-objects-and-service-principals.md) a Azure Active Directory és szolgáltatásnév-objektumokat.
 
 ## <a name="step-1-create-your-managed-identity-or-app-registration"></a>1. lépés: A felügyelt identitás vagy az alkalmazásregisztráció létrehozása
 
@@ -79,7 +79,7 @@ Amikor a Azure Time Series Insights környezet kérést kap, a rendszer előszö
 
 - Ha a felhasználói felületen [Azure Portal](https://portal.azure.com/) hozzáférést, kövesse az [Adatok hozzáférésének](concepts-access-policies.md) megadása környezethez cikkben felsorolt utasításokat. A felhasználó kiválasztásakor megkeresheti a felügyelt identitást vagy az alkalmazásregisztrációt a neve vagy azonosítója alapján.
 
-- Ha az Azure CLI-t használva hozzáférést ad, futtassa a következő parancsot. A hozzáférés [kezeléséhez](/cli/azure/ext/timeseriesinsights/tsi/access-policy) rendelkezésre álló parancsok teljes listáját az itt található dokumentációban találhatja meg.
+- Ha az Azure CLI-t használva hozzáférést ad, futtassa a következő parancsot. A hozzáférés [kezeléséhez](/cli/azure/tsi/access-policy) rendelkezésre álló parancsok teljes listáját az itt található dokumentációban találhatja meg.
 
    ```azurecli-interactive
    az tsi access-policy create --name "ap1" --environment-name "env1" --description "some description" --principal-object-id "aGuid" --roles Reader Contributor --resource-group "rg1"
@@ -90,7 +90,7 @@ Amikor a Azure Time Series Insights környezet kérést kap, a rendszer előszö
 
 ## <a name="step-3-requesting-tokens"></a>3. lépés: Jogkivonatok kérése
 
-Miután kiépítte és hozzárendelte a felügyelt identitást vagy az alkalmazásregisztrációt egy szerepkörhöz, megkezdheti a használatukat az OAuth 2.0-beli bearer tokenek igényléséhez. A jogkivonat beszerzésének módszere a kód helyétől és a választott nyelvtől függően eltérő lehet. Az erőforrás (más néven a jogkivonat "célközönsége") megadásakor a jogkivonat URL Azure Time Series Insights GUID-ja alapján azonosítható:
+Miután kiépítte és hozzárendelte a felügyelt identitást vagy az alkalmazásregisztrációt egy szerepkörhöz, megkezdheti a használatukat az OAuth 2.0-beli bearer tokenek igényléséhez. A jogkivonat beszerzésének módja a kód helyétől és a választott nyelvtől függően eltérő lehet. Az erőforrás (más néven a jogkivonat "célközönsége") megadásakor a jogkivonat URL Azure Time Series Insights GUID-ja alapján azonosítható:
 
 * `https://api.timeseries.azure.com/`
 * `120d688d-1518-4cf7-bd38-182f158850b6`
@@ -105,7 +105,7 @@ Miután kiépítte és hozzárendelte a felügyelt identitást vagy az alkalmaz�
 
 Ha az azure Azure App Service vagy a Functionsből fér hozzá, kövesse az [Azure-erőforrások jogkivonatának beszerzése dokumentum útmutatását.](../app-service/overview-managed-identity.md)
 
-A .NET-alkalmazások és -függvények esetében a felügyelt identitások használatának legegyszerűbb módja az [Azure Identity](/dotnet/api/overview/azure/identity-readme) .NET-hez való ügyféloldali kódtára. Ez az ügyféloldali kódtár az egyszerűsége és a biztonsági előnyei miatt népszerű. A fejlesztők egyszer írhatnak kódot, és az ügyfélkódtár meghatározhatja, hogyan kell az alkalmazáskörnyezet alapján hitelesíteni – akár fejlesztői munkaállomáson, akár egy fejlesztői fiókkal, akár felügyeltszolgáltatás-identitással üzembe helyezni az Azure-ban. Az előd appAuthentication kódtár migrálási útmutatójához olvassa el az [AppAuthentication to Azure.Identity Migration Guidance (AppAuthentication – Azure.Identity áttelepítési útmutató) útmutatót.](/dotnet/api/overview/azure/app-auth-migration)
+A .NET-alkalmazások és -függvények esetében a felügyelt identitások használatának legegyszerűbb módja az [Azure Identity](/dotnet/api/overview/azure/identity-readme) .NET-hez való ügyféloldali kódtára. Ez az ügyféloldali kódtár az egyszerűség és a biztonsági előnyök miatt népszerű. A fejlesztők megírhatják egyszer a kódot, és az ügyfélkódtárra hagyhatják, hogy az alkalmazáskörnyezet alapján határozzák meg a hitelesítést – legyen szó akár fejlesztői munkaállomásról, akár egy fejlesztői fiókról, akár felügyeltszolgáltatás-identitással üzembe helyezett Azure-ban. Az előd appAuthentication kódtár migrálási útmutatójához olvassa el az [AppAuthentication to Azure.Identity Migration Guidance (AppAuthentication – Azure.Identity áttelepítési útmutató) útmutatót.](/dotnet/api/overview/azure/app-auth-migration)
 
 Jogkivonat kérése Azure Time Series Insights C# és a .NET-hez való Azure Identity ügyféloldali kódtár használatával:
 
@@ -142,13 +142,13 @@ A jogkivonatok alkalmazásregisztrációként való lekért és Gen2-környezetb
 Ez a szakasz a Gen1 és Gen2 Azure Time Series Insights API-k lekérdezéséhez használt gyakori HTTP-kérésfejléceket és -paramétereket ismerteti. Az API-specifikus követelményeket részletesebben a referenciadokumentáció [Azure Time Series Insights REST API ismerteti.](/rest/api/time-series-insights/)
 
 > [!TIP]
-> Ha többet szeretne megtudni a REST [API-k](/rest/api/azure/) használatának, a HTTP-kérések igénylésének és a HTTP-válaszok kezelésének, olvassa el az Azure REST API referencia-útmutatóját.
+> Az [Azure REST API](/rest/api/azure/) referencia-útmutatója további információt tartalmaz a REST API-k használatának, a HTTP-kérések igénylésének és a HTTP-válaszok kezelésének elsajátításról.
 
 ### <a name="http-headers"></a>HTTP-fejlécek
 
 A szükséges kérelemfejléceket az alábbiakban ismertetjük.
 
-| Szükséges kérelemfejléc | Leírás |
+| Szükséges kérelemfejléc | Description |
 | --- | --- |
 | Engedélyezés | A hitelesítéshez Azure Time Series Insights OAuth 2.0 bearer jogkivonatot kell áteríteni az [Authorization fejlécben.](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) |
 
@@ -157,7 +157,7 @@ A szükséges kérelemfejléceket az alábbiakban ismertetjük.
 
 A nem kötelező kérelemfejléceket az alábbiakban ismertetjük.
 
-| Választható kérelemfejléc | Leírás |
+| Választható kérelemfejléc | Description |
 | --- | --- |
 | Tartalomtípus | csak `application/json` az támogatott. |
 | x-ms-client-request-id | Egy ügyfélkérés-azonosító. A szolgáltatás rögzíti ezt az értéket. Lehetővé teszi a szolgáltatás számára a műveletek nyomon követését a szolgáltatások között. |
@@ -166,7 +166,7 @@ A nem kötelező kérelemfejléceket az alábbiakban ismertetjük.
 
 A választható, de javasolt válaszfejléceket az alábbiakban ismertetjük.
 
-| Válaszfejléc | Leírás |
+| Válaszfejléc | Description |
 | --- | --- |
 | Tartalomtípus | Csak `application/json` a támogatott. |
 | x-ms-request-id | A kiszolgáló által létrehozott kérés azonosítója. A kérések kivizsgálására használható a Microsofttal való kapcsolatfelvételhez. |
@@ -188,12 +188,12 @@ Az URL-lekérdezési sztring választható paraméterei közé tartozik a HTTP-k
 
 | Nem kötelező lekérdezési paraméter | Leírás | Verzió |
 | --- |  --- | --- |
-| `timeout=<timeout>` | A HTTP-kérések végrehajtásának kiszolgálóoldali időkorlátja. Csak a Get [Environment Events](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) és a Get [Environment Aggregates API-kra](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) vonatkozik. Az időtúllépési értéknek PÉLDÁUL ISO 8601 időtartamformátumban kell lennie, és a `"PT20S"` tartományon belül kell `1-30 s` lennie. Az alapértelmezett érték `30 s`. | Gen1 |
-| `storeType=<storeType>` | A 2. generációs környezetek esetében, ahol engedélyezve van a meleg tároló, a lekérdezés a vagy a használatával `WarmStore` hajtható `ColdStore` végre. A lekérdezés ezen paramétere határozza meg, hogy melyik tárolón kell végrehajtani a lekérdezést. Ha nincs meghatározva, a lekérdezés a hidegen tárolt tárolón lesz végrehajtva. A warm store lekérdezéséhez a **storeType** tulajdonságot a következőre kell beállítani: `WarmStore` . Ha nincs meghatározva, a lekérdezés a hideg tárolón lesz végrehajtva. | Gen2 |
+| `timeout=<timeout>` | A HTTP-kérések végrehajtásának kiszolgálóoldali időkorlátja. Csak a Get [Environment Events](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) és a Get [Environment Aggregates API-kra](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) vonatkozik. Az időtúllépési értéknek például ISO 8601 időtartamformátumban kell lennie, és a `"PT20S"` tartományon belül kell `1-30 s` lennie. Az alapértelmezett érték `30 s`. | Gen1 |
+| `storeType=<storeType>` | A 2. generációs környezetekben, ahol engedélyezve van a meleg tároló, a lekérdezés a vagy a használatával `WarmStore` hajtható `ColdStore` végre. A lekérdezés ezen paramétere határozza meg, hogy melyik tárolón kell végrehajtani a lekérdezést. Ha nincs meghatározva, a lekérdezés a hidegen tárolt tárolón lesz végrehajtva. A warm store lekérdezéséhez a **storeType** tulajdonságot a következőre kell beállítani: `WarmStore` . Ha nincs meghatározva, a lekérdezés a hideg tárolón lesz végrehajtva. | Gen2 |
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Az 1. generációs Azure Time Series Insights API-t behívó mintakódért olvassa el az [1. generációs adatok C#](./time-series-insights-query-data-csharp.md)használatával való lekérdezését.
+* Az 1. generációs Azure Time Series Insights API-t behívó mintakódért olvassa el az 1. generációs adatok C# használatával [való lekérdezését.](./time-series-insights-query-data-csharp.md)
 
 * A Gen2 api-kódmintákat Azure Time Series Insights Gen2-adatokat C# használatával lekérdező [kódért olvassa el.](./time-series-insights-update-query-data-csharp.md)
 

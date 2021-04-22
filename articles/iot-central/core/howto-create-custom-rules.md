@@ -1,96 +1,96 @@
 ---
 title: Az Azure IoT Central kiterjesztése egyéni szabályokkal és értesítésekkel | Microsoft Docs
-description: Megoldás fejlesztőként konfiguráljon egy IoT Central alkalmazást e-mail-értesítések küldéséhez, amikor egy eszköz leállítja a telemetria küldését. Ez a megoldás Azure Stream Analytics, Azure Functions és SendGrid használ.
-author: TheJasonAndrew
-ms.author: v-anjaso
+description: Megoldásfejlesztőként konfiguráljon egy IoT Central, hogy e-mailes értesítéseket küldjön, amikor egy eszköz már nem küld telemetriai adatokat. Ez a megoldás a Azure Stream Analytics, Azure Functions és a SendGridet használja.
+author: philmea
+ms.author: philmea
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 824308b66803d2dfa05383ff06ce97c48626619d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a65d9dbaed4d197c2e0843e73ff3f45b8678017e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179340"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864216"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Az Azure IoT Central kibővítése egyéni szabályokkal a Stream Analytics, az Azure Functions és a SendGrid használatával
 
-Ez az útmutató bemutatja, hogyan bővítheti IoT Central alkalmazását egyéni szabályokkal és értesítésekkel. A példa egy értesítés küldését mutatja be egy operátornak, amikor egy eszköz leállítja a telemetria küldését. A megoldás egy [Azure stream Analytics](../../stream-analytics/index.yml) lekérdezést használ annak észlelésére, hogy egy eszköz leállította-e a telemetria küldését. A Stream Analytics-feladatokhoz [Azure functions](../../azure-functions/index.yml) kell küldenie az értesítő e-maileket a [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/)használatával.
+Ez az útmutató bemutatja megoldásfejlesztőként, hogyan bővítheti IoT Central alkalmazásait egyéni szabályokkal és értesítésekkel. A példa azt mutatja be, hogyan küld egy értesítést egy operátornak, ha egy eszköz már nem küld telemetriai adatokat. A megoldás [egy](../../stream-analytics/index.yml) Azure Stream Analytics lekérdezéssel észleli, ha egy eszköz már nem küld telemetriai adatokat. Az Stream Analytics feladat a [Azure Functions](../../azure-functions/index.yml) küld értesítő e-maileket a [SendGrid használatával.](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/)
 
-Ez a útmutató bemutatja, hogyan bővítheti IoT Central a beépített szabályokkal és műveletekkel, hogy mit tehet.
+Ez az útmutató bemutatja, hogyan bővítheti a IoT Central a beépített szabályokkal és műveletekkel már meglévő műveleteken túlra.
 
-Ebben a útmutatóban a következőket sajátíthatja el:
+Ez az útmutató a következő lehetőségekkel ismerkedik meg:
 
-* Stream telemetria egy IoT Central alkalmazásból *folyamatos adatexportálás* használatával.
-* Hozzon létre egy Stream Analytics-lekérdezést, amely észleli, ha egy eszköz leállította az adatküldést.
-* Értesítés küldése e-mailben a Azure Functions és a SendGrid Services használatával.
+* Streamelési telemetria egy IoT Central folyamatos *adatexportációval.*
+* Hozzon létre Stream Analytics lekérdezést, amely észleli, ha egy eszköz már nem küld adatokat.
+* E-mail-értesítés küldése a Azure Functions SendGrid-szolgáltatásokkal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A jelen útmutató lépéseinek végrehajtásához aktív Azure-előfizetésre van szükség.
+Az útmutató lépéseit egy aktív Azure-előfizetéssel kell végrehajtania.
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ### <a name="iot-central-application"></a>IoT Central alkalmazás
 
-Hozzon létre egy IoT Central alkalmazást az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén a következő beállításokkal:
+Hozzon létre IoT Central alkalmazásokat a [Azure IoT Central alkalmazáskezelő webhelyén](https://aka.ms/iotcentral) a következő beállításokkal:
 
 | Beállítás | Érték |
 | ------- | ----- |
 | Díjszabási csomag | Standard |
-| Alkalmazássablon | Áruházbeli elemzés – állapot figyelése |
-| Alkalmazásnév | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját nevét |
-| URL-cím | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját egyedi URL-előtagját |
-| Címtár | Azure Active Directory bérlő |
+| Alkalmazássablon | Áruházbeli elemzés – feltételfigyelés |
+| Alkalmazásnév | Fogadja el az alapértelmezett nevet, vagy válasszon saját nevet |
+| URL-cím | Fogadja el az alapértelmezett url-címet, vagy válasszon saját egyedi URL-előtagot |
+| Címtár | A Azure Active Directory bérlője |
 | Azure-előfizetés | Az Azure-előfizetése |
-| Region | A legközelebbi régió |
+| Region | Az Ön legközelebbi régiója |
 
-A cikkben szereplő példák és Képernyőképek a **Egyesült Államok** régiót használják. Válasszon egy helyet az Ön számára, és győződjön meg róla, hogy az összes erőforrást ugyanabban a régióban hozza létre.
+A cikkben található példák és képernyőképek a Egyesült Államok **használják.** Válasszon egy közeli helyet, és győződjön meg arról, hogy az összes erőforrást ugyanabban a régióban hozza létre.
 
-Ez az alkalmazás sablon két szimulált termosztátos eszközt tartalmaz, amelyek telemetria küldenek.
+Ez az alkalmazássablon két szimulált termosztátos eszközt tartalmaz, amelyek telemetriát küldenek.
 
 ### <a name="resource-group"></a>Erőforráscsoport
 
-A [Azure Portal használatával hozzon létre egy](https://portal.azure.com/#create/Microsoft.ResourceGroup) **DetectStoppedDevices** nevű erőforráscsoportot a létrehozott egyéb erőforrások tárolására. Hozza létre az Azure-erőforrásokat a IoT Central alkalmazással megegyező helyen.
+A Azure Portal [hozzon](https://portal.azure.com/#create/Microsoft.ResourceGroup) létre egy **DetectStoppedDevices** nevű erőforráscsoportot, amely tartalmazza a többi létrehozott erőforrást. Hozza létre az Azure-erőforrásokat a saját alkalmazásával IoT Central helyen.
 
 ### <a name="event-hubs-namespace"></a>Event Hubs-névtér
 
-A [Azure Portal használatával hozzon létre egy Event Hubs névteret](https://portal.azure.com/#create/Microsoft.EventHub) a következő beállításokkal:
+A Azure Portal [hozzon létre egy](https://portal.azure.com/#create/Microsoft.EventHub) Event Hubs a következő beállításokkal:
 
 | Beállítás | Érték |
 | ------- | ----- |
-| Név    | Adja meg a névtér nevét |
+| Név    | A névtér nevének kiválasztása |
 | Tarifacsomag | Alapszintű |
 | Előfizetés | Az Ön előfizetése |
-| Erőforráscsoport | DetectStoppedDevices |
+| Erőforráscsoport | DetectStoppedDevices (Észlelt hibák észlelése) |
 | Hely | USA keleti régiója |
 | Átviteli egységek | 1 |
 
-### <a name="stream-analytics-job"></a>Stream Analytics feladatok
+### <a name="stream-analytics-job"></a>Stream Analytics feladat
 
-A [Azure Portal használatával hozzon létre egy stream Analytics feladatot](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob)  a következő beállításokkal:
+A Azure Portal [hozzon létre egy Stream Analytics feladatot](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob)  a következő beállításokkal:
 
 | Beállítás | Érték |
 | ------- | ----- |
-| Név    | Válassza ki a feladatokhoz tartozó nevet |
+| Név    | A feladat nevének kiválasztása |
 | Előfizetés | Az Ön előfizetése |
-| Erőforráscsoport | DetectStoppedDevices |
+| Erőforráscsoport | DetectStoppedDevices (Észlelt hibák észlelése) |
 | Hely | USA keleti régiója |
 | Üzemeltetési környezet | Felhőbeli |
 | Streamelési egységek | 3 |
 
 ### <a name="function-app"></a>Függvényalkalmazás
 
-A [Azure Portal használatával hozzon létre egy Function alkalmazást](https://portal.azure.com/#create/Microsoft.FunctionApp) a következő beállításokkal:
+A Azure Portal [hozzon létre egy függvényalkalmazást a](https://portal.azure.com/#create/Microsoft.FunctionApp) következő beállításokkal:
 
 | Beállítás | Érték |
 | ------- | ----- |
-| Alkalmazás neve    | Válassza ki a Function alkalmazás nevét |
+| Alkalmazás neve    | A függvényalkalmazás nevének kiválasztása |
 | Előfizetés | Az Ön előfizetése |
-| Erőforráscsoport | DetectStoppedDevices |
+| Erőforráscsoport | DetectStoppedDevices (Észlelt hibák észlelése) |
 | Operációs rendszer | Windows |
 | Szolgáltatási csomag | Használatalapú csomag |
 | Hely | USA keleti régiója |
@@ -99,25 +99,25 @@ A [Azure Portal használatával hozzon létre egy Function alkalmazást](https:/
 
 ### <a name="sendgrid-account-and-api-keys"></a>SendGrid-fiók és API-kulcsok
 
-Ha nem rendelkezik Sendgrid-fiókkal, hozzon létre egy [ingyenes fiókot](https://app.sendgrid.com/) a Kezdés előtt.
+Ha még nincs Sendgrid-fiókja, kezdés előtt hozzon létre egy [ingyenes](https://app.sendgrid.com/) fiókot.
 
-1. A bal oldali menüben a Sendgrid-irányítópult beállításainál válassza az **API-kulcsok** elemet.
-1. Kattintson az **API-kulcs létrehozása** lehetőségre.
-1. Nevezze el az új API-kulcs **AzureFunctionAccess.**
-1. Kattintson a **létrehozás & nézet** elemre.
+1. A bal oldali menü Sendgrid Irányítópult beállításai menüjében válassza az **API-kulcsok lehetőséget.**
+1. Kattintson **az API-kulcs létrehozása elemre.**
+1. Az új API-kulcsnak nevezze **el az AzureFunctionAccess nevet.**
+1. Kattintson **a Create & View (Nézet &) elemre.**
 
-    :::image type="content" source="media/howto-create-custom-rules/sendgrid-api-keys.png" alt-text="Képernyőfelvétel a SendGrid API-kulcs létrehozásáról.":::
+    :::image type="content" source="media/howto-create-custom-rules/sendgrid-api-keys.png" alt-text="Képernyőkép a SendGrid API-kulcs létrehozásáról.":::
 
-Ezt követően egy API-kulcsot fog kapni. Mentse ezt a karakterláncot későbbi használatra.
+Ezt követően egy API-kulcsot kap. Mentse ezt a sztringet későbbi használatra.
 
 ## <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
-IoT Central alkalmazást úgy konfigurálhatja, hogy folyamatosan exportálja a telemetria egy Event hubhoz. Ebben a szakaszban egy Event hub-t hoz létre, amely telemetria fogad a IoT Central alkalmazásból. Az Event hub a telemetria az Stream Analytics-feladatokhoz továbbítja a feldolgozáshoz.
+Konfigurálhat egy IoT Central, hogy folyamatosan exportálja a telemetriát egy eseményközpontba. Ebben a szakaszban egy eseményközpontot hoz létre, amely telemetriát fogad a IoT Central alkalmazásból. Az eseményközpont továbbítja a telemetriát a Stream Analytics feldolgozásra.
 
-1. A Azure Portal navigáljon a Event Hubs névtérhez, és válassza a **+ Event hub** elemet.
-1. Nevezze el az Event hub- **centralexport**, majd válassza a **Létrehozás** lehetőséget.
+1. A Azure Portal lépjen a saját Event Hubs, és válassza **az + Eseményközpont lehetőséget.**
+1. Adja az eseményközpontnak **a centralexportálás nevet,** majd válassza a **Létrehozás lehetőséget.**
 
-A Event Hubs névtere a következő képernyőképre hasonlít: 
+A Event Hubs a következő képernyőképhez hasonló: 
 
 ```:::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Screenshot of Event Hubs namespace." border="false":::
 
@@ -226,7 +226,7 @@ To test the function in the portal, first choose **Logs** at the bottom of the c
 [{"deviceid":"test-device-1","time":"2019-05-02T14:23:39.527Z"},{"deviceid":"test-device-2","time":"2019-05-02T14:23:50.717Z"},{"deviceid":"test-device-3","time":"2019-05-02T14:24:28.919Z"}]
 ```
 
-A függvények naplójának üzenetei a **naplók** panelen jelennek meg:
+A függvény naplóüzenetei a Naplók **panelen jelennek** meg:
 
 ```:::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Function log output":::
 
@@ -241,31 +241,31 @@ test-device-2    2019-05-02T14:23:50.717Z
 test-device-3    2019-05-02T14:24:28.919Z
 ```
 
-## <a name="add-stream-analytics-query"></a>Stream Analytics lekérdezés hozzáadása
+## <a name="add-stream-analytics-query"></a>Lekérdezés Stream Analytics hozzáadása
 
-Ez a megoldás egy Stream Analytics lekérdezést használ annak észlelésére, hogy egy eszköz nem küld-e telemetria több mint 120 másodpercig. A lekérdezés az Event hub telemetria használja bemenetként. A feladat elküldi a lekérdezés eredményeit a Function alkalmazásnak. Ebben a szakaszban a Stream Analytics feladatot konfigurálja:
+Ez a megoldás egy Stream Analytics lekérdezéssel észleli, ha egy eszköz 120 másodpercnél tovább nem küld telemetriai adatokat. A lekérdezés az eseményközpontból származó telemetriát használja bemenetként. A feladat elküldi a lekérdezés eredményeit a függvényalkalmazásnak. Ebben a szakaszban a következő feladat Stream Analytics konfigurálni:
 
-1. A Azure Portal navigáljon a Stream Analytics feladathoz a **feladatok topológia** területen válassza a **bemenetek** lehetőséget, válassza a **+ stream-bemenet hozzáadása** lehetőséget, majd válassza az **Event hub** elemet.
-1. A következő táblázatban található információk segítségével konfigurálja a bemenetet a korábban létrehozott Event hub használatával, majd válassza a **Mentés** lehetőséget:
-
-    | Beállítás | Érték |
-    | ------- | ----- |
-    | Bemeneti alias | centraltelemetry |
-    | Előfizetés | Az Ön előfizetése |
-    | Event Hubs-névtér | Az Event hub-névtér |
-    | Eseményközpont neve | Meglévő **centralexport** használata |
-
-1. A **feladatok topológia** területen válassza a **kimenetek**, majd a **+ Hozzáadás**, majd az **Azure-függvény** lehetőséget.
-1. A következő táblázatban található információk segítségével konfigurálja a kimenetet, majd válassza a **Mentés** lehetőséget:
+1. A Azure Portal keresse meg a Stream Analytics feladatot, a Feladatok **topológiája** alatt válassza a **Bemenetek** lehetőséget, válassza a **+ Streambemenet** hozzáadása lehetőséget, majd válassza az **Eseményközpont lehetőséget.**
+1. Az alábbi táblázatban található információk segítségével konfigurálja a bemenetet a korábban létrehozott eseményközpont használatával, majd válassza a **Mentés lehetőséget:**
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Kimeneti alias | emailnotification |
+    | Bemeneti alias | centraltelemetry (központi elemetria) |
     | Előfizetés | Az Ön előfizetése |
-    | Függvényalkalmazás | A Function alkalmazás |
+    | Event Hubs-névtér | Az Eseményközpont-névtér |
+    | Eseményközpont neve | Meglévő használata – **központiexportálás** |
+
+1. A **Jobs topology (Feladatok topológiája) alatt** válassza a **Outputs (Kimenetek)** lehetőséget, válassza **a + Add (+ Hozzáadás)** lehetőséget, majd az **Azure Function (Azure-függvény) lehetőséget.**
+1. Az alábbi táblázatban található információk segítségével konfigurálja a kimenetet, majd válassza a Mentés **lehetőséget:**
+
+    | Beállítás | Érték |
+    | ------- | ----- |
+    | Kimeneti alias | e-mail-értesítés |
+    | Előfizetés | Az Ön előfizetése |
+    | Függvényalkalmazás | A függvényalkalmazás |
     | Függvény  | HttpTrigger1 |
 
-1. A **feladatok topológia** területen válassza a **lekérdezés** lehetőséget, és cserélje le a meglévő lekérdezést a következő SQL-re:
+1. A **Feladatok topológiája alatt válassza** a Lekérdezés **lehetőséget,** és cserélje le a meglévő lekérdezést a következő SQL-kiszolgálóra:
 
     ```sql
     with
@@ -307,38 +307,38 @@ Ez a megoldás egy Stream Analytics lekérdezést használ annak észlelésére,
     ```
 
 1. Kattintson a **Mentés** gombra.
-1. A Stream Analytics-feladatok elindításához válassza az **Áttekintés**, majd a **Start** **, majd a** Start lehetőséget, majd **indítsa** el a következőt:
+1. A feladat Stream Analytics válassza az **Áttekintés,** majd a **Start**, most **,** majd a Start **lehetőséget:**
 
-    :::image type="content" source="media/howto-create-custom-rules/stream-analytics.png" alt-text="Képernyőkép a Stream Analyticsról.":::
+    :::image type="content" source="media/howto-create-custom-rules/stream-analytics.png" alt-text="Képernyőkép a Stream Analytics.":::
 
-## <a name="configure-export-in-iot-central"></a>Az Exportálás konfigurálása IoT Central 
+## <a name="configure-export-in-iot-central"></a>Exportálás konfigurálása a IoT Central 
 
-Az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén navigáljon a létrehozott IoT Central alkalmazáshoz.
+Az [alkalmazáskezelő Azure IoT Central nyissa](https://aka.ms/iotcentral) meg a létrehozott IoT Central alkalmazást.
 
-Ebben a szakaszban úgy konfigurálja az alkalmazást, hogy a szimulált eszközökről az telemetria továbbítsa az alkalmazást. Az Exportálás konfigurálása:
+Ebben a szakaszban úgy konfigurálja az alkalmazást, hogy a szimulált eszközeiről streamelni tudja a telemetriát az eseményközpontba. Az exportálás konfigurálása:
 
-1. Navigáljon az **adatexportálás** lapra, válassza az **+ új**, majd az **Azure Event Hubs** elemet.
-1. Az Exportálás konfigurálásához használja a következő beállításokat, majd válassza a **Mentés** lehetőséget: 
+1. Lépjen az **Adatexportál lapra,** válassza **az + Új** lehetőséget, majd kattintson a **Azure Event Hubs.**
+1. Konfigurálja az exportálást a következő beállításokkal, majd válassza a **Mentés lehetőséget:** 
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Megjelenítendő név | Exportálás Event Hubsba |
+    | Megjelenítendő név | Exportálás Event Hubs |
     | Engedélyezve | Be |
-    | Exportálandó adattípusok | Telemetria |
-    | Modellbővítések | Adja meg a kívánt kulcs/érték értékét, hogyan szeretné rendszerezni az exportált adatmennyiséget | 
-    | Cél | Hozzon létre új adatokat, és adja meg az adatok exportálásának helyét. |
+    | Az exportálni szükséges adatok típusa | Telemetria |
+    | Enrichments (Gazdagítások) | Adja meg a kívánt kulcsot / Az exportált adatok rendszerezésének kívánt értékét | 
+    | Cél | Új létrehozása és az adatok exportálási helyéhez szükséges információk megszabadása |
 
-    :::image type="content" source="media/howto-create-custom-rules/cde-configuration.png" alt-text="Képernyőkép az adatexportálásról.":::
+    :::image type="content" source="media/howto-create-custom-rules/cde-configuration.png" alt-text="Képernyőkép az adatexportról.":::
 
-A folytatás előtt várjon, amíg az Exportálás állapota **fut** .
+A folytatás előtt várja meg, amíg az exportálás **állapota Fut.**
 
 ## <a name="test"></a>Tesztelés
 
-A megoldás teszteléséhez letilthatja a folyamatos adatexportálást IoT Centralról szimulált leállított eszközökre:
+A megoldás teszteléséhez letilthatja a folyamatos adatexportált a IoT Central leállított eszközökre:
 
-1. A IoT Central alkalmazásban navigáljon az **adatexportálás** lapra, és válassza az **Exportálás Event Hubs** exportálási konfigurációt.
-1. Válassza **ki** az **engedélyezve** lehetőséget, majd kattintson a **Mentés** gombra.
-1. Legalább két perc elteltével az e-mail-cím egy vagy **több olyan e** -mailt kap, amely az alábbi példához hasonlóan néz ki:
+1. A saját IoT Central nyissa meg az **Adatexportáció** oldalt, és válassza az **Exportálás exportálási** Event Hubs konfigurálást.
+1. Állítsa az **Engedélyezve beállítást** **Ki,** majd válassza a **Mentés lehetőséget.**
+1. Legalább két perc múlva a **Címzett** e-mail-cím egy vagy több olyan e-mailt kap, amely az alábbi példatartalomhoz hasonlít:
 
     ```txt
     The following device(s) have stopped sending telemetry:
@@ -347,18 +347,18 @@ A megoldás teszteléséhez letilthatja a folyamatos adatexportálást IoT Centr
     Thermostat-Zone1  2019-11-01T12:45:14.686Z
     ```
 
-## <a name="tidy-up"></a>Kitakarítás
+## <a name="tidy-up"></a>Tidy up
 
-A fenti útmutató és a szükségtelen költségek elkerülése érdekében törölje a **DetectStoppedDevices** erőforráscsoportot a Azure Portal.
+Ha ezt az eljárás után szeretné rendezetten tudni, és el szeretné kerülni a szükségtelen költségeket, törölje a **DetectStoppedDevices** erőforráscsoportot a Azure Portal.
 
-A IoT Central alkalmazást a **felügyeleti** lapról törölheti az alkalmazáson belül.
+A felügyeleti IoT Central az alkalmazás **Felügyelet** lapján törölheti.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a útmutatóban megtanulta, hogyan végezheti el a következőket:
+Ebben az útmutatóban a következőt sajátta el:
 
-* Stream telemetria egy IoT Central alkalmazásból *folyamatos adatexportálás* használatával.
-* Hozzon létre egy Stream Analytics-lekérdezést, amely észleli, ha egy eszköz leállította az adatküldést.
-* Értesítés küldése e-mailben a Azure Functions és a SendGrid Services használatával.
+* Streamelési telemetria egy IoT Central folyamatos *adatexportációval.*
+* Hozzon létre Stream Analytics lekérdezést, amely észleli, ha egy eszköz már nem küld adatokat.
+* E-mail-értesítés küldése a Azure Functions SendGrid-szolgáltatásokkal.
 
-Most, hogy már tudja, hogyan hozhat létre egyéni szabályokat és értesítéseket, a javasolt következő lépés az [Azure-IoT Central egyéni elemzésekkel való bővítésének](howto-create-custom-analytics.md)megismerése.
+Most, hogy már tudja, hogyan hozhat létre egyéni szabályokat és értesítéseket, a javasolt következő lépés a Azure IoT Central [egyéni elemzésekkel való kiterjesztése.](howto-create-custom-analytics.md)

@@ -1,44 +1,44 @@
 ---
-title: Eszköz áthelyezése az Azure IoT Centralba IoT Hub
-description: Eszköz áthelyezése az Azure IoT Centralba IoT Hub
-author: TheRealJasonAndrew
-ms.author: v-anjaso
+title: Eszköz áthelyezése a Azure IoT Central IoT Hub
+description: Eszköz áthelyezése a Azure IoT Central IoT Hub
+author: philmea
+ms.author: philmea
 ms.date: 02/20/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 543c3f1c72857098540cc2a77e8a0093b907b799
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 79aead5b374714e7856897a9b85349198341cb3d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102210835"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872730"
 ---
-# <a name="how-to-transfer-a-device-to-azure-iot-central-from-iot-hub"></a>Eszköz átvitele az Azure IoT Centralba IoT Hub
+# <a name="how-to-transfer-a-device-to-azure-iot-central-from-iot-hub"></a>Eszköz átvitele a Azure IoT Central IoT Hub
 
-*Ez a cikk az operátorokra és az eszközök fejlesztőire vonatkozik.*  
+*Ez a cikk a kezelőkre és az eszközfejlesztőkre vonatkozik.*  
 
-Ez a cikk azt ismerteti, hogyan vihető át egy eszköz egy Azure IoT Central-alkalmazásba egy IoT Hubból. 
+Ez a cikk azt ismerteti, hogyan továbbítható egy eszköz Azure IoT Central egy IoT Hub. 
 
-Az eszköz először csatlakozik egy DPS-végponthoz, hogy lekérje az alkalmazáshoz való csatlakozáshoz szükséges információkat. Belsőleg a IoT Central-alkalmazás egy IoT hub használatával kezeli az eszköz kapcsolatát.  
+Az eszközök először egy DPS-végponthoz csatlakoznak, hogy lekérik az alkalmazáshoz való csatlakozáshoz szükséges információkat. Belsőleg a IoT Central egy IoT Hubot használ az eszközkapcsolat kezeléséhez.  
 
-Az eszközök közvetlenül a kapcsolati sztring vagy a DPS használatával csatlakoztathatók egy IoT hubhoz. Az [Azure IoT hub Device Provisioning Service (DPS)](../../iot-dps/about-iot-dps.md) a IoT Central útvonala.
+Az eszközök közvetlenül, kapcsolati sztring használatával vagy DPS használatával is csatlakoztathatóak az IoT Hubhoz. [Azure IoT Hub Device Provisioning Service (DPS)](../../iot-dps/about-iot-dps.md) a szolgáltatás IoT Central.
 
-## <a name="to-move-the-device-to-azure-iot-central"></a>Az eszköz áthelyezése az Azure IoT Centralba
+## <a name="to-move-the-device-to-azure-iot-central"></a>Az eszköz áthelyezése Azure IoT Central
 
-Eszköz csatlakoztatása IoT Centralhoz a IoT Hub az eszközt a következővel kell frissíteni:
+Ha csatlakoztatni szeretne egy eszközt IoT Central a IoT Hub az eszközt a következővel kell frissíteni:
 
-* A IoT Central alkalmazás [hatókör-azonosítója](../../iot-dps/concepts-service.md) .
-* Az SAS-kulcs vagy [az X. 509-tanúsítvány](../../iot-hub/iot-hub-x509ca-overview.md) [csoportból](concepts-get-connected.md) származtatott kulcs
+* A [IoT Central](../../iot-dps/concepts-service.md) alkalmazás hatókör-azonosítója.
+* A csoportos [SAS-kulcsból](concepts-get-connected.md) vagy az [X.509-tanúsítványból származtatott kulcs](../../iot-hub/iot-hub-x509ca-overview.md)
 
-A IoT Central való interakcióhoz az eszköz által megvalósított tulajdonságokat/telemetria/parancsokat modellező eszköznek kell lennie. További információ: [Csatlakozás a IoT Centralhoz](concepts-get-connected.md) és [Mik azok az eszközök sablonjai?](concepts-device-templates.md)
+A IoT Central kell lennie egy eszközsablonnak, amely az eszköz által implementálja a tulajdonságokat/telemetriai adatokat/parancsokat. További információ: [Csatlakozás a](concepts-get-connected.md) IoT Central és [Mik azok az eszközsablonok?](concepts-device-templates.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha Ön egy eszköz fejlesztője, néhány javasolt lépés a következő:
+Ha Ön eszközfejlesztő, néhány javasolt következő lépés a következő:
 
-- Tekintse át a következő kódrészletet, amely bemutatja, hogyan használhatók az SAS-tokenek az [oktatóanyagban: ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central alkalmazással](tutorial-connect-device.md)
-- Ismerje meg, hogyan [csatlakoztathatók az X. 509 tanúsítvánnyal rendelkező eszközök a IoT Central alkalmazáshoz készült Node.js ESZKÖZOLDALI SDK-val](how-to-connect-devices-x509.md)
-- Ismerje meg, hogyan [figyelheti az eszközök kapcsolatát az Azure CLI használatával](./howto-monitor-devices-azure-cli.md)
-- Ismerje meg, hogyan [határozhat meg új IoT-típust az Azure IoT Central-alkalmazásban](./howto-set-up-template.md)
-- További információ a [Azure IoT Edge eszközökről és az Azure IoT Central](./concepts-iot-edge.md)
+- Tekintsen át néhány mintakódot, amely bemutatja, hogyan használhatók az SAS-jogkivonatok az Ügyfélalkalmazás létrehozása és csatlakoztatása a saját Azure IoT Central [oktatóanyagban](tutorial-connect-device.md)
+- Ismerje meg, [hogyan csatlakoztathat X.509-tanúsítványokkal](how-to-connect-devices-x509.md) eszközöket az Node.js Sdk for IoT Central Application használatával
+- Útmutató az [eszközkapcsolatok figyelése az Azure CLI használatával](./howto-monitor-devices-azure-cli.md)
+- Megtudhatja, [hogyan definiálhat új IoT-eszköztípust a Azure IoT Central alkalmazásban](./howto-set-up-template.md)
+- További információ [Azure IoT Edge eszközökről és Azure IoT Central](./concepts-iot-edge.md)

@@ -564,7 +564,7 @@ items:
             href: ./spark/apache-spark-machine-learning-mllib-notebook.md
           - name: Spark-feladatdefiníciók küldése
             href: ./spark/apache-spark-job-definitions.md
-          - name: Csatlakozás és monitor Azure Synapse Spark-alkalmazásszintű metrikákhoz
+          - name: Csatlakozás és Azure Synapse Spark-alkalmazásszintű metrikák
             href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
           - name: Alkalmazásszintű Apache Spark figyelése a Prometheus és a Grafana segítségével
             href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
@@ -1167,7 +1167,7 @@ items:
   - name: Referencia
     items:
       - name: Azure CLI
-        href: /cli/azure/ext/synapse/
+        href: /cli/azure/
       - name: Adatbázis-rendezési típusok
         href: sql/reference-collation-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
       - name: Indítás

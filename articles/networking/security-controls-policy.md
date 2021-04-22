@@ -1,18 +1,18 @@
 ---
 title: Azure Policy megfelelőségi vezérlők az Azure hálózati szolgáltatásaihoz
 description: Felsorolja Azure Policy Azure hálózati szolgáltatásokhoz elérhető szabályozási megfelelőségi vezérlőket. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: sample
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 526ad9e9bba63d9098454068837b302147d0fed8
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 999aa637f204c850925fa1ed03ae457a76eff0bc
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501858"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868255"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-networking-services"></a>Azure Policy megfelelőségi vezérlők az Azure hálózati szolgáltatásaihoz
 

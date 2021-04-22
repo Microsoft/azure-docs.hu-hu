@@ -4,12 +4,12 @@ description: Az azure Azure Blockchain Service kezelése az Azure CLI-val
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 63401f5ce5cd35f63915e03b7f0362811d2660ec
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 55df56274aa5baa946b60c27cf49723d59c928a1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768052"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865926"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Az Azure Blockchain Service kezelése az Azure CLI-vel
 
@@ -19,7 +19,7 @@ A Azure Portal mellett az Azure CLI-t is használhatja a blokklánctagok és a t
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta.
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A böngészőablakot Cloud Shell böngészőlapon is elindíthatja a következő gombra: [https://shell.azure.com/bash](https://shell.azure.com/bash) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. Az alkalmazásokat Cloud Shell böngészőlapon is elindíthatja a következő gombra: [https://shell.azure.com/bash](https://shell.azure.com/bash) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 Ha inkább helyileg szeretné telepíteni és használni a CLI-t, tekintse meg az [Azure CLI telepítését.](/cli/azure/install-azure-cli)
 
@@ -39,7 +39,7 @@ Ha inkább helyileg szeretné telepíteni és használni a CLI-t, tekintse meg a
 
     Ha az Azure CLI bővítményhivatkozásaival dolgozik, először telepítenie kell a bővítményt.  Az Azure CLI-bővítmények hozzáférést biztosítanak azokhoz a kísérleti és kiadás előtti parancsokhoz, amelyek az alap CLI-vel még nincsenek szállítva.  A bővítményekről, beleértve azok frissítését és eltávolítását is, a [Bővítmények használata az Azure CLI-vel](/cli/azure/azure-cli-extensions-overview) című cikkben olvashat.
 
-    Telepítse [a bővítményt a Azure Blockchain Service](/cli/azure/ext/blockchain/blockchain) a következő parancs futtatásával:
+    Telepítse [a bővítményt a Azure Blockchain Service](/cli/azure/blockchain) a következő parancs futtatásával:
 
     ```azurecli-interactive
     az extension add --name blockchain
@@ -47,7 +47,7 @@ Ha inkább helyileg szeretné telepíteni és használni a CLI-t, tekintse meg a
 
 ## <a name="create-blockchain-member"></a>Blokklánctag létrehozása
 
-A [példa létrehoz egy blokklánctagot a](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-create) Azure Blockchain Service, amely egy új konzorciumban futtatja a Quorum ledger protokollt.
+A [példa létrehoz egy blokklánctagot a](/cli/azure/blockchain/member#az_blockchain_member_create) Azure Blockchain Service, amely egy új konzorciumban futtatja a Quorum ledger protokollt.
 
 ```azurecli
 az blockchain member create \
@@ -74,7 +74,7 @@ az blockchain member create \
 
 ## <a name="change-blockchain-member-passwords-or-firewall-rules"></a>Blokklánctagok jelszavának vagy tűzfalszabályainak módosítása
 
-A [példa frissíti a blokklánctag](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-update)jelszavát, a konzorciumkezelési jelszót és a tűzfalszabályt.
+A [példa frissíti a blokklánctag](/cli/azure/blockchain/member#az_blockchain_member_update)jelszavát, a konzorciumkezelési jelszót és a tűzfalszabályt.
 
 ```azurecli
 az blockchain member update \
@@ -95,7 +95,7 @@ az blockchain member update \
 
 ## <a name="create-transaction-node"></a>Tranzakciós csomópont létrehozása
 
-[Tranzakciós csomópont létrehozása](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-create) egy meglévő blokklánctagon belül. Tranzakciós csomópontok hozzáadásával növelheti a biztonsági elkülönítést és eloszthatja a terhelést. Például a különböző ügyfélalkalmazások tranzakciós csomóponti végpontja is lehet.
+[Tranzakciós csomópont létrehozása](/cli/azure/blockchain/transaction-node#az_blockchain_transaction_node_create) egy meglévő blokklánctagon belül. Tranzakciós csomópontok hozzáadásával növelheti a biztonsági elkülönítést és eloszthatja a terhelést. Például létrehozhat egy tranzakciós csomópont végpontot a különböző ügyfélalkalmazások számára.
 
 ```azurecli
 az blockchain transaction-node create \
@@ -109,13 +109,13 @@ az blockchain transaction-node create \
 |---------|-------------|
 | **erőforráscsoport** | Az erőforráscsoport neve, Azure Blockchain Service létre az erőforrásokat. |
 | **Helyen** | A blokklánctag Azure-régiója. |
-| **tagnév** | A nevet, amely a Azure Blockchain Service azonosítja. |
+| **tagnév** | A tag azonosítására Azure Blockchain Service név. |
 | **alaphelyzetbe állítása** | A tranzakciós csomópont jelszava. A tranzakciós csomópont nyilvános végponthoz való csatlakozáskor használja az alapszintű hitelesítéshez használt jelszót. A jelszónak a következő négy követelmény közül háromnak kell megfelelnie: a hossznak 12 & 72 karakter, 1 kisbetű, 1 nagybetű, 1 szám és 1 speciális karakternek kell lennie, amely nem számjel (#), percent(%), vessző(,), star(*), back quote( \` ), double quote("), single quote('), dash(-) és semicolumn(;)|
 | **név** | Tranzakciós csomópont neve. |
 
 ## <a name="change-transaction-node-password"></a>Tranzakciós csomópont jelszavának módosítása
 
-A [példa frissíti a tranzakciós csomópont jelszavát.](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-update)
+A [példa frissíti a tranzakciós csomópont jelszavát.](/cli/azure/blockchain/transaction-node#az_blockchain_transaction_node_update)
 
 ```azurecli
 az blockchain transaction-node update \
@@ -134,7 +134,7 @@ az blockchain transaction-node update \
 
 ## <a name="list-api-keys"></a>API-kulcsok listozása
 
-Az API-kulcsok a felhasználónévhez és jelszóhoz hasonló csomópont-hozzáféréshez használhatók. A kulcsrotációt két API-kulcs támogatja. Az API-kulcsok listához használja [a következő parancsot.](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-list-api-key)
+Az API-kulcsok a felhasználónévhez és jelszóhoz hasonló csomópont-hozzáféréshez használhatók. A kulcsrotációt két API-kulcs támogatja. Az API-kulcsok listához használja [a következő parancsot.](/cli/azure/blockchain/member#az_blockchain_transaction_node_list-api-key)
 
 ```azurecli
 az blockchain member list-api-key \
@@ -145,11 +145,11 @@ az blockchain member list-api-key \
 | Paraméter | Leírás |
 |---------|-------------|
 | **erőforráscsoport** | Az erőforráscsoport neve, Azure Blockchain Service erőforrás létezik. |
-| **név** | A Azure Blockchain Service blokklánctag neve |
+| **név** | A blokklánctag Azure Blockchain Service neve |
 
 ## <a name="regenerate-api-keys"></a>API-kulcsok újragenerálása
 
-A következő paranccsal [újragenerálja az API-kulcsokat.](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-regenerate-api-key)
+A következő paranccsal [újragenerálja az API-kulcsokat.](/cli/azure/blockchain/member#az_blockchain_transaction_node_regenerate-api-key)
 
 ```azurecli
 az blockchain member regenerate-api-key \
@@ -161,12 +161,12 @@ az blockchain member regenerate-api-key \
 | Paraméter | Leírás |
 |---------|-------------|
 | **erőforráscsoport** | Az erőforráscsoport neve, Azure Blockchain Service erőforrás létezik. |
-| **név** | A blokklánctag Azure Blockchain Service neve. |
+| **név** | Az Azure Blockchain Service blokklánctag neve. |
 | **Kulcsnév** | Cserélje \<keyValue\> le a helyére a key1, key2 vagy mindkettőt. |
 
 ## <a name="delete-a-transaction-node"></a>Tranzakciós csomópont törlése
 
-A [példa töröl egy blokklánctag tranzakciós csomópontot.](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-delete)
+A [példa töröl egy blokklánctag tranzakciós csomópontot.](/cli/azure/blockchain/transaction-node#az_blockchain_transaction_node_delete)
 
 ```azurecli
 az blockchain transaction-node delete \
@@ -183,7 +183,7 @@ az blockchain transaction-node delete \
 
 ## <a name="delete-a-blockchain-member"></a>Blokklánctag törlése
 
-A [példa töröl egy blokklánctagot.](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-delete)
+A [példa töröl egy blokklánctagot.](/cli/azure/blockchain/member#az_blockchain_member_delete)
 
 ```azurecli
 az blockchain member delete \

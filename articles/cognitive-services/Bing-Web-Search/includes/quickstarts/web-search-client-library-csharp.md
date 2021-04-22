@@ -1,5 +1,5 @@
 ---
-title: Bing Web Search C# ügyféloldali kódtár gyors üzembe helyezése
+title: Bing Web Search C#-ügyféloldali kódtár – rövid útmutató
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d391586ade9e9a58344f9b1666802a453770152a
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: ff4a29cd2da98d6782d2e3bae5078e92bc43eaca
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94386618"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107880362"
 ---
-Az Bing Web Search ügyféloldali kódtár megkönnyíti a C#-alkalmazásba való Bing Web Search integrálását. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
+A Bing Web Search ügyféloldali kódtár megkönnyíti a Bing Web Search integrálását a C#-alkalmazásba. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
 
-Szeretné most rögtön megtekinteni a kódot? A .NET- [hez készült Bing Search ügyféloldali kódtárak](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7) mintái a githubon érhetők el.
+Szeretné most rögtön megtekinteni a kódot? A [githubon Bing Search .NET-hez elérhető](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7) ügyfélkódtárak mintái.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
@@ -27,16 +27,16 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 * [Visual Studio Code 2017](https://code.visualstudio.com/download)
   * [C# a Visual Studio Code-hoz](https://visualstudio.microsoft.com/downloads/)
   * [NuGet-csomagkezelő](https://github.com/jmrog/vscode-nuget-package-manager)
-* [.NET Core SDK](https://www.microsoft.com/net/download)
+* [.NET Core SDK](https://dotnet.microsoft.com/download)
 
 [!INCLUDE [bing-web-search-quickstart-signup](~/includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-install-dependencies"></a>Projekt létrehozása és a függőségek telepítése
 
 > [!TIP]
-> Szerezze be a legújabb kódot Visual Studio-megoldásként a [githubról](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
+> Szerezze be a legújabb kódot Visual Studio a [GitHubról.](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
 
-Az első lépés egy új konzolprojekt létrehozása. Ha segítségre van szüksége egy konzol-projekt beállításához, tekintse [meg a „Helló világ!” alkalmazás – az első programját (C# programozási útmutató)](/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Ha a Bing Web Search SDK-t használná az alkalmazásában, a NuGet-csomagkezelővel telepítse a következőt: `Microsoft.Azure.CognitiveServices.Search.WebSearch`.
+Az első lépés egy új konzolprojekt létrehozása. Ha segítségre van szüksége a konzolprojektek beállításával kapcsolatosakhoz, tekintse meg a [következőt: Hello World - Your First Program (C# Programming Guide) (Első program (C# programozási útmutató) ).](/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program) Ha a Bing Web Search SDK-t használná az alkalmazásában, a NuGet-csomagkezelővel telepítse a következőt: `Microsoft.Azure.CognitiveServices.Search.WebSearch`.
 
 A [Web Search SDK-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) a követezőket is telepíti:
 
@@ -59,7 +59,7 @@ using System.Threading.Tasks;
 
 ## <a name="create-project-scaffolding"></a>Projektszerkezet létrehozása
 
-Amikor létrehozta az új konzolprojektet, létre kellett jönnie egy névtérnek és egy osztálynak az alkalmazásához. A programnak a következő példához hasonlóan kell kinéznie:
+Amikor létrehozta az új konzolprojektet, létre kellett jönnie egy névtérnek és egy osztálynak az alkalmazásához. A programnak az alábbi példához hasonlónak kell lennie:
 
 ```csharp
 namespace WebSearchSDK
@@ -218,7 +218,7 @@ static async Task Main(string[] args)
 }
 ```
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az alkalmazást.
 
@@ -416,11 +416,11 @@ Ez a példa az `answer_count`, a `promote` és a `safe_search` paraméter segít
 
 3. Futtassa az alkalmazást.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői azonosítót az alkalmazás kódjából.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Cognitive Services Node.js SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)

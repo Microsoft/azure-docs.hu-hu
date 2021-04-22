@@ -1,7 +1,7 @@
 ---
 title: Blobok helyreállítható törlésének engedélyezése
 titleSuffix: Azure Storage
-description: A Blobok véletlen törlésének és felülírásának megakadályozása érdekében engedélyezze a Blobok adatainak tárolását.
+description: Engedélyezze a blobok soft delete funkcióját, hogy megvédje a blobadatokat a véletlen törléstől vagy felülírástól.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,40 +10,40 @@ ms.date: 03/27/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 11323f2aec05935b9dc45187ed54597e61af924d
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 4a8d1f872ca042429276b8f0e1112bc5837d8e38
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554117"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869274"
 ---
 # <a name="enable-soft-delete-for-blobs"></a>Blobok helyreállítható törlésének engedélyezése
 
-A blob Soft delete szolgáltatás védi az egyes blobokat, azok verzióit, pillanatképeit és metaadatait a véletlen törlésből vagy felülírásokból azáltal, hogy a törölt adatokat egy adott időszakra vonatkozóan tartja karban. A megőrzési időszak alatt a blobot visszaállíthatja az állapotára törléskor. A megőrzési időszak lejárta után a blob véglegesen törölve lesz. A blob Soft delete szolgáltatással kapcsolatos további információkért lásd a Blobok helyreállítható [törlését](soft-delete-blob-overview.md)ismertető témakört.
+A blobok és azok verziói, pillanatképei és metaadataik véletlen törlése és felülírása úgy védhető meg, hogy a törölt adatokat egy adott ideig megőrzik a rendszerben. A megőrzési időszak alatt visszaállíthatja a blobot a törléskor. A megőrzési időszak lejárta után a blob véglegesen törlődik. További információk a blobok soft delete (blobok soft delete ) törlésével kapcsolatban: Soft delete for blobs (Blobok soft [delete for blobok).](soft-delete-blob-overview.md)
 
-A blob-törlés a blob-adatvédelemmel kapcsolatos átfogó adatvédelmi stratégia részét képezi. További információ a Microsoft adatvédelmi javaslatairól: [Adatvédelem – áttekintés](data-protection-overview.md).
+A blobok soft delete (blobok soft delete) szolgáltatása a blobadatok átfogó adatvédelmi stratégiájának része. A Microsoft adatvédelmi javaslataival kapcsolatos további információkért lásd: [Adatvédelem áttekintése.](data-protection-overview.md)
 
-## <a name="enable-blob-soft-delete"></a>BLOB törlésének engedélyezése
+## <a name="enable-blob-soft-delete"></a>Blobok soft delete funkció engedélyezése
 
-A blob Soft delete alapértelmezés szerint le van tiltva egy új Storage-fiókhoz. A Storage-fiókhoz a Azure Portal, a PowerShell vagy az Azure CLI használatával bármikor engedélyezheti vagy letilthatja a helyreállítható törlést.
+A blobok soft delete (blobok soft delete) szolgáltatása alapértelmezés szerint le van tiltva az új tárfiókok esetén. A tárfiókok ideiglenes törlését bármikor engedélyezheti vagy letilthatja a Azure Portal, a PowerShell vagy az Azure CLI használatával.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Az alábbi lépéseket követve engedélyezheti a Blobok törlését a Storage-fiókjához a Azure Portal használatával:
+Ha engedélyezni szeretné a blobok blobok soft delete funkcióját a tárfiókhoz a Azure Portal kövesse az alábbi lépéseket:
 
 1. Az [Azure Portalon](https://portal.azure.com/) lépjen a tárfiókra.
-1. Keresse meg az **Adatvédelem** lehetőséget a **blob Service** alatt.
-1. A **helyreállítás** szakaszban jelölje be **a nem kötelező törlés bekapcsolása a blobokhoz** lehetőséget.
-1. 1 és 365 nap közötti megőrzési időtartamot kell megadni. A Microsoft a minimális megőrzési időtartamot javasolja hét nap alatt.
+1. Keresse meg **az Adatvédelem lehetőséget** a Blob service. 
+1. A Helyreállítás **szakaszban** válassza a Helyreállító törlés **bekapcsolás blobok számára lehetőséget.**
+1. 1 és 365 nap közötti megőrzési idő megadása. A Microsoft a hétnapos minimális megőrzési megőrzési időszakot javasolja.
 1. Mentse a módosításokat.
 
-:::image type="content" source="media/soft-delete-blob-enable/blob-soft-delete-configuration-portal.png" alt-text="Képernyőfelvétel: a Azure Portal a Soft delete engedélyezése":::
+:::image type="content" source="media/soft-delete-blob-enable/blob-soft-delete-configuration-portal.png" alt-text="Képernyőkép a soft delete engedélyezéséről a Azure Portal":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Ha engedélyezni szeretné a blob törlését a PowerShell-lel, hívja meg az [enable-AzStorageBlobDeleteRetentionPolicy](/powershell/module/az.storage/enable-azstorageblobdeleteretentionpolicy) parancsot, és állítsa be a megőrzési időszakot napokban.
+A blobok a PowerShell használatával való törlésének engedélyezéséhez hívja meg az [Enable-AzStorageBlobDeleteRetentionPolicy](/powershell/module/az.storage/enable-azstorageblobdeleteretentionpolicy) parancsot, és adja meg a megőrzési megőrzési időszakot napokban.
 
-A következő példa engedélyezi a Blobok törlését, és a megőrzési időtartamot hét napig állítja be. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
+Az alábbi példa engedélyezi a blobok soft delete funkcióját, és hét napra állítja a megőrzési megőrzési időszakot. Ne felejtse el lecserélni a zárójelben lévő helyőrzőket a saját értékeire:
 
 ```azurepowershell
 Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName <resource-group> `
@@ -51,7 +51,7 @@ Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName <resource-group> `
     -RetentionDays 7
 ```
 
-A blob Soft delete jelenlegi beállításainak vizsgálatához hívja meg a [Get-AzStorageBlobServiceProperty](/powershell/module/az.storage/get-azstorageblobserviceproperty) parancsot:
+A blobok aktuális soft delete beállításainak ellenőrzéséhez hívja meg a [Get-AzStorageBlobServiceProperty](/powershell/module/az.storage/get-azstorageblobserviceproperty) parancsot:
 
 ```azurepowershell
 $properties = Get-AzStorageBlobServiceProperty -ResourceGroupName <resource-group> `
@@ -62,9 +62,9 @@ $properties.DeleteRetentionPolicy.Days
 
 # <a name="cli"></a>[Parancssori felület](#tab/azure-CLI)
 
-Ha az Azure CLI-vel szeretné engedélyezni a Blobok törlését, hívja meg az az [Storage Account blob-Service-Properties Update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) parancsot, és határozza meg a megőrzési időtartamot napokban megadva.
+Ha engedélyezni szeretné a blobok soft delete parancsát az Azure CLI-val, hívja meg [az az storage account blob-service-properties update](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update) parancsot, és adja meg a megőrzési megőrzési időszakot napokban.
 
-A következő példa engedélyezi a Blobok törlését, és a megőrzési időtartamot hét napig állítja be. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
+Az alábbi példa engedélyezi a blobok soft delete funkcióját, és hét napra állítja a megőrzési megőrzési időszakot. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
 
 ```azurecli-interactive
 az storage account blob-service-properties update --account-name <storage-account> \
@@ -73,7 +73,7 @@ az storage account blob-service-properties update --account-name <storage-accoun
     --delete-retention-days 7
 ```
 
-Ha szeretné megtekinteni a blob-alapú törlés aktuális beállításait, hívja meg az az [Storage Account blob-Service-Properties show](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_show) parancsot:
+A blobok jelenlegi soft delete beállításainak ellenőrzéséhez hívja meg [az az storage account blob-service-properties show](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_show) parancsot:
 
 ```azurecli-interactive
 az storage account blob-service-properties show --account-name <storage-account> \
@@ -85,4 +85,4 @@ az storage account blob-service-properties show --account-name <storage-account>
 ## <a name="next-steps"></a>Következő lépések
 
 - [Blobok helyreállítható törlése](soft-delete-blob-overview.md)
-- [A nem törölt Blobok kezelése és visszaállítása](soft-delete-blob-manage.md)
+- [Helyreállíthatóan törölt blobok kezelése és visszaállítása](soft-delete-blob-manage.md)

@@ -2,7 +2,7 @@
   href: index.yml
 - name: Áttekintés
   href: overview.md
-- name: Újdonságok a Azure Sentinel?
+- name: A Azure Sentinel újdonsága
   href: whats-new.md
 - name: Rövid útmutatók
   expanded: true
@@ -53,7 +53,7 @@
       href: import-threat-intelligence.md
     - name: Saját gépi tanulási platform használata
       href: bring-your-own-ml.md
-    - name: Az Microsoft 365 Defender integrálása a Azure Sentinel
+    - name: A Defender Microsoft 365 integrálása a Azure Sentinel
       href: microsoft-365-defender-sentinel-integration.md
     - name: Külső adatok használata figyelőlistákkal
       href: watchlists.md
@@ -61,7 +61,7 @@
       href: extend-sentinel-across-workspaces-tenants.md
     - name: Adatok normalizálása táblázatok között
       href: normalization.md
-    - name: A Azure Data Explorer hosszú távú naplómegőrzéshez használja a Azure Data Explorer.
+    - name: A Azure Data Explorer használata a naplók hosszú távú megőrzéséhez
       href: store-logs-in-azure-data-explorer.md
     - name: Biztonság
       items:
@@ -96,6 +96,8 @@
               href: connect-azure-kubernetes-service.md
             - name: Azure SQL-adatbázisnaplók
               href: connect-azure-sql-logs.md
+            - name: Azure Storage-fiókok
+              href: connect-azure-storage-account.md
             - name: Azure-beli webalkalmazási tűzfal (WAF)
               href: connect-azure-waf.md
             - name: Defender for IoT (korábban ASC for IoT)
@@ -132,7 +134,7 @@
               href: connect-alcide-kaudit.md
             - name: Alsid a Active Directory
               href: connect-alsid-active-directory.md
-            - name: Apache HTTP-kiszolgáló
+            - name: Apache HTTP Server
               href: connect-apache-http-server.md
             - name: Barracuda WAF
               href: connect-barracuda.md
@@ -266,7 +268,7 @@
           href: monitor-data-connector-health.md
     - name: Felhasználói és entitásviselkedés-elemzés engedélyezése
       href: enable-entity-behavior-analytics.md
-    - name: Adatmezők leképezés entitásokhoz
+    - name: Adatmezők leképezása entitásokhoz
       href: map-data-fields-to-entities.md
     - name: Több bérlő (MSSP) kezelése
       href: multiple-tenants-service-providers.md
@@ -274,7 +276,7 @@
       href: multiple-workspace-view.md
     - name: Az ügyfél által kezelt kulcsok (CMK) beállítása
       href: customer-managed-keys.md
-    - name: Egyéni részletek felülete a riasztások között
+    - name: Egyéni részletek kijelzése a riasztások között
       href: surface-custom-details-in-alerts.md
     - name: Incidens létrehozása riasztásból
       href: create-incidents-from-alerts.md
@@ -295,10 +297,10 @@
       href: offboard.md
 - name: Referencia
   items:
-    - name: A Azure Sentinel munkafüzetek
+    - name: Felső Azure Sentinel munkafüzetek
       href: top-workbooks.md
     - name: Azure CLI
-      href: /cli/azure/ext/sentinel/sentinel
+      href: /cli/azure/sentinel
     - name: Azure RBAC-szerepkörök
       items:
         - name: Minden Azure-szerepkör
@@ -319,7 +321,7 @@
       href: entities-reference.md
     - name: Hálózati normalizációs séma
       href: normalization-schema.md
-    - name: Adatforrás sémareferenciája
+    - name: Adatforrás-séma referenciája
       href: data-source-schema-reference.md
     - name: Kusto Query Language
       items:
@@ -331,7 +333,7 @@
           href: ../azure-monitor/logs/query-optimization.md
     - name: UEBA-bővítések
       href: ueba-enrichments.md
-    - name: CEF naplómező-leképezés
+    - name: CEF-naplómező-leképezés
       href: cef-name-mapping.md
 - name: További források
   items:

@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: 8775696a35bfccc363aa2c6ec06c6c44115916b9
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 9b7b8fe9c05d0de64dcd0cf7c6c324e0d03cb1ac
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479270"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874152"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Nagy teljesítményű kiszolgálás a Triton következtetési kiszolgálóval (előzetes verzió) 
 
@@ -24,7 +24,7 @@ Megtudhatja, hogyan használhatja az [NVIDIA Triton dedukenciakiszolgálót](htt
 
 A modellek következtetéshez való üzembe helyezésének egyik módja a webszolgáltatás. Például egy központi telepítést Azure Kubernetes Service vagy Azure Container Instances. Alapértelmezés szerint a Azure Machine Learning egyszálas, általános  célú webes keretrendszert használ a webszolgáltatás üzembe helyezéséhez.
 
-A Triton egy következtetésre optimalizált *keretrendszer.* Jobb GPU-kihasználtságot és költséghatékonyabb következtetést biztosít. A kiszolgálóoldalon kötege a bejövő kéréseket, és dedoklánsan elküldi ezeket a kötegeket. A kötegek jobban kihasználják a GPU-erőforrásokat, és a Triton teljesítményének kulcsfontosságú részét képezi.
+A Triton egy következtetésre *optimalizált keretrendszer.* Jobb GPU-kihasználtságot és költséghatékonyabb következtetést biztosít. A kiszolgálóoldalon kötege a bejövő kéréseket, és dedoklánsan elküldi ezeket a kötegeket. A kötegek jobban kihasználják a GPU-erőforrásokat, és a Triton teljesítményének kulcsfontosságú részét képezi.
 
 > [!IMPORTANT]
 > A Triton használata a Azure Machine Learning jelenleg előzetes verzióban __érhető el.__ Előfordulhat, hogy az előzetes verziójú funkciókra nem vonatkozik az ügyfélszolgálat. További információ: Kiegészítő használati feltételek a Microsoft Azure [előzetes verziókhoz](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
@@ -44,7 +44,7 @@ A Triton egy következtetésre optimalizált *keretrendszer.* Jobb GPU-kihaszná
 
 ## <a name="architectural-overview"></a>Az architektúra áttekintése
 
-Mielőtt megpróbálja használni a Tritont a saját modelljéhez, fontos megértenie, hogyan működik együtt a Azure Machine Learning és hogyan viszonyul az alapértelmezett üzemelő példányhoz.
+Mielőtt megpróbálja használni a Tritont a saját modelljéhez, fontos tisztában lenni azzal, hogyan működik együtt a Azure Machine Learning és hogyan viszonyul az alapértelmezett üzemelő példányhoz.
 
 **Alapértelmezett üzembe helyezés Triton nélkül**
 
@@ -60,9 +60,9 @@ Mielőtt megpróbálja használni a Tritont a saját modelljéhez, fontos megér
 * A Triton kötegben dolgozza fel a kérelmeket a GPU-kihasználtság maximalizálása érdekében.
 * Az ügyfél a __Triton URI-t használja__ a kérések igényléshez. Például: `https://myservice.azureml.net/v2/models/${MODEL_NAME}/versions/${MODEL_VERSION}/infer`.
 
-:::image type="content" source="./media/how-to-deploy-with-triton/triton-deploy.png" alt-text="Inferenceconfig üzemelő példány csak Tritonnal, pythonos middleware nélkül":::
+:::image type="content" source="./media/how-to-deploy-with-triton/triton-deploy.png" alt-text="Inferenceconfig üzemelő példány csak a Tritonnal, pythonos middleware nélkül":::
 
-**Dedúenciakonfiguráció üzembe helyezése a Tritonnal**
+**Következtetéskonfiguráció üzembe helyezése a Tritonnal**
 
 * Több [Gunicorn-dolgozó](https://gunicorn.org/) is egyidejűleg kezeli a bejövő kéréseket.
 * A kéréseket a rendszer továbbítja a **Triton-kiszolgálónak.** 
@@ -88,7 +88,7 @@ A modellkonfigurációs fájl adja meg a Tritonnak, hogy hány bemenet várható
 > [!TIP]
 > A Triton Inference Server indításakor ezt a lehetőséget használjuk, ami azt jelenti, hogy nem kell fájlt adnia az `--strict-model-config=false` `config.pbtxt` ONNX- vagy TensorFlow-modellekhez.
 > 
-> Erről a beállításról az NVIDIA-dokumentáció [Generated model configuration (Létrehozott modellkonfiguráció)](https://aka.ms/nvidia-triton-docs) dokumentumában talál további információt.
+> További információt erről a beállításról az NVIDIA-dokumentáció [Generated model configuration (Létrehozott](https://aka.ms/nvidia-triton-docs) modellkonfiguráció) dokumentumában talál.
 
 ### <a name="use-the-correct-directory-structure"></a>A megfelelő könyvtárstruktúra használata
 
@@ -116,10 +116,10 @@ models
 az ml model register -n my_triton_model -p models --model-framework=Multi
 ```
 
-A ről a `az ml model register` referenciadokumentációban [talál további információt.](/cli/azure/ext/azure-cli-ml/ml/model)
+A ről a `az ml model register` referenciadokumentációban [talál további információt.](/cli/azure/ml/model)
 
 Amikor regisztrálja a modellt a Azure Machine Learning, a paraméter értékének a Triton szülőmappa nevének `--model-path  -p` kell lennie.  
-A fenti példában  `--model-path` a "models" (modellek) lesz.
+A fenti példában  `--model-path` a a "models" (modellek) lesz.
 
 A példában `--name  -n` a à€ ̃ my_triton_modelâ™ paraméter értéke lesz a modell neve, Azure Machine Learning-munkaterület. 
 
@@ -339,7 +339,7 @@ print(local_service.scoring_uri)
 
 ---
 
-Az üzembe helyezés befejezése után megjelenik a pontozási URI. Ebben a helyi üzemelő példányban a következő lesz: `http://localhost:6789/score` . Ha a felhőben helyez üzembe, az [az ml service show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) CLI-paranccsal le tudja szerezni a pontozási URI-t.
+Az üzembe helyezés befejezése után megjelenik a pontozási URI. Ebben a helyi üzemelő példányban a következő lesz: `http://localhost:6789/score` . Ha a felhőben helyez üzembe, az [az ml service show](/cli/azure/ml/service#az_ml_service_show) CLI-paranccsal le tudja szerezni a pontozási URI-t.
 
 A következtetési kérelmeket a pontozási URI-nak ügyfélszámítógépek létrehozásáról lásd: Webszolgáltatásként üzembe helyezett [modell igénybe helyezése.](how-to-consume-web-service.md)
 
@@ -374,7 +374,7 @@ local_service.delete()
 ---
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-* [Sikertelen üzembe helyezés hibaelhárítása,](how-to-troubleshoot-deployment.md)megtudhatja, hogyan háríthatja el és háríthatja el a modellek üzembe helyezése során előforduló gyakori hibákat.
+* [Sikertelen üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md), megtudhatja, hogyan háríthatja el és háríthatja el a modellek üzembe helyezésekor előforduló gyakori hibákat, illetve hogyan háríthatja el vagy háríthatja el a hibákat.
 
 * Ha az üzembe helyezési naplók azt mutatják, hogy **a TritonServer** nem tudott elindulni, tekintse meg az Nvidia® ™ nyílt forráskódú [dokumentációját.](https://github.com/triton-inference-server/server)
 

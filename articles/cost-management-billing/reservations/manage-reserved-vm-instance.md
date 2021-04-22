@@ -6,14 +6,14 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 04/21/2021
 ms.author: banders
-ms.openlocfilehash: 1523ca77b06281b84ed57fbc0e2e49ffede85fb4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e8a5e6d40b745efb7fcd50919cd27664b3406b7d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934342"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862848"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Foglalások kezelése az Azure-erőforrásoknál
 
@@ -35,7 +35,7 @@ Egy foglalási rendelés megtekintéséhez lépjen a **Foglalás** elemre > vál
 
 ![Példa egy foglalási rendelés részleteire, köztük a foglalási rendelés azonosítójával ](./media/manage-reserved-vm-instance/reservation-order-details.png)
 
-A foglalások az engedélyeket a foglalási rendelésektől öröklik. A foglalások cseréjéhez vagy visszafizetéséhez a felhasználót hozzá kell adni a foglalási rendeléshez.
+A foglalások az engedélyeket a foglalási rendelésektől öröklik. A foglalás cseréjéhez vagy visszatérítéshez a felhasználót hozzá kell adni a foglalási rendeléshez.
 
 ## <a name="change-the-reservation-scope"></a>Foglalás hatókörének módosítása
 
@@ -57,8 +57,8 @@ A hatókör csak a használatalapú fizetéses díjszabású különálló előf
 
 Alapértelmezés szerint a következő felhasználók tekinthetik meg és kezelhetik a foglalásokat:
 
-- A foglalást és a fiók tulajdonosát a számlázási előfizetés megvásárlása után az Azure RBAC hozzáférést kap a foglalási rendeléshez.
--  A Nagyvállalati Szerződés és a Microsoft ügyfél-szerződés számlázási közreműködői a Cost Management + számlázási > foglalási tranzakciókban lévő összes foglalást kezelhetik > válassza a kék szalagcímet.
+- A foglalást megvásárlott személy és a számlázási előfizetés fióktulajdonosa Azure RBAC-hozzáférést kap a foglalási rendeléshez.
+-  Nagyvállalati Szerződés és Microsoft Ügyfélszerződés számlázási közreműködők a Foglalási tranzakciók Cost Management + Billing > kezelhetik az összes foglalást, > a kék szalagcímet.
 
 Két lehetősége van, ha más személyeknek is engedélyezni szeretné a foglalások kezelését:
 
@@ -177,23 +177,9 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 ## <a name="next-steps"></a>További lépések
 
 Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
-
-- [Mik azok a foglalások az Azure-ban?](save-compute-costs-reservations.md)
-
-Szolgáltatáscsomag vásárlása:
-- [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../../virtual-machines/prepay-reserved-vm-instances.md)
-- [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../../azure-sql/database/reserved-capacity-overview.md)
-- [Előre fizetés fenntartott Azure Cosmos DB-kapacitással rendelkező Azure Cosmos DB-erőforrásokért](../../cosmos-db/cosmos-db-reserved-capacity.md)
-
-Szoftvercsomag vásárlása:
-- [Előre fizetés Azure Reservations-beli Red Hat-szoftvercsomagokért](../../virtual-machines/linux/prepay-suse-software-charges.md)
-- [Előre fizetés Azure Reservations-beli SUSE-szoftvercsomagokért](../../virtual-machines/linux/prepay-suse-software-charges.md)
-
-A kedvezmények és a kihasználtság ismertetése:
-- [A virtuális gépek foglalására vonatkozó kedvezmény alkalmazásának ismertetése](../manage/understand-vm-reservation-charges.md)
-- [A Red Hat Enterprise Linux szoftvercsomag kedvezményei alkalmazásának ismertetése](understand-rhel-reservation-charges.md)
-- [A SUSE Linux Enterprise szoftvercsomag kedvezményei alkalmazásának ismertetése](understand-suse-reservation-charges.md)
-- [Az egyéb foglalási kedvezmények alkalmazásának ismertetése](understand-reservation-charges.md)
-- [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](understand-reserved-instance-usage.md)
-- [A foglalási kihasználtság ismertetése vállalati regisztrációnál](understand-reserved-instance-usage-ea.md)
-- [A Reservations díjában nem szereplő Windows-szoftverköltségek](reserved-instance-windows-software-costs.md)
+ - [Foglalás kihasználtságának megtekintése](reservation-utilization.md)
+ - [Csere és visszatérítés](exchange-and-refund-azure-reservations.md)
+ - [Foglalások megújítása](reservation-renew.md)
+ - [Átvitelek bérlők között](troubleshoot-reservation-transfers-between-tenants.md)
+ - [Foglalásvásárló megkeresésekor az Azure-naplókban](find-reservation-purchaser-from-logs.md)
+ - [Foglalás megújítása](reservation-renew.md)
