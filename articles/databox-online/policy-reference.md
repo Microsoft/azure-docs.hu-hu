@@ -1,23 +1,23 @@
 ---
 title: Beépített szabályzatdefiníciók a Azure Stack Edge
-description: A Azure Policy beépített szabályzatdefinícióit és Azure Stack Edge. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 04/14/2021
+description: Felsorolja Azure Policy beépített szabályzatdefiníciókat a Azure Stack Edge. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+ms.date: 04/21/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
 ms.service: databox
 ms.subservice: edge
 author: alkohli
 ms.author: alkohli
-ms.openlocfilehash: 3ee04e8e5254c2f9de65d2f919a47a052d41ea04
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: c0202f85777df0d222647ef6950407b315729e33
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500634"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878379"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-stack-edge"></a>Azure Policy beépített definíciók a Azure Stack Edge
 
-Ez az oldal [](../governance/policy/overview.md) a Azure Policy szabályzatdefiníciók index Azure Stack Edge e. Az egyéb Azure Policy további beépített szolgáltatásaiért lásd a Azure Policy [definíciókat.](../governance/policy/samples/built-in-policies.md)
+Ez az oldal [](../governance/policy/overview.md) a Azure Policy szabályzatdefiníciók index Azure Stack Edge e. További Azure Policy más szolgáltatások beépített szolgáltatásaihoz: Azure Policy [beépített definíciók.](../governance/policy/samples/built-in-policies.md)
 
 Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 

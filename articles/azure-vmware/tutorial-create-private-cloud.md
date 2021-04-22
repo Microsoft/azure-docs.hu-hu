@@ -3,12 +3,12 @@ title: Oktatóanyag – Magánfelhő Azure VMware Solution üzembe helyezése
 description: Megtudhatja, hogyan hozhat létre és helyezhet Azure VMware Solution magánfelhőt
 ms.topic: tutorial
 ms.date: 02/22/2021
-ms.openlocfilehash: 89a44ce7e5910609068f72c321971ced2e3646b4
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: ea4bf27a1ff14e4872bc2a0e19daa032dd4ba66d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374845"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870912"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud"></a>Oktatóanyag: Magánfelhő Azure VMware Solution üzembe helyezése
 
@@ -40,11 +40,11 @@ Magánfelhőt a Azure VMware Solution vagy az Azure CLI Azure Portal [használat
 
 ### <a name="azure-cli"></a>Azure CLI
 
-A Azure Portal helyett Azure VMware Solution azure cli-t használhatja az Azure Cloud Shell.  A virtuális gépekkel használható parancsok listájáért lásd: [Azure VMware Azure VMware Solution parancsok.](/cli/azure/ext/vmware/vmware)
+A Azure Portal helyett Azure VMware Solution azure cli-t használhatja az Azure Cloud Shell.  A virtuális gépekkel használható parancsok listájáért lásd: [Azure VMware Azure VMware Solution parancsok.](/cli/azure/vmware)
 
 #### <a name="open-azure-cloud-shell"></a>Az Azure Cloud Shell megnyitása
 
-A **kódblokk jobb** felső sarkában válassza a Kipróbálom lehetőséget. A böngészőablakot Cloud Shell böngészőlapon is elindíthatja a következő gombra: [https://shell.azure.com/bash](https://shell.azure.com/bash) . Válassza **a Másolás** lehetőséget a kódblokkok másoláshoz, illessze be a Cloud Shell, majd nyomja le az **Enter** billentyűt a futtatáshoz.
+A **kódblokk jobb** felső sarkában válassza a Kipróbálom lehetőséget. Az alkalmazásokat Cloud Shell böngészőlapon is elindíthatja a következő gombra: [https://shell.azure.com/bash](https://shell.azure.com/bash) . Kattintson **a Másolás** gombra a kódblokkok másoláshoz, illessze be Cloud Shell, majd nyomja le az **Enter** billentyűt a futtatáshoz.
 
 #### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -74,7 +74,7 @@ az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --locati
 
 ## <a name="azure-vmware-commands"></a>Azure VMware-parancsok
 
-A virtuális gépekkel használható parancsok listájáért lásd: [Azure VMware Azure VMware Solution parancsok.](/cli/azure/ext/vmware/vmware)
+A virtuális gépekkel használható parancsok listájáért lásd: [Azure VMware Azure VMware Solution parancsok.](/cli/azure/vmware)
 
 ## <a name="next-steps"></a>Következő lépések
 

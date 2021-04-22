@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 036bcca08af001a517c28b52277c07d44d636381
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: eada0631bf571c5ac9110a73294f7b5492a9b11d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107511527"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107879419"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[A CORS nem engedélyezheti minden erőforrás számára az API-alkalmazáshoz való hozzáférést](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F358c20a6-3f9e-4f0e-97ff-c6ce485e2aac) |Az eredetközi erőforrás-megosztás (CORS) nem engedélyezheti minden tartomány számára az API-alkalmazáshoz való hozzáférést. Csak a szükséges tartományok számára engedélyezze az API-alkalmazással való interakciót. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_RestrictCORSAccess_ApiApp_Audit.json) |
 |[A CORS nem engedélyezheti minden erőforrás számára a függvényalkalmazások hozzáférését](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0820b7b9-23aa-4725-a1ce-ae4558f718e5) |Az eredetközi erőforrás-megosztás (CORS) nem engedélyezheti minden tartomány számára a függvényalkalmazáshoz való hozzáférést. Csak a szükséges tartományok számára engedélyezze a függvényalkalmazással való interakciót. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_RestrictCORSAccess_FuntionApp_Audit.json) |

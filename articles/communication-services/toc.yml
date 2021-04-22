@@ -152,7 +152,7 @@
     - name: A referenciadokumentáció áttekintése
       href: concepts/reference.md
     - name: Azure CLI
-      href: /cli/azure/ext/communication/communication
+      href: /cli/azure/communication
     - name: REST API – dokumentáció
       href: /rest/api/communication/
     - name: Hívási kódtárak

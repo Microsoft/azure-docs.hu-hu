@@ -1,6 +1,6 @@
 ---
 title: Karbantartási időszak konfigurálása (előzetes verzió)
-description: Megtudhatja, hogyan állíthatja be az időpontot, amikor a tervezett karbantartást az Azure SQL-adatbázisokon, a rugalmas készleteken és a felügyelt példány adatbázisain kell elvégezni.
+description: Megtudhatja, hogyan állíthatja be azt az időt, amikor tervezett karbantartást kell végrehajtania a Azure SQL adatbázisokon, rugalmas készleteken és felügyeltpéldány-adatbázisokon.
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
@@ -9,66 +9,66 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/23/2021
-ms.openlocfilehash: 8688458d85084f3d3dab4678fa91ed827a337739
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9771c68dda6f457586f27ea45fbc52aa118e8006
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047351"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874782"
 ---
 # <a name="configure-maintenance-window-preview"></a>Karbantartási időszak konfigurálása (előzetes verzió)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 
-Konfigurálja a [karbantartási időszakot (előzetes verzió)](maintenance-window.md) egy Azure SQL Database-adatbázishoz, egy rugalmas készlethez vagy egy Azure SQL felügyelt példány-adatbázishoz az erőforrás-létrehozás során vagy az erőforrás létrehozása után bármikor. 
+Konfigurálja a karbantartási [ablakot (előzetes verzió)](maintenance-window.md) egy Azure SQL-adatbázishoz, rugalmas készlethez vagy Azure SQL Managed Instance-adatbázishoz az erőforrás létrehozása során vagy az erőforrás létrehozása után bármikor. 
 
-A *rendszer alapértelmezett* karbantartási időszaka napi 5 – 08:00 (az erőforrást tartalmazó Azure-régió helyi ideje), hogy elkerülje a maximális munkaidő-megszakítást. Ha a *rendszer alapértelmezett* karbantartási időszaka nem a legjobb időpont, válasszon ki egy másik rendelkezésre álló karbantartási időszakot.
+A *rendszer alapértelmezett* karbantartási időszaka naponta 17:00-tól 20:00-ig tart (az erőforrás az Azure-régió helyi ideje), hogy elkerülje a csúcsidők megszakítását. Ha a *Rendszer alapértelmezett* karbantartási időszaka nem a legjobb időpont, válassza ki a többi rendelkezésre álló karbantartási időszak valamelyikét.
 
-A másik karbantartási időszakra való váltás nem minden szolgáltatási szinthez vagy régióhoz érhető el. A rendelkezésre állással kapcsolatos részletekért lásd a [karbantartási időszak elérhetőségét](maintenance-window.md#availability)ismertető témakört.
+A különböző karbantartási időszakra való váltás nem érhető el minden szolgáltatási szinten vagy minden régióban. További információ a rendelkezésre állásról: [Karbantartási időszak rendelkezésre állása.](maintenance-window.md#availability)
 
 > [!Important]
-> A karbantartási időszak konfigurálása hosszú ideig futó aszinkron művelet, hasonlóan az Azure SQL-erőforrás szolgáltatási rétegének módosításához. Az erőforrás a művelet során elérhető, kivéve a művelet végén előforduló rövid újrakonfigurálást, és általában akár 8 másodpercig is tart, akár a hosszan futó tranzakciók megszakítása esetén is. Az újrakonfigurálás hatásának csökkentése érdekében a műveletet a csúcsidőben kívül kell végrehajtania.
+> A karbantartási időszak konfigurálása egy hosszú ideig futó aszinkron művelet, hasonlóan ahhoz, mint az erőforrás szolgáltatási Azure SQL módosítása. Az erőforrás a művelet során érhető el, kivéve a művelet végén lekért rövid újrakonfigurálást, amely általában akár 8 másodpercig is tart, még akkor is, ha a hosszú ideig futó tranzakciók megszakadnak. Az újrakonfigurálás hatásának minimalizálása érdekében a műveletet a csúcsidőn kívül kell végrehajtania.
 
-## <a name="configure-maintenance-window-during-database-creation"></a>Karbantartási időszak konfigurálása az adatbázisok létrehozásakor 
+## <a name="configure-maintenance-window-during-database-creation"></a>Karbantartási időszak konfigurálása az adatbázis létrehozása során 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Ha az adatbázis, a rugalmas készlet vagy a felügyelt példány létrehozásakor szeretné beállítani a karbantartási időszakot, a **További beállítások** lapon állítsa be a kívánt **karbantartási** időszakot. 
+Az adatbázis, rugalmas készlet vagy felügyelt példány létrehozásakor a karbantartási  időszak konfigurálához állítsa be a kívánt Karbantartási ablakot a **További beállítások lapon.** 
 
-## <a name="set-the-maintenance-window-while-creating-a-single-database-or-elastic-pool"></a>A karbantartási időszak beállítása egyetlen adatbázis vagy rugalmas készlet létrehozásakor
+## <a name="set-the-maintenance-window-while-creating-a-single-database-or-elastic-pool"></a>Karbantartási időszak beállítása egyetlen adatbázis vagy rugalmas készlet létrehozása során
 
-Az új adatbázis vagy készlet létrehozásával kapcsolatos részletes információkért lásd: [Azure SQL Database önálló adatbázis létrehozása](single-database-create-quickstart.md).
+Az új adatbázisok vagy készlet létrehozásával kapcsolatos részletes információkért lásd: Create an Azure SQL Database single database (Adatbázis [létrehozása)](single-database-create-quickstart.md).
 
    :::image type="content" source="media/maintenance-window-configure/additional-settings.png" alt-text="Adatbázis további beállításainak létrehozása lap":::
 
 
-## <a name="set-the-maintenance-window-while-creating-a-managed-instance"></a>A karbantartási időszak beállítása felügyelt példány létrehozásakor
+## <a name="set-the-maintenance-window-while-creating-a-managed-instance"></a>A karbantartási időszak beállítása felügyelt példány létrehozása során
 
-Az új felügyelt példányok létrehozásával kapcsolatos részletes információkért lásd: [Azure SQL felügyelt példány létrehozása](../managed-instance/instance-create-quickstart.md).
+Az új felügyelt példányok létrehozásával kapcsolatos részletes információkért lásd: Create [an Azure SQL Managed Instance.](../managed-instance/instance-create-quickstart.md)
 
-   :::image type="content" source="media/maintenance-window-configure/additional-settings-mi.png" alt-text="Felügyelt példány további beállításainak létrehozása lap":::
+   :::image type="content" source="media/maintenance-window-configure/additional-settings-mi.png" alt-text="Felügyelt példány létrehozása – további beállítások lap":::
 
 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Az alábbi példák bemutatják, hogyan konfigurálhatja a karbantartási időszakot a Azure PowerShell használatával. [Telepítheti Azure PowerShell](/powershell/azure/install-az-ps), vagy használhatja a Azure Cloud shell.
+Az alábbi példák bemutatják, hogyan konfigurálhatja a karbantartási időszak Azure PowerShell. Telepítheti [a Azure PowerShell,](/powershell/azure/install-az-ps)vagy használhatja a Azure Cloud Shell.
 
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell elindítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A böngészőlapot Cloud Shell böngészőlapon is elindíthatja a következő gombra: [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 
-## <a name="discover-available-maintenance-windows"></a>Rendelkezésre álló karbantartási időszakok felderítése
+## <a name="discover-available-maintenance-windows"></a>Az elérhető karbantartási ablakok felderítése
 
-A karbantartási időszak beállításakor az egyes régiók saját karbantartási időszakra vonatkozó beállításokkal rendelkeznek, amelyek az adatbázist vagy a készletet tartalmazó régió időzónájának felelnek meg. 
+A karbantartási időszak beállításakor minden régió saját karbantartási időszakokkal rendelkezik, amelyek az adatbázis vagy készlet régiójának időzónának felelnek meg. 
 
 ### <a name="discover-sql-database-and-elastic-pool-maintenance-windows"></a>A SQL Database és a rugalmas készlet karbantartási időszakának felderítése 
 
-A következő példa a *eastus2* régió rendelkezésre álló karbantartási időszakait adja vissza a [Get-AzMaintenancePublicConfiguration](/powershell/module/az.maintenance/get-azmaintenancepublicconfiguration) parancsmag használatával. Adatbázisokhoz és rugalmas készletekhez állítsa a következőre: `MaintenanceScope` `SQLDB` .
+Az alábbi példa az *eastus2* régió elérhető karbantartási időszakát adja vissza a [Get-AzMaintenancePublicConfiguration](/powershell/module/az.maintenance/get-azmaintenancepublicconfiguration) parancsmag használatával. Adatbázisok és rugalmas készletek számára állítsa a `MaintenanceScope` `SQLDB` beállítását.
 
    ```powershell-interactive
    $location = "eastus2"
@@ -78,9 +78,9 @@ A következő példa a *eastus2* régió rendelkezésre álló karbantartási id
    $configurations | ?{ $_.Location -eq $location -and $_.MaintenanceScope -eq "SQLDB"}
    ```
 
-### <a name="discover-sql-managed-instance-maintenance-windows"></a>SQL felügyelt példány karbantartási ablakának felderítése 
+### <a name="discover-sql-managed-instance-maintenance-windows"></a>A SQL Managed Instance karbantartási időszak felderítése 
 
-A következő példa a *eastus2* régió rendelkezésre álló karbantartási időszakait adja vissza a [Get-AzMaintenancePublicConfiguration](/powershell/module/az.maintenance/get-azmaintenancepublicconfiguration) parancsmag használatával. Felügyelt példányok esetén állítsa a következőre: `MaintenanceScope` `SQLManagedInstance` .
+Az alábbi példa az *eastus2* régió elérhető karbantartási időszakát adja vissza a [Get-AzMaintenancePublicConfiguration](/powershell/module/az.maintenance/get-azmaintenancepublicconfiguration) parancsmag használatával. Felügyelt példányok esetén állítsa a `MaintenanceScope` beállítását a `SQLManagedInstance` beállításra.
 
    ```powershell-interactive
    $location = "eastus2"
@@ -91,9 +91,9 @@ A következő példa a *eastus2* régió rendelkezésre álló karbantartási id
    ```
 
 
-## <a name="set-the-maintenance-window-while-creating-a-single-database"></a>A karbantartási időszak beállítása egyetlen adatbázis létrehozásakor
+## <a name="set-the-maintenance-window-while-creating-a-single-database"></a>Karbantartási időszak beállítása egyetlen adatbázis létrehozásakor
 
-Az alábbi példa egy új adatbázist hoz létre, és a [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) parancsmaggal beállítja a karbantartási időszakot. A `-MaintenanceConfigurationId` értéket az adatbázis régiójának érvényes értékére kell beállítani. A régió érvényes értékeinek lekéréséhez tekintse meg a [rendelkezésre álló karbantartási időszakok felderítése](#discover-available-maintenance-windows)című témakört.
+Az alábbi példa létrehoz egy új adatbázist, és beállítja a karbantartási ablakot a [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) parancsmag használatával. A értékét érvényes értékre kell állítani az adatbázis `-MaintenanceConfigurationId` régiójához. A régióra vonatkozó érvényes értékekért lásd: [Elérhető karbantartási ablakok felderítése.](#discover-available-maintenance-windows)
 
 
    ```powershell-interactive
@@ -119,9 +119,9 @@ Az alábbi példa egy új adatbázist hoz létre, és a [New-AzSqlDatabase](/pow
 
 
 
-## <a name="set-the-maintenance-window-while-creating-an-elastic-pool"></a>A karbantartási időszak beállítása rugalmas készlet létrehozásakor
+## <a name="set-the-maintenance-window-while-creating-an-elastic-pool"></a>A karbantartási időszak beállítása rugalmas készlet létrehozása során
 
-Az alábbi példa egy új rugalmas készletet hoz létre, és beállítja a karbantartási időszakot a [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) parancsmag használatával. A karbantartási időszak a rugalmas készleten van beállítva, így a készletben lévő összes adatbázishoz a készlet karbantartási időszakának ütemezett beállítása szükséges. A `-MaintenanceConfigurationId` értéket a készlet régiójának érvényes értékére kell beállítani. A régió érvényes értékeinek lekéréséhez tekintse meg a [rendelkezésre álló karbantartási időszakok felderítése](#discover-available-maintenance-windows)című témakört.
+Az alábbi példa létrehoz egy új rugalmas készletet, és beállítja a karbantartási ablakot a [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) parancsmaggal. A karbantartási időszak a rugalmas készletre van beállítva, így a készletben található összes adatbázishoz tartozik a készlet karbantartási időszakának ütemezése. A értékét érvényes értékre kell állítani a készlet `-MaintenanceConfigurationId` régiójához. A régióra vonatkozó érvényes értékekért lásd: [Elérhető karbantartási ablakok felderítése.](#discover-available-maintenance-windows)
 
 
    ```powershell-interactive
@@ -146,9 +146,9 @@ Az alábbi példa egy új rugalmas készletet hoz létre, és beállítja a karb
     $pool
    ```
 
-## <a name="set-the-maintenance-window-while-creating-a-managed-instance"></a>A karbantartási időszak beállítása felügyelt példány létrehozásakor
+## <a name="set-the-maintenance-window-while-creating-a-managed-instance"></a>Karbantartási időszak beállítása felügyelt példány létrehozása során
 
-A következő példa létrehoz egy új felügyelt példányt, és beállítja a karbantartási időszakot a [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) parancsmag használatával. A karbantartási időszak a példányra van beállítva, így a példányban lévő összes adatbázishoz a példány karbantartási időszakának ütemterve tartozik. A esetében `-MaintenanceConfigurationId` a *MaintenanceConfigName* érvényes értéknek kell lennie a példány régiójában. A régió érvényes értékeinek lekéréséhez tekintse meg a [rendelkezésre álló karbantartási időszakok felderítése](#discover-available-maintenance-windows)című témakört.
+Az alábbi példa egy új felügyelt példányt hoz létre, és beállítja a karbantartási ablakot a [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) parancsmag használatával. A karbantartási időszak be van állítva a példányon, így a példányban található összes adatbázishoz meg van állítva a példány karbantartási időszakának ütemezése. Esetén a `-MaintenanceConfigurationId` *MaintenanceConfigName* tulajdonságnak érvényes értéknek kell lennie a példány régiójában. A régióra vonatkozó érvényes értékekért lásd: [Elérhető karbantartási ablakok felderítése.](#discover-available-maintenance-windows)
 
 
    ```powershell
@@ -162,23 +162,23 @@ A következő példa létrehoz egy új felügyelt példányt, és beállítja a 
 
 # <a name="cli"></a>[Parancssori felület](#tab/azure-cli)
 
-Az alábbi példák bemutatják, hogyan konfigurálhatja a karbantartási időszakot az Azure CLI használatával. [Telepítheti az Azure CLI](/cli/azure/install-azure-cli)-t, vagy használhatja a Azure Cloud shell. 
+Az alábbi példák bemutatják, hogyan konfigurálhatja a karbantartási időszakokat az Azure CLI használatával. Telepítheti [az Azure CLI-t,](/cli/azure/install-azure-cli)vagy használhatja a Azure Cloud Shell. 
 
-A karbantartási időszak Azure CLI-vel való konfigurálása csak az SQL felügyelt példányai esetében érhető el.
+A karbantartási időszak Azure CLI-val való konfigurálása csak a SQL Managed Instance.
 
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell elindítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/cli](https://shell.azure.com/cli) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A böngészőablakot Cloud Shell böngészőlapon is elindíthatja a következő gombra: [https://shell.azure.com/cli](https://shell.azure.com/cli) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
-## <a name="discover-available-maintenance-windows"></a>Rendelkezésre álló karbantartási időszakok felderítése
+## <a name="discover-available-maintenance-windows"></a>Az elérhető karbantartási ablakok felderítése
 
-A karbantartási időszak beállításakor az egyes régiók saját karbantartási időszakra vonatkozó beállításokkal rendelkeznek, amelyek az adatbázist vagy a készletet tartalmazó régió időzónájának felelnek meg.
+A karbantartási időszak beállításakor minden régió saját karbantartási időszakokkal rendelkezik, amelyek az adatbázis vagy készlet régiójának időzónának felelnek meg.
 
 ### <a name="discover-sql-database-and-elastic-pool-maintenance-windows"></a>A SQL Database és a rugalmas készlet karbantartási időszakának felderítése
 
-A következő példa a *eastus2* régió számára elérhető karbantartási időszakokat adja vissza az az [karbantartás nyilvános konfigurációs List](/cli/azure/ext/maintenance/maintenance/public-configuration#ext_maintenance_az_maintenance_public_configuration_list) paranccsal. Adatbázisokhoz és rugalmas készletekhez állítsa a következőre: `maintenanceScope` `SQLDB` .
+Az alábbi példa az [az maintenance public-configuration list](/cli/azure/maintenance/public-configuration#az_maintenance_public_configuration_list) paranccsal adja vissza az *eastus2* régió elérhető karbantartási időszakát. Adatbázisokhoz és rugalmas készletekhez állítsa a `maintenanceScope` (Beállítás) `SQLDB` adatokat.
 
    ```azurecli
    location="eastus2"
@@ -186,17 +186,17 @@ A következő példa a *eastus2* régió számára elérhető karbantartási id�
    az maintenance public-configuration list --query "[?location=='$location'&&contains(maintenanceScope,'SQLDB')]"
    ```
 
-### <a name="discover-sql-managed-instance-maintenance-windows"></a>SQL felügyelt példány karbantartási ablakának felderítése
+### <a name="discover-sql-managed-instance-maintenance-windows"></a>A SQL Managed Instance időszak felderítése
 
-A következő példa a *eastus2* régió számára elérhető karbantartási időszakokat adja vissza az az [karbantartás nyilvános konfigurációs List](/cli/azure/ext/maintenance/maintenance/public-configuration#ext_maintenance_az_maintenance_public_configuration_list) paranccsal. Felügyelt példányok esetén állítsa a következőre: `maintenanceScope` `SQLManagedInstance` .
+Az alábbi példa az [az maintenance public-configuration list](/cli/azure/maintenance/public-configuration#az_maintenance_public_configuration_list) paranccsal adja vissza az *eastus2* régió elérhető karbantartási időszakát. Felügyelt példányok esetén állítsa a `maintenanceScope` beállítását a `SQLManagedInstance` beállításra.
 
    ```azurecli
    az maintenance public-configuration list --query "[?location=='eastus2'&&contains(maintenanceScope,'SQLManagedInstance')]"
    ```
 
-## <a name="set-the-maintenance-window-while-creating-a-single-database"></a>A karbantartási időszak beállítása egyetlen adatbázis létrehozásakor
+## <a name="set-the-maintenance-window-while-creating-a-single-database"></a>A karbantartási időszak beállítása egyetlen adatbázis létrehozása során
 
-Az alábbi példa egy új adatbázist hoz létre, és beállítja a karbantartási időszakot az az [SQL db Create](/cli/azure/sql/db#az_sql_db_create) paranccsal. A `--maint-config-id` (vagy `-m` ) értéket az adatbázis régiójának érvényes értékére kell beállítani. A régió érvényes értékeinek lekéréséhez tekintse meg a [rendelkezésre álló karbantartási időszakok felderítése](#discover-available-maintenance-windows)című témakört.
+Az alábbi példa létrehoz egy új adatbázist, és beállítja a karbantartási ablakot [az az sql db create paranccsal.](/cli/azure/sql/db#az_sql_db_create) A (vagy ) értéket érvényes értékre kell állítani az adatbázis `--maint-config-id` `-m` régiójához. A régióra vonatkozó érvényes értékekért lásd: [Elérhető karbantartási ablakok felderítése.](#discover-available-maintenance-windows)
 
 
    ```azurecli
@@ -219,9 +219,9 @@ Az alábbi példa egy új adatbázist hoz létre, és beállítja a karbantartá
       --maint-config-id $maintenanceConfig
    ```
 
-## <a name="set-the-maintenance-window-while-creating-an-elastic-pool"></a>A karbantartási időszak beállítása rugalmas készlet létrehozásakor
+## <a name="set-the-maintenance-window-while-creating-an-elastic-pool"></a>A karbantartási időszak beállítása rugalmas készlet létrehozása során
 
-Az alábbi példa egy új rugalmas készletet hoz létre, és beállítja a karbantartási időszakot az az [SQL rugalmas készlet létrehozása](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create) parancsmag használatával. A karbantartási időszak a rugalmas készleten van beállítva, így a készletben lévő összes adatbázishoz a készlet karbantartási időszakának ütemezett beállítása szükséges. A `--maint-config-id` (vagy `-m` ) értéket a készlet régiójának érvényes értékére kell beállítani. A régió érvényes értékeinek lekéréséhez tekintse meg a [rendelkezésre álló karbantartási időszakok felderítése](#discover-available-maintenance-windows)című témakört.
+Az alábbi példa létrehoz egy új rugalmas készletet, és beállítja a karbantartási ablakot [az az sql elastic-pool create](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create) parancsmaggal. A karbantartási időszak a rugalmas készletre van beállítva, így a készletben található összes adatbázishoz tartozik a készlet karbantartási időszakának ütemezése. A (vagy ) értékét érvényes értékre kell állítani a készlet `--maint-config-id` `-m` régiójához. A régióra vonatkozó érvényes értékekért lásd: [Elérhető karbantartási ablakok felderítése.](#discover-available-maintenance-windows)
 
 
    ```azurecli
@@ -244,9 +244,9 @@ Az alábbi példa egy új rugalmas készletet hoz létre, és beállítja a karb
       --maint-config-id $maintenanceConfig
    ```
 
-## <a name="set-the-maintenance-window-while-creating-a-managed-instance"></a>A karbantartási időszak beállítása felügyelt példány létrehozásakor
+## <a name="set-the-maintenance-window-while-creating-a-managed-instance"></a>Karbantartási időszak beállítása felügyelt példány létrehozása során
 
-Az alábbi példa egy új felügyelt példányt hoz létre, és beállítja a karbantartási időszakot az [az SQL mi Create](/cli/azure/sql/mi#az_sql_mi_create)paranccsal. A karbantartási időszak a példányra van beállítva, így a példányban lévő összes adatbázishoz a példány karbantartási időszakának ütemterve tartozik. A *MaintenanceConfigName* érvényes értéknek kell lennie a példány régiójában. A régió érvényes értékeinek lekéréséhez tekintse meg a [rendelkezésre álló karbantartási időszakok felderítése](#discover-available-maintenance-windows)című témakört.
+Az alábbi példa létrehoz egy új felügyelt példányt, és beállítja a karbantartási ablakot [az az sql mi create parancs használatával.](/cli/azure/sql/mi#az_sql_mi_create) A karbantartási időszak a példányra van beállítva, így a példányban található összes adatbázishoz meg van állítva a példány karbantartási időszakának ütemezése. *A MaintenanceConfigName* tulajdonságnak érvényes értéknek kell lennie a példány régiójában. A régióra vonatkozó érvényes értékekért lásd: [Elérhető karbantartási ablakok felderítése.](#discover-available-maintenance-windows)
 
    ```azurecli
    az sql mi create -g mygroup -n myinstance -l mylocation -i -u myusername -p mypassword --subnet /subscriptions/{SubID}/resourceGroups/{ResourceGroup}/providers/Microsoft.Network/virtualNetworks/{VNETName}/subnets/{SubnetName} -m /subscriptions/{SubID}/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_{Region}_{MaintenanceConfigName}
@@ -254,30 +254,30 @@ Az alábbi példa egy új felügyelt példányt hoz létre, és beállítja a ka
 
 -----
 
-## <a name="configure-maintenance-window-for-existing-databases"></a>A meglévő adatbázisok karbantartási időszakának konfigurálása
+## <a name="configure-maintenance-window-for-existing-databases"></a>Karbantartási időszak konfigurálása meglévő adatbázisokhoz
 
 
-Amikor a karbantartási időszakot egy adatbázisra alkalmazza, előfordulhat, hogy egy rövid újrakonfigurálás (több másodperc) is előfordulhatnak bizonyos esetekben, ahogy az Azure alkalmazza a szükséges módosításokat.
+Amikor karbantartási időszakokat alkalmaz egy adatbázisra, előfordulhat, hogy rövid újrakonfigurálás (néhány másodperc) történik, mivel az Azure alkalmazza a szükséges módosításokat.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A következő lépésekkel állíthatja be a karbantartási időszakot egy meglévő adatbázison, rugalmas készleten vagy felügyelt példányon a Azure Portal használatával:
+Az alábbi lépések egy meglévő adatbázis, rugalmas készlet vagy felügyelt példány karbantartási időszakát állítják be a Azure Portal:
 
 
 ## <a name="set-the-maintenance-window-for-an-existing-database-or-elastic-pool"></a>Meglévő adatbázis vagy rugalmas készlet karbantartási időszakának beállítása
 
-1. Navigáljon ahhoz az SQL-adatbázishoz vagy rugalmas készlethez, amelyhez be szeretné állítani a karbantartási időszakot.
-1. A **Beállítások** menüben válassza a **karbantartás** lehetőséget, majd válassza ki a kívánt karbantartási időszakot.
+1. Keresse meg azt az SQL-adatbázist vagy rugalmas készletet, amely számára be szeretné állítani a karbantartási időszakát.
+1. A Beállítások **menüben** válassza a **Karbantartás lehetőséget,** majd válassza ki a kívánt karbantartási ablakot.
 
-   :::image type="content" source="media/maintenance-window-configure/maintenance.png" alt-text="SQL Database-karbantartási oldal":::
+   :::image type="content" source="media/maintenance-window-configure/maintenance.png" alt-text="AZ SQL Database karbantartási oldala":::
 
 
-## <a name="set-the-maintenance-window-for-an-existing-managed-instance"></a>Egy meglévő felügyelt példány karbantartási időszakának beállítása
+## <a name="set-the-maintenance-window-for-an-existing-managed-instance"></a>Meglévő felügyelt példány karbantartási időszakának beállítása
 
-1. Navigáljon ahhoz a felügyelt példányhoz, amelyhez be szeretné állítani a karbantartási időszakot.
-1. A **Beállítások** menüben válassza a **karbantartás** lehetőséget, majd válassza ki a kívánt karbantartási időszakot.
+1. Keresse meg azt a felügyelt példányt, amely számára be szeretné állítani a karbantartási időszakát.
+1. A Beállítások **menüben** válassza a **Karbantartás** lehetőséget, majd válassza ki a kívánt karbantartási ablakot.
 
-   :::image type="content" source="media/maintenance-window-configure/maintenance-mi.png" alt-text="SQL felügyelt példány karbantartási lapja":::
+   :::image type="content" source="media/maintenance-window-configure/maintenance-mi.png" alt-text="Felügyelt SQL-példány karbantartási oldala":::
 
 
 
@@ -285,7 +285,7 @@ A következő lépésekkel állíthatja be a karbantartási időszakot egy megl�
 
 ## <a name="set-the-maintenance-window-for-an-existing-database"></a>Meglévő adatbázis karbantartási időszakának beállítása
 
-A következő példa egy meglévő adatbázis karbantartási időszakát állítja be a [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) parancsmag használatával. A `-MaintenanceConfigurationId` értéket az adatbázis régiójának érvényes értékére kell beállítani. A régió érvényes értékeinek lekéréséhez tekintse meg a [rendelkezésre álló karbantartási időszakok felderítése](#discover-available-maintenance-windows)című témakört.
+Az alábbi példa beállítja egy meglévő adatbázis karbantartási időszakát a [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) parancsmag használatával. A értékét érvényes értékre kell állítani az adatbázis `-MaintenanceConfigurationId` régiójához. A régióhoz érvényes értékek lekért értékeivel kapcsolatos információkért lásd: [Elérhető karbantartási ablakok felderítése.](#discover-available-maintenance-windows)
 
    ```powershell-interactive
     # Select different maintenance window
@@ -300,9 +300,9 @@ A következő példa egy meglévő adatbázis karbantartási időszakát állít
     $database
    ```
 
-## <a name="set-the-maintenance-window-on-an-existing-elastic-pool"></a>A karbantartási időszak beállítása meglévő rugalmas készleten
+## <a name="set-the-maintenance-window-on-an-existing-elastic-pool"></a>Meglévő rugalmas készlet karbantartási időszakának beállítása
 
-A következő példa egy meglévő rugalmas készlet karbantartási időszakát állítja be a [set-AzSqlElasticPool](/powershell/module/az.sql/set-azsqlelasticpool) parancsmag használatával. Fontos, hogy az `$maintenanceConfig` érték a készlet régiójában érvényes érték legyen.  Egy régió érvényes értékeinek lekéréséhez tekintse meg a [rendelkezésre álló karbantartási időszakok felderítése](#discover-available-maintenance-windows)című témakört.
+Az alábbi példa beállítja egy meglévő rugalmas készlet karbantartási időszakát a [Set-AzSqlElasticPool](/powershell/module/az.sql/set-azsqlelasticpool) parancsmaggal. Fontos, hogy az érték érvényes érték legyen a készlet `$maintenanceConfig` régiójában.  Egy régió érvényes értékeinek lekért értékeivel kapcsolatos információkért lásd: [Elérhető karbantartási ablakok felderítése.](#discover-available-maintenance-windows)
 
    ```powershell-interactive
     # Select different maintenance window
@@ -319,9 +319,9 @@ A következő példa egy meglévő rugalmas készlet karbantartási időszakát 
 
 
 
-## <a name="set-the-maintenance-window-on-an-existing-managed-instance"></a>A karbantartási időszak beállítása egy meglévő felügyelt példányon
+## <a name="set-the-maintenance-window-on-an-existing-managed-instance"></a>Meglévő felügyelt példány karbantartási időszakának beállítása
 
-A következő példa egy meglévő felügyelt példány karbantartási időszakát állítja be a [set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance) parancsmag használatával. Fontos ellenőrizni, hogy az `$maintenanceConfig` értéknek érvényes értéknek kell lennie a példány régiójában.  Egy régió érvényes értékeinek lekéréséhez tekintse meg a [rendelkezésre álló karbantartási időszakok felderítése](#discover-available-maintenance-windows)című témakört.
+Az alábbi példa beállítja egy meglévő felügyelt példány karbantartási időszakát a [Set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance) parancsmag használatával. Fontos, hogy az értéknek érvényes értéknek kell lennie a példány `$maintenanceConfig` régiójában.  Egy régió érvényes értékeinek lekért értékeivel kapcsolatos információkért lásd: [Elérhető karbantartási ablakok felderítése.](#discover-available-maintenance-windows)
 
 
    ```powershell-interactive
@@ -333,11 +333,11 @@ A következő példa egy meglévő felügyelt példány karbantartási időszak�
 
 # <a name="cli"></a>[Parancssori felület](#tab/azure-cli)
 
-Az alábbi példák bemutatják, hogyan konfigurálhatja a karbantartási időszakot az Azure CLI használatával. [Telepítheti az Azure CLI](/cli/azure/install-azure-cli)-t, vagy használhatja a Azure Cloud shell.
+Az alábbi példák bemutatják, hogyan konfigurálhatja a karbantartási időszakokat az Azure CLI használatával. Telepítheti [az Azure CLI-t,](/cli/azure/install-azure-cli)vagy használhatja a Azure Cloud Shell.
 
 ## <a name="set-the-maintenance-window-for-an-existing-database"></a>Meglévő adatbázis karbantartási időszakának beállítása
 
-A következő példa a karbantartási időszakot egy meglévő adatbázison állítja be az az [SQL db Update](/cli/azure/sql/db#az_sql_db_update) paranccsal. A `--maint-config-id` (vagy `-m` ) értéket az adatbázis régiójának érvényes értékére kell beállítani. A régió érvényes értékeinek lekéréséhez tekintse meg a [rendelkezésre álló karbantartási időszakok felderítése](#discover-available-maintenance-windows)című témakört.
+Az alábbi példa beállítja egy meglévő adatbázis karbantartási időszakát [az az sql db update paranccsal.](/cli/azure/sql/db#az_sql_db_update) A (vagy ) értéket érvényes értékre kell állítani az adatbázis `--maint-config-id` `-m` régiójához. A régióra vonatkozó érvényes értékekért lásd: [Elérhető karbantartási ablakok felderítése.](#discover-available-maintenance-windows)
 
    ```azurecli
     # Select different maintenance window
@@ -351,9 +351,9 @@ A következő példa a karbantartási időszakot egy meglévő adatbázison áll
       --maint-config-id $maintenanceConfig
    ```
 
-## <a name="set-the-maintenance-window-on-an-existing-elastic-pool"></a>A karbantartási időszak beállítása meglévő rugalmas készleten
+## <a name="set-the-maintenance-window-on-an-existing-elastic-pool"></a>Meglévő rugalmas készlet karbantartási időszakának beállítása
 
-A következő példa a karbantartási időszakot egy meglévő rugalmas készleten állítja be az az [SQL rugalmas készlet frissítése](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update) parancs használatával. Fontos, hogy az `maintenanceConfig` érték a készlet régiójában érvényes érték legyen.  Egy régió érvényes értékeinek lekéréséhez tekintse meg a [rendelkezésre álló karbantartási időszakok felderítése](#discover-available-maintenance-windows)című témakört.
+Az alábbi példa beállítja egy meglévő rugalmas készlet karbantartási időszakát az [az sql elastic-pool update paranccsal.](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update) Fontos, hogy az érték érvényes érték legyen a készlet `maintenanceConfig` régiójában.  Egy régió érvényes értékeinek lekért értékeivel kapcsolatos információkért lásd: [Elérhető karbantartási ablakok felderítése.](#discover-available-maintenance-windows)
 
    ```azurecli
     # Select different maintenance window
@@ -367,9 +367,9 @@ A következő példa a karbantartási időszakot egy meglévő rugalmas készlet
       --maint-config-id $maintenanceConfig
    ```
 
-## <a name="set-the-maintenance-window-on-an-existing-managed-instance"></a>A karbantartási időszak beállítása egy meglévő felügyelt példányon
+## <a name="set-the-maintenance-window-on-an-existing-managed-instance"></a>Meglévő felügyelt példány karbantartási időszakának beállítása
 
-A következő példa az az [SQL mi Update](/cli/azure/sql/mi#az_sql_mi_update)paranccsal állítja be a karbantartási időszakot. A karbantartási időszak a példányra van beállítva, így a példányban lévő összes adatbázishoz a példány karbantartási időszakának ütemterve tartozik. A esetében `-MaintenanceConfigurationId` a *MaintenanceConfigName* érvényes értéknek kell lennie a példány régiójában. A régió érvényes értékeinek lekéréséhez tekintse meg a [rendelkezésre álló karbantartási időszakok felderítése](#discover-available-maintenance-windows)című témakört.
+Az alábbi példa beállítja a karbantartási ablakot [az az sql mi update parancs használatával.](/cli/azure/sql/mi#az_sql_mi_update) A karbantartási időszak a példányra van beállítva, így a példányban található összes adatbázishoz meg van állítva a példány karbantartási időszakának ütemezése. Esetén `-MaintenanceConfigurationId` a *MaintenanceConfigName* tulajdonságnak érvényes értéknek kell lennie a példány régiójában. A régióra vonatkozó érvényes értékekért lásd: [Elérhető karbantartási ablakok felderítése.](#discover-available-maintenance-windows)
 
    ```azurecli
    az sql mi update -g mygroup  -n myinstance -m /subscriptions/{SubID}/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_{Region}_{MainteanceConfigName}
@@ -379,12 +379,12 @@ A következő példa az az [SQL mi Update](/cli/azure/sql/mi#az_sql_mi_update)pa
 
 ## <a name="cleanup-resources"></a>Az erőforrások eltávolítása
 
-A szükségtelen költségek elkerülése érdekében ne felejtse el törölni a szükségtelen erőforrásokat a velük végzett munka után.
+A szükségtelen díjak elkerülése érdekében mindenképpen törölje a felesleges erőforrásokat, miután végzett velük.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. Navigáljon a már nem szükséges SQL-adatbázishoz vagy rugalmas készlethez.
-1. Az **Áttekintés** menüben válassza ki az erőforrás törlésének lehetőségét.
+1. Keresse meg azt az SQL-adatbázist vagy rugalmas készletet, amelyre már nincs szüksége.
+1. Az Áttekintés **menüben** válassza az erőforrás törlésére vonatkozó lehetőséget.
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -421,6 +421,6 @@ A szükségtelen költségek elkerülése érdekében ne felejtse el törölni a
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a karbantartási időszakokról: [karbantartási időszak (előzetes verzió)](maintenance-window.md).
-- További információ: karbantartási időszak – [Gyakori kérdések](maintenance-window-faq.yml).
-- A teljesítmény optimalizálásával kapcsolatos további tudnivalókért lásd: [monitorozás és teljesítmény finomhangolása Azure SQL Database és az Azure SQL felügyelt példányain](monitor-tune-overview.md).
+- További információ a karbantartási időszakról: [Karbantartási időszak (előzetes verzió)](maintenance-window.md).
+- További információ: Karbantartási [időszak – gyakori kérdések.](maintenance-window-faq.yml)
+- További információ a teljesítmény optimalizálásáról: Monitorozás és teljesítmény-finomhangolás a Azure SQL Database [és Azure SQL Managed Instance.](monitor-tune-overview.md)

@@ -14,12 +14,12 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d8400eb051c09fac4cb88863ad2fac12d2ca0a1b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d9754bb1390e242b12944b0b59595d4a4d46af33
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789860"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873576"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Rövid útmutató: Azure értesítési központ létrehozása az Azure CLI használatával
 
@@ -48,7 +48,7 @@ az group create --name spnhubrg --location eastus
 
 1. Hozzon létre egy névteret az értesítési központokhoz.
 
-   A névtér egy vagy több központot tartalmaz, és a névnek egyedinek kell lennie az összes Azure-előfizetésben, és legalább hat karakter hosszúságúnak kell lennie. Egy név rendelkezésre állásának ellenőrzéshez használja az [az notification-hub namespace check-availability](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-check-availability) parancsot.
+   A névtér egy vagy több központot tartalmaz, és a névnek egyedinek kell lennie az összes Azure-előfizetésben, és legalább hat karakter hosszúságúnak kell lennie. Egy név rendelkezésre állásának ellenőrzéshez használja az [az notification-hub namespace check-availability](/cli/azure/notification-hub/namespace#az_notification_hub_namespace_check-availability) parancsot.
 
    ```azurecli
    az notification-hub namespace check-availability --name spnhubns
@@ -69,7 +69,7 @@ az group create --name spnhubrg --location eastus
    }
    ```
 
-   Figyelje meg az Azure CLI-válasz második sorát: `"isAvailable": true` . Ez a sor beolvassa, ha a névtérhez megadott kívánt név `false` nem érhető el. Miután megerősítette a név rendelkezésre állását, futtassa [az az notification-hub namespace create](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-create) parancsot a névtér létrehozásához.  
+   Figyelje meg az Azure CLI-válasz második sorát: `"isAvailable": true` . Ez a sor beolvassa, ha a névtérhez megadott kívánt név `false` nem érhető el. Miután megerősítette a név rendelkezésre állását, futtassa [az az notification-hub namespace create](/cli/azure/notification-hub/namespace#az_notification_hub_namespace_create) parancsot a névtér létrehozásához.  
 
    ```azurecli
    az notification-hub namespace create --resource-group spnhubrg --name spnhubns  --location eastus --sku Free
@@ -85,14 +85,14 @@ az group create --name spnhubrg --location eastus
    The specified service namespace is invalid.
    ```
 
-   Ha az ön által kipróbált név nem sikerült, válasszon egy másik nevet az új névtérnek, és futtassa újra a `az notification-hub namespace create` parancsot.
+   Ha az első kipróbált név nem sikerült, válasszon egy másik nevet az új névtérnek, és futtassa újra a `az notification-hub namespace create` parancsot.
 
    > [!NOTE]
    > Ebben a lépésben le kell cserélnie a paraméter értékét az ebben a rövid útmutatóban másolt `--namespace` Azure CLI-parancsokban.
 
-2. Le kell szereznie a névterek listáját.
+2. Lekért névterek listája.
 
-   Az új névtér részleteinek megtekintése az [az notification-hub namespace list paranccsal.](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-list) A paraméter megadása nem kötelező, ha egy előfizetés összes `--resource-group` névterét meg szeretné látni.
+   Az új névtér részleteinek megtekintése az [az notification-hub namespace list paranccsal.](/cli/azure/notification-hub/namespace#az_notification_hub_namespace_list) A paraméter megadása nem kötelező, ha egy előfizetés összes `--resource-group` névterét meg szeretné látni.
 
    ```azurecli
    az notification-hub namespace list --resource-group spnhubrg
@@ -102,7 +102,7 @@ az group create --name spnhubrg --location eastus
 
 1. Hozza létre az első értesítési központot.
 
-   Mostantól egy vagy több értesítési központ is létre lehet hozva az új névtérben. Az [értesítési központ létrehozásához futtassa az az notification-hub create](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-create) parancsot.
+   Mostantól egy vagy több értesítési központ is létre lehet hozva az új névtérben. Az [értesítési központ létrehozásához futtassa az az notification-hub create](/cli/azure/notification-hub#az_notification_hub_create) parancsot.
 
    ```azurecli
    az notification-hub create --resource-group spnhubrg --namespace-name spnhubns --name spfcmtutorial1nhub --location eastus --sku Free
@@ -116,9 +116,9 @@ az group create --name spnhubrg --location eastus
    az notification-hub create --resource-group spnhubrg --namespace-name spnhubns --name mysecondnhub --location eastus --sku Free
    ```
 
-3. Szerezze be az értesítési központok listáját.
+3. Az értesítési központok listájának leküldése.
 
-   Az Azure CLI minden végrehajtott paranccsal sikert vagy hibaüzenetet ad vissza; Az értesítési központok listájának lekérdezése azonban már igen. Az [az notification-hub list](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-list) parancs erre a célra lett tervezve.
+   Az Azure CLI minden végrehajtott paranccsal egy sikert vagy hibaüzenetet ad vissza; Az értesítési központok listájának lekérdezése azonban nem kérdés. Az [az notification-hub list](/cli/azure/notification-hub#az_notification_hub_list) parancs erre a célra lett tervezve.
 
    ```azurecli
    az notification-hub list --resource-group spnhubrg --namespace-name spnhubns --output table
@@ -126,7 +126,7 @@ az group create --name spnhubrg --location eastus
 
 ## <a name="work-with-access-policies"></a>Hozzáférési szabályzatok elérése
 
-1. Az Azure Notification Hubs közös [hozzáférésű jogosultságok biztonságát](./notification-hubs-push-notification-security.md) használja hozzáférési szabályzatok használatával. Az értesítési központ létrehozásakor két szabályzat jön létre automatikusan. A szabályzatok kapcsolati sztringjére a leküldéses értesítések konfigurálása érdekében van szükség. Az [az notification-hub authorization-rule list parancs](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) felsorolja a szabályzatok nevét és azok erőforráscsoportját.
+1. Az Azure Notification Hubs közös [hozzáférésű jogosultságaláírás-biztonságot használ](./notification-hubs-push-notification-security.md) hozzáférési szabályzatok használatával. Az értesítési központ létrehozásakor automatikusan két szabályzat jön létre. A szabályzatok kapcsolati sztringjére a leküldéses értesítések konfigurálása érdekében van szükség. Az [az notification-hub authorization-rule list parancs](/cli/azure/notification-hub/authorization-rule#az_notification_hub_authorization-rule-list) felsorolja a szabályzatok nevét és azok erőforráscsoportját.
 
    ```azurecli
    az notification-hub authorization-rule list --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --output table
@@ -135,13 +135,13 @@ az group create --name spnhubrg --location eastus
    > [!IMPORTANT]
    > Ne használja a _DefaultFullSharedAccessSignature szabályzatot_ az alkalmazásban. Ez a szabályzat csak a háttérben használható. Csak hozzáférési `Listen` házirendeket használjon az ügyfélalkalmazásban.
 
-2. Ha további engedélyezési szabályokat szeretne létrehozni jelentéssel bíró névvel, létrehozhatja és testre szabhatja saját hozzáférési szabályzatát [az az notification-hub authorization-rule create paranccsal.](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-create) A paraméter a hozzárendelni kívánt engedélyek szóközrel tagolt `--rights` listája.
+2. Ha további engedélyezési szabályokat szeretne létrehozni jelentéssel bíró névvel, létrehozhatja és testre szabhatja saját hozzáférési szabályzatát [az az notification-hub authorization-rule create paranccsal.](/cli/azure/notification-hub/authorization-rule#az_notification_hub_authorization_rule_create) A paraméter a hozzárendelni kívánt engedélyek szóközrel tagolt `--rights` listája.
 
    ```azurecli
    az notification-hub authorization-rule create --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --name spnhub1key --rights Listen Manage Send
    ```
 
-3. Minden hozzáférési szabályzathoz két kulcskészlet és kapcsolati sztring van. Később szüksége lesz rájuk az [értesítési központ konfigurálásához.](./configure-notification-hub-portal-pns-settings.md) Egy új hozzáférési szabályzat kulcsának és kapcsolati sztringének Notification Hubs [az az notification-hub authorization-rule list-keys paranccsal.](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys)
+3. Minden hozzáférési szabályzathoz két kulcskészlet és kapcsolati sztring van. Később szüksége lesz rájuk az [értesítési központ konfigurálásához.](./configure-notification-hub-portal-pns-settings.md) Egy új hozzáférési szabályzat kulcsának és kapcsolati sztringének Notification Hubs [az az notification-hub authorization-rule list-keys paranccsal.](/cli/azure/notification-hub/authorization-rule#az_notification_hub_authorization_rule_list_keys)
 
    ```azurecli
    # query the keys and connection strings for DefaultListenSharedAccessSignature
@@ -154,7 +154,7 @@ az group create --name spnhubrg --location eastus
    ```
 
    > [!NOTE]
-   > A [Notification Hubs névtér és](/cli/azure/ext/notification-hub/notification-hub/namespace/authorization-rule#ext-notification-hub-az-notification-hub-namespace-authorization-rule-list-keys) az [értesítési központ](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) külön hozzáférési szabályzatokkal rendelkezik. Győződjön meg arról, hogy a megfelelő Azure CLI-hivatkozást használja a kulcsok és kapcsolati sztringek lekérdezéséhez.
+   > A [Notification Hubs névtér és](/cli/azure/notification-hub/namespace/authorization-rule#az_notification_hub_namespace_authorization_rule_list_keys) az [értesítési központ](/cli/azure/notification-hub/authorization-rule#az_notification_hub_authorization_rule_list_keys) külön hozzáférési szabályzatokkal rendelkezik. Győződjön meg arról, hogy a megfelelő Azure CLI-hivatkozást használja a kulcsok és kapcsolati sztringek lekérdezéséhez.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -170,10 +170,10 @@ az group delete --name spnhubrg
 
 * Ismerje meg az értesítési központok Azure CLI-val való kezelésének kiterjedt képességeit:
 
-  [Notification Hubs teljes referencialista](/cli/azure/ext/notification-hub/notification-hub)
+  [Notification Hubs teljes referencialista](/cli/azure/notification-hub)
 
-  [Notification Hubs-hivatkozáslista](/cli/azure/ext/notification-hub/notification-hub/namespace)
+  [Notification Hubs-hivatkozáslista](/cli/azure/notification-hub/namespace)
 
-  [Notification Hubs engedélyezési szabályok hivatkozási listája](/cli/azure/ext/notification-hub/notification-hub/authorization-rule)
+  [Notification Hubs engedélyezési szabályok hivatkozási listája](/cli/azure/notification-hub/authorization-rule)
 
-  [Notification Hubs hitelesítő adatok hivatkozási listája](/cli/azure/ext/notification-hub/notification-hub/credential)
+  [Notification Hubs hitelesítő adatok hivatkozási listája](/cli/azure/notification-hub/credential)

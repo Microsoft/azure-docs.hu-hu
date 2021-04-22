@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 284ef8de1c672fdc0a5bb1a996a3446010253f57
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 64b9ce78f05e1c8d14317f33f21758a86baeabd6
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816790"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869184"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 A Azure File Sync központosíthatja a szervezet fájlmegosztását a Azure Files-ban, miközben a helyszíni fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását is biztosítja. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -88,7 +88,7 @@ Javasoljuk, hogy a jelen cikkben leírt lépések Azure Files előtt olvassa el 
 
     A terminálon megjelenő utasítások alapján végezze el a hitelesítési folyamatot.
 
-1. Telepítse az [az filesync](/cli/azure/ext/storagesync/storagesync) Azure CLI-bővítményt.
+1. Telepítse az [az filesync](/cli/azure/storagesync) Azure CLI-bővítményt.
 
    ```azurecli
    az extension add --name storagesync
@@ -147,7 +147,7 @@ Kövesse az utasításokat a Azure Portal PowerShellben.
 ---
 
 ## <a name="deploy-the-storage-sync-service"></a>A Társzinkronizálási szolgáltatás üzembe helyezése 
-A tárfiók Azure File Sync a Storage **Sync** Service-erőforrásnak a kiválasztott előfizetés erőforráscsoportba való elhelyezésével kezdődik. Javasoljuk, hogy csak néhányat kiépítsen ezek közül. Megbízhatósági kapcsolatot fog létrehozni a kiszolgálók és az erőforrás között, és egy kiszolgáló csak egy Szinkronizálási szolgáltatásban regisztrálható. Ezért ajánlott annyi tárhelyszinkronizálási szolgáltatást üzembe helyezni, amennyit a kiszolgálók csoportjainak külön-külön kell használnia. Ne feledje, hogy a különböző tárolószinkronizálási szolgáltatások kiszolgálói nem szinkronizálhatóak egymással.
+A tárfiók Azure File Sync a Storage **Sync** Service-erőforrásnak a kiválasztott előfizetés erőforráscsoportba való elhelyezésével kezdődik. Javasoljuk, hogy csak néhányat kiépítsen ezek közül. Megbízhatósági kapcsolatot fog létrehozni a kiszolgálók és az erőforrás között, és egy kiszolgáló csak egy Szinkronizálási szolgáltatásban regisztrálható. Ezért ajánlott annyi tárhelyszinkronizálási szolgáltatást üzembe helyezni, amennyire a kiszolgálók csoportjainak külön-különülése szükséges. Ne feledje, hogy a különböző tárolószinkronizálási szolgáltatások kiszolgálói nem szinkronizálhatóak egymással.
 
 > [!Note]
 > A társzinkronizálási szolgáltatás örökli a hozzáférési engedélyeket az előfizetéstől és az üzembe helyezett erőforráscsoporttól. Javasoljuk, hogy gondosan ellenőrizze, hogy ki férhet hozzá. Az írási hozzáféréssel rendelkezik entitások elkezdheti szinkronizálni az új fájlkészleteket az ebben a társzinkronizálási szolgáltatásban regisztrált kiszolgálókról, és az adatok a számukra elérhető Azure-tárolóba áramlnak.
@@ -224,7 +224,7 @@ Az Azure File Sync ügynök egy letölthető csomag, amely lehetővé teszi a Wi
 Az ügynököt a [Microsoft letöltőközpontból töltheti le.](https://go.microsoft.com/fwlink/?linkid=858257) Ha a letöltés befejeződött, kattintson duplán az MSI-csomagra a Azure File Sync telepítéséhez.
 
 > [!Important]  
-> Ha feladatátvevő fürthöz Azure File Sync használni, a Azure File Sync ügynököt a fürt minden csomópontjára telepíteni kell. A fürt minden csomópontját regisztrálni kell, hogy működjön Azure File Sync.
+> Ha feladatátvevő fürthöz Azure File Sync használni, a Azure File Sync ügynököt a fürt minden csomópontjára telepíteni kell. A fürt minden csomópontját regisztrálni kell a Azure File Sync.
 
 javasoljuk, hogy tegye a következőket:
 - A hibaelhárítás és a kiszolgáló karbantartásának egyszerűsítése érdekében hagyja meg az alapértelmezett telepítési útvonalat (C:\Program Files\Azure\StorageSyncAgent).
@@ -277,7 +277,7 @@ Kövesse az utasításokat a Azure Portal PowerShellben.
 A Windows Server regisztrálásával a Társzinkronizálási szolgáltatásra megbízhatósági kapcsolatot hoz létre a kiszolgáló (vagy fürt) és a Társzinkronizálási szolgáltatás között. A kiszolgáló csak egy Társzinkronizálási szolgáltatásra regisztrálható és az ugyanahhoz a Társzinkronizálási szolgáltatáshoz társított kiszolgálókkal és Azure-fájlmegosztásokkal képes szinkronizálni.
 
 > [!Note]
-> A kiszolgálóregisztráció az Ön Azure-beli hitelesítő adatait használja a Társzinkronizálási szolgáltatás és a Windows Server közötti megbízhatósági kapcsolat létrehozásához, ezt követően azonban a kiszolgáló létrehozza és használja a saját identitását, amely érvényes addig, amíg a kiszolgáló regisztrálva marad, és a jelenlegi közös hozzáférésű jogosultságkódot (Storage SAS) érvényes. A kiszolgáló regisztrációjának megszüntetése után nem lehet új SAS-jogkivonatot kiadni a kiszolgálónak, így a kiszolgáló nem férhet hozzá az Azure-fájlmegosztáshoz, és nem tudja leállítani a szinkronizálást.
+> A kiszolgálóregisztráció az Azure-beli hitelesítő adatait használja a Társzinkronizálási szolgáltatás és a Windows Server közötti megbízhatósági kapcsolat létrehozásához, ezt követően azonban a kiszolgáló létrehozza és használja a saját identitását, amely addig érvényes, amíg a kiszolgáló regisztrálva marad, és a jelenlegi közös hozzáférésű jogosultságkódot (Storage SAS) érvényes. A kiszolgáló regisztrációjának megszüntetése után nem lehet új SAS-jogkivonatot kiadni a kiszolgálónak, így a kiszolgáló nem férhet hozzá az Azure-fájlmegosztáshoz, és nem tudja leállítani a szinkronizálást.
 
 A kiszolgálót regisztráló rendszergazdának az adott  szinkronizálási szolgáltatás tulajdonosi vagy közreműködői felügyeleti szerepkörének kell lennie.  Ez a Társzinkronizálási szolgáltatás **Access Control (IAM)** Azure Portal konfigurálható.
 
@@ -380,7 +380,7 @@ New-AzStorageSyncCloudEndpoint `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Hozzon létre egy új szinkronizálási csoportot az [az storagesync sync-group](/cli/azure/ext/storagesync/storagesync/sync-group#ext-storagesync-az-storagesync-sync-group-create) paranccsal.  Ha az összes PARANCSSORi felületi parancshoz alapértelmezett erőforráscsoportot használ, használja [az az configure parancsot.](/cli/azure/reference-index#az_configure)
+Hozzon létre egy új szinkronizálási csoportot az [az storagesync sync-group](/cli/azure/storagesync/sync-group#az_storagesync_sync_group_create) paranccsal.  Ha az összes PARANCSSORi felületi parancshoz alapértelmezett erőforráscsoportot használ, használja [az az configure parancsot.](/cli/azure/reference-index#az_configure)
 
 ```azurecli
 az storagesync sync-group create --resource-group myResourceGroupName \
@@ -388,7 +388,7 @@ az storagesync sync-group create --resource-group myResourceGroupName \
                                  --storage-sync-service myStorageSyncServiceName \
 ```
 
-Új felhővégpont létrehozásához használja az [az storagesync sync-group cloud-endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/cloud-endpoint#ext-storagesync-az-storagesync-sync-group-cloud-endpoint-create) parancsot.
+Új felhővégpont létrehozásához használja az [az storagesync sync-group cloud-endpoint](/cli/azure/storagesync/sync-group/cloud-endpoint#az_storagesync_sync_group_cloud_endpoint_create) parancsot.
 
 ```azurecli
 az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup \
@@ -420,7 +420,7 @@ A **Kiszolgálói végpont felvétele** panelen adja meg a következő informác
 - **Elérési** út: A szinkronizálási csoport részeként szinkronizálni kell a Windows Server elérési útja.
 - **Felhőbeli rétegezés:** A felhőbeli rétegezés engedélyezésére vagy letiltására való váltás. A felhőbeli rétegezéssel a ritkán használt vagy elért fájlok rétegként is Azure Files.
 - **Szabad kötetterület:** A kiszolgálóvégpontot tároló köteten lefoglalni szükséges szabad terület. Ha például a kötet szabad területének 50%-a van beállítva egy olyan köteten, amely egyetlen kiszolgálóvégponttal rendelkezik, akkor az adatok mennyiségének körülbelül a fele egy Azure Files. Függetlenül attól, hogy a felhőbeli rétegezés engedélyezve van-e, az Azure-fájlmegosztás mindig rendelkezik a szinkronizálási csoportban található adatok teljes másolattal.
-- **Kezdeti letöltési mód:** Ez egy választható lehetőség, az ügynök 11-es verziójától kezdve, amely hasznos lehet, ha fájlok vannak az Azure-fájlmegosztásban, de a kiszolgálón nem. Ilyen helyzet lehet például, ha olyan kiszolgálóvégpontot hoz létre, amely egy másik fiókiroda-kiszolgálót ad hozzá egy szinkronizálási csoporthoz, vagy ha vészhelyreállítást vezet be egy meghibásodott kiszolgálóra. Ha a felhőbeli rétegezés engedélyezve van, az alapértelmezett beállítás csak a névtér visszahívása, fájltartalom nélkül. Ez akkor lehet hasznos, ha úgy véli, hogy inkább a felhasználói hozzáférési kérelmeknek kell eldönteniük, hogy milyen fájltartalmat kell visszahívni a kiszolgálóra. Ha a felhőbeli rétegezés le van tiltva, az alapértelmezett beállítás az, hogy először a névtér lesz letöltve, majd a rendszer az utolsó módosítás időbélyege alapján visszahívja a fájlokat, amíg el nem érik a helyi kapacitást. A kezdeti letöltési módot azonban módosíthatja csak névtérre. Harmadik mód csak akkor használható, ha a felhőbeli rétegezés le van tiltva ehhez a kiszolgálóvégponthoz. Ezzel a móddal elkerülheti a névtér előhívását. A fájlok csak akkor jelennek meg a helyi kiszolgálón, ha volt lehetőség a teljes letöltésre. Ez a mód akkor hasznos, ha például egy alkalmazásnak teljes fájlokra van szüksége, és nem tűri a rétegzett fájlokat a névterében.
+- **Kezdeti letöltési mód:** Ez egy választható lehetőség, az ügynök 11-es verziójától kezdve, amely hasznos lehet, ha fájlok vannak az Azure-fájlmegosztásban, de a kiszolgálón nem. Ilyen helyzet lehet például, ha olyan kiszolgálóvégpontot hoz létre, amely egy másik fiókiroda-kiszolgálót ad hozzá egy szinkronizálási csoporthoz, vagy ha vészhelyreállítást vezet be egy meghibásodott kiszolgálóra. Ha a felhőbeli rétegezés engedélyezve van, az alapértelmezett beállítás csak a névtér visszahívása, fájltartalom nélkül. Ez akkor lehet hasznos, ha úgy gondolja, hogy inkább a felhasználói hozzáférési kérelmeknek kell eldönteniük, hogy milyen fájltartalmat kell visszahívni a kiszolgálóra. Ha a felhőbeli rétegezés le van tiltva, az alapértelmezett beállítás az, hogy először a névtér lesz letöltve, majd a rendszer az utolsó módosítás időbélyege alapján visszahívja a fájlokat, amíg el nem érik a helyi kapacitást. A kezdeti letöltési módot azonban módosíthatja csak névtérre. Harmadik mód csak akkor használható, ha a felhőbeli rétegezés le van tiltva ehhez a kiszolgálóvégponthoz. Ezzel a móddal elkerülheti a névtér előhívását. A fájlok csak akkor jelennek meg a helyi kiszolgálón, ha volt lehetőség a teljes letöltésre. Ez a mód akkor hasznos, ha például egy alkalmazásnak teljes fájlokra van szüksége, és nem tűri a rétegzett fájlokat a névterében.
 
 A kiszolgálóvégpont hozzáadásához válassza a **Létrehozás lehetőséget.** A fájlok mostantól szinkronban vannak az Azure-fájlmegosztás és a Windows Server között. 
 
@@ -464,7 +464,7 @@ if ($cloudTieringDesired) {
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Hozzon létre egy új kiszolgálóvégpontot az [az storagesync sync-group server-endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/server-endpoint#ext-storagesync-az-storagesync-sync-group-server-endpoint-create) paranccsal.
+Hozzon létre egy új kiszolgálóvégpontot az [az storagesync sync-group server-endpoint](/cli/azure/storagesync/sync-group/server-endpoint#az_storagesync_sync_group_server_endpoint_create) paranccsal.
 
 ```azurecli
 # Create a new sync group server endpoint 
@@ -526,16 +526,16 @@ A teljes fájlhűség és hozzáférés-vezérlési lista (ACL) megőrzése mell
 Ha nem rendelkezik további tárhellyel a kezdeti bevetéshez, és szeretné csatolni a meglévő megosztásokat, előre átveheti az adatokat az Azure-fájlmegosztások között. Ez a megközelítés akkor és csak akkor javasolt, ha elfogadja az állásidőt, és egyáltalán nem garantálja a kiszolgálómegosztások adatváltozását a kezdeti betöltés során. 
  
 1. Győződjön meg arról, hogy a kiszolgálókon található adatok nem változnak az adatbehozás folyamata során.
-1. Az Azure-fájlmegosztások előzetes átvitele a kiszolgálói adatokkal bármilyen adatátviteli eszköz használatával az SMB-n keresztül. Például Robocopy. Rest-hez is használhatja az AzCopyt. Az ACL időbélyegek és attribútumok megőrzéséhez az AzCopyt használja a megfelelő kapcsolókhoz.
+1. Az Azure-fájlmegosztások előzetes átvitele a kiszolgálói adatokkal bármilyen adatátviteli eszköz használatával az SMB-n keresztül. Például Robocopy. Rest-hez is használhatja az AzCopyt. Az ACL időbélyegek és attribútumok megőrzéséhez mindenképpen használja az AzCopyt a megfelelő kapcsolókhoz.
 1. Hozzon Azure File Sync a meglévő megosztásokra mutasson a kívánt kiszolgálóvégpontokkal.
 1. Hagyja, hogy a szinkronizálás befejezze az egyeztetési folyamatot az összes végponton. 
 1. Az egyeztetés befejezése után megnyithatja a megosztásokat a módosításokhoz.
  
 Jelenleg az elő- seeding megközelítésnek van néhány korlátja: 
 - A kiszolgáló adatváltozásai, mielőtt a szinkronizálási topológia teljesen működőképes és fut, ütközéseket okozhat a kiszolgálóvégponton.  
-- A felhőbeli végpont létrehozása után a Azure File Sync a kezdeti szinkronizálás megkezdése előtt futtat egy folyamatot, amely észleli a fájlokat a felhőben. A folyamat befejezéséhez szükséges idő a különböző tényezőktől függ, például a hálózati sebességtől, a rendelkezésre álló sávszélességtől, valamint a fájlok és mappák számától. Az előzetes kiadás hozzávetőleges becsléséhez az észlelési folyamat körülbelül 10 fájl/másodpercben fut.  Ezért még ha az előzetes adatokat gyorsan is le is futtatja, a teljes mértékben futó rendszer teljes ideje jelentősen hosszabb lehet, ha az adatokat előre feltöltik a felhőbe.
+- A felhőbeli végpont létrehozása után a Azure File Sync a kezdeti szinkronizálás megkezdése előtt futtat egy folyamatot, amely észleli a fájlokat a felhőben. A folyamat befejezéséhez szükséges idő a különböző tényezőktől függ, például a hálózati sebességtől, a rendelkezésre álló sávszélességtől, valamint a fájlok és mappák számától. Az előzetes kiadás hozzávetőleges becsléséhez az észlelési folyamat körülbelül 10 fájl/másodpercben fut.  Ezért még ha az előzetes adatokat gyorsan is le is futtatják, a teljes rendszer teljes futási ideje jelentősen hosszabb lehet, ha az adatok előre át lesznek feltöltve a felhőbe.
 
-## <a name="self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service"></a>Önkiszolgáló visszaállítás korábbi verziók és VSS segítségével (Kötet árnyékmásolata szolgáltatás)
+## <a name="self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service"></a>Önkiszolgáló visszaállítás a korábbi verziók és a VSS segítségével (Kötet árnyékmásolata szolgáltatás)
 
 > [!IMPORTANT]
 > Az alábbi információk csak a storage sync agent 9-es (vagy újabb) verziójával használhatók. A 9-nél alacsonyabb verziók nem fogják a StorageSyncSelfService parancsmagokat.
@@ -626,7 +626,7 @@ DFS-R üzemelő példány áttelepítése a Azure File Sync:
 1. A DFS-R kivezetve.
 1. A felhőbeli rétegezés most már bármilyen kiszolgálóvégponton engedélyezhető.
 
-További információ: Azure File Sync és elosztott fájlrendszer [(DFS)](file-sync-planning.md#distributed-file-system-dfs).
+További információ: Azure File Sync [és elosztott fájlrendszer (DFS)](file-sync-planning.md#distributed-file-system-dfs).
 
 ## <a name="next-steps"></a>Következő lépések
 - [Kiszolgálóvégpont hozzáadása vagy Azure File Sync eltávolítása](file-sync-server-endpoint.md)

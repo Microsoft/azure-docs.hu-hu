@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/06/2021
 ms.author: mbullwin
-ms.openlocfilehash: f2e227b2a589955191a2e602495cf0ffbb3f6d8b
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: e85f54beb9a3d4203e527ed9c8ce5582b6a2f5b0
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107732587"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107879442"
 ---
 A Javához anomáliadetektor ügyféloldali kódtár első lépések. Kövesse az alábbi lépéseket a csomag telepítéséhez, és kezdje el használni a szolgáltatás által biztosított algoritmusokat. Az új többváltozós anomáliadetektálási API-k lehetővé teszik a fejlesztők számára a fejlett AI integrálását a metrikák csoportjaiból származó anomáliák észleléséhez anélkül, hogy gépi tanulási ismeretekre vagy címkével jelölt adatokra lenne szükség. A különböző jelek közötti függőségeket és korrelációkat a rendszer automatikusan kulcsfontosságú tényezőknek számítja. Ez segít proaktív módon megvédeni az összetett rendszereket a hibáktól.
 
@@ -23,7 +23,7 @@ Használja a anomáliadetektor java-ügyféloldali kódtárat a következőre:
 * Ha egyetlen idősor sem árul el sokat, és minden jelet meg kell néznie a probléma észlelése érdekében.
 * Drága fizikai eszközök predikatív karbantartása több tíz vagy több száz különböző típusú érzékelővel, amelyek a rendszer állapotának különböző aspektusait mérik.
 
-[Kódtár forráskódja](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/anomalydetector/azure-ai-anomalydetector)  |  [Csomag (Maven)](https://repo1.maven.org/maven2/com/azure/azure-ai-anomalydetector/3.0.0-beta.2/)
+[Kódtár forráskódja](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/anomalydetector/azure-ai-anomalydetector)  |  [Csomag (Maven)](https://repo1.maven.org/maven2/com/azure/azure-ai-anomalydetector/3.0.0-beta.2/)  |  [Mintakód](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/src/samples/java/com/azure/ai/anomalydetector/MultivariateSample.java)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,13 +40,13 @@ Használja a anomáliadetektor java-ügyféloldali kódtárat a következőre:
 
 Ez a rövid útmutató a Gradle függőségkezelőt használja. További ügyféloldali kódtár-információkat a [Maven központi adattárában talál.](https://search.maven.org/artifact/com.azure/azure-ai-metricsadvisor)
 
-Egy konzolablakban (például cmd, PowerShell vagy Bash) hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá. 
+Egy konzolablakban (például cmd, PowerShell vagy Bash) hozzon létre egy új könyvtárat az alkalmazáshoz, és keresse meg. 
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Futtassa `gradle init` a parancsot a munkakönyvtárból. Ez a parancs alapvető buildfájlokat hoz létre a Gradle-hez, beleértve a *build.gradle.kts* fájlt, amelyet futásidőben használ az alkalmazás létrehozásához és konfigurálásához.
+Futtassa `gradle init` a parancsot a munkakönyvtárból. Ez a parancs alapvető buildfájlokat hoz létre a Gradle-hez, beleértve a *build.gradle.kts* fájlt is, amelyet futásidőben az alkalmazás létrehozásához és konfigurálásához használ a rendszer.
 
 ```console
 gradle init --type basic
@@ -66,7 +66,7 @@ dependencies {
 
 ### <a name="create-a-java-file"></a>Java-fájl létrehozása
 
-Hozzon létre egy mappát a mintaalkalmazáshoz. Futtassa a következő parancsot a munkakönyvtárból:
+Hozzon létre egy mappát a mintaalkalmazáshoz. Futtassa a következő parancsot a munkakönyvtárban:
 
 ```console
 mkdir -p src/main/java
@@ -110,11 +110,11 @@ String key = "YOUR_API_KEY";
 String endpoint = "YOUR_ENDPOINT";
 ```
 
- A többváltozós ANOMÁLIADETEKTOR való használathoz az észlelés előtt be kell betanítanunk a saját modellünket. A betanításhoz használt adatok idősorozatok, és minden idősornak CSV formátumúnak kell lennie két oszloppal, időbélyegzővel és értékkel. Az idősorokat egyetlen zip-fájlba kell tömörítenünk, és fel kell tölteni az [Azure Blob Storage-ba.](../../../../storage/blobs/storage-blobs-introduction.md) Alapértelmezés szerint a fájlnév az idősor változóját képviseli. Azt is meta.js, hogy a zip-fájlban egy további fájlnevet is fel kell venni, ha azt szeretné, hogy a változó neve eltér a .zip fájl nevétől. Miután létrehoztunk egy SAS- (közös hozzáférésű [jogosultságú) URL-címet,](../../../../storage/common/storage-sas-overview.md)a zip-fájl URL-címét használjuk a betanításhoz.
+ A többváltozós ANOMÁLIADETEKTOR való használathoz az észlelés előtt be kell betanítanunk a saját modellünket. A betanításhoz használt adatok idősorkötetek, és minden idősornak CSV formátumúnak kell lennie két oszloppal, időbélyegzővel és értékkel. Az idősorokat egyetlen zip-fájlba kell tömörítenünk, és fel kell tölteni az [Azure Blob Storage-ba.](../../../../storage/blobs/storage-blobs-introduction.md) Alapértelmezés szerint a fájlnév az idősor változóját képviseli. Azt is meta.js, hogy a zip-fájlban egy további fájlnevet is fel kell venni, ha azt szeretné, hogy a változó neve eltér a .zip fájl nevétől. Miután létrehoztunk [egy BLOB SAS-url-címet (közös](../../../../storage/common/storage-sas-overview.md)hozzáférésű jogosultságok) URL-címet, a zip-fájl URL-címét használjuk a betanításhoz.
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek a következőt mutatják be a anomáliadetektor ügyféloldali kódtárával Node.js:
+Ezek a kódrészletek azt mutatják be, hogyan lehet a következőket anomáliadetektor ügyféloldali kódtárával Node.js:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Modell betanítása](#train-a-model)
@@ -124,7 +124,7 @@ Ezek a kódrészletek a következőt mutatják be a anomáliadetektor ügyfélol
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Objektum `anomalyDetectorClient` példányosodása a végponttal és a hitelesítő adatokkal.
+Objektum példányosodása a végponttal és a `anomalyDetectorClient` hitelesítő adatokkal.
 
 ```java
 HttpHeaders headers = new HttpHeaders()
@@ -151,9 +151,9 @@ AnomalyDetectorClient anomalyDetectorClient = new AnomalyDetectorClientBuilder()
 
 ### <a name="construct-a-model-result-and-train-model"></a>Modell eredményének és betanításának eredménye
 
-Először létre kell hoznunk egy modellkérést. Ügyeljen arra, hogy a kezdési és a záró időpont igazodjon az adatforráshoz.
+Először létre kell hoznunk egy modellkérést. Győződjön meg arról, hogy a kezdési és a záró időpont igazodik az adatforráshoz.
 
- A többváltozós ANOMÁLIADETEKTOR való használathoz az észlelés előtt be kell betanítanunk a saját modellünket. A betanításhoz használt adatok idősorkötetek, és minden idősornak CSV formátumúnak kell lennie két oszloppal, időbélyegzővel és értékkel. Az idősorokat egyetlen zip-fájlba kell tömörítenünk, és fel kell tölteni az [Azure Blob Storage-ba.](../../../../storage/blobs/storage-blobs-introduction.md#blobs) Alapértelmezés szerint a fájlnév az idősor változóját képviseli. Azt is meta.js, hogy a zip-fájlban egy további fájlnevet is fel kell venni, ha azt szeretné, hogy a változó neve eltér a .zip fájl nevétől. Miután létrehoztunk egy SAS- (közös hozzáférésű [jogosultságú) URL-címet,](../../../../storage/common/storage-sas-overview.md)a zip-fájl URL-címét használjuk a betanításhoz.
+ A többváltozós ANOMÁLIADETEKTOR használata előtt be kell betanítanunk a saját modellünket. A betanításhoz használt adatok idősorkötetek, amelyek minden idősornak CSV formátumúnak kell lennie két oszloppal, időbélyegzővel és értékkel. Az idősorokat egyetlen zip-fájlba kell tömörítve feltölteni az [Azure Blob Storage-ba.](../../../../storage/blobs/storage-blobs-introduction.md#blobs) Alapértelmezés szerint a fájlnév az idősor változóját képviseli. Azt is meta.js, hogy a zip-fájlban egy további fájlnevet is fel kell venni, ha azt szeretné, hogy a változó neve eltér a .zip fájl nevétől. Miután létrehoztunk [egy BLOB SAS-url-címet (közös](../../../../storage/common/storage-sas-overview.md)hozzáférésű jogosultságú jogosultságok) URL-címet, a zip-fájl URL-címét használjuk a betanításhoz.
 
 ```java
 Path path = Paths.get("test-data.csv");
@@ -255,6 +255,8 @@ Az alkalmazást a következővel építheti fel:
 gradle build
 ```
 ### <a name="run-the-application"></a>Az alkalmazás futtatása
+
+A futtatása előtt hasznos lehet ellenőrizni a kódot a teljes [mintakóddal.](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/src/samples/java/com/azure/ai/anomalydetector/MultivariateSample.java)
 
 Futtassa az alkalmazást a következő `run` céllal:
 

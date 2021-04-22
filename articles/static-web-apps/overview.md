@@ -1,54 +1,54 @@
 ---
 title: Mi az Azure Static Web Apps?
-description: Az Azure statikus Web Apps legfontosabb funkciói és funkciói.
+description: A szolgáltatások legfontosabb funkciói Azure Static Web Apps.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: overview
 ms.date: 04/01/2021
 ms.author: cshoe
-ms.openlocfilehash: e81f0a9e4fc50cf0d80f2905b9328af3c721865c
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 945979daa3c766b737e5b312a6c14e60204a6a55
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166401"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874062"
 ---
-# <a name="what-is-azure-static-web-apps-preview"></a>Mi az Azure statikus Web Apps előzetes verzió?
+# <a name="what-is-azure-static-web-apps-preview"></a>Mi az Azure Static Web Apps előzetes verzió?
 
-Az Azure statikus Web Apps egy olyan szolgáltatás, amely automatikusan létrehozza és üzembe helyezi a teljes értékű webalkalmazásokat az Azure-ban egy adattárból.
+Azure Static Web Apps egy olyan szolgáltatás, amely automatikusan hoz létre és helyez üzembe teljes körű webalkalmazásokat az Azure-ban egy kódtárból.
 
-:::image type="content" source="media/overview/azure-static-web-apps-overview.png" alt-text="Az Azure statikus Web Apps áttekintése diagramja":::
+:::image type="content" source="media/overview/azure-static-web-apps-overview.png" alt-text="Azure Static Web Apps áttekintő diagram":::
 
-Az Azure statikus Web Apps munkafolyamata egy fejlesztői napi munkafolyamatra van szabva. Az alkalmazások a kód módosítása alapján vannak felépítve és telepítve.
+A Azure Static Web Apps munkafolyamata a fejlesztők napi munkafolyamatához van szabva. Az alkalmazások a kódváltozások alapján vannak felépítve és üzembe építve.
 
-Amikor létrehoz egy Azure statikus Web Apps-erőforrást, az Azure közvetlenül a GitHub vagy az Azure DevOps használatával felügyeli a választott ágakat. Minden alkalommal, amikor leküldi vagy elfogadja a pull-kérelmeket a figyelt ágra, a Build automatikusan elindul, és az alkalmazás és az API üzembe helyezése az Azure-ban történik.
+Amikor létrehoz egy Azure Static Web Apps erőforrást, az Azure közvetlenül a GitHubbal vagy az Azure DevOps használatával figyeli a választott ágat. Minden alkalommal, amikor leküldi a véglegesítéseket, vagy lekéréses kérelmeket fogad a figyelt ágba, a rendszer automatikusan futtat egy buildet, és üzembe helyez egy alkalmazást és egy API-t az Azure-ban.
 
-A statikus webalkalmazások általában olyan könyvtárak és keretrendszerek használatával készültek, mint például a szögletes, a reakciós, a karcsú, a Vue vagy a Blazer, ahol a kiszolgálóoldali megjelenítés nem szükséges. Ezek az alkalmazások HTML-, CSS-, JavaScript- és képobjektumokat tartalmaznak, és ezek alkotják az alkalmazást. A hagyományos webkiszolgálókkal ezeket az eszközöket a szükséges API-végpontok mellett egyetlen kiszolgáló szolgálja ki.
+A statikus webalkalmazások gyakran olyan kódtárak és keretrendszerek használatával készültek, mint az Angular, a React, a Svelte, a Vue vagy a Blazor, ahol a kiszolgálóoldali megjelenítés nem szükséges. Ezek az alkalmazások HTML-, CSS-, JavaScript- és képobjektumokat tartalmaznak, és ezek alkotják az alkalmazást. A hagyományos webkiszolgálók esetén ezeket az eszközöket egyetlen kiszolgáló szolgálja ki a szükséges API-végpontok mellett.
 
-A statikus Web Apps a statikus eszközöket egy hagyományos webkiszolgálótól választja el, és helyette a világ földrajzilag elosztott pontjairól szolgálnak. Ez az elosztás a fájlok sokkal gyorsabb szolgáltatását teszi lehetővé, mivel a fájlok fizikailag közelebb vannak a végfelhasználókhoz. Emellett az API-végpontok [kiszolgáló nélküli architektúrával](../azure-functions/functions-overview.md)vannak tárolva, így elkerülhető, hogy a teljes háttér-kiszolgálót egyszerre kelljen használni.
+A Static Web Apps a statikus eszközök elkülönülnek a hagyományos webkiszolgálótól, és ehelyett a világ földrajzilag elosztott pontjairól szolgálják ki őket. Ez az elosztás a fájlok sokkal gyorsabb szolgáltatását teszi lehetővé, mivel a fájlok fizikailag közelebb vannak a végfelhasználókhoz. Emellett az API-végpontok kiszolgáló [](../azure-functions/functions-overview.md)nélküli architektúrával vannak üzemeltetve, így nincs szükség teljes háttérkiszolgálóra.
 
 ## <a name="key-features"></a>A legfontosabb jellemzők
 
-- **Webes üzemeltetés** statikus tartalmakhoz, például HTML-, CSS-, JavaScript-és rendszerképekhez.
-- A Azure Functions által biztosított **integrált API** -támogatás.
-- **Az első osztályú GitHub és az Azure DevOps integrációja** , ahol a tárház megváltoztatja a trigger-és üzembe helyezési folyamatokat.
-- **Globálisan elosztott** statikus tartalom, amely közelebb helyezi a tartalmat a felhasználókhoz.
-- **Ingyenes SSL-tanúsítványok**, amelyek automatikusan megújulnak.
-- **Egyéni tartományok** , amelyek márkás testreszabásokat biztosítanak az alkalmazás számára.
-- **Zökkenőmentes biztonsági modell** fordított proxyval, ha olyan API-kat hív meg, amelyek nem igényelnek CORS-konfigurációt.
-- A Azure Active Directory, a Facebook, a Google, a GitHub és a Twitter **szolgáltatást használó hitelesítésszolgáltató integrációja** .
-- **Testreszabható engedélyezési szerepkör-definíció** és hozzárendelések.
-- A **háttér-útválasztási szabályok** lehetővé teszik a teljes körű irányítást a kiszolgált tartalom és útvonalak felett.
-- A lekéréses kérelmek által **generált átmeneti verziók** a közzététel előtt lehetővé teszik a hely előzetes verziójának kiadását.
+- **Webes üzemeltetés,** például HTML-, CSS-, JavaScript- és képtartalmakhoz használható.
+- **Integrált API-támogatás** a Azure Functions.
+- **Első osztályú GitHub- és Azure DevOps-integráció,** ahol az adattár változásai buildeket és üzembe helyezéseket aktiválnak.
+- **Globálisan elosztott statikus** tartalom, a tartalom közelebb kerül a felhasználókhoz.
+- **Ingyenes SSL-tanúsítványok,** amelyek automatikusan megújulnak.
+- **Egyéni tartományok** az alkalmazás márkajelzéses testreszabásához.
+- **Zökkenőmentes biztonsági modell** fordított proxyval AZ API-k hívhatóak, amelyekhez nincs szükség CORS-konfigurációra.
+- **A hitelesítésszolgáltató integrációja** a Azure Active Directory, a Facebookkal, a Google-sel, a GitHubbal és a Twittersel.
+- **Testre szabható engedélyezési szerepkör-definíciók** és -hozzárendelések.
+- **A háttér-útválasztási szabályok** lehetővé teszik a kiszolgált tartalom és útvonalak teljes vezérlését.
+- **Lekéréses kérelmeken** keresztül létrehozott átmeneti verziók, amelyek lehetővé teszik a webhely előzetes verzióit a közzététel előtt.
 
-## <a name="what-you-can-do-with-static-web-apps"></a>Mit tehet a statikus Web Apps
+## <a name="what-you-can-do-with-static-web-apps"></a>Mire használhatja a Static Web Apps
 
-- Hozzon létre **modern webalkalmazásokat** JavaScript-keretrendszerekkel és-tárakkal, például a [szögletes](getting-started.md?tabs=angular), a [reagálási](getting-started.md?tabs=react), a [karcsú](/learn/modules/publish-app-service-static-web-app-api/), a [Vue](getting-started.md?tabs=react)vagy a [Blazer](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) használatával webszerelvény-alkalmazások létrehozásához [Azure functions](apis.md) háttérrel.
-- **Statikus helyeket tehet közzé** olyan keretrendszerekkel, mint például a [Gatsby](publish-gatsby.md), a [Hugo](publish-hugo.md), a [VuePress](publish-vuepress.md).
-- **Webalkalmazások üzembe helyezése** olyan keretrendszerekkel, mint a [Next.js](deploy-nextjs.md) és a [Nuxt.js](deploy-nuxtjs.md).
+- **Modern webalkalmazásokat** hozhat létre JavaScript-keretrendszerekkel és kódtárakkal, például [az Angular,](getting-started.md?tabs=angular) [a React,](getting-started.md?tabs=react)a [](apis.md) [Svelte,](/learn/modules/publish-app-service-static-web-app-api/)a [Vue](getting-started.md?tabs=vue)vagy a [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) használatával WebAssembly-alkalmazások Azure Functions háttéralkalmazásokkal.
+- **Statikus webhelyeket tehet** közzé olyan keretrendszerekkel, mint a [Gatsby,](publish-gatsby.md) [a Mert,](publish-hugo.md)a [VuePress.](publish-vuepress.md)
+- **Webalkalmazások üzembe** helyezése olyan keretrendszerekkel, mintNext.js [és](deploy-nextjs.md) [Nuxt.js.](deploy-nuxtjs.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Az első statikus alkalmazás létrehozása](getting-started.md)
+> [Az első statikus alkalmazás összeállítása](getting-started.md)

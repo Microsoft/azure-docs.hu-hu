@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 97e589755602c14a11873fee5288ee8c6e24ba83
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: b3bbd8510c47831c9568bb10c62e2a5ca751902a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714285"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107863028"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Hálózatok biztonságos csatlakoztatása az Azure Monitorhoz az Azure Private Linkkel
 
@@ -73,12 +73,12 @@ A fenti ábrán a 10.0.1.x virtuális hálózat először csatlakozik az AMPLS1-
 > Zárásképpen: Az AMPLS beállítása minden olyan hálózatot érint, amely azonos DNS-zónával osztozik. A DNS-végpontleképezések felülbírálása érdekében ajánlott egyetlen privát végpontot beállítani egy társhálózaton (például egy központi virtuális hálózaton), vagy elkülönítani a hálózatokat DNS-szinten (például DNS-továbbítók vagy teljesen különálló DNS-kiszolgálók használatával).
 
 ### <a name="hub-spoke-networks"></a>Küllős hálózatok
-A küllős topológiák úgy kerülik el a DNS-felülbírálások kérdését, hogy Private Link-t a központi (fő) virtuális hálózaton ják meg ahelyett, hogy külön-külön külön Private Link külön-külön egy virtuális hálózathoz. Ez a beállítás különösen akkor hasznos, Azure Monitor küllő virtuális hálózatok által használt összes erőforrás meg van osztva. 
+A küllős topológiák úgy kerülik el a DNS-felülbírálások elkerülését, hogy külön-külön be Private Link-t a központi (fő) virtuális hálózatra, ahelyett, hogy külön Private Link külön-külön be Private Link virtuális hálózatokhoz. Ez a beállítás különösen akkor hasznos, Azure Monitor küllő virtuális hálózatok által használt összes erőforrás meg van osztva. 
 
 ![Küllős-egyszeres PE](./media/private-link-security/hub-and-spoke-with-single-private-endpoint.png)
 
 > [!NOTE]
-> Előfordulhat, hogy szándékosan különálló privát kapcsolatokat szeretne létrehozni a küllő virtuális hálózatokhoz, például hogy az egyes virtuális hálózatok csak korlátozott számú monitorozási erőforráshoz férnek hozzá. Ilyen esetekben dedikált privát végpontot és AMPLS-t hozhat létre mindegyik virtuális hálózathoz, de azt is ellenőriznie kell, hogy nem osztoznak-e ugyanazon DNS-zónákon a DNS-felülbírálások elkerülése érdekében.
+> Előfordulhat, hogy szándékosan különálló privát kapcsolatokat szeretne létrehozni a küllő virtuális hálózatokhoz, például hogy az egyes virtuális hálózatok csak korlátozott számú monitorozási erőforráshoz férnek hozzá. Ilyen esetekben dedikált privát végpontot és AMPLS-t hozhat létre az egyes virtuális hálózatokhoz, de azt is ellenőriznie kell, hogy nem osztoznak-e ugyanazon a DNS-zónán a DNS-felülbírálások elkerülése érdekében.
 
 
 ### <a name="consider-limits"></a>A korlátok figyelembe vere
@@ -113,7 +113,7 @@ Először hozzon létre egy Azure Monitor Private Link Scope erőforrást.
 
 Az Azure Monitor (Log Analytics-munkaterületek és Application Insights összetevők) csatlakoztatása az AMPLS-hez.
 
-1. A Azure Monitor Private Link a bal **Azure Monitor válassza** az Erőforrások elemet. Kattintson a **Hozzáadás gombra.**
+1. A saját Azure Monitor Private Link válassza az Erőforrások **Azure Monitor elemet** a bal oldali menüben. Kattintson a **Hozzáadás gombra.**
 2. Adja hozzá a munkaterületet vagy összetevőt. A **Hozzáadás gombra** kattintva megjelenik egy párbeszédpanel, ahol kiválaszthatja Azure Monitor erőforrásokat. Tallózhat az előfizetések és az erőforráscsoportok között, vagy begépelheti a nevüket a szűrésükbe. Válassza ki a munkaterületet vagy összetevőt, majd válassza az **Alkalmaz** lehetőséget, hogy hozzáadja őket a hatóköréhez.
 
     ![A hatókör kiválasztásának felhasználói felületének képernyőképe](./media/private-link-security/ampls-select-2.png)
@@ -135,7 +135,7 @@ Most, hogy az erőforrások csatlakoztatva vannak az AMPLS-hez, hozzon létre eg
 
 4. Az Erőforrás képernyőn:
 
-   a. Válassza ki **azt az** előfizetést, amely Azure Monitor a Privát hatókör erőforrást. 
+   a. Válassza ki **azt az előfizetést,** amely Azure Monitor a Privát hatókör erőforrást. 
 
    b. Az **erőforrástípushoz** válassza a **Microsoft.insights/privateLinkScopes lehetőséget.** 
 
@@ -183,7 +183,7 @@ Ez a zóna lefedi a Azure Monitor által használt globális végpontokat, ami a
 * `api` - Application Insights Log Analytics API-végpont
 * `live` - Application Insights élő metrikavégpont
 * `profiler` - Application Insights Profiler-végpont
-* `snapshot`- Application Insights pillanatképek végpont képernyőképe [ ![ saját DNS zónamonitor-azure-com képernyőképe.](./media/private-link-security/dns-zone-privatelink-monitor-azure-com.png)](./media/private-link-security/dns-zone-privatelink-monitor-azure-com-expanded.png#lightbox)
+* `snapshot`- Application Insights pillanatképek végpont képernyőképe [ ![ saját DNS zone monitor-azure-com virtuális hálózatról.](./media/private-link-security/dns-zone-privatelink-monitor-azure-com.png)](./media/private-link-security/dns-zone-privatelink-monitor-azure-com-expanded.png#lightbox)
 
 #### <a name="privatelink-oms-opinsights-azure-com"></a>privatelink-oms-opinsights-azure-com
 Ez a zóna az OMS-végpontokra való munkaterület-specifikus leképezést fedi le. A privát végponthoz csatlakoztatott AMPLS-hez csatolt munkaterületek mindegyikéhez meg kell lennie egy bejegyzésnek.
@@ -221,15 +221,15 @@ Nyissa meg az Azure Portalt. A Log Analytics-munkaterület erőforrásmenüje ba
 ![LA hálózatelszigetelés](./media/private-link-security/ampls-log-analytics-lan-network-isolation-6.png)
 
 ### <a name="connected-azure-monitor-private-link-scopes"></a>Csatlakoztatott Azure Monitor Private Link hatókörök
-Ezen a képernyőn a munkaterülethez csatlakoztatott összes hatókör megjelenik. A hatókörök (AMPLS-ek) csatlakoztatása lehetővé teszi, hogy az egyes AMPLS-hez csatlakoztatott virtuális hálózat hálózati forgalma elérje ezt a munkaterületet. A kapcsolat létrehozása itt ugyanazokkal a hatásokkal rendelkezik, mint a hatókörre való beállítás, mint a Connecting Azure Monitor resources (Erőforrások [csatlakoztatása) Azure Monitor esetén.](#connect-azure-monitor-resources) Új kapcsolat hozzáadásához válassza a Hozzáadás **lehetőséget,** majd válassza ki a Azure Monitor Private Link hatókört. A **csatlakozáshoz** válassza az Alkalmaz lehetőséget. Vegye figyelembe, hogy a munkaterület 5 AMPLS-objektumhoz tud csatlakozni, a [Korlátozások és korlátozások dokumentumban említettek szerint.](#restrictions-and-limitations) 
+Ezen a képernyőn a munkaterülethez csatlakoztatott összes hatókör megjelenik. A hatókörök (AMPLS-ek) csatlakoztatása lehetővé teszi, hogy az egyes AMPLS-hez csatlakoztatott virtuális hálózat hálózati forgalma elérje ezt a munkaterületet. A kapcsolat ezen keresztüli létrehozása ugyanazokkal a hatásokkal rendelkezik, mint a hatókörre való beállítás, mint a Connecting Azure Monitor resources (Erőforrások [csatlakoztatása) Azure Monitor esetén.](#connect-azure-monitor-resources) Új kapcsolat hozzáadásához válassza a Hozzáadás **lehetőséget,** majd válassza ki a Azure Monitor Private Link hatókört. A **csatlakozáshoz** válassza az Alkalmaz lehetőséget. Vegye figyelembe, hogy a munkaterület 5 AMPLS-objektumhoz tud csatlakozni, a [Korlátozások és korlátozások dokumentumban említettek szerint.](#restrictions-and-limitations) 
 
 ### <a name="manage-access-from-outside-of-private-links-scopes"></a>Hozzáférés kezelése a privát kapcsolatok hatókörein kívülről
-A lap alsó részén található beállítások a nyilvános hálózatokról való hozzáférést szabályozják, ami azt jelenti, hogy a felsorolt hatókörök (AMPLS-ekkel) nem csatlakozó hálózatok. Az **Allow public network access for ingestion** (Nyilvános hálózati hozzáférés engedélyezése a bebeükléshez) beállítást No blocks ingestion of machines from machines outside the connected scopes (A nyilvános hálózati hozzáférés engedélyezése a bebeükléshez) beállítás **No** blocks ingestion of logs from machines outside the connected scopes (Nincs blokkok a csatlakoztatott hatókörön kívüli gépekről). Az Allow public network access for queries (Nyilvános hálózati hozzáférés engedélyezése **a lekérdezésekhez)** beállítás No blocks queries from machines from outside the scopes **(Nem** blokkolja a hatóköröken kívüli gépekről érkező lekérdezéseket) beállítást. Ez magában foglalja többek között a munkafüzetek, irányítópultok, API-alapú ügyfélélmények, az Azure Portal lekérdezések futtatását. Az alkalmazáson kívül Azure Portal, és a log analytics-adatok lekérdezésének a privát virtuális hálózatban is futnia kell.
+A lap alsó részén található beállítások a nyilvános hálózatokról való hozzáférést szabályozják, ami azt jelenti, hogy a felsorolt hatókörök (AMPLS-ekkel) nem csatlakozó hálózatok. Az **Allow public network access for ingestion** (Nyilvános hálózati hozzáférés engedélyezése a bebeükléshez) beállítást **No** blocks ingestion of machines from machines outside the connected scopes (Nincs blokkok a csatlakoztatott hatókörön kívüli gépek naplóinak be). Az Allow public network access for queries (Nyilvános hálózati hozzáférés engedélyezése **a lekérdezésekhez)** beállítás No blocks queries from machines from outside the scopes **(Nem** blokkolja a hatóköröken kívüli gépekről érkező lekérdezéseket) beállítást. Ez magában foglalja többek között a munkafüzetek, irányítópultok, API-alapú ügyfélélmények, a Azure Portal és egyéb adatokon keresztül futtatott lekérdezéseket. Az alkalmazáson kívül Azure Portal, és a log analytics-adatok lekérdezésének a privát virtuális hálózatban is futnia kell.
 
 ### <a name="exceptions"></a>Kivételek
 A hozzáférés fent leírtaknak megfelelően való korlátozása nem vonatkozik a Azure Resource Manager ezért a következő korlátozásokkal rendelkezik:
 * Adatokhoz való hozzáférés – bár a nyilvános hálózatokról érkező lekérdezések blokkolása/engedélyezésének a legtöbb Log Analytics-élményre vonatkozik, egyes szolgáltatások az Azure Resource Manager-ről is lekérdezik az adatokat, ezért csak akkor lesznek képesek adatokat lekérdezni, ha Private Link Resource Manager-beállításokat is alkalmaznak (a funkció hamarosan elérhető lesz). Ilyenek például Azure Monitor megoldások, munkafüzetek és elemzések, valamint a LogicApp-összekötő.
-* Munkaterület-kezelés – A munkaterület beállításainak és konfigurációjának módosításait (beleértve a hozzáférési beállítások be- és kikapcsolása) az Azure Resource Manager. Korlátozza a munkaterület felügyeletéhez való hozzáférést a megfelelő szerepkörök, engedélyek, hálózati vezérlők és naplózás használatával. További információkért lásd a [Azure Monitor, az engedélyeket és a biztonságot.](../roles-permissions-security.md)
+* Munkaterület-kezelés – A munkaterület beállításainak és konfigurációjának módosításait (beleértve a hozzáférési beállítások be- és kikapcsolása) az Azure Resource Manager. Korlátozza a munkaterület felügyeletéhez való hozzáférést a megfelelő szerepkörök, engedélyek, hálózati vezérlők és naplózás használatával. További információkért lásd a [Azure Monitor, az engedélyeket](../roles-permissions-security.md)és a biztonságot.
 
 > [!NOTE]
 > A munkaterületre a diagnosztikai [](../essentials/diagnostic-settings.md) beállításokon keresztül feltöltött naplók és metrikák egy biztonságos privát Microsoft-csatornán keresztül mennek keresztül, és ezek a beállítások nem vezérlik őket.
@@ -254,9 +254,9 @@ Nyissa meg az Azure Portalt. A Azure Monitor Application Insights-erőforrásban
 
 ![AI-hálózat elkülönítése](./media/private-link-security/ampls-application-insights-lan-network-isolation-6.png)
 
-Először is csatlakoztathatja ezt Application Insights erőforrást olyan Azure Monitor Private Link, amelyekhez hozzáféréssel rendelkezik. Válassza **a Hozzáadás lehetőséget,** majd Azure Monitor Private Link **hatókört.** A csatlakozáshoz válassza az Alkalmaz lehetőséget. Ezen a képernyőn az összes csatlakoztatott hatókör megjelenik. Ennek a kapcsolatnak a létrehozása lehetővé teszi, hogy a csatlakoztatott virtuális hálózatok hálózati forgalma elérje ezt az összetevőt, és ugyanaz a hatása, mintha a hatókörből csatlakoztatta volna, mint a Connecting Azure Monitor resources (Erőforrások [csatlakoztatása) Azure Monitor esetében.](#connect-azure-monitor-resources) 
+Először is csatlakoztathatja ezt Application Insights erőforrást olyan Azure Monitor Private Link, amelyekhez hozzáféréssel rendelkezik. Válassza **a Hozzáadás lehetőséget,** majd válassza ki **Azure Monitor Private Link hatókört.** A csatlakozáshoz válassza az Alkalmaz lehetőséget. Ezen a képernyőn az összes csatlakoztatott hatókör megjelenik. Ennek a kapcsolatnak a létrehozása lehetővé teszi, hogy a csatlakoztatott virtuális hálózatok hálózati forgalma elérje ezt az összetevőt, és ugyanaz a hatása, mintha a hatókörből csatlakoztatta volna, mint a Connecting Azure Monitor resources (Erőforrások csatlakoztatása) Azure Monitor [esetében.](#connect-azure-monitor-resources) 
 
-Ezután szabályozhatja, hogyan használhatja ezt az erőforrást a korábban felsorolt privát kapcsolati hatókörök (AMPLS) hatóköreiből. Ha a Nyilvános hálózati hozzáférés engedélyezése **a** betöltéshez beállításnál a **Nem,** akkor a csatlakoztatott hatókörön kívüli gépek vagy az SDK-k nem tölthetnek fel adatokat ebbe az összetevőbe. Ha a **Lekérdezések nyilvános** hálózati hozzáférésének engedélyezése **beállításnál** a Nem lehetőséget adja meg, akkor a hatóköröken kívüli gépek nem férhetnek hozzá az ebben az erőforrásban Application Insights adatokhoz. Ezek az adatok tartalmazzák az APM-naplókhoz, metrikákhoz és az élő metrikastreamhez való hozzáférést, valamint az olyan, a szolgáltatásra épülő felületeket, mint a munkafüzetek, az irányítópultok, a lekérdezési API-alapú ügyfélélmények, a Azure Portal-elemzések stb. 
+Ezután szabályozhatja, hogyan használhatja ezt az erőforrást a korábban felsorolt privát kapcsolati hatókörök (AMPLS) hatóköreiből. Ha a **Nyilvános** hálózati hozzáférés engedélyezése a betöltéshez beállításnál a **Nem** lehetőséget adja meg, akkor a csatlakoztatott hatókörön kívüli gépek vagy az SDK-k nem tölthetnek fel adatokat ebbe az összetevőbe. Ha a **Lekérdezések nyilvános** hálózati hozzáférésének engedélyezése **beállításnál** a Nem lehetőséget adja meg, akkor a hatóköröken kívüli gépek nem férhetnek hozzá az ebben az erőforrásban Application Insights adatokhoz. Ezek az adatok tartalmazzák az APM-naplókhoz, metrikákhoz és az élő metrikastreamhez való hozzáférést, valamint az olyan, a szolgáltatásra épülő felületeket, mint a munkafüzetek, az irányítópultok, a lekérdezési API-alapú ügyfélélmények, a Azure Portal-elemzések stb. 
 
 > [!NOTE]
 > A nem portálon keresztüli használatot a monitorozási számítási feladatokat tartalmazó, privát kapcsolatú VNET-en is futnia kell.
@@ -268,14 +268,14 @@ A hozzáférés ilyen módon való korlátozása csak a Application Insights ada
 > [!NOTE]
 > A munkaterület-alapú Application Insights teljes körű biztonság érdekében le kell zárnia a hozzáférést Application Insights erőforráshoz és az alapul szolgáló Log Analytics-munkaterülethez is.
 >
-> A kódszintű diagnosztika (Profiler/hibakereső) [](../app/profiler-bring-your-own-storage.md) a privát kapcsolat támogatásához saját tárfiókot kell biztosítania.
+> Kódszintű diagnosztika (Profiler/hibakereső) – [](../app/profiler-bring-your-own-storage.md) saját tárfiókot kell biztosítania a privát kapcsolat támogatásához.
 
 ### <a name="handling-the-all-or-nothing-nature-of-private-links"></a>A privát hivatkozások "mindent vagy semmit" jellegének kezelése
 A Planning [your Private Link setup](#planning-your-private-link-setup)(Az Private Link beállításának megtervezése) című részben leírtak szerint a Private Link beállítása akár egyetlen erőforráshoz is hatással van az adott hálózatokban és más, azonos DNS-sel osztozó hálózatokban Azure Monitor erőforrásokra. Ez a viselkedés kihívást jelenthet az ön számára. Vegye figyelembe a következő lehetőségeket:
 
 * Mindent rendben – a legegyszerűbb és legbiztonságosabb módszer, ha az összes Application Insights hozzá az AMPLS-hez. A más hálózatokról továbbra is elérni kívánt összetevők esetében hagyja meg a "Nyilvános internet-hozzáférés engedélyezése a betekintéshez/lekérdezéshez" jelzőt Igen (ez az alapértelmezett beállítás).
 * Hálózatok elkülönítése – ha küllő virtuális hálózatokat használ (vagy képes igazodni a hálózathoz), kövesse az Azure küllős hálózati [topológiájáról (Hub-spoke network topology in Azure)](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)(Küllős hálózati topológia az Azure-ban) útmutatót. Ezután külön privát kapcsolati beállításokat kell beállítania a megfelelő küllő virtuális hálózatokon. Ügyeljen arra, hogy a DNS-zónákat is külön válassza el, mivel a DNS-zónák más küllős hálózatokkal való megosztása [DNS-felülbírálásokat fog okozhatni.](#the-issue-of-dns-overrides)
-* Egyéni DNS-zónák használata adott alkalmazásokhoz – ez a megoldás lehetővé teszi, hogy egy adott Application Insights-összetevőhöz egy adott Private Link- és minden más forgalmat a nyilvános útvonalakon tartva.
+* Egyéni DNS-zónák használata adott alkalmazásokhoz – ez a megoldás lehetővé teszi, hogy egy adott Application Insights-összetevőt egy Private Link-ben, miközben minden más forgalmat a nyilvános útvonalakon tart.
     - Állítson be [egy egyéni privát DNS-zónát,](../../private-link/private-endpoint-dns.md)és adjon neki egyedi nevet, például internal.monitor.azure.com
     - HOZZon létre egy AMPLS-t  és egy privát végpontot, és ne integrálja automatikusan a privát DNS-t
     - A Privát végpont -> DNS-konfigurációban tekintse át a teljes tartománynév javasolt leképezését.
@@ -285,7 +285,7 @@ A Planning [your Private Link setup](#planning-your-private-link-setup)(Az Priva
     - Az olyan alkalmazásoknak vagy szkripteknek, amelyek az összetevőt Private Link kell használniuk az EndpointSuffix=internal.monitor.azure.com kapcsolati sztringet
 * Végpontok leképezése gazdagépfájlokon keresztül DNS helyett – hogy Private Link csak egy adott gépről/virtuális gépről legyen hozzáférése a hálózatban:
     - ÁLLÍTSon be egy AMPLS-t  és egy privát végpontot, és ne integrálja automatikusan a privát DNS-t 
-    - Konfigurálja a fenti A-rekordokat egy olyan gépen, amely futtatja az alkalmazást a hosts fájlban
+    - Konfigurálja a fenti A rekordokat egy olyan gépen, amely futtatja az alkalmazást a hosts fájlban
 
 
 ## <a name="use-apis-and-command-line"></a>API-k és parancssor használata
@@ -294,7 +294,7 @@ A korábban ismertetett folyamatot automatizálhatja a Azure Resource Manager, R
 
 Privát kapcsolati hatókörök létrehozásához és kezeléséhez használja a REST API [vagy](/rest/api/monitor/privatelinkscopes(preview)/private%20link%20scoped%20resources%20(preview)) az Azure CLI-t [(az monitor private-link-scope)](/cli/azure/monitor/private-link-scope).
 
-A hálózati hozzáférés kezeléséhez használja a és a jelölőt a `[--ingestion-access {Disabled, Enabled}]` `[--query-access {Disabled, Enabled}]` Log [Analytics-munkaterületeken](/cli/azure/monitor/log-analytics/workspace) vagy Application Insights [összetevőkön.](/cli/azure/ext/application-insights/monitor/app-insights/component)
+A hálózati hozzáférés kezeléséhez használja a és a jelölőket a `[--ingestion-access {Disabled, Enabled}]` `[--query-access {Disabled, Enabled}]` Log [Analytics-munkaterületeken](/cli/azure/monitor/log-analytics/workspace) vagy [Application Insights összetevőkön.](/cli/azure/monitor/app-insights/component)
 
 ## <a name="collect-custom-logs-and-iis-log-over-private-link"></a>Egyéni naplók és IIS-naplók gyűjtése Private Link
 
@@ -305,7 +305,7 @@ A saját tárfiókok hozzuk létre a következőt: Ügyfél tulajdonában lévő
 ## <a name="restrictions-and-limitations"></a>Korlátozások
 
 ### <a name="ampls"></a>AMPLS
-Az AMPLS-objektum számos korlátozással rendelkezik, amelyek figyelembe veendők a Private Link tervezésekor:
+Az AMPLS-objektum számos korlátozással rendelkezik, amit figyelembe kell vennie a Private Link tervezésekor:
 
 * Egy virtuális hálózat csak 1 AMPLS-objektumhoz tud csatlakozni. Ez azt jelenti, hogy az AMPLS-objektumnak hozzáférést kell adnia az összes Azure Monitor erőforráshoz, amelyekhez a virtuális hálózatnak hozzáféréssel kell rendelkezik.
 * Egy Azure Monitor erőforrás (munkaterület vagy Application Insights összetevő) 5 AMPLS-hez csatlakozhat.

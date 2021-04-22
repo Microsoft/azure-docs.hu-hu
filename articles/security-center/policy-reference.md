@@ -1,18 +1,18 @@
 ---
 title: Beépített szabályzatdefiníciók a Azure Security Center
 description: A Azure Policy beépített szabályzatdefinícióit Azure Security Center. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: reference
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 8023dcc29fe8ea3af853237e911524549e4d2bcb
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 0fc5e2ed183020f32b59fec7f4436754467968e0
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739637"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872418"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Beépített Azure Policy-definíciók az Azure Security Centerben
 
@@ -32,7 +32,7 @@ A következő táblázatban további információt Security Center beépített k
 
 [!INCLUDE [azure-policy-reference-policyset-security-center](../../includes/policy/reference/bycat/policysets-security-center.md)]
 
-## <a name="security-centers-default-initiative-azure-security-benchmark"></a>Security Center alapértelmezett kezdeményezése (Azure biztonsági teljesítményteszt)
+## <a name="security-centers-default-initiative-azure-security-benchmark"></a>Security Center alapértelmezett kezdeményezése (Azure-biztonsági teljesítményteszt)
 
 A következő táblázatban további információt Security Center figyelt beépített szabályzatokkal kapcsolatban:
 

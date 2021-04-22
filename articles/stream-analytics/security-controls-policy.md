@@ -1,18 +1,18 @@
 ---
 title: Azure Policy megfelelőségi vezérlők a Azure Stream Analytics
-description: A Azure Policy megfelelőségi vezérlők listáját Azure Stream Analytics. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 04/14/2021
+description: Felsorolja Azure Policy megfelelőségi vezérlőket, amelyek a Azure Stream Analytics. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
+ms.date: 04/21/2021
 ms.topic: sample
 author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 6b4fead45696adc05ec510187ebab161174dbb3e
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: d7943235191ce4d12798b775cae22e3efeb07114
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107499350"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872990"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-stream-analytics"></a>Azure Policy megfelelőségi vezérlők a Azure Stream Analytics
 
@@ -24,5 +24,5 @@ ms.locfileid: "107499350"
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a jogszabályi [Azure Policy való megfelelésről.](../governance/policy/concepts/regulatory-compliance.md)
+- További információ a [jogszabályi Azure Policy való megfelelésről.](../governance/policy/concepts/regulatory-compliance.md)
 - A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).

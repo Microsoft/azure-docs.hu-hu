@@ -1,56 +1,56 @@
 ---
-title: Az IoT hub IP-címének megismerése | Microsoft Docs
-description: Ismerje meg, hogyan kérdezheti le az IoT hub IP-címét és annak tulajdonságait. Az IoT hub IP-címe bizonyos helyzetekben változhat, például a vész-helyreállítás vagy a regionális feladatátvétel során.
+title: Az IoT Hub-központ IP-címének | Microsoft Docs
+description: Az IoT Hub IP-címének és tulajdonságainak lekérdezése. Az IoT Hub IP-címe bizonyos esetekben változhat, például vészhelyreállítás vagy regionális feladatátvétel esetén.
 author: philmea
 ms.author: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 1bfae8c7afbfdc6e73dd8bb17b94e6543361e9ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/21/2021
+ms.openlocfilehash: 7d807a15d358bd621baedbff253f0c731e43ed26
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83848228"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874170"
 ---
-# <a name="iot-hub-ip-addresses"></a>IP-címek IoT Hub
+# <a name="iot-hub-ip-addresses"></a>IoT Hub IP-címek
 
-IoT Hub nyilvános végpontok IP-címének előtagjait a rendszer rendszeresen közzéteszi a _AzureIoTHub_ [szolgáltatás címkéjén](../virtual-network/service-tags-overview.md).
+A nyilvános végpontok IP-IoT Hub rendszeresen közzé vannak téve az _AzureIoTHub_ [szolgáltatáscímkével.](../virtual-network/service-tags-overview.md)
 
 > [!NOTE]
-> A helyszíni hálózatokon belül üzembe helyezett eszközök esetében az Azure IoT Hub támogatja a VNET-kapcsolatok integrációját a privát végpontokkal. További információ: [IoT hub támogatás a VNet](./virtual-network-support.md) .
+> A helyszíni hálózatokon belül üzembe helyezett eszközök esetében a Azure IoT Hub támogatja a VNET-kapcsolat integrációját a privát végpontokkal. További [IoT Hub lásd: A virtuális hálózat támogatása.](./virtual-network-support.md)
 
 
-Ezeket az IP-cím előtagokat használhatja a IoT Hub és az eszközök vagy hálózati eszközök közötti kapcsolat vezérléséhez a különböző hálózati elkülönítési célok megvalósítása érdekében:
+Ezeket az IP-címelőtagokat használhatja a IoT Hub és az eszközök vagy hálózati eszközök közötti kapcsolat szabályozásához, hogy többféle hálózatelkülönítési célokat valósíthat meg:
 
-| Cél | Alkalmazható helyzetek | Módszer |
+| Cél | Alkalmazható forgatókönyvek | Módszer |
 |------|-----------|----------|
-| Gondoskodjon arról, hogy az eszközök és szolgáltatások csak IoT Hub-végpontokkal kommunikáljanak | [Eszközről a felhőbe](./iot-hub-devguide-messaging.md), valamint [a felhőből az eszközre irányuló](./iot-hub-devguide-messages-c2d.md) üzenetkezelés, [közvetlen metódusok](./iot-hub-devguide-direct-methods.md), [eszközök és modulok az ikrek](./iot-hub-devguide-device-twins.md) és az [eszköz streamek](./iot-hub-device-streams-overview.md) számára | A _AzureIoTHub_ és a _EventHub_ Service-címkék használatával felderítheti IoT hub és az Event hub IP-címeinek előtagjait, és konfigurálhatja az eszközök és szolgáltatások tűzfalának engedélyezési szabályait az adott IP-cím előtagjainak megfelelően; dobja el a forgalmat más cél IP-címekre, nem szeretné, hogy az eszközök és a szolgáltatások kommunikáljanak a szolgáltatással. |
-| Győződjön meg arról, hogy az IoT Hub-eszköz végpontja csak az eszközökről és a hálózati eszközökről fogad kapcsolatokat | [Eszközről a felhőbe](./iot-hub-devguide-messaging.md), valamint [a felhőből az eszközre irányuló](./iot-hub-devguide-messages-c2d.md) üzenetkezelés, [közvetlen metódusok](./iot-hub-devguide-direct-methods.md), [eszközök és modulok az ikrek](./iot-hub-devguide-device-twins.md) és az [eszköz streamek](./iot-hub-device-streams-overview.md) számára | A IoT Hub [IP-szűrő funkció](iot-hub-ip-filtering.md) használatával engedélyezheti az eszközök és a hálózati eszközök IP-címeinek kapcsolatait (lásd a [korlátozások](#limitations-and-workarounds) szakaszt). | 
-| Győződjön meg arról, hogy az útvonalak egyéni végpont-erőforrásai (Storage-fiókok, Service Bus és Event hubok) csak a hálózati eszközökről érhetők el | [Üzenetek útválasztása](./iot-hub-devguide-messages-d2c.md) | Kövesse a kapcsolat korlátozására szolgáló erőforrás útmutatását (például [Tűzfalszabályok](../storage/common/storage-network-security.md), [magánhálózati hivatkozások](../private-link/private-endpoint-overview.md)vagy [szolgáltatási végpontok](../virtual-network/virtual-network-service-endpoints-overview.md)használatával); a _AzureIoTHub_ szolgáltatás-címkék használatával felderítheti IoT hub IP-címek előtagjait, és engedélyezheti az adott IP-előtag engedélyezési szabályait az erőforrás tűzfal-konfigurációjában (lásd a [korlátozások](#limitations-and-workarounds) szakaszt). |
+| Győződjön meg arról, hogy az eszközök és a szolgáltatások csak IoT Hub végpontokkal kommunikálnak | [Eszközről a felhőbe,](./iot-hub-devguide-messaging.md)a [felhőből](./iot-hub-devguide-messages-c2d.md) az eszközre történő [üzenetküldés,](./iot-hub-devguide-direct-methods.md)a közvetlen metódusok, az ikereszköz- és [modulikrek](./iot-hub-devguide-device-twins.md) és az [eszközstreamek](./iot-hub-device-streams-overview.md) | Az _AzureIoTHub_ és az _EventHub_ szolgáltatáscímkék használatával felderítheti az IoT Hub-t és az eseményközpont IP-címelőtagját, és ennek megfelelően konfigurálhatja az eszközök és szolgáltatások tűzfalbeállítására vonatkozó ALLOW-szabályokat; forgalom eldobás más cél IP-címekre, amelyeken nem szeretné, hogy az eszközök vagy szolgáltatások kommunikáljanak. |
+| Győződjön meg arról IoT Hub hogy az eszközvégpont csak az eszközökről és a hálózati eszközökről fogad kapcsolatokat | [Az eszközről a](./iot-hub-devguide-messaging.md) [](./iot-hub-devguide-messages-c2d.md) felhőbe, a felhőből az eszközre történő [üzenetküldés,](./iot-hub-devguide-direct-methods.md)a közvetlen metódusok, az ikereszköz- és [modulikrek](./iot-hub-devguide-device-twins.md) és az [eszközstreamek](./iot-hub-device-streams-overview.md) | Az IoT Hub [IP-szűrési](iot-hub-ip-filtering.md) funkció használatával engedélyezheti az eszközökről és a hálózati eszközök IP-címeinek kapcsolatait (lásd [a korlátozások szakaszt).](#limitations-and-workarounds) | 
+| Győződjön meg arról, hogy az útvonalak egyéni végpont-erőforrásai (tárfiókok, Service Bus és eseményközpontok) csak a hálózati eszközökről érjék el | [Üzenetek útválasztása](./iot-hub-devguide-messages-d2c.md) | Kövesse az erőforrás a kapcsolatok korlátozására [](../storage/common/storage-network-security.md)vonatkozó útmutatását (például tűzfalszabályok, privát kapcsolatok [vagy](../private-link/private-endpoint-overview.md) [szolgáltatásvégpontokkal);](../virtual-network/virtual-network-service-endpoints-overview.md) Az _AzureIoTHub_ szolgáltatáscímkéivel felderítheti IoT Hub IP-címelőtagokat, és ALLOW szabályokat adhat hozzá ezekhez az IP-előtagokhoz az erőforrás tűzfal-konfigurációjában (lásd a korlátozások [szakaszt).](#limitations-and-workarounds) |
 
 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-* Az eszközök tűzfal-konfigurációjának engedélyezési szabályok hozzáadásakor a legmegfelelőbb a [megfelelő protokollok által használt portok](./iot-hub-devguide-protocols.md#port-numbers)biztosításához.
+* Amikor ALLOW szabályokat ad hozzá az eszközök tűzfal-konfigurációjában, a legjobb, ha a megfelelő protokollok által használt adott [portokat biztosít.](./iot-hub-devguide-protocols.md#port-numbers)
 
-* Az IoT hub IP-címének előtagjainak módosítása változhat. A módosításokat a rendszer rendszeresen közzéteszi a szolgáltatáson keresztül, mielőtt érvénybe lépnek. Ezért fontos, hogy folyamatokat fejlesszen ki a legújabb szolgáltatási címkék rendszeres beolvasására és használatára. Ez a folyamat automatizálható a [Service Tags Discovery API](../virtual-network/service-tags-overview.md#service-tags-on-premises)használatával. Vegye figyelembe, hogy a Service Tags Discovery API még előzetes verzióban érhető el, és bizonyos esetekben előfordulhat, hogy nem hozza létre a címkék és az IP-címek teljes listáját. Amíg a felderítési API általánosan elérhetővé válik, érdemes lehet a [szolgáltatás címkéit letölthető JSON formátumban](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)használni. 
+* Az IoT Hub IP-címelőtagja változhat. Ezeket a módosításokat a rendszer rendszeres időközönként közzéteszi szolgáltatáscímkék használatával, mielőtt azok életbe lépnek. Ezért fontos, hogy olyan folyamatokat dolgozzon ki, amelyek rendszeresen lekérik és használják a legújabb szolgáltatáscímkéket. Ez a folyamat a szolgáltatáscímkék felderítési [API-jának használatával automatizálható.](../virtual-network/service-tags-overview.md#service-tags-on-premises) Vegye figyelembe, hogy a szolgáltatáscímkék felderítési API-ja még előzetes verzióban érhető el, és bizonyos esetekben előfordulhat, hogy nem készíti el a címkék és IP-címek teljes listáját. Amíg a Discovery API általánosan elérhetővé nem válik, fontolja meg a szolgáltatáscímkék használatát [letölthető JSON formátumban.](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) 
 
-* Használja a *AzureIoTHub. [ régió neve]* címkével azonosíthatja az IoT hub-végpontok által az adott régióban használt IP-előtagokat. Az adatközpontok vész-helyreállítási feladatainak elvégzéséhez, illetve a [regionális feladatátvételhez](iot-hub-ha-dr.md) a IoT hub geo-pair RÉGIÓJÁNAK IP-előtagjaihoz való kapcsolódás is engedélyezett.
+* Használja az *AzureIoTHubot.[ region name]* címke az IoT Hub-végpontok által egy adott régióban használt IP-előtagok azonosításához. Az adatközpont vészhelyreállításának [](iot-hub-ha-dr.md) vagy a regionális feladatátvételnek a figyelembevétele érdekében győződjön meg arról, hogy a IoT Hub földrajzi párja régiója IP-előtagjaihoz való csatlakozás is engedélyezve van.
 
-* A tűzfalszabályok beállítása a IoT Hubban letilthatja az Azure CLI és a PowerShell-parancsok futtatásához szükséges kapcsolatokat a IoT Hub. Ennek elkerüléséhez engedélyezheti az ügyfelek IP-címeinek engedélyezési szabályait, hogy engedélyezze újra a CLI vagy a PowerShell-ügyfelek számára a IoT Hub való kommunikációt.  
+* A tűzfalszabályok IoT Hub letilthatja az Azure CLI- és PowerShell-parancsok futtatásához szükséges kapcsolatot a IoT Hub. Ennek elkerülése érdekében ALLOW szabályokat adhat hozzá az ügyfelek IP-címelőtagjaihoz, hogy engedélyezze a PARANCSSORi felület vagy a PowerShell-ügyfelek számára, hogy kommunikáljanak a IoT Hub.  
 
 
 ## <a name="limitations-and-workarounds"></a>Korlátozások és megkerülő megoldások
 
-* IoT Hub IP-szűrő funkció legfeljebb 10 szabályt tartalmaz. Ezt a korlátot és az Azure-ügyfélszolgálaton keresztüli kérésekkel lehet kiemelni. 
+* IoT Hub IP-szűrési funkció korlátja 100 szabály. Ez a korlát az Azure ügyfélszolgálatán keresztüli kérésekkel emelhető ki. 
 
-* A konfigurált [IP-szűrési szabályok](iot-hub-ip-filtering.md) csak a IoT hub IP-végpontokon érvényesek, nem az IoT hub beépített Event hub-végpontján. Ha azt is megköveteli, hogy az IP-szűrést alkalmazni lehessen azon az esemény-Központon, ahol az üzenetek tárolódnak, akkor ezt úgy teheti meg, hogy a saját Event hub-erőforrást fogja használni, amely közvetlenül a kívánt IP-szűrési szabályokat konfigurálja Ehhez létre kell hoznia a saját Event hub-erőforrást, és úgy kell beállítania az [üzenet-útválasztást](./iot-hub-devguide-messages-d2c.md) , hogy az IoT hub beépített Event hub helyett az adott erőforráshoz küldje az üzeneteket. Végül, ahogy az a fenti táblázatban is látható, az üzenet-útválasztási funkció engedélyezéséhez engedélyeznie kell a IoT Hub IP-címéhez való kapcsolódást a kiépített Event hub-erőforráshoz.
+* A konfigurált [IP-szűrési](iot-hub-ip-filtering.md) szabályok csak a IoT Hub IP-végpontokra vonatkoznak, az IoT Hub beépített Eseményközpont-végpontjára nem. Ha ip-szűrést is alkalmaznia kell arra az eseményközpontra, ahol az üzenetek tárolva vannak, akkor a saját eseményközpont-erőforrását is használhatja, ahol közvetlenül konfigurálhatja a kívánt IP-szűrési szabályokat. Ennek érdekében ki kell építenie egy saját Event [](./iot-hub-devguide-messages-d2c.md) Hubs-erőforrást, és be kell állítania az üzenetek útválasztását, hogy az üzeneteket erre az erőforrásra küldje az IoT Hub beépített Eseményközpontja helyett. Végül, ahogy azt a fenti táblázatban is említettük, az üzenetek útválasztási funkcióját úgy engedélyezheti, hogy a IoT Hub IP-címelőtagja és a kiépített Eseményközpont-erőforrás közötti kapcsolat is elérhető.
 
-* A Storage-fiókhoz való útválasztás esetén a IoT Hub IP-címének előtagjairól érkező forgalom csak akkor lehetséges, ha a Storage-fiók egy másik régióban található, mint a IoT Hub.
+* A tárfiókra való útválasztáskor a IoT Hub IP-címelőtagjaiból származó forgalom csak akkor lehetséges, ha a tárfiók másik régióban van, mint IoT Hub.
 
 ## <a name="support-for-ipv6"></a>IPv6-támogatás 
 
-Az IPv6 jelenleg nem támogatott IoT Hubon.
+Az IPv6 jelenleg nem támogatott a IoT Hub.

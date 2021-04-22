@@ -1,20 +1,20 @@
 ---
-title: A Java Application Insights In-Process használata a Azure Spring Cloud
-description: Alkalmazások és mikroszolgáltatások figyelése Application Insights Java In-Process Agent használatával a Azure Spring Cloud.
+title: A Java Application Insights ügynök In-Process használata a Azure Spring Cloud
+description: Alkalmazások és mikroszolgáltatások figyelése az Application Insights Java In-Process Agent használatával a Azure Spring Cloud.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: c7083cb6669d7bc779a8e69babfef38988819f8c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b704d2cf8e2cc8e6cf5d8049290379dd45e26737
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483773"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870336"
 ---
-# <a name="application-insights-java-in-process-agent-in-azure-spring-cloud-preview"></a>Application Insights Java In-Process Agent in Azure Spring Cloud (előzetes verzió)
+# <a name="application-insights-java-in-process-agent-in-azure-spring-cloud-preview"></a>Application Insights Java In-Process Agent a Azure Spring Cloud (előzetes verzió)
 
 Ez a dokumentum azt ismerteti, hogyan figyelheti az alkalmazásokat és a mikroszolgáltatásokat a Application Insights Java-ügynökkel a Azure Spring Cloud. 
 
@@ -27,7 +27,7 @@ Ezzel a funkcióval a következő funkciókat használhatja:
 * Ellenőrizze a kéréshibákat.
 * Alkalmazásmetrikák ellenőrzése.
 
-Application Insights sok megfigyelhető perspektívát biztosítanak, beleértve a következőket:
+Application Insights, többek között az alábbiakat biztosítják:
 
 * Alkalmazástérkép
 * Teljesítmény
@@ -38,44 +38,44 @@ Application Insights sok megfigyelhető perspektívát biztosítanak, beleértve
 
 ## <a name="enable-java-in-process-agent-for-application-insights"></a>Enable Java In-Process Agent for Application Insights
 
-Engedélyezze a Java In-Process Agent előzetes verziójú funkcióját az alábbi eljárással.
+Engedélyezze a Java In-Process Agent előzetes verziójú funkcióját a következő eljárással.
 
 1. Ugrás a szolgáltatáspéldány szolgáltatásáttekintő oldalára.
-2. Kattintson **Application Insights** elemre a Figyelés panelen.
+2. A **Application Insights** panelen kattintson az Application Insights elemre.
 3. Kattintson **a Application Insights** engedélyezése gombra a Application Insights engedélyezéséhez. 
 4. Válasszon ki egy meglévő példányt a Application Insights vagy hozzon létre egy újat.
-5. Enable **Java in-process agent** to enable preview Java in-process agent (Java in-process ügynök funkció engedélyezése a java in-process ügynök funkció engedélyezéséhez). Itt a mintavételezési sebességet is testreszabhatja 0 és 100 között.
+5. Enable **Java in-process agent** to enable preview Java in-process agent feature (Java in-process agent előzetes verziójú ügynök funkció engedélyezéséhez). Itt 0 és 100 között testre szabhatja a mintavételezési sebességet.
 6.  Kattintson a **Mentés** gombra a módosítás mentéséhez.
 
 ## <a name="portal"></a>Portál
 
 1. Ugrás a szolgáltatás **| Áttekintés** **lap,** és Application Insights a Figyelés **szakaszban.** 
 2. Kattintson **az Enable Application Insights** (Application Insights engedélyezése) elemre a Application Insights engedélyezéséhez Azure Spring Cloud.
-3. Kattintson **a Java in-process agent engedélyezése elemre** a Java IPA előzetes verziójú funkció engedélyezéséhez. Ha az IPA előzetes verziójú funkciója engedélyezve van, konfigurálhat egy választható mintavételezési sebességet (alapértelmezés szerint 10,0%).
+3. Kattintson **a Java in-process agent engedélyezése lehetőségre** a Java IPA előzetes verziójú funkció engedélyezéséhez. Ha az IPA előzetes verziójú funkciója engedélyezve van, konfigurálhat egy választható mintavételezési sebességet (alapértelmezés szerint 10,0%).
 
   [![IPA 0](media/spring-cloud-application-insights/insights-process-agent-0.png)](media/spring-cloud-application-insights/insights-process-agent-0.png)
 
 ## <a name="using-the-application-insights-feature"></a>A Application Insights használata
 
-Ha az **Application Insights** funkció engedélyezve van, a következőt teszi lehetővé:
+Ha **a Application Insights** funkció engedélyezve van, a következőt teszi lehetővé:
 
-A bal oldali navigációs panelen kattintson a  **Application Insights** elemre a lap Áttekintés Application Insights. 
+A bal oldali navigációs panelen kattintson a **Application Insights** elemre, hogy az áttekintés **áttekintési** Application Insights. 
 
 * Kattintson **az Alkalmazástérkép elemre** az alkalmazások közötti hívások állapotának megtekintése érdekében.
 
   [![IPA 2](media/spring-cloud-application-insights/insights-process-agent-2-map.png)](media/spring-cloud-application-insights/insights-process-agent-2-map.png)
 
-* Kattintson a customers-service (ügyfelek szolgáltatása) közötti hivatkozásra, és további részleteket, például egy `petclinic` SQL-lekérdezést láthat.
+* Kattintson a customers-service közötti hivatkozásra, és további részleteket, például egy `petclinic` SQL-lekérdezést láthat.
 
-* A bal oldali navigációs panelen kattintson a **Teljesítmény** elemre az összes alkalmazásművelet teljesítményadatának, valamint a függőségek és szerepkörök végrehajtásához.
+* A bal oldali navigációs panelen kattintson a **Teljesítmény** elemre az összes alkalmazásművelet, valamint a függőségek és szerepkörök teljesítményadatának a megtekintése érdekében.
 
   [![IPA 4](media/spring-cloud-application-insights/insights-process-agent-4-performance.png)](media/spring-cloud-application-insights/insights-process-agent-4-performance.png)
 
-* A bal oldali navigációs panelen kattintson a **Hibák elemre,** és nézze meg, hogy nem történt-e valami váratlan az alkalmazásokban.
+* A bal oldali navigációs panelen kattintson a **Hibák** elemre, és nézze meg, hogy nem történt-e valami váratlan az alkalmazásokban.
 
   [![IPA 6](media/spring-cloud-application-insights/insights-process-agent-6-failures.png)](media/spring-cloud-application-insights/insights-process-agent-6-failures.png)
 
-* A bal oldali navigációs  panelen kattintson a Metrikák elemre, és válassza ki a névteret. Ha van ilyen, Spring Boot metrikákat és egyéni metrikákat is látni fog.
+* A bal oldali navigációs  panelen kattintson a Metrikák elemre, és válassza ki a névteret, és látni fogja a Spring Boot metrikákat és az egyéni metrikákat is, ha vannak.
 
   [![IPA 7](media/spring-cloud-application-insights/insights-process-agent-5-metrics.png)](media/spring-cloud-application-insights/insights-process-agent-5-metrics.png)
 
@@ -83,7 +83,7 @@ A bal oldali navigációs panelen kattintson a  **Application Insights** elemre 
 
   [![IPA 8](media/spring-cloud-application-insights/petclinic-microservices-live-metrics.jpg)](media/spring-cloud-application-insights/petclinic-microservices-live-metrics.jpg)
 
-* A bal oldali navigációs  panelen kattintson a Rendelkezésre állás elemre a webalkalmazások rendelkezésre állásának és válaszkészségének figyelése érdekében rendelkezésre állási tesztek létrehozásával a [Application Insights.](../azure-monitor/app/monitor-web-app-availability.md)
+* A bal oldali navigációs  panelen kattintson a Rendelkezésre állás elemre a webalkalmazások rendelkezésre állásának és válaszkészségének figyelése érdekében a rendelkezésre állási tesztek létrehozásával [a Application Insights.](../azure-monitor/app/monitor-web-app-availability.md)
 
   [![IPA 9](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)
 
@@ -123,7 +123,7 @@ A sablon Azure Resource Manager másolja a következő tartalmat a `azuredeploy.
 ## <a name="cli"></a>parancssori felület
 ARM-sablon alkalmazása a CLI-paranccsal:
 
-* Meglévő Azure Spring Cloud példányhoz:
+* Meglévő adatbázispéldány Azure Spring Cloud:
 
 ```azurecli
 az spring-cloud app-insights update [--app-insights/--app-insights-key] "assignedName" [--sampling-rate] "samplingRate" â€“name "assignedName" â€“resource-group "resourceGroupName"
@@ -141,6 +141,6 @@ az spring-cloud app-insights update --disable â€“name "assignedName" â€�
 ```
 
 ## <a name="see-also"></a>Lásd még
-* [Elosztott nyomkövetés használata a Azure Spring Cloud](spring-cloud-howto-distributed-tracing.md)
+* [Elosztott nyomkövetés használata Azure Spring Cloud](spring-cloud-howto-distributed-tracing.md)
 * [Naplók és metrikák elemzése](diagnostic-services.md)
 * [Naplók streamelése valós időben](spring-cloud-howto-log-streaming.md)

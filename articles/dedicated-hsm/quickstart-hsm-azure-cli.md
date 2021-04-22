@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Azure dedikált HSM létrehozása az Azure CLI-vel'
-description: Azure dedikált HSM létrehozása, megjelenítése, listázása, frissítése és törlése az Azure CLI használatával.
+title: 'Rövid útmutató: Azure Dedicated HSM létrehozása az Azure CLI használatával'
+description: Azure Dedicated HSM-eket hozhat létre, mutatat be, list használhat, frissíthet és törölhet az Azure CLI használatával.
 services: dedicated-hsm
 author: msmbaldwin
 ms.author: mbaldwin
@@ -9,34 +9,34 @@ ms.service: key-vault
 ms.devlang: azurecli
 ms.date: 01/06/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e07bc758b1ef86b3d8c605cbce72f6db564a355f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 80d5bbb54715c5a1a5102f8991f366e273145edc
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98020961"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868950"
 ---
-# <a name="quickstart-create-an-azure-dedicated-hsm-by-using-the-azure-cli"></a>Rövid útmutató: Azure dedikált HSM létrehozása az Azure CLI használatával
+# <a name="quickstart-create-an-azure-dedicated-hsm-by-using-the-azure-cli"></a>Rövid útmutató: Azure Dedicated HSM létrehozása az Azure CLI használatával
 
-Ez a cikk azt ismerteti, hogyan hozhat létre és kezelhet egy Azure dedikált HSM-t az az [dedikált-HSM](/cli/azure/ext/hardware-security-modules/dedicated-hsm) Azure CLI bővítmény használatával.
+Ez a cikk bemutatja, hogyan hozhat létre és kezelhet Azure Dedicated HSM az [az dedicated-hsm](/cli/azure/dedicated-hsm) Azure CLI-bővítmény használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés. Ha még nem rendelkezik ilyennel, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+- Azure-előfizetés. Ha még [nincs fiókja,](https://azure.microsoft.com/free/) létrehozhat egy ingyenes fiókot.
   
-  Ha több Azure-előfizetéssel rendelkezik, állítsa be az előfizetést az Azure CLI az [Account set](/cli/azure/account#az_account_set) paranccsal való számlázáshoz.
+  Ha több Azure-előfizetéssel rendelkezik, állítsa be a számlázáshoz használt előfizetést az Azure CLI [az account set parancsával.](/cli/azure/account#az_account_set)
   
   ```azurecli-interactive
   az account set --subscription 00000000-0000-0000-0000-000000000000
   ```
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]  
   
-- A dedikált HSM esetében minden követelmény teljesült, beleértve a regisztrációt, a jóváhagyást, valamint a kiépítés során használandó virtuális hálózatot és virtuális gépet. A dedikált HSM-követelményekkel és előfeltételekkel kapcsolatos további információkért lásd [: oktatóanyag: a HSM telepítése meglévő virtuális hálózatra az Azure CLI használatával](tutorial-deploy-hsm-cli.md).
+- A dedikált HSM-hez szükséges összes követelmény, beleértve a regisztrációt, a jóváhagyást, valamint a kiépítéshez használható virtuális hálózatot és virtuális gépet. A dedikált HSM követelményeivel és előfeltételeivel kapcsolatos további információkért [lásd: Oktatóanyag: HSM-ek](tutorial-deploy-hsm-cli.md)üzembe helyezése meglévő virtuális hálózaton az Azure CLI használatával.
   
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) egy logikai tároló az Azure-erőforrások csoportként történő üzembe helyezéséhez és kezeléséhez. Ha még nem rendelkezik erőforráscsoporthoz a dedikált HSM-hez, hozzon létre egyet az az [Group Create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy nevű erőforráscsoportot `myRG` az `westus` Azure-régióban:
+Az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) egy logikai tároló az Azure-erőforrások csoportként való üzembe helyezéséhez és kezeléséhez. Ha még nem rendelkezik erőforráscsoporttal a dedikált HSM-hez, hozzon létre egyet [az az group create paranccsal.](/cli/azure/group#az_group_create) Az alábbi példa egy nevű erőforráscsoportot hoz létre `myRG` az `westus` Azure-régióban:
 
 ```azurecli-interactive
 az group create --name myRG --location westus
@@ -44,7 +44,7 @@ az group create --name myRG --location westus
 
 ## <a name="create-a-dedicated-hsm"></a>Dedikált HSM létrehozása
 
-Dedikált HSM létrehozásához használja az az [dedikált-HSM Create](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_create) parancsot. Az alábbi példa egy, `hsm1` a `westus` régióban, az `myRG` erőforráscsoportban és a megadott előfizetésben, a virtuális hálózaton és az alhálózatban MEGnevezett dedikált HSM-t foglal le. A kötelező paraméterek a következők:, `name` `location` és `resource group` .
+Dedikált HSM létrehozásához használja [az az dedicated-hsm create](/cli/azure/dedicated-hsm#az_dedicated_hsm_create) parancsot. Az alábbi példa egy nevű dedikált HSM-et ad ki a régióban, az erőforráscsoportban és a megadott előfizetésben, virtuális hálózatban és `hsm1` `westus` `myRG` alhálózatban. A kötelező paraméterek a `name` , a és a `location` `resource group` .
 
 ```azurecli-interactive
 az dedicated-hsm create \
@@ -59,11 +59,11 @@ az dedicated-hsm create \
    --zones "AZ1"
 ```
 
-A telepítés elvégzése körülbelül 25 – 30 percet vesz igénybe.
+Az üzembe helyezés körülbelül 25–30 percet vesz igénybe.
 
-## <a name="get-a-dedicated-hsm"></a>Dedikált HSM beszerzése
+## <a name="get-a-dedicated-hsm"></a>Dedikált HSM lekért
 
-A jelenlegi dedikált HSM beszerzéséhez futtassa az az [dedikált-HSM show](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_show) parancsot. Az alábbi példa lekéri a `hsm1` DEDIKÁLT HSM-et az `myRG` erőforráscsoporthoz.
+Az aktuális dedikált HSM lekért futtatásához futtassa [az az dedicated-hsm show](/cli/azure/dedicated-hsm#az_dedicated_hsm_show) parancsot. Az alábbi példa lekérte `hsm1` az erőforráscsoportban a dedikált HSM-et. `myRG`
 
 ```azurecli-interactive
 az dedicated-hsm show --resource-group myRG --name hsm1
@@ -71,15 +71,15 @@ az dedicated-hsm show --resource-group myRG --name hsm1
 
 ## <a name="update-a-dedicated-hsm"></a>Dedikált HSM frissítése
 
-Az az [dedikált-HSM Update](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_update) paranccsal frissítheti a dedikált HSM-et. Az alábbi példa frissíti a `hsm1` DEDIKÁLT HSM-et az `myRG` erőforráscsoporthoz, valamint annak címkéit:
+Dedikált HSM frissítéséhez használja az [az dedicated-hsm update](/cli/azure/dedicated-hsm#az_dedicated_hsm_update) parancsot. Az alábbi példa frissíti az erőforráscsoportban a dedikált `hsm1` HSM-et `myRG` és annak címkéit:
 
 ```azurecli-interactive
 az dedicated-hsm update --resource-group myRG –-name hsm1 --tags resourceType="hsm" Environment="prod" Slice="A"
 ```
 
-## <a name="list-dedicated-hsms"></a>Dedikált HSM listázása
+## <a name="list-dedicated-hsms"></a>Dedikált HSM-ek felsorolása
 
-Futtassa az az [dedikált-HSM List](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_list) paranccsal a jelenlegi dedikált HSM kapcsolatos információk lekéréséhez. Az alábbi példa az erőforráscsoport dedikált HSM sorolja fel `myRG` :
+Futtassa [az az dedicated-hsm list parancsot](/cli/azure/dedicated-hsm#az_dedicated_hsm_list) az aktuális dedikált HSM-ekkel kapcsolatos információk lekért érdekében. Az alábbi példa az erőforráscsoportban található dedikált `myRG` HSM-eket sorolja fel:
 
 ```azurecli-interactive
 az dedicated-hsm list --resource-group myRG
@@ -87,7 +87,7 @@ az dedicated-hsm list --resource-group myRG
 
 ## <a name="remove-a-dedicated-hsm"></a>Dedikált HSM eltávolítása
 
-Dedikált HSM eltávolításához használja az az [dedikált-HSM delete](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_delete) parancsot. A következő példa törli a `hsm1` DEDIKÁLT HSM-et az `myRG` erőforráscsoporthoz:
+Dedikált HSM eltávolításához használja [az az dedicated-hsm delete](/cli/azure/dedicated-hsm#az_dedicated_hsm_delete) parancsot. Az alábbi példa törli a dedikált `hsm1` HSM-et az `myRG` erőforráscsoportból:
 
 ```azurecli-interactive
 az dedicated-hsm delete --resource-group myRG –-name hsm1
@@ -95,7 +95,7 @@ az dedicated-hsm delete --resource-group myRG –-name hsm1
 
 ## <a name="delete-the-resource-group"></a>Az erőforráscsoport törlése
 
-Ha már nincs szüksége a dedikált HSM-hez létrehozott erőforráscsoporthoz, az az [Group delete](/cli/azure/group#az_group_delete) parancs futtatásával törölheti. Ez a parancs törli a csoportot és az összes erőforrást, beleértve azokat is, amelyek nem kapcsolódnak a dedikált HSM-hez. Az alábbi példa törli az `myRG` erőforráscsoportot és a benne található összeset:
+Ha már nincs szüksége a dedikált HSM-hez létrehozott erőforráscsoportra, az [az group delete](/cli/azure/group#az_group_delete) parancs futtatásával törölheti. Ez a parancs törli a csoportot és a benne álló összes erőforrást, beleértve azokat is, amelyek nem kapcsolódnak a dedikált HSM-hez. Az alábbi példa törli az `myRG` erőforráscsoportot és mindent, ami benne van:
 
 ```azurecli-interactive
 az group delete --name myRG
@@ -103,4 +103,4 @@ az group delete --name myRG
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ az Azure dedikált HSM-ről: [Azure DEDIKÁLT HSM](overview.md).
+További információ a Azure Dedicated HSM: [Azure Dedicated HSM.](overview.md)

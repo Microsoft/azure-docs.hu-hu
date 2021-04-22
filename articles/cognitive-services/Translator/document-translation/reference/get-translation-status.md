@@ -1,5 +1,5 @@
 ---
-title: Fordítási állapot lekért állapota
+title: Fordítási állapot lekérte
 titleSuffix: Azure Cognitive Services
 description: A get translation status metódus egy dokumentumfordítási kérelem állapotát adja vissza.
 services: cognitive-services
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/25/2021
+ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 8b129974396e420948737c9bdf47a5707decab6b
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: c17cd6cb97aaac3cd08342270e4eafa07eb5fd7d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107836213"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864882"
 ---
-# <a name="get-translation-status"></a>Fordítási állapot lekért állapota
+# <a name="get-translation-status"></a>Fordítási állapot lekérte
 
-A Get translation status metódus egy dokumentumfordítási kérelem állapotát adja vissza. Az állapot tartalmazza a kérelem általános állapotát és a kérés részeként lefordított dokumentumok állapotát.
+A Fordítási állapot lekérése metódus visszaadja egy dokumentumfordítási kérelem állapotát. Az állapot tartalmazza a kérelem általános állapotát és a kérés részeként lefordított dokumentumok állapotát.
 
 ## <a name="request-url"></a>URL-cím kérése
 
@@ -28,12 +28,12 @@ Kérés küldése a `GET` következőre:
 GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches/{id}
 ```
 
-Megtudhatja, hogyan találhatja meg [az egyéni tartománynevet.](../get-started-with-document-translation.md#find-your-custom-domain-name)
+Ismerje meg, hogyan találhatja meg [az egyéni tartománynevét.](../get-started-with-document-translation.md#find-your-custom-domain-name)
 
 > [!IMPORTANT]
 >
-> * **A Document Translation szolgáltatásnak minden API-kéréséhez egyéni tartományvégpontra van szükség.**
-> * Nem használhatja az erőforráskulcsok és Azure Portal  oldalán található végpontot, sem a globális fordítóvégpontot – a Dokumentumfordítás szolgáltatásnak `api.cognitive.microsofttranslator.com` való HTTP-kérések igénylésére.
+> * **A Document Translation szolgáltatásnak minden API-kérelemhez egyéni tartományvégpontra van szükség.**
+> * Nem használhatja az erőforráskulcsok és -végpontok oldalán található végpontot Azure Portal, sem a globális fordítóvégpontot– a  `api.cognitive.microsofttranslator.com` dokumentumfordításra vonatkozó HTTP-kérések igénylésére.
 
 
 ## <a name="request-parameters"></a>Kérelemparaméterek
@@ -54,12 +54,12 @@ A kérelemfejlécek a következőek:
 
 ## <a name="response-status-codes"></a>Válasz állapotkódok
 
-A kérések által visszaadott lehetséges HTTP-állapotkódok a következők.
+A kérés által visszaadott lehetséges HTTP-állapotkódok a következők.
 
 |Állapotkód|Description|
 |--- |--- |
 |200|OK gombra. Sikeres kérés, és a kötegelt fordítási művelet állapotát adja vissza. HeadersRetry-After: integerETag: sztring|
-|401|Jogosulatlan. Ellenőrizze a hitelesítő adatait.|
+|401|Jogosulatlan. Ellenőrizze hitelesítő adatait.|
 |404|Az erőforrás nem található.|
 |500|Belső kiszolgálóhiba.|
 |Egyéb állapotkódok|<ul><li>Túl sok kérelem</li><li>A kiszolgáló ideiglenesen nem érhető el</li></ul>|
@@ -73,14 +73,14 @@ A sikeres válasz az alábbi adatokat tartalmazza.
 |Név|Típus|Description|
 |--- |--- |--- |
 |id|sztring|A művelet azonosítója.|
-|createdDateTimeUtc|sztring|Művelet létrehozási dátumának időpontja.|
+|createdDateTimeUtc|sztring|A művelet létrehozási dátumának időpontja.|
 |lastActionDateTimeUtc|sztring|A művelet állapotának frissítésének dátuma.|
-|status|Sztring|Feladat vagy dokumentum lehetséges állapotának listája: <ul><li>Megszakítva</li><li>Érvénytelenítés</li><li>Sikertelen</li><li>NotStarted (Nincs indítás)</li><li>Futó</li><li>Sikeres</li><li>ValidationFailed (Érvényesítési hiba)</li></ul>|
+|status|Sztring|Feladat vagy dokumentum lehetséges állapotának listája: <ul><li>Megszakítva</li><li>Érvénytelenítés</li><li>Sikertelen</li><li>NotStarted (Nem új)</li><li>Futó</li><li>Sikeres</li><li>ValidationFailed (Érvényesítési hiba)</li></ul>|
 |összegzés|StatusSummary (Állapot állapota)|Az alább felsorolt részleteket tartalmazó összegzés.|
 |summary.total|egész szám|Összesített szám.|
-|summary.failed|egész szám|Sikertelenek száma.|
+|summary.failed|egész szám|Sikertelen darabszám.|
 |summary.success|egész szám|A sikeresek száma.|
-|summary.inProgress (összegzés.inProgress)|egész szám|A folyamatban lévők száma.|
+|summary.inProgress (Összegzés.inProgress)|egész szám|A folyamatban lévők száma.|
 |summary.notYetStarted|egész szám|A még el nem indítottak száma.|
 |summary.cancelled|egész szám|A lemondottak száma.|
 |summary.totalCharacterCharged|egész szám|Az API által felszámított karakterek teljes száma.|
@@ -92,13 +92,13 @@ A sikeres válasz az alábbi adatokat tartalmazza.
 |code|sztring|Magas szintű hibakódokat tartalmazó felsorolások. Lehetséges értékek:<br/><ul><li>InternalServerError</li><li>InvalidArgument (Érvénytelen nyelv)</li><li>InvalidRequest (Érvénytelen kérdés)</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nem engedélyezett</li></ul>|
 |message|sztring|Magas szintű hibaüzenetet kap.|
 |Cél|sztring|Lekérte a hiba forrását. Ez lehet például "documents" (dokumentumok) vagy "document id" (dokumentumazonosító) érvénytelen dokumentum esetén.|
-|innerError|InnerErrorV2|Új belső hibaformátum, amely megfelel Cognitive Services API-irányelveknek. Tartalmazza az ErrorCode, az üzenet és az opcionális céltulajdonságok kötelező tulajdonságait, a részleteket (kulcs-érték párt), a belső hibát (beágyazható).|
+|innerError|InnerErrorV2|Új belső hibaformátum, amely megfelel Cognitive Services API-irányelveknek. Tartalmazza a szükséges ErrorCode, üzenet és opcionális tulajdonságok célértékét, a részleteket (kulcs-érték pár), a belső hibát (beágyazható).|
 |innerError.code|sztring|Lekérte a kód hibasringet.|
 |innerError.message|sztring|Magas szintű hibaüzenetet kap.|
 
 ## <a name="examples"></a>Példák
 
-### <a name="example-successful-response"></a>Példa sikeres válaszra
+### <a name="example-successful-response"></a>Példa a sikeres válaszra
 
 Az alábbi JSON-objektum egy példa a sikeres válaszra.
 

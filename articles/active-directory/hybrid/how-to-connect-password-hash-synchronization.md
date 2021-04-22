@@ -1,6 +1,6 @@
 ---
-title: Jelszó-kivonatolási szinkronizálás implementálása Azure AD Connect szinkronizálással | Microsoft Docs
-description: A jelszó-kivonatok szinkronizálásának működéséről és beállításáról nyújt információt.
+title: Jelszó kivonatszinkronizálás megvalósítása Azure AD Connect szinkronizálási | Microsoft Docs
+description: A jelszó kivonatszinkronizálásának működését és beállítását adja meg.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,89 +15,89 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47d7d541ed7d9805641ffdfde381d482c8700006
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee22ba3816e667bc58247fa81142e54587124fd6
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96858739"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865296"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>A jelszókivonat-szinkronizálás implementálása Azure AD Connect-szinkronizálással
-Ez a cikk azokat az információkat tartalmazza, amelyekkel szinkronizálhatja a felhasználói jelszavakat egy helyszíni Active Directory-példányról egy felhőalapú Azure Active Directory-(Azure AD-) példányra.
+Ez a cikk tájékoztatást nyújt arról, hogy hogyan szinkronizálhatja a felhasználói jelszavakat egy helyi Active Directory-példányról egy felhőalapú Azure Active Directory (Azure AD) példányra.
 
 ## <a name="how-password-hash-synchronization-works"></a>A jelszókivonat-szinkronizálás működése
-A Active Directory tartományi szolgáltatás a jelszavakat a tényleges felhasználói jelszó kivonatoló értékének ábrázolási formájában tárolja. A kivonatoló érték egy egyirányú matematikai függvény (a *kivonatoló algoritmus*) eredménye. Az egyirányú függvény eredménye semmilyen módszerrel nem fejthető vissza a jelszó egyszerű szöveges verziójára. 
+A Active Directory tartományi szolgáltatás kivonatérték-ábrázolás formájában tárolja a jelszavakat a tényleges felhasználói jelszó formájában. A kivonatérték egyedek matematikai függvényének (a kivonatolási *algoritmusnak) az eredménye.* Az egyirányú függvény eredménye semmilyen módszerrel nem fejthető vissza a jelszó egyszerű szöveges verziójára. 
 
-A jelszó szinkronizálásához Azure AD Connect Sync kivonja a jelszó kivonatát a helyszíni Active Directory példányból. A rendszer további biztonsági feldolgozást alkalmaz a jelszó-kivonatra, mielőtt szinkronizálja azt a Azure Active Directory hitelesítési szolgáltatással. A jelszavak felhasználónkénti és időrendi sorrendben lesznek szinkronizálva.
+A jelszó szinkronizálásához a Azure AD Connect kinyeri a jelszókivonatot a helyi Active Directory példányból. A rendszer további biztonsági feldolgozást alkalmaz a jelszó-kivonatra, mielőtt szinkronizálja azt a Azure Active Directory hitelesítési szolgáltatással. A jelszavak felhasználónként vannak szinkronizálva, időrendi sorrendben.
 
-A jelszó-kivonat szinkronizációs folyamatának tényleges adatfolyama hasonló a felhasználói adatok szinkronizálásához. A jelszavak azonban gyakrabban vannak szinkronizálva, mint a szabványos címtár-szinkronizálási ablak más attribútumok esetében. A jelszó-kivonat szinkronizációs folyamata 2 percenként fut. A folyamat gyakorisága nem módosítható. Amikor szinkronizál egy jelszót, felülírja a meglévő Felhőbeli jelszót.
+A jelszó-kivonat szinkronizálási folyamatának tényleges adatfolyama hasonló a felhasználói adatok szinkronizálásához. A jelszavak szinkronizálása azonban gyakoribb, mint más attribútumok szokásos címtár-szinkronizálási ablaka. A jelszó kivonatszinkronizálási folyamata 2 percenként fut le. A folyamat gyakorisága nem módosítható. Amikor szinkronizál egy jelszót, az felülírja a meglévő felhőbeli jelszót.
 
-Amikor első alkalommal engedélyezi a jelszó-kivonatolási szinkronizálási funkciót, az végrehajtja az összes hatókörrel rendelkező felhasználó jelszavának kezdeti szinkronizálását. Explicit módon nem határozhatja meg a szinkronizálni kívánt felhasználói jelszavak részhalmazát. Ha azonban több összekötő is van, akkor letilthatja a jelszó-kivonatok szinkronizálását egyes összekötők esetében, de a [set-ADSyncAADPasswordSyncConfiguration](../../active-directory-domain-services/tutorial-configure-password-hash-sync.md) parancsmag használatával nem.
+Amikor először engedélyezi a jelszó kivonatszinkronizálási funkcióját, az végrehajtja az összes hatókörbe tartozó felhasználó jelszavának kezdeti szinkronizálását. A szinkronizálni kívánt felhasználói jelszavak egy részkészletét nem határozhatja meg explicit módon. Ha azonban több összekötő is van, egyes összekötőknél letilthatja a jelszó kivonatszinkronizálását, másoknál azonban a [Set-ADSyncAADPasswordSyncConfiguration](../../active-directory-domain-services/tutorial-configure-password-hash-sync.md) parancsmagot használva.
 
-Amikor módosít egy helyszíni jelszót, a frissített jelszó szinkronizálva lesz, a leggyakrabban percek alatt.
-A jelszó-kivonat szinkronizációs funkciója automatikusan újrapróbálkozik a sikertelen szinkronizálási kísérletekkel. Ha egy jelszó szinkronizálására tett kísérlet során hiba lép fel, a rendszer hibát naplóz az eseménynaplóban.
+Amikor módosít egy helyszíni jelszót, a rendszer szinkronizálja a frissített jelszót, legtöbbször percek alatt.
+A jelszó kivonatszinkronizálási szolgáltatása automatikusan újra próbálkozik a sikertelen szinkronizálási kísérletekkel. Ha hiba történik a jelszó szinkronizálására tett kísérlet során, a rendszer hibát naplóz az eseménynaplóban.
 
-A jelszó szinkronizálása nincs hatással a jelenleg bejelentkezett felhasználóra.
-A jelenlegi Cloud Service-munkamenetet nem érinti azonnal a szinkronizált jelszó módosítása, amely a bejelentkezéskor egy felhőalapú szolgáltatásba kerül. Ha azonban a Cloud Service-nek újra kell hitelesítenie magát, meg kell adnia az új jelszót.
+A jelszó szinkronizálása nincs hatással az aktuálisan bejelentkezett felhasználóra.
+A jelenlegi felhőszolgáltatás-munkamenetet nem érinti azonnal a szinkronizált jelszó módosítása, amely a felhőszolgáltatásba való bejelentkezve történik. Ha azonban a felhőszolgáltatás újra megköveteli a hitelesítést, meg kell adnia az új jelszót.
 
-A felhasználóknak Másodszor kell megadniuk a vállalati hitelesítő adataikat az Azure AD-ben való hitelesítéshez, függetlenül attól, hogy be vannak-e jelentkezve a vállalati hálózatba. Ez a minta a lehető legkisebbre csökkenthető, ha azonban a felhasználó a bejelentkezéskor bejelöli a Keep Me bejelentkezve (KMSI) jelölőnégyzetet. Ez a beállítás olyan munkamenet-cookie-t állít be, amely 180 napig megkerüli a hitelesítést. Az Azure AD rendszergazdája engedélyezheti vagy letilthatja a KMSI viselkedését. Emellett a [zökkenőmentes SSO](how-to-connect-sso.md)bekapcsolásával csökkentheti a jelszó kéréseit, amely automatikusan aláírja a felhasználókat a vállalati hálózathoz csatlakozó vállalati eszközökön.
-
-> [!NOTE]
-> A jelszó-szinkronizálás csak az Objektumtípus felhasználója számára támogatott Active Directoryban. Az iNetOrgPerson objektum típusa nem támogatott.
-
-### <a name="detailed-description-of-how-password-hash-synchronization-works"></a>A jelszó-kivonatoló szinkronizálás működésének részletes leírása
-
-A következő szakasz részletesen ismerteti, hogyan működik a jelszó-kivonatok szinkronizálása Active Directory és az Azure AD között.
-
-![Részletes jelszavas folyamat](./media/how-to-connect-password-hash-synchronization/arch3b.png)
-
-1. Az AD összekapcsolási kiszolgáló jelszavas kivonat-szinkronizálási ügynöke két percenként kér tárolt jelszó-kivonatokat (a unicodePwd attribútumot) egy TARTOMÁNYVEZÉRLŐről.  Ez a kérelem a tartományvezérlők közötti adatszinkronizáláshoz használt szabványos [MS-drsr blokkméretéhez](/openspecs/windows_protocols/ms-drsr/f977faaa-673e-4f66-b9bf-48c640241d47) replikációs protokollon keresztül történik. A szolgáltatási fióknak replikálnia kell a címtár-módosításokat, és replikálnia kell a címtárat a jelszó-kivonatok beszerzéséhez szükséges összes AD-engedély (a telepítéskor alapértelmezés szerint megadva).
-2. A küldés előtt a tartományvezérlő titkosítja a MD4-jelszó kivonatát egy olyan kulccsal, amely az RPC-munkamenet kulcsának [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt) kivonata és egy só. Ezután elküldi az eredményt a jelszó-kivonatoló szinkronizációs ügynöknek az RPC protokollon keresztül. A tartományvezérlő a tartományvezérlő replikációs protokolljának használatával is átadja a sót a szinkronizációs ügynöknek, így az ügynök visszafejtheti a borítékot.
-3. Miután a jelszó-kivonat szinkronizációs ügynöke titkosított borítékot tartalmaz, a [MD5CryptoServiceProvider](/dotnet/api/system.security.cryptography.md5cryptoserviceprovider) és a só használatával generált egy kulcsot, amely visszafejti a kapott adatokat az eredeti MD4 formátumával. A jelszó-kivonat szinkronizációs ügynöke soha nem fér hozzá a tiszta szöveges jelszóhoz. A jelszó-kivonat szinkronizációs ügynökének MD5-használata szigorúan a DC-vel való kompatibilitást biztosító replikációs protokoll, és csak a tartományvezérlő és a jelszó-kivonat szinkronizációs ügynöke között használatos.
-4. A jelszó-kivonatoló szinkronizációs ügynök kibontja a 16 bájtos bináris jelszó kivonatát 64 bájtra, először konvertálja a kivonatot egy 32 bájtos hexadecimális karakterláncra, majd átalakítja a karakterláncot a binárisba UTF-16 kódolással.
-5. A jelszó-kivonatoló szinkronizálási ügynök egy 10 bájtos hosszúságú, a 64 bájtos bináris értékkel rendelkező felhasználónkénti sót hoz létre az eredeti kivonat további védelemmel való ellátása érdekében.
-6. A Password hash szinkronizációs ügynök ezután egyesíti a MD4-kivonatot és a felhasználónkénti sót, és beírja azt a [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) függvénybe. 1000 az [HMAC-sha256](/dotnet/api/system.security.cryptography.hmacsha256) kulcsos kivonatoló algoritmust használó iterációk. 
-7. A jelszó-kivonat szinkronizációs ügynöke az eredményül kapott 32 bájtos kivonatot, a felhasználónkénti sót és a hozzá tartozó SHA256-iterációk számát (az Azure AD általi használatra) a karakterláncot a Azure AD Connectról az Azure AD-be a TLS protokollon keresztül továbbítja.</br> 
-8. Amikor egy felhasználó megpróbál bejelentkezni az Azure AD-be, és megadja a jelszavát, a jelszó ugyanazon MD4 + Salt + PBKDF2 + HMAC-SHA256 folyamaton keresztül fut. Ha az eredményül kapott kivonat megegyezik az Azure AD-ben tárolt kivonattal, a felhasználó megadta a megfelelő jelszót, és hitelesítve van.
+A felhasználónak másodszor is meg kell adnia a vállalati hitelesítő adatait az Azure AD-hitelesítéshez, függetlenül attól, hogy be van-e jelentkezve a vállalati hálózatra. Ez a minta azonban minimalizálható, ha a felhasználó a Bejelentkezve marad (KMSI) jelölőnégyzetet választja a bejelentkezésnél. Ez a beállítás egy munkamenet-cookie-t állít be, amely 180 napig mellőzi a hitelesítést. A KMSI viselkedését az Azure AD-rendszergazda is engedélyezheti vagy letilthatja. Emellett csökkentheti a jelszó kérését a közvetlen [egyszeri](how-to-connect-sso.md)bejelentkezés bekapcsolásával, amely automatikusan bejelentkezteti a felhasználókat, amikor a vállalati hálózathoz csatlakoztatott vállalati eszközeiken vannak.
 
 > [!NOTE]
-> Az eredeti MD4-kivonatot a rendszer nem továbbítja az Azure AD-nek. Ehelyett a rendszer az eredeti MD4 kivonat SHA256 kivonatát továbbítja. Ennek eredményeképpen, ha az Azure AD-ben tárolt kivonatot beszerezték, nem használható helyszíni pass-The-hash típusú támadásban.
+> A jelszó-szinkronizálás csak az objektumtípus-felhasználó számára támogatott a Active Directory. Az iNetOrgPerson objektumtípus nem támogatja.
+
+### <a name="detailed-description-of-how-password-hash-synchronization-works"></a>A jelszó kivonatszinkronizálásának részletes leírása
+
+A következő szakasz részletesen bemutatja, hogyan működik a jelszó kivonatszinkronizálása a Active Directory Azure AD között.
+
+![Részletes jelszófolyam](./media/how-to-connect-password-hash-synchronization/arch3b.png)
+
+1. Az AD Connect-kiszolgáló jelszó-kivonatszinkronizálási ügynöke két percenként tárolt jelszó-kivonatokat (unicodePwd attribútumot) kér egy tartományvezérlőről.  Ez a kérés az adatok tartományvezérlők közötti szinkronizálására használt szabványos [MS-DRSR replikációs](/openspecs/windows_protocols/ms-drsr/f977faaa-673e-4f66-b9bf-48c640241d47) protokollon keresztül érhető el. A szolgáltatásfióknak rendelkeznie kell a Címtárváltozások replikálása és a Címtárváltozások replikálása minden AD-engedéllyel (a telepítéskor alapértelmezés szerint meg van jelölve) a jelszó-hashek beszerzéséhez.
+2. Küldés előtt a tartományvezérlő egy olyan kulcs használatával titkosítja az MD4-jelszó kivonatát, amely az RPC-munkamenetkulcs [MD5-kivonata](https://www.rfc-editor.org/rfc/rfc1321.txt) és egy salt típusú kulcs. Ezután elküldi az eredményt a jelszó kivonatszinkronizálási ügynökének RPC-n keresztül. A tartományvezérlő a tartományvezérlő replikációs protokolljának használatával továbbítja a sót a szinkronizációs ügynöknek, így az ügynök vissza tudja fejteni a borítékot.
+3. Miután a jelszó kivonatszinkronizálási ügynök megkapta a titkosított borítékot, [az MD5CryptoServiceProvider](/dotnet/api/system.security.cryptography.md5cryptoserviceprovider) és a salt használatával létrehoz egy kulcsot a fogadott adatok visszafejtéséhez az eredeti MD4 formátumba. A jelszó kivonatszinkronizálási ügynöke soha nem fér hozzá a tiszta szöveges jelszóhoz. A jelszó-kivonatszinkronizálási ügynök MD5-használatát szigorúan a tartományvezérlővel való replikációs protokoll kompatibilitására használja, és csak a helyszínen használja a tartományvezérlő és a jelszó-kivonatszinkronizálási ügynök között.
+4. A jelszó-kivonatszinkronizálási ügynök 64 bájtra bővíti a 16 bájtos bináris jelszó-kivonatot úgy, hogy először átalakítja a kivonatot egy 32 bájtos hexadecimális sztringgé, majd ezt a sztringet utF-16 kódolással binárisra konvertálja vissza.
+5. A jelszó-kivonatszinkronizálási ügynök felhasználónkénti sót ad hozzá, amely egy 10 bájtos salt értékből áll, és hozzáadja a 64 bájtos bináris fájlhoz az eredeti kivonat további védelme érdekében.
+6. A jelszó kivonatszinkronizálási ügynök ezután kombinálja az MD4-kivonatot és a felhasználónkénti sót, és bemenő adatokat a [PBKDF2 függvénybe.](https://www.ietf.org/rfc/rfc2898.txt) A [HMAC-SHA256](/dotnet/api/system.security.cryptography.hmacsha256) kulcsos kivonatolási algoritmus 1000 iterációja van használva. 
+7. A jelszó kivonatszinkronizálási ügynöke az eredményül kapott 32 bájtos kivonatot a felhasználónkénti sót és az SHA256 iterációk számát is összecsukja (az Azure AD-hez), majd továbbítja a sztringet az Azure AD Connect-ból az Azure AD-be TLS-kapcsolaton keresztül.</br> 
+8. Amikor egy felhasználó megpróbál bejelentkezni az Azure AD-be, és beírja a jelszavát, a rendszer ugyanazt az MD4+salt+PBKDF2+HMAC-SHA256 folyamatot használja. Ha az eredményül kapott kivonat megegyezik az Azure AD-ban tárolt kivonatával, a felhasználó a megfelelő jelszót adta meg, és a rendszer hitelesíti.
+
+> [!NOTE]
+> Az eredeti MD4-kivonat nem lesz továbbítva az Azure AD-nek. Ehelyett az eredeti MD4-kivonat SHA256 kivonatát továbbítja a program. Ennek eredményeképpen az Azure AD-ban tárolt kivonat lekért kivonat nem használható helyszíni pass-the-hash támadásban.
 
 ### <a name="security-considerations"></a>Biztonsági szempontok
 
-A jelszavak szinkronizálásakor a jelszó egyszerű szöveges verziója nem érhető el a jelszó-kivonat szinkronizálási szolgáltatásához, az Azure AD-hez vagy a társított szolgáltatásokhoz.
+A jelszavak szinkronizálása során a jelszó egyszerű szöveges verziója nem lesz elérhető a jelszó kivonatszinkronizálási szolgáltatása, az Azure AD vagy a társított szolgáltatások számára.
 
-A felhasználó hitelesítése a szervezet saját Active Directory példánya helyett az Azure AD-vel történik. A SHA256 az Azure AD-ben tárolt jelszavas adatokat – az eredeti MD4-kivonat kivonata – biztonságosabb, mint amit a Active Directory tárol. Továbbá, mivel ez a SHA256-kivonat nem fejthető vissza, nem állítható vissza a szervezet Active Directory környezetére, és érvényes felhasználói jelszóként jelenik meg egy pass-The-hash típusú támadásban.
+A felhasználóhitelesítés az Azure AD-ban történik, nem pedig a szervezet saját Active Directory példányán. Az Azure AD-ben tárolt SHA256 jelszóadatok – az eredeti MD4-kivonat kivonata – biztonságosabbak, mint a Active Directory. Továbbá, mivel ez az SHA256-kivonat nem visszafejthető, nem lehet visszahozni a szervezet Active Directory-környezetéhez, és érvényes felhasználói jelszóként bemutatni egy pass-the-hash támadás során.
 
-### <a name="password-policy-considerations"></a>Jelszóházirend-megfontolások
+### <a name="password-policy-considerations"></a>Jelszó-szabályzatokkal kapcsolatos szempontok
 
-A jelszó-kivonat szinkronizálásának engedélyezéséhez két típusú jelszóházirend vonatkozik:
+A jelszó-kivonat szinkronizálásának engedélyezése kétféle jelszó-házirendet érint:
 
-* Jelszó-összetettségi szabályzat
-* Jelszó elévülési szabályzata
+* Jelszó összetettségi szabályzata
+* Jelszó-elévülési szabályzat
 
-#### <a name="password-complexity-policy"></a>Jelszó-összetettségi szabályzat
+#### <a name="password-complexity-policy"></a>Jelszó összetettségi szabályzata
 
-Ha engedélyezve van a jelszó-kivonatolási szinkronizálás, a helyszíni Active Directory-példány jelszavas bonyolultsági szabályzatai felülbírálják a Felhőbeli összetettségi szabályzatokat a szinkronizált felhasználók számára. Az Azure AD-szolgáltatások eléréséhez használhatja a helyszíni Active Directory-példány összes érvényes jelszavát.
+Ha a jelszó kivonatszinkronizálása engedélyezve van, az helyi Active Directory-példány jelszó-összetettségi szabályzatok felülbírálják a felhőben a szinkronizált felhasználókra vonatkozó összetettségi szabályzatokat. Az Azure AD-szolgáltatások eléréséhez használhatja a helyi Active Directory összes érvényes jelszavát.
 
 > [!NOTE]
-> A felhőben közvetlenül létrehozott felhasználók jelszavai a felhőben definiált jelszavas szabályzatoknak is érvényesek.
+> A közvetlenül a felhőben létrehozott felhasználók jelszavaira továbbra is vonatkoznak a felhőben meghatározott jelszó-szabályzatok.
 
-#### <a name="password-expiration-policy"></a>Jelszó elévülési szabályzata
+#### <a name="password-expiration-policy"></a>Jelszó-elévülési szabályzat
 
-Ha a felhasználó a jelszó-kivonatolási szinkronizálás hatókörében van, alapértelmezés szerint a Cloud Account jelszó értéke *soha nem jár le*.
+Ha egy felhasználó a jelszó-kivonat szinkronizálásának hatókörében van, a felhőfiók jelszava alapértelmezés szerint *Never Expire (Soha elévül)* lesz.
 
-Továbbra is bejelentkezhet a Cloud servicesbe egy szinkronizált jelszó használatával, amely a helyszíni környezetben lejárt. A felhő jelszava frissül, amikor legközelebb megváltoztatja a jelszót a helyszíni környezetben.
+Továbbra is bejelentkezhet a felhőszolgáltatásokba egy olyan szinkronizált jelszóval, amely lejárt a helyszíni környezetben. A felhőbeli jelszó akkor frissül, amikor legközelebb módosítja a jelszót a helyszíni környezetben.
 
 ##### <a name="enforcecloudpasswordpolicyforpasswordsyncedusers"></a>EnforceCloudPasswordPolicyForPasswordSyncedUsers
 
-Ha olyan szinkronizált felhasználók vannak, akik csak az Azure AD integrált szolgáltatásaival működnek együtt, és meg kell felelniük a jelszó lejárati házirendjének, akkor a *EnforceCloudPasswordPolicyForPasswordSyncedUsers* funkció engedélyezésével kényszerítheti az Azure ad-jelszó lejárati szabályzatának betartását.
+Ha vannak olyan szinkronizált felhasználók, akik csak az Azure AD integrált szolgáltatásaival kommunikálnak, és meg kell felelniük egy jelszó-lejárati szabályzatnak, kényszerítheti őket, hogy megfeleljenek az Azure AD jelszó-lejárati szabályzatának a *EnforceCloudPasswordPolicyForPasswordSyncedUsers* funkció engedélyezésével.
 
-Ha a *EnforceCloudPasswordPolicyForPasswordSyncedUsers* le van tiltva (ez az alapértelmezett beállítás), Azure ad Connect a szinkronizált felhasználók PasswordPolicies attribútumát a "DisablePasswordExpiration" értékre állítja. Ez minden alkalommal megtörténik, amikor a felhasználó jelszava szinkronizálva van, és arra utasítja az Azure AD-t, hogy figyelmen kívül hagyja az adott felhasználóhoz tartozó Felhőbeli jelszó lejárati szabályzatát. Az attribútum értékét a következő paranccsal tekintheti meg az Azure AD PowerShell-modul használatával:
+Ha *a EnforceCloudPasswordPolicyForPasswordSyncedUsers* le van tiltva (ez az alapértelmezett beállítás), a Azure AD Connect a szinkronizált felhasználók PasswordPolicies attribútumát "DisablePasswordExpiration" beállításra állítja. Ez minden alkalommal meg történik, amikor egy felhasználó jelszava szinkronizálva van, és arra utasítja az Azure AD-t, hogy hagyja figyelmen kívül az adott felhasználó felhőbeli jelszó-elévülési szabályzatát. Az attribútum értékét az Azure AD PowerShell-modullal ellenőrizheti a következő paranccsal:
 
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
 
-A EnforceCloudPasswordPolicyForPasswordSyncedUsers funkció engedélyezéséhez futtassa a következő parancsot a MSOnline PowerShell-modullal az alább látható módon. Az engedélyezés paraméternél az Igen értéket kell beírnia az alábbi módon:
+A EnforceCloudPasswordPolicyForPasswordSyncedUsers szolgáltatás engedélyezéséhez futtassa a következő parancsot az MSOnline PowerShell-modullal az alább látható módon. Az Enable paraméterhez igent kellene begépelni az alább látható módon:
 
 ```
 Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers
@@ -109,114 +109,114 @@ Continue with this operation?
 [Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y
 ```
 
-Ha engedélyezve van, az Azure AD nem minden szinkronizált felhasználóhoz csatlakozik, hogy eltávolítsa az `DisablePasswordExpiration` értéket a PasswordPolicies attribútumból. Ehelyett a `DisablePasswordExpiration` rendszer eltávolítja az értéket a PasswordPolicies az egyes felhasználók következő jelszavas kivonatának szinkronizálásakor, a helyi ad-ben a következő jelszó megváltozása után.
+Ha engedélyezve van, az Azure AD nem kerül az egyes szinkronizált felhasználókhoz, hogy eltávolítsa az értéket a `DisablePasswordExpiration` PasswordPolicies attribútumból. Ehelyett az érték el lesz távolítva a PasswordPolicies-ból az egyes felhasználók következő jelszó-kivonatszinkronizálása során, amikor legközelebb módosítják a jelszót a helyszíni `DisablePasswordExpiration` AD-ban.
 
-Javasoljuk, hogy engedélyezze a EnforceCloudPasswordPolicyForPasswordSyncedUsers a jelszó-kivonat szinkronizálásának engedélyezése előtt, hogy a jelszó-kivonatok kezdeti szinkronizálása ne adja hozzá az `DisablePasswordExpiration` értéket a felhasználók PasswordPolicies attribútumához.
+Javasoljuk, hogy a jelszó-kivonatszinkronizálás engedélyezése előtt engedélyezze a EnforceCloudPasswordPolicyForPasswordSyncedUsers attribútumot, hogy a jelszó-kivonatok kezdeti szinkronizálása ne adja hozzá az értéket a `DisablePasswordExpiration` felhasználók PasswordPolicies attribútumához.
 
-Az alapértelmezett Azure AD-jelszóházirend megköveteli, hogy a felhasználók 90 naponta megváltoztassák a jelszavukat. Ha az AD-szabályzat 90 nap is, a két házirendnek egyeznie kell. Ha azonban az AD-házirend nem 90 nap, akkor a Set-MsolPasswordPolicy PowerShell-paranccsal módosíthatja az Azure AD-jelszó házirendjét.
+Az alapértelmezett Azure AD jelszó-szabályzat előírja, hogy a felhasználóknak 90 naponta módosítaniuk kell jelszavukat. Ha az AD-ben a szabályzat szintén 90 nap, a két szabályzatnak egyeznie kell. Ha azonban az AD-szabályzat nem 90 nap, az Azure AD jelszó-szabályzatát az Set-MsolPasswordPolicy PowerShell-paranccsal frissítheti.
 
-Az Azure AD egy regisztrált tartományon belüli külön jelszó-elévülési szabályzatot támogat.
+Az Azure AD regisztrált tartományonként külön jelszó-elévülési szabályzatot támogat.
 
-Figyelmeztetés: ha vannak olyan szinkronizált fiókok, amelyeknek az Azure AD-ben nem lejáró jelszavakkal kell rendelkezniük, explicit módon hozzá kell adnia az `DisablePasswordExpiration` értéket az Azure ad felhasználói objektumának PasswordPolicies attribútumához.  Ezt a következő parancs futtatásával teheti meg.
+Figyelmeztetés: Ha vannak olyan szinkronizált fiókok, amelyekhez le nem járó jelszavakra van szükség az Azure AD-ban, explicit módon hozzá kell adni az értéket a felhasználói objektum PasswordPolicies attribútumához az `DisablePasswordExpiration` Azure AD-ban.  Ezt a következő parancs futtatásával használhatja.
 
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
 > [!NOTE]
-> Az Set-MsolPasswordPolicy PowerShell-parancs összevont tartományokon nem fog működni. 
+> A Set-MsolPasswordPolicy PowerShell-parancs nem fog működni összevont tartományokon. 
 
-#### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Ideiglenes jelszavak szinkronizálása és a "jelszó módosítása a következő bejelentkezéskor"
+#### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Ideiglenes jelszavak szinkronizálása és "Jelszóváltozás kényszerítése a következő bejelentkezéskor"
 
-Általában arra kényszeríti a felhasználót, hogy az első bejelentkezéskor változtassa meg a jelszavát, különösen a rendszergazdai jelszó alaphelyzetbe állítása után.  Ezt általában "ideiglenes" jelszóként kell beállítani, és a rendszer azt ellenőrzi, hogy a "felhasználónak meg kell-e változtatni a jelszót a következő bejelentkezéskor" jelzőn a Active Directory (AD) felhasználói objektumán.
+Az első bejelentkezéskor általában arra kényszerítik a felhasználót, hogy változtassa meg a jelszavát, különösen a rendszergazdai jelszó alaphelyzetbe állítása után.  Ezt általában "ideiglenes" jelszó beállításának nevezik, és a "Felhasználónak meg kell változtatnia a jelszót a következő bejelentkezéskor" jelölővel kell végrehajtania a Active Directory (AD) felhasználói objektumán.
   
-Az ideiglenes jelszó funkció segítségével biztosítható, hogy a hitelesítő adatok tulajdonjogának átruházása az első használatnál legyen elvégezve, hogy minimálisra csökkentse azt az időtartamot, ameddig több személy ismeri a hitelesítő adatokat.
+Az ideiglenes jelszó funkció segít biztosítani, hogy a hitelesítő adatok tulajdonjogának átadása az első használatkor befejeződik, így minimalizálható az az időtartam, amely alatt egynél több személy ismeri ezt a hitelesítő adatokat.
 
-Az Azure AD-ben a szinkronizált felhasználók számára az ideiglenes jelszavak támogatásához engedélyezheti a *ForcePasswordChangeOnLogOn* szolgáltatást a következő parancs futtatásával a Azure ad Connect-kiszolgálón:
+Ha engedélyezni szeretné az ideiglenes jelszavakat az Azure AD-ban a szinkronizált felhasználók számára, engedélyezheti a *ForcePasswordChangeOnLogOn* funkciót a következő parancs futtatásával a Azure AD Connect kiszolgálón:
 
 `Set-ADSyncAADCompanyFeature -ForcePasswordChangeOnLogOn $true`
 
 > [!NOTE]
-> Ha arra kényszeríti a felhasználót, hogy a következő bejelentkezéskor megváltoztassa a jelszavát, a jelszó módosítására is szükség van.  A Azure AD Connect nem fogja önállóan felvenni a kényszerített jelszó-módosítási jelzőt. Ez a jelszó-kivonat szinkronizálásakor megjelenő észlelt jelszóval kiegészítve történik.
+> Ha arra kényszeríti a felhasználót, hogy a következő bejelentkezéskor változtassa meg a jelszavát, egyszerre kell módosítania a jelszót.  Azure AD Connect a jelszóváltozás kényszerítése jelzőt önmagában nem fogja használni; ez kiegészíti a jelszó kivonatszinkronizálása során észlelt jelszóváltozást.
 
 > [!CAUTION]
-> Ezt a funkciót csak akkor használja, ha a SSPR és a jelszó visszaírási engedélyezve vannak a bérlőn.  Ez azért van így, hogy ha a felhasználó a SSPR-n keresztül módosítja a jelszavát, a rendszer szinkronizálja Active Directory.
+> Ezt a funkciót csak akkor használja, ha az SSPR és a jelszóvisszaírás engedélyezve van a bérlőn.  Így ha egy felhasználó SSPR-en keresztül módosítja a jelszavát, az szinkronizálva lesz a Active Directory.
 
 #### <a name="account-expiration"></a>Fiók lejárata
 
-Ha a szervezet a accountExpires attribútumot használja a felhasználói fiókok felügyelete részeként, ez az attribútum nincs szinkronizálva az Azure AD-vel. Ennek eredményeképpen a jelszó-kivonat szinkronizálására konfigurált környezet lejárt Active Directory fiókja továbbra is aktív lesz az Azure AD-ben. Javasoljuk, hogy ha a fiók lejárt, egy munkafolyamat-műveletnek aktiválnia kell egy PowerShell-parancsfájlt, amely letiltja a felhasználó Azure AD-fiókját (használja a [set-AzureADUser](/powershell/module/azuread/set-azureaduser) parancsmagot). Ezzel szemben a fiók bekapcsolásakor az Azure AD-példányt be kell kapcsolni.
+Ha a szervezet az accountExpires attribútumot használja a felhasználói fiókok felügyeletének részeként, a rendszer nem szinkronizálja ezt az attribútumot az Azure AD-be. Ennek eredményeképpen a lejárt Active Directory fiók továbbra is aktív lesz az Azure AD-ban a jelszó kivonatszinkronizálásra konfigurált környezetben. Javasoljuk, hogy ha a fiók lejárt, a munkafolyamat-műveletnek aktiváljon egy PowerShell-szkriptet, amely letiltja a felhasználó Azure AD-fiókját (használja a [Set-AzureADUser](/powershell/module/azuread/set-azureaduser) parancsmagot). Ezzel szemben a fiók bekapcsoláskor az Azure AD-példányt is be kell kapcsolva.
 
 ### <a name="overwrite-synchronized-passwords"></a>Szinkronizált jelszavak felülírása
 
-A rendszergazdák a Windows PowerShell használatával manuálisan állíthatják alaphelyzetbe a jelszót.
+A rendszergazdák manuálisan állíthatják alaphelyzetbe a jelszót a Windows PowerShell.
 
-Ebben az esetben az új jelszó felülbírálja a szinkronizált jelszót, a felhőben definiált összes jelszóházirend pedig az új jelszóra lesz alkalmazva.
+Ebben az esetben az új jelszó felülírja a szinkronizált jelszót, és a rendszer a felhőben meghatározott összes jelszó-szabályzatot alkalmazza az új jelszóra.
 
-Ha ismét módosítja a helyszíni jelszót, az új jelszó szinkronizálva lesz a felhőbe, és felülbírálja a manuálisan frissített jelszót.
+Ha ismét megváltoztatja a helyszíni jelszót, a rendszer szinkronizálja az új jelszót a felhőbe, és felülírja a manuálisan frissített jelszót.
 
-A jelszó szinkronizálása nincs hatással a bejelentkezett Azure-felhasználóra. A jelenlegi Cloud Service-munkamenetet nem érinti azonnal a szinkronizált jelszó módosítása, amely akkor jelentkezik, amikor bejelentkezett egy felhőalapú szolgáltatásba. A KMSI kiterjeszti a különbség időtartamát. Ha a Cloud Service-nek újra kell hitelesítenie magát, meg kell adnia az új jelszót.
+A jelszó szinkronizálása nincs hatással a bejelentkezett Azure-felhasználóra. Az aktuális felhőszolgáltatás-munkamenetet nem érinti azonnal a szinkronizált jelszó módosítása, amely akkor következik be, amikor bejelentkezik egy felhőszolgáltatásba. A KMSI meghosszabbítja a különbség időtartamát. Amikor a felhőszolgáltatás megköveteli a hitelesítést, meg kell adnia az új jelszót.
 
 ### <a name="additional-advantages"></a>További előnyök
 
-- Általánosságban elmondható, hogy a jelszó-kivonat szinkronizálása egyszerűbben megvalósítható, mint az összevonási szolgáltatás. Nem igényel további kiszolgálókat, és a felhasználók hitelesítéséhez kizárja a nagyfokú rendelkezésre állású összevonási szolgáltatástól való függőséget.
-- A jelszó-kivonat szinkronizálása az összevonás mellett is engedélyezhető. Tartalékként használható, ha az összevonási szolgáltatás leállás miatt leáll.
+- A jelszó kivonatszinkronizálását általában egyszerűbb megvalósítani, mint egy összevonási szolgáltatást. Nem igényel további kiszolgálókat, és kiküszöböli a magas rendelkezésre állású összevonási szolgáltatástól való függést a felhasználók hitelesítéséhez.
+- A jelszó kivonatszinkronizálása az összevonás mellett is engedélyezhető. Tartalékként is használható, ha az összevonási szolgáltatás kimaradást tapasztal.
 
-## <a name="password-hash-sync-process-for-azure-ad-domain-services"></a>Jelszó-kivonat szinkronizálási folyamata Azure AD Domain Services
+## <a name="password-hash-sync-process-for-azure-ad-domain-services"></a>Jelszó kivonatának szinkronizálási folyamata Azure AD Domain Services
 
-Ha a Azure AD Domain Services segítségével örökölt hitelesítést biztosít a Kerberos, az LDAP vagy az NTLM protokollt használó alkalmazásokhoz és szolgáltatásokhoz, néhány további folyamat a jelszó-kivonat szinkronizációs folyamatának részét képezi. Azure AD Connect a következő folyamattal szinkronizálja a jelszó-kivonatokat az Azure AD-be a Azure AD Domain Servicesban való használathoz:
+Ha a Azure AD Domain Services-t használja a Kerberos, LDAP vagy NTLM protokollt használni szükséges alkalmazások és szolgáltatások régi hitelesítéséhez, néhány további folyamat is része a jelszó kivonatszinkronizálási folyamatának. Azure AD Connect a következő folyamattal szinkronizálja a jelszó-előjeleket az Azure AD-be a Azure AD Domain Services:
 
 > [!IMPORTANT]
-> A Azure AD Connect csak a helyszíni AD DS környezetekkel való szinkronizálásra kell telepíteni és konfigurálni. Nem támogatott Azure AD Connect telepítése Azure AD DS felügyelt tartományba az objektumok Azure AD-be való visszaszinkronizálásához.
+> Azure AD Connect csak helyszíni hálózati környezetekkel való szinkronizáláshoz kell telepíteni és AD DS konfigurálni. Az objektumok Azure AD-be Azure AD Connect felügyelt Azure AD DS való szinkronizálása nem támogatott.
 >
-> Azure AD Connect csak a régi jelszavakat szinkronizálja, amikor engedélyezi az Azure AD DSt az Azure AD-bérlő számára. A következő lépések nem használhatók, ha a helyszíni AD DS-környezet Azure AD-vel való szinkronizálásához csak Azure AD Connect használ.
+> Azure AD Connect csak akkor szinkronizálja az örökölt jelszó-Azure AD DS, ha engedélyezi a Azure AD DS Azure AD-bérlő számára. A következő lépéseket nem használja a rendszer, ha csak a Azure AD Connect használja a helyszíni AD DS Azure AD-val való szinkronizáláshoz.
 >
-> Ha az örökölt alkalmazásai nem használnak NTLM-hitelesítést vagy LDAP egyszerű kötéseket, javasoljuk, hogy tiltsa le az NTLM-jelszó kivonatának szinkronizálását az Azure AD DS. További információ: a [gyenge titkosítási csomagok letiltása és az NTLM hitelesítő adatok kivonatának szinkronizálása](../../active-directory-domain-services/secure-your-domain.md).
+> Ha az örökölt alkalmazások nem használják az NTLM-hitelesítést vagy az EGYSZERŰ LDAP-kötéseket, javasoljuk, hogy tiltsa le az NTLM jelszó-kivonatszinkronizálást a Azure AD DS. További információ: Gyenge titkosítási csomagok letiltása és [NTLM hitelesítőadat-kivonatszinkronizálás.](../../active-directory-domain-services/secure-your-domain.md)
 
-1. Azure AD Connect lekéri a bérlő Azure AD Domain Services példányának nyilvános kulcsát.
-1. Amikor egy felhasználó megváltoztatja a jelszavát, a helyszíni tartományvezérlő két attribútumban tárolja a jelszó-módosítás (kivonatok) eredményét:
-    * *unicodePwd* az NTLM-jelszó kivonatához.
+1. Azure AD Connect lekéri a bérlő példányának nyilvános kulcsát Azure AD Domain Services.
+1. Amikor egy felhasználó megváltoztatja a jelszavát, a helyszíni tartományvezérlő két attribútumban tárolja a jelszóváltozás (hashes) eredményét:
+    * Az NTLM-jelszó kivonata: *unicodePwd.*
     * *supplementalCredentials* a Kerberos-jelszó kivonatához.
-1. Azure AD Connect észleli a jelszó-módosításokat a címtár-replikációs csatornán keresztül (az attribútum módosításait más tartományvezérlőkre kell replikálni).
-1. A Azure AD Connect a következő lépéseket hajtja végre minden olyan felhasználónál, akinek a jelszava módosult:
-    * Véletlenszerűen generált AES 256-bites szimmetrikus kulcsot hoz létre.
-    * Létrehoz egy véletlenszerű inicializálási vektort, amely az első kör titkosításához szükséges.
-    * A *supplementalCredentials* attribútumaiból Kinyeri a Kerberos-jelszó kivonatait.
-    * Ellenőrzi a Azure AD Domain Services biztonsági konfiguráció *SyncNtlmPasswords* -beállítását.
-        * Ha ez a beállítás le van tiltva, a létrehoz egy véletlenszerű, nagy entrópia-alapú NTLM-kivonatot (amely eltér a felhasználó jelszavával). Ezt a kivonatot ezután a *supplementalCrendetials* attribútum által a pontosan megadott Kerberos-jelszó kivonatokkal kombinálva egyetlen adatstruktúrába.
-        * Ha engedélyezve van, a a *unicodePwd* attribútum értékét kombinálja a kinyert Kerberos-jelszó kivonatokkal a *supplementalCredentials* attribútumból egy adatstruktúrába.
-    * Titkosítja az egyetlen adatszerkezetet az AES szimmetrikus kulcs használatával.
-    * Titkosítja az AES szimmetrikus kulcsot a bérlő Azure AD Domain Services nyilvános kulcsa alapján.
-1. Azure AD Connect továbbítja a titkosított AES szimmetrikus kulcsot, a jelszó-kivonatokat tartalmazó titkosított adatstruktúrát, valamint az inicializálási vektort az Azure AD-nek.
-1. Az Azure AD tárolja a titkosított AES szimmetrikus kulcsot, a titkosított adatstruktúrát és a felhasználó inicializálási vektorát.
-1. Az Azure AD leküldi a titkosított AES szimmetrikus kulcsot, a titkosított adatstruktúrát és az inicializálási vektort egy belső szinkronizálási mechanizmus használatával, amely egy titkosított HTTP-munkameneten keresztül Azure AD Domain Services.
-1. Azure AD Domain Services lekéri a bérlő példányának titkos kulcsát az Azure Key vaultból.
-1. Az egyes titkosított adatkészletek esetében (amely az egyetlen felhasználó jelszavainak módosítását jelenti) Azure AD Domain Services ezután végrehajtja a következő lépéseket:
-    * A titkos kulcsát használja az AES szimmetrikus kulcs visszafejtéséhez.
-    * Az AES szimmetrikus kulcsot használja az inicializálási vektor használatával a jelszó-kivonatokat tartalmazó titkosított adatstruktúra visszafejtéséhez.
-    * A Kerberos-jelszó kivonatait írja a Azure AD Domain Services tartományvezérlőnek. A rendszer menti a kivonatokat a felhasználói objektum *supplementalCredentials* attribútumában, amely a Azure ad Domain Services tartományvezérlő nyilvános kulcsára van titkosítva.
-    * Azure AD Domain Services írja be a Azure AD Domain Services tartományvezérlőnek fogadott NTLM-jelszó kivonatát. A rendszer menti a kivonatot a felhasználói objektum *unicodePwd* attribútumában, amely a Azure ad Domain Services tartományvezérlő nyilvános kulcsához van titkosítva.
+1. Azure AD Connect a címtárreplikációs csatornán keresztül észleli a jelszóváltozásokat (az attribútumok módosításait más tartományvezérlőkre kell replikálni).
+1. Minden olyan felhasználó esetében, akinek a jelszava megváltozott, a Azure AD Connect a következő lépéseket végzi el:
+    * Véletlenszerű 256 bites szimmetrikus AES-kulcsot hoz létre.
+    * Létrehoz egy véletlenszerű inicializálási vektort, amely a titkosítás első körének létrehozásához szükséges.
+    * Kinyeri a Kerberos-jelszókivonatokat a *supplementalCredentials attribútumból.*
+    * Ellenőrzi a Azure AD Domain Services *SyncNtlmPasswords beállítását.*
+        * Ha ez a beállítás le van tiltva, a véletlenszerű, nagy energikus NTLM-kivonatot hoz létre (különbözik a felhasználó jelszavtól). Ezt a kivonatot ezután a *supplementalCrendetials* attribútumból származó pontos Kerberos-jelszó-kivonatokkal kombinálja egy adatstruktúrában.
+        * Ha engedélyezve van, a egyetlen adatstruktúrában egyesíti az *unicodePwd* attribútum értékét a *supplementalCredentials* attribútumból kinyert Kerberos jelszókivonatokkal.
+    * Az AES szimmetrikus kulccsal titkosítja az egyetlen adatstruktúrát.
+    * Titkosítja az AES szimmetrikus kulcsot a bérlő nyilvános Azure AD Domain Services használatával.
+1. Azure AD Connect továbbítja a titkosított szimmetrikus AES-kulcsot, a jelszó-hasitkokat tartalmazó titkosított adatstruktúrát és az inicializálási vektort az Azure AD-nek.
+1. Az Azure AD tárolja a titkosított szimmetrikus AES-kulcsot, a titkosított adatstruktúrát és a felhasználó inicializálási vektorát.
+1. Az Azure AD leküldi a titkosított szimmetrikus AES-kulcsot, a titkosított adatstruktúrát és az inicializálási vektort egy belső szinkronizálási mechanizmussal egy titkosított HTTP-munkameneten keresztül a Azure AD Domain Services.
+1. Azure AD Domain Services lekéri a bérlő példányának titkos kulcsát az Azure Key Vaultból.
+1. Az egyes titkosított adathalmazok (amelyek egyetlen felhasználó jelszóváltozását képviselik) Azure AD Domain Services a következő lépéseket:
+    * A titkos kulcsával visszafejti az AES szimmetrikus kulcsot.
+    * Az AES szimmetrikus kulcsát és az inicializálási vektort használva visszafejti a jelszó-előjeleket tartalmazó titkosított adatstruktúrát.
+    * A kapott Kerberos-jelszó-Azure AD Domain Services írja. A kivonatok a felhasználói objektum *supplementalCredentials* attribútumába kerülnek, amely a Azure AD Domain Services tartományvezérlő nyilvános kulcsába van titkosítva.
+    * Azure AD Domain Services az NTLM-jelszó kivonatát írja a Azure AD Domain Services tartományvezérlőre. A kivonat a felhasználói objektum *unicodePwd* attribútumába lesz mentve, amely az Azure AD Domain Services tartományvezérlő nyilvános kulcsára van titkosítva.
 
 ## <a name="enable-password-hash-synchronization"></a>Jelszókivonat szinkronizálásának engedélyezése
 
 >[!IMPORTANT]
->Ha AD FSról (vagy más összevonási technológiáról) végez áttelepítést jelszó-kivonatolási szinkronizálásra, javasoljuk, hogy kövesse az [itt](https://aka.ms/adfstophsdpdownload)közzétett részletes telepítési útmutatót.
+>Ha az áttelepítést egy AD FS (vagy más összevonási technológiáról) jelszó-kivonat-szinkronizálásra, javasoljuk, hogy kövesse az itt közzétett részletes üzembe helyezési [útmutatót.](https://aka.ms/adfstophsdpdownload)
 
-Ha az **expressz beállítások** lehetőséggel telepíti a Azure ad Connectt, a jelszó-kivonatolási szinkronizálás automatikusan engedélyezve lesz. További információ: az [Azure ad Connect használatának első lépései az expressz beállítások használatával](how-to-connect-install-express.md).
+Amikor a gyorsbeállítások Azure AD Connect telepíti, a jelszó kivonatszinkronizálása automatikusan engedélyezve lesz.  További információ: Ismerkedés a Azure AD Connect [gyorsbeállítások használatával.](how-to-connect-install-express.md)
 
-Ha Azure AD Connect telepítésekor egyéni beállításokat használ, a jelszó-kivonatolási szinkronizálás elérhető a felhasználói bejelentkezési oldalon. További információ: [Azure ad Connect egyéni telepítése](how-to-connect-install-custom.md).
+Ha egyéni beállításokat használ a Azure AD Connect telepítésekor, a jelszó kivonatszinkronizálása a felhasználói bejelentkezési oldalon érhető el. További információ: [A](how-to-connect-install-custom.md)Azure AD Connect.
 
 ![Jelszókivonat szinkronizálásának engedélyezése](./media/how-to-connect-password-hash-synchronization/usersignin2.png)
 
-### <a name="password-hash-synchronization-and-fips"></a>Jelszó-kivonat szinkronizálása és FIPS
-Ha a kiszolgálót a Federal Information Processing standard (FIPS) szerint zárolták, akkor az MD5 le van tiltva.
+### <a name="password-hash-synchronization-and-fips"></a>Jelszó kivonatszinkronizálása és FIPS
+Ha a kiszolgáló a Federal Information Processing Standard (FIPS) szerint zárolva lett, akkor az MD5 le van tiltva.
 
-**A jelszó-kivonatok szinkronizálásához az MD5 engedélyezéséhez hajtsa végre a következő lépéseket:**
+**Ha engedélyezni szeretné az MD5-öt a jelszó kivonatszinkronizálásához, hajtsa végre a következő lépéseket:**
 
-1. Ugrás a%programfiles%\Azure AD Sync\Bin.
+1. Ugrás a %programfiles%\Microsoft Azure AD Sync\Bin elemre.
 2. Nyissa meg miiserver.exe.config.
-3. Nyissa meg a fájl végén található Configuration/Runtime csomópontot.
+3. A fájl végén kattintson a konfigurációs/futásidejű csomópontra.
 4. Adja hozzá a következő csomópontot: `<enforceFIPSPolicy enabled="false"/>`
 5. Mentse a módosításokat.
 
-Hivatkozásként ez a kódrészlet az alábbihoz hasonló:
+Referenciaként ennek a kódrészletnek kell kinéznie:
 
 ```
     <configuration>
@@ -226,12 +226,12 @@ Hivatkozásként ez a kódrészlet az alábbihoz hasonló:
     </configuration>
 ```
 
-A biztonsággal és az FIPS-vel kapcsolatos további információkért lásd: az [Azure ad Password hash-szinkronizálás, a titkosítás és az FIPS megfelelősége](https://blogs.technet.microsoft.com/enterprisemobility/2014/06/28/aad-password-sync-encryption-and-fips-compliance/).
+További információ a biztonságról és a FIPS-ről: Az Azure AD jelszó-kivonat [szinkronizálása, titkosítása és FIPS-megfelelősége.](https://blogs.technet.microsoft.com/enterprisemobility/2014/06/28/aad-password-sync-encryption-and-fips-compliance/)
 
-## <a name="troubleshoot-password-hash-synchronization"></a>Jelszó-kivonatolási szinkronizálás hibáinak megoldása
-Ha problémái vannak a jelszó kivonatának szinkronizálásával kapcsolatban, olvassa el a [jelszó-kivonat szinkronizálásának hibaelhárítása](tshoot-connect-password-hash-synchronization.md)című témakört
+## <a name="troubleshoot-password-hash-synchronization"></a>Jelszó kivonatszinkronizálásának hibaelhárítása
+Ha problémákat tapasztal a jelszó kivonatának szinkronizálásával kapcsolatban, tekintse meg a jelszó kivonatszinkronizálásának [hibaelhárításával kapcsolatos témakört.](tshoot-connect-password-hash-synchronization.md)
 
 ## <a name="next-steps"></a>Következő lépések
-* [Azure AD Connect Sync: szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
+* [Azure AD Connect szinkronizálás: Szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
-* [Lépésenkénti üzembe helyezési terv az ADFS-ből a jelszó-kivonatolási szinkronizálásba való áttelepítéshez](https://aka.ms/authenticationDeploymentPlan)
+* [Részletes üzembe helyezési terv az ADFS-ről jelszó-kivonatszinkronizálásra való áttelepítéshez](https://aka.ms/authenticationDeploymentPlan)

@@ -42,7 +42,7 @@
     - name: Azure-biztonsági teljesítményteszt
       displayName: 'standards, azure, benchmark'
       href: ./samples/azure-security-benchmark.md
-    - name: Az Azure Security teljesítményteszt alapjai
+    - name: Azure Security Benchmark Foundation
       items:
         - name: Áttekintés
           displayName: 'standards, azure, benchmark, foundation'
@@ -72,13 +72,13 @@
         - name: Az üzembe helyezés lépései
           displayName: 'standards, canada, federal, pbmm'
           href: ./samples/canada-federal-pbmm/deploy.md
-    - name: CIS Microsoft Azure alapítványok teljesítményteszt v 1.3.0
+    - name: CIS Microsoft Azure Foundations Benchmark v1.3.0
       displayName: 'standards, cis'
       href: ./samples/cis-azure-1-3-0.md
     - name: CIS Microsoft Azure Foundations Benchmark 1.1.0-s verzió
       displayName: 'standards, cis'
       href: ./samples/cis-azure-1-1-0.md
-    - name: 3. CMMC szint
+    - name: CMMC 3. szint
       displayName: 'standards, cmmc'
       href: ./samples/cmmc-l3.md
     - name: DoD Impact Level 4
@@ -175,7 +175,7 @@
         - name: Az üzembe helyezés lépései
           displayName: 'standards, Media'
           href: ./samples/media/deploy.md
-    - name: Új-zélandi ISM-korlátozás
+    - name: Új-Zéland isM korlátozott
       displayName: 'standards, NZISM'
       href: ./samples/new-zealand-ism.md
     - name: NIST SP 800-53 R4
@@ -272,7 +272,7 @@
 - name: Referencia
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/blueprint/blueprint
+      href: /cli/azure/blueprint
     - name: Azure PowerShell
       href: /powershell/module/az.blueprint/#blueprint
     - name: Azure SDK for .NET

@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a98df1217f7113c645d9dd33fb7817d5c4067867
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 8c4ef61a67281b5b10082cd8aa36c77394cd66ce
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107504541"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869011"
 ---
 ## <a name="azure-security-benchmark"></a>Azure-biztonsági teljesítményteszt
 
-Az [Azure biztonsági teljesítményteszt](../../../../articles/security/benchmarks/overview.md) javaslatokat tesz arra vonatkozóan, hogyan biztosíthatja felhőalapú megoldásait az Azure-ban. A szolgáltatás az Azure biztonsági teljesítményteszthez való teljes leképezését az Azure biztonsági teljesítményteszt térképfájlja [tartalmazza.](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)
+Az [Azure biztonsági teljesítményteszt](/security/benchmark/azure/introduction) javaslatokat tesz arra vonatkozóan, hogyan biztosíthatja felhőalapú megoldásait az Azure-ban. A szolgáltatás az Azure biztonsági teljesítményteszthez való teljes leképezését az Azure biztonsági teljesítményteszt térképfájlja [tartalmazza.](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)
 
 Annak áttekintését, hogy az Azure Policy összes Azure-szolgáltatáshoz elérhető beépített funkciók hogyan érhetők el erre a megfelelőségi szabványra, tekintse meg a Azure Policy való megfelelésről – [Azure biztonsági teljesítményteszt](../../../../articles/governance/policy/samples/azure-security-benchmark.md).
 
@@ -24,7 +24,7 @@ Annak áttekintését, hogy az Azure Policy összes Azure-szolgáltatáshoz elé
 
 ## <a name="azure-security-benchmark-v1"></a>Azure biztonsági teljesítményteszt v1
 
-Az [Azure biztonsági teljesítményteszt](../../../../articles/security/benchmarks/overview.md) javaslatokat tesz arra vonatkozóan, hogyan biztosíthatja felhőalapú megoldásait az Azure-ban. A szolgáltatás az Azure biztonsági teljesítményteszthez való teljes leképezését az Azure biztonsági teljesítményteszt térképfájlja [tartalmazza.](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)
+Az [Azure biztonsági teljesítményteszt](/security/benchmark/azure/introduction) javaslatokat tesz arra vonatkozóan, hogyan biztosíthatja felhőalapú megoldásait az Azure-ban. A szolgáltatás az Azure biztonsági teljesítményteszthez való teljes leképezését az Azure biztonsági teljesítményteszt térképfájlja [tartalmazza.](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)
 
 Annak áttekintését, hogy az Azure Policy összes Azure-szolgáltatáshoz elérhető beépített funkciók hogyan érhetők el erre a megfelelőségi szabványra, tekintse meg a Azure Policy való megfelelésről – [Azure biztonsági teljesítményteszt](../../../../articles/governance/policy/samples/azure-security-benchmark.md).
 

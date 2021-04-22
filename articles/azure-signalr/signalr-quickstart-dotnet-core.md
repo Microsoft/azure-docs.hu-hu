@@ -1,5 +1,5 @@
 ---
-title: Útmutató az Azure Signaler szolgáltatás használatának megismeréséhez
+title: Rövid útmutató a Azure SignalR Service
 description: Rövid útmutató, amelyből megtudhatja, hogyan hozhat létre az Azure SignalR szolgáltatással csevegőszobát ASP.NET Core MVC alkalmazásokkal.
 author: sffamily
 ms.service: signalr
@@ -8,43 +8,43 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: 3cfcf57f455a5c3b17b794acf2ded66ed2285eff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9099a8620f6e4d87ec38c10226d94b1b3cd3462f
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94873505"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865980"
 ---
-# <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Rövid útmutató: csevegési hely létrehozása a Signaler szolgáltatás használatával
+# <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Rövid útmutató: Csevegőszoba létrehozása a SignalR Service
 
-Az Azure SignalR szolgáltatás egy olyan Azure-szolgáltatás, amely segítségével a fejlesztők könnyen hozhatnak létre webalkalmazásokat valós idejű funkciókkal. A szolgáltatás eredetileg [ASP.NET Core 2,1-es jelzőn](/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1)alapult, de mostantól támogatja a későbbi verziókat.
+Az Azure SignalR szolgáltatás egy olyan Azure-szolgáltatás, amely segítségével a fejlesztők könnyen hozhatnak létre webalkalmazásokat valós idejű funkciókkal. Ez a szolgáltatás eredetileg a SignalR-re épül [ASP.NET Core 2.1-hez,](/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1)de már támogatja a későbbi verziókat.
 
-Ez a cikk segítséget nyújt az első lépések megtételében az Azure SignalR szolgáltatás használatakor. Ebben a rövid útmutatóban egy ASP.NET Core MVC-webalkalmazás használatával hoz létre csevegési alkalmazást. Az alkalmazás kapcsolatot létesít az Azure SignalR szolgáltatási erőforrással a valós idejű tartalomfrissítések engedélyezéséhez. A webalkalmazást helyileg fogja üzemeltetni, és több böngésző-ügyféllel is csatlakozhat. Minden ügyfél képes lesz tartalomfrissítéseket küldeni a többi ügyfélnek. 
+Ez a cikk segítséget nyújt az első lépések megtételében az Azure SignalR szolgáltatás használatakor. Ebben a rövid útmutatóban egy csevegési alkalmazást fog létrehozni egy ASP.NET Core MVC-webalkalmazással. Az alkalmazás kapcsolatot létesít az Azure SignalR szolgáltatási erőforrással a valós idejű tartalomfrissítések engedélyezéséhez. A webalkalmazást helyileg fogja használni, és több böngészős ügyféllel fog csatlakozni. Minden ügyfél képes lesz tartalomfrissítéseket küldeni a többi ügyfélnek. 
 
-A rövid útmutató lépései bármilyen szövegszerkesztővel elvégezhetők. Az egyik lehetőség a [Visual Studio Code](https://code.visualstudio.com/), amely a Windows, MacOS és Linux platformokon érhető el.
+A rövid útmutató lépései bármilyen szövegszerkesztővel elvégezhetők. Az egyik lehetőség [Visual Studio Code,](https://code.visualstudio.com/)amely Windows, macOS és Linux platformokon érhető el.
 
-Az oktatóanyag kódja letölthető az [AzureSignalR-minták GitHub-adattárjából](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom). Emellett az ebben a rövid útmutatóban használt Azure-erőforrásokat is létrehozhatja a [Signal Service-parancsfájl létrehozása](scripts/signalr-cli-create-service.md)című lépéssel.
+Az oktatóanyag kódja letölthető az [AzureSignalR-minták GitHub-adattárjából](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom). Emellett az ebben a rövid útmutatóban használt Azure-erőforrásokat a Create a SignalR Service script (Új szkript [létrehozása) SignalR Service használhatja.](scripts/signalr-cli-create-service.md)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note-dotnet.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Telepítse a [.net Core SDK](https://www.microsoft.com/net/download/windows).
-* Töltse le vagy klónozott [AzureSignalR – minta GitHub-](https://github.com/aspnet/AzureSignalR-samples) tárházat. 
+* Telepítse a [.NET Core SDK.](https://dotnet.microsoft.com/download)
+* Töltse le vagy klónozza az [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) GitHub-adattárat. 
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnetcore).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudtossa velünk a következőt:](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="create-an-azure-signalr-resource"></a>Azure SignalR-erőforrás létrehozása
 
 [!INCLUDE [azure-signalr-create](../../includes/signalr-create.md)]
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnetcore).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudtossa velünk a következőt:](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core-webalkalmazás létrehozása
 
-Ebben a szakaszban a [.net Core parancssori felület (CLI)](/dotnet/core/tools/) használatával hoz létre egy ASP.net Core MVC webalkalmazás-projektet. A a .NET Core parancssori felülete a Visual Studióban való használatának előnye, hogy a Windows, macOS és Linux platformokon is elérhető. 
+Ebben a szakaszban a .NET Core parancssori felület [(CLI)](/dotnet/core/tools/) használatával fog létrehozni egy ASP.NET Core MVC webalkalmazás-projektet. A virtuális gép használatának a .NET Core parancssori felülete előnye Visual Studio, hogy Windows, macOS és Linux platformokon is elérhető. 
 
-1. Hozzon létre egy mappát a projekt számára. Ez a rövid útmutató a *E:\Testing\chattest* mappát használja.
+1. Hozzon létre egy mappát a projekthez. Ez a rövid útmutató az *E:\Testing\chattest mappát* használja.
 
 2. Az új mappában futtassa a következő parancsot a projekt létrehozásához:
 
@@ -52,13 +52,13 @@ Ebben a szakaszban a [.net Core parancssori felület (CLI)](/dotnet/core/tools/)
     dotnet new mvc
     ```
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnetcore).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudtossa velünk a következőt:](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="add-secret-manager-to-the-project"></a>A Secret Manager hozzáadása a projekthez
 
-Ebben a szakaszban a [Secret Manager eszközt](/aspnet/core/security/app-secrets) adja hozzá a projekthez. A Secret Manager eszköz bizalmas adatokat tárol a projekt fáján kívüli fejlesztési munkához. Ez a módszer segít megelőzni az alkalmazás titkos kódjának véletlen megosztását a forráskódban.
+Ebben a szakaszban a [Secret Manager](/aspnet/core/security/app-secrets) eszközt fogja hozzáadni a projekthez. A Secret Manager eszköz a projektfán kívül tárolja a fejlesztési munkához szükséges bizalmas adatokat. Ezzel a megközelítéssel megelőzhető, hogy az alkalmazás titkos kódjait véletlenül megosszuk a forráskódban.
 
-1. Nyissa meg a *.csproj* fájlt. Adjon hozzá egy `DotNetCliToolReference` elemet a *Microsoft.Extensions.SecretManager.Tools* belefoglalásához. Vegyen fel egy `UserSecretsId` elemet is, ahogy az a következő kódban látható a *csevegő. csproj*, és mentse a fájlt.
+1. Nyissa meg a *.csproj* fájlt. Adjon hozzá egy `DotNetCliToolReference` elemet a *Microsoft.Extensions.SecretManager.Tools* belefoglalásához. Adjon hozzá egy `UserSecretsId` elemet a *chattest.csproj* fájl alábbi kódjában látható módon, és mentse a fájlt.
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -76,11 +76,11 @@ Ebben a szakaszban a [Secret Manager eszközt](/aspnet/core/security/app-secrets
     </Project>
     ```
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnetcore).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudajuk meg velünk a következőt:](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="add-azure-signalr-to-the-web-app"></a>Az Azure SignalR hozzáadása a webalkalmazáshoz
 
-1. Adja hozzá a NuGet- `Microsoft.Azure.SignalR` csomagra mutató hivatkozást a következő parancs futtatásával:
+1. Adjon hozzá egy hivatkozást a `Microsoft.Azure.SignalR` NuGet-csomaghoz a következő parancs futtatásával:
 
     ```dotnetcli
     dotnet add package Microsoft.Azure.SignalR
@@ -94,20 +94,20 @@ Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr
 
 3. Adjon hozzá egy *Azure:SignalR:ConnectionString* nevű titkos kódot a Secret Managerhez. 
 
-    Ez a titkos kód tartalmazza a SignalR szolgáltatási erőforrás elérésére szolgáló kapcsolati sztringet. *Azure: szignáló: a ConnectionString* az az alapértelmezett konfigurációs kulcs, amelyet a jelző a kapcsolat létesítéséhez keres. Cserélje le a következő parancs értékét a Signaling Service-erőforráshoz tartozó kapcsolatok karakterláncára.
+    Ez a titkos kód tartalmazza a SignalR szolgáltatási erőforrás elérésére szolgáló kapcsolati sztringet. *Az Azure:SignalR:ConnectionString* az alapértelmezett konfigurációs kulcs, amely a SignalR által a kapcsolat létesítésében keres. A következő parancsban cserélje le az értéket a saját erőforrásának SignalR Service sztringjével.
 
-    Ezt a parancsot a *. csproj* fájllal megegyező könyvtárba kell futtatnia.
+    Ezt a parancsot ugyanabban a könyvtárban kell futtatnia, mint a *.csproj fájlt.*
 
     ```dotnetcli
     dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"
     ```
 
-    A Secret Manager csak a webalkalmazás helyi tesztelésére szolgál. Egy későbbi oktatóanyagban üzembe helyezheti a csevegési webalkalmazást az Azure-ban. Miután telepítette a webalkalmazást az Azure-ba, a kapcsolati sztring a Secret Managerrel való tárolása helyett egy alkalmazás-beállítást fog használni.
+    A Secret Manager csak a webalkalmazás tesztelésére lesz használva helyileg üzemeltetett környezetben. Egy későbbi oktatóanyagban üzembe fogja helyezni a csevegő webalkalmazást az Azure-ban. Miután üzembe helyezett egy webalkalmazást az Azure-ban, a kapcsolati sztring Secret Managerrel való tárolása helyett egy alkalmazásbeállítást fog használni.
 
-    Ez a titok a konfigurációs API-val érhető el. Egy kettőspont (:) a konfiguráció neve a konfigurációs API-val minden támogatott platformon használható. Lásd: [konfiguráció környezet alapján](/dotnet/core/extensions/configuration-providers#environment-variable-configuration-provider).
+    Ez a titkos kulcs a Konfigurációs API-val érhető el. Kettőspont (:) A konfigurációs API-val együtt a konfiguráció nevében működik az összes támogatott platformon. Lásd: [Konfiguráció környezet szerint.](/dotnet/core/extensions/configuration-providers#environment-variable-configuration-provider)
 
 
-4. Nyissa meg a *Startup. cs* programot, és frissítse a `ConfigureServices` metódust az Azure signaler szolgáltatás használatára a `AddSignalR()` és metódusok meghívásával `AddAzureSignalR()` :
+4. Nyissa *meg a Startup.cs-t,* és frissítse a metódust Azure SignalR Service `ConfigureServices` és `AddSignalR()` metódusok `AddAzureSignalR()` hívásával:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -117,9 +117,9 @@ Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr
     }
     ```
 
-    Ha nem küldi el a paramétert a rendszernek `AddAzureSignalR()` , ez a kód a jelző szolgáltatás erőforrás-kapcsolódási karakterláncának alapértelmezett konfigurációs kulcsát használja. Az alapértelmezett konfigurációs kulcs az *Azure: signaler: ConnectionString*.
+    Azáltal, hogy nem ad át paramétert a számára, ez a kód az alapértelmezett konfigurációs kulcsot SignalR Service `AddAzureSignalR()` erőforrás kapcsolati sztringhez. Az alapértelmezett konfigurációs kulcs az *Azure:SignalR:ConnectionString.*
 
-5. A *Startup. cs*-ban frissítse a `Configure` metódust a következő kóddal való lecserélésével.
+5. A *Startup.cs fájlban* frissítse a metódust úgy, hogy `Configure` lecseréli az alábbi kódra.
 
     ```csharp
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -135,18 +135,18 @@ Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr
 
 ### <a name="add-a-hub-class"></a>Központosztály hozzáadása
 
-A jelzőben a hub egy olyan alapvető összetevő, amely az ügyféltől hívható metódusok készletét teszi lehetővé. Ebben a szakaszban meghatároz egy központosztályt két metódussal:
+A SignalRben a hub egy alapvető összetevő, amely az ügyfélről hívható metódusok készletét teszi elérhetővé. Ebben a szakaszban meghatároz egy központosztályt két metódussal:
 
 * `Broadcast`: Ez a metódus üzenetet küld az összes ügyfélnek.
 * `Echo`: Ez a metódus visszaküld egy üzenetet a hívónak.
 
-Mindkét módszer a `Clients` ASP.net Core a signaler SDK által biztosított felületet használja. Ez az interfész hozzáférést biztosít az összes csatlakoztatott ügyfélhez, így tartalmat küldhet az ügyfeleknek.
+Mindkét módszer a Core `Clients` SignalR SDK által ASP.NET felületet használja. Ez az interfész hozzáférést biztosít az összes csatlakoztatott ügyfélhez, így lekkultálhatja a tartalmat az ügyfelekre.
 
-1. A projektkönyvtárban adjon hozzá egy új, *Hub* nevű mappát. Vegyen fel egy új, *ChatHub. cs* nevű hub-kódrészletet az új mappába.
+1. A projektkönyvtárban adjon hozzá egy új, *Hub* nevű mappát. Adjon hozzá egy *chatHub.cs* nevű új központi kódfájlt az új mappához.
 
-2. Adja hozzá a következő kódot a *ChatHub. cs* fájlhoz, hogy meghatározza a hub osztályt, és mentse a fájlt.
+2. Adja hozzá a következő kódot a *ChatHub.cs fájlhoz* a hub osztály meghatározásához és a fájl mentéshez.
 
-    Frissítse az osztály névterét, ha olyan projekt nevét használta, amely eltér a *signaler. MVC*-től.
+    Frissítse az osztály névterét, ha a *SignalR.Mvc* fájltól eltérő projektnevet használt.
 
     ```csharp
     using Microsoft.AspNetCore.SignalR;
@@ -166,15 +166,15 @@ Mindkét módszer a `Clients` ASP.net Core a signaler SDK által biztosított fe
     }
     ```
 
-### <a name="add-the-client-interface-for-the-web-app"></a>Az ügyfél felületének hozzáadása a webalkalmazáshoz
+### <a name="add-the-client-interface-for-the-web-app"></a>A webalkalmazás ügyféloldali felületének hozzáadása
 
-A csevegő alkalmazás ügyfél-felhasználói felülete HTML és JavaScript formátumú lesz egy *index.html* nevű fájlban a *wwwroot* könyvtárban.
+A csevegőszoba-alkalmazás ügyféloldali felhasználói felülete HTML-t és JavaScriptet fog tartalmazni egy *index.htmnevű* fájlban a *wwwroot könyvtárban.*
 
-Másolja a *CSS/site. css* fájlt a [Samples adattár](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot) *wwwroot* mappájából. Cserélje le a projekt *CSS-vagy site. css-* fájlját a vágólapra.
+Másolja a *css/site.css* fájlt a *mintatár wwwroot* [mappájába.](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot) Cserélje le a projekt *css/site.css fájlját* arra, amit kimásott.
 
-*index.html* fő kódja:
+Itt található az lindex.htm *fő kódja:*
 
-Hozzon létre egy új fájlt a *wwwroot* könyvtárban *index.html*, másolja, majd ILLESSZE be az alábbi HTML-fájlt az újonnan létrehozott fájlba:
+Hozzon létre egy új fájlt a *wwwroot* könyvtárban *index.html*, másolja, majd illessze be a következő HTML-kódot az újonnan létrehozott fájlba:
 
 ```html
 <!DOCTYPE html>
@@ -318,19 +318,19 @@ Hozzon létre egy új fájlt a *wwwroot* könyvtárban *index.html*, másolja, m
 </html>
 ```
 
-A *index.html* -ben található kód az `HubConnectionBuilder.build()` Azure signaler-erőforráshoz való http-kapcsolódást kezdeményez.
+A kód a *index.htmhívja* meg, `HubConnectionBuilder.build()` hogy HTTP-kapcsolatot létesítsen az Azure SignalR-erőforrással.
 
 Ha a kapcsolat sikeresen létrejött, át lesz adva a `bindConnectionMessage` számára, amely eseménykezelőket ad a bejövő tartalomhoz, amely le lesz küldve az ügyfélnek. 
 
-A `HubConnection.start()` kommunikálni kezd a központtal. Ezután `onConnected()` hozzáadja a Button eseménykezelőket. Ezek az eseménykezelők a kapcsolat segítségével engedélyezik, hogy ez az ügyfél tartalomfrissítéseket küldjön le az összes csatlakozott ügyfélnek.
+A `HubConnection.start()` kommunikálni kezd a központtal. Ezután `onConnected()` hozzáadja a gomb eseménykezelőket. Ezek az eseménykezelők a kapcsolat segítségével engedélyezik, hogy ez az ügyfél tartalomfrissítéseket küldjön le az összes csatlakozott ügyfélnek.
 
 ## <a name="add-a-development-runtime-profile"></a>Fejlesztési futtatási profil hozzáadása
 
-Ebben a szakaszban a ASP.NET Core fejlesztési futtatókörnyezeti környezetét fogja hozzáadni. További információ: [több környezet használata ASP.net Coreban](/aspnet/core/fundamentals/environments).
+Ebben a szakaszban egy fejlesztési futásidejű környezetet fog hozzáadni a ASP.NET Core-hoz. További információ: [Több környezet használatának a ASP.NET Core-ban.](/aspnet/core/fundamentals/environments)
 
-1. Hozzon létre egy *Tulajdonságok* nevű mappát a projektben.
+1. Hozzon létre egy *Properties (Tulajdonságok)* nevű mappát a projektben.
 
-2. Adjon hozzá egy *launchSettings.js* nevű új fájlt a mappához a következő tartalommal, és mentse a fájlt.
+2. Adjon hozzá egy *új,launchSettings.jsnevű* fájlt a mappához a következő tartalommal, majd mentse a fájlt.
 
     ```json
     {
@@ -347,23 +347,23 @@ Ebben a szakaszban a ASP.NET Core fejlesztési futtatókörnyezeti környezetét
     }
     ```
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnetcore).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudtossa velünk a következőt:](https://aka.ms/asrs/qsnetcore).
 
-## <a name="build-and-run-the-app-locally"></a>Az alkalmazás helyi létrehozása és futtatása
+## <a name="build-and-run-the-app-locally"></a>Az alkalmazás helyi összeállítása és futtatása
 
-1. Ha az alkalmazást a a .NET Core parancssori felülete használatával szeretné felépíteni, futtassa a következő parancsot a parancs-rendszerhéjban:
+1. Az alkalmazás parancssori paranccsal való a .NET Core parancssori felülete futtassa a következő parancsot a parancshéjban:
 
     ```dotnetcli
     dotnet build
     ```
 
-1. A létrehozás sikeres befejeződése után futtassa a következő parancsot a webalkalmazás helyi futtatásához:
+1. A build sikeres befejezése után futtassa a következő parancsot a webalkalmazás helyi futtatásához:
 
     ```dotnetcli
     dotnet run
     ```
 
-    Az alkalmazás az 5000-as porton, a fejlesztői futtatókörnyezeti profilban konfigurált módon lesz helyileg üzemeltetve:
+    Az alkalmazás helyileg, az 5000-es porton lesz üzemeltetve a fejlesztési futásidejű profilban konfigurált módon:
 
     ```output
     info: Microsoft.Hosting.Lifetime[0]
@@ -378,36 +378,36 @@ Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr
           Content root path: E:\Testing\chattest
     ```
 
-1. Nyisson meg két böngészőablakot. A böngészőben nyissa meg a következőt: `http://localhost:5000` . A rendszer kéri, hogy adja meg a nevét. Adja meg az ügyfél nevét mindkét ügyfél számára, és tesztelje az üzenetek tartalmát mindkét ügyfél között a **Küldés** gomb használatával.
+1. Nyisson meg két böngészőablakot. Minden böngészőben a következőt kell használnia: `http://localhost:5000` . A rendszer kéri, hogy adja meg a nevét. Adjon meg egy ügyfélnevet mindkét ügyfélnek, és a Küldés gombbal tesztelje az üzenet tartalmának leküldését mindkét ügyfél **között.**
 
-    ![Példa Azure-beli szignáló csoport csevegésére](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
+    ![Példa Azure SignalR csoportos csevegésre](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnetcore).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudtossa velünk a következőt:](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha továbbra is a következő oktatóanyagot használja, megtarthatja az ebben a rövid útmutatóban létrehozott erőforrásokat, és újból felhasználhatja őket.
+Ha a következő oktatóanyagra folytatja, megtarthatja és újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
-Ha elkészült a gyors üzembe helyezési minta alkalmazással, törölheti az ebben a rövid útmutatóban létrehozott Azure-erőforrásokat a díjak elkerülése érdekében. 
+Ha végzett a gyorsindítási mintaalkalmazással, a díjak elkerülése érdekében törölheti az ebben a rövid útmutatóban létrehozott Azure-erőforrásokat. 
 
 > [!IMPORTANT]
-> Egy erőforráscsoport törlése nem vonható vissza, és tartalmazza az adott csoport összes erőforrását. Figyeljen, nehogy véletlenül rossz erőforráscsoportot vagy erőforrásokat töröljön. Ha a minta tárolására szolgáló erőforrásokat olyan meglévő erőforráscsoporthoz hozta létre, amely a megőrizni kívánt erőforrásokat tartalmazza, akkor az erőforráscsoport törlése helyett az egyes erőforrásokat egyenként törölheti a paneljéről.
+> Az erőforráscsoport törlése nem visszafordítható, és az adott csoportban található összes erőforrást tartalmazza. Figyeljen, nehogy véletlenül rossz erőforráscsoportot vagy erőforrásokat töröljön. Ha a minta üzemeltetési erőforrásait egy meglévő erőforráscsoportban hozta létre, amely a megtartni kívánt erőforrásokat tartalmazza, az egyes erőforrásokat külön-külön törölheti a panelről az erőforráscsoport törlése helyett.
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
 
-A **szűrés név alapján** szövegmezőbe írja be az erőforráscsoport nevét. Ebben a rövid útmutatóban a *SignalRTestResources* nevű erőforráscsoportot használtuk. Az erőforráscsoport az eredmény listán válassza a három pontot (**..**.) > az **erőforráscsoport törlése** elemet.
+A Szűrés **név alapján szövegmezőbe** írja be az erőforráscsoport nevét. Ebben a rövid útmutatóban a *SignalRTestResources* nevű erőforráscsoportot használtuk. Az eredménylistában az erőforráscsoportban válassza a három pont **(...**) lehetőséget, > **erőforráscsoport törlése lehetőséget.**
 
-![Erőforráscsoport törlésének kiválasztása](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
+![Erőforráscsoport törlésére vonatkozó kijelölések](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 
-A rendszer az erőforráscsoport törlésének megerősítését kéri. Adja meg a megerősíteni kívánt erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget.
+A rendszer az erőforráscsoport törlésének megerősítését kéri. Adja meg az erőforráscsoport nevét a megerősítéshez, majd válassza a **Törlés lehetőséget.**
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és annak erőforrásait.
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsnetcore).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudajuk meg velünk a következőt:](https://aka.ms/asrs/qsnetcore).
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy új Azure Signal Service-erőforrást. Ezután egy ASP.NET Core webalkalmazással használta a tartalom frissítéseinek valós idejű leküldését több csatlakoztatott ügyfélre. Ha többet szeretne megtudni az Azure Signaler szolgáltatás használatáról, folytassa az oktatóanyagot, amely bemutatja a hitelesítést.
+Ebben a rövid útmutatóban létrehozott egy új Azure SignalR Service erőforrást. Ezután egy ASP.NET Core-webalkalmazással valós időben lekért tartalomfrissítéseket több csatlakoztatott ügyfélnek. Ha többet szeretne megtudni a Azure SignalR Service, folytassa a hitelesítést bemutató oktatóanyagban.
 
 > [!div class="nextstepaction"]
 > [Azure SignalR szolgáltatás – hitelesítés](./signalr-concept-authenticate-oauth.md)

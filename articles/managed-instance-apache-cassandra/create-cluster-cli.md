@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/15/2021
-ms.openlocfilehash: 53fe53e1406bfcde1f2d8c7b2a1ce8369303426f
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 56fe69ad7f56d62c9f61738448ea0276fee47063
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379366"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862524"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>Rövid útmutató: Felügyelt Azure-példány létrehozása Apache Cassandra-fürthöz az Azure CLI (előzetes verzió) használatával
 
@@ -22,7 +22,7 @@ Az Apache Cassandrára használható Felügyelt Azure-példány automatizált ü
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre fürtöt az Azure Managed Instance for Apache Cassandrával az Azure CLI-parancsokkal. Azt is bemutatja, hogyan hozható létre egy adatközpont, és hogyan skálázva felfelé vagy lefelé a csomópontokat az adatközponton belül.
+Ez a rövid útmutató azt mutatja be, hogyan használhatók az Azure CLI-parancsok fürtök létrehozására az Apache Cassandrára vonatkozó felügyelt Azure-példányokkal. Azt is bemutatja, hogyan lehet adatközpontot létrehozni, és felfelé vagy lefelé skálázni a csomópontokat az adatközponton belül.
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
@@ -49,7 +49,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre fürtöt az Azure Managed
    az network vnet create -n <VNet_Name> -l eastus2 -g <Resource_Group_Name> --subnet-name <Subnet Name>
    ```
     > [!NOTE]
-    > Az Apache Cassandrához használható felügyelt Azure-példány üzembe helyezéséhez internet-hozzáférés szükséges. Az üzembe helyezés meghiúsul olyan környezetekben, ahol az internet-hozzáférés korlátozott. Győződjön meg arról, hogy nem blokkolja a virtuális hálózatban a felügyelt Cassandra megfelelő működését nélkülözhetetlen Azure-szolgáltatásokhoz való hozzáférést:
+    > Az Apache Cassandrához használható felügyelt Azure-példány üzembe helyezéséhez internet-hozzáférés szükséges. Az üzembe helyezés meghiúsul olyan környezetekben, ahol az internet-hozzáférés korlátozott. Győződjön meg arról, hogy nem blokkolja a virtuális hálózatban a következő, a felügyelt Cassandra megfelelő működését nélkülözhetetlen Azure-szolgáltatásokhoz való hozzáférést:
     > - Azure Storage
     > - Azure KeyVault
     > - Azure Virtual Machine Scale Sets
@@ -66,7 +66,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre fürtöt az Azure Managed
    > [!NOTE]
    > Az előző parancs és értékei rögzített értékek, ezeket az értékeket pontosan a `assignee` `role` parancsban említettek szerint adja meg. Ha ezt nem teszi meg, az hibákhoz vezet a fürt létrehozásakor. Ha hibába ütközik a parancs végrehajtásakor, előfordulhat, hogy nem rendelkezik a futtatáshoz szükséges engedélyekkel, forduljon a rendszergazdához az engedélyekért.
 
-1. Ezután hozza létre a fürtöt az újonnan létrehozott Virtual Network [az az managed-cassandra cluster create paranccsal.](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_create) Futtassa a következő parancsot a változó `delegatedManagementSubnetId` értékeként:
+1. Ezután hozza létre a fürtöt az újonnan létrehozott Virtual Network [az az managed-cassandra cluster create paranccsal.](/cli/azure/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_cluster_create) Futtassa a következő parancsot a változó `delegatedManagementSubnetId` értékeként:
 
    > [!NOTE]
    > Az alább megadott változó értéke pontosan megegyezik a fenti parancsban megadott `delegatedManagementSubnetId` `--scope` értékkel:
@@ -87,7 +87,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre fürtöt az Azure Managed
       --debug
    ```
 
-1. Végül hozzon létre egy adatközpontot a fürthöz három csomóponttal az [az managed-cassandra datacenter create paranccsal:](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_create)
+1. Végül hozzon létre egy adatközpontot a fürthöz három csomóponttal az [az managed-cassandra datacenter create paranccsal:](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_create)
 
    ```azurecli-interactive
    dataCenterName='dc1'
@@ -102,7 +102,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre fürtöt az Azure Managed
       --node-count 3 
    ```
 
-1. Ha az adatközpont létrehozása után fel- vagy le szeretné skálázni az adatközpont csomópontjainak számát, futtassa [az az managed-cassandra datacenter update](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_update) parancsot. Módosítsa a `node-count` paraméter értékét a kívánt értékre:
+1. Ha az adatközpont létrehozása után fel- vagy le szeretné skálázni az adatközpont csomópontjainak számát, futtassa [az az managed-cassandra datacenter update](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_update) parancsot. Módosítsa a `node-count` paraméter értékét a kívánt értékre:
 
    ```azurecli-interactive
    resourceGroupName='<Resource_Group_Name>'
@@ -119,7 +119,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre fürtöt az Azure Managed
 
 ## <a name="connect-to-your-cluster"></a>Csatlakozás a fürthöz
 
-Az Apache Cassandrhoz használható felügyelt Azure-példány nem hoz létre nyilvános IP-címekkel kapcsolatos csomópontokat. Az újonnan létrehozott Cassandra-fürthöz való csatlakozáshoz létre kell hoznia egy másik erőforrást a virtuális hálózaton belül. Ez az erőforrás lehet egy alkalmazás, vagy egy virtuális gép, amelybe telepítve van az Apache nyílt forráskódú [CQLSH lekérdezési](https://cassandra.apache.org/doc/latest/tools/cqlsh.html) eszköze. Ubuntu virtuális [Resource Manager üzembe helyezéséhez](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/) használhat egy virtuálisgép-sablont. Az üzembe helyezést követően az SSH használatával csatlakozzon a géphez, és telepítse a CQLSH-t az alábbi parancsokban látható módon:
+Az Apache Cassandrhoz használható felügyelt Azure-példány nem hoz létre nyilvános IP-címekkel kapcsolatos csomópontokat. Az újonnan létrehozott Cassandra-fürthöz való csatlakozáshoz létre kell hoznia egy másik erőforrást a virtuális hálózaton belül. Ez az erőforrás lehet egy alkalmazás, vagy egy virtuális gép, amelybe telepítve van az Apache nyílt forráskódú [CQLSH lekérdezési](https://cassandra.apache.org/doc/latest/tools/cqlsh.html) eszköze. Ubuntu virtuális [Resource Manager üzembe helyezéséhez](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/) használhat egy virtuálisgép-sablont. Az üzembe helyezés után az SSH használatával csatlakozzon a géphez, és telepítse a CQLSH-t az alábbi parancsokban látható módon:
 
 ```bash
 # Install default-jre and default-jdk

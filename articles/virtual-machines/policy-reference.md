@@ -1,23 +1,23 @@
 ---
 title: Beépített szabályzatdefiníciók az Azure Virtual Machines
 description: Az Azure Policy Azure-erőforrások beépített szabályzatdefinícióit Virtual Machines. Ezek a beépített szabályzatdefiníciók gyakori megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: reference
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.subservice: security
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 6e337318418dd4aa8c7021e77706252497b18944
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: b3baeba692b5f810add9243dafa25dc945246556
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502507"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861087"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-machines"></a>Azure Policy Azure-előfizetés beépített definíciói Virtual Machines
 
-Ez az oldal az [Azure-Azure Policy](../governance/policy/overview.md) beépített szabályzatdefiníciók indexe Virtual Machines. Az egyéb Azure Policy további beépített szolgáltatásaiért lásd a Azure Policy [definíciókat.](../governance/policy/samples/built-in-policies.md)
+Ez az oldal az [Azure-Azure Policy](../governance/policy/overview.md) beépített szabályzatdefiníciók indexe Virtual Machines. További Azure Policy más szolgáltatások beépített szolgáltatásaihoz: Azure Policy [beépített definíciók.](../governance/policy/samples/built-in-policies.md)
 
 Az egyes beépített szabályzatdefiníciók neve a szabályzatdefinícióra mutató hivatkozásokat tartalmaz a Azure Portal. A Verzió oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy)
 

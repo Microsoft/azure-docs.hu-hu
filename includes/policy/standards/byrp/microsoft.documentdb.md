@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 19739524d3173481c9664b5cf5a8e9f1e0e10d33
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 222a04afb0b9e1b0b8cb7f8bf2d300790b0c86fe
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107504092"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873727"
 ---
 ## <a name="azure-security-benchmark"></a>Azure-biztonsági teljesítményteszt
 
-Az [Azure biztonsági teljesítményteszt](../../../../articles/security/benchmarks/overview.md) javaslatokat tesz arra vonatkozóan, hogyan biztosíthatja a felhőalapú megoldások biztonságát az Azure-ban. A szolgáltatás az Azure biztonsági teljesítményteszthez való teljes leképezését az Azure biztonsági teljesítményteszt leképezési [fájljaiban () láthatja.](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)
+Az [Azure biztonsági teljesítményteszt](/security/benchmark/azure/introduction) javaslatokat tesz arra vonatkozóan, hogyan biztosíthatja a felhőalapú megoldások biztonságát az Azure-ban. A szolgáltatás az Azure biztonsági teljesítményteszthez való teljes leképezését az Azure biztonsági teljesítményteszt térképfájlja [tartalmazza.](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)
 
 Annak áttekintését, hogy Azure Policy összes Azure-szolgáltatáshoz elérhető beépített funkciók hogyan érhetők el ehhez a megfelelőségi szabványhoz, tekintse meg a [következőt: Azure Policy Regulatory Compliance - Azure Security Benchmark](../../../../articles/governance/policy/samples/azure-security-benchmark.md)(Előírásoknak való megfelelőség – Azure biztonsági teljesítményteszt).
 
@@ -26,7 +26,7 @@ Annak áttekintését, hogy Azure Policy összes Azure-szolgáltatáshoz elérhe
 
 ## <a name="azure-security-benchmark-v1"></a>Azure biztonsági teljesítményteszt v1
 
-Az [Azure biztonsági teljesítményteszt](../../../../articles/security/benchmarks/overview.md) javaslatokat tesz arra vonatkozóan, hogyan biztosíthatja a felhőalapú megoldások biztonságát az Azure-ban. A szolgáltatás az Azure biztonsági teljesítményteszthez való teljes leképezését az Azure biztonsági teljesítményteszt leképezési [fájljaiban () láthatja.](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)
+Az [Azure biztonsági teljesítményteszt](/security/benchmark/azure/introduction) javaslatokat tesz arra vonatkozóan, hogyan biztosíthatja felhőalapú megoldásait az Azure-ban. A szolgáltatás az Azure biztonsági teljesítményteszthez való teljes leképezését az Azure biztonsági teljesítményteszt térképfájlja [tartalmazza.](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)
 
 Annak áttekintését, hogy az Azure Policy összes Azure-szolgáltatáshoz elérhető beépített funkciók hogyan érhetők el erre a megfelelőségi szabványra, tekintse meg a Azure Policy való megfelelésről – [Azure biztonsági teljesítményteszt](../../../../articles/governance/policy/samples/azure-security-benchmark.md).
 
@@ -50,7 +50,7 @@ További információ erről a megfelelőségi szabványról: [HIPAA HITRUST 9.2
 
 |Tartomány |Vezérlő azonosítója |Vezérlő címe |Szabályzat<br /><sub>(Azure Portal)</sub> |Szabályzat verziója<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|
-|Elkülönítés a hálózatokban |0805.01m1Organizational.12 - 01.m |A szervezet biztonsági átjárói (például tűzfalak) biztonsági házirendeket kényszerítnek ki, és úgy vannak konfigurálva, hogy szűrje a tartományok közötti forgalmat, blokkolja a jogosulatlan hozzáférést, és a belső vezetékes, belső vezeték nélküli és külső hálózati szegmensek (például az internet) közötti elkülönítés fenntartására használatosak, beleértve a DMZ-ket is, és minden tartományra érvényes hozzáférés-vezérlési házirendeket kényszerít. |[Cosmos DB hálózati szolgáltatásvégpontot kell használnia](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe0a2b1a3-f7f9-4569-807f-2a9edebdf4d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_CosmosDB_Audit.json) |
+|Elkülönítés a hálózatokban |0805.01m1Szervezeti.12 – 01.m |A szervezet biztonsági átjárói (például tűzfalak) biztonsági házirendeket kényszerítnek ki, és úgy vannak konfigurálva, hogy szűrik a tartományok közötti forgalmat, blokkolják a jogosulatlan hozzáférést, és a belső vezetékes, belső vezeték nélküli és külső hálózati szegmensek (például az internet) közötti elkülönítés fenntartására használatosak, beleértve a DMZ-ket is, valamint hozzáférés-vezérlési szabályzatok kényszerítését minden tartományra. |[Cosmos DB hálózati szolgáltatásvégpontot kell használnia](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe0a2b1a3-f7f9-4569-807f-2a9edebdf4d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_CosmosDB_Audit.json) |
 |Elkülönítés a hálózatokban |0806.01m2Organizational.12356 - 01.m |A szervezeti hálózat logikailag és fizikailag szegmentálva van egy meghatározott biztonsági szegélyhálózattal és egy fokozatos vezérlőkészlettel, beleértve a nyilvánosan elérhető rendszerösszetevők alhálózatát, amelyek a szervezeti követelmények alapján logikailag elkülönülnek a belső hálózattól; A és a forgalom vezérlése a szükséges funkciók, valamint az adatok/rendszerek besorolása alapján történik a kockázatértékelés és a vonatkozó biztonsági követelmények alapján. |[Cosmos DB hálózati szolgáltatásvégpontot kell használnia](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe0a2b1a3-f7f9-4569-807f-2a9edebdf4d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_CosmosDB_Audit.json) |
 |Elkülönítés a hálózatokban |0894.01m2Szervezeti.7 – 01.m |A fizikai kiszolgálók, alkalmazások vagy adatok virtualizált kiszolgálókra való áttelepítésekor a hálózatok elkülönülnek az éles szintű hálózatoktól. |[Cosmos DB hálózati szolgáltatásvégpontot kell használnia](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe0a2b1a3-f7f9-4569-807f-2a9edebdf4d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_CosmosDB_Audit.json) |
 |Hálózati vezérlők |0864.09m2Organizational.12 - 09.m |A használati korlátozásokat és a megvalósítási útmutatót hivatalosan definiálják a VoIP-hez, beleértve a szolgáltatás hitelesítését és monitorozását. |[Cosmos DB hálózati szolgáltatásvégpontot kell használnia](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe0a2b1a3-f7f9-4569-807f-2a9edebdf4d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_CosmosDB_Audit.json) |

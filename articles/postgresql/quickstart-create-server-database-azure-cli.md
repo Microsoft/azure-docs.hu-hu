@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a595d677cf0964083526cb7e2c73471148be0fd4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d4d3b44b0ee878028df369de41451e3dc1d3c6de
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778422"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875214"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>Rövid útmutató: Azure Database for PostgreSQL létrehozása az Azure CLI használatával
 
@@ -24,7 +24,7 @@ Ez a rövid útmutató bemutatja, [](https://shell.azure.com) hogyan hozhat lét
 - Ehhez a cikkhez az Azure CLI 2.0-s vagy újabb verziójára van szükség. Ha a Azure Cloud Shell, a legújabb verzió már telepítve van.
 
     > [!TIP]
-    >  Érdemes lehet az [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI egyszerűbb, jelenleg előzetes verzióban elérhető parancsát használni. Próbálja ki a [rövid útmutatót.](./quickstart-create-server-up-azure-cli.md)
+    >  Érdemes lehet az [az postgres up](/cli/azure/postgres#az_postgres_up) Azure CLI egyszerűbb, jelenleg előzetes verzióban elérhető parancsát használni. Próbálja ki a [rövid útmutatót.](./quickstart-create-server-up-azure-cli.md)
 
 - Az az account set paranccsal válassza ki a fiókjában az [adott előfizetés-azonosítót.](/cli/azure/account)
 
@@ -125,7 +125,7 @@ A [psql-ügyfél](https://www.postgresql.org/docs/current/static/app-psql.html) 
    ```
 
 > [!TIP]
-> Ha inkább URL-útvonalat szeretne használni a Postgreshez való csatlakozáshoz, kódolja a @ jelet a felhasználónévben a `%40` következővel: . A psql kapcsolati sztring például a következő lenne:
+> Ha inkább URL-címet szeretne használni a Postgreshez való csatlakozáshoz, kódolja a @ jelet a felhasználónévben a `%40` következővel: . A psql kapcsolati sztring például a következő lesz:
 >
 > ```
 > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 60278160646de1b80d224cabc6d781872a5624d9
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: c0a77896099bac5d4b3d819cfbd17ed339cb1b72
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107497122"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869551"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás(ak) |Verzió<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Azure HDInsight fürtöt kell injektálni egy virtuális hálózatba](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb0ab5b05-1c98-40f7-bb9e-dc568e41b501) |A Azure HDInsight fürtök egy virtuális hálózatba való be injektálása fejlett HDInsight hálózati és biztonsági funkciókat biztosít, és lehetővé teszi a hálózati biztonsági konfiguráció vezérlését. |Naplózás, Letiltva, Megtagadás |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/HDInsight/HDInsight_VNETInjection_Audit.json) |
 |[Azure HDInsight fürtöknek ügyfél által kezelt kulcsokat kell használniuk az adatok titkosításához](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F64d314f6-6062-4780-a861-c23e8951bee5) |Az ügyfél által kezelt kulcsokkal kezelheti a titkosítást a fürtök Azure HDInsight többi részében. Alapértelmezés szerint az ügyféladatok szolgáltatás által kezelt kulcsokkal vannak titkosítva, de az ügyfél által kezelt kulcsokra általában szükség van a jogszabályi megfelelőségi szabványoknak való megfeleléshez. Az ügyfél által kezelt kulcsok lehetővé teszik az adatok titkosítását egy olyan Azure Key Vault, amelyet Ön hozott létre és birtokolt. A kulcs életciklusa teljes körű vezérléssel és felelősséggel jár, beleértve a rotációt és a felügyeletet is. További információ: [https://aka.ms/hdi.cmk](https://aka.ms/hdi.cmk) . |Naplózás, Megtagadás, Letiltva |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/HDInsight/HDInsight_CMK_Audit.json) |

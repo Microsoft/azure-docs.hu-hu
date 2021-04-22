@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/08/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f6004961a43fe13db617f98ae2c65fa5829924e5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: eaec3521c90a0fb6425f5b68425ef608ae6db3c5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766550"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871308"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-azure-cli"></a>Feliratkozás egy egyéni témakör eseményeire az Azure CLI-vel
 
@@ -38,7 +38,7 @@ A szkript a következő parancsot használja az esemény-előfizetés létrehoz�
 | Parancs | Jegyzetek |
 |---|---|
 | [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create) | Event Grid-előfizetés létrehozása. |
-| [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) – bővítmény verziója | Event Grid-előfizetés létrehozása. |
+| [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create) – bővítmény verziója | Event Grid-előfizetés létrehozása. |
 
 ## <a name="next-steps"></a>Következő lépések
 

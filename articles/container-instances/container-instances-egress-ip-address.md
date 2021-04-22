@@ -3,31 +3,31 @@ title: Statikus kimenő IP-cím konfigurálása
 description: Konfigurálja az Azure Firewallt és a felhasználó által megadott útvonalakat Azure Container Instances, amelyek a tűzfal nyilvános IP-címét használják a bejövő és a bejövő forgalomhoz
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 1cd0ff48da58706a1be59caf4b9d5974dc5f552a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a03c59652b9409d54bbe63c63a31fdd2228ac34e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790814"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878685"
 ---
 # <a name="configure-a-single-public-ip-address-for-outbound-and-inbound-traffic-to-a-container-group"></a>Egyetlen nyilvános IP-cím konfigurálása a tárolócsoport kimenő és bejövő forgalmához
 
-Ha külső [](container-instances-container-groups.md) IP-címmel hoz létre tárolócsoportot, a külső ügyfelek az IP-cím használatával férhetnek hozzá a csoportban található tárolóhoz. Egy böngésző például hozzáférhet egy tárolóban futó webalkalmazáshoz. Jelenleg azonban a tárolócsoport más IP-címet használ a kimenő forgalomhoz. Ez a bejövő IP-cím nem programozott módon van elérhetővé téve, így a tárolócsoport figyelése és az ügyfél tűzfalszabályainak konfigurálása összetettebb.
+Ha külső [](container-instances-container-groups.md) IP-címmel hoz létre tárolócsoportot, a külső ügyfelek az IP-cím használatával férhetnek hozzá a csoportban található tárolókhoz. Egy böngésző például hozzáférhet egy tárolóban futó webalkalmazáshoz. Jelenleg azonban a tárolócsoport más IP-címet használ a kimenő forgalomhoz. Ez a bejövő IP-cím nem programozott módon van elérhetővé téve, így a tárolócsoport figyelése és az ügyfél tűzfalszabályainak konfigurálása összetettebb.
 
-Ez a cikk a tárolócsoport konfigurálásának lépéseit adja meg [a](container-instances-virtual-network-concepts.md) [Azure Firewall.](../firewall/overview.md) A tárolócsoporthoz és a tűzfalszabályokhoz felhasználó által megadott útvonal beállításával irányíthatja és azonosíthatja a tárolócsoportból származó és oda befelé tartó forgalmat. A tárolócsoport bejövő és bejövő portja a tűzfal nyilvános IP-címét használja. Egyetlen bejövő IP-címet több, a virtuális hálózat alhálózatán üzembe helyezett tárolócsoport is Azure Container Instances.
+Ez a cikk a tárolócsoport konfigurálásának lépéseit egy olyan virtuális hálózatban, amely [integrálva](container-instances-virtual-network-concepts.md) van a [Azure Firewall.](../firewall/overview.md) A tárolócsoport és a tűzfalszabályok felhasználó által megadott útvonalának beállításával irányíthatja és azonosíthatja a tárolócsoportból származó és oda befelé tartó forgalmat. A tárolócsoport bejövő és bejövő forgalom a tűzfal nyilvános IP-címét használja. Egyetlen bejövő IP-címet több, a virtuális hálózat alhálózatán üzembe helyezett tárolócsoport is Azure Container Instances.
 
-Ebben a cikkben az Azure CLI használatával hozza létre az ehhez a forgatókönyvhöz szükséges erőforrásokat:
+Ebben a cikkben az Azure CLI használatával hozhatja létre az ehhez a forgatókönyvhöz szükséges erőforrásokat:
 
 * A virtuális hálózat delegált alhálózatán üzembe helyezett [tárolócsoportok](container-instances-vnet.md) 
-* A hálózatban üzembe helyezett Azure-tűzfal statikus nyilvános IP-címmel
+* A hálózaton üzembe helyezett Azure-tűzfal statikus nyilvános IP-címmel
 * Felhasználó által megadott útvonal a tárolócsoportok alhálózatán
-* Nat-szabály tűzfal bejövő forgalomhoz és egy alkalmazásszabály a bejövő forgalomhoz
+* NAT-szabály tűzfal bejövő forgalomhoz és egy alkalmazásszabály a bejövő forgalomhoz
 
-Ezután érvényesítheti a példa tárolócsoportok bejövő és ki- és bementi feladatait a tűzfalon keresztül.
+Ezután ellenőrizheti a példa tárolócsoportok bejövő és ki- és bejövő ját a tűzfalon keresztül.
 
 ## <a name="deploy-aci-in-a-virtual-network"></a>Az ACI üzembe helyezése virtuális hálózaton
 
-Általában előfordulhat, hogy már rendelkezik egy Azure-beli virtuális hálózattal, amelyben tárolócsoportot helyezhet üzembe. Bemutatási célból a következő parancsok létrehoznak egy virtuális hálózatot és egy alhálózatot a tárolócsoport létrehozásakor. Az alhálózat delegálva van a Azure Container Instances. 
+Általában már van egy Azure-beli virtuális hálózata, amelyben üzembe helyezhet egy tárolócsoportot. Bemutatási célból a következő parancsok létrehoznak egy virtuális hálózatot és alhálózatot a tárolócsoport létrehozásakor. Az alhálózat delegálva van a Azure Container Instances. 
 
 A tárolócsoport egy kis méretű webalkalmazást futtat a `aci-helloworld` rendszerképből. Ahogy a dokumentáció más cikkei is mutatják, ez a kép egy statikus HTML-oldalt Node.js webalkalmazást tartalmaz.
 
@@ -37,7 +37,7 @@ Ha szüksége van rá, először hozzon létre egy Azure-erőforráscsoportot [a
 az group create --name myResourceGroup --location eastus
 ```
 
-A következő példaparancsok egyszerűsítése érdekében használjon környezeti változót az erőforráscsoport nevéhez:
+Az alábbi példaparancsok egyszerűsítése érdekében használjon környezeti változót az erőforráscsoport nevéhez:
 
 ```console
 export RESOURCE_GROUP_NAME=myResourceGroup
@@ -69,7 +69,7 @@ ACI_PRIVATE_IP="$(az container show --name appcontainer \
 
 ## <a name="deploy-azure-firewall-in-network"></a>Hálózati Azure Firewall üzembe helyezése
 
-A következő szakaszokban az Azure CLI használatával helyezhet üzembe egy Azure-tűzfalat a virtuális hálózaton. Háttérinformációkért [lásd: Oktatóanyag: Üzembe helyezés és Azure Firewall a Azure Portal.](../firewall/deploy-cli.md)
+A következő szakaszokban az Azure CLI használatával helyezhet üzembe egy Azure-tűzfalat a virtuális hálózaton. Háttérinformációkért [lásd: Oktatóanyag: Üzembe helyezés és konfigurálás Azure Firewall a Azure Portal.](../firewall/deploy-cli.md)
 
 Először az [az network vnet subnet create][az-network-vnet-subnet-create] használatával adjon hozzá egy AzureFirewallSubnet nevű alhálózatot a tűzfalhoz. Az alhálózat kötelező neve  az AzureFirewallSubnet.
 
@@ -120,7 +120,7 @@ az network firewall update \
   --resource-group $RESOURCE_GROUP_NAME
 ```
 
-Az az network firewall ip-config list paranccsal szerezze be a tűzfal [magánhálózati IP-címét.][az-network-firewall-ip-config-list] Ezt a magánhálózati IP-címet egy későbbi parancs használja.
+Az [az network firewall ip-config list paranccsal][az-network-firewall-ip-config-list] szerezze be a tűzfal magánhálózati IP-címét. Ezt a magánhálózati IP-címet egy későbbi parancs használja.
 
 
 ```azurecli
@@ -140,11 +140,11 @@ FW_PUBLIC_IP="$(az network public-ip show \
 
 ## <a name="define-user-defined-route-on-aci-subnet"></a>Felhasználó által megadott útvonal meghatározása az ACI-alhálózaton
 
-Határozzon meg egy használat által meghatározott útvonalat az ACI-alhálózaton, hogy átirányítsa a forgalmat az Azure-tűzfalra. További információ: [Hálózati forgalom útválasztása.](../virtual-network/tutorial-create-route-table-cli.md) 
+Definiálhat egy használat által meghatározott útvonalat az ACI-alhálózaton, hogy átirányítsa a forgalmat az Azure Firewallhoz. További információ: [Hálózati forgalom útválasztása.](../virtual-network/tutorial-create-route-table-cli.md) 
 
 ### <a name="create-route-table"></a>Útválasztási táblázat létrehozása
 
-Először futtassa a következő [az network route-table create parancsot][az-network-route-table-create] az útvonaltábla létrehozásához. Hozza létre az útvonaltáblát a virtuális hálózattal azonos régióban.
+Először futtassa a következő [az network route-table create parancsot][az-network-route-table-create] az útvonaltábla létrehozásához. Hozza létre az útvonaltáblát ugyanabban a régióban, mint a virtuális hálózat.
 
 ```azurecli
 az network route-table create \
@@ -156,7 +156,7 @@ az network route-table create \
 
 ### <a name="create-route"></a>Útvonal létrehozása
 
-Futtassa [az az network-route-table route create futtatásával][az-network-route-table-route-create] egy útvonalat az útvonaltáblában. A forgalom tűzfalra való útválasztáshoz állítsa a következő ugrás típusát a következőre, és adja meg a tűzfal magánhálózati `VirtualAppliance` IP-címét a következő ugrás címeként.
+Futtassa [az az network-route-table route create futtatásával][az-network-route-table-route-create] hozzon létre egy útvonalat az útvonaltáblában. A forgalom tűzfalra való útválasztáshoz állítsa a következő ugrás típusát a következőre, és adja meg a tűzfal magánhálózati `VirtualAppliance` IP-címét a következő ugrás címeként.
 
 ```azurecli
 az network route-table route create \
@@ -170,7 +170,7 @@ az network route-table route create \
 
 ### <a name="associate-route-table-to-aci-subnet"></a>Útválasztási táblázat társítása ACI-alhálózathoz
 
-Futtassa [az az network vnet subnet update parancsot,][az-network-vnet-subnet-update] hogy társítsa az útvonaltáblát az Azure Container Instances.
+Futtassa [az az network vnet subnet update parancsot,][az-network-vnet-subnet-update] hogy társítsa az útválasztási táblázatot az Azure Container Instances.
 
 ```azurecli
 az network vnet subnet update \
@@ -183,11 +183,11 @@ az network vnet subnet update \
 
 ## <a name="configure-rules-on-firewall"></a>Tűzfalszabályok konfigurálása
 
-Alapértelmezés szerint a Azure Firewall (letiltja) a bejövő és kimenő forgalmat. 
+Alapértelmezés szerint a Azure Firewall (blokkok) tiltja a bejövő és kimenő forgalmat. 
 
 ### <a name="configure-nat-rule-on-firewall-to-aci-subnet"></a>NAT-szabály konfigurálása tűzfalon az ACI-alhálózathoz
 
-Hozzon létre [egy NAT-szabályt](../firewall/rule-processing.md) a tűzfalon a bejövő internetes forgalom fordításához és szűréséhez a korábban a hálózaton elindított alkalmazástárolóra. Részletekért lásd: Bejövő internetes forgalom szűrése [Azure Firewall DNAT segítségével](../firewall/tutorial-firewall-dnat.md)
+Hozzon létre [egy NAT-szabályt](../firewall/rule-processing.md) a tűzfalon, amely lefordítja és szűri a bejövő internetes forgalmat a korábban a hálózaton elindított alkalmazástárolóra. Részletekért lásd: Bejövő internetes forgalom szűrése Azure Firewall [DNAT segítségével](../firewall/tutorial-firewall-dnat.md)
 
 Hozzon létre egy NAT-szabályt és -gyűjteményt [az az network firewall nat-rule create paranccsal:][az-network-firewall-nat-rule-create]
 
@@ -207,11 +207,11 @@ az network firewall nat-rule create \
   --priority 200
 ```
 
-Szükség szerint adjon hozzá NAT-szabályokat az alhálózat más IP-címeinek forgalmának szűréséhez. Az alhálózat más tárolócsoportja például ip-címeket tehet elérhetővé a bejövő forgalom számára, vagy más belső IP-címeket lehet hozzárendelni a tárolócsoporthoz az újraindítás után.
+Szükség szerint adjon hozzá NAT-szabályokat az alhálózat más IP-címeinek forgalmának szűréséhez. Például az alhálózatban található más tárolócsoportok IP-címeket tehetnek elérhetővé a bejövő forgalom számára, vagy más belső IP-címek rendelhetők hozzá a tárolócsoporthoz újraindítás után.
 
 ### <a name="create-outbound-application-rule-on-the-firewall"></a>Kimenő alkalmazásszabály létrehozása a tűzfalon
 
-Futtassa a következő [az network firewall application-rule create parancsot][az-network-firewall-application-rule-create] egy kimenő szabály létrehozásához a tűzfalon. Ez a mintaszabály engedélyezi a hozzáférést az FQDN-hez Azure Container Instances delegált `checkip.dyndns.org` alhálózatról. A webhely HTTP-hozzáférését egy későbbi lépésben fogja használni a hálózati forgalom IP-címének Azure Container Instances.
+Futtassa a következő [az network firewall application-rule create parancsot][az-network-firewall-application-rule-create] egy kimenő szabály létrehozásához a tűzfalon. Ez a mintaszabály engedélyezi a hozzáférést az FQDN-Azure Container Instances delegált `checkip.dyndns.org` alhálózatról. A webhely HTTP-hozzáférése egy későbbi lépésben lesz használva a hálózati forgalom IP-címének Azure Container Instances.
 
 ```azurecli
 az network firewall application-rule create \
@@ -226,13 +226,13 @@ az network firewall application-rule create \
   --action Allow
 ```
 
-## <a name="test-container-group-access-through-the-firewall"></a>Tárolócsoport-hozzáférés tesztelése a tűzfalon keresztül
+## <a name="test-container-group-access-through-the-firewall"></a>Tárolócsoport hozzáférésének tesztelése a tűzfalon keresztül
 
-A következő szakaszok ellenőrzik, hogy a Azure Container Instances delegált alhálózat megfelelően van-e konfigurálva az Azure-tűzfal mögött. Az előző lépések az alhálózatra érkező és az alhálózatról kimenő forgalmat is a tűzfalon keresztül irányítják.
+A következő szakaszok ellenőrzik, hogy a Azure Container Instances számára delegált alhálózat megfelelően van-e konfigurálva az Azure-tűzfal mögött. Az előző lépések az alhálózatra érkező és az alhálózatból kimenő forgalmat is a tűzfalon keresztül irányítják.
 
 ### <a name="test-ingress-to-a-container-group"></a>Tárolócsoport bejövő forgalomának tesztelése
 
-Tesztelje a virtuális hálózaton *futó appcontainer* bejövő hozzáférését a tűzfal nyilvános IP-címének tallózással. Korábban a nyilvános IP-címet a következő változóban tárolta$FW_PUBLIC_IP:
+Tesztelje a virtuális hálózaton futó *appcontainer* bejövő hozzáférését a tűzfal nyilvános IP-címének tallózással. Korábban a nyilvános IP-címet a következő változóban tárolta$FW_PUBLIC_IP:
 
 ```bash
 echo $FW_PUBLIC_IP
@@ -248,10 +248,10 @@ Ha a tűzfal NAT-szabálya megfelelően van konfigurálva, a következőt fogja 
 
 :::image type="content" source="media/container-instances-egress-ip-address/aci-ingress-ip-address.png" alt-text="Tallózás a tűzfal nyilvános IP-címére":::
 
-### <a name="test-egress-from-a-container-group"></a>Tárolócsoportból származó bejövő forgalom tesztelése
+### <a name="test-egress-from-a-container-group"></a>Tárolócsoportból származó forgalom tesztelése
 
 
-Telepítse a következő mintatárolót a virtuális hálózaton. Amikor fut, egyetlen HTTP-kérést küld a számára, amely megjeleníti a küldő `http://checkip.dyndns.org` IP-címét (a bejövő IP-címet). Ha a tűzfalon az alkalmazásszabály megfelelően van konfigurálva, a rendszer visszaadja a tűzfal nyilvános IP-címét.
+Telepítse a következő mintatárolót a virtuális hálózaton. A futtatásakor egyetlen HTTP-kérést küld a szolgáltatásnak, amely megjeleníti a küldő `http://checkip.dyndns.org` IP-címét (a bejövő forgalom IP-címét). Ha a tűzfalon az alkalmazásszabály megfelelően van konfigurálva, a rendszer visszaadja a tűzfal nyilvános IP-címét.
 
 ```azurecli
 az container create \
@@ -290,15 +290,15 @@ A forgalom kezelésével és az Azure-erőforrások [](../firewall/index.yml) v�
 [az-container-create]: /cli/azure/container#az_container_create
 [az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az_network_vnet_subnet_create
 [az-extension-add]: /cli/azure/extension#az_extension_add
-[az-network-firewall-update]: /cli/azure/ext/azure-firewall/network/firewall#ext-azure-firewall-az-network-firewall-update
+[az-network-firewall-update]: /cli/azure/network/firewall#az_network_firewall_update
 [az-network-public-ip-show]: /cli/azure/network/public-ip/#az_network_public_ip_show
 [az-network-route-table-create]:/cli/azure/network/route-table/#az_network_route_table_create
 [az-network-route-table-route-create]: /cli/azure/network/route-table/route#az_network_route_table_route_create
-[az-network-firewall-ip-config-list]: /cli/azure/ext/azure-firewall/network/firewall/ip-config#ext-azure-firewall-az-network-firewall-ip-config-list
+[az-network-firewall-ip-config-list]: /cli/azure/network/firewall/ip-config#az_network_firewall_ip_config_list
 [az-network-vnet-subnet-update]: /cli/azure/network/vnet/subnet#az_network_vnet_subnet_update
 [az-container-exec]: /cli/azure/container#az_container_exec
 [az-vm-create]: /cli/azure/vm#az_vm_create
 [az-vm-open-port]: /cli/azure/vm#az_vm_open_port
 [az-vm-list-ip-addresses]: /cli/azure/vm#az_vm_list_ip_addresses
-[az-network-firewall-application-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/application-rule#ext-azure-firewall-az-network-firewall-application-rule-create
-[az-network-firewall-nat-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/nat-rule#ext-azure-firewall-az-network-firewall-nat-rule-create
+[az-network-firewall-application-rule-create]: /cli/azure/network/firewall/application-rule#az_network_firewall_application_rule_create
+[az-network-firewall-nat-rule-create]: /cli/azure/network/firewall/nat-rule#az_network_firewall_nat_rule_create
