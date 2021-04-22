@@ -1,17 +1,17 @@
 ---
-title: Rövid útmutató – Azure Signaler szolgáltatás REST API
-description: Ismerje meg, hogyan használhatja a REST APIt az Azure Signaler szolgáltatással a következő mintákkal. REST API specifikáció részleteinek megkeresése.
+title: Rövid útmutató – Azure SignalR Service REST API
+description: Ismerje meg, hogyan használhatja REST API a Azure SignalR Service alábbi mintákkal. Az adatspecifikáció REST API le.
 author: sffamily
 ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 2613f91e8c7f1ad3a05792a9a165f4560c09a637
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfcbb00ec20797248f41cc1676809f3198d51527
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94874525"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866160"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rövid útmutató: Valós idejű üzenetek szétküldése konzolalkalmazásból
 
@@ -23,22 +23,22 @@ Ebből a rövid útmutatóból megtudhatja, hogyan küldhet üzeneteket parancss
 
 Ez a rövid útmutató macOS, Windows vagy Linux rendszeren is futtatható.
 
-* [.NET Core SDK](https://www.microsoft.com/net/download/core)
+* [.NET Core SDK](https://dotnet.microsoft.com/download)
 * Az Ön által választott szöveg- vagy kódszerkesztő.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsapi).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudtossa velünk a következőt:](https://aka.ms/asrs/qsapi).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azure-fiókjával.
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsapi).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudtossa velünk a következőt:](https://aka.ms/asrs/qsapi).
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsapi).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudtossa velünk a következőt:](https://aka.ms/asrs/qsapi).
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
@@ -51,7 +51,7 @@ Amíg a szolgáltatás üzembe helyezése folyamatban van, térjünk át a kód 
     ```bash
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsapi).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudtossa velünk a következőt:](https://aka.ms/asrs/qsapi).
 
 ## <a name="build-and-run-the-sample"></a>A minta létrehozása és futtatása
 
@@ -88,7 +88,7 @@ cd bin/Release/netcoreapp2.1/osx.10.13-x64/
 Serverless server -c "<ConnectionString>" -h <HubName>
 ```
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsapi).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudtossa velünk a következőt:](https://aka.ms/asrs/qsapi).
 
 ## <a name="run-the-sample-without-publishing"></a>Futtassa a mintát közzététel nélkül
 
@@ -106,11 +106,11 @@ dotnet run -- client <ClientName> -c "<ConnectionString>" -h <HubName>
 
 A `dotnet user-secrets set Azure:SignalR:ConnectionString "<ConnectionString>"` futtatását a minta gyökérkönyvtárában végezheti. Ezután már nem lesz szüksége a `-c "<ConnectionString>"` lehetőségre.
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsapi).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudtossa velünk a következőt:](https://aka.ms/asrs/qsapi).
 
 ## <a name="usage"></a>Használat
 
-A kiszolgáló elindítása után az parancs használatával küldjön üzenetet:
+A kiszolgáló elindulás után az paranccsal küldjön üzenetet:
 
 ```
 send user <User Id>
@@ -122,7 +122,7 @@ broadcast
 
 Több ügyfelet is indíthat különböző ügyfélnevekkel.
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsapi).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudtossa velünk a következőt:](https://aka.ms/asrs/qsapi).
 
 ## <a name="integration-with-third-party-services"></a><a name="usage"> </a> Integráció külső szolgáltatásokkal
 
@@ -139,21 +139,21 @@ Verzió | API-állapot | Ajtó | Specifikusság
 
 Az egyes verziókhoz elérhető API-k listáját az alábbi lista tartalmazza.
 
-API | 1,0 – előzetes verzió | 1.0
+API | 1.0-s előzetes verzió | 1.0
 --- | --- | ---
 [Szétküldés mindenkinek](#broadcast) | **&#x2713;** | **&#x2713;**
 [Szétküldés egy csoportnak](#broadcast-group) | **&#x2713;** | **&#x2713;**
 Szétküldés néhány csoportnak | **&#x2713;** (elavult) | `N / A`
-[Küldés felhasználó számára](#send-user) | **&#x2713;** | **&#x2713;**
+[Küldés egy felhasználónak](#send-user) | **&#x2713;** | **&#x2713;**
 Küldés néhány felhasználónak | **&#x2713;** (elavult) | `N / A`
 [Felhasználó hozzáadása egy csoporthoz](#add-user-to-group) | `N / A` | **&#x2713;**
 [Felhasználó eltávolítása egy csoportból](#remove-user-from-group) | `N / A` | **&#x2713;**
-[Felhasználó létezésének ellenőrzésével](#check-user-existence) | `N / A` | **&#x2713;**
-[Felhasználó eltávolítása minden csoportból](#remove-user-from-all-groups) | `N / A` | **&#x2713;**
-[Küldés egy kapcsolatban](#send-connection) | `N / A` | **&#x2713;**
-[Csoporthoz való kapcsolódás hozzáadása](#add-connection-to-group) | `N / A` | **&#x2713;**
-[Csoportból származó kapcsolatok eltávolítása](#remove-connection-from-group) | `N / A` | **&#x2713;**
-[Ügyfélkapcsolat lezárása](#close-connection) | `N / A` | **&#x2713;**
+[Felhasználó meglétének ellenőrzése](#check-user-existence) | `N / A` | **&#x2713;**
+[Felhasználó eltávolítása az összes csoportból](#remove-user-from-all-groups) | `N / A` | **&#x2713;**
+[Küldés kapcsolatra](#send-connection) | `N / A` | **&#x2713;**
+[Kapcsolat hozzáadása csoporthoz](#add-connection-to-group) | `N / A` | **&#x2713;**
+[Kapcsolat eltávolítása egy csoportból](#remove-connection-from-group) | `N / A` | **&#x2713;**
+[Ügyfélkapcsolat bezárása](#close-connection) | `N / A` | **&#x2713;**
 [Service Health](#service-health) | `N / A` | **&#x2713;**
 
 <a name="broadcast"> </a>
@@ -173,7 +173,7 @@ Verzió | API HTTP-metódus | URL-cím kérése | A kérés törzse
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>` | Lásd fent
 
 <a name="send-user"> </a>
-### <a name="sending-to-a-user"></a>Küldés felhasználó számára
+### <a name="sending-to-a-user"></a>Küldés egy felhasználónak
 
 Verzió | API HTTP-metódus | URL-cím kérése | A kérés törzse
 --- | --- | --- | ---
@@ -195,34 +195,34 @@ Verzió | API HTTP-metódus | URL-cím kérése
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
 
 <a name="check-user-existence"> </a>
-### <a name="check-user-existence-in-a-group"></a>A felhasználó létezésének ellenőrzéséhez egy csoportban
+### <a name="check-user-existence-in-a-group"></a>Felhasználó meglétének ellenőrzése egy csoportban
 
 API-verzió | API HTTP-metódus | URL-cím kérése
 ---|---|---
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups/<group-name>`
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>` 
 
-Válasz állapotkódja | Leírás
+Válasz állapotkódja | Description
 ---|---
 `200` | A felhasználó létezik
 `404` | A felhasználó nem létezik
 
 <a name="remove-user-from-all-groups"> </a>
-### <a name="remove-a-user-from-all-groups"></a>Felhasználó eltávolítása minden csoportból
+### <a name="remove-a-user-from-all-groups"></a>Felhasználó eltávolítása az összes csoportból
 
 API-verzió | API HTTP-metódus | URL-cím kérése
 ---|---|---
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups`
 
 <a name="send-connection"> </a>
-### <a name="send-message-to-a-connection"></a>Üzenet küldése egy kapcsolatban
+### <a name="send-message-to-a-connection"></a>Üzenet küldése egy kapcsolatnak
 
 API-verzió | API HTTP-metódus | URL-cím kérése | Kérelem törzse
 ---|---|---|---
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>` | `{ "target":"<method-name>", "arguments":[ ... ] }`
 
 <a name="add-connection-to-group"> </a>
-### <a name="add-a-connection-to-a-group"></a>Csoporthoz való kapcsolódás hozzáadása
+### <a name="add-a-connection-to-a-group"></a>Kapcsolat hozzáadása csoporthoz
 
 API-verzió | API HTTP-metódus | URL-cím kérése
 ---|---|---
@@ -230,7 +230,7 @@ API-verzió | API HTTP-metódus | URL-cím kérése
 `1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
 
 <a name="remove-connection-from-group"> </a>
-### <a name="remove-a-connection-from-a-group"></a>Csoportból származó kapcsolatok eltávolítása
+### <a name="remove-a-connection-from-a-group"></a>Kapcsolat eltávolítása egy csoportból
 
 API-verzió | API HTTP-metódus | URL-cím kérése
 ---|---|---
@@ -238,7 +238,7 @@ API-verzió | API HTTP-metódus | URL-cím kérése
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
 
 <a name="close-connection"> </a>
-### <a name="close-a-client-connection"></a>Ügyfélkapcsolat lezárása
+### <a name="close-a-client-connection"></a>Ügyfélkapcsolat bezárása
 
 API-verzió | API HTTP-metódus | URL-cím kérése
 ---|---|---
@@ -252,20 +252,20 @@ API-verzió | API HTTP-metódus | URL-cím kérése
 ---|---|---                             
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/health`
 
-Válasz állapotkódja | Leírás
+Válasz állapotkódja | Description
 ---|---
-`200` | A szolgáltatás jó
+`200` | Szolgáltatás jó
 `5xx` | Szolgáltatáshiba
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsapi).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudtossa velünk a következőt:](https://aka.ms/asrs/qsapi).
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qsapi).
+Problémákat? Próbálja ki [a hibaelhárítási útmutatót,](signalr-howto-troubleshoot-guide.md) [vagy tudtossa velünk a következőt:](https://aka.ms/asrs/qsapi).
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan használhatja a REST APIt a Signaler szolgáltatásból az ügyfeleknek küldött valós idejű üzenetek szórására. Következő lépésként tájékozódjon arról, hogyan fejlesztheti és helyezheti üzembe a Azure Functionst a Signal Service-kötéssel, amely REST APIra épül.
+Ebben a rövid útmutatóban megtanulta, hogyan használható a REST API valós idejű üzenetek SignalR Service ügyfelekre. Ezután többet is megtudhat arról, hogyan fejleszthet és helyezhet Azure Functions üzembe SignalR Service kötéssel, amely a REST API.
 
 > [!div class="nextstepaction"]
-> [Azure Functions fejlesztése az Azure Signaler szolgáltatás kötéseinek használatával](signalr-quickstart-azure-functions-csharp.md)
+> [Fejlesztés Azure Functions kötések Azure SignalR Service használatával](signalr-quickstart-azure-functions-csharp.md)

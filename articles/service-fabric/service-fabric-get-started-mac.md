@@ -1,15 +1,15 @@
 ---
-title: Fejlesztői környezet beállítása macOS rendszeren
-description: Telepítse a futtatókörnyezetet, az SDK-t és az eszközöket, majd hozzon létre egy helyi fejlesztési fürtöt. A telepítés befejezése után készen áll az alkalmazások macOS rendszeren való létrehozására.
+title: A fejlesztői környezet beállítása macOS rendszeren
+description: Telepítse a futtatókörnyezetet, az SDK-t és az eszközöket, majd hozzon létre egy helyi fejlesztési fürtöt. A beállítás befejezése után készen áll az alkalmazások macOS-en való építésére.
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: d08046c8f29901dd9650a1edc886efa2ff226e00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6fe551f8371322af8d955b5233e6d9d05741f3d9
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93086777"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868122"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>A fejlesztési környezet beállítása Mac OS X-en
 > [!div class="op_single_selector"]
@@ -41,38 +41,38 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    Ezeket a beállításokat közvetlenül a Docker telepítési útvonalán található daemon.json fájlban frissítheti. Közvetlenül módosíthatja a démon konfigurációs beállításait a Docker-ben. Válassza a **Docker ikonját**, majd válassza a **Preferences (Beállítások)** > **Daemon (Démon)** > **Advanced (Speciális)** lehetőséget.
+    Ezeket a beállításokat közvetlenül a Docker telepítési útvonalán található daemon.json fájlban frissítheti. A démon konfigurációs beállításait közvetlenül módosíthatja a Dockerben. Válassza a **Docker ikonját**, majd válassza a **Preferences (Beállítások)** > **Daemon (Démon)** > **Advanced (Speciális)** lehetőséget.
     
     >[!NOTE]
     >
-    >A démon közvetlenül a Docker-ben való módosítása ajánlott, mert a daemon.jsfájljának helye a gép és a gép között is változhat. Például: ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
+    >Ajánlott közvetlenül a Dockerben módosítani a démont, mert a daemon.jshelye gépenként eltérő lehet. Például: ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
     >
 
     >[!TIP]
     >Javasoljuk, hogy növelje a Docker számára lefoglalt erőforrásokat nagy méretű alkalmazások tesztelése esetén. Ehhez válassza a **Docker ikont**, majd a **Speciális** lehetőséget a magok és a memória számának módosításához.
 
 2. Indítsa el a fürtöt.<br/>
-    <b>Ubuntu 18,04 LTS:</b>
+    <b>Ubuntu 18.04 LTS:</b>
     ```bash
     docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u18
     ```
 
-    <b>Ubuntu 16,04 LTS:</b>
+    <b>Ubuntu 16.04 LTS:</b>
     ```bash
     docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u16
     ```
 
     >[!TIP]
-    > Alapértelmezés szerint ez a Service Fabric legújabb verziójával rendelkező rendszerképet kéri le. A részletekért látogasson el a Docker hub [Service Fabric beépített](https://hub.docker.com/_/microsoft-service-fabric-onebox) lapjára.
+    > Alapértelmezés szerint ez a Service Fabric legújabb verziójával rendelkező rendszerképet kéri le. Az egyes változatokért látogasson el a Service Fabric [Onebox oldalára](https://hub.docker.com/_/microsoft-service-fabric-onebox) a Docker Hub.
 
 
 
-3. Nem kötelező: a bővített Service Fabric rendszerkép kiépítése.
+3. Nem kötelező: Készítse el a kiterjesztett Service Fabric rendszerképet.
 
-    Egy új könyvtárban hozzon létre egy nevű fájlt a `Dockerfile` testreszabott rendszerkép létrehozásához:
+    Hozzon létre egy nevű fájlt egy új könyvtárban a `Dockerfile` testreszabott rendszerkép létrehozásához:
 
     >[!NOTE]
-    >A fenti képen a Docker további programokat vagy függőségeket adhat hozzá a tárolóhoz.
+    >A fenti rendszerképet egy Docker-fájl használatával úgy is adaptálhatja, hogy további programokat vagy függőségeket adjon a tárolóhoz.
     >A `RUN apt-get install nodejs -y` részlet hozzáadása például lehetővé teszi a `nodejs`-alkalmazások vendég végrehajtható fájlokként való támogatását.
     ```Dockerfile
     FROM mcr.microsoft.com/service-fabric/onebox:u18
@@ -85,7 +85,7 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
     >[!TIP]
     > Alapértelmezés szerint ez a Service Fabric legújabb verziójával rendelkező rendszerképet kéri le. Adott változatokért látogasson el a [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) oldalára.
 
-    Az újrahasznosítható rendszerkép létrehozásához `Dockerfile` nyissa meg a terminált, és `cd` a közvetlenül a következő `Dockerfile` parancsot:
+    Az újrahasználható rendszerképének a fájlból való felépítéséhez nyisson meg egy terminált, és a közvetlenül a `Dockerfile` `cd` fájlban található `Dockerfile` fájlhoz, majd futtassa a következőt:
 
     ```bash 
     docker build -t mysfcluster .
@@ -94,7 +94,7 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
     >[!NOTE]
     >Ez a művelet eltarthat egy ideig, de csak egyszer kell végrehajtani.
 
-    Most gyorsan elindíthatja Service Fabric helyi példányát, amikor a futtatásához szükség van rá:
+    Most már gyorsan elindíthatja a példányok helyi Service Fabric amikor szüksége van rá a következő futtatásával:
 
     ```bash 
     docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
@@ -108,14 +108,14 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
     >`docker run -itd -p 19000:19000 -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:u18`
     >
 
-4. A fürt eltarthat egy kis ideig. Ha fut, a következő parancs használatával megtekintheti a naplókat, vagy az irányítópultra ugorhat a fürtök állapotának megtekintéséhez: `http://localhost:19080`
+4. A fürt elindul. Ha fut, a következő paranccsal megtekintheti a naplókat, vagy az irányítópultra ugorva megtekintheti a fürtök állapotát: `http://localhost:19080`
 
     ```bash 
     docker logs sftestcluster
     ```
 
 
-5. A tároló leállításához és tisztításához használja az alábbi parancsot. Ezt a tárolót azonban a következő lépésben fogjuk használni.
+5. A tárolót a következő paranccsal állíthatja le és tisztíthatja meg. A következő lépésben azonban ezt a tárolót fogjuk használni.
 
     ```bash 
     docker rm -f sftestcluster
@@ -125,8 +125,8 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
  
  A Mac gép tárolójában futó helyi fürt ismert korlátozásai a következők: 
  
- * A DNS-szolgáltatás nem fut, és jelenleg nem támogatott a tárolón belül. [Probléma #132](https://github.com/Microsoft/service-fabric/issues/132)
- * A Container-alapú alkalmazások futtatásához az SF futtatására van szükség egy Linux-gazdagépen. A beágyazott tároló alkalmazások jelenleg nem támogatottak.
+ * A DNS-szolgáltatás nem fut, és jelenleg nem támogatott a tárolóban. [Probléma #132](https://github.com/Microsoft/service-fabric/issues/132)
+ * A tárolóalapú alkalmazások futtatásához az SF Linux-gazdagépen való futtatására van szükség. A beágyazott tárolóalkalmazások jelenleg nem támogatottak.
 
 ## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>A Service Fabric parancssori felület (sfctl) beállítása Mac gépen
 
@@ -173,8 +173,8 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyekkel S
     ```
 
     > [!IMPORTANT]
-    > Előfordulhat, hogy a jelenlegi verziói a `brew cask install java` JDK újabb verzióját telepítik.
-    > Ügyeljen arra, hogy a JDK 8 telepítse.
+    > Előfordulhat, hogy a jelenlegi `brew cask install java` verziói a JDK egy újabb verzióját telepítik.
+    > Mindenképpen telepítse a JDK 8-at.
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>Alkalmazás telepítése Mac gépen a terminálból
 
@@ -193,9 +193,9 @@ Miután létrehozta és kiépítette a Service Fabric-alkalmazását, a [Service
     bash install.sh
     ```
 
-## <a name="set-up-net-core-31-development"></a>A .NET Core 3,1-fejlesztés beállítása
+## <a name="set-up-net-core-31-development"></a>.NET Core 3.1-fejlesztés beállítása
 
-Telepítse a [.net Core 3,1 SDK for Mac](https://www.microsoft.com/net/core#macos) alkalmazást a [C# Service Fabric-alkalmazások létrehozásának](service-fabric-create-your-first-linux-application-with-csharp.md)megkezdéséhez. A .NET Core Service Fabric alkalmazások csomagjai a NuGet.org futnak.
+Telepítse a [Machez készült .NET Core 3.1 SDK-t](https://dotnet.microsoft.com/download?initial-os=macos) a C# és [Service Fabric létrehozásához.](service-fabric-create-your-first-linux-application-with-csharp.md) A .NET Core-Service Fabric alkalmazások csomagjai a NuGet.org.
 
 ## <a name="install-the-service-fabric-plug-in-for-eclipse-on-your-mac"></a>Az Eclipse-hez készült Service Fabric beépülő modul telepítése Mac gépen
 

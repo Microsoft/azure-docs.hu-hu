@@ -1,6 +1,6 @@
 ---
-title: Feltételes hozzáférés hozzáadása egy felhasználói folyamathoz Azure AD B2C
-description: Megtudhatja, hogyan adhat hozzá feltételes hozzáférést a Azure AD B2C felhasználói folyamatokhoz. A többtényezős hitelesítési (MFA) beállítások és a feltételes hozzáférési házirendek konfigurálása a felhasználói folyamatokban a házirendek betartatása és a kockázatos bejelentkezések szervizelése érdekében.
+title: Feltételes hozzáférés hozzáadása felhasználói folyamathoz a Azure AD B2C
+description: Megtudhatja, hogyan adhat feltételes hozzáférést a Azure AD B2C felhasználói folyamathoz. Konfigurálja a többtényezős hitelesítés (MFA) beállításait és a feltételes hozzáférési szabályzatokat a felhasználói folyamatokban a szabályzatok betartatása és a kockázatos bejelentkezések szervize érdekében.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,31 +11,31 @@ ms.author: mimart
 author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6325a890ea297a3aa2bdad76a1d95c10448a7b61
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0e6a872891f09f60ea963fa783e6f49dc4e94a54
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033913"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861854"
 ---
-# <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Feltételes hozzáférés hozzáadása a felhasználói folyamatokhoz Azure Active Directory B2C
+# <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Feltételes hozzáférés hozzáadása felhasználói folyamatokhoz a Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-A feltételes hozzáférés a Azure Active Directory B2C (Azure AD B2C) felhasználói folyamatokhoz vagy egyéni szabályzatokhoz vehető fel, hogy a kockázatos bejelentkezéseket az alkalmazásaihoz lehessen kezelni. A Azure Active Directory (Azure AD) feltételes hozzáférés a Azure AD B2C által a jelek összekapcsolására, a döntések meghozatalára és a szervezeti házirendek betartatására használt eszköz.
+A feltételes hozzáférés hozzáadható a Azure Active Directory B2C (Azure AD B2C) felhasználói folyamatokhoz vagy egyéni szabályzatokhoz az alkalmazásokba való kockázatos bejelentkezések kezeléséhez. Azure Active Directory (Azure AD) feltételes hozzáférés az eszköz, amelyet a Azure AD B2C használ a jelek egymáshoz hozása, a döntéshozatal és a szervezeti szabályzatok betartatása érdekében.
 
-![Feltételes hozzáférés folyamata](media/conditional-access-user-flow/conditional-access-flow.png)
+![Feltételes hozzáférési folyamat](media/conditional-access-user-flow/conditional-access-flow.png)
 
-A kockázatértékelés házirend-feltételekkel való automatizálása azt jelenti, hogy a kockázatos bejelentkezéseket azonnal azonosítják, majd szervizelni vagy letiltják.
+A kockázatfelmérés szabályzatfeltételekkel való automatizálása azt jelenti, hogy a kockázatos bejelentkezéseket a rendszer azonnal azonosítja, majd javítja vagy letiltja.
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="service-overview"></a>A szolgáltatás áttekintése
 
-Azure AD B2C kiértékeli az egyes bejelentkezési eseményeket, és biztosítja, hogy az összes házirend-követelmény teljesül a felhasználói hozzáférés megadása előtt. A **kiértékelési** fázisban a feltételes hozzáférési szolgáltatás a bejelentkezési események során kiértékeli az Identity Protection kockázati észlelésével gyűjtött jeleket. A kiértékelési folyamat eredménye olyan jogcímek összessége, amelyek jelzik, hogy a bejelentkezést meg kell-e adni vagy le kell tiltani. A Azure AD B2C szabályzat ezeket a jogcímeket használja a felhasználói folyamaton belüli művelet végrehajtására, például blokkolja a hozzáférést, vagy megtámadja a felhasználót egy adott szervizeléssel, például a többtényezős hitelesítéssel (MFA). A "hozzáférés letiltása" felülbírálja az összes többi beállítást.
+Azure AD B2C kiértékeli az egyes bejelentkezési eseményeket, és gondoskodik arról, hogy a felhasználói hozzáférés megadása előtt minden szabályzati követelmény teljesül. Ebben a **kiértékelési fázisban** a feltételes hozzáférési szolgáltatás kiértékeli az Identity Protection kockázatészlelései által gyűjtött jeleket a bejelentkezési események során. A kiértékelési folyamat eredménye jogcímek halmaza, amelyek jelzik, hogy a bejelentkezést meg kell-e adni vagy blokkolni kell. A Azure AD B2C szabályzat ezeket a jogcímeket használja a felhasználói folyamaton belüli művelethez, például letiltja a hozzáférést, vagy egy adott szervizelési megoldással, például többtényezős hitelesítéssel (MFA) követeli meg a felhasználót. A "Hozzáférés blokkolása" felülbírálja az összes többi beállítást.
 
 ::: zone pivot="b2c-custom-policy"
-Az alábbi példa egy feltételes hozzáférési technikai profilt mutat be, amely a bejelentkezési fenyegetés kiértékelésére szolgál.
+Az alábbi példa egy feltételes hozzáférési technikai profilt mutat be, amely a bejelentkezési fenyegetés kiértékeléséhez használható.
 
 ```XML
 <TechnicalProfile Id="ConditionalAccessEvaluation">
@@ -50,11 +50,11 @@ Az alábbi példa egy feltételes hozzáférési technikai profilt mutat be, ame
 
 ::: zone-end
 
-A következő **szervizelési** fázisban a felhasználó az MFA-val van megtámadva. Ha elkészült, Azure AD B2C tájékoztatja az Identity Protectiont arról, hogy az azonosított bejelentkezési fenyegetés szervizelése megtörtént, és milyen módszerrel. Ebben a példában Azure AD B2C jelzi, hogy a felhasználó sikeresen befejezte a multi-Factor Authentication kérdését. 
+A következő **szervizelési** fázisban a felhasználónak MFA-val kell szembetenének. A művelet Azure AD B2C értesíti az Identity Protectiont arról, hogy az azonosított bejelentkezési fenyegetést és melyik módszerrel orvosolták. Ebben a példában Azure AD B2C jelzi, hogy a felhasználó sikeresen befejezte a többtényezős hitelesítést. 
 
 ::: zone pivot="b2c-custom-policy"
 
-Az alábbi példa egy feltételes hozzáférési technikai profilt mutat be az azonosított fenyegetés szervizeléséhez:
+Az alábbi példa egy feltételes hozzáférési technikai profilt mutat be, amely az azonosított fenyegetést orvosolja:
 
 ```XML
 <TechnicalProfile Id="ConditionalAccessRemediation">
@@ -71,19 +71,19 @@ Az alábbi példa egy feltételes hozzáférési technikai profilt mutat be az a
 
 ## <a name="components-of-the-solution"></a>A megoldás összetevői
 
-Ezek azok az összetevők, amelyek engedélyezik a feltételes hozzáférést a Azure AD B2Cban:
+A feltételes hozzáférést a következő összetevők teszik Azure AD B2C:
 
-- **Felhasználói folyamat** vagy **egyéni házirend** , amely a felhasználót a bejelentkezési és a regisztrációs folyamaton keresztül irányítja.
-- **Feltételes hozzáférési szabályzat** , amely lehetővé teszi a jelek összekapcsolását a döntések meghozatalához és a szervezeti szabályzatok betartatásához. Amikor egy felhasználó egy Azure AD B2C szabályzattal jelentkezik be az alkalmazásba, a feltételes hozzáférési házirend Azure AD Identity Protection jeleket használ a kockázatos bejelentkezések azonosítására, és megadja a megfelelő szervizelési műveletet.
-- **Regisztrált alkalmazás** , amely a felhasználókat a megfelelő Azure ad B2C felhasználói folyamatra vagy egyéni házirendre irányítja.
-- [Tor-böngésző](https://www.torproject.org/download/) a kockázatos bejelentkezés szimulálása érdekében.
+- **Felhasználói folyamat** vagy **egyéni szabályzat,** amely végigvezeti a felhasználót a bejelentkezési és a regisztráció folyamatán.
+- **Feltételes hozzáférési szabályzat,** amely egyesíti a jeleket a döntéshozatal és a szervezeti szabályzatok betartatása érdekében. Amikor egy felhasználó egy Azure AD B2C-szabályzaton keresztül jelentkezik be az alkalmazásba, a feltételes hozzáférési szabályzat Azure AD Identity Protection jeleket használ a kockázatos bejelentkezések azonosításához, és bemutatja a megfelelő javítási műveletet.
+- **Regisztrált alkalmazás,** amely a megfelelő felhasználói Azure AD B2C vagy egyéni szabályzathoz irányítja a felhasználókat.
+- [TOR Browser](https://www.torproject.org/download/) a kockázatos bejelentkezés szimulálására.
 
-## <a name="service-limitations-and-considerations"></a>A szolgáltatásra vonatkozó korlátozások és megfontolások
+## <a name="service-limitations-and-considerations"></a>Szolgáltatási korlátozások és szempontok
 
 Az Azure AD feltételes hozzáférés használata esetén vegye figyelembe a következőket:
 
-- A személyazonosság védelme a helyi és a közösségi identitások, például a Google vagy a Facebook esetében egyaránt elérhető. A közösségi identitások esetében manuálisan kell aktiválni a feltételes hozzáférést. Az észlelés korlátozott, mert a közösségi fiók hitelesítő adatait a külső identitás szolgáltatója kezeli.
-- Azure AD B2C bérlők esetében csak az [Azure ad feltételes hozzáférési](../active-directory/conditional-access/overview.md) szabályzatok egy részhalmaza érhető el.
+- Az Identity Protection helyi és közösségi identitásokhoz is elérhető, például a Google-hez vagy a Facebookhoz. Közösségi identitások esetében manuálisan aktiválnia kell a feltételes hozzáférést. Az észlelés azért korlátozott, mert a közösségi fiók hitelesítő adatait a külső identitásszolgáltató kezeli.
+- A Azure AD B2C bérlőkben csak az Azure AD feltételes hozzáférési [szabályzatok egy](../active-directory/conditional-access/overview.md) része érhető el.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -92,101 +92,166 @@ Az Azure AD feltételes hozzáférés használata esetén vegye figyelembe a kö
 
 ## <a name="pricing-tier"></a>Tarifacsomag
 
-Azure AD B2C **prémium P2** szükséges a kockázatos bejelentkezési szabályzatok létrehozásához. A **prémium P1** -bérlők létrehozhatnak olyan házirendet, amely a hely, az alkalmazás, a felhasználó-vagy a csoport alapú házirendek alapján hozható létre. További információ: [a Azure ad B2C árképzési csomag módosítása](billing.md#change-your-azure-ad-pricing-tier)
+Azure AD B2C **P2 prémium** szintű előfizetés szükséges a kockázatos bejelentkezési szabályzatok létrehozásához. **A prémium szintű P1-bérlők** létrehozhatnak hely-, alkalmazás-, felhasználóalapú vagy csoportalapú szabályzatokat. További információkért lásd: A Azure AD B2C [tarifacsomag módosítása.](billing.md#change-your-azure-ad-pricing-tier)
 
-## <a name="prepare-your-azure-ad-b2c-tenant"></a>A Azure AD B2C bérlő előkészítése
+## <a name="prepare-your-azure-ad-b2c-tenant"></a>A Azure AD B2C előkészítése
 
-Feltételes hozzáférési szabályzat hozzáadásához tiltsa le a biztonsági beállításokat:
+Feltételes hozzáférési szabályzat hozzáadásához tiltsa le az alapértelmezett biztonsági beállításokat:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-3. Az **Azure-szolgáltatások** területen válassza a **Azure ad B2C** lehetőséget. Vagy a keresőmező használatával megkeresheti és kiválaszthatja a **Azure ad B2C**.
-4. Válassza a **Tulajdonságok** lehetőséget, majd válassza a **biztonsági beállítások kezelése** lehetőséget.
+2. Válassza a **Címtár és előfizetés** ikont a portál eszköztárán, majd válassza ki azt a címtárat, amely Azure AD B2C bérlőt.
+3. Az **Azure-szolgáltatások alatt** válassza a **Azure AD B2C** lehetőséget. Vagy a keresőmezővel megkeresheti és kiválaszthatja a **Azure AD B2C.**
+4. Válassza **a Tulajdonságok,** majd a **Biztonság alapértelmezett beállítások kezelése lehetőséget.**
 
-   ![Biztonsági alapértékek letiltása](media/conditional-access-user-flow/disable-security-defaults.png)
+   ![Az alapértelmezett biztonsági beállítások letiltása](media/conditional-access-user-flow/disable-security-defaults.png)
 
-5. A **biztonsági Alapértelmezések engedélyezése** területen válassza a **nem** lehetőséget.
+5. A **Biztonsági alapértelmezések engedélyezése alatt válassza** a Nem **lehetőséget.**
 
-   ![A biztonsági Alapértelmezések engedélyezése váltógomb beállítása nem értékre](media/conditional-access-user-flow/enable-security-defaults-toggle.png)
+   ![Állítsa az Alapértelmezett biztonsági beállítások engedélyezése kapcsolót Nemértékre.](media/conditional-access-user-flow/enable-security-defaults-toggle.png)
 
 ## <a name="add-a-conditional-access-policy"></a>Feltételes hozzáférési szabályzat hozzáadása
 
-A feltételes hozzáférési szabályzat a hozzárendelések és hozzáférés-vezérlések if-then utasítása. A feltételes hozzáférési szabályzatok közösen határozzák meg a döntéseket, és kényszerítik a szervezeti szabályzatok betartatását. A hozzárendelések közötti logikai operátor a *és* a. Az egyes hozzárendelésekben szereplő operátor a *vagy* a.
+A feltételes hozzáférési szabályzat hozzárendelések és hozzáférés-vezérlések if-then típusú utasítása. A feltételes hozzáférési szabályzatok együttesen hoznak döntéseket és érvényesítik a szervezeti szabályzatokat. A hozzárendelések közötti logikai operátor *és*. Az egyes hozzárendelések operátora *Vagy*.
 
-![Feltételes hozzáférési hozzárendelések](media/conditional-access-user-flow/conditional-access-assignments.png)
+![Feltételes hozzáférés-hozzárendelések](media/conditional-access-user-flow/conditional-access-assignments.png)
 
 Feltételes hozzáférési szabályzat hozzáadása:
 
-1. A Azure Portal keresse meg és válassza a **Azure ad B2C** lehetőséget.
-1. A **Biztonság** területen válassza a **feltételes hozzáférés (előzetes verzió)** lehetőséget. Megnyílik a **feltételes hozzáférési szabályzatok** lap.
-1. Válassza az **+ új házirend** elemet.
-1. Adja meg a szabályzat nevét, például tiltsa le a *kockázatos bejelentkezést*.
-1. A **hozzárendelések** területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki az alábbi támogatott konfigurációk egyikét:
+1. A Azure Portal keresse meg és válassza **a** Azure AD B2C.
+1. A **Biztonság alatt** válassza a Feltételes hozzáférés **(előzetes verzió) lehetőséget.** Megnyílik **a Feltételes hozzáférési szabályzatok** lap.
+1. Válassza **az + Új szabályzat lehetőséget.**
+1. Adjon nevet a szabályzatnak, *például: Kockázatos bejelentkezés blokkolása.*
+1. A **Hozzárendelések alatt** válassza a **Felhasználók és csoportok** lehetőséget, majd válassza ki az alábbi támogatott konfigurációk egyikét:
 
     |Belefoglalás  |Licenc | Jegyzetek  |
     |---------|---------|---------|
-    |**Minden felhasználó** | P1, P2 |Ha úgy dönt, hogy az **összes felhasználót** tartalmazza, ez a szabályzat minden felhasználóra hatással lesz. Annak érdekében, hogy ne zárolja magát, zárja ki a rendszergazdai fiókját a **kizárás** elem kiválasztásával, majd a **címtárbeli szerepkörök** kiválasztása lehetőséggel, majd válassza a **globális rendszergazda** elemet a listában. A **felhasználók és csoportok** lehetőséget is kiválaszthatja, majd kiválaszthatja a fiókját a **kizárt felhasználók kiválasztása** listában.  | 
+    |**Minden felhasználó** | P1, P2 |Ha a Minden felhasználó lehetőséget **választja,** ez a szabályzat az összes felhasználót érinti. Ha biztos szeretne lenni abban, hogy nem zárja ki magát, zárja  ki a rendszergazdai fiókját. Válassza a **Kizárás,** majd a Címtárszerepkomókok, **majd** a globális rendszergazda listában való kiválasztását. A Felhasználók és csoportok lehetőséget **is kiválaszthatja,** majd kiválaszthatja a fiókját a **Kizárt felhasználók kiválasztása listában.**  | 
  
-1. Válassza a **felhőalapú alkalmazások vagy műveletek** lehetőséget, majd **válassza az alkalmazások lehetőséget**. Tallózással keresse meg a [függő entitás alkalmazását](tutorial-register-applications.md).
+1. Válassza **a Felhőalkalmazások vagy műveletek,** majd az **Alkalmazások kiválasztása lehetőséget.** Keresse meg a [függő fél alkalmazását.](tutorial-register-applications.md)
 
-1. Válassza a **feltételek** lehetőséget, majd válasszon az alábbi feltételek közül. Válassza például a **bejelentkezési kockázat** és a **magas**, **közepes** és **alacsony** kockázati szintek lehetőséget.
+1. Válassza **a Feltételek** lehetőséget, majd válasszon az alábbi feltételek közül. Válassza például a **Bejelentkezési kockázat és** a **Magas,** **Közepes** és **Alacsony** kockázati szintek lehetőséget.
     
     |Feltétel  |Licenc  |Jegyzetek  |
     |---------|---------|---------|
-    |**Felhasználói kockázat**|P2|A felhasználói kockázat azt jelzi, hogy egy adott identitás vagy fiók biztonsága sérül.|
-    |**Bejelentkezési kockázat**|P2|A bejelentkezési kockázat azt jelzi, hogy egy adott hitelesítési kérelem nem jogosult az identitás tulajdonosa számára.|
-    |**Eszközplatformok**|Nem támogatott| Az eszközön futó operációs rendszer jellemzi. További információ: az [eszközök platformja](../active-directory/conditional-access/concept-conditional-access-conditions.md#device-platforms).|
-    |**Helyek**|P1, P2|A nevesített helyszínek tartalmazhatják a nyilvános IPv4-hálózati információkat, az országot vagy a régiót, illetve az ismeretlen területeket, amelyek nem képezhetők le adott országokba vagy régiókba. További információ: [Locations](../active-directory/conditional-access/concept-conditional-access-conditions.md#locations). |
+    |**Felhasználói kockázat**|P2|A felhasználói kockázat annak a valószínűségét jelenti, hogy egy adott identitás vagy fiók biztonsága sérül.|
+    |**Bejelentkezési kockázat**|P2|A bejelentkezési kockázat annak a valószínűségét jelenti, hogy az identitás tulajdonosa nem engedélyezi egy adott hitelesítési kérést.|
+    |**Eszközplatformok**|Nem támogatott| Az eszközön futó operációs rendszer jellemzi. További információ: [Eszközplatformok.](../active-directory/conditional-access/concept-conditional-access-conditions.md#device-platforms)|
+    |**Helyek**|P1, P2|A nevestű helyek közé tartozhatnak a nyilvános IPv4-hálózati információk, az ország vagy régió, illetve az ismeretlen területek, amelyek nincsenek leképezve adott országokra vagy régiókra. További információ: [Helyek.](../active-directory/conditional-access/concept-conditional-access-conditions.md#locations) |
  
-1. A **Hozzáférés-vezérlés** alatt válassza ki az **Engedélyezés** elemet. Ezután válassza ki, hogy szeretné-e letiltani vagy megadni a hozzáférést:
+1. A **Hozzáférés-vezérlés** alatt válassza ki az **Engedélyezés** elemet. Ezután válassza ki, hogy letiltja vagy megadja a hozzáférést:
     
     |Beállítás  |Licenc |Megjegyzés  |
     |---------|---------|---------|
-    |**Fájlhozzáférés**|P1, P2| A hozzáférés megakadályozása a feltételes hozzáférési házirendben megadott feltételek alapján.|
-    |**Hozzáférés engedélyezése** a **többtényezős hitelesítés megkövetelése**|P1, P2|Az ebben a feltételes hozzáférési házirendben megadott feltételek alapján a felhasználónak Azure AD B2C többtényezős hitelesítéssel kell eljárnia.|
+    |**Fájlhozzáférés**|P1, P2| A feltételes hozzáférési szabályzatban megadott feltételek alapján megakadályozza a hozzáférést.|
+    |**Hozzáférés engedélyezése a** **Többtényezős hitelesítés megkövetelve használatával**|P1, P2|A feltételes hozzáférési szabályzatban megadott feltételek alapján a felhasználónak egy többtényezős Azure AD B2C kell átesni.|
 
-1. A **házirend engedélyezése** területen válassza a következők egyikét:
+1. A **Szabályzat engedélyezése alatt** válasszon egyet a következők közül:
     
     |Beállítás  |Licenc |Megjegyzés  |
     |---------|---------|---------|
-    |**Csak jelentés**|P1, P2| A jelentés csak a rendszergazdák számára lehetővé teszi a feltételes hozzáférési házirendek hatásának kiértékelését, mielőtt engedélyezi őket a környezetében. Javasoljuk, hogy ellenőrizze ezt az állapotot, és határozza meg a végfelhasználók számára a többtényezős hitelesítés vagy a felhasználók blokkolása nélkül gyakorolt hatást. További információ: [feltételes hozzáférési eredmények áttekintése a naplózási jelentésben](#review-conditional-access-outcomes-in-the-audit-report)|
-    | **Be**| P1, P2| A hozzáférési házirend ki van értékelve, és nincs kikényszerítve. |
-    | **Kikapcsolva** | P1, P2| A hozzáférési házirend nincs aktiválva, és nincs hatással a felhasználókra. |
+    |**Csak jelentés**|P1, P2| A csak jelentés lehetővé teszi a rendszergazdák számára, hogy kiértékeljék a feltételes hozzáférési szabályzatok hatását, mielőtt engedélyezték volna őket a környezetben. Javasoljuk, hogy ellenőrizze a szabályzatot ezzel az állapotmal, és határozza meg a végfelhasználókra gyakorolt hatást anélkül, hogy többtényezős hitelesítésre lenne szükség, vagy blokkolni szeretné a felhasználókat. További információ: A feltételes [hozzáférés eredményeinek áttekintése a naplózási jelentésben](#review-conditional-access-outcomes-in-the-audit-report)|
+    | **Be**| P1, P2| A hozzáférési szabályzat kiértékelése és kényszerítése nem történik meg. |
+    | **Kikapcsolva** | P1, P2| A hozzáférési szabályzat nincs aktiválva, és nincs hatással a felhasználókra. |
 
-1. A **Létrehozás** lehetőség kiválasztásával engedélyezheti a feltételes hozzáférési szabályzat tesztelését.
+1. Engedélyezze a teszt feltételes hozzáférési szabályzatát a Létrehozás **lehetőség kiválasztásával.**
 
-## <a name="add-conditional-access-to-a-user-flow"></a>Feltételes hozzáférés hozzáadása egy felhasználói folyamathoz
+## <a name="add-conditional-access-to-a-user-flow"></a>Feltételes hozzáférés hozzáadása felhasználói folyamathoz
 
-Miután hozzáadta az Azure AD feltételes hozzáférési szabályzatot, engedélyezze a feltételes hozzáférést a felhasználói folyamatában vagy az egyéni házirendben. A feltételes hozzáférés engedélyezésekor nem kell megadnia a szabályzat nevét.
+Miután hozzáadta az Azure AD feltételes hozzáférési szabályzatot, engedélyezze a feltételes hozzáférést a felhasználói folyamaton vagy az egyéni szabályzaton. A feltételes hozzáférés engedélyezésekor nem kell megadnia a szabályzat nevét.
 
-Egyszerre több feltételes hozzáférési szabályzat is alkalmazható az egyes felhasználókra. Ebben az esetben a legszigorúbb hozzáférés-vezérlési házirend elsőbbséget élvez. Ha például egy házirendhez többtényezős hitelesítés (MFA) szükséges, míg a másik blokkolja a hozzáférést, a rendszer letiltja a felhasználót.
+Egy adott felhasználóra bármikor több feltételes hozzáférési szabályzat is vonatkozhat. Ebben az esetben a legszigorúbb hozzáférés-vezérlési szabályzat élvez elsőbbséget. Ha például az egyik szabályzat többtényezős hitelesítést (MFA) igényel, míg a másik letiltja a hozzáférést, a felhasználó blokkolva lesz.
 
-## <a name="enable-multi-factor-authentication-optional"></a>Multi-Factor Authentication engedélyezése (nem kötelező)
+## <a name="conditional-access-template-1-sign-in-risk-based-conditional-access"></a>1. feltételes hozzáférés sablon: Bejelentkezési kockázatalapú feltételes hozzáférés
 
-Ha feltételes hozzáférést ad hozzá egy felhasználói folyamathoz, vegye figyelembe a **többtényezős hitelesítés (MFA)** használatát. A felhasználók az SMS-ben és a hangon is használhatnak egyszeri kódot, vagy egy e-mailen keresztüli egyszeri jelszót a többtényezős hitelesítéshez. Az MFA-beállítások függetlenek a feltételes hozzáférési beállításoktól. Az MFA-t úgy állíthatja be, hogy **mindig** be legyen állítva, hogy az MFA mindig kötelező legyen a feltételes hozzáférés beállítástól függetlenül. Az MFA beállítható **úgy is, hogy az** MFA csak akkor legyen kötelező, ha az aktív feltételes hozzáférési szabályzat megköveteli.
+A legtöbb felhasználó viselkedése normális, amely követhető, és amikor eltérnek a normálistól, kockázatos lehet engedni, hogy egyszerűen bejelentkezzenek. Előfordulhat, hogy szeretné letiltani ezt a felhasználót, vagy csak megkérni, hogy végezzen többtényezős hitelesítést annak bizonyítására, hogy valóban azok, akiknek mondja magát.
+
+A bejelentkezési kockázat annak a valószínűségét jelenti, hogy az identitás tulajdonosa nem engedélyezi egy adott hitelesítési kérést. A P2 licenccel rendelkező szervezetek feltételes hozzáférési szabályzatokat hozhatnak létre, amelyek Azure AD Identity Protection [kockázatészlelést tartalmaznak.](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks#sign-in-risk) Vegye figyelembe [a B2C Identity Protection-észlelésére vonatkozó korlátozásokat.](https://docs.microsoft.com/azure/active-directory-b2c/identity-protection-investigate-risk?pivots=b2c-user-flow#service-limitations-and-considerations)
+
+Kockázat észlelésekor a felhasználók többtényezős hitelesítést hajthat végre az önkiszolgáló megoldás érdekében, és bezárhatják a kockázatos bejelentkezési eseményeket, hogy megelőzzék a felesleges zajt a rendszergazdák számára.
+
+A szervezeteknek az alábbi lehetőségek egyikét kell választaniuk a többtényezős hitelesítést (MFA) megkövetelő bejelentkezési kockázatalapú feltételes hozzáférési szabályzat engedélyezéséhez, ha a bejelentkezési kockázat közepes vagy magas.
+
+### <a name="enable-with-conditional-access-policy"></a>Engedélyezés feltételes hozzáférési szabályzatokkal
+
+1. Jelentkezzen be az **Azure Portalra**.
+2. Lépjen a **Azure AD B2C**  >  **feltételes**  >  **hozzáférésének eléréséhez.**
+3. Válassza az **Új szabályzat lehetőséget.**
+4. Nevezze el a szabályzatot. Javasoljuk, hogy a szervezetek hozzanak létre egy jelentéssel bíró szabványt a szabályzataik neveihez.
+5. A **Hozzárendelések** alatt válassza a **Felhasználók és csoportok** lehetőséget.
+   1. A **Include (Tartalmazza)** alatt válassza a **Minden felhasználó lehetőséget.**
+   2. A **Kizárás alatt** válassza a Felhasználók és **csoportok** lehetőséget, és válassza ki a szervezet vészelérési vagy vészhelyzeti fiókjait. 
+   3. Válassza a **Kész** lehetőséget.
+6. A **Felhőalkalmazások vagy műveletek** Tartalmazza alatt  >  **válassza** a **Minden felhőalkalmazás lehetőséget.**
+7. A **Feltételek Bejelentkezési** kockázat alatt  >  **állítsa** a **Konfigurálás beállítását** Igen **beállításra.** A **Bejelentkezési kockázati szint kiválasztása alatt ez a szabályzat érvényes lesz a következőre:** 
+   1. Válassza **a Magas és** a Közepes **lehetőséget.**
+   2. Válassza a **Kész** lehetőséget.
+8. A **Hozzáférés-vezérlés**  >  **alatt válassza** a Hozzáférés **engedélyezése** lehetőséget, a **Többtényezős hitelesítés** megkövetelve lehetőséget, majd a Kijelölés **lehetőséget.**
+9. Erősítse meg a beállításokat, és **állítsa a Szabályzat engedélyezése beállítást** **Bekapcsolva beállításra.**
+10. A **szabályzat engedélyezéséhez** válassza a Létrehozás lehetőséget.
+
+### <a name="enable-with-conditional-access-apis"></a>Engedélyezés feltételes hozzáférési API-okkal
+
+Bejelentkezési kockázatalapú feltételes hozzáférési szabályzat feltételes hozzáférési API-okkal való létrehozásához tekintse meg a feltételes hozzáférési [API-k dokumentációját.](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-apis#graph-api)
+
+Az alábbi sablonnal feltételes hozzáférési szabályzatot hozhat létre "CA002: MFA szükséges közepes+ bejelentkezési kockázathoz" megjelenített névvel, csak jelentési módban.
+
+```json
+{
+    "displayName": "Template 1: Require MFA for medium+ sign-in risk",
+    "state": "enabledForReportingButNotEnforced",
+    "conditions": {
+        "signInRiskLevels": [ "high" ,
+            "medium"
+        ],
+        "applications": {
+            "includeApplications": [
+                "All"
+            ]
+        },
+        "users": {
+            "includeUsers": [
+                "All"
+            ],
+            "excludeUsers": [
+                "f753047e-de31-4c74-a6fb-c38589047723"
+            ]
+        }
+    },
+    "grantControls": {
+        "operator": "OR",
+        "builtInControls": [
+            "mfa"
+        ]
+    }
+}
+```
+
+## <a name="enable-multi-factor-authentication-optional"></a>Többtényezős hitelesítés engedélyezése (nem kötelező)
+
+Amikor feltételes hozzáférést ad egy felhasználói folyamathoz, fontolja meg a **Többtényezős hitelesítés (MFA) használatát.** A felhasználók használhatnak egy egyszeres kódot SMS-ben vagy hangon keresztül, vagy egy e-mailes jelszót a többtényezős hitelesítéshez. Az MFA-beállítások függetlenek a feltételes hozzáférési beállításoktól. Az MFA-t **Always On (Mindig** be) állapotra állíthatja, így a feltételes hozzáférés beállításától függetlenül mindig szükség van az MFA-hitelesítésre. Az MFA-t feltételesre is beállíthatja, így az MFA csak akkor szükséges, ha egy aktív feltételes hozzáférési szabályzat megköveteli. 
 
 > [!IMPORTANT]
-> Ha a feltételes hozzáférési szabályzata hozzáférést biztosít az MFA-hoz, de a felhasználó még nem regisztrált telefonszámot, előfordulhat, hogy a felhasználó le lesz tiltva.
+> Ha a feltételes hozzáférési szabályzat MFA-val biztosít hozzáférést, de a felhasználó nem regisztrált telefonszámot, előfordulhat, hogy a felhasználó le lesz tiltva.
 
 ::: zone pivot="b2c-user-flow"
 
-Egy felhasználói folyamat feltételes hozzáférésének engedélyezéséhez győződjön meg arról, hogy a verzió támogatja a feltételes hozzáférést. A felhasználói folyamatok ezen verziói **ajánlott** címkével rendelkeznek.
+Ha engedélyezni szeretné a feltételes hozzáférést egy felhasználói folyamathoz, győződjön meg arról, hogy a verzió támogatja a feltételes hozzáférést. Ezek a felhasználói folyamatverziók Ajánlott címkével **vannak megcímkézve.**
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. Válassza a **Címtár és előfizetés** ikont a portál eszköztárán, majd válassza ki azt a címtárat, amely a Azure AD B2C bérlőt.
 
-1. Az **Azure-szolgáltatások** területen válassza a **Azure ad B2C** lehetőséget. Vagy a keresőmező használatával megkeresheti és kiválaszthatja a **Azure ad B2C**.
+1. Az **Azure-szolgáltatások alatt** válassza a **Azure AD B2C** lehetőséget. Vagy a keresőmezővel megkeresheti és kiválaszthatja a **Azure AD B2C.**
 
-1. A **házirendek** területen válassza a **felhasználói folyamatok** elemet. Ezután válassza ki a felhasználói folyamatot.
+1. A **Szabályzatok alatt** válassza a **Felhasználói folyamatok lehetőséget.** Ezután válassza ki a felhasználói folyamatot.
 
-1. Válassza a **Tulajdonságok** lehetőséget, és győződjön meg arról, hogy a felhasználói folyamat támogatja a feltételes hozzáférést, ha a **feltételes hozzáférés** feliratú beállítást keresi.
+1. Válassza **a Tulajdonságok** lehetőséget, és ellenőrizze, hogy a felhasználói folyamat támogatja-e a feltételes hozzáférést a Feltételes hozzáférés **beállítással.**
  
-   ![Az MFA és a feltételes hozzáférés konfigurálása a tulajdonságok között](media/conditional-access-user-flow/add-conditional-access.png)
+   ![Az MFA és a feltételes hozzáférés konfigurálása a Tulajdonságok között](media/conditional-access-user-flow/add-conditional-access.png)
 
-1. A **multi-Factor Authentication** szakaszban válassza ki a kívánt **MFA-módszert**, majd az MFA- **kényszerítés** területen válassza a **feltételes (ajánlott)** lehetőséget.
+1. A **Többtényezős hitelesítés** szakaszban válassza ki a kívánt **MFA-módszert,** majd az **MFA** kényszerítése területen válassza a **Feltételes (ajánlott) lehetőséget.**
  
-1. A **feltételes hozzáférés** szakaszban jelölje be a **feltételes hozzáférési házirendek betartatása** jelölőnégyzetet.
+1. A Feltételes **hozzáférés szakaszban** jelölje be a Feltételes **hozzáférési szabályzatok kikényszeríteni jelölőnégyzetet.**
 
 1. Kattintson a **Mentés** gombra.
 
@@ -195,20 +260,20 @@ Egy felhasználói folyamat feltételes hozzáférésének engedélyezéséhez g
 
 ::: zone pivot="b2c-custom-policy"
 
-## <a name="add-conditional-access-to-your-policy"></a>Feltételes hozzáférés hozzáadása a Szabályzathoz
+## <a name="add-conditional-access-to-your-policy"></a>Feltételes hozzáférés hozzáadása a szabályzathoz
 
-1. Példa egy feltételes hozzáférési szabályzatra a [githubon](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access).
-1. Minden fájlban cserélje le a karakterláncot a `yourtenant` Azure ad B2C bérlő nevére. Ha például a B2C-bérlő neve *contosob2c*, az összes példánya `yourtenant.onmicrosoft.com` lesz `contosob2c.onmicrosoft.com` .
-1. Töltse fel a szabályzat fájljait.
+1. Példa egy feltételes hozzáférési szabályzatra a [GitHubon.](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access)
+1. Minden fájlban cserélje le a sztringet a bérlő Azure AD B2C `yourtenant` nevére. Ha például a B2C-bérlő neve *contosob2c,* a összes példánya `yourtenant.onmicrosoft.com` `contosob2c.onmicrosoft.com` lesz.
+1. Töltse fel a szabályzatfájlokat.
 
-## <a name="test-your-custom-policy"></a>Egyéni szabályzat tesztelése
+## <a name="test-your-custom-policy"></a>Az egyéni szabályzat tesztelése
 
-1. Válassza ki a `B2C_1A_signup_signin_with_ca` vagy a `B2C_1A_signup_signin_with_ca_whatif` szabályzatot az Áttekintés oldal megnyitásához. Ezután válassza a **felhasználói folyamat futtatása** lehetőséget. Az **alkalmazás** alatt válassza a *webapp1* lehetőséget. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
-1. Másolja az URL-címet a **felhasználói folyamat végpontjának futtatása** alatt.
+1. Válassza az `B2C_1A_signup_signin_with_ca` vagy `B2C_1A_signup_signin_with_ca_whatif` a szabályzatot az áttekintő oldal megnyitásához. Ezután válassza **a Felhasználói folyamat futtatása lehetőséget.** Az **Alkalmazás alatt** válassza a *webapp1 lehetőséget.* A **válasz URL-címnek** a következőnek kell `https://jwt.ms` lennie: .
+1. Másolja a Felhasználói folyamat **végpontjának futtatása alatti URL-címet.**
 
-1. A kockázatos bejelentkezés szimulálása érdekében nyissa meg a [Tor böngészőt](https://www.torproject.org/download/) , és használja az előző lépésben másolt URL-címet a regisztrált alkalmazásba való bejelentkezéshez.
+1. Kockázatos bejelentkezés szimulálása érdekében nyissa meg a [Tor Browsert,](https://www.torproject.org/download/) és használja az előző lépésben kimásott URL-címet a regisztrált alkalmazásba való bejelentkezéshez.
 
-1. Adja meg a kért információkat a bejelentkezési lapon, majd próbálja meg bejelentkezni. A rendszer visszaküldi a tokent, `https://jwt.ms` és megjelenik Önnek. A dekódolású jwt.ms-tokenben látnia kell, hogy a bejelentkezés le lett tiltva.
+1. Adja meg a kért adatokat a bejelentkezési oldalon, majd próbáljon meg bejelentkezni. A jogkivonat vissza lesz küldve a következőnek: , `https://jwt.ms` és meg kell jelenni Önnek. A jwt.ms tokenben azt kell látnia, hogy a bejelentkezés le lett tiltva.
 
 ::: zone-end
 
@@ -216,13 +281,13 @@ Egy felhasználói folyamat feltételes hozzáférésének engedélyezéséhez g
 
 ## <a name="test-your-user-flow"></a>A felhasználói folyamat tesztelése
 
-1. Válassza ki a létrehozott felhasználói folyamatot az Áttekintés oldal megnyitásához, majd válassza a **felhasználói folyamat futtatása** lehetőséget. Az **alkalmazás** alatt válassza a *webapp1* lehetőséget. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. Válassza ki a létrehozott felhasználói folyamatot az áttekintő oldal megnyitásához, majd válassza a **Felhasználói folyamat futtatása lehetőséget.** Az **Alkalmazás alatt** válassza a *webapp1 lehetőséget.* A **válasz URL-címnek** a következőnek kell `https://jwt.ms` lennie: .
 
-1. Másolja az URL-címet a **felhasználói folyamat végpontjának futtatása** alatt.
+1. Másolja a Felhasználói folyamat **végpontjának futtatása alatti URL-címet.**
 
-1. A kockázatos bejelentkezés szimulálása érdekében nyissa meg a [Tor böngészőt](https://www.torproject.org/download/) , és használja az előző lépésben másolt URL-címet a regisztrált alkalmazásba való bejelentkezéshez.
+1. Kockázatos bejelentkezés szimulálása érdekében nyissa meg a [Tor Browsert,](https://www.torproject.org/download/) és használja az előző lépésben kimásott URL-címet a regisztrált alkalmazásba való bejelentkezéshez.
 
-1. Adja meg a kért információkat a bejelentkezési lapon, majd próbálja meg bejelentkezni. A rendszer visszaküldi a tokent, `https://jwt.ms` és megjelenik Önnek. A dekódolású jwt.ms-tokenben látnia kell, hogy a bejelentkezés le lett tiltva.
+1. Adja meg a kért adatokat a bejelentkezési oldalon, majd próbáljon meg bejelentkezni. A jogkivonat vissza lesz küldve a `https://jwt.ms` következőbe: , és meg kell jelenni Önnek. A jwt.ms tokenben látnia kell, hogy a bejelentkezés le van tiltva.
 
 ::: zone-end
 
@@ -232,25 +297,25 @@ Feltételes hozzáférési esemény eredményének áttekintése:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+2. Válassza a **Címtár és előfizetés** ikont a portál eszköztárán, majd válassza ki azt a címtárat, amely a Azure AD B2C bérlőt.
 
-3. Az **Azure-szolgáltatások** területen válassza a **Azure ad B2C** lehetőséget. Vagy a keresőmező használatával megkeresheti és kiválaszthatja a **Azure ad B2C**.
+3. Az **Azure-szolgáltatások alatt** válassza a **Azure AD B2C** lehetőséget. Vagy a keresőmezővel megkeresheti és kiválaszthatja a **Azure AD B2C.**
 
-4. A **tevékenységek** területen válassza a **naplók** lehetőséget.
+4. A **Tevékenységek alatt** válassza az **Auditnaplók lehetőséget.**
 
-5. A napló szűréséhez állítsa a **Kategória** beállítást a **B2C** értékre, és állítsa be a **tevékenység erőforrástípus** **IdentityProtection** értékre. Ezután válassza az **Alkalmaz** lehetőséget.
+5. Szűrje az auditnaplót a **Category** (Kategória) **B2C (B2C)** és a Activity Resource Type (Tevékenység **erőforrástípusa)** **identityProtection (Identitás védelme) beállításával.** Ezután válassza az **Alkalmaz** lehetőséget.
 
-6. Tekintse át a naplózási tevékenységet az elmúlt hét napban. A következő típusú tevékenységek tartoznak ide:
+6. Tekintse át a naplózási tevékenységet az elmúlt hét napra. A következő tevékenységtípusok tartoznak ide:
 
-   - **Feltételes hozzáférési szabályzatok kiértékelése**: Ez a naplózási naplóbejegyzés azt jelzi, hogy a rendszer feltételes hozzáférési értékelést hajtott végre egy hitelesítés során.
-   - **Felhasználó szervizelése**: Ez a bejegyzés azt jelzi, hogy a végfelhasználó megkapta a feltételes hozzáférési szabályzatok támogatását vagy követelményeit, és ezt a tevékenységet jelentette a kockázati motornak, hogy enyhítse (csökkentse a felhasználó kockázatát).
+   - **Feltételes hozzáférési szabályzatok értékelése:** Ez az auditnapló-bejegyzés azt jelzi, hogy a feltételes hozzáférés kiértékelése a hitelesítés során történt.
+   - **Felhasználó szervizelése:** Ez a bejegyzés azt jelzi, hogy a végfelhasználó megfelelt egy feltételes hozzáférési szabályzat követelményeknek, és ez a tevékenység jelentve lett a kockázati motornak a felhasználó mérséklése (a kockázat csökkentése) érdekében.
 
-7. Válassza ki a **feltételes hozzáférési szabályzat kiértékelése** naplóbejegyzés a listában a **tevékenység részletei:** napló lap, amely a naplózási napló azonosítóit jeleníti meg, valamint a **További részletek** szakaszban található információkat:
+7. Válassza **ki** a listában a Feltételes hozzáférési szabályzat kiértékelése naplóbejegyzést a Tevékenység **részletei:** Auditnapló oldal megnyitásához, amely megjeleníti az auditnapló azonosítóit, valamint az alábbi információkat a **További részletek szakaszban:**
 
-   - **ConditionalAccessResult**: a feltételes szabályzat kiértékeléséhez szükséges engedély.
-   - **AppliedPolicies**: az összes olyan feltételes hozzáférési szabályzat listája, amelyben teljesülnek a feltételek, és a szabályzatok be vannak kapcsolva.
-   - **ReportingPolicies**: azoknak a feltételes hozzáférési házirendeknek a listája, amelyek a csak jelentés módra lettek beállítva, és a feltételek teljesültek.
+   - **ConditionalAccessResult**: A feltételes szabályzat kiértékelése által megkövetelt engedély.
+   - **AppliedPolicies**: Azon feltételes hozzáférési szabályzatok listája, amelyekben a feltételek teljesültek, és a szabályzatok BE vannak stb.
+   - **ReportingPolicies:** Azon feltételes hozzáférési szabályzatok listája, amelyek csak jelentési módra voltak beállítva, és amelyekben teljesülnek a feltételek.
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Felhasználói felület testreszabása Azure AD B2C felhasználói folyamatban](customize-ui-with-html.md)
+[Felhasználói felület testreszabása Azure AD B2C felhasználói folyamatában](customize-ui-with-html.md)

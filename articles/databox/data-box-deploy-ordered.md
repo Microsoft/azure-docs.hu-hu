@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag a Azure Data Box | Microsoft Docs
+title: Útmutató a megrendeléshez Azure Data Box | Microsoft Docs
 description: Ebben az oktatóanyagban megismeri a Azure Data Box hibrid megoldást, amely lehetővé teszi a helyszíni adatok Importálását az Azure-ba, valamint a Azure Data Box.
 services: databox
 author: v-dalc
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: eae8cca0302993c16ea29adddf6e4ee9b5b24be8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ed539df9fec3c66b3881257ff1ce68d03cf4c382
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770897"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878595"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag leírja, hogyan rendelheti meg az Azure Data Box szolgáltat�
 
 # <a name="portal"></a>[Portál](#tab/portal)
 
-Az eszköz üzembe helyezése előtt Data Box a következő konfigurációs előfeltételeket:
+Az eszköz üzembe helyezése előtt Data Box a következő konfigurációs előfeltételeket a szolgáltatás és az eszköz számára:
 
 [!INCLUDE [Prerequisites](../../includes/data-box-deploy-ordered-prerequisites.md)]
 
@@ -45,7 +45,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 Az Azure-ba való bejelentkezés és az Azure CLI-parancsok futtatása kétféleképpen lehetséges:
 
 * Telepítheti a CLI-t, és helyileg futtathatja a CLI-parancsokat.
-* A parancssori felület parancsai a parancssori Azure Portal a Azure Cloud Shell.
+* A parancssori felület parancsai a Azure Portal a Azure Cloud Shell.
 
 Az oktatóanyaghoz Windows PowerShell Azure CLI-t használjuk, de bármelyik lehetőséget választhatja.
 
@@ -89,16 +89,16 @@ You have logged in. Now let us find all the subscriptions to which you have acce
 
 **A Azure Data Box CLI-bővítmény telepítése**
 
-A parancssori felületi Azure Data Box használata előtt telepítenie kell a bővítményt. Az Azure CLI-bővítmények hozzáférést biztosítanak azokhoz a kísérleti és kiadás előtti parancsokhoz, amelyek az alap CLI-vel még nincsenek szállítva. További információ a bővítményekről: [Bővítmények használata az Azure CLI-vel](/cli/azure/azure-cli-extensions-overview).
+A parancssori felület Azure Data Box használata előtt telepítenie kell a bővítményt. Az Azure CLI-bővítmények hozzáférést biztosítanak azokhoz a kísérleti és kiadás előtti parancsokhoz, amelyek az alap CLI-vel még nincsenek szállítva. További információ a bővítményekről: [Bővítmények használata az Azure CLI-vel](/cli/azure/azure-cli-extensions-overview).
 
-A bővítmény telepítéséhez futtassa Azure Data Box `az extension add --name databox` parancsot:
+A bővítmény telepítéséhez futtassa Azure Data Box következő `az extension add --name databox` parancsot:
 
 ```azurecli
 
     PS C:\Windows> az extension add --name databox
 ```
 
-Ha a bővítmény sikeresen telepítve van, a következő kimenet fog látni:
+Ha a bővítmény telepítése sikeresen megtörtént, a következő kimenetet fogja látni:
 
 ```output
     The installed extension 'databox' is experimental and not covered by customer support. Please use with discretion.
@@ -121,7 +121,7 @@ Ha a bővítmény sikeresen telepítve van, a következő kimenet fog látni:
 
 #### <a name="use-azure-cloud-shell"></a>Az Azure Cloud Shell használata
 
-A [cli Azure Cloud Shell](https://shell.azure.com/)futtatásához használhatja az Azure által üzemeltetett interaktív felületi környezetet a böngészőben. Azure Cloud Shell a Bash vagy Windows PowerShell Azure-szolgáltatásokkal. Az Azure CLI előre telepítve van, és a fiókjával való használatra van konfigurálva. Válassza Cloud Shell jobb felső részén található menü Azure Portal:
+A [cli Azure Cloud Shell](https://shell.azure.com/)futtatásához használhatja az Azure-ban üzemeltetett interaktív felületi környezetet a böngészőben. Azure Cloud Shell a Bash vagy Windows PowerShell Azure-szolgáltatásokkal. Az Azure CLI előre telepítve van, és a fiókjával való használatra van konfigurálva. Válassza Cloud Shell menü Jobb felső részén található Menü Azure Portal:
 
 ![Cloud Shell menü kiválasztása](../storage/common/media/storage-quickstart-create-account/cloud-shell-menu.png)
 
@@ -140,11 +140,11 @@ Mielőtt hozzákezd, győződjön meg arról, hogy:
 * Telepítse Azure Data Box (Az.DataBox) modult.
 * Jelentkezzen be az Azure-ba.
 
-#### <a name="install-azure-powershell-and-modules-locally"></a>A Azure PowerShell modulok helyi telepítése
+#### <a name="install-azure-powershell-and-modules-locally"></a>A Azure PowerShell és modulok helyi telepítése
 
 **Telepítési vagy frissítési Windows PowerShell**
 
-Telepítenie kell Windows PowerShell 6.2.4-es vagy újabb verzióját. Ha meg kell tudni, hogy a PowerShell melyik verzióját telepítette, futtassa a következőt: `$PSVersionTable` .
+Telepítenie kell Windows PowerShell 6.2.4-es vagy újabb verzióját. A powershell telepített verziójának kiderítére futtassa a következőt: `$PSVersionTable` .
 
 A következő kimenet jelenik meg:
 
@@ -164,11 +164,11 @@ A következő kimenet jelenik meg:
     WSManStackVersion              3.0
 ```
 
-Ha a 6.2.4-esnél régebbi verziójú, frissítenie kell a Windows PowerShell. Az alkalmazás legújabb verziójának telepítéséhez Windows PowerShell Install Azure PowerShell ( [Telepítés)](/powershell/scripting/install/installing-powershell)Azure PowerShell.
+Ha a 6.2.4-esnél korábbi verziójú, frissítenie kell a Windows PowerShell. Az alkalmazás legújabb verziójának telepítéséhez Windows PowerShell Install Azure PowerShell ( [Telepítés)](/powershell/scripting/install/installing-powershell)Azure PowerShell.
 
 **A Azure PowerShell és Data Box telepítése**
 
-A modulokat a Azure PowerShell telepítéséhez Azure PowerShell kell Azure Data Box. Az új Azure PowerShell telepítése:
+A modulokat a Azure PowerShell telepítéséhez Azure PowerShell kell Azure Data Box. A modul Azure PowerShell telepítése:
 
 1. Telepítse az [Azure PowerShell Az modult.](/powershell/azure/new-azureps-module-az)
 2. Ezután telepítse az Az.DataBoxot a `Install-Module -Name Az.DataBox` paranccsal.
@@ -261,52 +261,52 @@ Az eszköz megrendeléséhez Azure Portal alábbi lépéseket kell követnie.
 
     A virtuális hálózattal rendelkező tárfiókok támogatottak. Ahhoz, hogy a Data Box szolgáltatás működjön a biztonságos tárfiókok esetében, engedélyezze a megbízható szolgáltatásokat a tárfiók hálózati tűzfalának beállításai között. További információ: Azure Data Box [hozzáadása megbízható szolgáltatásként.](../storage/common/storage-network-security.md#exceptions)
 
-    Ha felügyelt Data Box vagy  lemezeket hoz létre a helyszíni virtuális merevlemezről (VHD-kről), a következő információkat is meg kell adnia:
+    Ha felügyelt Data Box a helyszíni virtuális merevlemezről (VHD-kből) hoz létre felügyelt **lemezeket,** a következő információkat is meg kell adnia:
 
     |Beállítás  |Érték  |
     |---------|---------|
     |Erőforráscsoportok     | Hozzon létre új erőforráscsoportokat, ha felügyelt lemezeket szeretne létrehozni helyszíni VHD-kből. Meglévő erőforráscsoportot csak akkor használhat, ha az erőforráscsoportot korábban, a felügyelt lemezekre vonatkozó Data Box létrehozásakor hozta létre a Data Box szolgáltatás. <br> Adjon meg több erőforráscsoportot, pontosvesszővel elválasztva. Legfeljebb 10 erőforráscsoport használata támogatott.|
 
-    ![Data Box rendelés importálása varázsló, Adatcél képernyő, Managed Disks ki](media/data-box-deploy-ordered/select-data-box-import-07-b.png)
+    ![Data Box Rendelés importálása varázsló, Adatcél képernyő, az Managed Disks kijelölve](media/data-box-deploy-ordered/select-data-box-import-07-b.png)
 
     A felügyelt lemezekhez megadott tárfiókot előkészítési tárfiókként használja a rendszer. A Data Box szolgáltatás lapblobként tölti fel a VHD-ket az előkészítési tárfiókba, majd felügyelt lemezekké konvertálja, és áthelyezi az erőforráscsoportba. További információ: [Az Azure-ba történő adatfeltöltés ellenőrzése](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
 
    > [!NOTE]
-   > Ha egy lapblob nem alakítható át felügyelt lemezre, az a tárfiókban marad, és a tárolásért díjat kell fizetnie.
+   > Ha egy lapblob nem konvertálható felügyelt lemezre, az a tárfiókban marad, és a tárolásért díjat kell fizetnie.
 
-8. A **folytatáshoz válassza a Tovább: Biztonság** lehetőséget.
+8. A folytatáshoz válassza a **Tovább: Biztonság** lehetőséget.
 
     A **Biztonság** képernyőn használhatja a saját titkosítási kulcsát és a saját eszközét, megoszthatja a jelszavakat, és választhatja a dupla titkosítás használatát.
 
-    A Biztonság képernyőn **az összes** beállítás megadása nem kötelező. Ha nem módosítja a beállításokat, az alapértelmezett beállítások lesznek érvényesek.
+    A Biztonság képernyőn **az összes** beállítás megadása nem kötelező. Ha nem módosítja a beállításokat, az alapértelmezett beállítások érvényesek lesznek.
 
     ![A Rendelés importálása varázsló Data Box képernyője](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
 
-9. Ha a saját, ügyfél által felügyelt kulcsát szeretné használni az új erőforrás hozzáférési kulcsának feloldásához, bontsa ki a **Titkosítási típust.**
+9. Ha saját, ügyfél által felügyelt kulcsot szeretne használni az új erőforrás zárolásának feloldására használt hozzáférési kulcs védelméhez, bontsa ki a **Titkosítási típust.**
 
-    Az ügyfél által felügyelt kulcs konfigurálása a Azure Data Box nem kötelező. Alapértelmezés szerint a Data Box microsoftos felügyelt kulccsal védi a hozzáférési kulcsot.
+    Az ügyfél által felügyelt kulcs konfigurálása a Azure Data Box nem kötelező. Alapértelmezés szerint a Data Box Microsoft által felügyelt kulcsot használ a hozzáférési kulcs feloldásához.
 
-    Az ügyfél által kezelt kulcs nincs hatással az eszközön található adatok titkosítására. A kulcs csak az eszköz zárolásának feloldására használt hozzáférési kulcs titkosítására használható.
+    Az ügyfél által felügyelt kulcs nincs hatással az eszközön található adatok titkosítására. A kulcs csak az eszköz feloldási hozzáférési kulcsának titkosítására használható.
 
     Ha nem szeretne felhasználó által felügyelt kulcsot használni, ugorjon a 15. lépésre.
 
-   ![Biztonsági képernyő a titkosítási típus beállításaival](./media/data-box-deploy-ordered/customer-managed-key-01.png)
+   ![A Biztonság képernyő a titkosítási típus beállításaival](./media/data-box-deploy-ordered/customer-managed-key-01.png)
 
 10. Válassza **az Ügyfél által kezelt kulcs** lehetőséget a kulcs típusaként. Ezután válassza **a Kulcstartó és kulcs kiválasztása lehetőséget.**
    
     ![Biztonság képernyő, ügyfél által kezelt kulcs beállításai](./media/data-box-deploy-ordered/customer-managed-key-02.png)
 
-11. A **Kulcs kiválasztása a Azure Key Vault** panelen az előfizetés automatikusan ki lesz töltve.
+11. A Kulcs **kiválasztása a Azure Key Vault** panelen az előfizetés automatikusan ki lesz töltve.
 
     - A **Key Vaulthoz** kiválaszthat egy meglévő kulcstartót a legördülő listából.
 
       ![Kulcs kiválasztása Azure Key Vault képernyőn](./media/data-box-deploy-ordered/customer-managed-key-03.png)
 
-    - Új kulcstartó létrehozásához az **Új** létrehozása lehetőséget is választhatja. A **Kulcstartó létrehozása képernyőn** adja meg az erőforráscsoportot és a kulcstartó nevét. Győződjön meg **arról, hogy a Szoftveres törlés** és **a Végleges törlés elleni védelem** engedélyezve van. Fogadja el az összes többi alapértelmezett beállítást, majd válassza **a Felülvizsgálat + létrehozás lehetőséget.**
+    - Új kulcstartó létrehozásához az **Új** létrehozása lehetőséget is választhatja. A **Kulcstartó létrehozása képernyőn** adja meg az erőforráscsoportot és a kulcstartó nevét. Győződjön meg arról, **hogy a Soft delete** és a **Purge protection engedélyezve** van. Fogadja el az összes többi alapértelmezett beállítást, majd válassza **a Felülvizsgálat + létrehozás lehetőséget.**
 
       ![Új Azure Key Vault létrehozása](./media/data-box-deploy-ordered/customer-managed-key-04.png)
 
-      Tekintse át a kulcstartó adatait, és válassza a **Létrehozás lehetőséget.** Várjon néhány percet, amíg a Key Vault létrehozása befejeződik.
+      Tekintse át a kulcstartó adatait, majd válassza a **Létrehozás lehetőséget.** Várjon néhány percet, amíg a Key Vault létrehozása befejeződik.
 
       ![Új Azure Key Vault képernyő](./media/data-box-deploy-ordered/customer-managed-key-05.png)
 
@@ -314,7 +314,7 @@ Az eszköz megrendeléséhez Azure Portal alábbi lépéseket kell követnie.
 
     ![Meglévő kulcs kiválasztása a Azure Key Vault](./media/data-box-deploy-ordered/customer-managed-key-06.png)
 
-    Ha új kulcsot szeretne létrehozni, válassza az **Új létrehozása lehetőséget.** RSA-kulcsot kell használnia. A méret lehet 2048 vagy nagyobb. Adja meg az új kulcs nevét, fogadja el a többi alapértelmezett értéket, majd válassza a **Létrehozás lehetőséget.**
+    Ha új kulcsot szeretne létrehozni, válassza az **Új létrehozása lehetőséget.** RSA-kulcsot kell használnia. A méret 2048 vagy nagyobb lehet. Adja meg az új kulcs nevét, fogadja el a többi alapértelmezett értéket, majd válassza a **Létrehozás lehetőséget.**
 
       ![Új kulcs létrehozása lehetőség](./media/data-box-deploy-ordered/customer-managed-key-07.png)
 
@@ -334,42 +334,42 @@ Az eszköz megrendeléséhez Azure Portal alábbi lépéseket kell követnie.
 
     A **Biztonság képernyőn** a Titkosítás típusa **beállításnál** megjelenik a kulcstartó és a kulcs.
 
-    ![Ügyfél által felügyelt kulcs kulcsa és kulcstartója](./media/data-box-deploy-ordered/customer-managed-key-09.png)
+    ![Kulcs és kulcstartó ügyfél által felügyelt kulcshoz](./media/data-box-deploy-ordered/customer-managed-key-09.png)
 
 14. Válasszon ki egy felhasználói identitást, amely az erőforráshoz való hozzáférést kezeli. Válassza **a Felhasználói identitás kiválasztása lehetőséget.** A jobb oldalon található panelen válassza ki a használni kívánt előfizetést és felügyelt identitást. Ezután kattintson a **Kiválasztás** gombra.
 
     A felhasználó által hozzárendelt felügyelt identitás egy különálló Azure-erőforrás, amely több erőforrás kezelésére is használható. További információ: Felügyelt [identitástípusok.](../active-directory/managed-identities-azure-resources/overview.md)  
 
-    Ha új felügyelt identitást kell létrehoznia, kövesse [a](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)szerepkör a felhasználó által hozzárendelt felügyelt identitással való létrehozásáról, listáról való listáról, törléséről vagy hozzárendelését Azure Portal.
+    Ha új felügyelt identitást kell létrehoznia, kövesse a Szerepkör [létrehozása, listába](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)való felsorolása, törlése vagy hozzárendelése felhasználó által hozzárendelt felügyelt identitáshoz a következő Azure Portal.
     
     ![Felhasználói identitás kiválasztása](./media/data-box-deploy-ordered/customer-managed-key-10.png)
 
-    A felhasználó identitása a Titkosítási **típus beállításainál jelenik** meg.
+    A felhasználó identitása megjelenik a **Titkosítási típus beállításai** között.
 
-    ![A titkosítási típus beállításainál megjelenő kiválasztott felhasználói identitás](./media/data-box-deploy-ordered/customer-managed-key-11.png)
+    ![Egy kiválasztott felhasználói identitás jelenik meg a Titkosítási típus beállításainál](./media/data-box-deploy-ordered/customer-managed-key-11.png)
 
-15. Ha nem szeretné az alapértelmezés szerint használt, a rendszer által Azure Data Box jelszavakat használni, bontsa ki a Saját jelszó **használata** bontsa ki a **Biztonság képernyőn.**
+15. Ha nem szeretné használni a rendszer által létrehozott jelszavakat, Azure Data Box a Biztonság képernyőn bontsa ki a **Saját** jelszó használata bontsa ki az **adatokat.**
 
     A rendszer által létrehozott jelszavak biztonságosak, és ajánlottak, hacsak a szervezet másként nem követeli meg.
 
-    ![Kibontva a Saját jelszó használata lehetőség egy Data Box rendeléshez](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
+    ![Kibontva a Saját jelszó használata lehetőség az importálási Data Box érdekében](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
 
-   - Ha saját jelszót használ az új eszközhöz, az Eszközjelszó beállítása beállításnál válassza a **Saját** jelszó használata lehetőséget, és írjon be egy olyan jelszót, amely megfelel a biztonsági követelményeknek.
+   - Ha saját jelszót használ az új eszközhöz, az Eszköz jelszavának beállítása beállításnál válassza a **Saját** jelszó használata lehetőséget, és írjon be egy olyan jelszót, amely megfelel a biztonsági követelményeknek.
      
      A jelszónak alfanumerikusnak kell lennie, és 12–15 karakter hosszúságúnak kell lennie, és tartalmaznia kell legalább egy nagybetűt, egy kisbetűt, egy speciális karaktert és egy számot. 
 
      - Engedélyezett speciális karakterek: @ # - $ % ^ ! + = ; : _ ( )
      - Nem engedélyezett karakterek: I i L o O 0
    
-     ![Beállítások a saját eszköz jelszavának a Biztonság képernyőn történő Data Box importálási sorrendhez](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
+     ![Beállítások a saját eszköz jelszavának a Biztonság képernyőn történő Data Box rendeléshez](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
 
  - Saját jelszavak használata megosztáshoz:
 
-   1. A **Megosztási jelszavak beállításának beállítása beállításban válassza** **a Saját** jelszavak használata, majd **a Megosztások jelszavának kiválasztása lehetőséget.**
+   1. A **Jelszavak megosztásának beállítása beállításhoz válassza** a **Saját** jelszavak használata, majd **a Megosztások jelszavának kiválasztása lehetőséget.**
      
-       ![Saját megosztási jelszavak használatának lehetőségei a Biztonság képernyőn egy Data Box rendeléshez](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
+       ![Saját megosztási jelszavak használatának lehetőségei a Biztonság képernyőn importálási Data Box esetén](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
 
-    1. Adja meg az egyes tárfiókok jelszavát a megadott sorrendben. A rendszer a jelszót a tárfiók összes megosztásán használja.
+    1. Adja meg az egyes tárfiókok jelszavát a sorrendben. A jelszó a tárfiók összes megosztásán használva lesz.
     
        A jelszónak alfanumerikusnak kell lennie, és 12–64 karakter hosszúságúnak kell lennie, és tartalmaznia kell legalább egy nagybetűt, egy kisbetűt, egy speciális karaktert és egy számot.
 
@@ -380,30 +380,30 @@ Az eszköz megrendeléséhez Azure Portal alábbi lépéseket kell követnie.
 
     1. Ha végzett, válassza a **Mentés lehetőséget.**
      
-       ![Képernyő a megosztási jelszavak bevitelére egy Data Box rendeléshez](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+       ![Képernyő megosztási jelszavak bevitelére Data Box rendeléshez](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
 
-    A Biztonság **képernyőn** a Jelszavak megtekintése vagy **módosítása segítségével** módosíthatja a jelszavakat.
+    A Biztonság **képernyőn** a Jelszavak megtekintése és **módosítása** segítségével módosíthatja a jelszavakat.
 
-16. A **Biztonság** beállításban, ha engedélyezni szeretné a szoftveralapú dupla titkosítást, bontsa ki a Dupla titkosítás **(rendkívül** biztonságos környezetek esetén) bontsa ki, majd válassza a Enable double encryption for the order (Dupla titkosítás engedélyezése a **sorrendben) lehetőséget.**
+16. A **Biztonság** beállításban, ha engedélyezni szeretné a szoftveralapú dupla titkosítást, bontsa ki a Dupla titkosítás **(rendkívül** biztonságos környezetek esetén) bontsa ki, majd válassza a Dupla titkosítás engedélyezése a **rendeléshez lehetőséget.**
 
     ![Biztonsági képernyő Data Box importáláshoz, szoftveralapú titkosítás engedélyezése Data Box rendeléshez](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
 
     A szoftveralapú titkosítás az adatok AES-256 bites titkosítása mellett történik a Data Box.
 
     > [!NOTE]
-    > A beállítás engedélyezése tovább tarthat a rendelésfeldolgozással és az adatok másolásával. Ezt a beállítást a rendelés létrehozása után már nem módosíthatja.
+    > A beállítás engedélyezése tovább tarthat a rendelésfeldolgozással és az adatok másolásával. Ezt a beállítást a rendelés létrehozása után nem módosíthatja.
 
     A **folytatáshoz válassza a Tovább: Kapcsolattartási adatok** lehetőséget.
 
 17. A **Kapcsolattartási adatok között** válassza a + Szállítási cím hozzáadása **lehetőséget.**
 
-    ![A Kapcsolattartási adatok képernyőn adjon hozzá szállítási címeket a Azure Data Box rendeléshez](media/data-box-deploy-ordered/select-data-box-import-08-a.png)
+    ![A Kapcsolattartási adatok képernyőn adja hozzá a szállítási címeket a Azure Data Box rendeléshez](media/data-box-deploy-ordered/select-data-box-import-08-a.png)
 
 18. A **Szállítási cím** területen adja meg a vezeték- és utónevét, a vállalata nevét és postai címét, valamint egy érvényes telefonszámot. Válassza a **Cím ellenőrzése** lehetőséget. A rendszer ellenőrzi, hogy a szolgáltatás elérhető-e a megadott szállítási címen. Ha a szolgáltatás elérhető a megadott szállítási címen, értesítést fog kapni erről.
 
     ![Képernyőkép a Szállítási cím hozzáadása párbeszédpanelről a Ship using beállításokkal és a Szállítási cím hozzáadása lehetőséggel.](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
-    Ha a saját maga által felügyelt szállítást választotta, a rendelés sikeres leküldése után e-mailes értesítést fog kapni. Az önálló felügyelt szállítással kapcsolatos további információkért lásd: Saját maga [által felügyelt szállítás használata.](data-box-portal-customer-managed-shipping.md)
+    Ha az ön által felügyelt szállítást választotta, a rendelés sikeres elküldése után e-mailes értesítést fog kapni. Az önálló szállítással kapcsolatos további információkért lásd: Saját maga [által felügyelt szállítás használata.](data-box-portal-customer-managed-shipping.md)
 
 19. A **szállítási adatok sikeres ellenőrzése** után válassza a Szállítási cím hozzáadása lehetőséget. Visszatér a Kapcsolattartási **adatok lapra.**
 
@@ -411,9 +411,9 @@ Az eszköz megrendeléséhez Azure Portal alábbi lépéseket kell követnie.
 
     Javasoljuk a csoportos e-mail-cím használatát, hogy az értesítéseket a rendszergazda távollétében is kézhez kaphassa.
 
-    ![A Rendelés varázsló Kapcsolattartási adatok szakasza e-mailben](media/data-box-deploy-ordered/select-data-box-import-08-c.png)
+    ![A Kapcsolattartási adatok e-mail szakasza a Rendelés varázslóban](media/data-box-deploy-ordered/select-data-box-import-08-c.png)
 
-21. Tekintse át a **megrendeléssel,** kapcsolattartási adatokkal, értesítésekkel és adatvédelmi feltételekkel kapcsolatos Áttekintés + Rendelés adatokat. Jelölje ki az adatvédelmi feltételek elfogadásához tartozó jelölőnégyzetet.
+21. Tekintse át a **megrendeléshez,** kapcsolattartási adatokhoz, értesítésekhez és adatvédelmi feltételekhez kapcsolódó Áttekintés és rendelés adatokat. Jelölje ki az adatvédelmi feltételek elfogadásához tartozó jelölőnégyzetet.
 
 22. Válassza a **Megrendelés** lehetőséget. A megrendelés létrehozása néhány percet vesz igénybe.
 
@@ -421,35 +421,35 @@ Az eszköz megrendeléséhez Azure Portal alábbi lépéseket kell követnie.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Eszköz megrendeléséhez kövesse az alábbi lépéseket az Azure CLI használatával:
+Az eszköz megrendeléséhez kövesse az alábbi lépéseket az Azure CLI használatával:
 
-1. Írja le a rendelési Data Box beállításait. Ezek a beállítások tartalmazzák a személyes/üzleti adatait, az előfizetés nevét, az eszközadatokat és a szállítási adatokat. A parancssori felület parancsának futtatásakor ezeket a beállításokat paraméterként kell használnia a Data Box létrehozásához. Az alábbi táblázat a paraméterbeállításait mutatja `az databox job create` be:
+1. Írja le a rendelési Data Box beállításait. Ezek a beállítások tartalmazzák a személyes/üzleti adatait, az előfizetés nevét, az eszközadatokat és a szállítási adatokat. Ezeket a beállításokat paraméterekként kell használnia a parancssori felület parancsának futtatásakor a Data Box létrehozásához. Az alábbi táblázat a paraméterbeállításait mutatja `az databox job create` be:
 
    | Beállítás (paraméter) | Description |  Mintaérték |
    |---|---|---|
    |resource-group| Használjon egy már létezőt, vagy hozzon létre újat. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | "myresourcegroup"|
    |name| A létrehozott rendelés neve. | "mydataboxorder"|
-   |kapcsolattartó neve| A szállítási címhez társított név. | "Található-e már"|
+   |kapcsolattartó neve| A szállítási címhez társított név. | "Fog Fog Foga"|
    |telefon| A rendelést megkapó személy vagy vállalkozás telefonszáma.| "14255551234"
    |location| Az eszköz szállításához legközelebbi Azure-régió.| "USA nyugati régiója"|
-   |Sku| A Data Box megrendelt eszköz konkrét adatokat. Érvényes értékek: "DataBox", "DataBoxDisk" és "DataBoxHeavy"| "DataBox" |
+   |Sku| A Data Box eszköz konkrét adatokat. Érvényes értékek: "DataBox", "DataBoxDisk" és "DataBoxHeavy"| "DataBox" |
    |e-mail-lista| A rendeléshez társított e-mail-címek.| "gusp@contoso.com" |
    |street-address1| Annak a címnek a címe, ahová a rendelést ki fogják szállítják. | "15700 NE 39th St" |
-   |street-address2| A másodlagos cím adatai, például az házszám vagy az épület száma. | "Building 123" |
+   |street-address2| A másodlagos cím adatai, például a szám vagy az épület száma. | "Building 123" |
    |city| Az a város, amelybe az eszközt szállítják. | "Redmond" |
    |state-or-province| Az eszköz szállításának állapota.| "WA" |
    |ország| Az eszköz szállításának országa. | "Egyesült Államok" |
    |irányítószám| A szállítási címhez társított irányítószám vagy irányítószám.| "98052"|
    |vállalat neve| A vállalat neve, amelynél dolgozik.| "Contoso, LTD" |
    |tárfiók| Az Azure Storage-fiók, ahonnan adatokat szeretne importálni.| "mystorageaccount"|
-   |Debug| Hibakeresési információk a részletes naplózáshoz  | --debug (Hibakeresés) |
+   |Debug| Hibakeresési információkkal részletes naplózást  | --debug |
    |segítség| Jelenítse meg a parancs súgóinformációját. | --help -h |
    |csak show-errors| Csak a hibák megjelenítése, a figyelmeztetések mellőzése. | --only-show-errors |
-   |output -o| Beállítja a kimeneti formátumot.  Megengedett értékek: json, jsonc, none, table, tsv, yaml, yamlc. Az alapértelmezett érték json. | --output "json" |
+   |output -o| Beállítja a kimeneti formátumot.  Megengedett értékek: json, jsonc, none, table, tsv, yaml, yamlc. Az alapértelmezett érték a json. | --output "json" |
    |lekérdezés| A JMESPath lekérdezési sztring. További információ: [JMESPath.](http://jmespath.org/) | --query <string>|
-   |részletes| Részletes naplózást is tartalmaz. | --verbose (részletes) |
+   |részletes| Részletes naplózást is tartalmazhat. | --verbose |
 
-2. A választott parancssorban vagy terminálban futtassa [az az data box job create](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-create) parancsot a Azure Data Box létrehozásához.
+2. A választott parancssorban vagy terminálban futtassa [az az data box job create](/cli/azure/databox/job#az_databox_job_create) parancsot a Azure Data Box létrehozásához.
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -515,7 +515,7 @@ Eszköz megrendeléséhez kövesse az alábbi lépéseket az Azure CLI használa
 
 3. Alapértelmezés szerint minden Azure CLI-parancs json kimeneti formátumot használ, hacsak nem módosítja. A kimeneti formátumot a globális paraméterrel `--output <output-format>` módosíthatja. Ha a formátumot "table" formátumra módosítja, az javítja a kimenet olvashatóságát.
 
-   Itt van ugyanaz a parancs, amit most futtattunk egy kis módosítással a formázás módosításahoz:
+   Itt van ugyanaz a parancs, amit most futtattunk egy kis finomhangolással a formázás módosítása után:
 
     ```azurecli
     az databox job create --resource-group "myresourcegroup" --name "mydataboxtest4" --location "westus" --sku "DataBox" --contact-name "Gus Poland" --phone "14255551234" --email-list "gusp@contoso.com" --street-address1 "15700 NE 39th St" --street-address2 "Bld 25" --city "Redmond" --state-or-province "WA" --country "US" --postal-code "98052" --company-name "Contoso" --storage-account mystorageaccount --output "table"
@@ -534,7 +534,7 @@ Eszköz megrendeléséhez kövesse az alábbi lépéseket az Azure CLI használa
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-ps)
 
-Az eszköz megrendeléséhez Azure PowerShell alábbi lépéseket kell megtennie:
+Eszköz megrendeléséhez Azure PowerShell alábbi lépéseket:
 
 1. Az importálási rendelés létrehozása előtt be kell szereznie a tárfiókot, és mentenie kell a tárfiók objektumát egy változóban.
 
@@ -542,19 +542,19 @@ Az eszköz megrendeléséhez Azure PowerShell alábbi lépéseket kell megtennie
     $storAcct = Get-AzStorageAccount -Name "mystorageaccount" -ResourceGroup "myresourcegroup"
    ```
 
-2. Írja le a rendelési Data Box beállításait. Ezek a beállítások tartalmazzák a személyes/üzleti adatait, az előfizetés nevét, az eszközadatokat és a szállítási adatokat. Ezeket a beállításokat paraméterekként kell használnia a PowerShell-parancs futtatásakor a Data Box létrehozásához. Az alábbi táblázat a [New-AzDataBoxJob parancshoz használt paraméterbeállításokat mutatja be.](/powershell/module/az.databox/New-AzDataBoxJob)
+2. Írja le a rendelési Data Box beállításait. Ezek a beállítások tartalmazzák a személyes/üzleti adatait, az előfizetés nevét, az eszközadatokat és a szállítási adatokat. Ezeket a beállításokat paraméterekként kell használnia a PowerShell-parancs futtatásakor a Data Box létrehozásához. Az alábbi táblázat a [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob)parancshoz használt paraméterbeállításokat mutatja be.
 
     | Beállítás (paraméter) | Description |  Mintaérték |
     |---|---|---|
     |ResourceGroupName [Kötelező]| Használjon egy meglévő erőforráscsoportot. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | "myresourcegroup"|
     |Név [Kötelező]| A létrehozott rendelés neve. | "mydataboxorder"|
-    |ContactName [Kötelező]| A szállítási címhez társított név. | "Található-e már"|
+    |ContactName [Kötelező]| A szállítási címhez társított név. | "Fog Fog Foga"|
     |PhoneNumber [Kötelező]| A rendelést megkapó személy vagy vállalkozás telefonszáma.| "14255551234"
-    |Hely [Kötelező]| Az eszköz szállításához legközelebbi Azure-régió.| "WestUS"|
-    |DataBoxType [Kötelező]| A Data Box megrendelt eszköz konkrét adatokat. Érvényes értékek: "DataBox", "DataBoxDisk" és "DataBoxHeavy"| "DataBox" |
-    |E-mail-címazonosító [kötelező]| A rendeléshez társított e-mail-címek.| "gusp@contoso.com" |
+    |Hely [kötelező]| Az eszköz szállításához legközelebbi Azure-régió.| "WestUS"|
+    |DataBoxType [Kötelező]| A Data Box eszköz konkrét adatokat. Érvényes értékek: "DataBox", "DataBoxDisk" és "DataBoxHeavy"| "DataBox" |
+    |EmailId [Kötelező]| A rendeléshez társított e-mail-címek.| "gusp@contoso.com" |
     |StreetAddress1 [Kötelező]| Annak a címnek a címe, ahová a rendelést ki fogják szállítják. | "15700 NE 39th St" |
-    |StreetAddress2| A másodlagos cím adatai, például a szám vagy az épület száma. | "Building 123" |
+    |StreetAddress2| A másodlagos cím adatai, például a házszám vagy az épület száma. | "Building 123" |
     |StreetAddress3| A harmadlagos címinformáció. | |
     |Város [Kötelező]| Az a város, amelybe az eszközt szállítják. | "Redmond" |
     |StateOrProvinceCode [Kötelező]| Az eszköz szállításának állapota.| "WA" |
@@ -596,7 +596,7 @@ Az eszköz megrendeléséhez Azure PowerShell alábbi lépéseket kell megtennie
 
 # <a name="portal"></a>[Portál](#tab/portal)
 
-Miután elküldte a megrendelését, annak állapotát az Azure Portalon követheti nyomon. Az állapot megtekintéséhez Data Box a saját rendeléséhez, majd az **Áttekintéshez.** A portálon a megrendelés **Megrendelve** állapotban látható.
+Miután elküldte a megrendelését, annak állapotát az Azure Portalon követheti nyomon. Az állapot megtekintéséhez Data Box meg a rendelést, majd az **Áttekintést.** A portálon a megrendelés **Megrendelve** állapotban látható.
 
 Ha nem áll rendelkezésre eszköz, értesítést fog kapni. Ha van elérhető eszköz, a Microsoft kiválaszt egyet a szállításhoz, és előkészíti a csomagot. Az eszköz előkészítése során a következő műveletek lesznek végrehajtva:
 
@@ -607,7 +607,7 @@ Ha nem áll rendelkezésre eszköz, értesítést fog kapni. Ha van elérhető e
 
 Az eszköz előkészítésének befejeztével a portálon a megrendelés **Feldolgozott** állapotban jelenik meg.
 
-![Egy Data Box feldolgozott megrendelés](media/data-box-overview/data-box-order-status-processed.png)
+![Egy Data Box megrendelés, amely fel lett feldolgozva](media/data-box-overview/data-box-order-status-processed.png)
 
 A Microsoft ezután előkészíti, majd feladja a csomagot egy regionális fuvarozónál. Az eszköz feladását követően Ön megkapja a fuvarlevélszámot. A portál a **Feladva** állapotot mutatja.
 
@@ -615,28 +615,28 @@ A Microsoft ezután előkészíti, majd feladja a csomagot egy regionális fuvar
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-### <a name="track-a-single-order"></a>Egyetlen megrendelés nyomon követése
+### <a name="track-a-single-order"></a>Egyetlen rendelés nyomon követése
 
-Egyetlen meglévő rendelés nyomkövetési információinak le Azure Data Box futtassa [`az databox job show`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-show) a parancsot. A parancs megjeleníti a rendeléssel kapcsolatos információkat, például a név, az erőforráscsoport, a követési adatok, az előfizetés azonosítója, a kapcsolattartási adatok, a szállítmány típusa és az eszköz termékváltozata adatait.
+Egy meglévő rendelés nyomkövetési információinak le Azure Data Box futtassa [`az databox job show`](/cli/azure/databox/job#az_databox_job_show) a parancsot. A parancs a rendeléssel kapcsolatos információkat jeleníti meg, például a nevet, az erőforráscsoportot, a követési adatokat, az előfizetés azonosítóját, a kapcsolattartási adatokat, a szállítmány típusát és az eszköz termékváltozatát.
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
    ```
 
-   Az alábbi táblázatban a paraméter adatai `az databox job show` láthatóak:
+   Az alábbi táblázatban a paraméterinformációi `az databox job show` láthatóak:
 
    | Paraméter | Leírás |  Mintaérték |
    |---|---|---|
    |erőforráscsoport [kötelező]| A rendeléshez társított erőforráscsoport neve. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | "myresourcegroup"|
    |name [Kötelező]| A megjelenítendő rendelés neve. | "mydataboxorder"|
-   |Debug| Hibakeresési információk a részletes naplózáshoz | --debug (Hibakeresés) |
+   |Debug| Hibakeresési információkkal részletes naplózást | --debug |
    |segítség| Jelenítse meg a parancs súgóinformációját. | --help -h |
    |csak show-errors| Csak a hibák megjelenítése, a figyelmeztetések mellőzése. | --only-show-errors |
-   |output -o| Beállítja a kimeneti formátumot.  Megengedett értékek: json, jsonc, none, table, tsv, yaml, yamlc. Az alapértelmezett érték a json. | --output "json" |
+   |output -o| Beállítja a kimeneti formátumot.  Megengedett értékek: json, jsonc, none, table, tsv, yaml, yamlc. Az alapértelmezett érték json. | --output "json" |
    |lekérdezés| A JMESPath lekérdezési sztring. További információ: [JMESPath.](http://jmespath.org/) | --query <string>|
-   |részletes| Részletes naplózást is tartalmazhat. | --verbose |
+   |részletes| Részletes naplózást is tartalmaz. | --verbose (részletes) |
 
-   Az alábbi példában a parancs kimeneti formátuma "table" (tábla) lesz:
+   Példa a parancsra, "table" kimeneti formátummal:
 
    ```azurecli
     PS C:\WINDOWS\system32> az databox job show --resource-group "myresourcegroup" \
@@ -654,30 +654,30 @@ Egyetlen meglévő rendelés nyomkövetési információinak le Azure Data Box f
    ```
 
 > [!NOTE]
-> A listarend az előfizetés szintjén is támogatott, így az erőforráscsoport választható paraméter (és nem kötelező paraméter).
+> A listarend az előfizetés szintjén is támogatott, így az erőforráscsoport választható paraméter (és nem kötelező paraméter) lesz.
 
 ### <a name="list-all-orders"></a>Az összes rendelés listása
 
-Ha több eszközt rendelt meg, a futtatásával megtekintheti az [`az databox job list`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-list) összes Azure Data Box rendelést. A parancs felsorolja az adott erőforráscsoporthoz tartozó összes rendelést. A kimenetben is megjelenik: rendelés neve, szállítási állapot, Azure-régió, kézbesítés típusa, rendelés állapota. A visszavont rendelések is szerepelnek a listában.
+Ha több eszközt rendelt meg, a parancs futtatásával megtekintheti az [`az databox job list`](/cli/azure/databox/job#az_databox_job_list) összes Azure Data Box rendelését. A parancs felsorolja az adott erőforráscsoporthoz tartozó összes rendelést. A kimenetben is megjelenik: rendelés neve, szállítási állapot, Azure-régió, kézbesítési típus, rendelés állapota. A lemondott rendelések is szerepelnek a listában.
 A parancs az egyes rendeléseket időbélyegzőit is megjeleníti.
 
 ```azurecli
 az databox job list --resource-group <resource-group>
 ```
 
-Az alábbi táblázatban a paraméter adatai `az databox job list` láthatóak:
+Az alábbi táblázatban a paraméterinformációi `az databox job list` láthatóak:
 
    | Paraméter | Leírás |  Mintaérték |
    |---|---|---|
    |erőforráscsoport [kötelező]| A rendeléseket tartalmazó erőforráscsoport neve. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | "myresourcegroup"|
-   |Debug| Hibakeresési információk a részletes naplózáshoz | --debug (Hibakeresés) |
+   |Debug| Hibakeresési információk beburkolása részletes naplózáshoz | --debug |
    |segítség| Jelenítse meg a parancs súgóinformációját. | --help -h |
    |csak show-errors| Csak a hibák megjelenítése, a figyelmeztetések mellőzése. | --only-show-errors |
-   |output -o| Beállítja a kimeneti formátumot.  Megengedett értékek: json, jsonc, none, table, tsv, yaml, yamlc. Az alapértelmezett érték json. | --output "json" |
+   |output -o| Beállítja a kimeneti formátumot.  Megengedett értékek: json, jsonc, none, table, tsv, yaml, yamlc. Az alapértelmezett érték a json. | --output "json" |
    |lekérdezés| A JMESPath lekérdezési sztring. További információ: [JMESPath.](http://jmespath.org/) | --query <string>|
-   |részletes| Részletes naplózást is tartalmazhat. | --verbose |
+   |részletes| Részletes naplózást is tartalmaz. | --verbose (részletes) |
 
-   Az alábbi példában a parancs kimeneti formátuma "table" (tábla) lesz:
+   Példa a parancsra, "table" kimeneti formátummal:
 
    ```azurecli
     PS C:\WINDOWS\system32> az databox job list --resource-group "GDPTest" --output "table"
@@ -699,18 +699,18 @@ Az alábbi táblázatban a paraméter adatai `az databox job list` láthatóak:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-ps)
 
-### <a name="track-a-single-order"></a>Egyetlen rendelés nyomon követése
+### <a name="track-a-single-order"></a>Egyetlen megrendelés nyomon követése
 
-Egyetlen meglévő rendelés nyomkövetési információinak le Azure Data Box [Get-AzDataBoxJob parancs futtatásával.](/powershell/module/az.databox/Get-AzDataBoxJob) A parancs a rendeléssel kapcsolatos információkat jeleníti meg, például a nevet, az erőforráscsoportot, a követési adatokat, az előfizetés azonosítóját, a kapcsolattartási adatokat, a szállítmány típusát és az eszköz termékváltozatát.
+Egyetlen meglévő rendelés nyomkövetési információinak le Azure Data Box a [Get-AzDataBoxJob parancs futtatásával.](/powershell/module/az.databox/Get-AzDataBoxJob) A parancs megjeleníti a rendeléssel kapcsolatos információkat, például a név, az erőforráscsoport, a követési adatok, az előfizetés azonosítója, a kapcsolattartási adatok, a szállítmány típusa és az eszköz termékváltozata adatait.
 
 > [!NOTE]
-> `Get-AzDataBoxJob` A egy és több rendelés megjelenítésére is használható. A különbség az, hogy ön adja meg az egyes rendelések rendelésnevét.
+> `Get-AzDataBoxJob` A egy- és több rendelés megjelenítésére is használható. A különbség az, hogy egyetlen rendelés rendelésnevét kell megadnia.
 
    ```azurepowershell
     Get-AzDataBoxJob -ResourceGroupName <String> -Name <String>
    ```
 
-   Az alábbi táblázatban a paraméterinformációi `Get-AzDataBoxJob` láthatóak:
+   Az alábbi táblázatban a paraméter adatai `Get-AzDataBoxJob` láthatóak:
 
    | Paraméter | Leírás |  Mintaérték |
    |---|---|---|
@@ -734,8 +734,8 @@ Egyetlen meglévő rendelés nyomkövetési információinak le Azure Data Box [
 
 ### <a name="list-all-orders"></a>Az összes rendelés listása
 
-Ha több eszközt rendelt meg, a parancs futtatásával megtekintheti az [`Get-AzDataBoxJob`](/powershell/module/az.databox/Get-AzDataBoxJob) összes Azure Data Box rendelését. A parancs felsorolja az adott erőforráscsoporthoz tartozó összes rendelést. A kimenetben is megjelenik: rendelés neve, szállítási állapot, Azure-régió, kézbesítési típus, rendelés állapota. A visszavont rendelések is szerepelnek a listában.
-A parancs az egyes rendeléseket időbélyegzőit is megjeleníti.
+Ha több eszközt rendelt meg, a futtatásával megtekintheti az [`Get-AzDataBoxJob`](/powershell/module/az.databox/Get-AzDataBoxJob) összes Azure Data Box rendelést. A parancs felsorolja az adott erőforráscsoporthoz tartozó összes rendelést. A kimenetben is megjelenik: rendelés neve, szállítási állapot, Azure-régió, kézbesítés típusa, rendelés állapota. A lemondott rendelések is szerepelnek a listában.
+A parancs az egyes rendeléseket időbélyegzőket is megjeleníti.
 
 ```azurepowershell
 Get-AzDataBoxJob -ResourceGroupName <String>
@@ -767,36 +767,36 @@ PS C:\WINDOWS\system32>
 
 # <a name="portal"></a>[Portál](#tab/portal)
 
-A rendelés megszakítása érdekében a Azure Portal válassza az Áttekintés **lehetőséget,** és válassza a Mégse lehetőséget **a** parancssávon.
+A rendelés megszakítása érdekében a Azure Portal válassza az **Áttekintés lehetőséget,** és válassza a **Mégse** lehetőséget a parancssávon.
 
 A megrendelést annak feladását követően bármikor megszakíthatja, mielőtt az Feldolgozott állapotba lép.
 
-A lemondott rendelés törléséhez válassza az Áttekintés **lehetőséget,** és válassza a Törlés **lehetőséget** a parancssávon.
+A lemondott rendelés törléséhez kattintson az Áttekintés **gombra,** és válassza **a** Törlés lehetőséget a parancssávon.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ### <a name="cancel-an-order"></a>Rendelés visszavonása
 
-Az új rendelés Azure Data Box futtassa a [`az databox job cancel`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-cancel) parancsot. Meg kell adnia a rendelés lemondásának okát.
+A rendelés megszakítása Azure Data Box futtassa a [`az databox job cancel`](/cli/azure/databox/job#az_databox_job_cancel) parancsot. Meg kell adnia a rendelés lemondásának okát.
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
    ```
 
-   Az alábbi táblázatban a paraméter adatai `az databox job cancel` láthatóak:
+   Az alábbi táblázatban a paraméterinformációi `az databox job cancel` láthatóak:
 
    | Paraméter | Leírás |  Mintaérték |
    |---|---|---|
    |erőforráscsoport [kötelező]| A törlési rendeléshez társított erőforráscsoport neve. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | "myresourcegroup"|
-   |name [Kötelező]| A törölni szükséges rendelés neve. | "mydataboxorder"|
-   |ok [Kötelező]| A rendelés lemondásának oka. | "Hibás adatokat adtam meg, és vissza kellett mondani a rendelést." |
+   |name [Kötelező]| A törlésre kerülő rendelés neve. | "mydataboxorder"|
+   |ok [Kötelező]| A rendelés lemondásának oka. | "Hibás információkat tam meg, és vissza kellett mondani a rendelést." |
    |igen| Ne kér megerősítést. | --yes (-y)| 
-   |Debug| Hibakeresési információkkal részletes naplózást | --debug |
+   |Debug| Hibakeresési információk a részletes naplózáshoz | --debug (Hibakeresés) |
    |segítség| Jelenítse meg a parancs súgóinformációját. | --help -h |
    |csak show-errors| Csak a hibák megjelenítése, a figyelmeztetések mellőzése. | --only-show-errors |
-   |output -o| Beállítja a kimeneti formátumot.  Megengedett értékek: json, jsonc, none, table, tsv, yaml, yamlc. Az alapértelmezett érték a json. | --output "json" |
+   |output -o| Beállítja a kimeneti formátumot.  Megengedett értékek: json, jsonc, none, table, tsv, yaml, yamlc. Az alapértelmezett érték json. | --output "json" |
    |lekérdezés| A JMESPath lekérdezési sztring. További információ: [JMESPath.](http://jmespath.org/) | --query <string>|
-   |részletes| Részletes naplózást is tartalmaz. | --verbose (részletes) |
+   |részletes| Részletes naplózást is tartalmazhat. | --verbose |
 
    Példa a parancsra a kimenettel:
 
@@ -814,26 +814,26 @@ Az új rendelés Azure Data Box futtassa a [`az databox job cancel`](/cli/azure/
 
 ### <a name="delete-an-order"></a>Rendelés törlése
 
-Ha visszavont egy Azure Data Box, a parancs futtatásával törölheti [`az databox job delete`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-delete) a rendelést.
+Ha lemondott egy Azure Data Box, a futtatásával törölheti [`az databox job delete`](/cli/azure/databox/job#az_databox_job_delete) a rendelést.
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]
    ```
 
-   Az alábbi táblázatban a paraméter adatai `az databox job delete` láthatóak:
+   Az alábbi táblázatban a paraméterinformációi `az databox job delete` láthatóak:
 
    | Paraméter | Leírás |  Mintaérték |
    |---|---|---|
    |erőforráscsoport [kötelező]| A törlési rendeléshez társított erőforráscsoport neve. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | "myresourcegroup"|
-   |name [Kötelező]| A törölni szükséges rendelés neve. | "mydataboxorder"|
+   |name [Kötelező]| A törlésre kerülő rendelés neve. | "mydataboxorder"|
    |előfizetést| Az Azure-előfizetés neve vagy azonosítója (GUID). | "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" |
    |igen| Ne kér megerősítést. | --yes (-y)|
-   |Debug| Hibakeresési információkkal részletes naplózást | --debug |
+   |Debug| Hibakeresési információk a részletes naplózáshoz | --debug (Hibakeresés) |
    |segítség| Jelenítse meg a parancs súgóinformációját. | --help -h |
    |csak show-errors| Csak a hibák megjelenítése, a figyelmeztetések mellőzése. | --only-show-errors |
-   |output -o| Beállítja a kimeneti formátumot.  Megengedett értékek: json, jsonc, none, table, tsv, yaml, yamlc. Az alapértelmezett érték a json. | --output "json" |
+   |output -o| Beállítja a kimeneti formátumot.  Megengedett értékek: json, jsonc, none, table, tsv, yaml, yamlc. Az alapértelmezett érték json. | --output "json" |
    |lekérdezés| A JMESPath lekérdezési sztring. További információ: [JMESPath.](http://jmespath.org/) | --query <string>|
-   |részletes| Részletes naplózást is tartalmazhat. | --verbose |
+   |részletes| Részletes naplózást is tartalmaz. | --verbose (részletes) |
 
 Példa a parancsra a kimenettel:
 
@@ -859,13 +859,13 @@ A rendelés megszakításához Azure Data Box [Stop-AzDataBoxJob parancsot.](/po
 Stop-AzDataBoxJob -ResourceGroup <String> -Name <String> -Reason <String>
 ```
 
-Az alábbi táblázatban a paraméter adatai `Stop-AzDataBoxJob` láthatóak:
+Az alábbi táblázatban a paraméterinformációi `Stop-AzDataBoxJob` láthatóak:
 
 | Paraméter | Leírás |  Mintaérték |
 |---|---|---|
 |ResourceGroup [Kötelező]| A megszakítani szükséges rendeléshez társított erőforráscsoport neve. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | "myresourcegroup"|
-|Név [Kötelező]| A törölni szükséges rendelés neve. | "mydataboxorder"|
-|Ok [Kötelező]| A rendelés lemondásának oka. | "Hibás információkat tam meg, és vissza kellett mondani a rendelést." |
+|Név [Kötelező]| A törlésre kerülő rendelés neve. | "mydataboxorder"|
+|Ok [Kötelező]| A rendelés lemondásának oka. | "Hibás adatokat adtam meg, és vissza kellett mondani a rendelést." |
 |Force | Kényszeríti a parancsmag futtatását a felhasználó megerősítése nélkül. | -Force |
 
 Példa a parancsra a kimenettel:
@@ -887,18 +887,18 @@ PS C:\WINDOWS\system32>
 
 ### <a name="delete-an-order"></a>Rendelés törlése
 
-Ha visszavont egy Azure Data Box, a parancs futtatásával törölheti [`Remove-AzDataBoxJob`](/powershell/module/az.databox/remove-azdataboxjob) a rendelést.
+Ha lemondott egy Azure Data Box, a futtatásával törölheti [`Remove-AzDataBoxJob`](/powershell/module/az.databox/remove-azdataboxjob) a rendelést.
 
 ```azurepowershell
 Remove-AzDataBoxJob -Name <String> -ResourceGroup <String>
 ```
 
-Az alábbi táblázatban a paraméter adatai `Remove-AzDataBoxJob` láthatóak:
+Az alábbi táblázatban a paraméterinformációi `Remove-AzDataBoxJob` láthatóak:
 
 | Paraméter | Leírás |  Mintaérték |
 |---|---|---|
 |ResourceGroup [Kötelező]| A törlési rendeléshez társított erőforráscsoport neve. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | "myresourcegroup"|
-|Név [Kötelező]| A törlésre kerülő rendelés neve. | "mydataboxorder"|
+|Név [Kötelező]| A törölni szükséges rendelés neve. | "mydataboxorder"|
 |Force | Kényszeríti a parancsmag futtatását a felhasználó megerősítése nélkül. | -Force |
 
 Példa a parancsra a kimenettel:

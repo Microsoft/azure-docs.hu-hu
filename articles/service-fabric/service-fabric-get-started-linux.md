@@ -1,15 +1,15 @@
 ---
-title: A fejlesztői környezet beállítása Linuxon
+title: A fejlesztési környezet beállítása Linuxon
 description: Telepítse a futtatókörnyezetet és az SDK-t, majd hozzon létre egy helyi fejlesztési fürtöt Linuxon. A beállítás befejezése után készen áll az alkalmazások létrehozására.
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fcf0aeec27415d03c528e42ad5341a92bd299d88
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93086890"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869400"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
@@ -19,16 +19,16 @@ ms.locfileid: "93086890"
 
 Az [Azure Service Fabric-alkalmazásoknak](service-fabric-application-model.md) a linuxos fejlesztői gépen való üzembe helyezéséhez és futtatásához telepítse a futtatókörnyezetet és az általános SDK-t. A Javához és a .NET Core-fejlesztéshez készült opcionális SDK-kat is telepítheti. 
 
-A cikkben ismertetett lépések azt feltételezik, hogy natív módon telepíti a Linux rendszert, vagy használja a [Service Fabric beépített-tároló rendszerképet](https://hub.docker.com/_/microsoft-service-fabric-onebox), például: `mcr.microsoft.com/service-fabric/onebox:u18` .
+A cikkben található lépések feltételezik, hogy natív módon telepít Linux rendszeren, vagy a [Service Fabric OneBox-tároló](https://hub.docker.com/_/microsoft-service-fabric-onebox)rendszerképét használja (pl. `mcr.microsoft.com/service-fabric/onebox:u18` ).
 
-A felhőben vagy a helyszínen üzemeltetett Service Fabric entitásokat az Azure Service Fabric parancssori felületével (CLI) kezelheti. A parancssori felület telepítési módját a [Service Fabric parancssori felület telepítését](./service-fabric-cli.md) ismertető témakörben találja.
+Az Azure Service Fabric (CLI) használatával kezelheti a felhőben vagy a helyszínen üzemeltetett Service Fabric entitásokat. A parancssori felület telepítési módját a [Service Fabric parancssori felület telepítését](./service-fabric-cli.md) ismertető témakörben találja.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A fejlesztéshez a következő operációsrendszer-verziók támogatottak.
 
-* Ubuntu 16,04 ( `Xenial Xerus` ), 18,04 ( `Bionic Beaver` )
+* Ubuntu 16.04 ( `Xenial Xerus` ), 18.04 ( `Bionic Beaver` )
 
     Győződjön meg róla, hogy az `apt-transport-https` csomag telepítve van.
          
@@ -50,7 +50,7 @@ Az SDK és a kapcsolódó futtatókörnyezet-csomag apt-get parancssori eszköz 
 
 ## <a name="script-installation"></a>Telepítés szkripttel
 
-A kényelmes használat érdekében parancsfájlt biztosít a Service Fabric futtatókörnyezet és a Service Fabric Common SDK, valamint a [ **sfctl** CLI](service-fabric-cli.md)telepítésére. A szkript a futtatáskor azt feltételezi, hogy Ön átolvasta és elfogadja a telepített szoftverek licencfeltételeit. Azt is megteheti, hogy futtatja a [manuális telepítési](#manual-installation) lépéseket a következő szakaszban, amely a társított licenceket és a telepítés alatt álló összetevőket is bemutatja.
+Az egyszerűség kedvéért egy szkript is rendelkezésre áll a Service Fabric és a Service Fabric SDK és az [ **sfctl** CLI telepítéséhez.](service-fabric-cli.md) A szkript a futtatáskor azt feltételezi, hogy Ön átolvasta és elfogadja a telepített szoftverek licencfeltételeit. Másik lehetőségként futtathatja a manuális telepítési lépéseket a következő szakaszban, amely a társított licenceket és a telepített összetevőket mutatja be. [](#manual-installation)
 
 A szkript sikeres futtatását követően folytathatja a [Helyi fürt beállítása](#set-up-a-local-cluster) lépéssel.
 
@@ -63,14 +63,14 @@ A Service Fabric-futtatókörnyezet és az általános SDK manuális telepítés
 
 1. Nyisson meg egy terminált.
 
-2. Adja hozzá a `dotnet` tárházat a források listájához a disztribúciónak megfelelően.
+2. Adja hozzá `dotnet` az adattúdát a disztribúciónak megfelelő források listájához.
 
     ```bash
     wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
     sudo dpkg -i packages-microsoft-prod.deb
     ```
 
-3. Adja hozzá az új MS Open Tech GNU Privacy Guard (GnuPG vagy GPG) kulcsot az APT kulcstartóhoz.
+3. Adja hozzá az új MS Open Tech Gnu Privacy Guard-kulcsot (GnuPG vagy GPG) az APT-kulcstartóhoz.
 
     ```bash
     sudo curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
@@ -88,7 +88,7 @@ A Service Fabric-futtatókörnyezet és az általános SDK manuális telepítés
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-6. Adja hozzá az Azul JDK-kulcsot az APT-kulcstartóhoz, és állítsa be az adattárát.
+6. Adja hozzá az Azul JDK Keyt az APT-kulcstárhoz, és adja meg annak adattárát.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
@@ -120,8 +120,8 @@ sudo apt-get install servicefabricsdkcommon
 
 # <a name="red-hat-enterprise-linux-74"></a>[Red Hat Enterprise Linux 7.4](#tab/sdksetuprhel74)
 
-## <a name="update-your-yum-repositories"></a>A yum-adattárak frissítése
-Az SDK és a kapcsolódó futásidejű csomag a yum parancssori eszköz használatával történő telepítéséhez először frissítenie kell a csomag forrásait.
+## <a name="update-your-yum-repositories"></a>A Yum-adattárak frissítése
+Az SDK és a társított futásidejű csomag yum parancssori eszközzel történő telepítéséhez először frissítenie kell a csomag forrásait.
 
 ## <a name="manual-installation-rhel"></a>Manuális telepítés (RHEL)
 A Service Fabric-futtatókörnyezet és az általános SDK manuális telepítéséhez kövesse a jelen útmutató hátralévő részét.
@@ -162,26 +162,26 @@ sudo yum install servicefabricsdkcommon
 
 ---
 
-## <a name="included-packages"></a>Belefoglalt csomagok
+## <a name="included-packages"></a>Mellékelt csomagok
 Az SDK-telepítéssel együtt érkező Service Fabric-futtatókörnyezet az alábbi táblázatban szereplő csomagokat tartalmazza. 
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-**Ubuntu** | 2.0.7 | AzulJDK 1,8 | Implicit módon az npm-ből | legújabb |
+**Ubuntu** | 2.0.7 | AzulJDK 1.8 | Implicit módon az npm-ből | legújabb |
 **RHEL** | - | OpenJDK 1.8 | Implicit módon az npm-ből | legújabb |
 
 ## <a name="set-up-a-local-cluster"></a>Helyi fürt beállítása
-1. Indítsa el a helyi Service Fabric-fürtöt a fejlesztéshez.
+1. Indítson el egy helyi Service Fabric a fejlesztéshez.
 
-# <a name="container-based-local-cluster"></a>[Tároló-alapú helyi fürt](#tab/localclusteroneboxcontainer)
+# <a name="container-based-local-cluster"></a>[Tárolóalapú helyi fürt](#tab/localclusteroneboxcontainer)
 
-Tároló-alapú [Service Fabric beépített](https://hub.docker.com/_/microsoft-service-fabric-onebox) -fürt elindítása.
+Indítson el egy tárolóalapú [Service Fabric Onebox-fürtön.](https://hub.docker.com/_/microsoft-service-fabric-onebox)
 
 1. Telepítse a Mobyt a Docker-tárolók üzembe helyezéséhez.
     ```bash
     sudo apt-get install moby-engine moby-cli -y
     ```
-2. Frissítse a Docker-démon konfigurációját a gazdagépen a következő beállításokkal, majd indítsa újra a Docker-démont. Részletek: [IPv6-támogatás engedélyezése](https://docs.docker.com/config/daemon/ipv6/)
+2. Frissítse a Docker-démon konfigurációját a gazdagépen a következő beállításokkal, és indítsa újra a Docker-démont. Részletek: [IPv6-támogatás engedélyezése](https://docs.docker.com/config/daemon/ipv6/)
 
     ```json
     {
@@ -191,12 +191,12 @@ Tároló-alapú [Service Fabric beépített](https://hub.docker.com/_/microsoft-
     ```
 
 3. Indítsa el a fürtöt.<br/>
-    <b>Ubuntu 18,04 LTS:</b>
+    <b>Ubuntu 18.04 LTS:</b>
     ```bash
     docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u18
     ```
 
-    <b>Ubuntu 16,04 LTS:</b>
+    <b>Ubuntu 16.04 LTS:</b>
     ```bash
     docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u16
     ```
@@ -206,7 +206,7 @@ Tároló-alapú [Service Fabric beépített](https://hub.docker.com/_/microsoft-
 
 # <a name="local-cluster"></a>[Helyi fürt](#tab/localcluster)
 
-Miután telepítette az SDK-t a fenti lépések használatával, indítson el egy helyi fürtöt.
+Miután a fenti lépésekkel telepítette az SDK-t, indítson el egy helyi fürtöt.
 
 1. Futtassa a fürttelepítési szkriptet.
 
@@ -216,7 +216,7 @@ Miután telepítette az SDK-t a fenti lépések használatával, indítson el eg
 
 ---
 
-2. Nyisson meg egy webböngészőt, és lépjen a **Service Fabric Explorer** () webhelyre `http://localhost:19080/Explorer` . A fürt indításakor megjelenik a Service Fabric Explorer irányítópultja. Eltarthat néhány percig, amíg a rendszer teljesen beállítja a fürtöt. Ha a böngésző nem tudja megnyitni az URL-címet, vagy a Service Fabric Explorer azt mutatja, hogy a rendszer nem áll készen, várjon néhány percet, és próbálkozzon újra.
+2. Nyisson meg egy webböngészőt, és nyissa meg **a Service Fabric Explorer** ( `http://localhost:19080/Explorer` ) gombra. A fürt indításakor megjelenik a Service Fabric Explorer irányítópultja. Eltarthat néhány percig, amíg a rendszer teljesen beállítja a fürtöt. Ha a böngésző nem tudja megnyitni az URL-címet, vagy a Service Fabric Explorer azt mutatja, hogy a rendszer nem áll készen, várjon néhány percet, és próbálkozzon újra.
 
     ![Service Fabric Explorer Linuxon][sfx-linux]
 
@@ -259,13 +259,13 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyek seg�
 
 A generátorok telepítése után hozzon létre futtatható vendégalkalmazásokat vagy tárolószolgáltatásokat a `yo azuresfguest` vagy a `yo azuresfcontainer` futtatásával.
 
-## <a name="set-up-net-core-31-development"></a>A .NET Core 3,1-fejlesztés beállítása
+## <a name="set-up-net-core-31-development"></a>A .NET Core 3.1-es fejlesztés beállítása
 
-Telepítse a [.net Core 3,1 SDK for Ubuntu](https://www.microsoft.com/net/core#linuxubuntu) alkalmazást a [C# Service Fabric-alkalmazások létrehozásának](service-fabric-create-your-first-linux-application-with-csharp.md)megkezdéséhez. A .NET Core Service Fabric alkalmazások csomagjai a NuGet.org futnak.
+Telepítse az Ubuntuhoz készült [.NET Core 3.1 SDK-t](/dotnet/core/install/linux-ubuntu) a C# és [Service Fabric létrehozásához.](service-fabric-create-your-first-linux-application-with-csharp.md) A .NET Core-Service Fabric-alkalmazások csomagjai a NuGet.org.
 
 ## <a name="set-up-java-development"></a>Java fejlesztői környezet beállítása
 
-Ha a Java-t használó Service Fabric-szolgáltatásokat szeretne létrehozni, telepítse a Gradle-t a Build-feladatok futtatásához. Futtassa az alábbi parancsot a Gradle telepítéséhez. A Service Fabric Java-kódtárakat a Mavenből kéri le a rendszer.
+Ha java Service Fabric, telepítse a Gradle-t a buildfeladatok futtatásához. Futtassa az alábbi parancsot a Gradle telepítéséhez. A Service Fabric Java-kódtárakat a Mavenből kéri le a rendszer.
 
 
 * Ubuntu
@@ -298,11 +298,11 @@ A Service Fabric Eclipse beépülő modulját a Java-fejlesztőknek vagy a Java 
 > 
 > Ubuntu rendszeren ajánlott közvetlenül az Eclipse webhelyéről elvégezni a telepítést csomagtelepítő helyett (`apt` vagy `apt-get`). Így biztosan az Eclipse legfrissebb verzióját fogja beszerezni. Telepítheti a Java-fejlesztőknek vagy a Java EE-fejlesztőknek készült Eclipse IDE-t.
 
-1. Az Eclipse-ben győződjön meg arról, hogy telepítve van az Eclipse Neon vagy egy újabb verzió, és a Buildship 2.2.1-es vagy újabb verziója. A telepített összetevők verziójának megtekintéséhez válassza az   >  **Eclipse**-  >  **telepítés részleteinek** súgóját. A Buildship frissítéséhez kövesse az [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Eclipse beépülő modulok a Gradle-hez) című témakör utasításait.
+1. Az Eclipse-ben győződjön meg arról, hogy telepítve van az Eclipse Neon vagy egy újabb verzió, és a Buildship 2.2.1-es vagy újabb verziója. Ellenőrizze a telepített összetevők verzióit a Help About Eclipse Installation Details **(Az**  >  **Eclipse telepítési részleteinek súgója)**  >  **lehetőség kiválasztásával.** A Buildship frissítéséhez kövesse az [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Eclipse beépülő modulok a Gradle-hez) című témakör utasításait.
 
-2. A Service Fabric beépülő modul telepítéséhez válassza a **Súgó**  >  **új szoftver telepítése** lehetőséget.
+2. Az új Service Fabric telepítéséhez válassza a **Súgó**  >  **Az új szoftver telepítése lehetőséget.**
 
-3. A **Work with (munka** ) mezőben adja meg a **https: \/ /dl.microsoft.com/Eclipse** értéket.
+3. A Work **with (Munkához) mezőbe** írja be a **https: \/ /dl.microsoft.com/eclipse.**
 
 4. Válassza a **Hozzáadás** lehetőséget.
 
@@ -312,7 +312,7 @@ A Service Fabric Eclipse beépülő modulját a Java-fejlesztőknek vagy a Java 
 
 6. Hajtsa végre a telepítés lépéseit. Ezután fogadja el a végfelhasználói licencszerződést.
 
-Ha a Service Fabric Eclipse beépülő modul már telepítve van, győződjön meg arról, hogy a legújabb verzióval rendelkezik. Jelölje be az   >  **Eclipse**-  >  **telepítés részleteinek** súgóját. Ezután keressen rá Service Fabric a telepített beépülő modulok listájában. Válassza a **frissítés** lehetőséget, ha újabb verzió érhető el.
+Ha a Service Fabric Eclipse beépülő modul már telepítve van, győződjön meg arról, hogy a legújabb verzióval rendelkezik. Ennek ellenőrzéséhez válassza **a Help** About Eclipse Installation Details  >  **(Az Eclipse telepítési**  >  **részletei) et.** Ezután keressen a Service Fabric a telepített beépülő modulok listájában. Válassza **a Frissítés** lehetőséget, ha újabb verzió érhető el.
 
 További információ: [Service Fabric beépülő modul az Eclipse-alapú Java-alkalmazásfejlesztéshez](service-fabric-get-started-eclipse.md).
 

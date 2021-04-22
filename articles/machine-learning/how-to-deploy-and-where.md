@@ -1,7 +1,7 @@
 ---
 title: Gépi tanulási modellek üzembe helyezése
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan és hol helyezheti üzembe a gépi tanulási modelleket. Üzembe helyezés az Azure Container Instances, az Azure Kubernetes Service, a Azure IoT Edge és a FPGA.
+description: Megtudhatja, hogyan és hol helyezhet üzembe gépi tanulási modelleket. Üzembe helyezés Azure Container Instances, Azure Kubernetes Service, Azure IoT Edge és FPGA környezetben.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,41 +12,41 @@ ms.date: 03/25/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli, contperf-fy21q2
 adobe-target: true
-ms.openlocfilehash: 598da277214a2ee8e52cc5baaf2c792dfdc0429d
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: f2128949090ce0ec2aa4ed66eb476384d662953a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220232"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872640"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Gépi tanulási modellek üzembe helyezése az Azure-ban
 
-Megtudhatja, hogyan helyezheti üzembe a gépi tanulást vagy a Deep learning-modellt webszolgáltatásként az Azure-felhőben. Azure IoT Edge eszközökön is üzembe helyezhető.
+Megtudhatja, hogyan helyezheti üzembe webszolgáltatásként a gépi tanulási vagy mély tanulási modelljét az Azure-felhőben. A központi telepítést az Azure IoT Edge is.
 
 A munkafolyamat a modell telepítésének helyétől függetlenül hasonló:
 
 1. Regisztrálja a modellt (nem kötelező, lásd alább).
-1. Készítse elő a következtetési konfigurációt (hacsak [nem használ programkód nélküli telepítést](./how-to-deploy-no-code-deployment.md)).
-1. Készítse elő a beléptetési parancsfájlt (hacsak [nem használ programkód nélküli telepítést](./how-to-deploy-no-code-deployment.md)).
+1. A következtetési konfiguráció előkészítése (kivéve, ha [kód nélkül való üzembe helyezést használ).](./how-to-deploy-no-code-deployment.md)
+1. Készítsen elő egy bejegyzési szkriptet (kivéve, ha [kód nélkül történő üzembe helyezést használ).](./how-to-deploy-no-code-deployment.md)
 1. Válasszon ki egy számítási célt.
 1. A modell üzembe helyezése a számítási célon.
 1. Tesztelje az eredményül kapott webszolgáltatást.
 
-A Machine learning üzembe helyezési munkafolyamatában részt vevő fogalmakkal kapcsolatos további információkért lásd: [modellek kezelése, telepítése és figyelése Azure Machine Learningokkal](concept-model-management-and-deployment.md).
+A gépi tanulás üzembe helyezési munkafolyamatával kapcsolatos fogalmakkal kapcsolatos további információkért lásd: [Modellek kezelése,](concept-model-management-and-deployment.md)üzembe helyezése és figyelése a Azure Machine Learning.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-- Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
-- Egy modell. Ha nem rendelkezik betanított modellel, az [oktatóanyagban](https://aka.ms/azml-deploy-cloud)szereplő modell-és függőségi fájlokat is használhatja.
-- Az [Azure parancssori felület (CLI) bővítmény a Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md).
+- Egy Azure Machine Learning-munkaterület. További információ: [Create an Azure Machine Learning workspace](how-to-manage-workspace.md)(Munkaterület Azure Machine Learning létrehozása).
+- Egy modell. Ha nem áll rendelkezésre betanított modell, használhatja az oktatóanyagban megadott modell- és [függőségfájlokat.](https://aka.ms/azml-deploy-cloud)
+- Az [Azure parancssori felület (CLI) bővítménye a Machine Learning szolgáltatáshoz.](reference-azure-machine-learning-cli.md)
 
 # <a name="python"></a>[Python](#tab/python)
 
-- Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
-- Egy modell. Ha nem rendelkezik betanított modellel, az [oktatóanyagban](https://aka.ms/azml-deploy-cloud)szereplő modell-és függőségi fájlokat is használhatja.
-- A [Pythonhoz készült Azure Machine learning szoftverfejlesztői készlet (SDK)](/python/api/overview/azure/ml/intro).
+- Egy Azure Machine Learning-munkaterület. További információ: [Create an Azure Machine Learning workspace](how-to-manage-workspace.md)(Munkaterület Azure Machine Learning létrehozása).
+- Egy modell. Ha nem áll rendelkezésre betanított modell, használhatja az oktatóanyagban megadott modell- és [függőségfájlokat.](https://aka.ms/azml-deploy-cloud)
+- A [Azure Machine Learning szoftverfejlesztői készlet (SDK) a Pythonhoz.](/python/api/overview/azure/ml/intro)
 
 ---
 
@@ -54,15 +54,15 @@ A Machine learning üzembe helyezési munkafolyamatában részt vevő fogalmakka
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-Az [előfizetési környezet beállításához](/cli/azure/manage-azure-subscriptions-azure-cli#change-the-active-subscription)kövesse az Azure CLI dokumentációjának utasításait.
+Kövesse az Azure CLI dokumentációjában található utasításokat az [előfizetési környezet beállításához.](/cli/azure/manage-azure-subscriptions-azure-cli#change-the-active-subscription)
 
-Ezután tegye a következőket:
+Ezután tegye a következőt:
 
 ```azurecli-interactive
 az ml workspace list --resource-group=<my resource group>
 ```
 
-lehetőségre kattintva megtekintheti a munkaterületeket.
+a munkaterületek, amelyekhez hozzáféréssel rendelkezik.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -71,7 +71,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config(path=".file-path/ws_config.json")
 ```
 
-Az SDK munkaterülethez való kapcsolódásával kapcsolatos további információkért tekintse meg a [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro#workspace) dokumentációját.
+A munkaterülethez való csatlakozás SDK-val való használatával kapcsolatos további információkért tekintse meg az [Azure Machine Learning SDK for Python dokumentációját.](/python/api/overview/azure/ml/intro#workspace)
 
 
 ---
@@ -79,22 +79,22 @@ Az SDK munkaterülethez való kapcsolódásával kapcsolatos további informáci
 
 ## <a name="register-your-model-optional"></a><a id="registermodel"></a> A modell regisztrálása (nem kötelező)
 
-A regisztrált modell a modellt alkotó egy vagy több fájl logikai tárolója. Ha például több fájlban tárolt modell van, akkor egyetlen modellként regisztrálhatja őket a munkaterületen. A fájlok regisztrálása után letöltheti vagy telepítheti a regisztrált modellt, és megkapja az összes regisztrált fájlt.
+A regisztrált modell a modellt tartalmazó egy vagy több fájl logikai tárolója. Ha például egy modell több fájlban van tárolva, regisztrálhatja őket egyetlen modellként a munkaterületen. A fájlok regisztrálása után letöltheti vagy üzembe helyezheti a regisztrált modellt, és fogadhatja az összes regisztrált fájlt.
 
 > [!TIP] 
-> A modell regisztrálása a verziók követéséhez ajánlott, de nem kötelező. Ha inkább a modell regisztrálása nélkül szeretne továbblépni, meg kell adnia egy forrás könyvtárat a [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) vagy [ ainferenceconfig.json](./reference-azure-machine-learning-cli.md#inference-configuration-schema) , és gondoskodnia kell arról, hogy a modell a forrás könyvtárán belül legyen.
+> A modell verziókövetésre való regisztrálása ajánlott, de nem kötelező. Ha inkább modell regisztrálása nélkül folytatná, meg kell adnia egy forráskönyvtárat az [](./reference-azure-machine-learning-cli.md#inference-configuration-schema) [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) vagyinferenceconfig.jsalatt, és meg kell győződni arról, hogy a modell abban a forráskönyvtárban található.
 
 > [!TIP]
-> Modell regisztrálása esetén megadja a Felhőbeli hely (betanítási Futtatás) vagy egy helyi könyvtár elérési útját. Ez az elérési út csak a feltöltéshez szükséges fájlok megkeresése a regisztrációs folyamat részeként. Nem kell megegyeznie a bejegyzési parancsfájlban használt elérési úttal. További információ: [a modell fájljainak megkeresése a belépési parancsfájlban](./how-to-deploy-advanced-entry-script.md#load-registered-models).
+> A modell regisztrálásakor meg kell adnia egy felhőbeli hely elérési útját (egy betanítás futtatásából) vagy egy helyi könyvtárat. Ez az elérési út csak a regisztrációs folyamat részeként feltölthet fájlokat keresve. Nem kell megegyezni a bejegyzési szkriptben használt elérési útokkal. További információ: [Modellfájlok keresése a bejegyzési szkriptben.](./how-to-deploy-advanced-entry-script.md#load-registered-models)
 
 > [!IMPORTANT]
-> Ha `Tags` Azure Machine learning Studio modellek lapján a szűrés lehetőséggel használja, az ügyfelek használata helyett `TagName : TagValue` `TagName=TagValue` (szóköz nélkül)
+> Ha a Filter by (Szűrés) lehetőséget használja a Azure Machine Learning Studio Models (Modellek) lapján, akkor az ügyfelek helyett a következőt kell `Tags` `TagName : TagValue` használniuk: `TagName=TagValue` (szóköz nélkül)
 
 Az alábbi példák bemutatják, hogyan regisztrálhat egy modellt.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-### <a name="register-a-model-from-an-azure-ml-training-run"></a>Modell regisztrálása egy Azure ML betanítási futtatásból
+### <a name="register-a-model-from-an-azure-ml-training-run"></a>Modell regisztrálása Azure ML betanítás futtatásából
 
 ```azurecli-interactive
 az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment --run-id myrunid --tag area=mnist
@@ -102,7 +102,7 @@ az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.
 
 [!INCLUDE [install extension](../../includes/machine-learning-service-install-extension.md)]
 
-A `--asset-path` paraméter a modell Felhőbeli helyét jelöli. Ebben a példában egyetlen fájl elérési útját használjuk. Ha több fájlt szeretne szerepeltetni a modell regisztrációjában, állítsa `--asset-path` a fájlokat tartalmazó mappa elérési útjára.
+A `--asset-path` paraméter a modell felhőbeli helyét jelenti. Ebben a példában egyetlen fájl elérési útját használjuk. Ha több fájlt is fel akar foglalni a modellregisztrációba, állítsa be egy olyan mappa elérési útját, `--asset-path` amely a fájlokat tartalmazza.
 
 ### <a name="register-a-model-from-a-local-file"></a>Modell regisztrálása helyi fájlból
 
@@ -110,17 +110,17 @@ A `--asset-path` paraméter a modell Felhőbeli helyét jelöli. Ebben a példá
 az ml model register -n onnx_mnist -p mnist/model.onnx
 ```
 
-Ha több fájlt szeretne szerepeltetni a modell regisztrációjában, állítsa `-p` a fájlokat tartalmazó mappa elérési útjára.
+Ha több fájlt is fel akar foglalni a modellregisztrációba, állítsa a adatokat tartalmazó mappa `-p` elérési útjára.
 
-A szolgáltatással kapcsolatos további információkért `az ml model register` olvassa el a [dokumentációt](/cli/azure/ext/azure-cli-ml/ml/model).
+A ről a `az ml model register` referenciadokumentációban [talál további információt.](/cli/azure/ml/model)
 
 # <a name="python"></a>[Python](#tab/python)
 
-### <a name="register-a-model-from-an-azure-ml-training-run"></a>Modell regisztrálása egy Azure ML betanítási futtatásból
+### <a name="register-a-model-from-an-azure-ml-training-run"></a>Modell regisztrálása Azure ML betanítás futtatásából
 
-  Ha az SDK-t használja a modell betanításához, akkor a modell kiképzésének módjától függően [futtathat egy futtatási](/python/api/azureml-core/azureml.core.run.run) objektumot vagy egy [AutoMLRun](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun) -objektumot. Minden objektum használható a kísérlet futtatásával létrehozott modellek regisztrálására.
+  Ha az SDK-val tanít be egy modellt, a modell betanításától függően kaphat egy Futtatás objektumot vagy egy [AutoMLRun](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun) objektumot. [](/python/api/azureml-core/azureml.core.run.run) Minden objektum felhasználható egy kísérlet futtatásával létrehozott modell regisztrálásához.
 
-  + Modell regisztrálása egy `azureml.core.Run` objektumból:
+  + Modell regisztrálása `azureml.core.Run` objektumból:
  
     ```python
     model = run.register_model(model_name='sklearn_mnist',
@@ -129,9 +129,9 @@ A szolgáltatással kapcsolatos további információkért `az ml model register
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    A `model_path` paraméter a modell Felhőbeli helyét jelöli. Ebben a példában egyetlen fájl elérési útját használjuk. Ha több fájlt szeretne szerepeltetni a modell regisztrációjában, állítsa `model_path` a fájlokat tartalmazó mappa elérési útjára. További információ: [Run.register_model](/python/api/azureml-core/azureml.core.run.run#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) dokumentáció.
+    A `model_path` paraméter a modell felhőbeli helyét jelenti. Ebben a példában egyetlen fájl elérési útját használjuk. Ha több fájlt is fel akar foglalni a modellregisztrációba, állítsa a adatokat tartalmazó mappa `model_path` elérési útjára. További információért tekintse [](/python/api/azureml-core/azureml.core.run.run#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) meg a Run.register_model dokumentációját.
 
-  + Modell regisztrálása egy `azureml.train.automl.run.AutoMLRun` objektumból:
+  + Modell regisztrálása `azureml.train.automl.run.AutoMLRun` objektumból:
 
     ```python
         description = 'My AutoML Model'
@@ -141,18 +141,18 @@ A szolgáltatással kapcsolatos további információkért `az ml model register
         print(run.model_id)
     ```
 
-    Ebben a példában a `metric` és a `iteration` paraméterek nincsenek megadva, ezért a rendszer a legjobb elsődleges metrikával rendelkező iterációt regisztrálja. A rendszer a `model_id` futtatásból visszaadott értéket használja a modell neve helyett.
+    Ebben a példában a és a paraméter nincs megadva, így a legjobb elsődleges metrikával való `metric` `iteration` iteráció lesz regisztrálva. A `model_id` futtatásból visszaadott érték lesz használva a modell neve helyett.
 
-    További információ: [AutoMLRun.register_model](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) dokumentáció.
+    További információért tekintse [](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) meg a AutoMLRun.register_model dokumentációját.
 
-    Ha egy regisztrált modellt szeretne központilag telepíteni `AutoMLRun` , azt javasoljuk, hogy az [Azure Machine learning Studióban az egykattintásos üzembe helyezés gomb](how-to-use-automated-ml-for-ml-models.md#deploy-your-model)használatával végezze el ezt a műveletet. 
+    Regisztrált modell egy alkalmazásból való üzembe helyezéséhez javasoljuk, hogy ezt az Azure Machine Learning Studióban, az egykattintásos üzembe helyezés `AutoMLRun` [gombbal telepítse.](how-to-use-automated-ml-for-ml-models.md#deploy-your-model) 
 ### <a name="register-a-model-from-a-local-file"></a>Modell regisztrálása helyi fájlból
 
-A modell helyi elérési útjának megadásával regisztrálhat egy modellt. Megadhatja egy mappa vagy egy fájl elérési útját. Ezzel a módszerrel regisztrálhatja Azure Machine Learning, majd letöltheti a betanított modelleket. Ezt a módszert használhatja a Azure Machine Learningon kívül betanított modellek regisztrálására is.
+A modellek regisztrálása a modell helyi elérési útjának meg kell megszabad ássa. Meg lehet adni egy mappa vagy egyetlen fájl elérési útját. Ezzel a módszerrel regisztrálhatja a Azure Machine Learning betanított modelleket. Ezzel a módszerrel a modellen kívül betanított modelleket is Azure Machine Learning.
 
 [!INCLUDE [trusted models](../../includes/machine-learning-service-trusted-model.md)]
 
-+ **Az SDK és a ONNX használata**
++ **Az SDK és az ONNX használata**
 
     ```python
     import os
@@ -170,27 +170,27 @@ A modell helyi elérési útjának megadásával regisztrálhat egy modellt. Meg
                             description = "MNIST image classification CNN from ONNX Model Zoo",)
     ```
 
-  Ha több fájlt szeretne szerepeltetni a modell regisztrációjában, állítsa `model_path` a fájlokat tartalmazó mappa elérési útjára.
+  Ha több fájlt is fel akar foglalni a modellregisztrációba, állítsa be egy olyan mappa elérési útját, `model_path` amely a fájlokat tartalmazza.
 
-További információkért tekintse meg a [modell osztály](/python/api/azureml-core/azureml.core.model.model)dokumentációját.
+További információért tekintse meg a [Model osztály dokumentációját.](/python/api/azureml-core/azureml.core.model.model)
 
-A Azure Machine Learningon kívül betanított modellek használatáról a következő témakörben talál további információt: [meglévő modell üzembe helyezése](how-to-deploy-existing-model.md).
+A meglévő modelleken kívül betanított Azure Machine Learning [lásd: How to deploy an existing model](how-to-deploy-existing-model.md)(Meglévő modell üzembe helyezése).
 
 ---
 
-## <a name="define-an-entry-script"></a>Bejegyzési parancsfájl definiálása
+## <a name="define-an-entry-script"></a>Bejegyzési szkript meghatározása
 
 [!INCLUDE [write entry script](../../includes/machine-learning-entry-script.md)]
 
 
-## <a name="define-an-inference-configuration"></a>Következtetési konfiguráció definiálása
+## <a name="define-an-inference-configuration"></a>Következtetési konfiguráció meghatározása
 
 
-A következtetések konfigurálásával megtudhatja, hogyan állíthatja be a modellt tartalmazó webes szolgáltatást. Ezt később, a modell telepítésekor használják.
+A következtetési konfiguráció azt ismerteti, hogyan állíthatja be a modellt tartalmazó webszolgáltatást. Ezt később, a modell üzembe helyezésekor használjuk majd.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-A minimális következtetési konfiguráció a következőképpen írható le:
+A minimális következtetési konfiguráció a következő ként írható meg:
 
 ```json
 {
@@ -238,18 +238,18 @@ A minimális következtetési konfiguráció a következőképpen írható le:
 }
 ```
 
-Ez azt jelenti, hogy a Machine learning üzembe helyezése a könyvtárban található fájlt fogja használni a `score.py` `./working_dir` bejövő kérések feldolgozásához, és a Docker-rendszerképet a környezetben megadott Python-csomagokkal fogja használni `project_environment` .
+Ez azt határozza meg, hogy a Machine Learning üzembe helyezése a könyvtárban lévő fájlt fogja használni a bejövő kérések feldolgozásához, és hogy a Docker-rendszerképet fogja használni a környezetben megadott `score.py` `./working_dir` Python-csomagokkal. `project_environment`
 
-[Tekintse meg ezt a cikket](./reference-azure-machine-learning-cli.md#inference-configuration-schema) a következtetések konfigurációjának alaposabb megvitatására. 
+[A következtetési](./reference-azure-machine-learning-cli.md#inference-configuration-schema) konfigurációk alaposabb megvitatásához tekintse meg ezt a cikket. 
 
 # <a name="python"></a>[Python](#tab/python)
 
 Az alábbi példa a következőket mutatja be:
 
-1. [kurátori környezet](resource-curated-environments.md) betöltése a munkaterületről
+1. [összecsatott környezet betöltése a](resource-curated-environments.md) munkaterületről
 1. A környezet klónozása
-1. `scikit-learn`Függőségként való megadása.
-1. A környezet használata InferenceConfig létrehozásához
+1. Függőségként `scikit-learn` való megadása.
+1. A környezet használata egy InferenceConfig létrehozásához
 
 ```python
 from azureml.core.environment import Environment
@@ -265,44 +265,44 @@ inference_config = InferenceConfig(entry_script='path-to-score.py',
                                     environment=env)
 ```
 
-További információ a környezetekről: [környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](how-to-use-environments.md).
+A környezetekkel kapcsolatos további információkért lásd: [Környezetek létrehozása és kezelése a betanításhoz és az üzembe helyezéshez.](how-to-use-environments.md)
 
-További információ a konfigurációval kapcsolatban: [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) Class dokumentáció.
+A dedundáns konfigurációval kapcsolatos további információkért tekintse meg az [InferenceConfig osztály dokumentációját.](/python/api/azureml-core/azureml.core.model.inferenceconfig)
 
 ---
 
 > [!TIP] 
-> További információ a következtetési konfigurációval rendelkező egyéni Docker-rendszerképek használatáról: [modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md).
+> Az egyéni Docker-rendszerkép következtetési konfigurációval való használatával kapcsolatos információkért lásd: Modell üzembe helyezése egyéni [Docker-rendszerkép használatával.](how-to-deploy-custom-docker-image.md)
 
 ## <a name="choose-a-compute-target"></a>Számítási cél kiválasztása
 
 [!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
 
-## <a name="define-a-deployment-configuration"></a>Telepítési konfiguráció definiálása
+## <a name="define-a-deployment-configuration"></a>Üzembe helyezési konfiguráció meghatározása
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-A központi telepítési konfigurációhoz elérhető lehetőségek a kiválasztott számítási céltól függően eltérőek.
+Az üzembe helyezési konfigurációkhoz elérhető beállítások a választott számítási céltól függően eltérőek lehetnek.
 
 [!INCLUDE [aml-local-deploy-config](../../includes/machine-learning-service-local-deploy-config.md)]
 
-További információkért tekintse meg [ezt a hivatkozást](./reference-azure-machine-learning-cli.md#deployment-configuration-schema).
+További információért tekintse meg ezt [a hivatkozást.](./reference-azure-machine-learning-cli.md#deployment-configuration-schema)
 
 # <a name="python"></a>[Python](#tab/python)
 
-A modell üzembe helyezése előtt meg kell határoznia a telepítési konfigurációt. *A központi telepítési konfiguráció a webszolgáltatást futtató számítási célra vonatkozik.* Ha például helyileg helyez üzembe egy modellt, meg kell adnia azt a portot, ahol a szolgáltatás fogadja a kérelmeket. A telepítési konfiguráció nem része a belépési parancsfájlnak. A rendszer a modell és a beléptetési parancsfájlt futtató számítási cél jellemzőinek meghatározására szolgál.
+A modell üzembe helyezése előtt meg kell határoznia az üzembe helyezési konfigurációt. *Az üzembe helyezési konfiguráció a webszolgáltatást tároló számítási célra vonatkozik.* Amikor például helyileg helyez üzembe egy modellt, meg kell adnia azt a portot, ahol a szolgáltatás fogadja a kéréseket. Az üzembe helyezési konfiguráció nem része a belépési szkriptnek. A modell és a belépési szkriptet tároló számítási cél jellemzőinek meghatározására használatos.
 
-Előfordulhat, hogy a számítási erőforrást is létre kell hoznia, ha például még nem rendelkezik a munkaterülethez társított Azure Kubernetes Service-(ak-) példánnyal.
+Előfordulhat, hogy a számítási erőforrást is létre kell hoznia, ha például még nincs a munkaterülethez társított Azure Kubernetes Service-példány (AKS).
 
-Az alábbi táblázat az egyes számítási célkitűzések központi telepítési konfigurációjának létrehozásához nyújt példát:
+Az alábbi táblázat egy példát mutat be az egyes számítási célhoz való üzembe helyezési konfiguráció létrehozására:
 
-| Számítási cél | Üzembe helyezési konfiguráció – példa |
+| Számítási cél | Példa üzembe helyezési konfigurációra |
 | ----- | ----- |
 | Helyi | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
-A helyi, Azure Container Instances és AK webszolgáltatásokhoz tartozó osztályok a következő helyekről importálhatók `azureml.core.webservice` :
+A helyi, Azure Container Instances és AKS-webszolgáltatások osztályai a alkalmazásból `azureml.core.webservice` importálhatók:
 
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
@@ -310,7 +310,7 @@ from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservic
 
 ---
 
-## <a name="deploy-your-machine-learning-model"></a>A Machine learning-modell üzembe helyezése
+## <a name="deploy-your-machine-learning-model"></a>A gépi tanulási modell üzembe helyezése
 
 Most már készen áll a modell üzembe helyezésére. 
 
@@ -318,7 +318,7 @@ Most már készen áll a modell üzembe helyezésére.
 
 ### <a name="using-a-registered-model"></a>Regisztrált modell használata
 
-Ha regisztrálta a modellt a Azure Machine Learning munkaterületen, cserélje le a "mymodel: 1" kifejezést a modell nevével és annak verziószámával.
+Ha regisztrálta a modellt a Azure Machine Learning munkaterületén, cserélje le a "mymodel:1" helyére a modell nevét és verziószámát.
 
 ```azurecli-interactive
 az ml model deploy -n tutorial -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
@@ -326,7 +326,7 @@ az ml model deploy -n tutorial -m mymodel:1 --ic inferenceconfig.json --dc deplo
 
 ### <a name="using-a-local-model"></a>Helyi modell használata
 
-Ha nem szeretné regisztrálni a modellt, akkor a inferenceconfig.js"sourceDirectory" paraméterének megadásával megadhat egy helyi könyvtárat a modell kiszolgálásához.
+Ha nem szeretné regisztrálni a modellt, átadhatja a "sourceDirectory" paramétert a inferenceconfig.js-ban, hogy megadjon egy helyi könyvtárat, amelyből a modellt kiszolgálni szeretné.
 
 ```azurecli-interactive
 az ml model deploy --ic inferenceconfig.json --dc deploymentconfig.json --name my_deploy
@@ -334,7 +334,7 @@ az ml model deploy --ic inferenceconfig.json --dc deploymentconfig.json --name m
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az alábbi példa egy helyi telepítést mutat be. A szintaxis az előző lépésben kiválasztott számítási céltól függően változhat.
+Az alábbi példa egy helyi üzembe helyezést mutat be. A szintaxis az előző lépésben kiválasztott számítási céltól függően változik.
 
 ```python
 from azureml.core.webservice import LocalWebservice, Webservice
@@ -345,59 +345,59 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-További információkért tekintse meg a [LocalWebservice](/python/api/azureml-core/azureml.core.webservice.local.localwebservice), a [Model. Deploy ()](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)és a [webszolgáltatások](/python/api/azureml-core/azureml.core.webservice.webservice)dokumentációját.
+További információkért tekintse meg a [LocalWebservice,](/python/api/azureml-core/azureml.core.webservice.local.localwebservice) [a Model.deploy() és](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)a [Webservice dokumentációját.](/python/api/azureml-core/azureml.core.webservice.webservice)
 
 ---
 
 ### <a name="understanding-service-state"></a>A szolgáltatás állapotának ismertetése
 
-A modell telepítése során előfordulhat, hogy a szolgáltatás állapota megváltozik a teljes üzembe helyezése során.
+A modell üzembe helyezése során előfordulhat, hogy a szolgáltatás állapota megváltozik a teljes üzembe helyezés során.
 
-Az alábbi táblázat a különböző szolgáltatás-állapotokat ismerteti:
+Az alábbi táblázat a különböző szolgáltatás-államokat ismerteti:
 
-| Webszolgáltatás állapota | Leírás | Végső állapot?
+| Webszolgáltatás állapota | Description | Végső állapot?
 | ----- | ----- | ----- |
-| Transitioning | A szolgáltatás üzembe helyezési folyamatban van. | Nem |
-| Nem kifogástalan | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | Nem |
-| Unschedulable | A szolgáltatás jelenleg nem telepíthető az erőforrások hiánya miatt. | Nem |
-| Sikertelen | Hiba vagy összeomlás miatt nem sikerült telepíteni a szolgáltatást. | Igen |
-| Kifogástalan | A szolgáltatás kifogástalan állapotban van, és a végpont elérhető. | Igen |
+| Átállás | A szolgáltatás üzembe helyezése folyamatban van. | No |
+| Nem kifogástalan | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | No |
+| Nem ütemezhető | A szolgáltatás jelenleg nem helyezhető üzembe az erőforrások hiánya miatt. | No |
+| Sikertelen | A szolgáltatás üzembe helyezése hiba vagy összeomlás miatt meghiúsult. | Yes |
+| Kifogástalan | A szolgáltatás kifogástalan állapotú, és a végpont elérhető. | Yes |
 
 > [!TIP]
-> A üzembe helyezéskor a számítási célokhoz tartozó Docker-rendszerképeket Azure Container Registry (ACR) alapján építették és töltik be. Alapértelmezés szerint a Azure Machine Learning létrehoz egy ACR-t, *amely az alapszintű* szolgáltatási szintet használja. A munkaterületre vonatkozó ACR a standard vagy a prémium csomagra való módosítása csökkentheti a lemezképeknek a számítási célokhoz való felépítéséhez és üzembe helyezéséhez szükséges időt. További információ: [Azure Container Registry szolgáltatási szintek](../container-registry/container-registry-skus.md).
+> Az üzembe helyezéskor a számítási célokhoz készült Docker-rendszerképeket a rendszer kiépíti és betölti az Azure Container Registry (ACR) szolgáltatásból. Alapértelmezés szerint a Azure Machine Learning alapszintű szolgáltatási szintet használó *ACR-t* hoz létre. Ha a munkaterület ACR-ét standard vagy prémium szintre módosítja, az csökkentheti a rendszerképek számítási célokon való létrehozásához és üzembe helyezéséhez szükséges időt. További információkért lásd a [Azure Container Registry rétegeket.](../container-registry/container-registry-skus.md)
 
 > [!NOTE]
-> Ha modellt helyez üzembe az Azure Kubernetes Service (ak) szolgáltatásban, javasoljuk, hogy engedélyezze [Azure monitor](../azure-monitor/containers/container-insights-enable-existing-clusters.md) a fürt számára. Ez segítséget nyújt a fürt állapotának és erőforrás-használatának általános megismerésében. A következő erőforrások is hasznosak lehetnek:
+> Ha AKS-Azure Kubernetes Service helyez üzembe egy modellt, javasoljuk, [](../azure-monitor/containers/container-insights-enable-existing-clusters.md) hogy engedélyezze Azure Monitor fürtön. Ez segít megérteni a fürt általános állapotát és erőforrás-használatát. A következő erőforrásokat is hasznosnak találhatja:
 >
-> * [Az AK-fürtöt befolyásoló Resource Health események keresése](../aks/aks-resource-health.md)
-> * [Azure Kubernetes Service Diagnostics](../aks/concepts-diagnostics.md)
+> * [Az AKS-Resource Health érintett események ellenőrzése](../aks/aks-resource-health.md)
+> * [Azure Kubernetes Service diagnosztika](../aks/concepts-diagnostics.md)
 >
-> Ha egy modellt nem kifogástalan állapotú vagy túlterhelt fürtre próbál telepíteni, a rendszer problémát tapasztal. Ha segítségre van szüksége az AK-fürtökkel kapcsolatos problémák megoldásához, forduljon az AK-támogatáshoz.
+> Ha egy modellt egy nem megfelelő vagy túlterhelt fürtön próbál üzembe helyezni, problémákat fog tapasztalni. Ha segítségre van szüksége az AKS-fürtproblémák elhárításához, forduljon az AKS ügyfélszolgálatához.
 
 ### <a name="batch-inference"></a><a id="azuremlcompute"></a> Batch-következtetés
-A Azure Machine Learning számítási célokat Azure Machine Learning hozza létre és kezeli. A kötegelt előrejelzésekhez Azure Machine Learning folyamatokból is felhasználhatók.
+Azure Machine Learning számítási célok létrehozása és kezelése a Azure Machine Learning. A folyamatokból származó kötegelt előrejelzésekhez Azure Machine Learning használhatók.
 
-A Batch-következtetések Azure Machine Learning számítási feladatokkal való áttekintését lásd: [a Batch-előrejelzések futtatása](tutorial-pipeline-batch-scoring-classification.md).
+Az Azure Machine Learning Compute kötegelt következtetésének bemutatójáért lásd: Kötegelt [előrejelzések futtatása.](tutorial-pipeline-batch-scoring-classification.md)
 
 ### <a name="iot-edge-inference"></a><a id="iotedge"></a> IoT Edge következtetés
-A peremhálózati üzembe helyezésének támogatása előzetes verzióban érhető el. További információ: [Azure Machine learning telepítése IoT Edge modulként](../iot-edge/tutorial-deploy-machine-learning.md).
+A peremhálózaton való üzembe helyezés támogatása előzetes verzióban érhető el. További információ: [Deploy Azure Machine Learning as an IoT Edge module](../iot-edge/tutorial-deploy-machine-learning.md)..
 
 ## <a name="delete-resources"></a>Erőforrások törlése
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-Telepített webszolgáltatás törléséhez használja a következőt: `az ml service <name of webservice>` .
+Egy üzembe helyezett webszolgáltatás törléséhez használja a `az ml service <name of webservice>` parancsot.
 
-Ha törölni szeretne egy regisztrált modellt a munkaterületről, használja a következőt: `az ml model delete <model id>`
+Regisztrált modell munkaterületről való törléséhez használja a `az ml model delete <model id>`
 
-További információ a [webszolgáltatások törléséről](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-delete) és [a modellek törléséről](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-delete).
+További információ [a webszolgáltatások törléséről](/cli/azure/ml/service#az_ml_service_delete) és [a modell törléséről.](/cli/azure/ml/model#az_ml_model_delete)
 
 # <a name="python"></a>[Python](#tab/python)
 
-Központilag telepített webszolgáltatás törléséhez használja a következőt: `service.delete()` .
-Regisztrált modell törléséhez használja a következőt: `model.delete()` .
+Az üzembe helyezett webszolgáltatás törléséhez használja a `service.delete()` parancsot.
+Regisztrált modell törléséhez használja a `model.delete()` parancsot.
 
-További információ: a [webszolgáltatások dokumentációja. Delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29#delete--) és [Model. Delete ()](/python/api/azureml-core/azureml.core.model.model#delete--).
+További információt a [WebService.delete()](/python/api/azureml-core/azureml.core.webservice%28class%29#delete--) és [a Model.delete() dokumentációjában talál.](/python/api/azureml-core/azureml.core.model.model#delete--)
 
 ---
 
@@ -405,11 +405,11 @@ További információ: a [webszolgáltatások dokumentációja. Delete ()](/pyth
 
 * [Sikertelen üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)
 * [Üzembe helyezés az Azure Kubernetes Service-ben](how-to-deploy-azure-kubernetes-service.md)
-* [Ügyfélalkalmazások létrehozása webszolgáltatások felhasználásához](how-to-consume-web-service.md)
+* [Ügyfélalkalmazások létrehozása webszolgáltatásokhoz](how-to-consume-web-service.md)
 * [Webszolgáltatás frissítése](how-to-deploy-update-web-service.md)
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
-* [Egy kattintással üzemelő példány automatikus ML-futtatáshoz a Azure Machine Learning Studióban](how-to-use-automated-ml-for-ml-models.md#deploy-your-model)
+* [Egykattintásos üzembe helyezés az automatizált gépi tanulási Azure Machine Learning stúdió](how-to-use-automated-ml-for-ml-models.md#deploy-your-model)
 * [TLS használata webszolgáltatás védelméhez az Azure Machine Learning szolgáltatás segítségével](how-to-secure-web-service.md)
-* [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
-* [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)
-* [Esemény-riasztások és eseményindítók létrehozása a modell üzembe helyezéséhez](how-to-use-event-grid.md)
+* [Monitor a Azure Machine Learning modelleket a Application Insights](how-to-enable-app-insights.md)
+* [Adatok gyűjtése éles modellekhez](how-to-enable-data-collection.md)
+* [Eseményriasztás és eseményindítók létrehozása a modell üzembe helyezéséhez](how-to-use-event-grid.md)

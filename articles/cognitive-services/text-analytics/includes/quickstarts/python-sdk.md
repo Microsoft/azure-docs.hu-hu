@@ -5,12 +5,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/19/2021
 ms.author: aahi
-ms.openlocfilehash: cee201c11d0415e1f63e7e6a9157b96a059503ba
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d36666ea35a4ce3fc894e35dd8ca3860900ecef6
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765071"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107881057"
 ---
 <a name="HOLTop"></a>
 
@@ -84,7 +84,7 @@ A válaszobjektum egy lista, amely az egyes dokumentumok elemzési adatait tarta
 
 # <a name="version-30"></a>[3.0-s verzió](#tab/version-3)
 
-A Text Analytics ügyfél egy objektum, amely az Ön kulcsával hitelesíti `TextAnalyticsClient` az Azure-t. Az ügyfél számos metódust biztosít a szöveg kötegként való elemzésére. 
+A Text Analytics ügyfél egy objektum, amely az Ön kulcsával hitelesíti `TextAnalyticsClient` magát az Azure-ban. Az ügyfél több módszert is biztosít a szöveg kötegként való elemzésére. 
 
 Amikor kötegelt feldolgozási szöveget küld az API-nak a listájaként, amelyek a használt metódustól függően , és attribútumok kombinációját tartalmazó `documents` `dictionary` `id` `text` `language` objektumok. A attribútum tárolja az elemzett szöveget a forrásban, és a `text` `language` bármilyen érték `id` lehet. 
 
@@ -391,7 +391,7 @@ Negative=0.02
 
 # <a name="version-31-preview"></a>[3.1-es előzetes verzió](#tab/version-3-1)
 
-Hozzon létre egy nevű új függvényt, amely az ügyfelet veszi fel `language_detection_example()` argumentumként, majd hívja meg `detect_language()` a függvényt. A visszaadott válaszobjektum az észlelt nyelvet fogja tartalmazni , ha sikeres, és ha nem, akkor a `primary_language` `error` következőt: .
+Hozzon létre egy nevű új függvényt, amely az ügyfelet veszi fel `language_detection_example()` argumentumként, majd hívja meg a `detect_language()` függvényt. A visszaadott válaszobjektum az észlelt nyelvet fogja tartalmazni a (ha sikeres) és a (ha `primary_language` `error` nem) értékeket.
 
 > [!Tip]
 > Bizonyos esetekben nehéz lehet a bemenet alapján különböző nyelveket felfedni. A paraméterrel kétbetűs országkódot `country_hint` is megadhat. Alapértelmezés szerint az API az "US" értéket használja alapértelmezett countryHint értékként, hogy eltávolítsa ezt a viselkedést, ha ezt a paramétert üres sztringre `country_hint : ""` állítja. 
@@ -656,7 +656,7 @@ Named Entities:
 
 ### <a name="entity-linking"></a>Entitáskapcsolás
 
-Hozzon létre egy nevű új függvényt, amely az ügyfelet veszi fel argumentumként, majd hívja meg a függvényt, és végigveszi az `entity_linking_example()` `recognize_linked_entities()` eredményeket. A visszaadott válaszobjektum tartalmazza az észlelt entitások listáját a (ha sikeres) és a (ha `entities` `error` nem) entitásokat. Mivel a csatolt entitások egyedileg vannak azonosítva, ugyanazon entitás előfordulásai objektumok listájaként vannak egy objektum `entity` alatt `match` csoportosítva.
+Hozzon létre egy nevű új függvényt, amely az ügyfelet veszi fel argumentumként, majd hívja meg a függvényt, és végigveszi az `entity_linking_example()` `recognize_linked_entities()` eredményeket. A visszaadott válaszobjektum tartalmazza az észlelt entitások listáját a (ha sikeres) és a (ha `entities` `error` nem) entitásokat. Mivel a csatolt entitások egyedileg vannak azonosítva, a rendszer ugyanannak az entitásnak az előfordulásait objektumok listájaként csoportosítja egy `entity` objektum `match` alatt.
 
 ```python
 def entity_linking_example(client):
@@ -730,7 +730,7 @@ Linked Entities:
 
 # <a name="version-31-preview"></a>[3.1-es előzetes verzió](#tab/version-3-1)
 
-Hozzon létre egy nevű új függvényt, amely az ügyfelet veszi fel `key_phrase_extraction_example()` argumentumként, majd hívja meg `extract_key_phrases()` a függvényt. Az eredmény az észlelt kulcskifejezések listáját tartalmazza a (ha sikeres) és a (ha `key_phrases` `error` nem) kifejezéseket. Nyomtassa ki az észlelt kulcskifejezéseket.
+Hozzon létre egy nevű új függvényt, amely az ügyfelet veszi fel `key_phrase_extraction_example()` argumentumként, majd hívja meg a `extract_key_phrases()` függvényt. Az eredmény az észlelt kulcskifejezések listáját tartalmazza a (ha sikeres) és a (ha `key_phrases` `error` nem) kifejezéseket. Nyomtassa ki az észlelt kulcskifejezéseket.
 
 ```python
 def key_phrase_extraction_example(client):
@@ -764,7 +764,7 @@ key_phrase_extraction_example(client)
 
 # <a name="version-30"></a>[3.0-s verzió](#tab/version-3)
 
-Hozzon létre egy nevű új függvényt, amely az ügyfelet veszi fel `key_phrase_extraction_example()` argumentumként, majd hívja meg `extract_key_phrases()` a függvényt. Az eredmény az észlelt kulcskifejezések listáját tartalmazza a (ha sikeres) és a (ha `key_phrases` `error` nem) kifejezéseket. Nyomtassa ki az észlelt kulcskifejezéseket.
+Hozzon létre egy nevű új függvényt, amely az ügyfelet veszi fel `key_phrase_extraction_example()` argumentumként, majd hívja meg a `extract_key_phrases()` függvényt. Az eredmény az észlelt kulcskifejezések listáját tartalmazza a (ha sikeres) és a (ha `key_phrases` `error` nem) kifejezéseket. Nyomtassa ki az észlelt kulcskifejezéseket.
 
 ```python
 def key_phrase_extraction_example(client):
@@ -805,7 +805,7 @@ key_phrase_extraction_example(client)
 
 [!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
 
-Hozzon létre egy nevű új függvényt, amely az ügyfelet veszi fel `analyze_batch_actions_example()` argumentumként, majd hívja meg `begin_analyze_batch_actions()` a függvényt. Az eredmény egy hosszú ideig futó művelet lesz, amelynek eredményeit a rendszer lekérdezi.
+Hozzon létre egy nevű új függvényt, amely az ügyfelet veszi fel `analyze_batch_example()` argumentumként, majd hívja meg `begin_analyze_batch_actions()` a függvényt. Az eredmény egy hosszú ideig futó művelet lesz, amelynek eredményeit a rendszer lekérdezi.
 
 ```python
 from azure.ai.textanalytics import (

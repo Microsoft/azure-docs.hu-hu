@@ -37,7 +37,7 @@
           href: azure-portal-dashboard-share-access.md
         - name: Egyéni Markdown-csempe használata
           href: azure-portal-markdown-tile.md
-        - name: Azure-irányítópult programozott létrehozása
+        - name: Azure-irányítópult létrehozása programozott módon
           href: azure-portal-dashboards-create-programmatically.md
           displayName: 'Azure CLI, az portal dashboard, az portal'
     - name: Az Azure Portal útmutató videósorozata
@@ -79,7 +79,7 @@
     - name: Az Azure-irányítópultok struktúrája
       href: azure-portal-dashboards-structure.md
     - name: Azure CLI
-      href: /cli/azure/ext/portal/portal
+      href: /cli/azure/portal
     - name: Az Azure Policy beépített elemei
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

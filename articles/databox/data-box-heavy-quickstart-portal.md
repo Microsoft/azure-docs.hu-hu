@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/04/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 3a7f9179822720b0e5ffc21bc560b4c6ccad9463
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
-ms.translationtype: HT
+ms.openlocfilehash: 8c418f7cbeb56b94b7a85b12e833301b979bff32
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347422"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871549"
 ---
 ::: zone target = "docs"
 
@@ -89,7 +89,7 @@ Ezekkel az Azure CLI-parancsokkal Data Box Heavy-feladatokat hozhat létre.
    az storage account create --resource-group databox-rg --name databoxtestsa
    ```
 
-1. Futtassa az [az databox job create](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_create) parancsot egy **--sku** értékű `DataBoxHeavy` paraméterrel rendelkező Data Box-feladat létrehozásához:
+1. Futtassa az [az databox job create](/cli/azure/databox/job#az_databox_job_create) parancsot egy **--sku** értékű `DataBoxHeavy` paraméterrel rendelkező Data Box-feladat létrehozásához:
 
    ```azurecli
    az databox job create --resource-group databox-rg --name databoxheavy-job \
@@ -102,37 +102,37 @@ Ezekkel az Azure CLI-parancsokkal Data Box Heavy-feladatokat hozhat létre.
    > [!NOTE]
    > Győződjön meg arról, hogy az előfizetés támogatja a Data Box Heavyt.
 
-1. Futtassa az [az databox job update](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_update) parancsot egy feladat frissítéséhez, mint ebben a példában, amelyben módosítja a kapcsolattartó nevét és e-mail-címét:
+1. Futtassa az [az databox job update](/cli/azure/databox/job#az_databox_job_update) parancsot egy feladat frissítéséhez, mint ebben a példában, amelyben módosítja a kapcsolattartó nevét és e-mail-címét:
 
    ```azurecli
    az databox job update -g databox-rg --name databox-job --contact-name "Robert Anic" --email-list RobertAnic@contoso.com
    ```
 
-   Futtassa az [az databox job show](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_show) parancsot a feladat adatainak lekéréséhez:
+   Futtassa az [az databox job show](/cli/azure/databox/job#az_databox_job_show) parancsot a feladat adatainak lekéréséhez:
 
    ```azurecli
    az databox job show --resource-group databox-rg --name databox-job
    ```
 
-   Futtassa az [az databox job list]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list) parancsot egy erőforráscsoport összes Data Box-feladatának megtekintéséhez:
+   Futtassa az [az databox job list]( /cli/azure/databox/job#az_databox_job_list) parancsot egy erőforráscsoport összes Data Box-feladatának megtekintéséhez:
 
    ```azurecli
    az databox job list --resource-group databox-rg
    ```
 
-   Futtassa az [az databox job cancel](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_cancel) parancsot egy feladat megszakításához:
+   Futtassa az [az databox job cancel](/cli/azure/databox/job#az_databox_job_cancel) parancsot egy feladat megszakításához:
 
    ```azurecli
    az databox job cancel –resource-group databox-rg --name databox-job --reason "Cancel job."
    ```
 
-   Futtassa az [az databox job delete](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_delete) parancsot egy feladat törléséhez:
+   Futtassa az [az databox job delete](/cli/azure/databox/job#az_databox_job_delete) parancsot egy feladat törléséhez:
 
    ```azurecli
    az databox job delete –resource-group databox-rg --name databox-job
    ```
 
-1. Futtassa az [az databox job list-credentials]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list_credentials) parancsot a Data Box-feladat hitelesítő adatainak listázásához:
+1. Futtassa az [az databox job list-credentials]( /cli/azure/databox/job#az_databox_job_list_credentials) parancsot a Data Box-feladat hitelesítő adatainak listázásához:
 
    ```azurecli
    az databox job list-credentials --resource-group "databox-rg" --name "databoxdisk-job"

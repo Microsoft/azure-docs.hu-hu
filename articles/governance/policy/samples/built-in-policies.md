@@ -1,21 +1,21 @@
 ---
 title: Beépített szabályzatdefiníciók listája
 description: List built-in policy definitions for Azure Policy. A kategóriák közé tartoznak a címkék, a jogszabályi megfelelőség, Key Vault, a Kubernetes, a vendégkonfiguráció stb.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 8110ee2539165dfd6daa243dca151578726d0d84
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 48eed2f33c31bc78e341a674948b23dc2aa99c43
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107498641"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866659"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy beépített szabályzatdefiníciók
 
 Ez az oldal a Azure Policy szabályzatdefiníciók indexe.
 
-Az egyes beépített hivatkozások a szabályzatdefinícióra mutató hivatkozások a Azure Portal. A Forrás oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy) A beépítettek a metaadatok **kategóriatulajdonságai** szerint vannak **csoportosítva.** Egy adott kategóriára való **ugráshoz** használja az oldal jobb oldalán található menüt. Ellenkező esetben használja <kbd>a Ctrl</kbd>F billentyűkombinációt a böngésző keresési - <kbd></kbd> funkcióját használva.
+Az egyes beépített hivatkozások neve a szabályzatdefinícióra a Azure Portal. A Forrás oszlopban található **hivatkozással** megtekintheti a forrást a [GitHub Azure Policy tárban.](https://github.com/Azure/azure-policy) A beépítettek a metaadatok **kategóriatulajdonságai** szerint vannak **csoportosítva.** Egy adott kategóriára való **ugráshoz** használja az oldal jobb oldalán található menüt. Ellenkező esetben használja <kbd>a Ctrl</kbd>F billentyűkombinációt a böngésző keresési - <kbd></kbd> funkcióját használva.
 
 ## <a name="api-for-fhir"></a>API for FHIR
 
@@ -48,6 +48,10 @@ Az egyes beépített hivatkozások a szabályzatdefinícióra mutató hivatkozá
 ## <a name="automation"></a>Automation
 
 [!INCLUDE [azure-policy-reference-policies-automation](../../../../includes/policy/reference/bycat/policies-automation.md)]
+
+## <a name="azure-active-directory"></a>Azure Active Directory
+
+[!INCLUDE [azure-policy-reference-policies-azure-active-directory](../../../../includes/policy/reference/bycat/policies-azure-active-directory.md)]
 
 ## <a name="azure-data-explorer"></a>Azure Adatkezelő
 

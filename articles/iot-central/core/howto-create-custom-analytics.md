@@ -1,67 +1,67 @@
 ---
-title: Az Azure IoT Central kiterjesztése egyéni elemzéssel | Microsoft Docs
-description: Megoldás fejlesztőként konfiguráljon egy IoT Central alkalmazást egyéni elemzések és vizualizációk végrehajtásához. Ez a megoldás Azure Databricks használ.
-author: TheRealJasonAndrew
-ms.author: v-anjaso
+title: A Azure IoT Central kiterjesztése egyéni elemzési | Microsoft Docs
+description: Megoldásfejlesztőként konfiguráljon egy IoT Central egyéni elemzésekhez és vizualizációkhoz. Ez a megoldás a Azure Databricks.
+author: philmea
+ms.author: philmea
 ms.date: 03/15/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 3132ec8fb3cb123653887d92a2f33788f40564c0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ada9947b217944d9aec9f785f4716bfe43315b1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105033823"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872766"
 ---
-# <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Az Azure IoT Central kiterjesztése egyéni elemzésekkel Azure Databricks használatával
+# <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Az Azure IoT Central kibővítése egyéni elemzésekkel az Azure Databricks használatával
 
-Ez az útmutató bemutatja, hogyan bővíthető a IoT Central alkalmazása egyéni elemzésekkel és vizualizációkkal. A példa egy [Azure Databricks](/azure/azure-databricks/) munkaterületet használ a IoT Central telemetria stream elemzéséhez, valamint vizualizációk, például [Box-ábrázolások](https://wikipedia.org/wiki/Box_plot)létrehozásához.  
+Ez az útmutató azt mutatja be megoldásfejlesztőként, hogyan bővítheti IoT Central alkalmazásait egyéni elemzésekkel és vizualizációk használatával. A példa egy [Azure Databricks](/azure/azure-databricks/) használ a telemetriastream IoT Central és vizualizációk, például dobozábrázolások [létrehozásához.](https://wikipedia.org/wiki/Box_plot)  
 
-Ez a útmutató azt mutatja be, hogyan terjeszthető ki IoT Central, hogy mit tehet a [beépített elemzési eszközökkel](./howto-create-custom-analytics.md).
+Ez az útmutató bemutatja, hogyan bővítheti a IoT Central a beépített elemzőeszközökkel már meglévő [funkciókon túl.](./howto-create-custom-analytics.md)
 
-Ebben a útmutatóban a következőket sajátíthatja el:
+Ez az útmutató a következő lehetőségekkel ismerkedik meg:
 
-* Stream telemetria egy IoT Central alkalmazásból *folyamatos adatexportálás* használatával.
-* Azure Databricks-környezet létrehozása az eszközök telemetria elemzéséhez és ábrázolásához.
+* Streamelési telemetria egy IoT Central folyamatos *adatexportációval.*
+* Hozzon létre Azure Databricks környezetet az eszköz telemetriai adatainak elemzéséhez és ábrázolása érdekében.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A jelen útmutató lépéseinek végrehajtásához aktív Azure-előfizetésre van szükség.
+Az útmutató lépéseit egy aktív Azure-előfizetéssel kell végrehajtania.
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ### <a name="iot-central-application"></a>IoT Central alkalmazás
 
-Hozzon létre egy IoT Central alkalmazást az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén a következő beállításokkal:
+Hozzon létre IoT Central alkalmazást a [Azure IoT Central alkalmazáskezelő webhelyén](https://aka.ms/iotcentral) a következő beállításokkal:
 
 | Beállítás | Érték |
 | ------- | ----- |
 | Díjszabási csomag | Standard |
-| Alkalmazássablon | Áruházbeli elemzés – állapot figyelése |
-| Alkalmazásnév | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját nevét |
-| URL-cím | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját egyedi URL-előtagját |
-| Címtár | Azure Active Directory bérlő |
+| Alkalmazássablon | Áruházbeli elemzés – feltételfigyelés |
+| Alkalmazásnév | Fogadja el az alapértelmezett nevet, vagy válassza ki a saját nevét |
+| URL-cím | Fogadja el az alapértelmezett url-címet, vagy válasszon saját egyedi URL-előtagot |
+| Címtár | Saját Azure Active Directory bérlője |
 | Azure-előfizetés | Az Azure-előfizetése |
-| Region | A legközelebbi régió |
+| Region | Az Ön legközelebbi régiója |
 
-A cikkben szereplő példák és Képernyőképek a **Egyesült Államok** régiót használják. Válasszon egy helyet az Ön számára, és győződjön meg róla, hogy az összes erőforrást ugyanabban a régióban hozza létre.
+A cikkben található példák és képernyőképek a Egyesült Államok **használják.** Válasszon egy közeli helyet, és győződjön meg arról, hogy az összes erőforrást ugyanabban a régióban hozza létre.
 
-Ez az alkalmazás sablon két szimulált termosztátos eszközt tartalmaz, amelyek telemetria küldenek.
+Ez az alkalmazássablon két szimulált termosztátos eszközt tartalmaz, amelyek telemetriát küldenek.
 
 ### <a name="resource-group"></a>Erőforráscsoport
 
-A [Azure Portal használatával hozzon létre egy](https://portal.azure.com/#create/Microsoft.ResourceGroup) **IoTCentralAnalysis** nevű erőforráscsoportot a létrehozott egyéb erőforrások tárolására. Hozza létre az Azure-erőforrásokat a IoT Central alkalmazással megegyező helyen.
+A Azure Portal [hozzon létre](https://portal.azure.com/#create/Microsoft.ResourceGroup) egy **IoTCentralAnalysis** nevű erőforráscsoportot, amely tartalmazza a többi létrehozott erőforrást. Hozza létre az Azure-erőforrásokat ugyanazon a helyen, ahol a IoT Central is.
 
 ### <a name="event-hubs-namespace"></a>Event Hubs-névtér
 
-A [Azure Portal használatával hozzon létre egy Event Hubs névteret](https://portal.azure.com/#create/Microsoft.EventHub) a következő beállításokkal:
+A Azure Portal [hozzon létre egy Event Hubs a](https://portal.azure.com/#create/Microsoft.EventHub) következő beállításokkal:
 
 | Beállítás | Érték |
 | ------- | ----- |
-| Név    | Adja meg a névtér nevét |
+| Név    | A névtér nevének kiválasztása |
 | Tarifacsomag | Alapszintű |
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | IoTCentralAnalysis |
@@ -70,137 +70,137 @@ A [Azure Portal használatával hozzon létre egy Event Hubs névteret](https://
 
 ### <a name="azure-databricks-workspace"></a>Azure Databricks munkaterület
 
-A [Azure Portal használatával hozzon létre egy Azure Databricks szolgáltatást](https://portal.azure.com/#create/Microsoft.Databricks) a következő beállításokkal:
+A Azure Portal [hozzon létre egy Azure Databricks szolgáltatást](https://portal.azure.com/#create/Microsoft.Databricks) a következő beállításokkal:
 
 | Beállítás | Érték |
 | ------- | ----- |
-| Munkaterület neve    | Válassza ki a munkaterület nevét |
+| Munkaterület neve    | A munkaterület nevének kiválasztása |
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | IoTCentralAnalysis |
 | Hely | USA keleti régiója |
 | Tarifacsomag | Standard |
 
-A szükséges erőforrások létrehozásakor a **IoTCentralAnalysis** -erőforráscsoport a következő képernyőképhez hasonlóan néz ki:
+A szükséges erőforrások létrehozása után az **IoTCentralAnalysis** erőforráscsoport az alábbi képernyőképen láthatóhoz hasonlít:
 
-:::image type="content" source="media/howto-create-custom-analytics/resource-group.png" alt-text="IoT Central Analysis erőforráscsoport képe.":::
+:::image type="content" source="media/howto-create-custom-analytics/resource-group.png" alt-text="az IoT Central erőforráscsoportot.":::
 
 ## <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
-IoT Central alkalmazást úgy konfigurálhatja, hogy folyamatosan exportálja a telemetria egy Event hubhoz. Ebben a szakaszban egy Event hub-t hoz létre, amely telemetria fogad a IoT Central alkalmazásból. Az Event hub a telemetria az Stream Analytics-feladatokhoz továbbítja a feldolgozáshoz.
+Konfigurálhat egy IoT Central, hogy folyamatosan exportálja a telemetriát egy eseményközpontba. Ebben a szakaszban egy eseményközpontot hoz létre, amely telemetriát fogad a IoT Central alkalmazásból. Az eseményközpont továbbítja a telemetriát a Stream Analytics feldolgozásra.
 
-1. A Azure Portal navigáljon a Event Hubs névtérhez, és válassza a **+ Event hub** elemet.
-1. Nevezze el az Event hub- **centralexport**.
-1. A névtérben található Event hubok listájában válassza a **centralexport** lehetőséget. Ezután válassza a **megosztott hozzáférési házirendek** elemet.
-1. Válassza a **+ Hozzáadás** lehetőséget. Hozzon létre egy **SendListen** nevű szabályzatot a **küldési** és **figyelési** jogcímekkel.
-1. Ha a házirend elkészült, jelölje ki azt a listában, majd másolja ki a **kapcsolódási karakterlánc – elsődleges kulcs** értékét.
-1. Jegyezze fel ezt a kapcsolati karakterláncot, később, amikor konfigurálja a Databricks-jegyzetfüzetet az Event hub-ból való olvasáshoz.
+1. A Azure Portal lépjen a saját Event Hubs, és válassza **az + Eseményközpont lehetőséget.**
+1. Nevezze el az eseményközpontot **központilagexportálva.**
+1. A névtérben található eseményközpontok listájában válassza a **centralexport lehetőséget.** Ezután válassza **a Megosztott hozzáférési szabályzatok lehetőséget.**
+1. Válassza a **+ Hozzáadás** lehetőséget. Hozzon létre egy **SendListen nevű szabályzatot** a **Send** és **Listen jogcímekkel.**
+1. Ha a szabályzat elkészült, jelölje ki a listában, majd másolja ki a **Kapcsolati sztring – elsődleges kulcs értékét.**
+1. Jegyezze fel ezt a kapcsolati sztringet, mert később, amikor konfigurálja a Databricks-jegyzetfüzetet az eseményközpontból való olvasásra.
 
-A Event Hubs névtere a következő képernyőképre hasonlít:
+A Event Hubs a következő képernyőképhez hasonló:
 
-:::image type="content" source="media/howto-create-custom-analytics/event-hubs-namespace.png" alt-text="Event Hubs névtér képe.":::
+:::image type="content" source="media/howto-create-custom-analytics/event-hubs-namespace.png" alt-text="a névtér Event Hubs képe.":::
 
-## <a name="configure-export-in-iot-central"></a>Az Exportálás konfigurálása IoT Central
+## <a name="configure-export-in-iot-central"></a>Exportálás konfigurálása a IoT Central
 
-Ebben a szakaszban az alkalmazást úgy konfigurálja, hogy a szimulált eszközökről az Event hub-ra továbbítsa a telemetria.
+Ebben a szakaszban úgy konfigurálja az alkalmazást, hogy telemetriát streamel a szimulált eszközeiről az eseményközpontba.
 
-Az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén navigáljon a korábban létrehozott IoT Central alkalmazáshoz. Az Exportálás konfigurálásához először hozzon létre egy célhelyet:
+Az [alkalmazáskezelő Azure IoT Central](https://aka.ms/iotcentral) keresse meg a korábban IoT Central alkalmazáshoz. Az exportálás konfiguráláshoz először hozzon létre egy célhelyet:
 
-1. Navigáljon az **adatexportálás** lapra, majd válassza a **Célhelyek** lehetőséget.
-1. Válassza az **+ új cél** lehetőséget.
-1. A cél létrehozásához használja az alábbi táblázatban szereplő értékeket:
+1. Lépjen az **Adatexportáció oldalra,** majd válassza a **Célhely lehetőséget.**
+1. Válassza **az + Új cél lehetőséget.**
+1. Célhely létrehozásához használja az alábbi táblázatban található értékeket:
 
     | Beállítás | Érték |
     | ----- | ----- |
-    | Cél neve | Telemetria Event hub |
+    | Célnév | Telemetriai eseményközpont |
     | Cél típusa | Azure Event Hubs |
-    | Kapcsolati sztring | Az Event hub kapcsolati karakterlánca, amelyet korábban jegyzett tett |
+    | Kapcsolati sztring | Az eseményközpont korábban feljegyett kapcsolati sztring |
 
-    Az **Event hub** **centralexport**-ként jelenik meg.
+    Az **eseményközpont központilag** **támogatottként jelenik meg.**
 
-    :::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="Az adatexportálás célhelyét ábrázoló képernyőfelvétel.":::
+    :::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="Képernyőkép az adatexport célhelyről.":::
 
 1. Kattintson a **Mentés** gombra.
 
 Az exportálási definíció létrehozása:
 
-1. Navigáljon az **adatexportálás** lapra, és válassza az **+ új Exportálás** lehetőséget.
+1. Lépjen az **Adatexportál oldalra,** és válassza **az + Új exportálás lehetőséget.**
 
-1. Az Exportálás konfigurálásához használja az alábbi táblázatban szereplő értékeket:
+1. Az alábbi táblázatban található értékekkel konfigurálhatja az exportálást:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Exportálás neve | Event hub-exportálás |
+    | Exportálás neve | Eseményközpont exportálása |
     | Engedélyezve | Be |
-    | Exportálandó adattípusok | Telemetria |
-    | Célhelyek | Válassza a **+ cél**, majd az **telemetria Event hub** elemet. |
+    | Az exportálni szükséges adatok típusa | Telemetria |
+    | Célhelyek | Válassza **a + Cél,** majd a **Telemetria eseményközpont lehetőséget** |
 
 1. Kattintson a **Mentés** gombra.
 
-    :::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="Az adatexportálási definíciót ábrázoló képernyőfelvétel.":::
+    :::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="Képernyőkép az adatexport-definícióról.":::
 
-A folytatás előtt várjon, amíg az Exportálás állapota **kifogástalan** állapotú az **adatexportálási** lapon.
+A folytatás előtt várja meg, amíg az exportálás **állapota Kifogástalan** lesz az Adatok **exportálása** lapon.
 
 ## <a name="configure-databricks-workspace"></a>Databricks-munkaterület konfigurálása
 
-A Azure Portal navigáljon a Azure Databricks szolgáltatáshoz, és válassza a **munkaterület elindítása** lehetőséget. Megnyílik egy új lap a böngészőben, és bejelentkezik a munkaterületre.
+A Azure Portal nyissa meg a Azure Databricks szolgáltatást, és válassza a **Munkaterület indítása lehetőséget.** Megnyílik egy új lap a böngészőben, és bejelentkezik a munkaterületre.
 
 ### <a name="create-a-cluster"></a>Fürt létrehozása
 
-A **Azure Databricks** oldalon, a gyakori feladatok listájában válassza az **új fürt** elemet.
+A **Azure Databricks** a gyakori feladatok listájában válassza az Új **fürt lehetőséget.**
 
-A fürt létrehozásához használja a következő táblázatban található információkat:
+A fürt létrehozásához használja az alábbi táblázatban található információkat:
 
 | Beállítás | Érték |
 | ------- | ----- |
 | Fürt neve | centralanalysis |
 | Fürt üzemmód | Standard |
-| Databricks Runtime verziója | 5,5 LTS (Scala 2,11, Spark 2.4.5) |
+| Databricks Runtime verziója | 5.5 LTS (Scala 2.11, Spark 2.4.5) |
 | Python-verzió | 3 |
 | Automatikus skálázás engedélyezése | No |
-| Megszakítás ennyi perc inaktivitás után | 30 |
+| Le kell ásni néhány perc inaktivitás után | 30 |
 | Feldolgozó típusa | Standard_DS3_v2 |
-| Feldolgozók | 1 |
+| Munkavállalók | 1 |
 | Illesztőprogram típusa | Ugyanaz, mint a feldolgozó |
 
-A fürt létrehozása több percet is igénybe vehet, amíg a folytatás előtt várnia kell, hogy a fürt létrehozása befejeződjön.
+A fürt létrehozása eltarthat néhány percig. A folytatás előtt várja meg, amíg a fürt létrehozása befejeződik.
 
-### <a name="install-libraries"></a>Tárak telepítése
+### <a name="install-libraries"></a>Kódtárak telepítése
 
-A **fürtök** lapon várjon, amíg a fürt állapota nem **fut**.
+A **Fürtök lapon** várja meg, amíg a fürt állapota **Fut.**
 
-A következő lépések bemutatják, hogyan importálhatja a mintát a fürthöz szükséges könyvtárba:
+A következő lépések azt mutatják be, hogyan importálhatja a mintához szükséges kódtárat a fürtbe:
 
-1. A **fürtök** lapon várjon, amíg a **centralanalysis** interaktív fürt állapota **fut**.
+1. A **Fürtök lapon** várja meg, amíg a **centralanalysis** interaktív fürt állapota **Fut.**
 
-1. Válassza ki a fürtöt, majd kattintson a **tárak** fülre.
+1. Válassza ki a fürtöt, majd válassza a **Kódtárak** lapot.
 
-1. A **tárak** lapon válassza az **új telepítése** lehetőséget.
+1. A **Kódtárak lapon** válassza az **Új telepítése lehetőséget.**
 
-1. A **könyvtár telepítése** lapon válassza a **Maven** lehetőséget a könyvtár forrásaként.
+1. Az Install **Library (Könyvtár telepítése) lapon** válassza a **Maven** könyvtárforrást.
 
-1. A **koordináták** szövegmezőbe írja be a következő értéket: `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
+1. A **Koordináták** szövegmezőbe írja be a következő értéket: `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
 
-1. A **telepítés** gombra kattintva telepítheti a tárat a fürtön.
+1. Válassza **a Telepítés** lehetőséget a kódtár fürtre való telepítéséhez.
 
-1. A könyvtár állapota most **telepítve** van:
+1. A kódtár állapota mostantól **Telepítve:**
 
-:::image type="content" source="media/howto-create-custom-analytics/cluster-libraries.png" alt-text="A telepített könyvtár képernyőképe.":::
+:::image type="content" source="media/howto-create-custom-analytics/cluster-libraries.png" alt-text="Képernyőkép a telepített kódtárról.":::
 
 ### <a name="import-a-databricks-notebook"></a>Databricks-jegyzetfüzet importálása
 
-A következő lépésekkel importálhatja a Python-kódot tartalmazó Databricks-jegyzetfüzetet a IoT Central telemetria elemzéséhez és megjelenítéséhez:
+A következő lépésekkel importálhat egy Databricks-jegyzetfüzetet, amely a Python-kódot tartalmazza a telemetria elemzéséhez és IoT Central megjelenítéséhez:
 
-1. Navigáljon a **munkaterület** lapra a Databricks-környezetben. Válassza ki a fiók neve melletti legördülő menüt, majd válassza az **Importálás** lehetőséget.
+1. Lépjen a **Munkaterület lapra** a Databricks-környezetben. Válassza ki a fiók neve melletti legördülő menüt, majd válassza az **Importálás lehetőséget.**
 
-1. Válassza az importálás egy URL-címről lehetőséget, és adja meg a következő címet: [https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true](https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true)
+1. Válassza az URL-címből való importálást, és adja meg a következő címet: [https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true](https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true)
 
-1. A jegyzetfüzet importálásához válassza az **Importálás** lehetőséget.
+1. A jegyzetfüzet importáláshoz válassza az Importálás **lehetőséget.**
 
-1. Válassza ki a **munkaterületet** az importált jegyzetfüzet megtekintéséhez:
+1. Az importált **jegyzetfüzet megtekintéséhez** válassza ki a munkaterületet:
 
 :::image type="content" source="media/howto-create-custom-analytics/import-notebook.png" alt-text="Képernyőkép az importált jegyzetfüzetről.":::
 
-5. Szerkessze a kódot az első Python-cellában, és adja hozzá a korábban mentett Event Hubs-kapcsolódási karakterláncot:
+5. Szerkessze az első Python-cellában lévő kódot, és adja hozzá Event Hubs korábban mentett kapcsolati sztringet:
 
     ```python
     from pyspark.sql.functions import *
@@ -214,41 +214,41 @@ A következő lépésekkel importálhatja a Python-kódot tartalmazó Databricks
 
 ## <a name="run-analysis"></a>Elemzés futtatása
 
-Az elemzés futtatásához csatolni kell a jegyzetfüzetet a fürthöz:
+Az elemzés futtatásához csatolnia kell a jegyzetfüzetet a fürthöz:
 
-1. Válassza a **leválasztva** lehetőséget, majd válassza ki a **centralanalysis** -fürtöt.
+1. Válassza **a Leválasztva** lehetőséget, majd válassza **ki a központianalysis fürtöt.**
 1. Ha a fürt nem fut, indítsa el.
-1. A jegyzetfüzet elindításához kattintson a Futtatás gombra.
+1. A jegyzetfüzet futtatásához kattintson a Futtatás gombra.
 
-Előfordulhat, hogy az utolsó cellában hibaüzenet jelenik meg. Ha igen, ellenőrizze, hogy az előző cellák futnak-e, várjon egy percet, amíg egyes adatfájlok tárolva lesznek a tárolóba, majd futtassa újra az utolsó cellát.
+Az utolsó cellában hiba jelenhet meg. Ha igen, ellenőrizze, hogy futnak-e az előző cellák, várjon egy percet, amíg a rendszer adatokat ír a tárolóba, majd futtassa újra az utolsó cellát.
 
-### <a name="view-smoothed-data"></a>Simított adatnézetek megtekintése
+### <a name="view-smoothed-data"></a>Smoothed data (Elsimított adatok megtekintése)
 
-A jegyzetfüzetben görgessen le a 14. cellába, és tekintse meg a mozgóátlag nedvességtartalmát az eszköz típusa alapján. Ez a nyomtatás folyamatosan frissül, mivel a streaming telemetria megérkezik:
+A jegyzetfüzetben görgessen le a 14. cellába a gördülő átlagos páratartalom eszköztípus szerint ábrázoló ábrázolásért. Ez a rajz folyamatosan frissül a streamelési telemetria érkezésekor:
 
-:::image type="content" source="media/howto-create-custom-analytics/telemetry-plot.png" alt-text="Képernyőkép a simított telemetria-mintaterületről.":::
+:::image type="content" source="media/howto-create-custom-analytics/telemetry-plot.png" alt-text="Képernyőkép a Smoothed telemetria ábrázolásról.":::
 
 A diagramot átméretezheti a jegyzetfüzetben.
 
-### <a name="view-box-plots"></a>Nézet Box-Telkek
+### <a name="view-box-plots"></a>Mező-ábrázolás megtekintése
 
-A jegyzetfüzetben görgessen le a 20. cellába, és tekintse meg a [mezők ábrázolását](https://en.wikipedia.org/wiki/Box_plot). A Box-mintaterületek a statikus adattartalomon alapulnak, így a frissítéshez újra kell futtatnia a cellát:
+A jegyzetfüzetben görgessen le a 20. cellára, és tekintse meg [a mező ábrázolásokat.](https://en.wikipedia.org/wiki/Box_plot) A mező-ábrázolás statikus adatokon alapul, ezért a frissítésük érdekében újra kellfuttatni a cellát:
 
-:::image type="content" source="media/howto-create-custom-analytics/box-plots.png" alt-text="Képernyőfelvétel a Box-mintaterületekről":::
+:::image type="content" source="media/howto-create-custom-analytics/box-plots.png" alt-text="Képernyőkép a doboz ábrázolásról.":::
 
-A ábrákat átméretezheti a jegyzetfüzetben.
+A diagramokat átméretezheti a jegyzetfüzetben.
 
-## <a name="tidy-up"></a>Kitakarítás
+## <a name="tidy-up"></a>Tidy up
 
-A fenti útmutató és a szükségtelen költségek elkerülése érdekében törölje a **IoTCentralAnalysis** erőforráscsoportot a Azure Portal.
+Ha el szeretné kerülni a felesleges költségeket, törölje az **IoTCentralAnalysis** erőforráscsoportot a Azure Portal.
 
-A IoT Central alkalmazást a **felügyeleti** lapról törölheti az alkalmazáson belül.
+A felügyeleti IoT Central az alkalmazás **Felügyelet** lapján törölheti.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a útmutatóban megtanulta, hogyan végezheti el a következőket:
+Ebben az útmutatóban a következőt sajátta el:
 
-* Stream telemetria egy IoT Central alkalmazásból *folyamatos adatexportálás* használatával.
-* Hozzon létre egy Azure Databricks környezetet a telemetria-adatelemzéshez és a nyomtatáshoz.
+* Streamelési telemetria egy IoT Central folyamatos *adatexportációval.*
+* Hozzon létre egy Azure Databricks a telemetriai adatok elemzéséhez és ábrázolása érdekében.
 
-Most, hogy már tudja, hogyan hozhat létre egyéni elemzéseket, a következő lépés az, hogy megtudja, hogyan [jelenítheti meg és elemezheti az Azure IoT Central-adatait egy Power bi irányítópulton](howto-connect-powerbi.md).
+Most, hogy már tudja, hogyan hozhat létre egyéni elemzéseket, a javasolt következő lépés az, hogy megtanulja, hogyan vizualizálhatja és elemezheti a Azure IoT Central adatait [egy Power BI irányítópulton.](howto-connect-powerbi.md)

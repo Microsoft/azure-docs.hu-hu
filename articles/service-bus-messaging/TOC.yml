@@ -110,6 +110,8 @@
           href: message-transfers-locks-settlement.md
         - name: Kézbesíthetetlen levelek sorai
           href: service-bus-dead-letter-queues.md
+        - name: Üzenetek halasztása
+          href: message-deferral.md
         - name: Teljesítmény optimalizálása
           href: service-bus-performance-improvements.md
         - name: Georeplikációs vészhelyreállítás és georeplikáció
@@ -206,8 +208,6 @@
           items:
             - name: Üzenetek előzetes betöltése
               href: service-bus-prefetch.md
-            - name: Üzenetek halasztása
-              href: message-deferral.md
             - name: Entitások láncolása automatikus továbbítással
               href: service-bus-auto-forwarding.md
             - name: Tranzakciófeldolgozás

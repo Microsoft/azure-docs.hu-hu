@@ -1,34 +1,34 @@
 ---
 title: Bevezetés az Azure Service Bus által kezelt üzenetsorok használatába | Microsoft Docs
-description: Ebben az oktatóanyagban .NET Core Console-alkalmazásokat hoz létre, amelyek üzeneteket küldenek és fogadnak egy Service Bus üzenetsor üzeneteit.
+description: Ebben az oktatóanyagban .NET Core-konzolalkalmazásokat hoz létre, amelyek üzeneteket küldenek egy üzenetsorba, és üzeneteket Service Bus az üzenetsorból.
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 09/01/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e8e70884838d56003694e2da09668527ce5b6c7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d92a5e0b0d1a6953d0043f85ff98f6740aaacebb
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652989"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864013"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Bevezetés a Service Bus által kezelt üzenetsorok használatába
-Ebben az oktatóanyagban .NET Core Console-alkalmazásokat hoz létre, amelyek üzeneteket küldenek és fogadnak egy Service Bus üzenetsor üzeneteit.
+Ebben az oktatóanyagban .NET Core-konzolalkalmazásokat hoz létre, amelyek üzeneteket küldenek egy üzenetsorba, és üzeneteket Service Bus az üzenetsorból.
 
 > [!WARNING]
-> Ez a rövid útmutató a régi Microsoft. Azure. ServiceBus csomagot használja. A legújabb Azure. Messaging. ServiceBus csomagot használó gyors útmutatóért lásd az [események küldése és fogadása az Azure. Messaging. ServiceBus csomag használatával](service-bus-dotnet-get-started-with-queues.md)című témakört. 
+> Ez a rövid útmutató a régi Microsoft.Azure.ServiceBus csomagot használja. A legújabb Azure.Messaging.ServiceBus csomagot használó rövid útmutatóért lásd: Események küldése és fogadása [az Azure.Messaging.ServiceBus csomag használatával.](service-bus-dotnet-get-started-with-queues.md) 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Visual Studio 2019](https://www.visualstudio.com/vs).
-- [NET Core SDK](https://www.microsoft.com/net/download/windows), 2.0-s vagy újabb verzió.
-- Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja MSDN- [előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Ha nem rendelkezik várólistával, hogy működjön a szolgáltatással, a várólista létrehozásához kövesse az [Azure Portal használata Service Bus üzenetsor létrehozásához](service-bus-quickstart-portal.md) című cikket.
+- [Visual Studio 2019. július.](https://www.visualstudio.com/vs)
+- [NET Core SDK](https://dotnet.microsoft.com/download), 2.0-s vagy újabb verzió.
+- Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja [MSDN-előfizetői](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) előnyeit, vagy regisztrálhat egy [ingyenes fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
+- Ha nincs üzenetsora, kövesse az Üzenetsor létrehozása Azure Portal üzenetsor létrehozásához [Service Bus](service-bus-quickstart-portal.md) cikk lépéseit.
 
-  - Olvassa el Service Bus várólisták gyors áttekintését.
-  - Hozzon létre egy Service Bus névteret.
-  - A kapcsolatok karakterláncának beolvasása.
-  - Hozzon létre egy Service Bus üzenetsor.
+  - Olvassa el az üzenetsorok Service Bus áttekintését.
+  - Hozzon létre Service Bus névteret.
+  - Szerezze be a kapcsolati sztringet.
+  - Hozzon létre egy Service Bus üzenetsort.
 
 ## <a name="send-messages"></a>Üzenetek küldése
 
@@ -36,19 +36,19 @@ A Visual Studio használatával írjon C# konzolalkalmazást az üzenetek üzene
 
 ### <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
-Indítsa el a Visual studiót, és hozzon létre egy új **Console app (.net Core)** projektet a C# nyelvhez. Ez a példa az alkalmazás *CoreSenderApp* nevet.
+Indítsa Visual Studio, és hozzon létre egy új **Console App (.NET Core)** projektet a C# programhoz. Ebben a példában a *CoreSenderApp nevet adhatja az alkalmazásnak.*
 
 ### <a name="add-the-service-bus-nuget-package"></a>A Service Bus NuGet-csomag hozzáadása
 
 1. Kattintson a jobb gombbal az újonnan létrehozott projektre, és válassza a **Manage Nuget Packages** (NuGet-csomagok kezelése) lehetőséget.
-1. Válassza a **Tallózás** lehetőséget. Keresse meg és válassza ki a **[Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)** elemet.
-1. A telepítés befejezéséhez válassza a **telepítés** lehetőséget, majd a NuGet csomagkezelő elemet.
+1. Válassza a **Tallózás** lehetőséget. Keresse meg és válassza ki a **[Microsoft.Azure.ServiceBus szolgáltatásokat.](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)**
+1. A **telepítés befejezéséhez** válassza a Telepítés lehetőséget, majd zárja be a NuGet-Csomagkezelő.
 
     ![NuGet-csomag kiválasztása][nuget-pkg]
 
 ### <a name="write-code-to-send-messages-to-the-queue"></a>Kód írása az üzenetek üzenetsorba való küldéséhez
 
-1. A *program. cs programban* adja hozzá a következő `using` utasításokat a névtér definíciójának elejéhez, az osztály deklarációja előtt:
+1. A *Program.cs fájlban* adja hozzá a következő utasításokat a névtér definíciójának tetejéhez, `using` az osztálydeklaráció előtt:
 
     ```csharp
     using System.Text;
@@ -65,9 +65,9 @@ Indítsa el a Visual studiót, és hozzon létre egy új **Console app (.net Cor
     static IQueueClient queueClient;
     ```
 
-    Adja meg a névtérhez tartozó kapcsolatok karakterláncát `ServiceBusConnectionString` változóként. Adja meg a várólista nevét.
+    Adja meg a névtér kapcsolati sztringját `ServiceBusConnectionString` változóként. Adja meg az üzenetsor nevét.
 
-1. Cserélje le a `Main()` metódust a következő **aszinkron** `Main` metódusra. Meghívja a `SendMessagesAsync()` metódust, amelyet a következő lépésben fog hozzáadni, hogy üzeneteket küldjön a várólistára. 
+1. Cserélje le `Main()` a metódust a következő **async** `Main` metódusra. Ez a metódust hívja meg, amely a következő lépésben hozzáadva `SendMessagesAsync()` üzeneteket küld az üzenetsorba. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -87,7 +87,7 @@ Indítsa el a Visual studiót, és hozzon létre egy új **Console app (.net Cor
         await queueClient.CloseAsync();
     }
     ```
-1. Közvetlenül a `MainAsync()` metódus után adja hozzá a következő `SendMessagesAsync()` metódust, amely a által megadott számú üzenet küldését végzi `numberOfMessagesToSend` (jelenleg 10 értékre van állítva):
+1. Közvetlenül a metódus után adja hozzá a következő metódust, amely a által megadott számú (jelenleg `MainAsync()` `SendMessagesAsync()` 10-re beállított) üzenet küldését `numberOfMessagesToSend` teszi:
 
     ```csharp
     static async Task SendMessagesAsync(int numberOfMessagesToSend)
@@ -114,7 +114,7 @@ Indítsa el a Visual studiót, és hozzon létre egy új **Console app (.net Cor
     }
     ```
 
-A *program. cs* fájljának így kell kinéznie.
+A *Program.cs fájlnak* így kell kinéznie.
 
 ```csharp
 namespace CoreSenderApp
@@ -176,25 +176,25 @@ namespace CoreSenderApp
 }
 ```
 
-Futtassa a programot, és keresse meg a Azure Portal.
+Futtassa a programot, és ellenőrizze a Azure Portal.
 
-A várólista- **alapok** megjelenítéséhez válassza ki a várólista nevét a névtér **áttekintési** ablakában.
+Válassza ki az üzenetsor nevét a névtér **Áttekintés ablakában** az **üzenetsor Alapvető szolgáltatások megjelenítéséhez.**
 
-![Fogadott üzenetek száma és mérete][queue-message]
+![Fogadott üzenetek darabszámmal és mérettel][queue-message]
 
-A várólista **aktív üzenetek száma** értékének értéke most **10**. Minden alkalommal, amikor a küldő alkalmazást az üzenetek lekérése nélkül futtatja, ez az érték 10-re nő.
+Az **üzenetsor Aktív üzenetek** száma értéke mostantól **10.** Minden alkalommal, amikor az üzenetek leolvasása nélkül futtatja ezt a küldőalkalmazást, ez az érték 10-sel növekszik.
 
-A várólista jelenlegi mérete minden alkalommal megnöveli az **alapok** **aktuális** értékét, amikor az alkalmazás üzeneteket hoz létre a várólistába.
+Az üzenetsor aktuális mérete minden alkalommal megnöveli a **CURRENT** értéket az **Alapvető**  szolgáltatásokban, amikor az alkalmazás üzeneteket ad hozzá az üzenetsorhoz.
 
-A következő szakasz az üzenetek lekérésének módját ismerteti.
+A következő szakasz ezeknek az üzeneteknek a lekérését ismerteti.
 
 ## <a name="receive-messages"></a>Üzenetek fogadása
 
-Az elküldött üzenetek fogadásához hozzon létre egy másik **Console app (.net Core)** alkalmazást. Telepítse a **Microsoft. Azure. ServiceBus** NuGet csomagot, ahogy azt a küldő alkalmazás esetében tette.
+Az elküldött üzenetek fogadásához hozzon létre egy másik **Konzolalkalmazás (.NET Core)** alkalmazást. Telepítse a **Microsoft.Azure.ServiceBus** NuGet-csomagot a küldőalkalmazáshoz is.
 
 ### <a name="write-code-to-receive-messages-from-the-queue"></a>Kód írása az üzenetek üzenetsorból történő fogadásához
 
-1. A *program. cs programban* adja hozzá a következő `using` utasításokat a névtér definíciójának elejéhez, az osztály deklarációja előtt:
+1. A *Program.cs fájlban* adja hozzá a következő utasításokat a névtér definíciójának tetejéhez, `using` az osztálydeklaráció előtt:
 
     ```csharp
     using System;
@@ -212,7 +212,7 @@ Az elküldött üzenetek fogadásához hozzon létre egy másik **Console app (.
     static IQueueClient queueClient;
     ```
 
-    Adja meg a névtérhez tartozó kapcsolatok karakterláncát `ServiceBusConnectionString` változóként. Adja meg a várólista nevét.
+    Változóként adja meg a névtér kapcsolati `ServiceBusConnectionString` sztringét. Adja meg az üzenetsor nevét.
 
 1. Cserélje le az `Main()` metódust az alábbi kódra:
 
@@ -239,7 +239,7 @@ Az elküldött üzenetek fogadásához hozzon létre egy másik **Console app (.
     }
     ```
 
-1. Közvetlenül a `MainAsync()` metódus után adja hozzá a következő metódust, amely regisztrálja az üzenetkezelőt, és fogadja a küldő alkalmazás által küldött üzeneteket:
+1. Közvetlenül a metódus után adja hozzá a következő metódust, amely regisztrálja az üzenetkezelőt, és fogadja a `MainAsync()` küldőalkalmazás által küldött üzeneteket:
 
     ```csharp
     static void RegisterOnMessageHandlerAndReceiveMessages()
@@ -295,7 +295,7 @@ Az elküldött üzenetek fogadásához hozzon létre egy másik **Console app (.
     }
     ```
 
-A *program. cs* fájljának így kell kinéznie:
+A *Program.cs fájlnak* így kell kinéznie:
 
 ```csharp
 namespace CoreReceiverApp
@@ -381,14 +381,14 @@ namespace CoreReceiverApp
 }
 ```
 
-Futtassa a programot, majd ellenőrizze ismét a portálon. Az **aktív üzenetek száma** és a **jelenlegi** értékek mostantól **0**.
+Futtassa a programot, majd ellenőrizze ismét a portálon. Az **Aktív üzenetek száma és** a **CURRENT** értékek mostantól **0.**
 
-![Üzenetsor üzenetek fogadása után][queue-message-receive]
+![Üzenetsor az üzenetek fogadása után][queue-message-receive]
 
-Gratulálunk! Létrehozta a várólistát, elküldött egy üzenetet a várólistára, és megkapta az üzeneteket ugyanabból a várólistából.
+Gratulálunk! Ezzel létrehozott egy üzenetsort, elküldött egy üzenetkészletet az üzenetsorba, és fogadott üzeneteket ugyanattól az üzenetsortól.
 
 > [!NOTE]
-> [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi, hogy a felhasználók könnyedén kapcsolódjanak egy Service Bus névtérhez, és felügyelje az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakörök, várólisták, előfizetések, továbbító szolgáltatások, értesítési központok és Event hubok tesztelésének lehetősége.
+> Az erőforrás-Service Bus a [Service Bus Explorer.](https://github.com/paolosalvatori/ServiceBusExplorer/) A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy könnyedén csatlakozznak egy Service Bus névtérhez, és felügyelni az üzenetküldési entitásokat. Az eszköz fejlett funkciókat biztosít, például az importálási/exportálási funkciókat, illetve a témakörök, üzenetsorok, előfizetések, továbbítási szolgáltatások, értesítési központok és eseményközpontok tesztelésének képességét.
 
 ## <a name="next-steps"></a>Következő lépések
 

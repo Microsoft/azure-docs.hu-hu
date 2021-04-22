@@ -67,7 +67,7 @@
 - name: Referencia
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/blockchain/blockchain
+      href: /cli/azure/blockchain
 - name: További források
   items:
     - name: Azure Blockchain fejlesztői készlet

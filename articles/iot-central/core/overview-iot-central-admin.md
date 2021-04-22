@@ -1,84 +1,84 @@
 ---
-title: Azure IoT Central rendszergazdai útmutató
-description: Az Azure IoT Central egy IoT-alkalmazásplatform, amely megkönnyíti IoT-megoldások létrehozását. Ez a cikk áttekintést nyújt a IoT Central rendszergazdai szerepköréről.
-author: TheJasonAndrew
-ms.author: v-anjaso
+title: Azure IoT Central útmutató
+description: Az Azure IoT Central egy IoT-alkalmazásplatform, amely megkönnyíti IoT-megoldások létrehozását. Ez a cikk áttekintést nyújt a rendszergazdai szerepkörről a IoT Central.
+author: philmea
+ms.author: philmea
 ms.date: 03/25/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 16a8aecae70d73399acb3878d7088e5086c053a1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 658ebe027565a3acaf427a7b3dbf3963701069d8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110491"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868644"
 ---
-# <a name="iot-central-administrator-guide"></a>IoT Central rendszergazdai útmutató
+# <a name="iot-central-administrator-guide"></a>IoT Central útmutató
 
 *Ez a cikk a rendszergazdákra vonatkozik.*
 
-Egy IoT Central alkalmazás lehetővé teszi több millió eszköz figyelését és kezelését életciklusuk során. Ez az útmutató azoknak a rendszergazdáknak szól, akik IoT Central alkalmazást felügyelik.
+Egy IoT Central alkalmazással eszközök millióit figyelheti és kezelheti azok életciklusa során. Ez az útmutató olyan rendszergazdáknak készült, akik IoT Central alkalmazásokat.
 
-IoT Central a rendszergazda:
+A IoT Central rendszergazda:
 
-- Kezeli a felhasználókat és a szerepköröket az alkalmazásban.
-- Kezeli a biztonságot, például az eszközök hitelesítését.
-- Az Alkalmazásbeállítások konfigurálása.
-- Alkalmazások frissítése.
-- Alkalmazások exportálása és megosztása.
-- Az alkalmazás állapotának figyelése.
+- Az alkalmazás felhasználóit és szerepköreit kezeli.
+- Kezeli a biztonságot, például az eszközhitelesítést.
+- Konfigurálja az alkalmazásbeállításokat.
+- Frissíti az alkalmazásokat.
+- Alkalmazásokat exportál és megoszt.
+- Az alkalmazás állapotát figyeli.
 
 ## <a name="users-and-roles"></a>Felhasználók és szerepkörök
 
-A IoT Central szerepköralapú hozzáférés-vezérlési rendszer használatával kezeli a felhasználói engedélyeket egy alkalmazáson belül. A IoT Central három beépített szerepkörrel rendelkezik a rendszergazdák, a megoldás-építők és a kezelők számára. A rendszergazdák adott engedélyekkel hozhatnak létre egyéni szerepköröket. A rendszergazdák feladata, hogy felhasználókat adjanak hozzá egy alkalmazáshoz, és hozzá lehessen rendelni őket a szerepkörökhöz.
+IoT Central szerepköralapú hozzáférés-vezérlési rendszert használ a felhasználói engedélyek alkalmazáson belüli kezeléséhez. IoT Central három beépített szerepköre van a rendszergazdák, a megoldáskészítők és az operátorok számára. A rendszergazdák adott engedélykészletekkel rendelkező egyéni szerepköröket hozhatnak létre. A rendszergazdák felelősek a felhasználók alkalmazáshoz való hozzáadásáért és szerepkörökhöz való hozzárendeléséért.
 
-További információt a [felhasználók és szerepkörök kezelése a IoT Central alkalmazásban](howto-manage-users-roles.md)című témakörben talál.
+További tudnivalókért lásd: Felhasználók és szerepkörök kezelése a IoT Central [alkalmazásban.](howto-manage-users-roles.md)
 
 ## <a name="application-security"></a>Alkalmazások biztonsága
 
-A IoT Central alkalmazáshoz csatlakozó eszközök általában X. 509 tanúsítványokat vagy közös hozzáférési aláírásokat (SAS) használnak hitelesítő adatként. A rendszergazda felügyeli azokat a tanúsítványokat vagy kulcsokat, amelyeket az eszköz hitelesítő adatai származtatnak.
+Az alkalmazáshoz IoT Central eszközök általában X.509-tanúsítványokat vagy közös hozzáférésű jogosultságokat (SAS) használnak hitelesítő adatként. A rendszergazda kezeli a csoporttanúsítványokat vagy kulcsokat, amelyekből az eszköz hitelesítő adatai származnak.
 
-További információ: [x. 509 csoportos regisztráció](concepts-get-connected.md#x509-group-enrollment), SAS- [csoport beléptetése](concepts-get-connected.md#sas-group-enrollment)és [az x. 509 eszköz tanúsítványainak](how-to-roll-x509-certificates.md)beolvasása.
+További tudnivalókért lásd: X.509-csoportregisztrálás, SAS-csoportregisztrálás és [X.509-eszköztanúsítványok igénylése.](how-to-roll-x509-certificates.md) [](concepts-get-connected.md#x509-group-enrollment) [](concepts-get-connected.md#sas-group-enrollment)
 
-A rendszergazda olyan API-jogkivonatokat is létrehozhat és kezelhet, amelyeket az ügyfélalkalmazás használ a IoT Central alkalmazással való hitelesítéshez. Az ügyfélalkalmazások a REST API használják a IoT Central való interakcióhoz.
+A rendszergazda emellett létrehozhatja és kezelheti az API-jogkivonatokat, amelyek használatával az ügyfélalkalmazás hitelesíti magát a IoT Central alkalmazással. Az ügyfélalkalmazások a REST API használják a IoT Central.
 
 ## <a name="configure-an-application"></a>Alkalmazás konfigurálása
 
-A rendszergazda konfigurálhatja egy IoT Central alkalmazás viselkedését és megjelenését. További információ:
+A rendszergazda konfigurálhatja egy alkalmazás IoT Central megjelenését. További információ:
 
 - [Alkalmazás nevének és URL-címének módosítása](howto-administer.md#change-application-name-and-url)
 - [A felhasználói felület testreszabása](howto-customize-ui.md)
 - [Alkalmazás áthelyezése másik díjszabási csomagba](howto-view-bill.md)
-- [Fájlfeltöltés konfigurálása](howto-configure-file-uploads.md)
+- [Fájlfeltöltések konfigurálása](howto-configure-file-uploads.md)
 
 ## <a name="export-an-application"></a>Alkalmazás exportálása
 
-A rendszergazda a következőket teheti:
+A rendszergazdák a következő jogosultságokat kaphatják meg:
 
-- Hozzon létre egy másolatot az alkalmazásról, ha csak egy másolatot szeretne készíteni az alkalmazásról. Előfordulhat például, hogy a teszteléshez duplikált másolatot kell készítenie.
-- Hozzon létre egy alkalmazás-sablont egy meglévő alkalmazásból, ha több példányt szeretne létrehozni.
+- Ha csak az alkalmazás másolatára van szüksége, hozzon létre egy másolatot az alkalmazásról. A teszteléshez például szükség lehet egy duplikált másolatra.
+- Hozzon létre egy alkalmazássablont egy meglévő alkalmazásból, ha több példányt tervez létrehozni.
 
-További információ: [Az Azure IoT-alkalmazás exportálása](howto-use-app-templates.md).
+További információ: [Az Azure IoT-alkalmazás exportálása.](howto-use-app-templates.md)
 
-## <a name="migrate-to-a-new-version"></a>Migrálás új verzióra
+## <a name="migrate-to-a-new-version"></a>Áttelepítés új verzióra
 
-A rendszergazdák egy újabb verzióra telepíthetik az alkalmazásokat. Jelenleg egy újonnan létrehozott alkalmazás egy v3-alkalmazás. Előfordulhat, hogy a rendszergazdának v2 alkalmazást kell áttelepítenie egy v3 alkalmazásba.
+A rendszergazdák újabb verzióra is átemelheti az alkalmazásokat. Jelenleg az újonnan létrehozott alkalmazás egy V3-as alkalmazás. Előfordulhat, hogy egy rendszergazdának V2-alkalmazást kell átemelni egy V3-alkalmazásba.
 
-További információ: [a V2 IoT Central alkalmazás áttelepítésének v3 verzióra](howto-migrate.md).
+További információ: V2-es virtuális gép IoT Central [V3-ra.](howto-migrate.md)
 
 ## <a name="monitor-application-health"></a>Alkalmazásállapot monitorozása
 
-A rendszergazdák IoT Central metrikákat használhatnak a csatlakoztatott eszközök állapotának és az adatexportálások állapotának felméréséhez.
+A rendszergazdák a IoT Central metrikák használatával felmérheti a csatlakoztatott eszközök és a futó adatexportok állapotát.
 
-A metrikák megtekintéséhez a rendszergazdák használhatnak diagramokat a Azure Portal, a REST API, a PowerShell vagy az Azure CLI lekérdezésekben.
+A metrikák megtekintéséhez a rendszergazdák diagramokat használhatnak a Azure Portal, REST API PowerShell- vagy Azure CLI-lekérdezésekben.
 
-További információ: [IoT Central alkalmazások általános állapotának figyelése](howto-monitor-application-health.md).
+További információ: Monitor the overall health of an IoT Central application (Egy alkalmazás [általános állapotának IoT Central figyelése).](howto-monitor-application-health.md)
 
 ## <a name="tools"></a>Eszközök
 
-A rendszergazdaként használt számos eszköz az egyes IoT Central alkalmazások **Adminisztráció** szakaszában érhető el. A következő eszközöket is használhatja a felügyeleti feladatok elvégzéséhez:
+A rendszergazdaként használt eszközök közül számos  elérhető az egyes alkalmazások Adminisztráció IoT Central szakaszában. Néhány felügyeleti feladat elvégzéséhez a következő eszközöket is használhatja:
 
 - [Azure CLI](howto-manage-iot-central-from-cli.md)
 - [Azure PowerShell](howto-manage-iot-central-from-powershell.md)
@@ -86,4 +86,4 @@ A rendszergazdaként használt számos eszköz az egyes IoT Central alkalmazáso
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megismerte az Azure IoT Central-alkalmazás felügyeletének módját, a javasolt következő lépés a [felhasználók és szerepkörök kezelése](howto-manage-users-roles.md) az Azure IoT Central-ban című témakörben.
+Most, hogy megtanulta, hogyan felügyelhet egy Azure IoT Central-alkalmazást, a javasolt [](howto-manage-users-roles.md) következő lépés a felhasználók és szerepkörök kezelése a Azure IoT Central.

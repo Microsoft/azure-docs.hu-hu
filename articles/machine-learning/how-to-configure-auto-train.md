@@ -1,7 +1,7 @@
 ---
 title: Automatizált gépi tanulási kísérletek létrehozása
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan határozhat meg adatforrásokat, számításokat és konfigurációs beállításokat az automatizált gépi tanulási kísérletekhez.
+description: Megtudhatja, hogyan definiálhat adatforrásokat, számításokat és konfigurációs beállításokat az automatizált gépi tanulási kísérletekhez.
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
@@ -11,23 +11,23 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 146697dec7e3d22e745fba2a1e9fae5d486195ef
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: d0a15b16c04a28bcc67caeeceedfcbad485b7157
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107819311"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861462"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 
 
-Ebből az útmutatóból megtudhatja, hogyan határozhatja meg az automatizált gépi tanulási kísérletek különböző konfigurációs beállításait a [Azure Machine Learning SDK-val.](/python/api/overview/azure/ml/intro) Az automatizált gépi tanulás kiválaszt egy algoritmust és hiperparamétereket, és létrehoz egy üzembe helyezésre kész modellt. Az automatizált gépi tanulási kísérletek konfigurál többféle módon is konfigurálhatóak.
+Ebből az útmutatóból megtudhatja, hogyan határozhatja meg az automatizált gépi tanulási kísérletek különböző konfigurációs beállításait az [Azure Machine Learning SDK-val.](/python/api/overview/azure/ml/intro) Az automatizált gépi tanulás kiválaszt önnek egy algoritmust és hiperparamétereket, és létrehoz egy üzembe helyezésre kész modellt. Az automatizált gépi tanulási kísérletek konfigurál többféle módon is konfigurálhatóak.
 
-Az automatizált gépi tanulási kísérletek példáiért [lásd: Oktatóanyag:](tutorial-auto-train-models.md) Besorolási modell betanítása automatizált gépi tanulással vagy Modellek betanítása automatizált gépi tanulással a [felhőben.](how-to-auto-train-remote.md)
+Az automatizált gépi tanulási kísérletek teljes példáért lásd: Oktatóanyag: Besorolási modell betanítás [automatizált gépi tanulással.](tutorial-auto-train-models.md)
 
 Az automatizált gépi tanulásban elérhető konfigurációs lehetőségek:
 
-* Kísérlet típusának kiválasztása: Besorolás, Regresszió vagy Idősorozat-előrejelzés
+* Válassza ki a kísérlet típusát: Besorolás, Regresszió vagy Idősorozat-előrejelzés
 * Adatforrás, formátumok és adatok beolvasása
 * Válassza ki a számítási célt: helyi vagy távoli
 * Automatizált gépi tanulási kísérlet beállításai
@@ -35,14 +35,14 @@ Az automatizált gépi tanulásban elérhető konfigurációs lehetőségek:
 * Modellmetrikák megismerés
 * Modell regisztrálása és üzembe helyezése
 
-Ha kódot nem szeretne, létrehozhatja az automatizált [gépi](how-to-use-automated-ml-for-ml-models.md)tanulási kísérleteket a következő Azure Machine Learning stúdió.
+Ha előnyben részesíti a nincs kódélményt, létrehozhatja az automatizált gépi tanulási kísérleteket a [Azure Machine Learning stúdió.](how-to-use-automated-ml-for-ml-models.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ehhez a cikkhez a következőre lesz szüksége: 
 * Egy Azure Machine Learning-munkaterület. A munkaterület létrehozásához lásd: [Munkaterület Azure Machine Learning létrehozása.](how-to-manage-workspace.md)
 
-* A Azure Machine Learning Python SDK telepítve van.
+* A Azure Machine Learning Python SDK van telepítve.
     Az SDK telepítéséhez a következőt használhatja: 
     * Hozzon létre egy számítási példányt, amely automatikusan telepíti az SDK-t, és előre konfigurálva van a gépi tanulási munkafolyamatokhoz. További [információ: Azure Machine Learning számítási példány létrehozása](how-to-create-manage-compute-instance.md) és kezelése. 
 
@@ -66,7 +66,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 ## <a name="data-source-and-format"></a>Adatforrás és formátum
 
-Az automatizált gépi tanulás támogatja a helyi számítógépen vagy a felhőben, például az Azure Blob Storage-ban található adatokat. Az adatok beolvashatóak egy **Pandas DataFrame-be** vagy egy **Azure Machine Learning Dataset adatkészletbe.** [További információ az adathalmazokról](how-to-create-register-datasets.md).
+Az automatizált gépi tanulás támogatja a helyi számítógépen vagy a felhőben, például az Azure Blob Storage-ban található adatokat. Az adatok egy **Pandas DataFrame-be** vagy egy **tabularDataset Azure Machine Learning olvashatók be.** [További információ az adathalmazokról](how-to-create-register-datasets.md).
 
 A gépi tanulás betanítás adataira vonatkozó követelmények:
 - Az adatoknak táblázatos formában kell lennie.
@@ -77,16 +77,16 @@ A gépi tanulás betanítás adataira vonatkozó követelmények:
 Az Azure Machine Learning-adathalmazok a következő funkciókat biztosítják:
 
 * Könnyedén továbbíthat adatokat statikus fájlokból vagy URL-forrásokból a munkaterületre.
-* Az adatok elérhetővé tétele a betanítási szkriptek számára a felhőbeli számítási erőforrásokon való futtatáskor. Az adatok távoli számítási célhoz való csatlakoztatására a osztály használatával az adatkészletekkel való betanítás példáját itt láthatja: How to train with [datasets](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) `Dataset` (Betanítás adatkészletekkel).
+* Az adatok elérhetővé tétele a betanítási szkriptek számára a felhőbeli számítási erőforrásokon való futtatáskor. Az [adatok távoli számítási célhoz](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) való csatlakoztatásának példájért tekintse meg az Adatkészletekkel való betanítás `Dataset` példáját.
 
-Az alábbi kód egy TabularDataset adatkészletet hoz létre egy webes URL-címből. Az adatkészletek más forrásokból, például helyi fájlokból és adattárolókból való létrehozásáról a Create [a TabularDatasets](how-to-create-register-datasets.md#create-a-tabulardataset) (Táblázatos adatkészletek létrehozása) oldalon talál példákat.
+Az alábbi kód egy TabularDataset adatkészletet hoz létre egy webes URL-címből. Az adatkészletek más forrásokból, például helyi fájlokból és adattárakból való létrehozásáról a Példakódok a [TabularDatasets](how-to-create-register-datasets.md#create-a-tabulardataset) létrehozása oldalon találhatóak.
 
 ```python
 from azureml.core.dataset import Dataset
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
 dataset = Dataset.Tabular.from_delimited_files(data)
   ```
-**Helyi számítási kísérletekhez** a pandas-adatkeretek használatát javasoljuk a gyorsabb feldolgozási idő érdekében.
+**Helyi számítási kísérletekhez a** pandas-adatkeretek használatát javasoljuk a gyorsabb feldolgozási idő érdekében.
 
   ```python
   import pandas as pd
@@ -97,30 +97,30 @@ dataset = Dataset.Tabular.from_delimited_files(data)
   label = "label-col-name"
   ```
 
-## <a name="training-validation-and-test-data"></a>Betanítési, ellenőrzési és tesztelési adatok
+## <a name="training-validation-and-test-data"></a>Betanítás, ellenőrzés és tesztelési adatok
 
-Közvetlenül a konstruktorban külön **betanítési adatokat** és ellenőrzési adatkészleteket `AutoMLConfig` is megadhat. További információ az [adatfedés és](how-to-configure-cross-validation-data-splits.md) keresztellenőrzés AutoML-kísérletekhez való konfigurálásról. 
+Közvetlenül a konstruktorban külön **betanítési adatokat** és ellenőrzési adatkészleteket `AutoMLConfig` is megadhat. További információ az [adatfosztók](how-to-configure-cross-validation-data-splits.md) konfigurálásról és keresztellenőrzésről az AutoML-kísérletekhez. 
 
-Ha nem ad meg explicit módon egy vagy paramétert, az automatikus gépi tanulási szolgáltatás alapértelmezett technikákat alkalmaz `validation_data` `n_cross_validation` az érvényesítés érvénybe lépésének megállapításához. Ez a meghatározás a paraméterhez rendelt adathalmaz sorai számától `training_data` függ. 
+Ha nem ad meg explicit módon egy vagy paramétert, az automatizált gépi tanulási szolgáltatás alapértelmezett technikákat alkalmaz `validation_data` `n_cross_validation` az érvényesítés hajtható végre. Ez a meghatározás a paraméterhez rendelt adathalmaz sorai számától `training_data` függ. 
 
 |Betanítás &nbsp; adatainak &nbsp; mérete| Ellenőrzési technika |
 |---|-----|
-|**Nagyobb, &nbsp; &nbsp; mint 20 000 &nbsp; sor**| A betanítás/ellenőrzés adatfelosztója lesz alkalmazva. Az alapértelmezett beállítás a kezdeti betanítás adatkészletének 10%-a az ellenőrzési készlet. Ezt az ellenőrzési készletet használja a rendszer a metrikák kiszámításához.
-|**&nbsp; &nbsp; 20 000 sornál &nbsp; kisebb**| A rendszer keresztellenőrzési megközelítést alkalmaz. Az összecsukott értékek alapértelmezett száma a sorok számától függ. <br> **Ha az adathalmaz kevesebb, mint 1000** sor, a rendszer 10-szerest használ. <br> **Ha a sorok 1000 és 20 000** közé esnek, akkor három összecsukás lesz használva.
+|**Nagyobb, &nbsp; &nbsp; mint 20 000 &nbsp; sor**| A rendszer alkalmazza a betanítás/ellenőrzés adatfelosztóját. Az alapértelmezett beállítás a kezdeti betanítás adatkészletének 10%-a az ellenőrzési készlet. A rendszer ezt az ellenőrzési készletet használja a metrikák kiszámításához.
+|**&nbsp; &nbsp; 20 000 sornál kisebb &nbsp;**| A rendszer keresztellenőrzési megközelítést alkalmaz. Az összecsukott értékek alapértelmezett száma a sorok számától függ. <br> **Ha az adathalmaz kevesebb, mint 1000** sor, a rendszer 10-et használ. <br> **Ha a sorok 1000 és 20 000** közé esnek, akkor három összecsukás lesz használva.
 
-Jelenleg meg kell adnia a saját **tesztadatát a** modell kiértékelése céljából. A saját tesztadatok modellértékeléshez való behozása kódpára a [Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)notebook Teszt szakaszában található. 
+Jelenleg meg kell adnia a saját tesztadatát a **modell** kiértékelése céljából. A saját tesztadatok modellértékeléshez való behozása kódpára a [Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)notebook Tesztelés szakaszában található. 
 
 ## <a name="compute-to-run-experiment"></a>Számítás a kísérlet futtatásához
 
 A következő lépés a modell betanítás helyének meghatározása. Az automatizált gépi tanuláshoz kapcsolódó tanítási kísérlet az alábbi számítási lehetőségeken futhat. Ismerje meg a [helyi és távoli számítási lehetőségek előnyeit és hátrányait](concept-automated-ml.md#local-remote). 
 
-* Helyi **gépe,** például egy helyi asztali számítógép vagy laptop – Általában akkor, ha kisebb adatkészlete van, és még a feltárási szakaszban van. A helyi számításra [ebben a jegyzetfüzetben](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb) tekinthet meg egy példát. 
+* Helyi **gépe,** például egy helyi asztali számítógép vagy laptop – Általában akkor, ha kis adatkészlete van, és még a feltárási szakaszban van. A helyi számításra [ebben a jegyzetfüzetben](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb) tekinthet meg egy példát. 
  
-* Távoli **gép** a felhőben – Azure Machine Learning [Managed Compute](concept-compute-target.md#amlcompute) egy felügyelt szolgáltatás, amely lehetővé teszi a gépi tanulási modellek betanítása Azure-beli virtuális gépek fürtjére. 
+* Felhőben **lévő** távoli gép – [Azure Machine Learning Managed Compute](concept-compute-target.md#amlcompute) egy felügyelt szolgáltatás, amely lehetővé teszi a gépi tanulási modellek betanítási képességét Azure-beli virtuális gépek fürtjére. 
 
     Az Azure Machine Learning Managed Compute-tal történő távoli számításra [ebben a jegyzetfüzetben](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) tekinthet meg egy példát. 
 
-* Egy **Azure Databricks az** Azure-előfizetésben. További részleteket az Automatikus gépi tanulási [fürt Azure Databricks talál.](how-to-configure-databricks-automl-environment.md) Tekintse meg ezt a [GitHub-webhelyet,](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl) amely példákat tartalmaz a Azure Databricks.
+* Egy **Azure Databricks az** Azure-előfizetésben. További részleteket az Automatikus gépi tanulási [fürt beállítása Azure Databricks talál.](how-to-configure-databricks-automl-environment.md) Ebben a [GitHub-webhelyen](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl) példákat talál a Azure Databricks.
 
 <a name='configure-experiment'></a>
 
@@ -141,7 +141,7 @@ Néhány példa:
                                       label_column_name=label,
                                       n_cross_validations=2)
    ```
-1. Az alábbi példa egy 60 perc után véget érő regressziós kísérlet öt ellenőrző keresztdátlálással.
+1. Az alábbi példa egy 60 perc után véget érő regressziós kísérlet öt ellenőrző keresztátcsattal.
 
    ```python
       automl_regressor = AutoMLConfig(task='regression',
@@ -154,7 +154,7 @@ Néhány példa:
    ```
 
 
-1. Az előrejelzési feladatokhoz további beállításokra van szükség. További részletekért tekintse meg az idősorozat-előrejelzési modell automatikus [képzését.](how-to-auto-train-forecast.md) 
+1. Az előrejelzési feladatokhoz további beállításokra van szükség. További részleteket [az idősoros előrejelzési](how-to-auto-train-forecast.md) modell automatikus képzését tartalmazó cikkben talál. 
 
     ```python
     time_series_settings = {
@@ -184,7 +184,7 @@ A három különböző paraméterérték határozza meg az alkalmazandó algorit
 Az alábbi táblázat a támogatott modelleket foglalja össze feladattípus szerint. 
 
 > [!NOTE]
-> Ha azt tervezi, hogy az automatikusan létrehozott modelleket [egy ONNX-modellbe](concept-onnx.md)exportálja, csak a * jelű algoritmusok konvertálhatók ONNX formátumra. További információ a [modellek ONNX-gé konvertálásával kapcsolatban.](concept-automated-ml.md#use-with-onnx) <br> <br> Azt is vegye figyelembe, hogy az ONNX jelenleg csak a besorolási és regressziós feladatokat támogatja. 
+> Ha azt tervezi, hogy az automatikusan gépi tanulási modelleket [egy ONNX-modellbe](concept-onnx.md)exportálja, csak a * jelű algoritmusok konvertálhatók ONNX formátumra. További információ a [modellek ONNX-gé konvertálásával kapcsolatban.](concept-automated-ml.md#use-with-onnx) <br> <br> Azt is vegye figyelembe, hogy az ONNX jelenleg csak a besorolási és regressziós feladatokat támogatja. 
 
 Osztályozás | Regresszió | Idősoros előrejelzés
 |-- |-- |--
@@ -200,13 +200,13 @@ Osztályozás | Regresszió | Idősoros előrejelzés
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
 [Averaged Perceptron Classifier](/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)|[Online gradiens gradiens regressor](/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?preserve-view=true&view=nimbusml-py-latest) |[Auto-ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
 [Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Gyors lineáris regresszió](/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?preserve-view=true&view=nimbusml-py-latest)|[Próféta](https://facebook.github.io/prophet/docs/quick_start.html)
-[Sztochasztikus gradiens gradiens (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* ||ForecastTCN (Előrejelzési TCN)
+[Sztochasztikus gradiens gradiens (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* ||ForecastTCN
 |[Lineáris SVM-osztályozó](/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)*||
 
 ### <a name="primary-metric"></a>Elsődleges metrika
 A paraméter határozza meg a modell optimalizáláshoz való betanítása `primary metric` során használt metrikát. A kiválasztható metrikákat a kiválasztott feladattípus határozza meg, és az alábbi táblázatban az egyes feladattípusokkal kapcsolatos érvényes elsődleges metrikák érhetők el.
 
-Az automatikus gépi tanulás optimalizálása elsődleges metrika kiválasztása számos tényezőtől függ. Javasoljuk, hogy elsősorban olyan metrikát válasszon, amely a legjobban megfelelő az üzleti igényeinek. Ezután fontolja meg, hogy a metrika megfelelő-e az adatkészlet-profilhoz (adatméret, tartomány, osztályelosztás stb.).
+Az automatikus gépi tanulás optimalizálása elsődleges metrika kiválasztása számos tényezőtől függ. Javasoljuk, hogy elsősorban olyan metrikát válasszon, amely a legjobban megfelelő az üzleti igényeinek. Ezután gondolja át, hogy a metrika megfelelő-e az adatkészlet-profilhoz (adatméret, tartomány, osztályelosztás stb.).
 
 A metrikák konkrét definícióiról az Automatizált gépi tanulási eredmények [megismerése cikkből olvashat.](how-to-understand-automated-ml.md)
 
@@ -256,7 +256,7 @@ Lásd fent a regressziós megjegyzéseket.
 
 ### <a name="data-featurization"></a>Adatok featurizálása
 
-Minden automatizált gépi tanulási kísérlet automatikusan méretezi és  normalizálja az adatokat, hogy segítsen bizonyos algoritmusok számára, amelyek érzékenyek a különböző skálán található jellemzőkre. Ezt a skálázást és normalizálást featurizálásnak nevezzük. További [részletekért és kódpépéékért](how-to-configure-auto-features.md#) tekintse meg a Featurization in AutoML (Az AutoML-sel való megrekedés) kódot. 
+Minden automatizált gépi tanulási kísérlet automatikusan méretezi és  normalizálja az adatokat, hogy segítsen bizonyos algoritmusok számára, amelyek érzékenyek a különböző skálán található jellemzőkre. Ezt a skálázást és normalizálást featurizálásnak nevezzük. További [részletekért és kódpépéékért](how-to-configure-auto-features.md#) tekintse meg a Featurization in AutoML (Az AutoML-sel való featurizálás) kódot. 
 
 A kísérletek objektumban való `AutoMLConfig` konfigurálásakor engedélyezheti vagy letilthatja a `featurization` beállítást. Az alábbi táblázatban az [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)objektumban elfogadott, a funkcióra vonatkozó beállításokat mutatjuk be. 
 
@@ -267,7 +267,7 @@ A kísérletek objektumban való `AutoMLConfig` konfigurálásakor engedélyezhe
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| Azt jelzi, hogy testreszabott featurizálási lépést kell használni. [Megtudhatja, hogyan szabhatja testre a featurizálást.](how-to-configure-auto-features.md#customize-featurization)|
 
 > [!NOTE]
-> Az automatizált gépi tanulás jellemzősítési lépései (a funkciók normalizálása, a hiányzó adatok kezelése, a szöveg numerikus formátumra konvertálása stb.) az alapul szolgáló modell részét képezi. Ha a modellt előrejelzésekhez használja, a rendszer automatikusan alkalmazza a betanítás során alkalmazott modellezési lépéseket a bemeneti adatokra.
+> A gépi tanulás jellemzősítésének automatizált lépései (a funkciók normalizálása, a hiányzó adatok kezelése, a szöveg numerikusra konvertálása stb.) az alapul szolgáló modell részét képezi. Ha a modellt előrejelzésekhez használja, a rendszer automatikusan alkalmazza a betanítás során alkalmazott modellezési lépéseket a bemeneti adatokra.
 
 <a name="ensemble"></a>
 
@@ -348,7 +348,7 @@ Az AutoMLConfigben több lehetőséget is meghatározhat a kísérlet végére.
 |Feltételek| leírás
 |----|----
 Nincsenek &nbsp; feltételek | Ha nem határoz meg kilépési paramétereket, a kísérlet addig folytatódik, amíg nem történik további előrehaladás az elsődleges metrikán.
-Hosszú &nbsp; &nbsp; idő &nbsp; &nbsp; után| A beállításban megadhatja, hogy a kísérlet mennyi ideig fusson (percben). `experiment_timeout_minutes` <br><br> A kísérlet időkorét túllépő hibák elkerülése érdekében legalább 15 perc, vagy 60 perc szükséges, ha a sor oszlopmérete meghaladja a 10 milliót.
+Hosszú &nbsp; &nbsp; idő &nbsp; &nbsp; után| A beállításokban megadhatja, hogy a kísérlet mennyi ideig fusson (percben). `experiment_timeout_minutes` <br><br> A kísérlet időkorét túllépő hibák elkerülése érdekében legalább 15 perc, vagy 60 perc szükséges, ha a sor oszlopmérete meghaladja a 10 milliót.
 A &nbsp; pontszám el lett &nbsp; &nbsp; &nbsp; érve| A `experiment_exit_score` használata befejezi a kísérletet a megadott elsődleges metrikapontszám elérése után.
 
 ## <a name="run-experiment"></a>Kísérlet futtatása
@@ -375,7 +375,7 @@ run = experiment.submit(automl_config, show_output=True)
 
 >[!NOTE]
 >A függőségek először egy új gépen vannak telepítve.  Akár 10 percig is eltarthat, amíg a kimenet megjelenik.
->Ha `show_output` ezt `True` a beállítást, akkor a kimenet megjelenik a konzolon.
+>Ha `show_output` ezt a `True` beállítást, akkor a kimenet megjelenik a konzolon.
 
 ### <a name="multiple-child-runs-on-clusters"></a>Több gyermekfutat a fürtökön
 
@@ -492,7 +492,7 @@ print_model(model_from_aml)
 
 ```
 > [!NOTE]
-> Az automatizált gépi tanulási algoritmusok eredendő véletlenszerűséggel vannak alkalmazva, amely kis mértékben variációt okozhat egy ajánlott modell végső metrikapontszámában, például a pontosságban. Az automatizált ml olyan adatokat is végrehajt, mint a betanítás-tesztelés felosztása, a betanítás-ellenőrzés felosztása vagy a keresztellenőrzés, ha szükséges. Ha tehát többször is futtat egy kísérletet ugyanazokkal a konfigurációs beállításokkal és elsődleges metrikával, valószínűleg az egyes kísérletek végső metrikapontszámát fogja látni ezen tényezők miatt. 
+> Az automatizált gépi tanulási algoritmusok eredendő véletlenszerűséggel vannak alkalmazva, amely kis mértékben variációt okozhat egy ajánlott modell végső metrikapontszámában, például a pontosságban. Az automatizált ml olyan adatokon is végez műveleteket, mint a betanítás-tesztelés felosztása, a betanítás-ellenőrzés felosztása vagy a keresztellenőrzés, ha szükséges. Ha tehát többször is futtat egy kísérletet ugyanazokkal a konfigurációs beállításokkal és elsődleges metrikával, valószínűleg az egyes kísérletek végső metrikapontszámát fogja látni ezen tényezők miatt. 
 
 ## <a name="monitor-automated-machine-learning-runs"></a><a name="monitor"></a> Automatizált gépi tanulási futtatás figyelése
 
@@ -539,11 +539,11 @@ Az üzembe helyezési konfigurációk létrehozásáról és a regisztrált mode
 
 ## <a name="model-interpretability"></a>Modell értelmezhetősége
 
-A modell értelmezhetősége lehetővé teszi annak értelmezését, hogy a modellek miért készítettek előrejelzéseket, és hogy a mögöttes funkciók fontossági értékeit is megértheti. Az SDK különböző csomagokat tartalmaz a modell értelmezhetőségi funkcióinak a betanításkor és a következtetéskor való engedélyezéséhez a helyi és az üzembe helyezett modellekhez.
+A modell értelmezhetősége lehetővé teszi annak értelmezését, hogy a modellek miért készítettek előrejelzéseket, valamint a mögöttes jellemző fontossági értékeit. Az SDK különböző csomagokat tartalmaz a modell értelmezhetőségi funkcióinak a betanításkor és a következtetéskor való engedélyezéséhez a helyi és az üzembe helyezett modellekhez.
 
-Tekintse meg [a kódmintákat,](how-to-machine-learning-interpretability-automl.md) amelyekből megismerheti, hogyan engedélyezheti az értelmezhetőségi funkciókat kifejezetten automatizált gépi tanulási kísérletekben.
+Tekintse meg [a kódmintákat,](how-to-machine-learning-interpretability-automl.md) amelyekből megismerheti, hogyan engedélyezheti az automatizált gépi tanulási kísérletekben használható értelmezhetőségi funkciókat.
 
-A modell magyarázatának és a funkciók fontosságának az automatizált gépi tanuláson kívüli [](how-to-machine-learning-interpretability.md) más területein történő alkalmazásával kapcsolatos általános információkért tekintse meg az értelmezhetőséggel kapcsolatos fogalmakat.
+A modell magyarázatának és a funkciók fontosságának az automatizált gépi tanuláson kívüli [](how-to-machine-learning-interpretability.md) más területein történő alkalmazásával kapcsolatos általános információkért tekintse meg az értelmezhetőséggel kapcsolatos cikket.
 
 > [!NOTE]
 > A Magyarázat ügyfél jelenleg nem támogatja az ForecastTCN modellt. Ez a modell nem ad vissza magyarázat-irányítópultot, ha a legjobb modellként van visszaadva, és nem támogatja az igény szerinti magyarázatfuttatásokat.
@@ -552,7 +552,7 @@ A modell magyarázatának és a funkciók fontosságának az automatizált gépi
 
 + További információ a [modellek üzembe helyezéséről.](how-to-deploy-and-where.md)
 
-+ További információ a [regressziós](tutorial-auto-train-models.md) modellek automatizált gépi tanulással történő betanításról vagy az automatizált gépi tanulás távoli [erőforráson történő betanításról.](how-to-auto-train-remote.md)
++ További információ a regressziós modellek automatizált gépi [tanulással való betanításról.](tutorial-auto-train-models.md)
 
 + Ismerje meg, hogyan képezhet be több modellt az AutoML segítségével a [Több modell megoldásgyorsítóban.](https://aka.ms/many-models)
 

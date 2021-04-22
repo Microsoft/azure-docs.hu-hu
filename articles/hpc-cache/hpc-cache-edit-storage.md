@@ -1,51 +1,51 @@
 ---
-title: Azure HPC cache tárolási célok frissítése
-description: Az Azure HPC cache tárolási céljainak szerkesztése
+title: Céltárolók Azure HPC Cache frissítése
+description: Céltárolók Azure HPC Cache szerkesztése
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/29/2021
 ms.author: v-erkel
-ms.openlocfilehash: d61612b6e491fae550559e499cb360efc0f7c044
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ebf68c1eb06984e2de8114c53e1bb55d52aed70a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258911"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862632"
 ---
 # <a name="edit-storage-targets"></a>Céltárolók szerkesztése
 
-A tárolási célokat a Azure Portal vagy az Azure CLI használatával távolíthatja el vagy módosíthatja.
+A céltárolókat eltávolíthatja vagy módosíthatja a Azure Portal vagy az Azure CLI használatával.
 
-A tároló típusától függően módosíthatja a tárolási célértékek értékét:
+A tároló típusától függően a következő célértékeket módosíthatja:
 
-* A blob Storage-célok esetében módosíthatja a névtér elérési útját és a hozzáférési házirendet.
+* Blob Storage-célokhoz módosíthatja a névtér elérési útját és a hozzáférési szabályzatot.
 
-* Az NFS-tárolási célok esetében a következő értékeket módosíthatja:
+* NFS-tárolócélok esetén a következő értékeket módosíthatja:
 
   * Névtér elérési útjai
   * Hozzáférési szabályzat
-  * A névtér elérési útjához társított tároló exportálása vagy exportálása
+  * A névtér elérési úthoz társított storage export vagy export alkönyvtár
   * Használati modell
 
-* A ADLS-NFS tárolási célok esetében módosíthatja a névtér elérési útját, a hozzáférési házirendet és a használati modellt.
+* Az ADLS-NFS-tárolók esetében módosíthatja a névtér elérési útját, a hozzáférési szabályzatot és a használati modellt.
 
-Nem szerkesztheti a tárolási cél nevét, típusát vagy háttérbeli tárolási rendszerét (blob-tároló vagy NFS-állomásnév/IP-cím). Ha módosítania kell ezeket a tulajdonságokat, törölje a tárolási célt, és hozzon létre egy cserét az új értékkel.
+A tárolási cél neve, típusa vagy háttértárrendszere (Blob-tároló vagy NFS-állomásnév/IP-cím) nem szerkeszthető. Ha módosítania kell ezeket a tulajdonságokat, törölje a tárolóhelyet, és hozzon létre egy új értéket helyettesítő adatokat.
 
 > [!TIP]
-> Az [Azure HPC cache-gyorsítótárának kezelése videó](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) bemutatja, hogyan szerkesztheti a tárolási célt a Azure Portal.
+> A [Azure HPC Cache kezelése videó bemutatja,](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) hogyan szerkeszthet egy tárolóhelyet a Azure Portal.
 
-## <a name="remove-a-storage-target"></a>Tárolási cél eltávolítása
+## <a name="remove-a-storage-target"></a>Tároló célhelyének eltávolítása
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Tárolási cél eltávolításához nyissa meg a **tárolási célok** lapot. Válassza ki a tárolási célt a listából, és kattintson a **Törlés** gombra.
+Tároló célhelyének eltávolításához nyissa meg a **Tárolási célok** lapot. Válassza ki a tárolócélt a listából, és kattintson **a Törlés gombra.**
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
+[Az Azure CLI beállítása a Azure HPC Cache.](./az-cli-prerequisites.md)
 
-Az [az HPC-cache Storage-Target Remove](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-remove) paranccsal törölheti a tárolási célt a gyorsítótárból.
+A [tároló célhelyét az az hpc-cache storage-target remove](/cli/azure/hpc-cache/storage-target#az_hpc_cache_storage_target_remove) parancs használatával törölheti a gyorsítótárból.
 
 ```azurecli
 $ az hpc-cache storage-target remove --resource-group cache-rg --cache-name doc-cache0629 --name blob1
@@ -60,31 +60,31 @@ $ az hpc-cache storage-target remove --resource-group cache-rg --cache-name doc-
 
 ---
 
-A tárolási cél törlése eltávolítja a tárolási rendszer társítását ezzel az Azure HPC cache rendszerrel, de nem változtatja meg a háttérrendszer tárolási rendszerét. Ha például egy Azure Blob Storage-tárolót használ, a tároló és annak tartalma továbbra is fennáll, miután törölte a gyorsítótárból. A tárolót hozzáadhatja egy másik Azure HPC-gyorsítótárhoz, hozzáadhatja újra a gyorsítótárhoz, vagy törölheti a Azure Portal.
+A tárolóhely törlése eltávolítja a tárolórendszer és a Azure HPC Cache társítását, de nem módosítja a háttértárrendszert. Ha például Egy Azure Blob Storage-tárolót használt, a tároló és annak tartalma továbbra is létezik, miután törölte azt a gyorsítótárból. A tárolót hozzáadhatja egy másik Azure HPC Cache, újra hozzáadhatja ehhez a gyorsítótárhoz, vagy törölheti a Azure Portal.
 
-A gyorsítótárban tárolt összes változás a tárolási cél eltávolítása előtt a háttérrendszer tárolási rendszerébe íródik. Ez a folyamat akár egy órát is igénybe vehet, ha a módosult adatmennyiségek nagy része a gyorsítótárban van.
+A rendszer a gyorsítótárban tárolt fájlváltozásokat a háttértárrendszerbe írja a tároló célhelyének eltávolítása előtt. Ha sok módosított adat található a gyorsítótárban, ez a folyamat akár egy órát vagy többet is el is vehet.
 
-## <a name="change-a-blob-storage-targets-namespace-path"></a>BLOB Storage-cél névtérbeli elérési útjának módosítása
+## <a name="change-a-blob-storage-targets-namespace-path"></a>Blob Storage-cél névtér elérési útjának módosítása
 
-A névtér elérési útjai az ügyfelek által a tárolási cél csatlakoztatásához használt elérési utak. (További információért olvassa el [az összesített névtér megtervezése](hpc-cache-namespace.md) és [az összesített névtér beállítása](add-namespace-paths.md)című témakört.
+A névtér elérési útjai azok az elérési utak, amelyek használatával az ügyfelek csatlakoztatják ezt a tárolási célt. (További információ: Az összesített névtér [megterve és](hpc-cache-namespace.md) Az összesített névtér [beállítása).](add-namespace-paths.md)
 
-A névtér elérési útja az egyetlen, amely az Azure Blob Storage-tárolón végezhető el. A Azure Portal vagy az Azure CLI használatával módosíthatja.
+A névtér elérési útja az egyetlen frissítés, amely egy Azure Blob Storage-célon frissítve lesz. A Azure Portal vagy az Azure CLI használatával módosíthatja azt.
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Használja az Azure HPC-gyorsítótár **névter** lapját. A névtér lap részletes ismertetését az [összesített névtér beállítása](add-namespace-paths.md)című cikkben találja.
+Használja a **névtér** lapját a Azure HPC Cache. A névtér lapját részletesebben az Összesített névtér beállítása cikkben [ismertetjük.](add-namespace-paths.md)
 
 Kattintson a módosítani kívánt elérési út nevére, és hozza létre az új elérési utat a megjelenő szerkesztési ablakban.
 
-![Képernyőkép a névtér oldaláról a blob-névtér elérési útjára való kattintás után – a szerkesztési mezők a jobb oldali ablaktáblán jelennek meg.](media/update-namespace-blob.png)
+![Képernyőkép a névtér oldalról, miután a blobnévtér elérési útjára kattintott – a szerkesztési mezők a jobb oldali panelen jelennek meg](media/update-namespace-blob.png)
 
-A módosítások végrehajtása után kattintson **az OK** gombra a tárolási cél frissítéséhez, vagy kattintson a **Mégse** gombra a módosítások elvetéséhez.
+A módosításokat követően kattintson az **OK gombra** a tárolási cél frissítéséhez, vagy kattintson a **Mégse** gombra a módosítások elvetéséhez.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
+[Az Azure CLI beállítása a Azure HPC Cache.](./az-cli-prerequisites.md)
 
-Ha módosítani szeretné a blob Storage-tároló névterét az Azure CLI-vel, használja az parancsot az [HPC-cache blob-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-update)paranccsal. Csak az `--virtual-namespace-path` érték módosítható.
+Ha módosítania kell egy Blob Storage-cél névterét az Azure CLI-vel, használja az [az hpc-cache blob-storage-target update parancsot.](/cli/azure/hpc-cache/blob-storage-target#az_hpc_cache_blob_storage_target_update) Csak `--virtual-namespace-path` az érték módosítható.
 
   ```azurecli
   az hpc-cache blob-storage-target update --cache-name cache-name --name target-name \
@@ -93,53 +93,53 @@ Ha módosítani szeretné a blob Storage-tároló névterét az Azure CLI-vel, h
 
 ---
 
-## <a name="update-an-nfs-storage-target"></a>NFS-tárolási cél frissítése
+## <a name="update-an-nfs-storage-target"></a>NFS-tárolóhely frissítése
 
-Az NFS-tárolási célok esetében megváltoztathatja vagy hozzáadhatja a virtuális névtér elérési útját, módosíthatja az NFS-exportálás vagy alkönyvtár értékeit, amelyeket a névtér elérési útja mutat, és megváltoztatja a használati modellt.
+NfS-tárolócélok esetén módosíthatja vagy hozzáadhatja a virtuális névtér elérési útját, módosíthatja az NFS exportálási vagy alkönyvtárértékeket, amelyekre a névtér elérési útja mutat, és módosíthatja a használati modellt.
 
-Az egyes egyéni DNS-beállításokkal rendelkező gyorsítótárban tárolt tárolási célokhoz az IP-címek frissítésére szolgáló vezérlő is tartozik. (Az ilyen típusú konfiguráció ritka.)
+Bizonyos típusú egyéni DNS-beállításokkal a gyorsítótárak tárolócéljai az IP-címük frissítésére is lehetőséget kínálnak. (Ez a konfiguráció ritka.)
 
-A részletek a következők:
+A részletek alább olvashatók:
 
-* [Összesített névtér értékeinek](#change-aggregated-namespace-values) (virtuális névtér elérési útja, hozzáférési házirend, exportálás és exportálás alkönyvtár) módosítása
+* [Összesített névtérértékek módosítása](#change-aggregated-namespace-values) (virtuális névtér elérési útja, hozzáférési szabályzat, exportálás és exportálás alkönyvtára)
 * [A használati modell módosítása](#change-the-usage-model)
 * [DNS frissítése](#update-ip-address-custom-dns-configurations-only)
 
-### <a name="change-aggregated-namespace-values"></a>Összesített névtér értékeinek módosítása
+### <a name="change-aggregated-namespace-values"></a>Összesített névtérértékek módosítása
 
-A Azure Portal vagy az Azure CLI segítségével módosíthatja az ügyfél felé irányuló névtér elérési útját, a tároló exportálását és az alkönyvtár exportálását (ha használatban van).
+Az ügyféloldali névtér Azure Portal vagy az Azure CLI használatával módosíthatja az ügyféloldali névtér elérési útját, a tároló exportálását és az exportálás alkönyvtárát (ha van).
 
-Ha emlékeztetőt szeretne arról, hogyan hozható létre több érvényes elérési út egy tárolási célra, olvassa el az [NFS-névtér elérési útjának hozzáadása](add-namespace-paths.md#nfs-namespace-paths) című témakör útmutatását.
+Olvassa el [](add-namespace-paths.md#nfs-namespace-paths) az NFS-névterek elérési útjának hozzáadása útmutatót, ha emlékeztetőt szeretne arról, hogyan hozhat létre több érvényes elérési utat egy tárolóhelyen.
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A névtér értékeinek frissítéséhez használja az Azure HPC-gyorsítótár **névter** lapját. A lap részletes ismertetését az [összesített névtér beállítása](add-namespace-paths.md)című cikkben találja.
+A **névtérértékek frissítéséhez** használja a Azure HPC Cache lapját. Ezt az oldalt részletesebben az Összesített névtér beállítása cikkben [ismertetjük.](add-namespace-paths.md)
 
-![képernyőkép a portál névtér oldaláról az NFS-frissítési oldal megnyitásával a jobb oldalon](media/update-namespace-nfs.png)
+![képernyőkép a portál névtéroldalról, jobb oldalt megnyitva az NFS frissítési oldalával](media/update-namespace-nfs.png)
 
 1. Kattintson a módosítani kívánt elérési út nevére.
-1. A szerkesztési ablak használatával beírhatja az új virtuális elérési utat, az exportálást vagy az alkönyvtár értékeit, vagy kijelölhet egy másik hozzáférési házirendet.
-1. A módosítások elvégzése után kattintson **az OK** gombra a tárolási cél frissítéséhez vagy a **Mégse** gombra a módosítások elvetéséhez.
+1. A szerkesztési ablakban begépelheti az új virtuális elérési utat, az exportálást vagy az alkönyvtár értékeit, vagy választhat egy másik hozzáférési szabályzatot.
+1. A módosításokat követően kattintson az **OK** gombra a tárolási cél frissítéséhez, vagy a **Mégse** gombra a módosítások elvetéhez.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
+[Az Azure CLI beállítása a Azure HPC Cache.](./az-cli-prerequisites.md)
 
-Használja az az ``--junction`` [HPC-cache NFS-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target) paranccsal a névtér elérési útjának, az NFS-exportálás vagy az Exportálás alkönyvtárának módosítására szolgáló lehetőséget.
+Az ``--junction`` [az hpc-cache nfs-storage-target update parancs](/cli/azure/hpc-cache/nfs-storage-target) kapcsolóját használva módosíthatja a névtér elérési útját, az NFS-exportálást vagy az export alkönyvtárat.
 
 A ``--junction`` paraméter a következő értékeket használja:
 
-* ``namespace-path`` – Az ügyfélre irányuló virtuális fájl elérési útja
-* ``nfs-export`` – A tárolásirendszer exportálja az ügyfél felé irányuló elérési úttal való hozzárendeléshez
-* ``target-path`` (nem kötelező) – szükség esetén az Exportálás alkönyvtára
+* ``namespace-path`` – Az ügyféloldali virtuális fájl elérési útja
+* ``nfs-export`` - Az ügyféloldali elérési úthoz társítható tárolórendszer exportálása
+* ``target-path`` (nem kötelező) – Az exportálás alkönyvtára, ha szükséges
 
 Például: ``--junction namespace-path="/nas-1" nfs-export="/datadisk1" target-path="/test"``
 
-Az utasításban szereplő összes elérési úthoz mindhárom értéket meg kell adnia ``--junction`` . Használja a meglévő értékeket bármely olyan értékhez, amelyet nem szeretne módosítani.
+A utasításban minden elérési úthoz mindhárom értéket meg kell ``--junction`` adnunk. A meglévő értékeket minden olyan értékhez használhatja, amit nem szeretne módosítani.
 
-A gyorsítótár neve, a tárolási cél neve és az erőforráscsoport is szükséges az összes frissítési parancsban.
+A gyorsítótár neve, a tároló célneve és az erőforráscsoport is szükséges az összes frissítési parancsban.
 
-Példa parancs:
+Példaparancs:
 
 ```azurecli
 az hpc-cache nfs-storage-target update --cache-name mycache \
@@ -151,71 +151,71 @@ az hpc-cache nfs-storage-target update --cache-name mycache \
 
 ### <a name="change-the-usage-model"></a>A használati modell módosítása
 
-A használati modell befolyásolja, hogy a gyorsítótár hogyan őrizze meg az adatokat. További információért olvassa el a [gyorsítótár-használati modellek ismertetése](cache-usage-models.md) című témakört.
+A használati modell befolyásolja, hogy a gyorsítótár hogyan őrzi meg az adatokat. További [információ: A gyorsítótár-használati modellek](cache-usage-models.md) megismerése.
 
 > [!NOTE]
-> Ha megváltoztatja a használati modelleket, előfordulhat, hogy újra kell csatlakoztatnia az ügyfeleket a NLM hibák elkerülése érdekében. Olvassa el, [Mikor kell újracsatlakoztatni az ügyfeleket](cache-usage-models.md#know-when-to-remount-clients-for-nlm) a részletekért.
+> Ha módosítja a használati modelleket, előfordulhat, hogy újra kell csatolnia az ügyfeleket az NLM-hibák elkerülése érdekében. További [információ: Know when to remount clients](cache-usage-models.md#know-when-to-remount-clients-for-nlm) (Tudja meg, mikor kell újra leválasztani az ügyfeleket).
 
-Ha módosítani szeretné egy NFS-tárolási cél használati modelljét, használja az alábbi módszerek egyikét.
+Az NFS-tárolóhely használati modelljének a módosítása az alábbi módszerek egyikével létezik.
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Módosítsa a használati modellt a Azure Portal **tárolási célok** lapján. Kattintson a módosítani kívánt tárolási cél nevére.
+Módosítsa a használati  modellt a tárterület céloldalán Azure Portal. Kattintson a módosítania kell a tároló célhelyének nevére.
 
-![az NFS-tárolási cél szerkesztési oldalának képernyőképe](media/edit-storage-nfs.png)
+![az NFS-tároló célhely szerkesztési oldalának képernyőképe](media/edit-storage-nfs.png)
 
-Új használati modell kiválasztásához használja a legördülő választót. A tárolási cél frissítéséhez kattintson **az OK** gombra, vagy kattintson a **Mégse** gombra a módosítások elvetéséhez.
+Új használati modell kiválasztásához használja a legördülő választót. Kattintson **az OK** gombra a tárolási cél frissítéséhez, vagy kattintson a **Mégse** gombra a módosítások elvetéséhez.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
+[Az Azure CLI beállítása a Azure HPC Cache.](./az-cli-prerequisites.md)
 
-Használja az az [HPC-cache NFS-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) parancsot.
+Használja az [az hpc-cache nfs-storage-target update parancsot.](/cli/azure/hpc-cache/nfs-storage-target#az_hpc_cache_nfs_storage_target_update)
 
-A frissítési parancs közel azonos ahhoz a parancshoz, amelyet az NFS-tárolási cél hozzáadásához használ. A részletekért és példákért tekintse meg az [NFS Storage-tároló létrehozása](hpc-cache-add-storage.md#create-an-nfs-storage-target) című témakört.
+A frissítési parancs majdnem teljesen megegyezik az NFS-tárolóhely hozzáadásához használt paranccsal. További részletekért és példákért tekintse meg [az NFS-tároló célhelyének](hpc-cache-add-storage.md#create-an-nfs-storage-target) létrehozása.
 
-A használati modell módosításához frissítse a ``--nfs3-usage-model`` beállítást. Például: ``--nfs3-usage-model WRITE_WORKLOAD_15``
+A használati modell beállításának ``--nfs3-usage-model`` módosítása. Például: ``--nfs3-usage-model WRITE_WORKLOAD_15``
 
-A gyorsítótár neve, a tárolási cél neve és az erőforráscsoport értékei is szükségesek.
+A gyorsítótár neve, a tároló célneve és az erőforráscsoport értékei is szükségesek.
 
-Ha ellenőrizni szeretné a használati modellek nevét, használja az parancsot az [HPC-cache use-Model List](/cli/azure/ext/hpc-cache/hpc-cache/usage-model#ext-hpc-cache-az-hpc-cache-usage-model-list).
+Ha ellenőrizni szeretné a használati modellek nevét, használja az [az hpc-cache usage-model list parancsot.](/cli/azure/hpc-cache/usage-model#az_hpc_cache_usage-model-list)
 
-Ha a gyorsítótár leáll, vagy nem kifogástalan állapotban van, a frissítés a gyorsítótár Kifogástalan állapotba helyezése után fog vonatkozni.
+Ha a gyorsítótár le van állítva vagy nem kifogástalan állapotban van, a frissítés a gyorsítótár kifogástalan állapota után lesz alkalmazva.
 
 ---
 
 ### <a name="update-ip-address-custom-dns-configurations-only"></a>IP-cím frissítése (csak egyéni DNS-konfigurációk esetén)
 
-Ha a gyorsítótár nem alapértelmezett DNS-konfigurációt használ, lehetséges, hogy az NFS-tárolási cél IP-címe megváltozik a háttérbeli DNS-változások miatt. Ha a DNS-kiszolgáló megváltoztatja a háttérrendszer IP-címét, akkor az Azure HPC cache elveszítheti a hozzáférést a tárolási rendszerhez.
+Ha a gyorsítótár nem alapértelmezett DNS-konfigurációt használ, az NFS-tároló céljának IP-címe megváltozhat a háttérbeli DNS-módosítások miatt. Ha a DNS-kiszolgáló módosítja a háttértárrendszer IP-címét, a Azure HPC Cache hozzáférhet a tárolórendszerhez.
 
-Ideális esetben a gyorsítótár egyéni DNS-rendszerének kezelőjével együttműködve tervezze meg a frissítéseket, mert ezek a módosítások nem teszik elérhetővé a tárterületet.
+Ideális esetben érdemes a gyorsítótár egyéni DNS-rendszerének kezelőjével együtt tervezni a frissítéseket, mivel ezek a módosítások elérhetetlenné teszik a tárterületet.
 
-Ha frissítenie kell egy tárolási cél DNS-beli IP-címét, akkor a tárolási célok listában megjelenik egy gomb. A **DNS frissítése** lehetőségre kattintva lekérdezheti az egyéni DNS-kiszolgálót az új IP-címekre.
+Ha frissítenie kell egy tárolási cél DNS által megadott IP-címét, a Tárolócélok listában megjelenik egy gomb. Kattintson **a DNS frissítése** elemre az egyéni DNS-kiszolgáló új IP-címének lekérdezéséhez.
 
-![Képernyőfelvétel a tárolási célhelyek listájáról. Egy tárolási cél esetén a "..." a jobb szélső oszlopban lévő menü megnyílik, és két lehetőség jelenik meg: delete és refresh DNS.](media/refresh-dns.png)
+![A tárolási céllista képernyőképe. Egy tárolóhelyen a "..." A jobb oldali oszlopban lévő menü meg van nyitva, és két lehetőség jelenik meg: Delete (Törlés) és Refresh DNS (DNS frissítése).](media/refresh-dns.png)
 
-Ha a művelet sikeres, a frissítés kevesebb, mint két percet vesz igénybe. Egyszerre csak egy tárolási cél frissítése végezhető el. Várjon, amíg az előző művelet befejeződik, mielőtt próbálkozik egy másikkal.
+Ha a frissítés sikeres, a frissítés kevesebb mint két percet fog igénybe venni. Egyszerre csak egy céltárolót frissíthet; várjon, amíg az előző művelet befejeződik, mielőtt próbálkozik egy másikkal.
 
-## <a name="update-an-adls-nfs-storage-target-preview"></a>ADLS-NFS tárolási cél frissítése (előzetes verzió)
+## <a name="update-an-adls-nfs-storage-target-preview"></a>ADLS-NFS tárolási cél frissítése (ELŐZETES VERZIÓ)
 
-Az NFS-célokhoz hasonlóan a névtér elérési útja és a ADLS-NFS tárolási célok használati modellje is módosítható.
+Az NFS-célokhoz hasonlóan módosíthatja az ADLS-NFS-tárolók névtérútvonalát és használati modelljét.
 
 ### <a name="change-an-adls-nfs-namespace-path"></a>ADLS-NFS-névtér elérési útjának módosítása
 
-A névtér értékeinek frissítéséhez használja az Azure HPC-gyorsítótár **névter** lapját. A lap részletes ismertetését az [összesített névtér beállítása](add-namespace-paths.md)című cikkben találja.
+A **névtérértékek frissítéséhez** használja a Azure HPC Cache lapját. Ezt az oldalt részletesebben az Összesített névtér beállítása cikkben [ismertetjük.](add-namespace-paths.md)
 
-![képernyőkép a portál névtér oldaláról a jobb oldalon található ADS-NFS-frissítési oldal megnyitásával](media/update-namespace-adls.png)
+![képernyőkép a portál névtéroldalról, jobb oldalt megnyitott ADS-NFS frissítési oldallal](media/update-namespace-adls.png)
 
 1. Kattintson a módosítani kívánt elérési út nevére.
-1. A szerkesztési ablak használatával beírhatja az új virtuális elérési utat, vagy frissítheti a hozzáférési házirendet.
-1. A módosítások elvégzése után kattintson **az OK** gombra a tárolási cél frissítéséhez vagy a **Mégse** gombra a módosítások elvetéséhez.
+1. A szerkesztési ablakban begépelheti az új virtuális útvonalat, vagy frissítheti a hozzáférési szabályzatot.
+1. A módosításokat követően kattintson az **OK gombra** a tároló célhelyének frissítéséhez, vagy a **Mégse** gombra a módosítások elvetéséhez.
 
-### <a name="change-adls-nfs-usage-models"></a>ADLS módosítása – NFS-használati modellek
+### <a name="change-adls-nfs-usage-models"></a>Az ADLS-NFS használati modellek módosítása
 
-A ADLS-NFS-használati modellek konfigurációja megegyezik az NFS használati modell kiválasztásával. Olvassa el a portálon megjelenő utasításokat a [használati modell módosítása](#change-the-usage-model) a fenti NFS-címen című részben. A ADLS-NFS tárolási célok frissítésének további eszközei fejlesztés alatt állnak.
+Az ADLS-NFS használati modellek konfigurációja megegyezik az NFS-használati modell kiválasztásával. Olvassa el a fenti NFS-szakaszban [található Használati](#change-the-usage-model) modell módosítása című szakaszban található portálra vonatkozó utasításokat. Az ADLS-NFS-tárolócélok frissítéséhez további eszközök is fejlesztés alatt állnak.
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A beállításokkal kapcsolatos további információkért olvassa el a [tárolási célok hozzáadása](hpc-cache-add-storage.md) című témakört.
-* A virtuális elérési utak használatával kapcsolatos további tippekért olvassa el [az összesített névtér megtervezése](hpc-cache-namespace.md) című cikkét.
+* További [információ ezekről](hpc-cache-add-storage.md) a lehetőségekről: Tárolócélok hozzáadása.
+* A [virtuális elérési utak használatával](hpc-cache-namespace.md) kapcsolatos további tippekért olvassa el Az összesített névtér megterve.

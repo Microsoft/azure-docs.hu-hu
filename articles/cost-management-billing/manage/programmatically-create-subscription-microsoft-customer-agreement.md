@@ -1,6 +1,6 @@
 ---
 title: Azure-előfizetések létrehozása programozott módon Microsoft Ügyfélszerződéshez a legújabb API-kkal
-description: Megtudhatja, hogyan hozhat létre az Azure-előfizetéseket Microsoft-szerződés alapján programozott módon a REST API, az Azure CLI, a Azure PowerShell és a Azure Resource Manager sablonok legújabb verzióival.
+description: Megtudhatja, hogyan hozhat létre Azure-előfizetéseket Microsoft Ügyfélszerződés a REST API, az Azure CLI, a Azure PowerShell és a Azure Resource Manager legújabb verzióival.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
@@ -9,12 +9,12 @@ ms.date: 03/29/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 5409c30020db2c8d7acf3c23df5a7d709d872341
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 324ca849e0f9c1282dc4b47ceba4654c76c07b35
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105963274"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870822"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-customer-agreement-with-the-latest-apis"></a>Azure-előfizetések létrehozása programozott módon Microsoft Ügyfélszerződéshez a legújabb API-kkal
 
@@ -28,9 +28,9 @@ Ha programozott módon hoz létre Azure-előfizetést, azt az a megállapodás s
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Előfizetések létrehozásához tulajdonosi, közreműködői vagy Azure-előfizetések létrehozói szerepkörével kell rendelkeznie egy számlaszakaszra, vagy tulajdonos vagy közreműködői szerepkörrel egy számlázási profilra vagy számlázási fiókra vonatkozóan. Ugyanezt a szerepkört is megadhatja egy egyszerű szolgáltatásnév (SPN) számára. További információ a szerepkörökről és az engedélyek hozzárendeléséről: [előfizetés számlázási szerepkörei és feladatai](understand-mca-roles.md#subscription-billing-roles-and-tasks).
+Előfizetések létrehozásához tulajdonosi, közreműködői vagy Azure-előfizetések létrehozói szerepkörével kell rendelkeznie egy számlaszakaszra, vagy tulajdonos vagy közreműködői szerepkörrel egy számlázási profilra vagy számlázási fiókra vonatkozóan. Ugyanezt a szerepkört egy egyszerű szolgáltatásnévnek (SPN) is meg lehet adni. A szerepkörökkel és az engedélyek hozzárendelésével kapcsolatos további információkért lásd: Előfizetés [számlázási szerepkörei és -feladatai.](understand-mca-roles.md#subscription-billing-roles-and-tasks)
 
-Ha SPN-t használ előfizetések létrehozásához, használja az Azure AD-alkalmazás regisztrációjának ObjectId az egyszerű szolgáltatásnév ObjectId [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) vagy az [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list)használatával. 
+Ha egyszerű szolgáltatásnévvel hoz létre előfizetéseket, használja az Azure AD-alkalmazásregisztráció ObjectId objektumazonosítóját szolgáltatásnév objectId-ként a [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) vagy [az Azure CLI használatával.](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) 
 
 Ha nem tudja, rendelkezik-e hozzáféréssel Microsoft Ügyfélszerződéshez, tekintse meg a [Microsoft Ügyfélszerződéshez való hozzáférés ellenőrzéséről](../understand/mca-overview.md#check-access-to-a-microsoft-customer-agreement) szóló cikket.
 
@@ -75,7 +75,7 @@ A `displayName` tulajdonsággal azonosíthatja azt a számlázási fiókot, amel
 ```azurepowershell
 Get-AzBillingAccount
 ```
-A rendszer visszaküldi az összes olyan számlázási fiók listáját, amelyhez hozzáfér 
+Megjelenik az összes olyan számlázási fiók listája, amelyekhez hozzáféréssel rendelkezik 
 
 ```json
 Name          : 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx
@@ -93,7 +93,7 @@ A `displayName` tulajdonsággal azonosíthatja azt a számlázási fiókot, amel
 ```azurecli
 az billing account list
 ```
-A rendszer visszaküldi az összes olyan számlázási fiók listáját, amelyhez hozzáfér 
+Megjelenik az összes olyan számlázási fiók listája, amelyekhez hozzáféréssel rendelkezik 
 
 ```json
 [
@@ -126,7 +126,7 @@ A `displayName` tulajdonsággal azonosíthatja azt a számlázási fiókot, amel
 
 Az előfizetésért felszámolt díjak a számlázási profilok számláinak egy szakaszában vannak feltüntetve. Az alábbi API-val kérheti le azon számlázási profilok és számlaszakaszok listáját, amelyeken engedéllyel rendelkezik Azure-előfizetések létrehozásához.
 
-Először szerezze be a számlázási profilok listáját abban a számlázási fiókban, amelyhez hozzáférése van (használja az `name` előző lépésben kapott)
+Először le kell kapnia azon számlázási profilok listáját azon számlázási fiók alatt, amelyhez hozzáféréssel rendelkezik (használja az előző lépésben `name` kapottet).
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -216,7 +216,7 @@ Az `id` tulajdonsággal azonosíthatja azt a számlaszakaszt, amelyhez előfizet
 Get-AzBillingProfile -BillingAccountName 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx
 ```
 
-A válasz részeként az ebben a fiókban lévő számlázási profilok listáját fogja kapni.
+A válasz részeként le fogja kapni a fiókhoz alatti számlázási profilok listáját.
 
 ```json
 Name              : AW4F-xxxx-xxx-xxx
@@ -238,20 +238,20 @@ Country           : US
 PostalCode        : 98052
 ```
 
-Jegyezze `name` fel a számlázási profilt a fenti válasz alapján. A következő lépés a számlázási profil alá tartozó számla szakasz beszerzése. Szüksége lesz a `name` Számlázási fiókra és a számlázási profilra
+Jegyezze `name` fel a fenti válaszból származó számlázási profilt. A következő lépés annak a számlázási szakasznak a be szereznie, amelyhez hozzáféréssel rendelkezik a számlázási profil alatt. Szüksége lesz a `name` számlázási fiók és a számlázási profil profiljára
 
 ```azurepowershell
 Get-AzInvoiceSection -BillingAccountName 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx -BillingProfileName AW4F-xxxx-xxx-xxx
 ```
 
-Ekkor a számla szakaszt kapja vissza
+Visszaadja a számlaszakaszt
 
 ```json
 Name        : SH3V-xxxx-xxx-xxx
 DisplayName : Development
 ```
 
-A `name` fenti a számla szakaszának neve, amelyet az előfizetés létrehozásához kell létrehoznia. Hozza létre a számlázási hatókörét a "/providers/Microsoft.Billing/billingAccounts/ <BillingAccountName> /BillingProfiles/ <BillingProfileName> /invoiceSections/ <InvoiceSectionName> " formátum használatával. Ebben a példában ez az érték felel meg a következőnek: `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"` .
+A `name` fenti a számlaszakasz neve, amely alatt létre kell hoznia egy előfizetést. A számlázási hatókört a következő formátumban építi fel: "/providers/Microsoft.Billing/billingAccounts/ <BillingAccountName> /billingProfiles/ <BillingProfileName> /invoiceSections/ <InvoiceSectionName> ". Ebben a példában ez az érték a következő lesz: `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"` .
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -259,7 +259,7 @@ A `name` fenti a számla szakaszának neve, amelyet az előfizetés létrehozás
 az billing profile list --account-name "5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx" --expand "InvoiceSections"
 ```
 
-Ez az API a számlázási profilok és a számlák listáját a megadott számlázási fiók alatt fogja visszaadni.
+Ez az API visszaadja a megadott számlázási fiókhoz tartozó számlázási profilok és számlaszakaszok listáját.
 
 ```json
 [
@@ -323,7 +323,7 @@ Ez az API a számlázási profilok és a számlák listáját a megadott száml�
   }
 ]
 ```
-A `id` számla szakasz objektum alatt található tulajdonsággal azonosíthatja azt a számla szakaszt, amelyhez előfizetéseket kíván létrehozni. Másolja ki az egész sztringet. Például/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx: XXXXXXXX-XXXX-XXXX-XXXX-xxxxxxxxxxxx_xxxx-XX-XX/billingProfiles/AW4F-XXXX-xxx-xxx/invoiceSections/SH3V-XXXX-xxx-xxx.
+A számlaszakasz objektum alatti tulajdonság használatával azonosíthatja azt a számlázási szakaszt, amelyhez `id` előfizetéseket szeretne létrehozni. Másolja ki az egész sztringet. Például: /providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx.
 
 ---
 
@@ -416,7 +416,7 @@ A parancsra adott válasz részeként megkapja a subscriptionId paramétert.
 
 Első lépésként telepítse a bővítményt az `az extension add --name account` és az `az extension add --name alias` futtatásával.
 
-Futtassa az alábbi [az account alias create](/cli/azure/ext/account/account/alias#ext_account_az_account_alias_create) parancsot.
+Futtassa az alábbi [az account alias create](/cli/azure/account/alias#az_account_alias_create) parancsot.
 
 ```azurecli
 az account alias create --name "sampleAlias" --billing-scope "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx" --display-name "Dev Team Subscription" --workload "Production"
@@ -440,9 +440,9 @@ A parancsra adott válasz részeként megkapja a subscriptionId paramétert.
 
 ## <a name="use-arm-template"></a>ARM-sablon használata
 
-Az előző szakasz azt mutatta be, hogyan lehet előfizetést létrehozni a PowerShell, a CLI vagy a REST API használatával. Ha automatizálni szeretné az előfizetések létrehozását, érdemes lehet egy Azure Resource Manager sablont (ARM-sablont) használni.
+Az előző szakasz azt mutatta be, hogyan hozhat létre előfizetést a PowerShell, a parancssori felület vagy a REST API. Ha automatizálni kell az előfizetések létrehozását, érdemes lehet egy Azure Resource Manager (ARM-sablon) használni.
 
-A következő sablon létrehoz egy előfizetést. A esetében `billingScope` adja meg a számla szakaszának azonosítóját. A esetében adja meg azt `targetManagementGroup` a felügyeleti csoportot, amelyben létre szeretné hozni az előfizetést.
+Az alábbi sablon egy előfizetést hoz létre. A `billingScope` esetén adja meg a számlaszakasz azonosítóját. A `targetManagementGroup` esetén adja meg azt a felügyeleti csoportot, amelyben létre szeretné hozni az előfizetést.
 
 ```json
 {
@@ -486,7 +486,7 @@ A következő sablon létrehoz egy előfizetést. A esetében `billingScope` adj
 }
 ```
 
-Telepítse a sablont a [felügyeleti csoport szintjén](../../azure-resource-manager/templates/deploy-to-management-group.md).
+Telepítse a sablont a [felügyeleti csoport szintjén.](../../azure-resource-manager/templates/deploy-to-management-group.md)
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -494,7 +494,7 @@ Telepítse a sablont a [felügyeleti csoport szintjén](../../azure-resource-man
 PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Resources/deployments/exampledeployment?api-version=2020-06-01
 ```
 
-Kérelem törzse:
+A kérelem törzsével:
 
 ```json
 {
@@ -549,4 +549,4 @@ az deployment mg create \
 
 * Most, hogy létrehozott egy előfizetést, elérhetővé teheti ezt a képességek más felhasználók és szolgáltatásnevek számára is. További információ: [Hozzáférés biztosítása nagyvállalati Azure-előfizetés létrehozáshoz (előzetes verzió)](grant-access-to-create-subscription.md).
 * Több előfizetés felügyeleti csoportok használatával történő kezeléséről az [erőforrások Azure-beli felügyeleti csoportokkal való rendszerezését](../../governance/management-groups/overview.md) ismertető részben talál további információt.
-* Az előfizetések felügyeleti csoportjának módosításához lásd: [előfizetések áthelyezése](../../governance/management-groups/manage.md#move-subscriptions).
+* Az előfizetés felügyeleti csoportjának módosítása: [Előfizetések áthelyezése.](../../governance/management-groups/manage.md#move-subscriptions)

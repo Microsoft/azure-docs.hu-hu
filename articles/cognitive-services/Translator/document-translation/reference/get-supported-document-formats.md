@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/25/2021
+ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 09e8f82b6a4ff26f0ae53090e7c330f72d3b9583
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: e47f3363a9e09a3e371c751e0bdd1143cfc72314
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107836196"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864900"
 ---
 # <a name="get-supported-document-formats"></a>Támogatott dokumentumformátumok lekért száma
 
@@ -33,7 +33,7 @@ Ismerje meg, hogyan találhatja meg [az egyéni tartománynevét.](../get-starte
 > [!IMPORTANT]
 >
 > * **A Document Translation szolgáltatásnak minden API-kérelemhez egyéni tartományvégpontra van szükség.**
-> * Nem használhatja az erőforráskulcsok és -végpontok oldalán található végpontot Azure Portal a globális fordítóvégpontot sem a dokumentumfordításra vonatkozó  `api.cognitive.microsofttranslator.com` HTTP-kérések igénylésére.
+> * Nem használhatja az erőforráskulcsok és -végpontok oldalán található végpontot Azure Portal, sem a globális fordítóvégpontot– a  `api.cognitive.microsofttranslator.com` dokumentumfordításra vonatkozó HTTP-kérések igénylésére.
 
 ## <a name="request-headers"></a>Kérésfejlécek
 
